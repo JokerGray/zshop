@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../common/css/common.css">
+    <link rel="stylesheet" href="../../../assets/layui-v2.3.0/css/layui.css" media="all">
+    <link rel="stylesheet" href="css/setting.css">
+    <title>设置</title>
+</head>
+
+<body>
+    <div class="app layui-fluid">
+        
+        <div class="setting-box setting-food">
+            <div class="setting-title">堂食设置</div>
+            <div class="setting-open">
+                是否开启脏台：
+                <span class="setting-radio" data-value="1"></span><span class="setting-label">是</span>
+                <span class="setting-radio radio-checked" data-value="2"></span><span class="setting-label">否</span>
+            </div>
+        </div>
+        <div class="setting-box setting-takeout">
+            <div class="setting-title">外卖设置</div>
+            <div class="setting-open">
+                是否开启接单自动打印：
+                <span class="setting-radio" data-value="1"></span>
+                <span class="setting-label">是</span>
+                <span class="setting-radio radio-checked" data-value="2"></span>
+                <span class="setting-label">否</span>
+            </div>
+        </div>
+        <div class="setting-box setting-surcharge" >
+            <div class="setting-title">附加费设置</div>
+            <div class="surcharge-data" style="display: none;">
+                    <span class="data-name">附加费</span>
+                    <span>:&nbsp;</span>
+                    <span class="data-price">10.00</span>
+                    <span>元 /</span>  
+                    <span class="data-unit" data-value="1">人</span>
+                    <span class="data-edit">修改</span>
+ 
+            </div>
+            <div class="setting-add">
+
+            </div>
+        </div>
+        <div class="setting-btn">
+            <button class="btn btn-ok">确定</button>
+        </div>
+        
+        <div id="add-surcharge" style="display: none;">
+            <div class="surcharge-content">
+                <div class="surcharge-name">
+                    <label for="">名称: </label>
+                    <input type="text" maxlength="20">
+                </div>
+                <div class="surcharge-algorithm">
+                    <label for="">算法：</label>
+                    <span class="setting-radio radio-checked" data-value="1" data-type="algorithm"></span>
+                    <span class="setting-label" data-value="1">按人算</span>
+                    <span class="setting-radio" data-value="2" data-type="algorithm"></span>
+                    <span class="setting-label" data-value="2">按桌算</span>
+                </div>
+                <div class="surcharge-price">
+                    <label for="">价格：</label>
+                    <span class="algorithm-price">每人</span>
+                    <input type="text" maxlength="6" onkeyup="clearNoNum(this,1000)"> 元
+                </div>
+                <div class="surcharge-ctl">
+                    <button class="btn btn-cancel">取消</button>
+                    <button class="btn btn-ok">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="rank-img-box">
+        <div class="rank-img-box">
+            {{# if(d.LAY_INDEX==1){ }}
+                <img src="img/top1.png" alt="">
+            {{# }else if(d.LAY_INDEX==2){  }}
+                <img src="img/top2.png" alt="">
+            {{# }else if(d.LAY_INDEX == 3){ }}
+                <img src="img/top3.png" alt="">
+            {{# }else{ }}
+                {{d.LAY_INDEX}}
+            {{# } }}
+        </div>
+    </script>
+    <script type="text/javascript" src="../../../assets/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../assets/layui-v2.3.0/layui.js"></script>
+    <script type="text/javascript" src="../../../assets/common/js/utils.js"></script>
+
+    <!--<script src="../../../assets/laydate-v5.0.9/laydate.js"></script>-->
+    <!--<script type="text/javascript" src="../../../assets/laydate/laydate.js"></script>-->
+    <script type="text/javascript" src="../common/js/common.js"></script>
+    <script type="text/javascript" src="js/setting.js"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>图片设置-自动轮播</title>
+        <link rel="stylesheet" href="../assets/hplus/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/kindeditor-4.1.7/themes/default/default.css"/>
+        <link rel="stylesheet" href="css/addCarouselPic.css">
+    </head>
+    <body>
+        <div class="pop-main">
+            <div class="pop-content">
+                <div class="pop-pic-show pull-left">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                      </ol>
+                      <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                          <img src="image/placeholder_img_01.png" alt="...">
+                          <div class="carousel-caption">
+                            ...
+                          </div>
+                        </div>
+                        <div class="item">
+                          <img src="image/placeholder_img_01.png" alt="...">
+                          <div class="carousel-caption">
+                            ...
+                          </div>
+                        </div>
+                        ...
+                      </div>
+                    </div>
+                </div>
+                <div class="pop-pic-set pull-right">
+                    <div id="addPicBox" class="add-pic-btn">
+                        <div class="num-box pull-left">
+                            <span class="pic-num">1</span>
+                        </div>
+                        <button type="button" class="btn add-btn"><i class="glyphicon glyphicon-plus"></i></button>
+                        <button type="button" class="btn remove-btn pull-right"><i class="glyphicon glyphicon-minus"></i></button>
+                    </div>
+                    <div class="edit-pic-info">
+                        <form></form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script id="carouselTemplate" type="text/template">
+            <div class="sub-form">
+                <div class="form-group">
+                    <label>选择类型：</label>
+                    <div>
+                        <select>
+                            <option value="1">商品</option>
+                            <option value="3">服务卡</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>商品名称：</label>
+                    <input type="text" class="form-control short-text" disabled="true">
+                </div>
+                <div class="form-group">
+                    <label>商品价格：</label>
+                    <input type="text" class="form-control short-text" disabled="true">
+                </div>
+                <div class="form-group mt-2">
+                    <label>商品详细介绍：</label>
+                    <div class="product-desc">
+                        <textarea name="detail" style="width: 100%; height: 144px;"  class="form-control required" aria-required="true" ></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>滚动条字幕：</label>
+                    <textarea class="multi-text"></textarea>
+                </div>
+                <div class="form-group text-right">
+                    <button class="btn import-btn" type="button">导入</button>
+                </div>
+                <div class="upload-pic">
+                    <div class="show-img">
+                        <input type="text" name="picUrl">
+                        <img src="image/placeholder_img_01.png" alt="pladceholder figure">
+                    </div>
+                    <a href="javascript:;" class="upload-pic-btn">【<span>设置图片</span>】
+                        <input type="file" accept="image/png,image/gif" name="file">
+                    </a>
+                </div>
+            </div>
+        </script>
+
+        <script src="../assets/js/jquery-1.8.2.min.js"></script>
+        <script src="../assets/layer/layer.js"></script>
+        <script src="../assets/kindeditor-4.1.7/kindeditor-all-min.js"></script>
+        <script src="../assets/kindeditor-4.1.7/lang/zh_CN.js"></script>
+        <script src="js/carousel.js"></script>
+        <script src="js/addCarouselPic.js"></script>
+    </body>
+</html>

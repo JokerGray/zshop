@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>智享头条 - 注册</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/login.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="header-inner clearfix">
+                <div class="logo pull-left">
+                    <a href="login.html"><img src="images/logo.png"></a>
+                </div>
+            </div>
+        </div>
+        <div class="register-wrap" style="min-height: 300px;">
+            <div class="base-register">
+                <div class="input-field">
+                    <input id="mobile" type="text" name="mobile" autocomplete="off" spellcheck="false" placeholder="手机号" maxlength="11">
+                </div>
+                <div class="input-field">
+                    <input id="password" type="password" name="password" autocomplete="off" spellcheck="false" placeholder="设置密码">
+                </div>
+                <div class="input-field">
+                    <input id="surepassword" type="password" name="password" autocomplete="off" spellcheck="false" placeholder="确认密码">
+                </div>
+                <div class="input-field">
+                    <div class="phone-code">
+                        <input id="code" type="text" name="code" autocomplete="off" spellcheck="false" placeholder="验证码">
+                        <span class="code-btn">获取验证码</span>
+                    </div>
+                </div>
+                <a href="javascript:void(0)" id="sendSubmit" class="btn btn-block btn-lg login-btn btn-submit">注册</a>
+                <!--<div class="clearfix" id="codestr" style="position: absolute; margin-top:10px; display: none;">
+                    您的验证码是：<span class="codestr"></span>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="util/util.js"></script>
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>角色管理</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="../../common/css/reset.css" />
+
+		<link rel="stylesheet" href="css/role.css">
+		<link rel="stylesheet" href="css/edit.css">
+		<link rel="stylesheet" href="css/remove.css">
+	<body>
+		<div class="allWrapper">
+			<!--公共头部部门-->
+			<div id="common-tool" class="clearfix p4">
+				<div id="search">
+					<button class="layui-btn layui-btn-small">
+					  <i class="layui-icon">&#xe615;</i> 搜索
+					</button>
+				</div>
+				<div id="rig-tool" class="clearfix">
+					<button class="layui-btn layui-btn-small" id="commonAdd">
+					  <i class="layui-icon">&#xe61f;</i> 添加
+					</button>
+					<button class="layui-btn layui-btn-small" id="refresh">
+					  <i class="layui-icon">&#x1002;</i> 刷新
+					</button>
+				</div>
+			</div>
+			<div id="search-tool" class="clearfix">
+				<div class="input-group layui-form-item">
+					<span class="layui-form-label ">角色名称:</span>
+					<input type="text" class="layui-input" placeholder="请输入角色名称" id="inquireInput" maxlength="10">
+				</div>
+				<div class="input-group">
+					<button class="layui-btn layui-btn-small" id="toolSearch">
+						搜索
+					</button>
+					<button class="layui-btn layui-btn-small" id="toolRelize">
+						重置
+					</button>
+				</div>
+				<div id="search-tool-show">
+				</div>
+			</div>
+			<!--公共头部部分-->
+			<div class="roleTable">
+				<table class="layui-table" id="roleName" lay-filter="roleName">
+				</table>
+				<div id="laypageLeft"></div>
+				<script type="text/html" id="barDemo1">
+				  <button class="layui-btn layui-btn-sm" lay-event="edit"><i class="layui-icon">&#xe6b2;</i>修改</button>
+				  <button class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</button>
+				</script>
+			</div>
+			<div class="nameTable">
+				<table class="layui-table" id="roleList" lay-filter="roleList">
+					<thead><td>角色用户列表，所属角色：<span id="role"></span></td></thead>
+				</table>
+				<script type="text/html" id="barDemo2">
+				  <a class="layui-btn  layui-btn-danger layui-btn-sm" lay-event="del">取消授权</a>
+				  <a class="layui-btn layui-btn-sm" lay-event="edit">移动角色</a>
+				</script>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+		<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="../../common/assets/layui/layui.all.js"></script>
+		<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script>
+
+		
+		<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+		<script type="text/javascript" src="../../common/js/util.js"></script>
+		
+		<script src="js/role.js"></script>
+	</body>
+</html>

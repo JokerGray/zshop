@@ -1,0 +1,513 @@
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+	<title>申请管理</title>
+	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css"> 
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		html,body {
+			font-size: 16px;
+			font-family:-apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+		}
+		.example{
+			display: none !important;
+		}
+		.loadmoreContent:after, .loadmoreContent:before{
+			content: ' ';
+			display: table;
+		}
+		/*顶部*/
+		.tabContent{
+			position: fixed;
+			display: flex;
+			width: 100%;
+			top: 0;
+			left: 0;
+			background-color: #F8F8F8;
+			z-index: 999;
+		}
+		.tabContent .tabItem{
+			display: inline-block;
+			flex: 1;
+			text-align: center;
+		}
+		.tabContent .tabItem span{
+			display: inline-block;
+			padding: 0.8rem;
+			font-size: 0.9rem;
+			color: #666;
+			border-bottom: 2px solid transparent;
+			transition: all 0.2s ease-out;
+		}
+		.tabContent .tabItem.active span{
+			color: #000;
+			border-bottom: 2px solid #349CEE;
+		}
+		/*底部*/
+		.btnGroup{
+			position: fixed;
+			display: block;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			z-index: 999;
+		}
+		.btnGroup>div{
+			display: flex;
+		}
+		.btnGroup .myBtn{
+			display: block;
+			flex: 1;
+			margin-top: 0;
+			height: 3rem;
+			font-size: 1rem;
+			line-height: 3rem;
+			border-radius: 0;
+			background-color: #4B9DFF;
+		}
+		.myBtn:after{
+			display: none;
+		}
+		.btnGroup .myCancleBtn{
+			background-color: #ff4b4f;
+		}
+		/*通用*/
+		.weui-cell:before{
+			display: none;
+		}
+		.hidden{
+			display: none !important;
+		}
+		/*面板*/
+		.panelContent{
+			overflow: auto;
+		}
+		.panelContent .panel{
+			display: none;
+			padding: 3rem 0;
+		}
+		.panelContent .panel.active{
+			display: block;
+		}
+		.checked{
+			left: 0;
+			width: 3rem;
+			background: url(../img/ckkf_kong.png) no-repeat;
+			background-position: center;
+			background-size: 40%;
+		}
+		.checkbox{
+			left: 0;
+			width: 3rem;
+			background: url(../img/ckkf_kong.png) no-repeat;
+			background-position: center;
+			background-size: 40%;
+		}
+		.checked{
+			background: url(../img/ckkf_xzzt.png) no-repeat;
+			background-position: center;
+			background-size: 40%;
+		}
+		.rightTransition{
+			-webkit-transform: translate3d(3rem, 0, 0);
+			-moz-transform: translate3d(3rem, 0, 0);
+			-ms-transform: translate3d(3rem, 0, 0);
+			-o-transform: translate3d(3rem, 0, 0);
+			transform: translate3d(3rem, 0, 0);
+		}
+		.contentbox{
+			-webkit-transition: all 0.2s ease-out;
+			-moz-transition: all 0.2s ease-out;
+			-ms-transition: all 0.2s ease-out;
+			-o-transition: all 0.2s ease-out;
+			transition: all 0.2s ease-out;
+		}
+		.groupContent{
+			display: block;
+			padding: 0.5rem 0.5rem 0 0.5rem;
+			font-size: 0.9rem;
+			color: #333;
+			line-height: 1.5rem;
+		}
+		.groupContent>div{
+			line-height: 1.5rem;
+		}
+		.groupContent>div>span:first-child{
+			display: inline-block;
+			padding-right: 0.25rem;
+		}
+		.groupContent>div .ObligateOne{
+			float: right;
+			display: inline-block;
+			padding: 0.1rem 0.35rem 0;
+			font-size: 0.75rem;
+			line-height: 1.2rem;
+			height: 1.2rem;
+			background-color: #4b9dff;
+			color: #fff;
+		}
+		.groupContent .number{
+			display: inline-block;
+			float: right;
+			font-size: 0.8rem;
+			color: #999;
+			padding-top: 0.4rem;
+		}
+		.groupContent .remarkContent{
+			display: flex;
+    		width: 100%;
+			padding-bottom: 0.8rem;
+			border-bottom: 1px solid #dadada;
+		}
+		.groupContent .remarkContent .remark{
+			display: inline-block;
+			flex: 1;
+		    color: #666;
+		}
+	</style>
+</head>
+<body>
+	<div class="tabContent">
+		<div class="tabItem active">
+			<span>入驻申请表</span>
+		</div>
+		<div class="tabItem">
+			<span>投资申请表</span>
+		</div>
+	</div>
+	<div class="panelContent">
+		<div class="panel active">
+			<div id="example1" class="application application1 weui-cell weui-cell_swiped hidden">
+                <div class="weui-cell__ft checkbox"></div>
+                <div class="weui-cell__bd contentbox">
+                    <div class="groupContent">
+                        <div>
+                        	<span>申请团队：</span>
+                        	<span class="teamName"></span>
+                        	<span class="ObligateOne">已发送</span>
+                        </div>
+                        <div>
+                        	<span>申请人：</span>
+                        	<span class="leaderName">name</span>
+                        	<span class="number">团队管理人员<span class="applyuserCount"></span>人</span>
+                        </div>
+                        <div class="remarkContent">
+                        	<span>备注：</span>
+                        	<span class="remark"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="loadmoreContent" id="loadmore1">
+		        <div class="weui-loadmore">
+		            <i class="weui-loading"></i>
+		            <span class="weui-loadmore__tips">正在加载</span>
+		        </div>
+		        <div class="weui-loadmore weui-loadmore_line hidden">
+		            <span class="weui-loadmore__tips">没有更多数据</span>
+		        </div>
+		    </div>
+		    
+		    <div class="btnGroup">
+		    	<a href="javascript:;" onclick="toggleBtn(this)" class="myBtn weui-btn weui-btn_primary">选择发送至邮箱</a>
+		    	<div class="hidden">
+		    		<a href="javascript:;" onclick="toggleBtn(this)" class="myBtn myCancleBtn weui-btn weui-btn_primary">取消</a>
+		    		<a href="javascript:;" onclick="sendToEmail(1)" class="myBtn weui-btn weui-btn_primary">发送至邮箱</a>
+		    	</div>
+		    </div>
+		</div>
+		<div class="panel">
+			<div id="example2" class="application application2 weui-cell weui-cell_swiped hidden">
+                <div class="weui-cell__ft checkbox"></div>
+                <div class="weui-cell__bd contentbox">
+                    <div class="groupContent">
+                        <div>
+                        	<span>投资公司：</span>
+                        	<span class="companyName"></span>
+                        	<span class="ObligateOne">已发送</span>
+                        </div>
+                        <div>
+                        	<span>负责人：</span>
+                        	<span class="companyBoss">name</span>
+                        </div>
+                        <div>
+                        	<span>投资领域：</span>
+                        	<span class="investmentKingdom"></span>
+                        </div>
+                        <div class="remarkContent">
+                        	<span>备注：</span>
+                        	<span class="remark"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="loadmoreContent" id="loadmore2">
+		        <div class="weui-loadmore">
+		            <i class="weui-loading"></i>
+		            <span class="weui-loadmore__tips">正在加载</span>
+		        </div>
+		        <div class="weui-loadmore weui-loadmore_line hidden">
+		            <span class="weui-loadmore__tips">没有更多数据</span>
+		        </div>
+		    </div>
+		    
+		    <div class="btnGroup">
+		    	<a href="javascript:;" onclick="toggleBtn(this)" class="myBtn weui-btn weui-btn_primary">选择发送至邮箱</a>
+		    	<div class="hidden">
+		    		<a href="javascript:;" onclick="toggleBtn(this)" class="myBtn myCancleBtn weui-btn weui-btn_primary">取消</a>
+		    		<a href="javascript:;" onclick="sendToEmail(2)" class="myBtn weui-btn weui-btn_primary">发送至邮箱</a>
+		    	</div>
+		    </div>
+		</div>
+	</div>
+	
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.2/weui.min.js"></script>
+	<script type="text/javascript">
+		var loadingStatus1 = false;
+		var loadingStatus2 = false;
+		
+		$(document).ready(function(){
+			FastClick.attach(document.body);
+			// 点击切换页面
+			$('.tabItem').click(function(){
+				$(this).addClass('active').siblings().removeClass('active');
+				$('.panel').eq($(this).index()).addClass('active').siblings().removeClass('active');
+			});
+			// 点击跳转页面
+			$('.panel').on('click', '.application', toggleCheckedOrToDetail);
+			// 滚动加载数据
+			$(window).on('scroll', scrollLoadData);
+			// 初步加载数据
+			getApplicationData();
+			$('.tabItem').eq(1).one('click', getInvestmentData);
+		});
+		
+		// 获取入驻申请
+		function getApplicationData(){
+			if(loadingStatus1) return;
+			var data = {
+				pagination:{
+					page: parseInt($('.application1').length / 10) +1,
+					rows: 10
+				}
+			}
+			$.ajax({
+				type:"post",
+				dataType: 'json',
+				url:"/zxcity_restful/ws/rest",
+				data:{
+					cmd: 'coffee/querySettleteamList',
+					data: JSON.stringify(data),
+					version: 1
+				},
+				beforeSend: function () {
+					loading = weui.loading('加载中……');
+					loadingStatus1 = true;
+				},
+				complete: function () {
+					loading.hide();
+					loadingStatus1 = false;
+				},
+				success: function (data) {
+					if(data.code == 1){
+						createApplicationList(data.data, data.total)
+					} else {
+						weui.alert(data.msg);
+					}
+				},
+				error: function (err) {
+					weui.alert('请求超时，请重试……');
+				}
+			});
+		}
+		
+		// 获取投资申请数据
+		function getInvestmentData(){
+			if(loadingStatus2) return;
+			var data = {
+				pagination:{
+					page: parseInt($('.application2').length / 10) +1,
+					rows: 10
+				}
+			}
+			$.ajax({
+				type:"post",
+				dataType: 'json',
+				url:"/zxcity_restful/ws/rest",
+				data:{
+					cmd: 'coffee/queryInvestmentInfoList',
+					data: JSON.stringify(data),
+					version: 1
+				},
+				beforeSend: function () {
+					loadingStatus2 = true;
+					loading = weui.loading('加载中……');
+				},
+				complete: function () {
+					loadingStatus2 = false;
+					loading.hide();
+				},
+				success: function (data) {
+					if(data.code == 1){
+						createInvestmentList(data.data, data.total)
+					} else {
+						weui.alert(data.msg);
+					}
+				},
+				error: function (err) {
+					weui.alert('请求超时，请重试……');
+				}
+			});
+		}
+		
+		// 生成入驻申请列表
+		function createApplicationList(arr, total){
+			for(var i=0; i< arr.length; i++){
+				var dom = $('#example1').clone();
+				dom.find('.checkbox').attr('id', arr[i]['id']);
+				dom.removeClass('hidden').removeAttr('id');
+				for(var key in arr[i]){
+					var _dom = dom.find('.'+key);
+					var val = arr[i][key];
+					if(key == 'obligateOne'){
+						_dom.toggleClass('hidden', val == '0');
+					} else{
+						_dom.text(val);
+					}
+				}
+				if(arr[i]['remark'] == null || arr[i]['remark'].length == 0){
+					dom.find('.remarkContent span').addClass('hidden')
+				}
+				$('#loadmore1').before(dom);
+			}
+			// 查询整体个数，和total对比
+			if($('#loadmore1').parent().find('.application').length -1 == total){
+				$('#loadmore1 .weui-loadmore').eq(0).addClass('hidden').siblings().removeClass('hidden');
+			}
+		}
+		
+		// 创建投资申请列表
+		function createInvestmentList(arr, total){
+			for(var i=0; i< arr.length; i++){
+				var dom = $('#example2').clone();
+				dom.find('.checkbox').attr('id', arr[i]['id']);
+				dom.removeClass('hidden').removeAttr('id');
+				for(var key in arr[i]){
+					var _dom = dom.find('.'+key);
+					var val = arr[i][key];
+					if(key == 'obligateOne'){
+						_dom.toggleClass('hidden', val == '0');
+					} else{
+						_dom.text(val);
+					}
+				}
+				if(arr[i]['remark'] == null || arr[i]['remark'].length == 0){
+					dom.find('.remarkContent span').addClass('hidden')
+				}
+				$('#loadmore2').before(dom);
+			}
+			// 查询整体个数，和total对比
+			if($('#loadmore2').parent().find('.application').length -1 == total){
+				$('#loadmore2 .weui-loadmore').eq(0).addClass('hidden').siblings().removeClass('hidden');
+			}
+		}
+		
+		// 切换按钮
+		// 取消所有选中状态
+		function toggleBtn(btn){
+			var btnGroup = $(btn);
+			if($(btn).hasClass('myCancleBtn')) btnGroup = $(btn).parent();
+			$(btn).parents('.panel').find('.contentbox').toggleClass('rightTransition', !$(btn).hasClass('myCancleBtn'));
+			btnGroup.toggleClass('hidden').siblings().toggleClass('hidden');
+			$('.checkbox').removeClass('checked');
+		}
+		
+		// 点击，若已打开，则切换选中
+		// 若未打开，则跳转对应详细页面
+		function toggleCheckedOrToDetail(){
+			var $dom = $(this)
+			var isOpened = $dom.find('.contentbox').hasClass('rightTransition');
+			if(isOpened) {
+				$dom.find('.checkbox').toggleClass('checked')
+			} else {
+				var id = $dom.find('.checkbox').attr('id');
+				var url = 'application_settled_detail.html?id='+id;
+				if($dom.parent().index() == 1) url ='application_investment_detail.html?id='+id;
+				window.location.href = url;
+			}
+		}
+		
+		// 发送到邮箱
+		function sendToEmail(type){
+			var cmd = 'coffee/sendEmailSettleteam';
+			var tips = '请选择至少一个入驻申请！';
+			if(type == 2) {
+				cmd = 'coffee/sendEmailInvestment';
+				tips = '请选择至少一个投资申请！';
+			}
+			// 获取已选中申请，未选中给出提示
+			var arr = []
+			$('.application .checked').each(function(){arr.push(this.id)})
+			if(arr.length == 0) return weui.topTips(tips);
+			
+			var data = {
+				idList: arr
+			}
+			$.ajax({
+				type:"post",
+				dataType: 'json',
+				url:"/zxcity_restful/ws/rest",
+				data:{
+					cmd: cmd,
+					data: JSON.stringify(data),
+					version: 1
+				},
+				beforeSend: function () {
+					loading = weui.loading('正在发送……');
+				},
+				complete: function () {
+					loading.hide();
+				},
+				success: function (data) {
+					if(data.code == 1){
+						weui.toast('发送成功！', function () {
+							location.reload();
+						})
+					} else {
+						weui.alert(data.msg);
+					}
+				},
+				error: function (err) {
+					weui.alert('请求超时，请重试……');
+				}
+			});
+		}
+		
+		// 滚动，根据情况加载数据
+		function scrollLoadData(){
+			// 到达底部才刷新
+			var toBottom = window.innerHeight + document.body.scrollTop + 105 > document.body.scrollHeight;
+			if(!toBottom) return;
+			// 当前面板内部数据，正在加载，则不管
+			var index = $('.panel.active').index()+1;
+			if(window['loadingStatus'+ index]) return;
+			// 若已无更多数据，不管
+			var needLoading = $('#loadmore'+ index +' .weui-loadmore_line').hasClass('hidden');
+			if(!needLoading) return;
+			// 否则加载对应方法
+			index == 1 ? getApplicationData() : getInvestmentData();
+		}
+		
+	</script>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title>门店统计</title>
+		<link rel="stylesheet" href="assets/css/bootstrap.css"/>
+		<link rel="stylesheet" href="css/store-data.css"/>
+	</head>
+	<body>
+		<div class="allWrapper">
+			<div class="data">
+				<div class="store-sale store-data row">
+					<div id="main1" style="width: 100%;height: 100%;"></div>
+				</div>
+				<div class="store-use store-data row">
+					<div id="main2" style="width: 100%;height: 100%;"></div>
+				</div>
+				<div class="best-product store-data row">
+					<div class="title">哪个产品最好卖</div>
+					<div class="goodsContainer"></div>
+				</div>
+				<div class="client-contribution store-data row">
+					<div class="title">哪个客户贡献最大</div>
+					<div class="col-xs-6 con-left" style="padding-left: 40px;border-right: solid 1px #eeeeee;">
+					</div>
+					<div class="col-xs-6 con-right" style="padding-left: 40px;">
+					</div>
+				</div>
+				<div class="client-warn store-data row">
+					<div class="title">哪个员工贡献最大</div>
+					<div class="col-xs-6 em-left" style="padding-left: 40px;border-right: solid 1px #eeeeee;">
+					</div>
+					<div class="col-xs-6 em-right" style="padding-left: 40px;">
+					</div>
+				</div>
+				<div class="client-warn store-data row">
+					<div class="title">门店赠送</div>
+					<div class="col-xs-6" style="padding-left: 40px;">
+						<div class="gift"><span id="gift-amounts">20</span><br/><span class="today">今日赠送</span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src="assets/js/jquery-2.1.0.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
+	<script src="assets/js/echarts.min.js"></script>
+	<script src="js/store-data.js"></script>
+	</body>
+</html>

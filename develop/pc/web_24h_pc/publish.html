@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>发表 - 智享城市·24小时</title>
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/rent.css" />
+		<link rel="stylesheet" href="css/publish.css" />
+		<script src="js/jquery-1.10.2.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/ckeditor/ckeditor.js" ></script>
+	    <!--[if lt IE 9]>
+	      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	    <![endif]-->
+	    <script>
+	    	$(function(){
+	    		$(".tabinner").find("li").click(function(){
+	    			var index = $(this).index();
+	    			$(this).addClass("active").siblings().removeClass("active");
+	    			$(".tab-content").eq(index).removeClass("hide").siblings().addClass("hide");
+	    		});
+	    		$(".form-radio").click(function(){
+	    			$(this).find(".radio").addClass("checked").parent().siblings().find(".radio").removeClass("checked");
+	    		});
+	    	});
+	    </script>
+	</head>
+	<body>
+		<div class="header">
+			<div class="header-inner clearfix">
+				<div class="logo pull-left"><img src="images/logo.png" ></div>
+				<div class="user pull-right">
+					<div class="user-group clearfix">
+						<div class="face pull-left">
+							<img src="images/face1.png" />
+							<ul class="dropdown">
+								<li>
+									<i class="fa fa-leaf"></i>作者
+									<div class="name"><a>NIKE耐克</a></div>
+								</li>
+								<li class="line">
+									<a href="login.html"><i class="fa fa-sign-out"></i>退出</a>
+								</li>
+							</ul>
+						</div>
+						<div class="pull-left">
+							<div class="user-type">企业号</div>
+							<div class="user-name">NIKE耐克</div>
+						</div>				
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="wrapper clearfix">
+				<div class="left pull-left">
+					<div class="sidebar">
+						<ul class="sidebar-collapse">
+							<li>
+								<a class="sidebar-item" href="index.html"><i class="fa fa-home"></i>主页</a>
+							</li>
+							<li class="active">
+								<a class="sidebar-item"><i class="fa fa-edit"></i>发表</a>
+							</li>
+							<li>
+								<a class="sidebar-item"><i class="fa fa-file-text-o"></i>文章管理</a>
+								<ul class="sidebar-sub">
+									<li>
+										<a href="newslist.html">手动更新</a>
+									</li>
+									<li>
+										<a href="commentlist.html">评论管理</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a class="sidebar-item"><i class="fa fa-bar-chart"></i>数据统计</a>
+								<ul class="sidebar-sub">
+									<li>
+										<a href="fananalysis.html">粉丝分析</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a class="sidebar-item"><i class="fa fa-volume-up"></i>公告消息</a>
+							</li>
+							<li>
+								<a class="sidebar-item"><i class="fa fa-gear"></i>设置</a>
+								<ul class="sidebar-sub">
+									<li>
+										<a href="accounts.html">账号信息</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="right pull-right">
+					<div class="crumb">发表</div>
+					<div class="tab-panel publish-tab">
+						<ul class="tabinner">
+							<li class="active">发表文章</li>
+							<li>发表视频</li>
+							<li>发表图集</li>
+						</ul>
+					</div>
+					<div class="right-content">
+						<div class="tab-content news">
+							<div class="title">
+								<input type="text" class="newstitle" name="newstitle" placeholder="请输入标题(5-30字)" />
+								<span class="limit"><em id="write">0</em>/30</span>
+							</div>
+							<div id="editor" class="edit">
+								<textarea name="newscontent"></textarea>
+								<script type="text/javascript">CKEDITOR.replace('newscontent')</script>
+							</div>
+							<div class="form-group clearfix">
+								<div class="form-label">封面</div>
+								<div class="form-content">
+									<div class="addimg"><i class="fa fa-plus"></i></div>
+									<div class="form-sign">所使用的封面图片均需来自己上传的图片</div>
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<div class="form-label">分类</div>
+								<div class="form-content">
+									<div class="drop">
+										 <select class="form-control">
+										 	<option>新闻</option>
+										 	<option>娱乐</option>
+										 	<option>美食</option>
+										 </select>
+									</div>
+								</div>
+							</div>
+							<div class="form-btn-wrap clearfix">
+								<button class="btn form-btn btn-submit">发表</button>
+								<button class="btn form-btn">存草稿</button>
+								<button class="btn form-btn">客户端预览</button>
+								<button class="btn form-btn">取消</button>
+							</div>
+						</div>
+						<div class="tab-content videos hide">
+							<div class="video-wrap">
+								<a class="btn form-btn btn-submit">上传视频<input type="file" class="video-btn" /></a>
+								<div class="form-sign">支持绝大多数视频文件格式，大小不超过2G，较大的视频请压缩后上传</div>
+							</div>
+							<div class="form-group clearfix">
+								<div class="form-label">标题</div>
+								<div class="form-content">
+									<div class="form-input-wrap">
+										<input type="text" class="form-input" name="videotitle" placeholder="请输入标题(5-30字)" />
+										<span class="limit"><em id="write">0</em>/30</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<div class="form-label">视频简介<span class="form-sign">(选填)</span></div>
+								<div class="form-content">
+									<div class="form-input-wrap">
+										<textarea class="form-input" name="videocontent" placeholder="请输入内容" style="height: 170px;"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<div class="form-label">设置</div>
+								<div class="form-content">
+									<div class="form-radio-wrap">
+										<label class="form-radio"><em class="radio isAdv" data-value="1"></em>投放广告</label>
+										<label class="form-radio"><em class="radio isAdv checked" data-value="0"></em>不投放广告</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<div class="form-label">封面</div>
+								<div class="form-content">
+									<div class="addimg"><i class="fa fa-plus"></i></div>
+									<div class="form-sign">所使用的封面图片均需来自己上传的图片</div>
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<div class="form-label">分类</div>
+								<div class="form-content">
+									<div class="drop">
+										 <select class="form-control">
+										 	<option>新闻</option>
+										 	<option>娱乐</option>
+										 	<option>美食</option>
+										 </select>
+									</div>
+								</div>
+							</div>
+							<div class="form-btn-wrap clearfix">
+								<button class="btn form-btn btn-submit">发表</button>
+								<button class="btn form-btn">存草稿</button>
+								<button class="btn form-btn">取消</button>
+							</div>
+						</div>
+						<div class="tab-content atlas hide">
+							<div class="atlas-wrap">
+								<div class="atlas-upload">
+									<ul class="clearfix atlas-item">
+										<li class="img">
+											<!--<img src="" width="110" height="110" />-->
+										</li>
+										<li class="imgdesc">
+											<textarea class="form-input" name="imgdesc" placeholder="图片描述(不超过200个字)"></textarea>
+										</li>
+										<li class="imgoperate">
+											<a><i class="fa fa-image fa-2x"></i></a>
+											<a><i class="fa fa-trash-o fa-2x"></i></a>
+											<a><i class="fa fa-bars fa-2x"></i></a>
+										</li>
+									</ul>
+								</div>
+								<div class="img-upload">
+									<a class="img-add"><i class="fa fa-plus"></i> 添加图片</a>
+									<span class="form-sign">已经添加1张图片</span>
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<div class="form-label">标题</div>
+								<div class="form-content">
+									<div class="form-input-wrap">
+										<input type="text" class="form-input" name="atlastitle" placeholder="请输入标题(5-30字)" />
+										<span class="limit"><em id="write">0</em>/30</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<div class="form-label">设置</div>
+								<div class="form-content">
+									<div class="form-radio-wrap">
+										<label class="form-radio"><em class="radio isAdv" data-value="1"></em>投放广告</label>
+										<label class="form-radio"><em class="radio isAdv checked" data-value="0"></em>不投放广告</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<div class="form-label">封面</div>
+								<div class="form-content">
+									<div class="addimg"><i class="fa fa-plus"></i></div>
+									<div class="form-sign">所使用的封面图片均需来自己上传的图片</div>
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<div class="form-label">分类</div>
+								<div class="form-content">
+									<div class="drop">
+										 <select class="form-control">
+										 	<option>新闻</option>
+										 	<option>娱乐</option>
+										 	<option>美食</option>
+										 </select>
+									</div>
+								</div>
+							</div>
+							<div class="form-btn-wrap clearfix">
+								<button class="btn form-btn btn-submit">发表</button>
+								<button class="btn form-btn">存草稿</button>
+								<button class="btn form-btn">取消</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

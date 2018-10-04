@@ -1,0 +1,33 @@
+<view class="main">
+  <view class='headerImg'>
+    <image src='{{item.logoUrl}}'></image>
+  </view>
+  <text class='headertext'>{{item.shopName}}</text>
+ 
+</view>
+<view class='loolshopIn' bindtap='loolshopIn'>进店</view>
+
+<view class='detailsbody'>
+    <image class='bodyImgone' src='../../images/detailed/hh_shopdetail_location@2x.png'></image>
+  <text>店铺地址</text>
+  <view class='bodyText'bindtap='bindmap' >{{item.address}}</view>
+  <image class='bodyImgone-sanjiao' src='../../images/detailed/hh_shopdatail_next@2x.png'></image>
+</view>
+
+
+<view class='detailsbody'>
+      <image class='bodyImgone' src='../../images/detailed/hh_shopdetail_phone@2x.png'></image>
+  <text>联系方式</text>
+  <view class='bodyText' bindtap='bindtal' >{{item.phoneService}}</view>
+  <image class='bodyImgone-sanjiao' src='../../images/detailed/hh_shopdatail_next@2x.png'></image>
+</view>
+
+<!-- 
+<view class='detailsbody'>
+      <image class='bodyImgone' src='../../images/detailed/hh_shopdetail_time@2x.png'></image>
+  <text>营业时间</text>
+  <view class='bodyText'>周一至周日  11:00-14:00  17:00-21:00</view>
+  <view class='bodyText'>周一至周日  11:00-14:00  17:00-21:00</view>
+
+</view> -->
+

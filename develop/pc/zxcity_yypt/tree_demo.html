@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+
+</head>
+<body>
+    <ul id="treeDemo" class="ztree"></ul>
+    <div>
+        <button type="button" id="getChkNodes">获取选中的节点</button>
+    </div>
+    <div>
+        <button type="button" id="getfalseChkNodes">没被获取选中的节点</button>
+    </div>
+    <script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+    <script src="common/assets/zTree_v3/js/jquery.ztree.core.min.js"></script>
+    <script src="common/assets/zTree_v3/js/jquery.ztree.excheck.min.js"></script>
+    <script>
+        var setting = {
+            check: {
+                enable: true
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            }
+        };
+
+        /*var zNodes =[
+            { id:1, pId:0, name:"随意勾选 1", open:true},
+            { id:11, pId:1, name:"随意勾选 1-1", open:true},
+            { id:111, pId:11, name:"随意勾选 1-1-1"},
+            { id:112, pId:11, name:"随意勾选 1-1-2"},
+            { id:12, pId:1, name:"随意勾选 1-2", open:true},
+            { id:121, pId:12, name:"随意勾选 1-2-1"},
+            { id:122, pId:12, name:"随意勾选 1-2-2"},
+            { id:2, pId:0, name:"随意勾选 2", checked:true, open:true},
+            { id:21, pId:2, name:"随意勾选 2-1"},
+            { id:22, pId:2, name:"随意勾选 2-2", open:true},
+            { id:221, pId:22, name:"随意勾选 2-2-1", checked:true},
+            { id:222, pId:22, name:"随意勾选 2-2-2"},
+            { id:23, pId:2, name:"随意勾选 2-3"}
+            ];*/
+            var zNodes = [
+            {
+                name: "父节点1",
+                iconOpen:"common/icon/open1.png",
+                iconClose:"common/icon/close.png",
+                id:1,
+                pid:0,
+                children: [
+                {name: "子节点11",id:11,pid:1,icon:"common/icon/yes.png"},
+                {name: "子节点12",id:12,pid:1},
+                {name: "子节点13",id:13,pid:1,children:[{name:"子节点131",id:131,pid:13}]}
+                ]
+            },
+            {
+                name: "父节点2",
+                id:2,
+                pid:0,
+                children: [
+                {name: "子节点21",id:21,pid:2},
+                {name: "子节点22",id:22,pid:2}
+                ]
+            },
+            {
+                name: "父节点3",
+                id:3,
+                pid:0,
+                children: [
+                {name: "子节点31",id:31,pid:3},
+                {name: "子节点32",id:32,pid:3}
+                ]
+            },
+            {
+                name: "父节点4",
+                id:4,
+                pid:0,
+                children: [
+                {name: "子节点41",id:41,pid:4,
+                children: [
+                {name: "子节点411",id:411,pid:41},
+                {name: "子节点421",id:421,pid:41}
+                ]
+            },
+            {name: "子节点42",id:42,pid:4}
+            ]
+        },
+        {
+            name: "父节点5",
+            id:5,
+            pid:0
+        }
+        ];
+
+        var code;
+
+        var treeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+// console.log(treeObj)
+        //获取选中节点id
+        $("#getChkNodes").click(function(){
+            var nodes = treeObj.getCheckedNodes(true);
+            var chkArr = [];
+            $.each(nodes, function(i, item){
+                console.log(item.id)
+                if(item.checked){
+                    console.log(item);
+                    // if(item.pid){
+                    //     chkArr.push(item.pid)
+                    // }
+                    chkArr.push(item.id);
+                }
+            });
+            console.log(chkArr)
+        });
+        $("#getfalseChkNodes").click(function(){
+            var nodes = treeObj.getCheckedNodes(false);
+            $.each(nodes, function(i, item){
+                console.log(item.id)
+                
+            });
+        })
+
+    </script>
+</body>
+</html>

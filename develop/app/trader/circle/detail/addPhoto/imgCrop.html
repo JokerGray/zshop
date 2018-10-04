@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+	<head lang="zh-cn">
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache, must-revalidate">
+		<meta http-equiv="expires" content="0">
+		<link rel="stylesheet" type="text/css" href="../../../assets/Jcrop-0.9.12/css/jquery.Jcrop.css"/>
+		<script src="../../../assets/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/Jcrop-0.9.12/js/jquery.Jcrop.js"></script>
+		<script src="../../../assets/Jcrop-0.9.12/js/jquery.color.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/plupload-2.3.1/js/moxie.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/plupload-2.3.1/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/plupload-2.3.1/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>
+		<title>图片裁剪</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+				/* 不要滚动条 */
+	::-webkit-scrollbar{
+		display: none;
+	}
+			.content{
+				padding: 20px;
+				position: relative;
+			}
+			.selectImg{
+				float: left;
+  				position: relative;
+  				height: 28px;
+				width: 80px;
+				z-index: 10000;
+  				text-align: center;
+  				line-height: 30px;
+  				cursor: pointer;
+  				padding: 5px;
+  				display: inline-block;
+  				text-decoration: none;
+				font-size: 14px;
+				color: #fff;
+				background-color: #353b53;
+				border: none;
+				border-radius: 5px;
+				margin-bottom: 20px;
+			}
+			.title{
+				float: right;
+				margin: 0;
+				font-size:18px ;
+				color: #333;
+				line-height: 28px;
+			}
+			.showBox{
+				
+				margin-top: 60px;
+			}
+			.showImg{
+				display: block;
+				
+			}
+			.preview{
+				position: absolute;
+				box-sizing: border-box;
+				border-radius: 5px;
+				border: 2px solid #fff;
+				top: 70px;
+				right: 20px;
+			}
+			.previewContainer{
+				height: 168px;
+				width: 332px;
+				overflow: hidden;
+			}
+			.jcropPreview{
+				border: none;
+			}
+			.desc {
+				position: absolute;
+				right: 0;
+				color: #999;
+				width: 300px;
+				text-align: right;
+				margin-top:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="hidden" name="imgClass" id="imgClass" value="" />
+		<div class="content ">
+			<a href="javascript:void(0)" class="selectImg" id="upImg">
+      				选择图片
+    		</a>
+			<p class="title">预览区</p>
+			<div class="showBox">
+					<img  class="showImg "  id="showImg" />
+			</div>
+			
+			 <div class="preview">
+    			<div class="previewContainer">
+    				<img  class="jcropPreview"   />
+    			</div>
+    				<p class="desc" >图片尺寸:80*80像素</p>
+    			
+  			</div>
+  			
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		var uploader =  new plupload.Uploader({
+                runtimes: 'html5,html4',
+                browse_button: 'upImg',
+                multi_selection: false,
+                unique_names:true,
+                url: 'http://oss.aliyuncs.com',
+                filters: {
+                    mime_types: [{
+                        title: "图片文件",
+                        extensions: 'jpg,jpeg,gif,png,bmp'
+                    }],
+                    max_file_size: "10mb",
+                    prevent_duplicates: false
+                }
+        	});
+        	uploader.init();
+        	uploader.bind('FilesAdded', function(up, files) {
+        	    statrUpload(up,files[0]);
+        	});
+        	uploader.bind('UploadProgress', function(up, file) {
+//      		$(dom).find('.progressContent .progress-bar').css('width', file.percent + "%");
+        	});
+        	uploader.bind('FileUploaded', function(up, file, info) {
+        		if(info && info.status == 200) {
+        			var src = OSSParams.host + '/' + OSSParams.dir + '/' + file.name;
+        			$('#showImg,.jcropPreview').attr('src',src);
+        			initJcrop();
+        		} else {
+        			console.log("上传失败，请重试");
+        		}
+        	});
+        	function statrUpload(up,file) {
+        		getOssParams().then(function(data) {
+      				file.name = randomName();
+        			var fileName = data['dir'] + '/' + file.name;
+        			up.setOption({
+        				url: data['host'],
+        				multipart_params: {
+        					key: fileName,
+        					policy: data['policy'],
+        					OSSAccessKeyId: data['accessid'],
+        					success_action_status: 200,
+        					signature: data['signature']
+        				}
+        			});
+        			up.start()
+        		});
+        	}
+        	function randomName(len) {
+        		len = len || 23;
+        		var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+        		var maxPos = chars.length;
+        		var str = '';
+        		for(i = 0; i < len; i++) {
+        			str += chars.charAt(Math.floor(Math.random() * maxPos));
+        		}
+        		return new Date().getTime() + str;
+        	}
+        	var OSSParams;
+        	function getOssParams() {
+        		var defer = $.Deferred();
+        		if(OSSParams && OSSParams.expire > new Date().getTime() / 1000) {
+        			defer.resolve(OSSParams);
+        		} else {
+        			$.ajax({
+        				url: '/zxcity_restful/ws/oss/ossUpload',
+        				dataType: 'json',
+        				success: function(data) {
+        					OSSParams = data;
+        					defer.resolve(data);
+        				},
+        				error: function() {
+        					defer.reject();
+        					console.log('上传参数获取失败！')
+        				}
+        			});
+        		}
+        		return defer.promise();
+        	}
+		var maxW=150,maxH=150,jcrop_api,
+        	boundx,
+       		boundy,
+       		$previewContainer=$('.previewContainer');
+		var params = {}
+		var imgCrop;
+		$(function(){
+        	imgClass = params.imgClass||"";
+        	if(imgClass=="logo"){
+				maxW = 80;
+				maxH = 80;
+			}else if(imgClass=="bg"){
+				maxW = 322;
+				maxH = 186;
+			}
+			$('.previewContainer').width(maxW).height(maxH);
+			$('.desc').html('图片尺寸:'+maxW+'*'+maxH+'像素').show();
+		})
+
+        	
+       	function initJcrop(){
+       		if(window.jcrop_api){window.jcrop_api.destroy();}
+       		$('#showImg').Jcrop({
+       			onChange: updatePreview,
+       			allowSelect:false,
+      			boxWidth: 432,
+      			boxHeight:242,
+      			minSize:[50,50],
+                aspectRatio: maxW / maxH
+       		},function(){
+       		jcrop_api = this;
+        	jcrop_api.animateTo([100,50,500,500]);
+      		 var bounds = this.getBounds();
+      		 boundx = bounds[0]; 
+      		 boundy = bounds[1];
+       		});
+       		function updatePreview(c) {
+      			if (parseInt(c.w) > 0){
+        			var rx = maxW / c.w;
+        			var ry = maxH / c.h;
+				}else{
+					jcrop_api.animateTo([100,50,500,500]);
+				}
+			 $('.jcropPreview').css({
+    			width: Math.round(rx * boundx) + 'px',
+   				height: Math.round(ry * boundy) + 'px',
+   				marginLeft: '-' + Math.round(rx * c.x) + 'px',
+   				marginTop: '-' + Math.round(ry * c.y) + 'px'
+   			});
+//				
+//				myCanvas.width = maxW;
+//				myCanvas.height = maxH;
+//				myCanvas.getContext('2d').drawImage($('#showImg')[0], c.x, c.y, c.w, c.h, 0, 0, maxW, maxH);
+// 				imgCrop = myCanvas.toDataURL("image/png");
+ 				imgCrop = $('#showImg').attr('src') + "?x-oss-process=image/crop,x_"+c.x+",y_"+c.y+",w_"+c.w+",h_"+c.h;
+ 				
+      	}
+    };
+//	function getParams(){
+//          var url = location.search;
+//          if (url.indexOf("?") != -1) {
+//              var str = url.substr(1);
+//              var strs = str.split("&");
+//              for (var i = 0; i < strs.length; i++) {
+//                  params[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+//              }
+//          }
+//      };
+       	
+	function callbackdata() {
+            var data = {
+            	imgCrop:imgCrop
+            };
+            return data;
+          }  	
+	</script>
+</html>

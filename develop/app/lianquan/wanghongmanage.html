@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+	    <title>网红管理</title>
+		<link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+        <link rel="stylesheet" type="text/css" href="common/assets/layui-v2.0.1/layui/css/layui.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="common/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/application.css" />
+		<link rel="stylesheet" type="text/css" href="css/wanghongmanage.css" />
+    </head>
+	<body>
+		<!--顶部-->
+		<div class="chose_type">
+			<span class="clint-type active" data-type="0">已签约主脸</span>
+			<span class="clint-type" data-type="1">已签约主播</span>
+		</div>
+		<div class="container-fluid" style="margin-top:10px;width: auto;">
+            <!-- 列表展示 -->
+			<table id="demo" lay-filter="test" ></table>
+			<!--分页-->
+			<div id="laypageLeft" class="table-rgt"></div>
+		</div>
+		<!-- 序号 -->
+		<script type="text/html" id="indexTpl">
+		    {{d.LAY_TABLE_INDEX+1}}
+		</script>
+		<!-- 图片imgTpl -->
+		<script type="text/html" id="imgTpl">
+			<div class="showImg">
+				<img class="imgs" src={{d.userpic}} style="background:#5cb85c url({{d.userpic}}   no-repeat center center;background-size:100% 100%;" />
+			</div>
+		</script>
+		<!--直播状态  -->
+		<script type="text/html" id="shopLiveTpl">
+			{{#  if(d.liveUser == true){ }}
+		  		<span>正在直播</span>
+			  {{#  } else { }}
+			  	<span>未直播</span>
+			  {{#  } }}			
+		</script>
+		<!-- 操作  -->
+		<script type="text/html" id="operationTpl">
+		  {{#  if(d.liveUser == true){ }}
+	  		<a class="" lay-event="to_agree">
+  				<img src="../lianquan/img/stopzhibo@2x.png" />
+  			</a>
+		  {{#  } else { }}
+		  	<a class="">
+  				<img src="../lianquan/img/stopzhibo@2x1.png" />
+  			</a>
+		  {{#  } }}
+		</script>
+	</body>
+	<!-- jSCommon -->
+	<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+	<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+	<script type="text/javascript" src="common/js/yyCache.js"></script>
+	<script type="text/javascript" src="common/js/util/util.js"></script>
+	
+	<!--jSCurr-->
+	<script type="text/javascript" src="common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/wanghongmanage.js"></script>
+</html>

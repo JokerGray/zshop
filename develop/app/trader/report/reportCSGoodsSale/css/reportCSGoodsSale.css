@@ -1,0 +1,509 @@
+body {
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.layui-input,
+.layui-select {
+  height: 34px;
+}
+/**顶部时间选择和店铺选择*/
+.time-shop {
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid #ccc;
+}
+.time-shop .timeTab {
+  float: left;
+}
+.time-shop .timeTab ul {
+  font-size: 0;
+  padding-top: 19px;
+}
+.time-shop .timeTab ul li {
+  display: inline-block;
+  width: 97px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 16px;
+  color: #707070;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.time-shop .timeTab ul li.active {
+  border: none;
+  background-color: #fff;
+}
+.time-shop .shopSelector {
+  float: right;
+  width: 150px;
+  margin-top: 15px;
+  margin-right: 20px;
+}
+/**时间选择和路径显示*/
+.time-path {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+}
+.time-path > div {
+  display: inline-block;
+  vertical-align: middle;
+}
+.time-path > div.timeIcon {
+  vertical-align: -7px;
+}
+.time-path > div.timeIcon i {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/common/img/dateIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.time-path > div.timeSelector > div:nth-of-type(1) {
+  width: 90px;
+}
+.time-path > div.timeSelector > div:nth-of-type(2) {
+  display: none;
+}
+.time-path > div.timeSelector > div:nth-of-type(2) span {
+  padding: 0 10px;
+  font-size: 16px;
+  color: #333333;
+}
+.time-path > div.timeSelector > div:nth-of-type(3) {
+  width: 190px;
+  display: none;
+}
+.time-path > div.timeSelector input {
+  width: 100%;
+  height: 24px;
+  color: #1e9fff;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  vertical-align: middle;
+}
+.time-path > div.path {
+  font-size: 16px;
+  color: #333333;
+}
+.time-path > div.path i {
+  font-family: SimSun;
+}
+.time-path > div.radioBox {
+  float: right;
+}
+.time-path > div.radioBox ul li {
+  display: inline-block;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.time-path > div.radioBox ul li i {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #D0D0D0;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+.time-path > div.radioBox ul li span {
+  vertical-align: middle;
+  font-size: 14px;
+  color: #333333;
+}
+.time-path > div.radioBox ul li.active i {
+  border: 6px solid #1e9fff;
+}
+/**店外购物*/
+.online {
+  /**商品前十报表*/
+  /**销售商品明细*/
+}
+.online .topTen {
+  padding: 0 20px;
+  margin-top: 20px;
+  /**店外购物报表*/
+}
+.online .topTen .tabNav {
+  width: 100%;
+  height: 55px;
+  background-color: #fff;
+  padding: 16px 20px 0 20px;
+}
+.online .topTen .tabNav a {
+  display: inline-block;
+  padding-bottom: 6px;
+  margin-right: 20px;
+}
+.online .topTen .tabNav a.active {
+  border-bottom: 2px solid #1e9fff;
+}
+.online .topTen .topTableBox {
+  padding: 0 20px 10px 20px;
+  background-color: #fff;
+  height: 440px;
+  overflow-y: auto;
+}
+.online .topTen .topTableBox table {
+  margin: 0;
+}
+.online .topTen .topTableBox table thead tr {
+  background-color: #fff;
+}
+.online .topTen .topTableBox table thead tr th {
+  border: none;
+  border-bottom: 1px solid #cccccc;
+}
+.online .topTen .topTableBox table thead tr th:nth-last-of-type(1),
+.online .topTen .topTableBox table thead tr th:nth-last-of-type(2),
+.online .topTen .topTableBox table thead tr th:nth-last-of-type(3) {
+  text-align: right;
+}
+.online .topTen .topTableBox table tbody tr:hover {
+  background-color: #fff;
+}
+.online .topTen .topTableBox table tbody tr td {
+  border-color: #fff;
+}
+.online .topTen .topTableBox table tbody tr td:nth-last-of-type(1),
+.online .topTen .topTableBox table tbody tr td:nth-last-of-type(2),
+.online .topTen .topTableBox table tbody tr td:nth-last-of-type(3) {
+  text-align: right;
+}
+.online .topTen .topTableBox table tbody tr td:nth-last-of-type(1) a,
+.online .topTen .topTableBox table tbody tr td:nth-last-of-type(2) a,
+.online .topTen .topTableBox table tbody tr td:nth-last-of-type(3) a {
+  color: #1e9fff;
+}
+.online .topTen .topTableBox table.salesVolume {
+  display: none;
+}
+.online .topTen .topTableBox table.returnGoods {
+  display: none;
+}
+.online .goodsSaleList {
+  padding: 0 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.online .goodsSaleList .table-title-search {
+  width: 100%;
+  height: 55px;
+  line-height: 53px;
+  background-color: #fff;
+  padding: 0 20px;
+}
+.online .goodsSaleList .table-title-search .tableTitle {
+  float: left;
+}
+.online .goodsSaleList .table-title-search .tableTitle span {
+  font-size: 15px;
+  color: #333;
+}
+.online .goodsSaleList .table-title-search .tableSearch {
+  float: right;
+}
+.online .goodsSaleList .table-title-search .tableSearch > div {
+  display: inline-block;
+  vertical-align: middle;
+}
+.online .goodsSaleList .table-title-search .tableSearch > div:first-of-type {
+  width: 150px;
+  position: relative;
+  z-index: 2;
+}
+.online .goodsSaleList .table-title-search .tableSearch > div:first-of-type .goodsResult {
+  position: absolute;
+  width: 100%;
+  max-height: 250px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #E6E6E6;
+  border-top: none;
+  z-index: 2;
+  display: none;
+}
+.online .goodsSaleList .table-title-search .tableSearch > div:first-of-type .goodsResult li {
+  width: 100%;
+  padding: 22px 10px;
+  line-height: 0;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666666;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.online .goodsSaleList .table-title-search .tableSearch > div:first-of-type .goodsResult li:hover {
+  background-color: #eeeeee;
+}
+.online .goodsSaleList .table-title-search .tableSearch > div:last-of-type {
+  margin-left: 6px;
+}
+.online .goodsSaleList .table-title-search .tableSearch > div:last-of-type a {
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  border: 1px solid #d2d2d2;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  font-size: 14px;
+  color: #333333;
+}
+.online .goodsSaleList .table-title-search .tableSearch > div:last-of-type a i {
+  display: inline-block;
+  vertical-align: -6px;
+  width: 24px;
+  height: 23px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.online .goodsSaleList .tableBox {
+  padding: 0 20px 10px 20px;
+  background-color: #fff;
+  height: 445px;
+  overflow-y: auto;
+}
+.online .goodsSaleList .tableBox table {
+  margin: 0;
+}
+.online .goodsSaleList .tableBox table td,
+.online .goodsSaleList .tableBox table th {
+  padding: 9px;
+}
+.online .goodsSaleList .tableBox table td:first-of-type,
+.online .goodsSaleList .tableBox table th:first-of-type {
+  text-align: center;
+}
+.online .goodsSaleList .tableBox table td:last-of-type,
+.online .goodsSaleList .tableBox table th:last-of-type {
+  text-align: right;
+}
+.online .goodsSaleList .tableBox table td:last-of-type a,
+.online .goodsSaleList .tableBox table th:last-of-type a {
+  color: #1e9fff;
+}
+.online .goodsSaleList .pageBox {
+  height: 55px;
+  padding: 0 20px;
+  background-color: #fff;
+}
+.online .goodsSaleList .pageBox > div {
+  float: right;
+}
+/**店内购物*/
+.inShop {
+  display: none;
+  /**各类商品销售总数*/
+  /**各类商品销售走势图*/
+  /**报表部分*/
+}
+.inShop .totalCount ul li {
+  float: left;
+  width: 22.7%;
+  min-width: 350px;
+  height: 98px;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+  margin: 20px;
+}
+.inShop .totalCount ul li div {
+  float: left;
+}
+.inShop .totalCount ul li div:nth-of-type(1) {
+  width: 46px;
+  height: 46px;
+  margin: 20px 20px 0  20px;
+}
+.inShop .totalCount ul li div:nth-of-type(3) {
+  float: right;
+  font-size: 14px;
+  color: #666666;
+  margin: 16px 20px 0 0;
+}
+.inShop .totalCount ul li div p {
+  font-size: 15px;
+  color: #333333;
+  margin-top: 16px;
+}
+.inShop .totalCount ul li div h4 {
+  font-size: 25px;
+  color: #333333;
+  font-weight: 700;
+  margin-top: 16px;
+}
+.inShop .totalCount ul li:nth-of-type(1) div:nth-of-type(1) {
+  background: url("../images/ic_cjjianshu.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.inShop .totalCount ul li:nth-of-type(2) div:nth-of-type(1) {
+  background: url("../images/ic_cardshu.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.inShop .totalCount ul li:nth-of-type(3) div:nth-of-type(1) {
+  background: url("../images/ic_packageshu.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.inShop .totalCount ul li:nth-of-type(4) div:nth-of-type(1) {
+  background: url("../images/ic_boxshu.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.inShop .inShopTrendBox {
+  padding: 0 20px;
+}
+.inShop .inShopTrendBox > div {
+  width: 100%;
+  height: 300px;
+  border: 1px solid #dddddd;
+  background-color: #fff;
+}
+.inShop .mainReport {
+  padding: 20px 20px;
+  /**tab按钮，搜索框，导出按钮*/
+  /**报表内容*/
+  /**分页器*/
+}
+.inShop .mainReport .tab-search-export {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+}
+.inShop .mainReport .tab-search-export .tabNavBox {
+  float: left;
+}
+.inShop .mainReport .tab-search-export .tabNavBox a {
+  display: inline-block;
+  height: 34px;
+  line-height: 34px;
+  margin-right: 20px;
+  color: #999999;
+}
+.inShop .mainReport .tab-search-export .tabNavBox a.active {
+  border-bottom: 2px solid #1e9fff;
+  color: #333333;
+}
+.inShop .mainReport .tab-search-export .searchBox {
+  float: right;
+}
+.inShop .mainReport .tab-search-export .searchBox form > div {
+  display: inline-block;
+  width: 150px;
+  vertical-align: middle;
+}
+.inShop .mainReport .tab-search-export .searchBox form button {
+  width: 80px;
+  height: 34px;
+  border: 1px solid #dedede;
+  background-color: #fff;
+  vertical-align: middle;
+  color: #333333;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
+.inShop .mainReport .tab-search-export .exportBox {
+  float: right;
+  margin-left: 10px;
+}
+.inShop .mainReport .tab-search-export .exportBox a {
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+  line-height: 34px;
+  border: 1px solid #dddddd;
+  text-align: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+.inShop .mainReport .tab-search-export .exportBox a i {
+  display: inline-block;
+  width: 24px;
+  height: 23px;
+  vertical-align: -6px;
+  background: url('../../../assets/common/img/exportIcon.png') no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.inShop .mainReport .tableContent {
+  padding: 0 20px;
+  height: 430px;
+  background-color: #fff;
+  overflow-y: auto;
+}
+.inShop .mainReport .tableContent table {
+  margin: 0;
+}
+.inShop .mainReport .tableContent table th:first-of-type,
+.inShop .mainReport .tableContent table td:first-of-type {
+  text-align: center;
+}
+.inShop .mainReport .tableContent table th:last-of-type,
+.inShop .mainReport .tableContent table td:last-of-type {
+  text-align: right;
+}
+.inShop .mainReport .tableContent table th:last-of-type a,
+.inShop .mainReport .tableContent table td:last-of-type a {
+  color: #1e9fff;
+}
+.inShop .mainReport .tableContent .card {
+  display: none;
+}
+.inShop .mainReport .tableContent .package {
+  display: none;
+}
+.inShop .mainReport .tableContent .setBox {
+  display: none;
+}
+.inShop .mainReport .pageBox {
+  padding: 0 20px;
+  height: 55px;
+  background-color: #fff;
+}
+.inShop .mainReport .pageBox > div {
+  float: right;
+}
+/**遮罩层*/
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: 1;
+  display: none;
+}
+/*# sourceMappingURL=reportCSGoodsSale.css.map */

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<style>
+	.div-st{
+		float: left;
+		width: 24%;
+		height: 95px;
+		margin-left: 1%;
+		margin-top: 1%;
+		/* text-align: center; */
+		padding-left: 12px;
+		background-color: #CCCCCC;
+	    border: 1px solid #e3e3e3;
+	    border-radius: 4px;
+	}
+	
+	.unnormal{
+		background-color: lightcoral;
+	}
+	
+	.div-font-st{
+		color: green;
+		font-size: 15px;
+	}
+	
+	.typeTitle{
+		text-align: center;
+		font-weight: bold;
+		color: #317EF3;
+		font-size: 15px;
+	}
+	
+	.div-li-st{
+		padding-top: 1px;
+	}
+	
+</style>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>业务质检详情</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap-datepicker/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/account_common.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/modal.css">
+</head>
+<body>
+    <div class="container-fluet" id="body-box" style="padding-top: 0px;">
+        <div class="row body-left-nav">
+            <div class="col-md-11 content-right" id="content">
+                <div class="cr-top">
+                	
+                <div class="cr-con">
+                    <div id="toolbar" class="row">
+                    <div class="cy-text-right-md form-inline clearfix">
+                   	  	<!-- 用户昵称  -->
+                       	<div class="selein fl">
+                            <span class="cy-pad-hor-s">用户昵称：</span>
+                            <input type="text" class="form-control h34 stationwid sechwidth" readonly id="username" maxlength="10" >
+                        </div>
+                    	<!-- 手机号  -->
+                       	<div class="selein fl">
+                            <span class="cy-pad-hor-s">手机号：</span>
+                            <input type="text" class="form-control h34 stationwid sechwidth" readonly id="phone" maxlength="20" >
+                        </div>
+                    </div>
+                    <div class="table-con">
+	                    <div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">充值</li>
+                    			<li class="div-li-st">用户账户余额增加： <span id="typeRecharge" class="div-font-st"></span></li>
+                    			<li class="div-li-st">系统总账户余额增加： <span id="bizRecharge" class="div-font-st"></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">消费</li>
+                    			<li class="div-li-st">用户账户余额减少： <span id="typeConsumption" class="div-font-st"></span></li>
+                    			<li class="div-li-st">托管&盈利账户余额增加： <span id="bizConsumption" class="div-font-st"></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">退货</li>
+                    			<li class="div-li-st">用户账户余额增加： <span id="typeReturn" class="div-font-st"></span></li>
+                    			<li class="div-li-st">托管账户余额减少： <span id="bizReturn" class="div-font-st"></span></li>
+                    		</ul>
+                    	</div>
+                    	
+                    	
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">提现结算</li>
+                    			<li class="div-li-st">用户账户余额减少： <span id="typeWithdraw" class="div-font-st"></span></li>
+                    			<li class="div-li-st">结算账户余额增加： <span id="bizWithdraw" class="div-font-st"></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">提现退回</li>
+                    			<li class="div-li-st">用户账户余额增加： <span id="typeWithdrawReturn" class="div-font-st"></span></li>
+                    			<li class="div-li-st">结算账户余额减少： <span id="bizWithdrawReturn" class="div-font-st"></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">转出到子账户</li>
+                    			<li class="div-li-st">用户账户余额减少： <span id="typeTransferSun" class="div-font-st"></span></li>
+                    			<li class="div-li-st">子账户余额增加： <span id="bizTransferSun" class="div-font-st"></span></li>
+                    		</ul>
+                    	</div>
+                    	
+                    	
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">子账户转入</li>
+                    			<li class="div-li-st">用户账户余额增加： <span id="typeTransferAccount" class="div-font-st"></span></li>
+                    			<li class="div-li-st">子账户余额减少： <span id="bizTransferAccount" class="div-font-st"></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">确认收货</li>
+                    			<li class="div-li-st">商户账户余额增加： <span id="typeConfirm" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">托管账户余额减少：<span id="bizConfirm" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">产生盈利</li>
+                    			<li class="div-li-st">用户账户余额减少： <span id="typeProfit" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">盈利账户余额增加： <span id="bizProfit" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">商户升级支付</li>
+                    			<li class="div-li-st">商户账户余额减少： <span id="typeMerchantUpgrade" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">未明账户余额增加：<span id="bizMerchantUpgrade" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">商户升级退款</li>
+                    			<li class="div-li-st">商户账户余额增加： <span id="typeMerchantReturn" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">未明账户余额减少： <span id="bizMerchantReturn" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">商户升级佣金发放</li>
+                    			<li class="div-li-st">用户账户余额增加：  <span id="typeMerchantCommission" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">未明账户余额减少：<span id="bizMerchantCommission" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">主播佣金发放</li>
+                    			<li class="div-li-st">用户账户余额增加：<span id="typeAnchor" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">盈利账户余额减少： <span id="bizAnchor" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">给其他用户转账</li>
+                    			<li class="div-li-st">用户账户余额减少： <span id="typeTransferOut" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">接受人账户余额增加： <span id="bizTransferOut" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">接受其他用户转账</li>
+                    			<li class="div-li-st">用户账户余额增加： <span id="typeTransferIn" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">转账人账户余额减少： <span id="bizTransferIn" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">分享赚支付</li>
+                    			<li class="div-li-st">用户账户余额减少： <span id="typeShare" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">托管账户余额增加： <span id="bizShare" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">确认分享赚收货</li>
+                    			<li class="div-li-st">商户账户余额增加： <span id="typeShareConfirm" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">托管账户余额减少： <span id="bizShareConfirm" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">分享赚退货</li>
+                    			<li class="div-li-st">用户账户余额增加： <span id="typeShareReturn" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">托管账户余额减少： <span id="bizShareReturn" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">发红包</li>
+                    			<li class="div-li-st">用户账户余额减少：<span id="typeRedPacket" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">红包托管账户余额增加： <span id="bizRedPacket" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">领取红包&红包退回</li>
+                    			<li class="div-li-st">用户账户余额增加： <span id="typeRedPacketOut" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">红包托管账户余额减少： <span id="bizRedPacketOut" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">智扮提成发放</li>
+                    			<li class="div-li-st">用户账户余额增加：  <span id="typeDecorationCommission" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">盈利账户余额减少：<span id="bizDecorationCommission" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">智享课堂消费</li>
+                    			<li class="div-li-st">用户账户余额减少：  <span id="typePayClass" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">智享课堂&盈利账户&商户账户余额增加：<span id="bizPayClass" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">智享课堂退款</li>
+                    			<li class="div-li-st">用户账户余额增加：  <span id="typePayClassReturn" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">智享课堂账户余额减少：<span id="bizPayClassReturn" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	<div class="div-st">
+                    		<ul>
+                    			<li class="div-li-st typeTitle">智享课堂收入</li>
+                    			<li class="div-li-st">商户账户余额增加：  <span id="typePayClassProfit" class="div-font-st" ></span></li>
+                    			<li class="div-li-st">买方账户余额减少：<span id="bizPayClassProfit" class="div-font-st" ></span></li>
+                    		</ul>
+                    	</div>
+                    	
+                    	<!-- <div class="div-st" style="width: 80%;">
+                    		<ul>
+                    			<li class="div-li-st">系统计算出来的支付宝金额（主要用于与实际支付宝金额进行对账）</li>
+                    			<li class="div-li-st">计算方式为：总账户 + 托管账户 + 结算账户 + 盈利账户 +子账户 +待确认款项 + 劳务费 - 支付宝手续费</li>
+                    			<li class="div-li-st"><span id="aliMoney" class="div-font-st"></span></li>
+                    		</ul>
+                    	</div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Common -->
+<script type="text/javascript" src="../../common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/js/jqPaginator.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table.v1.11.0.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/account_common.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/str.js"></script>
+<script type="text/javascript" src="../../common/js/num.js"></script>
+<script type="text/javascript" src="../../common/assets/template-web.js"></script>
+
+<script type="text/javascript" src="../../common/assets/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="../../common/assets/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="../../common/js/login_success.js"></script>
+
+
+<script type="text/javascript" src="../../common/js/util/pub.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<!-- detailsfile -->   
+<script type="text/javascript" src="bizInspectionDetail.js"></script>
+<!-- templates -->
+
+</body>
+</html>

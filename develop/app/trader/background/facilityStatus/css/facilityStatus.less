@@ -1,0 +1,470 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+body{
+  &::-webkit-scrollbar{
+    width: 6px;
+    height: 2px;
+  }
+  &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.3);
+  }
+  &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+  }
+}
+a{
+  text-decoration: none;
+  &:link,&:visited,&:hover,&:active{
+    color: #000;
+    text-decoration: none;
+  }
+}
+ul,li{
+  list-style: none;
+}
+.clearfix::after{
+  display: block;
+  content: '';
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.clearfix{
+  zoom: 1;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+  background-color: #f3f3f4;
+}
+.header{
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  line-height: 80px;
+  padding-left: 0;
+  .searchBox{
+    float: left;
+    vertical-align: middle;
+    height: 80px;
+    width: 100%;
+    text-align: right;
+    padding-right: 4%;
+    overflow: hidden;
+    label{
+      font-size: 18px;
+      color: #353b53;
+      font-weight: 400;
+      padding-top: 0;
+      margin-bottom: 0;
+      vertical-align: middle;
+      &:nth-of-type(1){
+        margin-left: 0;
+      }
+    }
+    select{
+      width: 212px;
+      height: 34px;
+      border-color: #353b53;
+      color: #333333;
+      font-size: 16px;
+      vertical-align: middle;
+
+    }
+    #facilityStatus,#timeSelector{
+      width: 148px;
+    }
+    >div{
+      display: inline-block;
+      margin-left: 5%;
+      &:nth-of-type(1){
+        margin-left: 0;
+      }
+    }
+    .select2-container{
+      z-index: 1;
+      text-align: left;
+    }
+  }
+}
+//设备占用情况页面样式开始
+.tabBar{
+  width: 100%;
+  height: 90/32rem;
+  //margin-top: 14/32rem;
+  .menu{
+    float: left;
+    padding-top: 30/32rem;
+    padding-left: 27/32rem;
+    a{
+      display: inline-block;
+      width: 140/32rem;
+      height: 60/32rem;
+      line-height: 60/32rem;
+      text-align: center;
+      background-color: #fff;
+      font-size: 18/32rem;
+      color: #666666;
+      border-radius: 8/32rem 8/32rem 0 0;
+      float: left;
+      margin-right: 4/32rem;
+      &.active{
+        border:1/32rem solid #353b53;
+        color: #353b53;
+      }
+    }
+  }
+  .occupiedDescription{
+    float: right;
+    height: 90/32rem;
+    line-height: 100%;
+    padding-top: 23/32rem;
+    padding-right: 54/32rem;
+    .statusInstructions{
+      display: inline-block;
+      vertical-align: middle;
+      span{
+        display: inline-block;
+        float: left;
+        height: 44/32rem;
+        line-height: 44/32rem;
+        text-align: center;
+        font-size: 18/32rem;
+        color: #333;
+        padding-left: 10/32rem;
+        border-left: 10/32rem solid #f59701;
+        margin-left: 70/32rem;
+        &:last-of-type{
+          border-left: 10/32rem solid #2db623;
+        }
+        &:first-of-type{
+          border-left: 10/32rem solid #0080ff;
+        }
+      }
+    }
+    .exportBtn{
+      width: 100/32rem;
+      height: 44/32rem;
+      outline: none;
+      border: none;
+      background-color: #2fc4b5;
+      color: #ffffff;
+      font-size: 18/32rem;
+      margin-left: 30/32rem;
+    }
+  }
+}
+.main{
+  width: 100%;
+  height: 100%;
+  padding:  0 24/32rem 10/32rem 24/32rem;
+  //overflow-y: auto;
+  background-color: #fff;
+  ul{
+    width: 100%;
+    height: 100%;
+    padding-left: 5/32rem;
+    //padding-bottom: 30/32rem;
+    li{
+      width: 250/32rem;
+      height: 250/32rem;
+      //border: 1/32rem solid #999;
+      border-radius:8/32rem;
+      text-align: center;
+      padding-top: 36/32rem;
+      position: relative;
+      background-color: #ffffff;
+      float: left;
+      margin-right: 34/32rem;
+      margin-top: 30/32rem;
+      &:nth-of-type(6n){
+        margin-right: 0;
+        .erCodeBox{
+          bottom: 175/32rem;
+          left: -280/32rem;
+        }
+      }
+      &:nth-of-type(6n-1){
+        .erCodeBox{
+          bottom: 175/32rem;
+          left: -280/32rem;
+        }
+      }
+      &:nth-of-type(1),&:nth-of-type(2),&:nth-of-type(3),&:nth-of-type(4){
+        .erCodeBox{
+          bottom: 0;
+          left: 250/32rem;
+          top: 50/32rem;
+        }
+      }
+      &:nth-of-type(5),&:nth-of-type(6){
+        .erCodeBox{
+          bottom: 0;
+          left: -280/32rem;
+          top: 50/32rem;
+        }
+      }
+      &.free{
+        border: 1/32rem solid #2db623;
+        h4{
+          font-size: 40/32rem;
+          color: #2db623;
+          font-weight: 400;
+          margin-top: 40/32rem;
+          padding-left: 6/32rem;
+          overflow: hidden;
+          white-space: nowrap;/*不换行*/
+          text-overflow:ellipsis;/*超出部分文字以...显示*/
+        }
+        p{
+          font-size: 24/32rem;
+          color: #2db623;
+          margin-top: 10/32rem;
+        }
+        .erCodeIcon{
+          position: absolute;
+          width: 50/32rem;
+          height: 50/32rem;
+          background: url("../image/Qr-codewu@2x.png") no-repeat right top;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+          top: 0/32rem;
+          right: 0/32rem;
+          cursor: pointer;
+          -webkit-border-radius: 0 8/32rem 0 0;
+          -moz-border-radius: 0 8/32rem 0 0;
+          border-radius: 0 8/32rem 0 0;
+        }
+        &::before{
+          position: absolute;
+          content: '';
+          width: 10/32rem;
+          height: 150/32rem;
+          background-color: #2db623;
+          left: -5/32rem;
+          top:50/32rem;
+        }
+      }
+      &.used{
+        border: 1/32rem solid #f59701;
+        text-align: left;
+        padding-top: 0/32rem;
+        position: relative;
+        h4{
+          font-size: 24/32rem;
+          color: #f59701;
+          padding-left: 16/32rem;
+          padding-right: 50/32rem;
+          margin-bottom: 5/32rem;
+          margin-top: 10/32rem;
+          overflow: hidden;
+          white-space: nowrap;/*不换行*/
+          text-overflow:ellipsis;/*超出部分文字以...显示*/
+        }
+        p{
+          font-size: 16/32rem;
+          color: #f59701;
+          width: 100%;
+          height: 40/32rem;
+          line-height: 40/32rem;
+          padding-left: 16/32rem;
+          margin-bottom: 0;
+          border-bottom: 1/32rem dashed #f59701;
+          &:first-of-type{
+            font-weight: 700;
+            font-size: 18/32rem;
+            overflow: hidden;
+            white-space: nowrap;/*不换行*/
+            text-overflow:ellipsis;/*超出部分文字以...显示*/
+          }
+          &:last-of-type{
+            border-bottom: 0;
+          }
+          >img{
+            width: 27/32rem;
+            height: 26/32rem;
+            margin-right: 4/32rem;
+            display: inline-block;
+            vertical-align: middle;
+          }
+        }
+        .erCodeIcon{
+          position: absolute;
+          width: 50/32rem;
+          height: 50/32rem;
+          background: url("../image/Qr-codeyou@2x.png") no-repeat right top;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+          top: 0/32rem;
+          right: 0/32rem;
+          cursor: pointer;
+          -webkit-border-radius: 0 8/32rem 0 0;
+          -moz-border-radius: 0 8/32rem 0 0;
+          border-radius: 0 8/32rem 0 0;
+        }
+        &::before{
+          position: absolute;
+          content: '';
+          width: 10/32rem;
+          height: 150/32rem;
+          background-color: #f59701;
+          left: -5/32rem;
+          top:50/32rem;
+        }
+      }
+      &.InAppointment{
+        border: 1/32rem solid #0080ff;
+        h4{
+          font-size: 40/32rem;
+          color: #0080ff;
+          font-weight: 400;
+          margin-top: 40/32rem;
+          padding-left: 6/32rem;
+          overflow: hidden;
+          white-space: nowrap;/*不换行*/
+          text-overflow:ellipsis;/*超出部分文字以...显示*/
+        }
+        p{
+          font-size: 24/32rem;
+          color: #0080ff;
+          margin-top: 10/32rem;
+        }
+        .erCodeIcon{
+          position: absolute;
+          width: 50/32rem;
+          height: 50/32rem;
+          background: url("../image/Qr-codelan.fw.png") no-repeat right top;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+          top: 0/32rem;
+          right: 0/32rem;
+          cursor: pointer;
+          -webkit-border-radius: 0 8/32rem 0 0;
+          -moz-border-radius: 0 8/32rem 0 0;
+          border-radius: 0 8/32rem 0 0;
+        }
+        &::before{
+          position: absolute;
+          content: '';
+          width: 10/32rem;
+          height: 150/32rem;
+          background-color: #0080ff;
+          left: -5/32rem;
+          top:50/32rem;
+        }
+      }
+      .erCodeBox{
+        width: 276/32rem;
+        height: 310/32rem;
+        border: 1/32rem solid #000;
+        position: absolute;
+        bottom: 175/32rem;
+        left: 250/32rem;
+        z-index: 2;
+        background-color: #fff;
+        display: none;
+        .erCode{
+          width: 256/32rem;
+          height: 256/32rem;
+          margin: 10/32rem 10/32rem 0 10/32rem;
+          >img{
+            width: 250/32rem;
+            height: 250/32rem;
+          }
+        }
+        .downloadBtn{
+          position: absolute;
+          width: 100/32rem;
+          height: 30/32rem;
+          text-align: center;
+          line-height: 30/32rem;
+          font-size: 18/32rem;
+          color: #fff;
+          background-color: #f8ac59;
+          left: 50%;
+          bottom: 5/32rem;
+          transform: translateX(-50%);
+        }
+      }
+
+    }
+  }
+}
+.mask{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.5);
+  z-index: 1;
+  display: none;
+}
+//设备占用情况页面样式结束
+
+//select2参插件样式修改开始
+.select2-container{
+  //z-index: 3;
+  .select2-selection--single{
+    height: 34px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    font-size: 16px;
+    border-color: #353b53;
+    .select2-selection__rendered{
+      line-height: 34px;
+    }
+    .select2-selection__arrow{
+      height: 34px;
+      b{
+        border-color: #353b53 transparent transparent transparent;
+      }
+    }
+  }
+}
+.select2-results__option{
+  font-size: 16px;
+}
+.select2-container--default.select2-container--open{
+  .select2-selection--single{
+    .select2-selection__arrow{
+      b{
+        border-color: transparent transparent #353b53 transparent;
+      }
+    }
+  }
+  .select2-results__option--highlighted[aria-selected]{
+    background-color: rgba(29, 191, 175, 0.7);
+  }
+  .select2-results>.select2-results__options{
+    &::-webkit-scrollbar{
+      width: 2px;
+      height: 2px;
+    }
+    &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+      border-radius: 0;
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.3);
+    }
+    &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      border-radius: 0;
+      background: rgba(0,0,0,0.1);
+    }
+  }
+}
+//select2参见样式修改结束
+
+
+
+

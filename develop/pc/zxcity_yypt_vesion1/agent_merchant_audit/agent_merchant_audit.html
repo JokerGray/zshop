@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>商户注册审核</title>
+		<!-- CssCommon -->
+		<link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+		<link rel="stylesheet" type="text/css" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+		<link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+		<!-- CssSinglepage-->
+		<link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/agent_merchant_audit.css" />
+	</head>
+
+	<body>
+		<div id="common-tool" class="clearfix p4">
+			<div id="search">
+				<button class="layui-btn layui-btn-small layui-btn-primary">
+            <i class="layui-icon">&#xe615;</i> 搜索
+        </button>
+			</div>
+		</div>
+		<div id="search-tool" class="clearfix">
+			<div class="input-group">
+				<span class="pull-left">手机号:</span>
+				<input type="text" class="form-control media-input" id="merchantName" maxlength="11">
+			</div>
+			<div class="input-group">
+				<span class="pull-left">商户名:</span>
+				<input type="text" class="form-control media-input" id="merchant_nickname" maxlength="11">
+			</div>
+			<div class="input-group">
+				<span class="pull-left">商户行业:</span>
+				<select class="form-control c0" id="merchant_trade">
+					<option value="">--请选择--</option>
+					<option value="0">服务业</option>
+					<option value="1">零售业</option>
+					<option value="2">餐饮业</option>
+				</select>
+			</div>
+			<!--<div class="input-group lasttime input-medium date-picker" data-date-format="yyyy-mm-dd">
+        <div class="input-group">
+            <span  class="jurisdiction-label pull-left" for="jurisdiction-begin">开始时间(申请/审核)：</span>
+            <div class='date form-control' id='datetimepicker1'>
+                <input name="dtBegin" type="text"  id="jurisdiction-begin" placeholder="-请选择-" >
+                <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+        <div class="input-group">
+            <span class="jurisdiction-label pull-left" for="jurisdiction-end">至 </span>
+            <div class='date form-control' id='datetimepicker2'>
+                <input name="dtEnd" type="text"  id="jurisdiction-end" placeholder="-请选择-" >
+                <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+    </div>-->
+			<div class="input-group">
+				<button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearch">
+            搜索
+        </button>
+				<button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+            重置
+        </button>
+			</div>
+			<!--<div id="search-tool-show" class="highsearch">
+        <i class="fa fa-angle-double-down"></i>
+    </div>-->
+		</div>
+		<div class="tab-title">
+			<ul>
+				<li class="tab-li active" data-num="0">
+					<a>待审核</a>
+				</li>
+				<li data-num="1" class="tab-li">
+					<a>审核通过</a>
+				</li>
+				<li data-num="2" class="tab-li">
+					<a>审核不通过</a>
+				</li>
+			</ul>
+		</div>
+		<div class="table-lt clearfix">
+			<div id="noAudit" class="table-list clearfix">
+				<table lay-filter="tableNo" id="tableNo"></table>
+				<div id="laypageLeft" class="table-rgt"></div>
+			</div>
+		</div>
+		<script type="text/html" id="barDemo">
+			<button class="layui-btn layui-btn-small layui-btn-normal" lay-event='nodetail'>
+        <i class="layui-icon">&#xe615;</i> 查看
+    </button> {{# if(d.status == 0){ }}
+			<button class="layui-btn layui-btn-small layui-btn" lay-event='pass'>
+	    	通过
+	    </button>
+			<button class="layui-btn layui-btn-small layui-btn-danger" lay-event='noPass'>
+	                    不通过
+	    </button> {{# } }}
+
+		</script>
+
+		<script type="text/html" id="titleTpl">
+			<span class="layui-input-block" style="display: none">{{d.step}}</span>{{d.eq}}
+		</script>
+
+		<!--modal-->
+		<!--查看-->
+		<div id="lookDemo" class='layui-form clearfix tipdemo'>
+			<div class="leftCon">
+				<div class="layui-form-item">
+					<label class="layui-form-label flex">代理商名：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="layui-input h30" id="sysUserNickname" disabled>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label flex">商户名称：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="layui-input h30" id="merchantNickname" disabled>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label flex">商户手机号：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="layui-input h30" id="merchantPhone" disabled>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label flex">所属行业：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="layui-input h30" id="merchantTrade" disabled>
+					</div>
+				</div>
+				<div class="layui-form-item busimg">
+					<label class="layui-form-label flex">营业执照<br>正面：</label>
+					<div class="layui-input-block flex">
+						<img id="licenseFront" src="" class="zImg" />
+					</div>
+				</div>
+				<div class="layui-form-item busimg">
+					<label class="layui-form-label flex">身份证照<br>正面：</label>
+					<div class="layui-input-block flex">
+						<img id="sysUserIdcardFront" src="" class="zImg" />
+					</div>
+				</div>
+				<div class="layui-form-item busimg">
+					<label class="layui-form-label flex">手持身份<br>证：</label>
+					<div class="layui-input-block flex">
+						<img id="sysUserIdcardHold" src="" class="zImg" />
+					</div>
+				</div>
+			</div>
+			<div class="rightCon">
+				<div class="layui-form-item">
+					<label class="layui-form-label flex">性别：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="layui-input h30" id="sysUserSex" disabled>
+					</div>
+				</div>
+				<div class="layui-form-item" id="noPassDiv">
+					<label class="layui-form-label flex">不通过理由：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="layui-input h30" id="advice" disabled>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label flex">申请时间：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="layui-input h30" id="updatetime" disabled>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label flex">省市：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="layui-input h30" id="province" disabled>
+						<input type="text" name="title" class="layui-input h30" id="city" disabled>
+					</div>
+				</div>
+				<div class="layui-form-item busimg">
+					<label class="layui-form-label flex">手持营业<br>执照：</label>
+					<div class="layui-input-block flex">
+						<img id="licenseHold" src="" class="zImg" />
+					</div>
+				</div>
+				<div class="layui-form-item busimg">
+					<label class="layui-form-label flex">身份证照<br>反面：</label>
+					<div class="layui-input-block flex">
+						<img id="sysUserIdcardBack" src="" class="zImg" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--第一步-->
+		<div id="oneDemo" class='layui-form clearfix tipdemo'>
+			<div class="looktit">
+				<img src="img/manage_1.jpg">
+			</div>
+			<div class="centerCon">
+				<div class="centerCon">
+					<h4>商户信息</h4>
+					<div class="layui-form-item">
+						<label class="layui-form-label flex"><b class="required-icon">＊</b>账号：</label>
+						<div class="layui-input-block flex">
+							<input type="text" name="title" class="form-control layui-input h30" lay-verify="required" id="uName" maxlength="11" placeholder="请输入手机号" data-num="0">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label flex"><b class="required-icon">＊</b>密码：</label>
+						<div class="layui-input-block flex">
+							<input type="password" name="title" class="form-control layui-input h30" lay-verify="required" placeholder="请输入6-12位长度的密码" id="upwd" maxlength="12">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label flex"><b class="required-icon">＊</b>昵称：</label>
+						<div class="layui-input-block flex">
+							<input type="text" name="title" class="form-control layui-input h30" lay-verify="required" placeholder="只能输入中文或者英文" id="udesigName" maxlength="12">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label flex"><b class="required-icon">＊</b>商户名称：</label>
+						<div class="layui-input-block flex">
+							<input type="text" name="title" class="form-control layui-input h30" lay-verify="required" id="udesig" maxlength="20">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label flex"><b class="required-icon">＊</b>类型：</label>
+						<div class="layui-input-block flex" id="uTypebox">
+							<select class="form-control layui-input h30" id="uType" lay-verify="required" lay-filter="uType">
+								<option value="0">正式</option>
+								<option value="1">测试</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label flex"><b class="required-icon">＊</b>所属行业：</label>
+						<div class="layui-input-block flex" id="uBussinessbox">
+							<select class="form-control layui-input h30" id="uBussiness" lay-filter="uBussiness">
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label flex"><b class="required-icon">＊</b>行业模板：</label>
+						<div class="layui-input-block flex">
+							<select class="form-control layui-input h30" id="bussTemplate" lay-filter="bussTemplate">
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label flex"><b class="required-icon">＊</b>省市：</label>
+						<div class="layui-input-block flex" id="uprobox">
+							<select class="form-control layui-input h30" id="provinceSelector2" lay-filter="provinceSelector2">
+							</select>
+							<div id="uCitid">
+								<select class="form-control layui-input h30" id="citySelector2" lay-filter="citySelector2">
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="leftCon">
+					<div class="layui-form-item imgid">
+						<label class="layui-form-label uploadimg">营业执照正面：（小于5M）</label>
+						<div class="layui-input-block">
+							<img src="img/upload.png" id="uploadImg1" class="signform-face-img" style="width:255px;height:160px" />
+
+						</div>
+					</div>
+				</div>
+				<div class="rightCon">
+					<div class="layui-form-item imgid">
+						<label class="layui-form-label uploadimg">手持营业执照：（小于5M）</label>
+						<div class="layui-input-block">
+							<img src="img/upload.png" id="uploadImg2" class="signform-face-img" style="width:255px;height:160px" />
+
+						</div>
+					</div>
+				</div>
+				<h4>平台用户信息</h4>
+				<div class="layui-form-item">
+					<label class="layui-form-label flex"><b class="required-icon">＊</b>账号：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="form-control layui-input h30" lay-verify="required" id="oneName" disabled>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label flex"><b class="required-icon">＊</b>性别：</label>
+					<div class="layui-input-block flex" id="uTypeBoxs">
+						<select class="form-control layui-input h30" id="onesex" lay-filter="onesex">
+							<option value="0">男</option>
+							<option value="1">女</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label flex"><b class="required-icon">＊</b>密码：</label>
+					<div class="layui-input-block flex">
+						<input type="password" name="title" class="form-control layui-input h30" lay-verify="required" placeholder="请输入6-12位长度的密码" id="onepwd" maxlength="12">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label flex"><b class="required-icon">＊</b>昵称：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="form-control layui-input h30" lay-verify="required" id="onedesig" maxlength="12">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label flex"><b class="required-icon">＊</b>真实姓名：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="form-control layui-input h30" lay-verify="required" id="realName" maxlength="5">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label flex"><b class="required-icon">＊</b>身份证号码：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="form-control layui-input h30" lay-verify="required" id="idNum" maxlength="18">
+					</div>
+				</div>
+			</div>
+			<div class="leftCon">
+				<div class="layui-form-item imgid">
+					<label class="layui-form-label uploadimg"><b class="required-icon">＊</b>身份证正面：（小于5M）</label>
+					<div class="layui-input-block">
+						<img src="img/upload.png" id="uploadImg01" class="signform-face-img" style="width:255px;height:160px" />
+					</div>
+				</div>
+				<div class="layui-form-item imgid">
+					<label class="layui-form-label uploadimg">手持身份证：（小于5M）</label>
+					<div class="layui-input-block">
+						<img src="img/upload.png" id="uploadImg03" class="signform-face-img" style="width:255px;height:160px" />
+
+					</div>
+				</div>
+			</div>
+			<div class="rightCon">
+				<div class="layui-form-item imgid">
+					<label class="layui-form-label uploadimg"><b class="required-icon">＊</b>身份证反面：（小于5M）</label>
+					<div class="layui-input-block">
+						<img src="img/upload.png" id="uploadImg02" class="signform-face-img" style="width:255px;height:160px" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--头条初始化-->
+		<div id="secondDemo" class='layui-form clearfix tipdemo'>
+			<div class="looktit">
+				<img src="img/manage_2.jpg">
+			</div>
+			<div class="leftCon">
+				<div class="layui-form-item">
+					<label class="layui-form-label flex"><b class="required-icon">＊</b>名称：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="layui-input h30" id="addName" lay-verify="required" autocomplete="off" maxlength="12">
+					</div>
+				</div>
+			</div>
+			<div class="rightCon">
+				<div class="layui-form-item">
+					<label class="layui-form-label flex"><b class="required-icon">＊</b>类型：</label>
+					<div class="layui-input-block flex" id="subscription">
+						<select class="layui-input h30" id="fixdepartment">
+							<option value="">选择</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="centerCon">
+				<div class="layui-form-item">
+					<label class="layui-form-label flex">简介：</label>
+					<div class="layui-input-block flex">
+						<textarea type="text" name="title" id="addnote" maxlength="100"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--个人信息维护-->
+		<div id="userDemo" class='layui-form clearfix tipdemo'>
+			<div class="looktit">
+				<img src="img/manage_3.jpg">
+			</div>
+			<div class="centerCon">
+				<div class="layui-form-item">
+					<label class="layui-form-label flex"><b class="required-icon">＊</b>金额：</label>
+					<div class="layui-input-block flex">
+						<input type="text" name="title" class="layui-input form-control h30" id="addmoney" lay-verify="required" value="0" autocomplete="off" maxlength="50" disabled>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--商户权限初始化-->
+		<div id="thirdDemo" class='layui-form clearfix tipdemo'>
+			<div class="looktit">
+				<img src="img/manage_4.jpg">
+			</div>
+			<div class="leftCon">
+				<div class="layui-form-item">
+					<label class="layui-form-label flex">角色名称：</label>
+					<div class="layui-input-block flex">
+						<ul id="mervchantRole" class="rolename">
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="rightCon">
+				<div class="layui-form-item">
+					<label class="layui-form-label flex">角色权限：</label>
+					<div class="layui-input-block flex">
+						<ul class='ztree' lay-filter='test' id='treedem'>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--商户注册第四步-->
+		<div id="fourDemo" class='layui-form clearfix tipdemo'>
+			<div class="centerCon">
+				<div class="layui-form-item ">
+					<label class="layui-form-label"><b class="required-icon">＊</b>审核意见：</label>
+					<div class="layui-input-block">
+						<textarea type="text" id="addAudit" lay-verify="required" name="title" required class="layui-input " maxlength="100"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.exedit.js"></script>
+<script type="text/javascript" src="js/zoomify.min.js"></script>
+<script type="text/javascript" src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script type="text/javascript" src="js/upload.js"></script>
+<script type="text/javascript" src="js/agent_merchant_audit.js"></script>
+</html>

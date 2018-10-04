@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head lang="zh-cn">
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache, must-revalidate">
+		<meta http-equiv="expires" content="0">
+		<link rel="stylesheet" type="text/css" href="../../../assets/Jcrop-0.9.12/css/jquery.Jcrop.css"/>
+		<script src="../../../assets/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/Jcrop-0.9.12/js/jquery.Jcrop.js"></script>
+		<script src="../../../assets/Jcrop-0.9.12/js/jquery.color.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/uploadPreview/uploadPreview.min.js" type="text/javascript" charset="utf-8"></script>
+		<title>图片裁剪</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+				/* 不要滚动条 */
+	::-webkit-scrollbar{
+		display: none;
+	}
+			.content{
+				padding: 20px;
+				position: relative;
+			}
+			.selectImg{
+				float: left;
+  				position: relative;
+  				height: 28px;
+				width: 80px;
+				z-index: 10000;
+  				text-align: center;
+  				line-height: 30px;
+  				overflow: hidden;
+  				cursor: pointer;
+  				padding: 5px;
+  				display: inline-block;
+  				text-decoration: none;
+				font-size: 14px;
+				color: #fff;
+				background-color: #353b53;
+				border: none;
+				border-radius: 5px;
+				margin-bottom: 20px;
+			}
+			#ipt{
+				position: absolute;
+  				font-size: 100px;
+  				right: 0;
+ 				top: 0;
+  				opacity: 0;
+  				filter: alpha(opacity=0);
+  				cursor: pointer;
+			}
+			.title{
+				float: right;
+				margin: 0;
+				font-size:18px ;
+				color: #333;
+				line-height: 28px;
+			}
+			.showBox{
+				
+				margin-top: 60px;
+			}
+			.showImg{
+				display: block;
+				
+			}
+			.preview{
+				position: absolute;
+				box-sizing: border-box;
+				border-radius: 5px;
+				border: 2px solid #fff;
+				top: 70px;
+				right: 20px;
+			}
+			.previewContainer{
+				height: 168px;
+				width: 332px;
+				overflow: hidden;
+			}
+			.jcropPreview{
+				border: none;
+			}
+			.desc {
+				position: absolute;
+				right: 0;
+				color: #999;
+				width: 300px;
+				text-align: right;
+				margin-top:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="hidden" name="imgClass" id="imgClass" value="" />
+		<div class="content ">
+			<a href="javascript:void(0)" class="selectImg" id="upImg">
+      			<input type="file" id="ipt"  accept="image/jpg,image/jpeg,image/png">选择图片
+    		</a>
+			<p class="title">预览区</p>
+			<div class="showBox">
+					<img  class="showImg "  id="showImg" />
+			</div>
+			
+			 <div class="preview">
+    			<div class="previewContainer">
+    				<img  class="jcropPreview"   />
+    			</div>
+    				<p class="desc" >图片尺寸:80*80像素</p>
+    			
+  			</div>
+  			
+		</div>
+	</body>
+	<script type="text/javascript">
+		 
+
+		var maxW=150,maxH=150,jcrop_api,
+        	boundx,
+       		boundy,
+       		$previewContainer=$('.previewContainer'),
+       		imgCrop;
+		$(function(){
+			$('.previewContainer').width(maxW).height(maxH);
+			$('.desc').html('图片尺寸:'+maxW+'*'+maxH+'像素').show();
+			$("#ipt").change(function(ev){
+				var files =  ev.target.files;
+				if(!/image\/\jpeg|jpg|png/.test(files[0].type)){ alert("只支持jpg,png格式"); return false; }
+				if(files[0].size>2*1024*1024){
+					return alert('文件过大')
+				}
+				$('#showImg').attr('src',getObjectURL(files[0]));
+				$('.jcropPreview').attr('src',getObjectURL(files[0]));
+				initJcrop();
+			});
+		})
+       	function initJcrop(){
+       		if(window.jcrop_api){window.jcrop_api.destroy();}
+       		$('#showImg').Jcrop({
+       			onChange: updatePreview,
+       			allowSelect:false,
+      			boxWidth: 432,
+      			boxHeight:242,
+      			minSize:[50,50],
+                aspectRatio: maxW / maxH
+       		},function(){
+       		jcrop_api = this;
+        	jcrop_api.animateTo([100,50,500,500]);
+      		 var bounds = this.getBounds();
+      		 boundx = bounds[0]; 
+      		 boundy = bounds[1];
+       		});
+       		function updatePreview(c) {
+      			if (parseInt(c.w) > 0){
+        			var rx = maxW / c.w;
+        			var ry = maxH / c.h;
+				}else{
+					jcrop_api.animateTo([100,50,500,500]);
+				}
+			 $('.jcropPreview').css({
+    			width: Math.round(rx * boundx) + 'px',
+   				height: Math.round(ry * boundy) + 'px',
+   				marginLeft: '-' + Math.round(rx * c.x) + 'px',
+   				marginTop: '-' + Math.round(ry * c.y) + 'px'
+   			});
+				if(!window.myCanvas) {
+						window.myCanvas= document.createElement("canvas");
+				}
+				
+				myCanvas.width = maxW;
+				myCanvas.height = maxH;
+				myCanvas.getContext('2d').drawImage($('#showImg')[0], c.x, c.y, c.w, c.h, 0, 0, maxW, maxH);
+ 				imgCrop = myCanvas.toDataURL("image/png");	
+      	}
+    };
+	function callbackdata() {
+            var data = {
+            	imgCrop:imgCrop
+            };
+            return data;
+          }  
+    function getObjectURL(file) {
+		    var url = null ; 
+		    if (window.createObjectURL!=undefined) { // basic
+		        url = window.createObjectURL(file) ;
+		    } else if (window.URL!=undefined) { // mozilla(firefox)
+		        url = window.URL.createObjectURL(file) ;
+		    } else if (window.webkitURL!=undefined) { // webkit or chrome
+		        url = window.webkitURL.createObjectURL(file) ;
+		    }
+		    return url ;
+		}      
+	</script>
+</html>

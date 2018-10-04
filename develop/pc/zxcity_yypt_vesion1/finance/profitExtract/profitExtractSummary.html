@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>收入提取汇总</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap-datepicker/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/account_common.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/modal.css">
+    <style>
+    	.notice {color: red; font-size: 12px;}
+    	.form-control-new {
+    		display: inline-block;
+		    width: 20%;
+		    height: 34px;
+		    font-size: 14px;
+		    line-height: 1.42857;
+		    color: rgb(85, 85, 85);
+		    background-color: rgb(255, 255, 255);
+		    background-image: none;
+		    padding: 6px 12px;
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(204, 204, 204);
+		    border-image: initial;
+		    border-radius: 4px;
+		    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    	}
+    </style>
+</head>
+<body>
+    <div class="container-fluet" id="body-box" style="padding-top: 0px;">
+        <div class="row body-left-nav">
+
+            <div class="col-md-11 content-right" id="content">               
+
+                <div class="cr-con">
+                    <div id="toolbar" class="row">
+                    	<div class="cy-text-right-md form-inline clearfix">
+
+                        </div>
+                    </div>
+                    <div class="table-con">
+                    <!-- 表格开始 -->
+                        <table id="table">
+                        </table>
+                    <!-- 表格结束 -->
+                    </div>
+                    
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+<!-- Common -->
+<script type="text/javascript" src="../../common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/js/jqPaginator.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table.v1.11.0.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/account_common.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/str.js"></script>
+<script type="text/javascript" src="../../common/js/num.js"></script>
+<script type="text/javascript" src="../../common/assets/template-web.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/lay/dest/layui.all.js"></script>
+<!-- <script type="text/javascript" src="../../common/js/login_success.js"></script>
+
+
+<script type="text/javascript" src="../../common/js/util/pub.js"></script> -->
+<!-- detailsfile -->
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="profitExtractSummary.js"></script>
+<script type="text/javascript" src="../../common/js/account_dynamic_column.js"></script>
+
+
+<script type="text/html" id="extractTpl">
+<div class="container-fluid">
+
+	<form class="form-horizontal">
+		<div class="row-fluid">
+			<h1 class="text-center dialog-title">{{row.profitTypeStr}} 收入提取</h1>
+		</div>
+
+		<div class="row">
+			<div class="form-group">
+    			<label class="col-md-4 col-sm-4 control-label"><b class="required-icon">*</b>提取金额：</label>
+   				<div class="col-md-6 col-sm-6">
+        			<input class="form-control" type="text" id="extractMoney" maxlength="16"  >
+   			    </div>
+			</div>
+
+			<div class="form-group">
+    			<label class="col-md-4 col-sm-4 control-label"><b class="required-icon">*</b>提取人：</label>
+    			<div class="col-md-6 col-sm-6">
+       				<input class="form-control" type="text" id="yyUserName" maxlength="16"  >
+    			</div>
+			</div>
+
+			<div class="form-group">
+    			<label class="col-md-4 col-sm-4 control-label"><b class="required-icon">*</b>提取资金池：</label>
+    			<div class="col-md-6 col-sm-6">
+					<label for="ali">支付宝</label><input class="form-control-new"  type="radio" id="ali" value="0" name="audit" >
+       				<label for="wx">微信</label><input class="form-control-new"  type="radio" id="wx" value="1" name="audit" >
+    			</div>
+			</div>
+
+			<div class="form-group">
+    			<div class="col-sm-offset-4 col-md-6 col-sm-6">
+					<button class="btn btn-primary" type="button" id="extractBtn">提交</button>
+    			</div>
+  			</div>
+		</div>
+
+	</form>
+
+</div>
+</script>
+
+</body>
+</html>

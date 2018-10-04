@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+          <title>全民炫 -轮播图管理</title>
+          <!-- CssCommon -->
+          <link rel="stylesheet" href="../../common/assets/hplus/css/bootstrap.min.css" />
+          <link rel="stylesheet" href="../../common/assets/hplus/css/font-awesome.min93e3.css">
+              <link rel="stylesheet" type="text/css" href="../../common/assets/layui-v2.0.1/layui/css/layui.css" media="all" />
+              <link rel="stylesheet" type="text/css" href="css/manage_topic.css">
+              <link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+      </head>
+<body>
+    <div id="anchor_check">
+        <div class="container-fluid">
+                <!-- 标题板块 -->
+              <div class="row subtitle">
+                <div class="col-xs-12">
+                  全民炫-轮播图管理
+                </div>
+              </div>
+
+              <!-- 新增物品 -->
+              <form action=""></form>
+           <div class="col-xs-12 add_gs input-group">
+                <!-- <input type="text" class="form-control sc_box" id="search_box"> -->
+                <!-- <div class="btn btn-primary sc_btn" id="search">搜索轮播图</div> -->
+                <div class="addbtn" id="adGs" data-toggle="modal" data-target="#addTop">+ 新增</div>
+            </div>
+          <!-- 列表展示 -->
+          <div class="row tableBox">
+                <div class="col-xs-12" id="tablelist">
+                    <!-- <table class="table table-bordered table-striped">
+                        <tbody>
+                            <tr><th>序号</th><th>话题名</th><th>话题内容</th><th>创建时间</th><th>操作</th></tr>
+                            <tr><td>1</td><td>序号</td><td>序号</td><td>序号</td><td><span class="btn btn-danger">删除</span><span class="btn btn-primary" style="margin-left:10px;">编辑</span><span class="btn btn-info" style="margin-left:10px;">置顶</span></td></tr>
+                        </tbody>
+                    </table> -->
+                    <table class="table table-bordered table-striped"><tbody>
+                      <tr><th>序号</th><th>话题名</th><th>话题内容</th><th>创建时间</th><th>优先显示</th><th>操作</th></tr>
+                    </tbody></table><div class="no-data">暂无数据~</div>
+                </div>
+                <!-- 翻页栏 -->
+                <div class="col-xs-12">
+                        <div class="page_dt">总页面数 <span style="color:#d9534f;" id="totals">0</span> 条，每页最多显示 <span style="color:#5cb85c;">5</span> 条 </div>
+                        <div id="pages" class="page"></div>
+                </div>
+          </div>
+        </div>
+  </div>
+	<!-- 新增话题 -->
+	<div class="modal fade"  role="dialog" id="addTop"  data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">新增轮播内容</h4>
+            <input type="hidden"></input>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="addType">轮播类型:</label>
+                    <select name="slideType" id="addType" class="form-control">
+                      <option value="1">1(跳转话题)</option>
+                      <option value="2">2(跳转网址)</option>
+                    </select>
+                </div>  
+                <div class="form-group">
+                  <label for="rank">优先级:</label>
+                  <input type="text" id="rankNum" value="1" class="form-control" maxlength="5">
+              </div>  
+                <div class="form-group">
+                  <label>轮播图片（必填）:</label>
+                  <span class="btn btn-primary" id="upload">上传图片</span>
+                  <div id="addImg" class="img-wrap" style="display:none">
+                  </div>
+                </div>
+                <div id="urlBox" class="form-group" style="display:none;">
+                  <label for="addUrl">轮播图跳转网址（必填）:</label>
+                  <input id="addUrl" class="form-control" type="text" placeholder="跳转网址（http://,https://开头）" maxlength="100">                        
+                </div>    
+              <div id="tpNames" class="form-group">
+                <label for="addtopic">点击选择话题（必填）:</label>
+                <span class="btn btn-primary" id="choseTopTag">选择话题</span>  
+                <input id="addtopic" class="form-control" type="text" placeholder="选择话题" readonly style="margin-top:20px;display:none;">                     
+              </div>                                                
+            </form>
+          </div>
+          <div class="modal-footer">
+            <div type="button" class="btn btn-default" data-dismiss="modal">取消</div>
+            <div type="button" class="btn btn-primary" id="addTopic">添加</div>
+          </div>        
+        </div>
+      </div>
+</div>  
+  
+	<!-- 选择话题 -->
+	<div class="modal fade choseTag"  role="dialog" id="choseTop"  data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">选择话题</h4>
+          <input type="hidden"></input>
+        </div>
+        <div class="modal-body">
+            <ul class="tag-wrap clearfix">
+              <li>
+                  <label>
+                    张小三啊
+                    <input type="checkbox" name="tags" value="1">
+                  </label>                
+              </li>
+              <li>
+                  <label>
+                    张小三啊
+                    <input type="checkbox" name="tags" value="2" >
+                  </label>                
+              </li>
+              <li>
+                  <label>
+                    张小三啊
+                    <input type="checkbox" name="tags" value="3">
+                  </label>                
+              </li>
+              <li>
+                  <label>
+                    张小三啊小四啊小五啊 小六啊
+                    <input type="checkbox" name="tags" value="4">
+                  </label>                
+              </li>   
+              <li class="active">
+                <label>
+                  张小三啊
+                  <input type="checkbox" name="tags" value="5">
+                </label>                
+              </li>                                      
+            </ul>
+        </div>
+        <div class="modal-footer">
+          <div type="button" class="btn btn-default" data-dismiss="modal">取消</div>
+          <div type="button" class="btn btn-primary" id="chTop">确定</div>
+        </div>        
+      </div>
+    </div>
+</div>  
+	<!-- 删除话题 -->
+	<div class="modal fade"  role="dialog" id="delTop"  data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">确认删除该话题？</h4>
+            <input type="hidden" id="delId"></input>
+          </div>
+
+          <div class="modal-footer">
+            <div type="button" class="btn btn-default" data-dismiss="modal">取消</div>
+            <div type="button" class="btn btn-primary" id="delTopic">删除</div>
+          </div>
+        </div>
+      </div>
+</div> 
+
+</body>
+<script type="text/javascript" src="../../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+<script src="../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script src="js/upload.js"></script>
+<script src="js/xuan_adver.js"></script>
+</html>

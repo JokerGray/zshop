@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>扫码下单</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/swiper/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="../../assets/layui-v2.2.2/css/layui.css">
+    <link href="../../assets/hplus/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/scan_order.css">
+</head>
+
+<body>
+    <script type="text/javascript">
+        var ctx = '';
+    </script>
+    <input type="hidden" id="userId">
+    <input type="hidden" id="shopId">
+    <div class="main-wrapper">
+        <div class="main-left">
+            <div class="main-top">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">搜索：</label>
+                    <div class="layui-input-block">
+                        <input id="codeName" name="shouldPay" lay-verify="title" autocomplete="off" class="layui-input" type="text" placeholder="请输入商品名称或条码"
+                            maxlength="24">
+                        <i class="glyphicon glyphicon-search" id="searchName"></i>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">卡券兑换：</label>
+                    <div class="layui-input-block">
+                        <input id="CDKEY" data-cdId="" name="shouldPay" lay-verify="title" autocomplete="off" class="layui-input" type="text" placeholder="请输入兑换码"
+                            maxlength="30">
+                        <a class="btn btn-default glyphicon glyphicon-ok" id="searchClass"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="main-table">
+                <div class="table-box">
+                    <table id="table" class="layui-table" lay-skin="nob" data-sum="0" data-true="0" data-isval="0">
+                        <thead>
+                            <tr>
+                                <th>商品名称</th>
+                                <th width="160">数量</th>
+                                <th>规格</th>
+                                <th>单价</th>
+                                <th>总价</th>
+                                <th width="120">实际价格</th>
+                                <th width="70"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-footer">
+                    合计：￥
+                    <span>0</span>
+                </div>
+                <div class="duigame" data-ty="0">
+                    <h4 class="duigame-title">兑换活动：</h4>
+                    <ul>
+                        <!-- <li>A</li>
+                        <li>B</li>
+                        <li>C</li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main-rgt layui-form">
+            <div class="form-box">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">顾客信息：</label>
+                    <div class="layui-input-block">
+                        <input name="phone" id="phone" lay-verify="phone" maxlength="11" autocomplete="off" placeholder="请输入手机号或者顾客姓名" class="layui-input"
+                            type="text" data-isvip="0">
+
+                        <div style="float: left; line-height: 38px; display: none;">&nbsp;&nbsp;顾客姓名：
+                            <span id="tradeName"></span>
+                        </div>
+                        <!--<a class="btn btn-default glyphicon glyphicon-ok" data-type="0" id="searchPhone"></a>-->
+                        <div class="phone_list" id="phone_list">
+                            <div class="phone_list_top lh38">
+                                <div>手机号</div>
+                                <div>顾客姓名</div>
+                            </div>
+                            <ul class="phone_list_bottom">
+                                <!--<li>-->
+                                <!--<div>15727050672</div><div>彭湃</div>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                <!--<div>15727050672</div><div>彭湃</div>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                <!--<div>15727050672</div><div>彭湃</div>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                <!--<div>15727050672</div><div>彭湃</div>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                <!--<div>15727050672</div><div>彭湃</div>-->
+                                <!--</li>-->
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="layui-form-item discount" style="display: none;">
+                    <label class="layui-form-label">折扣：</label>
+                    <div class="layui-input-block">
+                        <input id="discount" disabled name="discount" lay-verify="number" autocomplete="off" readonly="readonly" class="form-control layui-input"
+                            type="text" maxlength="11">（折）
+                    </div>
+                </div>
+                <div class="layui-form-item benjin" style="display: none;">
+                    <label class="layui-form-label">本金：</label>
+                    <div class="layui-input-block">
+                        <input id="principal" disabled name="discount" lay-verify="number" autocomplete="off" readonly="readonly" class="form-control layui-input"
+                            type="text">
+                    </div>
+                </div>
+                <hr>
+                <div class="layui-form-item card-item swiper-no-swiping" style="position: relative;display: none;">
+                    <!-- <div class="card-box">
+                        <ul class="clearfix card-list">
+                        </ul>
+                    </div>
+                    <span class="card-list-left glyphicon glyphicon-menu-left" style="display: none;"></span>
+                    <span class="card-list-right glyphicon glyphicon-menu-right" style="display: none;"></span> -->
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                        </div>
+ 
+                    </div>
+                    <!-- 如果需要导航按钮 -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <div class="layui-form-item half">
+                    <label class="layui-form-label">适用活动：</label>
+                    <div class="layui-input-block">
+                        <select id="game" name="game" lay-filter="game" data-type="" data-acContentt="" data-acThresholdMoney="">
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item duihuan half">
+                    <label class="layui-form-label">兑换码抵用：</label>
+                    <div class="layui-input-block">
+                        <input name="duihuan" data-type="0" disabled autocomplete="off" class="form-control layui-input" type="text" id="duihuan">
+                    </div>
+                </div>
+                <div class="layui-form-item half" style="display: none" id="selectPay" data-type="2">
+                    <label class="layui-form-label">支付方式：</label>
+                    <div class="layui-input-block">
+                        <select name="paytype" lay-filter="paytype">
+                            <option value="2">现金支付</option>
+                            <option value="0">本金支付</option>
+                            <option value="3">混合支付</option>
+                            <option value="4">微信支付</option>
+                            <option value="5">支付宝支付</option>
+                            <option value="6">信用卡支付</option>
+                            <option value="7">储蓄卡支付</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item half select-pay" style="display: block;" id="selectPayNo" data-type="0">
+                    <label class="layui-form-label">支付方式：</label>
+                    <div class="layui-input-block">
+                        <select name="pay-type" lay-filter="pay-type">
+                            <option value="2">现金支付</option>
+                        </select>
+                    </div>
+                </div>
+                <!--<div id="payClass" class="layui-form-item pay-type half" data-type="0">
+                    <div class="layui-input-block">
+                        <input type="radio" name="sex" value="0" title="现金" checked lay-filter="payClassify">
+                        <input type="radio" name="sex" value="1" title="支付宝" lay-filter="payClassify">
+                        <input type="radio" name="sex" value="2" title="微信" lay-filter="payClassify">
+                    </div>
+                </div>-->
+                <div class="layui-form-item half privilege">
+                    <label class="layui-form-label">整单优惠：</label>
+                    <div class="layui-input-block">
+                        <input name="discountMoney" lay-verify="number" autocomplete="off" class="layui-input" type="text" id="discountMoney">
+                    </div>
+                </div>
+                <div class="layui-form-item true-pay">
+                    <label class="layui-form-label">实收：</label>
+                    <div class="layui-input-block">
+                        <input id="actualPay" name="actualPay" lay-verify="number" autocomplete="off" class="layui-input" type="text" value="0">
+                    </div>
+                </div>
+                <div class="layui-form-item sale">
+                    <label class="layui-form-label">销售员工：</label>
+                    <div class="layui-input-block">
+                        <select id="sales" name="city" lay-filter="salesman" data-type="">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item performance" data-type="1">
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="" title="计算业绩" lay-skin="primary" lay-filter="achType">
+                    </div>
+                </div>
+            </div>
+            <div class="btn-ctronl">
+                <button type="button" class="layui-btn layui-btn-primary" lay-submit lay-filter="btnSum">下单并支付</button>
+                <button type="button" class="layui-btn layui-btn-primary" id="cancel">取消</button>
+            </div>
+        </div>
+    </div>
+    <!--弹窗表格-->
+    <div class="more-table">
+        <div class="tip">
+            注：只能选择一个商品
+        </div>
+        <table class="layui-table" id="moreTable" lay-filter="moreTable">
+            <thead>
+                <th width="50"></th>
+                <th>商品名称</th>
+                <th>规格</th>
+                <th>单价</th>
+                <th>库存</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <!--弹窗支付时-->
+    <div class="scan-box" id="scanBox">
+        <!--公用部分-->
+        <div class="top-tit">
+            <div class="up-tit">
+                <div class="tit-list acv">
+                    <span class="circle"></span>
+                </div>
+                <div class="tit-list">
+                    <div class="line"></div>
+                    <span class="circle"></span>
+                    <div class="line"></div>
+                </div>
+                <div class="tit-list">
+                    <div class="line"></div>
+                    <span class="circle"></span>
+                    <div class="line"></div>
+                </div>
+            </div>
+            <div class="tit-text">
+                <div class="text-list acv">扫描（客户）</div>
+                <div class="text-list">等待确认</div>
+                <div class="text-list">支付成功</div>
+            </div>
+        </div>
+        <!--第一步-->
+        <div class="sacn-user layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">客户授权码：</label>
+                <div class="layui-input-block">
+                    <input type="text" id="accredit" name="title" placeholder="请输入客户授权码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <!--第二步-->
+        <div class="scan-wait">
+            <main>
+                <div class="loader">
+                    <div class="loader-inner ball-beat">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!--第3步-->
+        <div class="sacn-success">
+            <img src="img/success.png">
+            <span>支付成功</span>
+            <div class="scan-btn">
+                <a class="look-order layui-btn">账单查看</a>
+                <a class="place-order layui-btn">继续下单</a>
+            </div>
+        </div>
+    </div>
+    <div id="dataHtml" style="height:auto;display:none;">
+
+    </div>
+    <script type="text/html" id="card-list-tpl">
+    {{each list data index}}
+        <div class="swiper-slide">
+            <div class="member-card" accountName="{{data.accountName}}" businessName="{{data.businessName}}" discount="{{data.discount/10}}" 
+                principal="{{data.principal}}" subaccountId="{{data.subaccountId}}" supportPurchaseGoods="{{data.supportPurchaseGoods}}">
+                <div class="card-left">
+                    <p>
+                        本金余额
+                    </p>
+                    <p>
+                        <span class="card-principal card-price">{{data.formatPrincipal}}</span>
+                    </p>
+                    <!-- <p>卡项余额
+                    <span class="card-balance card-price">1000.00</span>
+                        </p> -->
+                </div>
+                <div class="card-right">
+                    <div class="card-type" title="{{data.businessName}}">{{data.businessName}}</div>
+                    <div class="card-discount">
+                        <span>{{data.discount / 10}}</span>
+                        <em>折</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</script>
+    <!-- jquery组件 -->
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/layui-v2.2.2/layui.all.js"></script>
+    <script src="../../assets/hplus/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="../../assets/swiper/swiper-3.4.2.jquery.min.js"></script>
+    <script src="../../assets/artTemplate/template-web.js"></script>
+    <script src="../common/js/jquery.nicescroll.js"></script>
+    <script src="../common/js/util.js"></script>
+    <!-- <script type="text/javascript" src="../../assets/_common/zxcity_ms.js"></script>-->
+    <script src="js/scan_order.js"></script>
+    <script src="js/webprinter_1.8.js"></script>
+    <script>
+        //获取缓存 通行证码
+        var apikey = sessionStorage.getItem('apikey') || getUrlParams('apikey') || "test";
+        //获取缓存 版本号
+        var version = sessionStorage.getItem('version') || getUrlParams('apikey') || "1";
+        var printSwitch = 0;
+        var printTemplate = null;
+        var width = 210;
+        function getNowFormatDate() {
+            var date = new Date();
+            var seperator1 = "-";
+            var seperator2 = ":";
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+                + " " + date.getHours() + seperator2 + date.getMinutes()
+                + seperator2 + date.getSeconds();
+            return currentdate;
+        }
+        var wp = Strato.WebPrinter.getInstance();
+        (function () {
+            if (wp.isConnected()) {
+                console.info("已连接");
+            } else {
+                console.info("已断开");
+                // 			top.layer.alert('打印代理客户端未启动，请确定已经启动打印代理客户端！（打印代理下载地址：http://www.webprinter.cn/download）', {icon: 2});
+            }
+        })();
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('main').className += 'loaded';
+        });
+        //打印订单
+        $(function () {
+            console.log('444')
+            /**
+             * 查询是否开启了打印功能
+             * */
+            var parama = {
+                'merchantId': merchantId,
+                'templateSetName': "扫码下单打印模板"
+            };
+            reqAjaxAsync("backstage/findPrintTemplateSwitch", JSON.stringify(parama)).done(function (res) {
+                if (res.data == 1) {
+                    printSwitch = res.data;
+                    if (printSwitch = 1) {
+                        reqAjaxAsync('backstage/findPrintTemplate', JSON.stringify(parama)).done(function (res1) {
+                            var data = res1.data;
+                            printTemplate = data.printTemplateMap.content;
+                            if (data.printTemplateMap.templateType == "RM58") {
+                                width = 50;
+                            } else if (data.printTemplateMap.templateType == "RM80") {
+                                width = 70;
+                            }
+                            console.log(data);
+                        })
+                    }
+                }
+            })
+        });
+        function doPrintHtml(param) {
+            var type = "";
+            var phone = '无';
+            if ($("#phone").val() != null && $("#phone").val() != '') {
+                phone = $("#phone").val();
+            } var name = '';
+            if ($("#tradeName").text() != null && $("#tradeName").text() != '') {
+                name = $("#tradeName").text();
+            }
+            var coupon = '无';
+            if ($("#coupon").val() != null && $("#coupon").val() != '') {
+                coupon = $("#coupon").val();
+            }
+            var vipDiscount = 10;
+            if ($("#discount").val() == "") {
+                vipDiscount = 10;
+            } else {
+                vipDiscount = Number($("#discount").val());
+            }
+            var discountMoney = '无';
+            if ($('#discountMoney').val() != null && $('#discountMoney').val() != '') {
+                discountMoney = $('#discountMoney').val();
+            }
+            printTemplate = printTemplate.replace("#phone#", phone);
+            printTemplate = printTemplate.replace("#name#", name);
+            printTemplate = printTemplate.replace('#printTime#', getNowFormatDate());
+            printTemplate = printTemplate.replace('#paymentMethod#', $("#selectPay option:selected").text());
+            printTemplate = printTemplate.replace('#coupon#', coupon);
+            printTemplate = printTemplate.replace('#vipDiscount#', vipDiscount + "折");
+            printTemplate = printTemplate.replace('#discount#', discountMoney);
+            printTemplate = printTemplate.replace('#payable#', $(".table-footer span").text());
+            printTemplate = printTemplate.replace('#realPayment#', Number($("#actualPay").val()));
+            var man = '无';
+            if ($("#sales option:selected").val() != null && $("#sales option:selected").val() != '') { man = $("#sales option:selected").text() }
+            printTemplate = printTemplate.replace('#man#', man);
+            var activity = null;
+            if ($("#game option:selected").text() != '请选择' && $("#game option:selected").text() != null && $("#game option:selected").text() != '') { activity = $("#game option:selected").text() }
+            else { activity = '无' }
+            printTemplate = printTemplate.replace('#activity#', activity);
+
+            $("#dataHtml").html(printTemplate);
+
+            var newHtml = '';
+            var list = $("#table tbody tr");
+            for (var i = 0; i < list.length; i++) {
+                var tableHtml = $(".table-body").html();
+                tableHtml = tableHtml.replace("#commodity#", list.eq(i).find("td").eq(0).text());
+                tableHtml = tableHtml.replace("#univalent#", list.eq(i).find(".one-price").text());
+                tableHtml = tableHtml.replace("#number#", list.eq(i).find(".number").val());
+                tableHtml = tableHtml.replace("#realPrice#", list.eq(i).find(".true-price").val());
+                newHtml = newHtml + tableHtml;
+            }
+            $(".table-body").html(newHtml);
+
+            if (!wp.isConnected()) {
+                top.layer.open({
+                    type: 1,
+                    title: '小票打印失败！',
+                    area: ['400px', '250px'],
+                    fixed: false, //不固定
+                    maxmin: true,
+                    btn: ['知道了'],
+                    content: '<div class="tip" style="width: 80%;margin: 10px auto; font-size: 12px;">打印代理客户端未启动，请确定已经启动打印代理客户端！<br><br> <br>（<a style="text-decoration:none;color:red;" target="_blank" href="http://zxcity-backstage.oss-cn-hangzhou.aliyuncs.com/print/webprinter_setup_1.9.exe">打印插件下载</a>）<br><br><br>目前系统只支持80毫米热敏小票打印机 </div>'
+                    , success: function (layero) {
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
+                    }
+                });
+            } else {
+
+                var dataHeight = $("#dataHtml").height();
+                console.info(dataHeight);
+                var content = document.getElementById("dataHtml").innerHTML;
+
+                wp.newTask({
+                    name: "订单小票打印",
+                    content: content,
+                    interactive: false,
+                    type: "HTML",
+                    labels: [
+                    ],
+                    //	 			printer:document.getElementById("printer").value,
+                    config: {
+                        width: width,
+                        height: dataHeight / 2.5,//根据打印代理的纸张尺寸稍作修改
+                        quality: "HIGH",
+                        color: "COLOR",
+                        marginLeft: 0,
+                        marginTop: 0,
+                        marginRight: 0,
+                        marginBottom: 0
+                    }
+                }, function (id, status) {
+                    if (status == 200) {
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
+                    } else {
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
+                    }
+                });
+            }
+        }
+    </script>
+    <script>        
+       
+    </script>
+</body>
+
+</html>

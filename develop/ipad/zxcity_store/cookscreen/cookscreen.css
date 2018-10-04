@@ -1,0 +1,222 @@
+html,body{
+    font-size:100%;
+}
+select{
+    height:26px;
+    font-size: 14px;
+    color:#333;
+}
+.main-wrapper{
+    position:relative;
+    width:100%;
+    height:100vh;
+    background:url(./img/main_bg.jpg) no-repeat center center;
+    background-size:cover;
+    color:#fff;
+    overflow:hidden;
+}
+.main-top{
+    overflow:hidden;
+}
+.main-top .duty-title{
+    position:relative;
+    width:20%;
+    height:5rem;
+    line-height: 5rem;
+    background:url(./img/black-50.png) repeat;
+    font-size: 1.625em;
+    text-align:center;
+}
+.duty-title .return-icon{
+    position:absolute;
+    left:1rem;
+    top:1rem;
+    display:inline-block;
+    width:1.875rem;
+    height:3.25rem;
+    background:url(./img/icon-fanhui.png) no-repeat;
+    background-size:cover;
+}
+.main-top .order-dishes-title{
+    width:22%;
+    height:5rem;
+    line-height: 5rem;
+    margin-left:1.563rem;
+    background:url(./img/black-50.png) repeat;
+    font-size: 1.625em;
+    text-align:center;
+
+}
+.main-wrapper .main-content{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: none;
+}
+
+.main-wrapper .duty-box{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 78%;
+    z-index: 99;
+    height: 100vh;
+}
+.main-wrapper .order-dishes-box{
+    position: absolute;
+    top:0;
+    width:104%;
+    height:100vh;
+    overflow-y: auto;
+    z-index:9;
+}
+.duty-box .duty-list{
+    position: relative;
+    width:100%;
+}
+.duty-list .duty-item{
+    display:flex;
+    height:13.75rem;
+    margin-top:1.563rem;
+}
+
+.duty-item .duty-chef{
+    position:relative;
+    width:25%;
+    height:6.25rem;
+    line-height: 6.25rem;
+    margin-top:1.563rem;
+    color:#fff;
+    font-size:1.5em;
+    font-weight: normal;
+    background-repeat: repeat;
+}
+.duty-item:nth-child(even) .duty-chef,
+.duty-item:nth-child(even) .todo-dishes .dishes-info{
+    background-image:url(./img/bg-50.png);
+}
+.duty-item:nth-child(odd) .duty-chef,
+.duty-item:nth-child(odd) .todo-dishes .dishes-info{
+    background-image:url(./img/black-50.png);
+}
+.duty-item .duty-chef .ava{
+    width:5rem;
+    height:5rem;
+    margin:.5rem;
+    border:1px solid #fff;
+    border-radius:100%;
+}
+.duty-item .duty-chef .ava img{
+    width:100%;
+    height:100%;
+    border-radius:100%;
+}
+.duty-chef .count{
+    position:absolute;
+    top:-1.438rem;
+    right:-1.438rem;
+    width:2.813rem;
+    height:2.813rem;
+    line-height: 2.813rem;
+    background:url(./img/circle_bg2.png) no-repeat;
+    background-size:cover;
+    text-align: center;
+    color:#a58f64;
+}
+.duty-item .todo-dishes-list{
+    width:75%;
+    overflow:hidden;
+}
+
+.duty-item .todo-dishes{
+    float:left;
+    width:27%;
+    margin-left:5%;
+    color:#fff;
+}
+.todo-dishes .dishes-info{
+    height:10.625rem;
+    padding:1.25rem;
+    font-size:1.5em;
+}
+.todo-dishes .dishes-info .name{
+    -webkit-line-clamp: 2;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.todo-dishes .handle-box{
+    height:3.125rem;
+    border:0.063rem solid #a58f64;
+}
+.todo-dishes .handle-box .take-btn,
+.todo-dishes .handle-box .cancel-btn{
+    float:left;
+    display:block;
+    width:50%;
+    line-height: 3.125rem;
+    text-align: center;
+    font-size:1.875em;
+    color:#fff;
+}
+.todo-dishes .handle-box .take-btn{
+    background-color:#f59701;
+}
+
+.order-dishes-box .order-list-show{
+    /*padding-left:1.563rem;*/
+    position: relative;
+    height:39rem;
+    width: 100%;
+    overflow-y:auto;
+}
+.order-dishes-list{
+    position:absolute;
+    top:0;
+    right:3%;
+    width:22%;
+}
+.order-dishes-list .order-item{
+    position:relative;
+    margin-top:2.813rem;
+    width:100%;
+    height:6.25rem;
+    background-color:#fff;
+    padding-top:0.625rem;
+    font-size:1.5em;
+    color:#a58f64;
+    text-align:center;
+}
+.order-item .count{
+    position:absolute;
+    top:-1.563rem;
+    left:-1.563rem;
+    width:3.063rem;
+    height:3.063rem;
+    line-height: 3.063rem;
+    background:url(./img/circle_bg1.png) no-repeat;
+    background-size:cover;
+    color:#fff;
+}
+.ui-state-hover{
+    background-color: rgba(255, 255, 255, .3);
+}
+.ui-state-default{
+    background-color:transparent;
+    border:none;
+}
+
+@media screen and (max-width: 1366px)  {
+    html,body{
+        font-size:87.5%;
+    }
+}
+@media screen and (max-width: 1280px)  {
+    html,body{
+        font-size:75%;
+    }
+    .order-dishes-box .order-list-show{
+        height:58rem;
+    }
+}

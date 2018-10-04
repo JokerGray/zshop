@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="static/loaders/loaders.min.css">
+    ${require('../common/header.html')}
+    <link rel="stylesheet" href="static/bootstrap-select/css/bootstrap-select.min.css">
+</head>
+
+<body>
+    ${require('../common/tpl-header.html')}
+
+    <div class="img-content">
+        <img src="./img/banner.jpg" alt="">
+    </div>
+
+    <div class="container">
+        <div class="nav-subtitle">
+            <i class="iconfont icon-location"></i>
+            <span>当前位置：</span>
+            <a href="/">首页</a>
+            <i class="iconfont icon-right"></i>
+            <span>平台入驻申请</span>
+        </diV>
+    </div>
+
+    <section class="section container">
+        <div class="title-content">
+            <div class='title'>平台入驻申请</div>
+            <span>请填写真实信息，以便我们即时与您取得联系</span>
+        </div>
+        
+        <div class="section-content">
+            <div class="title">填写信息</div>
+
+            <table class="table table-bordered" id="table">
+                <tr>
+                    <th style="width: 150px;">商户名称：</th>
+                    <td class="setWidth">
+                        <input type="text" maxlength="50" id="merchantName" placeholder="请输入真实的商户名称" autocomplete="off">
+                    </td>
+                    <th style="width: 150px;">性别：</th>
+                    <td class="setWidth sexTd">
+                        <select class="selectpicker" id="usersex">
+                            <option value="1">男</option>
+                            <option value="2">女</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>真实姓名：</th>
+                    <td>
+                        <input type="text" maxlength="20" name="" id="realName" placeholder="请输入申请人的真实姓名" autocomplete="off">
+                    </td>
+                    <th>联系方式：</th>
+                    <td>
+                        <input type="text" maxlength="11" name="" id="phone" placeholder="请输入正确的手机号以便我们联系" autocomplete="off">
+                    </td>
+                </tr>
+                <tr>
+                    <th>身份证号：</th>
+                    <td>
+                        <input type="text" maxlength="18" name="" id="idCardNo" placeholder="请输入申请人的身份证号以便我们核实" autocomplete="off">
+                    </td>
+                    <th>所在省市：</th>
+                    <td class="cityTd">
+                        <select class="selectpicker" id="province"></select>
+                        <select class="selectpicker" id="city"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>身份证照正面：</th>
+                    <td>
+                        <img src="./img/up.png">
+                        <input type="hidden" id="cardFrontPhoto" title="身份证照正面">
+                        <div class="cover">
+                            <div>
+                                <p>0%</p>
+                                <p>正在上传……</p>
+                            </div>
+                        </div>
+                    </td>
+                    <th>身份证照反面：</th>
+                    <td>
+                        <img src="./img/up.png">
+                        <input type="hidden" id="cardBackPhoto" title="身份证照反面">
+                        <div class="cover">
+                            <div>
+                                <p>0%</p>
+                                <p>正在上传……</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>营业执照正面：</th>
+                    <td colspan="3">
+                        <img src="./img/up_license.png">
+                        <input type="hidden" id="licenseFront" title="营业执照正面">
+                        <div class="cover">
+                            <div>
+                                <p>0%</p>
+                                <p>正在上传……</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <button type="button" class="btn btn-danger btn-submit">提交</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="signup-content">
+        <div class="container text-center">
+            <p class="text-c">更多发现更多好玩尽在智享城市</p>
+            <a class="text-btn" href="/signup.html">立即注册</a>
+            <p class="text-e">MORE DEVELOPMENT AND MORE FUN IN THE CITY</p>
+        </div>
+    </section>
+
+    ${require('../common/tpl-footer.html')}
+    ${require('../common/footer.html')}
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="static/bootstrap-select/js/i18n/defaults-zh_CN.min.js"></script>
+    <script src="static/loaders/loaders.css.js"></script>
+    <script src="static/plupload-2.3.1/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/plupload-2.3.1/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>房间管理</title>
+    <link rel="stylesheet" href="../common/assets/foundation-v5.5.3/foundation.min.css">
+    <link rel="stylesheet" href="../common/assets/jedate/skin/jedate.css">
+    <link rel="stylesheet" href="../common/assets/jedate/skin/mystyle.css">
+    <link rel="stylesheet" href="../common/css/common.css"/>
+    <link rel="stylesheet" href="css/roomManage.css"/>
+</head>
+<body>
+<div class="main-title">
+    <h5 class="title">设备管理</h5>
+</div>
+<div class="main-content">
+    <ul id="roomList" class="room-list"></ul>
+</div>
+
+
+<script id="workOrderDetailTpl" type="text/html">
+    <div class="detail-show-box">
+        {{each list item i}}
+        <div class="order-item">
+            <div class="info">
+                <div class="row">
+                    <div class="small-4 columns">
+                        客户：<span>{{item.accountName}}</span>
+                    </div>
+                    <div class="small-3 columns">
+                        工单号：<span>{{item.id}}</span>
+                    </div>
+                    <div class="small-5 columns">
+                        时间：<span>{{item.consumeTime}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="detail">
+                <div class="row">
+                    <div class="small-3 columns text-center">
+                        <img class="pic" src="{{item.pictureUrl?item.pictureUrl:'../common/image/default_thumb.jpg'}}" alt="" crossOrigin="Anonymous">
+                    </div>
+                    <div class="small-9 columns">
+                        <h5>{{item.serviceName}}</h5>
+                        <p>设备：{{item.roomName}}</p>
+                        <p>
+                            <span class="waiter">服务人员：{{item.waiterName}}</span>
+                            <!--<span class="saleman">顾问：{{item.salesMan}}</span>-->
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--<div class="small-3 columns"><span class="status">状态：{{if item.orderStatus == 1}}{{"已下单"}}{{/if}}{{if item.orderStatus == 3}}{{"服务中"}}{{/if}}</span></div>-->
+                    <div class="small-3 columns"><span class="status">状态：服务中</span></div>
+                    <div class="small-9 columns text-right">
+                        <!--{{if item.orderStatus == 1 }}-->
+                        <!--<button data-id="{{item.orderId}}" data-status="{{item.orderStatus}}" type="button" class="btn-default complete-btn">开始服务</button>-->
+                        <!--{{/if}}-->
+                        <!--{{if item.orderStatus == 3 }}-->
+                        <!--<button data-id="{{item.orderId}}" data-status="{{item.orderStatus}}" type="button" class="btn-default complete-btn">服务完成</button>-->
+                        <!--{{/if}}-->
+                        <button data-id="{{item.id}}" data-status="{{item.orderStatus}}" type="button" class="btn-default complete-btn hide">完成服务</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</script>
+
+<!--重写弹窗查看工单详情-->
+<script type="text/html" id="workOrderDetailTpl_1">
+    {{each list item index}}
+    <div class="orderItem">
+        <div class="detailTop">
+            <span>客户：{{item.accountName}}</span>
+            <span>工单号：{{item.id}}</span>
+            <span>时间：{{item.consumeTime}}</span>
+        </div>
+        <div class="detailInfo">
+            <img src="{{item.pictureUrl?item.pictureUrl:'../common/image/default_thumb.jpg'}}" crossOrigin="Anonymous">
+            <div class="detailMsg">
+                <p>{{item.serviceName}}</p>
+                <p>设备：{{item.roomName}}</p>
+                <p>服务人员：{{item.waiterName}}</p>
+            </div>
+        </div>
+        <div class="detailStatus">
+            <div class="status">
+                <span>状态：服务中</span>
+            </div>
+            <a href="javascript:;" class="complete-btn">完成服务</a>
+        </div>
+    </div>
+    {{/each}}
+</script>
+
+<script id="bespokeDetailTpl" type="text/html">
+    <div class="bespoke-detail">
+        <dl>
+            <dd>
+                <lable class="item-label">预约客户：</lable>
+                <span class="item-desc">{{obj.customer}}</span>
+            </dd>
+            <dd>
+                <lable class="item-label">客户电话：</lable>
+                <span class="item-desc">{{obj.mobile}}</span>
+            </dd>
+            <dd>
+                <lable class="item-label">预约开始时间：</lable>
+                <span class="item-desc">{{obj.bespokeTime}}</span>
+            </dd>
+            <dd>
+                <lable class="item-label">预约结束时间：</lable>
+                <span class="item-desc">{{obj.bespokeEndTime}}</span>
+            </dd>
+            <dd>
+                <lable class="item-label">预约项目：</lable>
+                <span class="item-desc">{{obj.serviceName}}</span>
+            </dd>
+            <dd>
+                <lable class="item-label">预约服务人员：</lable>
+                <span class="item-desc">{{obj.waiter}}</span>
+            </dd>
+            <dd>
+                <lable class="item-label">预约设备：</lable>
+                <span class="item-desc">{{obj.facilityName}}</span>
+            </dd>
+            <dd>
+                <lable class="item-label">预约情况：</lable>
+                {{if obj.bespokeStatus == 0 }}
+                <span class="item-desc">预约中</span>
+                {{else if obj.bespokeStatus == 1 }}
+                <span class="item-desc">已完成</span>
+                {{else if obj.bespokeStatus == 2 }}
+                <span class="item-desc">待确认</span>
+                {{/if}}
+            </dd>
+            <dd>
+                <lable class="item-label">预约备注：</lable>
+                <span class="item-desc">{{obj.summary}}</span>
+            </dd>
+        </dl>
+    </div>
+</script>
+<script type="text/html" id="signTpl">
+    <div class="evaluation_box">
+        <span>请对本次的服务打分<sub>（注：一颗星代表1分，满分5分）</sub>：</span>
+        <p class="fiveStar">
+            <span>☆</span>
+            <span>☆</span>
+            <span>☆</span>
+            <span>☆</span>
+            <span>☆</span>
+        </p>
+    </div>
+    <div id="canvas">
+        <a id="clearCanvas">清屏</a>
+        <a id="saveCanvas">完成</a>
+    </div>
+</script>
+
+<script src="../common/assets/jquery.min.js"></script>
+<script src="../common/assets/foundation-v5.5.3/foundation.min.js"></script>
+<script src="../common/assets/foundation-v5.5.3/modernizr.js"></script>
+<script src="../common/assets/html2canvas.min.js"></script>
+<script src="../common/assets/layer/layer.js"></script>
+<script src="../common/assets/template-web.js"></script>
+<script src="../common/js/common.js"></script>
+<script src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script src="./js/upload.js"></script>
+<script src="js/roomManage.js"></script>
+</body>
+</html>

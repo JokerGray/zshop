@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>推荐好友</title>
+    <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"/> -->
+    <link rel="stylesheet" href="css/jieShao.css">
+    <style>
+
+
+    </style>
+
+</head>
+
+<body>
+    <!--<h2 class="tit h3">-->
+    <!--飞跃体系介绍-->
+    <!--<a href="javascript:history.go(-1)">-->
+    <!--<img class="tit_img" src="img/back.png" alt="">-->
+    <!--</a>-->
+    <!--</h2>-->
+    <div class="div1">
+        <div class="btn_box" style="display: flex;justify-content:space-around">
+            <div id="rm" href="javascript:;"><img src="img/rm.png" alt=""></div>
+            <div id="tx" style="display: none" href="javascript:;"><img src="img/tx.png" alt=""></div>
+        </div>
+    </div>
+    <!-- <div class="div2">
+
+    </div>
+    <div class="div3">
+
+    </div>
+    <div class="div4">
+
+    </div>
+    <div class="div5">
+
+    </div> -->
+    <div class="div6">
+        <div class="qrcode">
+            <div class="code" id="qrcode"></div>
+        </div>
+        <!-- <img src="img/fx.jpg" alt=""> -->
+        <p class="lh94">扫码分享注册</p>
+        <div class="btn_box fx_box" style="display: flex;justify-content:center">
+            <div class="WeChatPlatform goto" data-title="WechatTimeline" href="javascript:;"><img src="img/wxquan.png" alt=""></div>
+            <div class="WeChatPlatform goto" data-title="Wechat" href="javascript:;"><img src="img/wx.png" alt=""></div>
+            <div class="QQPlatform goto" data-title="QQ" href="javascript:;"><img src="img/qq.png" alt=""></div>
+            <div class="QQPlatform goto" data-title="QQZone" href="javascript:;"><img src="img/zone.png" alt=""></div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <!-- <script src="js/zepto.min.js"></script> -->
+    <script src="js/qrcode.min.js"></script>
+    <script>
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURI(r[2]);
+            return null;
+        }
+        var userId = GetQueryString('userId')
+        var merchantId = GetQueryString('merchantId')
+        var supportplatform = GetQueryString('supportplatform')
+        var type = GetQueryString('type')
+        var recommendUserId = GetQueryString('recommendUserId')
+        userId = userId || recommendUserId
+
+        var http = window.location.protocol;
+        var host = window.location.host;
+        $("#rm").click(function(e){
+            window.location.href =  http + "//" + host +'/zmaster/work_bench/myFriend.html?userId='+userId;
+        })
+        $("#tx").click(function(e){
+            window.location.href =  http + "//" + host +'/zmaster/work_bench/newSystem.html?userId='+userId+'&merchantId='+merchantId;
+        })
+        $(".div6").show();
+        $(function () {
+          
+            
+        })
+        window.onload=function(){
+            if (merchantId) {
+                $("#tx").show();
+            }
+            if (type) {
+                var url = http + "//" + host + '/bgapp/bgapp/appRegisterNew.html?recommendUserId=' + userId + '&productId=4&shareTime=' + new Date().getTime();
+            } else {
+                var url = http + "//" + host + '/yueba/yundian/shareGift/getPackage.html?userId=' + userId;
+
+
+            }
+            var codew = $('#qrcode').width();
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                text:'cc',
+                width: codew,
+                height: codew,
+                correctLevel : QRCode.CorrectLevel.H 
+            });
+            // console.log(url)
+            qrcode.clear()
+            qrcode.makeCode(url);
+            checkPlantForm(supportplatform)
+
+        }
+        function checkPlantForm(supportplatform) {
+            // // 判断为android
+            // if (navigator.userAgent.match(/android/i)) {
+            //     // alert('az')
+            //     $(".QQPlatform,.WeChatPlatform").show();
+
+            // } else if (navigator.userAgent.match(/iPhone|iPod|iPad/i)) {
+            //     // alert('ios')
+            //     //判断为IOS
+            //     if(supportplatform){
+            //         supportplatform.indexOf('QQPlatform') > -1 ? $(".QQPlatform").show() : ''
+            //         supportplatform.indexOf('WeChatPlatform') > -1 ? $(".WeChatPlatform").show() : ''
+            //     }
+
+
+            // } else {
+            //     //判断为pc
+            //     // window.location.href =outLink;
+            //     $(".QQPlatform,.WeChatPlatform").hide();
+            // }
+
+            if(supportplatform){
+                    supportplatform.indexOf('QQPlatform') > -1 ? $(".QQPlatform").show() : ''
+                    supportplatform.indexOf('WeChatPlatform') > -1 ? $(".WeChatPlatform").show() : ''
+            }
+
+        }
+
+        $('.goto').on('tap', function () {
+            var platform = $(this).attr('data-title');
+            try {
+                // 判断为android
+                if (navigator.userAgent.match(/android/i)) {
+                    // alert('az')
+                    window.android.shareToPlatform(platform);
+
+                } else if (navigator.userAgent.match(/iPhone|iPod|iPad/i)) {
+                    // alert('ios')
+                    window.webkit.messageHandlers.shareToPlatform.postMessage({ "platform": platform });
+
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        })
+
+    </script>
+</body>
+
+</html>

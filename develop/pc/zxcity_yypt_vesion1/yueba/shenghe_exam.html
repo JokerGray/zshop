@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Pragma" content="no-cache"> 
+    <meta http-equiv="Cache-Control" content="no-cache"> 
+    <meta http-equiv="Expires" content="0"> 
+    <title>证书审核管理——审核</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" href="./css/certificate_exam.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>服务名称</th>
+                    <td id="serviceName"></td>
+                    <th>服务价格</th>
+                    <td id="servicePrice"></td>
+                </tr>
+                <tr>
+                    <th>服务范围</th>
+                    <td id="serviceRangeAddress"></td>
+                    <th>服务地区</th>
+                    <td id="serviceLocationAddress"></td>
+                </tr>
+                <tr>
+                    <th>服务介绍</th>
+                    <td id="serviceComment"></td>
+                    <th>创建时间</th>
+                    <td id="createTime"></td>
+                </tr>
+                <tr>
+                    <th rowspan="5">身份信息</th>
+                    <td rowspan="5"><img id="userPic" src="" alt=""></td>
+                </tr>
+                <tr>
+                    <th>用户姓名</th>
+                    <td id="userName"></td>
+                </tr>
+                <tr>
+                    <th>用户性别</th>
+                    <td id="userSex"></td>
+                </tr>
+                <tr>
+                    <th>用户电话</th>
+                    <td id="userPhone"></td>
+                </tr>
+                <tr>
+                    <th>特色介绍</th>
+                    <td id="characteristic"></td>
+                </tr>
+                <tr>
+                    <th>已有证书</th>
+                    <td colspan="3" id="certList"></td>
+                </tr>
+                <tr>
+                    <th>待审核证书</th>
+                    <td><img id="certUrl" src="" alt=""></td>
+                    <td colspan="2">
+                        <form>
+                            <div class="form-group">
+                                <label for="remark">审核意见</label>
+                                <input type="text" class="form-control" id="remark" maxlength="30">
+                            </div>
+                            <div class="form-group">
+                                <label>相关图片</label>
+                                <div class="well text-center">
+                                    <h3 class="text-center">点击选择图片</h3>
+                                    <img id="imageUrl" src="" alt="">
+                                    <div class="progressContent">
+                                        <div class="text-info"></div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-center">
+                                <button type="button" class="btn btn-info" onclick="changeStatus(2)">通过</button>
+                                <button type="button" class="btn btn-warning" onclick="changeStatus(3)">拒绝</button>
+                            </p>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="./js/yueba_common.js"></script>
+    <script type="text/javascript" src="./js/certificate_exam.js"></script>
+</body>
+
+</html>

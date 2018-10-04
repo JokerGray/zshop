@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智享成功飞跃体系</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" user-scalable="no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" href="assets/swiper-4.0.7/dist/css/swiper.min.css" />
+    <link rel="stylesheet" href="css/dropload.css">
+    <link rel="stylesheet" href="pages/newSystem/newSystem.css">
+
+</head>
+<body class="gray-bg">
+    <div class="app" id="app" v-cloak>
+        <!--<h2 class="tit h3">-->
+            <!--我发展的商户-->
+            <!--<a href="javascript:history.go(-1)">-->
+                <!--<img class="tit_img" src="img/back.png" alt="">-->
+            <!--</a>-->
+        <!--</h2>-->
+        <!-- <div class="request_box">
+            <a :href="url">快邀请用户扫码成为商户吧！查看商户飞跃体系 <span><i></i></span></a>
+            <a href="jieShao.html">快邀请用户扫码成为商户吧！查看商户飞跃体系 <span><i></i></span></a>
+        </div> -->
+        <div class="container">
+            <div class="shandow">
+                <div class="data_box border-radius5 posr ">
+                    <ul class="ul_box p24 clearfix">
+                        <li>
+                            <a :href="url" class="myroad">
+                                <h3 class="ul_box_data h3">{{levelName}}</h3>
+                                <span>我的等级<img src="img/jiantou.png" alt=""></span>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a :href="moneyUrl">
+                                <div class="box2">
+                                    <h3 class="ul_box_data h3">{{shareUserSumTaxPrice}}.00</h3>
+                                    <span>累计佣金&nbsp;&nbsp;(元)</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <i class="layui-circle circle1"></i><i class="layui-circle circle2"></i>
+                </div>
+                <div class="request_data border-radius5">
+                    <ul class="request_data_ul p24 clearfix">
+                        <li>
+                            <p class="p c999">直接邀请成功</p>
+                            <span class="font-num">{{total}}</span>
+                        </li>
+                        <li>
+                            <p class="p c999">间接邀请成功</p>
+                            <span class="font-num">{{indirectCount}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="p_title p c666">发展的商户{{total}}家</p>
+            <div class="shop_list  border-radius5">
+                <ul class="shop_list_ul lists clearfix" >
+
+                    <li class="border-radius5" v-for="item in itemList" :key="item.id" :data-userId="item.userId" :data-merchantId="item.merchantId" :data-name="item.orgName">
+                        <div class="shop_list_img"><img :src="item.orgIcon" alt=""></div>
+                        <div class="shop_list_text">
+                            <h3>{{item.orgName}}</h3>
+                            <p>{{item.levelName}}</p>
+                            <p>发展{{item.count||0}}家商户</p>
+                            <p>{{item.recommendEmployeeUserId==0?'老板分享':'员工分享'}}</p>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <!--<div class="dropload-down"></div>-->
+        </div>
+        
+        
+    </div>
+</body>
+<!-- <script src="js/zepto.min.js"></script> -->
+<script src="js/jquery.min.js"></script>
+
+<script src="pages/pageThree/vue.js"></script>
+<script src="js/dropload.min.js"></script>
+
+<script src="js/fastclick.js"></script>
+<script src="assets/layer/layer.js"></script>
+<script src="js/util.js"></script>
+<script>
+//    $('.app').hide();
+    var USER_URL={
+        GETDATA:'user/leapsIndex',//获取相关信息
+        GETLIST:'user/leapsIndexPage',//获取分页
+    }
+    var VUEDATA={
+        userId:'myRoad.html?userId=',
+        levelName:'',
+        url:'',
+        moneyUrl:'moneyList.html?userId=',
+        indirectCount:'',
+        total:'',
+        shareUserSumTaxPrice:0,
+        imgPath:'img/test.png',
+        itemList:[],
+    }
+    var app = new Vue({
+        el:'#app',
+        data:VUEDATA,
+        created:function () {
+            getData()
+        }
+
+    })
+    function getData(){
+        var params = {
+            page:1,
+            rows:4,
+            userId: GetQueryString('userId')||'',
+            merchantId: GetQueryString('merchantId')||'',
+        }
+        reqAjaxAsync(USER_URL.GETDATA,JSON.stringify(params)).done(function (res) {
+            if(res.code == 1){
+                console.log(res)
+                var data = res.data;
+                if(data.merchantLevel){
+                    VUEDATA.levelName = data.merchantLevel.levelName;
+                }
+                VUEDATA.indirectCount = data.indirectCount
+                VUEDATA.total = res.total;
+                VUEDATA.shareUserSumTaxPrice=data.shareUserSumTaxPrice
+                VUEDATA.userId += data.userId;
+                VUEDATA.moneyUrl += data.userId;
+                if(data.shareUserSumTaxPrice==0){
+                    VUEDATA.moneyUrl = 'javascript:void(0)'
+                }
+                if(data.merchantLevel&& data.merchantLevel.orgLevel <=1){
+                    VUEDATA.url = 'javascript:void(0)'
+
+                }else{
+                    VUEDATA.url = 'myRoad.html?userId='+data.userId+'&merchantId='+data.merchantId;
+                }
+                setData(VUEDATA.itemList,data.infoMapList)
+
+            }
+        }).done(function (res) {
+            if( VUEDATA.total>= params.rows){
+                $('body').dropload({
+                    scrollArea : window,
+                    loadDownFn : function(me){
+                        params.page++;
+                        // 拼接HTML
+                        var result = ``;
+                        var localList = JSON.parse(window.sessionStorage.getItem('VUEDATALIST'));
+                        if(localList.length === VUEDATA.total){//判断缓存数据和请求数据 长度是否相等
+                            // 为了测试，延迟1秒加载
+                            setTimeout(function(){
+                                // 每次数据插入，必须重置
+//                            me.lock();
+                                // 无数据
+                                me.noData();
+                                me.resetload();
+                            },1000);
+                            VUEDATA.itemList = JSON.parse(window.sessionStorage.getItem('VUEDATALIST'))
+                            return false;
+                        }else{
+                            reqAjaxAsync(USER_URL.GETLIST,JSON.stringify(params)).done(function (res) {
+                                if(res.code == 1){
+                                    var data = res.data.infoMapList;
+//                            console.log(datas)
+                                    if(data.length > 0){
+                                        setData(VUEDATA.itemList,data)
+                                        // 如果没有数据
+                                        window.sessionStorage.setItem('VUEDATALIST',JSON.stringify(VUEDATA.itemList))
+                                        console.log(JSON.parse(window.sessionStorage.getItem('VUEDATALIST')))
+                                    }else{
+                                        // 锁定
+                                        me.lock();
+                                        // 无数据
+                                        me.noData();
+                                    }
+                                    // 为了测试，延迟1秒加载
+                                    setTimeout(function(){
+                                        // 插入数据到页面，放到最后面
+//                                $('.lists').append(result);
+                                        // 每次数据插入，必须重置
+                                        me.resetload();
+                                    },500);
+                                }else{
+                                    layer.msg(res.msg);
+                                }
+                            })
+                        }
+
+
+
+                    }
+                });
+            }else if(res.data.infoMapList.length === 0){
+                $('.lists').html(`<li class="nodata">暂无数据</li>`)
+            }
+
+        })
+        function setData(arrList,data){
+            for (var i = 0; i < data.length; i++) {
+                arrList.push(data[i]);
+            }
+            window.sessionStorage.setItem('VUEDATALIST',JSON.stringify(VUEDATA.itemList))
+        }
+    }
+    $('.shop_list_ul').on('click','li',function(e){
+        var userid = $(this).attr('data-userid');
+        var merchantid =$(this).attr('data-merchantid');
+        var orgName = encodeURI(encodeURI($(this).attr('data-name')));
+        window.location.href=`myBusiness.html?userId=${userid}&merchantId=${merchantid}&orgName=${orgName}`
+    })
+    // $('.shop_list_ul').on('touchstart touchmove touchend','li', function(event) {
+    //         if($(this).hasClass('nodata'))return
+    //         var falg;
+    //         switch(event.type) {
+    //             case 'touchstart':
+    //                 falg = false;
+    //                 break;
+    //             case 'touchmove':
+    //                 falg = true;
+    //                 break;
+    //             case 'touchend':
+    //                 if( !falg ) {
+    //                     var userid = $(this).attr('data-userid');
+    //                     var merchantid =$(this).attr('data-merchantid');
+    //                     var orgName = encodeURI(encodeURI($(this).attr('data-name')));
+    //                     window.location.href=`myBusiness.html?userId=${userid}&merchantId=${merchantid}&orgName=${orgName}`
+
+    //                 } else {
+    //                     console.log('滑动');
+    //                 }
+    //                 break;
+    //         }
+    //     });
+    $('.myroad').on('touchstart touchmove touchend', function(event) {
+        var url = $(this).attr('href');
+        var falg;
+        switch(event.type) {
+            case 'touchstart':
+                falg = false;
+                break;
+            case 'touchmove':
+                falg = true;
+                break;
+            case 'touchend':
+                if( !falg ) {
+                    if(url == 'javascript:void(0)'){
+                        layer.msg('请升级商户等级！')
+                    }
+                } else {
+                    console.log('滑动');
+                }
+                break;
+        }
+    });
+
+</script>
+
+<!--<script src="assets/swiper-4.0.7/dist/js/swiper.min.js"></script>-->
+</html>

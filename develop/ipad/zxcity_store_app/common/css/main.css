@@ -1,0 +1,103 @@
+/*
+ * 主体框架
+ */
+
+.wrapper {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.mainleft {
+	position: absolute;
+	width: 130px;
+	height: 100%;
+	background-color: #252c36;
+}
+
+.mainright {
+	position: absolute;
+	left: 130px;
+	width: calc(100% - 130px);
+	height: 100%;
+	background: #f2f2f2;
+}
+
+.mainleft-inner {
+	padding: 20px 0 0;
+}
+
+.mainleft p {
+	color: #fff;
+	font-size: 1.4em;
+}
+
+.mainleft .headimg {
+	width: 60px;
+	height: 60px;
+	margin: 0 auto;
+	border-radius: 50%;
+	background-color: #ccc;
+	overflow: hidden;
+}
+
+.mainleft .sidebar-collapse {
+	position: relative;
+	margin: 20px 0 0;
+}
+
+.mainleft .sidebar-collapse:after {
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 1px;
+	top: auto;
+	left: 0;
+	right: auto;
+	bottom: 0;
+	background-color: #202020;
+	transform: scaleY(.33);
+	-webkit-transform: scaleY(.33);
+	-moz-transform: scaleY(.33);
+}
+
+.mainleft .sidebar-collapse ul,
+.mainleft .sidebar-collapse li {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.mainleft .sidebar-item {
+	position: relative;
+	display: block;
+	padding: 20px;
+}
+
+.mainleft .sidebar-item:before {
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 1px;
+	top: 0;
+	left: 0;
+	right: auto;
+	bottom: auto;
+	background-color: #202020;
+	transform: scaleY(.33);
+	-webkit-transform: scaleY(.33);
+	-moz-transform: scaleY(.33);
+}
+
+.mainleft .sidebar-item:hover,
+.mainleft .sidebar-item.active {
+	background: url(../img/bg_jianbian2.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.mainright .pageview {
+	width: 100%;
+	height: 100%;
+	border: none;
+}

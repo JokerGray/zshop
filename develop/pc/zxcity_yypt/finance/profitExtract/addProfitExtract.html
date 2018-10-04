@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>收入提取</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap-datepicker/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/account_common.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/modal.css">
+</head>
+<body>
+
+	<div class="container-fluid">
+		<form class="form-horizontal">
+			<div class="row-fluid">
+			<h1 class="text-center dialog-title">收入提取</h1>
+			</div>
+			
+			<div class="row">
+				<div class="pull w-half">
+					<div class="form-group">
+					    <label class="col-md-5 col-sm-5 control-label"><b class="required-icon"></b>盈利账户余额：</label>
+					    <div class="col-md-6 col-sm-6">
+					        <input readonly class="form-control" id="balanceStr" type="text">
+					        <input id="balance" type="hidden">
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label class="col-md-5 col-sm-5 control-label"><b class="required-icon"></b>提取金额：</label>
+					    <div class="col-md-6 col-sm-6">
+					        <input class="form-control" id="moneyStr" onchange="changeMoney(this)" value="0.00" type="number" >
+					    	<input id="money" type="hidden" value="0.00" />
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label class="col-md-5 col-sm-5 control-label"><b class="required-icon"></b>说明：</label>
+					    <div class="col-md-6 col-sm-6">
+					        <input class="form-control" id="remark" type="text">
+					    </div>
+					</div>
+					
+					<button class="btn btn-success h34 sechwid" type="button" id="addProfitExtract">收入提取</button>
+					<button class="btn btn-success h34 sechwid" type="button" id="reset">金额重置</button>
+					
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+
+
+<script type="text/javascript" src="../../common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/js/jqPaginator.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table.v1.11.0.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/account_common.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/str.js"></script>
+<script type="text/javascript" src="../../common/js/num.js"></script>
+<script type="text/javascript" src="../../common/assets/template-web.js"></script>
+
+<script type="text/javascript" src="../../common/assets/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="../../common/js/login_success.js"></script>
+<script type="text/javascript" src="../../common/js/util/changePassword.js"></script>
+<script type="text/javascript" src="../../common/js/changePassword.js"></script>
+<script type="text/javascript" src="../../common/js/util/pub.js"></script>
+
+<script type="text/javascript" src="addProfitExtract.js"></script>
+
+</body>
+</html>

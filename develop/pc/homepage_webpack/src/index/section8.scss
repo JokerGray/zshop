@@ -1,0 +1,116 @@
+// 第八部分，智享头条
+.section8{
+    margin: 200px 0 120px;
+    .article{
+        .article-img{
+            position: relative;
+            height: 300px;
+            text-align: center;
+            background: rgba($color: #000, $alpha: 0.9);
+            overflow: hidden;
+            img{
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 0;
+            }
+            .article-time{
+                position: absolute;
+                left: 0;
+                top: 0;
+                padding: 14px 20px;
+                background: #d9010f;
+                color: #fff;
+                line-height: 1;
+                >span{
+                    display: block;
+                    font-size: 36px;
+                    font-weight: bold;
+                    text-align: center;
+                    padding-bottom: 5px;
+                }
+            }
+        }
+        .article-title{
+            padding: 42px 0 22px;
+            font-size: 28px;
+            color: #333;
+            line-height: 1;
+            transition: all 0.1s ease-in-out;
+            &:hover{
+                color: #d9010f;
+                cursor: pointer;
+            }
+        }
+        .article-content{
+            font-size: 18px;
+            color: #666;
+            word-wrap: break-word;
+        }
+    }
+    .box{
+        padding: 44px 0 48px 0;
+        border-bottom: 1px solid #eee;
+        .box-time{
+            float: left;
+            margin-top: -5px;
+            padding: 0;
+            color: #999;
+            font-size: 20px;
+            letter-spacing: 2px;
+            text-align: center;
+            line-height: 1;
+            >span{
+                display: block;
+                font-size: 76px;
+                font-weight: bold;
+                text-align: center;
+                padding-bottom: 10px;
+            }
+        }
+        .box-title{
+            padding: 0 0 22px 20px;
+            font-size: 28px;
+            color: #333;
+            line-height: 1;
+            transition: all 0.1s ease-in-out;
+            &:hover{
+                color: #d9010f;
+                cursor: pointer;
+            }
+        }
+        .box-content{
+            padding-left: 20px;
+            height: 52px;
+            font-size: 18px;
+            color: #666;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+    }
+    .readmore{
+        display: block;
+        margin-top: 46px;
+        width: 189px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 18px;
+        color: #fff;
+        text-align: center;
+        background: url(./img/zxtt_ljgd_bg.png) no-repeat;
+        background-size: auto;
+        text-decoration: none;
+        transition: all 0.1s ease-in-out;
+
+        &:hover{
+            font-size: 20px;
+            i{
+                transform: translate3d(10px, 0, 0);
+            }
+        }
+        i{
+            display: inline-block;
+            padding-left: 20px;
+            transition: all 0.1s ease-in-out;
+        }
+    }
+}

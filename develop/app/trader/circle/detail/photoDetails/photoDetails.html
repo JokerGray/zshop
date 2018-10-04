@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta charset="UTF-8">
+			
+		<script src="../../../assets/uploadPreview/uploadPreview.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../../assets/bootstrap/css/bootstrap.min.css"/>
+		<script src="../../../assets/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../../../assets/layer/layer.js"></script>
+		<script src="../../../assets/artTemplate/artTemplate.js"></script>
+		<script src="../../../assets/plupload-2.3.1/js/moxie.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/plupload-2.3.1/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/plupload-2.3.1/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/jquery.form.min.js"></script>
+		<!--sweetAlert--> 
+		<link rel="stylesheet" type="text/css" href="../../../assets/sweetalert/sweetalert.css" />
+		<script src="../../../assets/sweetalert/sweetalert.min.js"></script>
+		<!--<link rel="stylesheet" href="./photoPub.css" />-->
+		<!--<link href="../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<script src="../assets/uploadPreview/uploadPreview.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../assets/hplus/css/bootstrap.min.css"/>
+		<script src="../assets/hplus/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../assets/hplus/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../assets/layer/layer.js"></script>
+		<script src="../assets/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../assets/plupload-2.3.1/js/moxie.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../assets/plupload-2.3.1/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../assets/plupload-2.3.1/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>-->
+		<!--sweetAlert-->
+		<!--<link rel="stylesheet" type="text/css" href="../assets/hplus/css/plugins/sweetalert/sweetalert.css"/>
+		<script src="./sweetalert.min.js"></script>-->
+		<link rel="stylesheet" href="./photoDetails.css" />
+		<title>相册详情</title>
+
+	</head>
+	<body style="background-color: #f7f7f7;">
+		<form action="#"  enctype="multipart/form-data" method="post" novalidate="novalidate" id="myForm">
+			
+		
+			<div class="container">
+				<div class="row details" >
+					<div class="col-xs-12" >
+						<div class="mienTitle">活动相册</div>
+						<ul class="btnBro">
+							<li>
+								<span class="batchBtn btn" id="batchBtn">批量管理</span>
+							</li>
+							<li>
+								<span href="javascript:;" class="upPhoto btn" id="upPhoto">上传照片</span>
+							</li>
+							<li style="display: none;">
+								<span href="javascript:;"  class=" batchBtn btn" id="removeBtn">删除(0)</span>
+							</li>
+							<li style="display: none;">
+								<span href="javascript:;" class=" upPhoto btn" id="downloadBtn">下载(0)</span>
+							</li>
+						</ul>
+						<div class="priBox">
+							<ul class="priList">
+
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+				<div class="bottomBtn">
+				<button type="button" class="cancel" id="cancel">取消</button>
+				</div>
+			</div>
+		</form>
+		<!--<div class="progressContent" id="progressContent" style="display: none;">
+			<h4 class="title">进程</h4>
+			<div class="progress">
+				<div class="progress-bar" style="width: 0%"></div>
+			</div>
+			<h5 class="progress-text">0%</h5>
+		</div>-->
+	</body>
+	<script id="pList" type="text/html">
+	<%for(var i =0;i<data.length;i++){%>
+		<li class="priData" data-selected="0">
+			<input type="hidden" name="id" value="<%=data[i].id%>" />
+			<i class="iconCheck" style="display: none;"></i>
+			<div class="priDetaImg">
+				<a href="javascript:;" class="imgPreview">
+					<img class="photosImg" src="<%=data[i].url%>" />
+				</a>
+				<p class="puberName"><%=data[i].userName||""%></p>
+				<p class="pubDate"><%=data[i].albumTime.split(" ")[0]%></p>
+			</div>
+		</li>
+		<%}%>
+
+	</script>
+	<script src="./photoDetails.js"></script>
+</html>

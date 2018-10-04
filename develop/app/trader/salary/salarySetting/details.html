@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工资设置</title>
+	
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/bootstrap-table/bootstrap-table.min.css"/>
+
+	<style>
+		a:active{
+			color: #333;
+			text-decoration: none;
+		}
+		a:link { 
+			color: #333;
+			text-decoration: none; 
+		} 
+		a:visited { 
+			color: #333;
+			text-decoration: none; 
+		} 
+		a:hover { 
+			color: #333;
+			text-decoration: none; 
+		} 
+		
+		.contain{
+			padding: 0 30px;
+		}
+
+		.search{
+			padding:0 15px;
+			font-size: 15px;
+			margin-top: 15px;
+		}
+		.search .shopSelc{
+			height: 30px;
+			width: 150px;
+			margin-right: 30px;
+		}
+		
+		.search input.userName {
+		    width: 140px;
+		    height: 30px;
+		    padding-left: 10px;
+		    margin-right: 30px;
+		}
+		
+		.search a.query {
+		    display: inline-block;
+		    margin-right: 30px;
+		    height: 30px;
+		    line-height: 30px;
+		    width: 60px;
+		    text-align: center;
+		    border: 1px solid #19b392;
+		    color: #19b392;
+		    border-radius: 3px;
+		    vertical-align: bottom;
+		}
+
+		
+		.positionInfo{
+			width: 100%;
+		}
+		
+		.positionInfo{
+			background: #fff;
+			padding-top: 15px;
+		}
+
+		.positionInfo .bootstrap-table .table>thead>tr>th {
+		    border-left: 0;
+		}
+
+		.positionInfo .table th{
+			background: #F5F5F5;
+		}
+		.positionInfo .fixed-table-container tbody td .th-inner,.positionInfo .fixed-table-container thead th .th-inner{
+			padding: 12px 0;
+			font-size: 16px;
+		}
+		.positionInfo .fixed-table-container{
+			border:0;
+		}
+		.positionInfo .fixed-table-container tbody td {
+		    border-left: none;
+		}
+		.positionInfo .table td{
+			padding: 10px 0;
+			line-height: 30px;
+		}
+		.positionInfo tbody tr{
+
+		}
+		.employeesInfo{
+			cursor: pointer;
+		}
+
+
+		
+ 	</style>
+</head>
+<body>
+	<div class="contain">
+		<div class="search">
+			<label>所属店铺：</label>
+			<select name="" id="" class="shopSelc">
+				<!-- <option value="">头道汤十三店</option> -->
+			</select>
+
+			<label>员工：</label>
+			<input type="text" placeholder="姓名" class="userName">
+			
+			<a href="javascript:;" class="query" onclick="queryInfo()">查询</a>
+		</div>
+
+		<div class="positionInfo">
+			<div class="table-tool-content">
+				<div class="container-fluid table-content">
+					<table class="table table-hover table-condensed" id="position">
+						
+					</table>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	
+	<script src="../../assets/jquery/jquery.min.js"></script>
+	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../assets/layer/layer.js"></script>
+	<link rel="stylesheet" href="../../assets/check_index/layer/skin/default/layer.css"/>
+
+	<!-- bootstrap-table -->
+	<script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+	<script src="js/common.js"></script>
+	
+	
+	
+	<script>
+		// url获取 merchantId
+		var merchantId = getQueryString('merchantId');
+		var shopId = getQueryString('shopId');
+		var positionId = getQueryString('positionId');
+		var positionName = getQueryString('positionName');
+
+
+		// 如果url 中有中文，则用 此方法 获取url 中文
+		function GetQueryString_new(name){
+		    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		    var r = window.location.search.substr(1).match(reg);//注意这行
+		    if(r!=null){
+		        return  decodeURI(r[2]);//解码一次
+		    }else{
+		        return null;
+		    }
+		}       
+		//获取用户名
+		var positionName =  GetQueryString_new("positionName");//直接获取某一值为中文的参数。
+
+		// 获取所属店铺
+		var def = reqAjax('shop/newsalary/getShopByMerchantId', {
+			"merchantId": merchantId 
+		});
+		def.then(function(data){
+			if(data.code == 1){
+				var data =data.data;
+				for(var i = 0;i<data.length;i++){
+					if(shopId == data[i].id){
+						$('.shopSelc').append('<option selected="selected" value="'+data[i].id+'">'+data[i].shopName+'</option>');
+					}else{
+						$('.shopSelc').append('<option value="'+data[i].id+'">'+data[i].shopName+'</option>')
+					}
+				}
+				tableInit($('.shopSelc option:selected').val(),'');
+			}
+		})
+
+		function tableInit(shopId,userName){
+		    $('#position').bootstrapTable({
+		        url: '/zxcity_restful/ws/rest',
+		        method: 'post',
+		        ajaxOptions:{
+		            headers:{
+		                apikey: 'test'
+		            }
+		        },
+		        contentType: "application/x-www-form-urlencoded",
+		        queryParams: function(params){
+		            var p = {
+		                cmd: 'shop/newsalary/getBackUsersByPositionId',
+		                data: JSON.stringify({
+		                	merchantId: merchantId,
+		                	shopId: shopId,
+		                	positionId:positionId,
+		                	userName: userName,
+		                    pagination: {
+		                        page: params.offset/params.limit + 1,
+		                        rows: params.limit
+		                    }
+		                }),
+		                version: 1
+		            }
+		            return p;
+		        },
+		        responseHandler: function(res){
+		            res.rows = res.data
+		            return res;
+		        },
+		        sidePagination: "server",
+		        pageNumber:1,
+		        pageSize: 10,
+		        pageList: [10, 25, 50, 100],
+		        // striped: true,
+		        pagination: true,
+		        sortable: false,
+		        cardView: false,
+		        detailView: false,
+		        columns: [
+		            { field: 'usercode', title: '账户', width: 150, align: 'center' },
+		            { field: 'username', title: '姓名', width: 150, align: 'center'},
+		            { field: 'id',title: '用户职务', width: 150, align: 'center',formatter: function(val, row, index){
+		            	return positionName;
+		            }},
+		            { field: 'orderId', title: '操作', width: 150, align: 'center',formatter: function(val, row, index){  
+		                return '<img src="img/bianji1.png" alt="" class="employeesInfo" onclick="employeesInfo(this)">'
+		            }}
+		        ]
+		    });
+		}
+
+
+		function employeesInfo(self) {
+		    var dataAll = $('#position').bootstrapTable('getData');
+		    var index = $(self).parent().parent().index();
+		    parent.layer.open({
+		        type: 2,  
+		        area: ['800px', '300px'],
+		        btn: ['确定','关闭'],
+		        title: '职务员工列表',
+		        maxmin: true,
+		        content: 'modifySalary.html?merchantId='+merchantId+'&userName='+dataAll[index].username+'&userId='+dataAll[index].id+'&shopName='+$('.shopSelc option:selected').text()+'&positionName='+positionName+'&basicSalary='+dataAll[index].basicSalary,
+		        yes: function(index, layero){
+		            var body = layer.getChildFrame('body', index);
+			        var iframeWin = layero.find('iframe')[0]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+			       	var res = iframeWin.contentWindow.doSubmit();
+		        }
+		    }); 
+		}
+
+		// 搜索查询
+		function queryInfo(){
+			var shopId = $('.shopSelc option:selected').val();
+			var userName = $('.userName').val().trim('');
+			$('#position').bootstrapTable('destroy');
+			tableInit(shopId,userName);
+		}
+
+
+	</script>
+</body>
+</html>

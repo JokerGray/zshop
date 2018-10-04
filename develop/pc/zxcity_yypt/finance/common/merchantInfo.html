@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>商户明细表</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap-datepicker/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/account_common.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/modal.css">
+</head>
+<body>
+
+	<div class="container-fluid">
+		<form class="form-horizontal">
+			<div class="row-fluid">
+			<h1 class="text-center dialog-title">商户账户详细信息</h1>
+			</div>
+			
+			<div class="row">
+				<div class="pull-left w-half">
+					<div class="form-group">
+					    <label class="col-md-5 col-sm-5 control-label"><b class="required-icon"></b>账号：</label>
+					    <div class="col-md-6 col-sm-6">
+					        <input readonly class="form-control" id="userCode" type="text">
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label class="col-md-5 col-sm-5 control-label"><b class="required-icon"></b>商户用户类型：</label>
+					    <div class="col-md-6 col-sm-6">
+					        <input readonly class="form-control" id="regular" type="text">
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label class="col-md-5 col-sm-5 control-label"><b class="required-icon"></b>绑定的平台用户：</label>
+					    <div class="col-md-6 col-sm-6">
+					        <input readonly class="form-control" id="platformUserCode" type="text">
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label class="col-md-5 col-sm-5 control-label"><b class="required-icon"></b>手机号：</label>
+					    <div class="col-md-6 col-sm-6">
+					        <input readonly class="form-control" id="phone" type="text">
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label class="col-md-5 col-sm-5 control-label"><b class="required-icon"></b>省：</label>
+					    <div class="col-md-6 col-sm-6">
+					        <input readonly class="form-control" id="provinceName" type="text">
+					    </div>
+					</div>
+				</div>
+				
+				<div class="pull-right w-half">
+				    <div class="form-group">
+				        <label class="col-md-5 col-sm-5 control-label"><b class="required-icon"></b>用户昵称：</label>
+				        <div class="col-md-6 col-sm-6">
+				            <input readonly class="form-control" id="userName" type="text">
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label class="col-md-5 col-sm-5 control-label"><b class="required-icon"></b>是否锁定：</label>
+				        <div class="col-md-6 col-sm-6">
+				            <input readonly class="form-control" id="locked" type="text">
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label class="col-md-5 col-sm-5 control-label"><b class="required-icon"></b>注册状态：</label>
+				        <div class="col-md-6 col-sm-6">
+				            <input readonly class="form-control" id="registType" type="text">
+				        </div>
+				    </div>
+				    <div class="form-group">
+					    <label class="col-md-5 col-sm-5 control-label"><b class="required-icon"></b>行业：</label>
+					    <div class="col-md-6 col-sm-6">
+					        <input readonly class="form-control" id="trade" type="text">
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label class="col-md-5 col-sm-5 control-label"><b class="required-icon"></b>市：</label>
+					    <div class="col-md-6 col-sm-6">
+					        <input readonly class="form-control" id="cityName" type="text">
+					    </div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+
+
+<script type="text/javascript" src="../../common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/js/jqPaginator.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table.v1.11.0.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/account_common.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/str.js"></script>
+<script type="text/javascript" src="../../common/js/num.js"></script>
+<script type="text/javascript" src="../../common/assets/template-web.js"></script>
+
+<script type="text/javascript" src="../../common/assets/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="../../common/js/login_success.js"></script>
+<script type="text/javascript" src="../../common/js/util/changePassword.js"></script>
+<script type="text/javascript" src="../../common/js/changePassword.js"></script>
+<script type="text/javascript" src="../../common/js/util/pub.js"></script>
+
+<script type="text/javascript" src="merchantInfo.js"></script>
+
+</body>
+</html>

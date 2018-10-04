@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    ul{
+        margin:0;
+        padding:0;
+    }
+    li{
+        list-style: none;
+    }
+    .left{
+        float:left;
+        margin-right:25px;
+    }
+    .main-wrapper{
+        padding:20px;
+    }
+    
+    .input-box .btn{
+        background-color:#ffa501;
+        color:#fff;
+    }
+    
+    .show-box{
+        overflow-y: auto;
+    }
+    .show-list{
+        margin-left:-15px;
+    }
+    .show-list .list-item{
+        position: relative;
+        float:left;
+        width:120px;
+        height:140px;
+        margin-left:15px;
+        margin-bottom:15px;
+        border:1px solid #38ccc0;
+        border-radius:6px;
+        text-align: center;
+    }
+    .list-item .remove-icon{
+        position:absolute;
+        top:0;
+        right:0;
+        font-style: normal;
+    }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="input-box">
+            <div class="left">
+                <label>亲属朋友名称：</label>
+                <input type="text" maxlength="5">
+            </div>
+            <div class="left">
+                <label>电话：</label>
+                <input type="text" maxlength="11">
+            </div>
+            <button type="button" class="btn">提交</button>
+        </div>
+        <div class="show-box">
+            <ul class="show-list" id="list">
+                <li class="list-item">
+                    <i class="remove-icon">X</i>   
+                    <p class="name">赵小明</p>
+                    <p class="mobile">15900001234</p> 
+                </li>
+                <li class="list-item">
+                    <i class="remove-icon">X</i>     
+                    <p class="name">赵小明</p>
+                    <p class="mobile">15900001234</p>     
+                </li>
+                <li class="list-item">
+                    <i class="remove-icon">X</i>   
+                    <p class="name">赵小明</p>
+                    <p class="mobile">15900001234</p> 
+                </li>
+                <li class="list-item">
+                    <i class="remove-icon">X</i>   
+                    <p class="name">赵小明</p>
+                    <p class="mobile">15900001234</p> 
+                </li>
+                <li class="list-item">
+                    <i class="remove-icon">X</i>   
+                    <p class="name">赵小明</p>
+                    <p class="mobile">15900001234</p> 
+                </li>
+                <li class="list-item">
+                    <i class="remove-icon">X</i>
+                    <p class="name">赵小明</p>
+                    <p class="mobile">15900001234</p>
+                </li>
+                <li class="list-item">
+                    <i class="remove-icon">X</i>
+                    <p class="name">赵小明</p>
+                    <p class="mobile">15900001234</p>
+                </li>
+                <li class="list-item">
+                    <i class="remove-icon">X</i>
+                    <p class="name">赵小明</p>
+                    <p class="mobile">15900001234</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

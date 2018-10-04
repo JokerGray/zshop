@@ -1,0 +1,57 @@
+@charset "utf-8";
+/* PingFang  字体引入 */
+@font-face {
+  font-family: 'PingFangSC-Light';
+  src: url('../font/PingFang/PingFangSC-Light.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PingFangSC Medium';
+  src: url("../font/PingFang/PingFang Medium.ttf");
+}
+
+@font-face {
+  font-family: 'PingFangSC-Regular';
+  src: url("../font/PingFang/PingFang Regular.ttf");
+}
+
+@font-face {
+  font-family: 'PingFang Bold';
+  src: url("../font/PingFang/PingFang Bold.ttf");
+}
+
+body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,input,legend,li,ol,p,select,table,td,textarea,th,ul,img{margin:0;padding:0; font-weight: normal;}
+body,button,input,select,table,textarea{line-height:1.25em;font-family:PingFangSC Medium,'microsoft yahei',Verdana,Arial,Helvetica,sans-serif;}
+body { 
+  -webkit-text-size-adjust: none; /*禁止页面文字选择*/
+  -webkit-touch-callout:none;/*禁止文字自动调整大小*/
+  -webkit-touch-callout:none;/*禁用长按页面时的弹出菜单*/
+  color:#333;
+  height: 100%;
+}
+fieldset,img {border:0}
+ol,ul,li {	list-style:none}
+address,em {font-style:normal}
+a {	color:#333;	text-decoration:none; outline:none;background-color: transparent;}
+table {	border-collapse:collapse}
+*{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+*{
+  box-sizing:border-box;
+  -moz-box-sizing:border-box; /* Firefox */
+  -webkit-box-sizing:border-box; /* Safari */
+  -webkit-tap-highlight-color: transparent; /*透明度设置为0，去掉点击链接和文本框对象时默认的灰色半透明覆盖层*/
+}
+input[type="button"], input[type="submit"], input[type="reset"] {
+    -webkit-appearance: none;
+}
+

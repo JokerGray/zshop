@@ -1,0 +1,468 @@
+.qGreen {
+    background-color: #60D398;
+}
+
+.qRed {
+    background-color: #F70300;
+}
+
+.qGray {
+    background-color: #BFBFBF;
+}
+
+.qYellow {
+    background-color: #FEBF6F;
+}
+.qBlack {
+    background-color: black;
+}
+.qShield {
+    background-color: #402000;
+}
+/* 顶部tab栏 */
+a:link { 
+    text-decoration: none; 
+}
+
+.tabList {
+    padding: 15px 0 0 20px;
+    border-bottom: 1px solid #DADADA;
+}
+
+.tabList li {
+    float: left;
+    padding: 8px 16px;
+    font-size: 16px;
+}
+
+.topTab li.active {
+    border-bottom: 3px solid #FF7070;
+}
+
+.topTab li.active a {
+    font-weight: 500;
+    color: #FF7070;
+}
+
+.topTab a {
+    font-size: 18px;
+}
+
+.quesMineTab {
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.quesMineTab li.active {
+    border-bottom: 3px solid #ff8b6f;
+}
+
+.quesMineTab li:hover {
+    color: #FF7070;
+}
+/* 顶部tab栏 */
+/* 我的提问列表 */
+.quesMineBox {
+    padding: 15px 0;
+    margin: 0 30px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.quesMImgListBox img {
+    width: 100px;
+    height: 100px;
+}
+
+.quesMineInfo {
+    width: 620px;
+    height: 100px;
+    margin-left: 15px;
+    position: relative;
+}
+
+.quesMTitBox {
+    position: relative;
+}
+
+.quesMTitBox span:nth-child(1) {
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.quesIcon img {
+    height: 20px;
+    vertical-align: middle;
+    padding-right: 5px;
+    margin-top: -2px;
+}
+
+.notPassReason {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 400px;
+    background-color: #EEEEEE;
+}
+
+.quesMTitBox span:nth-child(3) {
+    color: #fff;
+    padding: 1px 5px;
+    margin-left: 8px;
+}
+
+.labelAndTime {
+    color: #9A9A9A;
+    margin-top: 10px;
+}
+
+.labelAndTime span:first-child {
+    margin-right: 10px;
+}
+
+.quesMDatas {
+    position: absolute;
+    bottom: 0;
+    color: #9A9A9A;
+}
+
+.quesMDatas span {
+    padding: 0 10px 0 7px;
+    border-right: 1px solid #E5E5E5;
+}
+
+.quesMDatas span:first-child {
+    padding-left: 0;
+}
+
+.quesMDatas span:last-child {
+    border-right: 0;
+}
+
+.quesMOperate {
+    height: 100px;
+    line-height: 100px;
+    padding-right: 10px;
+}
+
+.quesMOperate span {
+    font-size: 16px;
+    padding: 0 30px;
+    color: #7FBAE6;
+    cursor: pointer;
+}
+.page {
+    width: 100%;
+}
+/* 轮播图样式 */
+.quesMImgListBox {
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+.quesMImgList {
+    position: absolute;
+    top: 0;
+    width: 400px;
+    height: 100px;
+}
+/* 轮播图样式 */
+/* 问题详情模态框 */
+.quesInfoM {
+    width: 1000px;
+}
+
+.quesInfoMHead  {
+    border-bottom: 0px;
+}
+
+.quesInfoMHead h4 {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.quesInfoMHead h4 span img {
+    margin-right: 10px;
+    height: 30px;
+    /* vertical-align: top; */
+    margin-top: -7px;
+}
+
+.quesInfoCon {
+    padding-bottom: 30px;
+    height: 630px;
+    overflow-y: scroll;
+    word-wrap: break-word;
+}
+
+.quesInfoBox {
+    padding: 0 100px;
+}
+
+.quesInfoBox .quesInfoSubTxt {
+    margin-bottom: 10px;
+    color: #999999;
+}
+
+.quesInfoSubTxt div {
+    display: inline-block;
+}
+
+.quesInfoBox img, .answerContent img {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.quesLabels {
+    margin: 20px 0;
+}
+
+.quesLabelsIcon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../images/tag.png) no-repeat center center;
+    background-size: 20px;
+}
+
+.quesLabelList {
+    display: inline-block;
+}
+
+.quesLabelList li {
+    float: left;
+    font-size: 16px;
+    padding: 0 10px;
+    color: #FD4B4B;
+    position: relative;
+    height: 18px;
+    line-height: 18px;
+}
+
+.quesLabelList li:after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 16px;
+    position: absolute;
+    top: 1px;
+    right: 0;
+    background-color: #999;
+}
+
+.quesLabelList li:last-child:after {
+    display: none;
+}
+
+.onlineCelebrity {
+    margin-top: 20px;
+}
+.onlineCeleBox {
+    width: 100%;
+    padding: 20px 0 20px 60px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    background-color: #F8F8F8;
+    position: relative;
+}
+.onlineCeleBox.opacityO {
+    opacity: 0.6;
+}
+.onlineCeleBox > img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+.onlineCeleBox .onlineCeDescri {
+    margin-top: 30px;
+}
+.onlineCeleBox > div > p:first-child {
+    margin-bottom: 10px;
+}
+.onlineCeleBox > div > p span {
+    font-weight: 800;
+}
+.oCeleSingleBox {
+    margin-left: 30px;
+    margin-bottom: 30px;
+    position: relative;
+}
+.oCeleSingleBox .playerInfoIconBox{
+    margin-left: 80px;
+}
+.oCeleSingleBox>p{
+    height: 40px;
+    margin-bottom: 10px;
+}
+.layui-progress{
+    margin-left: 50px;
+    width: 400px;
+    float: left;
+}
+.oCeleSingleBox span {
+    float: left;
+}
+.onlineCeleBox i {
+    position: absolute;
+    top: 20px;
+    left: 60px;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-weight: 900;
+    padding: 1px 0 0 5px;
+    background: linear-gradient(-50deg, transparent 20px, #ff886b 0);
+}
+.oCeleSingleBox .ranking span:first-child {
+    background-color: #ff886b;
+    color: #fff;
+    width: 40px;
+    height: 100%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    margin-right: 20px;
+    font-weight: 900;
+}
+.oCeleSingleBox .ranking span:last-child{
+    line-height: 40px;
+} 
+.oCeleSingleBox .fl span:first-child{
+    margin-left: 10px;
+    margin-right: 40px;
+    color: #333;
+}
+.oCeleSingleBox .fl img{
+    margin-right: 5px;
+}
+.oCeleSingleBox .fl span:last-child{
+    color: #ff886b;
+}
+.echarts {
+    width: 800px;
+    height: 500px;
+}
+.voteInfoBTab {
+    border-bottom: 1px solid #DADADA;
+}
+.voteInfoBTab p {
+    color: #FF7070;
+}
+.voteInfoBTab p:first-child {
+    border-bottom: 3px solid #FF7070;
+    font-size: 22px;
+    font-weight: 700;
+}
+.voteInfoBTab p:last-child {
+    margin-top: 10px;
+}
+.noticeBox {
+    background-color: #F8F8F8;
+    height: 83px;
+    overflow: hidden;
+    box-sizing: content-box;
+    position: relative;
+}
+.noticeList {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 80px;
+    overflow-y: auto;
+}
+.noticeBox p {
+    font-size: 14px;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+.noticeBox p:last-child {
+    margin-bottom: 0;
+}
+.noticePublisher {
+    color: #FF7070;
+    font-size: 16px;
+    margin: 0 15px;
+}
+.noticePlayer {
+    font-weight: 800;
+    font-size: 16px;
+    margin: 0 15px;
+}
+.noticeTime {
+    color: #979797;
+    float: right;
+}
+/* 问题详情模态框 */
+.voteToWho {
+    color: #999;
+    padding: 20px 20px 0 20px;
+}
+.voteToWho span:first-child, .voteToWho span:nth-child(2) {
+    color: black;
+    font-weight: 900;
+}
+.tpiListBox {
+    position: relative;
+}
+.isEndIcon {
+    position: absolute;
+    top: 23px;
+    right: 350px;
+    width: 114px;
+    height: 84px;
+}
+.voteInfoHead {
+    position: relative;
+}
+.infoIsEndIcon {
+    position: absolute;
+    top: 9px;
+    right: 110px;
+    width: 76px;
+    height: 56px;
+}
+.headHasNameI {
+    color: #999;
+    font-size: 16px;
+}
+.playerInfoIconBox {
+    position: absolute;
+    top: 23px;
+    left: 550px;
+    text-align: center;
+    color: gray;
+}
+.playerInfoIconBox img {
+    width: 60px;
+    height: 60px;
+}
+.voteNumberBox {
+    position: absolute;
+    left: 0;
+    top: 37px;
+    font-weight: 900;
+    font-size: 16px;
+    text-align: center;
+}
+.voteNumberBox span {
+    display: inline-block;
+}
+.voteNumOrange {
+    color: #F85D37;
+}
+.voteNumBlue {
+    color: #37ADF8;
+    margin-top: 21px;
+}
+.layui-bg-blue{
+    background-color: #ff886b !important;
+}
+.layui-progress-big, .layui-progress-big .layui-progress-bar{
+    height: 10px;
+}

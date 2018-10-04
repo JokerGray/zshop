@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"> 
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <title>服务详情</title>
+    <link rel="stylesheet" href="css/index.css?v=20171127">
+    <link rel="stylesheet" href="assets/swiper/css/swiper.min.css">
+</head>
+<body>
+    <div id="commodityShare" class="content">
+        <div class="resourceContent" id="resourceList">
+            <div class="swiper-wrapper"></div>
+            <span class="tag">-/-</span>
+        </div>
+        <div class="serviceName"><span id="serviceName"></span></div>
+        <div class="sold">
+            <span class="sold_text">已售 <span id="orderNumber">0</span> 单</span>
+            <span class="sold_line"></span>
+            <span class="icon star"></span>
+            <span class="icon star"></span>
+            <span class="icon star"></span>
+            <span class="icon star"></span>
+            <span class="icon star"></span>
+            <span id="cityName">--</span>
+            <span class="collection"><span id="collection"></span>点赞</span>
+        </div>
+        <div class="content_user">
+            <img id="userPic" class="img_round" src="" />
+            <div class="user_content">
+                <div class="user_info">
+                    <p>
+                        <span class="user_name" id="userName"></span>
+                        <img class="icon sex" src="img/yb_boy@2x.png" />
+                        <img class="icon sex" src="img/yb_girl@2x.png" />
+                    </p>
+                    <!--<span id="isSkill" class="auth_cert">证书认证</span>
+                    <span id="ismerchant" class="auth_shop">店铺认证</span>-->
+                </div>
+            </div>
+        </div>
+        <div class="line"></div>
+
+        <table class="table" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th><img class="icon" src="img/yb_xq_sxdp.png" /><span>所属店铺</span></th>
+                <td><span id="shopName"> </span></td>
+            </tr>
+            <tr>
+                <th><img class="icon" src="img/yb_xq_fenlei@2x.png" /><span>服务分类</span></th>
+                <td><span id="categoryName"> </span></td>
+            </tr>
+            <tr>
+                <th><img class="icon" src="img/yb_fwfs@2x.png" /><span>服务方式</span></th>
+                <td><span id="serviceMode"> </span></td>
+            </tr>
+            <tr>
+                <th><img class="icon" src="img/yb_xq_xxbj@2x.png" /><span>线下报价</span></th>
+                <td colspan="3"><span id="servicePrice"></span> 元/<span id="serviceUnit">小时</span></td>
+            </tr>
+            <tr>
+                <th><img class="icon" src="img/yb_xq_fwsj@2x.png" /><span>服务时间</span></th>
+                <td colspan="3"><span id="serviceTime"> </span></td>
+            </tr>
+            <tr>
+                <th><img class="icon" src="img/yb_xq_fwfw@2x.png" /><span>服务范围</span></th>
+                <td colspan="3"><span id="serviceRangeAddress">  </span></td>
+            </tr>
+            <tr>
+                <th style="vertical-align: top;"><img class="icon" src="img/yb_xq_fwdz@2x.png" /><span>服务地址</span></th>
+                <td colspan="3"><span id="serviceLocationAddress">  </span></td>
+            </tr>
+        </table>
+
+        <div class="service_content">
+            <p class="service_title">服务介绍</p>
+            <p class="service_info"><span  id="serviceComment"></span></p>
+            <p class="folder off"><span>展开</span></p>
+        </div>
+        <div class="service_content">
+            <p class="service_title">特色介绍</p>
+            <p class="service_info"><span id="characteristic"></span></p>
+            <p class="folder off"><span>展开</span></p>
+        </div>
+
+        <div class="line"></div>
+        <div class="cert_content" id="certList">
+            <div class="cert_title">
+                专业证书 <span id="listNum">0</span>
+            </div>
+            <div class="cert_box_content">
+                <div class="cert_box" style="display: none;">
+                    <div class="cert_cover">
+                        <div class="cover_title">资格证书</div>
+                        <div class="cover_crooked"></div>
+                        <div class="cover_info"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="download" href="#">
+            <img src="img/download.png" alt="">
+        </a>
+    </div>
+    <div id="weixin_pageto" style="display: none;">
+        <div class="txt">
+            请点击右上角复制链接<img src="img/_more@3x.png" style="width: 0.7rem;" />从QQ浏览器中打开
+            <!--2、选择<img src="img/safari@3x.png" style="width: 0.7rem;"/>在浏览器中打开-->
+        </div>
+        <img src="img/shape_up@3x.png" alt="" class="uparrow">
+        <!--<img src="img/shape1_down@3x.png" alt="" class="downarrow">-->
+    </div>
+    <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="assets/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/swiper/js/swiper.min.js"></script>
+    <script type="text/javascript" src="assets/layer/layer.js?v=20170628"></script>
+    <script type="text/javascript" src="index.js?v=20180222"></script>
+</body>
+
+</html>

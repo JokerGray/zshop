@@ -1,0 +1,253 @@
+.h100{
+	height: 100px!important	;
+}
+.h30{
+	height: 30px!important	;
+}
+.flex{
+	display: flex!important;
+	justify-content: center!important;
+	align-items: center!important;
+	height: 100%!important;
+}
+.p4{
+	padding: 4px 10px;
+}
+
+
+#common-tool{
+	height: 40px;
+	background-color: #F8F7F7;
+	border-top: 1px solid #DCDCDC;
+	border-bottom:1px solid #DCDCDC;
+}
+#common-tool #search{
+	float: left;
+}
+#common-tool #rig-tool{
+	float: right;
+}
+#rig-tool>button{
+	float: left;
+}
+.input-group .form-control {
+	width: 200px;
+	height: 30px;
+}
+/*end*/
+#search-tool{
+	background-color: #fff;
+	border-top: 1px solid #DCDCDC;
+	border-bottom:1px solid #DCDCDC;
+	padding: 10px;
+	position: relative;
+	display: none;
+}
+#search-tool .input-group{
+	float: left;
+	margin-left: 10px;
+}
+#search-tool .input-group:first-child{
+	margin-left: 0;
+}
+#search-tool .input-group>span{
+	line-height: 30px;
+	font-size: 12px;
+	color: #666666;
+	margin-right: 5px;
+}
+#search-tool-show{
+	float: right;
+}
+/*layer*/
+#demo111{
+	padding: 20px 10px 0;
+	display: none;
+}
+
+#demo111 .layui-input-block {
+    margin-left:112px!important;
+    top: 0;
+}
+#demo111 .layui-form-label {
+    background-color: #F5F5F5;
+    width: 120px;
+    height: 100%;
+    margin-bottom: 0;
+}
+#demo111 .layui-form-item {
+	margin-bottom: 0!important;
+    border: 1px solid #E9E9E9;
+}
+#demo111 .layui-textarea {
+    min-height: 80px!important;
+}
+#demo111 .layui-form-select {
+    width: 98%!important;
+    }
+.tabale-list{
+	padding: 0 10px;
+}
+/*查看详情*/
+.lookinfo,.addinfo{
+	display: none;
+	width: 100%;
+	padding: 20px;
+}
+.lookinfo .top-info,.addinfo .top-info{
+	display: flex;
+}
+.lookinfo .top-info .layui-form-item,.addinfo .top-info .layui-form-item{
+	flex: 1;
+}
+.lookinfo .layui-form-label,.addinfo .layui-form-label{
+	padding: 9px 0;
+}
+.lookinfo .img-info,.addinfo .img-info{
+	width: 80%;
+	height: auto;
+	overflow: hidden;
+	margin: 0 auto 15px;
+}
+.lookinfo .left-img,.lookinfo .right-img,.addinfo .left-img,.addinfo .right-img{
+	width: 50%;
+	height: auto;
+	float: left;
+	text-align: center;
+	color:#aaa;
+}
+.lookinfo .left-img img,.addinfo .left-img img{
+	display: block;
+	width: 300px;
+	height: 300px;
+	border-radius: 100%;
+	margin:10px auto ;
+}
+.lookinfo .right-img img,.addinfo .right-img img{
+	display: block;
+	width: 300px;
+	height: 300px;
+	margin:10px auto ;
+}
+.lookinfo .layui-textarea,.addinfo .layui-textarea{
+	resize: none;
+}
+/*弹窗裁剪*/
+.imgtip{
+	width: 95%;
+	margin: 20px auto;
+	display: none;
+}
+.imgtip .leftimg{
+	width: 100%;
+}
+.imgtip .leftimg button:last-child{
+	float: right;
+}
+.imgtip .imgbtn{
+	width: 100%;
+	height: 40px;
+}
+.imgtip .imgbtn button:nth-child(2){
+	float: right;
+}
+.imgtip .showimg{
+	margin: 20px 0;
+	width: 100%;
+	height: auto;
+	float: left;
+}
+/*裁剪*/
+.canvas-box{
+	width: 500px;
+	height: 500px;
+	position: relative;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-o-user-select:none;
+	user-select:none;
+	float: left;
+}
+.canvas-box .overlay{
+	position: absolute;
+	left: 0;
+	top: 0;
+	cursor: move;
+	border:1px solid #69f;
+}
+.canvas-box div,.canvas-box canvas{
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-o-user-select:none;
+	user-select:none
+}
+.openhid{
+	display: none !important;
+}
+.upload{
+	float: left;
+	position: relative;
+	width: 120px;
+	height: 40px;
+	text-align: center;
+	line-height: 30px;
+	overflow: hidden;
+	cursor: pointer;
+	padding: 5px;
+	color: #ffffff;
+	background: rgb(6, 120, 206);
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	display: inline-block;
+	font-size: 18px;
+	text-decoration: none;
+	margin: 0 20px 0 0;
+}
+.upload input{
+	position: absolute;
+	font-size: 100px;
+	right: 0;
+	top: 0;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	cursor: pointer;
+}
+.save{
+	float: right;
+	width: 120px;
+	height: 40px;
+	display: inline-block;
+}
+.save input{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	color: #ffffff;
+	background: rgb(6, 120, 206);
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	display: inline-block;
+	text-decoration: none;
+	font-size: 18px;
+}
+.canvas-show1{
+	width: 250px;
+	height: 250px;
+	float: right;
+	display: none;
+}
+.right-img{
+	position: relative;
+}
+.right-img .inpt{
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	left: 30px;
+	top: 10px;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	cursor: pointer;
+	display: none;
+	z-index:55;
+}

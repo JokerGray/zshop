@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="cache-control" content="no-cache">
+    <link rel="stylesheet" href="../../../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/datatables/DataTables-1.10.15/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>自定义页面</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 nav-menu">已报名</div>
+            <div class="col-xs-4 nav-menu">晒单分享</div>
+            <div class="col-xs-4 nav-menu">附加信息</div>
+        </div>
+        <!-- 已报名 -->
+        <div class="content">
+            <table id="table" class="table table-striped table-bordered" style="width: 100%;"></table>
+            <p class="text-center">
+                <button type="button" class="btn btn-primary btn-back">返回</button>
+            </p>
+        </div>
+        <!-- 晒单分享 -->
+        <div class="content">
+            <!-- 图集 -->
+            <div class="share-content">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="share-info-content">
+                            <div class="user-content">
+                                <img src="" alt="">
+                                <p class="userName">用户名称</p>
+                                <p class="createDate">2018-01-01 11:11</p>
+                            </div>
+                            <div class="textContent">测试测试测试测试测测试测试测试测试测试测测试测试测试测试测试测测试</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 文字 -->
+            <div class="share-content">
+                <div class="share-info-content">
+                    <div class="user-content">
+                        <img src="" alt="">
+                        <p class="userName">用户名称</p>
+                        <p class="createDate">2018-01-01 11:11</p>
+                    </div>
+                    <div class="textContent">测试测试测试测试测测试测试测试测试测试测测试测试测试测试测试测测试</div>
+                </div>
+            </div>
+            <!-- 视频 -->
+            <div class="share-content">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="video-container">
+                            <video src=""></video>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="share-info-content">
+                            <div class="user-content">
+                                <img src="" alt="">
+                                <p class="userName">用户名称</p>
+                                <p class="createDate">2018-01-01 11:11</p>
+                            </div>
+                            <div class="textContent">测试测试测试测试测测试测试测试测试测试测测试测试测试测试测试测测试</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center">
+                <button type="button" class="btn btn-primary btn-more">点击加载更多</button>
+            </p>
+            <p class ="text-center">
+                <button type="button" class="btn btn-primary btn-back">返回</button>
+            </p>
+        </div>
+        <!-- 附件信息 -->
+        <div class="content">
+            <div class="other-title">其他人发起</div>
+
+            <div class="info-content">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <p class="status-text">赞助</p>
+                        <p class="text-center">
+                            <span class="status">审核中</span>
+                        </p>
+                        <div class="needle"></div>
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="shop-info-content">
+                            <div class="shop-content">
+                                <img src="" alt="">
+                                <span class="shop-name">用户名称</span>
+                                <span class="phone">13621212121</span>
+                                <i class="icon-phone"></i>
+                            </div>
+                            <div class="sensor-content">
+                                <span>赞助内容：</span>
+                                <p>测试测试测试测试测测试测试测试测试测试测测试测试测试测试测试测测试</p>
+                            </div>
+                            <p class="text-right">
+                                <button type="button" class="btn btn-danger btn-refuse">拒绝</button>
+                                <button type="button" class="btn btn-success btn-agree">同意</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-content">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <p class="status-text">买单</p>
+                            <p class="text-center">
+                                <span class="status">审核中</span>
+                            </p>
+                            <div class="needle"></div>
+                        </div>
+                        <div class="col-xs-9">
+                            <div class="shop-info-content">
+                                <div class="shop-content">
+                                    <img src="" alt="">
+                                    <span class="shop-name">用户名称</span>
+                                    <span class="phone">13621212121</span>
+                                    <i class="icon-phone"></i>
+                                </div>
+                                <p class="text-right">
+                                    <button type="button" class="btn btn-danger btn-refuse">拒绝</button>
+                                    <button type="button" class="btn btn-success btn-agree">同意</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="info-content succeed">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <p class="status-text">赞助</p>
+                        <p class="text-center">
+                            <span class="status">已成功</span>
+                        </p>
+                        <div class="needle"></div>
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="shop-info-content">
+                            <div class="shop-content">
+                                <img src="" alt="">
+                                <span class="shop-name">用户名称</span>
+                                <span class="phone">13621212121</span>
+                                <i class="icon-phone"></i>
+                            </div>
+                            <div class="sensor-content">
+                                <span>赞助内容：</span>
+                                <p>测试测试测试测试测测试测试测试测试测试测测试测试测试测试测试测测试</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-content refused">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <p class="status-text">冠名</p>
+                            <p class="text-center">
+                                <span class="status">已拒绝</span>
+                            </p>
+                            <div class="needle"></div>
+                        </div>
+                        <div class="col-xs-9">
+                            <div class="shop-info-content">
+                                <div class="shop-content">
+                                    <img src="" alt="">
+                                    <span class="shop-name">用户名称</span>
+                                    <span class="phone">13621212121</span>
+                                    <i class="icon-phone"></i>
+                                </div>
+                                <div class="sensor-content">
+                                    <span>冠名内容：</span>
+                                    <p>测试测试测试测试测测试测试测试测试测试测测试测试测试测试测试测测试</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <script src="../../../assets/jquery/jquery.min.js"></script>
+    <script src="../../../assets/layer/layer.js"></script>
+    <script src="../../../assets/datatables/DataTables-1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="../../../assets/datatables/DataTables-1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="../../../assets/datatables/I18n/cn.js"></script>
+    <script src="../../../assets/swiper/js/swiper.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

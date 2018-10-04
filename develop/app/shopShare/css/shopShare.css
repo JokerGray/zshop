@@ -1,0 +1,117 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#share{
+    width: 100%;
+    height: 100%;
+    font-size: 0.13rem;
+    position: relative;
+    color: #ffffff;
+    background: url(../images/zxcs_share_background.png) no-repeat 0 0;
+    box-sizing: border-box;
+    background-size: 100% 100%;
+    position: relative;
+    z-index: 1;
+    padding: 0.04rem;
+    letter-spacing: 0.01rem;
+}
+
+#share:after{
+    content:'';
+    background:inherit;
+    width: 100%;
+    height: 100%;
+    filter: blur(2px);
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+}
+
+#share #shade{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+    background-color: rgba(0,0,0,0.5);
+    left: 0;
+    top: 0;
+}
+
+#share #content{
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+}
+
+#share #codeBox{
+    background: url(../images/zxcs_share_saoma.png) no-repeat 50% 0;
+    background-size: 2.15rem 2.22rem;
+    margin-top: 0.75rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.17rem;
+}
+
+#share #qrcode{
+    width: 1.8rem;
+    height: 1.8rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#share #infoBox{
+    margin-top: 0.4rem;
+    text-align: center;
+    line-height: 0.3rem;
+    position: absolute;
+    z-index: 99999;
+    left: 0.525rem;
+}
+
+#infoBox #logo{
+    width: 0.6rem;
+    height:0.6rem;
+    border-radius: 0.3rem;
+    margin: 0 auto;
+}
+
+#infoBox #shopName{
+    font-size: 0.16rem;
+}
+
+#infoBox #addressBox{
+    font-size: 0.13rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#infoBox #address{
+    display: inline-block;
+    width: 2.7rem;
+}
+
+
+#infoBox #addressBox img{
+    width: 0.11rem;
+    height: 0.15rem;
+    margin-right: 0.07rem;
+}
+
+#infoBox #location{
+    width: 0.73rem;
+    height: 0.29rem;
+    margin: 0.25rem auto;
+    background: url(../images/zxcs_share_nav.png) no-repeat;
+    background-size: 100% 100%;
+}

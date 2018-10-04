@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <title>广告审核·管理员后台</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/advertise_manage.css?v=201706191500" />
+    <link rel="stylesheet" href="css/authorial_check.css" />
+    <link rel="stylesheet" href="css/article_check.css" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="ad_check">
+    <input type="hidden" id="scCmsAdvIdHid">
+    <input type="hidden" id="scCmsAdvExamineHid">
+
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div id="page_R" class="right pull-right">
+                <form id="selectForm">
+                    <div id="search_box" class="clearfix">
+                        <div id="penName_box" class="fl">
+                            <p class="penName_tit">投放账户</p>
+                            <input id="penName_inp" class="penName_inp" type="text" name="scCmsAdvPlaceName">
+                        </div>
+                        <div id="field_box" class="fl">
+                            <p class="field_tit">投放平台</p>
+                            <select id="inputValue" class="form-control signform-input select" name="scCmsAdvPlatform">
+							<option value="">请选择</option>
+                            <!--<option value="1001">管理后台</option>-->
+                            <option value="1002">商户后台</option>
+                            <option value="1003">作家后台</option>
+						</select>
+                        </div>
+                        <!-- <span class="middle_line" id="mLine2">-</span> -->
+                        <div id="field_box" class="fl">
+                            <p class="field_tit">广告位</p>
+                            <select id="advStyleNameSec" class="form-control signform-input select" name="scCmsAdvPlaceId">
+							<option value="">请选择</option>
+						</select>
+                        </div>
+                        <div id="timeBox" class="fl">
+                            <p class="field_tit">申请投放时间</p>
+                            <input type="text" class="fl" id="start" name="scCmsAdvStart" />
+                            <input type="text" class="fl" id="end" name="scCmsAdvEnd" />
+                        </div>
+                        <div id="search_icon" class="fl"><img src="images/search.png" alt=""></div>
+                    </div>
+                </form>
+                <div id="article_box" class="clearfix">
+                    <div class="tabinner"></div>
+                    <br>
+                    <br>
+                    <div class="table account_table">
+                        <div id="account_Table" class="table-left">
+                            <div class="panel panel-default">
+                                <table class="table table-hover zx-table">
+                                    <thead id="table_head">
+                                        <th class="w50px">序号</th>
+                                        <th class="w100px">投放账户</th>
+                                        <th class="w100px">投递时间</th>
+                                        <th class="w100px">投放平台</th>
+                                        <th class="w100px">投放广告位</th>
+                                        <th class="w200px">申请投放时间</th>
+                                        <th>操作</th>
+                                    </thead>
+                                    <tbody id="statement_con"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="pageAd" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看广告详情模态框-->
+    <div id="advertiseDetail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="advertiseDBox modal-dialog modal-dialog2" role="document">
+            <div class="advertiseDMain modal-content modal-content2">
+                <div class="advertiseDTit modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4>广告详情</h4>
+                </div>
+                <div class="advertiseDCon clearfix">
+                    <div class="adDConLeft fl">
+                        <div>
+                            <p class="adDConLabel">投放账户：</p>
+                            <span id="scCmsAdvPlaceName"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">投放广告位：</p>
+                            <span id="scCmsAdvStyleName"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">广告来源：</p>
+                            <span id="scCmsAdvPlatForm"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">广告类型：</p>
+                            <span id="scCmsAdvSourceName"></span>
+                        </div>
+                        <div id="adDTypeHrefBox">
+                            <p class="adDConLabel">外部链接：</p>
+                            <span id="adDTypeHref"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">申请投放时间：</p>
+                            <span id="scCmsAdvStart"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">添加标签：</p>
+                            <div id="adDConTagList" class="adDConTagList">
+                                <span class="adDConTag">明星</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">提交时间：</p>
+                            <span id="scCmsAdvCreateTime"></span>
+                        </div>
+                    </div>
+                    <div class="adDConRight fr">
+                        <div class="adDConRightTit">
+                            <span>广告样式</span>
+                            <span id="adDConRType"></span>
+                        </div>
+                        <div id="adDConRSetImg" class="adDConRSetBox clearfix">
+                            <div class="adDConRSetLeft fl">
+                                <p id="advStyleResTitle"></p>
+                                <p class="adDConRSetBottom"><span class="adDConRIcon">[广告]</span></p>
+                            </div>
+                            <img id="adDConRSetRight" class="fr" src="" alt="">
+                        </div>
+                        <div id="adDConRSetImgList" class="adDConRSetBox clearfix">
+                            <p id="advStyleImgLTitle" class="advStyleResTitle"></p>
+                            <div id="adDConRSetImgsBox" class="adDConRSetImgList">
+                                <!--<img src="images/face2.png" alt="">
+                                <img src="images/face2.png" alt="">
+                                <img src="images/face2.png" alt="">-->
+                            </div>
+                            <p class="adDConRIcon">[广告]</p>
+                        </div>
+                        <div id="adDConRSetVideo" class="adDConRSetBox clearfix">
+                            <p id="advStyleVideoTitle" class="advStyleResTitle"></p>
+                            <div id="adDConRSetVideoUrl" class="adDConRSetImgList">
+                                <!--<video src="" poster='' controls='controls'></video>-->
+                            </div>
+                            <p class="adDConRIcon">[广告]</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="advertiseDBtnBox" class="modal-footer">
+                    <button id="passBtn" type="button" class="btn btn-success">通过</button>
+                    <button id="cancelBtn" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--不通过 start-->
+    <div id="notPassModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-dialog2" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <textarea class="wfull" id="notPassTxt" cols="30" rows="10" placeholder="输入不通过辅助说明..."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button id="notpassBtn" class="NotPass btn" type="button">提交不通过</button>
+                    <button class="modalShield btn" type="button" data-dismiss="modal">返回</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--不通过 end-->
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/countUp.min.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/ad_check.js"></script>
+    <script id="adList" type="html/text">
+        {{# var num = d.rows*(d.curr-1) }} {{# layui.each(d.data, function(index, item){ }}
+        <tr>
+            <td>{{ ++num }}</td>
+            <td>{{ item.advName || '智享头条' }}</td>
+            <td>{{ (item.scCmsAdvCreateTime).replace(".0","") || '' }}</td>
+            <td>{{ getPlatform(item.scCmsAdvPlatForm) || '' }}</td>
+            <td>{{ item.scCmsAdvStyleName || '' }}</td>
+            <td style="width:220px">{{ (item.scCmsAdvStart).replace(".0","") || '' }}-{{ (item.scCmsAdvEnd).replace(".0","") || '' }}</td>
+            <td>
+                <button type="button" class="tabNotice_btn viewBtn" data-toggle="modal" data-target="#advertiseDetail" scCmsAdvId={{item.scCmsAdvId}} scCmsAdvPlaceId={{item.scCmsAdvPlaceId}} scCmsAdvStyleName={{item.scCmsAdvStyleName}} scCmsAdvPlaceName={{item.advName
+                    || '智享头条'}} flag='{{ (item.scCmsAdvState == 1)? "1":"0" }}'>查看</button> {{# if(item.scCmsAdvState != 3){ }} {{# if(item.scCmsAdvExamine == 1){ }}
+                <button type="button" class="tabNotice_btn gray noPassBtn" data-toggle="modal" data-target="#notPassModal" scCmsAdvId={{item.scCmsAdvId}} scCmsAdvExamine={{item.scCmsAdvExamine}}>驳回</button> {{# }else if(item.scCmsAdvExamine == 2){ }}
+                <button type="button" class="tabNotice_btn blue passBtn" data-toggle="modal" data-target="#myModal" scCmsAdvId={{item.scCmsAdvId}}>通过</button> {{# }else{ }}
+                <button type="button" class="tabNotice_btn blue passBtn" data-toggle="modal" data-target="#myModal" scCmsAdvId={{item.scCmsAdvId}}>通过</button>
+                <button type="button" class="tabNotice_btn gray noPassBtn" data-toggle="modal" data-target="#notPassModal" scCmsAdvId={{item.scCmsAdvId}} scCmsAdvExamine={{item.scCmsAdvExamine}}>驳回</button> {{# } }} {{# } }}
+            </td>
+        </tr>
+        {{# }); }}
+    </script>
+</body>
+
+</html>

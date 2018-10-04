@@ -1,0 +1,1001 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="renderer" content="webkit">
+		<title>脸圈申请认证</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/application.css" />
+	</head>
+	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/artTemplate.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="lib/plupload-2.1.2/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/upload.js" type="text/javascript" charset="utf-8"></script>
+	<script src="lib/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+
+	<body>
+		<!--顶部-->
+		<div class="nav_top">
+			<div class="btn-group btn-navlist" role="group" aria-label="...">
+				<button type="button" class="btn btn-active navbtn1">申请认证</button>
+				<button type="button" class="btn btn-default navbtn2">平台认证</button>
+				<button type="button" class="btn btn-default navbtn3">店面确认</button>
+				<button type="button" class="btn btn-default navbtn4">已认证</button>
+			</div>
+			<div class="btn-group btn-delete" id="deleteBtn">
+				<button type="button" class="btn btn-active"><img src="img/delete.png"/></button>
+			</div>
+			<div class="btn-group btn-searchs" role="group" aria-label="...">
+				<!--<button type="button" class="btn btn-default">-->
+				<div class="input-append date form_date btn btn-default" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="z-index: 999;">
+					<input size="16" type="text" value="" readonly placeholder="请选择日期" id="topdate" class="btn btn-default">
+					<span class="add-on"><i class="icon-th"></i></span>
+					<!--<span class="clender-back"><img src="img/xiala.png"/></span>-->
+				</div>
+				<input type="hidden" id="dtp_input2" value="" />
+				<!--</button>-->
+				<button type="button" class="btn btn-sear btn-active"><img src="img/fangdajing.png"/></button>
+			</div>
+			<div class="btn-group dropdown btn-alls">
+				<button type="button" class="btn btn-default" id="alls-button">全部</button>
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+   					 <img src="img/xiala.png"/>
+  				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<li><a href="#">全部</a></li>
+					<li><a href="#">已读</a></li>
+					<li><a href="#">未读</a></li>
+				</ul>
+			</div>
+		</div>
+		<!--左侧用户列表-->
+		<div class="nav_left" id="nav_left"></div>
+
+		<!--个人展示页面模板-->
+		<div class="apply_content container-fluid" id="personalInfo">
+		</div>
+
+		<!--邀约信息-->
+		<div class="show_apply" id="showapplyForm">
+
+		</div>
+		<div class="apply_forms" id="applyChart">
+
+		</div>
+
+		<!--申请表单信息模板-->
+		<script type="text/html" id="applyForm">
+			<div class="row apply_person">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="apply_person_box">
+						<img src="<%=data.userpic%>?x-oss-process=image/resize,m_fill,w_200,h_200,limit_0" class="img-circle" />
+
+						<span class="charmbox">
+							<div id="charmNums" class="showcharmNum">
+								<%=data.charm%>
+							</div>
+							<p>魅力值</p>
+						</span>
+						<span class="charmbox">
+							<div id="fansNums" class="showcharmNum">
+								<%=data.fensiCount%>
+							</div>
+							<p>粉丝数</p>
+						</span>
+
+						<span class="user_information">	
+							<p id="user_name_gender"><span id="user_name"><%=data.name%></span><img src="img/girl.png" alt="" id="user_gender" /></p>
+						<p id="user_birthdayP"><img src="img/birthday.png" /><span id="user_birthday"><%=data.birth%></span></p>
+						<p id="user_tel_qq">
+							<span class="tel-box">
+									<img src="img/phone.png"/><span id="user_tel"><%=data.phone%></span>
+							</span>
+							<%if(data.mail){%>
+								<span class="email-box">
+										<img src="img/message.png"/><span id="user_emails"><%=data.mail%></span>
+								</span>
+							<%}
+								%>
+						</p>
+						</span>
+						<span class="yaoyue_icon"><img src="img/yiyaoyue.png"/></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row apply_form">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="apply_form_box">
+						<div class="apply_form_title">
+							申请表
+						</div>
+						<form action="javascript:;">
+							<div class="form-left">
+								<ul>
+									<li><span class="form-classify">姓名</span><input id="formUserName1" type="text" class="btn btn-default" placeholder="真实姓名" maxlength="5"/></li>
+									<li><span class="form-classify">爱好</span><input id="formUserHobby1" type="text" class="btn btn-default" placeholder="爱好" maxlength="10"/></li>
+									<li>
+										<span class="form-classify">性别</span>
+										<span class="radio-box radio-active">
+										<input type="radio" name="sex" value="男" checked="checked" />
+										</span>
+										<label for="">男</label>
+										<span class="radio-box">
+										<input type="radio" name="sex" value="女" />
+										</span>
+										<label for="">女</label>
+									</li>
+									<li><span class="form-classify">职业</span><input type="text" class="btn btn-default" placeholder="职业" id="formUserProfession1" maxlength="10"/></li>
+									<li><span class="form-classify">生日</span>
+										<div class="input-append date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+											<input size="16" type="text" value="" readonly placeholder="选择日期" id="formUserBirth1" class="btn btn-default">
+											<span class="add-on"><i class="icon-th"></i></span>
+											<span class="clender-back" style="z-index:999;pointer-events:none;"><img src="img/xiala.png"/></span>
+										</div>
+										<input type="hidden" id="dtp_input2" value="" />
+									</li>
+									<li>
+										<span class="form-classify">婚姻状况</span>
+										<span class="radio-box radio-active">
+										<input type="radio" name="marry" value="已婚" checked="checked" />
+										</span>
+										<label for="">已婚</label>
+										<span class="radio-box">
+										<input type="radio" name="marry" value="未婚" />
+										</span>
+										<label for="">未婚</label>
+									</li>
+								</ul>
+								<input type="submit" value="发送申请" id="sendApply" style="background-color:#1dbfaf;" />
+
+							</div>
+							<div class="form-right">
+								<div class="file_box">
+									<div id="idcardbtn1" class="idcardbtn"></div>
+									<div  class="idcardback"><img  src="img/zhengmian.png"/></div>
+									<div  class="progressBar"><p class="progress-bars"></p></div>
+									<input type="hidden" class="cardhidden typehidden1" imgsrcs=""/>
+								</div>
+								<div class="file_box">
+									<div id="idcardbtn2" class="idcardbtn"></div>
+									<div  class="idcardback"><img  src="img/beimian.png"/></div>
+									<div  class="progressBar"><p class="progress-bars"></p></div>
+									<input type="hidden" class="cardhidden typehidden2" imgsrcs=""/>
+								</div>								
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</script>
+		
+		<!--申请表单信息模板1,以前填过信息的初始化-->
+		<script type="text/html" id="applyForm1">
+			<div class="row apply_person">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="apply_person_box">
+						<img src="<%=data.userpic%>" class="img-circle" />
+
+						<span class="charmbox">
+							<div id="charmNums" class="showcharmNum">
+								<%=data.charm%>
+							</div>
+							<p>魅力值</p>
+						</span>
+						<span class="charmbox">
+							<div id="fansNums" class="showcharmNum">
+								<%=data.fensiCount%>
+							</div>
+							<p>粉丝数</p>
+						</span>
+
+						<span class="user_information">	
+							<p id="user_name_gender"><span id="user_name"><%=data.name%></span><img src="img/girl.png" alt="" id="user_gender" /></p>
+						<p id="user_birthdayP"><img src="img/birthday.png" /><span id="user_birthday"><%=data.birth%></span></p>
+						<p id="user_tel_qq">
+							<span class="tel-box">
+									<img src="img/phone.png"/><span id="user_tel"><%=data.phone%></span>
+							</span>
+							<%if(data.mail){%>
+								<span class="email-box">
+										<img src="img/message.png"/><span id="user_emails"><%=data.mail%></span>
+								</span>
+							<%}
+								%>
+						</p>
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row apply_form">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="apply_form_box">
+						<div class="apply_form_title">
+							申请表
+						</div>
+						<form action="javascript:;">
+							<div class="form-left">
+								<ul>
+									<li><span class="form-classify">姓名</span><input id="formUserName1" type="text" class="btn btn-default" value="<%=data.identification.name%>" maxlength="5"/></li>
+									<li><span class="form-classify">爱好</span><input id="formUserHobby1" type="text" class="btn btn-default" value="<%=data.identification.hobby%>" maxlength="10"/></li>
+									<li>
+										<span class="form-classify">性别</span>
+
+										<%if(data.identification.sex=="男"){%>
+											<span class="radio-box radio-active">
+												<input type="radio" name="sex" value="男" checked="checked" />
+											</span>
+											<label for="">男</label>
+											<span class="radio-box">
+												<input type="radio" name="sex" value="女" />
+											</span>
+											<label for="">女</label>
+											<%}else if(data.identification.sex=="女"){%>
+											<span class="radio-box">
+												<input type="radio" name="sex" value="男"/>
+											</span>
+											<label for="">男</label>
+											<span class="radio-box radio-active">
+												<input type="radio" name="sex" value="女" checked="checked" />
+											</span>
+											<label for="">女</label>
+												<%}
+										%>
+
+									</li>
+									<li><span class="form-classify">职业</span><input type="text" id="formUserProfession1" class="btn btn-default" placeholder="职业" value="<%=data.identification.profession%>" maxlength="10"/></li>
+									<li><span class="form-classify">生日</span>
+										<div class="input-append date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+											<input size="16" type="text" value="<%=data.identification.birth%>" id="formUserBirth1" placeholder="选择日期" class="btn btn-default">
+											<span class="add-on"><i class="icon-th"></i></span>
+											<span class="clender-back" style="z-index:999;pointer-events:none;"><img src="img/xiala.png"/></span>
+										</div>
+										<input type="hidden" id="dtp_input2" value="" />
+									</li>
+									<li>
+										<span class="form-classify">婚姻状况</span>
+
+										<%if(data.identification.maritalStatus=="已婚"){%>
+											<span class="radio-box radio-active">
+										<input type="radio" name="marry" value="已婚" checked="checked" />
+										</span>
+											<label for="">已婚</label>
+											<span class="radio-box">
+										<input type="radio" name="marry" value="未婚" />
+										</span>
+											<label for="">未婚</label>
+											<%}else if(data.identification.maritalStatus=="未婚"){%>
+												<span class="radio-box">
+										<input type="radio" name="marry" value="已婚"/>
+										</span>
+												<label for="">已婚</label>
+												<span class="radio-box radio-active">
+										<input type="radio" name="marry" value="未婚"  checked="checked" />
+										</span>
+												<label for="">未婚</label>
+												<%}
+										%>
+
+									</li>
+								</ul>
+								<input type="submit" value="发送申请" id="sendApply" style="background-color:#1dbfaf;" />
+
+							</div>
+							<div class="form-right">
+								<div class="file_box">
+									<div id="idcardbtn1" class="idcardbtn"></div>
+									<div  class="idcardback"><img  src="<%=data.identification.frontUrl%>"/></div>
+									<div  class="progressBar"><p class="progress-bars"></p></div>
+									<input type="hidden" class="cardhidden typehidden1" imgsrcs=""/>
+								</div>
+								<div class="file_box">
+									<div id="idcardbtn2" class="idcardbtn"></div>
+									<div  class="idcardback"><img  src="<%=data.identification.contraryUrl%>"/></div>
+									<div  class="progressBar"><p class="progress-bars"></p></div>
+									<input type="hidden" class="cardhidden typehidden2" imgsrcs=""/>
+								</div>	
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</script>		
+
+		<!--申请表单信息模板固定不可修改模板-->
+		<script type="text/html" id="applyFormFix">
+			<div class="row apply_person">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="apply_person_box">
+						<img src="<%=data.userpic%>?x-oss-process=image/resize,m_fill,w_200,h_200,limit_0" class="img-circle" />
+
+						<span class="charmbox">
+							<div id="charmNums" class="showcharmNum">
+								<%=data.charm%>
+							</div>
+							<p>魅力值</p>
+						</span>
+						<span class="charmbox">
+							<div id="fansNums" class="showcharmNum">
+								<%=data.fensiCount%>
+							</div>
+							<p>粉丝数</p>
+						</span>
+
+						<span class="user_information">	
+							<p id="user_name_gender"><span id="user_name"><%=data.name%></span><img src="img/girl.png" alt="" id="user_gender" /></p>
+						<p id="user_birthdayP"><img src="img/birthday.png" /><span id="user_birthday"><%=data.birth%></span></p>
+						<p id="user_tel_qq">
+							<span class="tel-box">
+									<img src="img/phone.png"/><span id="user_tel"><%=data.phone%></span>
+							</span>
+							<%if(data.mail){%>
+								<span class="email-box">
+										<img src="img/message.png"/><span id="user_emails"><%=data.mail%></span>
+								</span>
+							<%}
+								%>
+						</p>
+						</span>
+						<%if(data.status==2){%>
+							<span class="yaoyue_icon"><img src="img/yimiantan.png"/></span>
+							<%}else if(data.status==3){%>
+								<span class="yaoyue_icon haspassed_icon"><img src="img/passed.png"/></span>
+								<%}
+						%>
+					</div>
+				</div>
+			</div>
+
+			<div class="row apply_form">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="apply_form_box">
+						<div class="apply_form_title">
+							申请表
+						</div>
+						<form action="javascript:;">
+							<div class="form-left">
+								<ul>
+									<li><span class="form-classify">姓名</span><input id="formUserName" type="text" class="btn btn-default" value="<%=data.identification.name%>" readonly="readonly" /></li>
+									<li><span class="form-classify">爱好</span><input id="formUserHobby" type="text" class="btn btn-default" value="<%=data.identification.hobby%>" readonly="readonly" /></li>
+									<li>
+										<span class="form-classify">性别</span>
+
+										<%if(data.identification.sex=="男"){%>
+											<span class="radio-box radio-active">
+										<input type="radio" name="sex" value="0" checked="checked" />
+										</span>
+											<label for="">男</label>
+											<span class="radio-box">
+										<input type="radio" name="sex" value="1" />
+										</span>
+											<label for="">女</label>
+											<%}else if(data.identification.sex=="女"){%>
+												<span class="radio-box">
+										<input type="radio" name="sex" value="0" checked="checked" />
+										</span>
+												<label for="">男</label>
+												<span class="radio-box radio-active">
+										<input type="radio" name="sex" value="1" />
+										</span>
+												<label for="">女</label>
+												<%}
+										%>
+
+									</li>
+									<li><span class="form-classify">职业</span><input type="text" class="btn btn-default" placeholder="职业" value="<%=data.identification.profession%>" readonly="readonly" /></li>
+									<li><span class="form-classify">生日</span>
+										<div class="input-append date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+											<input size="16" type="text" value="<%=data.identification.birth%>" readonly placeholder="选择日期" class="btn btn-default">
+											<span class="add-on"><i class="icon-th"></i></span>
+											<span class="clender-back" style="z-index: 999;"><img src="img/xiala.png"/></span>
+										</div>
+										<input type="hidden" id="dtp_input2" value="" />
+									</li>
+									<li>
+										<span class="form-classify">婚姻状况</span>
+
+										<%if(data.identification.maritalStatus=="已婚"){%>
+											<span class="radio-box radio-active">
+										<input type="radio" name="marry" value="0" checked="checked" />
+										</span>
+											<label for="">已婚</label>
+											<span class="radio-box">
+										<input type="radio" name="marry" value="1" />
+										</span>
+											<label for="">未婚</label>
+											<%}else if(data.identification.maritalStatus=="未婚"){%>
+												<span class="radio-box">
+										<input type="radio" name="marry" value="0" checked="checked" />
+										</span>
+												<label for="">已婚</label>
+												<span class="radio-box radio-active">
+										<input type="radio" name="marry" value="1" />
+										</span>
+												<label for="">未婚</label>
+												<%}
+										%>
+
+									</li>
+								</ul>
+
+								<%if(data.status==2){%>
+									<input type="submit" value="审核中" style="background-color:#F9C383;" />
+									<%}else if(data.status==3){%>
+										<input type="submit" value="确定" id="ensureBtn" style="background-color:#3ab1e7;" status=3 />
+										<%}
+								%>
+
+							</div>
+							<div class="form-right">
+								<div class="file_box">
+									<div  class="idcardback">
+										<img  src="<%=data.identification.frontUrl%>"/>
+									</div>
+								</div>	
+								<div class="file_box">
+									<div  class="idcardback">
+										<img  src="<%=data.identification.contraryUrl%>"/>
+									</div>
+								</div>									
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</script>
+
+		<!--申请表单信息模板展示信息并且可修改，审核未通过-->
+		<script type="text/html" id="applyFormHalfFix">
+			<div class="row apply_person">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="apply_person_box">
+						<img src="<%=data.userpic%>" class="img-circle" />
+
+						<span class="charmbox">
+							<div id="charmNums" class="showcharmNum">
+								<%=data.charm%>
+							</div>
+							<p>魅力值</p>
+						</span>
+						<span class="charmbox">
+							<div id="fansNums" class="showcharmNum">
+								<%=data.fensiCount%>
+							</div>
+							<p>粉丝数</p>
+						</span>
+
+						<span class="user_information">	
+							<p id="user_name_gender"><span id="user_name"><%=data.name%></span><img src="img/girl.png" alt="" id="user_gender" /></p>
+						<p id="user_birthdayP"><img src="img/birthday.png" /><span id="user_birthday"><%=data.birth%></span></p>
+						<p id="user_tel_qq">
+							<span class="tel-box">
+									<img src="img/phone.png"/><span id="user_tel"><%=data.phone%></span>
+							</span>
+							<%if(data.mail){%>
+								<span class="email-box">
+										<img src="img/message.png"/><span id="user_emails"><%=data.mail%></span>
+								</span>
+							<%}
+								%>
+						</p>
+						</span>
+						<span class="yaoyue_icon haspassed_icon"><img src="img/nopassed.png"/></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row apply_form">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="apply_form_box">
+						<div class="apply_form_title">
+							申请表
+						</div>
+						<form action="javascript:;">
+							<div class="form-left">
+								<ul>
+									<li><span class="form-classify">姓名</span><input id="formUserName1" type="text" class="btn btn-default" value="<%=data.identification.name%>" maxlength="5"/></li>
+									<li><span class="form-classify">爱好</span><input id="formUserHobby1" type="text" class="btn btn-default" value="<%=data.identification.hobby%>" maxlength="10"/></li>
+									<li>
+										<span class="form-classify">性别</span>
+
+										<%if(data.identification.sex=="男"){%>
+											<span class="radio-box radio-active">
+												<input type="radio" name="sex" value="男" checked="checked" />
+											</span>
+											<label for="">男</label>
+											<span class="radio-box">
+												<input type="radio" name="sex" value="女" />
+											</span>
+											<label for="">女</label>
+											<%}else if(data.identification.sex=="女"){%>
+											<span class="radio-box">
+												<input type="radio" name="sex" value="男"/>
+											</span>
+											<label for="">男</label>
+											<span class="radio-box radio-active">
+												<input type="radio" name="sex" value="女" checked="checked" />
+											</span>
+											<label for="">女</label>
+												<%}
+										%>
+
+									</li>
+									<li><span class="form-classify">职业</span><input type="text" id="formUserProfession1" class="btn btn-default" placeholder="职业" value="<%=data.identification.profession%>" maxlength="10"/></li>
+									<li><span class="form-classify">生日</span>
+										<div class="input-append date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+											<input size="16" type="text" value="<%=data.identification.birth%>" id="formUserBirth1" placeholder="选择日期" class="btn btn-default">
+											<span class="add-on"><i class="icon-th"></i></span>
+											<span class="clender-back" style="z-index:999;pointer-events:none;"><img src="img/xiala.png"/></span>
+										</div>
+										<input type="hidden" id="dtp_input2" value="" />
+									</li>
+									<li>
+										<span class="form-classify">婚姻状况</span>
+
+										<%if(data.identification.maritalStatus=="已婚"){%>
+											<span class="radio-box radio-active">
+										<input type="radio" name="marry" value="已婚" checked="checked" />
+										</span>
+											<label for="">已婚</label>
+											<span class="radio-box">
+										<input type="radio" name="marry" value="未婚" />
+										</span>
+											<label for="">未婚</label>
+											<%}else if(data.identification.maritalStatus=="未婚"){%>
+												<span class="radio-box">
+										<input type="radio" name="marry" value="已婚"/>
+										</span>
+												<label for="">已婚</label>
+												<span class="radio-box radio-active">
+										<input type="radio" name="marry" value="未婚"  checked="checked" />
+										</span>
+												<label for="">未婚</label>
+												<%}
+										%>
+
+									</li>
+								</ul>
+								<p id="sorryNopass" style="display: block;">审核未通过，<%=data.cause%>，请重新填写</p>
+								<input type="submit" value="重新提交" style="background-color:#CFB4A0;" id="reApply"/>
+
+							</div>
+							<div class="form-right">
+								<div class="file_box">
+									<div id="idcardbtn3" class="idcardbtn"></div>
+									<div  class="idcardback"><img  src="<%=data.identification.frontUrl%>"/></div>
+									<div  class="progressBar"><p class="progress-bars"></p></div>
+									<input type="hidden" class="cardhidden typehidden1" imgsrcs=""/>
+								</div>
+								<div class="file_box">
+									<div id="idcardbtn4" class="idcardbtn"></div>
+									<div  class="idcardback"><img  src="<%=data.identification.contraryUrl%>"/></div>
+									<div  class="progressBar"><p class="progress-bars"></p></div>
+									<input type="hidden" class="cardhidden typehidden2" imgsrcs=""/>
+								</div>	
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</script>
+
+		<!--弹出层信息-->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display:none;position: fixed;top: 0;">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span><img src="img/guanbi.png" alt=""/></span>	
+					</button>
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">完善邀约信息</h4>
+					</div>
+					<div class="modal-body">
+						<p>邀约时间（必填）</p>
+						<form class="form-inline" id="apply_day">
+							<div class="form-group">
+								<select name="year1" class="form-control" id="applyYear">
+								</select>
+								<select name="month1" class="form-control" id="applyMonth">
+								</select>
+								<select name="day1" class="form-control" id="applyDay">
+								</select>
+								<select name="time1" class="form-control" id="applyTime">
+									<option value="00:00">00：00</option>
+									<option value="01:00">01：00</option>
+									<option value="02:00">02：00</option>
+									<option value="03:00">03：00</option>
+									<option value="04:00">04：00</option>
+									<option value="05:00">05：00</option>	
+									<option value="06:00">06：00</option>
+									<option value="07:00">07：00</option>										
+									<option value="08:00">08：00</option>
+									<option value="09:00">09：00</option>
+									<option value="10:00">10：00</option>
+									<option value="11:00">11：00</option>
+									<option value="12:00">12：00</option>
+									<option value="13:00">13：00</option>
+									<option value="14:00">14：00</option>
+									<option value="15:00">15：00</option>	
+									<option value="16:00">16：00</option>
+									<option value="17:00">17：00</option>
+									<option value="18:00">18：00</option>
+									<option value="19:00">19：00</option>
+									<option value="20:00">20：00</option>
+									<option value="21:00">21：00</option>
+									<option value="19:00">22：00</option>
+									<option value="20:00">23：00</option>
+								</select>
+							</div>
+						</form>
+						<p>邀约地址（必填）</p>
+						<form class="form-inline" id="apply_address">
+							<div id="distpicker">
+								<div class="form-group">
+									<label class="sr-only" for="province1">Province</label>
+									<select class="form-control mycontrol" id="province1"></select>
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="city1">City</label>
+									<select class="form-control mycontrol" id="city1"></select>
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="district1">District</label>
+									<select class="form-control mycontrol" id="district1"></select>
+								</div>
+							</div>
+						</form>
+						<br />
+						<form>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="请填写详细地址(限30字以内)" maxlength="30" id="address_detail" />
+							</div>
+						</form>
+						<p>备注信息（必填）</p>
+
+						<form>
+							<div class="form-group">
+								<textarea class="form-control" rows="4" placeholder="请完善邀约信息(限50字以内)" maxlength="50" id="applyComment"></textarea>
+							</div>
+						</form>
+					</div>
+					<div class="modal_footer">
+						<button type="button" class="btn" id="sendYaoyue">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--左侧栏模板展示内容-->
+		<script type="text/html" id="leftList">
+
+			<ul class="nav nav-pills nav-stacked nav_infoList">
+				<%for(var i=0;i<data.begLogList.length;i++){%>
+					<%if(data.begLogList[i].status==0){%>
+						<li class="nav_info novisited applyNoRead" begId=<%=data.begLogList[i].id%> userId=
+							<%=data.begLogList[i].userId%> >
+								<img src="<%=data.begLogList[i].userpic%>?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" class="img-circle" />
+								<p class="apply_name">
+									<%=data.begLogList[i].username%>
+								</p>
+								<p><span class="apply_date"><%=data.begLogList[i].createTime.substr(5,5)%></span><span class="apply_time"><%=data.begLogList[i].createTime.substr(11,5)%></span></p>
+								<span class="apply_yue"></span>
+								<%if(!data.begLogList[i].read){%>
+									<span class="apply_point"></span>
+									<%}
+								%>
+						</li>
+						<%}else if(data.begLogList[i].status==1){%>
+							<li class="nav_info novisited applied" begId=<%=data.begLogList[i].id%> userId=
+								<%=data.begLogList[i].userId%> >
+									<img src="<%=data.begLogList[i].userpic%>?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" class="img-circle" />
+									<p class="apply_name">
+										<%=data.begLogList[i].username%>
+									</p>
+									<p><span class="apply_date"><%=data.begLogList[i].createTime.substr(5,5)%></span><span class="apply_time"><%=data.begLogList[i].createTime.substr(11,5)%></span></p>
+									<span class="apply_yue"></span>
+									<%if(!data.begLogList[i].read){%>
+										<span class="apply_point"></span>
+										<%}
+								%>
+							</li>
+							<%}else if(data.begLogList[i].status==2){%>
+								<li class="nav_info novisited review" begId=<%=data.begLogList[i].id%> userId=
+									<%=data.begLogList[i].userId%> >
+										<img src="<%=data.begLogList[i].userpic%>?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" class="img-circle" />
+										<p class="apply_name">
+											<%=data.begLogList[i].username%>
+										</p>
+										<p><span class="apply_date"><%=data.begLogList[i].createTime.substr(5,5)%></span><span class="apply_time"><%=data.begLogList[i].createTime.substr(11,5)%></span></p>
+										<span class="apply_yue"></span>
+										<%if(!data.begLogList[i].read){%>
+											<span class="apply_point"></span>
+											<%}
+								%>
+								</li>
+								<%}else if(data.begLogList[i].status==3){%>
+									<li class="nav_info novisited confirm" begId=<%=data.begLogList[i].id%> userId=
+										<%=data.begLogList[i].userId%> >
+											<img src="<%=data.begLogList[i].userpic%>?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" class="img-circle" />
+											<p class="apply_name">
+												<%=data.begLogList[i].username%>
+											</p>
+											<p><span class="apply_date"><%=data.begLogList[i].createTime.substr(5,5)%></span><span class="apply_time"><%=data.begLogList[i].createTime.substr(11,5)%></span></p>
+											<span class="apply_yue"></span>
+											<%if(!data.begLogList[i].read){%>
+												<span class="apply_point"></span>
+												<%}
+								%>
+									</li>
+									<%}else if(data.begLogList[i].status==4){%>
+										<li class="nav_info novisited confirmed" begId=<%=data.begLogList[i].id%> userId=
+											<%=data.begLogList[i].userId%> >
+												<img src="<%=data.begLogList[i].userpic%>?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" class="img-circle" />
+												<p class="apply_name">
+													<%=data.begLogList[i].username%>
+												</p>
+												<p><span class="apply_date"><%=data.begLogList[i].createTime.substr(5,5)%></span><span class="apply_time"><%=data.begLogList[i].createTime.substr(11,5)%></span></p>
+												<span class="apply_yue"></span>
+												<%if(!data.begLogList[i].read){%>
+													<span class="apply_point"></span>
+													<%}
+									%>
+										</li>
+										<%}
+					%>
+											<%}
+				%>
+			</ul>
+		</script>
+
+		<script type="text/html" id="leftList2">
+			<ul class="nav nav-pills nav-stacked nav_infoList">
+				<%for(var i=0;i<data.attestationUsers.length;i++){%>
+					<li class="nav_info visited hasConfirmed" userId="<%=data.attestationUsers[i].userId%>">
+						<img src="<%=data.attestationUsers[i].userpic%>?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" class="img-circle" />
+						<p class="apply_name">
+							<%=data.attestationUsers[i].username%>
+						</p>
+						<p><span class="apply_date"><%=data.attestationUsers[i].createTime.substr(5,5)%></span><span class="apply_time"><%=data.attestationUsers[i].createTime.substr(11,5)%></span></p>
+						<span class="apply_yue"></span>
+						<span class="apply_point"></span>
+					</li>
+					<%}
+					%>
+
+			</ul>
+		</script>
+
+		<!--右侧个人展示模板-->
+		<script type="text/html" id="personalInfoList">
+			<div class="row three-colomn">
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div class="content_box">
+						<img src="<%=data.userpic%>?x-oss-process=image/resize,m_fill,w_600,h_600,limit_0" />
+					</div>
+				</div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<div class="content_box" style="background-color:#9986f9;">
+						<span><img src="img/fensi.png"/></span>
+						<div class="fansNum" id="fansNum">
+							<%=data.fensiCount%>
+						</div>
+						<div class="fans">
+							粉丝数
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<div class="content_box" style="background-color:#84d7f9;">
+						<span><img src="img/meili.png"/></span>
+						<div class="fansNum" id="charmNum">
+							<%=data.charm%>
+						</div>
+						<div class="fans">
+							魅力值
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row two-column">
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div id="carousel-example-generic" class="slide carousel" data-ride="carousel">
+						<!-- Indicators -->
+						<%if(data.pictures.length>1){%>
+						<ol class="carousel-indicators">
+							<%for(var i=0;i<data.pictures.length;i++){%>
+							<li data-target="#carousel-example-generic" data-slide-to="0"></li>
+								<%}
+							%>							
+						</ol>
+								<%}
+							%>
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner" role="listbox">
+						<%if(data.pictures.length>0){%>	
+								<%for(var i=0;i<data.pictures.length;i++){%>
+									<div class="item">
+										<img src="<%=data.pictures[i].fileUrl%>?x-oss-process=image/resize,m_fill,w_954,h_604,limit_0" alt="...">
+									</div>
+									<%}
+								%>
+							<%}else if(data.pictures.length==0){%>
+								<div class="carousel_nodata">暂未发布图片！</div>
+							<%}
+						%>							
+						</div>
+
+						<!-- Controls -->
+						<%if(data.pictures.length>1){%>						
+						<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+							<span class="arrow_icon"><img src="img/arrow_left.png"/></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+							<span class="arrow_icon"><img src="img/arrow_right.png"/></span>
+							<span class="sr-only">Next</span>
+						</a>
+								<%}
+							%>
+					</div>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="showInformation">
+						<div class="person_information_title">个人信息</div>
+						<div class="person_information_table">
+							<table border="0" cellspacing="1" cellpadding="1" class="table">
+								<tr>
+									<td>姓名</td>
+									<td>
+										<%=data.name%>
+									</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>性别</td>
+									<td>
+										<%=data.sex%>
+									</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>电话</td>
+									<td>
+										<%=data.phone%>
+									</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>邮箱</td>
+									<td>
+										<%if(data.main){%>
+											<%=data.mail%>
+										<%}else{%>
+											<%="该用户未填写"%>
+											<%}
+										%>
+									</td>
+									<td><button class="btn btn-primary" data-toggle="modal" data-target="#myModal">邀约</button></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</script>
+
+
+		
+		<script type="text/html" id="showCharts">
+			 <div>
+            <div class="column_box">
+                <div class="three_row">
+                    <div class=" money_smallbox">
+                        <img src="img/shouyi.png" class="money"alt=""/>
+                        <span class="moneyNum"><%=data.allSum%>只</span>
+                        <span class="income">总收益（猪仔）</span>
+                    </div>
+                </div>
+                <div class="three_row">
+                    <div class=" fans_smallbox">
+                        <img src="img/fensi.png" class="fans"alt=""/>
+                        <span class="fansNum"><%=data.fensiCount%></span>
+                        <span class="followersCount">粉丝数</span>
+                    </div>
+                </div>
+                <div class="three_row">
+                    <div class=" charm_smallbox">
+                        <img src="img/meili.png" class="charm"alt=""/>
+                        <span class="charmNum"><%=data.charm%></span>
+                        <span class="charmValue">魅力值</span>
+                    </div>
+                </div>
+            </div>
+            <div class="two_row ">
+                <div class="information_box">
+                    <div class="information_smallbox">
+                        <img src="<%=data.userpic%>?x-oss-process=image/resize,m_fill,w_200,h_200,limit_0" class="zipai"alt=""/>
+                        <div class="person_name"><%=data.identification.name%></div>
+                        <span class="person">
+                            <span class="person_old"><%=data.age%>岁</span>
+                            <span><img src="img/girl.png" class="female" alt=""/></span>
+                        </span>
+
+                        <table border="0" cellpadding="1" cellspacing="1">
+                            <tr>
+
+                                <td>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话:</td>
+                                <td><%=data.phone%></td>
+                            </tr>
+
+                            <!--<tr>
+                                <td>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</td>
+                                 <td><%=data.mail%></td>
+                            </tr>-->
+
+                            <td>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</td>
+                             <td><%=data.identification.profession%></td>
+                            </tr>
+
+                            <tr>
+                                <td>婚姻情况：</td>
+                                 <td><%=data.identification.maritalStatus%></td>
+                            </tr>
+
+                            <tr>
+                                <td>签约时间：</td>
+                                <td><%=data.createTime%></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="earnings_box">
+                    <div class="earnings_smallbox">
+                        <div id="income"></div>
+						<div class="btn-group" role="group" aria-label="...">
+						  <button type="button" class="btn btn-default " id="month1">月</button>
+						  <button type="button" class="btn btn-default" id="week1">周</button>
+						  <button type="button" class="btn btn-default btn-active" id="day1">日</button>
+						</div>                        
+                        
+                    </div>
+                </div>
+            </div>
+             <div class="two_row ">
+                 <div class="ranking_box">
+                     <div class="ranking_smallbox">
+                         <div id="ranking" style="height:450px"></div>
+                         <div class="ranking_text" >今日收益（猪仔）&nbsp;&nbsp;&nbsp;&nbsp;<span class="ranking_num" style="color:#000000;font-weight: bold;"><%=data.daySum%>只</span></div>
+                     </div>
+
+                 </div>
+                 <div class="rankingtide_box">
+                     <div class="rankingtide_smallbox">
+                         <div id="rankingtide"></div>
+						<div class="btn-group" role="group" aria-label="...">
+						  <button type="button" class="btn btn-default " id="month2">月</button>
+						  <button type="button" class="btn btn-default" id="week2">周</button>
+						  <button type="button" class="btn btn-default btn-active" id="day2">日</button>
+						</div>
+                     </div>
+
+                 </div>
+		</script>
+
+	</body>
+	<script src="js/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/locales/bootstrap-datetimepicker.zh-CN.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/distpicker.data.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/distpicker.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/YMDClass.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/echarts.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

@@ -1,0 +1,110 @@
+@charset "utf-8";
+@import 'index.less';
+.main-top {
+    margin-top: 44px;
+}
+
+.main {
+    margin-top: 26px;
+}
+
+.searchBox {
+    margin-top: 12px;
+    .tt-input__inner {
+        width: 560px;
+    }
+    .searchA {
+        width: 50px;
+        height: 40px;
+        border-radius: 4px;
+        background: #ffbf14;
+        text-align: center;
+        line-height: 40px;
+    }
+}
+.container .blankPage{
+    padding-top: 160px;
+    img{
+        margin: 0 auto;
+        display: block;
+    }
+    p{  
+        margin-top: 80px;
+        font-size: 16px;
+        color: #999;
+        text-align: center;
+    }
+}
+// 右侧内容
+.right {
+    .right_title {
+        height: 24px;
+        .title_name {
+            font-weight: bold;
+            font-size: 20px;
+            color: #333333;
+            line-height: 24px;
+        }
+        i {
+            width: 4px;
+            height: 24px;
+            margin-right: 10px;
+            background-color: #e0041a;
+        }
+    }
+    .relatedBox {
+        width: 350px;
+        padding: 20px;
+        overflow: hidden;
+        background-color: #f8f8f8;
+        .relatedContent {
+            clear: both;
+            margin-top: 10px;
+            li {
+                height: auto;
+                line-height: 40px;
+                padding: 0 10px;
+                border-radius: 3px;
+                margin-top: 10px;
+                margin-right: 10px;
+                font-size: 16px;
+                text-align: center;
+                border: solid 1px #e0041a;
+                a:hover {
+                    color: #333;
+                }
+            }
+        }
+    }
+    .hotBox {
+        width: 350px;
+        padding: 20px;
+        margin-top: 20px;
+        overflow: hidden;
+        background-color: #f8f8f8;
+        .hotContent {
+            margin-top: 20px;
+            li {
+                margin-top: 10px;
+                font-size: 16px;
+                .num {
+                    width: 30px;
+                    color: #999;
+                    font-size: 24px;
+                    font-style: italic;
+                    display: inline-block;
+                    margin-right: 10px;
+                    &.num1 {
+                        color: #e0041a;
+                    }
+                    &.num2 {
+                        color: #ff7171;
+                    }
+                    &.num3 {
+                        color: #ffbf14;
+                    }
+                }
+            }
+        }
+    }
+}

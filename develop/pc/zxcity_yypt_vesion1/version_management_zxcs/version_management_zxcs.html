@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>参数设置</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common_v2.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="css/version_management.css" />
+</head>
+<body>
+
+<div id="app">
+    <div id="common-tool" class="clearfix p4">
+        <div id="search">
+            <ul class="search-ul clearfix">
+                <li class="search-li act" data-platform="ios">智享城市ios端</li>
+                <li class="search-li" data-platform="android">智享城市Android端</li>
+
+            </ul>
+        </div>
+    </div>
+    <div id="con" class="clearfix">
+        <ul class="left-con">
+            <li class="thead fs12 l">版本管理</li>
+            <li class="">版本号</li>
+            <!--<li class="h144">logo管理</li>-->
+            <li class="">下载地址</li>
+            <li class="">是否强制更新</li>
+            <li class="h144">更新日志</li>
+            <li class="">是否有补丁</li>
+            <li class="">MD5</li>
+            <li class="">版本代码</li>
+            <li class="">是否显示游戏入口</li>
+            <li class="">区域信息下载地址</li>
+            <li class="h144">新特性</li>
+        </ul>
+        <ul class="right-con layui-form">
+            <li class="thead fs12 r">
+                <a data-url="history_version_management.html" data-name="版本变更记录"  id="goHistory">版本变更记录</a>
+                <button class="layui-btn layui-btn-normal layui-btn" id="save">保存</button>
+            </li>
+            <li class="p5">
+                <input type="text" class="form-control h28" id="version" lay-verify="required"/>
+            </li>
+            <!--<li class="h144">logo管理</li>-->
+            <li class="p5">
+                <input type="text" class="form-control h28" id="url" lay-verify="required"/>
+            </li>
+            <li class="p5">
+                <select class="form-control h28 p05  b6" id="forceNew" lay-ignore/>
+                <option value="0">否</option>
+                <option value="1">是</option>
+                </select>
+            </li>
+            <li class="h144 p5">
+                <textarea rows="" cols="" class="form-control h100p" id="updateLog" lay-verify="required"></textarea>
+            </li>
+            <li class="p5">
+                <select class="form-control h28 p05  b6" id="hasPatch" lay-ignore/>
+                <option value="0">否</option>
+                <option value="1">是</option>
+                </select>
+            </li>
+            <li class="p5">
+                <input type="text" class="form-control h28" id="md5" lay-verify="required"/ placeholder="必填">
+            </li>
+            <li class="p5">
+                <input type="text" class="form-control h28" id="versionCode" lay-verify="required||number"/ placeholder="必填">
+            </li>
+            <li class="p5">
+                <select class="form-control h28 p05  b6" id="showGame" lay-ignore/>
+                <option value="0">否</option>
+                <option value="1">是</option>
+                </select>
+            </li>
+            <li class="p5">
+                <input type="text" class="form-control h28" id="areaurl" / placeholder="必填">
+            </li>
+            <li class="h144 p5">
+                <textarea rows="" cols="" class="form-control h100p" id="newSpecific" lay-verify="required"></textarea>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/login_success.js"></script>
+
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="js/version_management.js"></script>
+
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+</html>

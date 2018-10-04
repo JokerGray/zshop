@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>证书审核管理</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" href="../framework/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="./css/yueba_common.css">
+</head>
+<body>
+    <ol class="breadcrumb">
+        <li><a href="#">App管理</a></li>
+        <li><a href="#">约吧</a></li>
+        <li class="active">证书审核管理</li>
+    </ol>
+    <div class="container-fluid">
+        <div id="toolbar" class="bars">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="skillName">证书名称</label>
+                    <input type="text" class="form-control" id="skillName">
+                </div>
+                <!-- <div class="form-group">
+                    <label for="serviceName">服务名称</label>
+                    <input type="text" class="form-control" id="serviceName">
+                </div> -->
+                <div class="form-group">
+                    <label for="userName">发布人</label>
+                    <input type="text" class="form-control" id="userName">
+                </div>
+                <button type="button" class="btn btn-default" onclick="search()"><i class="fa fa-search"></i> 查询</button>
+            </form>
+        </div>
+        <table id="table" class="table table-hover table-bordered"></table>
+    </div>
+
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="../framework/bootstrap/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../framework/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="./js/yueba_common.js"></script>
+    <script type="text/javascript" src="./js/certificate.js?v=1"></script>
+</body>
+
+</html>

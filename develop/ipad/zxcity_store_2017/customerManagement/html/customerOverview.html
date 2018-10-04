@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1"/>
+		<link rel="stylesheet" href="../../common/assets/css/bootstrap.css" />
+		<link rel="stylesheet" href="../../common/assets/paging/dist/paging.css">
+		<link rel="stylesheet" href="../../common/css/common.css" />
+		<link rel="stylesheet" href="../css/customerOverview.css"/>
+		<title></title>
+	</head>
+	<body class="homePage">
+		<!-- 以下是正式内容 -->
+		<div class="main-title">
+			<h5 class="title">客情分析</h5>
+		</div>
+	    <div class="main-content homePage">
+			<div class="tab-content">
+				<div id="tabCon1">
+					<table class="table">
+						<tbody>
+							<tr>
+								<td colspan="2" class="half-item item-1">
+									<ul>
+										<li>会员姓名：<span id="mName"></span></li>
+										<li>会员等级：<span id="mLevel"></span></li>
+										<li>联系方式：<span id="mPhone"></span></li>
+										<li>会员类型：<span id="mType"></span></li>
+										<li>会员编号：<span id="mNo"></span></li>
+										<li>开卡时间：<span id="mTime"></span></li>
+									</ul>
+								</td>
+								<td colspan="2" class="half-item item-2">
+									<div class="sub-item">
+										<p id="mMoney">0</p>
+										<span>本金</span>
+									</div>
+									<div class="sub-item">
+										<p id="mCardMoney">0</p>
+										<span>卡项资金</span>
+									</div>
+								</td>
+							</tr>
+							<tr class="item-3">
+								<td colspan="2">
+									<p id="mYYCS">0</p>
+									<span>预约次数</span>
+								</td>
+								<td>
+									<p id="mXHYJ">0</p>
+									<a id="consumenDetailLink" data-type="2" href="javascript:;">消耗额</a>
+								</td>
+								<td>
+									<p id="mXSYJ">0</p>
+									<a id="saleDetailLink" data-type="1" href="javascript:;">销售额</a>
+								</td>
+							</tr>
+							<tr class="item-4">
+								<td colspan="2">
+									<p id="mGMCP">0</p>
+									<span>购买产品</span>
+								</td>
+								<td colspan="2">
+									<p id="mXMK">0</p>
+									<span>项目卡</span>
+								</td>
+							</tr>
+							<tr class="item-5">
+								<td colspan="4">
+									<div id="customerChart1"></div>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+				<div id="tabCon2" class="hide">
+					<div class="card-list"></div>
+				</div>
+				<div id="tabCon3" class="hide">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>工单号</th>
+								<th>客户</th>
+								<th>开单者</th>
+								<th>时间</th>
+								<th>状态</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+					<div class="pageview" id="workPage"></div>
+				</div>
+				<div id="tabCon4" class="hide">
+					<div class="order-list"></div>
+					<div class="pageview" id="orderPage"></div>
+				</div>
+			</div>
+
+	    </div>
+
+		<script src="../../common/assets/jquery.min.js"></script>
+		<script src="../../common/assets/jquery.bootpag.min.js"></script>
+		<script src="../../common/assets/layer/layer.js"></script>
+		<script src="../../common/assets/echarts.simple.min.js"></script>
+		<script src="../../common/assets/paging/dist/paging.js"></script>
+		<script src="../../common/js/common.js"></script>
+		<script src="../js/customerOverview.js"></script>
+	</body>
+</html>

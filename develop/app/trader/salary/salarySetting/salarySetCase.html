@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工资设置</title>
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+	<link  rel="stylesheet" href="../../assets/select2-v4.0.6/css/select2.min.css">
+	<link rel="stylesheet" href="css/common.css">
+	<style>
+		.selectInfos input.select2-search__field {
+		    height: 22px;
+		}
+
+		span.select2.select2-container.select2-container--default {
+		    width: 100%!important;
+		}
+		
+		body{
+			min-width: 1200px;
+		}
+		
+		.contain{
+			padding-left:55px;
+			font-family: '微软雅黑'; 
+		}
+	
+		.state{
+			height: 20px;
+		    line-height: 20px;
+		    font-size: 18px;
+		    margin-top: 15px;
+		    color: #333;
+		}
+		.state::before{
+			display: inline-block;
+		    content: '';
+		    width: 4px;
+		    height: 18px;
+		    background: #1DBFAF;
+		    vertical-align: bottom;
+		    margin-right: 5px;
+		}
+
+		.skyBule{
+			color:#09CCC2;
+		}
+		.baseInfo{
+			padding:15px 0;
+			width: 85%;
+			background: #f9f9f9;
+			overflow: hidden;
+		}
+		.baseInfo>div{
+			padding-bottom: 10px;
+		}
+		.baseInfo>div p{
+			margin-bottom:0;
+		}
+		.caseInfo,.cassDescribe{
+			display: inline-block;
+			border:1px solid #c2c2c2;
+			width: 85%;
+    		vertical-align: top;
+    		line-height: 28px;
+    		padding-left: 8px;
+		}
+		.caseMessage{
+			margin-top: 20px;
+		    width: 85%;
+		    background: #f9f9f9;
+		    padding: 15px 0;
+		}
+		.baseInfo label,.caseMessage label,.customPerformance label{
+			width: 100px;
+			text-align: right;
+			font-size: 15px;
+		}
+
+		.baseInfo #positionName{
+		    width: 150px;
+    		height: 30px;
+		}
+		.baseInfo .caseName {
+			width: 60%;
+			height: 34px;
+			padding-left: 10px;
+		}
+	
+		.rulesNames{
+			width: 60%;
+			height: 34px;
+			padding-left: 10px;
+		}
+		.rulesDescribe{
+			display: inline-block;
+		}
+		
+		.rulesMessage{
+			width: 100%;
+			padding-left: 100px;
+		}
+		.rulesMessage .rulesItem1,.rulesMessage .rulesItem2{
+			display: inline-block;
+			width: 23%;
+			height: 160px;
+			border:1px solid #eee;
+			vertical-align: top;
+			margin-right: 10px;
+		}
+
+		.rulesMessage>div p{
+			background: #26C2B2;
+			color: #fff;
+			padding: 5px 0 5px 15px;
+		}
+		.rulesMessage>div .accountSelec,.rulesMessage>div .goodsSelec,.rulesMessage>div .serviceSelec,.rulesMessage>div .serviceCardSelec{
+			text-align: center;
+			margin-top: 30px;
+		}
+		.rulesMessage>div div select{
+			width: 150px;
+			height: 28px;
+		}
+		.performanceRules {
+		    padding-left: 100px;
+		}
+		.performanceRules>div{
+			text-align: left;
+			margin:5px 0;
+			font-weight: bold;
+		}
+		.performanceRules input{
+			width: 100px;
+			height: 34px;
+			font-weight: normal;
+			padding:8px;
+		}
+		.performanceRules .typeSelec{
+			display: inline-block;
+			width: 48px;
+		}
+		.performanceRules .typeSelec select{
+			width: 100%;
+		}
+		.paddingH{
+			padding:10px 0;
+		}
+		.back{
+			text-decoration: none;
+			display: inline-block;
+		    padding: 6px 15px;
+		    margin-top: 10px;
+		    border: 1px solid #eee;
+		    border-radius: 5px;
+		    background: #26C2B2;
+		    color: #fff!important;
+		}
+
+		.submit{
+			text-align: center;
+			text-decoration: none;
+		}
+		.submitBtn{
+			display: inline-block;
+		    padding: 5px 25px;
+		    margin: 30px 0;
+		    background: #26C2B2;
+		    border-radius: 4px;
+		    color: #fff!important;
+		}
+
+		
+		input{
+			height: 34px;
+		}
+		select{
+			height: 34px;
+		}
+		input.money {
+		    width: 120px;
+		    padding-left: 10px;
+		}
+
+		/**/
+		.positions {
+		    display: inline-block;
+		    width: 120px;
+		}
+		h5{
+			margin: 0;
+		}
+		.cassDescribe {
+		    padding:0 10px;
+		    min-height: 80px;
+		    background: #eee;
+		}
+		.caseDescribeItem{
+			padding: 10px 0;
+			border-bottom: 1px solid #e2e2e2;
+		}
+		.caseDescribeItem:last-of-type{
+			border:0;
+		}
+		.caseInfos{
+			display: inline-block;
+			width: 80%;
+			padding-left: 10px;
+			margin-top: 5px;
+		}
+		/*.caseSetting{
+			display: inline-block;
+			width: 19%;
+			text-align: right;
+			color:#26C2B2!important;
+		}*/
+		/*.deleteRules{
+			display: inline-block;
+			width: 19%;
+			text-align: right;
+			color:#26C2B2!important;
+		}*/
+		.settingRule{
+			display: inline-block;
+			width: 19%;
+			text-align: right;
+			color:#26C2B2!important;
+		}
+		.caseSetting{
+			color:#26C2B2!important;
+		}
+		.deleteRules{
+			color:#ed5565!important;
+		}
+
+		.selecs{
+			width: 140px;
+			margin: 0 auto;
+			background: #999;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			margin-top: 20px;
+			color:#fff;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		
+		.add,.delete{
+			display: inline-block;
+		    width: 34px;
+		    height: 34px;
+		    background: #26C2B2;
+		    vertical-align: top;
+		    line-height: 34px;
+		    text-align: center;
+		    color: #fff!important;
+		    font-size: 15px;
+		    border-radius: 4px;
+		}
+
+		.divideClassItem {
+		    margin-bottom: 10px;
+		}
+		
+ 	</style>
+</head>
+<body>
+	<div class="contain">
+		<!-- 方案主键id -->
+		<input type="hidden" class="projectId">
+		<!-- 主键值 -->
+		<input type="hidden" class="contentKeyId">
+		<!-- 自定义规则 主键id -->
+		<input type="hidden" class="customId">
+		<!-- 自定义规格 规则表主键 -->
+		<input type="hidden" class="customRuleId">
+
+
+
+
+		<div class="navs">
+			<a class="base_salary active">基础薪资板块</a>
+			<a class="recruitment_salary">招聘薪资板块</a>
+			<a class="talk_salary">拓客薪资板块</a>
+			<a class="service_salary">服务薪资板块</a>
+			<a class="management_salary">管理薪资板块</a>
+			<a class="activity_salary">活动薪资板块</a>
+		</div>
+
+		<!-- 返回按钮 -->
+		<a class="back">返回</a>
+
+		<!--  -->
+		<div class="state">
+			请设置业绩提成方案
+		</div>
+
+		<div class="baseInfo">
+			<div>
+				<label>职务：</label>
+				<div class="positions">
+					<select name="" id="positionName" style="width: 150px;">
+						
+					</select>
+				</div>
+			</div>
+			<div class="caseInfoMessage">
+				<div>
+					<label>方案名称：</label>
+					<input type="text" class="caseName" maxlength="20">
+				</div>
+			</div>
+			<div class="caseInfoMessage">
+				<label>方案描述：</label>
+				<div class="cassDescribe">
+					<!-- <div class="caseDescribeItem" style="display: none;">
+						<h5>规则<span class="counts">1</span>：</h5>
+						<div>
+							<div class="caseInfos"></div>
+							<div class="settingRule">
+								<a href="javascript:;" class="deleteRules" onclick="deleteRule(this)">删除规则</a><br>
+								<a href="javascript:;" class="caseSetting">查看设置</a>
+							</div>
+						</div>
+					</div> -->
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="caseMessage">
+			<div style="text-align: right;">
+				<a href="javascript:;" class="addRules" style="display: inline-block;background: #26C2B2;padding:5px 10px;color:#fff;border-radius: 3px;margin:0 10px 10px 0;" onclick="refresh()">新增规则</a>
+			</div>
+
+			<div class="rulesNameInfo">
+				<label>规则名称：</label>
+				<input type="text" class="rulesNames" maxlength="20">
+			</div>
+
+			<div>
+				<label>规则<span style="font-size: 12px;">(业绩基数)：</span></label>
+				<div class="rulesDescribe paddingH">
+					<select name="" id="selectTeam" class="onlyType">
+						<option value="0">个人</option>
+						<option value="1">团队</option>
+						<option value="2">店铺</option>
+					</select>
+					的
+					<select name="" id="selectCount" class="">
+						<option value="0">每笔</option>
+						<option value="1">首次</option>
+						<option value="2">首次以外</option>
+						<option value="3">前三次</option>
+						<option value="4">前三次以外</option>
+					</select>
+					<div style="display: inline-block;width: 300px;vertical-align: top;" class="selectInfos">
+						<select name="" id="selectInfo1" class="selectpicker" multiple>
+							<option value="1">充值业绩</option>
+							<option value="2">现金购买商品</option>
+							<option value="3">现金消费服务</option>
+							<option value="4">现金购买服务卡项</option>
+							<option value="5">余额购买商品</option>
+							<option value="6">余额消费服务</option>
+							<option value="7">余额购买服务卡项</option>
+							<option value="8">普通服务业绩</option>
+							<option value="9">指定服务业绩</option>
+							<option value="10">服务人头数</option>
+							<option value="11">服务工单数</option>
+						</select>
+					</div>
+					金额大于
+					<input type="text" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)" class="money" maxlength="11">
+					元的
+					<select name="" id="" class="resultValue">
+						<option value="0">业绩值</option>
+						<option value="1">数量</option>
+					</select>
+				</div>
+
+				<div class="rulesMessage">
+					<div class="rulesMessage1">
+						
+					</div>
+				
+					<div class="paddingH">
+						<span>按照</span>
+						<select name="" id="" class="accumulativeType">
+							<option value="0">本月累计</option>
+							<option value="1">本季度累计</option>
+							<option value="2">本年累计</option>
+						</select>
+						的
+						<select name="" id="formulaModeType">
+							<option value="0">业绩基数</option>
+							<option value="1">自定义计算档次业绩</option>
+						</select>
+						进行
+						<select name="" id="" class="caleType">
+							<option value="0">固定提成</option>
+							<option value="1">分档次提成</option>
+						</select>
+
+						<span class="fixeds">
+							<input type="text" style="width: 120px;padding-left: 10px;" class="fixedsValue" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)" maxlength="11">
+							<select name="" id="" class="fixedsType">
+								<option value="0">$</option>
+								<option value="1">%</option>
+								
+							</select>
+						</span>
+
+					</div>
+				</div>
+			</div>
+
+			
+			<div class="customPerformance" style="display: none;">
+				<label>自定义业绩：</label>
+				<div style="display: inline-block;" class="paddingH">
+					<select name="" id="customTeam" >
+						<option value="0">个人</option>
+						<option value="1">团队</option>
+						<option value="2">店铺</option>
+					</select>
+					的
+					<select name="" id="customNum">
+						<option value="0">每笔</option>
+						<option value="1">首次</option>
+						<option value="2">首次以外</option>
+						<option value="3">前三次</option>
+						<option value="4">前三次以外</option>
+					</select>
+					<div style="display: inline-block;width: 300px;vertical-align: top;" class="selectInfos">
+						<select name="" id="selectInfo2" multiple>
+							<option value="1">充值业绩</option>
+							<option value="2">现金购买商品</option>
+							<option value="3">现金消费服务</option>
+							<option value="4">现金购买服务卡项</option>
+							<option value="5">余额购买商品</option>
+							<option value="6">余额消费服务</option>
+							<option value="7">余额购买服务卡项</option>
+							<option value="8">普通服务业绩</option>
+							<option value="9">指定服务业绩</option>
+							<option value="10">服务人头数</option>
+							<option value="11">服务工单数</option>
+
+						</select>
+					</div>
+					金额大于
+					<input type="text" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)" class="moneys" style="padding-left: 10px;" maxlength="11">
+					元的
+					<select name="" id="customType">
+						<option value="0">业绩值</option>
+						<option value="1">数量</option>
+					</select>
+				</div>
+				<div class="rulesMessage">
+					<div class="rulesMessage2">
+						<div class="rulesItem2" style="display: none;" forType = "1">
+							<p class="rulesName">充值</p>
+							<div class="accountSelec">
+								<select name="" id="" class="selecStatus">
+									<option value="0">全部</option>
+									<option value="1">选中</option>
+									<option value="2">选中以外</option>
+								</select>
+							</div>
+							<div class="selecs" style="display: none;">选中<span class="names">商品</span>（<span class="numbers">0</span>）</div>
+							<input type="hidden" id="infoItemId">
+							<!-- 自定义 主键id -->
+							<input type="hidden" id="customSelcId">
+							<!-- 自定义 提成规则 主键id -->
+							<input type="hidden" id="customSelcRuleId">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="performanceRules">
+				<div class="divideClass" style="display: none;"> 
+					<div class="divideClassItem">
+						业绩额达到
+						<input type="text" class="scopeMin" onkeyup="moneyCheck(this)" onchange="moneyCheck(this);moneyLimit(this)"  maxlength="11">
+						元~
+						<input type="text" class="scopeMax" onkeyup="moneyCheck(this)" onchange="moneyCheck(this);moneyLimit(this)" maxlength="11">
+						元时提
+						<input type="text" class="calcValue" onkeyup="moneyCheck(this)" onchange="moneyCheck(this);" maxlength="11">
+						<div class="typeSelec">
+							<select name="" id="" class="calcType">
+								<option value="0">&nbsp;&nbsp;$</option>
+								<option value="1">&nbsp;&nbsp;%</option>
+							</select>
+						</div>
+						<a href="javascript:;" class="add" onclick="addItem(this)">
+							<i class="glyphicon glyphicon-plus"></i>
+						</a>
+						<a href="javascript:;" class="delete" onclick="deleteItem(this)">
+							<i class="glyphicon glyphicon-minus"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<p class="submit" style="width: 85%;">
+			<a href="javascript:;" class="submitBtn" onclick="submitBtn()">确定</a>
+		</p>
+		
+	</div>
+
+	<script type="text/html" id="tp1">
+		<div class="divideClassItem">
+			业绩额达到
+			<input type="text" class="scopeMin" onkeyup="moneyCheck(this)" onchange="moneyCheck(this);moneyLimit(this)" maxlength="11">
+			元~
+			<input type="text" class="scopeMax" onkeyup="moneyCheck(this)" onchange="moneyCheck(this);moneyLimit(this)" maxlength="11">
+			元时提
+			<input type="text" class="calcValue" onkeyup="moneyCheck(this)" onchange="moneyCheck(this);" maxlength="11">
+			<div class="typeSelec">
+				<select name="" id="" class="calcType">
+					<option value="0">&nbsp;&nbsp;$</option>
+					<option value="1">&nbsp;&nbsp;%</option>
+				</select>
+			</div>
+			<a href="javascript:;" class="add" onclick="addItem(this)">
+				<i class="glyphicon glyphicon-plus"></i>
+			</a>
+			<a href="javascript:;" class="delete" onclick="deleteItem(this)">
+				<i class="glyphicon glyphicon-minus"></i>
+			</a>
+			<!-- 主键值 -->
+			<input type="hidden" class="levelId">
+			<!-- 提成规则表主键 -->
+			<input type="hidden" class="ruleId">
+		</div>
+	</script>
+
+	<script type="text/html" id="tp2">
+		<div class="rulesItem1" forType = "0">
+			<p class="rulesName">充值</p>
+			<div class="accountSelec">
+				<select name="" id="" class="selecStatus">
+					<option value="0">全部</option>
+					<option value="1">选中</option>
+					<option value="2">选中以外</option>
+				</select>
+			</div>
+			<div class="selecs" style="display: none;">选中<span class="names">商品</span>（<span class="numbers">0</span>）</div>
+			<input type="hidden" id="infoItemId">
+			<!--  -->
+			<input type="hidden" id="itemId">
+			<!--  -->
+			<input type="hidden" id="itemrulesId">
+		</div>
+	</script>
+
+	<script type="text/html" id="tp3">
+		<div class="caseDescribeItem">
+			<h5>规则<span class="counts">1</span>：</h5>
+			<div>
+				<div class="caseInfos"></div>
+				<div class="settingRule">
+					<a href="javascript:;" class="deleteRules" onclick="deleteRule(this)">删除规则</a><br>
+					<a href="javascript:;" class="caseSetting">查看设置</a>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script src="../../assets/jquery/jquery.min.js"></script>
+	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../assets/layer/layer.js"></script>
+	<link rel="stylesheet" href="../../assets/check_index/layer/skin/default/layer.css"/>
+	
+	<script src="../../assets/select2-v4.0.6/js/select2.full.min.js"></script>
+	<script src="../../assets/select2-v4.0.6/js/i18n/zh-CN.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/salarySetCase.js"></script>
+</body>
+</html>

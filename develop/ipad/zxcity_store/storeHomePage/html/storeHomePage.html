@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+    <link rel="stylesheet" href="../../common/assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../common/css/common.css"/>
+    <link rel="stylesheet" href="../css/storeHomePage.css"/>
+</head>
+<body class="homePage">
+<!-- 以下是正式内容 -->
+<div class="main-title container-fluid">
+    <div class="row">
+        <div class="col-xs-1">
+            <a class="return-icon" href="javascript:void(0);" onclick="backZxcityStoreApp()">
+                <img src="../../myHomePage/img/icon_fanhui.png">
+            </a>
+        </div>
+        <div class="col-xs-offset-2 col-xs-6">
+            <h1 class="title">门店首页</h1>
+        </div>
+    </div>
+</div>
+<div class="container-fluid content-box">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="modular-8-left">
+                <div class="modularTitle">
+                    <a id="shopSaleLink" href="javascript:void(0);">门店销售业绩</a>
+                </div>
+                <div class="content-1" id="salesPerformance"></div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="modular-8-right">
+                <div class="modularTitle">
+                    <a id="shopCostLink" href="javascript:void(0);">门店消耗业绩</a>
+                </div>
+                <div class="content-1" id="consumePerformance"></div>
+            </div>
+        </div>
+        <!-- <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="modular-8-left">
+                <div class="modularTitle">定金预售</div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6" onclick="showDetailPie('预售总金额分析',1,'')">
+                            <div class="modular-content-summary">
+                                <b>预售总金额</b>
+                            </div>
+                            <div class="modular-content-sum">
+                                ¥ <span id="actualPay">00.00</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="modular-content-summary">
+                                <b>该收钱了</b>
+                            </div>
+                            <div class="modular-content-sum">
+                                ¥ <span id="balance">00.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="accountList"></div>
+                </div>
+            </div>
+        </div> -->
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="modular-8-right">
+                <div class="container-fluid">
+                    <div class="row" id="showDetailSheGo">
+                        <div class="col-sm-6">
+                            <div class="title-item-left">
+                                今日TA来
+                                <p id="sheGoNum" onclick="showDetailPie('今日TA来', 6, '', 1)">0</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="title-item-right">
+                                您的功劳
+                                <p id="sheGoCredit" onclick="showDetailPie('您的功劳', 6, '', 2)">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="modular-8-left">
+                <div class="modularTitle">门店赠送</div>
+                <div class="content-2-left">
+                    <div onclick="showDetailPie('今日赠送分析',5,'')">
+                        <div class="content-2-text">
+                            <b id="largessNum">0</b>
+                        </div>
+                        <div class="content-2-title">今日赠送</div>
+                    </div>
+                </div>
+                <div class="content-2-right"></div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="modular-8-right">
+                <div class="modularTitle">哪个产品最好卖</div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6" id="goodsList"></div>
+                        <div class="col-sm-6" onclick="showDetailPie('今日消耗分析',2,'')">
+                            <div class="modular-content-summary">
+                                <b>今日消耗额</b>
+                            </div>
+                            <div class="modular-content-sum">
+                                ¥ <span id="consumePrice">00.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="modular-8-left">
+                <div class="modularTitle">哪个客户贡献最大</div>
+                <div class="container-fluid">
+                    <div class="row" id="accountContributeList"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="modular-8-right">
+                <div class="modularTitle">哪个员工贡献最大</div>
+                <div class="container-fluid">
+                    <div class="row" id="employeeContributeList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../common/assets/js/jquery-1.10.2.js"></script>
+<script src="../../common/assets/js/bootstrap.min.js"></script>
+<script src="../../common/assets/js/echarts.simple.min.js"></script>
+<script src="../../common/assets/js/layer/layer.js"></script>
+<script src="../../common/js/util/util.js"></script>
+<script src="../js/storeHomePage.js"></script>
+</body>
+</html>

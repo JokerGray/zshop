@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>药品发放</title>
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../../assets/laydate-v5.0.9/theme/default/laydate.css">
+    <link rel="stylesheet" href="../../../assets/layui-v2.2.2/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/medical.css">
+    <link rel="stylesheet" href="drugSending.css">
+</head>
+
+<body>
+    <!-- 代发药 已发药列表 -->
+    <div class="container-fluid" style="margin-top:2rem;padding:0 30px;min-height: 800px;" id="drug-list">
+ 
+        <div class="clearfix">
+            <div class="top-title">
+                <span class="title-name active" id="drug-sub" data-type="1">待发药(<span>0</span>)</span>
+                <span class="title-name" id="drug-already" data-type="2">已发药(<span>0</span>)</span>
+            </div>
+        
+            <div class="right-title top-tool row">
+                <div class="col-xs-7">
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: auto;">日期：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" id="date-start" placeholder="开始时间">
+                        </div>
+                        <span> - </span>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" id="date-end" placeholder="结束时间">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" id="search" placeholder="顾客姓名/顾客电话">
+                </div>
+                <div class="col-xs-2">
+                    <button class="btn btn-info" type="button" id="charge-search">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-content">
+            <!-- 代发药-->
+            <div class="treatment">
+                <ul class="clearfix treatment-data">
+                </ul>
+            </div>
+            <!--已发药  -->
+            <div class="dispensing content-area" style="display: none;">
+                <table id="dispensing-list"></table>
+            </div>
+            <div class="no-data" style="display: none;">
+                <img src="../assets/img/noSearch.png" alt="" id="no-search">
+                <img src="../assets/img/noData.png" alt="" id="no-data">
+            </div>
+        </div>
+ 
+    </div>
+    <!-- 详情页 -->
+    <div class="container-fluid" style="margin-top:2rem;padding: 0 20px; display:none;" id="drug-details">
+        <!-- 头部-->
+        <div class="header">
+            <!-- 左边返回 -->
+            <div class="goback">
+                <span class="layui-icon  layui-icon-left">&#xe603;</span>
+                <span>返回</span>
+            </div>
+        </div>
+        <!-- 内容信息 -->
+        <div class="drug-content margin-top content-area container-content">
+            <!-- 用户信息 -->
+            <div class="user-data  clearfix">
+                <!-- <div class="user-info">
+                    <p>
+                        <span id="user-name"></span>
+                        <span id="user-sex"></span>
+                        <span id="user-age"></span>
+                    </p>
+                    <span id="user-phone"></span>
+                </div> -->
+            </div>
+            <!-- tab切换-->
+            <div class="layui-tab layui-tab-brief" lay-filter="drug-tab" id="drug-tab">
+                <!-- <ul class="layui-tab-title">
+                    <li class="layui-this" lay-id="western" style="display: none;">西药处方</li>
+                    <li lay-id="chinese" style="display: none;">中成药方</li>
+ 
+                </ul> -->
+                <div class="layui-tab-content" style="margin-top:20px;">
+                    <div class="charge-data">
+                        <table id="table-medicine" class="table table-hover"></table>
+                    </div>
+                    <!--  西药 -->
+                    <div class="layui-tab-item layui-show" id="western-medicine" style="display: none">
+                        <div class="charge-data">
+                            <table id="table-western-medicine" class="table table-hover"></table>
+                        </div>
+                    </div>
+                    <!-- 中成药 -->
+                    <div class="layui-tab-item" id="chinese-medicine" style="display: none">
+                        <div class="charge-data">
+                            <table id="table-chinese-medicine" class="table table-hover"></table>
+                        </div>
+                    </div>
+ 
+                </div>
+            </div>
+            <!--分割线 -->
+            <div class="line"></div>
+            <div>
+                <div class="settlement">
+                    <div class="settlement-info">
+                        <p>
+                            <span>实收金额 : </span>
+                            <span class="price">0.00</span>
+                            <span>元</span>
+                        </p>
+                        <p class="info-total">
+                            <span>收费项 : </span>
+                            <span data-type="purchaseNum">0</span>
+                            <span data-type="units">项</span>
+                        </p>
+                    </div>
+                    <div class="settlement-dispensing">
+                        <span id="dispens">发药</span>
+                    </div>
+                </div>
+  
+            </div>
+        </div>
+        <!-- <div class="drug-sent-content margin-top">
+                    
+                <div class="user-data  clearfix">
+                    <div class="user-info">
+                        <p>
+                            <span id="user-name">张三</span>
+                            <span id="user-sex">男</span>
+                            <span id="user-age">45岁</span>
+                        </p>
+                        <span id="user-phone">1234567890</span>
+                    </div>
+                </div> -->
+        <!-- tab-->
+        <!-- <div class="layui-tab layui-tab-brief" lay-filter="drug-sent-tab" id="drug-sent-tab">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">西药处方</li>
+                        <li>中成药方</li>
+                        <li>中药处方</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show" id="sent-western-medicine">
+                            
+                            <div class="charge-data">
+                                <table id="table-sent-western-medicine"></table>
+                                <div class="settlement">
+                                    <div class="settlement-info"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="layui-tab-item" id="sent-chinese-medicine">
+                            <div class="charge-data">
+                                <table id="table-sent-chinese-medicine"></table>
+                                <div class="settlement">
+                                    <div class="settlement-info"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="layui-tab-item" id="sent-chinese-patent">
+                            <div class="charge-data">
+                                <div class="chinese-patent-items">
+                                    <div class="chinese-patent-item">
+                                        <div class="item-title">
+                                            <p>
+                                                <span class="vertical-line"></span>
+                                                <span>处方1</span>
+                                            </p>
+                                            <p>
+                                                (药品数量 :
+                                                <span class="drug-num">5</span>
+                                                剂)
+                                            </p>
+                                        </div>
+                                        <table id="table-sent-chinese-patent"></table>
+                                    </div>
+                                </div>
+                                <div class="settlement">
+                                    <div class="settlement-info"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+        </div>-->
+    </div>
+ 
+    <script type="text/html" id="user-info-tpl">
+        <div class="user-info">
+            <p>
+                <span id="user-name">{{data.name || data.memberName || ''}}</span>
+                <span id="user-sex">
+                        {{data.sex || ''}}
+                </span>
+                <span id="user-age">{{data.age && data.age + '岁' || ''}}</span>
+
+                <span id="user-phone">{{data.mobile || ''}}</span>
+            </p>
+             
+        </div>
+    </script>
+    <script type="text/html" id="settlement-info-tpl">
+            <p>
+                <span>实收金额 : </span>
+                <span class="price">{{data.actualPayment}}</span>
+                <span>元</span>
+            </p>
+            <p class="info-total">
+                <span>收费项 : </span>
+                <span data-type="purchaseNum">{{data.purchaseNum}}</span>
+                <span data-type="units">项</span>
+            </p>
+    </script>
+    <script type="text/html" id="chinese-patent-tpl">
+            {{each list value index}}
+                <div class="chinese-patent-item" index="{{index}}">
+                    <div class="item-title">
+                        <p>
+                            <span class="check" data-type="checkbox"></span>
+                            处方{{index + 1}}
+                        </p>
+                        <p>
+                            (药品数量 :
+                            <span class="drug-num">{{value.length}}</span>
+                            剂)
+                        </p>
+                    </div>
+                    <table id="{{'table-chinese-patent-' + (index + 1)}}">
+                        <thead> 
+                            <tr>
+                                <td>序号</td>
+                                <td>药品名称</td>
+                                <td>药品规格</td>
+                                <td>单价</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{each value as item itemIndex}}
+                            <tr unitPrice="{{item.unitPrice}}" stockId="{{item.stockId}}" drugsStatus="{{item.drugsStatus}}"
+                                goodsId="{{item.goodsId}}">
+                                <td>{{itemIndex+1}}</td>
+                                <td>{{item.goodsName}}</td>
+                                <td>{{item.stockName}}</td>
+                                <td>{{item.unitPrice}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            {{/each}}
+    </script>
+    
+    <script type="text/html" id="chinese-patent-sent-tpl">
+            {{each list.chinesePatent value index}}
+                <div class="chinese-patent-item" index="{{index}}">
+                    <div class="item-title">
+                        <p>
+                            <span class="vertical-line"></span>
+                            处方{{index + 1}}
+                        </p>
+                        <p>
+                            (药品数量 :
+                            <span class="drug-num">{{value.length}}</span>
+                            剂)
+                        </p>
+                    </div>
+                    <table id="{{'table-chinese-patent-' + (index + 1)}}">
+                        <thead> 
+                            <tr>
+                                <td>序号</td>
+                                <td>药品名称</td>
+                                <td>药品规格</td>
+                                <td>单价</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{each value as item itemIndex}}
+                            <tr unitPrice="{{item.unitPrice}}">
+                                <td>{{itemIndex+1}}</td>
+                                <td>{{item.purchaseName}}</td>
+                                <td>{{item.stockName}}</td>
+                                <td>{{item.unitPrice}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            {{/each}}
+    </script>
+    <script type="text/html" id="medicine-tpl">
+            {{each list value index}}
+                <table id="{{id}}">
+                    <thead> 
+                        <tr>
+                            <td>序号</td>
+                            <td>药品名称</td>
+                            <td>药品规格</td>
+                            <td>单价</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{each value as item itemIndex}}
+                        <tr unitPrice="{{item.unitPrice}}">
+                            <td>{{itemIndex+1}}</td>
+                            <td>{{item.purchaseName}}</td>
+                            <td>{{item.stockName}}</td>
+                            <td>{{item.unitPrice}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            {{/each}}
+    </script>
+    <!--代发药详情 表格 -->
+    <script type="text/html" id="medicines-tpl">
+        <thead>
+            <tr>
+                <th style="width:80px;"></th>
+                <th>药品名称</th>
+                <th>药品规格</th>
+                <th style="min-width:140px;">单价</th>
+                <th>总量</th>
+                <th style="min-width:140px;">金额</th>
+            </tr>   
+        </thead>
+        <tbody>
+            {{each list value index}}
+                <tr data-id="index"  drugsStatus="{{value.drugsStatus}}" unitPrice="{{value.unitPrice}}" 
+                    drugsStatusId="{{value.drugsStatusId}}" goodsId="{{value.goodsId}}"  number="{{value.number}}"
+                    goodsName="{{value.goodsName}}" money="{{value.money}}" stockId="{{value.stockId}}">
+                    <td class="bs-checkbox">
+                        <div><span></span></div>
+                    </td>
+                    <td>{{value.goodsName}}</td>
+                    <td>{{value.stockName}}</td>
+                    <td>{{value.formatUnitPrice}}</td>
+                    <td>{{value.number}}</td>
+                    <td>{{value.formatMoney}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </script>
+    <!--已发药详情 表格 -->
+    <script type="text/html" id="medicines-sent-tpl">
+            <thead>
+                <tr>
+                    <th style="width:80px;">序号</th>
+                    <th>药品名称</th>
+                    <th>药品规格</th>
+                    <th style="min-width:140px;">单价</th>
+                    <th>总量</th>
+                    <th style="min-width:140px;">金额</th>
+                </tr>   
+            </thead>
+            <tbody>
+                {{each list value index}}
+                    <tr data-id="index"  drugsStatus="{{value.drugsStatus}}" unitPrice="{{value.unitPrice}}" 
+                        drugsStatusId="{{value.drugsStatusId}}" goodsId="{{value.goodsId}}"  number="{{value.number}}"
+                        goodsName="{{value.goodsName}}" money="{{value.money}}" stockId="{{value.stockId}}">
+                        <td class="bs-checkbox">
+                            {{index+1}}
+                        </td>
+                        <td>{{value.goodsName}}</td>
+                        <td>{{value.stockName}}</td>
+                        <td>{{value.formatUnitPrice}}</td>
+                        <td>{{value.number}}</td>
+                        <td>{{value.formatMoney}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </script>
+    <!--代发药列表 -->
+    <!-- <script type="text/html" id="drug-list-tpl">
+        {{each list as value index}}
+            <li class="treatment-list" presaleId="{{value.presaleId}}" 
+                processId="{{value.processId}}" phone="{{value.phone}}" mobile="{{value.mobile}}" memberId="{{value.memberId}}"
+                allergy="{{value.allergy}}"
+                > 
+                <div class="treatment-content">
+                    <div class="treatment-desc">
+                       
+                        <div class="treatment-desc-info">
+                            <span class="desc-name" title={{value.memberName}}>{{value.memberName}}</span>
+                            <span class="desc-age">{{value.age}}岁</span>
+                            <span class="desc-sex">
+                                {{if value.sex == 0}} 女  
+                                {{else if value.sex == 1}} 男  
+                                {{else}}
+                                    保密
+                                {{/if}}
+                            </span>
+                        </div>
+                         
+                        <p class="treatment-desc-itmes" title="{{value.serviceName}}">
+                            治疗项目 : {{value.serviceName}}
+                        </p>
+                    </div>
+                    <div class="treatment-drug">发药</div>
+                </div>
+            </li>
+        {{/each}}
+    </script> -->
+
+    <script type="text/html" id="drug-list-tpl">
+        {{each list  value index}}
+        <div class="treatment-list"   
+                processId="{{value.processId}}" allergy="{{value.allergy}}"   mobile="{{value.mobile}}"
+                memberId="{{value.memberId}}"   sex="{{value.sex}}">
+            <div class="treatment-content">
+                <div class="content-line">
+                    <b class="desc-name" title={{value.memberName}}>{{value.memberName}}</b>
+                    <span class="desc-age">{{if value.age >= 0}}{{value.age}}{{else}}-{{/if}}</span>岁
+                    <span class="desc-sex">           
+                        {{if value.sex == 0}} 女  
+                        {{else if value.sex == 1}} 男  
+                        {{else}}
+                            保密
+                        {{/if}}
+                    </span>
+                </div>
+                <div class="content-line" title={{value.serviceName}}>咨询项目 :&nbsp;
+                    <b class="patient-content">{{value.serviceName}}</b>
+                </div>
+                <div class="content-line" title={{value.advUserName}}>咨询院长 :&nbsp;
+                    <b class="patient-content">{{value.advUserName || ''}}</b>
+                </div>
+            </div>
+            <div class="btn-list">
+                <div  class="treatment-btn">发药</div>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+    <script src="../../../assets/jquery/jquery.min.js"></script>
+    <script src="../../../assets/layer/layer.js"></script>
+    <script src="../../../assets/laydate-v5.0.9/laydate.js"></script>
+    <script src="../../../assets/layui-v2.2.2/layui.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+ 
+    <script src="../../../assets/artTemplate/template-web.js"></script>
+    <script src="../assets/js/comm.js"></script>
+    <!-- <script src="../../../assets/select2/select2.min.js"></script> -->
+    <script src="drugSending.js"></script>
+</body>
+
+</html>

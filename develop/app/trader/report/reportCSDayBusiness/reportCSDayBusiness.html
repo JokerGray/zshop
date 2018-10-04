@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>每日营业统计</title>
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../../assets/common/css/common.css">
+    <link rel="stylesheet" href="./css/reportCSDayBusiness.css">
+</head>
+<body>
+<!--顶部时间选择和店铺选择-->
+<div class="top">
+    <div class="timeFilter">
+        <input type="text" id="day" value="" onfocus="blur()">
+        <i> > </i>
+        <span class="shopName"> </span>
+    </div>
+    <div class="shopFilter layui-form">
+        <select id="shopSelector" lay-filter="shopSelector" lay-search>
+            <option value="">全部店铺</option>
+        </select>
+    </div>
+</div>
+<!--概况-->
+<div class="overviewBox">
+    <div class="overview clearfix">
+        <div class="overview-left">
+            <p class="timeText"></p>
+            <div class="payMoney clearfix">
+                <div>
+                    <span class="moneyIcon"></span>
+                    <div>
+                        <p>销售金额（元）</p>
+                        <p id="nowMoney">0</p>
+                    </div>
+                </div>
+                <div>
+                    <p id="lastMoney">前一日 0</p>
+                    <ul>
+                        <li>
+                            <i class="todayIcon"></i>
+                            <i class="nowTime"></i>
+                        </li>
+                        <li>
+                            <i class="dayBeforeIcon"></i>
+                            <i>前一日</i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div id="lineTrend" style="width: 100%;height: 187px;"></div>
+            </div>
+        </div>
+        <div class="payMoney-right">
+
+        </div>
+    </div>
+</div>
+<!--访客转换-->
+<div class="visitorConversionBox">
+    <div class="visitorConversion">
+        <p>访客转换</p>
+        <div class="toCollection">
+            <div class="top-chart">
+                <div>
+                    <div id="echart-toCollection" style="width: 180px;height: 180px;"></div>
+                </div>
+                <div id="collectionNum">
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="topTen">
+                <p>
+                    <span class="active" data-type="1">访客前十</span>
+                    <i>/</i>
+                    <span data-type="2">收藏前十</span>
+                </p>
+                <p class="clearfix">
+                    <span>商品</span>
+                    <span id="topTenText">访客数</span>
+                </p>
+                <ul class="goodsTopTen"></ul>
+            </div>
+        </div>
+        <div class="toPay">
+            <div class="top-chart">
+                <div>
+                    <div id="echart-toPay" style="width: 180px;height: 180px;"></div>
+                </div>
+                <div>
+                    <ul id="payNum">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="topTen">
+                <p>购买前十</p>
+                <p class="clearfix">
+                    <span>商品</span>
+                    <span>购买件数</span>
+                </p>
+                <ul class="payTopTen">
+                    <!--<li class="clearfix">-->
+                        <!--<span title="雅诗兰黛小棕瓶眼霜精">雅诗兰黛小棕瓶眼霜精华</span>-->
+                        <!--<span>2000</span>-->
+                    <!--</li>-->
+                    <li class="noDataTips"><i></i><i>暂无数据</i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../assets/layer-v3.1.1/layer.js"></script>
+<script src="../../assets/echart/echarts.min.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="./js/reportCSDayBusiness.js"></script>
+<script id="allCateDataTpl" type="text/html">
+    <ul class="clearfix">
+        <li>
+            <span class="listICons"></span>
+            <div>
+                <p>
+                    <span>线上成交件数</span>
+                    <span>前一日：{{lastDayNumberOfPackages}}</span>
+                </p>
+                <p>{{nowDayNumberOfPackages}}</p>
+            </div>
+        </li>
+        <li>
+            <span class="listICons"></span>
+            <div>
+                <p>
+                    <span>线上成交笔数</span>
+                    <span>前一日：{{lastDayNumberOfTrans}}</span>
+                </p>
+                <p>{{nowDayNumberOfTrans}}</p>
+            </div>
+        </li>
+        <li>
+            <span class="listICons"></span>
+            <div>
+                <p>
+                    <span>店内购物笔数</span>
+                    <span>前一日：{{lastDayNumPayedPresale}}</span>
+                </p>
+                <p>{{nowDayNumPayedPresale}}</p>
+            </div>
+        </li>
+    </ul>
+    <div class="cutLine"></div>
+    <ul class="clearfix">
+        <li>
+            <span class="listICons"></span>
+            <div>
+                <p>
+                    <span>店铺访客数</span>
+                    <span>前一日：{{lastDayNumberOfVisitors}}</span>
+                </p>
+                <p>{{nowDayNumberOfVisitors}}</p>
+            </div>
+        </li>
+        <li>
+            <span class="listICons"></span>
+            <div>
+                <p>
+                    <span>店铺收藏数</span>
+                    <span>前一日：{{lastDayNumberOfFav}}</span>
+                </p>
+                <p>{{nowDayNumberOfFav}}</p>
+            </div>
+        </li>
+        <li>
+            <span class="listICons"></span>
+            <div>
+                <p>
+                    <span>店铺点击数</span>
+                    <span>前一日：{{lastDayNumberOfClicks}}</span>
+                </p>
+                <p>{{nowDayNumberOfClicks}}</p>
+            </div>
+        </li>
+        <li>
+            <span class="listICons"></span>
+            <div>
+                <p>
+                    <span>预约数</span>
+                    <span>前一日：{{lastDayNumberOfCSBespoke}}</span>
+                </p>
+                <p>{{nowDayNumberOfCSBespoke}}</p>
+            </div>
+        </li>
+    </ul>
+</script>
+</html>

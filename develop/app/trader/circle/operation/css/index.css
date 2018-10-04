@@ -1,0 +1,75 @@
+html, body{
+  background: #f7f7f7;
+  height: 100%;
+}
+.main{
+  display: flex;
+  margin: 0;
+  padding: 70px 0 0 0;
+  height: 100%;
+  justify-content: space-around;
+}
+
+/* 左侧操作列 */
+.title-content{
+  min-width: 250px;
+  max-width: 300px;
+}
+.title-content>h1{
+  line-height: 1;
+  font-size: 26px;
+  font-weight: bold;
+}
+.title-content>.btn{
+  height: 36px;
+  padding: 0px 12px;
+  margin-top: 24px;
+  line-height: 36px;
+  font-size: 18px;
+  color: #FFB018;
+  border: 1px solid #FFB018;
+  border-radius: 36px;
+  text-align: left;
+  transition: all 0.1s ease-in-out;
+}
+.title-content>.btn:focus,.title-content>.btn:hover{
+  outline: none;
+  border-color: #FFB018;
+}
+.title-content>.btn.active{
+  color: #fff;
+  background: #FFB018;
+  box-shadow: none;
+}
+.title-content>.btn>span{
+  display: inline-block;
+  width: 22px;
+  margin-right: 10px;
+  line-height: 22px;
+  text-align: center;
+  border-radius: 100%;
+  background: #FFB018;
+  color: #fff;
+}
+/* 一条线 */
+.main>.line{
+  width: 1px;
+  border-right: 1px dashed #7BE3ED;
+}
+/* 中间手机样式 */
+.phone-content{
+  width: 436px;
+  min-width: 436px;
+  height: 872px;
+  margin: 0;
+  background-image: url(../img/zxht_qz_phone@3x.png), url(../img/zxht_qz_Indicator@3x.png);
+  background-repeat: no-repeat, no-repeat;
+  background-size: contain, 342px 32px;
+  background-position: 0 0, center 25px;
+}
+
+/* 嵌入页面样式 */
+.iframe-content{
+  width: 700px;
+  min-width: 700px;
+}

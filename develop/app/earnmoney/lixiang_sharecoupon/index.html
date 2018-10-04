@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no" name="format-detection" />
+		<meta content="email=no" name="format-detection" />
+    <title>粉丝福利</title>
+    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+  </head>
+  <body ontouchmove="showScroll ? event.preventDefault(): null">
+    <div id="app"></div>
+    <script src="static/layer/mobile/layer.js"></script>
+    <script src="//apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="//apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js"></script>
+    <script>
+      var showScroll = false;
+      $(document).ready(function(){
+        FastClick.attach(document.body);
+      });
+      // 分享页面
+      function share(data){
+        var imgUrl = data.data.couponPic;
+        var title = data.data.shareUserName + '赠送你的优惠券';
+        var introduce = data.data.couponDemand
+        $.ajax({
+            type: "post",
+            url: "/zxcity_restful/ws/rest",
+            dataType: 'json',
+            headers: {
+                apikey: sessionStorage.getItem('apikey') || 'test'
+            },
+            data: {
+                cmd: 'game/getSign',
+                data: JSON.stringify({
+                    url: location.href
+                }),
+                version: 1
+            },
+            success: function(res) {
+                wx.config({
+                    debug: false,
+                    appId: 'wxe50dd59beab1e644',
+                    timestamp: res.data.timestamp,
+                    nonceStr: res.data.nonceStr,
+                    signature: res.data.signature,
+                    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareWeibo', 'onMenuShareQZone', 'onMenuShareQZone']
+                });
+                var options = {
+                    title: title,
+                    desc: introduce,
+                    link: location.href,
+                    imgUrl: imgUrl
+                }
+                wx.ready(function(){
+                    wx.onMenuShareTimeline({
+                        title: introduce,
+                        link: location.href,
+                        imgUrl: imgUrl
+                    });
+                    wx.onMenuShareAppMessage($.extend({
+                        type: '',
+                        dataUrl: ''
+                    }, options));
+                    wx.onMenuShareQQ(options);
+                    wx.onMenuShareWeibo(options);
+                    wx.onMenuShareQZone(options);
+                    wx.onMenuShareQZone(options);
+                })
+            }
+        });
+      }
+      // 获取url中的参数
+      function getQueryString (name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+        var r = window.location.search.substr(1).match(reg)
+        return r !== null ? encodeURI(r[2]) : null
+      }
+
+      // 判断是否安卓且在app内部
+      function isAndroid () {
+        var u = window.navigator.userAgent
+        return (u.indexOf('Android') > -1 || u.indexOf('Adr') > -1) && u.indexOf('SmartCity') > -1
+      }
+
+      // 判断是否IOS且在app内部
+      function isIOS () {
+        var u = window.navigator.userAgent
+        return !!u.match(/\(i[^;]+;( u;)? CPU.+Mac OS X/) && u.indexOf('SmartCity') > -1
+      }
+    </script>
+  </body>
+</html>

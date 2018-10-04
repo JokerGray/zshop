@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工单列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../common/css/bootstrap.min.css" media="all"/>
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <link rel="stylesheet" href="work_source.css">
+</head>
+<body>
+<div class="layui-fluid pt20">
+    <div class="layui-app tool-box clearfix">
+        <div class="fr tab_box">
+            <button class="layui-btn layui-btn-sm" id="addBtn">
+                <i class="layui-icon">&#xe654;</i>新增来源
+            </button>
+        </div>
+    </div>
+</div>
+<div class="layui-row layui-fluid" id="tableBox">
+    <div class="app-table">
+        <table id="demo" lay-filter="demo"></table>
+        <div id="laypageLeft" class="fr"></div>
+    </div>
+</div>
+
+<script type="text/html" id="barDemo">
+
+    <button class="layui-btn layui-btn-sm layui-btn" lay-event='change'>
+        <i class="layui-icon">&#xe6b2;</i> 修改
+    </button>
+    <button class="layui-btn layui-btn-sm  layui-btn-normal" lay-event="del">
+        <i class="layui-icon">&#xe609;</i> 删除
+    </button>
+
+</script>
+
+<div id="demo222" class='layui-form clearfix layui-row disn layer-box'>
+    <div class="app-layer layui-col-sm12 layui-col-md12">
+        <div class="package clearfix">
+            <div class="package-title">查看信息</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+            <ul class="layui-form clearfix p0">
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>来源名称：</label>
+                        <div class="layui-input-block">
+                            <input lay-verify="required" type="text" class="layui-input"  id="name">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">备注：</label>
+                        <div class="layui-input-block">
+                            <textarea id="remark" style="width: 100%; padding: 10px;" placeholder="请输入意见" name="" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="work_source.js"></script>
+</body>
+</html>

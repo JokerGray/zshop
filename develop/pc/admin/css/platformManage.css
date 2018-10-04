@@ -1,0 +1,314 @@
+/*tab栏*/
+
+.platformToggle {
+    margin: 20px 0 0 30px;
+}
+
+.platformToggle li {
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #FFA893;
+    padding: 0 30px;
+    cursor: pointer;
+}
+
+.platformToggle li.active {
+    color: #fff;
+    background-color: #FFA893;
+}
+
+
+/*tab栏*/
+
+
+/*搜索区域*/
+
+#search_box {
+    padding-left: 140px;
+    position: relative;
+    margin-top: 20px;
+}
+
+#search_box>div {
+    margin-right: 30px;
+}
+
+#search_box>div:last-child {
+    margin-right: 0;
+}
+
+#penName_box>p,
+#autherName_box>p,
+#date_box>p,
+#time_box>p {
+    margin-bottom: 10px;
+}
+
+#penName_box,
+#autherName_box,
+#date_box,
+#time_box {
+    text-align: center;
+}
+
+#search_box input[type='text'],
+#search_box input[type='number'],
+#search_box select {
+    width: 120px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 34px;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+#time_box input {
+    width: 120px;
+    display: inline-block;
+}
+
+#inpConnect,
+.inpConnect {
+    margin: 0 10px;
+    height: 30px;
+    line-height: 30px;
+}
+
+#search_icon {
+    margin-top: 29px;
+}
+
+#search_icon img {
+    height: 33px;
+}
+
+#addNewLabel {
+    padding: 0 10px;
+    height: 33px;
+    line-height: 33px;
+    margin-top: 29px;
+    cursor: pointer;
+    background-color: #FFA893;
+    color: #fff;
+    border-radius: 4px;
+}
+
+#addNewLabel span {
+    display: inline-block;
+    vertical-align: 10%;
+}
+
+#addNewLabel i {
+    font-size: 20px;
+    margin-right: 5px;
+    height: 31px;
+    line-height: 31px;
+}
+
+
+/*搜索区域*/
+
+
+/*表格*/
+
+#labelTable,
+#customTable {
+    padding: 10px 30px 0 30px;
+}
+
+#labelTabHead th,
+#customTabHead th {
+    text-align: center;
+    padding: 0;
+    height: 40px;
+    line-height: 40px;
+    background-color: #f5f5f5;
+}
+
+#labelTabCon>tr>td,
+#labelTabFoot>tr>td,
+#customTabCon tr>td,
+#customTabFoot tr>td {
+    padding: 0;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.operateTab>div {
+    width: 50%;
+}
+
+.table i.glyphicon {
+    margin-right: 10px;
+}
+
+#labelMultiSelBox,
+.labelSinSelBox,
+.checkBoxIcon,
+.synCheckBoxIcon,
+#customMultiSelBox,
+.customSinSelBox {
+    height: 18px;
+    width: 18px;
+    display: inline-block;
+    background-image: url(../images/uncheck.png);
+    background-size: 18px;
+    -webkit-background-size: 18px;
+    vertical-align: middle;
+}
+
+#labelMultiSelBox.active,
+.labelSinSelBox.active,
+.checkBoxIcon.active,
+.synCheckBoxIcon.active,
+#customMultiSelBox.active,
+.customSinSelBox.active {
+    background-image: url(../images/checked.png);
+}
+
+#labelCheckAll span,
+#customCheckAll span {
+    vertical-align: middle;
+    margin-left: 6px;
+}
+
+.tfootOperate>div {
+    width: 50%;
+}
+
+#labelPage,
+#customPage {
+    /*position: absolute;
+    bottom: 20px;
+    left: 44%;
+    margin-left: -70px;*/
+}
+
+.channelName {
+    max-width: 93px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/*表格*/
+
+
+/*弹出框*/
+
+#addLabelM,
+#synLabelM {
+    margin-top: 200px;
+}
+
+.addLabelMBox,
+.synLabelMBox {
+    width: 500px;
+}
+
+.addLabelMBox>div,
+.synLabelMBox>div {
+    padding-bottom: 10px;
+}
+
+.addLabelHead,
+.synLabelHead {
+    border: 0;
+    text-align: center;
+    font-size: 20px;
+    padding: 25px 15px;
+}
+
+.addLabelHead .addSubTitle,
+.synLabelHead .synSubTitle {
+    font-weight: 600;
+}
+
+.addLabelCon,
+.synLabelCon {
+    padding-left: 100px;
+}
+
+input#labelNameInp[type='text'] {
+    width: 160px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 30px;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.addLabelName p {
+    font-size: 16px;
+    margin-top: 4px;
+}
+
+.addLabelCheck>p,
+.synLabelCheck>p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.synLabelCheck>p {
+    padding-right: 60px;
+}
+
+.synLabelCheck .synLabelName {
+    margin: 0 5px;
+}
+
+.labelMark {
+    font-size: 12px;
+    color: #999;
+}
+
+.labelCheckBox,
+.synLabCheckBox {
+    width: 40%;
+    display: inline-block;
+    box-sizing: border-box;
+    padding-left: 35px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.labelCheckBox>span,
+.synLabCheckBox>span {
+    margin-left: 15px;
+}
+
+#addlabelCheckBox,
+#synLabelcheckBox {
+    height: 230px;
+    overflow-y: auto;
+}
+
+.addLabelFoot,
+.synLabelFoot {
+    border: 0;
+    text-align: center;
+}
+
+.addLabelFoot .btn#confilmBtn,
+.addLabelFoot .btn#CancelBtn,
+.synLabelFoot .btn#synConfilmBtn,
+.synLabelFoot .btn#synCancelBtn {
+    margin: 0 30px;
+}
+
+.addLabelFoot .btn#confilmBtn,
+.synLabelFoot .btn#synConfilmBtn {
+    background-color: #2BC6FF;
+    border: 0;
+}
+
+.addLabelFoot .btn#CancelBtn,
+.synLabelFoot .btn#synCancelBtn {
+    padding: 6px 20px;
+}
+
+
+/*弹出框*/

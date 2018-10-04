@@ -1,0 +1,514 @@
+.common-container{
+    padding: 40px;
+    position: relative;
+    height: auto;
+}
+.jurisdiction-content{
+    height: 100%;
+    background: #fff;
+}
+.title{
+    position: relative;
+    width: 100%;
+    margin-bottom: 40px;
+}
+.title h4{
+    display: inline-block;
+    background: #fff;
+    position: absolute;
+    top: -8px;
+    width: 100px;
+    font-weight: 800;
+    font-size: 18px;
+}
+.jurisdiction-content .title hr{
+    height: 4px;
+}
+.jurisdiction-content .jurisdiction-left{
+    width: 320px;
+    height: 700px;
+    float: left;
+    border: 1px solid #dfdfdf;
+}
+
+.jurisdiction-left ul{
+    width: 100%;
+    height: 94%;
+    overflow: auto;
+}
+.ztree li span {
+    font-size: 15px;
+}
+.jurisdiction-left .repon-sort{
+    height: 50px;
+    line-height: 50px;
+    background: #f5f5f5;
+    padding: 0 10px;
+    font-size: 17px;
+}
+.jurisdiction-left .repon-sort i{
+    float: right;
+    cursor: pointer;
+    font-size: 22px;
+}
+.jurisdiction-left .ztree{
+    margin-left: 10px;
+}
+.ctrlbox{
+    display: inline-block;
+    float: right;
+}
+/*分割线*/
+
+
+.acv{
+    background: #eeedf2;
+}
+.resBtn{
+    display: none;
+}
+.knowClassify{
+    max-height: 500px;
+    overflow: auto;
+}
+.hidemenu li .change-input{
+    position: absolute;
+    top:5px;
+    left: 5px;
+    z-index: 22;
+    display: none;
+    background: #f6f6f6;
+}
+.change-input input{
+    width: 120px;
+    float: left;
+    margin-right: 5px;
+    padding: 2px;
+    border-radius: 2px;
+    border:1px solid #dfdfdf;
+}
+.change-input i{
+    background: #e8e8e8;
+    border-radius: 5px;
+    padding: 2px;
+    font-weight: bold;
+}
+.change-input .savebtn{
+    margin-right: 4px;
+}
+.hidemenu li .listtext{
+    width: 110px;
+    padding: 0 0 0 25px;
+    float: left;
+}
+.addli{
+    position: relative;
+}
+.addli .addicon{
+    position: absolute;
+    z-index: 2;
+    right: 5px;
+    top: 10px;
+}
+.searchicon{
+    cursor: pointer;
+}
+
+/*列表部分*/
+.jurisdiction-center{
+    height: 700px;
+    float: right;
+    max-width: 90%;
+    min-width: 76%;
+}
+.jurisdiction-center .repon-rightl{
+    width: 200px;
+    float: left;
+}
+.jurisdiction-center .repon-rightr{
+    width: 540px;
+    float: right;
+}
+.jurisdiction-center .search-box{
+    height: 38px;
+    width: 300px;
+    float: left;
+    border-radius: 5px;
+    border: 1px solid #3b96e5;
+}
+.search-box i{
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url(../img/search.png) no-repeat;
+    float: right;
+    margin:6px 5px;
+}
+.search-box input{
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    width: 88%;
+}
+.jurisdiction-center .detail{
+    width: 100%;
+    height: 690px;
+    overflow: auto;
+}
+.detail .detail-list{
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    border:1px solid #dfdfdf;
+    padding: 10px;
+    cursor: pointer;
+}
+.detail .detail-list:hover,.detail .aov{
+    background: #e5ecf2;
+}
+.detail .detail-list .detail-top{
+    padding-bottom: 5px;
+    overflow: hidden;
+}
+.detail-list .detail-top .detail-title{
+    width: 180px;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.detail-statu{
+    padding: 2px 3px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    float: right;
+}
+.redbg{
+    background: #f4887b;
+}
+.blubg{
+    background: #0ebcef;
+}
+.redCol{
+    color:#f4887b;
+}
+.blueCol{
+    color:#0ebcef;
+}
+.datail-content{
+    clear: none;
+    width: 227px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.detail-foot{
+    width: 100%;
+    overflow: hidden;
+    height: auto;
+}
+.detail-foot .detail-user{
+    display: inline-block;
+    color:#72716f;
+    float: left;
+}
+.detail-user img{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    float: left;
+    margin-right: 5px;
+}
+.detail-foot .create-time{
+    color:#72716f;
+    line-height: 20px;
+    float: right;
+}
+.repon-table{
+    clear: both;
+    padding-top: 15px;
+}
+.repon-table .layui-table-view{
+    border: none;
+}
+.repon-table .layui-table td, .layui-table th, .layui-table-header, .layui-table-tool, .layui-table-view, .layui-table[lay-skin=row], .layui-table[lay-skin=line]{
+    border-right: 0;
+}
+
+
+/*textare*/
+.layui-textarea{
+    min-height: 70px;
+}
+.layui-form-label{
+    width:100px;
+}
+
+/*分类部分*/
+.classify{
+    width: 100%;
+    height: 600px;
+    overflow: auto;
+}
+.classify li{
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    cursor: pointer;
+    position: relative;
+}
+.classify li:hover{
+    background: #eeedf2;
+}
+.classify li .classname{
+    width: 80%;
+    float: left;
+}
+.list-ctronl{
+    display: none;
+}
+.list-ctronl i{
+    font-size: 20px;
+}
+.addinput input{
+    height: 30px;
+    line-height: 30px;
+    width: 80%;
+    margin:5px;
+    border:1px solid #1E9FFF;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+.addinput{
+    width: 100%;
+    background: #fff;
+    height: 40px;
+    line-height: 40px;
+}
+.addinput .savebtn{
+    margin-right: 4px;
+    background: green;
+    color: #fff;
+}
+.addinput i{
+    background: #e8e8e8;
+    border-radius: 100%;
+    padding: 2px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.classify li .change-input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 22;
+    display: none;
+    background: #fff;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+}
+.change-input input{
+    height: 30px;
+    line-height: 30px;
+    width: 80%;
+    margin:5px;
+    border:1px solid #1E9FFF;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+.change-input i{
+    background: #e8e8e8;
+    border-radius: 100%;
+    padding: 2px;
+    font-weight: bold;
+}
+.change-input .savebtn{
+    margin-right: 4px;
+    background: green;
+    color: #fff;
+}
+/*查看详情*/
+.infomation{
+    display: none;
+    width: 40%;
+    height: 800px;
+    position: absolute;
+    right: -500px;
+    background: #fff;
+    border-left: 2px solid #dfdfdf;
+    z-index: 22;
+    top: 58px;
+}
+.infomation h4{
+    position: relative;
+    padding: 25px 0 15px 0;
+    text-align: center;
+    font-size: 16px;
+    border-bottom:1px solid #dfdfdf;
+}
+.infomation h4 i{
+    position: absolute;
+    top: 10px;
+    left: -16px;
+    border-radius: 100%;
+    z-index: 34;
+    width: 30px;
+    height: 30px;
+    background:#fff url('../img/close.png') no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+}
+.infomation .tip-titl{
+    margin:0 10px;
+    border-bottom: 1px dashed #dfdfdf;
+    color:#000;
+    padding: 25px 0 15px 0;
+    overflow: hidden;
+}
+.infomation .tip-titl .titletxt{
+    width: 425px;
+    height: 27px;
+    line-height: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+}
+.infomation .tip-titl .title-ctrl{
+    display: inline-block;
+    float: right;
+}
+.infomation .tip-titl .title-ctrl i{
+    cursor: pointer;
+}
+.tip-isvaild span.acv{
+    background: #1E9FFF;
+    color:#fff;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 5px 8px;
+}
+.infomation .tip-isvaild,.isclassify,.info-text,.info-content{
+    padding: 10px;
+}
+.infomation .sameclass{
+    background: #eee;
+    padding: 10px;
+    margin: 0 10px;
+}
+.infomation .info-content{
+    margin:0 10px;
+    padding: 10px 0;
+}
+/*新增修改*/
+.add-tip{
+    display: none;
+    width: 100%;
+    padding: 20px 30px 0 20px;
+}
+.add-tip textarea{
+    resize: none;
+    height: 300px;
+}
+/*导入*/
+.import-in{
+    display: none;
+    width: 100%;
+    padding: 15px 25px;
+}
+.import-in .step-one{
+    width: 165px;
+    height: 35px;
+    background: url("../img/step1.png") no-repeat;
+    background-size: 100%;
+    float: left;
+    font-style: normal;
+    text-align: center;
+    line-height: 35px;
+}
+.import-level{
+    display: inline-block;
+    margin:10px auto 20px;
+}
+.import-in .step{
+    width: 165px;
+    height: 35px;
+    background: url("../img/step3.png") no-repeat;
+    background-size: 100%;
+    float: left;
+    font-style: normal;
+    text-align: center;
+    line-height: 35px;
+    margin-left:-12px;
+}
+.import-in .step.acv{
+    background: url("../img/step2.png") no-repeat;
+    background-size: 100%;
+}
+.import-one{
+    height: auto;
+    margin-bottom: 25px;
+}
+.import-one span{
+    display: block;
+    margin-bottom: 15px;
+}
+.import-one a{
+    color:#1E9FFF;
+    cursor: pointer;
+}
+.localUpload {
+    position: relative;
+    width: 110px;
+    height: 34px;
+    margin-right: 20px;
+    border: 1px solid #1E9FFF;
+    cursor: pointer;
+    color:#1E9FFF;
+    float: left;
+    border-radius: 5px;
+    line-height: 34px;
+    text-align: center;
+}
+
+.import-two .layui-input-block{
+    margin:15px 10px 15px 0;
+}
+.form-sign{
+    display: inline-block;
+    color:#aaa;
+    height: 36px;
+    line-height: 36px;
+}
+.showimg .item_box{
+    width: 220px;
+    border: 1px solid #dfdfdf;
+    padding: 15px;
+    height: 55px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    float: left;
+    margin-bottom: 10px;
+}
+.item_box .fa{
+    font-size: 26px;
+    margin-right: 5px;
+    float: left;
+    color:#1E9FFF;
+}
+.item_box span{
+    display: block;
+    width: 150px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: right;
+    height: 55px;
+    line-height: 30px;
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>内容审核</title>
+		<!-- CssCommon -->
+		<link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+		<link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="common/css/common.css?time=new Date()" />
+		<link rel="stylesheet" type="text/css" href="common/css/modal.css" />
+		<link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+		<!-- CssSinglepage-->
+		<link rel="stylesheet" type="text/css" href="advice_feedback/advice_feedback.css" />
+	</head>
+
+	<body>
+		<!--<script type="text/javascript" src="common/js/util/head.js"></script>-->
+		<div class="container-fluet" id="body-box">
+			<div class="row body-left-nav">
+				<div id="content">
+					<div class="common-title">
+						内容审核 - <span class="jurisdiction-title-name">意见反馈</span>
+					</div>
+					<div class="row advice-search common-search">
+						<form class="form-inline" role="form">
+							<!--<div class="form-group serach">
+								<label class="control-lable">标题：</label>
+								<input type="text" class="form-control media-input longinput" placeholder="请输入信息" id="inquireInput">
+							</div>-->
+							<div class="form-group sta1">
+								<label class="control-lable">回复状态：</label>
+								<select id="replyStatus" class="selectpicker show-tick form-control">
+									<option>--全部--</option>
+									<option>未回复</option>
+									<option>未确认</option>
+									<option>已回复</option>
+								</select>
+							</div>
+							<div class="form-group sta2">
+								<label class="control-lable">反馈类型：</label>
+								<select id="feedbacktType" class="selectpicker show-tick form-control">
+									<option>--全部--</option>
+									<option>系统问题</option>
+									<option>页面问题</option>
+									<option>其它问题</option>
+								</select>
+							</div>
+							<div class="form-group sta3">
+								<label class="control-lable">反馈客户端：</label>
+								<select id="clientSide" class="selectpicker show-tick form-control">
+									<option>--全部--</option>
+									<option>PC端</option>
+									<option>APP</option>
+								</select>
+							</div>
+						<button class="btn btn-success" type="button" id="inquire">
+							<i class="search-icon"></i>查询
+						</button>
+						</form>
+					</div>
+					<div class="row advice-table common-table">
+						<table class="table table-hover">
+							<thead>
+								<tr class="active row">
+									<th style='width:45px'>序号</th>
+									<th style='width:86px'>问题类型</th>
+									<!--<th style='width:300px'>反馈内容</th>
+									<th style='width:300px'>回复内容</th>-->
+									<th>用户昵称</th>
+									<th>联系电话</th>
+									<th>qq号</th>
+									<th>用户邮箱</th>
+									<th>反馈时间</th>
+									<th>回复状态</th>
+									<th>客户端类型</th>
+									<th class="" style="width:310px">操作</th>
+								</tr>
+							</thead>
+							<tbody id="tbodyParameter">
+							</tbody>
+						</table>
+					</div>
+					<div class="common-page">
+						<div id="paging-box-count">
+						</div>
+						<div id="paging-box" class="basic-jump"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- modal -->
+		<div class="modal fade" id="changeAudit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+						<h4 class="modal-title" id="myModalLabel">
+                    	新增参数
+                </h4>
+					</div>
+					<div class="modal-body">
+						<form class="bs-example bs-example-form" role="form">
+							<!--反馈内容-->
+							<div class="input-group area">
+								<span class="input-group-addon">反馈内容:</span>
+								<textarea class="form-control remarks" rows="3" id="feedbackCon" readonly="readonly"></textarea>
+							</div>
+							<br>
+							<!--反馈内容end-->
+							<div class="input-group">
+								<span class="input-group-addon"><i class="xh">*</i>是否确定回复:</span>
+								<select id="replyStatus1" class="selectpicker show-tick form-control">
+									<option>否(待修改)</option>
+									<option>是</option>
+								</select>
+							</div>
+							<br>
+							<div class="input-group area">
+								<span class="input-group-addon">回复内容:</span>
+								<textarea class="form-control remarks" rows="3" id="replyCon"></textarea>
+							</div>
+							<br>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary close-btn" id="saveAudit" data-dismiss="modal">
+                    				保存
+                		</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--详情-->
+		<div class="modal fade" id="infoAudit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+						</button>
+						<h4 class="modal-title" id="myModalLabe2">
+							详情
+						</h4>
+					</div>
+					<div class="modal-body">
+            		<div class="common-table">
+					<table class="table table-hover">
+	                              <tbody id="modal-tbody">
+	                              </tbody>
+	                </table>
+	                </div>
+            		</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<!-- jSCommon -->
+	<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+	<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+
+	<script type="text/javascript" src="common/js/login_success.js"></script>
+	<script type="text/javascript" src="common/js/util/changePassword.js"></script>
+	<script type="text/javascript" src="common/js/util/util.js"></script>
+	<script type="text/javascript" src="common/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="common/js/common.js"></script>
+
+	<!--jSCurr-->
+	<script type="text/javascript" src="advice_feedback/advice_feedback.js"></script>
+	<script type="text/javascript" src="common/js/changePassword.js"></script>
+	<script type="text/javascript" src="common/js/util/pub.js"></script>
+</html>

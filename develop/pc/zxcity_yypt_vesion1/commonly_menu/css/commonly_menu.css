@@ -1,0 +1,162 @@
+.app {
+	width: calc(100% - 100px);
+	padding: 50px 0;
+	margin: 0 auto;	
+}
+#tit{
+	line-height: 10px;
+}
+.app-ul .app-li{
+	width: 220px;
+	height: 140px;
+	padding: 14px 0;
+	border-radius: 10px;
+	font-size: 18px;
+	margin: 0 20px 40px;
+	float: left;
+	cursor: pointer;
+	text-align: center;
+	position: relative;
+	border:1px dashed #00a0e9;
+	color:#00a0e9;
+}
+#add-menu #fa{
+	position: absolute;
+	background: url(../icon/plus.png);
+	width: 36px;
+	height: 36px;
+	top: 36px;
+	left: 90px;
+}
+#app-ul .select-li{
+	width: 220px;
+	height: 140px;
+	padding: 14px 0;
+	background: #00a0e9;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 18px;
+	margin: 0 20px 40px;
+	float: left;
+	cursor: pointer;
+	text-align: center;
+	position: relative;
+}
+#app-ul .select-li:hover .me-close{
+	display: block;
+}
+#app-ul .select-li:hover a>img{
+	border: 1px solid #00a0e9;
+	box-shadow: 0px 0px  10px 1px #00a0e9;
+}
+
+.select-li>a>img{
+	display: block;
+    margin: 16px auto 0;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all .3s;
+}
+.select-li>a>span{
+	line-height: 40px;
+	color:#fff;
+}
+
+
+#add-menu>a{
+	width: 100%;
+	height: 100%;
+}
+.select-li .fa{
+	width: 53px;
+	height: 53px;
+	margin: 10px auto 14px;
+	display: block;
+	background: url("../icon/default.png") no-repeat;
+}
+#add-menu>a>i{
+/*	float: left;*/
+	font-style: normal;
+	height: 100%;
+	line-height: 78px;
+	text-align: center;
+	    position: absolute;
+    left: 55px;
+    top: 68px;
+	color:#fff;
+}
+#add-menu>a>i.fa{
+	width: 80px;
+	color: #00A0E8;
+	font-size: 70px;
+}
+#add-menu>a>i.tit{
+	margin-top: 2px;
+	color:#00a0e9;
+}
+#add-menu #fa-tit{
+	float: none;
+}
+
+
+.app-ul .app-li>a{
+	width: 100%;
+	font-style: normal;
+	height: 100%;
+	text-align: center;
+}
+
+.select-li>i.me-close{
+	position: absolute;
+	right: -15px;
+	top: -8px;
+	width: 22px;
+	height: 22px;
+	background: url(../icon/arrow.png) 0 0 no-repeat;
+	display: none;
+}
+.select-li>i.me-close:hover{
+	background: url(../icon/arrow-hover.png) 0 0 no-repeat;
+}
+/*新修改*/
+body{
+	background: #f6f6f6;
+}
+.up-title{
+	width: 100%;
+	color:#999;
+}
+.up-title span{
+	padding: 5px;
+	background: #3caefe;
+	color: #fff;
+	border-radius: 5px;
+	margin-right: 2px;
+}
+.searchbox{
+	margin:46px 0;
+	width: 100%;
+	overflow: hidden;
+}
+.searchbox .input-group{
+	width: 50%;
+	margin: 0 auto;
+}
+.searchbox .input-group input{
+	width: 100%;
+	height: 40px;
+	border: 1px solid #00a0e9;
+}
+.searchbox button{
+	height: 40px;
+	background: #00a0e9;
+	color:#fff;
+	border: 1px solid #00a0e9;
+}
+.searchbox button:hover{
+	background: #00a0e9;
+	color:#fff;
+}
+.rightbtn{
+
+}

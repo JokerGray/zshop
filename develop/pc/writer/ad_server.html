@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>投放广告 - 智享城市·智享头条</title>
+    <!-- Bootstrap -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" type="text/css" href="css/advert.css">
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap-datetimepicker.min.css">
+</head>
+
+<body>
+    <input type="hidden" id="menuHid" value="ad_server_self">
+    <script src="util/head.js"></script>
+    <div class="container">
+        <div class="wrapper clearfix mb30">
+            <script src="util/menu.js"></script>
+            <div class="right pull-right">
+                <div class="wrap">
+                    <div class="wp_tit">选择投放广告位
+                        <span class="tit_desc">（单选）</span>
+                    </div>
+                    <div class="adct">
+                        <ul id="adType">
+                            <!--<li class="adtype_li adtype_li_active">
+                                <span class="mul_icon"></span>
+                                <span class="adtype_txt">自营广告位1</span>
+                                <span class="qus_icon qus1"></span>
+                            </li>
+                            <li class="adtype_li">
+                                <span class="mul_icon"></span>
+                                <span class="adtype_txt">自营广告位2</span>
+                                <span class="qus_icon qus2"></span>                     
+                            </li>-->
+                        </ul>
+                    </div>
+                    <div class="wp_tit">选择广告投放样式</div>
+                    <div class="adct">
+                        <ul id="adStyle">
+                            <!--<li class="adStyle_li adStyle_li_active">
+                                <span class="sig_icon"></span>
+                                <span class="adstyle_txt">单图</span>
+                            </li>
+                            <li class="adStyle_li">
+                                <span class="sig_icon"></span>
+                                <span class="adstyle_txt">三图</span>
+                            </li>   
+                            <li class="adStyle_li">
+                                <span class="sig_icon"></span>
+                                <span class="adstyle_txt">视频</span>
+                            </li>   -->
+                        </ul>
+                        <!--单图样式-->
+                        <div class="adStyle_cont" id="adStyle1" style="display: none;">
+                            <div class="upload clear">
+                                <div class="uploadImg1" id="upload1">
+
+                                </div>
+                                <p class="uploadImg1_desc">尺寸为166*166，格式为jpg/png,大小不超过1M</p>
+                            </div>
+                            <div class="input_tit">输入标题:
+                                <input type="text" name="" id="sgTitle" value="" maxlength="30" />
+                                <span>•&nbsp;&nbsp;不能超过30个文字</span>
+                            </div>
+                            <div class="sub_style">
+                                <span class="subStyle" id="subStyle1">提交预览</span>
+                            </div>
+                            <p class="adshow_txt">广告样式效果图展示</p>
+                            <div class="adShow adShow1">
+                                <p class="adshow_tit">
+                                    什么事内容化设计？设计师为什么关注内容？通过设计的手段
+                                </p>
+                                <div class="showImg1">
+                                </div>
+                                <p class="adshow_adlogo">
+                                    <span>&nbsp;[广告]</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!--三图样式-->
+                        <div class="adStyle_cont" id="adStyle2" style="display: none;">
+                            <div class="upload clear">
+                                <div class="uploadImg3" id="upload2"></div>
+                                <div class="uploadImg3" id="upload3"></div>
+                                <div class="uploadImg3" id="upload4"></div>
+                                <p class="uploadImg3_desc">尺寸为210*210，格式为jpg/png,大小不超过1M</p>
+                            </div>
+                            <div class="input_tit">输入标题:
+                                <input type="text" name="" id="thrTitle" value="" maxlength="30" />
+                                <span>•&nbsp;&nbsp;不能超过30个文字</span>
+                            </div>
+                            <div class="sub_style">
+                                <span class="subStyle" id="subStyle2">提交预览</span>
+                            </div>
+                            <p class="adshow_txt">广告样式效果图展示</p>
+                            <div class="adShow adShow3">
+                                <p class="adshow_tit">
+                                    什么事内容化设计？设计师为什么关注内容？通过设计的手段
+                                </p>
+                                <div class="img-wrap clear">
+                                    <div class="showImg3"></div>
+                                    <div class="showImg3"></div>
+                                    <div class="showImg3"></div>
+                                </div>
+                                <p class="adshow_adlogo">
+                                    <span>&nbsp;[广告]</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!--视频样式-->
+                        <div class="adStyle_cont" id="adStyle3" style="display: none;">
+                            <div class="upload clear">
+                                <p class="up_desc">上传视频</p>
+                                <div class="up_vedio">
+                                    <span id="upVedio">点击上传</span>
+                                    <span class="up_vedio_desc">格式为mp4/avi/rmp,大小不超过50M</span>
+                                    <div id="vdPro"></div>
+                                    <div class="vedioUrl" style="display: none;"></div>
+                                </div>
+                                <p class="up_desc">上传广告图</p>
+                                <div class="vediobg" id="upload5"></div>
+                                <p class="upvdbg_desc">尺寸为702*394，格式为jpg/png,大小不超过1M</p>
+                            </div>
+                            <div class="input_tit">输入标题:
+                                <input type="text" name="" id="vdTitle" value="" maxlength="30" />
+                                <span>•&nbsp;&nbsp;不能超过30个文字</span>
+                            </div>
+                            <div class="sub_style">
+                                <span class="subStyle" id="subStyle3">提交预览</span>
+                            </div>
+                            <p class="adshow_txt">广告样式效果图展示</p>
+                            <div class="adShow adShowV">
+                                <p class="adshow_tit">
+                                    什么事内容化设计？设计师为什么关注内容？通过设计的手段
+                                </p>
+                                <div class="video-wrap clear">
+                                    <span id="play"></span>
+                                    <span class="vd_dur">06:00</span>
+                                </div>
+                                <div class="play-video" style="display: none;">
+                                </div>
+                                <p class="adshow_adlogo">
+                                    <span>&nbsp;[广告]</span>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="wp_tit">选择广告来源</span>
+                    </div>
+                    <div class="adct">
+                        <ul class="ad_sorce">
+                            <!--<li class="ad_sorceli ad_sorceli_active clear">
+                              <div class="ad_stitle clear">
+                                <span class="ad_stitle_icon"></span><span class="ad_stitle_txt">App内部广告</span>
+                              </div>
+                              <ul class="inner_sorce clear">
+                                    <li class="inner_sorceli">
+                                        <span class="ad_stitle_icon"  data-toggle="modal" data-target="#brand"></span><span class="ad_stitle_txt">品牌广告</span>
+                                    </li>
+                                    <li class="inner_sorceli inner_sorceli_active">
+                                        <span class="ad_stitle_icon"  data-toggle="modal" data-target="#shops"></span><span class="ad_stitle_txt">云店广告</span>
+                                    </li>
+                                    <li class="inner_sorceli">
+                                        <span class="ad_stitle_icon"  data-toggle="modal" data-target="#goods"></span><span class="ad_stitle_txt">商品广告</span>
+                                    </li>                           
+                              </ul>
+                            </li>-->
+                        </ul>
+                    </div>
+                    <div class="wp_tit">选择投放区域
+                        <span class="tit_desc">（单选）</span>
+                    </div>
+                    <div class="adct clear cityList cityList1" style="display: none;">
+                        <ul class="ad_area clear">
+                            <li class="ad_areali">
+                                <span class="ad_arealiBtn" type="2"></span>
+                                <label>城市</label>
+                                <div class="distpicker1">
+                                    <select id="prov1"></select>
+                                    <span class="gap_span">--</span>
+                                    <select id="city1"></select>
+                                </div>
+                            </li>
+                            <li class="ad_areali">
+                                <span class="ad_arealiBtn" type="1"></span>
+                                <label>省</label>
+                                <div class="distpicker2">
+                                    <select id="prov2"></select>
+                                </div>
+                            </li>
+                            <li class="ad_areali ad_areali_active" code="0">
+                                <span class="ad_arealiBtn" type="0"></span>
+                                <label>全国</label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="adct clear cityList cityList2" style="display: none;">
+                        <ul class="ad_area clear">
+                            <li class="ad_areali shopCity">
+                                <span class="ad_arealiBtn" type="2"></span>
+                                <label></label>
+                            </li>
+                            <li class="ad_areali shopPro">
+                                <span class="ad_arealiBtn" type="1"></span>
+                                <label></label>
+                            </li>
+                            <li class="ad_areali ad_areali_active" code="0">
+                                <span class="ad_arealiBtn" type="0"></span>
+                                <label>全国</label>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="wp_tit clear">选择投放时间
+                        <span class="tit_desc">（开始时间必须大于当前时间，区间最长不能超过1个月）</span>
+                    </div>
+                    <div class="adct calendar clear">
+                        <div class="calendars">
+                            <p>开始时间</p>
+                            <input type="text" id="startTime" placeholder="开始日期" readonly="readonly" />
+                        </div>
+                        <div class="calendars">
+                            <p>结束时间</p>
+                            <input type="text" id="endTime" placeholder="结束日期" readonly="readonly" />
+                        </div>
+                    </div>
+                    <div class="wp_tit">添加标签</div>
+                    <div class="adct">
+                        <div class="tags clear">
+                            <span class="choose_tag" id="chooseTags">选择标签</span>
+                            <span class="showTags">
+                                <!--<span class="tag">明星<i></i></span>-->
+                            </span>
+                        </div>
+                        <div class="inputTag clear">
+                            <input type="text" placeholder="输入你想要的标签名称（不要包含，）" maxlength="6" id="inputTag" />
+                            <span>•&nbsp;不能超过6个文字</span>
+                        </div>
+                        <span class="tag_sub">提交标签</span>
+                    </div>
+                    <div id="platformCostBox">
+                        <div class="wp_tit">选择付费方式</div>
+                        <div class="adct">
+                            <ul id="adCost">
+                                <li class="adCost_li adCost_li_active" type="1">
+                                    <span class="adCost_icon"></span>
+                                    <span class="adCost_txt">按展示量付费</span>
+                                </li>
+                                <li class="adCost_li" type="2">
+                                    <span class="adCost_icon"></span>
+                                    <span class="adCost_txt">按点击量付费</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="wp_tit">
+                            选择投放次数 
+                            <span class="wp_titInfo">(按所选择展示次数/点击次数投放广告，选择次数用完则广告停止投放，若到期次数未用完，余额则退还账户)</span>
+                        </div>
+                        <div class="adct">
+                            <ul id="adTime">
+                                <li class="adTime_li adTime_li_active" num="1000">
+                                    <span class="adTime_icon"></span>
+                                    <span class="adTime_txt">1000</span>
+                                </li>
+                                <li class="adTime_li" num="2000">
+                                    <span class="adTime_icon"></span>
+                                    <span class="adTime_txt">2000</span>
+                                </li>
+                                <li class="adTime_li" num="5000">
+                                    <span class="adTime_icon"></span>
+                                    <span class="adTime_txt">5000</span>
+                                </li>
+                                <li class="adTime_li adTimeCostom">
+                                    <span class="adTime_icon"></span>
+                                    <span class="adTime_txt">自定义</span>
+                                </li>
+                            </ul>
+                            <div class="customTimeBox hide clearfix">
+                                <input id="customTimeInp" class="customTimeInp fl" type="text" maxlength="5">
+                                <button id="customTimeBtn" class="customTimeBtn fl">确定</button>
+                                <div class="customOpeBox"></div>
+                                <span class="reminder red">*展示量按千为单位，不满千次自动累加</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submits">
+                        <div id="submit">提交</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--显示广告样式-->
+        <div class="phone_model" style="display: none;">
+        </div>
+        <!--标签信息-->
+        <div class="modal fade shopModel" id="tags" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display:none;position: fixed;top: 0;">
+            <div role="document">
+                <div class="modal-content">
+                    <span class="closed" data-dismiss="modal"></span>
+                    <div class="modal-header">
+                        请选择标签
+                    </div>
+                    <div class="modal-body">
+                        <ul class="result_wrap" id="optionalTags">
+                        </ul>
+                    </div>
+                    <div class="modal_footer">
+                        <button class="ensure" id="addTag1">确认</button>
+                        <button class="cancel" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--云店信息-->
+        <div class="modal fade shopModel" id="brand" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display:none;position: fixed;top: 0;">
+            <div role="document">
+                <div class="modal-content">
+                    <span class="closed" data-dismiss="modal"></span>
+                    <div class="modal-header">
+                        请选择云店
+                    </div>
+                    <div class="modal-body">
+                        <div class="sou_wrap clear">
+                            <input type="text" placeholder="请输入商户名称" maxlength="10" id="searchBox" />
+                            <span class="search"></span>
+                        </div>
+                        <ul class="result_wrap"></ul>
+                    </div>
+                    <div class="modal_footer">
+                        <button class="ensure" id="brandSure">确认</button>
+                        <button class="cancel" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--弹出层信息-->
+        <div class="modal fade showModal" id="showModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display:none;position: fixed;top: 0;">
+            <div role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        广告详情
+                        <span class="closed" data-dismiss="modal"></span>
+                    </div>
+                    <div class="modal-body">
+                        <table>
+                            <tr>
+                                <td class="sad-item">投放广告位：</td>
+                                <td class="sad-ct items1"></td>
+                            </tr>
+                            <tr>
+                                <td class="sad-item">广告来源：</td>
+                                <td class="sad-ct items2"></td>
+                            </tr>
+                            <tr>
+                                <td class="sad-item">申请投放时间：</td>
+                                <td class="sad-ct items3"></td>
+                            </tr>
+                            <tr>
+                                <td class="sad-item">添加标签：</td>
+                                <td class="sad-ct items4"></td>
+                            </tr>
+                        </table>
+                        <div class="showAd">
+                            <div class="showAd_title">广告样式
+                                <span>单图</span>
+                            </div>
+                            <!--<div class="adShow adShow3">
+								<p class="adshow_tit">
+									什么事内容化设计？设计师为什么关注内容？通过设计的手段
+								</p>
+								<div class="img-wrap clear">
+									<div class="showImg3"></div>
+									<div class="showImg3"></div>
+									<div class="showImg3"></div>							
+								</div>
+								<p class="adshow_adlogo">智享头条<span>&nbsp;[广告]</span></p>
+							</div>							-->
+                        </div>
+                    </div>
+                    <div class="modal_footer">
+                        <span class="ensure_btn">确认提交</span>
+                        <span class="cancel_btn" data-dismiss="modal">取消</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--费用明细-->
+        <div id="expenseBox" class="expenseBox">
+            <div class="expenseTotal">
+                <p class="fl">费用明细</p>
+                <p class="expenseTotData fr">余额：
+                    <span id="wOrange" class="red"></span> 元
+                </p>
+            </div>
+            <div class="expenseInfo">
+                <div>
+                    <p class="expenseInfoTit">广告位</p>
+                    <p class="expenseData">
+                        <span id="adPositionText">推荐页：</span>
+                        <span id="adPositionPrice"></span>元/次</p>
+                </div>
+                <div>
+                    <p class="expenseInfoTit">投放区域</p>
+                    <p class="expenseData">
+                        <span id="spaceText">城市：</span>
+                        <span id="spaceCost"></span>元/次</p>
+                </div>
+                <div>
+                    <p class="expenseInfoTit">广告来源</p>
+                    <p class="expenseData">
+                        <span id="adSourceText">APP内部：</span>
+                        <span id="adSourcePrice"></span>元/次</p>
+                </div>
+                <div>
+                    <p class="expenseInfoTit">标签数量</p>
+                    <p class="expenseData">免费：1条</p>
+                    <p class="expenseData expenseDataLast">补充：4条
+                        <span id="unitPrice" class="unitPrice"></span>元/条</p>
+                </div>
+            </div>
+            <p class="expenseBottom">共计：
+                <span id="expenseBottomNum" class="wOrange expenseBottomNum">5</span> 元</p>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/upload_adImg.js"></script>
+    <script src="js/adServe.js"></script>
+</body>
+
+</html>

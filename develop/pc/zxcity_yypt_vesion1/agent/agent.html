@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>代理人设置</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" media="all" />
+
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../common/css/common_v2.css" />
+    <link rel="stylesheet" type="text/css" href="css/agent.css" />
+    <style>
+        /* .laytable-cell-checkbox {
+            display: none!important;
+        } */
+
+        /* th[data-type="checkbox"]>div.layui-table-cell>input {
+           display:none!important;
+               width: 71px!important;  
+        } */
+
+    </style>
+</head>
+
+<body>
+    <div class="row-container">
+        <div id="toolbar" class="first-row">
+            <div style="display: inline">
+                <div class="right-tools">
+                    
+                    <button class="layui-btn layui-btn-small layui-btn-primary" id="btnAdd">
+                        <i class="layui-icon"></i> 添加
+                      </button>
+                    <button class="layui-btn layui-btn-small layui-btn-primary" id="btnRefresh">
+                        <i class="layui-icon">ဂ</i> 刷新
+                      </button>
+                </div>
+                <button id="btnShowSearch" class="layui-btn layui-btn-small layui-btn-primary">
+                    <i class="layui-icon">&#xe615;</i> 搜索
+                </button>
+
+            </div>
+            <div class="search-box">
+                <form class="form-inline">
+                    <label for="txtQueryString">手机号码:</label>
+                    <input id="txtQueryString" class="form-control media-input" type="text" placeholder="请输入手机号码" maxlength="20" />
+
+                    <button class="layui-btn layui-btn-small layui-btn-normal" id="btnSearch">
+                        搜索
+                    </button>
+                    <button class="layui-btn layui-btn-small layui-btn-normal" id="btnRestSearch">
+                        重置
+                    </button>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="second-row" id="content">
+            <ul id="tabs" class="nav nav-tabs" role="tablist">
+                <!--<li><a href="#tabs-1" data-toggle="tab">合伙人</a></li>-->
+                <!--<li><a href="#tabs-2" data-toggle="tab">代理商</a></li>-->
+                <!--<li><a href="#tabs-3" data-toggle="tab">合作商户</a></li>-->
+                <li><a href="#tabs-4" data-toggle="tab">内部员工</a></li>
+            </ul>
+            <div class="tab-content">
+                <!--<div id="tabs-1" class="tab-pane" role="tabpanel">-->
+                    <!--<table id="table-1" lay-filter="agent-list"></table>-->
+
+                    <!--<div id="footpager1" class="footpager footpager-style"></div>-->
+                <!--</div>-->
+                <!--<div id="tabs-2" class="tab-pane" role="tabpanel">-->
+                    <!--<table id="table-2" lay-filter="agent-list"></table>-->
+                    <!--<div id="footpager2" class="footpager footpager-style"></div>-->
+                <!--</div>-->
+                <!--<div id="tabs-3" class="tab-pane" role="tabpanel">-->
+                    <!--<table id="table-3" lay-filter="agent-list"></table>-->
+                    <!--<div id="footpager3" class="footpager footpager-style"></div>-->
+                <!--</div>-->
+                <div id="tabs-4" class="tab-pane" role="tabpanel">
+                    <table id="table-4" lay-filter="agent-list"></table>
+                    <div id="footpager4" class="footpager footpager-style"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="pnlbind" class='layui-form clearfix' lay-filter="seach" style="display:none">
+            <div class="dialog-top-panel">
+                <form class="form-inline">
+                    <label for="txtAppUserPhone">手机号码:</label>
+
+                    <input id="txtAppUserPhone" class="form-control media-input" type="text" placeholder="请输入手机号码" maxlength="20" />
+                    <input id="btnAppUserSearch" type="button" class="layui-btn layui-btn-small layui-btn-normal" value="搜索" />
+                    <input id="btnAppUserRestSearch" type="button" class="layui-btn layui-btn-small layui-btn-primary" value="重置" />
+            </div>
+            <table id="tblAppUser" class="layui-table" lay-filter="unbindappusers"></table>
+            <div id="pgrAppUser" style="text-align: right;padding-right: 13px;"></div>
+        </div>
+    </div>
+<!-- 
+    <script type="text/html" id="realnameTpl">
+        {{ # if(d.isrealname === -1){ }}
+            <span> 审核不通过 </span> 
+        {{# } else if(d.isrealname === 0) { }}
+            <span> 未认证 </span> 
+        {{# } else if(d.isrealname === 1) { }}
+            <span> 待审核 </span> 
+        {{# } else { }}
+            <span style="color: #29B34C;"> 已认证</span> 
+        {{# } }}
+    </script> -->
+
+    
+
+    <script type="text/html" id="tpl_row_buttons">
+        {{# if(d.code == 'T4' || d.code == 'T2'){ }}
+        <span></span>
+            
+        {{# } else { }}
+            <button class="layui-btn layui-btn-small  layui-btn-danger" lay-event="unbind">
+                <i class="layui-icon">&#xe640;</i> 删除
+            </button>
+        {{# } }} 
+    </script>
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="js/agent.js"></script>
+
+
+
+<script>
+</script>
+
+</html>

@@ -1,0 +1,57 @@
+<div class="tools-lightbox">
+    <div class="panel-default">
+        <div class="padding-15">
+            <div class="col-md-12">
+                <!-- <h5 class="tools-line-h tools-m-0">您确定要拒绝活动申请吗？</h6> -->
+            </div>
+        </div>
+    
+        <div>
+            <div class="form-group">
+                <div class="modal-text-label">
+                    <span>实际人均费用:</span>
+                </div>
+                <div class="modal-text-content">
+                    <span ng-bind="activeStatusData.realBudget"></span>元
+                </div>
+                <div class="modal-text-label">
+                    <span>实际参加人数:</span>
+                </div>
+                <div class="modal-text-content">
+                    <span ng-bind="activeStatusData.JoinNum"></span>人
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="modal-text-label">
+                    <span>实际总金额:</span>
+                </div>
+                <div class="modal-text-content">
+                    <span ng-bind="activeStatusData.realMoney "></span>元
+                </div>
+
+                <div ng-if='activeStatusData.giveOrGet<=0' class="modal-text-label" style="color:red"
+                    <span>应退还:</span>
+                </div>
+                <div ng-if='activeStatusData.giveOrGet<=0' class="modal-text-content" style="color:red">
+                    <span ng-bind="activeStatusData.give">元</span>
+                </div>
+
+                <div ng-if='activeStatusData.giveOrGet>0' class="modal-text-label" style="color:red">
+                    <span>应补齐:</span>
+                </div>
+                <div ng-if='activeStatusData.giveOrGet>0' class="modal-text-content" style="color:red">
+                    <span ng-bind="activeStatusData.get">元</span>
+                </div>
+
+            </div>
+            
+        </div>
+
+        <div class="status-modal-footer">
+            <div class="col-md-12">
+                <button class="btn modal-btn-new-danger  col-md-5" ng-click="cancel()" id="ok">再想一想</button>
+                <button class="btn modal-btn-green-default  col-md-5" ng-click="access()" id="cancel">确认发放活动结余</button>
+            </div>
+        </div>
+    </div>
+</div>

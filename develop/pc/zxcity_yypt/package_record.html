@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>领取记录</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="package_manage/package_manage.css" />
+</head>
+<body>
+<div class="common-container">
+    <div class="content-body">
+        <div class="common-title">
+            礼包管理 - <span class="jurisdiction-title-name">领取记录</span>
+        </div>
+        <div class="row common-search">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <label class="control-lable">礼包名称：</label>
+                    <input type="text" class="form-control search-input longinput" id="searchName" placeholder="请输入信息"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-lable">领取状态：</label>
+                    <select class="form-control" id="payType">
+                        <option value="">-请选择-</option>
+                        <option value="1">已领取</option>
+                        <option value="0">未领取</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-lable">产品名称：</label>
+                    <select class="form-control" id="payLocK">
+                        <option value="">-请选择-</option>
+                        <option value="1">APP</option>
+                        <option value="2">商品后台</option>
+                        <option value="3">展示端</option>
+                        <option value="4">智大师</option>
+                    </select>
+                </div>
+                <a class="btn btn-success" href="javascript:void(0);" id="searchCount">
+                    <i class="search-icon"></i><span>查询</span>
+                </a>
+            </form>
+        </div>
+        <!-- 表格 -->
+        <div class="common-table">
+            <table class="table table-hover" id="jurisdiction-table">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>礼包</th>
+                    <th>领取人</th>
+                    <th>产品名称</th>
+                    <th>业务板块</th>
+                    <th>是否领取</th>
+                    <th>领取时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <!-- 分页 -->
+            <div class="common-page1">
+                <div id="paging-box-count">
+
+                </div>
+                <div id="paging-box" class="basic-jump"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="common/js/util/util.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+<script type="text/javascript" src="common/js/login_success.js"></script>
+<script type="text/javascript" src="common/js/util/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/pub.js"></script>
+<!-- jSCommon -->
+<script type="text/javascript" src="package_manage/package_record.js"></script>
+</html>

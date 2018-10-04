@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title>我的统计</title>
+		<link rel="stylesheet" href="assets/css/bootstrap.css"/>
+		<link rel="stylesheet" href="assets/css/jquery.circliful.css"/>
+		<link rel="stylesheet" href="css/my-data.css"/>
+	</head>
+	<body>
+		<div class="allWrapper">
+			<div class="data">
+				<div class="my-sale my-data row">
+					<div id="main1" style="width: 100%;height: 100%;"></div>
+				</div>
+				<div class="my-use my-data row">
+					<div id="main2" style="width: 100%;height: 100%;"></div>
+				</div>
+				<div class="client-visit my-data row">
+					<div class="title">客户回访</div>
+					<div class="col-xs-6" style="padding-left: 20px;border-right: solid 1px #fe6869;">
+						<div class="visit-amounts"><span>最近一个月到店</span><br/><span id="visit-amounts"></span></div>
+						<div class="regist-amounts"><span>最近一个月注册</span><br/><span id="regist-amounts"></span></div>
+					</div>
+					<div class="col-xs-6" style="padding-left: 20px;">
+						<div class="novisit-amounts"><span>1~2个月未到店</span><br/><span id="novisit-amounts"></span></div>
+						<div class="noregist-amounts"><span>1~2个月未注册</span><br/><span id="noregist-amounts"></span></div>
+					</div>
+				</div>
+				<div class="new-client my-data row">
+					<div class="title">新客分析</div>
+					<div class="col-xs-6">
+						<div class="day-amounts"><span id="day-amounts"></span><br/><span>今日新客人数</span></div>
+						<div class="month-amounts"><span id="month-amounts"></span><br/><span>本月新客总数</span></div> 
+					</div>
+					<div id="main3" class="col-xs-6" data-dimension="125" data-text="" data-width="16" data-fontsize="32" data-percent="" data-fgcolor="#fe6869" data-bgcolor="#eee"></div>
+				</div>
+				<div class="gift-amounts my-data row">
+					<div class="title">赠送统计</div>
+					<div class="col-xs-6">
+						<div class="day-amounts"><span id="day-gifts"></span><br/><span>今日赠送统计</span></div>
+						<div class="month-amounts"><span id="month-gifts"></span><br/><span>本月赠送总数</span></div> 
+					</div>
+					<div id="main4" class="col-xs-6" data-dimension="125" data-text="" data-width="16" data-fontsize="32" data-percent="" data-fgcolor="#fe6869" data-bgcolor="#eee"></div>
+				</div>
+				<div class="client-warn my-data row">
+					<div class="title">客户卡项预警</div>
+					<div class="col-xs-6 warn-left" style="padding-left: 40px;border-right: solid 1px #fe6869;">
+						<!--<div class="client"><span class="client-name">王尼玛</span><br/><span class="client-amounts">80</span></div>
+						<div class="client"><span class="client-name">小王子</span><br/><span class="client-amounts">80</span></div>-->
+					</div>
+					<div class="col-xs-6 warn-right" style="padding-left: 40px;">
+						<!--<div class="client"><span class="client-name">张三</span><br/><span class="client-amounts">80</span></div>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src="assets/js/jquery-2.1.0.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
+	<script src="assets/js/jquery.circliful.min.js"></script>
+	<script src="assets/js/echarts.min.js"></script>
+	<script src="js/my-data.js"></script>
+	</body>
+</html>

@@ -1,0 +1,170 @@
+
+@function vm($px) {
+  @return ($px / 750) * 100vw;
+}
+@mixin ell() {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin sj($px,$color) {
+  border:vm($px) solid $color;
+  border-top: vm($px) solid transparent;
+  border-bottom:vm($px) solid transparent;
+  border-left:vm($px) solid transparent;
+  border-right: vm($px) solid transparent;
+}
+$vm_base: 750;
+$color_base:#333333;
+$wihte:#fff;
+$faf:#f5f5f5;
+$dark:#000;
+$bdc:#dadada;
+$bdt:#f0eeee;
+$c999:#999999;
+$c666:#666666;
+$eee:#eee;
+$font_h3:vm(36);
+$font_p:vm(28);
+$font_num:vm(40);
+*{box-sizing: border-box;}
+.tac{
+  text-align: center;}
+.p{
+  font-size:$font_p;
+}
+.c666{
+  color: $c666;}
+.c999{
+  color: $c999;
+}
+body,html{
+  width:100%;
+}
+
+body{font-family: "Helvetica Neue", Helvetica, "PingFang SC", '微软雅黑', Tahoma, Arial, sans-serif;
+  color:$color_base ;
+}
+
+.app{
+  //width:vm(750);
+  //height: 100%;
+
+  margin-top: 0;
+  overflow: hidden;
+  //margin-bottom:vm(20);
+
+
+}
+.star{
+  color: red;
+  vertical-align: sub;
+  margin-right: vm(10);
+
+}
+.title{
+  color: $color_base;
+  font-size:vm(32);
+  font-weight:bold;
+  //margin-bottom: 10px;
+  line-height:vm(108);
+  background:$wihte;
+  text-align: center;
+  border-bottom:1px solid $eee;
+}
+.uploadUl{
+
+  li{
+    padding:vm(20) 0;
+    text-align: center;
+    background:$faf;
+    background-size:95%;
+  }
+  div{
+    z-index: 99!important;
+  }
+  input{
+    z-index: 99!important;
+  }
+  img{
+    display: block;
+    margin: 0 auto;
+    width:vm(460);
+    height:vm(316);
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .img2{
+    position: absolute;
+    z-index: 0;
+    width:vm(420);
+    height:vm(276);
+    top:vm(40);
+    left:  vm(165);
+  }
+}
+.formBox{
+  padding:vm(20);
+  .layui-input-block{
+    margin-left:80px;
+  }
+  .layui-form-label{
+    width:auto;
+    padding:9px;
+  }
+  .layui-form-item{
+
+  }
+  p{
+    margin-left:80px;
+
+    font-size:vm(24);
+    color: #666;
+    line-height:vm(64);
+
+  }
+  .submit{
+    width: 100%;
+  }
+}
+.layui-input:focus,.layui-input:hover{
+  outline: 0;
+  border-color: #009688!important;
+}
+.layui-form-select dl dd.layui-this{
+  background-color:#009688
+}
+.autoBox{
+  margin-right: 110px;
+  button{
+    position: absolute;
+    top: 0;
+    right: -110px;
+    width: 110px;
+    padding: 0;
+    text-align: center;
+  }
+  .layui-form-select .layui-input{
+    padding-right:20px;
+  }
+  select:first-child{
+
+
+  }
+  .select2+div{
+    position: absolute;
+    top: 0;
+    right: -110px;
+    width: 110px;
+    padding: 0;
+    text-align: center;
+  }
+  input{
+
+  }
+}
+input {
+  //caret-color: transparent;
+  -webkit-appearance: none;
+}

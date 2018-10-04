@@ -1,0 +1,68 @@
+.body {
+  font-family: 'microsoft yahei';
+  font-size: 14px;
+  color: #333333;
+}
+.content {
+  padding: 30px;
+}
+.content .priority {
+  margin-left: 10px;
+  font-style: normal;
+}
+.content .title {
+  border-bottom: 1px solid #E5E5E5;
+  height: 40px;
+}
+.content .title li {
+  position: relative;
+  float: left;
+  width: 90px;
+  height: 40px;
+  text-align: center;
+}
+.content .title li span {
+  position: absolute;
+  top: 0;
+  left: 60px;
+}
+.content .title li .unread {
+  top: -7px;
+  width: 10px;
+  height: 15px;
+}
+.content .title li:hover {
+  border-bottom: 2px solid #52c8be;
+  color: #52c8be;
+}
+.content .title li.active {
+  border-bottom: 2px solid #52c8be;
+}
+.content .centercontent ul {
+  height: 600px;
+}
+.content .centercontent ul li {
+  padding: 20px 0;
+  border-bottom: 1px solid #E5E5E5;
+}
+.content .centercontent ul a {
+  color: #1DCCC7;
+  font-size: 13px;
+}
+.content .centercontent ul i {
+  color: #818181;
+  font-style: normal;
+}
+.content .centercontent ul p {
+  font-size: 15px;
+  margin-top: 7px;
+  color: #545454;
+}
+.content .centercontent ul b {
+  float: right;
+  font-weight: normal;
+  font-size: 13px;
+}
+.content .layui-laypage {
+  float: right;
+}

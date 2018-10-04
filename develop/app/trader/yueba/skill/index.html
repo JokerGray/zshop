@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>技能管理</title>
+    <!-- <link rel="shortcut icon" href="favicon.ico"> -->
+    <link rel="stylesheet" href="./css/index.css">
+     <!-- <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css"> -->
+     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-table.css">
+     <link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="./css/morris-0.4.3.min.css">
+     <link rel="stylesheet" href="./css/animate.min.css">
+     <link rel="stylesheet" href="./css/style.min862f.css">
+     <script src="./js/jquery.min.js"></script>
+     <script src="../../assets/layer/layer.js"></script>
+     
+     <script src="../../assets/datatables/DataTables-1.10.15/js/jquery.dataTables.min.js"></script>
+     <script src="../../assets/datatables/DataTables-1.10.15/js/dataTables.bootstrap.min.js"></script>
+     <script src="../../assets/datatables/I18n/cn.js"></script>
+     <script src="../../assets/swiper/js/swiper.min.js"></script>
+     <script src="./js/bootstrap.min.js"></script>
+     <script src="./js/bootstrap-table.js"></script>
+     <script src="./js/bootstrap-table-zh-CN.js"></script>
+</head>
+    <body class="pace-done mini-navbar">
+        <div class="row container-fluid" style="padding-top: 20px;height: 100%;">
+        <div class="col-lg-2 hidden-md hidden-sm hidden-xs" id="listTips">
+                    <h1 class="text-info">可选择操作：</h1>
+                    <div class="Ican-list">
+                        <button type="button" class="btn1 Ican active1"><span class="Ican-span">1</span>管理我能列表</button>
+                        <button type="button" class="btn1 list"><span class="Ican-span">2</span>发布我能</button>
+                    </div> 
+                     
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-12 pone">
+            <div class="bg-shouji">
+                <div class="phone_title">
+                    <span class="phone_icon pull-left fa fa-plus" style="visibility:hidden"></span>  
+                     <!-- style="visibility:hidden" -->
+                    <span id="poneTitle">技能管理</span>
+                    <span id="addPublish" class="phone_icon pull-right fa fa-plus" style="visibility:hidden"></span>  
+                </div>
+                <div class="statusContent shadow">  
+                        <span class="active" value="1">开启中</span>
+                        <span value="0">已关闭</span>
+                </div>
+                <div class="phone_content">
+                        <div class="addTaskContent">
+                                <div class="addTask">
+                                    <i class="fa fa-plus"></i> <span class="addText">发布我能</span>
+                                </div>
+                        </div>
+                        <div class="myTask" style="display: none;">
+                                <!-- style="display: none;" -->
+                                <div class="shopName"><i class="icon-shop-empty"></i><span>测试店铺名称1</span></div>
+                                
+                                <div class="typeContent">
+                                    <img class="categoryUrl" src="http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/services/category/SRSC.png">
+                                    <span class="categoryName">test</span>
+                                </div>
+                                
+                                <div class="skillContent">
+                                    <div class="picContent">
+                                        <img class="resourceUrl" src="./image/spmr@2x.png">
+                                    </div>
+                                    <div class="skillDetailContent">
+                                        <div class="serviceName ellipsis">特一级初始大时代阿道夫啥地方安抚算法的方式的发生过</div>
+                                        <div class="rateContent">
+                                            <i class="rate"></i>
+                                            <i class="rate"></i>
+                                            <i class="rate"></i>
+                                            <i class="rate"></i>
+                                            <i class="rate"></i>
+                                            <span>已售<span class="orderNumber">58</span>单</span>
+                                        </div>
+                                        <div class="priceContent">
+                                            <span class="servicePrice">120</span>元/<span class="serviceUnit">小时</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div><span class="updateTime">更新时间 2017.12.12 13:22</span> <span class="erasure" onclick="refreshTime(this)">刷新</span><span class="erasure" onclick=" ">编辑</span><span class="erasure" onclick="">关闭</span></div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    <div class="col-lg-6 col-md-7 col-sm-12"  style="height:776px;">
+        <!-- <button id="btn">点击克隆</button> -->
+        <div class="myTitle text-center text-info">技能详情</div>
+        <table id="tablelist">
+        </table>
+        <div class="clearfix"></div>
+        </div>
+    </div>
+<script type="text/javascript">
+
+
+    function setData(arr){
+    for(var i=0; i<arr.length; i++){
+    var dom = $('.myTask').eq(0).clone().show();
+    $('.phone_content').append(dom);
+    dom.find('.shopName span').text(arr[i]['shopName']);
+    dom.find('.categoryUrl').attr('src', arr[i]['categoryUrl']);
+
+    dom.find('.categoryName').text(arr[i]['categoryName']);
+    dom.find('.serviceName').text(arr[i]['serviceName']).attr('title', arr[i]['serviceName']);
+    
+    if(arr[i]['resourceList'].length > 0 && arr[i]['resourceList'][0]['resourceUrl'].length> 0) {
+        dom.find('.resourceUrl').attr('src', arr[i]['resourceList'][0]['resourceUrl']);
+    }
+    dom.find('.orderNumber').text(arr[i]['orderNumber']);
+    dom.find('.servicePrice').text(arr[i]['servicePrice']);
+    dom.find('.serviceUnit').text(arr[i]['serviceUnit']);
+    var xxx=arr[i]['isOn'];
+     if(xxx===1){
+        dom.find('.serviceUnit').text(arr[i]['serviceUnit']);
+     }
+}
+    }
+$(document).ready(tableInit);
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function tableInit(){
+$('#tablelist').bootstrapTable({
+url: '/zxcity_restful/ws/rest',
+method: 'post',
+ajaxOptions:{
+    headers:{
+        apikey: 'test'
+    }
+},
+contentType: "application/x-www-form-urlencoded",
+queryParams: function(params){
+    var p = {
+        cmd: 'newservice/getUserSkillList',
+        data: JSON.stringify({
+            "userId": 17,
+            "skillType": 0,
+            "shelfStatus": 1,
+            "pagination": {
+            "page": 1,
+            "rows": 10,
+            }
+        }),
+        version: 3
+    }
+    return p;
+},
+responseHandler: function(res){
+    res.rows = res.data
+    return res;
+},
+language: language,
+sidePagination: "server",
+pageNumber:1,
+pageSize: 10,
+pageList: [10, 25, 50, 100],
+striped: true,
+pagination: true,
+sortable: false,
+cardView: false,
+detailView: false,
+columns: [
+    { field: 'serviceId', title: '编号', width: 200, align: 'center',formatter:function(val,row,index){
+            return index+1;
+    }},
+    { field: 'serviceName', title: '名称分类', width: 150, align: 'center' },
+    // formatter: function (val, row, index) { return val.substr(0, 18)+'...'}
+    { field: 'userName', title: '技能发布人', width: 100, align: 'center' },
+    { field: 'servicePrice', title: '服务价格', width: 100, align: 'center', formatter: function(val, row, index){
+        return row.servicePrice +" / "+row.serviceUnit;
+    }},
+    { field: 'isOn', title: '技能状态', width: 100, align: 'center',formatter:function(val,row,index){
+            if(row.isOn ===1){
+                return "开启中";
+            }else{
+                return "已关闭";
+            }
+    }},
+    { field: 'serviceId', title: '操作', width: 100, align: 'center',formatter: function(val, row, index){ return '<button type="button" class="btn btn-danger btn-xs" onclick="clickBtn(this)">查看</button>'}}
+],
+onClickRow: clickRow
+});
+// 按钮点击
+//  $('table').on('click', function (e) {
+ console.log('监听table的按钮点击');
+// var scrollTop=$('.phone_content').scrollTop();
+var height=$('.addTaskContent').height();
+var myTaskHeight=$('.myTask').height();
+$('table tbody').on('click','tr',function(){
+    var index1 = $('table tbody tr').index(this);
+    console.log(index1)
+    var scroll=height+38+213*(index1);
+    $('.phone_content').scrollTop(scroll);
+})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 列表点击事件
+function clickRow(row, $element){
+console.log('列点击');
+// console.log(row)
+}
+// 另一种按钮点击事件
+function clickBtn(btn) {
+var dataAll = $('#table').bootstrapTable('getData');
+var index = $(btn).parent().parent().index();
+console.log('直接写入点击');
+}
+function reqAjax(cmd, data){
+// var loadIndex=layer.load();
+setTimeout(function(){
+    // layer.close(loadIndex);
+},5000);
+var deferred = $.Deferred();
+$.ajax({
+    type:"post",
+    dataType: 'json',
+    url:"/zxcity_restful/ws/rest",
+    headers: {
+        apikey: sessionStorage.getItem('apikey') || 'test'
+    },
+    data: {
+        cmd: cmd,
+        data: JSON.stringify(data),
+        version: 3 // 版本号根据情况默认
+    },
+    success: function(data){
+        // layer.close(loadIndex);
+        deferred.resolve(data)
+    },
+    error: function(){
+        // 这里的 error 一般都是网络问题，500了也检查不出来
+        // layer.close(loadIndex);
+        toast('连接出错，请检查网络或稍后再试！');
+        deferred.reject()
+    }
+});
+return deferred;
+}
+var def = reqAjax('newservice/getUserSkillList',{
+"userId": 17,
+"skillType": 0,
+"shelfStatus": 1,
+"pagination": {
+    "page": 1,
+    "rows": 10
+}
+});
+def.then(function(data){
+setData(data.data);
+});
+$('.statusContent span').click(function(){
+    if($(this).hasClass('active')) return;
+    $(this).addClass('active').siblings().removeClass('active');
+});
+$('.Ican-list>.btn1').click(function(){
+    if($(this).hasClass('active1')) return;
+    if(!$(this).hasClass('active1')){
+        $(this).addClass('active1');
+        $(this).siblings().removeClass('active1');
+    };
+    if($(this).children().hasClass('active2')) return;
+    if(!$(this).children().hasClass('active2')){
+        $(this).children().addClass('active2');
+        $(this).siblings().children().removeClass('active2');
+    };
+});
+
+    console.log(sessionStorage);
+    // function getQueryString(name){
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+        console.log(r);
+	//  return r !== null ? decodeURI(r[2]) : null;
+	//  }
+
+      </script>
+      </body>
+      </html>

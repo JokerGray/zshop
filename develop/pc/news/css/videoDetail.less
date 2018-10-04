@@ -1,0 +1,135 @@
+@charset "utf-8";
+@import 'pub.less';
+//页面主体内容
+.main {
+    margin-top: 44px;
+}
+
+.main .left {
+    margin-top: 26px;
+    margin-bottom: 40px;
+    width: 760px;
+    .videoBox {
+        video {
+            width: 100%;
+            height: 500px;
+        }
+        .videoControl {
+            width: 100%;
+            padding: 0 20px;
+            height: 50px;
+            line-height: 50px;
+            color: #fff;
+            background-color: #333333;
+            .collectVideo {
+                display: inline-block;
+                position: relative;
+                padding-left: 30px;
+                i {
+                    position: absolute;
+                    left: 0;
+                    top: 14px;
+                    height: 20px;
+                    width: 20px;
+                    background: url(../img/collect.png) no-repeat center center;
+                    background-size: 20px;
+                }
+            }
+            .collectVideo.active {
+                color: #FD4B4B;
+                i {
+                    background: url(../img/cancelCollect.png) no-repeat center center;
+                }
+            }
+        }
+    }
+    .videoExplainBox {
+        margin-top: 10px;
+        .videoExpTitle {
+            font-size: 30px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        .videoAuthorIcon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .videoAuthorMess {
+            color: #666666;
+            margin: 5px 0 0 20px;
+            font-size: 14px;
+            p:nth-child(1) {
+                margin-bottom: 3px;
+            }
+        }
+        .FollowAuthorBtn {
+            width: 80px;
+            height: 30px;
+            background: url(../img/follow.png) no-repeat center center;
+            background-size: contain;
+            margin: 5px 0 0 30px;
+            background-size: contain;
+        }
+        .FollowAuthorBtn.active {
+            background: url(../img/followed.png) no-repeat center center;
+            background-size: contain;
+        }
+        .videoExpPlay {
+            color: #666666;
+            margin-top: 5px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            span {
+                margin-right: 5px;
+                font-size: 28px;
+                color: #FD4B4B;
+                vertical-align: bottom;
+            }
+        }
+        .videoExpContent {
+            margin: 10px 0;
+            text-indent: 2em;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 28px;
+        }
+        .videoTagBox {
+            .videoTagIcon {
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                background: url(../img/tag.png) no-repeat center center;
+                background-size: 24px;
+            }
+            ul {
+                display: inline-block;
+                li {
+                    float: left;
+                    font-size: 18px;
+                    padding: 0 10px;
+                    color: #FD4B4B;
+                    position: relative;
+                }
+                li:after {
+                    content: '';
+                    display: block;
+                    width: 1px;
+                    height: 16px;
+                    position: absolute;
+                    top: 5px;
+                    right: 0;
+                    background-color: #999;
+                }
+                li:last-child:after {
+                    width: 0;
+                }
+            }
+        }
+    }
+}
+
+.main .right {
+    margin-top: 26px;
+}

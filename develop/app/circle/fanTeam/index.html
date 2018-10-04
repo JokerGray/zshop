@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="wekit">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./static/flexible/flexible.js"></script>
+    <script src="./static/artTemplate/artTemplate.js"></script>
+    <script src="./static/share/share.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+
+    <title>粉团队详情</title>
+</head>
+<body style="font-size: 12px;max-width: 640px;margin: 0 auto;">
+        <div id="header" >
+            <div class="header_logo">
+                <img src="./src/img/logo.png">
+            </div>
+            <div class="header_load btn">
+                打开
+            </div>
+        </div>
+        
+    <div class="content">
+        
+    </div>
+    <a href="/24hours/share24/getPackage.html?sn=15w0&yw=circle&cp=1" class="footer download_link"> <img src="./src/img/footer.png" alt=""> </a>
+
+    <div id="contBlank" style="display: none;">
+        <span class="blank_icon"></span>
+        <p class="msg_miss">哎呀！您访问的地址不存在</p>
+    </div>
+
+    <div class="model">
+        <div class="model_cont">
+            <p class="text1">1、点击右上角的&nbsp;&nbsp;<span></span></p>
+            <p class="text2">2、选择&nbsp;&nbsp;<span></span></p>
+            <div class="pointTo"></div>
+        </div>
+    </div>
+
+    
+
+    <script src="./static/pub/pub.js"></script>
+    
+
+<script type="text/html" id="showCont">
+
+    <div class="cover-img" id="coverImg" onclick="gotoCircle({{data.fansTeam.detailId}})">
+
+        <img src="{{data.fansTeam.detailTitlePic}}" alt="" style="height: 100%; width: 100%;">
+        <div class="back-btn"></div>
+        <div class='swipe'>
+            {{each data.albumList as album index}}
+                {{if album.albumUrl}}
+                    <div>
+                        <img src="{{album.albumUrl}}" alt="" style="height: 100%; width: 100%;">
+                    </div>
+                {{/if}}
+            {{/each}}
+
+        </div>
+    </div>
+    <div class="activity-about">
+        {{if data.activityList[0]}}
+            <div class="active-process padding-lr-24">
+                <div class="active-process-title">
+                    <b class="title-bar"></b>粉活动
+                </div>
+                <div class="process-info-box">
+                    <div class="active-process-photo">
+                        <div class="photo-label-box">
+                            <div class='position-box'>
+                                <img src="src/img/dizhi@2x.png" alt="" class='photo-label-icon'>
+                                
+                                    <span class='photo-label-title'>{{data.activityList[0].detailPlace}}</span>
+                                
+                            </div>
+                            <div class='position-box'>
+                                <img src="src/img/huodongshijian@2x.png" alt="" class='photo-time-icon'>
+                               
+                                    <span  class='photo-label-time'>{{data.activityList[0].detailBeginTime}}</span>
+                                
+                            </div>
+                        </div>
+                       
+                            <img src="{{data.activityList[0].detailPicurl}}" alt="" >
+                        
+                        
+                    </div>               
+                    <div class="process-content" id="processContent">
+                        <p>
+                           
+                            <b>{{data.activityList[0].detailName}}</b>
+                            
+                        </p>
+                        <span id='processContent-detail'></span>
+                        <!-- {{if data.activityList[0]}} -->
+                            <!-- <span>{{data.activityList[0].detailDetail}}</span> -->
+                        <!-- {{/if}} -->
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+        <div  class="swiper-container">
+                <div class="active-process-title padding-lr-24">
+                    <b class="title-bar"></b>粉风采
+                </div>
+            <div class="swiper-wrapper">
+                {{each data.videoList as video index}}
+                    <div class="swiper-slide">
+                        <div class="total-box">
+                            <div class="fengcai-box">
+                                <div class="fengcai-photo">
+                                    <img src="{{video.circleLogo}}" alt="">
+                                </div>
+                                <div class="fengcai-info-box">
+                                    <div class="fengcai-info-title">
+                                        {{video.userName}}
+                                    </div>  
+                                    {{if video.videoAlbumCoverUrl}}
+                                        <div class="fengcai-info-photo">
+                                            <img src="{{video.videoAlbumCoverUrl}}" alt="" >
+                                        </div>
+                                        <div class="fengcai-info-detail">
+                                            {{video.videoAlbumDescription}}
+                                        </div>
+
+                                    {{else if video.urls.length != 0}}
+                                        <div class="fengcai-info-photo">
+                                            <img src="{{video.urls[0]}}" alt="" >
+                                        </div>
+                                        <div class="fengcai-info-detail">
+                                            {{video.videoAlbumDescription}}
+                                        </div>
+                                    {{else}}
+                                        <div class="fengcai-info-detail-center">
+                                            {{video.videoAlbumDescription}}
+                                        </div>
+                                    {{/if}}
+
+                                </div>
+                                
+                            </div>
+                            <div class="fengcai-info-zan">
+                                <div class="fengcai-info-zan-detail">
+                                    <div class="zan-heart">
+    
+                                    </div>
+                                    <div class="zan-num">
+                                        {{video.totalLikeCount}}
+                                    </div>
+                                </div>
+                                <div class="fengcai-info-zan-detail">
+                                    <div class="msg-icon">
+    
+                                    </div>
+                                    <div class="zan-num">
+                                        {{video.totalCount}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                    </div>
+                {{/each}}
+            </div>
+               
+                
+        </div>  
+
+        <div class="padding-lr-24">
+            <div class="active-process-title">
+                <b class="title-bar"></b>粉小组
+            </div>
+            <div class="fen-team-wall">
+                {{each data.groupList as group index}}
+                    {{if group.personList.length ==1 }}
+                        <div class="fen-team">
+                            <div class="photo-box">
+                                <div class="fen-team-photo-11">
+                                    <img src="{{group.personList[0].userPic}}" alt=""  class='fen-team-img'>
+                                </div>  
+                            </div>
+                            <div class='fen-team-name'>
+                                {{group.detailName}}
+                            </div>
+                        </div>
+                    {{else if group.personList.length ==2 }}
+                        <div class="fen-team">
+                            <div class="photo-box">
+                                    <div class="fen-team-photo-21">
+                                        <img src="{{group.personList[0].userPic}}" alt="" class='fen-team-img'>
+                                    </div>
+                                    <div class="fen-team-photo-22">
+                                        <img src="{{group.personList[1].userPic}}" alt="" class='fen-team-img'>
+                                    </div>  
+                            </div>
+                            <div class='fen-team-name'>
+                                {{group.detailName}}
+                            </div>
+                        </div>
+                    {{else}}
+                        <div class="fen-team">
+                            <div class="photo-box">
+                                    <div class="fen-team-photo-31">
+                                        <img src="{{group.personList[0].userPic}}" alt="" class='fen-team-img'>
+                                    </div>
+                                    <div class="fen-team-photo-32">
+                                        <img src="{{group.personList[1].userPic}}" alt="" class='fen-team-img'>
+                                    </div>
+                                    <div class="fen-team-photo-33">
+                                        <img src="{{group.personList[2].userPic}}" alt="" class='fen-team-img'>
+                                    </div>  
+                            </div>
+                            <div class='fen-team-name'>
+                                {{group.detailName}}
+                            </div>
+                        </div>
+                    {{/if}}
+                {{/each}}
+            </div>
+
+            {{if data.groupList.length>6}}
+                <div class="check-more" onclick='showMore()'>
+                    <span class="check-more-btn">查看更多粉小组</span>
+                </div>
+            {{/if}}
+            
+        </div>
+    </div>
+</script>
+<script>
+    function showMore (){
+        $('.fen-team-wall').css('height','auto');
+    }
+</script>
+</body>
+</html>

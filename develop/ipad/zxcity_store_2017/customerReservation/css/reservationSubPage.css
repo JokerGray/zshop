@@ -1,0 +1,265 @@
+.columns{
+    padding:0;
+}
+.aside-box{
+    background-color: #252c36;
+    height:100vh;
+}
+.side-top{
+    height:2.75rem;
+    border-bottom:0.063rem solid #dadada;
+}
+.side-top .return-icon{
+    display:block;
+    color:#fff;
+    line-height: 2.75rem;
+    font-size: 1.125rem;
+    text-align: center;
+}
+.side-top .return-icon .icon{
+    display: inline-block;
+    width: 0.938rem;
+    height: 1.5rem;
+    background-image: url(../../common/image/return_app_icon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    vertical-align: middle;
+    margin-right: 0.75rem;
+}
+.side-nav li{
+    margin:0;
+}
+.side-nav li a:not(.button){
+    display:block;
+    height:5rem;
+    color:#fff;
+    text-align: center;
+}
+.side-nav li.active{
+    background-color: #374260;
+}
+
+.side-nav li.active>a:first-child:not(.button){
+    color:#fff;
+}
+.side-nav li>a .icon{
+    display:block;
+    width:1.875rem;
+    height:1.875rem;
+    margin:0 auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.side-nav li>a .add-icon{
+    background-image:url(../image/nav_icon_xzyy.png);
+}
+.side-nav li>a .sign-icon{
+    background-image:url(../image/nav_icon_yydf.png);
+}
+.search-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 0.625rem 0;
+    margin-bottom: 1rem;
+    border-top: 0.063rem solid #dadada;
+}
+.search-box .sel-condition{
+    position: relative;
+    display: inline-block;
+    width: 8.25rem;
+    height: 2.25rem;
+    line-height: 2.25rem;
+    margin-right: 1rem;
+    color: #333;
+    border: 1px solid #fe6869!important;
+    background-color: #fff!important;
+    margin-bottom:0;
+}
+.sel-condition .dropdown {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 2.25rem;
+    color: #333;
+}
+.sel-condition .dropdown .icon {
+    display: inline-block;
+    width: 1.125rem;
+    height: 0.625rem;
+    margin-left: .75rem;
+    background-image: url(../image/arrow_down.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    vertical-align: middle;
+}
+.sel-date,.sel-date:focus{
+    padding-left:0.875rem!important;
+    background-image:url(../image/arrow_down.png)!important;
+    background-repeat: no-repeat!important;
+    background-position: 90% center!important;
+    transition: none!important;
+}
+.list-box {
+    padding:1rem;
+    height:38rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.list-box .list-item .item-inner{
+    height:25.25rem;
+    overflow:hidden;
+    background-color:#fff;
+}
+.list-item .title{
+    position: relative;
+    height:3.125rem;
+    line-height: 3.125rem;
+    border-bottom:0.063rem solid #dadada;
+    color:#333;
+    font-size:1.125rem;
+    text-align: center;
+}
+.list-item .title.todo{
+    background-color:#fe6869;
+    color:#fff;
+}
+.list-item .title .status{
+    position: absolute;
+    left:0.5rem;
+    top:0;
+    color:#fe6869;
+    font-size: 0.875rem;
+}
+.list-item .detail{
+    padding:0.75rem 1.5rem 0.25rem;
+    color:#333;
+}
+.list-item .detail .item-label{
+    color:#999;
+}
+.list-item .handle-btn .btn{
+    float:left;
+    width:50%;
+    height:2.625rem;
+    padding:0;
+    margin-bottom:0;
+    border-top:1px solid #dadada;
+    background-color: #fff;
+    color:#999;
+}
+.list-item .handle-btn .btn:hover{
+    color:#fe6869;
+}
+.list-item .handle-btn .cancel-btn{
+    border-left:1px solid #dadada;
+}
+
+
+/*新增预约*/
+/**日期选择*/
+.select-date {
+	display: flex;
+	align-items: center;
+	height:2.875rem;
+	padding-left: 1.375rem;
+	font-size: .875rem;
+	color: #fe6869;
+    background-color: #fff;
+    border-top: 1px solid #f2f2f2;
+}
+
+.select-date .select-day {
+	display: flex;
+	height: 100%;
+	align-items: center;
+}
+
+.select-date .selected-cur-date {
+	display: inline-block;
+	width: 4.5rem;
+	text-align: center;
+	line-height: 1.15;
+	color: #333;
+}
+
+.select-date .select-bottom-arrow {
+	display: inline-block;
+	width: 1rem;
+	height: 0.625rem;
+	background-image: url(../image/icon_datexiala@2x.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+	margin-right: .938rem;
+	vertical-align: middle;
+}
+
+.select-date .date-list-box {
+	position: relative;
+	border-left: 1px solid #f2f2f2;
+	padding-left: 1rem;
+}
+
+.date-list-box .prev,
+.date-list-box .next {
+	position: absolute;
+	display: block;
+	top: 50%;
+	margin-top: -0.625rem;
+	width: 1.125rem;
+	height: 1.125rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.date-list-box .prev {
+	left: 1rem;
+	background-image: url(../image/btn-left@2x.png);
+}
+
+.date-list-box .next {
+	left:496px;
+	background-image: url(../image/btn-right@2x.png);
+}
+
+.date-list-box .date-list-inner {
+	position: relative;
+	width: 444px;
+	height: 2rem;
+	margin-left: 2.688rem;
+	overflow: hidden;
+}
+
+.date-list-inner .date-list {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+}
+
+.date-list-inner .date-list a {
+	float: left;
+	display: block;
+	width: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	color: #fe6869;
+}
+
+.date-list-inner .date-list a+a {
+	margin-left: .75rem;
+}
+
+.date-list-inner .date-list a.selected {
+	width: 2rem;
+	height: 2rem;
+	color: #fff;
+	background-color: #fe6869;
+	border-radius: 100%;
+}
+
+.date-list-inner .date-list a.disabled {
+	color: #ccc;
+}

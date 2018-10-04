@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f7f7f7;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+}
+
+.showContainer {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 2rem;
+    overflow-x: hidden;
+}
+
+.showContainer .show-detail {
+    padding:0 2rem;
+}
+
+.show-detail h3 {
+    padding: 0.938rem 0 1.313rem;
+    color: #333;
+}
+
+.showContainer .show-back {
+    display: block;
+    color: #333;
+    padding: 1.313rem 0.938rem;
+    background: #fff;
+}
+
+.show-back img {
+    display: block;
+    width: 1.25rem;
+    height: 2.063rem;
+}
+
+.showContainer .show-back:hover,
+.showContainer .show-back:focus {
+    text-decoration: none;
+}
+
+.show-detail .show-article-body {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.show-article-body .show-author {
+    width: 75%;
+    float: left;
+}
+
+.show-author img {
+    display: block;
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 100%;
+    float: left;
+}
+
+.show-author .show-author-wrapper {
+    margin-left: 5rem;
+}
+
+.show-author-wrapper .show-author-name {
+    display: block;
+    color: #333333;
+}
+
+.user-institution{
+    font-style: normal;
+    color:#999;
+}
+
+.show-author-wrapper .show-author-date {
+    color: #999999;
+}
+
+.show-article-body .btn {
+    float: right;
+    width: 4rem;
+    height: 2rem;
+    line-height:2rem;
+    margin-left:0.625rem;
+    padding:0;
+    background-color: #fff;
+    border:1px solid #fe6869;
+    border-radius:4px;
+    color: #fe6869;
+    font-size: 1rem;
+}
+.show-article-body .btn.active{
+    background-color: #fe6869;
+    color:#fff;
+}
+
+.show-detail .show-info {
+    padding: 1.438rem 0;
+    font-size: 1.5rem;
+    line-height:1.5;
+    color: #333333;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.show-info p {
+    margin-bottom: 1.625rem;
+}
+
+.show-info img {
+    display:inline;
+    max-width:100%;
+    min-width:auto;
+}
+
+/*举报*/
+.report-box{
+    padding:15px;
+}
+
+.report-box label{
+    height: 24px;
+    line-height: 24px;
+    font-weight: normal;
+    margin-right:25px;
+    margin-bottom:6px;
+}
+
+.report-box input[type=radio]{
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    vertical-align: text-top;
+}
+.report-box .reason-txt{
+    margin:10px auto;
+}
+.report-box textarea{
+    width: 100%;
+    height: 72px;
+    resize: none;
+    padding: 5px;
+}

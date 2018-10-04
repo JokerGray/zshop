@@ -1,0 +1,846 @@
+* {
+  box-sizing: border-box;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  background-color: #e5e5e5;
+}
+*::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0);
+}
+body {
+  background-color: #EFEFEF;
+}
+.layoutBody {
+  width: 68.259%;
+  margin: 20px auto;
+  background-color: #fff;
+  overflow: hidden;
+}
+.tabNav {
+  width: 100%;
+  height: 60px;
+  padding: 0 40px;
+  position: relative;
+}
+.tabNav ul {
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid #EBEBEB;
+}
+.tabNav ul li {
+  display: inline-block;
+  font-size: 14px;
+  color: #333333;
+  padding: 0 30px;
+  line-height: 58px;
+  cursor: pointer;
+}
+.tabNav ul li.active {
+  border-bottom: 2px solid #1be0d6;
+  color: #1be0d6;
+}
+.tabNav .shopSelect {
+  position: absolute;
+  right: 40px;
+  top: 14px;
+}
+.tabNav .shopSelect select {
+  width: 130px;
+  height: 32px;
+  font-size: 12px;
+  padding-left: 30px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.filterBox {
+  width: 100%;
+  padding: 20px 0 20px 20px;
+}
+.filterBox .showWhat {
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.filterBox .showWhat label {
+  width: 80px;
+  text-align: right;
+  display: inline-block;
+  font-size: 14px;
+  color: #333333;
+  vertical-align: middle;
+}
+.filterBox .showWhat ul {
+  display: inline-block;
+  vertical-align: middle;
+  width: 86.333%;
+}
+.filterBox .showWhat ul li {
+  float: left;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.filterBox .showWhat ul li i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #1be0d6;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+.filterBox .showWhat ul li span {
+  font-size: 14px;
+  color: #5F5F5F;
+  vertical-align: middle;
+}
+.filterBox .showWhat ul li.active i {
+  background: url("../images/selected.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  border: none;
+}
+.filterBox .timePeople {
+  width: 100%;
+}
+.filterBox .timePeople .dateRangeSelect {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 50px;
+}
+.filterBox .timePeople .dateRangeSelect label {
+  width: 80px;
+  display: inline-block;
+  text-align: right;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #333333;
+}
+.filterBox .timePeople .dateRangeSelect > div {
+  display: inline-block;
+}
+.filterBox .timePeople .dateRangeSelect > div > input {
+  width: 180px;
+  height: 32px;
+  border: 1px solid #d9d9d9;
+  outline: none;
+  text-align: center;
+  font-size: 14px;
+  color: #5F5F5F;
+}
+.filterBox .timePeople .dateRangeSelect > div > span {
+  font-size: 14px;
+  color: #333333;
+  padding: 0 10px;
+}
+.filterBox .timePeople .dateDaySelect {
+  display: none;
+  vertical-align: middle;
+  margin-right: 120px;
+}
+.filterBox .timePeople .dateDaySelect label {
+  width: 80px;
+  display: inline-block;
+  text-align: right;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #333333;
+}
+.filterBox .timePeople .dateDaySelect input {
+  width: 110px;
+  height: 32px;
+  border: 1px solid #ebebeb;
+  font-size: 12px;
+  color: #5f5f5f;
+  padding-left: 10px;
+  background: url("../images/icon-calender.fw.png") no-repeat 90px 9px;
+}
+.filterBox .timePeople .peopleSelect {
+  display: inline-block;
+  vertical-align: middle;
+}
+.filterBox .timePeople .peopleSelect label {
+  display: inline-block;
+  font-size: 14px;
+  color: #333333;
+}
+.filterBox .timePeople .peopleSelect .peopleSelectBtn {
+  display: inline-block;
+  width: 110px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  color: #333333;
+  border: 1px solid #d9d9d9;
+  padding-left: 10px;
+  background: url("../images/icon_arrow.png") no-repeat top right;
+  -webkit-background-size: 32px;
+  background-size: 32px;
+  cursor: pointer;
+}
+.line {
+  width: 100%;
+  padding: 0 40px;
+  height: 1px;
+}
+.line hr {
+  margin: 0;
+}
+.exportBtn {
+  padding: 16px 20px;
+}
+.exportBtn button {
+  outline: none;
+  border: none;
+  width: 130px;
+  height: 28px;
+  background-color: #1be0d6;
+  color: #ffffff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.reportContent {
+  padding: 0 21px;
+  position: relative;
+}
+.reportContent > .month {
+  overflow: auto;
+  padding-bottom: 20px;
+  display: block;
+}
+.reportContent > .month #month-table {
+  margin: 0;
+}
+.reportContent > .month #month-table thead tr th {
+  min-width: 100px;
+  max-width: 100px;
+  height: 100px;
+  text-align: center;
+  color: #333333;
+  padding: 0;
+}
+.reportContent > .month #month-table thead tr th.shopName {
+  min-width: 160px;
+}
+.reportContent > .month #month-table thead tr th.date {
+  position: relative;
+}
+.reportContent > .month #month-table thead tr th.date span {
+  font-weight: 700;
+}
+.reportContent > .month #month-table thead tr th.date span:first-of-type {
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  -webkit-transform: translateX(-150%);
+  -moz-transform: translateX(-150%);
+  -ms-transform: translateX(-150%);
+  -o-transform: translateX(-150%);
+  transform: translateX(-150%);
+}
+.reportContent > .month #month-table thead tr th.date span:last-of-type {
+  position: absolute;
+  bottom: 24px;
+  left: 60%;
+}
+.reportContent > .month #month-table tbody tr td {
+  padding: 0 0;
+  height: 90px;
+  color: #5F5F5F;
+}
+.reportContent > .month #month-table tbody tr td > p {
+  font-size: 12px;
+  text-decoration: underline;
+  padding: 0 2px;
+}
+.reportContent > .month #month-table tbody tr td > p.non-normal {
+  color: #FF796B;
+}
+.reportContent > .month #month-table tbody tr td.lateDuration,
+.reportContent > .month #month-table tbody tr td.LeaveEarlyDuration,
+.reportContent > .month #month-table tbody tr td.non-workDuration {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.reportContent > .month #month-table tbody tr td.attendanceDetailBtn {
+  cursor: pointer;
+}
+.reportContent > .day {
+  font-size: 14px;
+  width: 80%;
+  min-width: 600px;
+  overflow-y: auto;
+  display: none;
+  padding-bottom: 20px;
+}
+.reportContent > .day .layui-table {
+  margin: 0;
+}
+.reportContent > .day .layui-table thead tr {
+  color: #333333;
+}
+.reportContent > .day .layui-table thead tr th {
+  padding: 9px 0;
+}
+.reportContent > .day .layui-table tbody tr td {
+  padding: 9px 0;
+}
+.reportContent > .day .layui-table tbody tr td .non-normal {
+  text-decoration: underline;
+  color: #FF796c;
+}
+.reportContent > .time {
+  display: none;
+  overflow: auto;
+  width: 100%;
+  padding-bottom: 20px;
+}
+.reportContent > .time .layui-table {
+  margin: 0;
+}
+.reportContent > .time .layui-table thead tr th {
+  color: #333333;
+  padding: 0;
+}
+.reportContent > .time .layui-table thead tr th.date {
+  position: relative;
+}
+.reportContent > .time .layui-table thead tr th.date span:first-of-type {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  -webkit-transform: translateX(-150%);
+  -moz-transform: translateX(-150%);
+  -ms-transform: translateX(-150%);
+  -o-transform: translateX(-150%);
+  transform: translateX(-150%);
+}
+.reportContent > .time .layui-table thead tr th.date span:last-of-type {
+  position: absolute;
+  bottom: 6px;
+  left: 60%;
+}
+.reportContent > .time .layui-table tbody tr td {
+  padding: 9px 0;
+}
+.selectWaiter {
+  -webkit-border-radius: 8px!important;
+  -moz-border-radius: 8px!important;
+  border-radius: 8px!important;
+}
+.selectWaiter .layui-layer-content {
+  -webkit-border-radius: 8px!important;
+  -moz-border-radius: 8px!important;
+  border-radius: 8px!important;
+}
+.selectWaiter .layui-layer-content .title {
+  width: 100%;
+  height: 70px;
+  background-color: #353b53;
+  color: #1ae0d5;
+  font-size: 24px;
+  line-height: 70px;
+  text-align: center;
+}
+.selectWaiter .layui-layer-content .selectorBox {
+  width: 100%;
+  height: 506px;
+  padding: 0 52px;
+  overflow: hidden;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting,
+.selectWaiter .layui-layer-content .selectorBox .selected {
+  width: 350px;
+  height: 100%;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting > span,
+.selectWaiter .layui-layer-content .selectorBox .selected > span {
+  display: block;
+  font-size: 20px;
+  color: #333333;
+  padding: 25px 0 15px 0;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting > div,
+.selectWaiter .layui-layer-content .selectorBox .selected > div {
+  width: 100%;
+  height: 440px;
+  max-height: 440px;
+  min-height: 220px;
+  border: 1px solid #e3e3e3;
+  background-color: #f4f6f8;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  overflow-y: auto;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting {
+  float: left;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting form {
+  padding-left: 12px;
+  margin-top: 12px;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting form .keyword {
+  width: 312px;
+  height: 40px;
+  outline: none;
+  border: 1px solid #e3e3e3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333333;
+  padding-left: 40px;
+  background: url("../images/icon-search.png") no-repeat 10px 9px;
+  -webkit-background-size: 22px;
+  background-size: 22px;
+  background-color: #fff;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters {
+  padding-left: 16px;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters .allSelectBox {
+  margin-top: 24px;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters .allSelectBox > i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #d9d9d9;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  vertical-align: middle;
+  background-color: #fff;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters .allSelectBox > i.active {
+  border: 0;
+  background: url("../images/selected.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters .allSelectBox > span {
+  display: inline-block;
+  font-size: 16px;
+  color: #333333;
+  vertical-align: middle;
+  margin-left: 16px;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters .waiterItem {
+  margin-top: 20px;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters .waiterItem li {
+  font-size: 0;
+  margin: 10px 0;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters .waiterItem li .selectBtn {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #d9d9d9;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  vertical-align: middle;
+  background-color: #fff;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters .waiterItem li .selectBtn.active {
+  border: 0;
+  background: url("../images/selected.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters .waiterItem li p {
+  display: inline-block;
+  font-size: 16px;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters .waiterItem li p .waiterName {
+  display: inline-block;
+  width: 154px;
+  color: #333333;
+  vertical-align: middle;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters .waiterItem li p .phoneNum {
+  vertical-align: middle;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters .waiterItem li p .phoneNum .phoneIcon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: url("../images/icon-phone.fw.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: middle;
+}
+.selectWaiter .layui-layer-content .selectorBox .waiting .waiters .waiterItem li p .phoneNum b {
+  font-size: 14px;
+  color: #999999;
+  vertical-align: middle;
+  margin-left: 12px;
+}
+.selectWaiter .layui-layer-content .selectorBox .selected {
+  float: right;
+}
+.selectWaiter .layui-layer-content .selectorBox .selected .selectedContent {
+  overflow-y: auto;
+}
+.selectWaiter .layui-layer-content .selectorBox .selected .selectedContent ul {
+  padding-left: 44px;
+  margin-top: 16px;
+}
+.selectWaiter .layui-layer-content .selectorBox .selected .selectedContent ul li {
+  margin: 14px 0;
+}
+.selectWaiter .layui-layer-content .selectorBox .selected .selectedContent ul li .waiterName {
+  display: inline-block;
+  width: 154px;
+  font-size: 16px;
+  color: #333333;
+  vertical-align: middle;
+}
+.selectWaiter .layui-layer-content .selectorBox .selected .selectedContent ul li .phoneNum {
+  vertical-align: middle;
+}
+.selectWaiter .layui-layer-content .selectorBox .selected .selectedContent ul li .phoneNum .phoneIcon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: url("../images/icon-phone.fw.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: middle;
+}
+.selectWaiter .layui-layer-content .selectorBox .selected .selectedContent ul li .phoneNum b {
+  vertical-align: middle;
+  font-size: 14px;
+  color: #999999;
+  margin-left: 12px;
+}
+.selectWaiter .layui-layer-content .btnBox {
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-size: 0;
+}
+.selectWaiter .layui-layer-content .btnBox button {
+  width: 100px;
+  height: 40px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  margin: 0 16px;
+}
+.selectWaiter .layui-layer-content .btnBox button.cancelBtn {
+  background-color: #fff;
+  color: #333333;
+  border: 1px solid #ebebeb;
+}
+.selectWaiter .layui-layer-content .btnBox button.yesBtn {
+  background-color: #1eccc6;
+  color: #ffffff;
+}
+.lateTotal {
+  -webkit-border-radius: 8px!important;
+  -moz-border-radius: 8px!important;
+  border-radius: 8px!important;
+}
+.lateTotal .layui-layer-content {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+.lateTotal .layui-layer-content .title {
+  width: 100%;
+  height: 41px;
+  line-height: 41px;
+  background-color: #353b53;
+  font-size: 14px;
+  color: #1ae0d5;
+  padding-left: 10px;
+}
+.lateTotal .layui-layer-content .lateList {
+  height: 179px;
+  overflow: auto;
+}
+.lateTotal .layui-layer-content .lateList .th {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background-color: #f7f7f7;
+  font-size: 0;
+  padding: 0 34px;
+}
+.lateTotal .layui-layer-content .lateList .th span {
+  display: inline-block;
+  width: 33.3333%;
+  text-align: left;
+  font-size: 14px;
+  color: #333333;
+}
+.lateTotal .layui-layer-content .lateList .tb {
+  width: 100%;
+  padding: 0 24px;
+}
+.lateTotal .layui-layer-content .lateList .tb ul li {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 0;
+  border-bottom: 1px solid #ebebeb;
+  padding: 0 10px;
+}
+.lateTotal .layui-layer-content .lateList .tb ul li span {
+  display: inline-block;
+  width: 33.333%;
+  font-size: 14px;
+  color: #5F5F5F;
+}
+.lateTotal .layui-layer-content .lateList .tb ul li.nodata span {
+  width: 100%;
+  text-align: center;
+}
+.attendanceDetail {
+  -webkit-border-radius: 8px!important;
+  -moz-border-radius: 8px!important;
+  border-radius: 8px!important;
+}
+.attendanceDetail .layui-layer-content {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+.attendanceDetail .layui-layer-content .title {
+  width: 100%;
+  height: 41px;
+  background-color: #353b53;
+  font-size: 14px;
+  color: #1ae0d5;
+  line-height: 41px;
+  padding-left: 10px;
+  position: relative;
+}
+.attendanceDetail .layui-layer-content .title .closeBtn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  right: 0;
+  font-size: 30px;
+  color: #1ae0d5;
+  cursor: pointer;
+  text-align: center;
+}
+.attendanceDetail .layui-layer-content .userName {
+  padding: 12px 0 12px 28px;
+}
+.attendanceDetail .layui-layer-content .userName span {
+  display: inline-block;
+  vertical-align: middle;
+}
+.attendanceDetail .layui-layer-content .userName span.nameIcon {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: #1eccc6;
+  color: #ffffff;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.attendanceDetail .layui-layer-content .userName span.name {
+  font-size: 16px;
+  color: #333333;
+}
+.attendanceDetail .layui-layer-content .timeDsc {
+  font-size: 14px;
+  color: #333333;
+  padding-left: 35px;
+}
+.attendanceDetail .layui-layer-content .detailContent {
+  width: 100%;
+  height: 146px;
+  padding: 10px 25px;
+  overflow-y: auto;
+}
+.attendanceDetail .layui-layer-content .detailContent ul {
+  border: 1px solid #ebebeb;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.attendanceDetail .layui-layer-content .detailContent ul li {
+  font-size: 0;
+  border-bottom: 1px solid #ebebeb;
+  height: 40px;
+}
+.attendanceDetail .layui-layer-content .detailContent ul li span {
+  display: inline-block;
+  font-size: 14px;
+  color: #333333;
+  width: 15%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-left: 1px solid #ebebeb;
+  vertical-align: top;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.attendanceDetail .layui-layer-content .detailContent ul li span:nth-of-type(3),
+.attendanceDetail .layui-layer-content .detailContent ul li span:nth-of-type(4) {
+  width: 20%;
+}
+.attendanceDetail .layui-layer-content .detailContent ul li span:nth-of-type(1) {
+  border-left: 0;
+}
+.attendanceDetail .layui-layer-content .detailContent ul li span > img {
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 2px;
+}
+.attendanceDetail .layui-layer-content .detailContent ul li span.non-normal {
+  text-decoration: underline;
+  color: #FF796c;
+}
+.attendanceDetail .layui-layer-content .detailContent ul li:first-of-type {
+  background-color: #f7f7f7;
+}
+.attendanceDetail .layui-layer-content .detailContent ul li:last-of-type {
+  border-bottom: 0;
+}
+.select2-container--default {
+  vertical-align: middle;
+  font-size: 12px;
+}
+.select2-container--default .select2-selection--single {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  height: 32px;
+  border: 1px solid #d9d9d9;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  width: 100%;
+  line-height: 32px;
+  color: #333333;
+  position: absolute;
+  z-index: 1;
+  padding-left: 30px;
+  overflow: hidden;
+  /*超出部分隐藏*/
+  white-space: nowrap;
+  /*不换行*/
+  text-overflow: ellipsis;
+  /*超出部分文字以...显示*/
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  width: 128px;
+  height: 30px;
+  background: url("../images/selectstore.png") no-repeat top left;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  display: none;
+}
+.select2-container--open {
+  font-size: 12px;
+}
+.select2-container--open .select2-results__option--highlighted[aria-selected] {
+  background-color: #1be0d6;
+}
+.select2-container--open .select2-dropdown {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.select2-container--open .select2-results__option {
+  padding: 4px 6px;
+}
+
+.layui-table .dataTh {
+	width: 120px;
+	max-width:120px;
+	min-width:120px;
+	height: 50px;
+	text-align: center;
+}
+
+.reportContent .data {
+	overflow: auto;
+  padding-bottom: 20px;
+  display: block;
+}
+.work-img {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	cursor: pointer;
+}
+.work-img img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+#viewImage {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 99;
+	background: rgba(0,0,0,0.5);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+#viewImage .img-box {
+	/*width: 300px;
+	height: 300px;*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+#viewImage .img-box img {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+#viewImage  .img-close {
+	width: 30px;
+	height: 30px;
+	color: #fff;
+	font-size: 20px;
+	position: absolute;
+	top: 20px;
+	right:20px;
+	z-index: 100;
+	cursor: pointer;
+	text-align: center;
+	line-height: 30px;
+}
+#viewImage  .img-close:hover{
+	color: #ccc;
+}
+/*# sourceMappingURL=attendanceReport.css.map */

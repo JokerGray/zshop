@@ -1,0 +1,451 @@
+.contain{
+   width: 100%;
+   height: auto;
+    font-family:PingFang-SC-Medium;
+}
+.top{
+    width: 100%;
+}
+.top img{
+    display: block;
+    width: 100%;
+}
+.top .active-title{
+    padding: 0.5rem 1rem 1rem;
+    font-size:2.25rem;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+}
+.top .active-user{
+    padding: 0 1rem;
+    font-size:1.5rem;
+    font-weight:500;
+    color:rgba(153,153,153,1);
+}
+.active-info{
+    margin:2.5rem 1rem 0;
+    font-size:1.6rem;
+    font-weight:500;
+    color:rgba(102,102,102,1);
+    padding-bottom: 2rem;
+}
+.active-info .time,.adress,.price{
+    width: 100%;
+    padding: 0 1rem 0 0;
+    line-height: 2rem;
+    margin-bottom: 0.8rem;
+}
+.active-info .time-icon{
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background: url("../../../images/qz_activity_date@2x.png") no-repeat;
+    background-position: center left;
+    background-size: 65%;
+    float: left;
+}
+.active-info .adress-icon{
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background: url("../../../images/qz_activity_location@2x.png") no-repeat;
+    background-position: center left;
+    background-size: 65%;
+    float: left;
+}
+.active-info .price-icon{;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background: url("../../../images/moey.png") no-repeat;
+    background-position: center left;
+    background-size: 65%;
+    float: left;
+}
+.active-user div{
+    display: inline-block;
+    margin-right:1rem;
+}
+.right-icon{
+    float: right;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    background: url(../../../images/back.png) no-repeat;
+    background-size: 40%;
+    background-position: center;
+}
+.ctrol-btn{
+    width: 100%;
+    display: flex;
+}
+.ctrol-btn div{
+    flex: 1;
+    text-align: center;
+}
+.ctrol-btn div span{
+    display: block;
+    width:13rem;
+    height:3rem;
+    border:1px solid rgba(255,101,33,1);
+    border-radius:2rem;
+    margin:0 auto;
+    color:#FF6521;
+    font-size:1.6rem;
+    line-height: 3rem;
+}
+.jiange{
+    width: 100%;
+    height:0.63rem;
+    background:rgba(248,248,248,1);
+}
+.sgary span{
+    border:1px solid  #999999 !important;
+    color:#999 !important;
+}
+.gray{
+    background: #D2D2D2;
+}
+.sgow-btn{
+    color: #fff;
+    background:linear-gradient(-60deg,rgba(255,202,60,1),rgba(255,186,60,1));
+}
+.top-img{
+    height: 15rem;
+    overflow: hidden;
+}
+/*赞助商相关*/
+.naming-box{
+    width: 100%;
+    height: auto;
+}
+.common-nam{
+    padding: 0 1rem;
+    font-size: 1.6rem;
+    display: flex;
+    vertical-align: middle;
+    height: 4rem;
+    line-height: 4rem;
+}
+.common-nam .sponsor-lft{
+    flex: 1;
+}
+.sponsor-lft span{
+    color:#666;
+}
+.common-nam .sponsor-rgt{
+    flex: 1;
+}
+.sponsor-box .sponsor-lft span{
+    display: inline-block;
+    float: left;
+}
+.sponsor-box .sponsor-name{
+    width: 10rem;
+    overflow:hidden; /*内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    white-space:nowrap; /*不换行 */
+    padding-left: 1rem;
+}
+.sponsor-box .sponsor-rgt .sponsor-img,.apply-box .sponsor-rgt .sponsor-img{
+    width: 13rem;
+    height: auto;
+    overflow: hidden;
+    float: left;
+}
+.sponsor-box .sponsor-rgt .sponsor-img img,.apply-box .sponsor-rgt .sponsor-img img{
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+    margin-left: -0.5rem;
+    margin-top: 0.8rem;
+    float: right;
+}
+.sponsor-box .sponsor-rgt .sponsor-img img:first-child,.apply-box .sponsor-rgt .sponsor-img img:first-child{
+    margin-left: 0;
+}
+.common-nam i{
+    margin-top:1rem;
+}
+/*发起人圈子信息*/
+.hid-shop{
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+    height:9rem;
+    background:rgba(252,252,252,1);
+}
+.shop-items{
+    display: flex;
+}
+.hid-shop .shop-left{
+    flex: 0.3;
+    margin-top:2rem;
+    margin-right: 0.3rem;
+}
+.hid-shop .shop-left img{
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+}
+.hid-shop .shop-center{
+    flex: 1;
+    margin-top:2rem;
+}
+.hid-shop .shop-right{
+    flex: 0.5;
+}
+.hid-shop .shop-center h4{
+    font-size: 1.6rem;
+    font-weight: 500;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.hid-shop .shop-center .shop-address{
+    margin-top:2rem;
+    font-size: 3.2rem;
+    color: #999999;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.hid-shop .shop-center .address-icon{
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    float: left;
+    background: url("../../../images/qz_circledetail_location@2x.png") no-repeat;
+    background-position: center;
+}
+.hid-shop .shop-right span{
+    display: block;
+    width: 10rem;
+    height: 3rem;
+    line-height: 3rem;
+    border:1px solid #FF6521;
+    border-radius: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 3rem auto 0;
+    float: right;
+    color: #FF6521;
+}
+.shop-source{
+    width: 100%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.no-list{
+    padding: 0 1rem;
+}
+.no-list h4{
+    font-size: 1.8rem;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(51,51,51,1);
+    border-bottom: 1px solid #dfdfdf;
+    height: 4rem;
+    line-height: 4rem;
+    margin: 0;
+}
+.no-list .no-text{
+    font-size: 1.4rem;
+    color:#999999;
+    height: 4rem;
+    line-height: 4rem;
+}
+/*活动说明*/
+.explain{
+    padding: 0 1rem;
+    margin-bottom: 4rem;
+}
+.explain h4{
+    font-size: 1.8rem;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(51,51,51,1);
+    border-bottom: 1px solid #dfdfdf;
+    height: 4rem;
+    line-height: 4rem;
+    margin: 0;
+}
+.explain-content{
+    font-size: 1.6rem;
+    color:#666;
+    padding: 1rem;
+}
+.footer{
+    position: fixed;
+    height: 4rem;
+    display: flex;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background: #fff;
+}
+.footer-btn{
+    flex: 1.2;
+    display: flex;
+}
+.sgow-btn{
+    flex: 0.8;
+    text-align: center;
+    line-height: 4rem;
+    font-size: 1.6rem;
+}
+.sgow-btn.gray{
+    background: #D2D2D2;
+}
+.footer-btn .collect{
+    flex: 1;
+    text-align: center;
+}
+.collect i{
+   display: block;
+    width: 2rem;
+    height: 2rem;
+    margin:0 auto;
+}
+.footer-btn .collect:first-child i{
+    background: url("../../../images/qz_activity_collect@2x.png") no-repeat;
+    background-size: 80%;
+    background-position: center;
+}
+.footer-btn .collect:nth-child(2) i{
+    background: url("../../../images/qz_activity_chat@2x.png") no-repeat;
+    background-size: 80%;
+    background-position: center;
+}
+.footer-btn .collect:nth-child(3) i{
+    background: url("../../../images/qz_activity_phone@2x.png") no-repeat;
+    background-size: 80%;
+    background-position: center;
+}
+/*评论*/
+.show-list h4{
+    font-size: 1.8rem;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(51,51,51,1);
+    height: 4rem;
+    line-height: 4rem;
+    margin:0 1rem;
+}
+.list-item{
+    width: 100%;
+    border-top: 1px solid #dfdfdf;
+}
+.list-item .list-top{
+    margin: 1rem;
+    height: auto;
+    overflow: hidden;
+}
+.list-item .list-top>img{
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+    float: left;
+    margin-right: 1rem;
+}
+.list-pic{
+    float: left;
+    width: 25rem;
+}
+.list-pic .list-name{
+    font-size: 1.6rem;
+    color:#333333;
+    width: 25rem;
+    overflow:hidden; /*内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    white-space:nowrap; /*不换行 */
+}
+.list-pic .list-time{
+    font-size: 1.2rem;
+    color: #999999;
+    margin-top: 0.5rem;
+    width: 25rem;
+    overflow:hidden; /*内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    white-space:nowrap; /*不换行 */
+}
+.list-text{
+    padding: 0 1rem;
+}
+.no-list{
+    display: none;
+}
+/*顶部*/
+.head{
+    position: absolute;
+    top:3vw;
+    left: 3vw;
+    z-index:4;
+}
+.head .back{
+    display: block;
+    width: 4vw;
+    height: 4vw;
+    background: url(../../../images/qz_circledetail_return@2x.png) no-repeat;
+    background-size: 80%;
+    background-position: center;
+}
+/*引导*/
+#model{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    z-index: 9999;
+    color: #333333;
+    background: url(../../../images/line.png) no-repeat 96% 0.2rem;
+    background-size: 0.7rem 0.58rem;
+    height: 12vh;
+    width: 100%;
+    background-color:#ffffff;
+}
+
+#model div{
+    display: flex;
+    align-items: center;
+    height: 6vh;
+    line-height: 6vh;
+    margin-left: 2vw;
+}
+
+#model img{
+    margin-left: 0.15rem
+}
+
+#dot{
+    width: 5vw;
+    height: 5vw;
+}
+
+#broswer{
+    width: 30vw;
+    height: 6vw;
+}
+
+#shade{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 888;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}

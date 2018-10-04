@@ -1,0 +1,171 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+}
+.uploadDetail-container{
+    width: 100%;
+    height: 100%;
+}
+.uploadDetail-container .uploadDetail-head{
+    padding: 31px 45px 5px;
+    width: 100%;
+    text-align: center;
+    height: auto;
+    background: #f8f8f8;
+    overflow: hidden;
+}
+.uploadDetail-head .show-back{
+    color: #333;
+    display: block;
+    float: left;
+    font-size: 20px;
+    font-weight: 600;
+    position: absolute;
+    width: 100px;
+}
+.show-back span{
+    font-size: 26px;
+    float: left;
+}
+.uploadDetail-title{
+    font-size: 21px;
+    font-weight: 600;
+}
+.uploadDetail-head .show-back:hover,.showContainer .show-back:focus{
+    text-decoration: none;
+}
+.uploadDetail-head .upload-img{
+    display: block;
+    width: 44px;
+    height: 44px;
+    border-radius: 100%;
+    float: right;
+    margin-top: -10px;
+}
+.upload-img img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+.uploadDetail-container .addBtn{
+    margin: 0 10px 20px 70px;
+    background: #a58f64;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    float: left;
+}
+.uploadDetail-container .uploadDetail-action{
+    margin: 0 70px;
+    overflow: hidden;
+}
+.uploadDetail-action .uploadDetail-title-info{
+    display: inline-block;
+    float: left;
+    line-height: 42px;
+    margin:12px auto;
+    width:800px;
+}
+.uploadDetail-title-info img{
+    display: block;
+    width: 42px;
+    height: 42px;
+    border-radius: 100%;
+    float: left;
+    margin-right: 11px;
+}
+.uploadDetail-title-info span{
+    font-size: 18px;
+    color:#666666;
+}
+.uploadDetail-action .upload-form-submit{
+    float: right;
+    height: 42px;
+    padding: 0;
+    line-height: 42px;
+    width: 70px;
+    font-size: 17px;
+    color: #ffffff;
+    background: #a58f64;
+    margin-top: 12px;
+}
+.upload-detail{
+    width: 100%;
+    position: relative;
+}
+.upload-detail .upload-detail-hr{
+    position: absolute;
+    height: 44px;
+    width: 100%;
+    top: 0;
+    background: #f8f8f8;
+    z-index: -1;
+}
+.upload-detail .upload-detail-table{
+    margin:0 70px;
+}
+.upload-detail-table table tr th{
+    border: 0;
+    background: #f8f8f8;
+    color: #000;
+    text-align: center;
+    font-size: 19px;
+    height: 43px;
+    line-height: 43px;
+    padding: 0;
+}
+.upload-detail-table table tr td{
+    border-top:0;
+    border-bottom: 1px solid #dfdfdf;
+    text-align: center;
+    font-size: 14px;
+    height: 26px;
+    line-height:26px;
+    color:#999;
+    vertical-align: middle;
+}
+.upload-detail-table table tr td:nth-child(1){
+    color: #333333;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.upload-detail-Interaction{
+    display: inline-block;
+}
+.upload-detail-zans{
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+}
+.upload-detail-zans .upload-detail-zan{
+    display: block;
+    float: left;
+    width: 20px;
+    height: 26px;
+    background: url(../image/fsj_zan.png) no-repeat;
+    background-size: 100%;
+    margin-right: 5px;
+}
+.upload-detail-eyes{
+    display: inline-block;
+}
+.upload-detail-eyes i{
+    display: block;
+    float: left;
+    width: 20px;
+    height: 26px;
+    background: url(../image/fsj_see.png) no-repeat;
+    background-size: 100%;
+    margin-right: 5px;
+    background-position: center;
+}

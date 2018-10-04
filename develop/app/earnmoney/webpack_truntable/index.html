@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+    <title>玩家挣钱 — 转盘页</title>
+</head>
+<body>
+    <div class="container">
+        <!-- 游戏规则 -->
+        <div class="ruleLayer">
+            <div class="ruleBg">
+                <div class="ruleTitle">
+                    免责声明
+                    <div class="iconContent">
+                        <i class="iconClose"></i>
+                    </div>
+                </div>
+                <p class="p1">1、抽奖资格</p>
+                <p>年满18周岁并通过实名认证。</p>
+                <p class="p1">2、抽奖说明</p>
+                <p>首先点击支付一元，然后点击轮盘开始即可进行抽奖。注：未点击开始将不会扣除账户余额。</p>
+
+                <div class="footer">
+                    本活动与Apple Inc.无关
+                </div>
+            </div>
+        </div>
+        <!-- 顶部 -->
+        <div class="contentTop">
+            <div class="clickMeImgBgShow active breath"></div>
+            <!-- 点我点我 -->
+            <div class="clickMeImgBg">
+                <div class="clickMeImg"></div>
+                <div class="clickArrow updown"></div>
+                <div class="clickText"></div>
+            </div>
+            
+            <!-- 智账余额 -->
+            <div class="contentAccount">
+                <div class="contentAccountBg"></div>
+                <span class="accountLabel">余额：</span><span id="accountBalance">0</span> 元
+            </div>
+            <!-- 灯笼 -->
+            <div class="contentLantern"></div>
+        </div>
+        
+        <!-- 规则 -->
+        <span class="rule">免责声明</span>
+        
+        <!-- 转盘 -->
+        <div class="contentTurntable">
+            <div class="truntableLight">
+                <div class="truntableWheel">
+                    <!-- 奖品们 -->
+                    <div class="awardContent">
+                        <img class="awardImg">
+                        <span class="awardText"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- 虚假按钮和真实按钮 -->
+            <div class="truntableImg">
+                <div class="truntableBtn"></div>
+            </div>
+        </div>
+
+        <!-- 滚屏获奖者 -->
+        <div class="contentWinner"></div>
+
+        <!-- 我的宝箱 -->
+        <div class="contentBox animated bounceIn"></div>
+    </div>
+
+     <!-- 数据加载失败占位图 -->
+    <div class="fail_load" style="display: none">
+        <div class="pic">
+            <i></i>
+        </div>
+        <p class="text">网络连接失败</p>
+        <div class="link_a">
+            <p class="load_btn">点击重新加载</p>
+        </div>
+    </div>
+
+    <script src="//apps.bdimg.com/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="static/layer/mobile/layer.js"></script>
+</body>
+</html>

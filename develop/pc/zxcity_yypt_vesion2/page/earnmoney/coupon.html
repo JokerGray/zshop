@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>虚拟奖品管理</title>    <!-- CssCommon -->
+    <!--<link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="coupon/coupon.css" />
+</head>
+<body>
+    <div class="wrapper-main">
+        <div class="header layui-form clearfix">
+            <ul class="layui-form layui-col-sm12 layui-col-md12 clearfix input-box">
+                <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="">店铺名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="请输入" class="layui-input" id="shopNames">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="">标题：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="请输入" class="layui-input" id="prizeTitles">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="">发布时间：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="请输入" class="layui-input" id="createTimes" readonly>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                    <label>&nbsp;</label>
+                    <div class="fl">
+                        <button class="layui-btn" id="searchBtn">搜索</button>
+                        <button class="layui-btn" id="restBtn">重置</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--<div class="clearfix mb10">-->
+            <!--<button class="layui-btn fr" id="addBtn"><i class="layui-icon">&#xe654;</i>新增</button>-->
+        <!--</div>-->
+        <div class="main">
+            <table id="tableNo" lay-filter="tableNo"></table>
+            <div class="layui-laypage" id="page"></div>
+        </div>
+    </div>
+
+    <script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-sm" lay-event='detail'>查看</button>
+    </script>
+
+    <script type="text/html" id="switchDemo">
+        {{# if(d.prizeStatus == 1){ }}
+        <input type="checkbox" checked lay-skin="switch"  lay-text="上架|下架"  lay-filter="switchTest" >
+        {{#  } else { }}
+        <input type="checkbox"   lay-skin="switch"  lay-text="上架|下架" lay-filter="switchTest">
+        {{#  } }}
+    </script>
+    <!--弹出层-->
+    <div id="addDemo" class="layui-form addDemo layui-row">
+        <h3 class="title"><em id="prizeTitle"></em><span id="prizeStatus" class="down">-</span></h3>
+        <ul>
+            <li class="layui-form-item layui-col-md3">
+                <span class="span_normal">中奖人数</span><span class="discript" id="prizeCount"></span>
+            </li>
+            <li class="layui-form-item layui-col-md6">
+                <span class="span_normal">奖品价值</span><span class="discript" id="prizePrice"></span>
+            </li>
+            <li class="layui-form-item layui-col-md12">
+                <span class="span_normal">发布时间</span><span class="discript" id="createTime"></span>
+            </li>
+            <li class="layui-form-item layui-col-md12">
+                <span class="span_normal">使用说明</span><div class="discript" id="prizeExplain"></div>
+            </li>
+        </ul>
+        <table id="addTable" lay-filter="addTable"></table>
+        <div class="layui-laypage" id="addPage"></div>
+    </div>
+    <script type="text/javascript" src="../../common/assets/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+    <script type="text/javascript" src="../../common/js/util.js"></script>
+    <script type="text/javascript" src="../../common/js/yyCache.js"></script>
+
+
+    <script type="text/javascript" src="coupon/coupon.js"></script>
+
+
+</body>
+</html>

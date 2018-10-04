@@ -1,0 +1,160 @@
+::-webkit-input-placeholder {/* WebKit browsers*/
+    color: #999!important;
+}
+
+:-moz-placeholder {/* Mozilla Firefox 4 to 18*/
+    color: #999!important;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+*/
+    color: #999!important;
+}
+
+:-ms-input-placeholder {/* Internet Explorer 10+*/
+    color: #999!important;
+}
+input[type="text"]:focus,
+input[type="password"]:focus{
+    background:none!important;
+    border:none!important;
+}
+.main-wrapper{
+    position: relative;
+    background-image: url(../image/login_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.main-wrapper .logo{
+    display:block;
+    margin:0;
+    padding:0.875rem 1rem;
+}
+.main-wrapper .logo>img{
+    width:8.75rem;
+    height:3rem;
+}
+
+.main-wrapper .login-box{
+    position: absolute;
+    top:50%;
+    left:50%;
+    width:22.5rem;
+    height:20.625rem;
+    margin-left:-11.25rem;
+    margin-top:-10.3125rem;
+    padding:0.5rem 1.875rem;
+}
+.login-box .slogen-1{
+    margin-bottom:1.125rem;
+}
+.login-box .slogen-2{
+    margin-bottom:1.375rem;
+}
+.login-box .slogen-mid>img{
+    display:block;
+    margin:0 auto;
+}
+.login-box .input-box{
+    position: relative;
+    height:3.125rem;
+    padding-left:2.5rem;
+    margin-bottom:1.25rem;
+    background-color:rgba(0, 0, 0, 0.3);
+    border-radius:0.25rem;
+    overflow:hidden;
+}
+.input-box .input-icon{
+    position:absolute;
+    display:inline-block;
+    top:0.6rem;
+    height:1.875rem;
+}
+.input-box .user-icon{
+    width:1.563rem;
+    left:0.5rem;
+    background-image:url(../image/login_user@2x.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.input-box .pwd-icon{
+    width:1.375rem;
+    left:0.6rem;
+    background-image:url(../image/login_pwd@2x.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.input-box .input-text{
+    height:100%;
+    margin:0;
+    background: none;
+    font-size:1rem;
+    border:none;
+    color:#fff;
+}
+.login-box .login-btn{
+    height:3.125rem;
+    width:100%;
+    padding:0;
+    margin:0;
+    background-color: transparent;
+    background-image: url(../image/login_btn@2x.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    outline: none;
+}
+
+.main-wrapper .slogen-bottom{
+    position: absolute;
+    bottom:1.25rem;
+    right:1.5rem;
+}
+.slogen-bottom img{
+    width:12.125rem;
+    height:2.813rem;
+}
+body .layui-layer-setwin .layui-layer-close2,
+body .layui-layer-setwin .layui-layer-close2:hover{
+    background:url(../image/layer_close@2x.png) no-repeat 0 0;
+    background-size:contain;
+}
+.list-box{
+    width:18.375rem;
+    height:27.375rem;
+    padding:4.5rem 0.5rem 1.5rem 0;
+    background:url(../image/layer_bg@2x.png) no-repeat 0 0;
+    background-size: contain;
+    overflow: hidden;
+}
+.list-box .list-inner{
+    height: 100%;
+    width: 105%;
+    padding: 0 1.5rem 0 1rem;
+    overflow-y: auto;
+}
+.list-box ul>li{
+    text-align: center;
+    height: 2.25rem;
+    line-height: 2.25rem;
+    border: 1px solid #fbd100;
+    border-radius: 0.25rem;
+}
+.list-box ul>li+li{
+    margin-top:0.75rem;
+}
+@media screen and (max-width:64rem) {
+    .login-box .slogen-1 img{
+        width:54%;
+    }
+    .login-box .slogen-2 img{
+        width:70%;
+    }
+}
+@media screen and (max-width:50rem) {
+    .login-box .slogen-1 img{
+        width:40%;
+    }
+    .login-box .slogen-2 img{
+        width:56%;
+    }
+}

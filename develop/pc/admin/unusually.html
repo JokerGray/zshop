@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+	<title>异常名单·管理员后台</title>
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/layui/css/layui.css" />
+	<link rel="stylesheet" href="css/reset.css?v=201706131500" />
+	<link rel="stylesheet" href="css/zx.css?v=201706131500" />
+	<link rel="stylesheet" href="css/gainsToCheck.css?v=201706131500" />
+</head>
+
+<body>
+	<script src="util/head.js"></script>
+	<input type="hidden" id="menuHid" value="unusually">
+	<div class="container">
+		<div class="wrapper clearfix">
+			<script src="util/menu.js"></script>
+			<div id="page_R" class="right pull-right">
+				<div id="author_box" class="clearfix">
+					<div>
+						<ul class="tabinner clearfix">
+							<li id="tabAll" class="fl active" writerRank="">全部</li>
+							<li id="tabAverage" class="fl" writerRank="2">普通作者</li>
+							<li id="tabOriginal" class="fl" writerRank="3">原创作者</li>
+							<li id="tabaddV" class="fl" writerRank="4">加V作者</li>
+							<li id="tabSign" class="fl" writerRank="5">签约作者</li>
+						</ul>
+						<div id="authBoxNavR">
+							<span class="fl">时间：</span><input id="start" class="fl" type="text">
+							<button id="exportExcel" class="fl">导出Excel</button>
+						</div>
+					</div>
+					<div id="gainsTable" class="table account_table">
+						<div class="table-left">
+							<div class="panel panel-default">
+								<table class="table table-hover">
+									<thead id="gainsTabHead">
+										<th>作者名称</th>
+										<th>收益类型</th>
+										<th>昨日阅读数</th>
+										<th>昨日广告展示量</th>
+										<th>单价</th>
+										<th>昨日收益</th>
+										<th></th>
+									</thead>
+									<tbody id="gainsTabBody"></tbody>
+								</table>
+							</div>
+						</div>
+						<div id="page" class="text-center"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="modifyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modifyPrice modal-dialog modal-dialog2" role="document">
+			<div class="modifyPriceBox modal-content modal-content2">
+				<div class="modifyPriceTit modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<h4>修改单价</h4>
+				</div>
+				<div id="modifyCon">
+					<p>单价：<input id="unitPriceInp" type="text">元/1000次广告展示</p>
+					<p>普通作者广告费总和</p>
+					<p><span id="modifyTotalAcc">60000</span>元</p>
+				</div>
+				<div id="modifyPriBtnBox" class="modal-footer">
+					<button id="affirmBtn" type="button" class="btn btn-default" data-dismiss="modal">确认修改</button>
+					<button id="cancelBtn" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="authAccounts" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="examineAccounts modal-dialog modal-dialog2" role="document">
+			<div class="authAccountsBox modal-content modal-content2">
+				<div class="authAccouTit modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<h4 class="addSubTitle">单日收益详情</h4>
+				</div>
+				<div class="authorMess">
+					<span class="authorNameTit">作者：</span><span class="authorNameCon"></span><span class="authorNameType"></span>
+					<span class="authorDateTit">时间：</span><span class="authorDateCon"></span>
+					<span class="authorDateTit">修改人:</span>
+					<span class="editer"></span>
+				</div>
+				<div class="authAccouTable table account_table">
+					<div class="table-left">
+						<div class="panel panel-default">
+							<table class="table table-hover">
+								<thead id="gainsTabHead">
+									<th>文章名称</th>
+									<th>昨日阅读数</th>
+									<th>昨日广告展示量</th>
+									<th>单价</th>
+									<th>昨日收益</th>
+									<th></th>
+								</thead>
+								<tbody id="artTabBody"></tbody>
+							</table>
+						</div>
+					</div>
+					<div id="artPage" class="text-center"></div>
+				</div>
+				<div id="accModalBtnBox" class="modal-footer">
+					<button id="freezeAcc" type="button" class="freezeAcc btn btn-default">解除冻结</button>
+					<button id="shieldBtn" type="button" class="disfreezeAcc btn w100px">屏蔽</button>
+					<button id="disfreezeAcc" type="button" class="disfreezeAcc btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="assets/jquery-1.10.2.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/layui/lay/dest/layui.all.js"></script>
+	<script src="assets/countUp.min.js"></script>
+	<script src="util/util.js?v=201706131500"></script>
+	<script src="util/pub.js?v=201706131500"></script>
+	<script src="js/unusually.js?v=201706131600"></script>
+	<script id="accTableList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }} 
+        	<tr>
+				<td class="subcriptName">{{item.subscriptionName || ''}}</td>
+				<td class="subcriptNameType">{{item.name || ''}}</td>
+				<td>{{item.dayVisitNumber}}</td>
+				<td>{{item.isDisplayed}}</td>
+				<td>{{item.rankRate}}元</td>
+				<td>{{item.money}}</td>
+				<td>
+					<span class="gainsTabFreeze cur-p" userId={{item.userId}}>解除冻结</span>
+					<button class="gainsTabBtn" userId={{item.userId}} data-toggle="modal" data-target="#authAccounts">查看</button>
+				</td>
+			</tr>
+        {{#  }); }}
+    </script>
+	<script id="artTableList" type="text/html">
+    	{{#  layui.each(d, function(index, item){ }} 
+        	<tr>
+				<td>{{item.scCmsAarticleTitle || ''}}</td>
+				<td>{{item.dayVisitNumber || '0'}}</td>
+				<td>{{item.isDisplayed || '0'}}</td>
+				<td>{{item.rankRate || '0'}}元</td>
+				<td>{{item.money || '0'}}</td>
+				<!--<td>
+					<button class="gainsTabBtn">查看</button>
+				</td>-->
+			</tr>
+        {{#  }); }}
+    </script>
+</body>
+
+</html>

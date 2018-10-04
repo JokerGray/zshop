@@ -1,0 +1,456 @@
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, abbr, em, img, strong, b, i, dl, dt, dd, ol, ul, li, form, label, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,footer, header, menu, nav, section, summary, audio, video, input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* custom */
+a {
+    color: #7e8c8d;
+    text-decoration: none;
+    -webkit-backface-visibility: hidden;
+}
+
+li {
+    list-style: none;
+}
+
+html, body {
+    width: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+@font-size-base: 75;
+
+/*********************************************************************/
+body {
+    font-family: sans-serif, Arial, '微软雅黑';
+}
+
+#header {
+    position: relative;
+    background: #7a70ee;
+    width: 100%;
+    min-height: 128rem/@font-size-base;
+    color: #333;
+    h4 {
+        position: absolute;
+        top: 16rem/@font-size-base;
+        left: 100rem/@font-size-base;
+        text-align: left;
+        font-size: 24px;
+        [data-dpr='3'] & {
+            font-size: 36px;
+        }
+        [data-dpr='1'] & {
+            font-size: 12px;
+        }
+    }
+    span {
+        font-size: 18px;
+        [data-dpr='3'] & {
+            font-size: 27px;
+        }
+        [data-dpr='1'] & {
+            font-size: 9px;
+        }
+    }
+    span:nth-of-type(1) {
+        display: inline-block;
+        width: 57rem/@font-size-base;
+        height: 57rem/@font-size-base;
+        margin: 35.5rem/@font-size-base 18rem/@font-size-base 0 18rem/@font-size-base;
+        background-image: url(../img/userico@2x.png);
+        [data-dpr='3'] & {
+            background-image: url(../img/userico@3x.png);
+        }
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: cover;
+        border-radius: 50%;
+    }
+    span:nth-of-type(2) {
+        display: inline-block;
+        vertical-align: bottom;
+    }
+    span:nth-of-type(3) {
+        display: inline-block;
+        vertical-align: bottom;
+    }
+    span:nth-of-type(4) {
+        background-image: url(../img/eyemini@2x.png);
+        width: 17px;
+        height: 14px;
+        [data-dpr='3'] & {
+            background-image: url(../img/eyemini@3x.png);
+            width: 26px;
+            height: 21px;
+        }
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        display: inline-block;
+        vertical-align: bottom;
+    }
+    span:nth-of-type(5) {
+        display: inline-block;
+        vertical-align: bottom;
+    }
+    &:before {
+        display: table;
+        content: '';
+    }
+}
+
+#main {
+    video {
+        width: 100%;
+        height: 560rem/@font-size-base;
+    }
+    p {
+        min-height: 100rem @font-size-base;
+        color: #333;
+        padding: 20rem/@font-size-base 27rem/@font-size-base 36rem/@font-size-base 28rem/@font-size-base;
+        font-size: 24px;
+        [data-dpr='3'] & {
+            font-size: 36px;
+        }
+        [data-dpr='1'] & {
+            font-size: 12px;
+        }
+    }
+    .dianzan {
+        width: 100%;
+        height: 75rem/@font-size-base;
+        line-height: 75rem/@font-size-base;
+        background: #999999;
+        padding-left: 40rem/@font-size-base;
+        span {
+            display: inline-block;
+            vertical-align: middle;
+            width: 23px;
+            height: 21px;
+            background-image: url(../img/dianzan@2x.png);
+            [data-dpr='3'] & {
+                width: 35px;
+                height: 32px;
+                background-image: url(../img/dianzan@3x.png);
+            }
+            background-position: 0 0;
+            background-repeat: no-repeat;
+        }
+        i {
+            color: #fff;
+            vertical-align: middle;
+        }
+    }
+}
+
+#footer {
+    width: 100%;
+    background: #f2f2f2;
+    .pinglun {
+        height: 78rem/@font-size-base;
+        line-height: 78rem/@font-size-base;
+        padding-left: 27rem/@font-size-base;
+        color: #333333;
+        font-size: 20px;
+        [data-dpr='3'] & {
+            font-size: 30px;
+        }
+        [data-dpr='1'] & {
+            font-size: 10px;
+        }
+    }
+    .newPing_head {
+        width: 100%;
+        min-height: 10rem/@font-size-base;
+        position: relative;
+        .left-line {
+            span:nth-of-type(1) {
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: block;
+                background: #666;
+                width: 203rem/@font-size-base;
+                height: 2rem/@font-size-base;
+            }
+            span:nth-of-type(2) {
+                position: absolute;
+                left: 109rem/@font-size-base;
+                top: 8rem/@font-size-base;
+                display: block;
+                background: #666;
+                width: 188rem/@font-size-base;
+                height: 2rem/@font-size-base;
+            }
+        }
+        p {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+            color: #777;
+            font-size: 22px;
+            [data-dpr='3'] & {
+                font-size: 33px;
+            }
+            [data-dpr='1'] & {
+                font-size: 11px;
+            }
+        }
+        .right-line {
+            span:nth-of-type(1) {
+                position: absolute;
+                right: 0;
+                top: 0;
+                display: block;
+                background: #666;
+                width: 191rem/@font-size-base;
+                height: 2rem/@font-size-base;
+            }
+            span:nth-of-type(2) {
+                position: absolute;
+                right: 86rem/@font-size-base;
+                top: 7rem/@font-size-base;
+                display: block;
+                background: #666;
+                width: 211rem/@font-size-base;
+                height: 2rem/@font-size-base;
+            }
+        }
+    }
+    .newContent {
+        ul {
+            li {
+                min-height: 121rem/@font-size-base;
+                margin: 23rem/@font-size-base 32rem/@font-size-base 30rem/@font-size-base 18rem/@font-size-base;
+                padding-bottom: 30rem/@font-size-base;
+                border-bottom: 1rem/@font-size-base solid #999;
+                font-size: 16rem/@font-size-base;
+                .headIcon {
+                    display: inline-block;
+                    width: 43rem/@font-size-base;
+                    height: 46rem/@font-size-base;
+                    margin-right: 20rem/@font-size-base;
+                    background-image: url(../img/Uicosm@2x.png);
+                    [data-dpr='3'] & {
+                        background-image: url(../img/Uicosm@3x.png);
+                    }
+                    background-position: 0 0;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    border-radius: 50%;
+                }
+                .date {
+                    display: inline-block;
+                    vertical-align: top;
+                    font-size: 16px;
+                    [data-dpr='3'] & {
+                        font-size: 24px;
+                    }
+                    [data-dpr='1'] & {
+                        font-size: 8px;
+                    }
+                }
+                .dianzan {
+                    display: inline-block;
+                    vertical-align: top;
+                    float: right;
+                    .starIcon {
+                        display: inline-block;
+                        vertical-align: top;
+                        width: 23px;
+                        height: 21px;
+                        background-image: url(../img/dianzan@2x.png);
+                        [data-dpr='3'] & {
+                            background-image: url(../img/dianzan@3x.png);
+                            width: 35px;
+                            height: 32px;
+                        }
+                        background-repeat: no-repeat;
+                        background-position: 0 0;
+                    }
+                    i {
+                        display: inline-block;
+                        vertical-align: top;
+                        font-size: 22px;
+                        [data-dpr='3'] & {
+                            font-size: 33px;
+                        }
+                        [data-dpr='1'] & {
+                            font-size: 11px;
+                        }
+                    }
+                }
+                p {
+                    margin-left: 65rem/@font-size-base;
+                    font-size: 26px;
+                    [data-dpr='3'] & {
+                        font-size: 39px;
+                    }
+                    [data-dpr='1'] & {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+    .hotPing_head {
+        width: 100%;
+        min-height: 10rem/@font-size-base;
+        position: relative;
+        .left-line {
+            span:nth-of-type(1) {
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: block;
+                background: #666;
+                width: 203rem/@font-size-base;
+                height: 2rem/@font-size-base;
+            }
+            span:nth-of-type(2) {
+                position: absolute;
+                left: 109rem/@font-size-base;
+                top: 8rem/@font-size-base;
+                display: block;
+                background: #666;
+                width: 188rem/@font-size-base;
+                height: 2rem/@font-size-base;
+            }
+        }
+        p {
+            position: absolute;
+            left: 50%;
+            /*平移自身元素一半的距离*/
+            transform: translate(-50%, 0);
+            color: #777;
+            font-size: 22px;
+            [data-dpr='3'] & {
+                font-size: 33px;
+            }
+            [data-dpr='1'] & {
+                font-size: 11px;
+            }
+        }
+        .right-line {
+            span:nth-of-type(1) {
+                position: absolute;
+                right: 0;
+                top: 0;
+                display: block;
+                background: #666;
+                width: 191rem/@font-size-base;
+                height: 2rem/@font-size-base;
+            }
+            span:nth-of-type(2) {
+                position: absolute;
+                right: 86rem/@font-size-base;
+                top: 7rem/@font-size-base;
+                display: block;
+                background: #666;
+                width: 211rem/@font-size-base;
+                height: 2rem/@font-size-base;
+            }
+        }
+    }
+    .hotContent {
+        ul {
+            li {
+                min-height: 121rem/@font-size-base;
+                margin: 23rem/@font-size-base 32rem/@font-size-base 30rem/@font-size-base 18rem/@font-size-base;
+                padding-bottom: 30rem/@font-size-base;
+                border-bottom: 1rem/@font-size-base solid #999;
+                font-size: 16rem/@font-size-base;
+                .headIcon {
+                    display: inline-block;
+                    width: 43rem/@font-size-base;
+                    height: 46rem/@font-size-base;
+                    margin-right: 20rem/@font-size-base;
+                    background-image: url(../img/Uicosm@2x.png);
+                    [data-dpr='3'] & {
+                        background-image: url(../img/Uicosm@3x.png);
+                    }
+                    background-position: 0 0;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    border-radius: 50%;
+                }
+                .date {
+                    display: inline-block;
+                    vertical-align: top;
+                    font-size: 16px;
+                    [data-dpr='3'] & {
+                        font-size: 24px;
+                    }
+                    [data-dpr='1'] & {
+                        font-size: 8px;
+                    }
+                }
+                .dianzan {
+                    display: inline-block;
+                    vertical-align: top;
+                    float: right;
+                    .starIcon {
+                        display: inline-block;
+                        vertical-align: top;
+                        width: 23px;
+                        height: 21px;
+                        background-image: url(../img/dianzan@2x.png);
+                        [data-dpr='3'] & {
+                            background-image: url(../img/dianzan@3x.png);
+                            width: 35px;
+                            height: 32px;
+                        }
+                        background-repeat: no-repeat;
+                        background-position: 0 0;
+                    }
+                    i {
+                        display: inline-block;
+                        vertical-align: top;
+                        font-size: 22px;
+                        [data-dpr='3'] & {
+                            font-size: 33px;
+                        }
+                        [data-dpr='1'] & {
+                            font-size: 11px;
+                        }
+                    }
+                }
+                p {
+                    margin-left: 65rem/@font-size-base;
+                    font-size: 26px;
+                    [data-dpr='3'] & {
+                        font-size: 39px;
+                    }
+                    [data-dpr='1'] & {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+
+}

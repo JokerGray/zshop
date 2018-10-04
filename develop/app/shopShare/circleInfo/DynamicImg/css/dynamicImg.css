@@ -1,0 +1,367 @@
+.contain{
+    width: 100%;
+    height: auto;
+    font-size: 3.8vw;
+    overflow: hidden;
+}
+.hid-shop{
+    margin-bottom: 2vw;
+    padding: 0 3vw;
+    height: 12vh;
+    background: rgba(252,252,252,1);
+}
+.shop-items{
+    display: flex;
+}
+.hid-shop .shop-left{
+    flex: 0.3;
+    margin-top: 2.8vh;
+    margin-right: 0.3vw;
+}
+.dynamic-img img{
+    display: block;
+    width: 90%;
+    margin:0 auto;
+}
+.add-num{
+    color:#999;
+}
+.hid-shop .shop-left img{
+    display: block;
+    width: 14vw;
+    height: 14vw;
+    border-radius: 100%;
+}
+.hid-shop .shop-center{
+    flex: 1;
+    margin-top: 2.8vh;
+    padding: 0 3vw;
+}
+.hid-shop .shop-right{
+    flex: 0.5;
+}
+.hid-shop .shop-center h4{
+    font-size: 4vw;
+    font-weight: 500;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.hid-shop .shop-center .shop-address{
+    margin-top:2vh;
+    font-size: 3.2vw;
+    color: #999999;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.hid-shop .shop-right span{
+    display: block;
+    width: 100%;
+    height: 4.5vh;
+    line-height: 4.5vh;
+    border-radius: 10vw;
+    text-align: center;
+    font-size: 4vw;
+    margin: 4vh auto 0;
+    float: right;
+    color: #fff;
+    background: linear-gradient(-90deg,rgba(255,186,60,1) 0%,rgba(255,202,60,1) 100%);
+}
+/*详情*/
+video{
+    width: 100%;
+}
+.img-box{
+    width: 100%;
+    height: auto;
+    margin:2vh auto;
+}
+.dynamic-top{
+    margin:2vh 3vw;
+    display: flex;
+}
+.dynamic-tl{
+    flex: 0.3;
+}
+.dynamic-tc{
+    flex: 1.7;
+}
+.dynamic-tl img{
+    display: block;
+    width: 12vw;
+    height: 12vw;
+    border-radius: 100%;
+}
+.dynamic-name{
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+}
+.dynamic-time{
+    font-size: 3.5vw;
+    color:#999;
+    margin-top: 1vh;
+}
+.dynamic-center{
+    margin:0 3vw;
+}
+.dynamic-text{
+    font-family:PingFang-SC-500;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    font-size: 4.6vw;
+}
+.video-hid{
+    border-top: 1px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
+}
+/*评论*/
+.discuss{
+    padding: 0 3vw;
+}
+.discuss h4{
+    font-size: 4.5vw;
+    font-weight: 500;
+}
+.discuss-box{
+    width: 100%;
+}
+.no-data{
+    display: none;
+}
+.discuss-box .discuss-item{
+    width: 100%;
+    height: auto;
+}
+.discuss-item .discuss-img{
+    width: 15vw;
+    height: 15vw;
+    vertical-align: middle;
+    float: left;
+}
+.discuss-item .discuss-img img{
+    display: block;
+    width: 12vw;
+    height:12vw;
+    border-radius: 100%;
+}
+.discuss-info{
+    margin-left: 15vw;
+}
+.discuss-name{
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(51,51,51,1);
+}
+.discuss-time{
+    font-size: 3.5vw;
+    color: #999;
+    margin-top: 1vh;
+}
+.discuss-content{
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(51,51,51,1);
+    margin: 1vh 0;
+}
+.discuss-reply{
+    padding: 1vw 1vw;
+    background: #F7F7F7;
+    font-size: 3.5vw;
+    color:#999999;
+}
+.discuss-reply span{
+    color: #333333;
+}
+.footer{
+    position: fixed;
+    width: 100%;
+    height: 6vh;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+    display: flex;
+}
+.footer .footer-input{
+    flex: 1.4;
+}
+.footer .footer-input input{
+    width: 90%;
+    margin: 1vh 3vw;
+    height: 4vh;
+    background: #F7F7F7;
+    border: none;
+    border-radius: 5px;
+    padding: 1vw
+}
+.footer .footer-btn{
+    flex: 0.6;
+    display: flex;
+}
+.footer-btn .comment,.footer-btn .cares{
+    flex: 1;
+    text-align: center;
+    line-height: 6vh;
+    color:#666;
+    font-size: 3.5vw;
+}
+.discuss-icon{
+    display: inline-block;
+    width: 4vw;
+    height: 4vw;
+    background: url(../../../images/qz_circledetail_comment@2x.png) no-repeat;
+    background-size: 100%;
+    background-position: center;
+    margin-top: 3.5vw;
+    float: left;
+}
+.cares-icon{
+    display: inline-block;
+    width: 4vw;
+    height: 4vw;
+    background: url("../../../images/qz_circledetail_like@2x.png") no-repeat;
+    background-size: 100%;
+    background-position: center;
+    margin-top: 3.5vw;
+    float: left;
+}
+.video-list{
+    display: none;
+}
+.video-hid .shop-left{
+    margin-top: 1.6vh;
+}
+.video-hid .shop-center{
+    margin-top: 1.6vh;
+}
+/*顶部*/
+.head{
+    position: absolute;
+    top:3vw;
+    left: 3vw;
+    z-index:4;
+    display: none;
+}
+.head .back{
+    display: block;
+    width: 4vw;
+    height: 4vw;
+    background: url(../../../images/qz_circledetail_return@2x.png) no-repeat;
+    background-size: 80%;
+    background-position: center;
+}
+.head .back.black{
+    background: url(../../../images/qz_dynamicdetails_return@2x.png) no-repeat;
+    background-size: 80%;
+    background-position: center;
+    float: left;
+    margin-top: 1.5vh;
+}
+.img-list{
+    width: 90%;
+    text-align: center;
+    line-height: 6vh;
+    height: 6vh;
+    font-size: 5vw;
+    font-weight: 500;
+}
+.img-hid{
+    margin-top:6vh;
+}
+.hr{
+    width: 100%;
+    height: 6rem;
+}
+/*引导*/
+#model{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    z-index: 9999;
+    color: #333333;
+    background: url(../../../images/line.png) no-repeat 96% 0.2rem;
+    background-size: 0.7rem 0.58rem;
+    height: 12vh;
+    width: 100%;
+    background-color:#ffffff;
+}
+
+#openApp{
+    height: 5rem;
+    width: 100%;
+    background-color: #343338;
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.15rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+#openApp #infoBox{
+    font-weight: bold;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+#openApp #logo{
+    width: 3rem;
+    height: 3rem;
+    margin: 0 1rem;
+}
+
+#openApp #open{
+    width: 8rem;
+    height: 3rem;
+    line-height: 3rem;
+    border-radius: 2rem;
+    border: solid 1px #ffffff;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+#model div{
+    display: flex;
+    align-items: center;
+    height: 6vh;
+    line-height: 6vh;
+    margin-left: 2vw;
+}
+
+#model img{
+    margin-left: 0.15rem
+}
+
+#dot{
+    width: 5vw;
+    height: 5vw;
+}
+
+#broswer{
+    width: 30vw;
+    height: 6vw;
+}
+
+#shade{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 888;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}

@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>访客统计</title>
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../../assets/common/css/common.css">
+    <link rel="stylesheet" href="./css/reportCSVisitor.css">
+</head>
+<body>
+<!--顶部时间选择和店铺选择-->
+<div class="time-shop">
+    <div class="timeTab">
+        <ul>
+            <li class="active" data-navType="1">日报</li>
+            <li data-navType="2">全部</li>
+            <li data-navType="3">自定义</li>
+        </ul>
+    </div>
+    <div class="shopSelector layui-form">
+        <select id="shopSelector" lay-filter="shopSelector" lay-search> </select>
+    </div>
+</div>
+<!--时间选择和路径显示-->
+<div class="time-path">
+    <div class="timeIcon">
+        <i> </i>
+    </div>
+    <div class="timeSelector">
+        <div>
+            <input type="text" value="" onfocus="blur()" id="day">
+        </div>
+        <div>
+            <span>全部</span>
+        </div>
+        <div>
+            <input type="text" value="" onfocus="blur()" id="dateRange">
+        </div>
+    </div>
+    <div class="path">
+        <i> > </i>
+        <span class="shopName"> </span>
+    </div>
+    <div class="typeChange">
+        <ul class="clearfix">
+            <li class="active" data-type="1">
+                <i> </i>
+                <span>访问店铺</span>
+            </li>
+            <li data-type="2">
+                <i> </i>
+                <span>访问商品</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--报表内容（店铺访客和商品访客）-->
+<div class="mainContent">
+    <div class="shop">
+        <div class="visitTotal">
+            <ul class="clearfix">
+                <li>
+                    <div></div>
+                    <div>
+                        <p>收藏店铺总数</p>
+                        <h4 id="shopTotal"> </h4>
+                    </div>
+                    <div>
+                        <p>新增收藏店铺数</p>
+                        <h4 id="addShopTotal"> </h4>
+                    </div>
+                </li>
+                <li>
+                    <div></div>
+                    <div>
+                        <p>总访客数</p>
+                        <h4 id="shopVisitCount"> </h4>
+                    </div>
+                    <div>
+                        <p>新增访客数</p>
+                        <h4 id="addShopVisitCount"> </h4>
+                    </div>
+                </li>
+                <li>
+                    <div></div>
+                    <div>
+                        <p>总点击数</p>
+                        <h4 id="shopClickCount"> </h4>
+                    </div>
+                    <div>
+                        <p>新增点击数</p>
+                        <h4 id="addShopClickCount"> </h4>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="trendBox">
+            <div id="shopTrend"></div>
+        </div>
+        <div class="tab-export clearfix">
+            <div class="tab">
+                <a href="javascript:;" class="active" data-index="1">店铺收藏记录</a>
+                <a href="javascript:;" data-index="2">店铺浏览记录</a>
+            </div>
+            <div class="export">
+                <a href="javascript:;" id="shopExportBtn">
+                    <i> </i>
+                    <span>导出</span>
+                </a>
+            </div>
+        </div>
+        <div class="tableBox">
+            <table class="layui-table shopCollection">
+                <colgroup>
+                    <col width="70">
+                    <col width="200">
+                    <col width="150">
+                    <!--<col width="150">-->
+                    <col width="150">
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>店铺名称</th>
+                    <th>用户名称</th>
+                    <!--<th>用户类型</th>-->
+                    <th>用户电话</th>
+                    <th>收藏来源</th>
+                    <th>收藏时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>武汉楚河汉街店</td>-->
+                    <!--<td>福西西fcc0616</td>-->
+                    <!--<td>游客</td>-->
+                    <!--<td>1300000000</td>-->
+                    <!--<td>app</td>-->
+                    <!--<td>2016-11-29 10:30</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+            <table class="layui-table shopBrowse">
+                <colgroup>
+                    <col width="70">
+                    <col width="200">
+                    <col width="150">
+                    <!--<col width="150">-->
+                    <col width="150">
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>店铺名称</th>
+                    <th>用户名称</th>
+                    <!--<th>用户类型</th>-->
+                    <th>用户电话</th>
+                    <th>访问来源</th>
+                    <th>访问时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>武汉楚河汉街店</td>-->
+                    <!--<td>福西西fcc0616</td>-->
+                    <!--<td>游客</td>-->
+                    <!--<td>1300000000</td>-->
+                    <!--<td>app</td>-->
+                    <!--<td>2016-11-29 10:30</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="goods">
+        <div class="visitTotal">
+            <ul class="clearfix">
+                <li>
+                    <div></div>
+                    <div>
+                        <p>收藏商品总数</p>
+                        <h4 id="goodsCollection"> </h4>
+                    </div>
+                    <div>
+                        <p>新增收藏商品数</p>
+                        <h4 id="addGoodsCollection"> </h4>
+                    </div>
+                </li>
+                <li>
+                    <div></div>
+                    <div>
+                        <p>总访客数</p>
+                        <h4 id="goodsVisit"> </h4>
+                    </div>
+                    <div>
+                        <p>新增访客数</p>
+                        <h4 id="addGoodsVisit"> </h4>
+                    </div>
+                </li>
+                <li>
+                    <div></div>
+                    <div>
+                        <p>总点击数</p>
+                        <h4 id="goodsClick"> </h4>
+                    </div>
+                    <div>
+                        <p>新增点击数</p>
+                        <h4 id="addGoodsClick"> </h4>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="trendBox">
+            <div id="goodsTrend"></div>
+        </div>
+        <div class="tab-export clearfix">
+            <div class="tab">
+                <a href="javascript:;" class="active" data-index="1">商品收藏记录</a>
+                <a href="javascript:;" data-index="2">商品访客记录</a>
+            </div>
+            <div class="export">
+                <a href="javascript:;" id="goodsExportBtn">
+                    <i> </i>
+                    <span>导出</span>
+                </a>
+            </div>
+            <div class="search">
+                <form action="javascript:;">
+                    <input type="text" id="keyWord" placeholder="请输入商品名称" autocomplete="off">
+                    <button id="searchBtn">搜索</button>
+                </form>
+            </div>
+        </div>
+        <div class="tableBox">
+            <table class="layui-table goodsCollection">
+                <colgroup>
+                    <col width="70">
+                    <col width="200">
+                    <col width="150">
+                    <!--<col width="150">-->
+                    <col width="150">
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>商品名称</th>
+                    <th>用户名称</th>
+                    <!--<th>用户类型</th>-->
+                    <th>用户电话</th>
+                    <th>收藏来源</th>
+                    <th>收藏时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>法国原装进口奶粉</td>-->
+                    <!--<td>福西西fcc0616</td>-->
+                    <!--<td>游客</td>-->
+                    <!--<td>1300000000</td>-->
+                    <!--<td>app</td>-->
+                    <!--<td>2016-11-29 10:30</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+            <table class="layui-table goodsBrowse">
+                <colgroup>
+                    <col width="70">
+                    <col width="200">
+                    <col width="150">
+                    <!--<col width="150">-->
+                    <col width="150">
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>商品名称</th>
+                    <th>用户名称</th>
+                    <!--<th>用户类型</th>-->
+                    <th>用户电话</th>
+                    <th>访问来源</th>
+                    <th>访问时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>法国原装进口奶粉</td>-->
+                    <!--<td>福西西fcc0616</td>-->
+                    <!--<td>游客</td>-->
+                    <!--<td>1300000000</td>-->
+                    <!--<td>app</td>-->
+                    <!--<td>2016-11-29 10:30</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="pageBox">
+        <div id="pageSelector"></div>
+    </div>
+</div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/echart/echarts.min.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="./js/reportCSVisitor.js"></script>
+</html>

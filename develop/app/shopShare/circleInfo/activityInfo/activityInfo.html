@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <title>活动详情</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/layer/theme/default/layer.css">
+    <link rel="stylesheet" href="css/activityInfo.css">
+</head>
+<body>
+    <div class="contain">
+        <div class="head" onclick="back()"><i class="back"></i></div>
+        <div class="top">
+            <div class="top-img">
+                <img class="imgcover" src="">
+            </div>
+            <div class="active-title"></div>
+            <div class="active-user">
+                <div class="read">
+                    浏览 <span class="read-num"></span>次
+                </div>
+                <div class="save">
+                    收藏 <span class="save-num"></span>次
+                </div>
+            </div>
+        </div>
+        <div class="active-info">
+            <div class="time">
+                <i class="time-icon"></i><span></span>
+            </div>
+            <div class="adress">
+                <i class="adress-icon"></i><span></span><i class="right-icon"></i>
+            </div>
+            <div class="price">
+                <i class="price-icon"></i><span></span>
+            </div>
+            <div class="ctrol-btn">
+                <div class="sponsor" onclick="openApp()"><span>我要赞助</span></div>
+                <div class="naming" onclick="openApp()"><span>我要冠名</span></div>
+            </div>
+        </div>
+        <div class="jiange"></div>
+        <div class="naming-box">
+            <div class="common-nam namin-box">冠名商<span></span></div>
+            <div class="common-nam sponsor-box">
+                <div class="sponsor-lft"><span class="sponsor-title">赞助商</span><span class="sponsor-name"></span></div>
+                <div class="sponsor-rgt" onclick="openApp()">
+                    <i class="right-icon"></i>
+                    <div class="sponsor-img">
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="common-nam apply-box">
+                <div class="sponsor-lft">报名</div>
+                <div class="sponsor-rgt" onclick="openApp()">
+                    <i class="right-icon"></i>
+                    <div class="sponsor-img">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="hid-shop">
+            <div class="shop-items">
+                <div class="shop-left">
+                    <img src="">
+                </div>
+                <div class="shop-center">
+                    <h4></h4>
+                    <div class="shop-source">
+
+                    </div>
+                </div>
+                <div class="shop-right">
+                    <span onclick="openApp()">进入圈子</span>
+                </div>
+            </div>
+        </div>
+        <div class="jiange"></div>
+        <div class="show-list">
+            <h4>全部晒单<span></span><i onclick="openApp()" class="right-icon"></i></h4>
+            <div class="list-box">
+                <!--<div class="list-item">-->
+                    <!--<div class="list-top">-->
+                        <!--<img src="../../images/1.png">-->
+                        <!--<div class="list-pic">-->
+                            <!--<div class="list-name">年好吗</div>-->
+                            <!--<div class="list-time">1454545</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="list-center">-->
+                        <!--<div class="list-text">155656565656</div>-->
+                        <!--<div class="dynamic-img">-->
+                            <!--<div class="item-img">-->
+                                <!--<div class="img-list">-->
+                                    <!--<img src="../../images/1.png">-->
+                                <!--</div>-->
+                                <!--<div class="img-list">-->
+                                    <!--<img src="../../images/1.png">-->
+                                <!--</div>-->
+                                <!--<div class="img-list">-->
+                                    <!--<img src="../../images/1.png">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="img-num">共6张</div>-->
+                         <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="no-list">
+            <h4>暂无晒单</h4>
+            <div class="no-text">欢迎大家参与晒单!</div>
+        </div>
+        <div class="jiange"></div>
+        <div class="explain">
+            <h4>活动说明</h4>
+            <div class="explain-content">
+            </div>
+
+        </div>
+        <div class="footer">
+            <div class="footer-btn">
+                <div class="collect" onclick="openApp()">
+                    <i class="collect-icon"></i>
+                    <span>收藏</span>
+                </div>
+                <div class="collect" onclick="openApp()">
+                    <i class="collect-icon"></i>
+                    <span>聊天</span>
+                </div>
+                <div class="collect" onclick="openApp()">
+                    <i class="collect-icon"></i>
+                    <span>电话</span>
+                </div>
+            </div>
+            <div class="sgow-btn" onclick="openApp()">我要晒单</div>
+        </div>
+
+        <!--引导-->
+        <div id="model" style="display:none;">
+            <div>1. 点击右上角的<img src="../../images/dot.png" id="dot"></div>
+            <div>2. 选择<img src="../../images/open.png" id="broswer"></div>
+        </div>
+        <div id="shade" style="display:none;"></div>
+    </div>
+    <script src="../../assets/js/jquery-2.1.0.js"></script>
+    <script src="../../assets/layer/layer.js"></script>
+    <script src="../common/js/common.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="js/activityInfo.js"></script>
+</body>
+</html>

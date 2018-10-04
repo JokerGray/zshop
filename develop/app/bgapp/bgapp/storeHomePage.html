@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+		<title>门店首页</title>
+		<link rel="stylesheet" href="assets/layui/css/layui.css" />
+		<link rel="stylesheet" href="css/storeHomePage.css" />
+	</head>
+	<body>
+		<div class="allWrapper">
+			<div id="container1">
+				<div id="lineHeader1" class="lineHeader">
+					<span>门店销售业绩</span>
+				</div>
+				<div id="lineChartContainer1"></div>
+			</div>
+			<div id="container2">
+				<div id="lineHeader2" class="lineHeader">
+					<span>门店消耗业绩</span>
+				</div>
+				<div id="lineChartContainer2"></div>
+			</div>
+			<div id="infoContainer">
+				<div id="bestEmployer" class="info">
+					<h3>贡献最大的员工</h3>
+				</div>
+				<div id="bestCumstomer" class="info">
+					<h3>贡献最大的客户</h3>
+				</div>
+				<div id="bestProduct" class="info">
+					<h3>最好卖的产品</h3>
+				</div>
+				<div id="storeGift" class="info">
+					<h3>门店赠送</h3>
+				</div>
+			</div>
+		</div>
+		<script src="assets/js/jquery-2.1.0.js"></script>
+		<script src="js/util.js"></script>
+		<script src="assets/layer/layer.js"></script>
+		<script src="assets/js/echarts.min.js"></script>
+		<script src="js/lineChart.js"></script>
+		<script src="js/storeHomePage.js"></script>
+	</body>
+</html>

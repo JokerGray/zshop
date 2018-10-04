@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="text/html; charset=utf-8">
+    <title>新增或编辑页面</title>
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/bootstrapDatePicker/css/datetimepicker.css">
+    <link rel="stylesheet" href="../../../assets/layer/mobile/need/layer.css">
+    <link rel="stylesheet" href="../../../assets/sweetalert/sweetalert.css">
+    <link rel="stylesheet" href="../../../assets/select2/select2.min.css">
+    <!-- kindeditor -->
+    <link rel="stylesheet" href="../../../assets/kindeditor-4.1.7/themes/default/default.css" />
+    <script type="text/javascript" src="../../../assets/kindeditor-4.1.7/kindeditor-all-min.js"></script>
+    <script type="text/javascript" src="../../../assets/kindeditor-4.1.7/plugins/image/image.js"></script>
+    <!-- <script type="text/javascript" src="../../../assets/kindeditor-4.1.7/plugins/multiimage/multiimage.js"></script> -->
+    <script type="text/javascript" src="../../../assets/kindeditor-4.1.7/lang/zh_CN.js"></script>
+    <link rel="stylesheet" href="add-or-edit.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-title">
+            <span class="title-name">新增活动</span>
+        </div>
+        
+        <div class="row">
+            <input type="hidden" name="address" value="" />
+            <input type="hidden" name="lat" id="lat" value="" />
+            <input type="hidden" name="lng" id="lng" value="" />
+            <input type="hidden" name="adcode" id="adcode" value="" />
+            <div class="col-md-7">
+                <form class="form-horizontal form-padding">
+                    <div class="form-group">
+                        <label for="activityName" class="col-sm-3 control-label"><i class="must">*</i>活动名称：</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="activityName" placeholder="请输入活动名称">
+                        </div>
+                        <div class="col-sm-3 tips-no-padding">
+                            <small class="text-muted">4-20个字以内</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate" class="col-sm-3 control-label"><i class="must">*</i>开始时间：</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="startDate" placeholder="请选择开始时间">
+                                <label for="startDate" class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="place" class="col-sm-3 control-label"><i class="must">*</i>活动地点：</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="place" id="place" placeholder="请选择活动地点">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget" class="col-sm-3 control-label"><i class="must">*</i>人均预算：</label>
+                        <div class="col-sm-5 budget-input">
+                            <input type="text" class="form-control" id="budget" placeholder="请输入金额">
+                        </div>
+                        <span id="perBudget">0</span>
+                        <div class="col-sm-1 tips-no-padding">
+                            <span>元/人</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="staff" class="col-sm-3 control-label"><i class="must">*</i>参加人员：</label>
+                        <div class="col-sm-6" id="staffInput">
+                            <input type="text" class="form-control" id="staff" placeholder="请选择参加人员">
+                        </div>
+                        <div class="col-sm-6" id="staffCheck">
+                            <span id="staffNum">已选择0人</span>
+                            <button type="button" class="btn btn-primary btn-sm" id="checkPeople">查看参加人员</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cover" class="col-sm-3 control-label"><i class="must">*</i>活动封面：</label>
+                        <div class="col-sm-6">
+                            <label class="mylabel" for="upFace">
+                                <i class="must">*</i>封面图片&nbsp;:
+                                <span class="textHint">点击修改封面图片</span>
+                            </label>
+                            <div class="upFace">
+                                <div class="imgshadow" style="display: none;"></div>
+                                <img src="img/upFace.png" alt="" id="upFace" />
+                                <input type="hidden" name="face" id="url" value="" />
+                            </div>
+                            <input type="hidden" name="faceImg" />
+                        </div>
+                        <!-- <div class="col-sm-6">
+                            <img id="cover" src="" alt="点击上传封面">
+                        </div> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="introduce" class="col-sm-3 control-label"><i class="must">*</i>活动介绍：</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" id="introduce" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" id="checkMan">
+                        <label for="approver" class="col-sm-3 control-label"><i class="must">*</i>活动审批人：</label>
+                        <div class="col-sm-6">
+                            <!-- <select name="approver" id="approver" class="select-people"></select> -->
+                            <select name="approver" id="approver" class=""></select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-5">
+                <div class="phone-bg">
+                    <div class="left-state">3:35</div>
+                    <div class="right-state"></div>
+                    <div class="cover-img" id="coverImg">
+                        <div class="cover-cover"></div>
+                        <div class="back-btn"></div>
+                        <div class="user-info">
+                            <div class="user-icon">
+                                <img id="userLogo" src="img/rentou.png" alt="">
+                            </div>
+                            <div class="user-text">
+                                <div class="user-title" id="fansName">-</div>
+                                <div class="user-name">
+                                    <b id="merchantName">-</b>
+                                    <img src="img/shanghubiao.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="activity-about">
+                        <div class="detail-info">
+                            <div class="detail-title" id="detailTitle"></div>
+                            <div class="detail-time">
+                                <img src="img/icon-clock.png" alt="">
+                                <b id="selectTime"></b>开始
+                            </div>
+                            <div class="detail-addr">
+                                <img src="img/icon-addr.png" alt="">
+                                <b id="selectAddress"></b>
+                            </div>
+                            <div class="detail-people">
+                                <img src="img/icon-people.png" alt="">
+                                <b id="totalPeople">0</b>人
+                            </div>
+                        </div>
+                        <div class="active-process">
+                            <b class="title-bar"></b>活动流程
+                            <div class="process-content" id="processContent"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row save-btn">
+            <div class="col-md-3 col-md-offset-3">
+                <button type="button" class="btn btn-info btn-block" id="submitBtn">保存</button>
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+                <button type="button" class="btn btn-default btn-block" id="cancelBtn">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../assets/jquery/jquery.min.js"></script>
+    <script src="../../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script type="text/javascript" src="../../../assets/layer/layer.js"></script>
+    <script type="text/javascript" src="../../../assets/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../../../assets/select2/select2.min.js"></script>
+    <script src="../../../assets/plupload-2.3.1/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="common/common.js"></script>
+    <script src="add-or-edit.js"></script>
+</body>
+</html>

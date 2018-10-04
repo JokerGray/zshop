@@ -1,0 +1,114 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+.content {
+	padding: 20px;
+	position: relative;
+}
+
+.selectImg {
+	float: left;
+	position: relative;
+	height: 28px;
+	width: 80px;
+	z-index: 10000;
+	text-align: center;
+	line-height: 18px;
+	overflow: hidden;
+	cursor: pointer;
+	padding: 5px;
+	display: inline-block;
+	text-decoration: none;
+	font-size: 14px;
+	color: #fff;
+	background-color: #A67227;
+	border: none;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+#ipt {
+	position: absolute;
+	font-size: 100px;
+	right: 0;
+	top: 0;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	cursor: pointer;
+}
+
+.title {
+	float: right;
+	margin: 0;
+	font-size: 18px;
+	color: #333;
+	line-height: 28px;
+}
+
+.showBox {
+	margin-top: 60px;
+}
+
+.showImg {
+	display: block;
+}
+
+.preview {
+	position: absolute;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: 2px solid #fff;
+	top: 70px;
+	right: 20px;
+}
+
+.previewContainer {
+	height: 168px;
+	width: 332px;
+	overflow: hidden;
+}
+
+.jcropPreview {
+	border: none;
+}
+
+.desc {
+	position: absolute;
+	right: 0;
+	color: #999;
+	width: 300px;
+	text-align: right;
+	margin-top: 10px;
+}
+
+.layui-layer-title{
+	background-color: #353b53 !important;
+}
+
+.content .selectImg{
+	background-color: #1dbfaf !important;
+}
+			
+.cropBtn{
+	width: 120px;
+	height: 28px;
+	border:0;
+	outline: 0;
+	bottom: 0;
+    right: 23px;
+	border-radius: 5px;
+	background: #1dbfaf;
+    color: #fff;
+	margin-top: 50px;
+    margin-left: 51px;
+	font-size: 14px;
+}
+.cropBtn:hover{
+	color:#265884;
+}

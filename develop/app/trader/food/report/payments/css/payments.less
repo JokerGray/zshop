@@ -1,0 +1,291 @@
+
+@baseFontSize: 18px;
+
+@orderFontSize: 16px;  //订单详情字体
+@orderLineHeight: 22px; //订单详情行高
+
+@tableCellHeight: 70px;
+@tableCellLineHeight: 70px;
+
+@foodLineColor: #E5E5E5;   //订单 商品列表 分割线
+@foodPaddingTB:   10px;     //订单 商品列表 上下间隔
+@orderWidth: 488px;
+body{
+    min-width: 1260px;
+}
+.tab-content{
+    margin-top: 20px;
+    position: relative;
+}
+
+.layui-table, .layui-table-view {
+    margin: 0; 
+    box-sizing: border-box;
+} 
+.food-left{
+    max-height: 900px;
+}
+.food-left.show-left{
+    padding-right: 518px;
+}
+.food-box{
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+}
+.food-box div:first-child{
+    float: left;
+}
+.food-box div:last-child{
+    float: right;
+}
+ 
+.food-money{
+    color: #FF7B7C;
+}
+ 
+.food-right {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    float: right;
+    width: @orderWidth;
+    height: aotu;
+    overflow: hidden;
+    box-shadow:0px 3px 6px rgba(0,0,0,0.16);
+    box-sizing: border-box;
+    min-height: 800px;
+    margin-bottom: 20px;
+    font-size: @orderFontSize;
+}
+
+.print-title{
+    width:@orderWidth;
+    height:40px;
+    background-color: #353B53;
+    border-radius:2px 2px 0px 0px;
+    position: relative;
+    color:#fff;
+}
+.print-title p{
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+     
+}
+.print-title i{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.print-content {
+    font-size: @orderFontSize;
+    color: #333;
+    line-height:34px;
+    min-height: 700px;
+    .order-header {
+        position: relative;
+        padding: 10px 20px;
+        border-bottom:  1px solid #e5e5e5;
+    }
+    .food-item{
+        padding: @foodPaddingTB 0;
+        border-bottom: 1px solid @foodLineColor;
+        .food-content>div{
+            line-height: 24px;
+        }
+ 
+        /* 商品名称 描述*/
+        .food-name, .food-desr{
+            max-width: 300px;
+        }
+        /* 商品状态*/
+        .food-status{
+            background-color: #FF7B7C;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 14px;
+            line-height: 22px;
+            text-align: center;
+            margin-left: 10px;
+            width: 22px;
+            height: 22px;
+            display: inline-block;
+            font-style:normal
+        }
+        .food-status.give{
+            background-color: #19bb89;
+        }
+    }
+    /* 商品总数 优惠*/
+    .order-food-total,.order-food-discount{
+        height: 70px;
+        line-height: 70px;
+        border-top: 1px solid @foodLineColor;
+        border-bottom: 1px solid @foodLineColor;
+        margin-top: -1px;
+        >div:first-child{
+            max-width: 48%;
+            height: 100%;
+            display: inline-block;
+            float: left;
+            padding-left: 20px;
+        }
+        >div:last-child{
+            max-width: 48%;
+            height: 100%;
+            display: inline-block;
+            float: right;
+            text-align: right;
+            padding-right: 20px;
+        }
+    }
+    .order-amount{
+        line-height: 70px;
+        padding-right:20px; 
+        text-align: right;
+        color:#FF7B7C;
+        font-size: 22px;
+    }
+    /* 外卖 合计*/
+    .order-total-amount{
+        line-height: 70px;
+        padding-right:20px; 
+        text-align: right;
+        font-size: 22px;
+    }
+}
+ 
+/* 打印*/
+.order-printing{
+    font-size: 22px;
+    text-align: right;
+    color: #fff;
+    span{
+        width: 120px;
+        height: 56px;
+        line-height: 56px;
+        border-radius: 10px;
+        background-color: #F2B323;
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }  
+}
+.order-header div {
+    height: 34px;
+}
+.order-header .order-number{
+    position: absolute;
+    right: 100px;
+    top: 10px;
+}
+
+/* 订单 食品 内容*/
+.order-body{
+    padding: 0 20px;
+}
+.order-body li>div{
+    height: 24px;
+}
+ 
+
+.order-food-name div:first-child,
+.order-food-desr div:first-child{
+    float: left;
+}
+.food-price{
+    .yj{
+        text-decoration: line-through;
+        font-size: 14px;
+        color: #CCC; 
+    }
+    .hyj{
+        color: #e6382f
+    }
+    em{
+        font-style:normal;
+    }
+}
+
+.order-food-name div:last-child,
+.order-food-desr div:last-child{
+    float: right;
+}
+
+.food-desr {
+    font-size: 14px;
+    color: #999;
+}
+
+/*修改layui table 样式 */ 
+.layui-table{
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    thead th{
+        background-color: #fff !important;
+        font-size: 18px;
+    }
+    tbody tr:nth-child(even){
+        background-color: #fbfbfb!important;
+     }
+    tbody tr:nth-child(odd){
+        background-color: #f8f8f8!important;
+     }
+
+    th {
+        height: @tableCellHeight;
+        line-height: @tableCellLineHeight;
+        text-align: center;
+        padding: 0px;
+    }
+    tbody tr td:nth-child(4){
+        color: #999999;
+    }
+    tbody tr td:nth-child(5){
+        color: #999999;
+    }
+    td {
+        font-size: @baseFontSize;
+        height: @tableCellHeight;
+        line-height: @tableCellLineHeight;
+    }
+    .layui-table-cell {
+        width: 100%!important;
+    }
+ }
+
+ /* 订单详情*/
+ .order-header {
+    .order-id{
+        span{
+            margin-left: 10px;
+        }
+    }
+    .order-time{
+        span{
+            margin-left: 10px;
+        }
+    }
+ }
+
+
+//  .layui-table-body{overflow-x: hidden;}
+
+.layui-table[lay-skin=line] {
+    border-width: 0 0 0 0 !important;
+    width:100%;
+}
+
+.layui-table-body{
+    margin-right: 1px;
+}
+.layui-table tbody>tr.layui-table-click{
+    border: 2px solid #1BE0D6;
+    box-sizing: border-box;
+}

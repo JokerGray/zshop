@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>飞跃体系商户查询</title>
+	    <!-- CssCommon -->
+
+		<link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+		<link rel="stylesheet" href="../../common/css/reset.css"/>
+	    <!-- CssSinglepage-->
+	    <link rel="stylesheet" type="text/css" href="../../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" href="../../common/assets/zTree_v3/css/metroStyle/metroStyle.css" />
+
+		<link rel="stylesheet" type="text/css" href="css/leaps.css" />
+	</head>
+	<body>
+		<div class="app-wrapper layui-row">
+			<div class="app-left">
+				<div class="search-box">
+					<div class="layui-input-block ml0">
+						<input type="text" class="layui-input layui-btn-radius input-me" id="nodeName"  placeholder="搜索商户">
+						<i class="layui-icon icon-me" id="searchBtn">&#xe615;</i>
+					</div>
+
+				</div>
+				<div class="trees-box bdd1">
+					<h4>飞跃体系商户结构</h4>
+					<ul id="tree" class="ztree"></ul>
+				</div>
+			</div>
+			<div class="app-container bdd1 clearfix">
+				<div class="header"></div>
+				<h3 class="h3">商户信息</h3>
+				<div class="line-me"></div>
+				<div class="container">
+					<dl class="dl-me clearfix">
+						<dt></dt>
+						<dd>
+							<h3 id="ToOrgName">&nbsp;</h3>
+							<p id="toLevelName"></p>
+						</dd>
+					</dl>
+					<ul class="ul-me clearfix">
+						<li class="bgc6">
+							<h3>发展商户数量(直接)：<span id="directCount">&nbsp;</span></h3>
+							<h3>发展商户数量(间接)：<span id="indirectCount">&nbsp;</span></h3>
+						</li>
+						<li class="bgfd">
+							<h3>累计佣金（元）：<span id="shareUserSumTaxPrice">&nbsp;</span></h3>
+							<h3>累计回款（元）：<span id="allShareMoney">&nbsp;</span></h3>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	<!-- jSCommon -->
+	<script type="text/javascript" src="../../common/assets/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+	<script type="text/javascript" src="../../common/js/util.js"></script>
+	<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+	<!-- jSCommon -->
+	<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.core.js"></script>
+	<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.excheck.js"></script>
+	<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.exedit.js"></script>
+	<!---->
+	<script type="text/javascript" src="../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+	<script type="text/javascript" src="js/upload.js"></script>
+	<!---->
+	<script type="text/javascript" src="js/leaps.js"></script>
+	</body>
+</html>

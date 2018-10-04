@@ -1,0 +1,257 @@
+@charset "UTF-8";
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section {
+  display: block;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  color: black;
+}
+
+li {
+  list-style: none;
+}
+
+a:hover, a:visited, a:active, a:link {
+  text-decoration: none;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@font-size-base: 75;
+
+body {
+  background-color: #f9f8f8;
+  font-family: PingFang SC, San Francisco, '微软雅黑', sans-serif, Arial;
+}
+
+//优先级
+.level-item {
+  padding: 8rem/@font-size-base 10rem/@font-size-base;
+  margin-left: 50rem/@font-size-base;;
+  font-size: 24px;
+  [data-dpr='3'] & {
+    font-size: 36px;
+  }
+  [data-dpr='1'] & {
+    font-size: 12px;
+  }
+  border: 1rem/@font-size-base solid gainsboro;
+  border-radius: 6rem/@font-size-base;
+}
+
+//普通
+.level-one {
+  border: 1rem/@font-size-base solid transparent;
+  background-color: #96d452;
+  color: white;
+}
+
+//紧急
+.level-two {
+  border: 1rem/@font-size-base solid transparent;
+  background-color: #fab42f;
+  color: white;
+}
+
+//非常紧急
+.level-three {
+  border: 1rem/@font-size-base solid transparent;
+  background-color: #fa4646;
+  color: white;
+}
+
+//基础蓝色
+@baseColor: #ff925a;
+
+//选择弹框
+//信息框
+.layui-m-layercont {
+  padding: 35rem/@font-size-base 15rem/@font-size-base !important;
+
+  font-size: 28px !important;
+  [data-dpr='3'] & {
+    font-size: 38px !important;
+  }
+
+  [data-dpr='1'] & {
+    font-size: 14px !important;
+  }
+}
+
+//选择按钮
+.layui-m-layerbtn {
+  height: 60px !important;
+  line-height: 60px !important;
+
+  [data-dpr='3'] & {
+    height: 90px !important;
+    line-height: 90px !important;
+  }
+  [data-dpr='1'] & {
+    height: 30px !important;
+    line-height: 30px !important;
+  }
+}
+
+.layui-m-layerbtn span[no], .layui-m-layerbtn span[yes] {
+  font-size: 26px !important;
+
+  [data-dpr='3'] & {
+    font-size: 39px !important;
+  }
+
+  [data-dpr='1'] & {
+    font-size: 13px !important;
+  }
+}
+
+.layui-m-layerbtn span[yes] {
+  color: @baseColor !important;
+}
+
+
+//公共头部
+.title_tab {
+  position: fixed;
+  top:0;
+  width: 100%;
+  height: 88rem/@font-size-base;
+  line-height: 88rem/@font-size-base;
+  text-align: center;
+  background-color: #ffffff;
+  margin-bottom: 20rem/@font-size-base;
+  font-size: 34px;
+  color: #333333;
+  font-weight: bold;
+  z-index: 500;
+  [data-dpr='3'] & {
+    font-size: 51px;
+  }
+  [data-dpr='1'] & {
+    font-size: 17px;
+  }
+  .back_imgBtn {
+    position: absolute;
+    top:0;
+    //top: 30rem/@font-size-base;
+    left: 30rem/@font-size-base;
+    width: 88rem/@font-size-base;
+    height: 88rem/@font-size-base;
+    img{
+      margin-top: 30rem/@font-size-base;
+      width: 19px;
+      height: 30px;
+      [data-dpr='3'] & {
+        width: 30px;
+        height: 53px;
+      }
+      [data-dpr='1'] & {
+        width: 10px;
+        height: 15px;
+      }
+    }
+  }
+
+  .createBtn {
+    position: absolute;
+    top: 22rem/@font-size-base;
+    right: 30rem/@font-size-base;
+    width: 45px;
+    height: 45px;
+
+    [data-dpr='3'] & {
+      width: 68px;
+      height: 68px;
+    }
+    [data-dpr='1'] & {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+
+//拒绝同意,转交弹框
+.rejectBox{
+  display: none;/*隐藏*/
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+  top: 0px;
+  left: 0px;
+  z-index:1000000000000000000;
+
+  .innerBox{
+    font-size: 30px;
+    [data-dpr='3'] & {
+      font-size: 48px;
+    }
+    [data-dpr='1'] & {
+      font-size: 12px;
+    }
+    background: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: block;
+    width: 80%;
+    height: 230rem/@font-size-base;
+    padding: 30rem/@font-size-base;
+    border-radius: 10rem/@font-size-base;
+    .title{
+      text-align: center;
+      color: #858585;
+    }
+    input{
+      width: 95%;
+      padding-left: 2%;
+      height: 80rem/@font-size-base;
+      font-size: 30px;
+      [data-dpr='3'] & {
+        font-size: 36px;
+      }
+      [data-dpr='1'] & {
+        font-size: 12px;
+      }
+      margin: 30rem/@font-size-base 0;
+      border: 1px solid gainsboro;
+    }
+    .commonbtn{
+      height: 50rem/@font-size-base;
+      line-height: 50rem/@font-size-base;
+      text-align: center;
+      width: 50%;
+      box-sizing: border-box;
+      float: left;
+
+    }
+    .deleteBtn{
+      border-right: 1px solid gainsboro;
+      color: #858585;
+    }
+    .certainBtn{
+      color: @baseColor;
+    }
+  }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>手术列表</title>
+	<script src="../../assets/jquery/jquery.min.js"></script>
+
+	<script src="../../assets/layer/layer.js"></script>
+	<link rel="stylesheet" href="../../assets/check_index/layer/skin/default/layer.css"/>
+
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+	<script src="../../assets/layui-v2.3.0/layui.js"></script>
+
+	<link rel="stylesheet" href="../../assets/bootstrapDatePicker/css/bootstrap-datetimepicker.min.css">
+	<script src="../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="src/iconfont/iconfont.css">
+	<!-- bootstrap-table -->
+	<link rel="stylesheet" type="text/css" href="../../assets/bootstrap-table/bootstrap-table.min.css"/> 
+	<script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+	<script src="src/js/common.js"></script>
+	<link rel="stylesheet" href="src/css/common.css">
+
+	<style>
+		.surgerying{
+            color:#23c8c9!important;
+        }
+
+	</style>   
+</head>
+<body>
+	<div class="contain">
+		<div class="header cl">
+			<div class="fl navTab">
+				<a class="remind">术前提醒</a><a class="waitSurgery">待手术</a><a class="hasSurgery active">已手术（<span class="hasNums">2</span>）</a>
+			</div>
+			<div class="fr">
+				<label>日期：</label>
+				<input type="text" class="startTime"> - <input type="text" class="endTime">
+				<input type="text" class="search" placeholder="顾客姓名/顾客电话" >
+				<a href="javascript:;" class="searchBtn" onclick="searchBtn()">
+					<i class="iconfont icon-sousuo1"></i>
+				</a>
+			</div>
+		</div>
+		<div class="contentList">
+			<div class="table-tool-content">
+				<div class="container-fluid table-content">
+					<table class="table table-hover table-condensed" id="surgeryList">
+						
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+        var merchantId = getQueryString('merchantId');
+
+        $(document).ready(function(){
+            var bgTime = year + '-' + month + '-01';
+            var edTime = curDate.Format('yyyy-MM-dd');
+
+            tableInit('',2,bgTime,edTime);
+
+	        $('.remind').attr({'href':'preoperativeRemind.html?merchantId='+getQueryString('merchantId')});
+			$('.waitSurgery').attr({'href':'forSurgery.html?merchantId='+getQueryString('merchantId')});
+			$('.hasSurgery').attr({'href':'hasSuigery.html?merchantId='+getQueryString('merchantId')});
+        });
+
+        function tableInit(searchParam,status,bgTime,edTime){
+            $('#surgeryList').bootstrapTable({
+                url: '/zxcity_restful/ws/rest',
+                method: 'post',
+                ajaxOptions:{
+                    headers:{
+                        apikey: 'test'
+                    }
+                },
+                contentType: "application/x-www-form-urlencoded",
+                queryParams: function(params){
+                    var p = {
+                        cmd: 'medical/getMedicalSurgerys',
+                        data: JSON.stringify({
+                            merchantId:merchantId,
+                            searchParam:searchParam,
+                            status:status,
+                            bgTime:bgTime,
+                            edTime:edTime,
+                            page:params.offset/params.limit + 1,
+                            rows:params.limit
+                        }),
+                        version: 1
+                    }
+                    return p;
+                },
+                onLoadSuccess: function(res){  // 成功加载
+                    $('.hasNums').text(res.total);
+                },
+                responseHandler: function(res){
+                    res.rows = res.data
+                    return res;
+                },
+                sidePagination: "server",
+                pageNumber:1,
+                pageSize: 10,
+                pageList: [10, 25, 50, 100],
+                striped: true,
+                pagination: true,
+                sortable: false,
+                cardView: false,
+                detailView: false,
+                columns: [
+                    { title: '序号', width: 50, align: 'center',formatter: function (value, row, index) {
+                            var pageSize=$('#surgeryList').bootstrapTable('getOptions').pageSize;//通过表的#id 可以得到每页多少条
+                            var pageNumber=$('#surgeryList').bootstrapTable('getOptions').pageNumber;//通过表的#id 可以得到当前第几页
+                            return pageSize * (pageNumber - 1) + index + 1;//返回每条的序号： 每页条数 * （当前页 - 1 ）+ 序号
+                        }
+                    },
+                    { field: 'memberName', title: '顾客姓名', width: 100, align: 'center'},
+                    {field: 'age', title: '年龄', width: 100, align: 'center'},
+                    { field: 'gender', title: '性别', width: 100, align: 'center',formatter:function(val, row, index){
+                            if(val == 0){
+                                return '女';
+                            }else if(val == 1){
+                                return '男';
+                            }else if(val == 2){
+                                return '保密';
+                            }
+                        }
+                    },
+                    {field: 'mobile', title: '手机号码', width: 100, align: 'center'},
+                    {field: 'advUserName', title: '咨询院长', width: 100, align: 'center'},
+                    {field: 'purchaseName', title: '手术项目', width: 100, align: 'center'},
+                    {field: 'costTime', title: '手术耗时（min）', width: 100, align: 'center'},
+                    {field: 'operatorName', title: '执行人', width: 100, align: 'center'},
+                    { field: 'orderId', title: '操作', width: 100, align: 'center',formatter: function(val, row, index){
+                            return '<a class="surgerying" style="cursor: pointer;">查看信息</a>'
+                        }
+                    },
+                ],
+                onClickRow: clickRow
+            });
+
+            // 按钮点击
+             $('#surgeryList').on('click', '.surgerying', function (e) {
+                var dataAll = $('#surgeryList').bootstrapTable('getData');
+                var index = $(this).parent().parent().index();
+                $(this).attr({'href':'historical.html?merchantId='+merchantId+'&processId='+dataAll[index].processId+'&memberId='+dataAll[index].memberId+'&id='+dataAll[index].operationId });
+            });
+        }
+
+        // 列表点击事件
+        function clickRow(row, $element){
+            console.log('列点击');
+        }
+
+
+         // 点击 搜索按钮
+        function searchBtn(){
+            $('#surgeryList').bootstrapTable('destroy');
+            var searchParam = $('.search').val().trim('');
+            var status = 2;
+            var bgTime = $('.startTime').val();
+            var edTime = $('.endTime').val();
+            tableInit(searchParam,status,bgTime,edTime)
+        }
+	</script>
+</body>
+</html>

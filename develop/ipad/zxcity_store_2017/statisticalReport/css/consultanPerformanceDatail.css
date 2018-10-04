@@ -1,0 +1,90 @@
+.tab-ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0.5rem auto;
+    overflow:hidden;
+}
+.tab-ul .tab-item{
+    border:0.063rem solid #fe6869;
+}
+.tab-ul .tab-item+.tab-item{
+    margin-left:-0.063rem;
+}
+.tab-box .tab-ul .tab-item .tab-link{
+    display:block;
+    width:6.25rem;
+    height:2.25rem;
+    line-height: 2.25rem;
+    background-color: #fff;
+    color:#fe6869;
+}
+.tab-box .tab-ul .tab-item.active .tab-link{
+    background-color: #fe6869;
+    color:#fff;
+}
+.date-wrap{
+    position: relative;
+    height:3.375rem;
+    padding:0.5rem;
+    overflow:hidden;
+}
+.date-wrap .date-selector{
+    text-align: center;
+}
+.date-wrap .datetime{
+    display:inline-block;
+    width: 12.5rem;
+    line-height: 1.25rem;
+    border-radius: 0.25rem;
+    padding: 0.313rem;
+    margin:0 0.5rem;
+    background-color: #fff;
+    font-size: 0.875rem;
+}
+.date-wrap .date-type-box{
+    position:absolute;
+    top:.35rem;
+    right:2rem;
+}
+.date-type-box .tab-ul .tab-item{
+    border-color:#d98b41;
+}
+
+.date-type-box .tab-ul .tab-item .tab-link{
+    display:block;
+    width:3.125rem;
+    height:1.375rem;
+    line-height: 1.375rem;
+    background-color: #fff;
+    text-align: center;
+    font-size:0.875rem;
+    color:#d98b41;
+}
+.date-type-box .tab-ul .tab-item.active .tab-link{
+    background-color: #d98b41;
+    color:#fff;
+}
+.chart-box .chart-container{
+    width:98%;
+    height:30rem;
+    margin:1rem auto;
+}
+.nodata{
+    text-align: center;
+    color:#666;
+    font-size: 1.25rem;
+}
+
+/*paging插件样式修改开始*/
+.ui-paging-container ul {
+    height: 3.0rem;
+}
+
+/*.ui-paging-container ul li {*/
+    /*width: 2rem;*/
+    /*height: 2.4rem;*/
+    /*line-height: 2.4rem;*/
+    /*font-size: 1.5rem;*/
+/*}*/
+/*paging插件样式修改结束*/

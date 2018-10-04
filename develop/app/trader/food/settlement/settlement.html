@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css?t=20180828">
+    <link rel="stylesheet" href="../common/css/rest.css">
+    <link rel="stylesheet" href="css/settlement.css">
+</head>
+<body>
+    <div class="main-wrapper layui-fluid">
+        <div class="layui-row">
+            <div class="con-left layui-col-md4 layui-col-lg4">
+                <div class="order-detail">
+                    <div class="order-title">订单详情</div>
+                    <div class="order-info" style="display:none">
+                        <div class="order-top">
+                            <span>桌台：<b id="facilityId"></b></span>
+                            <span>人数：<b id="peopleNum"></b>人</span>
+                        </div>
+                        <div class="order-num">
+                            <p>订单编号：<span id="orderNo"></span></p>
+                            <p>下单时间：<span id="orderTime"></span></p>
+                        </div>
+                        <div class="order-list">
+                            <ul id="orderList">
+                                <!-- <li class="order-item">
+                                    <div>
+                                        <p class="name">{{obj.purchaseName}}</p>
+                                        <p class="desc">{{obj.remake}}</p>
+                                    </div>
+                                    <div>
+                                        <p class="num">X {{obj.purchaseNum}}</p>
+                                        <p class="price">￥{{obj.unitPrice}}</p>
+                                    </div>
+                                </li> -->
+
+                            </ul>
+                        </div>
+                        <div class="order-total">
+                            <p class="surcharge">
+                                <span id="surchargeName"></span>
+                                <span>合计：<b id="surchargeCount"></b></span>
+                            </p>
+                            <p class="total">
+                                <span>商品总数：<b id="totalNum"></b></span>
+                                <span>合计：<b id="totalCount"></b></span>
+                            </p>
+                             <p class="discount layui-hide">
+                                <span>会员折扣</span>
+                                <span>-￥<b id="discountNum"></b></span>
+                            </p> 
+                            <p class="preferential">
+                                <span>优惠</span>
+                                <span class="num">-￥<input type="text" maxlength="9" readonly id="preferentialNum" value="0"></span>
+                            </p>
+                            <p class="should-pay">
+                                <label>应收：</label><span>￥<b id="shouldPayNum1"></b></span>
+                            </p>
+                        </div>
+                        <div class="btn-contol">
+                            <button type="button" class="layui-btn print-btn">打印</button>
+                        </div>
+                    </div>
+                    <!-- <div class="order-handle layui-hide">
+                        <div class="order-edit"> -->
+                            <!-- <div class="order-item-price">￥<span class="price-show"></span>0</div>
+                            <div class="num-handle">
+                                <a href="javascript:;" class="num-btn minus-btn"></a>
+                                <input type="text" class="layui-input num-input" value="1" maxlength="5">
+                                <a href="javascript:;" class="num-btn plus-btn"></a>
+                            </div>
+                            <button type="button" class="layui-btn layui-btn-disabled">规格</button>
+                            <button type="button" class="layui-btn layui-btn-disabled">做法</button> -->
+                            <!-- <button type="button" id="leveaBtn" class="layui-btn layui-btn-primary">留店</button>
+                            <button type="button" id="giveBtn" class="layui-btn layui-btn-primary">赠送</button>
+                            <button type="button" id="returnBtn" class="layui-btn layui-btn-primary">退菜</button>
+                        </div>
+                    </div> -->
+                    <div class="handle_spec" id="handle_spec">
+                        <!-- 显示退菜界面 -->
+                        <ul class="handle_spec_box">
+                            <li class="">
+                                <button class="layui-btn handle_spec_btn handle_spec_btn_price"></button>
+                            </li>
+                            <!-- <li class=" cancular_li">
+                                <i class="icon sub"></i>
+                                <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" onkeydown="value=value.replace(/[^\d]/g,'')" maxlength="3"
+                                    value="1" id="cancularer">
+                                <i class="icon add"></i>
+                            </li>
+                            <li class="">
+                                    <button class="layui-btn handle_spec_btn handle_spec_btn_normal" data-type="stock">规格</button>
+                            </li>
+                            <li class="">
+                                    <button class="layui-btn handle_spec_btn handle_spec_btn_normal" data-type="recipes">做法</button>
+                            </li>
+                            <li class="handle_spec_special" style="border-bottom:none;margin-bottom: 0;">
+                                    <button class="layui-btn handle_spec_btn  " id="delFood">留店</button>
+                            </li> -->
+                            <li class="handle_spec_special" style="border-top:none;padding-top: 0;">
+                                <button class="layui-btn handle_spec_btn  " id="giveFood">赠送</button>
+                            </li>
+                            <!-- <li class="handle_spec_operation">
+                                <button class="layui-btn handle_spec_btn handle_spec_submit">确定</button>
+                                <button class="layui-btn handle_spec_btn handle_spec_cancel">取消</button>
+                            </li> -->
+                        </ul>
+                        <!-- 选择规格区域 -->
+                        <div class="handle_spec" id="handle_norms">
+                                <ul class="handle_spec_box" id="handle_spec_box_norms">
+                                    <!-- <li>
+                                            <h3>选择做法</h3>
+                                    </li>
+                                    <li class="">
+                                            <button class="layui-btn handle_spec_btn">番茄汁</button>
+                                    </li>
+                                    <li class="">
+                                            <button class="layui-btn handle_spec_btn handle_spec_btn_special">番茄汁</button>
+                                    </li>
+                                    <li class="">
+                                            <button class="layui-btn handle_spec_btn">蜂蜜芥末汁</button>
+                                    </li> -->
+                                </ul>
+                            </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="con-mid layui-col-md3 layui-col-lg3">
+                <div class="member-wrapper">
+                    <div class="member-login">
+                        <p class="title">会员登录</p>
+                        <input type="tel" name="phone" id="phoneNum" lay-verify="phone" autocomplete="off" class="layui-input phone-input" maxlength="11" placeholder="请输入会员手机号">
+                        <button type="button" class="layui-btn login-btn" id="searchMemberBtn">确定</button>
+                        <!-- <button type="button" class="layui-btn new-btn">新办会员</button> -->
+                    </div>
+                    <div class="member-info layui-hide">
+                        <p class="title">会员信息</p>
+                        <div class="info">
+                            <p class="name">姓名：<span></span></p>
+                            <p class="phone">电话：<span></span></p>
+                            <p class="level">会员级别：<span></span></p>
+                            <p class="account">余额：<span>￥<em></em></span></p>
+                        </div>
+                        <div class="list">
+                            <dl id="goodsList" class="goods-list"></dl>
+                        </div>
+                        <div class="bottom-btns">
+                            <button type="button" class="layui-btn member-pay-btn">会员结账</button>
+                            <button type="button" class="layui-btn exit-btn">退出会员</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="con-right layui-col-md5 layui-col-lg5">
+                <div class="pay-wrapper">
+                    <div class="pay-top">
+                        <div class="actual-price">应收:<span>￥<em id="shouldPayNum2"></em></span></div>
+                    </div>
+                    <div class="pay-type">
+                        <ul class="type-list">
+                            <li class="type-item active"><i class="type-icon type-xj"></i>现金</li>
+                            <li class="type-item"><i class="type-icon type-zfb"></i>支付宝</li>
+                            <li class="type-item"><i class="type-icon type-wx"></i>微信</li>
+                            <li class="type-item"><i class="type-icon type-yhk"></i>银行卡</li>
+                            <li class="type-item"><i class="type-icon type-xyk"></i>信用卡</li>
+                        </ul>
+                    </div>
+                    <div class="actual-pay">
+                        <p class="change-num" id="changeNum">找零：<span>￥<em>0</em></span></p>
+                        <div class="money">
+                            <b>￥</b><input type="text" maxlength="9" autocomplete="off" id="money-input"  placeholder="0.00" class="layui-input money-input">
+                            <a href="javascript:;" class="clear-btn"></a>
+                        </div>
+                        <div class="num-box">
+                            <table class="layui-table num-table">
+                                <tbody>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td rowspan="4" class="pay-col">结<br>账</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>.</td>
+                                        <td>C</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- 弹窗计算器 -->
+    <div class="moneyBox pay-wrapper" id="moneyBox">
+        <h3 class="moneyTitle">优惠金额 <i class="del"></i></h3>
+        
+        <div class="actual-pay">
+                <div class="layui-input-block">
+                        <input type="text" class="layui-input money-input" value="" id="money-youhui" onblur="check(this)"  placeholder="输入优惠金额">
+                    </div>
+            <div class="num-box">
+                <table class="layui-table num-table">
+                    <tbody>
+                        <tr>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>.</td>
+                            <td>C</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> 
+            <button class="layui-btn moneySubmit">确定</button>
+        </div>
+    </div>
+    <div class="leaving layui-form" id="checkOut"" lay-filter='leaving'>
+        <i class="del"></i>
+        <img src="../common//img/jiezhang.png" alt="">
+        <p>付款成功</p>
+        <p class="p2">找零:&yen;<em id="zhaoling">70.00</em></p>
+    </div>
+
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <script src="../../assets/layer-v3.1.1/layer.js"></script>
+    <script src="../common/js/webprinter_1.8.js"></script>
+    <script src="../common/js/miniUtils.js"></script>
+    <script src="js/settlement.js"></script>
+
+
+</body>
+</html>

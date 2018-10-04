@@ -1,0 +1,207 @@
+@import "../../common/css/common.css";
+body{
+  background-color: #F2F2F2;
+  overflow: hidden;
+}
+a:hover, a:focus, a:link, a:active{
+  color: #333333;
+}
+header{
+  width:100%;
+  height:114/32rem;
+  line-height:116/32rem;
+  border-bottom:1/32rem solid #dadada;
+  text-align: center;
+  font-size:40/32rem;
+  font-weight:700;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+nav{
+  width:100%;
+  height:100/32rem;
+  background-color: #fff;
+  padding-left: 30/32rem;
+  position: fixed;
+  top: 116/32rem;
+  left: 0;
+  z-index: 3;
+  a{
+    font-size:36/32rem;
+    color: #666666;
+    border-bottom: 2/32rem solid #666666;
+    display: inline-block;
+    width:210/32rem;
+    margin-right:100/32rem;
+    text-align: center;
+    padding:0 5/32rem 10/32rem 5/32rem;
+    margin-top:30/32rem;
+    sub{
+      vertical-align: baseline;
+      font-size:18/32rem;
+    }
+    &.active{
+      color: #fe6869;
+      border-color: #fe6869;
+      sub{
+        color: #fe6869;
+      }
+    }
+  }
+
+}
+
+main{
+  width: 100%;
+  height:100%;
+  padding:0 30/32rem;
+  margin-top:246/32rem;
+  ul{
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    //display: flex;
+    //flex-wrap: wrap;
+    //justify-content: space-between;
+    li{
+      width:400/32rem;
+      height:400/32rem;
+      background-color: #fff;
+      margin-top:20/32rem;
+      float: left;
+      margin-right: 44/32rem;
+      &:nth-of-type(4n){
+        margin-right: 0;
+      }
+      .imgBox{
+        width:400/32rem;
+        height:300/32rem;
+        position: relative;
+        img{
+          width:100%;
+        }
+        &::before{
+          position: absolute;
+          content: '';
+          width:90/32rem;
+          height:90/32rem;
+          background: url("../assets/images/video@2x.png") no-repeat center;
+          -webkit-background-size: 90/32rem;
+          background-size: 90/32rem;
+          top:50%;
+          left:50%;
+          transform: translate(-50%,-50%);
+          z-index:2;
+        }
+        &::after{
+          position: absolute;
+          content: '';
+          width:100%;
+          height:100%;
+          background-color: rgba(0,0,0,0.1);
+          top:0;
+          left: 0;
+          z-index:1;
+        }
+      }
+      p{
+        display: inline-block;
+        width:100%;
+        height:100/32rem;
+        line-height:100/32rem;
+        font-size:30/32rem;
+        padding: 0 20/32rem;
+        overflow: hidden;
+        white-space:nowrap;
+        text-overflow: ellipsis;
+      }
+
+    }
+  }
+  .noDataImg{
+    width:100%;
+    height:766/32rem;
+    background:url("../assets/images/Live-space@2x.png") no-repeat center;
+    -webkit-background-size: 997/32rem 766/32rem;
+    background-size: 997/32rem 766/32rem;
+    margin-top:360/32rem;
+    text-align: center;
+    p{
+      font-size:40/32rem;
+      color: #a8a8a8;
+      padding-top:790/32rem;
+
+    }
+  }
+}
+
+.videoBox{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  video{
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+  }
+  .my-video-dimensions{
+    width: 100%;
+    height: 100%;
+    .vjs-control-bar{
+      bottom:0;
+      background-color: #fff;
+    }
+  }
+}
+.hide{
+  display: none;
+}
+//chimee插件使用开始
+.chimee-container{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.time-ad{
+  background-color: transparent;
+  border:0;
+  display: none !important;
+
+}
+.time-ad img{
+  display: block;
+  width: 30px;
+}
+.time-ad em{
+  position: absolute;
+  right: -7px;
+  top: 35px;
+  width: 60px;
+  text-align: center;
+  font-size: 12px;
+  background-color: rgba(156, 85, 85, 0.66);
+  padding: 0 3px;
+  z-index: -1;
+  border-radius: 5px;
+}
+.time-ad cm-pp-close{
+  display: none;
+}
+.time-ad cm-pp-body{
+  padding: 0;
+}
+chimee-menu{
+  display: none !important;
+}
+//chimee插件使用结束
+
+//调整弹窗关闭按钮显示层级
+.layui-layer-setwin .layui-layer-close2{
+  z-index: 1;
+  top: -380/32rem !important;
+  right: -240/32rem !important;
+}
+

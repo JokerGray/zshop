@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商户信息拷贝</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <link rel="stylesheet" href="merchant_information_copy.css">
+</head>
+<body>
+    <div class="main-wapper layui-row">
+        <div class="header layui-form clearfix">
+           <ul class="layui-col-md12">
+               <li class="layui-col-md12">
+                   <div class="layui-form-item ">
+                       <label class="layui-form-label" for="merchantId">源商户ID:</label>
+                       <div class="layui-input-inline">
+                           <input type="text" class="layui-input" id="merchantId">
+                       </div>
+                       <label class="layui-form-label" for="destmerchantId">目标商户ID:</label>
+                       <div class="layui-input-inline">
+                           <input type="text" class="layui-input" id="destmerchantId">
+                       </div>
+                       <button class="layui-btn" id="submit1">提交</button>
+                   </div>
+               </li>
+               <li class="layui-col-md12">
+                   <div class="layui-form-item ">
+                       <label class="layui-form-label" for="srcShopId">源店铺ID:</label>
+                       <div class="layui-input-inline">
+                           <input type="text" class="layui-input" id="srcShopId">
+                       </div>
+                       <label class="layui-form-label" for="destShopId">目标店铺ID:</label>
+                       <div class="layui-input-inline">
+                           <input type="text" class="layui-input" id="destShopId">
+                       </div>
+                       <button class="layui-btn" id="submit2">提交</button>
+                   </div>
+               </li>
+
+           </ul>
+        </div>
+        <div class="main clearfix">
+            <h3 class="layui-flow-more c333">【日志展示】</h3>
+            <div class="layui-form-item layui-col-md10 m0a">
+                <textarea name="" id="contentDetial" class="contentDetial layui-textarea " cols="30" rows="10"></textarea>
+            </div>
+
+        </div>
+    </div>
+<!--jquery 可以在layui 里面引用-->
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="merchant_information_copy.js"></script>
+
+</body>
+</html>

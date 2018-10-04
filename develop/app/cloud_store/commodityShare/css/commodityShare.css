@@ -1,0 +1,333 @@
+@charset "UTF-8";
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: normal;
+  font-style: normal;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section {
+  display: block;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+li {
+  list-style: none;
+}
+a:hover,
+a:visited,
+a:active,
+a:link {
+  text-decoration: none;
+}
+body {
+  width: 100%;
+  height: auto;
+  color: #666666;
+  font-family: PingFang SC, San Francisco, 'microsoft yahei', sans-serif, Arial;
+  background-color: #eeeeee;
+  line-height: 1.2;
+  overflow-x: hidden;
+}
+#commodityShare {
+  width: 100%;
+}
+#commodityShare .title {
+  width: 100%;
+  height: 106.66666667vw;
+}
+#commodityShare .title .swiper-container img {
+  width: 100%;
+  height: 100%;
+}
+#commodityShare .commodity-info {
+  font-size: 4.26666667vw;
+  background-color: #ffffff;
+  margin: 0 0 1.86666667vw 0;
+  padding: 2.13333333vw 16.66666667vw 3.86666667vw 3.33333333vw;
+}
+#commodityShare .commodity-info p:nth-of-type(1) {
+  color: #646464;
+  margin: 0 0 5.6vw 0;
+}
+#commodityShare .commodity-info p.price {
+  color: #ff7879;
+  font-size: 3.73333333vw;
+}
+#commodityShare .commodity-info p.price span {
+  font-size: 4.8vw;
+}
+#commodityShare .commodity-assess {
+  background-color: #ffffff;
+  margin: 0 0 1.86666667vw 0;
+}
+#commodityShare .commodity-assess .assess-count {
+  position: relative;
+  height: 11.6vw;
+  line-height: 11.6vw;
+  padding: 0 3.33333333vw;
+  border-bottom: 1px solid #cccccc;
+}
+#commodityShare .commodity-assess .assess-count p {
+  font-size: 3.73333333vw;
+}
+#commodityShare .commodity-assess .assess-details {
+  height: 9.6vw;
+  line-height: 9.6vw;
+  padding: 0 3.33333333vw;
+  font-size: 3.73333333vw;
+  color: #333333;
+}
+#commodityShare .commodity-assess .assess-details p {
+  float: left;
+}
+#commodityShare .commodity-assess .assess-details .star-rating {
+  float: right;
+}
+#commodityShare .commodity-assess .assess-details .star-rating a {
+  display: inline-block;
+  width: 2.66666667vw;
+  height: 2.66666667vw;
+  background-image: url(../img/star0@2x.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+#commodityShare .commodity-assess .assess-details:after {
+  display: table;
+  content: '';
+  clear: both;
+}
+#commodityShare .commodity-assess .assess-content {
+  font-size: 3.73333333vw;
+  line-height: 4.66666667vw;
+  color: #333333;
+  padding: 0 3.33333333vw;
+  margin: 0 0 3.06666667vw 0;
+}
+#commodityShare .commodity-assess .commodity-img {
+  padding: 0 3.33333333vw;
+  margin: 0 0 1.6vw 0;
+}
+#commodityShare .commodity-assess .commodity-img a {
+  float: left;
+  width: 16vw;
+  height: 16vw;
+  margin: 0 3.33333333vw 0 0;
+  background: url(../img/zhanwei1@2x.png) no-repeat;
+  background-size: 100% 100%;
+}
+#commodityShare .commodity-assess .commodity-img a:nth-last-child(1) {
+  margin-right: 0;
+}
+#commodityShare .commodity-assess .commodity-img:after {
+  display: table;
+  content: '';
+  clear: both;
+}
+#commodityShare .commodity-assess .specification {
+  padding: 0 3.33333333vw 4.4vw 3.33333333vw;
+  color: #666666;
+}
+#commodityShare .commodity-assess .specification p {
+  float: left;
+  font-size: 3.73333333vw;
+}
+#commodityShare .commodity-assess .specification .date {
+  float: right;
+  font-size: 3.2vw;
+  margin: 0.66666667vw 0 0 0;
+}
+#commodityShare .commodity-assess .specification:after {
+  display: table;
+  content: '';
+  clear: both;
+}
+#commodityShare .shop {
+  background-color: #ffffff;
+  height: auto;
+  padding: 4vw 0 4.26666667vw 3.33333333vw;
+  margin: 0 0 1.86666667vw 0;
+}
+#commodityShare .shop i {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 2vw 0 0;
+  width: 6.66666667vw;
+  height: 6.66666667vw;
+  background: url(../img/zhanwei2@2x.png) no-repeat;
+  background-size: 100% 100%;
+}
+#commodityShare .shop .shop-name {
+  display: inline-block;
+  vertical-align: middle;
+  color: #333333;
+  font-size: 3.46666667vw;
+}
+#commodityShare .shop p {
+  margin: 4vw 0 0 0;
+  font-size: 3.46666667vw;
+}
+#commodityShare .details {
+  background-color: #ffffff;
+}
+#commodityShare .details .subtitle {
+  height: 11.6vw;
+  line-height: 11.6vw;
+  padding: 0 3.33333333vw;
+  border-bottom: 1px solid #cccccc;
+  color: #333333;
+  font-size: 3.73333333vw;
+}
+#commodityShare .details .details-area {
+  padding: 4vw 3.33333333vw 2.4vw 3.33333333vw;
+}
+#commodityShare .details .details-area .details-content {
+  width: 93.33333333vw;
+  height: auto;
+  min-height: 27.2vw;
+  background-color: #eeeeee;
+  overflow: hidden;
+  word-wrap: break-word;
+  word-break: normal;
+}
+#commodityShare .details .details-area .details-content table {
+  width: 100% !important;
+}
+#commodityShare .details .details-area .details-content table img {
+  width: 100% !important;
+}
+#commodityShare .sub {
+  background-color: #ffffff;
+  padding: 0 3.33333333vw 2.4vw 3.33333333vw;
+}
+#commodityShare .sub button {
+  display: block;
+  width: 93.33333333vw;
+  height: 11.73333333vw;
+  background-color: #ff7879;
+  border-radius: 1.33333333vw;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 4.26666667vw;
+  outline: none;
+}
+#weixin_pageto {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 0.40rem;
+  z-index: 999;
+}
+#weixin_pageto .txt {
+  line-height: 2.0em;
+  color: #333333;
+  margin-top: 22%;
+  text-align: center;
+}
+#weixin_pageto .txt img {
+  display: inline-block;
+  margin: -8rem 20rem 0;
+  vertical-align: middle;
+}
+#weixin_pageto .uparrow {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.2rem;
+  width: 2rem;
+}

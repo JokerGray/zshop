@@ -1,0 +1,279 @@
+a:hover, a:link, a:focus, a:active{
+    text-decoration: none;
+}
+ul, ol{
+    margin:0;
+    padding:0;
+}
+li{
+    list-style: none;
+}
+.clear{
+    clear:both;
+}
+.main-wrapper{
+    padding:20px;
+}
+#addPicBox .num-box .pic-num{
+    float:left;
+    display:block;
+    height:30px;
+    width:30px;
+    line-height: 30px;
+    background-color: #fff;
+    border:1px solid #ccc;
+    color:#666;
+    text-align: center;
+    font-size:16px;
+    cursor:pointer;
+}
+#addPicBox .num-box .pic-num.active{
+    background-color:#eee;
+}
+#addPicBox .btn{
+    width:30px;
+    height:30px;
+    line-height: 30px;
+    padding:0;
+    border-radius: 0;
+    background-color:#ccc;
+    color:#fff;
+    font-size:16px;
+}
+.main-content{
+    padding:20px;
+    border:1px solid #ccc;
+}
+.main-content .btn-box .btn{
+    width:100px;
+    height:40px;
+    font-size:16px;
+}
+.main-content .import-btn{
+    color:#fff;
+    background-color:#34a4ea;
+}
+.main-content .reset-btn{
+    color:#666;
+    background-color:#ccc;
+}
+#typeSelector{
+    width:49%;
+}
+.content-box{
+    overflow:hidden;
+}
+.sub-content .pull-left,
+.sub-content .pull-right{
+    width:49%;
+}
+.sub-content .upload-pic{
+    position:relative;
+    text-align: center;
+}
+.upload-pic .show-img{
+    display: inline-block;
+    width:260px;
+    height:170px;
+    margin:0 auto;
+}
+.upload-pic .show-img img{
+    width:100%;
+    height:100%;
+}
+.upload-pic .upload-pic-btn{
+    position:relative;
+    display: block;
+    margin-top:8px;
+    overflow: hidden;
+    color:#707070;
+    font-size:18px;
+
+}
+.upload-pic .upload-pic-btn input[type=file]{
+    position: absolute;
+    font-size: 30px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.type-mark{
+    font-weight: normal;
+    color:#999;
+}
+.type-list .type-item{
+    line-height:32px;
+    font-size:16px;
+    color:#666;
+}
+.type-item .select-icon{
+    display:inline-block;
+    width:22px;
+    height:22px;
+    margin-top:4px;
+    margin-right:10px;
+    background:url(../image/blue.png) no-repeat;
+    background-position:-120px 0;
+}
+.type-item .select-icon.selected{
+    background-position:-168px 0;
+}
+.type-item input[type=checkbox],
+.type-item input[type=radio]{
+    width:18px;
+    height:18px;
+    margin-right:3px;
+    vertical-align: text-bottom;
+}
+.type-item .item-name{
+    display:inline-block;
+    margin-right:15px;
+}
+.type-item .sub-item-list{
+    clear:both;
+    width:100%;
+    padding-left:25px;
+}
+.type-item .edit-box .edit-icon,
+.type-item .edit-box .remove-icon{
+	cursor:pointer;
+	margin-right:5px;
+}
+.sub-item-list label{
+    margin-left:8px;
+    margin-bottom:0;
+    vertical-align: text-bottom;
+    font-weight: normal;
+}
+.type-list .attr-list-box{
+	width:100%;
+    height:460px;
+    border:1px solid #ccc;
+    background-color:#f8f8f8;
+    overflow-y:auto;
+}
+.type-list .attr-list-box{
+	height:285px;
+	overflow-y:auto;
+	background-color: #eee;
+}
+.type-list .btn-box{
+    margin-top:15px;
+}
+.type-list .btn-box .diy-type-btn{
+    background-color: #ccc;
+    color:#666;
+}
+.type-list .btn-box .submit-btn{
+    width:72px;
+    margin-left:20px;
+    background-color: #66d3b8;
+    color:#fff;
+}
+
+.show-list{
+	height:285px;
+    width:100%;
+    overflow-y:auto;
+}
+.show-list table {
+    color:#666;
+}
+.show-list table>thead{
+    border:1px solid #ccc;
+    background-color:#f8f8f8;
+}
+.show-list table th,
+.show-list table td{
+    text-align: center;
+}
+.show-list table input[type=text]{
+    width:60px;
+    height:26px;
+    padding:0 5px;
+}
+.table>tbody>tr>td .glyphicon-trash{
+    color:#f46767;
+    cursor: pointer;
+}
+/**添加自定义规格*/
+.add-type-box{
+    width:380px;
+    padding:20px;
+}
+.add-type-box input[type=text]{
+    width:160px;
+    height:32px;
+    padding:0 5px;
+    margin-right:15px;
+}
+.add-type-box .item-list>li{
+    position:relative;
+    display:inline-block;
+    float:left;
+    margin:0 10px 10px;
+    border:1px solid #ddd;
+}
+.add-type-box .item-list>li span{
+    display:block;
+    padding:5px 12px;
+}
+.add-type-box .item-list>li .remove-btn{
+    position:absolute;
+    top:-8px;
+    right:-8px;
+    color:#666;
+    font-size:18px;
+    text-decoration: none;
+}
+.add-type-box .item-list>li.selected{
+    border-color:#f70;
+}
+.add-type-box .submit-btn{
+    display:block;
+    width:72px;
+    margin:0 auto;
+}
+.multi-box{
+    clear:both;
+    padding-top:15px;
+}
+
+/*service package*/
+.service-content{
+    padding:15px;
+    border:1px solid #ccc;
+}
+.service-content .control-label{
+    float:left;
+    margin-top:5px;
+}
+.service-content .input-group{
+    float:left;
+    width:80%;
+}
+.service-content .service-detail .form-control{
+    display:inline-block;
+    width:120px;
+    margin-right:15px;
+}
+.service-content .table-box{
+    height:205px;
+    overflow-y: auto;
+}
+.service-content .table-box .service-table{
+    margin-bottom:0;
+}
+.service-table thead{
+    border:1px solid #ccc;
+    background-color:#f8f8f8;
+}
+.service-table th,
+.service-table td{
+    text-align: center;
+}
+.service-table td>input{
+    width:80px;
+    padding:0 5px;
+}

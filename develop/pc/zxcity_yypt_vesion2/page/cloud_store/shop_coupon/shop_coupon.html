@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>优惠券</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../../common/css/reset.css"/>
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="shop_coupon.css" />
+</head>
+<body>
+    <div class="wrapper-main">
+        <div class="header layui-form layui-row clearfix">
+            <ul class="layui-col-sm12 layui-col-md12 clearfix input-box">
+                <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="">优惠券名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="请输入" class="layui-input" id="names">
+                        </div>
+                    </div>
+                </li>
+                <li class=" layui-col-sm10 layui-col-xs12">
+                    <label>&nbsp;</label>
+                    <div class="fl">
+                        <button class="layui-btn" id="searchBtn">搜索</button>
+                        <button class="layui-btn" id="restBtn">重置</button>
+                    </div>
+                    <button class="fr layui-btn" id="addBtn"><i class="layui-icon">&#xe608;</i>新增</button>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <table id="tableNo" lay-filter="tableNo"></table>
+            <div class="layui-laypage" id="page"></div>
+        </div>
+    </div>
+
+    <script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event='del'>删除</button>
+    </script>
+    <script type="text/html" id="barDemoer">
+        <button class="layui-btn layui-btn-sm" lay-event='ok'>确认</button>
+    </script>
+    <!--新增-->
+    <!--弹出层-->
+    <div id="addDemo" class="layui-form addDemo layui-row">
+        <div class="layui-form-item layui-col-md6">
+            <label for="" class="">优惠券名称：</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" placeholder="请输入名称（必填）" id="name" lay-verify="required">
+            </div>
+        </div>
+
+        <div class="layui-form-item  layui-col-md6">
+            <label for="" class="">单人可领总数:</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" id="numberOne" value="1" lay-verify="required|number" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item  layui-col-md6">
+            <label for="" class="">优惠券总可用数量:</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" id="numberTotal" maxlength="5" value="1" lay-verify="required|number" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item  layui-col-md6">
+            <label for="" class="">最低消费（元）:</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" placeholder="请填写数字（必填）" maxlength="4" id="amountMin" lay-verify="required|number">
+            </div>
+        </div>
+        <div class="layui-form-item  layui-col-md6">
+            <label for="" class="">优惠类型：</label>
+            <div class="layui-input-block">
+                <select class="layui-select" id="couponType" disabled="true">
+                    <option value="00">通用券</option>
+                    <option value="01">优惠券</option>
+                    <option value="02">减免券</option>
+                    <option value="03">包邮券</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item layui-col-md6">
+            <label for="" class="">优惠金额：</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" id="amount" maxlength="5" placeholder="请填写数字,不得高于最低消费（必填）" lay-verify="required|number">
+            </div>
+        </div>
+        <div class="layui-form-item layui-col-md6">
+            <label for="" class="">优惠券等级：</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" id="couponLevel" placeholder="请填写数字,0-9（非必填）" maxlength="1" lay-verify="required|number">
+            </div>
+        </div>
+        <div class="layui-form-item layui-col-md6">
+            <label for="" class="">优惠时间：</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" id="date" placeholder="" maxlength="1" readonly lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item layui-col-md12">
+            <label for="" class="">说明:</label>
+            <div class="layui-input-block ">
+                <textarea class="layui-textarea" name="" id="description" cols="30" rows="5"></textarea>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript" src="../../../common/assets/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+    <script type="text/javascript" src="../../../common/js/util.js"></script>
+    <script type="text/javascript" src="../../../common/js/yyCache.js"></script>
+    <!--//上传-->
+    <script src="../../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="../../../common/js/upload.js"></script>
+
+
+    <script type="text/javascript" src="shop_coupon.js"></script>
+
+
+</body>
+</html>

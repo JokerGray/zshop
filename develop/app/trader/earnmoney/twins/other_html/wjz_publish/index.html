@@ -1,0 +1,118 @@
+<!DOCTYPE html >
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>发布抽奖卡券</title>
+		<!-- bootstrap的样式 -->
+		<link href="../../../../assets/hplus/css/bootstrap.min14ed.css" rel="stylesheet">
+		<link href="../../../../assets/hplus/css/font-awesome.min93e3.css" rel="stylesheet">
+
+		<!-- jquery -->
+		<script type="text/javascript" src="../../../../assets/hplus/js/jquery.min.js"></script>
+		
+		<!--layer弹出层插件-->
+		<script type="text/javascript" src="../../../../assets/layer/layer.js"></script>
+		
+		<!-- 通用JS工具类 -->
+		<script type="text/javascript" src="../../../../assets/_common/zxcity_ms.js"></script>
+
+		<!-- jquery validate -->
+		<script type="text/javascript" src="../../../../assets/hplus/js/plugins/validate/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="../../../../assets/_common/validate_expand.js"></script>
+		<script type="text/javascript" src="../../../../assets/hplus/js/plugins/validate/messages_zh.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../../../assets/css/common/jquery_validate.css"></link>
+
+		<!-- iCheck选择框样式 -->
+		<link href="../../../../assets/hplus/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<script src="../../../../assets/hplus/js/plugins/iCheck/icheck.min.js"></script>
+
+		<!-- layDate时间 -->
+		<script src="../../../../assets/laydate/laydate.js"></script>
+
+		<!-- 弹层title样式统一 -->
+		<link rel="stylesheet" href="../../../../assets/check_index/layer/skin/default/layer.css"/>
+
+		<link rel="stylesheet" href="index.css">
+
+		<script type="text/javascript">
+			var ctx = '';
+			laydate.skin('molv');
+		</script>
+		<script type="text/javascript" src="../../../../assets/My97DatePicker/WdatePicker.js"></script>
+	</head>
+<body>
+	<div class="myTitle text-center text-info"> 发布玩家转  </div>
+
+	<form class="myForm" id="inputForm" enctype="multipart/form-data" method="post">
+		<input type="hidden" value="573" name="userId" id="userId" />
+		<input type="hidden" value="" name="shopName" id="shopName" />
+		<div class="form-group">
+			<label for="articleTitle">选择店铺：</label>
+			<select class="form-control" name="shopId" id="shopId">
+	            <option value="" data-userpic=""></option>
+			</select>
+		</div>
+		<div class="form-group"> 
+			<label>选择样式：</label>
+			<div class="row prizeImg">
+			
+               <div class="col-xs-3 card-items" style="display: none">
+            	<img class="mobile-img" src="http://oss-cn-hangzhou.aliyuncs.com/tsnrhapp/earnmoney/shareearn/b36e577dc33e4aaead50a62a4b59c7d0.png" alt="票券样式" />
+               	<input name="prizeStyle" value="" aria-label="Single checkbox Two" type="radio" class="prizeStyle">
+               </div>
+    
+            </div>
+		</div>
+		<div class="row">
+			<div class="form-group col-xs-4">
+				<label for="prizeTitle">卡券标题：</label>
+				<input type="text" id="prizeTitle" name="prizeTitle" placeholder="请输入标题，最多6字" class="wjzWriteContent form-control" maxlength="6" onblur="checkStata($(this))">
+				<div class="tipinfo">
+					<div class="empty">
+						<i class="fa fa-times-circle"></i>必填
+					</div>
+					<div class="writeErrow"></div>
+				</div>
+			</div>
+			<div class="form-group col-xs-4">
+				<label for="prizePrice">卡券面额：</label>
+				<input type="text" id="prizePrice" name="prizePrice" placeholder="请输入" class="prizePrice wjzWriteContent form-control required oneToNightNightNight" maxlength="3" onblur="checkStata($(this))">
+				<div class="tipinfo">
+					<div class="empty">
+						<i class="fa fa-times-circle"></i>必填
+					</div>
+					<div class="writeErrow"></div>
+				</div>
+			</div>
+			<div class="form-group col-xs-4"> 
+				<label for="expireTime">到期时间：</label>
+				<input type="text" id="expireTime" name="expireTime" placeholder="请选择" onblur="checkStata($(this))" onclick="WdatePicker({minDate: '%y-%M-%d', dateFmt:'yyyy-MM-dd HH:mm:ss', onpicked: dataInteract})" class="wjzWriteContent form-control required" readonly="false"></input>
+				<div class="tipinfo">
+					<div class="empty">
+						<i class="fa fa-times-circle"></i>必填
+					</div>
+					<div class="writeErrow"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label>注释说明：</label>
+			<textarea rows="10" id="prizeExplain" name="prizeExplain" class="wjzWriteContent form-control required" onblur="checkStata($(this))"> </textarea>
+			<div class="tipinfo">
+				<div class="empty">
+					<i class="fa fa-times-circle"></i>必填
+				</div>
+				<div class="writeErrow"></div>
+			</div>
+		</div>
+		
+		<div class="text-right">
+			<button type="button" class="btn btn-info" onclick="doSubmit()"> 提 交 </button>
+			<button type="button" class="btn btn-default" onclick="parent.window.closeAddPage()"> 取 消 </button>
+		</div>
+	</form>
+	<script src="../../src/js/common.js"></script>
+	<script src="index.js"></script>
+</body>
+</html>

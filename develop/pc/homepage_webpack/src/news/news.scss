@@ -1,0 +1,82 @@
+@import "../util/util.scss";
+
+.swiper-container {
+  height: 600px;
+  
+  img{
+    user-select: none;
+  }
+}
+
+// 导航
+.nav-subtitle{
+  padding: 10px 0;
+  color: #999;
+  i{
+    font-size: 14px;
+  }
+  .icon-location{
+    color: #ffd119;
+  }
+  a{
+    color: inherit;
+  }
+}
+
+// 标题
+.title-content{
+  position: relative;
+  padding: 50px 0 20px;
+  color: #333;
+
+  .title, .subtitle{
+    color: inherit;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .subtitle{
+    font-size: 24px;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+
+  &::after{
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    height: 5px;
+    background-color: #d80a31;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+  }
+}
+
+// 第一个文章
+.article-content{
+  display: flex;
+  .img-content{
+    position: relative;
+    flex-basis: 42.86%;
+
+    &::after{
+      content: '';
+      position: absolute;
+      display: inline-block;
+      width: 0; 
+      height: 0; 
+      border-top: 5px solid transparent; 
+      border-left: 10px solid red; 
+      border-bottom: 5px solid transparent;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  .article{
+    flex: 1;
+  }
+} 

@@ -1,0 +1,80 @@
+.body {
+  font-family: 'microsoft yahei';
+  font-size: 14px;
+  color: #333333;
+}
+
+@corlor: #52C8BE;
+
+.content {
+  padding: 30px;
+   .priority{
+    margin-left: 10px;
+    font-style: normal;
+  }
+
+  //头部导航条
+  .title {
+    border-bottom: 1px solid #E5E5E5;
+    height: 40px;
+
+    li {
+      position: relative;
+      float: left;
+      width: 90px;
+      height: 40px;
+      text-align: center;
+      span {
+        position: absolute;
+        top: 0;
+        left: 60px;
+      }
+
+      .unread {
+        top: -7px;
+        height: 15px;
+        width: 10px;
+        height: 15px;
+      }
+    }
+    li:hover {
+      border-bottom: 2px solid @corlor;
+      color: @corlor;
+    }
+    li.active{
+      border-bottom: 2px solid @corlor;
+    }
+  }
+  //中间内容
+  .centercontent ul {
+    height: 600px;
+    li {
+      padding: 20px 0;
+      border-bottom: 1px solid #E5E5E5;
+    }
+    a {
+      color: #1DCCC7;
+      font-size: 13px;
+    }
+    i {
+      color: #818181;
+
+      font-style: normal;
+
+    }
+    p {
+      font-size: 15px;
+      margin-top: 7px;
+      color: #545454;
+    }
+    b {
+      float: right;
+      font-weight: normal;
+      font-size: 13px;
+    }
+  }
+
+  .layui-laypage{
+    float: right;
+  }
+}

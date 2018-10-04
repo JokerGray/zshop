@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随访</title>
+
+	<script src="../../assets/jquery/jquery.min.js"></script>
+    
+	<script src="../../assets/layer/layer.js"></script>
+	<link rel="stylesheet" href="../../assets/check_index/layer/skin/default/layer.css"/>
+
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+	<script src="../../assets/layui-v2.3.0/layui.js"></script>
+
+	<link rel="stylesheet" href="../../assets/bootstrapDatePicker/css/bootstrap-datetimepicker.min.css">
+	<script src="../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="src/iconfont/iconfont.css">
+	
+	<!-- bootstrap-table -->
+	<link rel="stylesheet" type="text/css" href="../../assets/bootstrap-table/bootstrap-table.min.css"/> 
+	<script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<link rel="stylesheet" href="src/css/common.css">
+	<script src="src/js/common.js"></script>
+	<style>
+		.surgerying{
+			display: inline-block;
+			width: 60%;
+			height: 30px;
+			line-height: 30px;
+			border:1px solid #23c8c9;
+			background: #fff;
+			border-radius: 5px;
+			color:#23c8c9!important;
+		}
+        .consultingProjects,.consultingDean{
+            display:inline-block;
+            width: 150px;
+        }
+        .consultingProjects select,.consultingDean select{
+            width: 100%;
+            height: 31px;
+            border-radius: 5px;
+        }
+        .followUpHeader{
+            position: relative;
+            height: 31px;
+        }
+        .followUpHeader>div{
+            display: inline-block;
+        }
+
+        .followUpTime{
+            padding-left: 15px;
+            padding-right: 30px;
+        }
+        .porject{
+            padding-right: 30px;
+        }
+        .dean{
+            padding-right: 30px;
+        }
+
+        .telNumer{
+            position: absolute;
+            right: 30px;
+        }
+	</style>
+</head>
+<body>
+	<div class="contain">
+		<div class="header cl followUpHeader">
+            <div class="followUpTime">
+                <label>随访时间：</label>
+                <input type="text" class="startTime"> - <input type="text" class="endTime">
+            </div>
+
+            <div class="porject">
+                <label>咨询项目：</label>
+                <span class="consultingProjects">
+                    <select name="" id="project" placeholder="请选择咨询项目">
+                        <option value="">请选择咨询项目</option>
+                    </select>
+                </span>
+            </div>
+            
+            <div class="dean">
+                <label>咨询院长</label>
+                <span class="consultingDean">
+                    <select name="" id="consultingDean">
+                        <option value="">请选择咨询院长</option>
+                    </select>
+                </span>
+            </div>
+
+            <div class="telNumer">
+                <input type="text" class="search" placeholder="顾客姓名/顾客电话" >
+                <a href="javascript:;" class="searchBtn">
+                    <i class="iconfont icon-sousuo1"></i>
+                </a>
+            </div>
+		</div>
+		<div class="contentList">
+			<div class="contentList">
+				<div class="table-tool-content">
+					<div class="container-fluid table-content">
+						<table class="table table-hover table-condensed" id="surgeryList">
+							
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+         var merchantId = getQueryString('merchantId');
+
+		$(document).ready(function(){
+            tableInit();
+            // 获取 咨询院长
+            var def = reqAjax('customer/salesmanList', {
+                merchantId : merchantId
+            }); 
+            def.then(function(data){
+                salesmanList = data.data;
+                for(var j = 0; j<salesmanList.length;j++){
+                    $('#consultingDean').append("<option value='" + salesmanList[j].id + "'>" + salesmanList[j].username + "</option>")
+                }
+            })
+
+            // 获取咨询项目
+            var def = reqAjax('medical/getServiceInfo', {
+                merchantId : merchantId,
+                type : 4
+            }); 
+            def.then(function(data){
+                var data = data.data;
+                for(var j = 0; j<data.length;j++){
+                    $('#project').append("<option value='" + data[j].id + "'>" + data[j].serviceName + "</option>")
+                }
+            })
+
+
+        });
+        function tableInit(){
+            $('#surgeryList').bootstrapTable({
+                url: '/zxcity_restful/ws/rest',
+                method: 'post',
+                ajaxOptions:{
+                    headers:{
+                        apikey: 'test'
+                    }
+                },
+                contentType: "application/x-www-form-urlencoded",
+                queryParams: function(params){
+                    var p = {
+                        cmd: 'earnmoney/getPlayerWinningList',
+                        data: JSON.stringify({
+                            pagination: {
+                                page: params.offset/params.limit + 1,
+                                rows: params.limit
+                            }
+                        }),
+                        version: 1
+                    }
+                    return p;
+                },
+                responseHandler: function(res){
+                    res.rows = res.data
+                    return res;
+                },
+                sidePagination: "server",
+                pageNumber:1,
+                pageSize: 10,
+                pageList: [10, 25, 50, 100],
+                striped: true,
+                pagination: true,
+                sortable: false,
+                cardView: false,
+                detailView: false,
+                columns: [
+                    { title: '序号', width: 50, align: 'center',formatter: function (value, row, index) {
+                        	var pageSize=$('#surgeryList').bootstrapTable('getOptions').pageSize;//通过表的#id 可以得到每页多少条
+			                var pageNumber=$('#surgeryList').bootstrapTable('getOptions').pageNumber;//通过表的#id 可以得到当前第几页
+			                return pageSize * (pageNumber - 1) + index + 1;//返回每条的序号： 每页条数 * （当前页 - 1 ）+ 序号
+ 
+                    	}
+                    },
+                    { field: 'prizeStyle', title: '顾客姓名', width: 100, align: 'center', formatter: function (val, row, index) {
+                       		return val.substr(0, 18)+'...'
+                    	}
+                	},
+                    { field: 'phone', title: '性别', width: 100, align: 'center' },
+                    {field: 'phone', title: '年龄', width: 100, align: 'center'},
+                	{field: 'phone', title: '手机号码', width: 100, align: 'center'},
+                	{field: 'phone', title: '咨询项目', width: 100, align: 'center'},
+                	{field: 'phone', title: '咨询院长', width: 100, align: 'center'},
+                	{field: 'phone', title: '随访时间', width: 100, align: 'center'},
+                	{ field: 'orderId', title: '随访结果', width: 100, align: 'center',formatter: function(val, row, index){
+                        	// return '<button type="button" class="btn btn-danger btn-xs" onclick="clickBtn(this)">发送短信</button>'
+                        	return val;
+                    	}
+                	},
+                    { field: 'orderId', title: '随访人员', width: 100, align: 'center',formatter: function(val, row, index){
+                            // return '<button type="button" class="btn btn-danger btn-xs" onclick="clickBtn(this)">发送短信</button>'
+                            return val;
+                        }
+                    },
+                ]
+            });
+
+            // 按钮点击
+            $('#surgeryList').on('click', 'button.btn', function (e) {
+                var dataAll = $('#surgeryList').bootstrapTable('getData');
+                var index = $(this).parent().parent().index();
+                console.log('监听table的按钮点击');
+                // console.log(dataAll[index]);
+            });
+        }
+
+        
+	</script>
+</body>
+</html>

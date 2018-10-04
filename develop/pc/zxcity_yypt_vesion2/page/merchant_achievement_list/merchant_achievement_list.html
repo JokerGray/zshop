@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>员工业绩报表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../common/css/bootstrap.min.css" media="all"/>
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css"/>
+    <link rel="stylesheet" href="../../common/assets/zTree_v3/css/metroStyle/metroStyle.css"/>
+    <link rel="stylesheet" href="merchant_achievement_list.css">
+</head>
+<body>
+<div class="layui-row layui-fluid">
+    <ul class="layui-form layui-col-sm12 layui-col-md12 clearfix input-box">
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="">选择直营店：</label>
+                <div class="layui-input-block">
+                    <select class="form-control" name="" id="shop">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+        </li>
+        <!--nickName-->
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="">员工业绩类型：</label>
+                <div class="layui-input-block">
+                    <div class="layui-input-block">
+                        <select class="form-control" name="" id="achType">
+                            <option value="">--请选择--</option>
+                            <option value="1">充值</option>
+                            <option value="2">销售(现金消费)</option>
+                            <option value="3">服务</option>
+                            <option value="4">划卡(账户消费)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="start_time">开始时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off"  class="layui-input" id="jurisdiction-begin">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="">结束时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="jurisdiction-end">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <label>&nbsp;</label>
+            <div class="fl">
+                <button class="layui-btn" id="toolSearch">搜索</button>
+                <button class="layui-btn" id="toolRelize">重置</button>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="layui-row layui-fluid" id="tableBox">
+    <div class="app-table">
+        <table id="tableNo" lay-filter="tableNo"></table>
+        <div id="laypageLeft" class="fr"></div>
+    </div>
+</div>
+<div class="layui-fluid">
+    <!--折线统计图-->
+    <div id="myChart"></div>
+</div>
+<!--lay-event='detail' 这个是绑定事件没有这个就绑定不了事件-->
+
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-md layui-btn-normal" lay-event='detail'>
+        <i class="layui-icon">&#xe615;</i> 查看
+    </button>
+</script>
+
+<div id="demo111" class="layui-row clearfix  disn layer-box">
+    <!--<div class="tool-box layui-form layui-col-sm12 layui-col-md12">-->
+        <!--<ul class="tool-box-ul clearfix p0">-->
+            <!--<li class="tool-box-li">-->
+                <!--<div class="layui-form-item">-->
+                    <!--<label class="tool-box-label">商户名</label>-->
+                    <!--<div class="layui-input-inline">-->
+                        <!--<input type="text" name="" class="layui-input" id="merName" >-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<button class="layui-btn searchBtnLayer" id="searchBtn1" style="margin-top: 33px;">搜索</button>-->
+            <!--<button class="layui-btn resetBtnLayer" id="resetBtn1" style="margin-top: 33px;">重置</button>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <div class="app-table layui-col-sm12 layui-col-md12">
+        <table lay-filter="merchantTableLayer1" id="tableLayer"></table>
+        <div id="laypageLeftLayer" class="fr"></div>
+    </div>
+</div>
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/js/echarts.common.min.js"></script>
+
+<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script>
+
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="merchant_achievement_list.js"></script>
+</body>
+</html>

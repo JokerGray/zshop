@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>内容设置</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/content_setting.css" />
+</head>
+<body>
+<div id="common-tool" class="clearfix p4">
+    <div id="search">
+        <button class="layui-btn layui-btn-small layui-btn-primary">
+            <i class="layui-icon">&#xe615;</i> 搜索
+        </button>
+    </div>
+    <div id="rig-tool" class="clearfix">
+        <button class="layui-btn layui-btn-small layui-btn-primary" id="refrshbtn">
+            <i class="layui-icon">&#x1002;</i> 刷新
+        </button>
+    </div>
+</div>
+<div id="search-tool" class="clearfix">
+    <div class="input-group">
+        <span class="pull-left">板块名称：</span>
+        <input type="text" class="form-control media-input"  id="merchantName" maxlength="12">
+    </div>
+    <div class="input-group">
+        <span class="pull-left">板块表名：</span>
+        <input type="text" class="form-control media-input"  id="tableName" maxlength="30">
+    </div>
+    <div class="input-group">
+        <button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearch">
+            搜索
+        </button>
+        <button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+            重置
+        </button>
+    </div>
+</div>
+<div class="tab-title">
+    <ul>
+        <li class="active" data-num="1"><a>智享城市APP</a></li>
+        <li data-num="0"><a>智大师APP</a></li>
+        <li data-num="0"><a>智享店务PAD</a></li>
+    </ul>
+</div>
+<div class="table-lt clearfix">
+    <div id="noAudit" class="table-list clearfix">
+        <table lay-filter="tableNo" id="tableNo"></table>
+        <div id="laypageLeft" class="table-rgt"></div>
+    </div>
+<!--    <div id="audit" class="table-list clearfix">
+        <table lay-filter="table" id="table"></table>
+        <div id="laypageright" class="table-rgt"></div>
+    </div>-->
+</div>
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-small layui-layui-btn-warm" lay-event='change'>
+        <i class="layui-icon">&#xe6b2;</i> 修改
+    </button>
+</script>
+<script type="text/html" id="titleStatu">
+    {{#  if(d.reviewStatus == 0){ }}
+        发布即审核
+    {{#  } else { d.reviewStatus == 1 }}
+        审核后发布
+    {{#  } }}
+</script>
+
+
+
+
+<!--modal-->
+<!--修改-->
+<div id="fourDemo" class='layui-form clearfix tipdemo'>
+    <div class="centerCon">
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">板块名称：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="form-control layui-input h30" id="contentDesign" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>发布状态：</label>
+            <div class="layui-input-block flex publishtype" id="subscription">
+                <select  class="layui-input h30 " id="fixdepartment">
+                    <option value="0">发布即审核</option>
+                    <option value="1">审核后发布</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="js/content_setting.js"></script>
+</html>

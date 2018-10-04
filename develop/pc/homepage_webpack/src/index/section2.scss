@@ -1,0 +1,113 @@
+// 第二部分，智享生活
+.section2{
+    margin-top: 200px;
+    // 遮罩
+    .cover.active {
+        &~.content-title, &~.icon-play{
+            display: none;
+        }
+    }
+    .lives-content{
+        display: flex;
+        padding: 0 0 20px 34px;
+        >div{
+            position: relative;
+            background-color: rgba($color: #000, $alpha: 0.05);
+            text-align: center;
+            overflow: hidden;
+            cursor: pointer;
+
+            &:hover{
+                .content-title{
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+            >img{
+                z-index: -1;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate3d(-50%, -50%, 0);
+                width: 100%;
+                height: auto;
+            }
+        }
+        .content-title{
+            z-index: 999;
+            height: 164px;
+            background-color: rgba($color: #d70c2a, $alpha: 0.85);
+            transform: translate3d(0, -100%, 0);
+            transition: all 0.15s ease-in-out;
+            user-select: none;
+
+            .time{
+                display: block;
+                padding-top: 36px;
+                font-size: 34px;
+                color: #c5c5c5;
+                text-align: left;
+                line-height: 1;
+                &::before{
+                    content: '';
+                    display: inline-block;
+                    width: 60px;
+                    height: 5px;
+                    margin-right: 24px;
+                    background-color: #fff;
+                    vertical-align: middle;
+                }
+            }
+            .title{
+                margin-top: 30px;
+                padding: 0 25px 0 84px;
+                text-align: left;
+                line-height: 1;
+                .text{
+                    font-size: 46px;
+                    color: #fff;
+                }
+                .more{
+                    float: right;
+                    padding: 0 25px 0 0;
+                    margin-top: 5px;
+                    font-size: 40px;
+                    color: #ffff1b;
+                    background-image: url(./img/narrow_yellow.png);
+                    background-repeat: no-repeat;
+                    background-position: right;
+                    cursor: pointer;
+                }
+            }
+        }
+        .img-content{
+            flex: 4;
+            height: 830px;
+            margin-right: 20px;
+        }
+        .video-content{
+            flex: 6;
+            height: 830px;
+            .icon-play{
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate3d(-50%, -50%, 0);
+                width: 188px;
+                height: 188px;
+                background-color: rgba($color: #fff, $alpha: 0);
+                background-image: url(./img/zxsh_bofang.png);
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+        .live-content{
+            flex: 1;
+            height: 540px;
+            margin-right: 20px;
+        }
+        .panorama-content{
+            flex: 1;
+            height: 540px;
+        }
+    }
+}

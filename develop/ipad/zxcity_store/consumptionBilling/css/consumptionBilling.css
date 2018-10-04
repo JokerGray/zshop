@@ -1,0 +1,229 @@
+p{
+	line-height: 1;
+	padding:0;
+	margin:0;
+}
+
+img{
+	width:100%;
+	height:100%;
+}
+
+.homePage{
+	background-color: #f2f2f2;
+}
+.main-title{
+	position:relative;
+	width: 100%;
+	height: 118px;
+	text-align: center;
+	padding-top:30px;
+}
+
+.main-title .return-icon{
+	position:absolute;
+	left: 42px;
+	top: 30px;
+}
+
+.main-con{
+	display: flex;
+	justify-content: center;
+}
+
+.main-con .con-left{
+	width:396px;
+}
+
+.main-con .con-right{
+	width:1380px;
+	margin-left:16px;
+}
+
+.con-left .staff-box{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	width:100%;
+	height:258px;
+	background-color: #fff;
+}
+
+.con-left .history-record{
+	width:100%;
+	margin-top:16px;
+}
+
+.con-right .customer-box{
+	position:relative;
+	display:flex;
+	align-items: center;
+	width:100%;
+	height:258px;
+	background-color: #fff;
+}
+
+.con-right .service-box{
+	width:100%;
+	height:1010px;
+	margin-top:16px;
+	background-color: #fff;
+}
+
+.staff-box .ava{
+	width:87px;
+	height:102px;
+	margin-right:41px;
+}
+
+.staff-box .info p{
+	font-size:30px;
+	color:#333;
+}
+
+.staff-box .info .staff-name{
+	margin-bottom:18px;
+}
+
+.staff-box .info .staff-num{
+	margin-top:29px;
+}
+
+.history-record .history-title{
+	height:112px;
+	line-height: 112px;
+	margin-bottom:15px;
+	color:#333;
+	font-size:36px;
+	text-align: center;
+	background-color: #fff;
+}
+
+.history-record .history-list{
+	height:884px;
+	background-color: #fff;
+	overflow-y:auto;
+}
+
+.history-list ul>li{
+	height:145px;
+	padding-top:32px;
+	padding-left:75px;
+	border-bottom:1px solid #e5e5e5;
+}
+
+.history-list ul>li p{
+	font-size:30px;
+}
+
+.history-list ul>li p.name{
+	color:#333;
+}
+
+.history-list ul>li p.time{
+	margin-top:20px;
+	color:#999;
+}
+
+.customer-box .customer-ava{
+	width:87px;
+	height:102px;
+	margin-right:40px;
+	margin-left:40px;
+}
+
+.customer-box .customer-info{
+	font-size:28px;
+	color:#333;
+}
+
+.customer-info table>tbody>tr>td{
+	padding-top:3px;
+	padding-bottom:4px;
+}
+
+.customer-info table>tbody>tr>td+td{
+	padding-left:26px;
+}
+
+.customer-box .select-customer-btn{
+	position:absolute;
+	right:25px;
+	top:15px;
+	width:187px;
+	height:63px;
+	background-color:rgb(255, 207, 40);
+	font-size:36px;
+	color:#fff;
+}
+
+.service-box .service-list{
+	height:850px;
+	overflow-y: auto;
+}
+
+.service-box .service-list table{
+	width:100%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.service-box table th{
+	width:25%;
+	font-size:36px;
+	text-align: center;
+	font-weight: normal;
+}
+
+.service-box table tr.even{
+	background-color:#f6f6f6;
+}
+
+.service-box table td{
+	font-size:30px;
+	color：#333;
+}
+
+.service-box table td input[type=text]{
+	width:54px;
+	height:54px;
+	margin-left:15px;
+	margin-right:15px;
+	text-align: center;
+	border:1px solid #bfbfbf;
+}
+
+.service-box .num-control{
+	color:#b7b7b7;
+	text-decoration: none;
+}
+
+#submitBtn{
+	float:right;
+	width:194px;
+	height:90px;
+	margin-top:50px;
+	margin-right:50px;
+	color:#fff;
+	background-color:#39df77;
+	font-size:32px;
+}
+
+.operator-list a{
+	display:block;
+	font-size:44px;
+	height:72px;
+	line-height: 72px;
+	background:#fff;
+	text-align: center;
+	color:#333;
+}
+.operator-list a:hover{
+	color:#fe6869;
+	background: #f2f2f2;
+}
+body .diy-layer .layui-layer-title{
+	color:#fff;
+	background:#fe6869;
+	text-align:center;
+}

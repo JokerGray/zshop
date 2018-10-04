@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+    <title>店铺可兑换智币明细</title>
+ 	<link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../../../common/css/reset.css" />
+	<link rel="stylesheet" href="../../../common/css/layTab.css" />
+</head>
+<body>
+	<div class="container-fluid">
+		<!-- <div class="top">
+			<h1 class="text-center dialog-title">店铺可兑换智币明细</h1>
+			<h1 class="text-center dialog-title">店铺可兑换智币明细</h1>
+		</div> -->
+		
+	    <div class="layui-app">
+			<div class="app-table" style="margin-top: 10px;">
+				<table lay-filter="merchantTable" id="merchantTable"></table>
+				<div id="amount"></div>
+				<div id="layTablePage"></div>
+			</div>
+			
+		</div>
+		
+		<script type="text/html" id="barDemo">
+		    <button class="layui-btn my-btn" lay-event="view">确认</button>
+		</script>
+
+	</div>
+
+
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="shopExchangeableZDetail.js"></script>
+</body>
+</html>

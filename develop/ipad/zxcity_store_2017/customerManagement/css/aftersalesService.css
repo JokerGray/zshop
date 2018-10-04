@@ -1,0 +1,58 @@
+.main-tab{
+    padding:0.938rem;
+    background-color: #fff;
+}
+.main-tab .button-group{
+}
+.main-tab .button-group .btn{
+    float:left;
+    margin:0;
+    font-size:1rem;
+}
+.main-tab .button-group .btn+.btn{
+    margin-left:-1px;
+}
+.main-tab .button-group .btn.active{
+    background-color: #fe6869;
+    color:#fff;
+}
+.list-box{
+    max-height: 40rem;
+    padding:1rem 0.75rem;
+    overflow-y: auto;
+}
+.list-box .list{
+    display:flex;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+}
+.list .list-item{
+    width:50%;
+    padding:0.75rem;
+}
+.list .list-item .item-inner{
+    position:relative;
+    background-color: #fff;
+}
+
+.list-item .item-inner .name{
+    height:2.5rem;
+    line-height: 2.5rem;
+    padding:0 0.75rem;
+    border-bottom:1px solid #dadada;
+    font-size:1.25rem;
+    color:#333;
+}
+.list-item .item-inner .detail{
+    padding:1rem 0.75rem 0.75rem;
+}
+.item-inner .detail .item-label,
+.item-inner .detail .item-txt{
+    font-size:1rem;
+    color:#999;
+}
+.list-item .item-inner .btn{
+    position:absolute;
+    bottom:0.75rem;
+    right:0.75rem;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+		<title>商户组织</title>
+			  <!-- CssCommon -->
+		<link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css"/>
+		<link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+			
+			
+		<link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+			  <!-- CssSinglepage-->
+		<link rel="stylesheet" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+		<link rel="stylesheet" type="text/css" href="css/merchants_organization.css" />
+	</head>
+	<body>
+	<!--添加删除刷新-->
+		<div class="topcontrol h4">
+			  <div class="searchbutton">
+				    <button class="layui-btn layui-btn-small layui-btn-primary" >
+					      <i class="layui-icon">&#xe615;</i>搜索&nbsp;&nbsp;
+					      <i class="layui-icon" >&#xe61a;</i>
+				    </button>
+			  </div>
+			  <div id="rig-tool" class="clearfix">
+			      <button class="layui-btn layui-btn-small layui-btn-primary" id="refresh">
+			            <i class="layui-icon">ဂ</i> 刷新
+			      </button>
+			  </div>
+		</div>
+		<!--搜索条件查询-->
+		<div class="searchform">
+			  <form class="form-inline">
+				    <div class="form-group">
+				      <label for="username">组织名称：</label>
+				      <input type="text" class="form-control" id="username"  maxlength="10">
+				    </div>
+				    <button type="button" class="layui-btn layui-btn-small layui-btn-normal" id="searchbtn">搜索</button>
+				    <button type="button" class="layui-btn layui-btn-small layui-btn-normal" id="resetbtn">重置</button>
+			  </form>
+		</div>
+		
+		<!--中间内容-->
+		<div class="content user-center">
+		  <!--左侧树形图-->
+		  <div class="trees-box">
+		
+		    <h4>商户管理&nbsp;-&nbsp;商户组织</h4>
+		    <ul id="treeDemo" class="ztree"></ul>
+		  </div>
+		  <!--右侧表格-->
+		  <div id="app" class="tabale-list ">
+		
+		    <table lay-filter="table" id="table" lay-size="lg">
+		
+		    </table>
+		    <div id="laypageLeft" class="table-rgt"></div>
+		    <div id="laypageLeft1" class="table-rgt"></div>
+		  </div>
+		</div>
+		
+		<!--表格右侧工具栏-->
+		<script type="text/html" id="barDemo">
+		  <button class="layui-btn layui-btn-small  layui-btn-normal" lay-event="change">
+		    <i class="layui-icon">&#xe6b2;</i> 修改
+		  </button>
+		
+		</script>
+		<!--弹出框新增/修改-->
+		<div id="fourDemo" class='layui-form clearfix tipdemo'>
+		    <div class="centerCon">
+	        <div class="layui-form-item">
+	            <label class="layui-form-label flex"><b class="required-icon">＊</b>组织名称：</label>
+	            <div class="layui-input-block flex">
+	                <input type="text" name="title" class="form-control layui-input h30" id="contentDesign">
+	            </div>
+	        </div>
+	        <div class="layui-form-item">
+	            <label class="layui-form-label flex"><b class="required-icon">＊</b>组织类型：</label>
+	            <div class="layui-input-block flex" >
+	 								<input type="text" name="title" class="form-control layui-input h30" id="fixdepartment" disabled>
+	            </div>
+	        </div>
+	        <div class="layui-form-item">
+	            <label class="layui-form-label flex"><b class="required-icon">＊</b>优先级：</label>
+	            <div class="layui-input-block flex">
+	                <input type="text" name="title" class="form-control layui-input h30" id="contentEq"><br>
+	            </div>
+	            <span class="tips">排序号1-99 排序号越大，优先级别越高</span>
+	        </div>
+		    </div>
+		</div>
+	</body>
+
+	<!-- jSCommon -->
+	<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+	<script type="text/javascript" src="../common/js/yyCache.js"></script>
+	<script type="text/javascript" src="../common/js/common.js"></script>
+	<script type="text/javascript" src="../common/js/util/util.js"></script>
+	<script type="text/javascript" src="../common/js/util/pub.js"></script>
+	<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script>
+	<script type="text/javascript" src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+	<script type="text/javascript" src="js/merchants_organization.js"></script>
+</html>

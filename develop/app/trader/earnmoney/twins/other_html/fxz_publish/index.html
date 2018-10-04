@@ -1,0 +1,168 @@
+<!DOCTYPE html >
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link href="../../../../assets/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/animate.min.css" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	<link rel="stylesheet" href="index.css">
+	<!-- jquery -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/jquery.min.js"></script>
+	
+	<!-- bootstrap -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/bootstrap.min.js"></script>
+	<!-- 左侧手风琴菜单-->
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<!--jQuery滚动条特效插件jQuery slimScroll-->
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<!--layer弹出层插件-->
+	<script type="text/javascript" src="../../../../assets/layer/layer.js"></script>
+	<!-- 主页的样式初始化-->
+	<script type="text/javascript" src="../../../../assets/hplus/js/hplus.min.js"></script>
+	
+	<!-- 通用JS工具类 -->
+	<script type="text/javascript" src="../../../../assets/_common/zxcity_ms.js"></script>
+	
+	<!-- jquery validate -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/validate/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/_common/validate_expand.js"></script>
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/validate/messages_zh.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/css/common/jquery_validate.css"></link>
+	
+	<!-- iCheck选择框样式 -->
+	<link href="../../../../assets/hplus/css/plugins/iCheck/custom.css" rel="stylesheet">
+	<script src="../../../../assets/hplus/js/plugins/iCheck/icheck.min.js"></script>
+	
+	<!-- 图片预览 -->
+	<script src="../../../../assets/uploadPreview/uploadPreview.min.js"></script>
+	
+	<!-- 弹层title样式统一 -->
+	<script type="text/javascript" src="../../../../assets/My97DatePicker/WdatePicker.js"></script>
+</head>
+<body>
+
+	<div class="myTitle text-center text-info"> 发布分享赚 </div>
+
+	<form id="inputForm" class="myForm" enctype="multipart/form-data" method="post">
+		<input type="hidden" value="" name="couponName" id="couponName" />
+		<input type="hidden" value="" name="cityId" id="cityId" />
+		
+		<div class="form-group">
+			<label for="articleTitle">所属门店:</label>
+			<select class="form-control" name="shopId" id="shopId" onchange="dataInteract()">
+	            <option value="" data-userpic=""></option>
+			</select>
+		</div>
+		
+		<div class="form-group" id="shareCouponTitle">
+			<label>分享赚标题:</label>
+			<span id="shareTitle"></span>
+		</div>
+
+		<div class="form-group">
+			<label for="articleTitle">分享券描述 <span class="explain text-warning">(20字以内)</span></label>
+			<input type="text" id="couponDemand" name="couponDemand" class="form-control required" maxlength="20" placeholder="请输入优惠券描述(限定20个字)" />
+			<div class="tipinfo"></div>
+		</div>
+		
+		<div class="row rowContent">
+			<div class="form-group col-xs-6">
+				<label for="couponType">分享赚类型</label>
+				<select class="form-control" name="couponType" id="couponType" onchange="changeCouponType()">
+					<option value="1">优惠券</option>
+					<option value="2">免费券</option>
+				</select>
+			</div>
+			<div class="form-group col-xs-6">
+				<label for="couponOriginalPrice">原金额</label>
+				<input type="text" id="couponOriginalPrice" name="couponOriginalPrice" class="form-control required isMoney" maxlength="8" placeholder="单位：元"/> 
+				<div class="tipinfo"></div>
+			</div>
+			<div class="form-group col-xs-6">
+				<label for="couponPresentPrice">实际支付金额</label>
+				<input type="text" id="couponPresentPrice" name="couponPresentPrice" class="form-control required isMoney" maxlength="8" placeholder="单位：元" />
+				<div class="tipinfo"></div>
+			</div>
+			<div class="form-group col-xs-6" style="display: none;">
+				<label for="couponNum">免费券数量</label>
+				<input type="text" id="couponNum" name="couponNum" class="form-control required lessNineNineNineNine" maxlength="4" placeholder="单位：张" />
+				<div class="tipinfo"></div>
+			</div>
+			<div class="form-group col-xs-6">
+				<label for="couponCashback">转发佣金金额 <span class="explain text-warning" id="couponTypeNote">(佣金金额将从实际支付金额中扣除)</span></label>
+				<input type="text" id="couponCashback" name="couponCashback" class="form-control required isMoney" maxlength="8" placeholder="单位：元" />
+				<div class="tipinfo"></div>
+			</div>
+			<div class="form-group col-xs-6"> 
+				<label for="expireTime">到期时间：</label>
+				<input type="text" id="expireTime" name="expireTime" placeholder="请选择" onclick="var date = getTomorrow();WdatePicker({minDate: date, dateFmt:'yyyy-MM-dd', onpicked: dataInteract})" class="form-control required" readonly="false"></input>
+				<div class="tipinfo"></div>
+			</div>
+			<div class="form-group col-xs-6"></div>
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-xs-6"> 
+				<label for="couponExplain">使用说明：</label>
+				<textarea id="couponExplain" name="couponExplain" placeholder="请输入优惠券使用说明！" class="form-control required" style="width:100%;height:200px;resize:none;"></textarea>
+				<div class="tipinfo"></div>
+			</div>
+			<div class="form-group col-xs-6" id="imgs">
+				<label>上传封面图片 <span class="explain text-warning">(有特色或更好说明情况的优惠券封面)</span></label>
+				<input type="file" id="imgUrl" name="imgUrl" style="display: none;" />
+				<div id="imgdiv" onclick="upImg()">
+					<img id="imgPreview" src="../../src/images/earnmoney/twins/bg_fileupload.png"/>
+				</div>
+				<input type="hidden" name="videoUrl" id="videoUrl" />
+			</div>
+		</div>
+			
+		<input type="hidden" name="password" id="password" />
+
+		<div class="text-right">
+			<span class="explainBottom text-warning pull-left">免费的分享赚需要商家支付转发佣金</span>
+			<button type="button" class="btn btn-info couponTypeBtn" onclick="doSubmit()"> 提 交 </button>
+			<button type="button" class="btn btn-info couponTypeBtn" onclick="doSubmit()" style="display: none;"> 支 付 </button>
+			<button type="button" class="btn btn-default" onclick="parent.window.closeAddPage()"> 取 消 </button>
+		</div>
+	</form>
+
+	
+	<div id="layerContent" style="display: none;">
+		<div class="row myContent">
+			<div class="col-xs-12"><label class="_shopName"></label></div>
+			<div class="col-xs-12"><label class="_couponDemand">100元免费体验券</label></div>
+			<div class="col-xs-6"><label>原金额： </label><span class="_couponOriginalPrice">100.00</span> 元</div>
+			<div class="col-xs-6"><label>实际支付金额： </label><span>免费</span></div>
+			<div class="col-xs-6"><label>转发佣金金额： </label><span class="_couponCashback">20</span> 元</div>
+			<div class="col-xs-6"><label>免费券数量： </label><span class="_couponNum">20</span> 张</div>
+			<div class="col-xs-12">
+				<hr style="margin-top: 10px;">
+				<h3 style="margin-top: 0;">支付方式</h3>
+				<div>
+					<img src="../../earnmoney/twins/src/images/earnmoney/twins/zxcs_icon.png" style="width: 35px;"> 智享账户
+				</div>
+			</div>
+			<div class="col-xs-12" style="margin-top: 1rem;">
+				<form autocomplete="off" onsubmit="return false;">
+					智享账户密码
+					<span class="text-danger"> * </span>
+					<input type="password" id="payPsw" class="form-control" style="display: inline-block; width: auto;" placeholder="请输入智享账户密码"/>
+				</form>
+			</div>
+			<div class="col-xs-12 text-right" style="margin-top: 1rem;">
+				<span class="pull-left" style="margin-top: 0.5rem;">需支付：( <span class="_couponCashback">5</span> 元/人 x <span class="_couponNum">20</span>人 )</span>
+				<span>合计：<span class="text-warning"><span class="_sum" style="font-size: 18px;"></span>元</span></span>
+				<button class="btn btn-warning" style="margin-left: 0.5rem;" onclick="payAndSubmit(this)">确定支付</button>
+			</div>
+		</div>
+	</div>
+	<script src="../../src/js/common.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+</body>
+</html>

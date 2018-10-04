@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>积分商品</title>
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
+	<script src="assets/jquery.min.js"></script>
+	<script src="assets/layer/layer.js"></script>
+	<link rel="stylesheet" href="assets/check_index/layer/skin/default/layer.css"/>
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="assets/layui/css/layui.css">
+	<script src="assets/layui/layui.js"></script>
+	<script src="src/js/common.js"></script>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			font-family: '微软雅黑';
+			min-width: 1100px;
+		}
+		.paddingValue{
+			padding:30px 50px 0 50px;
+		}
+		.nav{
+			border-bottom: 10px solid #f7f7f7;
+		}
+		.levelSet,.integralSet,.integralGoods{
+			display: inline-block;
+			text-align: center;
+			text-decoration: none!important;
+			padding: 19px 50px;
+			background:#f1f1f1;
+			color:#6f6f6f;
+			border-top-right-radius: 8px;
+			border-top-left-radius: 8px;
+			font-size: 16px;
+		}
+		.nav>a.active{
+			background:#1cc1ae;
+			color:#fff;
+		}
+
+		/**/
+		.contain{
+			padding:24px 50px 0 50px;
+		}
+		.commodityExchange{
+			overflow: hidden;
+			padding-bottom: 24px;
+		}
+		.commodityExchange .goodsExchange{
+			float: right;
+			display: inline-block;
+			text-decoration: none;
+			text-align: center;
+			border-radius: 3px;
+			width: 100px;
+			height: 38px;
+			line-height: 38px;
+			background: #f9ab5e;
+			color: #fff;
+		}
+
+		
+		.goods .goodsItem{
+			position: relative;
+			width: 200px;
+			border:1px solid #eee;
+			margin-right: 20px;
+			margin-bottom: 20px;
+			cursor: pointer;
+			vertical-align: top;
+		}
+		.goods .cha{
+			position: absolute;
+		}
+		.goods .goodsItem img{
+			display: inline-block;
+			height: 200px;
+		    width: 200px;
+		}
+		.goods .goodsItem .title{
+			padding:0 10px;
+			color: #343434;
+		}
+		.goods .goodsItem p{
+			padding:10px 0;
+		}
+		.goods .goodsItem .integral{
+			color:#18c3ac;
+			padding-bottom: 20px;
+		}
+
+		.goodsListpagination {
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
+
+		.goods .cha {
+		    position: absolute;
+		    top: 5px;
+		    right: 5px;
+		    display: inline-block;
+		    width: 20px;
+		    height: 20px;
+		    background: #f9ab5e;
+		    text-align: center;
+		    line-height: 20px;
+		    border-radius: 50%;
+		    color: #fff;
+		    font-size: 12px;
+			opacity: 0;
+		}
+		.goods .goodsItem:hover .cha{
+			opacity: 1;
+		}  
+		/*搜索*/
+		.search{
+			float: left;
+			padding:0 10px;
+			height: 38px;
+		}
+
+		.search select{
+			width: 90px;
+			height: 38px;
+
+		}
+		.searchInput{
+			width: 210px;
+			height: 38px;
+			padding:0 10px;
+		}
+
+		.searchBtn{
+			display: inline-block;
+			width: 38px;
+			height:38px;
+			background: #f9ab5e;
+			vertical-align: bottom;
+			text-align: center;
+			border-radius: 5px;
+		}
+		.searchBtn i{
+			display: inline-block;
+			line-height: 38px;
+			text-align: center;
+			font-size: 28px;
+			color:#fff;
+		}
+	
+		.tip{
+			position: absolute;
+		    z-index: 99;
+		    display: inline-block;
+		    width: 60px;
+		    height: 20px;
+		    background: #f9ab5e;
+		    top: 0;
+		    left: 0;
+		    border-radius: 3px;
+		    text-align: center;
+		    color:#fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="nav paddingValue">
+		<a href="levelSet.html" class="levelSet">等级设置</a>
+		<a href="integralSet.html" class="integralSet">积分设置</a>
+		<a href="integralGoods.html;" class="integralGoods active">积分商品</a>
+	</div>
+
+	<div class="contain">
+		<div class="commodityExchange">
+			<div class="search">
+				<select name="" id="">
+					<option value="">&nbsp;&nbsp;&nbsp;&nbsp;全部</option>
+					<option value="1">&nbsp;&nbsp;&nbsp;&nbsp;服务卡</option>
+					<option value="2">&nbsp;&nbsp;&nbsp;&nbsp;套餐</option>
+					<option value="3">&nbsp;&nbsp;&nbsp;&nbsp;商品</option>
+					<option value="4">&nbsp;&nbsp;&nbsp;&nbsp;套盒</option>
+				</select>
+				<input type="text" class="searchInput">
+				<a href="javascript:;" class="searchBtn" onclick="searchGoods()">
+					<i class="iconfont icon-sousuo"></i>
+				</a>
+			</div>
+			<a href="javascript:;" class="goodsExchange" onclick="commodityExchange()">增加兑换商品</a>
+		</div>
+		<div class="goods">
+			
+		</div>
+	</div>
+
+	 <!-- 分页 -->
+	<div class="goodsListpagination">
+	    <div class="pagination">
+	        <div id="test1"></div>
+	    </div>
+	</div>
+<!-- http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/itemreport/default/morenfuwu_pic.jpg -->
+	<script type="text/html" id="tp1">
+		<div class="goodsItem">
+			<img src="" alt="" class="goodsImg" onerror="this.src='http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/itemreport/default/morenfuwu_pic.jpg'">
+			<div class="title">
+				<p class="goodsName">全身按摩精油身体推背通经面部开背美容院</p>
+				<div class="integral">100积分</div>
+			</div>
+			<i class="cha iconfont icon-cha" onclick="deleteGoods(this)"></i>
+			<div class="tip"></div>
+		</div>
+	</script>
+
+	<script>
+
+		// 从url 中获取  merchantId
+		var merchantId = getQueryString('merchantId');
+		var total;
+
+		window.onload=function(){
+		    $('.levelSet').attr('href','levelSet.html?merchantId='+ getQueryString('merchantId'));
+		    $('.integralSet').attr('href','integralSet.html?merchantId='+ getQueryString('merchantId'));
+		    $('.integralGoods').attr('href','integralGoods.html?merchantId='+ getQueryString('merchantId'));
+
+		    // var def = reqAjax('credits/creditsConsumingItems', {
+			var def = reqAjax('credits/searchCreditsItems', {
+				page: 1,
+				rows: 10,
+			    stockName: "",
+			    merchantId: merchantId,
+			    goodsName: '',
+			    goodsType: '',
+			    sort: "createTime",
+				order: "desc"
+			});
+			def.then(function(data){
+				total = data.total;
+				pageFuc(total,'','');
+			});
+		}
+
+		var total;
+
+		function commodityExchange(){
+			layer.open({
+			    type: 2,  
+		    	content: 'commodityExchange.html?merchantId='+merchantId,
+			    title: '商品兑换',
+			    area: ['700px', '600px'],
+			    btn: ['确定','关闭'],
+		        maxmin: true,
+				scrollbar: false,
+		        yes : function(index, layero){
+		        	 //获取到弹框里面的body
+		            var body = layer.getChildFrame('body', index);
+		            var iframeWin = layero.find('iframe')[0]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+                	iframeWin.contentWindow.doSubmit();
+		        },
+		        cancel: function(){
+		        },
+		    });
+		}
+
+
+
+		// 商户的等级设置 接口联调
+		function ajaxA(page,goodsName,goodsType){
+			// var def = reqAjax('credits/creditsConsumingItems', {
+			var def = reqAjax('credits/searchCreditsItems', {
+				page: page,
+				rows: 10,
+			    stockName: "",
+			    merchantId: merchantId,
+			    goodsName: goodsName,
+			    goodsType: goodsType,
+			    sort: "createTime",
+				order: "desc"
+
+			});
+			def.then(function(data){
+				total = data.total;
+			    var data = data.data;
+			    for(var i = 0;i<data.length;i++){
+			        var row = data;
+			        var content = $($('#tp1').html()).first().clone();
+
+			        if(row[i].goodsType == 1){
+			        	content.find('.tip').text('服务卡');
+			        }else if(row[i].goodsType == 2){
+			        	content.find('.tip').text('套餐');
+			        }else if(row[i].goodsType == 3){
+			        	content.find('.tip').text('商品');
+			        }else if(row[i].goodsType == 4){
+			        	content.find('.tip').text('套盒');
+			        }
+			        content.attr('id',row[i].id);
+			        content.find('.goodsImg').attr('src',row[i].image);
+			        content.find('.goodsName').text(row[i].goodsName);
+			        content.find('.integral').text(row[i].point+'积分');
+			        content.css({'display':'inline-block'});
+			        $('.goods').append(content);
+			    }
+			})
+		}
+
+		// 分页
+		function pageFuc(total,goodsName,goodsType){
+			layui.use('laypage', function(){
+			    var laypage = layui.laypage;
+
+			    if(total <= 10){
+					$('#test1').hide();
+				}else{
+					$('#test1').show();
+				}
+				laypage.render({
+				    elem: 'test1', //注意，这里的 test1 是 ID，不用加 # 号
+				    count: total, //数据总数，从服务端得到
+				    layout: ['prev','page', 'next'],
+				    prev: '<i class="glyphicon glyphicon-menu-left"></i>',
+				    next: '<i class="glyphicon glyphicon-menu-right"></i>',
+				    jump : function(obj,first){
+				        $('.goods .goodsItem').remove();
+				        ajaxA(obj.curr,goodsName,goodsType);
+				    }
+				});
+			});
+		}
+
+
+		// 删除 某个固定的商品
+		function deleteGoods(self){
+			var id = $(self).parent().attr('id');
+
+			layer.confirm('确认删除？', {
+		        btn : [ '确定', '取消' ]//按钮
+		    }, function(index) {
+		        layer.close(index);
+
+		        var def = reqAjax('credits/creditsConsumingItemRemove', {
+				    id : id
+				});
+				def.then(function(data){
+					layer.msg(data.msg,{icon:1})
+					location.reload();
+				});
+		    });
+		}
+
+		// 点击 搜索
+		function searchGoods(){
+			var goodsType = $('.search select option:selected').val();
+			var goodsName = $('.searchInput').val();
+			var def = reqAjax('credits/searchCreditsItems', {
+			// var def = reqAjax('credits/creditsConsumingItems', {
+			      	merchantId:merchantId, 
+				    page: 1,
+				    rows: 10,
+				    goodsName:goodsName,
+				    stockName:'',
+				    goodsType:goodsType,
+				    sort: "createTime",
+					order: "desc"   
+			});
+			def.then(function(data){
+				// console.log(data.total);
+				if(data.code == 1){
+					$('.goods .goodsItem').remove();
+					total = data.total;
+				    var data = data.data;
+				    for(var i = 0;i<data.length;i++){
+				        var row = data;
+				        var content = $($('#tp1').html()).first().clone();
+				        content.attr('id',row[i].id);
+				        content.find('.goodsImg').attr('src',row[i].image);
+				        content.find('.goodsName').text(row[i].goodsName);
+				        content.find('.integral').text(row[i].point+'积分');
+				        content.css({'display':'inline-block'});
+				        $('.goods').append(content);
+				    }
+				    // console.log(total);
+
+				    pageFuc(total,$('.searchInput').val(),$('.search select option:selected').val());
+				    // location.reload();
+				}else{
+					layer.msg(data.msg,{icon:2});
+				}
+			})
+		}
+
+
+		// 类型 改变 刷新数据
+		$('.search select').on('change',function(){
+			$('.searchInput').val('');
+			searchGoods();
+		});
+		
+
+
+	</script>
+</body>
+</html>

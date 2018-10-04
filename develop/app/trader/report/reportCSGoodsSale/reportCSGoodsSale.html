@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品销售统计</title>
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../../assets/common/css/common.css">
+    <link rel="stylesheet" href="./css/reportCSGoodsSale.css">
+</head>
+<body>
+<!--顶部时间选择和店铺选择-->
+<div class="time-shop">
+    <div class="timeTab">
+        <ul>
+            <li class="active" data-navType="1">日报</li>
+            <li data-navType="2">全部</li>
+            <li data-navType="3">自定义</li>
+        </ul>
+    </div>
+    <div class="shopSelector layui-form">
+        <select id="shopSelector" lay-filter="shopSelector" lay-search> </select>
+    </div>
+</div>
+<!--时间选择和路径显示-->
+<div class="time-path">
+    <div class="timeIcon">
+        <i> </i>
+    </div>
+    <div class="timeSelector">
+        <div>
+            <input type="text" value="" onfocus="blur()" id="day">
+        </div>
+        <div>
+            <span>全部</span>
+        </div>
+        <div>
+            <input type="text" value="" onfocus="blur()" id="dateRange">
+        </div>
+    </div>
+    <div class="path">
+        <i> > </i>
+        <span class="shopName"> </span>
+    </div>
+    <div class="radioBox">
+        <ul class="clearfix">
+            <li class="active" data-index="1">
+                <i> </i>
+                <span>店外购物</span>
+            </li>
+            <li data-index="2">
+                <i> </i>
+                <span>店内下单</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--店外购物-->
+<div class="online">
+    <!--商品前十报表-->
+    <div class="topTen">
+        <!--店外购物前十报表-->
+        <div class="tabNav">
+            <a href="javascript:;" class="active" data-toptype="1">销售额TOP10</a>
+            <a href="javascript:;" data-toptype="2">销量TOP10</a>
+            <a href="javascript:;" data-toptype="3">退货TOP10</a>
+        </div>
+        <div class="topTableBox">
+            <!--销售额-->
+            <table class="layui-table sales">
+                <colgroup>
+                    <col width="100">
+                    <col width="500">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>商品名称</th>
+                    <th>销售额</th>
+                    <th>销售额占比</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                <!--<td>1</td>-->
+                <!--<td>法国进口原装水氧精华套装</td>-->
+                <!--<td>1,561,145.00</td>-->
+                <!--<td>80%</td>-->
+                <!--<td>-->
+                <!--<a href="javascript:;">查看详情</a>-->
+                <!--</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+            <!--销量-->
+            <table class="layui-table salesVolume">
+                <colgroup>
+                    <col width="100">
+                    <col width="500">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>商品名称</th>
+                    <th>销量</th>
+                    <th>销量占比</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                <!--<td>1</td>-->
+                <!--<td>法国进口原装水氧精华套装</td>-->
+                <!--<td>1,561,145.00</td>-->
+                <!--<td>80%</td>-->
+                <!--<td>-->
+                <!--<a href="javascript:;">查看详情</a>-->
+                <!--</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+            <!--退货-->
+            <table class="layui-table returnGoods">
+                <colgroup>
+                    <col width="100">
+                    <col width="500">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>商品名称</th>
+                    <th>退货件数</th>
+                    <th>退货率</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                <!--<td>1</td>-->
+                <!--<td>法国进口原装水氧精华套装</td>-->
+                <!--<td>1,561,145.00</td>-->
+                <!--<td>80%</td>-->
+                <!--<td>-->
+                <!--<a href="javascript:;">查看详情</a>-->
+                <!--</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--销售商品明细-->
+    <div class="goodsSaleList">
+        <div class="table-title-search">
+            <div class="tableTitle">
+                <span>商品统计明细</span>
+            </div>
+            <div class="tableSearch">
+                <div>
+                    <input type="text" class="layui-input" id="keyWord" placeholder="请输入商品名称" autocomplete="off">
+                    <input type="hidden" id="goodsId">
+                    <ul class="goodsResult">
+
+                    </ul>
+                </div>
+                <div>
+                    <a href="javascript:;" id="onlineExportBtn">
+                        <i> </i>
+                        <span>导出</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="tableBox">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="80">
+                    <col width="200">
+                    <col width="110">
+                    <col width="100">
+                    <col width="100">
+                    <col width="150">
+                    <col width="160">
+                    <col width="150">
+                    <col width="120">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>商品名称</th>
+                    <th>当前状态</th>
+                    <th>库存</th>
+                    <th>访客数</th>
+                    <th>商品收藏次数</th>
+                    <th>线上支付件数</th>
+                    <th>线上支付金额</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                <!--<td>01</td>-->
+                <!--<td>法国进口原装水氧精华套装</td>-->
+                <!--<td>上架</td>-->
+                <!--<td>100</td>-->
+                <!--<td>1000</td>-->
+                <!--<td>10000</td>-->
+                <!--<td>201</td>-->
+                <!--<td>2,010,000.00</td>-->
+                <!--<td>-->
+                <!--<a href="javascript:;">查看详情</a>-->
+                <!--</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+        <div class="pageBox">
+            <div id="pageSelector"></div>
+        </div>
+    </div>
+</div>
+<!--店内购物-->
+<div class="inShop">
+    <!--各类商品销售总数-->
+    <div class="totalCount">
+        <ul class="clearfix">
+            <li>
+                <div></div>
+                <div>
+                    <p>商品销售总数</p>
+                    <h4 id="productNum"> </h4>
+                </div>
+                <div id="productRat"> </div>
+            </li>
+            <li>
+                <div></div>
+                <div>
+                    <p>服务卡销售总数</p>
+                    <h4 id="cardNum"> </h4>
+                </div>
+                <div id="cardRat"> </div>
+            </li>
+            <li>
+                <div></div>
+                <div>
+                    <p>套餐销售总数</p>
+                    <h4 id="packageNum"> </h4>
+                </div>
+                <div id="packageRat"> </div>
+            </li>
+            <li>
+                <div></div>
+                <div>
+                    <p>套盒销售总数</p>
+                    <h4 id="setBoxNum"> </h4>
+                </div>
+                <div id="setBoxRat"> </div>
+            </li>
+        </ul>
+    </div>
+    <!--各类商品销售走势图-->
+    <div class="inShopTrendBox">
+        <div id="inShopTrend"></div>
+    </div>
+    <!--报表部分-->
+    <div class="mainReport">
+        <!--tab按钮，搜索框，导出按钮-->
+        <div class="tab-search-export">
+            <div class="tabNavBox">
+                <a href="javascript:;" class="active" data-type="1">商品明细</a>
+                <a href="javascript:;" data-type="2">服务卡明细</a>
+                <a href="javascript:;" data-type="3">套餐明细</a>
+                <a href="javascript:;" data-type="4">套盒明细</a>
+            </div>
+            <div class="exportBox">
+                <a href="javascript:;" id="inShopExportBtn">
+                    <i> </i>
+                    <span>导出</span>
+                </a>
+            </div>
+            <div class="searchBox">
+                <form action="javascript:;" class="layui-form">
+                    <div>
+                        <input type="text" class="layui-input" placeholder="请输入商品名称" autocomplete="off" id="inShopKeyword">
+                    </div>
+                    <button>搜索</button>
+                </form>
+            </div>
+        </div>
+        <!--报表内容-->
+        <div class="tableContent">
+            <table class="layui-table product">
+                <colgroup>
+                    <col width="50">
+                    <col width="200">
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>商品名称</th>
+                    <th>销量</th>
+                    <th>商品原价</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>人生就像是一场修行</td>-->
+                    <!--<td>100</td>-->
+                    <!--<td>1,000.00</td>-->
+                    <!--<td>-->
+                        <!--<a href="javascript:;">查看详情</a>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+            <table class="layui-table card">
+                <colgroup>
+                    <col width="50">
+                    <col width="200">
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>服务卡名称</th>
+                    <th>销量</th>
+                    <th>服务卡原价</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>人生就像是一场修行</td>-->
+                    <!--<td>100</td>-->
+                    <!--<td>1,000.00</td>-->
+                    <!--<td>-->
+                        <!--<a href="javascript:;">查看详情</a>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+            <table class="layui-table package">
+                <colgroup>
+                    <col width="50">
+                    <col width="200">
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>套餐名称</th>
+                    <th>销量</th>
+                    <th>套餐原价</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>人生就像是一场修行</td>-->
+                    <!--<td>100</td>-->
+                    <!--<td>1,000.00</td>-->
+                    <!--<td>-->
+                        <!--<a href="javascript:;">查看详情</a>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+            <table class="layui-table setBox">
+                <colgroup>
+                    <col width="50">
+                    <col width="200">
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>套盒名称</th>
+                    <th>销量</th>
+                    <th>套盒原价</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>人生就像是一场修行</td>-->
+                    <!--<td>100</td>-->
+                    <!--<td>1,000.00</td>-->
+                    <!--<td>-->
+                        <!--<a href="javascript:;">查看详情</a>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+        <!--分页器-->
+        <div class="pageBox">
+            <div id="inShopPageSelector"></div>
+        </div>
+    </div>
+
+</div>
+<div class="mask"></div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/echart/echarts.min.js"></script>
+<script src="../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="./js/reportCSGoodsSale.js"></script>
+</html>

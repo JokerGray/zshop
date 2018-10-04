@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>利润报表</title>
+    <!--<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="../../assets/layui-v2.2.2/css/layui.css">
+    <!--<link href="../../assets/hplus/css/plugins/iCheck/custom.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/accounts_profits.css">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="main-wapper layui-row" >
+    <div class="hearder layui-clear">
+        <ul class="layui-form layui-col-md12">
+            <li class="layui-col-md3 layui-col-lg2">
+                <div class="layui-form-item">
+                    <label class="layui-form-label" for="">店铺:</label>
+                    <div class="layui-input-block">
+                        <select class="layui-input shopName" id="shopName">
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="w430">
+                <div class="layui-form-item">
+                    <label class="layui-form-label" for="">时间选择:</label>
+                    <div class="layui-input-block" id="timeBox">
+                        <input type="text" class="layui-input" readonly id="dataTime">
+                        <div class="time-box disn">
+                            <ul class="time-box-ul">
+                                <li>本年</li><li>本月</li><li>上月</li><li>今日</li><li>昨日</li>
+                            </ul>
+                            <p>自定义</p>
+                            <input class="layui-input" type="text" id="date" readonly placeholder="选择时间段">
+                            <div class="time-box-div">
+                                <button class="layui-btn main-color-bg" id="saveBtn">保存</button>
+                                <button class="layui-btn bgf3" id="cancelBtn">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md3 layui-col-lg2">
+                <div class="layui-form-item">
+                    <button class="layui-btn main-color-bg ml25" id="searchBtn">查询</button>
+                    <button class="layui-btn main-color-bg ml25" id="restBtn">重置</button>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+    <div class="main"  v-cloak>
+        <ul class="data-box" style="display: none;">
+            <li>
+                <p>利润 <span>?</span></p>
+                <h3>{{profit}}</h3>
+            </li>
+            <li>
+                <p>收入 <span>?</span></p>
+                <h3>{{incomTotal}}</h3>
+            </li>
+            <li>
+                <p>支出 <span>?</span></p>
+                <h3>{{expTotal}}</h3>
+            </li>
+        </ul>
+        <div class="table-box">
+            <table id="tableMe" class="layui-table " style="text-align: center;font-size: 16px;">
+                <thead>
+                <tr>
+                    <th>收支类别</th>
+                    <th>费用类型</th>
+                    <th>金额</th>
+                </tr>
+                </thead>
+                <tbody class="" id="tbody">
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+<!--<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>-->
+<script src="../../assets/layui-v2.2.2/layui.js"></script>
+<!--<script src="../../assets/hplus/js/plugins/iCheck/icheck.min.js"></script>-->
+<script src="../common/js/jquery.nicescroll.js"></script>
+<script src="../common/js/util.js"></script>
+<!-- <script type="text/javascript" src="../../assets/_common/zxcity_ms.js"></script>-->
+<script src="js/accounts_profits.js"></script>
+</body>
+</html>

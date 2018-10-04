@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta http-equiv="cache-control" content="no-cache">
+        <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/popbox.css">
+        <title>职务底薪</title>
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="main-title container">职务：<span class="name">美容师</span></div>
+            <hr>
+            <div class="main-content container">
+                <div class="tab">
+                    <label class="checkbox-inline checked">
+                      <input type="hidden"  value="1"> 固定
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="hidden"  value="2"> 浮动
+                    </label>
+                </div>
+                <div class="con">
+                    <div class="set-con-content fixed-set-con">
+                        <p class="show">固定底薪：<span><b class="num">2000</b>元</span> <a href="javascript:showModify();" class="link-btn edit-btn">修改</a></p>
+                        <p class="input-edit hidden">固定底薪：<input type="text" class="form-control"> <button type="button" class="btn btn-primary">确定</button></p>
+                    </div>
+                    <div class="set-con-content float-set-con hidden">
+                        <table class="table table-reward">
+                            <tbody>
+                                <tr>
+                                    <td class="text-right">总业绩在</td>
+                                    <td>
+                                        <b class="num">0</b><input type="text">
+                                        ~ 
+                                        <b class="num">10000</b><input type="text">
+                                        之间，底薪为
+                                        <b class="num">2000</b><input type="text">
+                                    </td>
+                                    <td>
+                                        <a href="javascript:;" class="link-btn submit-btn">提交</a>
+                                        <a href="javascript:;" class="link-btn edit-btn">修改</a>
+                                        <a href="javascript:;" class="link-btn remove-btn">删除</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">总业绩在</td>
+                                    <td>
+                                        <b class="num">0</b><input type="text">
+                                        ~ 
+                                        <b class="num">10000</b><input type="text">
+                                        之间，底薪为
+                                        <b class="num">2000</b><input type="text">
+                                    </td>
+                                    <td>
+                                        <a href="javascript:;" class="link-btn submit-btn">提交</a>
+                                        <a href="javascript:;" class="link-btn edit-btn">修改</a>
+                                        <a href="javascript:;" class="link-btn remove-btn">删除</a>
+                                    </td>
+                                </tr>
+                                <tr class="edit">
+                                    <td class="text-right">总业绩在</td>
+                                    <td>
+                                        <b class="num">0</b><input type="text" value="0">
+                                        ~ 
+                                        <b class="num">10000</b><input type="text" value="10000">
+                                        之间，底薪为
+                                        <b class="num">2000</b><input type="text" value="2000">
+                                    </td>
+                                    <td>
+                                        <a href="javascript:;" class="link-btn submit-btn">提交</a>
+                                        <a href="javascript:;" class="link-btn edit-btn">修改</a>
+                                        <a href="javascript:;" class="link-btn remove-btn">删除</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot><tr class="text-center"><td colspan="3"><a href="javascript:;" class="btn-add">新增业绩提成档次</a></td></tr></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../../assets/jquery/jquery.min.js" charset="utf-8"></script>
+        <script src="../js/popbox.js" charset="utf-8"></script>
+    </body>
+
+    <script type="text/html" id="addTpl">
+        <tr>
+            <td class="text-right">总业绩在</td>
+            <td>
+                <b class="num">0</b><input type="text">
+                ~ 
+                <b class="num">10000</b><input type="text">
+                之间，底薪为
+                <b class="num">2000</b><input type="text">
+            </td>
+            <td>
+                <a href="javascript:;" class="link-btn submit-btn">提交</a>
+                <a href="javascript:;" class="link-btn edit-btn">修改</a>
+                <a href="javascript:;" class="link-btn remove-btn">删除</a>
+            </td>
+        </tr>
+    </script>
+</html>

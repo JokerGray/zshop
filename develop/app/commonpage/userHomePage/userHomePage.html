@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="js/rem.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/swipebox.min.css" />
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="css/layui/lay/dest/layui.all.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/jquery.swipebox.min.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="commodityShare">
+    <div class="header">
+       <div class="nav">
+            <i class="headericon"></i>
+            <div class="moreRight">
+                <!-- <i class="zcimg"></i>>
+                <img class="more" src="img/more.png" alt=""> -->
+            </div>
+       </div>
+       <p class="userName"></p>
+       <p class="userInfo">
+           <span class="info">
+               <i class="sex"></i>
+               <i class="age"></i>
+            </span>
+           <span class="address"></span>
+        </p>
+        <div class="numer">
+            <span class="zcNum"><span class="zcnuml"></span>筑城</span>
+            <span class="fansNum"><span class="fansnuml"></span>粉丝</span>
+        </div>
+    </div>
+    <div class="container">
+        <ul class="tabNav">
+            <li class="active">朋友圈<span></span></li>
+            <li>了解Ta<span></span></li>
+        </ul>
+        <div class="content">
+            <div class="friendCircle">
+                <ul>
+                    <!-- s -->
+                </ul>
+                <!-- <div class="posBom">
+                    <img class="left" src="img/goods.png" alt="">
+                    <img class="right" src="img/sl.png" alt="">
+                </div> -->
+                <div class="zanwei" style="display: none;">
+                    <img src="img/zanwei.png" alt="">
+                    <p>空空如也~~</p>
+                </div>
+            </div>
+            <div class="understand" style="display: none">
+                <ul>
+                <li class="intro border">
+                        <p class="clear"><span class="words">简介</span><span class="moreL">更多<img src="img/jt.png" alt=""></span></p>
+                        <p class="indes"></p>
+                    </li>
+                    <li class="yundianwrap">
+                        <p class="clear"><span class="words">云店</span><span class="moreL">更多<img src="img/jt.png" alt=""></span></p>
+                        <div class="slide">
+                            <div class="con">
+                                <div class="yunScroll yd scroll">
+                                </div>
+                            </div>
+                        </div>
+                    </li> 
+                    <li class="qmxwrap">
+                        <p class="clear"><span class="words">全民炫</span><span class="moreL">更多<img src="img/jt.png" alt=""></span></p>
+                        <div class="slide">
+                            <div class="con">
+                                <div class="yunScroll quanmingxun">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="lianquanwrap">
+                        <p class="clear"><span class="words">脸圈</span><span class="moreL">更多<img src="img/jt.png" alt=""></span></p>
+                        <div class="slide">
+                            <div class="con">
+                                <div class="lianScroll">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="yuebawrap">
+                        <p class="clear"><span class="words">约吧</span><span class="moreL">更多<img src="img/jt.png" alt=""></span></p>
+                        <div class="slide">
+                            <div class="con">
+                                <div class="yueScroll yueba">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="wanjiawrap">
+                        <p class="clear"><span class="words">玩家赚钱</span><span class="moreL">更多<img src="img/jt.png" alt=""></span></p>
+                        <div class="slide">
+                            <div class="con">
+                                <div class="yueScroll wanjia">
+                                    <!-- <div class="yueCon clear">
+                                        <div class="left wanImg play">
+                                            <img class="wanImg" src="img/list.png" alt="">
+                                            <span class="flag">抢标任务</span>
+                                        </div>
+                                        <div class="left renwu">
+                                            <p class="ellipsis">需要帮我下楼买水</p>
+                                            <p><span class="zuan">赚</span><span class="yang">￥</span><span class="price">58.88</span><span class="unit">元/人</span></p>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="quanziwrap">
+                        <p class="clear"><span class="words">圈子</span><span class="moreL">更多<img src="img/jt.png" alt=""></span></p>
+                        <div class="slide">
+                            <div class="con">
+                                <div class="quanScroll">
+                                    <!-- <div class="quanCon clear">
+                                        <img class="quanImg" src="img/list.png" alt="">
+                                        <p class="quanW ellipsis">吃喝玩乐圈</p>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="toutiaowrap">
+                        <p class="clear"><span class="words">智享头条</span><span class="moreL">更多<img src="img/jt.png" alt=""></span></p>
+                        <div class="slide">
+                            <div class="con">
+                                <div class="yueScroll toutiao">
+                                    <!-- <div class="yueCon clear">
+                                        <div class="left wanImg play">
+                                            <img class="wanImg" src="img/list.png" alt="">
+                                        </div>
+                                        <div class="left renwu toutiao">
+                                            <p class="ellipsis">这个世界，在残酷惩罚不改变的人</p>
+                                            <p><span class="unit">06-30</span><span class="unit">49浏览</span></p>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="zanwei" style="display: none;">
+                    <img src="img/zanwei.png" alt="">
+                    <p>空空如也~~</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="app-download isPack">
+        <a href="javascript:;" id="downloadA">
+            <div class="bg">
+                <div class="floatleft">  
+                    <img src="img/qmx_share_xiazai.png" alt="按钮"> 
+                    智享城市
+                </div>
+                <div class="floatright">下载</div>
+            </div>
+        </a>
+    </div>
+</div>
+<div id="weixin_pageto" class="wx_layer" style="display: none;">
+    <div id="msgBox" class="msg_box"> 
+        <p>1.点击右上角的</p>
+        <p>2.选择</p>
+        <span class="msg_arrow"></span>
+        <span class="msg_point"></span>
+        <span class="msg_txt"></span>
+    </div>
+</div>
+    <script id="friendCircleList" type="text/html">
+        {{# layui.each(d, function(index, item){ }}
+        <!-- "type": "0",//类型  0朋友圈 1脸圈 2圈子 3粉天地社群风采 4粉天地粉丝团队粉风采 5全民炫 -->
+        <li class="">
+                <div class="paowrap">
+                    <div class="toubu left">
+                        <div class="left">
+                            <img class="imgp" src="{{item.userFacePic}}" alt="">
+                        </div>
+                        <div class="left namep">
+                            <p>{{item.userName}}</p>
+                            <!-- <p>{{getTimeStr(Date.parse(new Date()),Date.parse(item.createTime))}}</p> -->
+                            <p>{{item.createTime}}</p>
+                        </div>
+                    </div>
+                    <div class="right dian">
+                        <img src="img/dian.png" alt="">
+                    </div>
+                </div>
+                {{# if(!isNull(item.content)){ }}
+                <p class="navtitle">{{item.content}}</p>
+                {{# } }}
+                <div class="paolist">
+                    {{# if(!isNull(item.picUrl)){ }}
+                        {{# layui.each(eval(item.picUrl), function(k,v){ }}
+                        <a href="{{v}}" class='show-big-img'>
+                                <img class="yunImg" src="{{v}}" alt="">
+                        </a>
+                        
+                        {{# }); }}
+                    {{# } }}
+                    {{# if(!isNull(item.videoPic)){ }}
+                        <div class="video img">   
+                            <video controls='controls' class='yunImg' poster="{{item.videoPic}}" src='{{item.videoUrl.replace(/\"/g,"")}}'></video>
+                            <!-- <img class="yunImg" src="{{item.videoPic}}" alt=""> -->
+                            <!-- <img class="icon" src="img/video.png" alt=""> -->
+                        </div>  
+                    {{# } }}
+
+                </div>
+                <p class="paoadd">
+                    {{# if(!isNull(item.publishAddr)){ }}
+                    <img class="left" src="img/ditu.png" alt=""><span class="left">{{item.publishAddr}}</span>
+                    {{# } }}
+                    {{# if(!isNull(item.userName)){ }}
+                    <span class="fount">来自{{item.userName}}<img class="jiant" src="img/jiant.png" alt=""></span> 
+                    {{# } }}
+                </p>
+                <div class="xinBottom">
+                    <div class="left">
+                        <span class="zannum">
+                            {{# if(item.alrUpvote==0){ }}
+                            <img class="mr10" src="img/zan.png" alt="">
+                            {{# } else if(item.alrUpvote==1){ }}
+                            <img class="mr10" src="img/zanh.png" alt="">
+                            {{# } }}
+                            {{item.appUpvoteTotal}}
+                        </span>
+                        <span><img class="mr10" src="img/writer.png" alt="">{{item.appReviewTotal}}</span>
+                    </div>
+                    <div class="right">
+                        <img src="img/xinxi.png" alt="">
+                    </div>
+                </div>
+                <span class="postypeP">
+                    {{# if(item.imgType==0 ){ }}
+                    <img src="img/xuan.png" alt="">
+                    {{# } else if(item.type==1){ }}
+                    <img src="img/lian.png" alt="">
+                    {{# } else if(item.type==2){ }}
+                    <img src="img/qz.png" alt="">
+                    {{# } else if(item.type==3){ }}
+                    <img src="img/she.png" alt="">
+                    {{# } else if(item.type==4){ }}
+                    <img src="img/fen.png" alt="">
+                    {{# } else if(item.type==5){ }}
+                    <img src="img/xuan.png" alt="">
+                    {{# } }}
+                </span>
+            </li>
+        {{# }); }}
+    </script>
+</body>
+</html>

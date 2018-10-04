@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../common/css/common.css">
+    <link rel="stylesheet" href="../../../assets/common/css/reset.css">
+    <link rel="stylesheet" href="../../../assets/layui-v2.3.0/css/layui.css" media="all">
+    <!-- <link rel="stylesheet" href="../../../assets/layer/skin/layer.css"> -->
+    <link rel="stylesheet" href="css/payments.css">
+    <script type="text/javascript" src="../common/js/vue.js"></script>
+    <title>收支</title>
+</head>
+
+<body>
+    <div class="app layui-fluid" id="app">
+        <div class="header clearfix layui-row">
+            <div class="header-tabs">
+                <span class="active" data-type="1">堂食</span>
+                <!-- <span data-type="2">外卖</span> -->
+            </div>
+            <div class="header-info">
+                <div class="my-select" id="select-cashier">
+                    <input type="text" placeholder="请选择收银员">
+                    <div class="my-select-icon">
+                        <i class="layui-icon layui-icon-triangle-d"></i>
+                    </div>
+                    <dl class="my-dl" style="display: none;">
+                        <dd data-id="" class="my-dd-this">全部</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="header-info">
+                <div class="my-select" id="select-payment">
+                    <input type="text" placeholder="请选择支付方式">
+                    <div class="my-select-icon">
+                        <i class="layui-icon layui-icon-triangle-d"></i>
+                    </div>
+                    <dl class="my-dl" style="display: none;">
+                        <dd data-id="" class="my-dd-this">全部</dd>
+                        <dd data-id="2">现金</dd>
+                        <dd data-id="0">会员</dd>
+                        <dd data-id="5">支付宝</dd>
+                        <dd data-id="4">微信</dd>
+                        <dd data-id="7">银行卡</dd>
+                        <dd data-id="6">信用卡</dd>
+                    </dl>
+                </div>
+
+            </div>
+            <div class="header-date">
+                <span>消费期间</span>
+                <div class="date-box date-start">
+                    <input class="date-time" maxlength="20"> 
+                    <i></i>
+                </div>
+                <span>&nbsp;-&nbsp;</span>
+                <div class="date-box date-end">
+                    <input class="date-time" maxlength="20">
+                    <i></i>
+                </div>
+            </div>
+            <div class="header-date">
+                <div class="layui-form-item">
+                    <label class="layui-form-label" for="">订单号：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="operatorId" class="layui-input" placeholder="订单号码">
+                    </div>
+                </div>
+            </div>
+            <div class="header-date header-button">
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn searchBtn">搜索</button><button class="layui-btn restBtn">重置</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-contents">
+            <div class="tab-content clearfix" data-type="1" id="food">
+                <div class="food-left">
+                    <table id="table-food" lay-filter="table-food"></table>
+                    <div class="food-box">
+                        <div>订单合计:
+                            <span class="food-num">0</span>单</div>
+                        <div>合计金额:￥<span class="food-money"></span>
+                        </div>
+                    </div>
+                    <div id="page-food" class="table-r"></div>
+                </div>
+                <div class="food-right" v-show="isShowFoodOrder" style="display: none;">
+                    <div class="print-title">
+                        <p>订单详情</p>
+                        <i class="layui-icon layui-icon-close"></i>
+                    </div>
+                    <div class="print-content">
+                        <div class="order-header">
+                            <div class="order-table">桌号:
+                                <span v-text="foodDetail.title"></span>
+                            </div>
+                            <div class="order-number">人数:
+                                <span v-text="foodDetail.peopleNumber"></span>人</div>
+                            <div class="order-id">订单编号:
+                                <span v-text="foodDetail.id"></span>
+                            </div>
+                            <div class="order-time">下单时间:
+                                <span v-text="foodDetail.consumeTime"></span>
+                            </div>
+                            <div class="order-menmber" v-show="foodDetail.mobile">会员名称：
+                                <span v-text="foodDetail.memberName"></span>
+                            </div>
+                            <div class="order-menmber" v-show="foodDetail.mobile">会员电话：
+                                <span v-text="foodDetail.mobile"></span>
+                            </div>
+                            <div class="order-menmber" v-show="foodDetail.mobile">整单折扣：
+                                <span v-text="foodDetail.discount/10+'折'"></span>
+                            </div>
+                            <!-- <div class="order-menmber">会员名称
+                                <span v-text="foodDetail.memberName"></span>
+                            </div> -->
+                        </div>
+                        <div class="order-body">
+                            <div class="order-food">
+                                <div class="food-item" v-for="(item,index) in foodDetail.scPresaleInfos">
+                                    <div class="food-content">
+                                        <div class="order-food-name clearfix">
+                                            <div class="food-name" v-text="item.purchaseName"></div>
+                                            <i class="food-status" v-if="item.purchaseType == 6">留</i>
+                                            <i class="food-status give" v-else-if="item.actualPayment == 0">赠</i>
+                                            <div class="food-num">X<span v-text="item.purchaseNum"></span>
+                                            </div>
+                                        </div>
+                                        <div class="order-food-desr clearfix" @click="handleClick(index)">
+                                            <div class="food-desr" v-text="item.stockName"></div>
+                                            <div class="food-price">
+                                                <span class="yj"  v-show="item.unitPrice != item.actualPayment">￥<em v-text="item.unitPrice*item.purchaseNum"></em></span>
+                                                <span class="item.unitPrice != item.actualPayment ? hyj : ''">￥ <em v-text="item.actualPayment"></em></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-food-total">
+                            <div class="">商品总数:
+                                <span v-text="foodDetail.presaleInfoNum"></span>
+                            </div>
+                            <div class="" >合计: ￥<span v-text="Number(parseFloat(foodDetail.actualPay)+parseFloat(foodDetail.discountMoney)).toFixed(2)"></span>
+                            </div>
+                        </div>
+                        <div class="order-food-discount" v-show="foodDetail.discountMoney">
+                            <div class="">优惠</div>
+                            <div class="">-￥
+                                <span v-text="foodDetail.discountMoney || 0.00"></span>
+                            </div>
+                        </div>
+                        <div class="order-food-discount" v-show="foodDetail.additionalMoney">
+                            <div class="">附加费</div>
+                            <div class="">￥
+                                <span v-text="foodDetail.additionalMoney || 0.00"></span>
+                            </div>
+                        </div>
+                        <div class="order-amount">实付:￥
+                            <span v-text="foodDetail.actualPay"></span>
+                        </div>
+                    </div>
+                    <div class="order-printing">
+                        <span>打印</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- <div class="tab-content clearfix" data-type="2" id="takeout" style="display: none;">
+                <div class="food-left">
+                    <table id="table-takeout" lay-filter="table-takeout"></table>
+                    <div class="food-box">
+                        <div>订单合计:
+                            <span class="food-num">20</span>单</div>
+                        <div>合计金额:
+                            <span class="food-money">￥2000.00</span>
+                        </div>
+                    </div>
+                    <div id="page-takeout" class="table-r"></div>
+                </div>
+                <div class="food-right">
+                    <div class="print-title">
+                        <p>订单详情</p>
+                        <i class="layui-icon layui-icon-close"></i>
+                    </div>
+                    <div class="print-content">
+                        <div class="order-header">
+                            <div class="order-table">桌号:
+                                <span>A1</span>
+                            </div>
+                            <div class="order-number">人数:
+                                <span>2人</span>
+                            </div>
+                            <div class="order-id">订单编号:
+                                <span>15645646546</span>
+                            </div>
+                            <div class="order-time">下单时间:
+                                <span>2018-08-18 11:45</span>
+                            </div>
+                        </div>
+                        <div class="order-header">
+                            <div class="order-name">姓名:
+                                <span>王乐乐</span>
+                            </div>
+                            <div class="order-phone">电话:
+                                <span>1325464754</span>
+                            </div>
+                            <div class="order-id">订单编号:
+                                <span>15645646546</span>
+                            </div>
+                            <div class="order-card">会员级别:
+                                <span>超级会员</span>
+                            </div>
+                        </div>
+                        <div class="order-body">
+                            <div class="order-food">
+                                <div class="food-item">
+                                    <div class="food-content">
+                                        <div class="order-food-name clearfix">
+                                            <div class="food-name">牛排</div>
+                                            <i class="food-status">退</i>
+                                            <div class="food-num">X
+                                                <span>1</span>
+                                            </div>
+                                        </div>
+                                        <div class="order-food-desr clearfix">
+                                            <div class="food-desr">五成熟、黑</div>
+                                            <div class="food-price">￥
+                                                <span>280.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="food-item">
+                                    <div class="food-content">
+                                        <div class="order-food-name clearfix">
+                                            <div class="food-name">牛排</div>
+                                            <div class="food-num">X
+                                                <span>1</span>
+                                            </div>
+                                        </div>
+                                        <div class="order-food-desr clearfix">
+                                            <div class="food-desr">五成熟、黑</div>
+                                            <div class="food-price">￥
+                                                <span>280.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="food-item">
+                                    <div class="food-content">
+                                        <div class="order-food-name clearfix">
+                                            <div class="food-name">阿萨德发顺丰士大夫士大夫士大夫多少分多少分都是</div>
+                                            <i class="food-status">退</i>
+                                            <div class="food-num">X
+                                                <span>11</span>
+                                            </div>
+                                        </div>
+                                        <div class="order-food-desr clearfix">
+                                            <div class="food-desr">五成熟、黑</div>
+
+                                            <div class="food-price">￥
+                                                <span>280.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="food-item">
+                                    <div class="food-content">
+                                        <div class="order-food-name clearfix">
+                                            <div class="food-name">阿萨德发顺丰士大夫士大夫士大夫多少分多少分都是</div>
+                                            <i class="food-status">退</i>
+                                            <div class="food-num">X
+                                                <span>11</span>
+                                            </div>
+                                        </div>
+                                        <div class="order-food-desr clearfix">
+                                            <div class="food-desr">五成熟、黑</div>
+
+                                            <div class="food-price">￥
+                                                <span>280.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="food-item">
+                                    <div class="food-content">
+                                        <div class="order-food-name clearfix">
+                                            <div class="food-name">阿萨德发顺丰士大夫士大夫士大夫多少分多少分都是</div>
+                                            <i class="food-status">退</i>
+                                            <div class="food-num">X
+                                                <span>11</span>
+                                            </div>
+                                        </div>
+                                        <div class="order-food-desr clearfix">
+                                            <div class="food-desr">五成熟、黑</div>
+
+                                            <div class="food-price">￥
+                                                <span>280.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-food-total">
+                            <div class="">商品总数:
+                                <span>5</span>
+                            </div>
+                            <div class="">合计: ￥
+                                <span>630.00</span>
+                            </div>
+                        </div>
+                        <div class="order-food-discount">
+                            <div class="">会员折扣</div>
+                            <div class="">-￥
+                                <span>130.00</span>
+                            </div>
+                        </div>
+                         
+                        <div class="order-total-amount">合计:￥
+                            <span>500.00</span>
+                        </div>
+                    </div>
+                    <div class="order-printing">
+                        <span>打印</span>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+ 
+    <script type="text/javascript" src="../../../assets/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../assets/layui-v2.3.0/layui.js"></script>
+    <!-- <script type="text/javascript" src="../../../assets/layer/layer.js"></script> -->
+    <script type="text/javascript" src="../../../assets/common/js/utils.js"></script>
+    <script type="text/javascript" src="../common/js/common.js"></script>
+
+
+    <script type="text/javascript" src="js/payments.js"></script>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                orderType: 0,  //支付方式
+                isShowFoodOrder: false,
+                foodList: [],
+                foodDetail: {},
+                startTime: '',  //搜索时间
+                endTime: '',
+                page: 1,
+                rows: 10,
+                operatorId: '',
+                discount: 130.00,   //优惠金额
+                
+            },
+            computed: {
+                //应付金额
+                payments: function () {
+                    return  ''; //this.foodsAmount - this.foodOrder.discount;
+                },
+                //商品总数
+                foodsNum: function () {
+                    return '' ;// this.foodOrder && this.foodOrder.foods && this.foodOrder.foods.length || '';
+                },
+                //合计
+                foodsAmount: function () {
+                    return '';
+                    var ary = this.foodOrder && this.foodOrder.foods;
+                    var total = 0;
+                    if (ary) {
+                        ary.forEach(function (item, index) {
+                            total += (item.foodPrice * item.foodNum);
+                        })
+                    }
+                    return total;
+                }
+            },
+            created: function () {
+                // this.getOrderList();
+                console.log('11111111');
+            },
+            methods: {
+                getFoodOrder: function (orderNumber) {
+                    //获取 订单详情
+                    this.foodOrder.orderNumber = orderNumber;
+                },
+                //获取订单
+                getOrderList: function () {
+                    var param = {
+                        merchantId: API.merchantId,
+                        shopId: API.shopId || '',
+                        operatorId: '',
+                        startTime: this.startTime,
+                        endTime: this.endTime,
+                        page: this.page,
+                        rows: this.rows,
+                    };
+                    // reqAjaxAsync('foodBoot/findFoodConsumeAccount', JSON.stringify(param))
+                    //     .done(function (res) {
+                    //         if (res.code == 1) {
+                    //             console.log(res.data);
+                    //         }
+                    //     });
+                },
+                handleClick: function(index){
+                    console.log(this.foodDetail.scPresaleInfos[index]);
+                }
+            }
+        });
+        // app.render();
+    </script>
+</body>
+
+
+</html>

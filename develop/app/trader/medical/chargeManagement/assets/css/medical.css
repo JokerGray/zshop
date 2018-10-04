@@ -1,0 +1,165 @@
+/*头部*/
+.header {
+    line-height: 30px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 30px; 
+}
+/*返回控制*/
+.header .goback {
+    width: 100px;
+    min-width: 70px;
+    height: 100%;
+    position: relative;
+    border: 2px solid #999;
+    border-radius:5px;
+    box-sizing: border-box;
+}
+.header .goback:hover {
+    cursor: pointer;
+}
+.header .goback span:first-child {
+    color: #999;
+    position: absolute;
+    line-height: 34px;
+    left: 20px;
+    top: 0px;
+}
+
+.header .goback span:last-child {
+    color: #333;
+    position: absolute;
+    right: 20px;
+    top: -2px;
+}
+
+.container-content {
+    padding: 20px;
+}
+
+/* 无数据 */
+.no-data {
+    width: 100%;
+    height: 600px;
+    position: relative;
+}
+.no-data img{
+    width: 108px;
+    height: 163px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -54px; 
+    margin-left: -81.5px; 
+}
+
+.inline{
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    width: 151px;
+    box-sizing: border-box;
+}
+
+.inline label{
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    min-width: 73px;
+    width: auto;
+    box-sizing: border-box;
+}
+.inline input.date{
+    outline: none;
+    border: none;
+    display: inline-block;
+    width: 115px;
+    height: 36px;
+    border: 1px solid #999;
+    border-radius: 5px 0 0 5px;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.inline .img-date {
+    border-right: 1px solid #999; 
+    border-top: 1px solid #999; 
+    border-bottom: 1px solid #999; 
+    border-radius:  0 5px 5px 0;
+    width: 36px;
+    height: 36px !important;
+    float: right;
+    background: url('../assets/img/date.png') center;
+    background-size: 24px 26px;
+    background-repeat: no-repeat;
+ }
+
+ /* 修改表格样式*/
+.bootstrap-table table>tbody>tr:nth-child(odd){
+    background-color: #fff !important;
+ }
+.bootstrap-table table>tbody>tr:nth-child(even){
+    background-color: #F6F9FF !important;
+ }
+.content-area {
+    padding: 0 20px;
+}
+ /* 隐藏 表格无记录 */
+table tbody .no-records-found {
+    display: none;
+}
+.fixed-table-loading {
+    display: none;
+}
+ 
+.table-ym tbody tr{
+    height: 60px;
+    line-height: 60px;
+}
+.table-ym thead tr{
+    height: 50px;
+    line-height: 50px;
+}
+.layui-form-select dl {
+    top: 36px;
+    border-radius: 0 0 5px 5px;
+}
+.fixed-table-loading {
+    display: none;
+}
+.pagination-info {
+    display: none;
+}
+ 
+
+
+.title-search ::-webkit-input-placeholder {
+    font-size: 14px;
+    color:#999;
+}
+.title-search   ::-moz-placeholder {/*Firefox*/
+    font-size: 14px;
+    color:#999;
+}
+.title-search   ::-ms-input-placeholder {/*IE*/
+    font-size: 14px;
+    color:#999;
+} 
+
+.table-ym-normal tbody tr{
+    height: 50px;
+    line-height: 50px;
+}
+
+.container-fluid {
+    background-color: #f9f9f9;
+    /* background-color: #333; */
+}
+
+.container-content {
+    background-color: #fff;
+    /* background-color: red; */
+    border-radius: 5px;
+}

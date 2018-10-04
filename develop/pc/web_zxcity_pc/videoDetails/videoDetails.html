@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <title>视频查看-提问</title>
+    <link rel="stylesheet" href="../common/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/css/common.css">
+    <link rel="stylesheet" href="css/videoDetails.css">
+</head>
+<body>
+<div id="title">
+    <h2></h2>
+    <button class="btn">提问</button>
+</div>
+<div id="consult">
+    <textarea id="text" name="text"></textarea>
+    <a href="javascript:void(0)">提交</a>
+</div>
+<div id="main">
+    <!--<video src="#" controls="controls"></video>-->
+    <div class="layer">
+        <div class="play">
+            <div class="square"></div>
+        </div>
+    </div>
+</div>
+<div id="replyListShow"></div>
+<!-- <div class="answer">
+    <div class="ask">
+        <button class="icon">问</button>
+        <span>天才</span>---
+        <span>女人花管理员</span>
+        <span>[2017-02-22 17:35:56]</span>
+    </div>
+    <div class="answerTxt">
+        <span>答:</span>
+        <span>天才</span>---
+        <span>超级管理员</span>
+        <span>[2017-02-28 16:57:21]</span>
+    </div>
+</div> -->
+</body>
+<script src="../common/scripts/jquery-1.11.1.min.js"></script>
+<script src="../common/scripts/commonUtil.js"></script>
+<script>
+    //获取视频名称
+    var videoName = CommonUtil.getUrlParam('catalogName') || "";
+    var videoId = CommonUtil.getUrlParam("videoId");
+    $('#title h2').html(decodeURI(videoName));
+
+    //提问栏弹出隐藏
+    $('#title .btn').on('click', function () {
+        $('#consult').slideToggle(500);
+    });
+
+    //提交提问信息
+    $('#consult a').on('click', function () {
+        var txt = $('#text').val();
+        //提交问题
+        if (txt != null) {
+            var txtParam = '{"id":"10110","vedioId":"1","question":"' + txt + '"}';
+            CommonUtil.ajaxData('shopWeb/vedioQuestion', txtParam);
+        } else {
+            alert('提问内容不得为空!');
+        }
+    });
+
+    //问答列表
+    function getMessage() {
+        var answerParam = '{"vedioId":' + videoId + '}';
+        var answerTxtData = CommonUtil.ajaxData('shopWeb/vedioReply', answerParam);
+        if (answerTxtData.code == 1) {
+            var html = '';
+            for (var i = 0; i < answerTxtData.data.length; i++) {
+                var row = answerTxtData.data[i];
+                html += '<div class="answer"><div class="ask">' +
+                    '<button class="icon">问</button>' +
+                    '<span>' + row.question + '</span>---' +
+                    '<span>' + row.userName + '</span>' +
+                    '<span>' + row.questionTime + '</span>' +
+                    '</div>';
+                var answer = row.replyList;
+                for (var n = 0; n < answer.length; n++) {
+                    html += '<div class="answerTxt">' +
+                        '<span>答:</span>' +
+                        '<span>' + answer[n].reply + '</span>---' +
+                        '<span>' + answer[n].userName + '</span>' +
+                        '<span>' + answer[n].replyTime + '</span>' +
+                        '</div>';
+                }
+                html += '</div></div>';
+            }
+            $('#replyListShow').html(html);
+        }
+    }
+    getMessage();
+
+    //视频播放
+    function getVideoUrl() {
+        var param = '{"catalogId": ' + videoId + '}';
+        var res = CommonUtil.ajaxData("shopWeb/getVideoListDetails", param);
+        if (res.code == 1) {
+            var html = '';
+            for (var i = 0; i < res.data.length; i++) {
+                var row = res.data[i];
+                var vedioUrl = row.vedioUrl;
+                html = '<video src="' + vedioUrl + '"></video>'
+            }
+            $('#main').prepend(html);
+
+            //点击播放
+            $('#main').on('click', function () {
+                $('.layer').hide();
+                $('#main video')[0].play();
+            })
+        } else {
+            console.error(res.msg);
+        }
+    }
+    getVideoUrl();
+</script>
+</html>

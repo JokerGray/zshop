@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="wekit">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./static/flexible/flexible.js"></script>
+    <script src="./static/artTemplate/artTemplate.js"></script>
+    <script src="./static/share/share.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+
+    <title>粉丝权益分享</title>
+</head>
+<body style="font-size: 12px;max-width: 640px;margin: 0 auto;">
+        <div id="header">
+            <div class="header_logo">
+                <img src="./src/img/logo.png">
+            </div>
+            <div class="header_load btn">
+                打开
+            </div>
+        </div>
+        
+    <div class="content">
+        
+    </div>
+    <a href="/24hours/share24/getPackage.html?sn=15w0&yw=circle&cp=1" class="footer download_link"> <img src="./src/img/footer.png" alt=""> </a>
+
+    <div id="contBlank" style="display: none;">
+        <span class="blank_icon"></span>
+        <p class="msg_miss">哎呀！您访问的地址不存在</p>
+    </div>
+
+    <div class="model">
+        <div class="model_cont">
+            <p class="text1">1、点击右上角的&nbsp;&nbsp;<span></span></p>
+            <p class="text2">2、选择&nbsp;&nbsp;<span></span></p>
+            <div class="pointTo"></div>
+        </div>
+    </div>
+
+    
+
+    <script src="./static/pub/pub.js"></script>
+    
+
+<script type="text/html" id="showCont">
+
+    <div class="cover-img" id="coverImg" onclick="gotoCircle()">
+        <div class='lv-detail'>
+            <div class='lv-tubiao'></div>
+            <span class='lv-name'></span>
+        </div>
+        <img src="./src/img/beijing@2x.png" alt="" style="height: 100%; width: 100%;">
+        <div class="back-btn"></div>
+        <div class="swiper-container pinkLvl-nav swiper-container-horizontal" id="pinkLvl-nav">
+		
+            <div class="swiper-wrapper" id="lvlList" style="">
+                <!-- {{each data.businessList as business index}}
+                    <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                        <div class="lvlicon" onclick="slideTo("+index+")"> V{{index+1}} </div>
+                    </div>
+                {{/each}} -->
+            </div>
+
+        </div>
+    </div>
+    <div class="activity-about">
+        <div>
+                
+        </div>
+        
+<!-- 111 -->
+<div class="pink-power">
+    <div class='zhuanshu'>
+        <div class='title'>
+            <img src="./src/img/huiyuanjibeitubiao@2x.png" alt="">
+            <span>专属权益</span>
+        </div>
+        <div class='zhuan-content'>
+            <div class='detail'>
+                <div class='qichong'>
+                    <div class='text'>起充金额</div>
+                    <span class='num'>10 </span> <span class='unit'>元</span>
+                </div>
+                <div class='zengsong'>
+                    <div class='text'>赠送金额</div>
+                    <span class='num'>10 </span> <span class='unit'>元</span>
+                </div>
+            </div>
+            <div class='detail'>
+                <div class='zhekou'>
+                    <div class='text'>尊享折扣</div>
+                    <span class='num'>10 </span> <span class='unit'>折</span>
+                </div>
+                <div class='jingfei'>
+                    <div class='text'>活动经费</div>
+                    <span class='num'>10 </span> <span class='unit'>元</span>
+                </div>
+            </div>
+        </div>
+        <div class='jieshao'>
+            <div>尊享转介绍费<span class='jieshaofei'>600</span>元</div>
+        </div>
+        <div class='title'>
+            <span>粉丝赠品</span>
+        </div>
+        <div class='gifts'>  
+            <!-- <div class='gift-box'>
+                <img src="./src/img/beijing@2x.png" alt="" class='gift-img'>
+                <div class='gift-detail'>
+                    <div class='gi-describe'>小米超大容量便携式充电宝</div>
+                    <div class='price-box'>
+                        <div>￥<span class='price'>666</span>元</div>
+                        <div>x<span>222</span></div>
+                    </div>
+                </div>
+                <div class='gift-bg'>
+                    <div class='gift-title'>礼品</div>
+                </div>
+            </div> -->
+        </div>
+
+        <div class='title'>
+            <span>特殊权益</span>
+        </div>
+        <div class='privalege'></div>
+    </div>
+
+</div>
+
+<!-- 舞台 讲座-->
+    <div class="chair" id="chair" style="">
+
+        <h5 class="power-title chair-title">讲座论坛</h5>
+        <div class="swiper-container chairShow swiper-container-horizontal swiper-container-autoheight" id="chairShow">
+            <div class="chair-list swiper-wrapper" id="chariLst">
+                {{if data.funsStageList[0]}}
+                    {{each data.funsStageList[0].stage as stage index}}
+                        <div class="swiper-slide chairBox swiper-slide-active" style="display: block;">
+                            <div class="video-box">
+                                <img class="chairImg" alt="" src="{{stage.logo}}">
+                                <!--<video width="300px" height="130px"></video>
+                                <div class="play"></div>-->
+                            </div>
+                            <div class="video-describe">
+                                {{stage.title}}
+                            </div>
+                        </div>
+                    {{/each}}
+                {{/if}}
+                    
+            </div>
+        </div>
+
+        <div class="stage" id="stage" style="">
+                <h5 class="power-title chair-title">绽放舞台</h5>
+                <div class="swiper-container stageShow swiper-container-horizontal swiper-container-autoheight" id="stageShow">
+                    <div class="chair-list swiper-wrapper" id="stageLst">
+                        {{if data.funsStageList[0]}}
+                            {{each data.funsStageList[1].stage as stage index}}
+                                <div class="swiper-slide stageBox swiper-slide-active" style="display: block;">
+                                    <div class="video-box">
+                                        <img class="chairImg" alt="" src="{{stage.logo}}">
+                                        <!--<video width="300px" height="130px"></video>
+                                                                    <div class="play"></div>-->
+                                    </div>
+                                    <div class="video-describe">
+                                            {{stage.title}}
+                                    </div>
+                                </div>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+
+<!-- 111 -->
+
+       
+        
+
+    </div>
+</script>
+
+</body>
+</html>

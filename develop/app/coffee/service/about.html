@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<title>关于我们</title>
+	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css"> 
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			line-height: 1.8;
+			box-sizing: border-box;
+			-webkit-tap-highlight-color: transparent;
+			font-family:-apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+		}
+		html, body{
+			font-size: 16px;
+		}
+		.main_view{
+			display: block;
+			margin: 0 auto;
+			max-width: 750px;
+		}
+		.content {
+			margin: 0 12px;
+			color: #333;
+		}
+		.content_title {
+			color: #349cee;
+			border-left: 3.5px solid #349cee;
+			font-size: 18px;
+			padding-left: 10px;
+			height: 22px;
+			line-height: 22px;
+			margin-top: 22.5px;
+		}
+		.content_detail {
+			font-size: 14px;
+			margin-bottom: 10px;
+		}
+		.dot {
+			font-size: 1rem;
+		}
+		.content_detail span {
+			display: block;
+			margin-top: 6px;
+		}
+		.img_content {
+			margin-top: 5px;
+		}
+		.img_content img ,
+		.bottom_content img{
+			width: 100%;
+			height: 100%;
+		}
+		.bottom_content {
+			margin: 0 auto;
+			margin-top: 15px;
+		}
+		.bottom_content .bottom_map {
+			padding-bottom: 20px;
+			border-bottom:  1px solid #dadada;
+		}
+		.bottom_content .bottom_code {
+			margin: 0 auto;
+			margin-top: 20px;
+			margin-bottom: 100px;
+			width: 150px;
+			height: 150px;
+			overflow: hidden;
+		}
+		/*后面添加的管理员项*/
+		.hidden{
+			display: none !important;
+		}
+		.adminBtn{
+			display: inline-block;
+			float: right;
+			font-size: 14px;
+			padding: 0 8px;
+			line-height: 18px;
+			border: 1px solid #ff9d2a;
+			color: #ff9d2a;
+			border-radius: 18px;
+			cursor: pointer;
+		}
+		.dialog{
+			padding: 0.5rem !important;
+		}
+		#modal{
+			transition: all 0.2s ease-out;
+		}
+		.dialogTitle{
+			display: block;
+			text-align: center;
+			font-size: 18px;
+			color: #000;
+			padding: 10px 0;
+		}
+		.pwdInput{
+		    display: block;
+		    margin: 1rem auto 0;
+		    width: 90%;
+		    height: 34px;
+		    padding: 6px 12px;
+		    font-size: 14px;
+		    line-height: 1.42857143;
+		    color: #555;
+		    background-color: #fff;
+		    background-image: none;
+		    border: 1px solid #dadada;
+		    border-radius: 4px;
+		    outline: none;
+		    box-sizing: border-box;
+		    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+		    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+		    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+		}
+		.pwdInput:focus{
+			border-color: #66afe9;
+			outline: 0;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+			box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+		}
+		.tips{
+			display: block;
+			position: absolute;
+			width: 90%;
+			padding: 0.2rem 0 0 0.75rem;
+			margin: 0 auto;
+			font-size: 0.8rem;
+			color: red;
+			text-align: left;
+		    line-height: 1;
+		}
+		a.submitBtn{
+			display: block;
+			margin: 1.5rem auto 0.5rem;
+			width: 90%;
+			text-align: center;
+			font-size: 1rem;
+			line-height: 2.5rem;
+			color: #fff;
+			background-color: #349CEE;
+			border-radius: 0.5rem;
+			text-decoration: none;
+		}
+		a.submitBtn:active{
+			opacity: 0.8;
+		}
+	</style>
+</head>
+<body>
+	<div class="main_view">
+		<div class="content">
+			<div>
+				<div class="content_title">走进荆楚创客 <span class="adminBtn" id="showModal">管理员项</span></div>
+				<div class="content_detail">
+					<div>
+						<span>2016年3月1日成立的荆楚创客咖啡是湖北省大学生创新创业俱乐部所在地，位于武汉市洪山区珞狮路122号（湖北省高等学校毕业生就业指导服务中心二楼）。</span>
+					</div>
+				</div>	
+			</div>
+			<div class="img_content">
+				<img src="../img/ckkf_zp1.png">
+			</div>
+			<div class="img_content">
+				<img src="../img/ckkf_zp2.png">
+			</div>
+
+			<div class="content_detail">
+					<div style="margin-top: 10px">
+						<span>创客空间占地约1000平米，设有交流区、展示区、培训室、舞台活动区等，是开展大学生创新创业文化交流活动和创业项目孵化的集中场所，旨在加强大学生创新创业文化建设，培养大学生创新创业意识与能力，推进大学生自主创业工作。主要功能是组织创新创业论坛、创业讲座培训、创业规划大赛、创业经验交流、创业项目推介等主题沙龙活动，为大学生之间，大学生与企业家、创业成功人士、专家学者、创业导师、金融投资经理人和政府部门负责人之间随时沟通、深入交流、学习研讨提供平台。</span>
+					</div>
+			</div>
+
+			<div class="img_content">
+				<img src="../img/ckkf_zp3.png">
+			</div>
+			<div class="img_content">
+				<img src="../img/ckkf_zp4.png">
+			</div>
+			<div class="img_content">
+				<img src="../img/ckkf_zp5.png">
+			</div>
+			<div class="img_content">
+				<img src="../img/ckkf_zp6.png">
+			</div>
+
+			<div class="content_detail">
+					<div style="margin-top: 10px">
+						<span>在教育厅领导的高度重视和厅学生处等处室大力支持下，2016年荆楚创客咖啡各项工作进展顺利，呈现出活动多样、特色鲜明、成效明显的良好态势。2016年共举办80余场活动，其中大型活动28场，100多名创业导师指导，90多所高校师生参与，10000多名具有创业意愿或正在创业的大学生参加。</span>
+					</div>
+			</div>
+
+			<div class="img_content">
+				<img src="../img/ckkf_zp7.png">
+			</div>
+			<div class="img_content">
+				<img src="../img/ckkf_zp8.png">
+			</div>
+			<div class="img_content">
+				<img src="../img/ckkf_zp9.png">
+			</div>
+			<!--<div class="img_content">
+				<img src="../img/ckkf_zp10.png">
+			</div>-->
+			<div class="img_content">
+				<img src="../img/ckkf_zp11.png">
+			</div>
+			<div class="img_content">
+				<img src="../img/ckkf_zp12.png">
+			</div>
+
+			<div class="content_detail">
+				<div style="margin-top: 10px">
+					<span>目前，荆楚创客咖啡在湖北省高校大学生创业圈以及中小企业创业家圈具有了一定的影响力，逐步形成了湖北省高校大学生创新创业服务机构的原始品牌。面对“大众创业、万众创新”的新形势，荆楚创客咖啡专注于服务全省大学生创新创业工作，努力打造成培训辅导型、创客孵化型、专业服务型、投资促进型的综合性众创空间。</span>
+				</div>
+			</div>
+
+			<div style="margin-top: 10px">
+				<div class="content_title">拜访荆楚创客</div>
+				<div class="content_detail">
+					<div style="margin-top: 15px">
+						<span><strong>地址: <br/></strong>
+							湖北省武汉市洪山区珞狮路122号（武汉理工大学东院正门北侧）理工设计院暨省就业指导中心二楼。
+						</span>
+						<span style="margin-top: 20px">
+							<strong>联系方式: <br/></strong>
+							电话：027-87858563<br>
+							手机：13476042786（马先生）
+						</span>
+						<span style="margin-top: 20px">
+							<strong>公交线路: <br/></strong>
+							乘坐59路，510路，519路，521路，583路，703路，715路，728路，804路，576路到武珞路街道口站；或乘坐66路，576路，591路，817路，586路，613路到珞狮路武工大（珞狮路理工大）站。
+						</span>
+						<span style="margin-top: 20px">
+							<strong>地铁线路: <br/></strong>
+							乘坐地铁2号线到街道口站（A或者B出口）下车，往珞狮路理工大学东门方向步行300米。
+						</span>
+					</div>
+				</div>	
+			</div>
+
+			<div class="bottom_content">
+				<div class="bottom_map">
+					<img src="../img/ckkf_dituzp.png">
+				</div>
+				<div class="bottom_code">
+					<img src="../img/qrcode_jcck.png">
+				</div>		
+			</div>
+		</div>
+	</div>
+	
+	<div class="js_dialog" id="modal" style="display: none;">
+        <div class="weui-mask" onclick="hideModal()"></div>
+        <div class="weui-dialog weui-skin_android">
+            <div class="weui-dialog__bd dialog">
+                <div class="dialogTitle">请输入管理员密码</div>
+                <input id="password" class="pwdInput" type="password" value="" placeholder="密码" />
+                <p class="tips" style="display: none;">请输入密码！</p>
+                <a class="submitBtn" href="javascript:checkPwd();">确定</a>
+            </div>
+        </div>
+    </div>
+	
+	<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.2/weui.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			FastClick.attach(document.body);
+			$('#showModal').click(function(){
+				$('#modal').show();
+			})
+		})
+		
+		function hideModal(){
+			$('#modal').hide();
+			$('#modal .tips').hide();
+			document.getElementById("password").value = '';
+		}
+		var checking = false;
+		// 密码校验
+		function checkPwd(){
+			if(checking) return;
+			var val = document.getElementById("password").value;
+			if(val.length == 0){
+				return $('#modal .tips').show().text('请输入密码！');
+			}
+			var loading;
+			$.ajax({
+				type:"post",
+				dataType: 'json',
+				url:"/zxcity_restful/ws/rest",
+				data:{
+					cmd: 'coffee/verifyPassword',
+					data: JSON.stringify({
+						password: val,
+					}),
+					version: 1
+				},
+				beforeSend: function () {
+					checking = false
+					$('#modal .tips').hide();
+					loading = weui.loading('检查中...');
+				},
+				complete: function () {
+					loading.hide();
+				},
+				success: function(data){
+					if(data.code == 1){
+						weui.toast('校验成功', function () {
+							location.replace('application_manage.html');
+						});
+					} else {
+						$('#modal .tips').show().text(data.msg);
+					}
+					checking = data.code == 1;
+				},
+				error: function (){
+					$('#modal .tips').show().text('请求超时，请重试……');
+					checking = false;
+				}
+			});
+		}
+		
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

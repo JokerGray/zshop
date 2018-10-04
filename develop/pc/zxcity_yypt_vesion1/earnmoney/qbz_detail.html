@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抢标赚详情</title>
+	<link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+	<link rel="stylesheet" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css">
+	<link rel="stylesheet" type="text/css" href="../common/assets/hplus/css/plugins/bootstrap-table/bootstrap-table.min.css" /> 
+</head>
+<style>
+	.status i{
+		position: absolute;
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		border:6px solid #666;
+		margin-left: 7px;
+	}
+	.status .top{
+		border-left-color: transparent;
+		border-right-color: transparent;
+		border-top-color: transparent;
+		top: 5px;
+	}
+	.status .bottom{
+		border-left-color: transparent;
+		border-right-color: transparent;
+		border-bottom-color: transparent;
+		top: 19px;
+	}
+
+	
+
+	span.status {
+	    display: inline-block;
+	    width: 100%;
+	    height: 100%;
+	}
+
+	.active{
+		border-bottom-color:#23c6c8 !important; 
+	}
+	.activeBottom{
+		border-top-color:#23c6c8 !important; 
+	}
+
+	.th-inner{
+		padding:0 !important;
+		height: 36px !important;
+		line-height: 36px !important;
+	}
+</style>
+<body>
+	<div class="table-tool-content">
+		<div class="container-fluid table-content zwz_table">
+			<table class="table table-hover table-condensed" id="qbzTable">
+				
+			</table>
+		</div>
+	</div>
+</body>
+<script src="../common/assets/hplus/js/jquery.min.js"></script>
+<script src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui/lay/dest/layui.all.js"></script>
+<script src="../common/js/util/echarts.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="js/earnmoney_common.js"></script>
+
+<script>
+	var taskStatus;
+	// 获取url地址信息
+	function getQueryString (name) {
+		var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+		var r = window.location.search.substr(1).match(reg)
+		return r !== null ? encodeURI(r[2]) : ''
+	}
+
+	var taskId = getQueryString('taskId');
+
+	// bootstrap-table
+    var TableInit = function () {
+		var oTableInit = new Object();
+		//初始化Table
+		oTableInit.Init = function () {
+		  $('#qbzTable').bootstrapTable({
+		    url: '/zxcity_restful/ws/rest',
+		    method: 'POST',
+			ajaxOptions:{
+    	        headers:{
+    	            apikey: 'test'
+    	    	}
+    	    },
+			responseHandler: function(res){
+				res.rows = res.data;
+    	        return res;
+    	    },
+		    striped: true,			//是否显示行间隔色
+		    cache: false,			//是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+		    pagination: true,		//是否显示分页（*）
+		    sortable: false,		//是否启用排序
+			sortName : "orderId",	//排序的字段
+		    sortOrder: "desc",		//排序方式
+		    contentType: "application/x-www-form-urlencoded",	//解决POST，后台取不到参数
+		    queryParams: oTableInit.queryParams,				//传递参数（*）
+		    sidePagination: "server",//分页方式：client客户端分页，server服务端分页（*）
+		    pageNumber:1,			//初始化加载第一页，默认第一页
+		    pageSize: 10,			//每页的记录行数（*）
+		    pageList: [10, 25, 50, 100],	//可供选择的每页的行数（*）
+		    strictSearch: true,
+		    clickToSelect: false,	//是否启用点击选中行
+		  // height: 500,			//行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+		    uniqueId: "uniqueId",	//每一行的唯一标识，一般为主键列
+		    cardView: false,		//是否显示详细视图
+		    detailView: false,		//是否显示父子表
+		    singleSelect : true,
+		    columns: [
+		    	{ field: 'userName', title: '抢标人', width: 200, align: 'center'},
+		        { field: 'userPhone', title: '用户电话', width: 150, align: 'center'},
+		        { field: 'bidTime', title: '抢标时间', width: 150, align: 'center' },
+		        { field: 'status', title: '<span class="status">状态 <i class="top active"></i><i class="bottom"></i></span>', width: 100, align: 'center', formatter: function(val, row, index){
+		        	if(val == 1){
+		        		return '待审核';
+		        	}else if(val == 2){
+		        		return '审核通过';
+		        	}else if(val == 3){
+		        		return '审核拒绝';
+		        	}else if(val == 4){
+		        		return '完成';
+		        	}else if(val == 6){
+		        		return '未中标'
+		        	}
+		        }}
+		    ]
+		 });
+	};
+	//得到查询的参数
+	oTableInit.queryParams = function (params) {
+		var res = {
+            cmd: 'earnmoney/getTaskReportForOperateDetail',
+            data: JSON.stringify({
+            	taskStatus : taskStatus,
+			    taskId : taskId,
+                pagination: {
+                    page: params.offset/params.limit + 1,
+                    rows: params.limit
+                }
+            }),
+            version: 2
+        }
+         return res;
+	};
+	return oTableInit;
+};
+
+$(function(){
+	taskStatus = 1;
+	var t = TableInit();
+	t.Init();
+})
+
+
+// 点击事件
+$('#qbzTable').on('click','th .status',function(){
+	if($($(this).children()[0]).hasClass('active')){
+		taskStatus = 2;
+		$('#qbzTable').bootstrapTable('destroy');
+		var t = TableInit();
+		t.Init();
+		$('#qbzTable').find('.top').removeClass('active').siblings().addClass('activeBottom');
+	}else if($($(this).children()[1]).hasClass('activeBottom')){
+		taskStatus = 1;
+		$('#qbzTable').bootstrapTable('destroy');
+		var t = TableInit();
+		t.Init();
+		$('#qbzTable').find('.bottom').removeClass('activeBottom').siblings().addClass('active');
+	}
+
+})
+</script>
+</html>

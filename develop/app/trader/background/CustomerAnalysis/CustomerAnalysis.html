@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>客情分析</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../../assets/paging/dist/paging.css">
+    <link rel="stylesheet" href="../../assets/common/css/paging.css">
+    <link rel="stylesheet" href="../../assets/select2/select2.min.css">
+    <link rel="stylesheet" href="css/CustomerAnalysis.css">
+</head>
+<body class="clearfix">
+<!--客户列表和搜索客户-->
+<div class="customerList">
+    <div class="searchBox">
+        <form action="javascript:;" id="submit">
+            <input type="text" class="searchCustomer" placeholder="请输入姓名/手机号" id="keyword" autocomplete="off">
+            <button class="searchBtn" id="searchBtn"></button>
+        </form>
+    </div>
+    <div class="listContentBox"></div>
+    <div class="account-page-select"></div>
+</div>
+<!--客户详情-->
+<div class="customerContent">
+    <div class="navsBox">
+        <a href="javascript:;" class="active" data-navType="11">基本信息</a>
+        <a href="javascript:;" data-navType="22">服务卡项</a>
+        <a href="javascript:;" data-navType="33">订单记录</a>
+        <a href="javascript:;" data-navType="44">服务单记录</a>
+        <a href="javascript:;" data-navType="55">到店记录</a>
+        <a href="javascript:;" data-navType="66">充值记录</a>
+        <a href="javascript:;" data-navType="77">预约记录</a>
+        <a href="javascript:;" data-navType="88">访谈信息</a>
+    </div>
+    <div class="filterBox">
+        <!--<div class="statusSelect">-->
+            <!--<div class="statusNav">-->
+                <!--<a href="javascript:;" class="active">可使用</a>-->
+                <!--<a href="javascript:;">已用完</a>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div id="ArrivalAction">
+            <label>到店行为：</label>
+            <select class="ArrivalAction" id="arrival_action">
+                <option value="">全部</option>
+                <option value="1">充值</option>
+                <option value="2">销售</option>
+                <option value="4">定金预售</option>
+                <!--<option value="5">消费</option>-->
+                <option value="3">消耗</option>
+            </select>
+        </div>
+        <div id="selectShop">
+            <label>店铺选择：</label>
+            <select class="selectShop"></select>
+        </div>
+        <div id="reservationStatue">
+            <label>预约状态：</label>
+            <select class="ArrivalAction" id="reservation_statue">
+                <option value="">全部</option>
+                <option value="2">待确认</option>
+                <option value="0">预约中</option>
+                <option value="1">已完成</option>
+                <option value="-1">已取消</option>
+            </select>
+        </div>
+        <div id="addBtnBox">
+            <button id="addBtn">新增</button>
+        </div>
+        <div id="selectDateBox">
+            <label>时间选择：</label>
+            <input type="text" class="selectDate" value="" id="selectDate" onclick="blur()" placeholder="">
+        </div>
+    </div>
+    <div class="navInfo">
+        <!--基本信息-->
+
+        <!--服务卡项-->
+        <!--订单记录-->
+
+        <!--服务单记录-->
+
+        <!--到店记录-->
+
+        <!--充值记录-->
+
+        <!--预约记录-->
+
+        <!--访谈记录-->
+
+    </div>
+    <div class="pageBox clearfix">
+        <div class="pageTips">
+            <span>显示第<span id="pageStart">1</span>条到第<span id="pageEnd">10</span>条记录，总共<span id="pageTotal">100</span>记录，每页显示</span>
+            <div class="btn-group dropup ">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    10 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:;">10</a></li>
+                    <li><a href="javascript:;">20</a></li>
+                    <li><a href="javascript:;">50</a></li>
+                    <li><a href="javascript:;">100</a></li>
+                </ul>
+            </div>
+            <span>条记录</span>
+        </div>
+        <div class="pageSelector"></div>
+    </div>
+</div>
+<!--正在加载时显示白色的半透明遮罩-->
+<div class="mask"></div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/layer-v3.1.1/layer.js"></script>
+<script src="../../assets/paging/dist/paging.js"></script>
+<script src="../../assets/laydate-v5.0.9/laydate.js"></script>
+<script src="../../assets/select2/select2.min.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="js/CustomerAnalysis.js"></script>
+<script>
+    $('.customerList').height($(window).height());
+    $('.customerContent').height($(window).height());
+    $('.navInfo').height($(window).height()-$('.navsBox').outerHeight()-$('.filterBox').height()-$('.pageBox').outerHeight());
+    $('.mask').css({'width':$(window).width(),'height':$(window).height()})
+</script>
+<!--基本信息-->
+<script type="text/html" id="baseInformation">
+    {{each data item index}}
+    <div class="baseInformation">
+        <p>
+            <!--<span>客户名称：{{data[0].memberName}}</span>-->
+            <span>账户类型：{{item.businessName}}</span>
+            <span>本金余额：{{item.principal}}元</span>
+            <span>卡项余额：{{item.interest}}元</span>
+        </p>
+        <p>
+            <span>办理时间：{{item.createTime}}</span>
+        </p>
+    </div>
+    {{/each}}
+</script>
+<!--服务卡项-->
+<script type="text/html" id="serviceCardItem">
+    <div class="serviceCardItem">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>名称</th>
+                <th style="min-width:160px">店铺</th>
+                <th style="min-width:80px">总次数</th>
+                <th style="min-width:180px">剩余次数</th>
+                <th style="min-width:80px">消费次数</th>
+                <th style="min-width:80px">服务业绩</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each data item index}}
+            <tr>
+                <td>{{item.cardName}}</td>
+                <td>{{item.shopName}}</td>
+                <td>{{item.totalNum}}{{ /^[0-9]*$/.test(item.totalNum)?'次':''}}</td>
+                <td>{{item.remainNum}}{{ /^[0-9]*$/.test(item.remainNum)?'次':''}}</td>
+                <td>{{item.consumeNum}}次</td>
+                <td>{{item.achievements}}元</td>
+                <td><a href="javascript:;" class="viewBtn" data-purchaseid="{{item.purchaseId}}" data-cardname="{{item.cardName}}"></a></td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{if data.length ===0}}
+        <div class="noDataTip">暂无服务卡记录！</div>
+        {{/if}}
+    </div>
+</script>
+<!--订单记录-->
+<script type="text/html" id="orderRecord">
+    <div class="orderRecord">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>订单号</th>
+                <th>下单时间</th>
+                <th>开单人</th>
+                <th>实际支付</th>
+                <th>支付方式</th>
+                <!--<th>折扣</th>-->
+                <th>消费账户</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each data item index}}
+            <tr>
+                <td>{{item.orderId}}</td>
+                <td>{{item.consumeTime}}</td>
+                <td>{{item.saleMan}}</td>
+                <td>{{item.actualPay}}元</td>
+                <td>
+                    {{if item.payType == 0}}
+                    &nbsp;本金支付&nbsp;
+                    {{/if}}
+                    {{if item.payType == 1}}
+                    &nbsp;卡项支付&nbsp;
+                    {{/if}}
+                    {{if item.payType == 2}}
+                    &nbsp;现金支付&nbsp;
+                    {{/if}}
+                    {{if item.payType == 3}}
+                    &nbsp;组合支付&nbsp;
+                    {{/if}}
+                    {{if item.payType == 4}}
+                    &nbsp;微信支付&nbsp;
+                    {{/if}}
+                    {{if item.payType == 5}}
+                    &nbsp;支付宝支付&nbsp;
+                    {{/if}}
+                    {{if item.payType == 6}}
+                    &nbsp;信用卡支付&nbsp;
+                    {{/if}}
+                    {{if item.payType == 7}}
+                    &nbsp;储蓄卡支付&nbsp;
+                    {{/if}}
+                    {{if item.payType == 9}}
+                    &nbsp;云店线上支付&nbsp;
+                    {{/if}}
+                </td>
+                <!--<td>-->
+					<!--{{if item.discount == 100}}-->
+						<!--无折扣-->
+					<!--{{else}}-->
+						<!--{{item.discount*0.1}}折-->
+					<!--{{/if}}-->
+				<!---->
+				<!--</td>-->
+                <td>{{item.businessName}}</td>
+                <td><a href="javascript:;" class="viewBtn" data-orderid="{{item.orderId}}"></a></td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{if data.length ===0}}
+        <div class="noDataTip">暂无订单记录！</div>
+        {{/if}}
+    </div>
+</script>
+<!--服务单记录-->
+<script type="text/html" id="serviceTicketecord">
+    <div class="serviceTicketecord">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th style="min-width: 80px">订单号</th>
+                <th style="min-width: 80px">服务单号</th>
+                <th>服务卡项</th>
+                <th style="min-width: 80px">服务人员</th>
+                <th style="min-width: 100px">服务设备</th>
+                <th style="min-width: 80px">开单者</th>
+                <th style="min-width: 150px">时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each data item idnex}}
+            <tr>
+                <td>{{item.presaleId}}</td>
+                <td>{{item.id}}</td>
+                <td>{{item.purchaseName}}</td>
+                <td>{{item.waiterName}}</td>
+                <td>{{item.facilityName}}</td>
+                <td>{{item.createName}}</td>
+                <td>{{item.consumeTime}}</td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{if data.length ===0}}
+        <div class="noDataTip">暂无服务单记录！</div>
+        {{/if}}
+    </div>
+</script>
+<!--到店记录-->
+<script type="text/html" id="ArrivalRecord">
+    <div class="ArrivalRecord">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>到店时间</th>
+                <th>店铺</th>
+                <th>到店行为</th>
+                <th>消费账户</th>
+                <th>消费金额</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each data item index}}
+            <tr>
+                <td>{{item.consumeTime}}</td>
+                <td>{{item.shopName}}</td>
+                {{if item.orderType == 1}}
+                <td>充值</td>
+                {{else if item.orderType == 2}}
+                <td>销售</td>
+                {{else if item.orderType == 4}}
+                <td>定金预售</td>
+                {{else if item.orderType == 3}}
+                <td>消耗</td>
+                {{/if}}
+                <td>{{item.businessName}}</td>
+                <td>{{item.actualPay}}元</td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{if data.length ===0}}
+        <div class="noDataTip">暂无记录！</div>
+        {{/if}}
+    </div>
+</script>
+<!--充值记录-->
+<script type="text/html" id="rechargeRecord">
+    <div class="rechargeRecord">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>充值账户</th>
+                <th>充值金额</th>
+                <th>赠送金额</th>
+                <th>充值时间</th>
+                <th>操作员工</th>
+                <th>支付方式</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each data item index}}
+            <tr>
+                <td>{{item.businessName}}</td>
+                <td>{{item.recharge}}元</td>
+                <td>{{item.largess}}元</td>
+                <td>{{item.operateTime}}</td>
+                <td>{{item.operatorName}}</td>
+                {{if item.payType == 0}}
+                <td>本金支付</td>
+                {{else if item.payType == 1}}
+                <td>卡项支付</td>
+                {{else if item.payType == 2}}
+                <td>现金支付</td>
+                {{else if item.payType == 3}}
+                <td>组合支付</td>
+                {{else if item.payType == 4}}
+                <td>微信支付</td>
+                {{else if item.payType == 5}}
+                <td>支付宝支付</td>
+                {{else if item.payType == 6}}
+                <td>信用卡支付</td>
+                {{else if item.payType == 7}}
+                <td>储蓄卡支付</td>
+                {{else if item.payType == 9}}
+                <td>云店线上支付</td>
+                {{/if}}
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{if data.length ===0}}
+        <div class="noDataTip">暂无充值记录！</div>
+        {{/if}}
+    </div>
+</script>
+<!--预约记录-->
+<script type="text/html" id="reservationRecord">
+    <div class="reservationRecord">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th style="min-width: 100px;">店铺</th>
+                <th>预约服务</th>
+                <th style="min-width: 120px;">预约服务人员</th>
+                <th style="min-width: 150px;">预约开始时间</th>
+                <th style="min-width: 150px;">预约结束时间</th>
+                <th style="min-width: 100px;">预约状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each data item index}}
+            <tr>
+                <td>{{item.shopName}}</td>
+                <td>{{item.serviceName}}</td>
+                <td>{{item.waiterName}}</td>
+                <td>{{item.bookBeginDate}}</td>
+                <td>{{item.bookEndTime}}</td>
+                {{if item.status === -1}}
+                <td>已取消</td>
+                {{else if item.status === 0}}
+                <td>预约中</td>
+                {{else if item.status === 1}}
+                <td>已完成</td>
+                {{else if item.status === 2}}
+                <td>待确认</td>
+                {{/if}}
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{if data.length ===0}}
+        <div class="noDataTip">暂无预约记录！</div>
+        {{/if}}
+    </div>
+</script>
+<!--访谈记录-->
+<script type="text/html" id="interviewInformation">
+    <div class="interviewInformation">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>访谈时间</th>
+                <th>访谈员工</th>
+                <th>访谈内容</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each data item index}}
+            <tr>
+                <td>{{item.createTime}}</td>
+                <td>{{item.createrName}}</td>
+                <td>{{item.description}}</td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{if data.length ===0}}
+        <div class="noDataTip">暂无访谈记录！</div>
+        {{/if}}
+    </div>
+</script>
+<!--客户列表-->
+<script type="text/html" id="accountListTpl">
+    <ul>
+        {{each $data item index }}
+        <li data-memberid="{{item.memberId}}" data-index="{{index}}">
+            <span>{{item.memberName}}</span>
+            <span>{{item.mobile}}</span>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+<!--订单详情-->
+<script type="text/html" id="orderDetail">
+    <div class="layer-common-style">
+        <div class="title-top">
+            <span class="title-text">订单明细</span>
+            <button class="closeBtn">×</button>
+        </div>
+        <div class="orderPayMsg">
+            <span>
+                支付方式：
+                {{if data.payType == 0}}
+                本金支付
+                {{else if data.payType == 1}}
+                卡项支付
+                {{else if data.payType == 2}}
+                现金支付
+                {{else if data.payType == 3}}
+                组合支付
+                {{else if data.payType == 4}}
+                微信支付
+                {{else if data.payType == 5}}
+                支付宝支付
+                {{else if data.payType == 6}}
+                信用卡支付
+                {{else if data.payType == 7}}
+                储蓄卡支付
+                {{else if data.payType == 9}}
+                云店线上支付
+                {{/if}}
+                <!--{{if data.principalPay>0&&data.cashPay>0&&data.cardPay>0}}-->
+                <!--混合支付(本金支付&nbsp;&nbsp;现金支付&nbsp;&nbsp;卡项支付)-->
+                <!--{{else if data.principalPay>0&&data.cashPay>0}}-->
+                 <!--混合支付(本金支付&nbsp;&nbsp;现金支付)-->
+                <!--{{else if data.cashPay>0&&data.cardPay>0}}-->
+                <!--混合支付(现金支付&nbsp;&nbsp;卡项支付)-->
+                <!--{{else if data.principalPay>0&&data.cardPay>0}}-->
+                <!--混合支付(本金支付&nbsp;&nbsp;卡项支付)-->
+                <!--{{else}}-->
+                    <!--{{if data.principalPay>0}}-->
+                    <!--本金支付&nbsp;&nbsp;-->
+                    <!--{{/if}}-->
+                    <!--{{if data.cashPay>0}}-->
+                    <!--现金支付&nbsp;&nbsp;-->
+                    <!--{{/if}}-->
+                    <!--{{if data.cardPay>0}}-->
+                    <!--卡项支付-->
+                    <!--{{/if}}-->
+                <!--{{/if}}-->
+            </span>
+            <!--<span>折扣：{{if data.discount == 100}}-->
+						<!--无折扣-->
+					<!--{{else}}-->
+						<!--{{data.discount*0.1}}折-->
+					<!--{{/if}}-->
+            <!--</span>-->
+            <span>整单优惠：{{data.discountMoney||0}}元</span>
+            <span>实付：<b>{{data.actualPay||0}}</b><i>元</i></span>
+        </div>
+        <div class="detailList">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>商品名称</th>
+                    <th style="min-width: 80px">数量</th>
+                    <th style="min-width: 80px">单价</th>
+                    <th style="min-width: 80px">总价</th>
+                    <th style="min-width: 80px">实际价格</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{each data.goodsList item index}}
+                <tr>
+                    <td>{{item.purchaseName}}</td>
+                    <td>{{item.num}}</td>
+                    <td>{{item.unitPrice}}元</td>
+                    <td>{{item.totelPrice}}元</td>
+                    <td>{{item.actualPayment}}元</td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<!--服务卡信息详情-->
+<script type="text/html" id="serviceCardDetail">
+    <div class="layer-common-style">
+        <div class="title-top">
+            <span class="title-text">卡项信息明细（{{$data.cardName}}）</span>
+            <button class="closeBtn">×</button>
+        </div>
+        <div class="detailList">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>服务项目</th>
+                    <th style="min-width: 80px">订单号</th>
+                    <th style="min-width: 80px">服务单号</th>
+                    <th style="min-width: 80px">开单者</th>
+                    <th style="min-width: 80px">服务人员</th>
+                    <th style="min-width: 100px">服务设备</th>
+                    <th style="min-width: 150px">服务时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{each data item idnex}}
+                <tr>
+                    <td>{{item.serviceName||$data.cardName}}</td>
+                    <td>{{item.presaleId}}</td>
+                    <td>{{item.id}}</td>
+                    <td>{{item.operator}}</td>
+                    <td>{{item.waiterName}}</td>
+                    <td>{{item.roomName}}</td>
+                    <td>{{item.consumeTime}}</td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+            {{if data.length ===0}}
+            <div class="noDataTip">暂无详细信息！</div>
+            {{/if}}
+        </div>
+        <div class="detail-page-selector"></div>
+    </div>
+</script>
+</html>
+<!--新增访谈记录弹窗-->
+<div id="addInterviewInformation" class="layer-common-style" style="display: none">
+    <div class="title-top">
+        <span class="title-text">新增访谈记录</span>
+        <button class="closeBtn">×</button>
+    </div>
+    <!--<div class="waiterSelectorBox">-->
+        <!--<label>访谈人员：<br><span>（必选）</span></label>-->
+        <!--<select id="waiterSelector"></select>-->
+    <!--</div>-->
+    <div class="edit-InterviewMsg-box">
+        <p>请在下面输入框内输入访谈内容<span>（100字以内）</span>：</p>
+        <textarea id="interviewContent" rows="3"  maxlength="100" onchange="this.value=this.value.substring(0, 100)" onkeydown="this.value=this.value.substring(0, 100)" onkeyup="this.value=this.value.substring(0, 100)" placeholder="请输入访谈内容..."></textarea>
+        <div class="wordNum">
+            <span id="inputWordNum">0</span><span>/100</span>
+        </div>
+    </div>
+</div>

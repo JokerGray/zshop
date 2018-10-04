@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>顾客管理-顾客信息</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/laydate-v5.0.9/theme/default/laydate.css">
+    <link rel="stylesheet" href="../assets/layui-v2.2.2/css/layui.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../assets/hplus/css/style.min862f.css">
+    <!-- <link rel="stylesheet" href="../../../../assets/ztree/css/metroStyle/metroStyle.css"> -->
+    <!-- <link rel="stylesheet" href="../../../assets/select2/select2.min.css"> -->
+    <link rel="stylesheet" href="customerinfo.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row top-bar">
+            <div class="col-xs-3">
+                <span class="title-name">选择店铺：</span>
+                <select class="select-body" name="shopSelect" id="shopSelect">
+                    <option value="">--选择店铺--</option>
+                </select>
+            </div>
+            <div class="col-xs-3">
+                <span class="title-name">顾客姓名：</span>
+                <input type="text" class="input-body" id="customerName" placeholder="请输入顾客姓名">
+            </div>
+            <div class="col-xs-3">
+                <span class="title-name">手机号码：</span>
+                <input type="text" class="input-body" id="customerPhone" placeholder="请输入手机号码">
+            </div>
+            <div class="col-xs-1">
+                <button class="btn btn-info" id="search">查询</button>
+            </div>
+        </div>
+        <div class="row row-body">
+            <div class="col-xs-12" style="margin-top: 20px;">
+                <button class="btn btn-info" id="memberAdd">会员补录</button>
+                <button class="btn btn-info" style="margin-left: 10px;" id="lookRemindList">提醒查看</button>
+            </div>
+            <div class="col-xs-12">
+                <table id="recycleTable" class="table-hovered"></table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/jquery/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/layer/layer.js"></script>
+    <link rel="stylesheet" href="../assets/check_index/layer/skin/default/layer.css">
+    <script src="../assets/laydate-v5.0.9/laydate.js"></script>
+    <script src="../assets/layui-v2.2.2/layui.js"></script>
+    <script src="../assets/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- <script src="../../../assets/select2/select2.min.js"></script> -->
+    <script src="customerinfo.js"></script>
+</body>
+</html>

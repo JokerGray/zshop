@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />		
+		<title>关于我们</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body{margin-top: 0.1px;color: #393939;}
+			img{border:none;display: block;margin:0.63rem auto 0;width:1rem;height: 1rem;}
+			.names{font-size: 0.17rem;text-align: center;margin-bottom: 3rem;margin-top: 0.12rem;}
+			footer p{font-size: 0.12rem;text-align: center;height: 0.27rem;}
+			footer p a{font-size: 0.16rem;color: red;color: #fa6256;}
+		</style>
+	</head>
+	<script type="text/javascript">
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if (!clientWidth) return;
+						docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+					};
+				if (!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);
+			})(document, window);
+	</script>
+
+	<body>
+		<div id="content">	
+			<img src="image/zhixianglogo.png" />
+			<div class="names">智享城市</div>
+		</div>
+		<footer>
+			<p>官方网站：&nbsp;<a href="http://www.izxcs.com">www.izxcs.com</a></p>
+			<p>Copyright 2014-2017 版权所有 智享城市</p>
+		</footer>
+	
+	</body>
+
+</html>

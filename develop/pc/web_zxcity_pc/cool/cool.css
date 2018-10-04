@@ -1,0 +1,368 @@
+main{
+    background-color: #f4f4f4;
+}
+.cool-main-content{
+    width:100%;
+    background-color:#fff;
+}
+.cool-main-content .video-intro{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    height:72px;
+    line-height: 72px;
+    padding-left:25px;
+    padding-right:25px;
+}
+.cool-main-content .title{
+    display:inline-block;
+    width:75%;
+    font-size:24px;
+    color:#333;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.cool-main-content .time{
+    display:inline-block;
+    font-size:18px;
+    color:#666;
+    text-align: right;
+}
+.cool-main-content .video,
+.cool-main-content .video video{
+    width:100%;
+    height:587px;
+}
+.cool-main-content .video-handler{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    height:76px;
+    line-height: 76px;
+    padding-left:25px;
+    padding-right:25px;
+    font-size:18px;
+    color:#666;
+}
+
+.video-handler .share-btn a{
+    display:inline-block;
+    width:26px;
+    height:26px;
+    background-repeat: no-repeat;
+    margin-right:6px;
+    vertical-align: middle;
+}
+.video-handler .share-btn a.qzone-share-link{
+    background-image: url(../common/images/qzoneIcon.png);
+}
+.video-handler .share-btn a.wb-share-link{
+    background-image: url(../common/images/sinaIcon.png);
+}
+.video-handler .share-btn a.qq-share-link{
+    background-image: url(../common/images/qqIcon.png);
+}
+.view-show i, .view-show span{
+    display:inline-block;
+    margin-right:5px;
+}
+.like-show{
+    margin-left:10px;
+}
+.like-show a{
+    font-size: 22px;
+    color:#ccc;
+    vertical-align: text-top;
+}
+.like-show a.active{
+    color:#ef0303;
+}
+.view-show i{
+    width:18px;
+    height:15px;
+    background-image: url(image/view_icon.png);
+    background-repeat: no-repeat;
+}
+
+.like-btn{
+    display:inline-block;
+    width:22px;
+    height:20px;
+    background: url(image/dianzan.png) no-repeat center;
+}
+.like-num, .report-link{
+    display: inline-block;
+    color:#787878;
+    font-size:20px;
+}
+.report-link:hover{
+    color:currentColor;
+}
+.cool-comments{
+    width:100%;
+    margin-top:16px;
+    background-color:#fff;
+}
+.cool-comments .publish-comments{
+    margin:0 auto;
+    padding-left:25px;
+    padding-right:25px;
+}
+.publish-comments .user{
+    margin-top:15px;
+    margin-bottom:15px;
+    font-size:20px;
+    color:#333;
+}
+.publish-comments .user img{
+    width:52px;
+    height:52px;
+    border-radius:100%;
+}
+.publish-comments textarea{
+    width:736px;
+    height:98px;
+    border:2px solid #eeeeee;
+    resize: none;
+}
+.publish-comments .btn{
+    float:right;
+    background-color: #433f50;
+    color:#fff;
+}
+
+.comments-show .title{
+    height:32px;
+    line-height: 32px;
+    padding-left:25px;
+    margin-bottom:20px;
+    font-size:16px;
+    color:#333;
+    border-bottom:1px solid #eee;
+}
+.comments-show .title span{
+    position:relative;
+    display:inline-block;
+    padding-left:3px;
+}
+.comments-show .title span:after{
+    content:'';
+    position: absolute;
+    bottom:-2px;
+    left:0;
+    height:4px;
+    width:100%;
+    background-color: #433f50;
+}
+.comments-show .title em{
+    font-style: normal;
+}
+.comments-list ul{
+    padding-left:25px;
+    padding-right:25px;
+}
+.comments-list ul>li{
+    position:relative;
+    padding-left:70px;
+    padding-bottom:30px;
+    margin-bottom:30px;
+    border-bottom:1px solid #eee;
+    overflow: hidden;
+}
+.comments-list ul>li .pic{
+    position:absolute;
+    left:0;
+    top:0;
+}
+.comments-list ul>li .pic img{
+    width:60px;
+    height:60px;
+    border-radius:100%;
+}
+.comments-list ul>li .info{
+    width:100%;
+    font-size:18px;
+    color:#333;
+}
+.comments-list ul>li .info .user-info{
+    height:40px;
+    line-height: 40px;
+}
+.comments-list ul>li .user-info .name{
+    font-weight: bold;
+}
+.comments-list ul>li .user-info .time{
+    color:#999;
+    margin-left:20px;
+}
+.comments-list ul>li .info .detail{
+    width:80%;
+}
+.aside-content .user-info{
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    height:100px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:#fff;
+}
+.aside-content .user-info .pic,
+.aside-content .user-info .pic img{
+    width:58px;
+    height:58px;
+    border-radius:100%;
+}
+.aside-content .user-info .name{
+    font-size:24px;
+    color:#333;
+    margin-left:24px;
+}
+
+.aside-content .user-cool-list p{
+    width:100%;
+    height:28px;
+    line-height: 28px;
+    margin-top:20px;
+    margin-bottom:20px;
+    padding-left:8px;
+    border-left:5px solid #e0041a;
+    font-size:20px;
+    color:#666;
+}
+.aside-content .user-cool-list ul{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.user-cool-list ul>li{
+    position:relative;
+    width:160px;
+    height:160px;
+    overflow: hidden;
+    margin-bottom:8px;
+}
+.user-cool-list ul>li a{
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+.user-cool-list ul>li .title{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:38px;
+    line-height: 38px;
+    padding-left:10px;
+    background: url(image/cool_title_bg.png) no-repeat left bottom;
+    font-size:16px;
+    color:#fff;
+}
+.cool-rank-list{
+    background-color: #fff;
+}
+.cool-rank-list .rank-title{
+    display: flex;
+    align-items: center;
+    width:100%;
+    height:50px;
+    line-height: 50px;
+    padding-left:10px;
+    border-radius:5px 5px 0 0;
+    background-color: #7a70ee;
+    color:#fff;
+    font-size:20px;
+}
+.cool-rank-list .rank-title i{
+    display:inline-block;
+    width:13px;
+    height:20px;
+    margin-right: 10px;
+    vertical-align: middle;
+    background: url(../common/images/rank_title_icon.png) no-repeat;
+}
+.cool-rank-list ul{
+    padding-top:5px;
+    padding-bottom:30px;
+}
+.cool-rank-list ul>li{
+    position:relative;
+    padding:14px;
+}
+.cool-rank-list ul>li .num{
+    position: absolute;
+    top:0;
+    left:12px;
+    display:block;
+    width:30px;
+    height:40px;
+    background-repeat: no-repeat;
+}
+.cool-rank-list ul>li .media{
+    margin:0;
+}
+.cool-rank-list ul>li:nth-child(1) .num{
+    background-image:url(../common/images/rank_num_1.png);
+}
+.cool-rank-list ul>li:nth-child(2) .num{
+    background-image:url(../common/images/rank_num_2.png);
+}
+.cool-rank-list ul>li:nth-child(3) .num{
+    background-image:url(../common/images/rank_num_3.png);
+}
+.cool-rank-list ul>li:nth-child(4) .num{
+    background-image:url(../common/images/rank_num_4.png);
+}
+.cool-rank-list ul>li:nth-child(5) .num{
+    background-image:url(../common/images/rank_num_5.png);
+}
+.cool-rank-list ul>li .media-left img{
+    width:100px;
+    height:100px;
+}
+.cool-rank-list ul>li .media-heading{
+    font-size:20px;
+    color:#666;
+    font-weight: bold;
+}
+.cool-rank-list ul>li .name{
+    font-size:18px;
+    color:#ccc;
+    font-weight: bold;
+}
+.cool-rank-list ul>li .other{
+    height:30px;
+}
+.cool-rank-list ul>li .other div{
+    display: flex;
+    align-items: center;
+}
+.cool-rank-list ul>li .like-icon{
+    display:inline-block;
+    font-size:22px;
+    color:#aaa;
+    vertical-align: middle;
+}
+
+.cool-rank-list ul>li .comments-num-icon{
+    display:inline-block;
+    width:19px;
+    height:17px;
+    background: url(image/comments_num_icon.png) no-repeat;
+    margin-left:20px;
+}
+.cool-rank-list ul>li .like-num,
+.cool-rank-list ul>li .comments-num{
+    display:inline-block;
+    height:28px;
+    line-height: 28px;
+    margin-left:5px;
+    font-size:18px;
+    color:#666;
+    font-weight: bold;
+}

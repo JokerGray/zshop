@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0" />
+		<meta http-equiv="pragma" content="no-cache">
+	    <meta http-equiv="cache-control" content="no-cache, must-revalidate">
+	    <meta http-equiv="expires" content="0">
+		<title>客户预约</title>
+		<link href="../../common/assets/css/bootstrap.css" rel="stylesheet" />
+		<link href="../../common/css/common.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../common/assets/css/bootstrap-datetimepicker.min.css" />
+		<link href="../css/customerReservation.css" rel="stylesheet" />
+	</head>
+	<body class="homePage">
+		<!-- 以下是正式内容 -->
+		<div class="main-title">
+			<a href="javascript:void(0);" class="return-icon" onclick="backZxcityStoreApp();">
+				<img src="../../myHomePage/img/icon_fanhui.png" />
+			</a>
+			<h1 class="rightTitle">客户预约</h1>
+			<div id="reservationTab" class="tab">
+				<a href="javascript:void(0);" data-rel="roomReservation" data-list="roomReservationList">房间预定</a>
+				<a href="javascript:void(0);" data-rel="signIn" class="active">客户签到</a>
+			</div>
+		</div>
+
+	    <div class="main-content">
+			<div id="roomReservation">
+				<div class="top-div">
+		    		<button class="sel-condition datetime" id="selDate1"><span id="selDateShow1"></span> &gt;</button>
+					<button class="sel-condition" id="selTechnician1"><span>选择技师</span> ></button>
+		    		<button class="sel-condition hide" id="selRoom1"><span>选择房间</span> ></button>
+					<button class="search-btn" id="searchByCondition1">查询</button>
+					<button class="add-btn" id="addReservationBtn">新增预约</button>
+		    	</div>
+		    	<ul class="middle-div">
+		    		<!-- <li><span class="status-icon status-icon-1"></span>无空</li> -->
+		    		<li><span class="status-icon status-icon-2"></span>空闲</li>
+		    		<!-- <li><span class="status-icon status-icon-3"></span>非指定</li> -->
+		    		<!-- <li><span class="status-icon status-icon-4"></span>指定</li> -->
+		    		<li><span class="status-icon status-icon-5"></span>选中</li>
+		    	</ul>
+		    	<div class="bottom-div">
+					<ul id="roomReservationList" class="hide"></ul>
+					<ul id="technicianReservationList"></ul>
+		    	</div>
+			</div>
+			<div id="signIn" class="hide">
+				<div class="top-div">
+					<button class="sel-condition datetime" id="selDate2"><span id="selDateShow2"> ></span> ></button>
+		    		<button class="sel-condition" id="selTechnician2"><span>选择技师</span> ></button>
+					<button class="sel-condition" id="selCustomer2"><span>选择客户</span> ></button>
+		    		<button class="search-btn" id="searchByCondition2">查询</button>
+				</div>
+				<div class="bottom-div">
+					<div id="signInList"></div>
+				</div>
+			</div>
+
+	    </div>
+		<!-- /. WRAPPER  -->
+
+		<script src="../../common/assets/js/jquery-1.10.2.js"></script>
+		<script src="../../common/assets/js/bootstrap.min.js"></script>
+		<script src="../../common/assets/js/layer/layer.js"></script>
+		<script src="../../common/assets/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+		<script src="../../common/assets/js/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script src="../../common/assets/js/bootstrap-table.js"></script>
+		<script src="../../common/assets/js/bootstrap-table-zh-CN.js"></script>
+		<script src="../../common/js/util/util.js"></script>
+		<script src="../js/customerReservation.js"></script>
+		<script src="../../common/assets/js/My97DatePicker/WdatePicker.js"></script>
+	</body>
+</html>

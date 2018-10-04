@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+    <title>审核页面</title>
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../../../common/css/reset.css" />
+	<link rel="stylesheet" href="../../../common/css/layTab.css" />
+	<link rel="stylesheet" href="audit/css/audit.css">
+	<style type="text/css">
+		#searchBtn{
+			top: 28px;
+		}
+	</style>
+</head>
+<body>
+<div class="container-fluid">
+   	<!--头部搜索框-->	
+	<div class="tool-box layui-form">
+   		<ul class="tool-box-ul clearfix">
+            <!-- 时间开始 -->
+           	<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="stTime">时间范围：</label>
+					<div class="layui-input-inline startDate">
+						<input type="text" class="layui-input" id="startDate" placeholder="开始日期">
+					</div>
+				</div>
+			</li>				
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="endTim">至：</label>
+					<div class="layui-input-inline endDate">
+						<input type="text" class="layui-input" id="endDate" placeholder="截止日期">
+					</div>
+				</div>
+			</li>
+               <!-- 时间结束 -->                    
+			<button class="layui-btn" id="searchBtn">搜索</button>
+		</ul>
+	</div>
+
+	<div class="row">
+		<ul>
+			<li class="ele-block txshenqing icon1">
+				<div class="block-title">提现申请审核</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">笔数：</label><span id="cashApplyCount" class="block-sub-content"></span></p>
+					<p><label class="block-sub-title">待支付金额：</label><span id="cashApplySum" class="block-sub-content"></span></p>
+				</div>
+			</li>
+			<li class="ele-block txtongguo icon2">
+				<div class="block-title">提现支付</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">笔数：</label><span id="cashPassCount" class="block-sub-content"></span></p>
+					<p><label class="block-sub-title">待支付金额：</label><span id="cashPassSum" class="block-sub-content"></span></p>
+				</div>
+			</li>
+			<li class="ele-block zblaowu icon3">
+				<div class="block-title">主播劳务审核</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">笔数：</label><span id="liveCommissionTaxCount" class="block-sub-content"></span></p>
+					<p><label class="block-sub-title">待支付金额：</label><span id="liveCommissionTaxSum" class="block-sub-content"></span></p>
+				</div>
+			</li>
+			<li class="ele-block zbqiye icon4">
+				<div class="block-title">主播企业审核</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">笔数：</label><span id="liveCommissionEnterpriseCount" class="block-sub-content"></span></p>
+					<p><label class="block-sub-title">待支付金额：</label><span id="liveCommissionEnterpriseSum" class="block-sub-content"></span></p>
+				</div>
+			</li>
+			<li class="ele-block shsjxianxia icon5">
+				<div class="block-title">线下商户升级审核</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">笔数：</label><span id="upgradeOffLineCount" class="block-sub-content"></span></p>
+					<p><label class="block-sub-title">待支付金额：</label><span id="upgradeOffLineSum" class="block-sub-content"></span></p>
+				</div>
+			</li>
+			<li class="ele-block shsjxianshang icon6">
+				<div class="block-title">线上商户升级审核</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">笔数：</label><span id="upgradeOnLineCount" class="block-sub-content"></span></p>
+					<p><label class="block-sub-title">待支付金额：</label><span id="upgradeOnLineSum" class="block-sub-content"></span></p>
+				</div>
+			</li>
+			<li class="ele-block tjryongjin icon7">
+				<div class="block-title">线上推荐人佣金审核</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">笔数：</label><span id="upgradeOnLineCommissionCount" class="block-sub-content"></span></p>
+					<p><label class="block-sub-title">待支付金额：</label><span id="upgradeOnLineCommissionSum" class="block-sub-content"></span></p>
+				</div>
+			</li>
+			<li class="ele-block ttjiesuan icon8">
+				<div class="block-title">头条结算审核</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">笔数：</label><span id="incomeCount" class="block-sub-content"></span></p>
+					<p><label class="block-sub-title">待支付金额：</label><span id="incomeSum" class="block-sub-content"></span></p>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="auditHome.js"></script>
+</html>

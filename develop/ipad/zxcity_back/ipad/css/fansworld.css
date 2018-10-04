@@ -1,0 +1,38 @@
+.fans-world-main{
+    position:relative;
+    width:1024px;
+    height:768px;
+}
+.fans-world-main .fans-circle{
+    position:relative;
+    width:500px;
+    height:500px;
+    background:url(../image/fansworld/circle_bg.png) no-repeat;
+    background-size:cover;
+}
+
+.circle_1{
+    position:absolute;
+    display:block;
+    width:250px;
+    height:250px;
+    background-color: #f70;
+    border-radius:250px 0 0 0;
+    overflow:hidden;
+}
+.circle_1:before{
+    position:absolute;
+    top:92px;
+    left:92px;
+    content:'';
+    width:158px;
+    height:158px;
+    background-color: #fff;
+    border-radius:158px 0 0 0;
+}
+.circle_1, .circle_1:before{
+    transform-origin: 100%;
+    transform: rotate(30deg);
+    -webkit-transform-origin: 100%;
+    -webkit-transform: rotate(30deg);
+}

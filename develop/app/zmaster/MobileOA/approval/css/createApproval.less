@@ -1,0 +1,388 @@
+@import url(../../common/reset);
+
+//@baseColor: #4e8ced;
+//
+//
+//
+body {
+  //height: 100%;
+  overflow: hidden;
+}
+
+//必填
+.flag {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 5rem/@font-size-base;
+  margin-right: 1rem/@font-size-base;
+  color: red;
+  font-size: 24px;
+  [data-dpr='3'] & {
+    font-size: 36px;
+  }
+  [data-dpr='1'] & {
+    font-size: 12px;
+  }
+}
+
+#centerContent {
+  padding-top: 100rem/@font-size-base;
+  .commonTypeOne {
+    padding: 30rem/@font-size-base;
+    background: white;
+    margin-bottom: 20rem/@font-size-base;
+  }
+  //文字提示
+  .wordTips {
+    font-size: 24px;
+    [data-dpr='3'] & {
+      font-size: 36px;
+    }
+    [data-dpr='1'] & {
+      font-size: 12px;
+    }
+    color: #9b9da0;
+  }
+
+  //名称
+  .wordPrompt {
+    font-size: 28px;
+    [data-dpr='3'] & {
+      font-size: 42px;
+    }
+    [data-dpr='1'] & {
+      font-size: 14px;
+    }
+    margin-right: 24rem/@font-size-base;
+  }
+
+  //添加审批人/图片
+  .addCommom {
+    text-align: center;
+    width: 88px;
+    height: 88px;
+    line-height: 88px;
+    [data-dpr='3'] & {
+      width: 132px;
+      height: 132px;
+      line-height: 132px;
+    }
+    [data-dpr='1'] & {
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+    }
+    margin-top: 14rem/@font-size-base;
+    margin-left: 20rem/@font-size-base;
+  }
+
+  //请假类型
+  .leaveType {
+    .nextPart {
+      float: right;
+      margin-top: 8rem/@font-size-base;
+      width: 16rem/@font-size-base;
+      height: 28rem/@font-size-base;
+    }
+
+    .typeName{
+      margin-left: 20rem/@font-size-base;
+    }
+  }
+    //开始时间
+  .leavetime{
+    background: white;
+    display: flex;
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    margin-bottom: 20rem/@font-size-base;
+    .toChooseType{
+      padding: 20rem/@font-size-base 28rem/@font-size-base;
+    }
+    .wordTime{
+      padding:22rem/@font-size-base 0 ;
+      flex-grow:2;
+      color: #858585;
+      .wordTips{
+        display: inline-block;
+        padding-top: 4rem/@font-size-base;
+      }
+    }
+  }
+
+  //请假事由
+  .inputReason {
+    //border: none;
+    width: 650rem/@font-size-base;
+    height: 60rem/@font-size-base;
+    padding-left: 21rem/@font-size-base;
+  }
+  //选择审批人
+  .toChoosed{
+      display: flex;
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+
+    .addPersonBtn{
+      cursor: pointer;
+      background-color:#EBEBEB ;
+      .addpersonImg{
+        width: 60px;
+        height:60px;
+        margin-top: 12rem/@font-size-base;
+        //margin-left:2rem/@font-size-base;
+        [data-dpr='3'] & {
+          width:90px;
+          height:90px;
+        }
+        [data-dpr='1'] & {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+      .haveChoosed{
+        padding-left: 20rem/@font-size-base;
+        display: none;
+        font-size: 30px;
+        [data-dpr='3'] & {
+          font-size:45px;
+        }
+        [data-dpr='1'] & {
+          font-size:15px;
+        }
+        .dotImg{
+          margin: 14rem/@font-size-base auto;
+            border-radius: 43rem/@font-size-base;
+          background-color: @baseColor;
+          color: white;
+          vertical-align: baseline;
+        }
+        .name{
+          //margin-left: 20rem/@font-size-base;
+          margin-top: 22rem/@font-size-base;
+          text-align: center;
+        }
+      }
+  }
+  //图片
+  .picType{
+    margin-left: 20rem/@font-size-base;
+    margin-bottom: 24rem/@font-size-base;
+  }
+
+  .havechoosedImg{
+    display: flex;
+    display: -webkit-box ;
+    display: -webkit-flex ;
+    display: -ms-flexbox ;
+    //添加的图片
+    .imgBox{
+      position: relative;
+      margin-right: 20rem/@font-size-base;
+      //删除图片
+      .deletPicBtn{
+        position: absolute;
+        right: -14rem/@font-size-base;
+        top:-10rem/@font-size-base;
+        width: 38px;
+        height: 38px;
+        border-radius: 19rem/@font-size-base;
+        background-color: #333333;
+        [data-dpr='3'] & {
+          width: 51px;
+          height: 51px;
+        }
+        [data-dpr='1'] & {
+          width: 17px;
+          height: 17px;
+          border-radius: 16rem/@font-size-base;
+        }
+        img{
+          width: 26px;
+          height: 26px;
+          margin-top: 6rem/@font-size-base;
+          margin-left:6rem/@font-size-base;
+          [data-dpr='3'] & {
+            width:30px;
+            height: 30px;
+            margin-top: 7rem/@font-size-base;
+            margin-left:6rem/@font-size-base;
+          }
+          [data-dpr='1'] & {
+            width: 11px;
+            height: 11px;
+            margin-top: 6rem/@font-size-base;
+            margin-left: 6rem/@font-size-base;
+          }
+        }
+      }
+    }
+    //图片按钮
+    .addPinBtn{
+      cursor: pointer;
+      background-color:#EBEBEB ;
+      .addpicImg{
+          width: 60px;
+          height:60px;
+          margin-top: 12rem/@font-size-base;
+          //margin-left:2rem/@font-size-base;
+          [data-dpr='3'] & {
+            width:90px;
+            height:90px;
+          }
+          [data-dpr='1'] & {
+            width: 30px;
+            height: 30px;
+          }
+      }
+    }
+  }
+
+  //发布
+  .publishProval {
+    padding: 60rem/@font-size-base 30rem/@font-size-base 40rem/@font-size-base 30rem/@font-size-base;
+
+    .pulishBtn {
+      height: 70rem/@font-size-base;
+      line-height: 70rem/@font-size-base;
+      background: @baseColor;
+      border-radius: 4rem/@font-size-base;
+
+      color: white;
+      text-align: center;
+      font-size: 30px;
+      [data-dpr='3'] & {
+        font-size: 45px;
+      }
+      [data-dpr='1'] & {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+#mo{
+  display: none;/*隐藏*/
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+  top: 0px;
+  left: 0px;
+  z-index:1000000000000000000;
+}
+
+//请假类型
+#chooseType {
+  display: none;/*隐藏*/
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+  top: 0px;
+  left: 0px;
+  z-index:1000000000000000000;
+
+  ul{
+    padding-top: 230rem/@font-size-base;
+  }
+
+  li{
+    background: white;
+    margin:0 auto;
+    width: 60%;
+    height: 70rem/@font-size-base;
+    line-height: 70rem/@font-size-base;
+    border-bottom: 1px solid gainsboro;
+    text-align: center;
+    -webkit-animation: first 1s;
+    -o-animation: first 1s;
+    animation: first 1s;
+    font-size: 34px;
+    [data-dpr='3'] & {
+      font-size: 51px;
+    }
+    [data-dpr='1'] & {
+      font-size:17px;
+    }
+    color: #333333;
+
+    &:first-child{
+      border-top-left-radius:10rem/@font-size-base ;
+      border-top-right-radius: 10rem/@font-size-base;
+    }
+
+    &:last-child{
+      border-bottom-left-radius: 10rem/@font-size-base;
+      border-bottom-right-radius: 10rem/@font-size-base;
+    }
+
+  }
+}
+@keyframes first{
+  from{transform: scale(0.1);}
+  to{transform: scale(1);}
+}
+
+//向上三角形
+.triangle-up {
+  position: absolute;
+  top:210rem/@font-size-base;
+  left: 47%;
+  width: 0;
+  height: 0;
+  border-left: 25rem/@font-size-base solid transparent;
+  border-right: 25rem/@font-size-base solid transparent;
+  border-bottom: 30rem/@font-size-base solid white;
+  -webkit-animation: first 1s;
+  -o-animation: first 1s;
+  animation: first 1s;
+}
+
+//时间控件
+#date-wrapper h3{
+  line-height: 70rem/@font-size-base!important;
+  background: @baseColor!important;
+  font-size: 34px!important;
+
+  [data-dpr='3'] & {
+    font-size: 51px!important;
+  }
+  [data-dpr='1'] & {
+    font-size: 17px!important;
+  }
+}
+
+#d-tit{
+  line-height: 70rem/@font-size-base!important;
+}
+
+#d-cancel, #d-confirm {
+  border-radius: 5rem/@font-size-base!important;
+  line-height: 50rem/@font-size-base!important;
+  font-size: 28px!important;
+
+  [data-dpr='3'] & {
+    font-size: 32px!important;
+  }
+  [data-dpr='1'] & {
+    font-size: 14px!important;
+  }
+}
+#d-confirm {
+  background: @baseColor!important;
+}
+
+#d-content #d-bg{
+  height:190rem/@font-size-base!important;
+}
+
+//上传图片提示
+//.layui-m-layercont{
+//  color: white!important;
+//}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>搜索工单</title>
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/order_search.css" />
+</head>
+<body>
+    <div class="common-container" id="common-container">
+        <div class="jurisdiction-content">
+                <!--搜索-->
+                <div id="addcontent" class="addcontent-info">
+                    <form class="layui-form" action="" role="form">
+                        <div class="addcontent">
+                            <div class="addcontent-title">
+                                <span id="myOrder">我的工单</span> > 搜索工单
+                            </div>
+                            <div class="addcontent-table layui-form">
+                                <div class="table-top">
+                                    <div class="form-left">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">优先级</label>
+                                            <div class="layui-input-block" id="priority">
+                                                <select name="priority">
+                                                    <option value="">--请选择--</option>
+                                                    <option value="0">低</option>
+                                                    <option value="1">一般</option>
+                                                    <option value="2">紧急</option>
+                                                    <option value="3">非常急</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">工单编号</label>
+                                            <div class="layui-input-block">
+                                                <input id="numbersc" type="text" name="title" placeholder="请输入工单编号" autocomplete="off" class="layui-input" maxlength="22">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item addclass">
+                                            <label class="layui-form-label">工单分类</label>
+                                            <div class="layui-input-block" id="classify">
+                                                <div class="order-classify order-common" id="add-classify" data-num="0">
+                                                    <span id="order-classifyname" class="order-classifyname">-请选择-</span>
+                                                    <i class="down-arrows"></i>
+                                                </div>
+                                                <div class="classify-menu">
+                                                    <i class="layui-icon">&#x1007;</i>
+                                                    <ul class="classify-nav">
+                                                        <li class="actv">一级</li>
+                                                        <li>二级</li>
+                                                        <li>三级</li>
+                                                        <li>四级</li>
+                                                    </ul>
+                                                    <ul class="classify-list">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item addplat">
+                                            <label class="layui-form-label">所属板块</label>
+                                            <div class="layui-input-block" id="plate">
+                                                <div class="order-common order-plat" id="add-plate" data-num="0">
+                                                    <input class="plateinput" type="hidden" required  lay-verify="required">
+                                                    <span id="order-platename" class="order-platename" >-请选择-</span>
+                                                    <i class="down-arrows"></i>
+                                                </div>
+                                                <div class="plate-menu">
+                                                    <i class="layui-icon">&#x1007;</i>
+                                                    <ul class="plate-nav">
+                                                        <li class="actv">一级</li>
+                                                        <li>二级</li>
+                                                        <li>三级</li>
+                                                        <li>四级</li>
+                                                    </ul>
+                                                    <ul class="plate-list">
+                                                        <li></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">创建人</label>
+                                            <div class="layui-input-block" id="createUser">
+                                                <select name="allot" class="copycommon" lay-search>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-right">
+                                        <div class="layui-form-item titlename">
+                                            <label class="layui-form-label">标题</label>
+                                            <div class="layui-input-block">
+                                                <input id="titlesc" type="text" id="title" name="title" autocomplete="off" class="layui-input" maxlength="20" placeholder="请输入标题">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">处理人</label>
+                                            <div class="layui-input-block" id="ctronlUser">
+                                                <select name="allot" class="copycommon" lay-search>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">工单状态</label>
+                                            <div class="layui-input-block" id="status">
+                                                <select name="allot" class="statu-select">
+                                                    <option value="">--请选择--</option>
+                                                    <option value="0">未分配</option>
+                                                    <option value="1">处理中</option>
+                                                    <option value="2">已解决</option>
+                                                    <option value="3">不解决</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item titlename">
+                                            <label class="layui-form-label">手机号</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" lay-verify="required|phone" id="phone" name="title" autocomplete="off" class="layui-input" maxlength="11" placeholder="请输入手机号">
+                                            </div>
+                                        </div>
+                                        <div class="input-group begintime input-medium date-picker" data-date-format="yyyy-mm-dd">
+                                            <div class="input-group">
+                                                <span  class="jurisdiction-label pull-left" for="jurisdiction-begin2">创建时间</span>
+                                                <div class='date form-control' id='datetimepicker2'>
+                                                    <input name="dtBegin" type="text"  id="jurisdiction-begin2" placeholder="-请选择-" readonly="readonly">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jurisdiction-add">
+                                    <a class="layui-btn layui-btn-normal" id="searchBtn">
+                                        搜索
+                                    </a>
+                                    <a class="layui-btn layui-btn-normal" id="newBtn">保存当前条件并搜索</a>
+                                    <a class="cenlbtn" href="javascript:void(0);" id="cancelBtn">
+                                        重置
+                                    </a>
+                                </div>
+                                <div class="table-bottom">
+                                    <!--无数据时-->
+                                    <div class="nodata"></div>
+                                    <!--列表-->
+                                    <div class="repon-table">
+                                        <table class="layui-hide" id="table" lay-filter="table"></table>
+                                        <div id="laypageLeft" class="table-rgt"></div>
+                                        <script type="text/html" id="effcettime">
+                                            <span style="display: none" class="ids">{{d.id}}</span>{{d.title}}
+                                        </script>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        </div>
+    </div>
+
+    <!--自定义搜索名称-->
+    <div class="diy-name layui-form" id="diyBox">
+        <div class="layui-form-item">
+            <label class="layui-form-label">搜索名称</label>
+            <div class="layui-input-block">
+                <input id="diyName" type="text" name="title" placeholder="1-10个字" autocomplete="off" class="layui-input" maxlength="10">
+            </div>
+        </div>
+    </div>
+</body>
+
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui-2.2.5/layui/layui.all.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="../common/js/util/util.js"></script>
+    <script type="text/javascript" src="../common/js/common.js"></script>
+    
+    <script type="text/javascript" src="../common/js/util/pub.js"></script>
+    <!-- jSMyself-->
+    <script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../order/js/common_order.js"></script>
+    <script type="text/javascript" src="js/order_search.js"></script>
+</body>
+</html>

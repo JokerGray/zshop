@@ -1,0 +1,90 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>分享赚订单详细</title>
+	<link href="../../../../assets/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/animate.min.css" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	<link rel="stylesheet" href="index.css">
+	<!-- jquery -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/jquery.min.js"></script>
+
+	<!-- bootstrap -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/bootstrap.min.js"></script>
+	<!-- 左侧手风琴菜单-->
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<!--jQuery滚动条特效插件jQuery slimScroll-->
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<!--layer弹出层插件-->
+	<script type="text/javascript" src="../../../../assets/layer/layer.js"></script>
+	
+	<!-- bootstrap-table -->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/hplus/css/plugins/bootstrap-table/bootstrap-table.min.css" /> 
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+	<!-- 弹层title样式统一 -->
+	<link rel="stylesheet" href="../../../../assets/check_index/layer/skin/default/layer.css">
+
+	<link rel="stylesheet" href="../../../../assets/css/earnmoney/coupon/add.css" />
+</head>
+<body>
+
+<input type="hidden" id="couponId" value="" />
+
+<div class="myTitle text-center text-info"> 分享赚订单详情 </div>
+
+<div class="container-fluid">
+	<div class="row formContent">
+		<div class="col-xs-12">
+			<p class="formTitle">
+				<span class="couponName"></span>
+				<span id="shelve" class="shelve "></span>	
+				<button type="button" id = 'changShelve' class="btn btn-md pull-right" onclick="shelve()">点击下架</button>
+			</p>
+		</div>
+		
+		<div class="col-xs-5">
+			<label>发布时间：</label>
+			<span class="createTime"></span>
+		</div>
+		
+		<div class="col-xs-5">
+			<label>原金额：</label>
+			<span class="couponOriginalPrice"></span>
+		</div>
+		<div class="col-xs-5">
+			<label>实际支付金额：</label>
+			<span class="couponPresentPrice"></span>
+		</div>
+		<div class="col-xs-5">
+			<label>转发佣金金额：</label>
+			<span class="couponCashback"></span>
+		</div>
+		
+		<div class="col-xs-5 couponNumber">
+			<label>免费券数量：</label>
+			<span class="articleNum couponNum"></span>
+		</div>
+		
+		<div class="col-xs-5">
+			<label>到期时间：</label>
+			<span class="expireTime"></span>
+		</div>
+	</div>
+	<div class="form-inline searchForm">
+	  <div class="form-group">
+	    <input type="text" class="form-control inline-input" id="userPhone" placeholder="请输入需要搜索的电话号码" maxlength="11">
+	    <button type="button" class="btn btn-primary searchBtn" onclick="refresh()"><i class="fa fa-search icon"></i></button>
+	  </div>
+	</div>
+	
+	<table class="table table-hover" id="couponTable"></table>
+</div>
+<script src="../../src/js/common.js"></script>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>

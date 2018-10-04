@@ -1,0 +1,334 @@
+page{
+  height: 100%;
+  background: #f17168;
+}
+.color333{
+  color: #333;
+}
+.color666{
+  color: #666;
+}
+.color999{
+  color: #999;
+}
+.font26{
+  font-size: 26rpx;
+}
+.font28{
+  font-size: 28rpx;
+}
+.font30{
+  font-size: 30rpx;
+}
+.font32{
+  font-size: 32rpx;
+}
+.font36{
+  font-size: 36rpx;
+}
+.font40{
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.fontWeight{
+  font-weight: bold;
+}
+.discountDetail{
+  height: 100%;
+  z-index: 9999;
+}
+.list{
+  width: 710rpx;
+  background: #fff;
+  margin: 0 20rpx;
+  border-radius: 10rpx;
+  margin-top:216rpx;
+  padding-top: 4rpx;
+}
+.list .shopIcon{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  position: absolute;
+  left: 295rpx;
+  top: -140rpx;
+}
+.list .shopname{
+  margin-top: 80rpx !important;
+}
+.list .con{
+  height: 306rpx;
+  border-bottom: 2rpx dashed #ddd;
+  position: relative;
+}
+.list .con>view{
+  margin-top: 18rpx;
+  text-align: center;
+}
+.list .info{
+  border-bottom: 2rpx dashed #ddd;
+  color: #666;
+  font-size: 28rpx;
+  padding: 30rpx;
+}
+.list .info>view:first-child{
+    color: #333;
+    font-weight: bold;
+}
+.list .info>view{
+  text-align: left;
+  line-height: 50rpx;
+  color: #666;
+}
+.cicrl{
+  width: 30rpx;
+  height: 30rpx;
+  background: #f17168;
+  position: absolute;
+  border-radius: 50%;
+ 
+}
+.cicleLeft{
+  /* left:6rpx;
+  top:386rpx;  */
+  bottom: -15rpx;
+  left:-15rpx;
+}
+.cicleRight{
+  /* right: 6rpx;
+  top:386rpx;  */
+  bottom: -15rpx;
+  right: -15rpx;
+}
+.colory{
+  background-color: #fb8b33;
+}
+.discount .con{
+  height: auto;
+  padding-bottom: 25rpx;
+}
+.discount .cicleLeft,.discount .cicleRight{
+  /* top:426rpx;  */
+}
+.discount .info{
+  padding: 30rpx;
+  overflow: hidden;
+}
+.discount .info view:first-child{
+  color: #fb8b33;
+  float: left;
+}
+.discount .info view:last-child{
+  padding: 5rpx 20rpx;
+  float: right;
+  background: #fb8b33;
+  color: #fff;
+  border-radius: 5rpx;
+}
+.list .info button{
+  float:right;
+  /* background:#fb8b33; */
+  border-radius:5rpx;
+  font-size: 28rpx;
+  color: #fff;
+  height: 46rpx;
+  line-height: 46rpx;
+}
+.serial view{
+  width: 100%;
+	border-radius: 4px;
+  font-size: 32rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 40rpx 0 35rpx;
+}
+.serial view text{
+  background-color: #eeeeee;
+  padding: 10rpx 34rpx;
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  text-align: center;
+  border-radius: 6rpx;
+}
+.serial image{
+  display: block;
+  width: 268rpx;
+	height: 268rpx;
+  margin: 0 auto;
+}
+.call{
+  height: 80rpx;
+  padding: 30rpx;
+}
+.canvas-box{
+  position:fixed;
+  top:999999rpx;
+  left:0;
+}
+.call image:first-child{
+  width: 34rpx;
+  height: 42rpx;
+  vertical-align: middle;
+  float: left;
+  padding-right: 24rpx;
+  border-right: 2rpx solid #ddd;
+  padding-top: 10rpx;
+}   
+.call text{
+  font-size: 26rpx;
+  width: 465rpx;
+  color: #333;
+  display: block;
+  float: left;
+  padding-left: 24rpx;
+}
+.call image:last-child{
+  width: 32rpx;
+  height: 42rpx;
+  vertical-align: middle;
+  float: right;
+  margin-right: 80rpx;
+}
+.discount .img{
+  width: 112rpx;
+  height: 112rpx;
+  position: absolute;
+  right:40rpx;
+  top:178px;
+}
+.discount .noshare view:first-child{
+  color: #999999;
+}
+.discount .noshare view:last-child{
+  background: #999999;
+}
+.colorred{
+  color: #f15b43;
+}
+.color999{
+  color: #999;
+}
+.wrapList{
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+  display: flex;
+  /* height: 230rpx; */
+  overflow-x: scroll;
+}
+.wrapList .mylist{
+  margin-right: 20rpx;
+  width: 200rpx;
+  float: left;
+  padding-bottom:16rpx;
+}
+.wrapList .mylist image{
+  width: 200rpx;
+  height: 200rpx;
+  display: block;
+
+}
+.wrapList .mylist view{
+  font-size: 22rpx;
+  text-align: center;
+  margin-top: 10rpx;
+}
+.goods{
+  font-size: 30rpx;
+  color: #333;
+  padding: 20rpx;
+  font-weight: bold;
+}
+.wrapList .text-overflow{
+  width: 200rpx;
+}
+.text-overflow{
+  display:block;/*内联对象需加*/
+  word-break:keep-all;/* 不换行 */
+  white-space:nowrap;/* 不换行 */
+  overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+  text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+discount .info .text-overflow{
+  width: 100%;
+  text-align: center;
+}
+.discount .namecheck{
+  margin-bottom: 34rpx;
+}
+
+canvas#discountCanvas{
+  position: fixed;
+  top: 9999rpx;
+  left: 9999rpx;
+}
+
+#share,#goback{
+  position: fixed;
+  width: 80rpx;
+  height: 80rpx;
+  z-index: 99999;
+}
+
+#share{
+  right: 30rpx;
+  bottom: 280rpx;
+}
+
+#goback{
+  right: 30rpx;
+  bottom: 180rpx;
+}
+.bindGet{
+  width: 500rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  margin: 0 auto;
+  background: #f17168;
+  color: #fff;
+  font-size: 32rpx;
+}
+.supernatant{
+  position: absolute;
+  top: 0;
+  width: 710rpx;
+  left: 20rpx;
+  background: rgba(255,255,255,0.3);
+  font-size: 26rpx;
+  color: #fff;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  margin-top: 60rpx;
+
+}
+.supernatant .delete{
+  float: right;
+  color: #fff;
+  border-radius: 50%;
+  display: block;
+  width: 26rpx;
+  height: 26rpx;
+  text-align: center;
+  line-height: 60rpx;
+  padding: 17rpx 30rpx 0 30rpx;
+}
+.location{
+  position:fixed;
+  width:80rpx;
+  height:80rpx;
+  z-index:99999;
+  right:30rpx;
+  bottom:390rpx;
+}
+.marginTop88{
+  margin-top: 88rpx;
+}
+.marginTop216{
+  margin-top: 216rpx;
+}
+@import "../../../share/share.wxss"

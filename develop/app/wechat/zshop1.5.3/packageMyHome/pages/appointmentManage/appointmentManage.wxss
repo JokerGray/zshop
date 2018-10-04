@@ -1,0 +1,89 @@
+/* pages/myhome/appointmentManage/appointmentManage.wxss */
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.mr15{
+  margin-right: 15rpx;
+}
+page{
+  background: #f8f8f8;
+}
+.header{
+  position: fixed;
+  top: 0;
+  background: #fff;
+  width: 100%;
+  border-top:1px solid #e0e0e0; 
+  border-bottom:1px solid #e0e0e0; 
+}
+.manageTitle{
+  font-size: 32rpx;
+  color: #333;
+  display: flex;
+}
+.manageTitle>text{
+  flex: 2;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  cursor: pointer;
+}
+.manageTitle text.active{
+  border-bottom: 4rpx solid #fb452c;
+  color: #fb452c;
+  padding:15rpx 0;
+}
+.wrap{
+ padding-top:100rpx;
+}
+.addessNull image{
+    width: 340rpx;
+    height: 260rpx;
+    display: block;
+    margin: 300rpx auto 20rpx;
+}
+.addessNull{
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+}
+.content{
+  padding-bottom: 50rpx;
+}
+.content .list{
+  font-size: 28rpx;
+  color: #333;
+  background: #fff;
+  margin-bottom: 20rpx;
+  padding-bottom:30rpx;
+}
+.content .list:first-child{
+  margin-top: 0;
+}
+.content .shop{
+  overflow: hidden;
+  padding: 30rpx;
+}
+.content .shop .shopImg{
+  width: 32rpx;
+  height: 28rpx;
+  vertical-align: middle;
+}
+.content .shop .rightIcon{
+  width: 16rpx;
+  height: 26rpx;
+  vertical-align: middle;
+}
+.rightType{
+  color: #fb452c;
+}
+.shopList{
+  padding: 30rpx 30rpx 0 30rpx;
+  background:#f8f8f8;
+}
+.list .shopList:last-child{
+  padding-bottom: 30rpx;
+}

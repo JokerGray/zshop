@@ -1,0 +1,45 @@
+<!--pages/shop/newshop/newshop.wxml-->
+<!-- //添加新的店铺 -->
+<view>
+  <view class='newheader'>
+    <image class='newheaderimgleft' src='../../../images/detailed/hh_shopdetail_location@2x.png'></image>
+    <view class='newheadercontent' bindtap = 'bindmap'>{{addressName}}({{addressNameI}})</view>
+    <image class = 'newheaderimgright' bindtap = 'bindmap' src='../../../images/detailed/hh_shopdatail_next@2x.png'></image>
+  </view>
+  <view class='newcontent'>
+    <view class='newcontentName'>店铺名称</view>
+    <view>
+      <input class="newcontentText" bindinput='useraddShop' value = '' name = 'userNameShop'placeholder=" 请输入店铺名称" ></input>
+    </view>
+  </view>
+
+   <view class='newcontent'>
+    <view class='newcontentName'>请输入店铺详细地址</view>
+    <view>
+      <input class="newcontentText" placeholder="请输入店铺详细地址" value = '' name ='useraddShop' bindinput='userNameShop'></input>
+    </view>
+  </view>
+
+  <view class='newconfirm' bindtap='confirmShop'>确定
+  </view>
+</view>
+
+
+
+
+<!-- //添加店铺信息 -->
+<!-- <view class="drawer_screen" bindtap="showCartList" data-statu="close" wx:if="{{showShop}}"></view>
+<view class="shop" wx:if="{{showShop}}">
+    <view class='shopheader addshopheader'>
+      <image class='shopimage' src='../../../images/detailed/huahuo_shoptc_close@2x.png' bindtap='closenewshop'></image>
+      <view class='shopheadertop'style='padding-left:100rpx;width:500rpx;'>填写店铺信息</view>
+      <view class='shopheadertopright' bindtap='newaddshop' >添加新店铺</view>
+    </view>
+    <view class='lookshop-list' wx:for='{{shopComment}}'wx:key='unqie' bindtap = 'sendDetail'>
+            <image        src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLhpCNoXf1fPRmNTacXOekNDO76tZ33TAkS8s0JfjWqu7YpbItoJ8EorAhPgPGlhT2lmFXIBQOFRw/132'style="border-radius:50%;"></image>
+            <view>
+              <view class='loolshop-name'>{{item.useraddShop}}</view>
+              <view class='showcomment'>{{item.userNameShop}}</view>
+            </view>
+    </view>
+</view> -->

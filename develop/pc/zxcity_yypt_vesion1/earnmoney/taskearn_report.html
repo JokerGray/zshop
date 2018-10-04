@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Pragma" content="no-cache"> 
+    <meta http-equiv="Cache-Control" content="no-cache"> 
+    <meta http-equiv="Expires" content="0">
+	<title>抢标赚数据统计</title>
+	<link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+	<link rel="stylesheet" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css">
+	<link rel="stylesheet" type="text/css" href="../common/assets/hplus/css/plugins/bootstrap-table/bootstrap-table.min.css" /> 
+	<link rel="stylesheet" href="./css/taskearn_report.css">
+</head>
+<body>
+	 <ol class="breadcrumb">
+        <li><a href="#">App管理</a></li>
+        <li><a href="#">玩家挣钱</a></li>
+        <li class="active">抢标赚数据统计</li>
+    </ol>
+
+	<div class="container">
+		<div class="search">
+			<div class="publishPeople">
+				<label for="userName">发布人</label>
+				<input type="text" id="userName">
+			</div>
+			<div class="publishTask">
+				<label for="taskName">任务名称</label>
+				<input type="text" id="taskName">
+			</div>
+			<div class="publishTime">
+				<label for="time">发布时间</label>
+				<input type="text"  id="createTime" onchange="changeCreateTime();"> - <input type="text" id="finishTime" onchange="changeFinishTime();">
+			</div>
+			<div class="taskStatus">
+				<label for="status">状态</label>
+				<select name="" id="status">
+					<option>全部</option>
+					<option value="1">进行中</option>
+					<option value="2">已完成</option>
+				</select>
+			</div>
+
+			<div class="search_btn">
+				<button id = 'btn'> <i class="fa fa-search"></i> 查询</button>
+			</div>
+		</div>
+		
+		<div class="chartStatisics">
+			<div class="chart col-sm-9" id="chart" style="height: 250px"></div>
+			<div class="statistics col-sm-3">
+				<ul class="stat-list">
+                    <li>
+                        <h2 class="no-margins finishMoneyTotal">0</h2>
+                        <small>已完成总金额</small>
+                        <div class="progress progress-mini">
+                            <div style="width: 100%;" class="progress-bar"></div>
+                        </div>
+					</li>
+                    <li>
+                        <h2 class="no-margins ongoingConMoneyTotal">0</h2>
+                        <small>已发放总金额</small>
+                        <div class="progress progress-mini">
+                            <div style="width: 100%;" class="progress-bar"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <h2 class="no-margins ongoingTotalMoneyTotal">0</h2>
+                        <small>未发放总金额</small>
+                        <div class="progress progress-mini">
+                            <div style="width: 100%;" class="progress-bar"></div>
+                        </div>
+                    </li>
+                </ul>
+			</div>
+		</div>
+		
+
+		<div class="table-tool-content">
+			<div class="container-fluid table-content zwz_table">
+				<table class="table table-hover table-condensed" id="qbzTable">
+					
+				</table>
+			</div>
+		</div>
+	</div>
+	<script src="../common/assets/hplus/js/jquery.min.js"></script>
+	<script src="../common/assets/hplus/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../common/assets/hplus/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../common/assets/hplus/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="../common/js/util/echarts.js"></script>
+	<script type="text/javascript" src="../common/assets/layui/lay/dest/layui.all.js"></script>
+	<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+	<script type="text/javascript" src="../common/js/yyCache.js"></script>
+	<script type="text/javascript" src="js/earnmoney_common.js"></script>
+	<script src="js/taskearn_report.js"></script>	
+</body>
+</html>

@@ -1,0 +1,211 @@
+
+			ul li {
+				list-style: none;
+			}
+			
+			::-webkit-scrollbar {
+				display: none;
+			}
+			a:focus,a:hover {
+			    color: #E94D47;
+			    text-decoration: none;
+			}
+			.mienTitle{
+				height: 60px;
+				text-align: center;
+				line-height: 60px;
+				font-size: 20px;
+				font-weight: bold;
+				color: #FFF;
+				background-color: #353b53;
+				margin-bottom: 20px;
+			}
+			.mienContent{
+				padding: 0 20px;
+			}
+			.mienBox{
+				height: 580px;
+				overflow-y: auto;
+				overflow-x: hidden;
+			}
+			.saveBtn.cancelBtn {
+				border: 1px solid #353b53;
+				height: 50px;
+				width: 118px;
+				background-color: #fff;
+				color: #353b53;
+			}	
+			.teamLogo .faceImg {
+				display: block;
+				width: 60px;
+				height: 60px;
+				border-radius: 5px;
+				margin-right: 20px;
+			}
+			.teamLogo{ float: left; }
+			.picBox{ display: block; height: 164px; width: 294px; overflow: hidden; position: relative; margin-bottom: 10px; }
+			.picBox img { position: absolute; top: 50%; transform: translateY(-50%); height: auto; width: 100%; display: block; }
+			.videoBox{ position: relative; margin-bottom: 10px;width: 302px;height: 171px; }
+			.videoBox img{height: 100%;width: 100%;}
+			.playVideo { position: absolute; height: 60px; width: 60px; top: 50%; left: 50%; cursor: pointer; transform: translateX(-50%) translateY(-50%); }
+			.praisedList .faceImg,.reviewerFace .faceImg { display: block; width: 30px; height: 30px; border-radius: 50%; margin-right: 20px;}
+			.adduser { padding-top: 10px; height: 60px;margin-bottom: 20px; position: relative;}
+			.bus{
+				display: inline-block;
+				margin-left: 10px;
+				height: 16px;
+				width: 16px;
+				vertical-align: sub;
+				background: url(../image/bus.png);
+			}
+			.pubDate {
+				position: absolute;
+			    bottom: 0;
+			    left: 80px;
+			    color: #999;
+			    font-size: 14px;
+			    margin: 0;
+			}
+			.adduser .adminName{margin-top: 20px; font-size: 16px; display: inline-block; font-weight: bold; margin-right: 6px; color: #333; margin: 0; line-height: 16px; margin-bottom: 2px; }
+			.adm { height: 14px; width: 40px; background-image: url(../images/guanliyuan.png); display: inline-block; }
+			.adduser .teamName{ font-size: 12px; line-height: 12px; margin: 0; color: #A67227; }
+			.pictureBox {
+				padding: 0;
+				margin-top: -14px;
+				margin-left: -14px;
+				display: flex;
+				flex-wrap: wrap;
+				margin-bottom: 10px;
+			}
+			.pictureBox li {
+				float: left;
+				height: 92px;
+				width: 92px;
+				margin-top: 14px;
+				margin-left: 14px;
+				list-style: none;
+				display: block;
+			}
+			.pictureBox li img {
+				display: block;
+				height: 100%;
+				width: 100%;
+			}
+			.praisedList {
+				margin-left: -10px;
+				padding: 0;
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.praised {
+				margin-left: 10px;
+				height: 30px;
+				width: 30px;
+				
+			}
+			.praised img{
+				height: 100%;
+				width: 100%;
+				display: block;
+				border-radius: 50%;
+			}
+			.reviewerFace{
+				float: left;
+				display: inline-block;
+				margin-right: 10px;
+			}
+			.reviewer {
+				font-size: 14px;
+				margin-bottom: 14px;
+			}
+			.reviewerName,.replier {
+				color: #E94D47;
+				display: inline-block;
+			}
+			.comments,.reply {
+				word-wrap: break-word;
+				color: #666;
+				line-height: 14px;
+				margin-bottom: 0;
+			}
+			.editTime {
+				font-size: 10px;
+				color: #999;
+			}
+			.reviewerRe,.reviewerLscrr{
+				display: inline-block;
+				margin-left: 10px;
+				font-size: 12px;
+				color: #E94D47;
+			}
+			.revertList{
+				margin-top: 10px;
+			}
+			.revertList li {
+				margin-top: 6px;
+			}
+			.loadMore{
+				color: #E94D47;
+				font-size: 18px;
+			}
+			.userName,.shopName{
+				margin-top: 10px;
+				position: relative;
+				padding-left: 40px;
+				font-size: 18px;
+				color: #333;
+			}
+			.userName::after,.shopName::after{
+				content: "";
+				position: absolute;
+				height: 20px;
+				width: 20px;
+				background: url(../image/pp.png) no-repeat center;
+				top: 50%;
+				transform: translateY(-50%);
+				left: 0;
+			}
+			.shopName::after{
+				background: url(../image/videoStore.png) no-repeat center;
+			}
+			
+			.caption {
+				font-size: 18px;
+				color: #333;
+				display: inline-block;
+				margin-right: 5px;
+				line-height: 18px;
+				margin-top: 10px;
+			}
+			.caption + span {
+				font-size: 16px;
+				color: #999;
+			}
+			.menText{
+				word-wrap: break-word;
+				font-size: 18px;
+				color: #666;
+				margin: 0;
+			}
+			.menText.pre{
+				visibility: hidden;
+				position: absolute;
+				z-index: -10000;
+			}
+			.saveBtn {
+				float: right;
+				margin-right: 55px;
+				width: 118px;
+				height: 50px;
+				border: none;
+				background-color: #353b53;
+				color: #fff;
+				font-size: 20px;
+				font-weight: 700;
+				border-radius: 5px;
+			}
+			.bottomBtn{
+				height: 50px;
+				padding-top: 30px;
+			}
+	

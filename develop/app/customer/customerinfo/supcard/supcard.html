@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>后台补卡</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/ztree/css/metroStyle/metroStyle.css">
+    <!-- <link rel="stylesheet" href="../../assets/select2-3.5.3/select2.css"> -->
+    <link rel="stylesheet" href="../../assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" href="supcard.css">
+</head>
+
+<body>
+    <div class="container-fluid" style="margin-top:2rem;">
+        <div class="row row-user">
+            <div class="col-xs-2" style="line-height: 34px">
+                <span class="title-name">姓名：</span>
+                <span id="userName">-</span>
+            </div>
+            <div class="col-xs-3" style="line-height: 34px">
+                <span class="title-name">店铺：</span>
+                <span id="userShop">-</span>
+            </div>
+            <div class="col-xs-6">
+                <span class="title-name">服务卡：</span>
+                <select class="select-body" name="serviceCard" id="serviceCard">
+                    <option value=""> -选择服务卡- </option>
+                </select>
+            </div>
+        </div>
+        <div class="top-title">
+            <div class="row row-user">
+                <div class="col-xs-4">
+                    <span class="title-name">账户：</span>
+                    <select class="select-body" name="account" id="account">
+                        <option value=""> -选择类型- </option>
+                    </select>
+                </div>
+                <div class="col-xs-3" style="line-height: 34px">
+                    <span class="title-name">本金余额：</span>
+                    <span class="principal" id="principal">-</span>
+                </div>
+                <div class="col-xs-4">
+                    <span class="title-name">卡项余额：</span>
+                    <span class="interest" id="interest">-</span>
+                </div>
+            </div>
+        </div>
+        <div class="row row-user">
+            <div class="col-xs-2">
+                <input type="checkbox" id="hasdiscount">
+                <label class="isdiscount" for="hasdiscount">会员折扣：<span id="discount">8.6</span>折</label>
+                <label class="nodiscount" for="hasdiscount" style="display: none;">会员折扣：无折扣</label>
+            </div>
+            <div class="col-xs-2">
+                <select class="select-body" name="cardType" id="cardType">
+                    <option value="1"> 服务卡 </option>
+                    <option value="2"> 服务套餐 </option>
+                </select>
+            </div>
+            <div class="col-xs-6">
+                <!-- <select class="select-body input100" name="selectContent" id="selectContent">
+                    <option value=""> -选择店铺- </option>
+                </select> -->
+                <input id="serviceList" type="text" class="form-control" />
+            </div>
+            <div class="col-xs-2">
+                <a href="javascript:;" id="addCart">
+                    <img src="../img/add.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="row row-user">
+            <div class="col-xs-12">
+                <table id="serviceTable" class="table-hovered"></table>
+            </div>
+        </div>
+        <div class="row row-user">
+            <div class="col-xs-6">
+                <span class="title-name">支付方式：</span>
+                <select class="select-body" name="payType" id="payType">
+                    <option value="0"> 本金支付 </option>
+                    <option value="1"> 卡项支付 </option>
+                    <!-- <option value="2"> 现金支付 </option> -->
+                </select>
+                <input type="checkbox" id="countmoney" style="margin-left: 20px;vertical-align: text-bottom;">
+                <label for="countmoney">计算业绩</label>
+            </div>
+            <div class="col-xs-5">
+                <span class="total-count">合计：<span id="totalCount" class="money">-</span></span>
+            </div>
+        </div>
+        <div class="row row-user count-money" style="display: none;">
+            <div class="col-xs-3">
+                <span class="title-name">销售员工：</span>
+                <select class="select-body salesMan">
+                    <option value=""> --请选择-- </option>
+                </select>
+            </div>
+            <div class="col-xs-3">
+                <span class="title-name">业绩：</span>
+                <input type="text" class="input-body earnMoney" id="earnMoney" oninput="isnum(this)" onkeyup="isnum(this)" onafterpaste="delunum(this)">
+            </div>
+            <div class="col-xs-3">
+                <span class="title-name">辅助员工：</span>
+                <select class="select-body supCustomer">
+                    <option value=""> --请选择-- </option>
+                </select>
+            </div>
+            <div class="col-xs-2">
+                <a href="javascript:;" id="addStaff">
+                    <img src="../img/add.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div id="newSalesMan">
+            
+        </div>
+                      
+    </div>
+
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <script src="../../assets/layer/layer.js"></script>
+    <script src="../../assets/ztree/js/jquery.ztree.all.min.js"></script>
+    <script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../assets/Icc-combo.js"></script>
+    <!-- <script src="../../assets/select2-3.5.3/select2.min.js"></script> -->
+    <!-- <script src="../../assets/select2-3.5.3/select2_locale_zh-CN.js"></script> -->
+    <script src="supcard.js"></script>
+</body>
+</html>

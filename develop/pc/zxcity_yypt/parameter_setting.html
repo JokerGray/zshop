@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>参数设置</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="parameter_setting/parameter_setting.css" />
+</head>
+<body>
+    <div class="common-container" id="body-box">
+        <div class="row body-left-nav" >
+                <div class="common-title">
+                    基础设置 - <span class="jurisdiction-title-name">参数管理</span>
+                </div>
+                  <div class="row common-search">
+                      <form class="form-inline" role="form">
+                          <div class="form-group">
+                              <label class="control-lable">参数名：</label>
+                              <input type="text" class="layui-input search-input media-input longinput" placeholder="请输入信息" id="inquireInput">
+                          </div>
+                          <button class="btn btn-success" type="button" id="inquire">
+                              <i class="search-icon"></i>查询
+                          </button>
+                      </form>
+                      <a href="javascript:void(0);"  class="btn btn-info add-users" id="add-users" data-toggle="modal" data-target="#add-newuser"><i class="add-icon"></i>新增参数</a>
+                  </div>
+                    <div class="common-table">
+                        <table class="table table-hover">
+                              <thead>
+                                <tr class="active row">
+                                  <th class="col-xs-1">序号</th>
+                                  <th class="col-xs-4">参数名</th>
+                                  <th class="col-xs-1">参数值</th>
+                                  <th class="col-xs-4">备注</th>
+                                  <th class="col-xs-2">操作</th>
+                                </tr>
+                              </thead>
+                              <tbody id="tbodyParameter">
+                                
+                              </tbody>
+                    </table>
+                </div>
+                <div class="common-page">
+                      <div id="paging-box-count">
+                          
+                      </div>
+                    <div id="paging-box" class="basic-jump"></div>
+                </div>
+                
+        </div>
+
+    </div>
+    <!-- modal -->
+    <div class="modal fade" id="add-newuser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    新增参数
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                        <span class="input-group-addon">参数名称:</span>
+                        <input type="text" class="form-control newname">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                          <span class="input-group-addon">参数类型:</span>
+                            <select id="addBasic" class="selectpicker show-tick form-control">
+                              <option>系统缺省参数</option>
+                              <option>产品业务参数</option>
+                            </select>
+                    </div>
+                    <br>
+                    <div class="input-group">           
+                        <span class="input-group-addon">参数值:</span>
+                        <input type="text" class="form-control parameter-val" id="parameter-val">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">备注:</span>
+                         <textarea class="form-control remarks" rows="3"></textarea>
+                    </div>
+                    <br>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn" id="add-parameters">
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+   <!-- modal -->
+    <div class="modal fade" id="change-newuser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    修改参数
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form" id="changeform">
+                    <div class="input-group">
+                        <span class="input-group-addon">参数名称:</span>
+                        <input type="text" class="form-control newname">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                          <span class="input-group-addon">参数类型:</span>
+                            <select id="changeBasic" class="selectpicker show-tick form-control">
+                              
+                            </select>
+                    </div>
+                    <br>
+                    <div class="input-group">           
+                        <span class="input-group-addon">参数值:</span>
+                        <input type="text" class="form-control parameter-val" id="parameter-val">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">备注:</span>
+                         <textarea class="form-control remarks" rows="3"></textarea>
+                    </div>
+                    <br>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn" id="saveParemeterconfig">
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+
+<script type="text/javascript" src="common/js/common.js"></script>
+<script type="text/javascript" src="common/js/login_success.js"></script>
+<script type="text/javascript" src="common/js/util/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/util.js"></script>
+<script type="text/javascript" src="common/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+
+<!--jSCurr-->
+
+<script type="text/javascript" src="parameter_setting/paging.js"></script>
+<script type="text/javascript" src="parameter_setting/parameter_setting.js"></script>
+<script type="text/javascript" src="common/js/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/pub.js"></script>
+</html>

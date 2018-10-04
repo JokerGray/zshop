@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商户信息补全</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../../common/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css"/>
+    <link rel="stylesheet" href="../../common/assets/zTree_v3/css/metroStyle/metroStyle.css"/>
+    <link rel="stylesheet" href="layer.css">
+
+    <link rel="stylesheet" href="merchant_data_completion.css">
+    <style>
+
+        #tableBox {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="tool-box layui-form">
+    <ul class="tool-box-ul clearfix">
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">手机号：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input"
+                           id="merchantPhone" maxlength="11">
+                </div>
+            </div>
+        </li>
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">商户名：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input"
+                           id="merchantName" lay-verify="username">
+                </div>
+            </div>
+        </li>
+        <li class="tool-box-li" style="padding-top: 33px;">
+            <button class="layui-btn" id="toolSearch">搜索</button>
+            <button class="layui-btn" id="toolRelize">重置</button>
+        </li>
+    </ul>
+</div>
+<div class="layui-app">
+    <ul class="layui-ul-tab clearfix">
+        <li class="layui-li-item act fl" data-d="operations/getAddMerchantLog">
+            <a href="javascript:;">新增商户资料补全</a>
+        </li>
+        <li class="layui-li-item fl" data-d="operations/getAddAppMerchantLog">
+            <a href="javascript:;">app用户升级成商户资料补全</a>
+        </li>
+    </ul>
+</div>
+<div id="app" class="layui-app clearfix">
+    <div id="tableBox">
+        <table lay-filter="tableNo" id="tableNo" class="mtb0"></table>
+        <div id="laypageLeft"></div>
+    </div>
+</div>
+
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-small layui-btn layui-mybtn" lay-event='pass'>
+        <i class="layui-icon">&#xe631;</i> 资料补全
+    </button>
+</script>
+
+<script type="text/html" id="titleTpl">
+    <span class="layui-input-block" style="display: none">{{d.step}}</span>{{d.eq}}
+</script>
+
+
+<!--补全商户 第一步-->
+
+<!--补全商户 第二步-->
+<div id="secondDemo" class='layui-form clearfix layer-my disn' lay-filter="addHeadlines">
+    <div class="layui-progress layui-progress-big progress-my" lay-filter="progross" lay-showPercent="true">
+        <div class="layui-progress-bar layui-bg-green" lay-percent="25%"></div>
+    </div>
+    <div class="app-layer">
+        <div class="package clearfix">
+            <div class="package-title">头条初始化</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+            <ul class="tool-box-ul layui-form clearfix p0 w70">
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>名称：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="请输入名称" autocomplete="off" class="layui-input"
+                                   id="addName" lay-verify="required" maxlength="11">
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>类型：</label>
+                        <div class="layui-input-inline">
+                            <select lay-verify="required" id="fixdepartment" lay-search placeholder="请选择或输入搜索">
+
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 fnone w100">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">简介：</label>
+                        <div class="layui-input-inline">
+                            <textarea name="" rows="" class="layui-textarea" id="addnote" maxlength="100"></textarea>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--补全商户 第三歩 个人账户信息初始化-->
+<div id="thirdDemo" class='layui-form clearfix layer-my  disn' lay-filter="moneyReset">
+    <div class="layui-progress layui-progress-big progress-my" lay-filter="progross" lay-showPercent="true">
+        <div class="layui-progress-bar layui-bg-green" lay-percent="50%"></div>
+    </div>
+
+    <div class="app-layer">
+        <div class="package clearfix">
+            <div class="package-title">个人账户信息初始化</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+            <ul class="tool-box-ul layui-form clearfix p0">
+                <li class="tool-box-li mr5 w100">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>金额：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" autocomplete="off" class="layui-input" id="addmoney"
+                                   lay-verify="required" maxlength="50">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--补全商户 第四步 商户权限初始化-->
+<div id="fourDemo" class='layui-form clearfix layer-my disn' lay-filter="promissReset">
+    <div class="layui-progress layui-progress-big progress-my" lay-filter="progross" lay-showPercent="true"
+         id="progross">
+        <div class="layui-progress-bar layui-bg-green" lay-percent="75%"></div>
+    </div>
+    <div class="app-layer">
+        <div class="package clearfix">
+            <div class="package-title">商户权限</div>
+        </div>
+        <div class="app-layer-content clearfix p0">
+            <div class="left-app">
+                <ul class="tool-box-ul layui-form clearfix p0">
+                    <li class="tool-box-li mr5 w70">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label"><b class="required-icon">＊</b>角色名称：</label>
+                            <div class="layui-input-inline">
+                                <ul id="mervchantRole" class="rolename text-center">
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="mid-line">
+            </div>
+            <div class="right-app">
+                <div class="layui-form-item">
+                    <h4 id="fatherTree">商户权限</h4>
+                    <ul id="treedem" class="ztree"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--app补全第一步-->
+
+<div id="appOneDemo" class='layui-form clearfix tipdemo disn'>
+    <!--addName subscription fixdepartment-->
+    <div class="layui-progress layui-progress-big" lay-filter="progross" lay-showPercent="true" id="progross2">
+        <div class="layui-progress-bar layui-bg-green" lay-percent="50%"></div>
+    </div>
+    <div class="app-layer">
+        <div class="package clearfix">
+            <div class="package-title">头条初始化</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+            <ul class="tool-box-ul layui-form clearfix p0">
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>名称：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" lay-verify="required"
+                                   class="layui-input" id="addNameAPP">
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>类型：</label>
+                        <div class="layui-input-inline" id="subscription">
+                            <!--uBussiness-->
+                            <select class="form-control layui-input h30" id="fixdepartmentAPP">
+                                <option value="">选择</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script>
+    <script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+    <script type="text/javascript" src="../../common/js/util.js"></script>
+
+    <script type="text/javascript" src="../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script type="text/javascript" src="../../common/js/yyCache.js"></script>
+
+    <!--jSCurr-->
+    <script type="text/javascript" src="../../common/js/zoomify.min.js"></script>
+    <script type="text/javascript" src="../../common/js/upload.js"></script>
+    <script type="text/javascript" src="merchant_data_completion.js"></script>
+</body>
+<script type="text/javascript">
+//jsorcss('js', 'merchant_data_completion');
+</script>
+</html>

@@ -1,0 +1,286 @@
+/*上半部分gains_box*/
+#page_R {
+	position: relative;
+}
+
+#gains_box, #publisherAccBox {
+	margin: 0 80px;
+	padding: 20px 0;
+	text-align: center;
+	border: 1px solid #e5e5e5;
+}
+
+#gains_box {
+	margin: 30px 30px 0 30px;
+}
+
+#gains_box .categoryEarn, .pubCategoryEarn {
+	width: 80%;
+}
+
+#gains_box .categoryEarn > div, .pubCategoryEarn > div {
+	width: 25%;
+}
+
+#gains_box .categoryEarn p:nth-child(1), #gains_box .totalEarn p:nth-child(1), .pubCategoryEarn p:nth-child(1), .pubTotalEarn p:nth-child(1) {
+	font-size: 18px;
+}
+
+#gains_box .categoryEarn p:nth-child(2), #gains_box .totalEarn p:nth-child(2), .pubCategoryEarn p:nth-child(2), .pubTotalEarn p:nth-child(2) {
+	font-size: 32px;
+	font-weight: 500;
+	margin: 10px 0 5px 0;
+}
+
+#gains_box .categoryEarn p:last-child {
+	color: #FFA893;
+	margin-top: 3px;
+}
+
+#gains_box .totalEarn, .pubTotalEarn {
+	width: 20%;
+	padding-top: 10px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+#gains_box .totalEarn::before, .pubTotalEarn::before {
+	content: '';
+	width: 1px;
+	height: 80px;
+	background-color: #e5e5e5;
+	position: absolute;
+	top: 20px;
+	left: 0;
+}
+
+.pubTotalEarn::before {
+	top: 10px;
+}
+
+#gains_box .totalEarn p:nth-child(2) {
+	margin-top: 30px;
+}
+
+.pubTotalEarn p:nth-child(2) {
+	margin-top: 20px;
+}
+
+/*下半部分author_box表格*/
+#author_box > div:nth-child(1) {
+	position: relative;
+}
+
+#authBoxNavR {
+	position: absolute;
+	bottom: 10px;
+	right: 0;
+	margin-right: 30px;
+	height: 32px;
+	line-height: 32px;
+}
+
+#authBoxNavR span {
+	font-size: 16px;
+}
+
+input#start {
+	width: 100px;
+	padding: 0px 8px;
+	margin-bottom: 0;
+	text-align: center;
+}
+
+#exportExcel {
+	border: 0;
+	background-color: #FFA893;
+	color: #fff;
+	line-height: 34px;
+	height: 34px;
+	padding: 0 10px;
+	border-radius: 3px;
+	font-size: 18px;
+	margin-left: 30px;
+}
+
+#gainsTable {
+	padding: 30px;
+}
+
+#gainsTabHead th, #artTabHead th {
+	text-align: center;
+	padding: 0;
+	height: 40px;
+	line-height: 40px;
+	background-color: #f5f5f5;
+}
+
+#gainsTabBody > tr > td, #artTabBody tr > td {
+	padding: 0;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.gainsTabFreeze {
+	color: #FFA893;
+	margin-right: 10px;
+}
+
+.gainsTabBtn {
+	border: 0;
+	background-color: #FFA893;
+	color: #fff;
+	line-height: 25px;
+	height: 25px;
+	padding: 0 10px;
+	border-radius: 3px;
+}
+
+#page, #AccountPage {
+	position: absolute;
+	width: 100%;
+	bottom: 10px;
+	left: 0;
+}
+
+/*点击查看模态框*/
+.examineAccounts, .publishAccounts {
+	width: 1100px;
+	margin-top: 100px;
+}
+
+.authAccountsBox, .publishAccouBox {
+	width: 1100px;
+}
+
+.authAccouTit, .pubAccouTit, .modifyPriceTit {
+	padding: 15px;
+	text-align: center;
+	font-size: 20px;
+}
+
+.authAccouTit h4, .pubAccouTit h4, .modifyPriceTit h4 {
+    font-weight: 600;
+}
+
+.modifyPriceTit {
+	border: 0;
+}
+
+.authorMess {
+	padding: 15px 0 15px 113px;
+	font-size: 16px;
+}
+
+.publisherMess {
+	padding: 15px 0 15px 168px;
+	font-size: 16px;
+}
+
+.authorMess .pubNameTit, .authorMess .pubDateTit {
+	color: #999;
+}
+
+.authorMess .authorNameType {
+	color: #FFA893;
+	font-size: 15px;
+	margin-left: 10px;
+}
+
+.authorMess .authorDateTit, .pubDateTit {
+	margin-left: 205px;
+}
+
+.authorMess .authorDateCon, .pubDateCon {
+	font-size: 18px;
+}
+
+.authAccouTable {
+	padding: 0 60px;
+}
+#accModalBtnBox, #pubModalBtnBox, #modifyPriBtnBox {
+	border-top: 0;
+	padding: 0 0 30px 0;
+	text-align: center;
+}
+
+#pubModalBtnBox {
+	padding-top: 30px;
+}
+
+button#freezeAcc, button#disfreezeAcc, button#publishBtn, button#notPublishBtn, button#affirmBtn, button#cancelBtn {
+	border: 0;
+	color: #fff;
+	padding: 6px 40px;
+	margin: 0 20px;
+}
+
+button#freezeAcc, button#affirmBtn {
+	background-color: #2BC6FF;
+}
+
+button#publishBtn {
+	background-color: #FFA893;
+	padding: 6px 30px;
+}
+
+button#disfreezeAcc, button#notPublishBtn, button#cancelBtn {
+	background-color: #BBBBBB;
+}
+
+button#affirmBtn {
+	padding: 6px 30px;
+}
+
+.modifyPrice {
+	width: 400px;
+	margin-top: 300px;
+}
+
+.modifyPriceBox {
+	width: 400px;
+}
+
+#modifyCon {
+	text-align: center;
+}
+
+input#unitPriceInp {
+	width: 80px;
+	margin: 0 10px 0 0;
+	padding: 8px;
+	display: inline-block;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+#modifyCon p:nth-child(2) {
+	font-size: 16px;
+}
+
+#modifyCon p:last-child {
+	margin: 10px 0;
+}
+/*
+#modifyTotalAcc {
+	font-size: 24px;
+	color: #FFA893;
+}*/
+
+/*点击查看模态框*/
+
+/*发布按钮*/
+#publishAccount {
+	position: absolute;
+	bottom: 24px;
+	right: 32px;
+	background-color: #FFA893;
+	color: #fff;
+	line-height: 34px;
+	height: 34px;
+	padding: 0 30px;
+	border-radius: 3px;
+	font-size: 18px;
+}

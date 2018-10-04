@@ -1,0 +1,346 @@
+.apply_content{float:right;width:83.5%;height:730px;background:#f6f6f6;}
+.apply_content>.three-colomn>div{height:365px;position: relative;}
+.apply_content>.three-colomn>div>.content_box{width:60%;position: absolute;top:20px;text-align: center;}
+.apply_content>.three-colomn>div:nth-of-type(1)>.content_box{right:0;}
+.apply_content>.three-colomn>div:nth-of-type(2)>.content_box{left:20%;}
+.apply_content>.three-colomn>div:nth-of-type(3)>.content_box{left:0;}
+.apply_content>.three-colomn>div>.content_box>img{width: 100%;height: 100%;}
+.apply_content>.three-colomn>div>.content_box>span>img{padding-top:25px;width: 110px;}
+.apply_content>.three-colomn>div>.content_box>.fansNum{font-size:48px;color:#fff;padding-top: 10px;}
+.apply_content>.three-colomn>div>.content_box>.fans{font-size:28px;color:#fff;}
+.apply_content>.two-column{margin-top:20px;}
+.apply_content>.two-column>div{height:340px;position: relative;}
+.apply_content>.two-column>div>div{width:60%;background:#fff;position: absolute;}
+.carousel-indicators>li{border:1px solid rgba(0,0,0,0.3);background:#f6f6f6;}
+.carousel-indicators>.active{border: none;background:#1be0d6;}
+.carousel_nodata{height: 100%;width: 100%;text-align: center;color: #999999;padding-top:80px;}
+.apply_content>.two-column>div>.slide{left:26%;overflow: hidden;}
+.apply_content>.two-column>div>.slide>.carousel-inner>.item>img{width: 100%;height: 100%;}
+.apply_content>.two-column>div>.slide>.carousel-control>.arrow_icon{position:absolute;width: 25px;height: 44px;top: 50%;left: 50%;margin-left: -12.5px;margin-top: -22px;}
+.apply_content>.two-column>div>.slide>.carousel-control>.arrow_icon>img{width: 100%;height: 100%;}
+.apply_content>.two-column>div>.showInformation{right:26%;}
+.apply_content>.two-column>div>.showInformation>.person_information_title{height: 70px;line-height: 76px;font-size: 22px;padding-left: 29px;border-bottom:1px solid #dadada;border-left:6px solid #1be0d6;}
+.apply_content>.two-column>div>.showInformation>.person_information_table{padding:20px 0 0 30px;}
+.apply_content>.two-column>div>.showInformation>.person_information_table>.table>tbody>tr>td{border:none;}
+.apply_content>.two-column>div>.showInformation>.person_information_table>.table>tbody>tr>td:nth-of-type(1){width: 80px;}
+.apply_content>.two-column>div>.showInformation>.person_information_table>.table>tbody>tr>td:nth-of-type(2){width:250px;text-align: left;}
+.apply_content>.two-column>div>.showInformation>.person_information_table>.table>tbody>tr>td>.btn{width:75px;height:30px;padding:0;background-color:#f98686;margin-right:15px;color: #fff;border: none;font-size:20px;border-radius:6px;}
+
+.show_apply{display: none;}
+
+.show_apply>.apply_form>div>.apply_form_box>form>.form-left>ul>li>.date{width:206px;height:50px;background-color: #fff;position: absolute;top:30px;left:90px;}
+.show_apply>.apply_form>div>.apply_form_box>form>.form-left>ul>li>.date>input{position: absolute;top: 0;}
+.show_apply>.apply_form>div>.apply_form_box>form>.form-left>ul>li>.date>.add-on{position: absolute;top:5px;}
+.show_apply>.apply_form>div>.apply_form_box>form>.form-left>ul>li>.date>.clender-back{position:absolute;top:20px;width: 14px;height: 8px;}
+.show_apply>.apply_form>div>.apply_form_box>form>.form-left>ul>li>.date>.clender-back>img{width:100%;height:100%;position: absolute;top: 0;}
+/*弹出框的样式*/
+#myModal{margin:60px auto;position: relative;}
+#myModal .modal-content{padding:5px 50px;width: 725px;}
+#myModal .modal-content .close{position: absolute;top:18px;right:18px;}
+#myModal .modal-content .modal-header{padding: 0;border-bottom: 1px solid #adb1bd;}
+#myModal .modal-content .modal-body{padding:0;border-bottom: 1px solid #adb1bd;border: none;}
+#myModal .modal-content .modal-body .form-control{background-color:#f6f6f6;}
+#myModal .modal-content .modal-body p{color:#606474;font-size: 22px;height: 50px;line-height: 50px;margin-top: 20px;}
+#myModal .modal-header h4{height:80px;line-height:80px;text-align: center;font-size: 26px;color:#606474;}
+#myModal .modal-content .modal_footer .btn{width: 125px;height: 50px;font-size: 24px;margin:10px 0 20px 450px;background-color:#f98686;color: #fff;}
+#apply_address select{width: 203px;height: 50px;font-size: 19px;color:#a6aaba;}
+#address_detail{height:50px;}
+#apply_day{height:50px;}
+#apply_day select{width: 150px;height: 50px;font-size: 19px;color:#a6aaba;}
+
+    .apply_forms .column_box {
+    	width: 100%;
+    	height: 220px;
+    	background-color: #F6F6F6;
+    }
+    
+    .apply_forms .three_row {
+    	float: left;
+    	box-sizing: border-box;
+    	width: 33.33%;
+    	height: 100%;
+    	/*background-color: red;*/
+    	border: none;
+    	position: relative;
+    }
+    
+    .apply_forms .three_row>div {
+    	width:85%;
+    	height:70%;
+    	/*margin:0 auto;*/
+    	/*background-color:lightpink;*/
+    	position: absolute;
+    	top: 50%;
+    	left: 50%;
+    	transform: translate(-50%, -50%);
+    }
+    
+    .apply_forms .two_row {
+    	width: 100%;
+    	height: 550px;
+    	background-color: #F6F6F6;
+    }
+    
+    .apply_forms .information_box {
+    	width: 33.33%;
+    	height: 550px;
+    	background-color: #F6F6F6;
+    	float: left;
+    	position: relative;
+    }
+    
+    .apply_forms .earnings_box {
+    	width: 66.67%;
+    	height: 550px;
+    	background-color: #F6F6F6;
+    	float: left;
+    	position: relative;
+    }
+    
+    .apply_forms .ranking_box {
+    	width: 33.33%;
+    	height: 700px;
+    	background-color: #F6F6F6;
+    	float: left;
+    	position: relative;
+    }
+    
+    .apply_forms .rankingtide_box {
+    	width: 66.67%;
+    	height: 700px;
+    	background-color: #F6F6F6;
+    	float: left;
+    	position: relative;
+    }
+    
+    .apply_forms {
+    	float: right;
+    	width: 80%;
+    	height: 970px;
+    	min-width:1170px;
+    }
+    .apply_forms .column_box{
+    	width:100%;
+    	height: 220px;
+    	background-color: #F6F6F6;
+    }
+    
+    .apply_forms .column_box .three_row>div {
+    	position: relative;
+    }
+    
+    .apply_forms .column_box .three_row>div .money {
+    	width: 92px;
+    	height: 92px;
+    	position: absolute;
+    	left: 45px;
+    	top: 30px;
+    }
+    
+    .apply_forms .column_box .money_smallbox {
+    	background-color: #F9C383;
+    }
+    
+    .apply_forms .column_box .three_row>div .moneyNum {
+    	font-size: 35px;
+    	color: #fff;
+    	position: absolute;
+    	left:40%;
+    	top: 27px;
+    }
+    
+    .apply_forms .column_box .three_row>div .income {
+    	font-size: 25px;
+    	color: #fff;
+    	position: absolute;
+    	left:40%;
+    	top: 92px;
+    }
+    
+    .apply_forms .column_box .three_row>div .fans {
+    	width: 92px;
+    	height: 92px;
+    	position: absolute;
+    	left: 45px;
+    	top: 30px;
+    }
+    
+    .apply_forms .column_box .fans_smallbox {
+    	background-color: #9986F9;
+    }
+    
+    .apply_forms .column_box .three_row>div .fansNum {
+    	font-size:35px;
+    	color: #fff;
+    	position: absolute;
+    	left: 40%;
+    	top: 27px;
+    }
+    
+    .apply_forms .column_box .three_row>div .followersCount {
+    	font-size: 25px;
+    	color: #fff;
+    	position: absolute;
+    	left: 40%;
+    	top: 92px;
+    }
+    
+    .apply_forms .column_box .three_row>div .charm {
+    	width: 92px;
+    	height: 92px;
+    	position: absolute;
+    	left: 45px;
+    	top: 30px;
+    }
+    
+    .apply_forms .column_box .charm_smallbox {
+    	background-color: #84D7F9;
+    }
+    
+    .apply_forms .column_box .three_row>div .charmNum {
+    	font-size:35px;
+    	color: #fff;
+    	position: absolute;
+    	left: 40%;
+    	top: 27px;
+    }
+    
+    .apply_forms .column_box .three_row>div .charmValue {
+    	font-size: 25px;
+    	color: #fff;
+    	position: absolute;
+    	left:40%;
+    	top: 92px;
+    }
+    
+    .apply_forms .information_box .information_smallbox {
+    	width: 85%;
+    	height: 95%;
+    	background-color: #fff;
+		margin-left: 8%;
+		position: relative;
+		padding-top: 0.1px;
+    }
+    
+    .apply_forms .information_box .zipai {
+    	width: 116px;
+    	height: 116px;
+    	border-radius: 50%;
+    	display: block;
+		margin:50px auto 20px;
+    }
+    
+    .apply_forms .information_box .person_name {
+    	font-size: 25px;
+    	color: #5E637A;
+    	text-align: center;
+    	height: 30px;
+    }
+    
+    .apply_forms .information_box .person_old {
+    	font-size: 18px;
+    	color: #999;
+    }
+    
+    .apply_forms .information_box .information_smallbox .person {
+    	display: block;
+		height:50px;
+		line-height: 50px;
+    	text-align: center;
+    }
+    /*.apply_form .information_box .female{position: absolute;left: 295px;top:246px;}*/
+    
+    .apply_forms .information_box .information_smallbox>table {
+    	margin:30px auto 0;
+    	font-size: 18px;
+    	color: #999;
+    }
+    .apply_forms .information_box .information_smallbox>table td:nth-of-type(2){
+    	width:180px;
+    	text-align: left;
+    }
+     .apply_forms .information_box .information_smallbox>table td:nth-of-type(1){
+     	vertical-align: text-top;
+    	width:90px;
+    }   
+    .apply_forms .earnings_box .earnings_smallbox {
+    	width: 92.1%;
+    	height: 94.5%;
+    	background-color: #fff;
+    	position: absolute;
+    	left: 42px;
+    	top: 4px;
+    }
+    .apply_forms .earnings_box .earnings_smallbox #income{
+    	width: 100%;
+    	height: 100%;
+    }    
+
+    .apply_forms .earnings_box .btn-group {
+    	position:absolute;
+    	width: 150px;
+    	height: 50px;
+    	top:20px;
+    	right:30px;
+    }
+   
+    .apply_forms .ranking_smallbox {
+    	width: 85%;
+    	height: 90%;
+    	background-color: #fff;
+    	position: absolute;
+    	left: 42px;
+    	top: 12px;
+    }
+    
+    .apply_forms .ranking_smallbox .ranking_text {
+    	font-size: 20px;
+    	color: #999;
+    	text-align:center;
+    }
+    
+ 
+    
+    .apply_forms .rankingtide_smallbox {
+    	width: 92.1%;
+    	height: 90%;
+    	background-color: #fff;
+    	position: absolute;
+    	left: 42px;
+    	top: 12px;
+    }
+     .apply_forms .rankingtide_smallbox #rankingtide{
+     	width: 100%;
+     	height: 100%;
+     }   
+     .apply_forms .rankingtide_box .btn-group{
+     	position:absolute;
+    	width: 150px;
+    	height: 50px;
+    	top:20px;
+    	right:30px;    	
+     }
+    
+    .imageurls{
+    	width:200px;
+    	height:120px;
+    	margin: 0 20px 20px 0;
+    	border-radius: 5px;
+    }
+	#pleaseWriteAll{
+		text-align: center;
+		color: red;
+		font-size:20px;
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+	#ossfile div{
+		font-size: 15px;
+	}
+	#ossfile .progress{
+		width: 200px;
+	}
+	#console{
+		font-size:15px;
+	}
+	#kongbai>img{width:40%;margin-left: 30%;margin-top: 50px;}

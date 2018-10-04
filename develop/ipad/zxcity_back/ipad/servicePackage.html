@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>服务套餐</title>
+        <link rel="stylesheet" href="../assets/hplus/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../assets/kindeditor-4.1.7/themes/default/default.css"/>
+        <link rel="stylesheet" href="css/servicePackage.css">
+    </head>
+    <body>
+        <div class="serviceContainer">
+            <form id="inputForm" class="form-horizontal" method="post" action=" ">
+                <div class="service-body">
+                    <div class="service-up">
+                        <div class="form-group service-name">
+                            <label>套餐名称：</label>
+                            <input type="text" class="form-control required" name="serviceName">
+                        </div>
+                        <label class="service-img-label">图片：</label>
+                        <div class="service-img">
+                            <img class="service-imgPreview" src="image/placeholder_img_01.png">
+                        </div>
+                        <input class="service-add-image" name="image"  type="file">
+                        <div class="service-info">
+                            <label>商品详情：</label>
+                            <div class="service-info-text">
+                                <textarea style="width: 100%; height: 144px;" id="detail" name="detail" class="form-control required" aria-required="true" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <!--添加相关部分-->
+                    <div class="service-down">
+                            <!--服务卡相关-->
+                            <div class="service-card">
+                                <div class="form-group">
+                                    <label class="service-card-name control-label">服务卡名称：</label>
+                                    <div class="service-card-content">
+                                        <div class="service-card-select">
+                                            <div class="service-card-input">
+                                                <input data-serviceId="" class="card-id form-control" type="text" value="">
+                                                <button class="btn btn-white" type="button" >
+                                                    <span class="caret"></span>
+                                                </button>
+                                            </div>
+                                            <!--下拉选项卡-->
+                                            <div class="card-detail">
+                                                <table class="card-detail-table table table-bordered table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th width="30px">序号</th>
+                                                        <th width="60px">服务卡</th>
+                                                        <th width="60px">价格</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <!--<tr data-serviceId="">
+                                                        <td>1</td>
+                                                        <td>FGFD卡</td>
+                                                        <td>300</td>
+                                                    </tr>-->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="service-card-numBody">
+                                        <label class="service-card-num control-label">数量：</label>
+                                        <div class="card-add-num txt-value">
+                                            <input id="serviceNum" class="form-control required valid" value="1" aria-required="true" aria-invalid="false" type="text" value="1">
+                                        </div>
+                                    </div>
+                                    <div class="service-card-priceBody">
+                                        <label class="service-card-price control-label">价格：</label>
+                                        <div class="card-add-price txt-value">
+                                            <input id="servicePrice" class="form-control required valid" aria-required="true" type="text" aria-invalid="false">
+                                        </div>
+                                    </div>
+                                    <button class="card-detail-btn btn btn-primary dim" type="button" >
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!--服务卡相关end-->
+                        <!--添加的服务卡列表-->
+                        <div class="addCard">
+                            <!--添加一条-->
+                            <table class="addCard-table table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th width="30%">服务卡名称</th>
+                                    <th width="20%">数量：</th>
+                                    <th width="30%">单价：</th>
+                                    <th width="20%">操作：</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!--添加一条end-->
+                        </div><!--添加的服务卡列表end-->
+                        <!--总价格-->
+                        <div class="form-group clear price-sum">
+                            <label class="control-label">总价格：</label>
+                            <input id="packageActualPrice" class=" form-control" type="text" disabled="disabled"> 元
+                        </div><!--总价格end-->
+                    </div><!--添加相关部分end-->
+                </div>
+            </form>
+        </div>
+        <!-- jquery组件 -->
+        <script src="../assets/js/jquery-1.8.2.min.js"></script>
+        <script src="../assets/kindeditor-4.1.7/kindeditor-all-min.js"></script>
+        <script src="../assets/kindeditor-4.1.7/lang/zh_CN.js"></script>
+        <script src="../assets/layer/layer.js"></script>
+        <script src="js/servicePackage.js"></script>
+    </body>
+</html>

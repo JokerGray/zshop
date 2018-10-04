@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+    <title>考勤统计</title>
+    <link rel="stylesheet" href="../common/css/reset.css">
+    <link rel="stylesheet" href="../assets/layui-v2.3.0/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/select2/select2.min.css">
+    <link rel="stylesheet" href="./css/attendanceReport.css">
+</head>
+<body>
+<div class="layoutBody">
+    <!--顶部tab栏-->
+    <div class="tabNav">
+        <ul>
+            <li class="active" data-class="month">月统计</li>
+            <li data-class="day">日统计</li>
+            <li data-class="time">打卡时间</li>
+             <!--<li data-class="data">数据统计</li>-->
+        </ul>
+        <div class="shopSelect">
+            <label>考勤店铺：</label>
+            <select id="shopSelect">
+                <!--<option value="1">武汉店测试店XX</option>-->
+            </select>
+        </div>
+    </div>
+    <!--条件筛选栏-->
+    <div class="filterBox">
+        <!--控制月包表显示内容-->
+        <div class="showWhat">
+            <label>展示列：</label>
+            <ul class="filterItem">
+                <li class="active" data-class="attendanceDays"><i></i><span>出勤天数</span></li>
+                <li class="active" data-class="non-attendanceDays"><i></i><span>未出勤天数</span></li>
+                <li class="active" data-class="workDuration"><i></i><span>工作时长</span></li>
+                <li class="active" data-class="lateDuration"><i></i><span>迟到次数</span></li>
+                <li class="active" data-class="LeaveEarlyDuration"><i></i><span>早退次数</span></li>
+                <li class="active" data-class="non-workDuration"><i></i><span>缺卡次数</span></li>
+            </ul>
+        </div>
+        <!--时间和店铺考勤人员选择-->
+        <div class="timePeople">
+            <!--时间范围选择-->
+            <div class="dateRangeSelect">
+                <label>时间范围：</label>
+                <div>
+                    <input type="text" class="dateRange" placeholder="" id="dateRange">
+                    <!--<span>至</span>-->
+                    <!--<input type="text" class="endTime" placeholder="2018-05-23">-->
+                </div>
+            </div>
+            <!--单独日期选择-->
+            <div class="dateDaySelect">
+                <label>时间：</label>
+                <input type="text" id="dateDay" value="">
+            </div>
+            <!--考勤人员选择-->
+            <div class="peopleSelect">
+                <label>店铺/人员</label>
+                <span class="peopleSelectBtn">全店铺</span>
+            </div>
+        </div>
+    </div>
+    <!--导出按钮上面的横线-->
+    <div class="line">
+        <hr>
+    </div>
+    <!--导出按钮-->
+    <div class="exportBtn">
+        <button id="exportBtn">导出报表</button>
+        <a href="" id="downBtn" download="4月考勤报表"></a>
+    </div>
+    <!--考勤报表-->
+    <div class="reportContent" id="reportContent">
+        <!--月报表-->
+        <div class="month"></div>
+        <!--日报表-->
+        <div class="day"></div>
+        <!--打卡时间报表-->
+        <div class="time"></div>
+        <!--数据统计报表-->
+        <div class="data"></div>
+    </div>
+</div>
+</body>
+<script src="../assets/jquery/jquery.min.js"></script>
+<script src="../assets/artTemplate/template-web.js"></script>
+<script src="../assets/layer-v3.1.1/layer.js"></script>
+<script src="../assets/laydate-v5.0.9/laydate.js"></script>
+<script src="../assets/select2/select2.min.js"></script>
+<script src="../assets/select2/zh-CN.js"></script>
+<script src="../common/js/util.js"></script>
+<script src="./js/attendanceReport.js"></script>
+<script>
+    $(function () {
+        // 设置最外层容器高度
+        $('.layoutBody').outerHeight($(window).height(),true);
+        // 设置月报表容器高度
+        $('.month').css('max-height', $(window).height() - $('.tabNav').height() - $('.filterBox').outerHeight(true) - $('.line').height() - $('.exportBtn').outerHeight(true) - 40)
+    });
+    // 设置日报表容器高度
+    $('.day').css('max-height', $(window).height() - $('.tabNav').height() - $('.filterBox').outerHeight(true) - $('.line').height() - $('.exportBtn').outerHeight(true));
+    //设置打卡时间报表容器高度
+    $('.time').css('max-height', $(window).height() - $('.tabNav').height() - $('.filterBox').outerHeight(true) - $('.line').height() - $('.exportBtn').outerHeight(true));
+	$('.data').css('max-height', $(window).height() - $('.tabNav').height() - $('.filterBox').outerHeight(true) - $('.line').height() - $('.exportBtn').outerHeight(true));
+	//时间戳转换
+	template.defaults.imports.dateFormat = function(date){
+		return date.substring(0, 10);
+	};
+	$(document).on("click",".work-img",function(){
+		$("#viewImage").show().children('.img-box').html($(this).html());
+	})
+	$(document).on("click",".img-close",function(){
+		$("#viewImage").hide().children('.img-box').html('');
+	})
+</script>
+<!--考勤月报表-->
+<script type="text/html" id="monthReportTpl">
+    <table class="layui-table" id="month-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th style="width: 100px;height: 100px">姓名</th>
+            <th class="shopName" style="width: 160px;height: 100px">店铺</th>
+            <th class="attendanceDays" style="width: 100px;height: 100px">出勤天数</th>
+            <th class="non-attendanceDays" style="width: 100px;height: 100px">未出勤天数</th>
+            <th class="workDuration" style="width: 100px;height: 100px">工作时长</th>
+            <th class="lateDuration" style="width: 100px;height: 100px">迟到次数</th>
+            <th class="LeaveEarlyDuration" style="width: 100px;height: 100px">早退次数</th>
+            <th class="non-workDuration" style="width: 100px;height: 100px">缺卡次数</th>
+            {{each calendar item index}}
+            <th class="date" style="width: 100px;height: 100px"><span>{{item.week}}</span><span>{{item.day}}</span></th>
+            {{/each}}
+        </tr>
+        </thead>
+        <tbody>
+        {{each data item index}}
+        <tr style="text-align: center;height: 90px;">
+            <td class="userName" data-userId="{{item.userId}}">{{item.userName}}</td>
+            <td>{{$data.shopName}}</td>
+            <td class="attendanceDays">{{item.workDay}}</td>
+            <td class="non-attendanceDays">{{item.noWorkDay}}</td>
+            <td class="workDuration">{{$imports.workTimeFormat(item.workSum)}}</td>
+            <!--<td class="workDuration">135小时10分钟</td>-->
+            <td class="lateDuration abnormal" data-list="{{item.lateList}}" data-name="{{item.userName}}">{{item.lateSum}}</td>
+            <td class="LeaveEarlyDuration abnormal" data-list="{{item.earlyList}}" data-name="{{item.userName}}">{{item.earlySum}}</td>
+            <td class="non-workDuration abnormal" data-list="{{item.noWorklist}}" data-name="{{item.userName}}">{{item.noWork}}</td>
+            {{each item.checkTime v i}}
+            <td class="attendanceDetailBtn" data-time="{{calendar[i]}}">
+                {{if v.split("&&")[0] == 0 && v.split("&&")[1] == 0}}
+                <p>正常</p>
+                {{else if v.split("&&")[0] >= 1 && v.split("&&")[1] == 0}}
+                <p class="non-normal">上班迟到{{v.split("&&")[0]<=60?v.split("&&")[0]:$imports.parseInt(v.split("&&")[0]/60)+"小时"+v.split("&&")[0]%60}}分钟</p>
+                {{else if v.split("&&")[0] >= 1 && v.split("&&")[1] == -1}}
+                <p class="non-normal">上班迟到{{v.split("&&")[0]<=60?v.split("&&")[0]:$imports.parseInt(v.split("&&")[0]/60)+"小时"+v.split("&&")[0]%60}}分钟</p>
+                <p class="non-normal">下班缺卡</p>
+                {{else if v.split("&&")[0] == 0 && v.split("&&")[1] >= 1}}
+                <p class="non-normal">下班早退{{v.split("&&")[1]<=60?v.split("&&")[1]:$imports.parseInt(v.split("&&")[1]/60)+"小时"+v.split("&&")[1]%60}}分钟</p>
+                {{else if v.split("&&")[0] == -1 && v.split("&&")[1] >= 1}}
+                <p class="non-normal">上班缺卡</p>
+                <p class="non-normal">下班早退{{v.split("&&")[1]<=60?v.split("&&")[1]:$imports.parseInt(v.split("&&")[1]/60)+"小时"+v.split("&&")[1]%60}}分钟</p>
+                {{else if v.split("&&")[0] >=1 && v.split("&&")[1] >= 1}}
+                <p class="non-normal">上班迟到{{v.split("&&")[0]<=60?v.split("&&")[0]:$imports.parseInt(v.split("&&")[0]/60)+"小时"+v.split("&&")[0]%60}}分钟</p>
+                <p class="non-normal">下班早退{{v.split("&&")[1]<=60?v.split("&&")[1]:$imports.parseInt(v.split("&&")[1]/60)+"小时"+v.split("&&")[1]%60}}分钟</p>
+                {{else if v.split("&&")[0] == 0 && v.split("&&")[1] == -1}}
+                <p class="non-normal">下班缺卡</p>
+                {{else if v.split("&&")[0] == -1 && v.split("&&")[1] == 0}}
+                <p class="non-normal">上班缺卡</p>
+                {{else if v.split("&&")[0] == -1 && v.split("&&")[1] == -1}}
+                <p>无</p>
+                {{/if}}
+            </td>
+            {{/each}}
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</script>
+<!--考勤日报表-->
+<script type="text/html" id="dayReportTpl">
+    <table class="layui-table" id="day-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th style="width: 110px;min-width: 78px;height: 100px;text-align: center" rowspan="2">姓名</th>
+            <th style="width: 160px;min-width: 110px;height: 100px;text-align: center" rowspan="2">店铺</th>
+            <th style="width: 160px;min-width: 110px;height: 100px;text-align: center" rowspan="2">日期</th>
+            <th colspan="2" style="width: 260px;min-width: 150px;height: 50px;text-align: center;">上班打卡</th>
+            <th colspan="2" style="width: 260px;min-width: 150px;height: 50px;text-align: center;">下班打卡</th>
+        </tr>
+        <tr style="width: 100px;min-width: 100px;height: 50px">
+            <th style="text-align: center;width: 130px;min-width: 70px;">打卡时间</th>
+            <th style="text-align: center;width: 130px;min-width: 70px;">打卡结果</th>
+            <th style="text-align: center;width: 130px;min-width: 70px;">打卡时间</th>
+            <th style="text-align: center;width: 130px;min-width: 70px;">打卡结果</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{each data item index}}
+        <tr style="height: 60px;text-align: center;">
+            <td>{{item.userName}}</td>
+            <td>{{$data.shopName}}</td>
+            <td>{{$data.date}}</td>
+            <td>{{item.startDate!==''&&item.startDate!==null?item.startDate:'无'}}</td>
+            <td>
+                {{if item.startDate === ''||item.startDate === null}}
+                <span class="non-normal">缺卡</span>
+                {{else if (item.startDate !== ''||item.startDate !== null)&&item.late<60&&item.late!=null}}
+                <span class="non-normal">迟到{{item.late}}分钟</span>
+                {{else if (item.startDate !== ''||item.startDate !== null)&&item.late>=60&&item.late!=null}}
+                <span class="non-normal">迟到{{$imports.parseInt(item.late/60)+'小时'+item.late%60+'分钟'}}</span>
+                {{else if (item.startDate !== ''||item.startDate !== null)&&item.late == null}}
+                <span>正常</span>
+                {{/if}}
+            </td>
+            <td>{{item.endDate!==''&&item.endDate!==null?item.endDate:'无'}}</td>
+            <td>
+                {{if item.endDate === ''||item.endDate === null}}
+                <span class="non-normal">缺卡</span>
+                {{else if (item.endDate !== ''||item.endDate !== null)&&item.early<60&&item.early!=null}}
+                <span class="non-normal">早退{{item.early}}分钟</span>
+                {{else if (item.endDate !== ''||item.endDate !== null)&&item.early>=60&&item.early!=null}}
+                <span class="non-normal">早退{{$imports.parseInt(item.early/60)+'小时'+item.early%60+'分钟'}}</span>
+                {{else if (item.endDate !== ''||item.endDate !== null)&&item.early == null}}
+                <span>正常</span>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</script>
+<!--考勤打卡时间报表-->
+<script type="text/html" id="timeReportTpl">
+    <table class="layui-table" id="time-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th style="width: 120px;max-width:120px;min-width:120px;height: 50px; text-align: center">姓名</th>
+            <th style="width: 120px;max-width:120px;min-width:120px;height: 50px; text-align: center">店铺</th>
+            {{each calendar item index}}
+            <th style="width: 90px;max-width:90px;min-width:90px;height: 50px; text-align: center" class="date"><span>{{item.week}}</span><span>{{item.day}}</span></th>
+            {{/each}}
+        </tr>
+        </thead>
+        <tbody>
+        {{each data item index}}
+        <tr style="height:60px;min-height:60px;text-align: center">
+            <td>{{item.userName}}</td>
+            <td>{{$data.shopName}}</td>
+            {{each item.checkTime v i}}
+            {{if v === ''}}
+            <td>无</td>
+            {{else}}
+            <td>
+                {{@(v.replace(/&&/g,"<br>"))}}
+                <!--05:30<br>-->
+                <!--05:30<br>-->
+            </td>
+            {{/if}}
+            {{/each}}
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</script>
+<!--数据统计-->
+
+<script type="text/html" id="dataReportTpl">
+
+	<table class="layui-table" id="data-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th class="dataTh">姓名</th>
+            <th class="dataTh">店铺</th>
+            <th class="dataTh">职务</th>
+            <th class="dataTh">角色</th>
+            <th class="dataTh">考勤日期</th>
+            <th class="dataTh">考勤时间</th>
+            <th class="dataTh">打卡时间</th>
+            <th class="dataTh">打卡结果</th>
+            <th class="dataTh">打卡地址</th>
+            <th class="dataTh">打卡备注</th>
+            <th class="dataTh">打卡图片</th>
+            <th class="dataTh">打卡设备</th>
+            <th class="dataTh">管理员修改备注</th>
+            <th class="dataTh">管理员修改图片</th> 
+        </tr>
+        </thead>
+        <tbody>
+        {{each data item index}}
+        <tr style="text-align: center;height: 90px;">
+        	<td>      		
+	        	{{if (item.userName==''||item.userName==null)}}
+	        	<span class="non-normal">无</span>
+	        	{{else}}
+                <span class="non-normal">{{item.userName}}</span>
+	        	{{/if}}
+        	</td>
+        	<td>{{item.scWorkDeploys.shopName}}</td>
+        	<td>
+        		{{if (item.positionName==''||item.positionName==null)}}
+	        	<span class="non-normal">无</span>
+	        	{{else}}
+                <span class="non-normal">{{item.positionName}}</span>
+	        	{{/if}}
+        	</td>
+        	<td>{{item.roleName}}</td>
+        	<td>{{item.scWorkDeploys.createTime|dateFormat}}</td>
+        	<td>
+        		{{if (item.workType=='1')}}
+	        	<span class="non-normal">{{item.scWorkDeploys.startTime}}</span>
+	        	{{else if(item.workType=='4')}}
+                <span class="non-normal">{{item.scWorkDeploys.endTime}}</span>
+	        	{{/if}}
+        	</td>
+        	<td>{{item.workTime}}</td>
+        	<td>
+        		{{if (item.clockType=='')}}
+                <span class="non-normal">缺卡</span>
+                {{else if (item.clockType == '1')}}
+                <span class="non-normal">正常</span>
+                {{else if (item.clockType == '2')}}
+                <span class="non-normal">补卡</span>
+                {{else if (item.clockType == '3')}}
+                <span class="non-normal">早退</span>
+                {{else if (item.clockType == '4')}}
+                <span class="non-normal">请假</span>
+                {{else if (item.clockType == '5')}}
+                <span class="non-normal">加班</span>
+                {{else if (item.clockType == '6')}}
+                <span class="non-normal">外勤</span>
+                {{else if (item.clockType == '7')}}
+                <span class="non-normal">迟到</span>
+                {{/if}}
+        	</td>
+        	<td>{{item.address}}</td>
+        	<td>
+                {{if (item.workRemark == ''||item.workRemark==null)}}
+                <span class="non-normal">无</span>
+                {{else}}
+                <span class="non-normal">{{item.workRemark}}</span>    
+                {{/if}}
+        	</td>
+        	<td>
+        		{{if (item.userImg==''||item.userImg==null)}}
+	        	<span><img src="images/com.png"/></span>
+	        	{{else}}
+                <span class="work-img"><img src="{{item.userImg}}"/></span>
+	        	{{/if}}
+        	</td>
+        	<td>
+        		
+        		{{if (item.scWorkDeploys.facilityName==''||item.scWorkDeploys.facilityName==null)}}
+	        	<span>无</span>
+	        	{{else}}
+                <span class="non-normal">{{item.scWorkDeploys.facilityName}}</span>
+	        	{{/if}}
+        	</td>
+        	<td>
+        		{{if (item.clockType == '11')}}
+                <span class="non-normal">管理员修改为正常</span>
+                {{else if (item.clockType == '12')}}
+                <span class="non-normal">管理员修改为迟到</span>
+                {{else if (item.clockType == '13')}}
+                <span class="non-normal">管理员修改为早退</span>
+                {{else}}
+                <span class="non-normal">无</span>
+                {{/if}}
+        	</td>
+        	<td>
+        		{{if (item.workPicurl==''||item.workPicurl==null)}}
+	        	<span ><img src="images/com.png"/></span>
+	        	{{else}}
+                <span class="work-img"><img src="{{item.workPicurl}}"/></span>
+	        	{{/if}}
+        	</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</script>
+</html>
+
+<!--查看图片-->
+<div id="viewImage" style="display: none;">
+	<div class="img-close">
+		x
+	</div>
+    <div class="img-box">
+        
+    </div>
+</div>
+
+
+<!--选择考勤人员弹窗-->
+<div id="selectWaiterTpl" style="display: none;">
+    <div class="title">选择人员</div>
+    <div class="selectorBox">
+        <div class="waiting">
+            <span>选择：</span>
+            <div class="waitingContent">
+                <form action="javascript:;" id="submit">
+                    <input type="text" class="keyword" placeholder="搜索">
+                </form>
+                <div class="waiters">
+                    <p class="allSelectBox"><i class="allSelectBtn"></i><span>全选</span></p>
+                    <ul class="waiterItem">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="selected">
+            <span>已选：</span>
+            <div class="selectedContent">
+
+            </div>
+        </div>
+    </div>
+    <div class="btnBox">
+        <button class="cancelBtn">取消</button>
+        <button class="yesBtn">确定</button>
+    </div>
+</div>
+<!--考勤人员选择列表-->
+<script type="text/html" id="waitingTpl">
+    {{each $data item index}}
+    <li>
+        <i class="selectBtn {{item.selected === 'true'?'active':''}}" data-item="{{item}}" data-waiterId="{{item.userId}}"></i>
+        <p>
+            <span class="waiterName" data-waiterId="{{item.userId}}">{{item.backUserName}}</span>
+            <span class="phoneNum">
+                <s class="phoneIcon"></s><b>{{item.phone}}</b>
+            </span>
+        </p>
+    </li>
+    {{/each}}
+</script>
+<!--已选考勤人员列表-->
+<script type="text/html" id="selectedTpl">
+    <ul>
+        {{each $data item index}}
+        <li>
+            <span class="waiterName" data-waiterId="{{item.userId}}">{{item.backUserName}}</span>
+            <span class="phoneNum"><s class="phoneIcon"></s><b>{{item.phone}}</b></span>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+<!--异常次数汇总-->
+<script type="text/html" id="lateTotalTpl">
+    <div class="title">{{$data.userName}} {{$data.timeRange}} {{$data.type}}次数汇总</div>
+    <div class="lateList">
+        <div class="th">
+            <span>考勤时间</span>
+            <span>用户打卡时间</span>
+            <span>考勤结果</span>
+        </div>
+        <div class="tb">
+            <ul>
+                {{if data.length === 0}}
+                <li class="nodata"><span>无异常情况！</span></li>
+                {{else}}
+                {{each data item index}}
+                <li>
+                    <span>{{item.actualDate.substr(0,16)}}</span>
+                    <span>{{item.workTime.substr(0,16)}}</span>
+                    {{if item.late && item.late!=-1}}
+                    <span>迟到{{item.late<=60?item.late:$imports.parseInt(item.late/60)+"小时"+item.late%60}}分钟</span>
+                    {{else if item.early}}
+                    <span>早退{{item.early<=60?item.early:$imports.parseInt(item.early/60)+"小时"+item.early%60}}分钟</span>
+                    {{else if item.late == -1}}
+                    <span>缺卡</span>
+                    {{/if}}
+                </li>
+                {{/each}}
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</script>
+<!--打卡详情-->
+<script type="text/html" id="attendanceDetailTpl">
+    <div class="title">
+        {{$data.userName}} {{$data.date}}
+        <span class="closeBtn">×</span>
+    </div>
+    <div class="userName">
+        <span class="nameIcon">{{$data.userName.substr(1)}}</span>
+        <span class="name">{{$data.userName}}</span>
+    </div>
+    <div class="timeDsc">
+        {{if $data.startInfo !== ''&&$data.endInfo !== ''}}
+            {{if workLength.hours == 0 && workLength.minutes > 0}}
+            今日打卡2次，工时共计{{workLength.minutes}}分钟
+            {{else if workLength.hours > 0 && workLength.minutes == 0}}
+            今日打卡2次，工时共计{{workLength.hours}}小时
+            {{else if workLength.hours > 0 && workLength.minutes > 0}}
+            今日打卡2次，工时共计{{workLength.hours}}小时{{workLength.minutes}}分钟
+            {{else if workLength.hours == 0 && workLength.minutes == 0}}
+            今日打卡2次，工时共计0小时
+            {{/if}}
+        {{else}}
+        今日打卡1次，工时共计0小时
+        {{/if}}
+    </div>
+    <div class="detailContent">
+        <ul>
+            <li>
+                <span>考勤时间</span>
+                <span>打卡时间</span>
+                <span>打卡结果</span>
+                <span>打卡地址</span>
+                <span>打卡备注</span>
+                <span>打卡照片</span>
+            </li>
+            {{if $data.startInfo!==''}}
+            <li>
+                <span>{{$data.startInfo.startTime}}</span>
+                <span>{{$data.startInfo.sWork}}</span>
+                {{if $data.startInfo.sStatus == 0}}
+                <span class="non-normal">正常</span>
+                {{else}}
+                <span class="non-normal">迟到{{$data.startInfo.sStatus<=60?$data.startInfo.sStatus:$imports.parseInt($data.startInfo.sStatus/60)+"小时"+$data.startInfo.sStatus%60}}分钟</span>
+                {{/if}}
+                <span>{{$data.startInfo.addr}}</span>
+                <span title="{{$data.startInfo.sRemark}}">{{$data.startInfo.sRemark}}</span>
+                <span>
+                    <img src="{{$data.startInfo.sPic}}" alt="">
+                </span>
+            </li>
+            {{/if}}
+            {{if $data.endInfo!==''}}
+            <li>
+                <span>{{$data.endInfo.endTime}}</span>
+                <span>{{$data.endInfo.eWork}}</span>
+                {{if $data.endInfo.eStatus == 0}}
+                <span class="non-normal">正常</span>
+                {{else}}
+                <span class="non-normal">早退{{$data.endInfo.eStatus<=60?$data.endInfo.eStatus:$imports.parseInt($data.endInfo.eStatus/60)+"小时"+$data.endInfo.eStatus%60}}分钟</span>
+                {{/if}}
+                <span>{{$data.endInfo.addr}}</span>
+                <span>{{$data.endInfo.eRemark}}</span>
+                <span>
+                    <img src="{{$data.endInfo.ePic}}" alt="">
+                </span>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+</script>

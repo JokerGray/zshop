@@ -1,0 +1,270 @@
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+	<title>活动晒单页</title>
+	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css"> 
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		html,body {
+			font-size: 16px;
+			font-family:-apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+		}
+		/*活动动态*/
+		.activityContent{
+			padding: 0.8rem 0.75rem 1rem;
+		}
+		.userContent{
+			display: flex;
+		}
+		.userContent .thumbnail{
+			display: block;
+			width: 3.6rem;
+			height: 3.6rem;
+		}
+		.userContent .thumbnail img{
+			display: block;
+			height: 100%;
+			width: 100%;
+		}
+		.userContent .titleContent{
+			display: flex;
+			flex: 1;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: 0.5rem 0 0.5rem 0.5rem;
+		}
+		.userContent .titleContent .title{
+			display: block;
+			font-size: 0.9rem;
+			color: #333;
+		}
+		.userContent .titleContent .time{
+			display: block;
+			font-size: 0.8rem;
+			color: #999;
+		}
+		.summaryContent .article{
+			display: block;
+		    margin: 1rem 0;
+		    font-size: 0.9rem;
+		    color: #333;
+		    line-height: 1.6;
+		    letter-spacing: 0.5px;
+		    max-height: 100%;
+			overflow: auto;
+		}
+		.mediaContent{
+			display: block;
+		    flex-wrap: wrap;
+		}
+		.mediaContent .media{
+			display: block;
+			margin: 0.5rem 0 0 0;
+			padding: 0;
+			flex: 1;
+			min-width: auto;
+		    max-width: 100%;
+    		box-sizing: border-box;
+		}
+		.mediaContent .media img, .mediaContent .media video{
+			display: block;
+			margin: 0 auto;
+			width: auto;
+			max-width: 100%;
+			height: auto;
+		}
+		.mediaContent .media video{
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="activityContent">
+		<div class="userContent">
+			<div class="thumbnail">
+				<img class="userpic"/>
+			</div>
+			<div class="titleContent">
+				<div class="title userName"></div>
+				<div class="time videoAlbumTime"></div>
+			</div>
+		</div>
+		<div class="summaryContent">
+			<div class="article videoAlbumDescription"></div>
+			<div class="mediaContent">
+				<div class="media">
+					<video id="video" controls="controls" src=""></video>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.2/weui.min.js"></script>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script type="text/javascript">
+		var id = getQueryString('id');
+		var videoAlbumId = getQueryString('videoalbumid');
+		// 获取url中的参数
+		function getQueryString(name){
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+			var r = window.location.search.substr(1).match(reg);
+			return r !== null ? decodeURI(r[2]) : null;
+		}
+		$(document).ready(function(){
+			FastClick.attach(document.body);
+			getData();
+		})
+		
+		function getData(){
+			if(!id || !videoAlbumId) return;
+			var loading;
+			$.ajax({
+				type:"post",
+				dataType: 'json',
+				url:"/zxcity_restful/ws/rest",
+				data:{
+					cmd: 'circle/getVAByIdNew20',
+					data: JSON.stringify({
+						videoAlbumId: videoAlbumId,
+						userId: id
+					}),
+					version: 1
+				},
+				beforeSend: function () {
+					loading = weui.loading('加载中...');
+				},
+				complete: function () {
+					loading.hide();
+				},
+				success: function (data) {
+					if(data.code == 1){
+						setData(data.data);
+					} else {
+						weui.alert(data.msg);
+					}
+				},
+				error: function (err) {
+					weui.alert('请求超时，请重试……');
+				}
+			});
+		}
+		
+		// 加载数据
+		function setData(obj){
+			var dom = $('.activityContent');
+			var data = obj['videoAlbum'];
+			// 分享
+			var title = data['userName'] + '的活动动态';
+			var introduce = data['videoAlbumDescription'];
+			var imgUrl = data['userpic'];
+			// 数据
+			dom.find('.userpic').attr('src' , data['userpic']);
+			dom.find('.userName').text(data['userName']);
+			dom.find('.videoAlbumTime').text(data['videoAlbumTime']);
+			dom.find('.videoAlbumTime').text(data['videoAlbumTime'].substr(0, 10));
+			dom.find('.videoAlbumDescription').text(data['videoAlbumDescription']);
+			
+			var urls = data['urls'];
+			// 媒体
+			if(urls.length == 0) {
+				dom.find('.mediaContent').remove();
+				share(title, imgUrl, introduce)
+				return;
+			}
+			var type = data['videoAlbumType'];
+			if(type == 6) {
+				imgUrl = data['videoAlbumCoverUrl'];
+				dom.find('video').attr('src', urls[0]).attr('poster', data['videoAlbumCoverUrl']);
+				share(title, imgUrl, introduce)
+				return;
+			}
+			dom.find('.media').remove();
+			var content = dom.find('.mediaContent');
+			for (var j=0; j<urls.length; j++) {
+				var img = $('<div class="media"><img src="'+ urls[j] +'"></div>');
+				content.append(img)
+			}
+			imgUrl = urls[0];
+			share(title, imgUrl, introduce);
+		}
+		function share(title, imgUrl, introduce){
+			document.title = title;
+	        $.ajax({
+	            type: "post",
+	            url: "/zxcity_restful/ws/rest",
+	            dataType: 'json',
+	            headers: {
+	                apikey: sessionStorage.getItem('apikey') || 'test'
+	            },
+	            data: {
+	                cmd: 'game/getSign',
+	                data: JSON.stringify({
+	                    url: location.href
+	                }),
+	                version: 1
+	            },
+	            success: function(res) {
+	                wx.config({
+	                    debug: false,
+	                    appId: 'wxe50dd59beab1e644',
+	                    timestamp: res.data.timestamp,
+	                    nonceStr: res.data.nonceStr,
+	                    signature: res.data.signature,
+	                    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareWeibo', 'onMenuShareQZone', 'onMenuShareQZone']
+	                });
+	                var options = {
+	                    title: title,
+	                    desc: introduce,
+	                    link: location.href,
+	                    imgUrl: imgUrl
+	                }
+	                wx.ready(function(){
+	                    wx.onMenuShareTimeline({
+	                        title: introduce,
+	                        link: location.href,
+	                        imgUrl: imgUrl
+	                    });
+	                    wx.onMenuShareAppMessage($.extend({
+	                        type: '',
+	                        dataUrl: ''
+	                    }, options));
+	                    wx.onMenuShareQQ(options);
+	                    wx.onMenuShareWeibo(options);
+	                    wx.onMenuShareQZone(options);
+	                    wx.onMenuShareQZone(options);
+	                })
+	            }
+	        });
+	      }
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

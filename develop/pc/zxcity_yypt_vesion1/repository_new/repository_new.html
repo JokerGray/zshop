@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>知识库</title>
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-2.2.5/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/repository_new.css" />
+</head>
+<body>
+    <div class="common-container">
+        <div class="jurisdiction-content" id="contentIndex">
+            <div class="title">
+                <h4>知识库</h4>
+                <hr />
+            </div>
+            <div class="jurisdiction-left">
+                <div class="repon-sort">
+                    分类<i class="layui-icon" id="classifyAdd">&#xe642;</i>
+                </div>
+                <ul id="tree" class="ztree"></ul>
+            </div>
+
+            <div class="jurisdiction-center layui-form">
+                <div class="tab-menu">
+                    <span class="acv">问题</span>
+                    <span data-num="0">知识点</span>
+                </div>
+                <div class="repon-rightr">
+                    <!--搜索-->
+                    <div class="search-box">
+                        <input type="text" data-type="0" id="searchName" autocomplete="off" placeholder="搜索问题" maxlength="50"><i class="searchicon" data-type="0"></i>
+                    </div>
+                    <div class="repon-rightl layui-form-item">
+                        <div class="layui-input-block">
+                            <select name="addslect" lay-filter="addslect">
+                                <option value="0">添加问题</option>
+                                <option value="1">添加知识点</option>
+                            </select>
+                        </div>
+                        <button class="layui-btn layui-btn-primary" id="delBtn" data-type="0">删除</button>
+                    </div>
+                 </div>
+                <!--列表-->
+                <div class="table-box">
+                    <div class="repon-table">
+                        <table class="layui-table" lay-filter="table" lay-even lay-skin="nob" id="table">
+                        </table>
+                        <div id="laypageLeft" class="table-rgt"></div>
+                        <script type="text/html" id="barDemo">
+                            <i class="layui-icon" lay-event="change" style="font-size: 25px;">&#xe642;</i>
+                            <i class="layui-icon" lay-event="del" style="font-size: 25px; ">&#xe640;</i>
+                        </script>
+                        <script type="text/html" id="titleTpl">
+                            {{#  if(d.auditStatus == 0){ }}
+                            删除
+                            {{#  } else if(d.auditStatus == 1){ }}
+                            有效
+                            {{#  } else if(d.auditStatus == 2){ }}
+                            无效
+                            {{#  } }}
+                        </script>
+                        <script type="text/html" id="effcettime">
+                            {{d.startTime}} 至 {{d.endTime}}<span style="display: none;" class="ids">{{d.id}}</span>
+                        </script>
+                    </div>
+                    <div class="repon-table">
+                        <table class="layui-table" lay-filter="table2" lay-even lay-skin="nob" id="table2">
+                        </table>
+                        <div id="laypageRgt" class="table-rgt"></div>
+                        <script type="text/html" id="barDemo1">
+                            <i class="layui-icon" lay-event="change" style="font-size: 25px;">&#xe642;</i>
+                            <i class="layui-icon" lay-event="del" style="font-size: 25px; ">&#xe640;</i>
+                        </script>
+                        <script type="text/html" id="titleTpl1">
+                            {{#  if(d.auditStatus == 0){ }}
+                            删除
+                            {{#  } else if(d.auditStatus == 1){ }}
+                            有效
+                            {{#  } else if(d.auditStatus == 2){ }}
+                            无效
+                            {{#  } }}
+                        </script>
+                        <script type="text/html" id="effcettime1">
+                            {{d.startTime}} 至 {{d.endTime}}<span style="display: none;" class="ids">{{d.id}}</span>
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+
+               <!--内容详情end-->
+            </div>
+        <!--新增问题-->
+        <div class="newknow contentlist layui-form" id="knowTip">
+            <div class="title">
+                <h4>知识库</h4>
+                <hr />
+            </div>
+            <div class="newkonw-box">
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label"><b class="required-icon">＊</b>标准问题</label>
+                    <div class="layui-input-block">
+                        <input id="addTitle" name="desc" required  lay-verify="required" placeholder="请输入问题(100字以内)" class="layui-input" maxlength="100">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">相似问题</label>
+                    <div class="sameQs" id="sameQs">
+                        <div class="layui-input-block">
+                            <input class="addIntro layui-input" name="desc"  placeholder="请输入相似问题(100字以内)" class="layui-input" maxlength="100">
+                        </div>
+                    </div>
+
+                    <div class="add-qs" data-num="0"><i class="layui-icon">&#xe654;</i>添加相似问题</div>
+                </div>
+                <div class="add-tag" id="addTag">
+                    <div class="adatitle">添加标签</div>
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">标签</label>
+                        <div class="layui-input-block addtags">
+                            <input type="text" placeholder="标签(10字以内)" class="tags_enter layui-input addinputtag" autocomplete="off" maxlength="10">
+                            <div class="hidetags"></div>
+                            <input class="form-field-tags" id="form-field-tags" type="text" placeholder="请输入标签 ..." value="Tag Input Control" name="tags" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="tagboxs">
+                        <div class="notag">暂无相似</div>
+                        <ul class='tag-ul'></ul>
+                    </div>
+                </div>
+                <div class="layui-form-item infotext">
+                    <label class="layui-form-label"><b class="required-icon">＊</b>对外答案</label>
+                    <div class="layui-input-block">
+                        <textarea required  lay-verify="required" placeholder="请输入答案（最多可输入3000字）" class="edits layui-textarea"  id="editor_id0"  maxlength="3000"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item infotext1">
+                    <label class="layui-form-label">对内答案</label>
+                    <div class="layui-input-block">
+                        <div class="add-internal">
+                            <i class="layui-icon">&#xe654;</i>添加对内答案
+                        </div>
+                        <textarea placeholder="请输入答案（最多可输入3000字）" class="edits layui-textarea"  maxlength="3000" id="editor_id1"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item qsclassify">
+                    <label class="layui-form-label"><b class="required-icon">＊</b>问题分类</label>
+                    <div class="layui-input-block class-select" data-num="0">
+                        <div class="selectname">未分类</div><i class="layui-icon">&#xe625;</i>
+                    </div>
+                    <div class="class-detail">
+                        <ul id="trees" class="ztree"></ul>
+                    </div>
+                </div>
+                <div class="layui-form-item infotext">
+                    <label class="layui-form-label">有效期设置</label>
+                    <div class="layui-input-block" id="isStop">
+                        <a class="acve">启用</a><a>停用</a>
+                        <div class="minitab" data-val="0">
+                            <div class="layui-input-block">
+                                <input id="alwayVaild" lay-filter="isRadio" type="radio" name="sex" value="1" title="永久有效" checked>
+                                <input id="diyVaild" lay-filter="isRadio" type="radio" name="sex" value="0" title="自定义有效期"  >
+                            </div>
+                            <div class="input-group date-picker" data-date-format="yyyy-mm-dd">
+                                <div class="input-group">
+                                    <div class='date form-control' id='datetimepicker1' data-time="0">
+                                        <input name="dtBegin" type="text"  id="jurisdiction-begin" placeholder="-请选择-" >
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="jurisdiction-label pull-left" for="jurisdiction-end">至 </span>
+                                    <div class='date form-control' id='datetimepicker2' data-time="0">
+                                        <input name="dtEnd" type="text"  id="jurisdiction-end" placeholder="-请选择-" >
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item ctroladd" >
+                    <div class="layui-input-block">
+                        <button id="save" class="layui-btn layui-btn-normal" lay-submit lay-filter="formadd">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" id="formcancel">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--新增end-->
+        <!--新增知识点-->
+        <div class="newkonwa contentlist layui-form">
+            <div class="title">
+                <h4>知识库</h4>
+                <hr />
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label"><b class="required-icon">＊</b>知识点标题</label>
+                <div class="layui-input-block">
+                    <input id="addkTitle" name="desc" required  lay-verify="required" placeholder="请输入问题(100字以内)" class="layui-input" maxlength="100">
+                </div>
+            </div>
+            <div class="layui-form-item infotext">
+                <label class="layui-form-label"><b class="required-icon">＊</b>知识点内容</label>
+                <div class="layui-input-block">
+                    <textarea required  lay-verify="required" placeholder="请输入答案（最多可输入3000字）" class="edits layui-textarea"  id="editorKnow"  maxlength="3000"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item qsclassify">
+                <label class="layui-form-label"><b class="required-icon">＊</b>所属分类</label>
+                <div class="layui-input-block class-select" data-num="0">
+                    <div class="selectname">未分类</div><i class="layui-icon">&#xe625;</i>
+                </div>
+                <div class="class-detail">
+                    <ul id="treesKnow" class="ztree"></ul>
+                </div>
+            </div>
+            <div class="layui-form-item relevancyqs">
+                <label class="layui-form-label">相关问题</label>
+                <div class="layui-input-block">
+                    <a class="layui-btn layui-btn-primary" id="addQse">添加新问题</a>
+                    <a class="layui-btn layui-btn-primary" id="relevancy">关联已有问题</a>
+                </div>
+                <div class="about-qs">
+                    <div class="newqs"></div>
+                    <div class="oldqs"></div>
+                </div>
+            </div>
+            <div class="layui-form-item infotext">
+                <label class="layui-form-label">有效期设置</label>
+                <div class="layui-input-block" id="isStopkonw">
+                    <a class="acve">启用</a><a>停用</a>
+                    <div class="minitabk" data-val="0">
+                        <div class="layui-input-block">
+                            <input id="alwayVaildkonw" lay-filter="isRadiok" type="radio" name="isval" value="1" title="永久有效" checked>
+                            <input id="diyVaildkonw" lay-filter="isRadiok" type="radio" name="isval" value="0" title="自定义有效期"  >
+                        </div>
+                        <div class="input-group date-picker" data-date-format="yyyy-mm-dd">
+                            <div class="input-group">
+                                <div class='date form-control' id='datetimepicker1' data-time="0">
+                                    <input name="dtBegin" type="text"  id="jurisdiction-begin" placeholder="-请选择-" >
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <span class="jurisdiction-label pull-left" for="jurisdiction-end">至 </span>
+                                <div class='date form-control' id='datetimepicker2' data-time="0">
+                                    <input name="dtEnd" type="text"  id="jurisdiction-end" placeholder="-请选择-" >
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button id="saveKonw" class="layui-btn layui-btn-normal" lay-submit lay-filter="formaddk">提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary" id="formcancelKnow">取消</button>
+                </div>
+            </div>
+            <div class="hr">
+
+            </div>
+        </div>
+        <!--新增知识点end-->
+        </div>
+    <!--关联问题-->
+    <div class="associated" id="associated">
+        <div class="search-associated search-box">
+            <div class="search-small">
+                <input type="text" data-type="0" id="searchName01" autocomplete="off" placeholder="搜索问题" maxlength="50"><i class="searchicon" data-type="0"></i>
+            </div>
+
+        </div>
+        <div class="lft-clsas">
+            <ul id="tree2" class="ztree"></ul>
+        </div>
+        <div class="rgt-table">
+            <table class="layui-table" lay-filter="table01" lay-even lay-skin="nob" id="table01">
+            </table>
+            <div id="laypageLeft01" class="table-rgt"></div>
+            <script type="text/html" id="associaInfo">
+                <span style="display: none;" class="id">{{d.id}}</span>
+                <span style="display: none;" class="title">{{d.title}}</span>
+            </script>
+        </div>
+    </div>
+    <!--查看详情(问题)-->
+    <div class="infomation" id="infoQs">
+        <h4>问题详情<i class="info-close"></i></h4>
+        <div class="tip-titl">
+            <div class="titletxt"></div>
+            <div class="title-ctrl">
+                <i class="layui-icon" id="editKnow" style="font-size: 25px;">&#xe642;</i>
+                <i class="layui-icon" id="delKnow" style="font-size: 25px; ">&#xe640;</i>
+            </div>
+        </div>
+        <div class="tip-isvaild">
+            <span class="acv">有效</span><span>永久有效</span>
+        </div>
+        <div class="isclassify"></div>
+        <div class="sameclass">
+            相似问题：<span></span>
+        </div>
+        <div class="info-text">
+           <p class="info-tit"><i>外</i>对外答案：</p>
+            <span></span>
+        </div>
+        <div class="info-content">
+            <p class="info-tit inhert"><i>内</i>对内答案：</p>
+           <span></span>
+        </div>
+    </div>
+    <!--查看详情(知识点)-->
+    <div class="infomation infoKnow" id="infoKnow">
+        <h4>知识点详情<i class="info-close"></i></h4>
+        <div class="tip-titl">
+            <div class="titletxt"></div>
+            <div class="title-ctrl">
+                <i class="layui-icon" id="editKnow1" style="font-size: 25px;">&#xe642;</i>
+                <i class="layui-icon" id="delKnow1" style="font-size: 25px; ">&#xe640;</i>
+            </div>
+        </div>
+        <div class="tip-isvaild">
+            <span class="acv">有效</span><span>永久有效</span>
+        </div>
+        <div class="isclassify">
+            所属分类：<span></span>
+        </div>
+        <div class="info-text">
+        </div>
+    </div>
+    <!--编辑分类-->
+    <div class="demo classify-demo" id="classify-demo">
+        <div class="oneclass classify-list" data-isclick="0">
+            <h4>
+                一级分类
+            </h4>
+            <ul class="one-class" id="oneClass"></ul>
+            <div class="addmenu" data-num="0">
+                <i class="layui-icon">&#xe61f;</i>添加分类项
+            </div>
+            <div class="save-box">
+                <a class="save" data-num="0" data-isclose="1">保存</a>
+            </div>
+        </div>
+        <div class="secondclass classify-list" data-isclick="0">
+            <h4>
+                二级分类
+            </h4>
+            <ul id="secondClass"></ul>
+            <div class="addmenu" data-num="0">
+                <i class="layui-icon">&#xe61f;</i>添加分类项
+            </div>
+            <div class="save-box">
+                <a class="save" data-num="0" data-isclose="1">保存</a>
+            </div>
+        </div>
+        <div class="thirdclass classify-list" data-isclick="0">
+            <h4>
+                三级分类
+            </h4>
+            <ul id="thirdClass"></ul>
+            <div class="addmenu" data-num="0">
+                <i class="layui-icon">&#xe61f;</i>添加分类项
+            </div>
+            <div class="save-box">
+                <a class="save" data-num="0" data-isclose="1">保存</a>
+            </div>
+        </div>
+        <div class="fourclass classify-list" data-isclick="0">
+            <h4>
+                四级分类
+            </h4>
+            <ul id="fourClass"></ul>
+            <div class="addmenu" data-num="0">
+                <i class="layui-icon">&#xe61f;</i>添加分类项
+            </div>
+            <div class="save-box">
+                <a class="save" data-num="0" data-isclose="1">保存</a>
+            </div>
+        </div>
+        <!--<div class="add-nextclass">
+            <i class="layui-icon">&#xe61f;</i>新增下一级分类
+        </div>-->
+    </div>
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui-2.2.5/layui/layui.all.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="../common/js/util/util.js"></script>
+    <script type="text/javascript" src="../common/js/common.js"></script>
+    
+    <script type="text/javascript" src="../common/js/util/pub.js"></script>
+    <!-- jSMyself-->
+    <script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.exedit.js"></script>
+    <script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.exhide.js"></script>
+    <script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/repository_new.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+.jurisdiction-content{
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+.jurisdiction-title{
+    width: 100%;
+    font-size: 16px;
+    color:#666;
+    padding: 12px 32px;
+    background: #f7f7f7;
+    border-bottom: 1px dashed #e5e5e5;
+}
+.jurisdiction-info{
+    height: 100%;
+}
+.system-nav ul li .jurisdiction-nav-li{
+    text-indent: 12px;
+    padding: 17px 0;
+    cursor: pointer;
+}
+.system-nav>ul>li .jurisdiction-nav-li{
+    background: #ededed;
+    color:#333;
+    font-size: 14px;
+}
+.jurisdiction-info-nav li .jurisdiction-nav-li{
+    text-indent: 24px;
+    font-size: 14px;
+    color: #666666;
+}
+.jurisdiction-info-nav{
+    background: #e5e5e5;
+}
+.jurisdiction-label,.control-label{
+    float: left;
+    line-height: 34px;
+    font-weight: 400;
+}
+.btn-success {
+    width: 100px;
+}
+button.setting{
+    width: 140px;
+    height: 38px;
+    padding:0;
+    background-color:#00c1de;
+    font-size: 14px;
+    color:#fff;
+    margin-right: 10px;
+}
+#resetBtn{
+    background-color: #F0514E;
+    border:0;
+}
+
+/*内容表格*/
+.jurisdiction-detail, .system-detail {
+    padding: 0 35px;
+}
+/*限制长度*/
+#auditBody tr .modalUrl,#auditBody tr .pTitle{
+    max-width: 210px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+}
+.system-detail table tr th, .system-detail table tr td {
+    text-align: center;
+}
+.system-detail table tr{
+    /*line-height: 40px;*/
+}
+#auditBody tr td:nth-of-type(5){
+    cursor: pointer;
+    color: #00C2DE;
+}
+#auditBody tr td:nth-of-type(12) button{
+    background-color: #5bc0de;
+    padding: 3px 10px;
+    color: #fff;
+    border: 0;
+}
+.tdauti .audi{
+    padding: 3px 10px;
+}
+/*版块设置 模态框*/
+#modularSet .modal-dialog .modal-content{
+    margin-top: 100px;
+    width: 1025px;
+}
+#modularSet .modal-body {
+    padding-top: 25px;
+    overflow: auto;
+}
+#addNew{
+    margin-bottom: 25px;
+}
+#modularSet .modal-body table th,#modularSet .modal-body table td{
+    text-align: center;
+    line-height: 30px;
+}
+#modularSet .modal-body table{
+    border: 1px solid #ccc;
+}
+#modularSet .modal-body table select,#board input{
+    width: 135px;
+    height: 30px;
+    border-color: #BFBFBF;
+    margin-top: -2px;
+}
+#modularSet .table tr td .delBut{
+    border: 0;
+    padding: 0;
+    background-color: inherit;
+    margin-top: -8px;
+    cursor: pointer;
+}
+#modularSet .table tr td .delBut .glyphicon{
+    color: #FF585D;
+    margin-top: 9px;
+    vertical-align: sub;
+}
+#modularSet .table tr td .delBut span{
+    font-size: 14px;
+}
+.modal-dialog .modal-content .modal-footer{
+    background-color: #f1f1f1;
+}
+
+
+/*审核 模态框*/
+/*#modularAudit .modal-body{
+    padding-top: 10px;!important;
+}
+#modularAudit .modal-body textarea{
+    resize: none;
+}
+#modularAudit .modal-body .isPass label{
+    font-size: 16px;
+}
+#modularAudit .modal-body .isPass .checkbox-inline:nth-of-type(1),#modularAudit .modal-body .isPass .checkbox-inline:nth-of-type(2){
+    width: 100px;
+    line-height: 50px;
+}
+#modularAudit .modal-body .fail{
+    background-color: #EEEEEE;
+    margin-bottom: 20px;
+}
+#modularAudit .modal-body .fail label{
+    width: 80px;
+    line-height: 50px;
+}*/
+#auditBody tr td.red{
+	color:red;
+}
+#auditBody tr td.green{
+	color:green;
+}
+#auditBody tr td.blue{
+	color:blue;
+}
+/*封号*/
+#auditBody .chose{
+    background-color:#eaeaea;
+}
+.form-inline {
+    margin-bottom: 40px;
+}
+/*修复版块设置bug0*/
+.modal-body{
+    height: 700px;
+    overflow-y: auto;
+}

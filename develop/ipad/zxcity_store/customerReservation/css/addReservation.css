@@ -1,0 +1,295 @@
+a{
+	color:#333;
+}
+.homePage{
+	background-color: #f2f2f2;
+}
+
+.main-title{
+	position:relative;
+    display:flex;
+	padding-left:42px;
+    padding-right:60px;
+	height: 98px;
+	align-items: center;
+    justify-content: space-between;
+}
+
+.main-title .save-btn{
+    font-size:40px;
+    color:#fe6869;
+}
+
+.main-content .main-top{
+    height:184px;
+    background-color:#fff;
+}
+
+.main-top .select-date{
+    display:flex;
+    align-items: center;
+    height:92px;
+    padding-left:44px;
+    border-bottom:1px solid #f2f2f2;
+    font-size:28px;
+    color:#fe6869;
+}
+
+.select-date .select-day{
+    display:flex;
+    height:100%;
+    align-items: center;
+}
+
+.select-date .selected-cur-date{
+    display:inline-block;
+    width:66px;
+    text-align: center;
+    line-height: 1.15;
+	color:#333;
+}
+
+.select-date .select-bottom-arrow{
+    display:inline-block;
+    width:21px;
+    height:13px;
+    background:url(../img/icon_datexiala@2x.png) no-repeat;
+    margin-left:10px;
+    margin-right:30px;
+}
+
+.select-date .date-list-box{
+    position:relative;
+    border-left:1px solid #f2f2f2;
+    padding-left:16px;
+}
+
+.date-list-box .prev,
+.date-list-box .next{
+    position:absolute;
+    display:block;
+    top:50%;
+    margin-top:-18px;
+    width:36px;
+    height:36px;
+}
+
+.date-list-box .prev{
+    left:16px;
+    background:url(../img/btn-left@2x.png) no-repeat;
+}
+
+.date-list-box .next{
+	left:992px;
+    background:url(../img/btn-right@2x.png) no-repeat;
+}
+
+.date-list-box .date-list-inner{
+	position: relative;
+	width: 888px;
+    height:62px;
+    margin-left:86px;
+	overflow: hidden;
+}
+
+.date-list-inner .date-list{
+	position: absolute;
+	top:0;
+	left:0;
+	height:100%;
+}
+
+.date-list-inner .date-list a{
+    float:left;
+    display:block;
+	width:62px;
+	line-height: 62px;
+	text-align:center;
+	color:#fe6869;
+}
+
+.date-list-inner .date-list a+a{
+    margin-left:22px;
+}
+
+.date-list-inner .date-list a.selected{
+    width:62px;
+    height:62px;
+    color:#fff;
+    background-color:#fe6869;
+    border-radius:100%;
+}
+
+.date-list-inner .date-list a.disabled{
+	color:#ccc;
+}
+
+.main-top .select-customer{
+    display:flex;
+    height:92px;
+    align-items: center;
+    padding-left:44px;
+    font-size:28px;
+    color:#333;
+}
+
+.select-customer label{
+    font-weight: normal;
+    color:#fe6869;
+    margin-right:34px;
+}
+
+.select-customer .select-right-arrow{
+    display:inline-block;
+    width:13px;
+    height:21px;
+    background:url(../img/icon_gengduo@2x.png) no-repeat;
+    margin-left:24px;
+    margin-right:64px;
+}
+
+.select-customer .desc{
+    border-left:1px solid #f2f2f2;
+    padding-left:60px;
+}
+
+.select-customer .desc input[type=text]{
+    padding-left:5px;
+    width:720px;
+    border-bottom:1px solid #f2f2f2;
+    border-left:none;
+    border-right:none;
+    border-top:none;
+    outline:none;
+}
+
+.main-content .main-bottom{
+	display:flex;
+	justify-content: space-between;
+    height:1120px;
+    margin-top:22px;
+    padding-left:24px;
+    padding-right:24px;
+}
+
+.main-bottom .select-item{
+	width:560px;
+    height:100%;
+    background-color:#fff;
+}
+
+.main-bottom .select-item+.select-item{
+    margin-left:14px;
+}
+
+.select-item .select-item-title{
+    width:100%;
+    height:266px;
+    line-height: 266px;
+    font-size:40px;
+    color:#fe6869;
+    text-align:center;
+    border-bottom:1px solid #f2f2f2;
+}
+
+.select-item .select-inner .select-add-btn{
+    display:block;
+    width:294px;
+    height:294px;
+    margin:200px auto 0;
+    background:url(../img/btn_tianjia@2x.png) no-repeat;
+}
+
+.select-item .select-inner .info{
+	display:block;
+	height:88px;
+	line-height: 88px;
+	border-bottom:1px solid #f2f2f2;
+	font-size:30px;
+	color:#333;
+	text-align:center;
+}
+
+.select-inner .info .name{
+	color:#333;
+}
+
+.select-inner .info .time{
+	margin-left:78px;
+}
+
+.pop-layer{
+	display:none;
+	width:100%;
+	height:100%;
+}
+
+.pop-layer .pop-mask{
+	position: fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background:rgba(0, 0, 0, 0.4);
+}
+
+.pop-layer .pop-inner{
+	position:absolute;
+	top:40%;
+	left:50%;
+	width:600px;
+	height:600px;
+	margin-left:-300px;
+	margin-top:-300px;
+	background-color:#fff;
+	z-index:101;
+	box-shadow: 0px 0px 6px #333;
+	color:#333;
+}
+
+.pop-layer .pop-title{
+	display:flex;
+	align-items: center;
+	justify-content: space-between;
+	height:80px;
+	line-height: 80px;
+	font-size:34px;
+	padding-left:20px;
+	padding-right:20px;
+	background-color: #e7e7e7;
+}
+
+.pop-layer .close-btn{
+	display:inline-block;
+	width:28px;
+	height:28px;
+	background:url(../img/icon_guanbi@2x.png) no-repeat;
+}
+
+.pop-layer .pop-con{
+	height:500px;
+	overflow-y: auto;
+}
+
+.pop-con ul>li{
+	display:flex;
+	align-items: center;
+	justify-content: space-around;
+	height:80px;
+	line-height: 80px;
+	font-size:28px;
+	border-bottom:2px solid #f2f2f2;
+}
+
+.pop-con ul>li:hover{
+	color:#fe6869;
+}
+
+.pop-con ul>li .btn{
+	font-size:28px;
+}
+
+#roomSelectBox li,
+#serviceSelectBox li{
+	cursor:pointer;
+}

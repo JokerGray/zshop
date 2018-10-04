@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="../../common/assets/css/bootstrap.css" rel="stylesheet" />
+		<link href="../../common/css/common.css" rel="stylesheet" />
+		<link href="../css/addOftenCustomer.css" rel='stylesheet' />
+		<title></title>
+	</head>
+	<body>
+	    <div>
+	    	<div id="tableCondition">
+	    		<input id="keyword" name="keyword" placeholder="根据客户姓名、电话、会员卡号做模糊搜索" />
+	    		<button type="button" class="btn" id="btnSel">搜索</button>
+	    	</div>
+    		<div id="tableContent" class="row-fluid">
+				<table class="table table-hover table-striped table-responsive" id="customerTable">
+					<thead>
+						<tr>
+							<th>姓名</th>
+							<th>电话</th>
+							<th>会员编号</th>
+							<th>会员类型</th>
+							<th>是否我的熟客</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+				<div class="pageview" id="customerPage"></div>
+			</div>
+	    </div>
+
+		<!-- jquery组件 -->
+		<script src="../../common/assets/js/jquery-1.10.2.js"></script>
+		<script src="../../common/assets/js/jquery.bootpag.min.js"></script>
+		<script src="../../common/assets/js/layer/layer.js"></script>
+		<script src="../../common/js/util/util.js"></script>
+		<script src="../js/addOftenCustomer.js"></script>
+	</body>
+</html>

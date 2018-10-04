@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="stylesheet" type="text/css" href="../../assets/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="../../assets/swiper/css/swiper.css" />
+	<link rel="stylesheet" href="./css/detail.css" />
+	<link rel="stylesheet" href="../../assets/select2-3.5.3/select2.css" />
+	<link rel="stylesheet" type="text/css" href="./css/chosen_1.css"/>
+	<link rel="stylesheet" type="text/css" href="../../assets/sweetalert/sweetalert.css" />
+	<title>圈子</title>
+	
+</head>	
+<body style="background-color: #f7f7f7;">
+	<div class="container-fluid" style="padding-top: 20px;">
+		<div class="row" style="height: 100%;">
+			<div class="col-lg-2 hidden-md hidden-sm hidden-xs"  id="listTips">
+				<div class="hint">
+					<h1 class="operation">可选择操作:</h1>
+					<button type="button" class="btn btn-white  active" id="setTeam" ><span class="btnNum">1</span>创建圈子</button>
+					<ul class="errorMessage" >
+						<!--<li class="caution"></li>-->
+					</ul>
+					<button type="button" class="btn "  id="dynamicBtn"><span class="btnNum">2</span>发布动态</button>
+					<button type="button" class="btn  "  id="activityGbtn"><span class="btnNum">3</span>发布活动</button>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-5 col-sm-12 phone ">
+				<div class="titber"></div>
+				<div class="bgPhone">
+					<!--圈子动态-->
+
+				</div>
+				<div class="pubBg" style="display: none;">
+					
+				</div>
+			</div>	
+			<div class="col-lg-6 col-md-7 col-sm-12" style="height: 776px;" >
+				<iframe width="100%" class="myIframe" scrolling="yes" id="myIframe"></iframe>
+			</div>
+		</div>
+	</div>	
+	<div class="imgContent" id="imgContent" style="display: none;">
+		<input type="hidden" name="aid">
+		<div class="priBox">
+			<img src="" class="priShow" />
+		</div>
+		<div class="base">
+			<p class="useName">应吹试听~</p>
+			<p class="priDate">2017/09/21</p>
+		</div>
+	</div>
+	<div class="progressContent" id="progressContent" style="display: none;">
+		<h4 class="proitle">进程</h4>
+		<div class="progress">
+			<div class="progress-bar" style="width: 0%"></div>
+		</div>
+		<h5 class="progress-text">0%</h5>
+	</div>
+<script id="circleHead" type="text/html">
+	<div class="phoneContent tab-content">
+		<!--筛选-->
+		<div class="shadowOpen" style="display: none;">
+			<select name="select2" id="select2" class="select2" multiple="multiple" style="width: 340px;">
+					<option value="all">全部</option>
+			</select>
+			<select name="activitySelect" id="activitySelect" class="select2" multiple="multiple" style="width: 340px; display: none;">
+					<option value="all">全部</option>
+					<option value="other" id="other">其他圈子(我冠名、赞助、买单的)</option>
+			</select>
+		</div>
+		<!--玩家圈内容Begin-->
+		<div role="tabpanel" class="playerCircle tab-pane active" id="playerCircle">
+			<div class="phoneTitle">
+				<span class="circlePlay">玩家圈</span>
+				<a href="javascript:;" class="setIcon" id="setCircle">
+				</a>
+			</div>
+			<!--swiperBegin-->
+			<%if(data.length>0){%>
+			<div class="swiper-container detail">
+				<div class="swiper-wrapper" id="detail">
+					<%for(var i =0;i<data.length;i++){%>
+					<div class="swiper-slide">
+						<input type="hidden" name="id" value="<%=data[i].id%>" />
+						<input type="hidden" name="markName" value="<%=data[i].markName%>" />
+						<input type="hidden" name="personNumber" value="<%=data[i].personNumber%>" />
+						<input type="hidden" name="type" value="<%=data[i].type%>" />
+						<input type="hidden" name="albumNumber" id="" value="<%=data[i].albumNumber%>" />
+						<div class="details">
+							<div class="coverImg">
+								<img class="url" src="<%=data[i].url%>?x-oss-process=image/resize,m_fill,w_305,h_185,limit_0" />
+							</div>
+					
+							<div class="detailData">
+								<div class="nameBar">
+									<h4 class="cirName name"><%=data[i].name%></h4>
+									<%if(data[i].type==2){%>
+									<em class="bus"></em>
+									<%}%>
+								</div>
+								<%if(data[i].personNumber>=3){%>
+								<ul class="memberList">
+									<li> <img src="<%=data[i].personList[0].userPic%>" /> </li>
+									<li> <img src="<%=data[i].personList[1].userPic%>" /> </li>
+									<li>
+										<p>+
+											<%=(data[i].personNumber-2)%>
+										</p>
+									</li>
+								</ul>
+								<%}else if(data[i].personNumber>0&&data[i].personNumber<3){%>
+								<ul class="memberList">
+									<%for(var k=0;k<data[i].personList.length;k++){%>
+									<li> <img src="<%=data[i].personList[k].userPic%>" /> </li>
+									<%}%>
+								</ul>
+								<%}%>
+								<p class="txt ellipsis title"><%=data[i].title%></p>
+								<%if(data[i].markName!=""){%>
+								<ul class="tagList">
+									<%for(var l= 0 ; l < data[i].markName.split(',').length; l++){%>
+									<li>#<%=data[i].markName.split(',')[l]%></li>
+									<%}%>
+								</ul>
+								<%}%>
+							</div>
+						</div>
+						<ul class="infobar">
+							<li>
+								<h4>动态</h4>
+								<p class="videoNumber">
+									<%=data[i].videoNumber%>
+								</p>
+							</li>
+							<li>
+								<h4>活动</h4>
+								<p class="activityNumber">
+									<%=data[i].activityNumber%>
+								</p>
+							</li>
+							<li>
+								<h4>关注</h4>
+								<p class="attentionNumber">
+									<%=data[i].attentionNumber%>
+								</p>
+							</li>
+						</ul>
+					</div>
+					<%}%>
+				</div>
+			</div>
+			<!--swiperEnd-->
+			<div class="page" id="page" >
+				<p class="pageNum" id="num"></p>
+				<em class="division"></em>
+				<p class="amount" id="amount"><%=data.length%></p>
+	
+			</div>
+			<%}else{%>
+			<!--noCircle-->
+				<div class="noData">
+					<div class="setBox" id="">
+						<img src="image/pl.png" />
+						<h5>创建玩家圈</h5>
+					</div>
+				</div>
+				<h3 class="noCircle">暂时还没有创建玩家圈哦</h3>
+				<%}%>
+
+		</div>
+		<!--玩家圈内容End-->
+		<div role="tabpanel" class="tab-pane" id="dynamic">
+			<div class="phoneTitle">
+				<span class="circlePlay">圈子动态</span>
+				<a href="javascript:;" class="selectCircle" id="selectCircle">
+				</a>
+			</div>
+			<div class="pubBtn">
+	
+			</div>
+			<div class="dynamicCet">
+				<div class="mienList" id="searchVideo">
+					<!--动态-->
+
+
+				</div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="activity">
+			<div class="phoneTitle">
+				<span class="activityName1">圈子活动</span>
+				<a href="javascript:;" class="selectCircle" id="selectCircleActivity">
+				</a>
+			</div>
+			<div class="pubAct">
+	
+			</div>
+			<div class="dynamicCet">
+				<div class="mienList" id="activityContentBox">
+					<!--动态-->
+
+
+				</div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="guest">...</div>
+	
+	</div>
+	<!-- Nav tabs -->
+	<ul id="tab" class="nav nav-tabs phoneNav" role="tablist">
+		<li role="presentation" class="active">
+			<a href="#playerCircle" aria-controls="circleIcon" role="tab" data-toggle="tab"><em class="navIcon circleIcon"></em><span>玩家圈</span></a>
+		</li>
+		<li role="presentation" onclick="index.getVideoListByShopId()" id="getVideoListByShopId">
+			<a href="#dynamic" aria-controls="dynamic" role="tab" data-toggle="tab"><em class="navIcon dynamic"></em><span>圈子动态</span></a>
+		</li>
+		<li role="presentation" onclick="index.getActivityByShopId()" id="getActivityByShopId">
+			<a href="#activity" aria-controls="activity" role="tab" data-toggle="tab"><em class="navIcon activity"></em><span>圈子活动</span></a>
+		</li>
+		<li role="presentation" onclick="layer.msg('敬请期待')" >
+			<a href="javascript:;" aria-controls="guest" role="tab" data-toggle="tab"><em class="navIcon guest"></em><span>圈金客来</span></a>
+		</li>
+	</ul>
+	<div class="pubVideo" style="display: none;"></div>
+	<div class="pubActivity" style="display: none;"></div>
+</script>
+<script id="setCircleShow" type="text/html">
+	<div class="setTitle" >
+		<a href="javascript:;" class="back" id="back"></a>
+		<p class="setName">玩家圈</p>
+		<!--<b class="move" id="move" style="display: none;">...</b>-->
+		<div class="dropBox" style="display: none;">
+			<ul class="drop">
+				<li class="qrCode">二维码</li>
+				<li class="install">圈子设置</li>
+			</ul>
+		</div>
+	</div>
+	<div class="setContent" >
+		<div class="shade"></div>
+		<img alt="" class="headImg" id="headImg" />
+		<div class="setData">
+			<div class="setNameBar">
+				<h2 class="setName" id="setName"></h2>
+				<em class="bus" style="display: none;"></em>
+			</div>
+			<p class="storeName"></p>
+			<ul class="markName" id="markName">
+	
+			</ul>
+			<p class="titleText" id="titleText"></p>
+		</div>
+</script>
+<script id="circleParticulars" type="text/html">
+	<div class="setTitle">
+		<a href="javascript:;" class="back" id="back"></a>
+		<p class="setName">玩家全</p>
+		<!--<b class="move" id="move" >...</b>-->
+		<div class="dropBox" style="display: none;">
+			<ul class="drop">
+				<li class="qrCode">二维码</li>
+				<li class="install">圈子设置</li>
+			</ul>
+		</div>
+	</div>
+	<div class="dynamicList" style="display: none;"></div>
+	<div class="setContent" >
+		<div class="shade"></div>
+		<img alt="" class="headImg" id="headImg" />
+		<div class="setData">
+			<div class="setNameBar">
+				<h2 class="setName" id="setName"></h2>
+				<em class="bus" style="display: none;"></em>
+			</div>
+			<p class="storeName"></p>
+			<ul class="markName" id="markName">
+	
+			</ul>
+			<p class="titleText" id="titleText"></p>
+		</div>
+		<div class="menu" id="menu" >
+			<div class="menuBtn videoBtn" id="video">
+				<p class="Num videoNum">0</p>
+				<p>圈子动态</p>
+			</div>
+			<div class="menuBtn activityBtn" id="activityBtn">
+				<p class="Num activityNum">0</p>
+				<p>圈子活动</p>
+			</div>
+			<div class="menuBtn photoBtn" id="album">
+				<p class="Num photoNum">0</p>
+				<p>圈子相册</p>
+			</div>
+			<div class="menuBtn personBtn" id="person">
+				<p class="Num personNum">0</p>
+				<p>圈子成员</p>
+			</div>
+		</div>
+	</div>
+</script>
+<script id="memberTem" type="text/html">
+	<div id="member" class="member">
+			<div class="memberTitle">
+		<a href="javascript:;" class="memberBack" id="memberBack"></a>
+		<p class="setName"></p>
+	</div>
+	<div class="memberContent">
+		<%if(data.managerList.length>0){%>
+		<div class="address">
+			圈主、管理员(<span><%=data.managerList.length%></span>人)
+		</div>
+		<div class="originatorList">
+			<%for(var i = 0 ; i<data.managerList.length ; i++ ){%>
+			<div class="originator ">
+				<div class="imgBox">
+					<div class="originatorLogo lv<%=data.managerList[i].type%>">
+						<img src="<%=data.managerList[i].userPic%>" />
+					</div>
+					<div class="originatorName">
+						<%=data.managerList[i].userName%>
+					</div>
+				</div>
+				<div class="originatorCall">188722118774</div>
+			</div>
+			<%}%>
+		</div>
+
+		<%}%>
+		
+		<div class="sortBox">
+			<%if(data.personList.length>0){%>
+			<%for(var j = 0 ; j < data.personList.length; j++){%>
+			<div class="sortList">
+				<div class="imgBox">
+					<div class="numLogo">
+						<img src="<%=data.personList[j].userPic%>">
+					</div>
+					<div class="numName">
+						<%=data.personList[j].userName%>
+					</div>
+				</div>
+				<div class="numCall">188722118774</div>
+			</div>
+			<%}%>
+			<%}%>
+		</div>
+
+	</div>	
+	<div class="initials">
+		<ul>
+			<li class="glyphicon glyphicon-star"></li>
+			<!--<li>A</li>
+			<li>B</li>
+			<li>C</li>
+			<li>D</li>
+			<li>E</li>
+			<li>F</li>
+			<li>G</li>
+			<li>H</li>
+			<li>I</li>
+			<li>J</li>
+			<li>K</li>
+			<li>L</li>
+			<li>M</li>
+			<li>N</li>
+			<li>O</li>
+			<li>P</li>
+			<li>Q</li>
+			<li>R</li>
+			<li>S</li>
+			<li>T</li>
+			<li>U</li>
+			<li>V</li>
+			<li>W</li>
+			<li>X</li>
+			<li>Y</li>
+			<li>Z</li>
+			<li>#</li>-->
+		</ul>
+	</div>
+				
+	</div>
+	
+	
+
+	
+</script>
+<script id="videoContent" type="text/html">
+					<div class="videoContent" >
+						<div class="memberTitle">
+							<a href="javascript:;" class="memberBack" id="videoBack"></a>
+							<a href="javascript:;" class="memberBack" id="aDetaBack" style="display: none;"></a>
+							<p class="setName"></p>
+						</div>
+						<div class="pubBtn"></div>
+						<div class="dynamicCet" >
+							<div class="searchVideoList" id="searchVideo">
+							
+							</div>
+						</div>
+						<div class="ActivityDetails" style="display: none;">
+						</div>
+						<div class="pubActivity" style="display: none;"></div>
+					</div>
+					<div class="pubVideo" style="display: none;"></div>
+</script>
+<script id="videoAlbumList" type="text/html">
+	<%if(data.length>0){%>
+		<input type="hidden" name="videoAlbumCircleId" value="<%=data[0].videoAlbum.videoAlbumCircleId%>"/>
+		<%for(var i = 0 ; i<data.length ; i++){%>
+			<div class="mienBox">
+				<input type="hidden" name="videoId" value="<%=data[i].videoAlbum.videoAlbumId%>">
+				<div class="mienC">
+					<div class="teamLogo">
+						<a href="javascript:;">
+							<img class="faceImg" src="<%=data[i].videoAlbum.logo%>?x-oss-process=image/resize,m_fill,h_70,w_70">
+						</a>
+					</div>
+					<div class="adduser">
+						<h3 class="adminName busIc"><%=data[i].videoAlbum.circleName%></h3>
+						<p class="pubDate"><%=data[i].videoAlbum.videoAlbumTime%></p>
+					</div>
+					<p class="mienText"><%=data[i].videoAlbum.videoAlbumDescription%></p>
+					<!--多图排列布局-->
+					<div class="media">
+						<%if(data[i].videoAlbum.videoAlbumType==1){%>
+							<%if(data[i].videoAlbum.urls.length>1){%>
+								<ul class="pictureBox">
+									<%for(var j =0;j<data[i].videoAlbum.urls.length;j++){%>
+									<li><img src="<%=data[i].videoAlbum.urls[j]%>?x-oss-process=image/resize,m_fill,h_224,w_224"></li>
+									<%}%>
+								</ul>
+								<%}else{%>
+									<div class="picBox">
+										<img src="<%=data[i].videoAlbum.urls[0]%>?x-oss-process=image/resize,m_fill,h_224,w_224">
+									</div>
+									<%}%>
+							
+							<%}else if(data[i].videoAlbum.videoAlbumType==2){%>
+								<div class="videoBox" >
+									<video width="320px" height="176px" src="<%=data[i].videoAlbum.urls[0]%>" poster="<%=data[i].videoAlbum.videoAlbumCoverUrl%>">
+									</video>
+									<a class="playVideo">
+										<img src="./image/bofanganniu.png" alt="">
+									</a>
+								</div>
+								<%}%>
+					</div>
+					<%if(data[i].videoAlbum.shopName){%>
+						<div class="store">
+							<p class="videoStore"><%=data[i].videoAlbum.shopName%></p>
+						</div>
+					<%}%>
+				
+				</div>
+				<div class="subinfo">
+					<div class="subinfoHeart"><em class="zan"></em><span>
+						<%if(data[i].commentList){%>
+							<%=data[i].commentList.totalLikeCount%>
+							<%}else{%>
+								<%=data[i].totalLikeCount%>
+								<%}%>
+					</span></div>
+					<div class="subinfoRgt"><em class="pinglun"></em><span>
+						<%if(data[i].commentList){%>
+							<%=data[i].commentList.totalCount%>
+							<%}else{%>
+								<%=data[i].totalCount%>
+								<%}%>
+						</span></div>
+					<div class="subinfoBrowse"><em class="liulan"></em><span><%=data[i].videoAlbum.videoAlbumTimes%></span></div>
+				</div>
+			</div>
+			<%}%>
+		<%}%>
+		<%if(data.length>=4){%>
+		<a href="javascript:;" class="btn toLoad" id="toLoad">加载更多</a>
+		<%}else{%>
+		<a href="javascript:;" class="btn toLoad noMove">没有更多了</a>
+		<%}%>
+
+</script>
+
+<script id="phones" type="text/html">
+	<div class="keep" style="display: none;"></div>
+	<div class="videoContent" >
+		<div class="memberTitle">
+			<a href="javascript:;" class="memberBack" id="videoBack"></a>
+			<p class="setName" ></p>
+		</div>
+		<div class="pubBtn"></div>
+		<div class="dynamicCet">
+			<div class="searchVideoList" id="searchVideo">
+				<div class="photoContent">
+					<div class="photoBox">
+						<%if(data.length>0){%>
+						<%for(var i = 0 ; i< data.length; i++){%>
+						<div class="album">
+							<div class="cover">
+								<input type="hidden" name="userId" value="<%=data[i].userId%>">
+								<input type="hidden" name="circleId" value="<%=data[i].circleId%>">
+								<input type="hidden" name="albumId" value="<%=data[i].albumId%>">
+								<input type="hidden" name="id" value="<%=data[i].id%>">
+								<i class="iconCheck" style="display: none;"></i>
+								<div class="tier" style="display: none;">
+									<p class="photoName">
+										<%=data[i].albumName%>
+									</p>
+									<p class="creator">创建人:
+										<%=data[i].userName || "" %>
+									</p>
+									<p class="number">
+										<%=data[i].number%>张</p>
+									<div class="btnBox">
+										<a href="javascript:;" class="removeP">删除</a>
+										
+										<a href="javascript:;" class="compile">编辑</a>
+									</div>
+								</div>
+								<img alt="" class="fansPhoto" src="<%=data[i].albumUrl%>">
+							</div>
+							<p class="look">
+								<a href="javascript:;" class="particulars">
+									查看详情&nbsp;>>
+								</a>
+							</p>
+						</div>
+						<%}%>
+						<%}%>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+<script id="pubPhotoModule" type="text/html">
+	<div class="videoContent" >
+		<div class="memberTitle">
+			<a href="javascript:;" class="memberBack" id="videoBack"></a>
+			<p class="newPhoto" >新建相册</p>
+		</div>
+		<div class="dynamicCet">
+			<div id="pubPhoto">
+				<p class="pubAlbumName"></p>
+				<img id="pubShowImg" class="pubShowImg" src="./image/LOGO.png" />
+				<div class="hoverShow">
+					<p>鼠标移上效果</p>
+					<div class="hoverShowImgBox">
+						<div class="tier">
+							<p class="photoName">
+								
+							</p>
+							<p class="creator">创建人:
+							</p>
+							<p class="number">0张</p>
+							<div class="btnBox">
+								<a href="javascript:;" class="removeP">删除</a>
+								<a href="javascript:;" class="compile">编辑</a>
+							</div>
+						</div>
+						<img src="./image/LOGO.png" class="hoverImg" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+<script id="pubActibityModule" type="text/html">
+	<div class="memberTitle " style="display: none;">
+			<a href="javascript:;" class="memberBack" id="aDetaBack" style=""></a>
+			<p class="setName">发布活动</p>
+	</div>
+	<div class="pubActivityBox">
+		<div style="background: #fff;" class="pubContent ">
+		
+			<div class="activityDetailsH">
+				<img />
+		
+				<h5 class="isJoin" style="display: none;">限圈内报名</h5>
+			</div>
+			<h3 class="actName"></span></h3>
+			<p class="ico StartTime" style="display: none;">活动时间:开始</p>
+			<p class="ico activityAddress" style="display: none;">活动地址 :</p>
+			<p class="ico avePrice" style="display: none;">¥</p>
+			<div class="circleBar">
+				<img alt="" />
+				<div>
+					<p class="puber">发布人</p>
+					<h4 class="actCircleName"></h4>
+		
+					<span class="bus"></span>
+		
+				</div>
+			</div>
+			<div class="circleActivityContent">
+				<p class="contentTitle">
+				</p>
+				<div class="videoBox">
+					<video src="" class="video" width="320px" height="176px" poster=""></video>
+					<a href="javascript:;" class="playVideo">
+						<img src="./image/bofanganniu.png" alt="">
+					</a>
+		
+				</div>
+				<div class="imgBox">
+					<img class="contentImg" alt="" src="">
+				</div>
+				<ul class="activityImgList">
+		
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</script>
+<script id="pubVideoShow" type="text/html">
+	<div class="videoContent" >
+		<div class="memberTitle">
+			<a href="javascript:;" class="memberBack" id="pubVideoBack"></a>
+			<p class="newPhoto" >发布动态</p>
+		</div>
+		<div class="dynamicCet" style="height: 627px;">
+			<textarea name="" rows="" cols="" disabled="disabled" class="videoAlbumDescription"></textarea>
+			<div class="pubMedia">
+				<ul class="imagesBox pictureBox" style="display: none;">
+					
+				</ul>
+			
+				<!--视频-->
+				<div class="videoBox" style="display: none;">
+					<video width="294px" height="166px" src="" poster="">
+					</video>
+					<a class="playVideo">
+						<img src="./image/bofanganniu.png" alt="" />
+					</a>
+				</div>
+			</div>
+			<div class="belong">
+				<p class="cir">所属圈子:</p>
+				<p class="selectCircleName"></p>
+			</div>
+		</div>
+	</div>
+</script>
+<script id="ActivityList" type="text/html">
+	<%if(data.length>0){%>
+	
+	<div class="photoBox" style="background-color: #ddd;">
+		<%for(var i =0 ;i<data.length;i++){%>
+		<div class="activityList">
+			<input type="hidden" name="id" value="<%=data[i].id%>"/>
+			<div class="face">
+				<a href="javascript:;">
+					<img src="<%=data[i].circleLogo%>?x-oss-process=image/resize,m_fill,h_70,w_70" class="a-face-img" alt="">
+				</a>
+			</div>
+			<h3 class="pubName"><%=data[i].circleName%></h3>
+			<%if(data[i].circleType==2){%>
+			<div class="bus"></div>
+			<%}%>
+			<p class="createTime">于
+				<%=data[i].createTime%>发布</p>
+			<div class="imgbox">
+				<%if(data[i].beggarName!=""||data[i].beggarName){%>
+					<h5 class="beggarName"><%=data[i].beggarName%></h5>
+					<%}%>
+				<img class="pub-img" src="<%=data[i].cover%>?x-oss-process=image/resize,m_fill,h_422,w_662" alt="">
+				<%if(data[i].isJoin==0){%>
+				<h5 class="isJoin">限圈内报名</h5>
+				<%}%>
+			</div>
+			<h3 class="actName"><%if(data[i].namingName!=""){%><span class="namingName"><%=data[i].namingName%></span><%}%><%=data[i].name%></h3>
+			<%if(data[i].spNumber!=0){%>
+			<p class="sponsorNumber">以获
+				<%=data[i].spNumber%>家赞助</p>
+			<%}%>
+			<p class="startTime">
+				<%=data[i].startTime%>开始</p>
+	
+			<%if(data[i].avePrice==0){%>
+			<span class="avePrice">免费</span>
+			<%}else{%>
+			<span class="avePrice">¥<%=data[i].avePrice%></span>
+			<%}%>
+			<%if(data[i].status==0){%>
+			<p class="actType">已过期</p>
+			<%}else if(data[i].status==2){%>
+			<p class="actType2">已结束</p>
+			<%}else if(data[i].status==1){%>
+				<p class="actType2">报名中(<%=data[i].joinNumber%>人已经报名)</p>
+				<%}%>
+		</div>
+		<%}%>
+	
+		<%if(data.length>=4){%>
+		<a href="javascript:;" class="btn toLoad" id="toLoad">加载更多</a>
+		<%}else{%>
+		<a href="javascript:;" class="btn toLoad noMove">没有更多了</a>
+		<%}%>
+	</div>
+	<%}else{%>
+	<div class="photoBox noList" style="background-color: #ddd;"></div>
+	<%}%>
+</script>
+<script id="allActivityList" type="text/html">
+	<%if(data.length>0){%>
+	
+	<div class="photoBox" style="background-color: #ddd;">
+		<%for(var i =0 ;i<data.length;i++){%>
+
+		<div class="activityList">
+						<%if(data[i].isNaming==1&&data[i].isSponsor==1){%>
+				<div class="seal isNamingisSponsor"></div>
+				<%}else if(data[i].isNaming==1&&data[i].isSponsor==0){%>
+					<div class="seal isNaming"></div>
+					<%}else if(data[i].isNaming==0&&data[i].isSponsor==1){%>
+						<div class="seal isSponsor"></div>
+						<%}else if(data[i].isBuy==1){%>
+							<div class="seal isBuy"></div>
+							<%}%>
+			<input type="hidden" name="id" value="<%=data[i].id%>" />
+			<div class="face">
+				<a href="javascript:;">
+					<img src="<%=data[i].circleLogo%>?x-oss-process=image/resize,m_fill,h_70,w_70" class="a-face-img" alt="">
+				</a>
+			</div>
+			<h3 class="pubName"><%=data[i].circleName%></h3>
+			<%if(data[i].circleType==2){%>
+			<div class="bus"></div>
+			<%}%>
+			<p class="createTime">于
+				<%=data[i].createTime%>发布</p>
+			<div class="imgbox">
+				<%if(data[i].beggarName!=""||data[i].beggarName){%>
+				<h5 class="beggarName"><%=data[i].beggarName%></h5>
+				<%}%>
+				<img class="pub-img" src="<%=data[i].cover%>?x-oss-process=image/resize,m_fill,h_422,w_662" alt="">
+				<%if(data[i].isJoin==0){%>
+				<h5 class="isJoin">限圈内报名</h5>
+				<%}%>
+			</div>
+			<h3 class="actName"><%if(data[i].namingName!=""){%><span class="namingName"><%=data[i].namingName%></span><%}%><%=data[i].name%></h3>
+			<%if(data[i].spNumber!=0){%>
+			<p class="sponsorNumber">以获
+				<%=data[i].spNumber%>家赞助</p>
+			<%}%>
+			<p class="startTime">
+				<%=data[i].startTime%>开始</p>
+
+			<%if(data[i].avePrice==0){%>
+			<span class="avePrice">免费</span>
+			<%}else{%>
+			<span class="avePrice">¥<%=data[i].avePrice%></span>
+			<%}%>
+			<%if(data[i].status==0){%>
+			<p class="actType">已过期</p>
+			<%}else if(data[i].status==2){%>
+			<p class="actType2">已结束</p>
+			<%}else if(data[i].status==1){%>
+			<p class="actType2">报名中(
+				<%=data[i].joinNumber%>人已经报名)</p>
+			<%}%>
+		</div>
+		<%}%>
+
+		<%if(data.length>=4){%>
+		<a href="javascript:;" class="btn toLoad" id="toLoadActivity">加载更多</a>
+		<%}else{%>
+		<a href="javascript:;" class="btn toLoad noMove">没有更多了</a>
+		<%}%>
+	</div>
+	<%}else{%>
+	<div class="photoBox noList" style="background-color: #ddd;"></div>
+	<%}%>
+</script>
+<script id="ActivityDetalist" type="text/html">
+	<div class="memberTitle " style="display: none;">
+		<a href="javascript:;" class="memberBack" id="aDetaBack" style=""></a>
+		<p class="setName"></p>
+	</div>
+	<div class="short">
+		<div style="background: #fff;" class="pubContent">
+		
+			<div class="activityDetailsH">
+				<img src="<%=data.cover%>" />
+				<%if(data.applyQualification==1){%>
+				<h5 class="isJoin">限圈内报名</h5>
+				<%}%>
+			</div>
+			<h3 class="actName"><%if(data.namingName!=""){%><span class="namingName"><%=data.namingName%></span><%}%><%=data.name%></h3>
+			<p class="ico StartTime">活动时间:
+				<%=data.startTime%>开始</p>
+			<p class="ico activityAddress">活动地址 :
+				<%=data.address%>
+			</p>
+			<p class="ico avePrice">¥
+				<%=data.avePrice%>
+			</p>
+		</div>
+		
+		<%if(data.namingShopName!=""){%>
+		<div class="ico namingShopName">由
+			<%=data.namingShopName%>冠名</div>
+		<%}%>
+		<%if(data.spNumber>0){%>
+		<div class="ico sponsorNumber"> 赞助者: <span>获得<%=data.spNumber%>家赞助</span></div>
+		<%}%>
+		<%if(data.beggarName!=""||data.beggarName){%>
+		<div class="ico actBeggarName"> 买单者: <span><%=data.beggarName%></span></div>
+		<%}%>
+		
+		<div class="circleBar">
+			<img src="<%=data.circleLogo%>" alt="" />
+			<div>
+				<h4 class="actCircleName"><%=data.circleName%></h4>
+				<%if(data.circleType==2){%>
+				<span class="bus"></span>
+				<%}%>
+				<p class="circlePhone">
+					<%=data.phone%>
+				</p>
+			</div>
+		</div>
+		<%if(data.joinNumber>0){%>
+		<div class="joinBar">
+			<p class="joinNumber">已报名(
+				<%=data.joinNumber%>)</p>
+			<ul class="joinList">
+				<%for(var i = 0 ; i<data.joinList.length;i++){%>
+				<li>
+					<img src="<%=data.joinList[i].userPic%>" alt="" />
+					<p class="joinListUserPicName ellipsis">
+						<%=data.joinList[i].userName%>
+					</p>
+				</li>
+				<%}%>
+			</ul>
+		</div>
+		<%}%>
+		<div class="circleActivityContent">
+			<p class="contentTitle">
+				<%=data.content%>
+			</p>
+			<%if(data.contentVideo){%>
+			<div class="videoBox">
+				<video src="<%=data.contentVideo%>" width="320px" height="176px" class="video" poster="<%=data.contentCoverUrl%>"></video>
+				<a class="playVideo">
+					<img src="./image/bofanganniu.png" alt="">
+				</a>
+			</div>
+			<%}%>
+			<%if(data.contentUrl){%>
+			<%if(data.contentUrl.split(',')){%>
+			<%for(var j = 0 ; j < data.contentUrl.split(',').length; j++){%>
+			<div class="imgBox">
+				<img class="contentImg" alt="" src="<%=data.contentUrl.split(',')[j]%>">
+			</div>
+			<%}%>
+		
+			<%}else{%>
+			<div class="imgBox">
+				<img class="contentImg" alt="" src="<%=data.contentUrl%>">
+			</div>
+			<%}%>
+			<%}%>
+		</div>
+	</div>
+</script>
+
+	<script src="../../assets/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../assets/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../assets/swiper/swiper-3.4.2.jquery.min.js"></script>
+	<script src="../../assets/artTemplate/artTemplate.js"></script>
+	<script src="../../assets/jquery.charfirst.pinyin.js"></script>
+	<script src="../../assets/layer/layer.js"></script>
+	<script src="../../assets/select2-3.5.3/select2.min.js"></script>
+	<script src="./js/chosen.jquery.js"></script>
+	<script src="../../assets/sweetalert/sweetalert.min.js"></script>
+
+	<script src="./js/detail.js"></script>
+</body>
+</html>

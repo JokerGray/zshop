@@ -1,0 +1,67 @@
+@function vm($px) {
+    @return ($px / 750) * 100vw;
+  }
+  @mixin ell() {
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  $vm_base: 750;
+  $color_base:#333333;
+  $wihte:#fff;
+  $e2e:#e2e2e2;
+  $dark:#000;
+  $bdc:#dadada;
+  $bdt:#f0eeee;
+  $c999:#999999;
+  $c666:#666666;
+  $money:#f04d06;
+  $line:#e1aa5f;
+  $shu:#fff01d;
+  $req:#f89750;
+  $font_h3:vm(36);
+  $font_p:vm(28);
+  $font_num:vm(40);
+  $f88:#f88952;
+  $f16:#f16399;
+  $f25:#25cdd3;
+  $f4bb:#4bb046;
+  $f585:#5858ed;
+  $f1c:#1c64d0;
+  $ffe:#fed59d;
+  $d8:#d84967;
+  *{box-sizing: border-box;}
+ 
+  body,html{
+    width:100%;
+    height: 100%;
+    max-width: 750px;
+}
+.app{
+    height: 100%;
+    margin-top: 0;
+    }  
+    .container{
+    
+    }
+.ul_list{
+    >li{padding: 0;}
+    dl{margin:0 vm(15); padding: vm(15) 0; border-bottom: 1px solid $e2e; font-size: vm(30);}
+    dt{float: left; width: vm(74);height: vm(74);overflow: hidden;}
+    dd{height:vm(74);line-height:vm(74);overflow: hidden;padding-left: vm(20);padding-right: vm(40);}
+    span{
+        float: right;
+        color: $c666;
+    }
+    img{
+        width: 110%;
+        height: auto;
+    }
+}
+.no_data{
+    color: $c666;
+    text-align:center;
+    line-height: vm(750);
+}    

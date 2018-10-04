@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>参数设置</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common_v2.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="css/parameter_setting.css" />
+</head>
+<body>
+	<div id="common-tool" class="clearfix p4">
+		<div id="search">
+			<button class="layui-btn layui-btn-small layui-btn-primary">
+			  <i class="layui-icon">&#xe615;</i> 搜索
+			</button>
+		</div>
+		<div id="rig-tool" class="clearfix">
+			<button class="layui-btn layui-btn-small layui-btn-primary" id="commonAdd">
+			  <i class="layui-icon">&#xe61f;</i> 添加
+			</button>
+			<button class="layui-btn layui-btn-small layui-btn-primary" id="refresh">
+			  <i class="layui-icon">&#x1002;</i> 刷新
+			</button>
+		</div>
+	</div>
+	<div id="search-tool" class="clearfix">
+		<div class="input-group">
+			<span class="pull-left">类型编码:</span>
+			<input type="text" class="form-control media-input" placeholder="请输入类型编码" id="inquireInputType" maxlength="10">
+		</div>
+		<div class="input-group">
+			<span class="pull-left">类型名称:</span>
+			<input type="text" class="form-control media-input" placeholder="请输入类型名称" id="inquireInputNote" maxlength="10">
+		</div>
+		<div class="input-group">
+			<button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearch">
+				搜索
+			</button>
+			<button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+				重置
+			</button>
+		</div>
+		<div id="search-tool-show">
+			<!--<button class="layui-btn layui-btn-small layui-btn-normal">
+				高级搜索
+			</button>-->
+		</div>
+	</div>
+	<div id="app" class="clearfix">
+		<div id="leftTable" class="clearfix">
+			<table lay-filter="demo" id="demo"></table>
+			<div id="laypageLeft"></div>
+		</div>
+		<div id="app-table" class="clearfix">
+			<h2 id="myListName"></h2>
+			<div id="btnCon">
+				<button class="layui-btn layui-btn-small layui-btn-normal" id="addKv">
+				  <i class="layui-icon">&#xe61f;</i> 添加键值
+				</button>
+			</div>
+			<table lay-filter="demodb" id="demodb"></table>
+			
+		</div>
+	</div>
+	<script type="text/html" id="barDemo">
+			<button class="layui-btn layui-btn-small layui-btn-normal" lay-event='detail'>
+			  <i class="layui-icon">&#xe615;</i> 查看
+			</button>
+			<button class="layui-btn layui-btn-small layui-layui-btn-warm" lay-event='change'>
+			  <i class="layui-icon">&#xe6b2;</i> 修改
+			</button>
+			<button class="layui-btn layui-btn-small  layui-btn-danger" lay-event="del">
+			  <i class="layui-icon">&#xe640;</i> 删除
+			</button>
+	</script>
+		<script type="text/html" id="barDemoR">
+			<button class="layui-btn layui-btn-small layui-layui-btn-warm" lay-event='change'>
+			  <i class="layui-icon">&#xe6b2;</i> 修改
+			</button>
+			<button class="layui-btn layui-btn-small  layui-btn-danger" lay-event="dell">
+			  <i class="layui-icon">&#xe640;</i> 删除
+			</button>
+	</script>
+	
+	
+	
+	
+	
+	
+	<!--modal-->
+	<div id="demo111" class='layui-form clearfix' lay-filter="seach">
+		<div class="leftCon">
+			<div class="layui-form-item">
+		          <label class="layui-form-label flex"><i class="star">*</i>类型编码：</label>
+		          <div class="layui-input-block flex">
+	              <input type="text" name="title"  lay-verify="required" maxlength="10"   placeholder="请输入类型编码" autocomplete="off" class="layui-input h30" id="addName">
+          		  </div>
+      		</div>
+
+		</div>
+		<div class="rightCon">
+			<div class="layui-form-item">
+		          <label class="layui-form-label flex"><i class="star">*</i>类型名称：</label>
+		          <div class="layui-input-block flex">
+	              <input type="text" name="title" required="" lay-verify="required" maxlength="10" placeholder="请输入类型名称" autocomplete="off" class="layui-input h30" id="addValue">
+          		  </div>
+      		</div>
+
+		</div>
+	</div>
+	<!--modal-->
+	<div id="demo222" class='layui-form clearfix' lay-filter="seachr">
+		<div class="leftCon">
+			<div class="layui-form-item">
+		          <label class="layui-form-label flex"><i class="star">*</i>名称：</label>
+		          <div class="layui-input-block flex">
+	              <input type="text" name="title" required="" lay-verify="required" maxlength="10" placeholder="请输入类型名称" autocomplete="off" class="layui-input h30" id="addValuer">
+          		  </div>
+      		</div>
+			
+          	<div class="layui-form-item h100">
+		          <label class="layui-form-label flex"><i class="star">*</i>类型名称：</label>
+		          <div class="layui-input-block flex">
+		            <select lay-verify="required" id="typeSelectr" disabled>
+		              <!--<option value="">直接或搜索选择</option>-->
+		            </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择</dd><dd lay-value="0" class="">北京</dd><dd lay-value="1" class="">上海</dd><dd lay-value="2" class="">广州</dd><dd lay-value="3" class="">深圳</dd><dd lay-value="4" class="">杭州</dd></dl></div>
+		          </div>
+        	</div>
+		</div>
+		<div class="rightCon">
+			<div class="layui-form-item">
+		          <label class="layui-form-label flex"><i class="star">*</i>键值：</label>
+		          <div class="layui-input-block flex">
+	              <input type="text" name="title"  lay-verify="required" maxlength="10"   placeholder="请输入键值" autocomplete="off" class="layui-input h30" id="addNamer">
+          		  </div>
+      		</div>
+      		<div class="layui-form-item layui-form-text h100">
+			    <label class="layui-form-label flex">备注：</label>
+			    <div class="layui-input-block flex">
+			      <textarea placeholder="请输入备注" class="layui-textarea" id="addContentr" maxlength="150" style="resize: none"></textarea>
+			    </div>
+			  </div>
+		</div>
+	</div>
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="js/parameter_setting.js"></script>

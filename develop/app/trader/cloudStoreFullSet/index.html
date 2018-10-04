@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>云店全屏设置</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/layui-v2.2.2/css/layui.css">
+    <link rel="stylesheet" href="../assets/common/css/reset.css">
+    <link rel="stylesheet" href="css/cloudStoreFullSet.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- 选择，显示，设置板块 -->
+        <div class="row centerContent">
+            <!--1.左边选择板块-->
+            <div class="col-lg-3 hidden-md hidden-sm hidden-xs leftChoose">
+                <p class="chooseeOperation">可选择操作 :</p>
+                <div class="managementTab" id="managementTab" data-screenType="1">
+                    <ul class="layui-form leftTab" >
+                        <li class="common_tab first_screen" data-screenType="1">
+                            <a class="hasChoose active" id="coverSet">
+                                <span>1</span> 封面设置
+                            </a>
+                            <input type="checkbox" name="switch" lay-skin="switch" value="0">
+                        </li>
+
+                        <li class="common_tab" data-screenType="2">
+                            <a class="hasChoose" id="video">
+                                <span>2</span> 视频
+                            </a>
+                            <input type="checkbox" name="switch" lay-skin="switch" value="0"></li>
+                        <li class="common_tab" data-screenType="3">
+                            <a class="hasChoose" id="panorama">
+                                <span>3</span> 720°全景
+                            </a>
+                            <input type="checkbox" name="switch" lay-skin="switch" value="0">
+                        </li>
+                        <li class="common_tab" data-screenType="4">
+                            <a class="hasChoose" id="sinatv">
+                                <span>4</span> 直播
+                            </a>
+                            <input type="checkbox" name="switch" lay-skin="switch" value="0">
+                        </li>
+                        <li class="common_tab" data-screenType="5">
+                            <a class="hasChoose" id="pic">
+                                <span>5</span> 图片
+                            </a>
+                            <input type="checkbox" name="switch" lay-skin="switch" value="0">
+                        </li>
+                        <li class="common_tab" data-screenType="6">
+                            <a class="hasChoose" id="goodsSet">
+                                <span>6</span> 商品设置
+                            </a>
+                            <input type="checkbox" name="switch" lay-skin="switch" value="0">
+                        </li>
+                        <li class="common_tab" data-screenType="7">
+                            <a class="hasChoose" id="orderSet">
+                                <span>7</span> 预约项目设置
+                            </a>
+                            <input type="checkbox" name="switch" lay-skin="switch" value="0">
+                        </li>
+                        <li class="common_tab" data-screenType="8">
+                            <a class="hasChoose" id="stateSet">
+                                <span>8</span> 云店动态设置
+                            </a>
+                            <input type="checkbox" name="switch" lay-skin="switch" value="0">
+                        </li>
+                        <li class="common_tab" data-screenType="9">
+                            <a class="hasChoose" id="headlineSet">
+                                <span>9</span> 云店头条设置
+                            </a>
+                            <input type="checkbox" name="switch" lay-skin="switch" value="0">
+                        </li>
+                        <li class="common_tab" data-screenType="10">
+                            <a class="hasChoose" id="playerGroup">
+                                <span>10</span> 云店玩家圈
+                            </a>
+                            <input type="checkbox" name="switch" lay-skin="switch" value="0">
+                        </li>
+                        <li class="common_tab" data-screenType="11">
+                            <a class="hasChoose" id="pinkTeam">
+                                <span>11</span> 云店粉团队
+                            </a>
+                            <input type="checkbox" name="switch" lay-skin="switch" value="0">
+                        </li>
+                        <li class="common_tab" data-screenType="12">
+                            <a class="hasChoose" id="introSet">
+                                <span>12</span> 店铺简介设置
+                            </a>
+                            <input type="checkbox" name="switch" lay-skin="switch" value="0">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--2.中间显示板块-->
+            <div class="col-lg-4 col-md-5 col-sm-12 center-tab middleShow">
+                <div class="middlePreview">
+                    <div class="previewHead">
+                        <!--模拟iphoneX头部视图-->
+                        <div class="iphoneHead">
+                            <span class="time_tab">
+                                <!--模拟iphoneX左上时间-->
+                                </span>
+                            <!--模拟iphoneX顶部刘海及右侧信号wifi电量-->
+                            <img class="tophead" src="img/houtai_iphonex_top(3).png" alt="">
+                        </div>
+                        <!-- 中间上下轮播对应左侧tab栏 -->
+                        <div class="middleSwiper">
+                            <!--空白页-->
+                            <div class="blank_img">
+                            </div>
+                            <!--第一屏-->
+                            <div class="fistcenter_img">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 3.右边设置板块 -->
+            <div class="col-lg-5 col-md-7 col-sm-12 rightSet">
+                <ul>
+                    <!-- 1.封面设置-设置首页封面 -->
+                    <li class="rightSetTab">
+                        <!-- 公共头部模块 -->
+                        <div class="rightSetHead">
+                            <p>设置首页封面</p>
+                        </div>
+                        <div class="mian_content">
+                            <p class="title">设置封面海报 （建议尺寸：750*1624）</p>
+                            <!-- 公共上传模块 -->
+                            <div class="goodsChooseFather">
+                                <div class="goodsChoose" id="goodsChooseBtn">
+                                    <img src="img/goodsChoose.png" alt="">
+                                    <p>选择封面海报</p>
+                                    <p>建议尺寸：750*1624</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                    <!-- 2.视频-设置视频界面 -->
+                    <li class="rightSetTab">
+                        <div class="rightSetHead">
+                            <p>设置视频界面</p>
+                        </div>
+                        <div class="mian_content">
+                            <p class="title">已选视频 （最多十个，建议尺寸：750*1624）</p>
+                            <div class="videoSet"  id="videoSet">
+                                <!-- 插件：视频拖动模块 -->
+                                <ul class="choosed_vedio" id="ul_video">
+                                    <!--<li class="video_list">-->
+                                    <!--<img src="img/img_01.jpg" alt="">-->
+                                    <!--<span class="del_btn"></span>-->
+                                    <!--</li>-->
+                                </ul>
+                                <div class="videoStyle">
+                                    <div class="choose_video">
+                                        <img src="img/goodsChoose.png" alt="">
+                                        <p >选择视频</p>
+                                        <p>建议尺寸：750*1624</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="parent_btn">
+                                <span class="layui-btn layui-btn-normal" id="saveVideo">保存</span>
+                            </div>
+                        </div>
+
+                    </li>
+                    <!-- 3.720°全景-设置全景界面 -->
+                    <li class="rightSetTab">
+                        <div class="rightSetHead">
+                            <p>设置全景界面</p>
+                        </div>
+                        <div class="placeholder_img">
+                            <a href="javascript:;" class="layui-btn dredge">去开通</a>
+                        </div>
+                    </li>
+                    <!-- 4.直播-设置直播界面 -->
+                    <li class="rightSetTab zhibo">
+                        <div class="rightSetHead">
+                            <p>设置直播界面</p>
+                        </div>
+                        <div class="placeholder_img">
+                            <a href="javascript:;" class="layui-btn dredge">去开通</a>
+                        </div>
+                    </li>
+                    <!-- 5.图片-设置图片界面 -->
+                    <li class="rightSetTab">
+                        <div class="rightSetHead">
+                            <p>设置图片界面</p>
+
+                        </div>
+                        <div class="mian_content">
+                            <p class="title"> 已选图片 （最多十个，建议尺寸：750*1624）</p>
+                            <div class="videoSet" >
+                                <!-- 插件：视频拖动模块 -->
+                                <ul class="choosed_vedio" id="ul_img">
+                                    <!--<li class="video_list">-->
+                                    <!--<img src="img/img_01.jpg" alt="">-->
+                                    <!--<span class="del_btn"></span>-->
+                                    <!--</li>-->
+                                </ul>
+                                <div class="videoStyle">
+                                    <div class="choose_video">
+                                        <img src="img/goodsChoose.png" alt="">
+                                        <p >选择图片</p>
+                                        <p>建议尺寸：750*1624</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="parent_btn">
+                                <span class="layui-btn layui-btn-normal" id="saveImg">保存</span>
+                            </div>
+                        </div>
+
+                    </li>
+                    <!-- 6.商品设置-设置商品界面 -->
+                    <li class="rightSetTab">
+                        <div class="rightSetHead">
+                                <p>设置商品界面</p>
+                        </div>
+                        <div class="mian_content">
+                            <p class="title">已选商品</p>
+                            <ul class="have_choosed_goods">
+                                <!--<li>-->
+                                    <!--<img src="img/avatar1.png" class="img_show">-->
+                                    <!--<p>2018年新款春装连帽卫衣</p>-->
+                                    <!--<p class="red">¥ 800.00</p>-->
+                                    <!--<span class="to_del layui-icon">-->
+                                    <!--&#x1007;-->
+                                <!--</span>-->
+                                <!--</li>-->
+                            </ul>
+                            <div class="add_goods">
+                                <img src="img/goodsChoose.png" alt="">
+                                <p>选择商品</p>
+                            </div>
+                            <div class="parent_btn">
+                                <span class="layui-btn layui-btn-normal" id="saveGoods">保存</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="rightSetTab">7</li>
+                    <!--8-->
+                    <li class="rightSetTab">
+                        <div class="rightSetHead">
+                            <p>设置动态界面</p>
+                        </div>
+                        <div class="mian_content">
+                            <p class="title">已选择显示的动态</p>
+                            <ul class="have_choosed_goods">
+                                <li>
+                                    <img src="img/avatar1.png" class="img_show">
+                                    <div class="content">2018年新款春装连帽卫衣
+                                        2018年新款春装连帽卫衣
+                                        2018年新款春装连帽卫衣
+                                        2018年新款春装连帽卫衣
+                                        2018年新款春装连帽卫衣
+                                    </div>
+                                    <div class="time">
+                                        <p>3月3日</p>
+                                        <p>14:25</p>
+                                    </div>
+                                    <span class="to_del layui-icon">
+                                    &#x1007;
+                                </span>
+                                </li>
+                            </ul>
+                            <div class="add_trends">
+                                <img src="img/goodsChoose.png" alt="">
+                                <p>选择商品</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="rightSetTab">9</li>
+                    <li class="rightSetTab">10</li>
+                    <li class="rightSetTab">11</li>
+                    <li class="rightSetTab">12</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!--选择视频弹框-->
+    <div id="choose_videoBox">
+        <ul class="centerBtn">
+            <!--<li>全部</li>-->
+            <!--<li>首页</li>-->
+        </ul>
+        <div class="center_video">
+            <ul class="center_ul">
+
+                <!--<li class="video_list">-->
+                    <!--<img src="img/contentIMG.png" class="img_video">-->
+                    <!--<span class="to_play"></span>-->
+                    <!--<span class="the_cheack"></span>-->
+                    <!--<span class="to_cheack"></span>-->
+                <!--</li>-->
+            </ul>
+            <div class="videoStyle">
+                <div class="choose_video" id="to_choose_video">
+                    <img src="img/goodsChoose.png" alt="">
+                    <p >选择视频</p>
+                    <p>建议尺寸：750*1624</p>
+                </div>
+            </div>
+            <div class="imgStyle">
+                <div class="choose_img" id="to_choose_img">
+                    <img src="img/goodsChoose.png" alt="">
+                    <p >选择图片</p>
+                    <p>建议尺寸：750*1624</p>
+                </div>
+            </div>
+        </div>
+        <ul class="center_hidden" style="display: none">
+
+        </ul>
+    </div>
+
+    <!--设置视频封面弹框-->
+    <div id="cover_box">
+        <p class="title">设置封面海报 （建议尺寸：750*1624）</p>
+            <!-- 公共上传模块 -->
+            <div class="goodsChooseFather">
+                <div class="goodsChoose"  id="the_cover_btn" >
+                    <div class="noUpload">
+                        <img src="img/goodsChoose.png" class="chooseImg">
+                        <p>选择封面海报</p>
+                        <p>建议尺寸：750*1624</p>
+                    </div>
+                </div>
+               </div>
+        <!--已上传图片 -->
+        <div class="haveUpload">
+            <img src="" class="choosedCoverImg" id="choosedCoverImg">
+        </div>
+    </div>
+
+    <!--选择商品弹框-->
+     <div id="choose_goodsBox">
+        <div class="top_box">
+            <input type="text" placeholder="下拉输入搜索商品" class="search_title">
+            <ul class="have_searched_box">
+                <!--<li>-->
+                    <!--<input type="checkbox">-->
+                    <!--<img src="img/avatar1.png" alt="">-->
+                    <!--<span>-->
+                        <!--2018新款套装-->
+                    <!--</span>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<input type="checkbox">-->
+                    <!--<img src="img/avatar1.png" alt="">-->
+                    <!--<span>-->
+                        <!--2018新款套装-->
+                    <!--</span>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<input type="checkbox">-->
+                    <!--<img src="img/avatar1.png" alt="">-->
+                    <!--<span>-->
+                        <!--2018新款套装-->
+                    <!--</span>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<input type="checkbox">-->
+                    <!--<img src="img/avatar1.png" alt="">-->
+                    <!--<span>-->
+                        <!--2018新款套装-->
+                    <!--</span>-->
+                <!--</li>-->
+            </ul>
+        </div>
+                <p class="title">上传商品图片</p>
+                <div class="add_goods" id="add_goods">
+                    <img src="img/goodsChoose.png" alt="">
+                    <p>选择商品</p>
+                </div>
+
+         <!--已上传商品图片 -->
+         <div class="haveUpload">
+             <img src="" class="choosedGoodImg" id="choosedGoodImg">
+         </div>
+    </div>
+
+    <!--选择动态弹框-->
+    <div id="choose_trendsBox">
+        <div class="content">
+            <form class="form-inline ">
+                <div class="form-group">
+                    <label for="exampleInputName2">动态内容</label>
+                    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail2">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                    <span>至</span>
+                    <input type="email" class="form-control" id="exampleInputEmail" placeholder="jane.doe@example.com">
+                </div>
+                <span class="to_search">
+                    <i class="layui-icon">&#xe615;</i>
+                </span>
+            </form>
+
+                <ul class="to_choose_content">
+                    <li>
+                        <input type="checkbox">
+                        <p class="content_title">
+                            南极探险队的话题话题话题
+                        </p>
+                        <p class="content_img">
+                            <img src="img/avatar1.png" alt="">
+                            <img src="img/avatar1.png" alt="">
+                            <img src="img/avatar1.png" alt="">
+                        </p>
+                       <div class="time">
+                           <p>2018-3-3</p>
+                           <p>14:50</p>
+                       </div>
+                    </li>
+                </ul>
+        </div>
+    </div>
+
+    <script src="../assets/jquery/jquery.min.js"></script>
+    <script src="../assets/layui-v2.2.2/layui.all.js"></script>
+    <script src="./js/util.js"></script>
+    <script src="../assets/plupload-2.3.1/js/moxie.js"></script>
+    <script src="../assets/plupload-2.3.1/js/plupload.full.min.js"></script>
+    <script src="../assets/plupload-2.3.1/js/i18n/zh_CN.js"></script>
+    <script src="./js/upload.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="./js/cloudStoreFullSet.js"></script>
+</body>
+
+</html>

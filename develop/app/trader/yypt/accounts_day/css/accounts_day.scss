@@ -1,0 +1,236 @@
+$base-size:16px;
+$base-color:#333333;
+$bg:#f3f3f3;
+$white:#fff;
+$main-color:#26c3b2;
+$second-color:#f8ab59;
+$f1:#f1f1f1;
+.main-color{
+  color: $main-color;
+}
+.main-color-bg{
+  background: $main-color;
+}
+.f1{
+  background: $f1;
+}
+
+.ml25{
+  margin-left: 25px;
+}
+.layui-input, .layui-select, .layui-textarea,.layui-btn,.layui-table-cell{
+  height: 35px;
+  line-height: 35px;
+}
+.layui-btn{
+  font-size:$base-size;
+  border-radius: 3px;
+}
+.layui-form-label{
+  padding:7px 15px;
+}
+.layui-table-view .layui-table{
+  width: 100%;
+}
+.layui-table-view .layui-table td, .layui-table-view .layui-table th{
+  padding:10px 0;
+  font-size:$base-size;
+}
+.layui-table thead tr{
+  background: $main-color;
+  color: $white;
+}
+.layui-table tbody tr:hover, .layui-table-click, .layui-table-header, .layui-table-hover, .layui-table-mend, .layui-table-patch, .layui-table-tool{
+  background: $bg;
+}
+.layui-form-select dl dd.layui-this{
+  background: $main-color;
+}
+.layui-form-select .layui-input{
+  padding-right: 0;
+}
+.layui-btn .layui-icon{
+  margin-right: 0;
+}
+
+.layui-btn-sm i{
+  font-size: 16px!important;
+}
+
+.layui-table-body,.bg-white{
+  background: $white;
+
+}
+.layui-table, .layui-table-view{
+  margin: 0;
+}
+.layui-laypage{
+  float: right;
+  padding-right: 10px;
+}
+.layui-layer-btn .layui-layer-btn0{
+  background-color:$main-color!important;
+  border-color: $main-color!important;;
+
+
+}
+.fr{
+  float: right;
+}
+.fl{
+  float: left;}
+
+body,html{
+  width: 100%;
+  overflow-x: hidden;
+}
+body{
+  font-size:$base-size;
+  color:$base-color;
+  background: $bg;
+}
+.main-wapper{
+  //width: 100%;
+  height: auto;
+  padding:0 10px;
+}
+.hearder{
+  background: $white;
+  ul{
+    //overflow: hidden;
+    padding-top: 15px;
+  }
+  li{
+    float: left;
+  }
+}
+.main{
+  padding:0 50px;
+  .btn-box{
+    padding:18px 0;
+    button{
+      padding:0 40px;
+      background: $second-color;
+      line-height:44px;
+      height: 44px;
+    }
+  }
+  .table-box{
+  }
+  .tab-box{
+    overflow: hidden;
+    width: 100%;
+    margin-top: 18px;
+    //border-bottom:1px solid #dadada;
+    position: relative;
+    height: 44px;
+    z-index:1;
+    li{
+      float: left;
+      line-height: 42px;
+      padding:0 40px;
+      border:1px solid #dadada;
+      margin-bottom:-1px;
+      cursor: pointer;
+      color: #7c7c7c;
+
+    }
+    li:nth-child(2){
+      border-left:none;
+    }
+    li.active{
+      background: $white;
+      border-bottom:1px solid $bg;
+      color: $base-color;
+
+    }
+  }
+  .tab-box:after{
+    position: absolute;
+    content:'';
+    width: 100%;
+    height: 1px;
+    background: #dadada;
+    top: 43px;
+
+
+
+  }
+}
+.circle{
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: $main-color;
+}
+
+//新增模板
+.addDemo{
+  width: 100%;
+  display: none;
+  background: $white;
+  text-align: center;
+  margin:40px 0;
+  margin-bottom: 25px;
+  ul{
+    width: 525px;
+    margin: 0 auto;
+    margin-bottom:36px;
+
+  }
+  .bgf3{
+    background: $bg;
+    color: $base-color;
+  }
+  .bgf3:hover{
+    color: $base-color;
+  }
+  .p35{
+    padding:0 35px;
+  }
+}
+//编辑模板
+.editDemo{
+  display: block;
+}
+.addUl .layui-form-item{
+  margin-bottom: 14px;
+  width:460px;
+}
+.addUl .remarkBox{
+  width: 100%;
+}
+.fujian{
+  text-align: left;
+  button{
+    background: none;
+    color:$main-color;
+    border:1px solid $main-color;
+  }
+  button:hover{
+    color:$white;
+    background: $main-color;
+  }
+}
+.w142+div{
+  float: right;
+  width: 142px;}
+.w192+div{
+  width: 192px;
+  float: left;
+  //margin-left: 10px;
+
+}
+.layui-table-cell{
+  padding-right: 0;
+  //overflow: inherit;
+}
+.layui-form-select dl{
+  max-width:100%;
+  max-height: 220px;
+}
+.layui-disabled, .layui-disabled:hover {
+  color: rgb(84, 84, 84)!important;
+  cursor: not-allowed!important;
+}

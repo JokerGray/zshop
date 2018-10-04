@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>店铺营业概况</title>
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../../assets/common/css/common.css">
+    <link rel="stylesheet" href="./css/reportCSShopBusiness.css">
+</head>
+<body>
+<!--顶部时间选择和店铺选择-->
+<div class="time-shop">
+    <div class="timeTab">
+        <ul>
+            <li class="active" data-navType="1">日报</li>
+            <li data-navType="2">全部</li>
+            <li data-navType="3">自定义</li>
+        </ul>
+    </div>
+    <div class="shopSelector layui-form">
+        <select id="shopSelector" lay-filter="shopSelector" lay-search> </select>
+    </div>
+</div>
+<!--时间选择和路径显示-->
+<div class="time-path">
+    <div class="timeIcon">
+        <i> </i>
+    </div>
+    <div class="timeSelector">
+        <div>
+            <input type="text" value="" onfocus="blur()" id="day">
+        </div>
+        <div>
+            <span>全部</span>
+        </div>
+        <div>
+            <input type="text" value="" onfocus="blur()" id="dateRange">
+        </div>
+    </div>
+    <div class="path">
+        <i> > </i>
+        <span class="shopName"> </span>
+    </div>
+    <div class="radioBtn">
+        <ul class="clearfix">
+            <li class="active" data-index="1">
+                <i> </i>
+                <span>店外购物</span>
+            </li>
+            <li data-index="2">
+                <i> </i>
+                <span>店内下单</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--营业概览-->
+<div class="Overview">
+    <ul class="clearfix online">
+        <li class="active" data-type="0">
+            <div>
+                <i> </i>
+            </div>
+            <div>
+                <p>销售总额（元）</p>
+                <h4 id="totalSales"> </h4>
+            </div>
+            <div>
+                <p>平均日销售额（元）</p>
+                <h4 id="averageSales"> </h4>
+            </div>
+        </li>
+        <li data-type="1">
+            <div>
+                <i> </i>
+            </div>
+            <div>
+                <p>销量（件）</p>
+                <h4 id="salesCount"> </h4>
+            </div>
+            <div>
+                <p>平均日销量（件）</p>
+                <h4 id="averageSalesCount"> </h4>
+            </div>
+        </li>
+        <li data-type="2">
+            <div>
+                <i> </i>
+            </div>
+            <div>
+                <p>支付订单数</p>
+                <h4 id="payCount"> </h4>
+            </div>
+            <div>
+                <p>平均日订单数</p>
+                <h4 id="averagePayCount"> </h4>
+            </div>
+        </li>
+    </ul>
+    <ul class="clearfix inShop">
+        <li class="active" data-type="0">
+            <div></div>
+            <div>
+                <p>销量（件）</p>
+                <h4 id="inShopSales"> </h4>
+            </div>
+            <div>
+                <p>平均日销量（件）</p>
+                <h4 id="inShopAverageSales"> </h4>
+            </div>
+        </li>
+        <li data-type="1">
+            <div></div>
+            <div>
+                <p>已结算订单数</p>
+                <h4 id="inShopFinishOrder"> </h4>
+            </div>
+            <div>
+                <p>平均日订单数</p>
+                <h4 id="inShopAverageOrder"> </h4>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--走势图-->
+<div class="treads">
+    <div class="trendContent online">
+        <div class="saleMoney"></div>
+        <div class="saleNum"></div>
+        <div class="payNum"></div>
+    </div>
+    <div class="trendContent inShop">
+        <div class="inShopSaleNum"></div>
+        <div class="inShopSettlementNum"></div>
+    </div>
+</div>
+<!--报表-->
+<div class="reportContent">
+    <div class="title-export">
+        <div>数据表</div>
+        <div>
+            <a href="JavaScript:;" class="exportBtn">
+                <i> </i>
+                <span>导出</span>
+            </a>
+        </div>
+    </div>
+    <div class="tableBox">
+        <table class="layui-table">
+            <colgroup>
+                <col width="60">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>日期</th>
+                <th>订单数</th>
+                <th>销量</th>
+                <th>销售额</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr>-->
+                <!--<td>01</td>-->
+                <!--<td>2016-11-29</td>-->
+                <!--<td>100</td>-->
+                <!--<td>123</td>-->
+                <!--<td>3,000,000.00</td>-->
+                <!--<td>-->
+                    <!--<a href="javascript:;">查看详情</a>-->
+                <!--</td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+    <!--分页-->
+    <div class="pageBox">
+        <div id="pageSelector"></div>
+    </div>
+</div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../assets/echart/echarts.min.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="./js/reportCSShopBusiness.js"></script>
+</html>

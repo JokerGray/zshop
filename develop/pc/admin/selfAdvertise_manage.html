@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <title>平台广告管理·管理员后台</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css?v=201706191500" />
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/zx.css?v=201706191500" />
+    <link rel="stylesheet" href="css/advertise_manage.css?v=201706191500" />
+    <link rel="stylesheet" href="css/selfAdvertise_manage.css?v=201706191500" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="selfAdvertise_manage">
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div id="page_R" class="right pull-right">
+                <form id="selectForm">
+                    <div id="search_box" class="clearfix">
+                        <div id="advertisingSpace" class="fl">
+                            <p class="advertisingSpTit">投放账户</p>
+                            <input id="putInTheAccount" class="" type="text" name="scCmsAdvPlaceName">
+                        </div>
+                        <div id="advertisingSpace" class="fl">
+                            <p class="advertisingSpTit">广告位</p>
+                            <select id="advertisingSpSel" class="" name="scCmsAdvPlaceId">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                        <div id="advertisingSource" class="fl">
+                            <p class="advertisingSoTit">广告类型</p>
+                            <select id="advertisingSoSel" class="" name="scCmsAdvSourceId">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                        <div id="advertisingTime" class="fl">
+                            <p class="advertisingTTit">申请投放时间</p>
+                            <input id="start" class="fl" type="text" name="scCmsAdvStart">
+                            <input id="end" class="fl" type="text" name="scCmsAdvEnd">
+                        </div>
+                        <div id="search_icon" class="fl"><img id="searchIcon" class="cur-p" src="images/search.png" alt=""></div>
+                    </div>
+                </form>
+                <div class="advertiseData">
+                    <div class="advertiseDataBox">
+                        <img src="images/icon_tongji.png" alt="">
+                        <p>商户自投放广告条数</p>
+                        <p id="advertNum" class="advertiseDataNum"></p>
+                    </div>
+                    <div class="advertiseDataBox">
+                        <img src="images/icon_zhanshi.png" alt="">
+                        <p>展现次数</p>
+                        <p id="adShowNum" class="advertiseDataNum"></p>
+                    </div>
+                    <div class="advertiseDataBox">
+                        <img src="images/icon_dianji.png" alt="">
+                        <p>点击次数</p>
+                        <p id="adClickNum" class="advertiseDataNum"></p>
+                    </div>
+                </div>
+                <div id="" class="advertiseList clearfix">
+                    <div>
+                        <ul id="tabinner" class="tabinner clearfix">
+                            <li class="fl active" writerRank="">全部</li>
+                            <li class="fl" writerRank="1">已上架</li>
+                            <li class="fl" writerRank="2">已下架</li>
+                            <li class="fl" writerRank="3">已过期</li>
+                        </ul>
+                    </div>
+                    <div id="advertiseTable" class="table advertiseTable account_table">
+                        <div class="table-left">
+                            <div class="panel panel-default">
+                                <table class="table table-hover">
+                                    <thead class="advertiseTabHead">
+                                        <th>序号</th>
+                                        <th>投放账户</th>
+                                        <th>广告位</th>
+                                        <th>广告类型</th>
+                                        <th>标签数</th>
+                                        <th>展示量</th>
+                                        <th>点击量</th>
+                                        <th>投放时间</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </thead>
+                                    <tbody id="advertiseTabBody" class="advertiseTabBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="page" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="advertiseDetail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="advertiseDBox modal-dialog modal-dialog2" role="document">
+            <div class="advertiseDMain modal-content modal-content2">
+                <div class="advertiseDTit modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4>广告详情</h4>
+                </div>
+                <div class="advertiseDCon clearfix">
+                    <div class="adDConLeft fl">
+                        <div>
+                            <p class="adDConLabel">投放广告位：</p>
+                            <span id="adDConPosition"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">状态：</p>
+                            <span id="adDConIsPutaway" class="adDConstate"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">展示量：</p>
+                            <span id="adDConShowNum"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">点击量：</p>
+                            <span id="adDConClickNum"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">广告来源：</p>
+                            <span id="adDConSource"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">广告类型：</p>
+                            <span id="adDConType"></span>
+                        </div>
+                        <div id="adDTypeHrefBox">
+                            <p class="adDConLabel">外部链接：</p>
+                            <span id="adDTypeHref"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">申请投放时间：</p>
+                            <span id="adDConTime"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">添加标签：</p>
+                            <div id="adDConTagList" class="adDConTagList">
+                                <span class="adDConTag">明星</span>
+                                <span class="adDConTag">明星</span>
+                                <span class="adDConTag">明星</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">提交时间：</p>
+                            <span id="adDConCreateTime"></span>
+                        </div>
+                    </div>
+                    <div class="adDConRight fr">
+                        <div class="adDConRightTit">
+                            <span>广告样式</span>
+                            <span id="adDConRType"></span>
+                        </div>
+                        <div id="adDConRSetImg" class="adDConRSetBox clearfix">
+                            <div class="adDConRSetLeft fl">
+                                <p id="advStyleResTitle"></p>
+                                <p class="adDConRSetBottom"><span id="adDConRSetBIcon" class="adDConRSetBIcon adDConBIconText"></span></p>
+                            </div>
+                            <img id="adDConRSetRight" class="fr" src="" alt="">
+                        </div>
+                        <div id="adDConRSetImgList" class="adDConRSetBox clearfix">
+                            <p id="advStyleImgLTitle" class="advStyleResTitle"></p>
+                            <div id="adDConRSetImgsBox" class="adDConRSetImgList">
+                                <!--<img src="images/face2.png" alt="">
+                                <img src="images/face2.png" alt="">
+                                <img src="images/face2.png" alt="">-->
+                            </div>
+                            <p class="adDConRIcon adDConBIconText"></p>
+                        </div>
+                        <div id="adDConRSetVideo" class="adDConRSetBox clearfix">
+                            <p id="advStyleVideoTitle" class="advStyleResTitle"></p>
+                            <div id="adDConRSetVideoUrl" class="adDConRSetImgList">
+                                <!--<video src="http://zxcity-app.oss-cn-hangzhou.aliyuncs.com/user-dir/zx1496213744283.mp4" poster='images/face2.png' controls='controls'></video>-->
+                            </div>
+                            <p class="adDConRIcon adDConBIconText"></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="advertiseDBtnBox" class="modal-footer">
+                    <button id="putawayBtn" type="button" class="btn btn-default" data-dismiss="modal">下架</button>
+                    <button id="cancelBtn" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/countUp.min.js"></script>
+    <script src="util/util.js?v=201706191500"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/selfAdvertise_manage.js?v=201706191600"></script>
+    <script id="tableList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+        <tr scCmsAdvId="{{item.scCmsAdvId || ''}}" scCmsAdvStyleResId="{{item.scCmsAdvStyleResId || ''}}">
+            <td>{{index + 1}}</td>
+            <td class="putInTheAccount">{{item.advName || '智享头条'}}</td>
+            <td class="adPosition">{{item.scCmsAdvPlaceName || ''}}</td>
+            <td class="adType" sourceType="{{item.scCmsAdvSourceType || ''}}">{{item.scCmsAdvSourceName || ''}}</td>
+            <td>{{item.scCmsAdvLableNumber || '0'}}</td>
+            <td class="adShowNum">{{item.scCmsAdvShowNumber || '0'}}</td>
+            <td class="adClickNum">{{item.scCmsAdvClickNumber || '0'}}</td>
+            <td class="adTime">
+                {{# var str = (item.scCmsAdvStart).slice(0, length - 2) + '--' + (item.scCmsAdvEnd).slice(0, length - 2)}}
+                {{str}}
+            </td>
+            <td class="checkStatus">
+                {{# if(item.scCmsAdvState == 1){ }}
+                    <span>已上架</span>
+                {{# } else if(item.scCmsAdvState == 2){ }}
+                    <span class="active">已下架</span>
+                {{# } else if(item.scCmsAdvState == 3){ }}
+                    <span class="invalid">已过期</span>
+                {{# } else if(item.scCmsAdvExamine == 0){ }}
+                    <span class="invalid">待审核</span>
+                {{# } else if(item.scCmsAdvExamine == 2){ }}
+                    <span class="invalid">已驳回</span>
+                {{# } else if(item.scCmsAdvExamine == 4 && item.scCmsAdvState == 4){ }}
+                    <span class="invalid">已完成</span>
+                {{# } }}
+            </td>
+            {{# var adHref = JSON.parse(item.scCmsAdvjump)['url'], adHref1 = '', adHref2 = ''}};
+            {{# if(!isNull(adHref)){ }}
+                {{# adHref1 = adHref.substr(0, 7), adHref2 = adHref.substr(7, adHref.length-1)}}
+            {{# }; }}
+            <td ad1="{{adHref1}}" ad2="{{adHref2}}"> 
+                <button class="checkBtn" data-toggle="modal" data-target="#advertiseDetail" label="{{item.scCmsAdvLable}}" creatTime="{{item.scCmsAdvCreateTime}}">查看</button>
+                {{# if(item.scCmsAdvExamine == 1){ }}
+                    {{# if(item.scCmsAdvState == 1){ }}
+                    <button class="isPutawayBtn isPutawayOp" value="1">下架</button>
+                    <button class="isPutawayBtn reject">驳回</button>  
+                    {{# } else if(item.scCmsAdvState == 2){ }}
+                    <button class="isPutawayBtn isPutawayOp active" value="2">上架</button>
+                    <button class="isPutawayBtn reject">驳回</button>  
+                    {{# } }}
+                {{# } }}
+            </td>
+        </tr>
+        {{#  }); }}
+        {{#  if(d.length == 0){ }}
+        	<tr></tr>
+        {{#  } }} 
+    </script>
+</body>
+
+</html>

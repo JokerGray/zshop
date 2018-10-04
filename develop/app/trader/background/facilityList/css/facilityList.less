@@ -1,0 +1,501 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+a{
+  text-decoration: none;
+  &:link,&:visited,&:hover,&:active{
+    color: #000;
+    text-decoration: none;
+  }
+}
+ul,li{
+  list-style: none;
+}
+.clearfix::after{
+  display: block;
+  content: '';
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.clearfix{
+  zoom: 1;
+}
+
+html, body{
+  width: 100%;
+  height: 100%;
+  background-color: #f3f3f3;
+}
+.main-wrapper{
+  position: relative;
+  padding-left:220px;
+  height:100%;
+  .con-left{
+    position: absolute;
+    top:0;
+    left:0;
+    width:220px;
+    height:100%;
+    background-color:#fff;
+  }
+  .con-right{
+    width:100%;
+    height:100%;
+    .contentBox{
+      padding:20px;
+    }
+  }
+}
+.con-left{
+  .btn-add{
+    width:100%;
+    height: 80px;
+    border-radius: 0;
+    outline: none;
+    background-color:#f3f3f3;
+    font-size: 16px;
+    line-height: 2;
+    .icon-add{
+      display:block;
+      width:28px;
+      height:28px;
+      margin:0 auto;
+      background:url(../image/xzfl@3x.png) no-repeat;
+      background-size:contain;
+    }
+  }
+  .category-list{
+    .list-item{
+      height: 48px;
+      text-align: center;
+      line-height: 48px;
+      font-size: 16px;
+      cursor:pointer;
+      .c-btn{
+        float:right;        
+        display:inline-block;
+        width:20px;
+        height:20px;
+        margin-top:15px;
+        margin-right:8px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        
+      }
+      .c-edit-btn{
+        background-image: url(../image/edit_btn@2x.png);
+      }
+      .c-del-btn{
+        background-image: url(../image/shanchu1.png);
+      }
+    }
+    .list-item:hover,
+    .list-item.active{
+      color:#1DBFAF;
+      -moz-box-shadow: 0 0 10px #ccc inset;
+      -webkit-box-shadow: 0 0 10px #ccc inset;
+      box-shadow: 0 0 10px #ccc inset;
+    }
+  }
+}
+.header{
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  line-height: 80px;
+  padding-left: 54px;
+  //font-size: 0;
+  .controlBtnBox{
+    float: left;
+    vertical-align: middle;
+    width: 33%;
+    height: 80px;
+    //font-size: 0;
+    button{
+      outline: none;
+      border: none;
+      background-color: #f8ac59;
+      color: #ffffff;
+      font-size: 18px;
+      vertical-align: middle;
+      &.addBtn{
+        width: 109px;
+        height: 38px;
+        line-height: 38px;
+      }
+      &.setTimeBtn{
+        width: 160px;
+        height: 38px;
+        margin-left: 10px;
+        line-height: 38px;
+      }
+    }
+  }
+  .searchBox{
+    float: left;
+    vertical-align: middle;
+    height: 100%;
+    width: 67%;
+    text-align: right;
+    padding-right: 4%;
+    label{
+      font-size: 18px;
+      color: #353b53;
+      font-weight: 400;
+      padding-top: 0;
+      margin-bottom: 0;
+      vertical-align: middle;
+      &:nth-of-type(1){
+        margin-left: 0;
+      }
+    }
+    select{
+      width: 212px;
+      height: 34px;
+      border-color: #353b53;
+      color: #333333;
+      font-size: 16px;
+      vertical-align: middle;
+      &#facilityCate,&#facilityStatus{
+        width: 148px;
+      }
+    }
+    >div{
+      display: inline-block;
+      margin-left: 5%;
+      &:nth-of-type(1){
+        margin-left: 0;
+      }
+      &.facilityStatus{
+        display: none;
+      }
+    }
+    .select2-container{
+      z-index: 1;
+      text-align: left;
+    }
+  }
+}
+
+//设备设施列表页面样式开始
+.listBox{
+  overflow-y: auto;
+  padding: 0 54px;
+}
+//设备设施列表页面样式结束
+
+//列表公共样式修改开始
+.table-striped {
+  margin-bottom: 0;
+  thead {
+    tr {
+      th {
+        text-align: center;
+        border:0;
+        padding: 0 8px;
+        background-color: #1dbfaf;
+        color: #ffffff;
+        font-size: 16px;
+      }
+    }
+  }
+  tbody {
+    text-align: center;
+    tr {
+      &:nth-of-type(odd) {
+        background-color: #fff;
+      }
+      td, th {
+        height: 55px;
+        border: none;
+        padding: 0 8px;
+        font-size: 14px;
+        color: #323232;
+        vertical-align: middle;
+      }
+      td {
+        .editBtn,.delBtn {
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+          background: url("../image/bianji1.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+          vertical-align: middle;
+          margin: 0 15px;
+        }
+        .delBtn{
+          background: url("../image/shanchu1.png") no-repeat center;
+        }
+      }
+    }
+  }
+}
+//列表公共样式修改结束
+
+//分页信息公共样式开始
+.pageBox {
+  width: 100%;
+  height: 50px;
+  padding: 10px 50px 0 50px;
+  display: none;
+  .pageTips {
+    float: left;
+  }
+  .pageSelector {
+    float: right;
+    .pagination {
+      margin: 0;
+    }
+  }
+}
+//分页信息公共样式结束
+
+//新增设备弹窗样式开始
+.addEditPage{
+  .title{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #353b53;
+    text-align: center;
+    position: relative;
+    span{
+      font-size: 20px;
+      color: #1be0d6;
+    }
+    i{
+      position: absolute;
+      width: 80px;
+      height: 60px;
+      text-align: center;
+      font-size: 50px;
+      color: #a2a5b0;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+    }
+  }
+  .selectorsBox{
+    width: 100%;
+    overflow: hidden;
+    padding: 0 100px;
+    label{
+      font-size: 18px;
+      color: #353b53;
+      font-weight: 400;
+      text-align: right;
+      span{
+        color: red;
+        font-size: 22px;
+        vertical-align: middle;
+      }
+    }
+    .top{
+      width: 100%;
+      text-align: left;
+      margin-top: 30px;
+
+      select{
+        width: 192px;
+        height: 38px;
+        padding: 6px 8px;
+        font-size: 16px;
+        outline: none;
+        border: 1px solid #353b53;
+        color: #333333;
+      }
+    }
+    .left,.right{
+      width: 50%;
+      float: left;
+      text-align: left;
+    }
+    select,input{
+      width: 155px;
+      height: 38px;
+      padding: 6px 8px;
+      font-size: 16px;
+      outline: none;
+      border: 1px solid #353b53;
+      color: #333333;
+    }
+    #sorting,#maxNum{
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      -moz-appearance: textfield;
+    }
+    div{
+        margin-top: 40px;
+      }
+    .right{
+      text-align: right;
+     }
+  }
+}
+//新增设备弹窗样式结束
+
+//设置默认时长弹窗样式开始
+.defaultDurationPage{
+  .settingsBox{
+    width: 100%;
+    padding: 50px 40px;
+    label{
+      font-size: 18px;
+      color: #363636;
+      font-weight: 400;
+    }
+    input{
+      width: 60px;
+      height: 38px;
+      padding: 4px 2px;
+      text-align: center;
+      font-size: 16px;
+      outline: none;
+      border: 1px solid #353b53;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+    span{
+      font-size: 16px;
+      color: #999999;
+      vertical-align: bottom;
+      margin-left: 10px;
+    }
+  }
+  //.layui-layer-btn{
+  //  .layui-layer-btn0,.layui-layer-btn1{
+  //    height: 38px;
+  //    line-height: 38px;
+  //    padding: 0 30px;
+  //  }
+  //}
+}
+//设置默认时长弹窗样式结束
+
+//弹窗公共样式开始
+.title{
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #353b53;
+  text-align: center;
+  position: relative;
+  span{
+    font-size: 20px;
+    color: #1be0d6;
+  }
+  i{
+    position: absolute;
+    width: 80px;
+    height: 60px;
+    text-align: center;
+    font-size: 50px;
+    color: #a2a5b0;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+}
+.layui-layer-btn{
+  .layui-layer-btn0,
+  .layui-layer-btn1{
+    height: 38px;
+    line-height: 38px;
+    padding: 0 30px;
+    //background-color: #f8ac59;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+  }
+  .layui-layer-btn0{
+    background-color: #1dbfaf !important;
+  }
+  .layui-layer-btn1{
+    background-color: #f8ac59;
+  }
+}
+.layui-layer-dialog{
+  .layui-layer-btn0, .layui-layer-btn1 {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 24px;
+  }
+  .layui-layer-btn0{
+    background-color: #1dbfaf!important;
+  }
+  .layui-layer-btn1{
+    background-color: #f8ac59;
+  }
+}
+//弹窗公共样式结束
+
+//select2参见样式修改开始
+.select2-container{
+  //z-index: 3;
+  .select2-selection--single{
+    height: 34px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    font-size: 16px;
+    border-color: #353b53;
+    .select2-selection__rendered{
+      line-height: 34px;
+    }
+    .select2-selection__arrow{
+      height: 34px;
+      b{
+        border-color: #353b53 transparent transparent transparent;
+      }
+    }
+  }
+}
+.select2-results__option{
+  font-size: 16px;
+}
+.select2-container--default.select2-container--open{
+  .select2-selection--single{
+    .select2-selection__arrow{
+      b{
+        border-color: transparent transparent #353b53 transparent;
+      }
+    }
+  }
+  .select2-results__option--highlighted[aria-selected]{
+    background-color: rgba(29, 191, 175, 0.7);
+  }
+  .select2-results>.select2-results__options{
+    &::-webkit-scrollbar{
+      width: 2px;
+      height: 2px;
+    }
+    &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+      border-radius: 0;
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.3);
+    }
+    &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      border-radius: 0;
+      background: rgba(0,0,0,0.1);
+    }
+  }
+}
+//select2参见样式修改结束
+
+
+
+

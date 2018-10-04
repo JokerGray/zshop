@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/layui/css/layui.css" />
+<link rel="stylesheet" href="css/animate.min.css">
+<link type="text/less" rel="stylesheet/less" rev="stylesheet/less" href="css/myArticle.less" />
+
+<head>
+    <meta charset="UTF-8">
+    <title>智享头条</title>
+</head>
+
+<body>
+    <!--首页头部-->
+    <script src="util/headerChild.js"></script>
+    <script src="util/navChild.js"></script>
+    <div class="main">
+        <div class="container">
+            <div class="myMessBox">
+                <img class="bannerImg" src="img/banner.png" alt="">
+                <div class="myIntroBox clearfix">
+                    <div class="fl">
+                        <img id="myHeadIcon" class="myHeadIcon fl" src="" alt="">
+                        <div class="myIntroTextBox fl">
+                            <span id="myIntroName" class="myIntroName"></span>
+                            <span id="myAuthorType" class="myAuthorType"></span>
+                            <p id="myIntroTalk" class="myIntroTalk"></p>
+                        </div>
+                    </div>
+                    <!--<a class="skipToArtback fr" target="_blank" href="/writer/login.html">发布文章？点我去作家的专属后台</a>-->
+                </div>
+            </div>
+            <!--左侧内容-->
+            <div class="left fl">
+                <ul id="myNav" class="myNav clearfix">
+                    <li><a class="active" href="javascript:;" typeCode="1001">文章</a></li>
+                    <li><a href="javascript:;" typeCode="1003">视频</a></li>
+                    <li><a href="javascript:;" typeCode="1002">图集</a></li>
+                    <li><a href="javascript:;" typeCode="1005">提问</a></li>
+                    <li><a href="javascript:;" typeCode="1007">投票</a></li>
+                    <li><a id="collectionArt" href="javascript:;" typeCode="">收藏</a></li>
+                </ul>
+                <div id="voteTab" class="voteTab">
+                    <ul class="clearfix">
+                        <li class="fl active" type="1">我发起的</li>
+                        <li class="fl" type="2">我参与的</li>
+                    </ul>
+                </div>
+                <div id="quesTab" class="voteTab">
+                    <ul class="clearfix">
+                        <li class="fl" type="1">等我来答</li>
+                        <li class="fl active" type="2">我发起的</li>
+                        <li class="fl" type="3">我答过的</li>
+                    </ul>
+                </div>
+                <div id="articleListBox" class="articleListBox"></div>
+                <p id="moreCommentBtn" class="moreConBtn cur-p">点击查看更多</p>
+            </div>
+            <!--右侧主体内容-->
+            <div class="right fr">
+                <a id="myFollowBox" class="myFollowBox clearfix" href="javascript:;" target="_blank">
+                    <div class="myFollowTab" typeCode="1001">
+                        <p id="myFollowNum" class="myFollowNum"></p>
+                        <p class="myFollowType">筑城</p>
+                    </div>
+                    <div class="myFollowTab" typeCode="1002">
+                        <p id="enshrinedNum" class="myFollowNum"></p>
+                        <p class="myFollowType">粉丝</p>
+                    </div>
+                </a>
+                <div id="hot" class="hot">
+                    <div class="r_head">
+                        <h2 class="title">近期最多被浏览</h2>
+                    </div>
+                    <div class="r_list">
+                        <ul id="rVideoList" class="rVideoList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="company">
+        <div>
+            <a class="J-company-name"> © 2017 智享头条</a>
+            <a class="J-company-name"> 互联网举办中心</a>
+            <a href="comments.html" target="_blank">跟帖评论自律管理承诺书</a>
+        </div>
+        <div>
+            <span>违法和不良信息举报：010-58341833</span>
+            <span>公司名称：尖叫时刻（武汉）传媒有限公司</span>
+        </div>
+    </div>
+    <!--登录注册模态框 start-->
+    <script src="util/loginModal.js"></script>
+    <!--登录注册模态框 end-->
+    <!--[if lt IE 9]>
+        <script>
+            window.location.href = "tip.html";
+        </script>
+    <![endif]-->
+    <script src="assets/less.min.js"></script>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/lazyload/jquery.lazyload.js"></script>
+    <script src="util/qq.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/myArticle.js"></script>
+    <script id="articleList" type="text/html">
+        {{# layui.each(d, function(index, item){ }}
+            {{# if(item.previewImgType == 1){ }}
+                <div class="list_inner">
+                    <div class="lbox">
+                        <a href="articleDetail.html?articleId={{item.articleId}}" target="_blank" class="img-wrap">
+                            {{# if(!isNull(item.scCmsResourcesList)){ }}
+                                <img class="lazy" src={{item.scCmsResourcesList[0].resourcesUrl || ''}} alt="封面图">
+                            {{# } }}
+                        </a>
+                    </div>
+                    <div class="rbox">
+                        <div class="rbox_inner">
+                            <a href="articleDetail.html?articleId={{item.articleId}}" target="_blank" class="title">{{item.articleTitle || ''}}</a>
+                            <div class="footer">
+                                <div class="r_left">
+                                    <div class="r_left">
+                                        <a href="javascript:;" class="lbtn" style="cursor: text;">阅读<span>{{item.articleBrowser || '0'}}</span></a>
+                                        <span class="lbtn ml10 mr10">⋅</span>
+                                        <a href="javascript:;" class="lbtn" style="cursor: text;">评论<span>{{item.commentNum || '0'}}</span></a>
+                                        <span class="lbtn ml10 mr10">⋅</span>
+                                        <span class="lbtn">{{item.releaseTime || ''}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{# } }}
+            {{# if(item.previewImgType == 2){ }}
+                <div class="list_item"> 
+                    <div class="list_inner"> 
+                        <p class="list_title"> 
+                            <a href="articleDetail.html?articleId={{item.articleId}}" target="_blank">{{item.articleTitle || ''}}</a> 
+                        </p> 
+                        <div class="list_img bui-box"> 
+                            {{# if(!isNull(item.scCmsResourcesList)){ }}
+                                {{# layui.each(item.scCmsResourcesList, function(i,e){ }}
+                                    {{# if(e.resourcesType == 'cover'){ }}
+                                        <a class="img-wrap" target="_blank" href="articleDetail.html?articleId={{item.articleId}}"> 
+                                            <img class="lazy"  alt="封面图" src={{e.resourcesUrl || ''}}> 
+                                        </a>   
+                                    {{# } }}
+                                {{# }) }}
+                            {{# } }}
+                            <i class="img_num">3图</i> 
+                        </div> 
+                        <div class="bui-box footer-bar"> 
+                            <div class="bui-left footer-bar-left"> 
+                                <a href="javascript:;" target="_blank" class="footer-bar-action tag tag-style-other lbtn">阅读{{item.articleBrowser || '0'}}</a> 
+                                <span class="ml10 mr10 lbtn">⋅</span> 
+                                <a href="javascript:;" target="_blank" class="footer-bar-action source lbtn">评论{{item.commentNum || '0'}}</a> 
+                                <span class="ml10 mr10 lbtn">⋅</span> 
+                                <span class="footer-bar-action lbtn">{{item.releaseTime || ''}}</span> 
+                            </div>  
+                        </div> 
+                    </div> 
+                </div>
+            {{# } }}
+        {{# }); }}
+    </script>
+    <script id="videoList" type="text/html">
+        {{# layui.each(d, function(index, item){ }}
+            <div class="list_inner clearfix" href="">
+                <div class="lbox fl">
+                    <a class="img-wrap" target="_blank" href="videoDetail.html?articleId={{item.articleId}}"> 
+                        {{# if(!isNull(item.scCmsResourcesList)){ }}
+                            <img src={{item.scCmsResourcesList[0].resourcesUrl || ''}}>
+                            <i class="ftype video"><span>{{item.scCmsResourcesList[0].videoPlayTime || '0'}}</span></i>
+                        {{# } else{ }}
+                            <img src="img/failure.png">
+                            <i class="ftype video"><span>{{'0'}}</span></i>
+                        {{# } }}
+                    </a>
+                </div>
+                <div class="rbox">
+                    <div class="rbox_inner"> 
+                        <a target="_blank" href="videoDetail.html?articleId={{item.articleId}}" class="title">{{item.articleTitle || ''}}</a>
+                        <div class="footer fl">
+                            <div class="r_left">
+                                    <div class="r_left">
+                                        <a href="" class="lbtn">播放<span>{{item.articleBrowser || '0'}}</span></a>
+                                        <span class="lbtn ml10 mr10">⋅</span>
+                                        <a href="" class="lbtn">评论<span>{{item.commentNum || '0'}}</span></a>
+                                        <span class="lbtn ml10 mr10">⋅</span>
+                                        <span class="lbtn">{{item.releaseTime || ''}}</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{# }); }}
+    </script>
+    <script id="imgList" type="text/html">
+        {{# layui.each(d, function(index, item){ }}
+            <div class="list_inner">
+                <div class="lbox">
+                    <a href="imgDetail.html?articleId={{item.articleId}}" target="_blank" class="img-wrap">
+                        {{# if(!isNull(item.scCmsResourcesList)){ }}
+                            {{# var num = 0;}}
+                            {{# layui.each(item.scCmsResourcesList, function(i,e){ }}
+                                {{# if(e.resourcesType == 'cover'){ }}
+                                    <img class="lazy" src={{e.resourcesUrl}}> 
+                                {{# } else if(e.resourcesType == 'image'){ }}
+                                    {{# num++ }}
+                                {{# } }}
+                            {{# }) }}
+                            <i class="img_num">{{num}}图</i> 
+                        {{# } }}
+                    </a>
+                </div>
+                <div class="rbox">
+                    <div class="rbox_inner">
+                        <a href="articleDetail.html?articleId={{item.articleId}}" target="_blank" class="title">{{item.articleTitle || ''}}</a>
+                        <div class="footer">
+                            <div class="r_left">
+                                <div class="r_left">
+                                    <a href="" class="lbtn">阅读<span>{{item.articleBrowser || '0'}}</span></a>
+                                    <span class="lbtn ml10 mr10">⋅</span>
+                                    <a href="" class="lbtn">评论<span>{{item.commentNum || '0'}}</span></a>
+                                    <span class="lbtn ml10 mr10">⋅</span>
+                                    <span class="lbtn">{{item.releaseTime || ''}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{# }) }}
+    </script>
+    <script id="collectionList" type="text/html">
+        {{# layui.each(d, function(index, item){ }} 
+        {{# if(item.previewImgType == 1 || item.previewImgType == 3 || item.previewImgType == 5){ }}
+        <div class="list_item">
+            <div class="list_inner">
+                <div class="lbox">
+                    {{# if(item.previewImgType == 1 || item.previewImgType == 2){ }}
+                    <a href="articleDetail.html?articleId={{item.articleId}}" class="img-wrap" target="_blank">
+                    {{# } else if(item.previewImgType == 3 || item.previewImgType == 4){ }}
+                    <a href="imgDetail.html?articleId={{item.articleId}}" class="img-wrap" target="_blank">
+                    {{# } else if(item.previewImgType == 5){ }}
+                    <a href="videoDetail.html?articleId={{item.articleId}}" class="img-wrap" target="_blank">
+                    {{# } }}
+                        {{# layui.each(item.scCmsResourcesList,function(k,v){ }}
+                            {{# if(v.resourcesType == "cover" || v.resourcesType == "video"){ }}
+                                <img class="lazy" src="{{v.resourcesUrl}}" alt="封面图">
+                            {{# } }}
+                            {{# if(item.previewImgType == 5){ }}
+                            <i class="ftype video"><span>{{v.videoPlayTime}}</span></i>
+                            {{# } }}
+                        {{# }); }}
+                    </a>
+                </div>
+                <div class="rbox">
+                    <div class="rbox_inner">
+                        {{# if(item.previewImgType == 1 || item.previewImgType == 2){ }}
+                        <a href="articleDetail.html?articleId={{item.articleId}}" class="title" target="_blank">
+                        {{# } else if(item.previewImgType == 3 || item.previewImgType == 4){ }}
+                        <a href="imgDetail.html?articleId={{item.articleId}}" class="title" target="_blank">
+                        {{# } else if(item.previewImgType == 5){ }}
+                        <a href="videoDetail.html?articleId={{item.articleId}}" class="title" target="_blank">
+                        {{# } }}
+                            {{item.articleTitle || ""}}
+                        </a>
+                        <div class="footer">
+                            <div class="r_left">
+                                <!--<a href="javascript:;" class="lbtn tag tag_bg_video">{{item.channelName}}</a>-->
+                                <div class="r_left">
+                                    {{# if(!isNull(item.scSysUser)){ }}
+                                    <a href="" class="lbtn media_avatar">
+                                        <img class="lazy" src="{{item.scSysUser.userpic}}" alt="">
+                                    </a>
+                                    <a href="" class="lbtn">{{item.scSysUser.username}}</a>
+                                    {{# } }}
+                                    <span class="lbtn ml10 mr10">⋅</span>
+                                    <a href="" class="lbtn">{{item.commentNum}}评论</a>
+                                    <span class="lbtn ml10 mr10">⋅</span>
+                                    <span class="lbtn">{{item.releaseTime}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{# } }} 
+        {{# if(item.previewImgType == 2){ }}
+        <div class="list_item">
+            <div class="list_inner">
+                <p class="list_title">
+                    <a href="articleDetail.html?articleId={{item.articleId}}" target="_blank">{{item.articleTitle || ""}}</a>
+                </p>
+                <div class="list_img bui-box">
+                    {{# var num = 0;}}
+                    {{# layui.each(item.scCmsResourcesList,function(k,v){ }} 
+                        {{# if(v.resourcesType == "cover"){ }}
+                        <a class="img-wrap" target="_blank" href="articleDetail.html?articleId={{item.articleId}}">
+                            <img class="lazy" src="{{v.resourcesUrl}}">
+                            {{# num++;}}
+                        </a>
+                        {{# } }}
+                    {{# }); }}
+                    <i class="img_num">{{num}}图</i>
+                </div>
+                <div class="bui-box footer-bar">
+                    <div class="bui-left footer-bar-left">
+                        <!--<a href="javascript:;" target="_blank" class="footer-bar-action tag tag-style-other">{{item.channelName}}</a>-->
+                        {{# if(!isNull(item.scSysUser)){ }}
+                        <a href="" class="lbtn media_avatar">
+                            <img class="lazy" src="{{item.scSysUser.userpic}}" alt="">
+                        </a>
+                        <a href="" class="lbtn">{{item.scSysUser.username}}</a>
+                        {{# } }}
+                        <span class="lbtn ml10 mr10">⋅</span>
+                        <a href="" class="lbtn">{{item.commentNum}}评论</a>
+                        <span class="lbtn ml10 mr10">⋅</span>
+                        <span class="lbtn">{{item.releaseTime}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{# } }}
+        {{# if(item.previewImgType == 10 || item.previewImgType == 11 || item.previewImgType == 12){ }}
+        <div class="list_item">
+            <div class="list_inner">
+                <div class="lbox">
+                    <a href="quesDetail.html?articleId={{item.articleId}}&code=1005" target="_blank" class="img-wrap">
+                        {{# if(isNull(item.scCmsResourcesList)){ }}
+                            <img class="lazy" src="img/zhanwei.png" alt="">
+                        {{# }else { }}
+                            {{#  layui.each(item.scCmsResourcesList, function(index, item){ }}
+                                <img class="lazy" src="{{item.resourcesUrl || 'img/zhanwei.png'}}" alt="">
+                            {{# }); }}
+                        {{# } }}
+                    </a>
+                </div>
+                <div class="rbox">
+                    <div class="rbox_inner">
+                        <a href="quesDetail.html?articleId={{item.articleId}}&code=1005" target="_blank" class="title">{{item.articleTitle || ''}}</a>
+                        <div class="footer">
+                            <div class="r_left">
+                                {{# if(item.scCmsChannel.channelName!=null){ }}
+                                <a href="javascript:;" target="_blank" class="lbtn tag tag_bg_video">{{item.scCmsChannel.channelName}}</a>
+                                {{# } }}
+                                <span class="lbtn quesIcon"><img src="img/quesIconS.png" alt=""></span>
+                                <a href="javascript:;" class="lbtn media_avatar">
+                                    <img class="lazy" src="{{item.scSysUser.userpic}}" alt="">
+                                </a>
+                                <a href="javascript:;" class="lbtn">{{item.scSysUser.username}}</a>
+                                <span class="lbtn ml10 mr10">⋅</span>
+                                <a href="javascript:;" class="lbtn"><span>{{item.answerNumber || '0'}}</span>回答</a>
+                                <span class="lbtn ml10 mr10">⋅</span>
+                                <span class="lbtn">{{getTimeStr(new Date(),Date.parse(new Date(item.releaseTime))) || ''}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{# } }}
+        <!-- 投票 -->
+        {{# if(item.previewImgType == 13 || item.previewImgType == 14 || item.previewImgType == 15){ }}
+        <div class="list_item">
+            <div class="list_inner">
+                <div class="lbox">
+                    <a href="voteDetail.html?articleId={{item.articleId}}&code=1007" target="_blank" class="img-wrap">
+                        {{# if(isNull(item.scCmsResourcesList)){ }}
+                            <img class="lazy" src="img/zhanwei.png" alt="">
+                        {{# }else { }}
+                            {{#  layui.each(item.scCmsResourcesList, function(index, item){ }}
+                                <img class="lazy" src="{{item.resourcesUrl || 'img/zhanwei.png'}}" alt="">
+                            {{# }); }}
+                        {{# } }}
+                    </a>
+                </div>
+                <div class="rbox">
+                    <div class="rbox_inner">
+                        <a href="voteDetail.html?articleId={{item.articleId}}&code=1007" target="_blank" class="title">{{item.articleTitle || ''}}</a>
+                        <div class="footer">
+                            <div class="r_left">
+                                {{# if(item.scCmsChannel.channelName!=null){ }}
+                                <a href="javascript:;" target="_blank" class="lbtn tag tag_bg_video">{{item.scCmsChannel.channelName}}</a>
+                                {{# } }}
+                                <span class="lbtn quesIcon"><img src="img/toupiaoS.png" alt=""></span>
+                                <a href="javascript:;" class="lbtn media_avatar">
+                                    <img class="lazy" src="{{item.scSysUser.userpic}}" alt=""
+                                </a>
+                                <a href="javascript:;" class="lbtn">{{item.scSysUser.username}}</a>
+                                <span class="lbtn ml10 mr10">⋅</span>
+                                <a href="javascript:;" class="lbtn"><span>{{item.voteNumber || '0'}}</span>票</a>
+                                <span class="lbtn ml10 mr10">⋅</span>
+                                <span class="lbtn">{{getTimeStr(new Date(),Date.parse(new Date(item.releaseTime))) || ''}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{# } }} {{# }); }}
+    </script>
+    <script id="voteMineList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+            <div class="list_inner">
+                <div class="lbox">
+                    <a href="voteDetail.html?articleId={{item.articleId}}&code=1007" target="_blank" class="img-wrap">
+                        {{# if(isNull(item.scCmsResourcesList)){ }}
+                            <img class="lazy" src="images/zhanweitu.png" alt="">
+                        {{# }else { }}
+                            {{#  layui.each(item.scCmsResourcesList, function(index, item){ }}
+                                <img class="lazy" src="{{item.resourcesUrl || 'images/zhanweitu.png'}}" alt="">
+                            {{# }); }}
+                        {{# } }}
+                    </a>
+                </div>
+                <div class="rbox">
+                    <div class="rbox_inner">
+                        <a href="voteDetail.html?articleId={{item.articleId}}&code=1007" target="_blank" class="title">{{item.articleTitle || ''}}</a>
+                        <div class="footer">
+                            <div class="r_left">
+                                <div class="r_left">
+                                    <span class="lbtn quesIcon"><img src="img/toupiaoS.png" alt=""></span>
+                                    <a href="" class="lbtn">阅读<span>{{item.articleBrowser || '0'}}</span></a>
+                                    <span class="lbtn ml10 mr10">⋅</span>
+                                    <a href="" class="lbtn">参与<span>{{item.voteNumber || '0'}}</span></a>
+                                    <span class="lbtn ml10 mr10">⋅</span>
+                                    <span class="lbtn">{{item.releaseTime || ''}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{#  }); }}
+    </script>
+    <script id="tpiVoteList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+            <div class="list_inner">
+                <div class="lbox">
+                    <a href="voteDetail.html?articleId={{item.articleId}}&code=1007" target="_blank" class="img-wrap">
+                        {{# if(isNull(item.scCmsResourcesList)){ }}
+                            <img class="lazy" src="images/zhanweitu.png" alt="">
+                        {{# }else { }}
+                            {{#  layui.each(item.scCmsResourcesList, function(index, item){ }}
+                                <img class="lazy" src="{{item.resourcesUrl || 'images/zhanweitu.png'}}" alt="">
+                            {{# }); }}
+                        {{# } }}
+                    </a>
+                </div>
+                <div class="rbox">
+                    <div class="rbox_inner">
+                        <a href="voteDetail.html?articleId={{item.articleId}}&code=1007" target="_blank" class="title">{{item.articleTitle || ''}}</a>
+                        <div class="footer">
+                            <div class="r_left">
+                                <div class="r_left">
+                                    <span class="lbtn quesIcon"><img src="img/toupiaoS.png" alt=""></span>
+                                    <a href="" class="lbtn">阅读<span>{{item.articleBrowser || '0'}}</span></a>
+                                    <span class="lbtn ml10 mr10">⋅</span>
+                                    <a href="" class="lbtn">参与<span>{{item.voteNumber || '0'}}</span></a>
+                                    <span class="lbtn ml10 mr10">⋅</span>
+                                    <span class="lbtn">{{item.releaseTime || ''}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{# if(!isNull(item.scCmsVoteList)){ }}
+                    {{#  layui.each(item.scCmsVoteList, function(i, e){ }}
+                        {{# var voteToWhoTime = e.scCmsVoteCreateTime || ''}}
+                        <p class="voteToWho clearfix"><span>我</span> 把票投给了 <span>{{e.scCmsVoteTitle || ''}}</span><span class="fr">{{voteToWhoTime.replace('.0', '')}}</span></p>
+                    {{#  }); }}
+                {{# } }}
+            </div>
+        {{#  }); }}
+    </script>
+    <script id="questionL" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+            <div class="list_inner">
+                <div class="lbox">
+                    <a href="quesDetail.html?articleId={{item.articleId}}&code=1005" target="_blank" class="img-wrap">
+                        {{# if(isNull(item.scCmsResourcesList)){ }}
+                            <img class="lazy" src="images/zhanweitu.png" alt="">
+                        {{# }else { }}
+                            {{#  layui.each(item.scCmsResourcesList, function(index, item){ }}
+                                <img class="lazy" src="{{item.resourcesUrl || 'images/zhanweitu.png'}}" alt="">
+                            {{# }); }}
+                        {{# } }}
+                    </a>
+                </div>
+                <div class="rbox">
+                    <div class="rbox_inner">
+                        <a href="quesDetail.html?articleId={{item.articleId}}&code=1005" target="_blank" class="title">{{item.articleTitle || ''}}</a>
+                        <div class="footer">
+                            <div class="r_left">
+                                <div class="r_left">
+                                    <span class="lbtn quesIcon"><img src="img/quesIconS.png" alt=""></span>
+                                    <a href="" class="lbtn">阅读<span>{{item.articleBrowser || '0'}}</span></a>
+                                    <span class="lbtn ml10 mr10">⋅</span>
+                                    <a href="" class="lbtn">回答<span>{{item.answerNumber || '0'}}</span></a>
+                                    <span class="lbtn ml10 mr10">⋅</span>
+                                    <span class="lbtn">{{item.releaseTime || ''}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{#  }); }}
+    </script>
+    <script id="todoAnsTpl" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+            <li class="quesMineBox clearfix" articleId="{{item.articleId || ''}}">
+                <div class="inviterBox clearfix">
+                    <img class="fl" src="{{item.scCmsSubscription.subscriptionImgUrl || 'images/zhanweitu.png'}}" alt="">
+                    <div class="fl">
+                        <p class="inviter"><span>{{item.scCmsSubscription.subscriptionName || ''}}</span> 邀请你回答</p>
+                        <p>{{item.releaseTime || ''}}</p>
+                    </div>
+                </div>
+                <div class="inviQuesBox clearfix">
+                    <div class="quesMImgListBox fl">
+                        <!-- 10一图  11三图 -->
+                        <a href="quesDetail.html?articleId={{item.articleId}}&code=1005" target="_blank" class="quesMImgList clearfix">
+                            {{# if(isNull(item.scCmsResourcesList)){ }}
+                                <img class="fl" src="images/zhanweitu.png" alt="">
+                            {{# }else { }}
+                                {{#  layui.each(item.scCmsResourcesList, function(index, item){ }}
+                                    <img class="fl" src="{{item.resourcesUrl || 'images/zhanweitu.png'}}" alt="">
+                                {{# }); }}
+                            {{# } }}
+                        </a>
+                    </div>
+                    <div class="quesMineInfo fl">
+                        <div class="quesMTitBox">
+                            <a href="quesDetail.html?articleId={{item.articleId}}&code=1005" target="_blank" class="quesTit">{{item.articleTitle || ''}}</a>
+                        </div>
+                        <div class="labelAndTime">
+                            {{# var channelName = isNull(item.scCmsChannel) ? '' : item.scCmsChannel.channelName}}
+                            <span>{{channelName}}</span>
+                            <span>{{item.releaseTime || ''}}</span>
+                        </div>
+                        <div class="quesMDatas">
+                            <span>阅读：{{item.articleBrowser || '0'}}</span>
+                            <span>回答：{{item.answerNumber || '0'}}</span>
+                            <span>转发：{{item.forwardNumber || '0'}}</span>
+                            <span>收藏：{{item.enshrinedNum || '0'}}</span>
+                        </div>
+                    </div>
+                    <div class="fr">
+                        <a href="quesDetail.html?articleId={{item.articleId}}&code=1005" target="_blank" class="inviAnsBtn cur-p"><i class="glyphicon glyphicon-pencil"></i>回答</a>
+                    </div>
+                </div>
+            </li>
+        {{#  }); }}
+    </script>
+    <script id="doneAnsTpl" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+            {{# if(!isNull(item.scCmsAnswer)){ }}
+                <li class="ansBox clearfix">
+                    <div class="answerTitBox clearfix">
+                        <a href="quesDetail.html?articleId={{item.scCmsAnswer.scCmsQuestionArticleId || ''}}&code=1005" target="_blank" class="answerTit fl">{{item.articleTitle || ''}}</a>
+                        {{getExamine(item.isDraft, item.isExamine)}}
+                    </div>
+                    <div class="answerIcon"><img src="img/wodehuida.png" alt=""></div>
+                    <div class="ansCon">{{item.articleContent || ''}}</div>
+                    <div class="ansDataBox clearfix">
+                        <div class="fl">
+                            <span>阅读：{{item.articleBrowser || '0'}}</span>
+                            <span>评论：{{item.commenNumber || '0'}}</span>
+                            <span>转发：{{item.forwardNumber || '0'}}</span>
+                            <span>收藏：{{item.enshrinedNum || '0'}}</span>
+                        </div>
+                        <div class="fr">{{item.releaseTime || ''}}</div>
+                    </div>
+                </li>
+            {{# } }}
+        {{#  }); }}
+    </script>
+    <script id="visitedArtList" type="text/html">
+        {{# layui.each(d, function(index, item){ }} 
+        <li class="r_list_li">
+            {{# if(item.typeCode == 1001){ }}
+            <a href="articleDetail.html?articleId={{item.reArticleId}}" target="_blank">
+            {{# }else if(item.typeCode == 1005){ }}
+            <a href="quesDetail.html?articleId={{item.reArticleId}}&code=1005" target="_blank">
+            {{# }else if(item.typeCode == 1007){ }}
+            <a href="voteDetail.html?articleId={{item.reArticleId}}&code=1007" target="_blank">
+            {{# } }}
+                <div class="visitedArtImgBox fl">
+                    <div class="artImgUl">
+                    {{# if(!isNull(item.scCmsResourcesList)){ }}
+                        {{# layui.each(item.scCmsResourcesList, function(i, e){ }} 
+                            {{# if(e.resourcesType == 'cover'){ }}
+                                <img class="cover fl" src="{{e.resourcesUrl}}" alt="pic">
+                            {{# } }}
+                        {{# }); }}
+                    {{# } }}
+                    </div>
+                </div>
+                <div class="content artContent fl">
+                    <p>{{item.reArticleTitle || ''}}</p>
+                    <p class="info"> 
+                        <span>阅读{{item.reArticleCount || '0'}}</span> 
+                    </p>
+                </div>
+            </a>
+        </li>
+        {{# }); }}
+    </script>
+    <script id="visitedVideoList" type="text/html">
+        {{# layui.each(d, function(index, item){ }} 
+        <li class="r_list_li">
+            <a href="videoDetail.html?articleId={{item.reArticleId}}" target="_blank">
+                <div class="fl" style="position: relative;">
+                {{# if(!isNull(item.scCmsResourcesList)){ }}
+                    <img class="cover vCover" src="{{item.scCmsResourcesList[0].resourcesUrl}}" alt="pic">
+                    <i class="ftype video vFtype"><span>{{item.scCmsResourcesList[0].videoPlayTime || '0'}}</span></i>
+                {{# } }}
+                </div>
+                <div class="content">
+                    <p>{{item.reArticleTitle || ''}}</p>
+                    <p class="info"> 
+                        <span>{{item.reArticleCount || '0'}}次播放</span> 
+                    </p>
+                </div>
+            </a>
+        </li>
+        {{# }); }}
+    </script>
+    <script id="visitedImgList" type="text/html">
+        {{# layui.each(d, function(index, item){ }} 
+        <li class="r_list_li">
+            <a href="imgDetail.html?articleId={{item.reArticleId}}" target="_blank">
+                <div class="fl" style="position: relative;">
+                {{# if(!isNull(item.scCmsResourcesList)){ }}
+                    {{# var num = 0;}}
+                    {{# layui.each(item.scCmsResourcesList, function(i, e){ }}
+                        {{# if(e.resourcesType == 'cover'){ }}
+                            <img class="cover vCover" src="{{e.resourcesUrl}}" alt="pic">
+                        {{# }else if(e.resourcesType == 'image'){ }}
+                            {{# num++;}}
+                        {{# } }}
+                    {{# }); }}
+                    <i class="img_num visitImg_num">{{num}}图</i>
+                {{# } }}
+                </div>
+                <div class="content">
+                    <p>{{item.reArticleTitle || ''}}</p>
+                    <p class="info"> 
+                        <span>{{item.reArticleCount || '0'}}次浏览</span> 
+                    </p>
+                </div>
+            </a>
+        </li>
+        {{# }); }}
+    </script>
+</body>
+
+</html>

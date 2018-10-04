@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>卡项修改</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../assets/hplus/css/font-awesome.min93e3.css">
+    <!-- <link rel="stylesheet" href="../../../assets/select2/select2.min.css"> -->
+    <link rel="stylesheet" href="cardedit.css">
+</head>
+
+<body>
+    <div class="container-fluid" style="margin-top:2rem;">
+        <div class="row row-user">
+            <div class="col-xs-4">
+                <span class="title-name">账户类型：</span>
+                <select class="select-body" name="account" id="account">
+                    <option value=""> -选择类型- </option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <span class="title-name">店铺：</span>
+                <select class="select-body" name="shop" id="shop">
+                    <option value=""> -选择店铺- </option>
+                </select>
+            </div>
+            <div class="col-xs-2">
+                <button type="button" class="btn btn-success" id="searchTable">查询</button>
+            </div>
+        </div>
+        <div class="row-user">
+            <div class="row row-body">
+                <div class="col-xs-12">
+                    <table id="serviceTable" class="table-hovered"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <script src="../../assets/layer/layer.js"></script>
+    <link rel="stylesheet" href="../../assets/check_index/layer/skin/default/layer.css">
+    <script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- <script src="../../../assets/select2/select2.min.js"></script> -->
+    <script src="cardedit.js"></script>
+</body>
+</html>

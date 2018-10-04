@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <link rel="stylesheet" href="assets/layer_mobile/need/layer.css">
+    <link rel="stylesheet" href="css/basePack.css">
+	<link rel="stylesheet" href="css/shareVote.css">
+	<link rel="stylesheet" href="assets/swiper/css/swiper.min.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <title>智享城市礼包</title>
+    <script src="js/rem.js"></script>
+    <style>
+		a,img,button,input,textarea,label{-webkit-tap-highlight-color:rgba(255,255,255,0);}
+    	.left{
+    		float: left;
+    	}
+    	.right{
+    		float: right;
+		}
+		.swiper-container {
+			height: 3.8rem;
+			width: 100%;
+		}
+		.swiper-slide {
+			background-size: 100% 100% !important;
+		}
+		.voteBtn,.voteList .number span:last-child{
+			cursor: pointer;
+		}
+    </style>
+</head>
+
+<body>
+	<div id="commodityShare">
+		<div class="voteWrap">
+			<div class="nav"> 
+				<!-- <img src="img/shareVote/icon_fanhui@3x.png" alt="" />
+				<img src="img/shareVote/icon_gengduo@3x.png" alt="" /> -->
+			</div>
+			<div class="voteName">
+				<p class="nameTitle"></p>
+				<p class="nameDes"></p>
+			</div>
+		</div>
+		<!-- 轮播 start-->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<!-- <div class="swiper-slide">
+					<div class="voteName">
+						<p class="nameTitle">2017武汉网红大赛开始了，把票投给你心仪的她！</p>
+						<p class="nameDes">【匿名】</p>
+					</div>
+				</div>
+				<div class="swiper-slide">Slide 2</div>
+				<div class="swiper-slide">Slide 3</div>
+				<div class="swiper-slide">Slide 4</div> -->
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+		</div>
+		<!-- 轮播 end-->
+		<div class="voteDetil">
+			<div class="left">
+				<img class="left userpic" src="" alt="" />
+				<div class="time left">
+					<p class="recreation"></p>
+					<p class="releaseTime"></p>
+				</div>
+			</div>
+			<!--<div class="right">
+				<p class="zc">
+					<img src="img/shareVote/zhucehng.png" alt="" />
+					<span>筑城</span>
+				</p>
+				<p class="gz">
+					<img src="img/shareVote/guanzhu.png" alt="" />
+					<span>关注</span>
+				</p>
+			</div>-->
+		</div>
+		<div class="count">
+			<ul>
+				<li>
+					<p>参与选手</p>
+					<p class="numberOfPlayers"></p>
+				</li>
+				<li>
+					<p>累积投票</p>
+					<p class="voteNumber"></p>
+				</li>
+				<li>
+					<p>访问人数</p>
+					<p class="articleBrowser"></p>
+				</li>
+			</ul>
+		</div>
+		<div class="voteTime">
+			<ul>
+				<li>
+					<img src="img/shareVote/start.png"/>
+					<span class="timeDes">开始时间：</span>
+					<span class="titDes scCmsVoteStartTime"></span>
+				</li>
+			   	<li>
+					<img src="img/shareVote/end.png"/>
+					<span class="timeDes">截止时间：</span>
+					<span class="titDes scCmsVoteEndTime"></span>
+				</li>
+				<li>
+					<img src="img/shareVote/tan.png"/>
+					<span class="timeDes">投票规则：</span>
+					<span class="titDes scCmsVoteMethod"></span>
+				</li>
+				<li>
+					<img src="img/shareVote/write.png"/>
+					<span class="timeDes ">投票描述：</span>
+					<p class="titDes articleContent text-overflowp"></p>
+					<img class="jtx" src="img/shareVote/jtx.png" alt="">
+				</li>
+			</ul>
+		</div>
+		<div class="search">
+			<input class="left" type="" name="" id="" value="" placeholder="请输入名称或编号搜索"/>
+			<img class="left" src="img/shareVote/search.png" alt="" />
+		</div>
+		<div class="content">
+			<!--图文未投票 start-->
+			<div class="voteList voteFirst">
+				<ul></ul>
+			</div>
+			<!--图文未投票 end-->
+			
+			<!--图文已完成 start-->
+			<div class="voteImg voteSecond">
+				<ul></ul>
+			</div>
+			<!--图文已完成 end-->
+			
+			<!--文字 未投票 start-->
+			<div class="voteWrite voteThree">
+				<ul></ul>
+			</div>
+			<!--文字 未投票 end-->
+			
+			<!--文字 已投票 暂时不用 start-->
+			<!-- <div class="voteWrite">
+				<ul class="end">
+					<li>
+						<p class="endDes">黄蓉蓉是网红黄蓉蓉是网红黄蓉蓉是网红黄蓉蓉是网红</p>
+						<div>
+							<p class="number left"><img src="img/shareVote/huo.png" alt="" /><span>128票</span></p>
+							<p class="probability right"><span>10%</span></p>
+						</div>
+					</li>
+					<li>
+						<p class="endDes">黄蓉蓉是网红黄蓉蓉是网红黄蓉蓉是网红黄蓉蓉是网红</p>
+						<div>
+							<p class="number left"><img src="img/shareVote/huo.png" alt="" /><span>128票</span></p>
+							<p class="probability right"><span>10%</span></p>
+						</div>
+					</li>
+					<li>
+						<p class="endDes">黄蓉蓉是网红黄蓉蓉是网红黄蓉蓉是网红黄蓉蓉是网红</p>
+						<div>
+							<p class="number left"><img src="img/shareVote/huo.png" alt="" /><span>128票</span></p>
+							<p class="probability right"><span>10%</span></p>
+						</div>
+					</li>
+					<li>
+						<p class="voteBtnend">你已投票</p>
+					</li>
+				</ul>
+			</div> -->
+			<!--文字 已投票 暂时不用 end-->
+			<!--文字 已投票 start-->
+			<div class="voteWrite voteRanking">
+				<ul class="end">
+					<!-- <li>
+						<span class="ranking rankingfirst">1</span>
+						<p class="endDes">黄蓉蓉是网红黄蓉蓉是网红黄蓉蓉是网红黄蓉蓉是网红</p>
+						<div>
+							<p class="number left"><img src="img/shareVote/huo.png" alt="" /><span>128票</span></p>
+							<p class="probability right"><span>10%</span></p>
+						</div>
+					</li> -->
+				</ul>
+			</div>
+		</div>	
+		<!--文字 已投票 end-->
+		
+		<div class="app-download isPack">
+			<a href="javascript:;" id="downloadA">
+				<!-- <img src="img/btn.png" alt="按钮"> -->
+				<div class="bg">
+                    <div class="floatleft">  
+                        <img src="img/qmx_share_xiazai.png" alt="按钮"> 
+                        智享城市
+                    </div>
+                    <div class="floatright">下载</div>
+                </div>
+			</a>
+		</div>
+	</div>
+	<p class="haha"></p>
+	<div id="weixin_pageto" class="wx_layer" style="display: none;">
+		<div id="msgBox" class="msg_box">
+			<p>1.点击右上角的</p>
+			<p>2.选择</p>
+			<span class="msg_arrow"></span>
+			<span class="msg_point"></span>
+			<span class="msg_txt"></span>
+		</div>
+	</div>
+    <script src="js/jquery-1.10.2.js"></script>
+    <!--<script src="assets/layer_mobile/layer.js"></script>
+    <script src="js/jweixin-1.2.0.js"></script>-->
+    <script src="assets/fingerprint2.min.js"></script>
+    <script src="js/util.js?v=2017101012116"></script>
+	<script src="js/shareVote.js"></script>
+	<script src="assets/swiper/js/swiper.min.js"></script>
+	<script>
+		// 启动轮播图
+		var swiper = new Swiper('.swiper-container', {
+			pagination: {
+				el: '.swiper-pagination',
+			},
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+body{
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.layui-input, .layui-select{
+  height: 34px;
+}
+/**顶部时间选择和店铺选择*/
+.time-shop{
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid #ccc;
+  .timeTab{
+    float: left;
+    ul{
+      font-size: 0;
+      padding-top: 19px;
+      li{
+        display: inline-block;
+        width: 97px;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        font-size: 16px;
+        color: #707070;
+        border-top: 1px solid #cccccc;
+        border-left: 1px solid #cccccc;
+        border-right: 1px solid #cccccc;
+        -webkit-border-radius: 4px 4px 0 0;
+        -moz-border-radius: 4px 4px 0 0;
+        border-radius: 4px 4px 0 0;
+        margin-left: 20px;
+        cursor: pointer;
+        &.active{
+          border: none;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  .shopSelector{
+    float: right;
+    width: 150px;
+    margin-top: 15px;
+    margin-right: 20px;
+  }
+}
+/**时间选择和路径显示*/
+.time-path{
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+  >div{
+    display: inline-block;
+    vertical-align: middle;
+    &.timeIcon{
+      vertical-align: -7px;
+      i{
+        display: block;
+        width: 24px;
+        height: 24px;
+        background: url("../../../assets/common/img/dateIcon.png") no-repeat center;
+        -webkit-background-size: 100%;
+        background-size: 100%;
+      }
+    }
+    &.timeSelector{
+      >div:nth-of-type(1){
+        //display: none;
+        width: 90px;
+      }
+      >div:nth-of-type(2){
+        display: none;
+        span{
+          padding: 0 10px;
+          font-size: 16px;
+          color: #333333;
+        }
+      }
+      >div:nth-of-type(3){
+        width: 190px;
+        display: none;
+      }
+      input{
+        width: 100%;
+        height: 24px;
+        color: #1e9fff;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        vertical-align: middle;
+      }
+    }
+    &.path{
+      font-size: 16px;
+      color: #333333;
+      i{
+        font-family: SimSun;
+      }
+    }
+    &.linkBtn{
+      float: right;
+      a{
+        font-size: 14px;
+        color: #1e9fff;
+        i{
+          font-family: SimSun;
+        }
+      }
+    }
+  }
+}
+/**礼券总数*/
+.ticketCount{
+  ul{
+    li{
+      float: left;
+      width: 400px;
+      height: 98px;
+      background-color: #fff;
+      border: 1px solid #dddddd;
+      margin: 20px;
+      div{
+        &:nth-of-type(1){
+          float: left;
+          width: 46px;
+          height: 46px;
+          background: url("../images/ic_lyyhq.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+          margin: 20px 20px 0 20px;
+        }
+        &:nth-of-type(2){
+          float: left;
+          color: #333333;
+          p{
+            font-size: 15px;
+            margin-top: 20px;
+          }
+          h4{
+            font-size: 26px;
+            font-weight: 700;
+            margin-top: 14px;
+          }
+        }
+        &:nth-of-type(3){
+          float: right;
+          font-size: 14px;
+          color: #666666;
+          margin: 20px 20px 0 0;
+        }
+      }
+      &:nth-of-type(2){
+        div:nth-of-type(1){
+          background: url("../images/ic_syyhq.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+    }
+  }
+}
+/**优惠券领用和使用走势*/
+.ticketTrend{
+  padding: 0 20px;
+  >div{
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
+    border: 1px solid #dddddd;
+  }
+}
+/**优惠券明细*/
+.ticketList{
+  padding: 0 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .tab-filter-export{
+    width: 100%;
+    height: 55px;
+    line-height: 54px;
+    background-color: #fff;
+    .tab{
+      float: left;
+      a{
+        display: inline-block;
+        height: 34px;
+        line-height: 34px;
+        font-size: 16px;
+        color: #333333;
+        margin-left: 20px;
+        &.active{
+          border-bottom: 2px solid #1e9fff;
+        }
+      }
+    }
+    .filter{
+      float: right;
+      width: 150px;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+    .export{
+      float: right;
+      margin-right: 20px;
+      a{
+        display: inline-block;
+        width: 80px;
+        height: 34px;
+        line-height: 34px;
+        text-align: center;
+        border: 1px solid #d2d2d2;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        font-size: 14px;
+        color: #333333;
+        i{
+          display: inline-block;
+          vertical-align: -6px;
+          width: 24px;
+          height: 23px;
+          background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+    }
+  }
+  .tableBox{
+    padding: 0 20px 10px 20px;
+    background-color: #fff;
+    height: 440px;
+    overflow-y: auto;
+    table{
+      margin: 0;
+      th,td{
+        padding: 9px;
+      }
+      th:first-of-type,
+      td:first-of-type{
+        text-align: center;
+      }
+    }
+    .use{
+      display: none;
+      th:last-of-type,
+      td:last-of-type{
+        text-align: right;
+        a{
+          color: #1e9fff;
+        }
+      }
+    }
+  }
+  .pageBox{
+    padding: 0 20px;
+    background-color: #fff;
+    height: 55px;
+    >div{
+      float: right;
+    }
+  }
+}
+/**优惠券使用详情弹窗*/
+.useDetail{
+  .top{
+    height: 34px;
+    line-height: 34px;
+    background-color: #353B53;
+    padding: 0 10px 0 20px;
+    span{
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+    i{
+      float: right;
+      width: 34px;
+      text-align: center;
+      font-size: 20px;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+  }
+  .ticketInfo{
+    padding: 0 20px;
+    position: relative;
+    .info{
+      p:nth-of-type(1){
+        font-size: 16px;
+        color: #333333;
+        margin: 16px 0 6px 0;
+        span{
+          margin-right: 40px;
+          &:first-of-type{
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 230px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow:ellipsis;
+          }
+          &:last-of-type{
+            margin-right: 0;
+          }
+        }
+      }
+      p:nth-of-type(2){
+        >i{
+          font-size: 16px;
+          color: #666666;
+          margin: 0 6px;
+        }
+        >span{
+          font-size: 16px;
+          color: #666666;
+          >span:nth-of-type(2){
+            color: #ff3030;
+          }
+        }
+      }
+    }
+    .detailExport{
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      a{
+        display: inline-block;
+        width: 80px;
+        height: 34px;
+        line-height: 34px;
+        text-align: center;
+        border: 1px solid #d2d2d2;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        font-size: 14px;
+        color: #333333;
+        i{
+          display: inline-block;
+          vertical-align: -6px;
+          width: 24px;
+          height: 23px;
+          background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+    }
+  }
+  .useDetailList{
+    padding: 0 20px;
+    height: 450px;
+    overflow-y: auto;
+    margin-top: 10px;
+    table{
+      margin: 0;
+    }
+  }
+}

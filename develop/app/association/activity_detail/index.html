@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"> 
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <title>活动详情</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+</head>
+<body>
+    <div class="container">
+    	<div class="bg">
+    		<img id="cover" src="img/spmr@2x.png"/>
+    		<a id="applyQualification" href="#" class="signUp download-link">限圈内报名</a>
+    	</div>
+        <div class="content">
+        	<div class="titleContent">
+	        	<span>
+		        	<i class="sponsorIcon"></i>
+		        	<span class="sponsor" id="namingName"></span>
+		        	<i class="sponsorIcon"></i>
+	        	</span>
+	        	<span class="activityName" id="name"></span>
+	        </div>
+	        <table class="detailTable" border="0" cellspacing="0" cellpadding="0">
+	        	<tr>
+	        		<td width="90px"><i class="icon icon-time"></i><span>活动时间</span></td>
+	        		<td id="startTime"></td>
+	        	</tr>
+	        	<tr>
+	        		<td><i class="icon icon-location"></i><span>活动地点</span></td>
+	        		<td id="address"></td>
+	        	</tr>
+	        	<tr>
+	        		<td><i class="icon icon-cost"></i><span id="avePrice">免费</span></td>
+	        	</tr>
+	        </table>
+        </div>
+        
+        <div class="box">
+        	<i class="icon icon-supporter"></i>
+        	<span id="namingShopName"></span>
+        </div>
+        <a class="box download-link" href="#">
+        	<i class="icon icon-sensor"></i>
+        	<span>赞助者</span>
+        	<span class="sensorNo">获得<span id="sponsorNumber"></span>家赞助</span>
+        	<i class="icon icon-right"></i>
+        </a>
+        <div class="box">
+        	<img id="circleLogo" src="" alt="" />
+        	<div class="userDetail">
+        		<div class="userName" id="userName">发布方</div>
+        		<div class="circleName">
+        			<span id="circleName"></span>
+        			<i class="icon icon-shop" id="circleType"></i>
+        		</div>
+        	</div>
+        </div>
+        <a class="box download-link" href="#">
+ 			<div class="regText">已报名(<span id="joinNumber"></span>) <i class="icon icon-right"></i></div>       	
+        	<div class="regContent hidden">
+        		<img class="userPic" src=""/>
+        		<div class="userName"></div>
+        	</div>
+    		<i class="icon icon-right icon-reg" style="display: none;"></i>
+        </a>
+        
+        <div class="contentAll">
+        	<div id="content"></div>
+        	<div class="videoContent">
+        		<video id="contentVideo" src=""></video>
+        		<div class="videoCover"></div>
+        	</div>
+        </div>
+        
+        <a class="download download-link" href="#">
+            <img src="img/download.png" alt="">
+        </a>
+    </div>
+    <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="assets/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/layer/layer.js?v=20170628"></script>
+    <script type="text/javascript">
+		// 获取url参数，没有就''
+        function getQueryString(name) {
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+            var r = window.location.search.substr(1).match(reg)
+            return r !== null ? decodeURI(r[2]) : ''
+        }
+        // 设置下载路径
+        function setDownload(){
+        	var list = document.querySelectorAll('.download-link');
+        	var sn = getQueryString('sn');
+        	for(var i=0; i<list.length; i++){
+        		list[i].href = '/24hours/share24/getPackage.html?sn='+ sn +'&yw=service&cp=1';
+        	}
+        }
+        // 分享页面
+        function share(title, introduce, imgUrl){
+            $.ajax({
+                type: "post",
+                url: "/zxcity_restful/ws/rest",
+                dataType: 'json',
+                headers: {
+                    apikey: sessionStorage.getItem('apikey') || 'test'
+                },
+                data: {
+                    cmd: 'game/getSign',
+                    data: JSON.stringify({
+                        url: location.href
+                    }),
+                    version: 1
+                },
+                success: function(res) {
+                    wx.config({
+                        debug: false,
+                        appId: 'wxe50dd59beab1e644',
+                        timestamp: res.data.timestamp,
+                        nonceStr: res.data.nonceStr,
+                        signature: res.data.signature,
+                        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareWeibo', 'onMenuShareQZone', 'onMenuShareQZone']
+                    });
+                    var options = {
+                        title: title,
+                        desc: introduce,
+                        link: location.href,
+                        imgUrl: imgUrl
+                    }
+                    wx.ready(function(){
+                        wx.onMenuShareTimeline({
+                            title: introduce,
+                            link: location.href,
+                            imgUrl: imgUrl
+                        });
+                        wx.onMenuShareAppMessage($.extend({
+                            type: '',
+                            dataUrl: ''
+                        }, options));
+                        wx.onMenuShareQQ(options);
+                        wx.onMenuShareWeibo(options);
+                        wx.onMenuShareQZone(options);
+                        wx.onMenuShareQZone(options);
+                    })
+                }
+            });
+        }
+        // 初始化
+        $(document).ready(function() {
+        	setDownload();
+            getData();
+            $('.videoCover').click(function(){
+            	$(this).hide();
+            	document.getElementById("contentVideo").play();
+            })
+            $('#contentVideo').bind('ended', function(){  
+		        $('.videoCover').show();
+		    });
+        });
+	
+		function domVM(dom){
+			var $dom = dom instanceof jQuery ? dom : $(dom);
+			$dom.each(function(){
+				$(this).css('margin-top', parseInt(($(this).parent().height() - $(this).height()) / 2))
+			})
+		}
+
+        // 获取数据
+        function getData() {
+            var params = {
+            	userId: getQueryString('userid'),
+                id: getQueryString('id'),
+                sn: getQueryString('sn'),                
+            }
+            $.ajax({
+                type: "post",
+                url: "/zxcity_restful/ws/rest",
+                headers: {
+                    apikey: sessionStorage.getItem('apikey') || 'test'
+                },
+                data: {
+                    cmd: 'activityNew/getActivityDetail',
+                    data: JSON.stringify(params),
+                    version: 3
+                },
+                beforeSend: function() {
+                    // layer.css加载慢，会偏移
+                    setTimeout(loading, 200)
+                },
+                success: function(data) {
+                	if(data.code == 1){
+                		setTimeout(function() {layer.closeAll('dialog')}, 200)
+                		setData(data.data);
+                	} else{
+                		setTimeout(function() {layer.msg(data.msg, {icon: 2})}, 200)
+                	}
+                },
+                error: function() {
+                	setTimeout(function() {layer.msg('系统繁忙！', {icon: 2});}, 200)
+                }
+            });
+        }
+        
+        // 设置数据
+        function setData(data){
+        	share(data['name'], data['content'], data['cover']);
+        	
+        	$('#cover').attr('src', data['cover']);
+        	$('#applyQualification').toggle(data['applyQualification'] != 0);
+        	$('#namingName').text(data['namingName']);
+        	$('#namingName').parent().toggle(!(data['namingName'].length == 0));
+        	
+        	$('#name').text(data['name']);
+        	var time = new Date(data['startTime'].replace(/-/g, "/"));
+        	var apm = time.getHours() < 12 ? ' 上午 ' : ' 下午 ';
+        	$('#startTime').text(data['startTime'].substr(0, 10) + apm + data['startTime'].substr(11, 5));
+        	$('#address').text(data['address']);
+        	$('#avePrice').text(!!data['avePrice'] ? ('¥ ' + data['avePrice']) : '免费');
+
+			$('#namingShopName').text('由 ' + data['namingShopName'] + ' 的冠名');
+        	$('#namingShopName').parent().toggle(!(data['namingShopName'].length == 0));
+			$('#sponsorNumber').text(data['sponsorNumber']);
+			$('#sponsorNumber').parent().parent().toggle(!(data['sponsorNumber'].length == 0));
+			
+			$('#userName').text(data['userName']);
+			$('#circleName').text(data['circleName']);
+			$('#circleLogo').attr('src', data['circleLogo']);
+        	$('#circleType').toggle(data['circleType'] == 2);
+        	// 处理报名，右侧箭头样式
+        	$('#joinNumber').text(data['joinNumber']);
+        	var joinList = data['joinList'];
+        	var hasList = joinList.length != 0;
+        	$('.icon-reg').toggle(hasList);
+        	$('.regText i').toggle(!hasList);
+        	$('.regText').toggleClass('hasData', hasList);
+        	for(var i=0; i<joinList.length; i++){
+        		var dom = $('.regContent').first().clone().removeClass('hidden');
+        		dom.find('.userPic').attr('src', joinList[i]['userPic']);
+        		dom.find('.userName').text(joinList[i]['userName']);
+        		$('.icon-reg').before(dom);
+        	}
+        	
+        	$('#content').text(data['content'] == null ? '' : data['content']);
+        	
+        	$('#contentUrl').attr('src', data['contentUrl']);
+        	if(data['contentUrl']){
+        		var imgList = data['contentUrl'].split(',');
+        		for(var j=0; j<imgList.length; j++){
+        			$('.videoContent').before('<img src="'+ imgList[j] +'">');
+        		}
+        	}
+        	
+        	$('#contentVideo').attr('src', data['contentVideo']);
+        	
+        	setTimeout(function(){
+        		domVM($('#cover'))
+        	}, 200);
+        	if(!data['contentVideo'])$('#contentVideo').parent().hide();
+        }
+        
+        function loading(){
+        	layer.msg('加载中...', {icon: 16, shade: [0.5, '#f5f5f5'], scrollbar: false, time: 20000})
+        }
+        
+    </script>
+</body>
+
+</html>

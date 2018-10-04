@@ -1,0 +1,237 @@
+/*顶部通用部分 广告资源 广告管理 广告机*/
+.btns:hover{ /*鼠标经过像搜索，删除，取消之类按钮时效果*/
+    background: #4fa5fe !important;;
+}
+.advertising{
+    width: 100%;
+    height: 100%;
+    background: #f8f6f7;
+}
+.advertising .advertising-topbox{
+    height: 127px;
+    width: 100%;
+    background: #fff;
+    box-shadow: 1px 1px 5px #dfdfdf;
+}
+.advertising-topbox .advertising-top{
+    width: 1380px;
+    margin: 0 auto;
+    padding: 25px 0 0 0;
+}
+.advertising-top .advertising-area{
+    display: inline-block;
+    position: relative;
+    float: left;
+    margin-top: 6px;
+}
+.advertising-area .area-input{
+    cursor: pointer;
+    font-size: 18px;
+}
+.advertising-area .area-input .address{
+    display: block;
+    width: 12px;
+    height: 17px;
+    background: url("../../common/img/address.png") no-repeat;
+    float: left;
+    margin-right: 8px;
+    margin-top: 5px;
+}
+.area-all{
+    position: absolute;
+    top:30px;
+    left: 0;
+    width: 600px;
+    z-index: 9999;
+    border:1px solid #ccc;
+    box-shadow: 0 0 5px #aaa;
+    background: #fff;
+    padding: 15px;
+    display: none;
+    height: 340px;
+    overflow: auto;
+}
+.area-all .close{
+    position: absolute;
+    right: 15px;
+    top:10px;
+    z-index: 5;
+    padding: 5px;
+}
+.area-all .selectarea ul{
+    overflow: hidden;
+    height: auto;
+}
+.area-all .selectarea li{
+    float: left;
+    border-bottom: 2px solid #3b9bff;
+    width: 160px;
+    position: relative;
+    height: 32px;
+    font-size: 13px;
+}
+.area-all .selectarea li.actv a{
+    border:2px solid #3b9bff;
+    border-bottom: 3px solid #fff;
+    background: #fff;
+}
+.area-all .selectarea li a{
+    display: block;
+    width: 150px;
+    border: 1px solid #dfdfdf;
+    border-bottom:0;
+    padding: 5px;
+    position: absolute;
+    cursor: pointer;
+}
+.area-all .selectarea li i{
+    float: right;
+    color: #b0b0b0;
+}
+.area-all .selectarea li:last-child{
+    width: 400px;
+}
+.area-all .arealist{
+    display: none;
+    overflow: hidden;
+}
+.area-all .arealist.actv{
+    display: block;
+}
+.area-all .arealist ul{
+    width: 100%;
+    height: 100%;
+}
+.area-all .arealist ul li{
+    width: 140px;
+    text-align: left;
+    float: left;
+    padding: 5px 0;
+
+}
+.area-all .arealist ul li a span{
+    color:#8c8e8c;
+    cursor: pointer;
+}
+.area-all .selectarea li a span{
+    color: #8c8e8c;
+}
+.area-all .arealist li a:hover span{
+    color:#3b9bff;
+}
+.search-box{
+    margin:0 auto;
+    width: 814px;
+    border:2px solid #3b9bff;
+}
+.search-box i{
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url(../img/search.png) no-repeat;
+    margin: 6px 5px;
+    float: left;
+    background-position: center;
+}
+.search-box input{
+    width: 650px;
+    border: none;
+    height: 36px;
+    float: left;
+}
+.search-box .search{
+    display: block;
+    width: 130px;
+    height: 36px;
+    background: #3b9bff;
+    color: #fff;
+    margin-left: 682px;
+    text-align: center;
+    line-height: 36px;
+    cursor: pointer;
+    font-size: 18px;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #d1d1d1;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder{
+    color: #d1d1d1;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #d1d1d1;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #d1d1d1;
+}
+/*隐藏选择*/
+.hide-ctronl{
+    width: 1380px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: none;
+    padding-top: 84px;
+}
+.hide-ctronl .layui-form-item{
+    display: inline-block;
+    float: left;
+}
+.ctronl-search{
+    float: right;
+    width: 260px;
+    height: 30px;
+    border:2px solid #3b9bff;
+}
+.hide-ctronl .btn-default{
+    float: right;
+    background:#3b9bff;
+    color:#fff;
+    height: 30px;
+    width: 70px;
+    border-radius: 0;
+    margin-left: 9px;
+}
+.hide-ctronl input{
+    width: 198px;
+}
+.select-num{
+    height: 28px;
+    line-height: 38px;
+    color: #666;
+    float: left;
+}
+.ctronl-search input {
+    border: 0;
+    height: 26px;
+    background: #fff;
+    padding: 0 5px;
+}
+.ctronl-search a{
+    float: right;
+    background:#3b9bff;
+    color:#fff;
+    height: 27px;
+    line-height: 27px;
+    text-align: center;
+    width: 58px;
+    border-radius: 0;
+}
+.common-page1{
+    text-align: center;
+}
+#paging-box-count{
+    float: none;
+}
+.layui-laypage .layui-laypage-curr .layui-laypage-em{
+    background: #3b9bff;
+}
+/*修改checkbox样式*/
+.detail .layui-form-item .layui-form-checkbox[lay-skin=primary] {
+    margin-top: 0px;
+}
+.layui-form-checked[lay-skin=primary] i {
+    border-color: #3b9bff;
+    background-color: #3b9bff;
+    color: #fff;
+}

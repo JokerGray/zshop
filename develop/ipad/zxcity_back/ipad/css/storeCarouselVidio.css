@@ -1,0 +1,144 @@
+ul{
+    margin:0;
+    padding:0;
+}
+li{
+    list-style: none;
+}
+.pop-main{
+    width:1024px;
+    height:768px;
+}
+.pop-main .pop-content{
+    padding:12px;
+}
+.pop-content .pop-pic-show{
+    width:450px;
+    height:660px;
+    padding-top:150px;
+    margin-top:30px;
+    background-color:#eee;
+}
+.pop-pic-show .carousel{
+    width:100%;
+    height:338px;
+}
+.pop-pic-show .carousel > .carousel-inner,
+.pop-pic-show .carousel > .carousel-inner > .item{
+    height:100%;
+}
+.pop-pic-show .carousel > .carousel-inner >.item img{
+    max-width:100%;
+    max-height:100%;
+    margin:0 auto;
+}
+.pop-content .pop-pic-set{
+    width:535px;
+    height:auto;
+    overflow:hidden;
+}
+.pop-pic-set .add-pic-btn{
+    height:30px;
+}
+.add-pic-btn .pic-num,
+.add-pic-btn .btn{
+    float:left;
+    display:inline-block;
+    width:40px;
+    height:30px;
+    line-height: 30px;
+    color:#666;
+    border-radius:0;
+}
+.add-pic-btn .pic-num{
+    border:1px solid #ccc;
+    text-align:center;
+    font-size:18px;
+    cursor:pointer;
+}
+.add-pic-btn .pic-num:hover,
+.add-pic-btn .pic-num.active{
+    background-color:#999;
+    color:#fff;
+}
+.add-pic-btn .btn{
+    padding:0;
+    margin:0;
+}
+.pop-pic-set .edit-pic-info{
+    position:relative;
+    height:660px;
+    padding:20px;
+    border:1px solid #eee;
+}
+
+.edit-pic-info .multi-text{
+    width:100%;
+    height:70px;
+    padding-left:5px;
+    padding-right:5px;
+    resize: none;
+    border:1px solid #999;
+}
+.edit-pic-info .radio-label{
+    margin-right:8px;
+}
+.edit-pic-info input[type=radio]{
+    width:16px;
+    height:16px;
+    vertical-align: text-bottom;
+}
+.edit-pic-info select{
+    height:30px;
+    line-height: 30px;
+}
+.edit-pic-info .upload-pic{
+    width:200px;
+    text-align: center;
+}
+.edit-pic-info .upload-pic img{
+    width:200px;
+    height:180px;
+    border:1px solid #bbb;
+}
+.upload-pic .upload-pic-btn{
+    position: relative;
+    display: inline-block;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #666;
+    text-decoration: none;
+    line-height: 20px;
+    font-size: 13px;
+    margin-top:10px;
+}
+.upload-pic .upload-pic-btn span{
+    color: #999;
+}
+.upload-pic .upload-pic-btn input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.upload-pic .upload-pic-btn:hover {
+    background: #fff;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+.sub-form{
+	position:relative;
+}
+.video-upload-box{
+	/*position:absolute;
+	right:0;
+	top:185px;
+	width:270px;*/
+	
+}
+.video-upload-box .video-iframe{
+	padding-top:5px;
+	border:1px solid #eee;
+}

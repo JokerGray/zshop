@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>账号信息 - 智享城市·智享头条</title>
+    <!-- Bootstrap -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/accounts.css" />
+</head>
+
+<body>
+    <input type="hidden" id="menuHid" value="accounts">
+    <script src="util/head.js"></script>
+    <div class="container">
+        <div class="wrapper clearfix mb30">
+            <script src="util/menu.js"></script>
+            <div class="right pull-right">
+                <div class="crumb">账号信息</div>
+                <div class="right-content">
+                    <div class="account-wrap">
+                        <div class="account-item clearfix">
+                            <div class="account-item-gt">头条号名称:</div>
+                            <div class="account-item-gd">
+                                <span class="account-name"></span>
+                                <input class="account-input" type="text" name="accountName" maxlength="8">
+                                <a class="modify"><i class="fa fa-pencil"></i></a>
+                            </div>
+                        </div>
+                        <div class="account-item clearfix">
+                            <div class="account-item-gt">头条号介绍:</div>
+                            <div class="account-item-gd">
+                                <span class="account-intro"></span>
+                                <input class="account-input" type="text" name="accountIntro">
+                                <a class="modify"><i class="fa fa-pencil"></i></a>
+                            </div>
+                        </div>
+                        <div class="account-item clearfix">
+                            <div class="account-item-gt">头条号头像:</div>
+                            <div class="account-item-gd">
+                                <div class="account-img"><img id="preview"></div>
+                                <div class="account-upload-handler">
+                                    <button id="uploadBtn" class="btn tui-btn image-upload-btn" type="button">上 传</button>
+                                </div>
+                                <div class="account-gl">
+                                    <div class="account-sign">
+                                        请勿使用侵犯他人版权及非企业所拥有的注册商标、LOGO等<br /> 请勿使用二维码，最大5M，200×200像素
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-item clearfix">
+                            <div class="account-item-gt">作者二维码:</div>
+                            <div class="account-item-gd">
+                                <div class="account-img">
+                                    <div id="qrCodeImg" class="qr-img-box"></div>
+                                    <a id="qrCodeImgDownload" download="qrcode.jpg"></a>
+                                </div>
+                                <div class="account-code-btn">
+                                    <button id="downloadMore" class="btn">下载更多尺寸</button>
+                                </div>
+                                <div class="account-gl">
+                                    <div class="account-sign">
+                                        点击图片即下载，尺寸200x200px
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-item clearfix">
+                            <div class="account-item-gt">联系人:</div>
+                            <div class="account-item-gd">
+                                <span class="contact"></span>
+                            </div>
+                        </div>
+                        <div class="account-item clearfix">
+                            <div class="account-item-gt">联系电话:</div>
+                            <div class="account-item-gd">
+                                <span class="number"></span>
+                            </div>
+                        </div>
+                        <div class="account-item clearfix">
+                            <div class="account-item-gt">领域:</div>
+                            <div class="account-item-gd">
+                                <span class="field"></span>
+                            </div>
+                        </div>
+                        <div class="account-item clearfix">
+                            <div class="account-item-gt">所在地:</div>
+                            <div class="account-item-gd">
+                                <span class="position"></span>
+                            </div>
+                        </div>
+                        <div class="account-item clearfix">
+                            <div class="account-item-gt">网站:</div>
+                            <div class="account-item-gd">
+                                <span class="website"></span>
+                                <input class="account-input" type="text" name="webUrl">
+                                <a class="modify"><i class="fa fa-pencil"></i></a>
+                            </div>
+                        </div>
+                        <div class="account-item clearfix">
+                            <div class="account-item-gt">机构/公司名称:</div>
+                            <div class="account-item-gd">
+                                <span class="company"></span>
+                                <input class="account-input" type="text" name="companyName">
+                                <a class="modify"><i class="fa fa-pencil"></i></a>
+                            </div>
+                        </div>
+                        <div class="account-item clearfix">
+                            <div class="account-item-gt">公司机构地址:</div>
+                            <div class="account-item-gd">
+                                <span class="address"></span>
+                                <input class="account-input" type="text" name="companyAdderss">
+                                <a class="modify"><i class="fa fa-pencil"></i></a>
+                            </div>
+                        </div>
+                        <div class="account-item clearfix">
+                            <div class="account-item-gt">联系邮箱:</div>
+                            <div class="account-item-gd">
+                                <span class="mail"></span>
+                                <input class="account-input" type="text" name="contactEmail">
+                                <a class="modify"><i class="fa fa-pencil"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="account-item clearfix">
+                            <div class="account-item-gt">&nbsp;</div>
+                            <div class="account-item-gd">
+                                <a id="submitBtn" class="btn btn-submit account-submit">提交</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hidden">
+            <div class="hidden" id="qrcode_290"></div>
+            <div class="hidden" id="qrcode_370"></div>
+            <div class="hidden" id="qrcode_530"></div>
+            <div class="hidden" id="qrcode_690"></div>
+            <a id="download_290" download="qrcode.jpg"></a>
+            <a id="download_370" download="qrcode.jpg"></a>
+            <a id="download_530" download="qrcode.jpg"></a>
+            <a id="download_690" download="qrcode.jpg"></a>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="assets/jquery.qrcode.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/accounts.js"></script>
+</body>
+
+</html>

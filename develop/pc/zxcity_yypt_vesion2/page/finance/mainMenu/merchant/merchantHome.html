@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>商户升级主页面</title>
+   	<link rel="stylesheet" href="../../../../common/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../../../../common/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="../../common/cw_common.css">
+	<link rel="stylesheet" href="./merchantHome.css">
+</head>
+<body>
+	<div class="layout-top tool-box layui-form">
+		<ul class="tool-box-ul clearfix">
+            <!-- 时间开始 -->
+           	<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="stTime">日期：</label>
+					<div class="layui-input-inline startDate">
+						<input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+					</div>
+				</div>
+			</li>				
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="endTim">至：</label>
+					<div class="layui-input-inline endDate">
+						<input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+					</div>
+				</div>
+			</li>
+               <!-- 时间结束 -->                    
+			<button class="layui-btn" id="searchBtn">搜索</button>
+		</ul>
+	</div>
+	
+    <div class="content">
+	    <!-- 左边 -->
+	    <div class="left-content">
+	        <div class="headline-left">
+	          <div class="titel-name">
+	            <a href="javascript:" onclick="lookMerchantHomeDetails(1)">查看详情</a>
+	            <p>商户升级完成</p>
+	          </div>
+	          <ul class="headline-left-list">
+	            <li class="item item-float1">
+	              <span>升级个数：</span>
+	              <span id="upgradeCompleteSumNumber">0</span>
+	              <span>个</span>
+	            </li>
+	            <li class="item item-float1">
+	              <span>到账金额：</span>
+	              <span id="sumUpgradeRealAmount">0.00</span>
+	              <span>元</span>
+	            </li>
+	          </ul>
+	        </div>
+	
+	        <div class="left-details">
+	            <div class="details-info">
+	              <div class="titel-name">
+	                  <a href="javascript:" onclick="lookMerchantHomeDetails(3)">查看详情</a>
+	                  <p>线下升级完成</p>
+	              </div>
+	
+	              <ul class="details-titel">
+	                <li class="item item-float1">
+	                  <span>升级个数：</span>
+	                  <span id="offlineUpgradeNumber">0</span>
+	                  <span>个</span>
+	                </li>
+	                <li class="item item-float1">
+	                  <span>到账金额：</span>
+	                  <span id="offlineUpgradeAmount">0.00</span>
+	                  <span>元</span>
+	                </li>
+	              </ul>
+	
+	              <ul class="details-list">
+	                <li class="item-titel">
+	                  <p>公司盈利</p>
+	                </li>
+	                <li class="item cursor-pointer" onclick="lookPartnerPageInfoList(2)">
+	                  <span>合伙人：</span>
+	                  <span id="offlineCopartnerMoney">0.00</span>
+	                  <span>元</span>
+	                  <div class="li-f-mr">
+	                    <span>数量：</span>
+	                    <span id="offlineCopartnerNumber">0</span>
+	                    <span>个</span>
+	                  </div>
+	                </li>
+	                <li class="item cursor-pointer" onclick="lookProfitsDetails(2,1)">
+	                  <span>合作商户：</span>
+	                  <span id="offlineCooperationMerchantMoney">0.00</span>
+	                  <span>元</span>
+	                  <div class="li-f-mr">
+	                    <span>数量：</span>
+	                    <span id="offlineCooperationMerchantNumber">0</span>
+	                    <span>个</span>
+	                  </div>
+	                </li>
+	                <li class="item cursor-pointer" onclick="lookProfitsDetails(2,2)">
+	                  <span>代理商户：</span>
+	                  <span id="offlineAgencyMerchantMoney">0.00</span>
+	                  <span>元</span>
+	                  <div class="li-f-mr">
+	                    <span>数量：</span>
+	                    <span id="offlineAgencyMerchantNumber">0</span>
+	                    <span>个</span>
+	                  </div>
+	                </li>
+	              </ul>
+	              <ul class="details-list">
+	                <li class="item cursor-pointer" onclick="lookStaffCommission(2,6)">
+	                  <span>员工提成：</span>
+	                  <span id="offlineStaffCommission">0</span>
+	                  <span>元</span>
+	                  <div class="li-f-mr">
+	                    <span>数量：</span>
+	                    <span id="offlineStaffCommissionNumber">0</span>
+	                    <span>个</span>
+	                  </div>
+	                </li>
+	              </ul>
+	            </div>
+	
+	            <div class="details-info" style="margin-left: 10px;">
+	              <div class="titel-name">
+	                  <a href="javascript:" onclick="lookMerchantHomeDetails(2)">查看详情</a>
+	                  <p>线上升级完成</p>
+	              </div>
+	              <ul class="details-titel">
+	                <li class="item item-float1">
+	                  <span>升级个数：</span>
+	                  <span id="onlineUpgradeNumber">0</span>
+	                  <span>个</span>
+	                </li>
+	                <li class="item item-float1">
+	                  <span>到账金额：</span>
+	                  <span id="onlineUpgradeAmount">0.00</span>
+	                  <span>元</span>
+	                </li>
+	              </ul>
+	              <ul class="details-list">
+	                <li class="item-titel">
+	                  <p>公司盈利</p>
+	                </li>
+	                <li class="item cursor-pointer" onclick="lookPartnerPageInfoList(1)">
+	                  <span>合伙人：</span>
+	                  <span id="onlineCopartnerMoney">0.00</span>
+	                  <span>元</span>
+	                  <div class="li-f-mr">
+	                    <span>数量：</span>
+	                    <span id="onlineCopartnerNumber">0</span>
+	                    <span>个</span>
+	                  </div>
+	                </li>
+	                <li class="item cursor-pointer" onclick="lookProfitsDetails(1,1)">
+	                  <span>合作商户：</span>
+	                  <span id="onlineCooperationMerchantMoney">0.00</span>
+	                  <span>元</span>
+	                  <div class="li-f-mr">
+	                    <span>数量：</span>
+	                    <span id="onlineCooperationMerchantNumber">0</span>
+	                    <span>个</span>
+	                  </div>
+	                </li>
+	                <li class="item cursor-pointer" onclick="lookProfitsDetails(1,2)">
+	                  <span>代理商户：</span>
+	                  <span id="onlineAgencyMerchantMoney">0.00</span>
+	                  <span>元</span>
+	                  <div class="li-f-mr">
+	                    <span>数量：</span>
+	                    <span id="onlineAgencyMerchantNumber">0</span>
+	                    <span>个</span>
+	                  </div>
+	                </li>
+	              </ul>
+	              <ul class="details-list">
+	                <li class="item-titel">
+	                  <p>推荐人劳务费(含税)</p>
+	                </li>
+	                <li class="item cursor-pointer" onclick="lookLaborDetails(1,5)">
+	                  <span>合  伙 人：</span>
+	                  <span id="onlineCopartner">0</span>
+	                  <span>元</span>
+	                  <div class="li-f-mr">
+	                    <span>数量：</span>
+	                    <span id="laborOnlineCopartnerNumber">0</span>
+	                    <span>个</span>
+	                  </div>
+	                </li>
+	                <li class="item cursor-pointer" onclick="lookLaborDetails(1,3)">
+	                  <span>合作商户：</span>
+	                  <span id="onlineCooperationMerchant">0</span>
+	                  <span>元</span>
+	                  <div class="li-f-mr">
+	                    <span>数量：</span>
+	                    <span id="laborOnlineCooperationMerchantNumber">0</span>
+	                    <span>个</span>
+	                  </div>
+	                </li>
+	                <li class="item cursor-pointer" onclick="lookLaborDetails(1,4)">
+	                  <span>代理商户：</span>
+	                  <span id="onlineAgencyMerchan">0</span>
+	                  <span>元</span>
+	                  <div class="li-f-mr">
+	                    <span>数量：</span>
+	                    <span id="onlineAgencyMerchanNumber">0</span>
+	                    <span>个</span>
+	                  </div>
+	                </li>
+	                <li class="item cursor-pointer" onclick="lookLaborDetails(1,1)">
+	                  <span>平台用户：</span>
+	                  <span id="onlinePlatformUser">0</span>
+	                  <span>元</span>
+	                  <div class="li-f-mr">
+	                    <span>数量：</span>
+	                    <span id="onlinePlatformUserNumber">0</span>
+	                    <span>个</span>
+	                  </div>
+	                </li>
+	                <li class="item cursor-pointer" onclick="lookLaborDetails(1,2)">
+	                  <span>普通商户：</span>
+	                  <span id="onlineOrdinaryMerchan">0</span>
+	                  <span>元</span>
+	                  <div class="li-f-mr">
+	                    <span>数量：</span>
+	                    <span id="onlineOrdinaryMerchanNumber">0</span>
+	                    <span>个</span>
+	                  </div>
+	                </li>
+	              </ul>
+	
+	              <ul class="details-list">
+	                <li class="item cursor-pointer" onclick="lookStaffCommission(1,6)">
+	                  <span>员工提成：</span>
+	                  <span id="onlineStaffCommission">0</span>
+	                  <span>元</span>
+	                  <div class="li-f-mr">
+	                    <span>数量：</span>
+	                    <span id="onlineStaffCommissionNumber">0</span>
+	                    <span>个</span>
+	                  </div>
+	                </li>
+	              </ul>
+	            </div>
+	        </div>
+	    </div>
+
+	    <!-- 右边 -->
+	    <div class="right-content">
+	        <!-- 线上申请中 -->
+	        <div class="right-module">
+	            <div class="titel-name">
+	                <p>线上</p>
+	            </div>
+	            <ul class="headline-left-list model-list">
+	              <li class="item-titel">
+	                <p>申请中</p>
+	              </li>
+	              <li class="item cursor-pointer" onclick="lookApplyFor(1)">
+	                <span>金额：</span>
+	                <span id="onlineUpgradeApplicationMoney">0.00</span>
+	                <span>元</span>
+	                <div class="li-f-mr">
+	                  <span>数量：</span>
+	                  <span id="onlineUpgradeApplicationNumber">0</span>
+	                  <span>个</span>
+	                </div>
+	              </li>
+	            </ul>
+	            <ul class="headline-left-list model-list">
+	              <li class="item-titel">
+	                <p>完成升级-佣金未发放</p>
+	              </li>
+	              <li class="item cursor-pointer" onclick="lookCommissionDetails(1)">
+	                <span>金额：</span>
+	                <span id="onlineIsCommissionStatusMoney">0.00</span>
+	                <span>元</span>
+	                <div class="li-f-mr">
+	                  <span>数量：</span>
+	                  <span id="onlineIsCommissionStatusNumber">0</span>
+	                  <span>个</span>
+	                </div>
+	              </li>
+	            </ul>
+	        </div>
+	        <!-- 线下申请中 -->
+	        <div class="right-module ">
+	            <div class="titel-name">
+	                <p>线下</p>
+	            </div>
+	            <ul class="headline-left-list model-list">
+	              <li class="item-titel">
+	                <p>申请中</p>
+	              </li>
+	              <li class="item cursor-pointer" onclick="lookApplyFor(2)">
+	                <span>金额：</span>
+	                <span id="offlineUpgradeApplicationMoney">0.00</span>
+	                <span>元</span>
+	                <div class="li-f-mr">
+	                  <span>数量：</span>
+	                  <span id="offlineUpgradeApplicationNumber">0</span>
+	                  <span>个</span>
+	                </div>
+	              </li>
+	            </ul>
+	
+	            <ul class="headline-left-list model-list">
+	              <li class="item-titel">
+	                <p>完成升级-佣金未发放</p>
+	              </li>
+	              <li class="item cursor-pointer" onclick="lookCommissionDetails(2)">
+	                <span>金额：</span>
+	                <span id="offlineIsCommissionStatusMoney">0.00</span>
+	                <span>元</span>
+	                <div class="li-f-mr">
+	                  <span>数量：</span>
+	                  <span id="offlineIsCommissionStatusNumber">0</span>
+	                  <span>个</span>
+	                </div>
+	              </li>
+	            </ul>
+	        </div>
+	    </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="../../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../../common/assets/layui/layui.all.js"></script>
+<script type="text/javascript" src="../../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/cw_common.js"></script>
+<script type="text/javascript" src="merchantHome.js"></script>
+</html>

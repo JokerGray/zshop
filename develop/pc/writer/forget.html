@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>智享头条 - 忘记密码</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/forget.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="header-inner clearfix">
+                <div class="logo pull-left">
+                    <a href="login.html">
+                        <img src="images/logo.png">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="forget-wrap">
+            <div class="base-forget">
+                <h2 class="forgettitle">忘记密码</h2>
+                <div class="input-field">
+                    <label for="usernameTxt" class="fl label-zx">手机号码</label>
+                    <input id="usernameTxt" class="fl" type="text" autocomplete="off" placeholder="请输入手机号">
+                </div>
+                <div class="input-field clearfix">
+                    <label for="codeTxt" class="fl label-zx">验证码</label>
+                    <input id="codeTxt" class="fl input-code" type="text" autocomplete="off" placeholder="请输入验证码">
+                    <span class="fl get-code" id="getCode">点击验证</span>
+                </div>
+                <div class="input-field clearfix">
+                    <label for="passwordTxt" class="fl label-zx">输入新密码</label>
+                    <input id="passwordTxt" class="fl" type="password" autocomplete="off" placeholder="请输入新密码">
+                </div>
+                <a href="javacript:;" id="sendSubmit" class="btn btn-block btn-lg login-btn btn-submit">重置密码</a>
+                <!--<div class="input-field clearfix" id="showCode"></div>-->
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="util/util.js"></script>
+    <script src="js/forget.js"></script>
+</body>
+</html>

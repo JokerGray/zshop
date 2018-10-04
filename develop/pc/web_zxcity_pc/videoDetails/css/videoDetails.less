@@ -1,0 +1,122 @@
+html {
+    overflow-y: scroll;
+}
+
+#title {
+    width: 1140px;
+    margin: 0 auto 50px auto;
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    h2 {
+        margin: 0;
+        padding: 0;
+        float: left;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .btn {
+        float: right;
+        background: #FF610B;
+        color: #ffffff;
+        outline: none;
+        font-size: 16px;
+        border-radius: 5px;
+        font-family: '微软雅黑';
+    }
+}
+
+#consult {
+    width: 1140px;
+    margin: 0 auto 70px auto;
+    display: none;
+    textarea {
+        width: 1134px;
+        height: 100px;
+        margin-bottom: 20px;
+        resize: none;
+    }
+    a {
+        float: right;
+        display: block;
+        font-size: 16px;
+        color: #A4D3EE;
+    }
+}
+
+#main {
+    position: relative;
+    width: 1140px;
+    height: 480px;
+    margin: 0 auto 50px auto;
+    video {
+        width: 1140px;
+        height: 480px;
+    }
+    .layer {
+        position: absolute;
+        width: 1140px;
+        height: 480px;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: #000;
+        .play {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -40px;
+            margin-top: -20px;
+            width: 80px;
+            height: 40px;
+            background: pink;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 10px;
+            border: 3px solid #ffffff;
+            background: #39434D;
+            cursor: pointer;
+            .square {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0px;
+                height: 0px;
+                margin-left: -8px;
+                margin-top: -8px;
+                border-top: 8px solid transparent;
+                border-left: 16px solid #ffffff;
+                border-bottom: 8px solid transparent;
+            }
+        }
+    }
+}
+
+.answer {
+    width: 1140px;
+    margin: 0 auto 30px auto;
+    .icon {
+        font-family: '微软雅黑';
+        color: #ffffff;
+        background: #FF5C0B;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        font-size: 18px;
+    }
+    .ask {
+        font-size: 18px;
+        color: #333333;
+        margin-bottom: 20px;
+    }
+    .answerTxt {
+        font-size: 16px;
+        text-indent: 2.5em;
+    }
+}
+

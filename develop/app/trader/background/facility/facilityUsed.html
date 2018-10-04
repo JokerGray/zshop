@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>设施设备占用情况</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../../assets/paging/dist/paging.css">
+    <link rel="stylesheet" href="../../assets/common/css/paging.css">
+    <link rel="stylesheet" href="../../assets/select2/select2.min.css">
+    <link rel="stylesheet" href="css/facilityUsed.css">
+</head>
+<body>
+<!--头部tab页和筛选条件框-->
+<div class="header">
+    <div class="switchBtn">
+        <a href="javascript:;" data-navType="11"class="current">设备设施</a>
+        <a href="javascript:;" data-navType="22">查看占用</a>
+    </div>
+    <div class="searchBox">
+        <div class="selectShop">
+            <label>店铺：</label>
+            <select id="selectShop">
+                <!--<option value="">全部店铺</option>-->
+                <!--<option value="1">武汉店</option>-->
+                <!--<option value="2">宜昌店</option>-->
+                <!--<option value="3">荆州店</option>-->
+            </select>
+        </div>
+        <div class="facilityCate">
+            <label>设备分类：</label>
+            <select id="facilityCate">
+                <option value="">全部设施</option>
+                <option value="1">房间</option>
+                <option value="2">床位</option>
+                <option value="3">座位</option>
+                <option value="4">其他</option>
+                <option value="5">设备</option>
+            </select>
+        </div>
+        <div class="facilityStatus">
+            <label>设备占用：</label>
+            <select id="facilityStatus">
+                <option value="">全部</option>
+                <option value="1">实际占用</option>
+                <option value="0">空闲</option>
+            </select>
+        </div>
+    </div>
+</div>
+<!--页面主要内容-->
+<div class="contentBox"></div>
+<!--分页信息-->
+<div class="pageBox clearfix">
+    <div class="pageTips">
+        <span>显示第<span id="pageStart">1</span>条到第<span id="pageEnd">10</span>条记录，总共<span id="pageTotal">100</span>记录，每页显示</span>
+        <div class="btn-group dropup ">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                10 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="javascript:;">10</a></li>
+                <li><a href="javascript:;">20</a></li>
+                <li><a href="javascript:;">50</a></li>
+                <li><a href="javascript:;">100</a></li>
+            </ul>
+        </div>
+        <span>条记录</span>
+    </div>
+    <div class="pageSelector"></div>
+</div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="./js/base.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/jquery-qrcode/jquery.qrcode.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/layer-v3.1.1/layer.js"></script>
+<script src="../../assets/paging/dist/paging.js"></script>
+<script src="../../assets/select2/select2.min.js"></script>
+<script src="js/facilityUsed.js"></script>
+<!--查看占用情况-->
+<script type="text/html" id="userStatueTpl">
+    <div class="tabBar">
+        <!--菜单选项列表-->
+        <div class="menu">
+            <a href="javascript:;" data-cate="1" class="active">房间</a>
+            <a href="javascript:;" data-cate="2">床位</a>
+            <a href="javascript:;" data-cate="3">座位</a>
+            <a href="javascript:;" data-cate="4">其他</a>
+            <a href="javascript:;" data-cate="5">设备</a>
+        </div>
+        <!--设备占用说明-->
+        <div class="occupiedDescription">
+            <div class="timeSelector">
+                <label>预约时间：</label>
+                <select id="timeSelector">
+                    <option value="">--选择时间--</option>
+                    {{each times item index}}
+                    <option value="{{item}}">{{item}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="statusInstructions">
+                <span>预约占用</span>
+                <span>实际占用</span>
+                <span>空闲</span>
+            </div>
+            <button class="downloadBtn">批量导出</button>
+            <a href="javascript:;" class="hide" id="downloadBtn" download=""></a>
+        </div>
+
+    </div>
+    <div class="main">
+        <ul class="clearfix">
+            {{each status item index}}
+            {{if item.presaleId == 0&&item.isBespoke == 0}}
+            <li class="free">
+                <h4 title="{{item.title}}">{{item.title}}</h4>
+                <p>可容纳{{item.maxNum}}人</p>
+                <div class="erCodeIcon"
+                     data-facilityId="{{item.id}}"
+                     data-flag="true"
+                     title="点击查看二维码"
+                     data-shopId="{{item.shopId}}"></div>
+                <div class="erCodeBox">
+                    <div class="erCode"></div>
+                    <a href="javascript:;" class="downloadBtn" download="">下载</a>
+                </div>
+            </li>
+            {{else if item.presaleId > 0&&item.isBespoke == 0}}
+            <li class="used">
+                <h4 title="{{item.title}}">{{item.title}}</h4>
+                <p title="面部按摩">面部按摩</p>
+                <p>订单号：{{item.presaleId}}</p>
+                <p>顾客：{{item.accountName}}</p>
+                <p><img src="./image/clock.png"><span>{{item.startTime}}</span></p>
+                <p><img src="./image/people.png"><span>{{item.waiterName}}</span></p>
+                <div class="erCodeIcon"
+                     data-facilityId="{{item.id}}"
+                     data-flag="true"
+                     title="点击查看二维码"
+                     data-shopId="{{item.shopId}}"></div>
+                <div class="erCodeBox">
+                    <div class="erCode"></div>
+                    <a href="javascript:;" class="downloadBtn" download="">下载</a>
+                </div>
+            </li>
+            {{else if item.isBespoke == 1&&item.presaleId == 0}}
+            <li class="InAppointment">
+                <h4 title="{{item.title}}">{{item.title}}</h4>
+                <p>可容纳{{item.maxNum}}人</p>
+                <div class="erCodeIcon"
+                     data-facilityId="{{item.id}}"
+                     data-flag="true"
+                     title="点击查看二维码"
+                     data-shopId="{{item.shopId}}"></div>
+                <div class="erCodeBox">
+                    <div class="erCode"></div>
+                    <a href="javascript:;" class="downloadBtn" download="">下载</a>
+                </div>
+            </li>
+            {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+    <div class="selector-paging"></div>
+    <div class="mask"></div>
+</script>
+<!--设备设施列表-->
+<script type="text/html" id="facilityListTpl">
+    <div class="controlBtnBox">
+        <button class="addBtn">新增设备</button>
+        <button class="setTimeBtn">设置默认工单时长</button>
+    </div>
+    <div class="listBox">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>设备名称</th>
+                <th>店铺名称</th>
+                <th>设施分类</th>
+                <th>排序号</th>
+                <th>最大使用人数</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each data item index}}
+            <tr>
+                <td>{{index+1}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.shopName}}</td>
+                {{if item.facilityType ==1}}
+                <td>房间</td>
+                {{else if item.facilityType ==2}}
+                <td>床位</td>
+                {{else if item.facilityType == 3}}
+                <td>座位</td>
+                {{else if item.facilityType == 4||item.facilityType == 'undefined'}}
+                <td>其他</td>
+                {{else if item.facilityType == 5}}
+                <td>设备</td>
+                {{/if}}
+                <td>{{item.sequence}}</td>
+                <td>{{item.maxNum}}</td>
+                <td>
+                    <a href="JavaScript:;" class="editBtn" data-item="{{item}}"></a>
+                    <a href="JavaScript:;" class="delBtn" data-id="{{item.id}}"></a>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</script>
+<!--新增设备和编辑设备弹窗-->
+<script type="text/html" id="addEditTpl">
+    <div class="title">
+        <span>{{$data.shopId?"编辑设备":"新增设备"}}</span>
+        <i class="closePage">×</i>
+    </div>
+    <div class="selectorsBox">
+        <div class="top">
+            <label>选择店铺：</label>
+            <select id="shopSelector">
+                <option value="">--选择店铺--</option>
+            </select>
+        </div>
+        <div class="left">
+            <div>
+                <label>设施分类：</label>
+                <select id="selectFacilityCate">
+                    <option value="">--选择分类--</option>
+                    <option value="1">房间</option>
+                    <option value="2">床位</option>
+                    <option value="3">座位</option>
+                    <option value="4">其他</option>
+                    <option value="5">设备</option>
+                </select>
+            </div>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>排序号：</label>
+                <input type="tel" placeholder="请输入排序号" value="{{$data?$data.sequence:''}}" id="sorting" maxlength="3">
+            </div>
+        </div>
+        <div class="right">
+            <div>
+                <label>设备名称：</label>
+                <input type="text" placeholder="请输入设备名称" value="{{$data?$data.title:''}}" id="facilityName" maxlength="10">
+            </div>
+            <div>
+                <label>使用人数：</label>
+                <input type="tel" placeholder="请输入使用人数" value="{{$data?$data.maxNum:''}}" id="maxNum" maxlength="3">
+            </div>
+        </div>
+    </div>
+</script>
+<!--设置默认工单时长弹窗-->
+<script type="text/html" id="setDefaultDuration">
+    <div class="title">
+        <span>设置默认工单时长</span>
+        <i class="closePage">×</i>
+    </div>
+    <div class="settingsBox">
+        <label for="inputDuration">默认时长：</label>
+        <input type="tel" id="inputDuration" maxlength="3">
+        <span>分钟</span>
+    </div>
+</script>
+</html>

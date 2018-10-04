@@ -1,0 +1,572 @@
+.common-container{
+    padding: 40px;
+    position: relative;
+    height: auto;
+}
+.jurisdiction-content{
+    height: 100%;
+    background: #fff;
+    position: relative;
+}
+.title{
+    position: relative;
+    width: 100%;
+    margin-bottom: 40px;
+}
+.title h4{
+    display: inline-block;
+    background: #fff;
+    position: absolute;
+    top: -8px;
+    width: 70px;
+    font-weight: 800;
+    font-size: 18px;
+}
+.jurisdiction-content .title hr{
+    height: 4px;
+}
+.jurisdiction-content .jurisdiction-left{
+    width: 320px;
+    height: 700px;
+    float: left;
+    border: 1px solid #dfdfdf;
+}
+
+.jurisdiction-left ul{
+    width: 100%;
+    height: 94%;
+    overflow: auto;
+}
+.ztree li span {
+    font-size: 15px;
+}
+.jurisdiction-left .repon-sort{
+    height: 40px;
+    line-height: 40px;
+    background: #f5f5f5;
+    padding: 0 10px;
+}
+.jurisdiction-left .repon-sort i{
+    float: right;
+    cursor: pointer;
+    font-size: 22px;
+}
+.jurisdiction-left .ztree{
+    margin-left: 10px;
+}
+/*分割线*/
+
+
+.actv{
+    background: #f6f6f6;
+}
+.resBtn{
+    display: none;
+}
+.knowClassify{
+    max-height: 500px;
+    overflow: auto;
+}
+.hidemenu li .change-input{
+    position: absolute;
+    top:5px;
+    left: 5px;
+    z-index: 22;
+    display: none;
+    background: #f6f6f6;
+}
+.change-input input{
+    width: 120px;
+    float: left;
+    margin-right: 5px;
+    padding: 2px;
+    border-radius: 2px;
+    border:1px solid #dfdfdf;
+}
+.change-input i{
+    background: #e8e8e8;
+    border-radius: 5px;
+    padding: 2px;
+    font-weight: bold;
+}
+.change-input .savebtn{
+    margin-right: 4px;
+}
+.hidemenu li .listtext{
+    width: 110px;
+    padding: 0 0 0 25px;
+    float: left;
+}
+.addli{
+    position: relative;
+}
+.addli .addicon{
+    position: absolute;
+    z-index: 2;
+    right: 5px;
+    top: 10px;
+}
+.searchicon{
+    cursor: pointer;
+}
+
+/*列表部分*/
+.jurisdiction-center{
+    height: 700px;
+    float: right;
+    width: 100%;
+}
+.jurisdiction-center .search-box{
+    height: 38px;
+    width: 300px;
+    margin-right: 15px;
+    float: left;
+    border-radius: 5px;
+    border: 1px solid #3b96e5;
+}
+.search-box i{
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url(../img/search.png) no-repeat;
+    float: right;
+    margin: 5px;
+}
+.search-box input{
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+.jurisdiction-center .detail{
+    width: 100%;
+    height: 690px;
+    overflow: auto;
+}
+.detail .detail-list{
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    border:1px solid #dfdfdf;
+    padding: 10px;
+    cursor: pointer;
+}
+.detail .detail-list:hover,.detail .aov{
+    background: #e5ecf2;
+}
+.detail .detail-list .detail-top{
+    padding-bottom: 5px;
+    overflow: hidden;
+}
+.detail-list .detail-top .detail-title{
+    width: 180px;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.detail-statu{
+    padding: 2px 3px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    float: right;
+}
+.redbg{
+    background: #f4887b;
+}
+.blubg{
+    background: #0ebcef;
+}
+.redCol{
+    color:#f4887b;
+}
+.blueCol{
+    color:#0ebcef;
+}
+.datail-content{
+    clear: none;
+    width: 227px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.detail-foot{
+    width: 100%;
+    overflow: hidden;
+    height: auto;
+}
+.detail-foot .detail-user{
+    display: inline-block;
+    color:#72716f;
+    float: left;
+}
+.detail-user img{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    float: left;
+    margin-right: 5px;
+}
+.detail-foot .create-time{
+    color:#72716f;
+    line-height: 20px;
+    float: right;
+}
+.repon-table{
+    clear: both;
+    padding-top: 15px;
+}
+.repon-table .layui-table-view{
+    border: none;
+}
+.repon-table .layui-table td, .layui-table th, .layui-table-header, .layui-table-tool, .layui-table-view, .layui-table[lay-skin=row], .layui-table[lay-skin=line]{
+    border-right: 0;
+}
+/*新增*/
+.newknow{
+    width: 90%;
+    z-index: 33;
+    background: #fff;
+    display: none;
+    padding: 0 0 50px;
+}
+.newkonw-box{
+    width: 800px;
+    height: auto;
+    position: relative;
+}
+.newkonw-box .layui-form-label{
+    width: 110px;
+}
+.newkonw-box .add-qs{
+    color: #1E9FFF;
+    padding-top: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+textarea{
+    resize: none !important;
+}
+.infotext1 textarea{
+    display: none;
+}
+.add-internal{
+    color: #1E9FFF;
+    padding: 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+.selectname{
+    height: 36px;
+    line-height: 36px;
+    width: 300px;
+    border: 1px solid #e6e6e6;
+}
+.class-select{
+    position: relative;
+}
+.class-select i{
+    position: absolute;
+    left: 280px;
+    top: 10px;
+}
+.class-detail{
+    width: 300px;
+    height: 200px;
+    border:1px solid #e6e6e6;
+    margin:2px 0 0 110px;
+    box-shadow: 2px 2px 10px #dfdfdf;
+    display: none;
+}
+
+.class-detail .class-tit{
+    width: 100%;
+    height: 36px;
+    background: #fafafa;
+    border-bottom: 1px solid #dfdfdf;
+}
+.class-detail .class-tit li{
+    width: 25%;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    color:#000;
+    cursor: pointer;
+    float: left;
+    border-right: 1px solid #dfdfdf;
+}
+.infotext a{
+    display: block;
+    float: left;
+    width: 80px;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid #dfdfdf;
+    text-align: center;
+    cursor: pointer;
+}
+.infotext a:first-child{
+    border-right: 0;
+}
+.infotext a.acve{
+    background: #3b9bff;
+    color:#fff;
+}
+.minitab{
+    clear: both;
+   /* height: 200px;*/
+}
+.minitab .layui-input-block{
+    margin-left: 0;
+}
+.minitab .date-picker input{
+    border: 0;
+}
+.minitab .date-picker{
+    margin-top:10px;
+}
+.minitab .date-picker .input-group{
+    float: left;
+}
+.minitab .date-picker .jurisdiction-label{
+    float: left;
+    margin:0 10px;
+    padding-top: 10px;
+}
+.minitab .date-picker .date{
+    width: 215px;
+}
+/*修改*/
+.changeknow,.audit-info{
+    width: 100%;
+    padding: 15px 0;
+    position: absolute;
+    z-index: 33;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+}
+.changebox{
+    width: 800px;
+    height: auto;
+}
+.changeknow>.layui-form-item{
+    height: 55px;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 0 10px 15px;
+}
+.changeknow>.layui-form-item .layui-input-block{
+    margin: 0 10px;
+}
+.changeknow>.layui-form-item button{
+    font-size: 14px;
+    background: #f3f3f3;
+    float: left;
+    margin-right:10px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    color: #000;
+}
+
+/*textare*/
+.layui-textarea{
+    min-height: 70px;
+}
+.layui-form-label{
+    width:90px;
+}
+/*添加相似问题*/
+.add-tag .adatitle{
+    margin-left: 110px;
+    color:#1E9FFF;
+    padding-bottom: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+.add-tag .layui-input-block{
+    margin-bottom: 5px;
+    margin-left: 110px;
+}
+.add-tag .layui-form-text{
+    width: 800px !important;
+}
+.add-tag .tagbox{
+    max-height: 170px;
+    overflow: auto;
+}
+.tagbox input{
+    width: 95%;
+    float: left;
+    margin-right: 5px;
+}
+.add-tag{
+    position: relative;
+}
+.tagboxs{
+    position: absolute;
+    z-index: 22;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    box-shadow:  1px 1px 5px #dfdfdf;
+    top: 60px;
+    height: 130px;
+    width: 82%;
+    left: 110px;
+    overflow: auto;
+}
+.tagboxs{
+    display: none;
+}
+.notag{
+    display: block;
+    font-size: 16px;
+    text-align: center;
+    line-height: 100px;
+    color: #aaa;
+}
+.tag-ul li{
+    padding: 5px;
+}
+.tag-ul li:hover{
+    background: #1E9FFF;
+    color:#fff;
+}
+.tagbox i{
+    font-size: 20px;
+    color: red;
+}
+.tags .listtext{
+    width: 100% !important;
+}
+.resetbtn{
+    font-size: 12px;
+    padding: 3px 10px;
+    background: #f3f3f3;
+    float: right;
+    margin:0 10px 10px 0;
+    display: none;
+}
+
+/*标签*/
+
+.add-tag[class*="span"] {
+    float: none;
+    margin-left: 0;
+}
+.add-tag input[type="text"],.add-tag input[type="text"]:focus {
+    /*border: 0 none;*/
+    box-shadow: none;
+    display: inline;
+    line-height: 22px;
+    margin: 0;
+    outline: 0 none;
+    padding: 4px 6px;
+}
+.add-tag .tag {
+    background-color: #91b8d0;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 4px 22px 5px 9px;
+    position: relative;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease 0s;
+    vertical-align: baseline;
+    white-space: nowrap;
+    margin: 5px 5px 0 0;
+}
+.add-tag .close {
+    bottom: 0;
+    color: #fff;
+    float: none;
+    font-size: 12px;
+    line-height: 20px;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-shadow: none;
+    top: 0;
+    width: 18px;
+}
+.add-tag .close:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.add-tag .close {
+    color: #000;
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    opacity: 0.2;
+    text-shadow: 0 1px 0 #fff;
+}
+.add-tag .close:hover,.add-tag .close:focus {
+    color: #000;
+    cursor: pointer;
+    opacity: 0.5;
+    text-decoration: none;
+}
+.add-tag button.close {
+    background: transparent none repeat scroll 0 0;
+    border: 0 none;
+    cursor: pointer;
+    padding: 0;
+}
+.add-tag .tag-warning {
+    background-color: #ffb752;
+}
+.edits{
+    width: 100%;
+    height: 400px;
+    border: 1px solid #dfdfdf;
+    padding: 10px;
+}
+/*修改分类*/
+.demo{
+    display: none;
+}
+.infomation{
+    display: none;
+    width: 40%;
+    height: 800px;
+    position: absolute;
+    right: -500px;
+    background: #fff;
+    border-left: 2px solid #dfdfdf;
+    z-index: 22;
+    top: 6px;
+}
+.infomation h4{
+    position: relative;
+    padding: 25px 0 15px 0;
+    text-align: center;
+    font-size: 16px;
+    border-bottom:1px solid #dfdfdf;
+}
+.infomation h4 i{
+    position: absolute;
+    top: 10px;
+    left: -16px;
+    border-radius: 100%;
+    z-index: 34;
+    width: 30px;
+    height: 30px;
+    background:#fff url('../img/close.png') no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+}
+.infomation .tip-titl{
+    margin:0 10px;
+    border-bottom: 1px dashed #dfdfdf;
+    color:#000;
+    padding: 25px 0 15px 0;
+}
+.infomation .info-content{
+    margin:0 10px;
+    padding: 10px 0;
+}

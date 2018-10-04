@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+    <title>劳务费存入月统计</title>
+	<link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../../../common/css/reset.css" />
+	<style media="screen">
+ 	    .loca { float: right;margin-left:12px; } 
+ 	    .toLeft {float: left;font-family:\5FAE\8F6F\96C5\9ED1,arial,sans-serif;color:#333;font-size:17px;margin-left:3px;font-weight:bold;margin-top:5px;}
+ 	    .csr {cursor:pointer;}
+  		.seacrch {margin-right:25px;}
+  		.notice {color: red; font-size: 12px;}
+  		.highLight {font-weight:bold;color:red;}
+ 	</style>
+</head>
+<body>
+    <div class="tool-box layui-form top">
+   		<ul class="tool-box-ul clearfix">
+   			<li class="toLeft">
+		    	<p>
+			      <a>截止当前应存劳务费：  </a>
+			      <sapn id="amount">0.00</sapn>
+			    </p>
+		    </li>
+		    <button class="layui-btn toRight" id="searchBtn">搜索</button>
+			<!-- 时间开始 -->
+           	<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="" id="stTime">年份：</label>
+					<div class="layInput startDate">
+						<input type="text" class="layuiInput" id="startDate" placeholder="请选择年份">
+					</div>
+					
+				</div>
+			</li>				
+            <!-- 时间结束 -->                    
+			
+		</ul>
+	</div>
+	<div class="layui-app">
+		<div class="app-table">
+			<table lay-filter="merchantTable" id="merchantTable"></table>
+			<div id="layTablePage"></div>
+		</div>
+	</div>
+	
+	<script type="text/html" id="barDemo">
+		<button class="layui-btn my-btn" lay-event="view">确认</button>
+	</script>
+
+</body>	
+</html>
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="laborCostStoreMonthlyInfo.js"></script>
+<script type="text/javascript">
+	jsorcss('css', 'laborCostStoreMonthlyInfo');    
+	//jsorcss('js', 'laborCostStoreMonthlyInfo');
+</script>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <!-- <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/> -->
+  <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+  <meta name="format-detection"  content="telphone=no, email=no"/>
+  <!-- iOS 设备 begin -->
+  <!-- 添加到主屏后的标题（iOS 6 新增） -->
+  <meta name="apple-mobile-web-app-capable" content="拼团分享"/>
+  <!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <!-- 禁止百度转码 -->
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <!-- 避免IE使用兼容模式 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+  <meta name="HandheldFriendly" content="true">
+  <!-- 微软的老式浏览器 -->
+  <meta name="MobileOptimized" content="320">
+  <!-- uc强制竖屏 -->
+  <meta name="screen-orientation" content="portrait">
+  <!-- QQ强制竖屏 -->
+  <meta name="x5-orientation" content="portrait">
+  <!-- UC强制全屏 -->
+  <meta name="full-screen" content="yes">
+  <!-- QQ强制全屏 -->
+  <meta name="x5-fullscreen" content="true">
+  <!-- UC应用模式 -->
+  <meta name="browsermode" content="application">
+  <!-- QQ应用模式 -->
+  <meta name="x5-page-mode" content="app">
+  <!-- windows phone 点击无高光 -->
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>拼团分享</title>
+
+  <!-- lib -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/spellshare.css">
+  <link rel="stylesheet" href="css/assets/swiper.min.css">
+  <script src="assets/Flexible.js"></script>
+</head>
+<body>
+<div class="wap-wrap">
+  <div class="spelltop">
+    <!-- product -->
+    <section id="mainProduct" class="product">
+      <div class="product-img">
+        <img src="" alt="">      
+      </div>
+      <div class="product-info">
+        <h2 id="productTitle"></h2>
+        <div class="product-info-text clearfix">
+          <div class="pricecon">
+            <span class="code">￥</span>
+            <span id="priceText" class="pricetext"></span>
+          </div>
+    
+          <div class="product-info-status">
+            <span>已拼</span>
+            <span id="statusnum"></span>单
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- product end -->
+    <!-- join -->
+    <div class="join">
+      <!-- 已拼人员 -->
+      <div class="groupcon swiper-container" id="grouplist">
+        <div class="swiper-wrapper" id="alreadyUser">
+          
+        </div>
+      </div>
+      <!-- 已拼人员 end-->
+      <h1 class="join-prompt">
+        仅剩
+        <span id="joinnumber" class="redtext"></span>个名额，
+        <span id="jointime"></span>后结束
+      </h1>
+    </div>
+    <!-- join end -->
+
+    <div class="joinwrap"><button id="joinbtn" class="joinbtn"></button></div>
+
+    <!-- spell -->
+    <div class="spell clearfix">
+      <span id="viewrule">拼单规则</span>
+      <span class="light">好友拼单·人满发货·人不满退款</span>
+    </div>
+    <!-- spell end -->
+  </div>
+  <!-- productwrap -->
+  <div class="productwrap">
+    <div class="productcon">
+      <ul id="productlist"  class="productlist clearfix"></ul>
+    </div>
+  </div>
+  <!-- productwrap end-->
+</div>
+<!-- common -->
+
+<!-- 主商品信息 -->
+<script id="mainproduct" type="text/html">
+  <div class="product-img">
+    <img src="<%=pictureUrl%>" alt="">      
+  </div>
+  <div class="product-info">
+    <h2><%=goodsTitle%></h2>
+    <div class="product-info-text clearfix">
+      <div class="pricecon">
+        <span class="code">￥</span>
+        <span class="pricetext"><%=discountPrice%></span>
+      </div>
+
+      <div class="product-info-status">
+        <span>已拼</span>
+        <span id="statusnum"><%=groupOrderList.length%></span>单
+      </div>
+    </div>
+  </div>
+</script>
+<!-- 主商品信息 end -->
+
+<!-- 推荐商品 列表 item -->
+<script id="productItem" type="text/html">
+  <% for (var i = 0; i < moreGroupList.length; i ++) { %>
+  <li>
+    <a href="">
+      <div class="imgcon">
+        <img src="<%=moreGroupList[i].pictureUrl%>" alt="">
+      </div>
+      <section class="productlist-info">
+        <h2 class="productlist-info-tit">
+          <%=moreGroupList[i].itemTitle%>
+        </h2>
+        <section class="productlist-info-status clearfix">
+          <div class="status-price">
+            <span class="code">￥</span>
+            <span id="price" class="listprice"><%=moreGroupList[i].discountPrice%></span>
+          </div>
+          <div class="status-num">已拼<span id="donenumber"><%=moreGroupList[i].num%></span>单</div>
+        </section>
+      </section>
+    </a>
+  </li>
+  <% } %>
+</script>
+<!-- 推荐商品 列表 item end-->
+
+<script src="assets/jquery-1.9.1.min.js"></script>
+<script src="assets/swiper.min.js"></script>
+<script src="assets/layer-v3.1.1/layer/layer.js"></script>
+<script src="assets/template-web.js"></script>
+
+<!-- single -->
+<script src="js/utli.js"></script>
+<script src="js/spellshare.js"></script>
+</body>
+<!-- rulelayer -->
+<div id="rulelayer" class="rulelayer">
+  <div class="rulttit">
+    如何参加拼单
+  </div>
+  <div class="rultext">
+    <ul class="rulelist">
+      <li><span class="cricle">·</span>发起拼单或参加别人的拼单</li>
+      <li><span class="cricle">·</span>在规定的时间内，邀请好友参加拼单</li>
+      <li><span class="cricle">·</span>未达拼单人数，款项将自动原路返还</li>
+    </ul>
+  </div>
+</div>
+<!-- rulelayer end-->
+<!-- share -->
+<div id="share" class="sharelay">
+  <div class="clearfix">
+    <div class="arrow">
+      <img src="" alt="" class="arrowicon">
+    </div>
+  </div>
+  <div class="sharetext">
+    <div class="shaeront">
+      还差<span id="iredtext" class="iredtext"></span>人，点击右上角发送给朋友
+      <div class="shertwo">
+        拼单已发起，人满后立即发货
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- share end -->
+</html>

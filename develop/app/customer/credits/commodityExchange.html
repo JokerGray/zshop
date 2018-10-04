@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品兑换</title>
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
+	<script src="assets/jquery.min.js"></script>
+
+	<script src="assets/layer/layer.js"></script>
+	<link rel="stylesheet" href="assets/check_index/layer/skin/default/layer.css"/>
+
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="assets/layui/css/layui.css">
+	<script src="assets/layui/layui.js"></script>
+
+	<link rel="stylesheet" href="assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+	<script src="assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script src="assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	
+	<!-- bootstrap-table -->
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap-table/bootstrap-table.min.css"/> 
+	<script src="assets/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="assets/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+
+	<script src="src/js/common.js"></script>
+	<style>
+		.contain{
+			padding: 0 55px;
+		}
+		.goodsearch{
+			position: relative;
+			border-bottom: 1px solid #ddd;
+			padding:25px 0 25px 0;
+		}
+		.goodsearch label{
+			font-size: 16px;
+			padding: 5px 0;
+    		margin: 0;
+		}
+		.search{
+			position: absolute;
+			right: 0;
+			display: inline-block;
+			width: 70%;
+			text-align: right;
+		}
+		.search input{
+			width: 100%;
+			height: 32px;
+		}
+
+		/*下拉框*/
+ 		.selec {
+		    display: inline-block;
+		    width: 25%;
+		    height: 32px;
+		}
+		#selecType{
+			width: 100%;
+			height: 32px;
+		}
+
+		#searchGood{
+			padding:0 32px 0 10px;
+		}
+		.searchContent{
+			position: relative;
+			padding:30px 0;
+
+		}
+
+		.searchContent span.sName {
+		    display: inline-block;
+		    width: 200px;
+		    color: #85b6ff;
+		    vertical-align: middle;
+		}
+		.count{
+			height: 34px;
+			width: 50px;
+			text-align: center;
+			margin-right: 15px;
+		}
+		.needIntegral{
+			width: 85px;
+			height: 28px;
+			text-align: center;
+			margin-right: 15px;
+		}
+		.startTime,.endTime{
+			height: 28px;
+			width: 128px;
+		}
+		.btn{
+			position: absolute;
+			display: inline-block;
+			width: 38px;
+			height: 34px;
+			background: #19b392;
+			vertical-align: middle;
+    		border-radius: 5px;
+    		right: 0;
+    		top:50%;
+    		-webkit-transform: translateY(-50%);
+    		   -moz-transform: translateY(-50%);
+    		    -ms-transform: translateY(-50%);
+    		     -o-transform: translateY(-50%);
+    		        transform: translateY(-50%);
+    		color: #fff;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
+		.goodsContent table{
+			border-collapse:collapse;
+			width: 100%;
+		}
+		.goodsContent table th{
+			background: #dfdfdf;
+			font-weight: normal;
+			padding-top: 7px;
+    		padding-bottom: 7px;
+		}
+		.goodsName{
+			width: 30%;
+			text-align: left;
+    		padding-left: 30px;
+		}
+		.countName,.needIntegralName,.deleteBtnName{
+			width: 10%;
+			text-align: center;
+		}
+		.startTimeName,.endTimeName{
+			width: 20%;
+			text-align: center;
+		}
+		.goodsContent tbody tr td{
+			text-align: center;
+		}
+	
+		.goodsContent tbody tr td:first-of-type{
+			padding-left: 30px;
+			text-align: left!important;
+		}
+		.goodsContent tbody tr td{
+			padding:10px 0;
+			border-bottom:1px solid #eee;
+		}
+		.deleteBtn{
+			position: absolute;
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			border-radius:50%;
+			background: #ffac54;
+			top: 50%;
+		    transform: translateY(-50%);
+		    right: 3px;
+		    color:#fff;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    text-decoration: none!important;
+		}
+
+		.search i{
+			position: absolute;
+		    display: inline-block;
+		    width: 32px;
+		    height: 32px;
+		    line-height: 32px;
+		    top: 0;
+		    right: 0;
+		    text-align: center;
+		    color: #333;
+		}
+		.searchReasult{
+			position: absolute;
+			z-index: 2;
+			width: 100%;
+			border: 1px solid #dadada;
+			background: #fff;
+		}
+		
+		.searchReasult span.page-list{
+			display: none;
+		}
+ 		.searchReasult.active{
+ 			display: none;
+ 		}
+		
+
+	</style>
+</head>
+<body>
+	<div class="contain">
+		
+		<input type="hidden" id="merchantId">
+		<input type="hidden" id="goodsId">
+		<input type="hidden" id="serviceId">
+		<input type="hidden" id="goodsName">
+		<input type="hidden" id="stockId">
+
+		<!-- <input type="hidden" id="availableNumber"> -->
+
+
+		<div class="goodsearch">
+			<div class="selec">
+				<select name="" id="selecType">
+					<option value="1">服务卡</option>
+					<option value="2">服务套餐</option>
+					<option value="3">商品信息</option>
+					<option value="4">套盒</option>
+				</select>
+			</div>
+			<div class="search">
+				<input type="text" id="searchGood" onkeyup="openFlag()" onkeydown="closeFlag()">
+				<i class="glyphicon glyphicon-chevron-down" id="packUp"></i>
+				<div class="searchReasult active">
+					<div class="table-tool-content">
+						<div class="table-content">
+							<table class="table table-hover table-condensed" id="goodsInfo">
+								
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="searchContent">
+			<span class="sName"></span>
+			<label>数量：</label>
+			<input type="text" class="count" maxlength="3" value="1"  onkeyup="integerCheck(this)"  onchange="integerCheck(this)">
+			<label>所需积分：</label>
+			<input type="text" class="needIntegral" value="100"  maxlength="10" onkeyup="integerCheck(this)"  onchange="integerCheck(this)">
+			<!-- <label>时间：</label>
+			<input type="text" class="startTime"> - <input type="text" class="endTime"> -->
+
+			<a href="javascript:;" class="btn" onclick="add()">
+				<i class="iconfont icon-iconfont22"></i>
+			</a>		
+		</div>
+
+		<div class="goodsContent">
+			<table>
+				<thead>
+					<tr style="display: none;">
+						<th class="goodsName">名称</th>
+						<th class="countName">数量</th>
+						<th class="needIntegralName">所需积分</th>
+						<!-- <th class="startTimeName">生效时间</th>
+						<th class="endTimeName">结算时间</th> -->
+						<th class="deleteBtnName"></th>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+	<script type="text/html" id="tp1">
+		<tr>
+			<td id="sNameInfo"></td>
+			<td id="count"></td>
+			<td id="totalScore"></td>
+			<!-- <td id="startTimeInfo"></td>
+			<td id="endTimeInfo"></td> -->
+			<td style="position: relative;">
+				<a href="javascript:;" class="deleteBtn" onclick="deleteBtn(this)">
+					<i class="iconfont icon-cha"></i>
+				</a>
+			</td>
+		</tr>
+	</script>
+	
+	<script src="src/js/common.js"></script>
+
+	<script>
+		// 从url 中获取  merchantId
+		var merchantId = getQueryString('merchantId');
+		$('#merchantId').val(merchantId);
+
+		var arr = [];
+
+
+		//日期时间选择器  开始时间
+		// layui.use('laydate', function(){
+  // 			var laydate = layui.laydate;
+  // 			var startDate = laydate.render({
+		// 	    elem: '.startTime',
+		// 	    type: 'datetime',
+		// 	    max:"2099-12-31",
+		// 	    format:'yyyy-MM-dd HH:mm',
+		// 	    done: function(value, date){
+		// 	      	endDate.config.min ={  
+		// 	        	year:date.year,   
+		// 	        	month:date.month-1,   
+		// 	        	date: date.date,
+		// 	        	hours :date.hours,
+		// 	        	minutes : date.minutes,
+		// 	        	seconds : date.seconds
+		// 	      	};   
+		// 	    }
+		//   	});
+		// 	var endDate = laydate.render({
+		// 	    elem: '.endTime',
+		// 	    type: 'datetime',
+		// 	    min:"1970-1-1",
+		// 	    format:'yyyy-MM-dd HH:mm',
+		// 	    done: function (value, date) {  
+		// 	      	startDate.config.max={  
+		// 	        	year:date.year,   
+		// 	        	month:date.month-1,  
+		// 	        	date: date.date,
+		// 	        	hours :date.hours,
+		// 	        	minutes : date.minutes,
+		// 	        	seconds : date.seconds
+		// 	      	}  
+		// 	    }  
+		// 	});
+		// });
+
+		// 搜索 延迟
+		var flag = 0;
+		var t;
+		// var searchContent;
+		var statuscount = true;
+		function openFlag () {
+			statuscount = true;
+			t = setTimeout(function(){flag = 1; searchInfo();}, 1000);
+		}
+		function closeFlag() {
+			clearTimeout(t);
+			flag = 0;
+		}
+		function searchInfo() {
+			if (flag) {
+				searchContent = $('#searchGood').val();
+				console.log(searchContent !=  $('#searchGood').val());
+				if(statuscount){
+					$('#goodsInfo').bootstrapTable('destroy'); 
+					tableInit($('#searchGood').val(),$('#selecType option:selected').val());
+					statuscount = false;
+				}
+			}
+		}
+
+
+		$('#goodsInfo').bootstrapTable('destroy'); 
+		tableInit('','1');
+
+
+		// bootstrap-table 方法封装
+		// 列表初始化
+		 function tableInit(goodsName,serviceType){
+            $('#goodsInfo').bootstrapTable({
+                url: '/zxcity_restful/ws/rest',
+                method: 'post',
+                ajaxOptions:{
+                    headers:{
+                        apikey: 'test'
+                    }
+                },
+                contentType: "application/x-www-form-urlencoded",
+                queryParams: function(params){
+                    var p = {
+                        cmd: 'credits/goodsList',
+                        data: JSON.stringify({
+                            page: params.offset/params.limit + 1,
+                            rows: params.limit,
+                            merchantId : merchantId,
+							goodsName : goodsName,
+							serviceType : serviceType
+                            
+                        }),
+                        version: 1
+                    }
+                    return p;
+                },
+                responseHandler: function(res){
+                    res.rows = res.data
+                    return res;
+                },
+                sidePagination: "server",
+                pageNumber:1,
+                pageSize: 10,
+                // pageList: [10, 25, 50, 100],
+                striped: true,
+                pagination: true,
+                sortable: false,
+                cardView: false,
+                detailView: false,
+                columns: [
+                    { field: 'serviceName', title: '服务名', width: 200, align: 'center' },
+                    { field: 'actualPrice', title: '价格', width: 50, align: 'center'}
+                ],
+                onClickRow : ClickRow
+           
+            });
+        }
+
+		var count = 0;
+		// 增加按钮
+		function add(){
+			if($('.sName').text() == ''){
+				layer.alert('请选择商品',{icon:2});
+				return;
+			}
+
+			if($('.count').val() <= 0 || $('.count').val() == ''){
+				layer.alert('请输入大于0的数量',{icon:2});
+				return;
+			}
+
+			if($('.needIntegral').val() == ''){
+				layer.alert('请输入积分',{icon:2});
+				return;
+			}
+
+			$('.goodsContent thead tr').show();
+			var content = $($('#tp1').html()).first().clone();
+			content.find('#sNameInfo').text($('.sName').text());
+			content.find('#count').text($('.count').val());
+			content.find('#totalScore').text(Number($('.count').val()*$('.needIntegral').val()));
+			content.find('#startTimeInfo').text($('.startTime').val());
+			content.find('#endTimeInfo').text($('.endTime').val());
+			$('.goodsContent tbody').append(content);
+			arr.push(
+				{  
+					id:'',
+					merchantId : merchantId,
+					pointValue : Number($('.count').val()*$('.needIntegral').val()),
+					stockId : $('#stockId').val(),
+					goodsId : $('#selecType option:selected').val() == 1 || $('#selecType option:selected').val() == 2 ? $('#serviceId').val() : $('#goodsId').val(),
+					goodsName : $('#goodsName').val(),
+					validTime : '',
+					availableNumber : $('.count').val(),
+					goodsType : $('#selecType option:selected').val()
+				}
+			);
+			count++;
+		}
+
+		// 删除按钮
+		function deleteBtn(self){
+			$('.goodsContent table tbody tr').each(function(index, el) {
+				$(el).attr('index',index);
+			});
+			arr.splice($(self).parent().parent().attr('index'),1)
+
+			count--;
+			$(self).parent().parent().remove();
+
+			if(count <= 0){
+				$('.goodsContent thead tr').hide();
+			}
+		}
+
+
+		// 搜索框失去焦点
+		$('#searchGood').on('focus',function(){
+			$('.searchReasult').removeClass('active');
+			if($('.searchReasult').hasClass('active')){
+				$('#goodsInfo').bootstrapTable('destroy'); 
+				tableInit('');
+			}
+		})
+
+		$('#packUp').on('click',function(){
+			$('.searchReasult').toggleClass('active');
+		});
+
+
+		// 点击表格数据  
+		function ClickRow(row, $element){
+
+			// console.log(row);
+			$('.sName').text(row.serviceName+'['+row.packNumber+']');
+
+			$('#id').val('');
+
+			$('#goodsId').val(row.goodsId);
+			$('#serviceId').val(row.id);
+
+			$('#goodsName').val(row.serviceName);
+			$('#stockId').val(row.stockId);
+
+			$('.searchReasult').addClass('active');
+		}
+
+
+        // 校验
+		function moneyCheck(self){
+			if($(self).val().length==1){
+				$(self).val($(self).val().replace(/[^0-9]/g,''));
+			} else {
+				$(self).val($(self).val().replace(/[^0-9.]/g,''));
+				$(self).val($(self).val().replace(/\.{2,}/g,"."));
+				$(self).val($(self).val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+			}
+		}
+		// 正整数
+		function integerCheck(self){
+			if(self.value.length==1){
+				self.value=self.value.replace(/[^1-9]/g,'');
+			}else{
+				self.value=self.value.replace(/\D/g,'');
+			}
+		}
+
+		// 数据 提交
+		function doSubmit(){
+			console.log($('.goodsContent table tbody tr').length);
+			if($('.goodsContent table tbody tr').length < 1){
+				layer.alert('请选择商品或服务',{icon:2});
+				return;
+			}
+			console.log(arr);
+			var def = reqAjax('credits/consumingItemsUpdate', {
+			    arr
+			});
+			def.then(function(data){
+				if(data.code == 1){
+					layer.msg(data.msg,{icon:1});
+					parent.location.reload();
+				}else{
+					layer.msg(data.msg,{icon:2});
+				}
+			});
+		}
+
+		// 类型切换
+		$('#selecType').on('change',function(){
+			if($('#selecType').val() == 1){
+				$('#goodsInfo').bootstrapTable('destroy'); 
+				tableInit('','1');
+			}else if($('#selecType').val() == 2){
+				$('#goodsInfo').bootstrapTable('destroy'); 
+				tableInit('','2');
+			}else if($('#selecType').val() == 3){
+				$('#goodsInfo').bootstrapTable('destroy'); 
+				tableInit('','3');
+			}else if($('#selecType').val() == 4){
+				$('#goodsInfo').bootstrapTable('destroy'); 
+				tableInit('','4');
+			}
+		})
+	</script>
+</body>
+</html>

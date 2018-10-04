@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+        <title></title>
+        <link rel="stylesheet" href="../assets/hplus/css/bootstrap.min.css">
+        <link rel="stylesheet" href="report.css">
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="main-tab">
+                <div class="tab-inner">
+                    <a class="tab-item active" data-rel="turnover" href="javascript:;">营业额</a>
+                    <a class="tab-item" data-rel="best-selling" href="javascript:;">畅销商品</a>
+                    <a class="tab-item" data-rel="settlement" href="javascript:;">结算统计</a>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="sub-content turnover ">
+                    <div class="sub-tab">
+                        <div class="btn-group">
+                            <button data-type="1" class="btn active" type="button">总</button>
+                            <button data-type="2" class="btn" type="button">店内下单</button>
+                            <button data-type="3" class="btn" type="button">店外购物</button>
+                        </div>
+                    </div>
+                    <ul class="statistical-box">
+                        <li id="turnoverItem1" class="statistical-item">
+                            <div class="title">
+                                <span class="name">营业额</span>
+                                <div class="btn-group selector">
+                                    <button class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="txt">日</span><span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a data-timetype="1" href="javascript:;">日</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a data-timetype="2" href="javascript:;">周</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a data-timetype="3" href="javascript:;">月</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <p class="num">386,200</p>
+                                <p class="desc">昨日营业额</p>
+                                <div class="contrast down">
+                                    <span class="percent">98%</span>
+                                    <span class="glyphicon glyphicon-arrow-down"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="turnoverItem2" class="statistical-item">
+                            <div class="title">
+                                <span class="name">订单</span>
+                                <div class="btn-group selector">
+                                    <button class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="txt">日</span><span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a data-timetype="1" href="javascript:;">日</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a data-timetype="2" href="javascript:;">周</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a data-timetype="3" href="javascript:;">月</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <p class="num">80,800</p>
+                                <p class="desc">上周订单量</p>
+                                <div class="contrast up">
+                                    <span class="percent">20%</span>
+                                    <span class="glyphicon glyphicon-arrow-up"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="turnoverItem3" class="statistical-item">
+                            <div class="title">
+                                <span class="name">新增会员</span>
+                                <div class="btn-group selector">
+                                    <button class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="txt">日</span><span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a data-timetype="1" href="javascript:;">日</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a data-timetype="2" href="javascript:;">周</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a data-timetype="3" href="javascript:;">月</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <p class="num">50</p>
+                                <p class="desc">昨日新增会员数</p>
+                                <div class="contrast up">
+                                    <span class="percent">15%</span>
+                                    <span class="glyphicon glyphicon-arrow-up"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="turnoverItem4" class="statistical-item">
+                            <div class="title">
+                                <span class="name">云店点击</span>
+                                <div class="btn-group selector">
+                                    <button class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="txt">日</span><span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a data-timetype="1" href="javascript:;">日</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a data-timetype="2" href="javascript:;">周</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a data-timetype="3" href="javascript:;">月</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <p class="num">100</p>
+                                <p class="desc">昨日云店点击量</p>
+                                <div class="contrast up">
+                                    <span class="percent">10%</span>
+                                    <span class="glyphicon glyphicon-arrow-up"></span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="chart-box">
+                        <div class="chart-selector btn-group">
+                            <button data-timetype="1" class="btn active" type="button">日</button>
+                            <button data-timetype="2" class="btn" type="button">周</button>
+                            <button data-timetype="3" class="btn" type="button">年</button>
+                        </div>
+                        <div id="turnoverChart"></div>
+                    </div>
+                </div>
+                <div class="sub-content best-selling hidden">
+                    <div class="sub-tab">
+                        <div class="btn-group">
+                            <button data-type="1" class="btn active" type="button">总</button>
+                            <button data-type="2" class="btn" type="button">店内下单</button>
+                            <button data-type="3" class="btn" type="button">店外购物</button>
+                        </div>
+                    </div>
+                    <div class="chart-box">
+                        <div id="bestSellingChart"></div>
+                    </div>
+                </div>
+                <div class="sub-content settlement hidden">
+                    <div class="chart-box">
+                        <div id="settlementChart" class="pull-left"></div>
+                        <div id="settlementList" class="pull-right list1">
+                            <div class="table-box">
+                                <table class="table settlement-table">
+                                    <thead>
+                                        <tr>
+                                            <th>姓名</th>
+                                            <th>结算金额</th>
+                                            <th>支付宝账号</th>
+                                            <th>结算时间</th>
+                                            <th>备注</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>王尼玛</td>
+                                            <td>500元</td>
+                                            <td>15971402785</td>
+                                            <td>14:55</td>
+                                            <td>会员</td>
+                                        </tr>
+                                        <tr>
+                                            <td>王尼玛</td>
+                                            <td>500元</td>
+                                            <td>15971402785</td>
+                                            <td>14:55</td>
+                                            <td>会员</td>
+                                        </tr>
+                                        <tr>
+                                            <td>王尼玛</td>
+                                            <td>500元</td>
+                                            <td>15971402785</td>
+                                            <td>14:55</td>
+                                            <td>会员</td>
+                                        </tr>
+                                        <tr>
+                                            <td>王尼玛</td>
+                                            <td>500元</td>
+                                            <td>15971402785</td>
+                                            <td>14:55</td>
+                                            <td>会员</td>
+                                        </tr>
+                                        <tr>
+                                            <td>王尼玛</td>
+                                            <td>500元</td>
+                                            <td>15971402785</td>
+                                            <td>14:55</td>
+                                            <td>会员</td>
+                                        </tr>
+                                        <tr>
+                                            <td>王尼玛</td>
+                                            <td>500元</td>
+                                            <td>15971402785</td>
+                                            <td>14:55</td>
+                                            <td>会员</td>
+                                        </tr>
+                                        <tr>
+                                            <td>王尼玛</td>
+                                            <td>500元</td>
+                                            <td>15971402785</td>
+                                            <td>14:55</td>
+                                            <td>会员</td>
+                                        </tr>
+                                        <tr>
+                                            <td>王尼玛</td>
+                                            <td>500元</td>
+                                            <td>15971402785</td>
+                                            <td>14:55</td>
+                                            <td>会员</td>
+                                        </tr>
+                                        <tr>
+                                            <td>王尼玛</td>
+                                            <td>500元</td>
+                                            <td>15971402785</td>
+                                            <td>14:55</td>
+                                            <td>会员</td>
+                                        </tr>
+                                        <tr>
+                                            <td>王尼玛</td>
+                                            <td>500元</td>
+                                            <td>15971402785</td>
+                                            <td>14:55</td>
+                                            <td>会员</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../assets/hplus/js/jquery.min.js"></script>
+        <script src="../assets/hplus/js/bootstrap.min.js"></script>
+        <script src="../assets/layer/layer.js"></script>
+        <script src="echarts.simple.min.js"></script>
+        <script src="report.js"></script>
+    </body>
+</html>

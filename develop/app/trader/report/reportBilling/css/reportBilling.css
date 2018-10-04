@@ -1,0 +1,440 @@
+body {
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+/**顶部条件选项栏*/
+.topFilterBox {
+  width: 100%;
+  height: 65px;
+  background-color: #f3f3f4;
+  font-size: 0;
+  border-bottom: 1px solid #cccccc;
+}
+.topFilterBox > div {
+  display: inline-block;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.topFilterBox .timeFilter {
+  width: 60%;
+  height: 100%;
+}
+.topFilterBox .timeFilter ul {
+  width: 100%;
+  height: 100%;
+}
+.topFilterBox .timeFilter ul li {
+  float: left;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 0 30px;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  color: #707070;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  font-size: 16px;
+}
+.topFilterBox .timeFilter ul li.active {
+  background-color: #fff;
+  border: none;
+}
+.topFilterBox .shopFilter {
+  width: 40%;
+  height: 100%;
+  line-height: 65px;
+  text-align: right;
+  padding-right: 20px;
+}
+.topFilterBox .shopFilter > div {
+  display: inline-block;
+}
+.topFilterBox .shopFilter > div > label {
+  font-size: 14px;
+  color: #333333;
+  vertical-align: middle;
+}
+.topFilterBox .shopFilter > div > div {
+  display: inline-block;
+  width: 150px;
+  margin-left: 10px;
+  vertical-align: middle;
+  text-align: left;
+}
+.topFilterBox .shopFilter > div .exportBtn {
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+  line-height: 28px;
+  text-align: center;
+  background-color: #fff;
+  font-size: 12px;
+  color: #333333;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.topFilterBox .shopFilter > div .exportBtn > .exportIcon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: middle;
+}
+.topFilterBox .shopFilter > div .exportBtn > span {
+  vertical-align: middle;
+}
+/**路径显示*/
+.path {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding-left: 20px;
+  font-size: 16px;
+}
+.path .dateIcon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/common/img/dateIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: -5px;
+}
+.path > input {
+  color: #1E9FFF;
+  margin-left: 4px;
+  height: 34px;
+  padding-left: 32px;
+  background: url("../../../assets/common/img/dateIcon.png") no-repeat left 3px;
+  -webkit-background-size: 24px 24px;
+  background-size: 24px 24px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.path > input.selectedDate {
+  width: 116px;
+}
+.path > input.selectedMonth {
+  width: 94px;
+  display: none;
+}
+.path > input.selectedYear {
+  width: 72px;
+  display: none;
+}
+.path > input.selfDate {
+  width: 220px;
+  display: none;
+}
+.path .arrowIcon {
+  font-family: SimSun;
+  margin: 0 4px 0 0;
+  font-weight: 700;
+}
+/**统计概览*/
+.reportOverview {
+  min-height: 150px;
+}
+.reportOverview ul li {
+  float: left;
+  width: 22.7%;
+  min-width: 390px;
+  height: 130px;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  padding: 0 20px;
+  margin: 10px 20px;
+}
+.reportOverview ul li p {
+  margin-top: 16px;
+}
+.reportOverview ul li p:nth-of-type(1) {
+  font-size: 16px;
+  color: #666666;
+}
+.reportOverview ul li p:nth-of-type(2) {
+  font-size: 20px;
+  color: #333333;
+}
+.reportOverview ul li p:nth-of-type(3) {
+  font-size: 14px;
+  color: #666666;
+}
+.reportOverview ul li p:nth-of-type(3) span:nth-of-type(1) {
+  float: left;
+}
+.reportOverview ul li p:nth-of-type(3) span:nth-of-type(2) {
+  float: right;
+}
+/**报表内容*/
+.tableBox {
+  padding: 0 20px;
+}
+.tableBox > p {
+  font-size: 16px;
+  color: #333333;
+  background-color: #fff;
+  padding: 15px 0 15px 20px;
+}
+.tableBox > div {
+  height: 430px;
+  overflow-y: auto;
+  padding: 0 20px;
+  background-color: #fff;
+}
+.tableBox > div table {
+  margin: 0;
+}
+.tableBox > div table thead > tr > th,
+.tableBox > div table tbody > tr > td {
+  text-align: right;
+}
+.tableBox > div table thead > tr > th:first-of-type,
+.tableBox > div table tbody > tr > td:first-of-type {
+  text-align: center;
+}
+.tableBox > div table thead > tr > th:nth-of-type(2),
+.tableBox > div table tbody > tr > td:nth-of-type(2) {
+  text-align: left;
+}
+.tableBox > div table tbody > tr > td:last-of-type a {
+  color: #1e9fff;
+}
+/**分页选择器*/
+.pageSelectorBox {
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  border-left: 20px solid #f3f3f4;
+  border-right: 20px solid #f3f3f4;
+  padding-right: 20px;
+}
+.pageSelectorBox #reportPageSelector {
+  float: right;
+}
+.pageSelectorBox .layui-laypage {
+  margin-bottom: 0;
+}
+/**详情弹窗*/
+.detail .top,
+.detailDetail .top {
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  background-color: #353B53;
+  padding: 0 20px;
+  color: #fff;
+}
+.detail .top > span,
+.detailDetail .top > span {
+  float: left;
+  font-size: 14px;
+}
+.detail .top > i,
+.detailDetail .top > i {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+.detail .descAndExport,
+.detailDetail .descAndExport {
+  width: 100%;
+  height: 60px;
+  line-height: 58px;
+  padding: 0 20px;
+}
+.detail .descAndExport .descPath,
+.detailDetail .descAndExport .descPath {
+  float: left;
+  font-size: 16px;
+  color: #333333;
+}
+.detail .descAndExport .descPath > i,
+.detailDetail .descAndExport .descPath > i {
+  font-family: SimSun;
+}
+.detail .descAndExport .detailRadio,
+.detailDetail .descAndExport .detailRadio {
+  float: left;
+}
+.detail .descAndExport .detailRadio ul li,
+.detailDetail .descAndExport .detailRadio ul li {
+  float: left;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.detail .descAndExport .detailRadio ul li > i,
+.detailDetail .descAndExport .detailRadio ul li > i {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+.detail .descAndExport .detailRadio ul li > span,
+.detailDetail .descAndExport .detailRadio ul li > span {
+  font-size: 14px;
+  color: #333333;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.detail .descAndExport .detailRadio ul li.active > i,
+.detailDetail .descAndExport .detailRadio ul li.active > i {
+  border: none;
+  background: url("../../../assets/common/img/selectedIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.detail .descAndExport .detailExportBtn,
+.detailDetail .descAndExport .detailExportBtn {
+  float: right;
+  width: 80px;
+  height: 34px;
+  font-size: 14px;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  line-height: 34px;
+  text-align: center;
+  margin-top: 13px;
+}
+.detail .descAndExport .detailExportBtn > i,
+.detailDetail .descAndExport .detailExportBtn > i {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: -6px;
+}
+.detail .detailContent > div,
+.detailDetail .detailContent > div {
+  padding: 0 20px;
+}
+.detail .detailContent > div > div,
+.detailDetail .detailContent > div > div {
+  overflow-y: auto;
+}
+.detail .detailContent > div > div table,
+.detailDetail .detailContent > div > div table {
+  margin: 0;
+}
+.detail .detailContent .recharge table thead > tr > th:last-of-type,
+.detailDetail .detailContent .recharge table thead > tr > th:last-of-type,
+.detail .detailContent .sale table thead > tr > th:last-of-type,
+.detailDetail .detailContent .sale table thead > tr > th:last-of-type,
+.detail .detailContent .consumption table thead > tr > th:last-of-type,
+.detailDetail .detailContent .consumption table thead > tr > th:last-of-type,
+.detail .detailContent .preSale table thead > tr > th:last-of-type,
+.detailDetail .detailContent .preSale table thead > tr > th:last-of-type,
+.detail .detailContent .detailDetailContent table thead > tr > th:last-of-type,
+.detailDetail .detailContent .detailDetailContent table thead > tr > th:last-of-type,
+.detail .detailContent .recharge table tbody > tr > td:last-of-type,
+.detailDetail .detailContent .recharge table tbody > tr > td:last-of-type,
+.detail .detailContent .sale table tbody > tr > td:last-of-type,
+.detailDetail .detailContent .sale table tbody > tr > td:last-of-type,
+.detail .detailContent .consumption table tbody > tr > td:last-of-type,
+.detailDetail .detailContent .consumption table tbody > tr > td:last-of-type,
+.detail .detailContent .preSale table tbody > tr > td:last-of-type,
+.detailDetail .detailContent .preSale table tbody > tr > td:last-of-type,
+.detail .detailContent .detailDetailContent table tbody > tr > td:last-of-type,
+.detailDetail .detailContent .detailDetailContent table tbody > tr > td:last-of-type {
+  text-align: right;
+}
+.detail .detailContent .recharge table tbody > tr > td:last-of-type,
+.detailDetail .detailContent .recharge table tbody > tr > td:last-of-type,
+.detail .detailContent .sale table tbody > tr > td:last-of-type,
+.detailDetail .detailContent .sale table tbody > tr > td:last-of-type,
+.detail .detailContent .consumption table tbody > tr > td:last-of-type,
+.detailDetail .detailContent .consumption table tbody > tr > td:last-of-type,
+.detail .detailContent .preSale table tbody > tr > td:last-of-type,
+.detailDetail .detailContent .preSale table tbody > tr > td:last-of-type,
+.detail .detailContent .detailDetailContent table tbody > tr > td:last-of-type,
+.detailDetail .detailContent .detailDetailContent table tbody > tr > td:last-of-type {
+  color: #ff3030;
+}
+.detail .detailContent .sale table tbody > tr > td > a,
+.detailDetail .detailContent .sale table tbody > tr > td > a,
+.detail .detailContent .preSale table tbody > tr > td > a,
+.detailDetail .detailContent .preSale table tbody > tr > td > a {
+  color: #1e9fff;
+}
+.detail .detailContent .sale table tbody > tr > td:nth-last-of-type(2),
+.detailDetail .detailContent .sale table tbody > tr > td:nth-last-of-type(2),
+.detail .detailContent .preSale table tbody > tr > td:nth-last-of-type(2),
+.detailDetail .detailContent .preSale table tbody > tr > td:nth-last-of-type(2) {
+  color: #ff3030;
+}
+.detail .detailContent .sale,
+.detailDetail .detailContent .sale,
+.detail .detailContent .consumption,
+.detailDetail .detailContent .consumption,
+.detail .detailContent .preSale,
+.detailDetail .detailContent .preSale {
+  display: none;
+}
+.detail .detailContent .detailDetailContent table,
+.detailDetail .detailContent .detailDetailContent table {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.detail .detailContent .detailPageBox,
+.detailDetail .detailContent .detailPageBox {
+  padding: 0 20px;
+}
+.detail .detailContent .detailPageBox > div,
+.detailDetail .detailContent .detailPageBox > div {
+  float: right;
+}
+.detail .detailPageBox,
+.detailDetail .detailPageBox {
+  padding: 0 20px;
+  height: 55px;
+}
+.detail .detailPageBox > div,
+.detailDetail .detailPageBox > div {
+  float: right;
+}
+.detail .layui-form .layui-form-select,
+.detailDetail .layui-form .layui-form-select {
+  text-align: left;
+}
+.detail .layui-form .layui-form-select dl,
+.detailDetail .layui-form .layui-form-select dl {
+  max-width: 100%;
+}
+.detail .layui-input,
+.detailDetail .layui-input {
+  height: 34px;
+  border-color: #cccccc;
+  color: #707070;
+  font-size: 14px;
+}
+/*# sourceMappingURL=reportBilling.css.map */

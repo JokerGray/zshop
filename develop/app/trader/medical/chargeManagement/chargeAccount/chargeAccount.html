@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>收费管理</title>
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/bootstrap-table/bootstrap-table.min.css">
+ 
+    <link rel="stylesheet" href="../../../assets/laydate-v5.0.9/theme/default/laydate.css">
+    <link rel="stylesheet" href="../../../assets/layui-v2.2.2/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/medical.css">
+    <link rel="stylesheet" href="chargeAccount.css">
+</head>
+
+<body>
+    <div id="charge-mian" class="container-fluid" style="margin-top:2rem;padding: 0 30px;min-height: 800px;">
+        <!-- 标题控制栏-->
+        <!-- <div class="title clearfix">
+            
+            <div class="top-title left-title">
+                <span class="title-name active" id="settlement">收费结算</span>
+                <span class="title-name" id="charge-recode">收费记录</span>
+            </div>
+             
+            <div class="right-title">
+                <div class="title-date">
+                    <span>日期:</span>
+                    <div class="start-date">
+                        <input type="text" id="date-start" readonly>
+                        <span class="img-date" id="date-start-ctl" style="font-size: 0px;"></span>
+                    </div>
+                    <span class="date-to">-</span>
+                    <div class="start-date">
+                        <input type="text" id="date-end" readonly>
+                        <span class="img-date" id="date-end-ctl" style="font-size: 0px;"></span>
+                    </div>
+                </div>
+                <div class="title-search">
+                    <input type="text" class="input-search" placeholder="顾客姓名/顾客电话">
+                    <span class="layui-icon layui-icon-search" id="charge-search">&#xe615;</span>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="clearfix">
+                <div class="top-title">
+                    <span class="title-name active" id="settlement">收费结算</span>
+                    <span class="title-name" id="charge-recode">收费记录</span>
+                </div>
+                
+                <div class="right-title top-tool row">
+                    <div class="col-xs-7">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: auto;">日期：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" class="layui-input" id="date-start" placeholder="开始时间">
+                            </div>
+                            <span> - </span>
+                            <div class="layui-input-inline">
+                                <input type="text" class="layui-input" id="date-end" placeholder="结束时间">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="search" placeholder="顾客姓名/顾客电话">
+                    </div>
+                    <div class="col-xs-2">
+                        <button class="btn btn-info" type="button" id="charge-search">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true">
+                        </button>
+                    </div>
+                </div>
+        </div>
+ 
+
+        <div class="container-content">
+            <!-- 收费结算 治疗项目-->
+            <div class="treatment">
+                <ul class="clearfix treatment-data">
+                </ul>
+                <div class="treatment-pagination">
+                </div>
+            </div>
+ 
+
+            <!-- 收费账单 -->
+            <div class="record-data" style="margin-top:20px;margin-bottom: 20px; display: none">
+                <div class="record-table">
+                    <table id="table-record-list"></table>
+                </div>
+                <!--分割线 -->
+                <!-- <div class="line"></div> -->
+                <!-- 结算 -->
+                <div class="settlement" style="display: none;">
+                    <div class="settlement-info">
+                        <p class="info-amount">
+                            <span>总金额 : </span>
+                            <span class="price"></span>
+                            <span> 元</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="no-data" style="display: none;">
+                <img src="../assets/img/noSearch.png" alt="" id="no-search">
+                <img src="../assets/img/noData.png" alt="" id="no-data">
+            </div>
+        </div>
+    </div>
+
+    <!-- 项目结算收费详情 -->
+    <div id="charge-details" class="container-fluid" style="margin-top:2rem;padding: 0 30px;display:none;">
+        <!-- 头部-->
+        <div class="header">
+            <!-- 左边栏 -->
+            <div class="goback">
+                <span class="layui-icon  layui-icon-left">&#xe603;</span>
+                <span>返回</span>
+            </div>
+        </div>
+
+        <!-- table 收费数据 -->
+        <div class="charge-data container-content">
+            <!-- 用户信息 -->
+            <div class="user-data clearfix">
+                <div class="user-info">
+                    <span id="user-name"></span>
+                    <span id="user-sex"></span>
+                    <span id="user-age"></span>
+                    <span id="user-state"></span>
+                    <span id="user-phone"></span>
+                </div>
+            </div>
+            <!-- 收费项目详情 -->
+            <table id="charge-items"></table>
+            <div class="table-tfoot">
+                <span class="table-add" style="display: none;">+ 添加</span>
+            </div>
+            <!-- 结算 -->
+            <div class="settlement-pay">
+                <div class="settlement-info">
+                    <p>
+                        <span>实收金额 : </span>
+                        <span class="price">0.00</span>
+                        <span>元</span>
+                    </p>
+                    <p>
+                        <span>药品数量 : </span>
+                        <span>0</span>
+                        <span>件</span>
+                    </p>
+                    <p>
+                        <span>优惠 : </span>
+                        <span>0.00</span>
+                    </p>
+                    <p>
+                        <span>合计 : </span>
+                        <span>0.00</span>
+                    </p>
+                </div>
+                <div class="settlement-charge" style="margin-top:10px;margin-bottom: 20px;">
+                    <button class="layui-btn layui-btn-primar" id="btn-charge">收费</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- 收费记录详情 -->
+    <div id="record-details" class="container-fluid" style="margin-top:2rem;padding: 0 30px;display:none;">
+        <!-- 头部-->
+        <div class="header">
+            <!-- 左边返回 -->
+            <div class="goback">
+                <span class="layui-icon layui-icon-left">&#xe603;</span>
+                <span>返回</span>
+            </div>
+        </div>
+        <div class="charge-details container-content" style="margin-bottom: 20px;">
+            <!-- 用户信息 -->
+            <div class="user-data margin-top clearfix">
+                <div class="user-info">
+                    <span id="user-name"></span>
+                    <span id="user-sex"></span>
+                    <span id="user-age"></span>
+                    <span id="user-state"></span>
+                    <span id="user-phone"></span>
+                </div>
+            </div>
+            <!-- table 收费数据 -->
+            <div class="charge-data">
+                <table id="record-itmes">
+                </table>
+            </div>
+            <!--分割线 -->
+            <div class="line"></div>
+            <!-- 结算 -->
+            <div class="settlement-record">
+                <div class="settlement-info">
+                    <p class="info-amount">
+                        <span>总金额 : </span>
+                        <span>0.00</span>
+                        <span>元</span>
+                    </p>
+                    <p class="info-discount">
+                        <span>优惠价格 : </span>
+                        <span>0.00</span>
+                        <span> 元</span>
+                    </p>
+                    <p class="info-total">
+                        <span>药品数量 : </span>
+                        <span>0</span>
+                        <span>件</span>
+                    </p>
+                </div>
+                <div class="sum-money">
+                    <p>
+                        <span>实收金额 : </span>
+                        <span class="price">0.00</span>
+                        <span>元</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--收费列 -->
+    <script type="text/html" id="charge-list-tpl">
+        {{each list as value index}}
+        <div class="treatment-list" orderStatus="{{value.orderStatus}}" presaleId="{{value.presaleId}}" 
+                processId="{{value.processId}}" allergy="{{value.allergy}}" historcal="{{value.historcal}}" mobile="{{value.mobile}}"
+                memberId="{{value.memberId}}" shopId="{{value.shopId}}" gender="{{value.gender}}">
+            <div class="treatment-content">
+                <div class="content-line">
+                    <b class="desc-name" title={{value.memberName}}>{{value.memberName}}</b>
+                    <span class="desc-age">{{if value.age >= 0}}{{value.age}}{{else}}-{{/if}}</span>岁
+                    <span class="desc-sex">           
+                        {{if value.gender == 0}}女  
+                        {{else if value.gender == 1}}男  
+                        {{else}}
+                            保密
+                        {{/if}}
+                    </span>
+                     
+                </div>
+                <div class="content-line"><span class="desc-money">￥{{value.actualPay}}元</span>
+                </div>
+            </div>
+            <div class="btn-list">
+                <div  class="treatment-btn">收费</div>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+    <!--收费详情 金额计算 -->
+    <script type="text/html" id="settlement-tpl">
+            <p>
+                <span>实收金额 : </span>
+                <span class="price" id="actualPay" data-price="{{data.actualPayment}}">{{data.actualPayment}}</span>
+                <span>元</span>
+            </p>
+            <p>
+                <span>收费项 : </span>
+                <span id="purchaseNum">{{data.purchaseNum}}</span>
+                <span>项</span>
+            </p>
+            <p>
+                <span>优惠 : </span>
+                <span id="discountMoney" data-price="{{data.preferentialAmount}}">{{data.preferentialAmount}}</span>
+            </p>
+            <p>
+                <span>合计 :  </span>
+                <span id="shouldPay" data-price="{{data.originalAmount}}">{{data.originalAmount}}</span>
+            </p>
+    </script>
+    <!-- 收费账单详情 金额计算 -->
+    <script type="text/html" id="settlement-bill-tpl">
+        <div class="settlement-info">
+            <p class="info-amount">
+                <span>总金额 : </span>
+                <span data-price="{{data.originalAmount}}">{{data.originalAmount}}</span>
+                <span>元</span>
+            </p>
+            <p class="info-discount">
+                <span>优惠价格 : </span>
+                <span data-price="{{data.preferentialAmount}}">{{data.preferentialAmount}}</span>
+                <span> 元</span>
+            </p>
+            <p class="info-total">
+                <span>收费项 : </span>
+                <span data-price="{{data.purchaseNum}}">{{data.purchaseNum}}</span>
+                <span>项</span>
+            </p>
+        </div>
+        <div class="sum-money">
+            <p>
+                <span>实收金额 : </span>
+                <span data-price="{{data.actualPayment}}" class="price">{{data.actualPayment}}</span>
+                <span>元</span>
+            </p>
+        </div>
+    </script>
+    <!-- 用户信息 -->
+    <script type="text/html" id="user-info-tpl">
+        <span id="user-name">{{data.patientName || data.memberName}}</span>
+        <span id="user-sex">
+            {{if data.sex == 0}} 女  
+            {{else if data.sex == 1}} 男  
+            {{else if data.sex == '女'}} 女  
+            {{else if data.sex == '男'}} 男  
+            {{else}}
+                保密
+            {{/if}}
+        </span>
+        <span id="user-age">
+            {{data.age}}
+        </span>
+        {{if data.allergy}}
+            <span id="user-state">
+             过敏
+            </span>
+        {{else}}
+        {{/if}}
+        <span id="user-phone">{{data.mobile || data.phone}}</span>
+    </script>
+
+    <!-- 新增药品 -->
+    <script type="text/html" id="charge-table-itme">
+            <tr class="new-item">
+                <td>{{data.num + 1}}</td>
+                <td field="purchaseName">
+                    <select class="form-control charging-name">
+                        {{each data.purchaseNameList as value index}}
+                            <option>{{value}}</option>
+                        {{/each}}
+                    </select>
+                </td>
+                <td field="purchaseType">
+                    <select class="form-control charging-name">
+                        {{each data.purchaseTypeList as value index}}
+                            <option>{{value}}</option>
+                        {{/each}}
+                    </select>
+                </td>
+                <td field="stockName">
+                    <input type="text" class="charging-dose form-control" value="{{data.stockName}}">
+                </td>
+                <td field="unitPrice">
+                    <input type="text" class="charging-price form-control" value="{{data.unitPrice}}">
+                </td>
+                <td field="purchaseNum">
+                    <div class="total-num-new">
+                        <input type="text" class="charging-total form-control" value="{{data.purchaseNum}}">
+                        <span>件</span>
+                    </div>
+                </td>
+                <td field="totalPrice"> 
+                    <input type="text" class="charging-price form-control" value="{{data.totalPrice}}"> </td>
+                <td field="discount">
+                    <input type="text" class="charging-price form-control" value="{{data.discount}}">
+                </td>
+                <td field="actualPayment">
+                    <input type="text" class="charging-price form-control" value="{{data.discount}}">
+                </td>
+                <td>
+                    <div class="charging-delete">
+                        <span class="layui-icon layui-icon-delete">&#xe640;</span>
+                    </div>
+                </td>
+            </tr>
+    </script>
+
+    <script type="text/html" id="toolbar">
+        <div class="look-detail">
+                <span>查看详情</span>
+        </div>
+     </script>
+ 
+
+    <script type="text/html" id="record-list-tpl">
+    </script>
+    <script type="text/html">
+        <div class="no-data">
+            <img src="../assets/img/noSearch.png" alt="">
+        </div>
+    </script>
+    <script src="../../../assets/jquery/jquery.min.js"></script>
+    <script src="../../../assets/layer/layer.js"></script>
+    <script src="../../../assets/laydate-v5.0.9/laydate.js"></script>
+    <script src="../../../assets/layui-v2.2.2/layui.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../assets/artTemplate/template-web.js"></script>
+    <script src="../assets/js/comm.js"></script>
+    <!-- <script src="../../../../../assets/artTemplate/artTemplate.js"></script> -->
+    <!-- <script src="../../../assets/select2/select2.min.js"></script> -->
+    <script src="chargeAccount.js"></script>
+</body>
+
+</html>

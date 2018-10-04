@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>个人入驻资料 - 智享头条</title>
+    <!-- Bootstrap -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+    <input type="hidden" id="menuHid" value="register_single">
+    <script src="util/head.js"></script>
+
+    <div class="container">
+        <div class="wrapper sign-wrapper clearfix">
+            <div class="signstep step3">
+                <div class="signstep-bg">
+                    <div class="signstep-bgc" style="width:100%;"></div>
+                </div>
+                <div class="signstep-item i1 done">
+                    <div class="signstep-item-text">帐号注册</div>
+                </div>
+                <div class="signstep-item-bg i1 done"></div>
+                <div class="signstep-item i2 done">
+                    <div class="signstep-item-text">选择类型</div>
+                </div>
+                <div class="signstep-item-bg i2 done"></div>
+                <div class="signstep-item i3 current">
+                    <div class="signstep-item-text">入驻资料</div>
+                </div>
+                <div class="signstep-item-bg i3 current"></div>
+            </div>
+            <div class="signform">
+                <div class="signform-item require clearfix">
+                    <div class="signform-dt">智享头条名称</div>
+                    <div class="signform-dd">
+                        <input type="text" id="form-control" class="form-control signform-input" placeholder="" name="subscriptionName" maxlength="10">
+                        <div class="signform-hint">2-10个字,请勿使用包含特殊符号或含有明显营销推广意图的媒体名称</div>
+                    </div>
+                </div>
+                <div class="signform-item require clearfix">
+                    <div class="signform-dt">智享头条介绍</div>
+                    <div class="signform-dd">
+                        <textarea class="form-control signform-input area" placeholder="" name="subscriptionSynopsis" maxlength="30"></textarea>
+                        <div class="signform-hint">10-30个字,要求内容完整通顺，无特殊符号，请勿添加联系方式如：微博、微信、QQ、手机号</div>
+                    </div>
+                </div>
+                <div class="signform-item require clearfix">
+                    <div class="signform-dt">智享头条头像</div>
+                    <div class="signform-dd" id="contentLabel">
+                        <img id="faceImg" src="images/facenormal.png" class="signform-face-img" />
+                        <label class="btn signform-face-btn" id="uploadLabel">上传头像<input type="hidden" class="file-hidden" name="subscriptionImgUrl" /></label>
+                        <div class="signform-face-text">要求清晰、健康、代表品牌形象<br />请勿使用二维码，最大5M，200x200像素</div>
+                    </div>
+                </div>
+                <div class="signform-item clearfix">
+                    <div class="signform-dt">辅助资料</div>
+                    <div class="signform-dd">
+                        <textarea class="form-control signform-input area" placeholder="" name="assistData" maxlength="200"></textarea>
+                        <div class="signform-hint">0~200个字，请提供您本人的专栏、博客或微信公众号等链接，我们会以您提供的文章做为参考依据，审核您申请的帐号。</div>
+                    </div>
+                </div>
+                <div class="signform-item require clearfix">
+                    <div class="signform-dt">所在地</div>
+                    <div class="signform-dd">
+                        <select class="form-control signform-input select" name="province">
+								<option value="-1">请选择</option>
+							</select>
+                        <select class="form-control signform-input select" name="city" style="opacity: 0;"></select>
+                    </div>
+                </div>
+                <div class="signform-item require clearfix">
+                    <div class="signform-dt">频道</div>
+                    <div class="signform-dd">
+                        <select class="form-control signform-input select" name="subscriptionType">
+							<option value="-1">请选择</option>
+						</select>
+                    </div>
+                </div>
+                <div class="signform-item clearfix">
+                    <div class="signform-dt">其他资质</div>
+                    <div class="signform-dd " id="contentLabels">
+                        <img id="otherImg" src="images/facenormal.png" class="signform-face-img" />
+                        <label class="btn signform-face-btn" id="uploadLabels">上传图片<input type="file" class="file-btn" /></label>
+                        <div class="signform-face-text"><span class="sred">上传资质证明可有效提高审核通过率！ </span></div>
+                    </div>
+                </div>
+                <div class="signform-item require clearfix">
+                    <div class="signform-dt">运营者电话</div>
+                    <div class="signform-dd">
+                        <input type="text" class="form-control signform-input" placeholder="" name="operationPhone">
+                    </div>
+                </div>
+                <div class="signform-item require clearfix">
+                    <div class="signform-dt">联系邮箱</div>
+                    <div class="signform-dd">
+                        <input type="text" class="form-control signform-input" placeholder="" name="contactEmail">
+                    </div>
+                </div>
+                <div class="signform-item agree clearfix">
+                    <div class="signform-dt">&nbsp;</div>
+                    <div class="signform-dd">
+                        <div class="signform-checkbox checked" id="signformCheckbox">同意智享头条用户注册协议</div>
+                    </div>
+                </div>
+                <div class="signform-item agree clearfix">
+                    <div class="signform-dt">&nbsp;</div>
+                    <div class="signform-dd">
+                        <a class="btn signform-back" href="register_type.html">上一步</a>
+                        <a id="signform_btn" class="btn btn-submit signform-submit">提交</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/register_single.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!--pages/reg/reg.wxml-->
+<view class='reg'>
+  <image src='../../images/yundian_bangdingdianji_bg.jpg' id='bg'></image>
+  <view id='logo'>
+    <view><image src='../../images/yundian_bangdingdianji_logo.png'></image></view>
+    <text id='poster'>随时随地 快乐购物 智享生活</text>
+  </view>
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" id='login'>微信绑定手机号注册</button>
+  <view class='center'>
+       <text class='phonetext'  bindtap='phoneLogin'>手机号注册登录 </text>
+    <image class='phoneimg' src='../../images/sjhsq_jiantou@2x.png' bindtap='phoneLogin'></image>
+  </view>
+ 
+  <text id='warn'>拒绝授权将无法体验完整功能，建议打开授权</text>
+   <view class='phoneLogin'  catchtap='closePhonemodel' wx:if="{{phoneModel}}">
+    <view class='phoneModel' catchtap>
+    
+      <view class='phonetitle'>手机号授权 </view>
+      <view class='phoneInput'>
+        <image src='../../images/sjhsq_iphone@2x.png'></image>
+        <input name="phoneNum" value='{{phoneNum}}' maxlength="11" type='number' confirm-type="done" placeholder='请输入手机号' bindinput="phoneInput"></input>
+      </view>
+      <view class='phoneInput'> 
+      <image src='../../images/sjhsq_password@2x.png'></image>
+      <input name="yzCode" value='{{yzCode}}' maxlength="6" type='number' bindinput="codeInput" placeholder='请输入验证码'></input><button disabled="{{time==0?false:true}}" class='{{time==0?"yzCode active":"yzCode"}}' bindtap='getCode'>{{time==0? msg:time+'秒后重发'}}</button>
+      </view>
+      
+      <button  class='sureLogin' bindtap='sureLogin'>手机号注册</button>
+      <view class='center'>
+        <text class='phonetext'   bindtap='closePhonemodel'>返回微信绑定手机号注册 </text>
+        <image class='phoneimg' src='../../images/sjhsq_jiantou@2x.png' bindtap='closePhonemodel'></image>
+      </view>
+      
+    </view>
+  </view>
+  <view class='mask' wx:if="{{modal}}" bindtap='cancel'>
+    <view class='modal'>
+      <text class='title'>打开设置页面重新授权</text>
+      <view id='option'>
+        <view id='cancel' bindtap='cancel'>取消</view>
+        <button open-type='openSetting' bindopensetting="openSetting" id='confirm'>去设置</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+

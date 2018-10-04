@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>线上商户专业制作申请</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common_v2.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <link rel="stylesheet" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+	<link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+
+	<!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="css/work_order_online.css" />
+	<link rel="stylesheet" type="text/css" href="css/layer.css" />
+</head>
+<body>
+<div id="common-tool" class="clearfix p4">
+	<div id="search">
+		<button class="layui-btn layui-btn-small layui-btn-primary">
+			<i class="layui-icon">&#xe615;</i> 搜索
+		</button>
+	</div>
+
+</div>
+<div id="search-tool" class="clearfix">
+	<div class="input-group">
+		<span class="pull-left">商户名:</span>
+		<input type="text" class="form-control media-input" id="orgName2" maxlength="11"/>
+	</div>
+	<div class="input-group lasttime input-medium date-picker" data-date-format="yyyy-mm-dd">
+		<div class="input-group">
+			<span  class="jurisdiction-label pull-left" for="jurisdiction-begin">申请时间起：</span>
+			<div class='date form-control' id='datetimepicker1'>
+				<input name="dtBegin" type="text" readonly id="jurisdiction-begin" placeholder="-请选择-" >
+				<span class="glyphicon glyphicon-calendar"></span>
+			</div>
+		</div>
+		<div class="input-group">
+			<span class="jurisdiction-label pull-left" for="jurisdiction-end">申请时间止：</span>
+			<div class='date form-control' id='datetimepicker2'>
+				<input name="dtEnd" type="text" readonly  id="jurisdiction-end" placeholder="-请选择-" >
+				<span class="glyphicon glyphicon-calendar"></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="input-group">
+		<button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearch">
+			搜索
+		</button>
+		<button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+			重置
+		</button>
+	</div>
+	<div id="search-tool-show">
+
+	</div>
+</div>
+<div id="app" class="clearfix">
+	<div class="tab-title">
+		<ul>
+			<li class="active" data-num="0"><a>待处理申请</a></li>
+			<li data-num="1" class=""><a>已处理申请</a></li>
+		</ul>
+	</div>
+	<div id="tableBox" class="m10">
+		<table lay-filter="demo" id="demo" class="mtb0"></table>
+		<div id="laypageLeft"></div>
+	</div>
+</div>
+
+	<script type="text/html" id="barDemo">
+			<button class="layui-btn layui-btn-small  layui-btn" lay-event="nodetail">
+				查看
+			</button>
+			{{# if(d.status == '0'){ }}
+			<button class="layui-btn layui-btn-small layui-btn" lay-event='submit'>
+				<i class="layui-icon">&#xe6b2;</i> 转工单
+			</button>
+			{{#  } }}
+			
+	</script>
+
+<script type="text/html" id="barDemor">
+	<button class="layui-btn layui-btn-small layui-btn" lay-event='ok'>
+		<i class="layui-icon">&#xe620;</i> 确认
+	</button>
+
+</script>
+
+	<!--modal-->
+	<div id="demo222" class='layui-form clearfix' lay-filter="seachr">
+		<div class="leftCon">
+
+			<div class="layui-form-item h48">
+				<label class="layui-form-label flex">商户名：</label>
+				<div class="layui-input-block flex">
+					<input type="hidden" id="merchantId">
+					<input  type="text" class="layui-input h30" id="orgName" maxlength="18">
+				</div>
+			</div>
+
+			<div class="layui-form-item h48 person">
+				<label class="layui-form-label flex">推荐人姓名：</label>
+				<div class="layui-input-block flex person">
+					<input  type="text" class="layui-input h30 refUserName">
+				</div>
+			</div>
+			<div class="layui-form-item h48 person2">
+				<label class="layui-form-label flex">推荐人姓名：</label>
+				<div class="layui-input-block flex ">
+					<input type="hidden" id="refUserId">
+					<input type="text"  class="layui-input h30 w50" readonly id="refUserName">
+					<button class="layui-btn layui-btn-small" id="checkUserRel">选择推荐人</button>
+				</div>
+			</div>
+			<div class="layui-form-item h48  videoAmount">
+				<label class="layui-form-label flex"><i class="star">*</i>视频拍摄实收：</label>
+				<div class="layui-input-block flex">
+					<input lay-verify="float" type="text" name="money"  class="layui-input h30" disabled id="videoAmount"   maxlength="18">
+				</div>
+			</div>
+
+			<div class="layui-form-item h48">
+				<label class="layui-form-label flex"><i class="star">*</i>应收金额：</label>
+				<div class="layui-input-block flex">
+					<input  type="text" class="layui-input h30" id="realAmount"  maxlength="12">
+
+				</div>
+			</div>
+		</div>
+		<div class="rightCon">
+			<div class="layui-form-item h48">
+		          <label class="layui-form-label flex"><i class="star">*</i>工单制作项目：</label>
+		          <div class="layui-input-block flex">
+	              	<input type="checkbox" name="workItems" data-id="videoAmount"  lay-filter='workItems' value="0" lay-skin="primary" title="视频拍摄" >
+					<input type="checkbox" name="workItems" data-id="panoramicAmount"  lay-filter='workItems' value="1" lay-skin="primary" title="720°全景拍摄" >
+          		  </div>
+      		</div>
+			<div class="layui-form-item h48">
+				<label class="layui-form-label flex"><i class="star">*</i>创建时间：</label>
+				<div class="layui-input-block flex">
+					<input  type="text" class="layui-input h30" id="createTime"  maxlength="12">
+
+				</div>
+			</div>
+			<div class="layui-form-item h48  panoramicAmount">
+				<label class="layui-form-label flex"><i class="star">*</i>720°全景实收：</label>
+				<div class="layui-input-block flex">
+					<input lay-verify="float" type="text" name="money" class="layui-input h30  money" disabled id="panoramicAmount"   maxlength="18">
+				</div>
+			</div>
+
+
+
+			<div class="layui-form-item h48">
+				<label class="layui-form-label flex"><i class="star">*</i>实收金额：</label>
+				<div class="layui-input-block flex">
+					<input  type="text" class="layui-input h30" id="reviewActualReceivable"  maxlength="12">
+
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item ">
+			<label class="layui-form-label" style="height: 160px;line-height: 160px	;">备注：</label>
+			<div class="layui-input-block">
+
+				<textarea class="layui-textarea" style="width: 100%;" placeholder="请输入备注" name="" id="remark" cols="30" rows="10"></textarea>
+			</div>
+		</div>
+	</div>
+<!--modal 升级为商户-->
+<div id="threeDemo" class='layui-form clearfix disn'>
+	<div class="layui-fluid">
+		<div class="layui-form">
+			<label class="tool-box-label">APP用户手机:</label>
+			<ul class="tool-box-ul clearfix p0">
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<div class="layui-input-inline">
+							<input type="text" name="" class="layui-input" id="appUserPhone" >
+						</div>
+					</div>
+				</li>
+				<li class="tool-box-li">
+					<button class="layui-btn searchBtnLayer" id="toolSearch1">搜索</button>
+					<button class="layui-btn resetBtnLayer" id="resetBtn1">重置</button>
+				</li>
+			</ul>
+		</div>
+		<table lay-filter="tableRe" id="tableRe" class="mtb0"></table>
+		<div id="laypageTip"></div>
+	</div>
+</div>
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/login_success.js"></script>
+
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script>
+<script type="text/javascript" src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+
+
+<!--jSCurr-->
+
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="js/work_order_online.js"></script>
+
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+</html>

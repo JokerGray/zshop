@@ -1,0 +1,265 @@
+body {
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+/**顶部tab栏*/
+.navTabBox {
+  width: 100%;
+  height: 65px;
+  background-color: #f3f3f4;
+  font-size: 0;
+  border-bottom: 1px solid #cccccc;
+}
+.navTabBox > div {
+  display: inline-block;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.navTabBox .navList {
+  width: 50%;
+  height: 100%;
+}
+.navTabBox .navList ul {
+  width: 100%;
+  height: 100%;
+}
+.navTabBox .navList ul li {
+  float: left;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 0 20px;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  color: #707070;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  font-size: 16px;
+}
+.navTabBox .navList ul li.active {
+  background-color: #fff;
+  border: none;
+}
+.navTabBox .cardFilter {
+  width: 50%;
+  height: 100%;
+  line-height: 65px;
+  text-align: right;
+  padding-right: 20px;
+}
+.navTabBox .cardFilter > div {
+  display: inline-block;
+}
+.navTabBox .cardFilter > div.layui-form-item {
+  margin-bottom: 0;
+  vertical-align: middle;
+  width: 200px;
+}
+.navTabBox .cardFilter > div.layui-form-item .layui-input-block {
+  min-height: 34px;
+  margin-left: 50px;
+}
+.navTabBox .cardFilter > div.layui-form-item .layui-input {
+  height: 34px;
+  border: 1px solid #cccccc;
+}
+.navTabBox .cardFilter .layui-btn {
+  height: 34px;
+  line-height: 34px;
+  padding: 0 24px;
+  outline: none;
+  margin: 0 5px;
+}
+.navTabBox .cardFilter .exportBtn {
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+  line-height: 28px;
+  text-align: center;
+  background-color: #fff;
+  font-size: 12px;
+  color: #333333;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+.navTabBox .cardFilter .exportBtn > .exportIcon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: middle;
+}
+.navTabBox .cardFilter .exportBtn > span {
+  vertical-align: middle;
+}
+/**报表内容*/
+.reportContent {
+  background-color: #fff;
+  padding: 0 40px;
+}
+.reportContent .card > p {
+  font-size: 16px;
+  color: #333333;
+  padding: 20px 0;
+}
+.reportContent .card .tableBox {
+  height: 430px;
+  overflow-y: auto;
+}
+.reportContent .card .tableBox table {
+  margin: 0;
+}
+.reportContent .card .tableBox table thead > tr > th:first-of-type,
+.reportContent .card .tableBox table tbody > tr > td:first-of-type {
+  text-align: center;
+  min-width: 60px;
+  max-width: 60px;
+}
+.reportContent .card .tableBox table thead > tr > th:last-of-type,
+.reportContent .card .tableBox table tbody > tr > td:last-of-type {
+  text-align: right;
+}
+.reportContent .card .tableBox table thead > tr > th:last-of-type a,
+.reportContent .card .tableBox table tbody > tr > td:last-of-type a {
+  color: #1e9fff;
+}
+/**卡项详情*/
+.cardDetail .top {
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  background-color: #353B53;
+  padding: 0 20px;
+  color: #fff;
+}
+.cardDetail .top > span {
+  float: left;
+  font-size: 14px;
+}
+.cardDetail .top > i {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+.cardDetail .descAndExport {
+  width: 100%;
+  height: 60px;
+  line-height: 58px;
+  padding: 0 20px;
+}
+.cardDetail .descAndExport .descPath {
+  float: left;
+  font-size: 16px;
+  color: #333333;
+}
+.cardDetail .descAndExport .descPath .descName {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.cardDetail .descAndExport .descPath > i {
+  font-family: SimSun;
+}
+.cardDetail .descAndExport .detailRadio {
+  float: left;
+}
+.cardDetail .descAndExport .detailRadio ul li {
+  float: left;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.cardDetail .descAndExport .detailRadio ul li > i {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+.cardDetail .descAndExport .detailRadio ul li > span {
+  font-size: 14px;
+  color: #333333;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.cardDetail .descAndExport .detailRadio ul li.active > i {
+  border: none;
+  background: url("../../../assets/common/img/selectedIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.cardDetail .descAndExport .detailExportBtn {
+  float: right;
+  width: 80px;
+  height: 34px;
+  font-size: 14px;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  line-height: 34px;
+  text-align: center;
+  margin-top: 13px;
+}
+.cardDetail .descAndExport .detailExportBtn > i {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: -6px;
+}
+.cardDetail .detailTable {
+  padding: 0 20px;
+  overflow-y: auto;
+}
+.cardDetail .detailTable table {
+  margin: 0;
+}
+.cardDetail .detailTable table thead > tr > th:first-of-type,
+.cardDetail .detailTable table tbody > tr > td:first-of-type {
+  text-align: center;
+  min-width: 60px;
+  max-width: 60px;
+}
+.cardDetail .detailPageBox {
+  background-color: #fff;
+  padding: 10px 20px;
+}
+.cardDetail .detailPageBox > div {
+  float: right;
+}
+/**分页*/
+.pageBox {
+  background-color: #fff;
+  padding: 10px 40px;
+}
+.pageBox > div {
+  float: right;
+}
+/*# sourceMappingURL=reportCardOwnership.css.map */

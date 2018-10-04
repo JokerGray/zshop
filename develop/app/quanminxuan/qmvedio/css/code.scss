@@ -1,0 +1,73 @@
+
+@function vm($px) {
+  @return ($px / 750) * 100vw;
+}
+@mixin ell($num) {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $num;
+  -webkit-box-orient: vertical;
+}
+
+$bf9:#609bf9;
+$c33:#333;
+$c99:#999999;
+$wihte:#fff;
+$fz42:vm(42);
+$fz24:vm(24);
+.app{
+  background: $bf9;
+}
+.code_box{
+  width:vm(636);
+  height:vm(814);
+  margin: 0 auto;
+  margin-top:vm(156);
+  background: $wihte;
+  border-radius: vm(15);
+  text-align: center;
+  position: relative;
+  .pic{
+    position: absolute;
+    width:vm(170);
+    height:vm(170);
+    border-radius: 50%;
+    top: vm(-85);
+    left: 50%;
+    margin-left:vm(-85);
+    padding:vm(5);
+    overflow: hidden;
+    img{
+      width: 110%;
+      height:110%;
+      margin-left:-5%;
+      margin-top:-5%;
+    }
+  }
+  .code{
+    width: vm(388);
+    height:vm(388);
+    margin: vm(55) auto;
+    overflow: hidden;
+  }
+  img{
+    width: 100%;
+    height: 100%;
+  }
+  h3{
+    color: $c33;
+    font-size:$fz42;
+    display: block;
+    width:vm(480);
+    @include ell(2);
+    margin: 0 auto;
+    padding-top:vm(118);
+    line-height:vm(52);
+  }
+  p{
+    color: $c99;
+    font-size:$fz24;
+  }
+}

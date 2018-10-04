@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商户营收归档</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common_v2.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+	<link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />   
+    <link rel="stylesheet" type="text/css" href="css/merchant_revenue_archiving.css" />
+</head>
+<body>
+	<div id="common-tool" class="clearfix p4">
+		<div id="search">
+			<button class="layui-btn layui-btn-small layui-btn-primary">
+			  <i class="layui-icon">&#xe615;</i> 搜索
+			</button>
+		</div>
+		<div id="rig-tool" class="clearfix">
+			<button class="layui-btn layui-btn-small layui-btn-primary" id="refresh">
+			  <i class="layui-icon">&#x1002;</i> 刷新
+			</button>
+		</div>
+	</div>
+	<div id="search-tool" class="clearfix dn">
+		<div class="input-group">
+			<span class="pull-left">商户名称:</span>
+			<input type="text" class="form-control media-input" placeholder="请输入商户名" id="orgName" maxlength="10">
+		</div>
+		<div class="input-group">
+			<span class="pull-left">手机号:</span>
+			<input type="text" class="form-control media-input" placeholder="请输入手机号" id="phone" maxlength="10">
+		</div>
+		<div class="input-group">
+			<button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearch">
+				搜索
+			</button>
+			<button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+				重置
+			</button>
+		</div>
+	</div>
+	<div id="app" class="clearfix">
+		<div id="leftTable" class="clearfix">
+			<table lay-filter="demo" id="demo"></table>
+			<div id="laypageLeft"></div>
+		</div>
+		<div id="app-table" class="clearfix">
+			<h2 id="myListName"></h2>
+		<div id="search-tool" class="clearfix" style="none">
+		    <div class="input-group">
+		        <span class="pull-left">店铺名称：</span>
+		        <select class="form-control" id="chargeType">
+		        </select>
+	    	</div>
+		    <div class="input-group lasttime input-medium date-picker" data-date-format="yyyy-mm-dd">
+		        <div class="input-group">
+		            <span  class="jurisdiction-label pull-left" for="jurisdiction-begin">归档日期：</span>
+		            <div class='date form-control' id='datetimepicker1'>
+		                <input name="dtBegin" type="text"  id="jurisdiction-begin" placeholder="-请选择-" >
+		                <span class="glyphicon glyphicon-calendar"></span>
+		            </div>
+		        </div>
+		        <div class="input-group">
+		            <span class="jurisdiction-label pull-left" for="jurisdiction-end">至 </span>
+		            <div class='date form-control' id='datetimepicker2'>
+		                <input name="dtEnd" type="text"  id="jurisdiction-end" placeholder="-请选择-" >
+		                <span class="glyphicon glyphicon-calendar"></span>
+		            </div>
+		        </div>
+		    </div>
+			<div class="input-group">
+				<button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearchDetial">
+					搜索
+				</button>
+				<button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelizeDetial">
+					重置
+				</button>
+			</div>
+		</div>			
+			<div id="rightTable" class="clearfix">
+				<table lay-filter="demoDetial" id="demoDetial"></table>
+				<div id="laypageLeftDetial"></div>
+			</div>
+			
+		</div>
+	</div>
+	<script type="text/html" id="barDemo">
+			<button class="layui-btn layui-btn-small layui-layui-btn-warm" lay-event='change'>
+			  <i class="layui-icon">&#xe60a;</i> 归档
+			</button>
+	</script>
+
+	<!--modal-->
+	<div id="demo111" class='layui-form clearfix' lay-filter="seach">
+		<div class="layui-form-item">
+	          <label class="layui-form-label flex">商户名称：</label>
+	          <div class="layui-input-block flex">
+              <input type="text" name="title" class="layui-input h30" id="name" readonly>
+      		  </div>
+  		</div>
+		<div class="layui-form-item">
+	          <label class="layui-form-label flex">创建时间：</label>
+	          <div class="layui-input-block flex">
+              <input type="text" name="title" class="layui-input h30" id="creatTime" readonly>
+      		  </div>
+  		</div>
+	    <div class="input-group lasttime input-medium date-picker" data-date-format="yyyy-mm-dd">
+	        <div class="input-group">
+	            <span  class="jurisdiction-label pull-left" for="jurisdiction-begin">归档日期：</span>
+	            <div class='date form-control' id='datetimepicker3'>
+	                <input name="dtBegin" type="text"  id="jurisdiction-begin3" placeholder="-请选择-" >
+	                <span class="glyphicon glyphicon-calendar"></span>
+	            </div>
+	        </div>
+	        <div class="input-group">
+	            <span class="jurisdiction-label pull-left" for="jurisdiction-end">至 </span>
+	            <div class='date form-control' id='datetimepicker4'>
+	                <input name="dtEnd" type="text"  id="jurisdiction-end4" placeholder="-请选择-" >
+	                <span class="glyphicon glyphicon-calendar"></span>
+	            </div>
+	        </div>
+	    </div>  		
+	</div>
+
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+<!--jSCurr-->
+<script type="text/javascript" src="js/merchant_revenue_archiving.js"></script>

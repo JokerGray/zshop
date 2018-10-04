@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="wekit">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./static/flexible/flexible.js"></script>
+    <script src="./static/artTemplate/artTemplate.js"></script>
+    <script src="./static/share/share.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+
+    <title>粉团队详情</title>
+</head>
+<body style="font-size: 12px;max-width: 640px;margin: 0 auto;">
+        <div id="header" >
+            <div class="header_logo">
+                <img src="./src/img/logo.png">
+            </div>
+            <div class="header_load btn">
+                打开
+            </div>
+        </div>
+        
+    <div class="content">
+        
+    </div>
+    <a href="/24hours/share24/getPackage.html?sn=15w0&yw=circle&cp=1" class="footer download_link"> <img src="./src/img/footer.png" alt=""> </a>
+
+    <div id="contBlank" style="display: none;">
+        <span class="blank_icon"></span>
+        <p class="msg_miss">哎呀！您访问的地址不存在</p>
+    </div>
+
+    <div class="model">
+        <div class="model_cont">
+            <p class="text1">1、点击右上角的&nbsp;&nbsp;<span></span></p>
+            <p class="text2">2、选择&nbsp;&nbsp;<span></span></p>
+            <div class="pointTo"></div>
+        </div>
+    </div>
+
+    
+
+    <script src="./static/pub/pub.js"></script>
+    
+
+<script type="text/html" id="showCont">
+
+    <div class="cover-img" id="coverImg" onclick="gotoCircle({{data.fansTeam.detailId}})">
+
+        <img src="{{data.fansTeam.detailTitlePic}}" alt="" style="height: 100%; width: 100%;">
+        <div class="cover-cover"></div>
+        <div class='aevter'>
+            <img src="{{data.fansTeam.logo}}" alt="">
+            <div>{{data.fansTeam.detailName}}</div>
+        </div>
+    </div>
+    <div class="activity-about">
+        {{if data.activityList[0]}}
+            <div class="active-process padding-lr-24">
+                <div class="active-process-title">
+                    粉小组
+                </div>
+                <div class="swiper-wrapper">
+                    {{each data.groupList as group index}}
+                        <div class="swiper-slide">
+                            <div class="group-box">
+                                <img class='group-img' src="{{group.logo}}" alt="">
+                                <div class='detail'>
+                                    <div class='title'>{{group.detailName}}</div>
+                                    <div class='person'>
+                                        {{each group.personList as person index}}
+                                            <img src="{{person.userPic}}" alt="">
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                                
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+        <div  class="padding-lr-24">
+                <div class="active-process-title ">
+                    粉相册
+                </div>
+                <div class='albumList'>
+                    <div class='albumList-left'>
+                        <div class='albumList-left1'>
+                            <img src="{{data.albumList[0].albumUrl}}" alt="">
+                        </div>
+                        <div class='albumList-left2'>
+                            <div class='albumList-left21'>
+                                <img src="{{data.albumList[1].albumUrl}}" alt="">
+                            </div>
+                            <div class='albumList-left22'>
+                                <img src="{{data.albumList[2].albumUrl}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class='albumList-right'>
+                        <div class='albumList-right1'>
+                            <img src="{{data.albumList[3].albumUrl}}" alt="">
+                        </div>
+                        <div class='albumList-right2'>
+                            <img src="{{data.albumList[4].albumUrl}}" alt="">
+                        </div>
+                    </div>
+                </div>
+        </div>  
+
+        <div class="padding-lr-28">
+            <div class='fan-activity-box'>
+                <div class="active-process-title">
+                    粉活动
+                </div>
+                <div class="swiper-wrapper">
+                    {{each data.activityList as activity index}}
+                        <div class="swiper-slide">
+                            <div class="fan-activity">
+                                <div class='act-img' style="background:url('{{activity.detailPicurl}}') no-repeat; background-size: cover"></div>
+                                <div class='detail'>
+                                    <div class='title'>{{activity.detailName}}</div>
+                                    <div class='content-detail'>{{activity.detailDetail}}</div>
+                                    <div class='zan'>
+                                        <span class='zan-num'>赞 0 · 评论 0</span>
+                                        <span class='date'>{{activity.detailBeginTime}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+                
+        </div>
+
+        <div class="padding-lr-28">
+                <div class='fan-activity-box'>
+                    <div class="active-process-title">
+                        粉动态
+                    </div>
+                        {{each data.videoList as video index}}
+                            <div class="fan-news">
+                                <div class='avatar-box'>
+                                    <img class='avatar' src="{{video.userPic}}" alt="">
+                                    <div class='name-box'>
+                                        <div class='name'>{{video.userName}}</div>
+                                        <div class='desc'>{{video.userName}}</div>
+                                    </div>
+                                </div>
+                                <div class='content-box'>{{video.videoAlbumDescription}}</div>
+                                <div class='photo-box'>
+                                    
+                                    <img src="{{video.urls[0]}}" alt="">
+                                    <img src="{{video.urls[0]}}" alt="">
+                                    <img src="{{video.urls[0]}}" alt="">
+                                    
+                                </div>
+                                <div class='date-box'>
+                                    <div class='date'>15:30</div>
+                                    <div class='right-box'>
+                                        <div class='zan'>
+                                            <img src="./src/img/zan.png" alt="">
+                                            <div class='num'>100</div>
+                                        </div>
+                                        <div class='zan'>
+                                            <img src="./src/img/zan.png" alt="">
+                                            <div class='num'>100</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                    
+                        {{/each}}
+                </div>
+                    
+            </div>
+    </div>
+</script>
+<script>
+    // function showMore (){
+    //     $('.fen-team-wall').css('height','auto');
+    // }
+</script>
+</body>
+</html>

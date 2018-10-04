@@ -1,0 +1,116 @@
+@draftW:750/10rem;
+@C000: #000;
+@Cf5: #f5F5F5;
+@C555: #555;
+@click:#0CB8FF;
+@total:#FF7733;
+#details{
+    width: 100%;
+    font-family: "copperplate gothic bold";
+    font-weight: 500;
+}
+
+/*
+ .title{
+    height: 100/@draftW;
+    line-height: 100/@draftW;
+    font-size: 36/@draftW;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: #353535;
+    i{
+        width: 75/@draftW;
+        font-size: 60/@draftW;
+    }
+    span{
+        width: 675/@draftW;
+    }
+}
+ * */
+.r_nav{
+    height: 80/@draftW;
+    line-height: 80/@draftW;
+    display: flex;
+    justify-content: center;
+    background: #FFD600;
+    ul{
+       display: flex;
+       width: calc(100% - 80/@draftW);
+       text-align: center;
+    }
+    li{
+        font-size: 30/@draftW;
+        flex: 0 0 25%;
+        color: #555;  
+    }    
+}
+.date{
+    font-size: 20/@draftW;
+    background-color: #f5f5f5;
+    height: 75/@draftW;
+    line-height: 75/@draftW;
+    span{
+        margin-left: 27/@draftW;
+        color: @C000;
+    }
+}
+.title{
+    height: 130/@draftW;
+    display: flex;
+    font-weight: bold;
+    span:first-child{
+        padding: 0 30/@draftW;
+        margin-top: 36/@draftW;
+        font-size: 32/@draftW;
+        width: 61.4%;
+        color: #333;
+    }
+    span:last-child{
+        margin-top: 40/@draftW;
+        font-size: 30/@draftW;
+        color: #999;
+        margin-right: 30/@draftW;
+    }
+}
+.marked{
+    display: flex;
+    margin: 0 auto;
+    margin-left: 36/@draftW;
+    font-size: 33/@draftW;
+    color: #333;
+    i{
+        display: inline-block;
+        width:24/@draftW;
+        height: 24/@draftW;
+        border-radius: 12/@draftW;
+    }
+    .m_a{
+       i{
+         background-color: @click;  
+       } 
+       span{
+           margin-left: 16/@draftW;
+       }
+    }
+    .m_b{
+        i{
+           background-color: @total; 
+           margin-left: 185/@draftW;
+        }
+        span{
+            margin-left: 16/@draftW;
+        }
+    }
+}
+.t_tatol{
+    margin-top: 24/@draftW;
+    font-size: 35/@draftW;
+    color: #333;
+    span:first-child{
+        margin-left: 80/@draftW;
+    }
+    span:last-child{
+        margin-left: 281/@draftW;
+    }
+}

@@ -1,0 +1,1077 @@
+/*通用*/
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: normal;
+    font-style: normal;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section {
+    display: block;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a {
+    color: #7e8c8d;
+    text-decoration: none;
+    -webkit-backface-visibility: hidden;
+    cursor: pointer;
+}
+li {
+    list-style: none;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
+    outline: none;
+    outline-offset: 0;
+}
+.btn.active, .btn:active{
+    box-shadow: 0 0 0;
+}
+body{
+    background: #f4f4f4;
+}
+.clear{clear: both;}
+.jiange{
+    height: 46px;
+    background: #fff;
+    width:100%;
+}
+.faceBody{
+    min-width: 1140px;
+    margin: 22px auto;
+    padding: 0;
+}
+/*左侧*/
+.faceBody .faceLft{
+    width: 785px;
+    float: left;
+    background: #fff;
+}
+/*个人风采*/
+.faceLft .personStyle{
+    width:100%;
+    background: #fff;
+}
+.personStyle h3{
+    height: 138px;
+    margin:0 138px;
+    background: url("../img/topBg.png") no-repeat;
+    background-position: center;
+    color:#333333;
+    font-size: 40px;
+    text-align: center;
+    line-height: 138px;
+}
+/*全民炫*/
+.personStyle .hyun{
+    margin-left:25px;
+    height: 584px;
+    margin-bottom:102px;
+}
+.hyun h4{
+    width:100%;
+    height: 52px;
+    line-height: 52px;
+    position: relative;
+    margin-bottom:40px;
+}
+.hyun h4>span{
+    color: #333;
+    font-size: 40px;
+    display: inline-block;
+    float: left;
+}
+.hyun h4 .circle-share{
+    position: absolute;
+    right:0;
+    top:13px;
+    height: 26px;
+    line-height: 26px;
+    margin-right: 25px;
+}
+.hyun h4 .circle-share span{
+    color:#666;
+    font-size: 18px;
+    float:left;
+}
+.circle-share .shareList{
+    display: inline-block;
+}
+.circle-share .shareList li{
+    width:27px;
+    float:left;
+    margin-right:10px;
+}
+.shareList li a{
+    display:block;
+    width:27px;
+    height: 26px;
+}
+.shareList li .qzone{
+    background: url("../../common/images/qzoneIcon.png") no-repeat;
+}
+.shareList li .sina{
+    background: url("../../common/images/sinaIcon.png") no-repeat;
+}
+.shareList li .qq{
+    background: url("../../common/images/qqIcon.png") no-repeat;
+}
+.hyun .Hyun-container{
+    width: 100%;
+    height: 492px;
+}
+.hyun .Hyun-container .swiper-slide{
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    width: 80%;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.HyunImg-body{
+    width:100%;
+    height: 492px;
+    border: 1px solid #eee;
+}
+.hyun .Hyun-container .swiper-slide:nth-child(2n) {
+    width: 60%;
+}
+.hyun .Hyun-container .swiper-slide:nth-child(3n) {
+    width: 40%;
+}
+.hyun .Hyun-container .swiper-slide .HyunImg{
+    width:100%;
+    height: 381px;
+    overflow: hidden;
+}
+.hyun .Hyun-container .swiper-slide .HyunImg img{
+    display: block;
+    width: 100%;
+}
+.hyun .Hyun-container .swiper-slide .Hyuntitle{
+    font-size: 30px;
+    color:#333333;
+    padding: 12px 22px 8px 22px;
+    text-align: left;
+}
+.hyun .Hyun-container .swiper-slide .hyunTit{
+    padding: 0 22px;
+    text-align: left;
+    height: 34px;
+    line-height: 34px;
+}
+.hyunTit .huynName{
+    font-size:24px;
+    color:#999999;
+}
+.hyunTit .hyunNum{
+    display: inline-block;
+    float: right;
+    font-size: 22px;
+    color:#999999;
+}
+.hyunNum .grayHeart{
+    display: block;
+    width:25px;
+    height: 21px;
+    float: left;
+    margin-right:7px;
+    margin-top: 6.5px;
+    background: url("../img/grayHeart.png") no-repeat;
+}
+/*发布的服务*/
+.serviceRelease{
+    margin-left:25px;
+    height: 310px;
+    margin-bottom:102px;
+}
+.serviceRelease h4{
+    color: #333;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+.serviceRelease .service-container{
+    width: 100%;
+    height: 226px;
+    overflow: hidden;
+}
+.service-container .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    width: 80%;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.service-container .swiper-slide:nth-child(2n) {
+    width: 60%;
+}
+.service-container .swiper-slide:nth-child(3n) {
+    width: 40%;
+}
+.service-container .swiper-slide .service-info{
+    width: 100%;
+    height: 226px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    box-shadow: 2px 2px 5px #dfdfdf;
+    padding: 24px 0;
+}
+.service-container .swiper-slide .service-info .serviceTx{
+    width: 169px;
+    float: left;
+    text-align: center;
+}
+.serviceTx .serviceTx-img{
+    width:120px;
+    height: 120px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+}
+.serviceTx .serviceTx-img img{
+    display: block;
+    width: 100%;
+}
+.serviceTx>span{
+    font-size: 30px;
+    color: #7de1c3;
+}
+.service-info .serviceTxt{
+    margin-left:182px;
+    padding: 15px 20px 0 0;
+    margin-bottom: 20px;
+}
+.serviceTxt .serviceTxt-content{
+    width: 100%;
+    color:#979797;
+    font-size: 24px;
+    height: 120px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+.serviceTxt .serviceJudge{
+    text-align: left;
+}
+.serviceJudge span{
+    font-size: 24px;
+    color:#333333;
+    display: inline-block;
+    float: left;
+}
+.serviceJudge .star{
+    display: inline-block;
+}
+.serviceJudge .star i{
+    display: block;
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+.serviceJudge .star .yellowStar{
+    background: url("../img/yellowStar.png") no-repeat;
+    background-size: 100%;
+}
+.serviceJudge .star .grayStar{
+    background: url("../img/grayStar.png") no-repeat;
+    background-size: 100%;
+}
+/*发布的文章*/
+.articleRelease{
+    margin-left:25px;
+    height: 318px;
+    margin-bottom:102px;
+}
+.articleRelease h4{
+    color: #333;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+.articleRelease .article-container{
+    width: 100%;
+    height: 234px;
+    overflow: hidden;
+}
+.article-container .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    width: 80%;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.article-container .swiper-slide:nth-child(2n) {
+    width: 60%;
+}
+.article-container .swiper-slide:nth-child(3n) {
+    width: 40%;
+}
+.article-container .articleBdy{
+    width: 100%;
+    height: 234px;
+    overflow: hidden;
+}
+.article-container .articleBdy .articleLft{
+    width: 240px;
+    height: 234px;
+    overflow: hidden;
+    position: relative;
+    float: left;
+}
+.articleBdy .articleLft img{
+    display: block;
+    width: 100%;
+}
+.articleBdy .articleLft .articleFc{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.2);
+}
+.articleBdy .articleText{
+    margin-left: 269px;
+    padding-right:15px ;
+}
+.articleText .articleTitle{
+    width: 100%;
+    color:#333333;
+    font-size: 32px;
+    text-align: left;
+    height: 40px;
+    line-height: 40px;
+}
+.articleText .articleTitle>span{
+    display: block;
+    width:4px ;
+    height: 40px;
+    background: #333;
+    float: left;
+    margin-right: 12px;
+}
+.articleText .articleContent{
+    width: 100%;
+    font-size: 24px;
+    color: #666;
+    margin:15px 0 10px 0;
+    text-align: left;
+}
+.articleText .articleTip{
+    font-size: 24px;
+    color: #333333;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.articleText .articleInfo{
+    width: 100%;
+    color:#979797;
+    font-size: 24px;
+    line-height: 30px;
+    height: 30px;
+}
+.articleInfo .articleRead{
+    display: inline-block;
+    float: left;
+}
+.articleRead .readIcon{
+    display: block;
+    width:27px;
+    height: 22px;
+    background: url("../img/book.png") no-repeat;
+    float: left;
+    margin-right:16px;
+    margin-top: 3px;
+}
+.articleInfo .articlePl{
+    display: inline-block;
+    float: right;
+}
+.articlePl .plIcon{
+    display: block;
+    width:30px;
+    height: 26px;
+    background: url("../img/personTalk.png") no-repeat;
+    float: left;
+    margin-right:16px;
+}
+/*加入的圈子*/
+.addCircle{
+    margin-left:25px;
+    height: 316px;
+    margin-bottom:58px;
+}
+.addCircle h4{
+    color: #333;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+.addCircle .circle-container{
+    width: 100%;
+    height: 232px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.addCircle .circle-container .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.addCircle .circle-container .circleBdy{
+    width: 100%;
+    height: 228px;
+    overflow: hidden;
+    border:1px solid #eee;
+    box-shadow: 2px 2px 5px #dfdfdf;
+}
+.circle-container .circleBdy .addCrImg{
+    width: 121px;
+    height: 121px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin: 20px auto 10px;
+}
+.circleBdy .addCrImg img{
+    display: block;
+    width: 100%;
+}
+.circleBdy .addCrTit{
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.circleBdy .addCrTit .redZuan{
+    display: block;
+    width: 24px;
+    height: 20px;
+    background: url("../img/zuanshi.png") no-repeat;
+    float: left;
+    margin-right: 14px;
+    margin-top: 5.5px;
+}
+.circleBdy .addCrTit .king{
+    display: block;
+    width: 28px;
+    height: 20px;
+    background: url("../img/king.png") no-repeat;
+    float: left;
+    margin-right: 14px;
+    margin-top: 5.5px;
+}
+.addCrTit .addCrInfo{
+    font-size: 22px;
+    color: #333333;
+}
+.starWrappe{
+    width: 100%;
+    height: 16px;
+}
+.circleBdy .addCrStar{
+    display: inline-block;
+    margin: 0 auto;
+}
+.addCrStar .redStar{
+    display: block;
+    float: left;
+    width: 16px;
+    height: 16px;
+    background: url("../img/redstar.png") no-repeat;
+    margin-right: 6px;
+}
+/*我的关注*/
+.faceLft .myFallow{
+    width:100%;
+    background: #fff;
+}
+.myFallow h3{
+    height: 138px;
+    margin:0 138px;
+    background: url("../img/topBg.png") no-repeat;
+    background-position: center;
+    color:#333333;
+    font-size: 40px;
+    text-align: center;
+    line-height: 138px;
+}
+/*云店*/
+.myFallow .loveStore{
+    margin-left:25px;
+    height: 338px;
+    margin-bottom:102px;
+}
+.loveStore h4{
+    width:100%;
+    height: 52px;
+    line-height: 52px;
+    margin-bottom:40px;
+    color: #333;
+    font-size: 40px;
+}
+.loveStore .loveStore-container{
+    width: 100%;
+    height: 254px;
+    margin: 0px auto;
+}
+.loveStore-container .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.storeBody{
+    width: 100%;
+    height: 254px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+.storeBody img{
+    display: block;
+    width: 100%;
+}
+.storeBody .storeTti{
+    text-align: center;
+    color:#fff;
+    font-size: 30px;
+    background:#000;
+    padding:13px 0;
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    width: 100%;
+}
+/*关注的个人*/
+.myFallow .lovePerason{
+    margin-left:25px;
+    height: 263px;
+    margin-bottom:60px;
+}
+.lovePerason h4{
+    width:100%;
+    height: 52px;
+    line-height: 52px;
+    margin-bottom:40px;
+    color: #333;
+    font-size: 40px;
+}
+.lovePerason .lovePerason-container{
+    width: 100%;
+    height: 179px;
+    margin: 0px auto;
+}
+.lovePerason-container .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.lovePerason-bdy{
+    width:100%;
+    height: 179px;
+    overflow: hidden;
+}
+.lovePerason-bdy .lovePs{
+    width: 128px;
+    height: 128px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.lovePerason-bdy .lovePs img{
+    display: block;
+    width: 100%;
+}
+.lovePerason-bdy .loveNmae{
+    font-size: 26px;
+    margin:12px 0;
+    color: #40372e;
+}
+/*右侧*/
+.faceRgt{
+    width: 328px;
+    float: right;
+}
+/*用户信息*/
+.faceRgt .faceUser{
+    width: 328px;
+    height: 421px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom:30px;
+}
+.faceUser .userBg{
+    width: 100%;
+    height: 421px;
+    overflow: hidden;
+    position: relative;
+}
+.userBg img{
+    display: block;
+    width: 100%;
+}
+.userBg .headTp{
+    position: absolute;
+    z-index:2;
+    width: 100%;
+    height: 280px;
+    background: url("../img/userTip.png") no-repeat;
+    background-size: 100%;
+    bottom: 0;
+    left: 0;
+}
+.faceUser .userVisit{
+    position: absolute;
+    top:28px;
+    left:28px;
+    z-index: 3;
+}
+.userVisit .userVisit-visit,.userVisit .userVisit-love{
+    margin-bottom: 16px;
+}
+.userVisit-visit .visitNum ,.userVisit-love .loveNum{
+    font-size: 13px;
+    color:#a286f8;
+    display: block;
+}
+.userVisit-visit .visitTit ,.userVisit-love .loveTit{
+    font-size: 9px;
+    color:#fff;
+    background: #000;
+    display: inline-block;
+    padding: 2px;
+    margin: 5px 0 0 0;
+}
+.faceUser .userInformation{
+    position: absolute;
+    bottom:14px;
+    left:12px;
+    z-index: 3;
+    width: 304px;
+}
+.userInformation .userInformation-lft{
+    display: inline-block;
+}
+.userInformation-lft .faceName{
+    width: 100%;
+}
+.userInformation-lft .faceName>span{
+    font-size: 22px;
+    color:#333333;
+    display: inline-block;
+    margin-right:18px ;
+    float: left;
+}
+.faceName .faceOld{
+    width: 45px;
+    height: 19px;
+    background: url("../img/userBg.png") no-repeat;
+    background-size: 100%;
+    color:#fff;
+    font-size:7px ;
+    float: right;
+    margin: 6px 0;
+}
+.faceOld i{
+    display: block;
+    width: 16px;
+    height: 19px;
+    float: left;
+}
+.faceOld .man{
+    background: url("../img/man.png") no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+.faceOld .woman{
+    background: url("../img/icon-woman.png") no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+.faceOld span{
+    display: inline-block;
+}
+.userInformation-lft>span{
+    color: #bbbbbb;
+    font-size: 10px;
+}
+.dingwei {
+    width: 100%;
+}
+.dingwei .address{
+    display: block;
+    width: 8px;
+    height: 10px;
+    background: url("../img/address.png") no-repeat;
+    float: left;
+    margin-right: 5px;
+    margin-top: 3.5px;
+}
+.dingwei span{
+    display: block;
+    color: #666;
+    font-size: 10px;
+}
+.userInformation-Rgt{
+    display: inline-block;
+    float: right;
+    padding: 5px 0;
+    color:#999999;
+    font-size: 10px;
+    cursor: pointer;
+}
+.userInformation-Rgt .loveIocn{
+    display: block;
+    width: 20px;
+    height: 17px;
+    background: url("../img/redHeart.png") no-repeat;
+    margin: 0 auto;
+}
+/*更多相册*/
+.userImages{
+    width: 100%;
+    margin-bottom: 22px;
+}
+.userImages .imagesTitle{
+    width: 100%;
+    font-size: 20px;
+    color:#666666;
+    height: 26px;
+    line-height: 26px
+    margin-bottom:22px;
+}
+.userImages .imagesTitle .titleHr{
+    display: block;
+    float: left;
+    width: 4px;
+    height: 26px;
+    background: #e0041a;
+    margin-right: 5px;
+}
+.userImages .imageList{
+    width: 100%;
+    overflow: hidden;
+    margin-top: 22px;
+}
+.imageList .image-info{
+    width:160px ;
+    height: 160px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+    margin-bottom: 8px;
+}
+.imageList .image-info:nth-child(2n){
+    margin-left:8px;
+}
+.image-info>span{
+    position: absolute;
+    left:8px;
+    bottom:7px;
+    color:#fff;
+    font-size: 16px;
+}
+/*玩家圈*/
+.circlePlayer{
+    height: auto;
+    width: 100%;
+}
+.circlePlayer h4{
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    background: #7a70ee;
+    border-radius: 5px 5px 0 0;
+    padding:0 14px;
+    font-size: 20px;
+}
+.circlePlayer h4 .topIocn{
+    display: block;
+    width: 13px;
+    height: 20px;
+    background: url("../img/topIcon.png") no-repeat;
+    float: left;
+    margin-top: 15px;
+    margin-right: 12px;
+}
+.circlePlayer .hotSaleList{
+    width: 100%;
+}
+.circlePlayer .hotSaleList li{
+    padding: 19px 14px 6px;
+    background: #fff;
+    height: 125px;
+    position: relative;
+    overflow: hidden;
+}
+.hotSaleList li .topHead{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.hotSaleList li .topHead i{
+    display: block;
+    width: 30px;
+    height: 40px;
+    position: absolute;
+    top: 2px;
+}
+.topHead .topNum1{
+    background: url("../img/topNum1.png") no-repeat;
+}
+.topHead .topNum2{
+    background: url("../img/topNum2.png") no-repeat;
+}
+.topHead .topNum3{
+    background: url("../img/topNum3.png") no-repeat;
+}
+.topHead .topNum4{
+    background: url("../img/topNum4.png") no-repeat;
+}
+.topHead .topNum5{
+    background: url("../img/topNum5.png") no-repeat;
+}
+.hotSaleList li .topHead img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #efefef;
+}
+.hotSaleList li .topInfo{
+    margin-left: 117px;
+    height: 100px;
+}
+.topInfo .topInfo-message{
+    font-size: 20px;
+    color:#666;
+    width: 183px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.topInfo .topInfo-userName{
+    font-size: 18px;
+    color:#ccc;
+    margin:11px 0 18px;
+    width: 183px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.topInfo .fans{
+    display: inline-block;
+    float: left;
+    margin-right: 24px;
+    font-size: 18px;
+    color:#666;
+}
+.topInfo .fans i{
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: url("../img/heart.png") no-repeat;
+    float: left;
+}
+.topInfo .fans span,.topInfo .service span{
+    display: block;
+    height: 18px;
+    margin-left: 23px;
+    line-height: 18px;
+}
+.topInfo .service{
+    display: inline-block;
+    font-size: 18px;
+    color:#666;
+}
+.topInfo .perNum i{
+    display: block;
+    width: 20px;
+    height: 19px;
+    background: url(../img/personNum.png) no-repeat;
+    background-position: center;
+    background-size: 100%;
+    margin-right: 5px;
+    float: left;
+}
+.articleTip li{
+    display: inline-block;
+    float: left;
+    margin-right: 25px;
+}

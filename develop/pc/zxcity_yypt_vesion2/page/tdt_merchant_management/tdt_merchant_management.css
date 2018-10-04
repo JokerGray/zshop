@@ -1,0 +1,287 @@
+/*禁止选择*/
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+}
+.layui-btn.my-btn{
+    height: 28px;
+    line-height: 28px;
+    padding: 0 16px;
+    font-size: 12px;
+}
+/*common*/
+.p0{
+    padding: 0!important;
+}
+.w30{
+    width: 30%!important;
+}
+.mr5{
+    margin-right: 5%!important;
+}
+.tr90{
+    transform: rotate(90deg)!important;
+}
+.w70{
+    width: 70%!important;
+}
+.w100{
+    width: 100%!important;
+}
+.dn{
+    display: none!important;
+}
+.h100{
+    height: 100px!important;
+}
+/*common end*/
+
+
+ul.tool-box-ul {
+    padding: 35px 25px;
+}
+
+ul.tool-box-ul>li.tool-box-li {
+    width: 250px;
+    margin-right: 20px;
+    float: left;
+}
+
+div.layui-input-inline {
+    width: 100%!important;
+}
+
+ul.tool-box-ul>li.tool-box-li .tool-box-label {
+    display: block;
+    font: normal 14px/2em "微软雅黑";
+}
+
+#searchBtn {
+    width: 112px;
+    height: 38px;
+    position: relative;
+    top: 27px;
+}
+/*搜索框结束*/
+#addBtn{
+    float: right;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+}
+#resetBtn {
+    width: 112px;
+    height: 38px;
+    position: relative;
+    top: 27px;
+}
+
+/*APP开始*/
+.layui-app{
+    padding: 0px 25px;
+}
+.layui-app .select-search{
+
+}
+.layui-app .select-search .select-search-div{
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 10px;
+    float: left;
+    color: #000000;
+    font: normal 14px/40px "微软雅黑";
+    text-align: center;
+    background-color: #ECECEC;
+    border: 1px silid #C6C6C6;
+    cursor: pointer;
+    transition: all .3s;
+}
+.layui-app .select-search .select-search-div.act{
+    color: #fff;
+    background-color: #009688;
+}
+.layui-app .app-table{
+    margin-top: 25px;
+    border-top: 2px solid #009688;
+}
+.layui-app .app-table div.layui-form{
+    margin-top: 0;
+}
+.layui-app .app-table div.layui-form .layui-table-body{
+    overflow-x: hidden;
+}
+/*分页*/
+#layTablePage{
+    text-align: right;
+}
+/*LAYER*/
+
+#addLayer{
+    display: none;
+    padding: 30px 40px;
+}
+.required-icon{
+    color: red;
+}
+.app-layer{
+    border: 1px solid #E3E3E3;
+    border-top: 2px solid #009688;
+}
+.app-layer .package{
+    height: 40px;
+    line-height: 40px;
+    background-color: #F5F5F5;
+    cursor: pointer;
+}
+.app-layer .package .package-title{
+    float: left;
+    margin-left: 15px;
+}
+.app-layer .package .package-some{
+    float: right;
+}
+.app-layer .package .package-some>i.icon{
+    padding: 5px;
+    color:#009688;
+    display: inline-block;
+    transition: all 0.3s;
+}
+.app-layer .package .package-some>i.description{
+    font-style: normal;
+    color:#000;
+    font-size: 12px;
+}
+.app-layer .package .package-some>i.deg{
+    transform: rotateX(180deg);
+}
+.app-layer .app-layer-content{
+    padding: 35px 60px;
+}
+.app-layer .tool-box-li:nth-of-type(3n){
+    margin-right: 0!important;
+}
+.app-layer .layer-place{
+    display: none;
+    font: normal 12px/30px "微软雅黑";
+    color: #8D8D8D;
+    text-align: center;
+    cursor: pointer;
+}
+.app-layer .layer-place i{
+    font: normal 12px/30px "微软雅黑";
+    color: #8D8D8D;
+    padding: 5px;
+}
+#uploadImg1,#uploadImg2,#uploadImg3,#uploadImg4,#uploadImg5{
+    width: 100%;
+    height: 222px;
+}
+.tool-add-box {
+    padding: 0 35px;
+}
+button.my-btn {
+    height: 28px;
+    line-height: 28px;
+    padding: 0 16px;
+    font-size: 12px;
+}
+.tool-add-box .add {
+    width: 112px;
+    height: 38px;
+    float: right;
+}
+.tool-add-box .add:first-child{
+    margin-left: 10px;
+}
+
+/*新增*/
+#addMerchant{
+    display: none;
+    padding: 30px 40px;
+}
+/*头条初始化*/
+#addHeadlines{
+    display: none;
+    padding: 30px 40px;
+}
+/*账户初始化*/
+#moneyReset{
+    display: none;
+    padding: 30px 40px;
+}
+/*商户升级*/
+#upgradeLayer{
+    display: none;
+    padding: 30px 40px;
+}
+/*推荐人*/
+#recommendTip{
+    display: none;
+    padding: 30px 40px;
+}
+#laypageTip{
+    text-align: right;
+}
+/*商户权限初始化*/
+#promissReset{
+    display: none;
+    height: 100%;
+    padding: 30px 40px;
+}
+#promissReset .app-layer{
+    height: 100%
+}
+#promissReset .left-app{
+    float: left;
+    width: 60%;
+}
+#promissReset .right-app{
+    float: left;
+    width: 40%;
+}
+#promissReset .layui-input-inline{
+    width: 250px;
+}
+#fatherTree{
+    background: gainsboro;
+    padding: 5px;
+    line-height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.mid-line{
+    position: absolute;
+    background-color:#009688;
+    height: 100%;
+    width: 2px;
+    left: 50%;
+    margin-left: -1px;
+
+}
+#promissReset #treeDemo{
+    height: 304px;
+    overflow: auto;
+}
+
+#progross{
+    margin: 20px 0;
+}
+#toolSearchLayer,#toolRelizeLayer{
+    position: relative;
+    top: 27px;
+}
+.table-lt{
+    padding:0 25px;}
+.layui-table-view .layui-table{
+    width: 100%;}
+.layui-app{
+    padding:0 25px!important;}

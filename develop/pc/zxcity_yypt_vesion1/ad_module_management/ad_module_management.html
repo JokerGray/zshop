@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>广告模板设置</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- 大家都在用 -->
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" media="all" />
+
+    <!-- 区域下拉样式 -->
+    <link rel="stylesheet" type="text/css" href="../advertising/common/css/advertising.css" />
+    <!-- 广告模板 -->
+    <link rel="stylesheet" href="css/ad_module_management.css" />
+</head>
+
+<body>
+
+    <!-- 注: 不能包在vue中 -->
+    <div class="advertising-top">
+        <div class="advertising-area">
+            <div class="area-input" data-num="0">
+                <i class="address"></i>
+                <span data-pro="42" data-city="4201" class="area-name">武汉市</span>
+                <i class="layui-icon">&#xe61a;</i>
+            </div>
+            <div class="area-all">
+                <span class="close">x</span>
+                <div class="selectarea">
+                    <ul>
+                        <li class="actv">
+                            <a>
+                                <span data-id="42" class="provice-name">湖北省</span>
+                                <i class="layui-icon">&#xe61a;</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span data-id="4201" class="city-name">武汉市</span>
+                                <i class="layui-icon">&#xe61a;</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="arealist selectprovince actv">
+                    <ul>
+                    </ul>
+                </div>
+                <div class="arealist selectcity">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="vueWrapper">
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- tabs -->
+                <ul id="tbRegionType" class="nav nav-tabs nav-justified">
+                    <li role="presentation">
+                        <a href="#tabs-1" data-toggle="tab">商圈</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#tabs-2" data-toggle="tab">社区</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#tabs-3" data-toggle="tab">职能部门</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#tabs-4" data-toggle="tab">地铁</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#tabs-5" data-toggle="tab">公交</a>
+                    </li>
+                </ul>
+
+                <!-- 占位, 不用 -->
+                <div class="tab-content">
+                    <div id="tabs-1" class="tab-pane" role="tabpanel">
+                    </div>
+                </div>
+
+                <!-- 这个才是内容tab-content -->
+                <div id="pnlRegions">
+                    <!-- easy1 区域级别列表 -->
+                    <div class="easy1">
+                        <form class="form-vertical" role="form">
+                            <fieldset v-cloak v-for="item in regionItems">
+                                <legend> {{ item.groupName }}
+                                    <button type="button" class="btn btn-primary btn-wide" style="margin-left: 1rem;" @click="showGroupMod(item, $event)">设置</button>
+                                </legend>
+                                <div class="form-group">
+                                    <label class="btn btn-default" v-for="(m,index) in item.members">
+                                        <div :id="'rgntag' + index" class="iradio_square-blue checked" style="position: relative;" v-if="m.checked" @click="showPerMod(m,$event)">
+                                            <input type="radio" name="options" style="position: absolute; opacity: 0;" checked="">
+                                            <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                        </div>
+                                        <div :id="'rgntag' + index" class="iradio_square-blue" style="position: relative;" v-else @click="showPerMod(m, $event)">
+                                            <input type="radio" name="options" style="position: absolute; opacity: 0;" checked="">
+                                            <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                        </div>
+                                        <span>{{ m.regionName }}</span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <!-- ./easy1 -->
+
+
+
+                    <!-- easy2 广告模板设置页 -->
+                    <div class="easy2">
+                        <!-- 标题栏 -->
+                        <div class="ph-header">
+                            <button type="button" class="close" @click="slideOutModule" style="float:right;margin-right:3rem;font-size:36px;margin-top:0.75rem;">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h1 style="display: inline;margin-right:1rem;">
+                                <span id="regionText"></span>
+                            </h1>
+                            <small class="label label-info">广告模板</small>
+                        </div>
+
+                        <!-- 广告位 -->
+                        <div id="adPlaceholder" class="col-md-10 col-md-offset-1">
+                            <!-- 广告位1 -->
+                            <div id="ph-1" class="col-lg-6">
+                                <div id="myCarousel" class="carousel">
+                                    <!-- 导航指示 -->
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#myCarousel" :data-slide-to="index" v-for="(item,index) in gallery1" v-bind:class="{active:item.active}"></li>
+                                    </ol>
+
+                                    <!-- 内容 -->
+                                    <div class="carousel-inner">
+                                        <div v-for="(item,index) in gallery1" v-bind:class="[{active:item.active}, item.divClass]">
+                                            <div v-if="item.video">
+                                                <video class="video-fluid" autoplay loop >
+                                                    <source v-bind:src=item.resUrl type="video/mp4" />
+                                                </video>
+                                            </div>
+                                            <div v-else class="image-fluid" v-bind:style="{ backgroundImage: 'url(' + item.resUrl + ')' }">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 左右控制键 -->
+                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                        <span class="sr-only">上一个</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                        <span class="sr-only">下一个</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- 广告位2 -->
+                            <div id="ph-2" class="col-lg-6">
+                                <div id="myCarousel2" class="carousel">
+                                    <!-- 导航指示 -->
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#myCarousel2" :data-slide-to="index" v-for="(item,index) in gallery2" v-bind:class="{active:item.active}"></li>
+                                    </ol>
+
+                                    <!-- 内容 -->
+                                    <div class="carousel-inner">
+                                        <div v-for="(item,index) in gallery2" v-bind:class="[{active:item.active}, item.divClass]">
+
+
+                                            <div v-if="item.video">
+                                                <video class="video-fluid" autoplay loop >
+                                                    <source v-bind:src=item.resUrl type="video/mp4" />
+                                                </video>
+                                            </div>
+                                            <div class="image-fluid" v-bind:style="{ backgroundImage: 'url(' + item.resUrl + ')' }" v-else>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 左右控制键 -->
+                                    <a class="left carousel-control" href="#myCarousel2" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                        <span class="sr-only">上一个</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel2" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                        <span class="sr-only">下一个</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 三八线 -->
+                        <div class="clear"></div>
+                        <!-- 广告列表 -->
+                        <div id="adContainer" class="row collapse ">
+
+                            <div class="panel panel-warning" style="width:80%;display:block; margin:0 auto;margin-top:10px;margin-bottom:30px;">
+                                <div class="panel-heading">选择广告</div>
+                                <div class="panel-body">
+
+                                    <div>
+                                        <div class="card" v-for="item in adItems">
+                                            <img class="card-img-top" v-bind:src=item.coverUrl v-bind:alt=item.name v-if="item.resType === '1'" @click="setPlaceholder(item)">
+                                            <img class="card-img-top" src="image/default-video.png" alt="视频" v-else-if="item.resType === '2'" @click="setPlaceholder(item)">
+
+
+                                            <div class="card-body">
+                                                <h4 class="card-title">{{ item.name }}
+                                                    <small>({{ item.itemCount }})</small>
+                                                </h4>
+                                                <!-- <small class="card-text">{{item.createTime}}</small> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 三八线 -->
+                                    <div class="clear"></div>
+                                    <!-- 分页栏 -->
+                                    <div id="pgrAdvertise" class="pager text-center"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./easy2 -->
+                </div>
+                <!-- ./pnlRegions -->
+
+            </div>
+        </div>
+
+
+        <div id="pnlAlert">
+            <div id="lrt-1" class="alert alert-info alert-dismissible  fade in" role="alert"  data-auto-dismiss="3000">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">&times;</a>
+                <strong>提示: </strong> 点击区域的名称, 可查看和修改该区域的广告模板.
+            </div> 
+            
+            <div id="lrt-2" class="alert alert-success alert-dismissible  fade in" role="alert" data-auto-dismiss="3000">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">&times;</a>
+                <strong>提示: </strong> 点击分组右边的设置按钮, 对该分组下所有区域的广告模板进行设置.
+            </div> 
+        </div>
+
+
+        <!-- 底部工具栏 -->
+
+
+        <div id="pnlModuleButtons" class="row">
+
+            <div class="pull-right">
+                <button type="button" class="btn btn-default btn-wide" @click="slideOutModule">关闭</button>
+                <button type="button" class="btn btn-primary btn-wide" @click="saveModule">保存</button>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <!-- plugins -->
+    <script type="text/javascript" src="../common/assets/vue/vue.min.js"></script>
+    <script type="text/javascript" src="../common/assets/jquery.nicescroll/jquery.nicescroll.iframehelper.min.js"></script>
+    <script type="text/javascript" src="../common/assets/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+    <!-- job stuff-->
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="../common/js/util/util.js"></script>
+    <script type="text/javascript" src="../advertising/common/js/advertis.js"></script>
+    <!-- preference -->
+    <script type="text/javascript" src="js/ad_module_management.js"></script>
+
+    <script>        
+        $('.alert').each(function (index, element) {
+            var $element = $(element),
+                timeout  = $element.data('auto-dismiss') || 5000;
+
+            window.setTimeout(function () { 
+                $("#" + $element.prop("id")).alert("close");
+            }, timeout);
+        });
+
+        
+    </script>
+</body>
+
+<script>
+
+</script>
+
+</html>

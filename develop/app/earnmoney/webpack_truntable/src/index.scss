@@ -1,0 +1,411 @@
+// px转成rem的方法
+@function ptr($px) {
+    @return ($px/26) * 1rem;
+}
+// 以图片作为按钮之类的通用样式
+@mixin imgForContent($width, $height){
+    display: inline-block;
+    width: ptr($width);
+    height: ptr($height);
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: top;
+}
+// 以行居中的样式
+@mixin blockCenter{
+    display: block;
+    margin: 0 auto;
+}
+// css呼吸效果
+.breath {
+    animation: breath 3s linear infinite;
+}
+@keyframes breath {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    25% { transform: translate3d(0, 0, 0) scale(0.98); }
+    50% { transform: translate3d(0, 0, 0) scale(1); }
+    75% { transform: translate3d(0, 0, 0) scale(1.02); }
+    100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+// css沉浮效果
+.updown {
+    animation: updown 1s linear infinite;
+}
+@keyframes updown {
+    0% { transform: translate3d(0, 0, 0)}
+    50% { transform: translate3d(0, -0.5rem, 0)}
+    100% { transform: translate3d(0, 0, 0)}
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+html{
+    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+html, body{
+    height: 100%;
+}
+// 最大宽度设定为750
+@media screen { html { font-size: 70%!important; } }
+@media screen and (min-width: 320px) { html { font-size: 70%!important; } }
+@media screen and (min-width: 375px) { html { font-size: 87.890625%!important; } }
+@media screen and (min-width: 414px) { html { font-size: 97.03%!important; } }
+@media screen and (min-width: 480px) { html { font-size: 112.5%!important; } }
+@media screen and (min-width: 560px) { html { font-size: 131.25%!important; } }
+@media screen and (min-width: 640px) { html { font-size: 150%!important; } }
+@media screen and (min-width: 720px) { html { font-size: 168.75%!important; } }
+// @media screen and (min-width: 750px) { html { font-size: 175.78125%!important; } }
+// @media screen and (min-width: 800px) { html { font-size: 187.5%!important; } }
+// @media screen and (min-width: 960px) { html { font-size: 225%!important; } }
+
+// 全局背景
+.container{
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    display: block;
+    height: 100%;
+    background: url(./img/wjzq_shou_bg.png) no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+// 顶部样式
+.contentTop{
+    display: flex;
+    justify-content: space-between;
+    padding-right: ptr(10);
+
+    // 支付1z币的闪亮背景
+    .clickMeImgBg, .clickMeImgBgShow{
+        margin-top: ptr(42);
+        @include imgForContent(243, 121);
+        box-sizing: content-box;
+        z-index: 1;
+    }
+    .clickMeImgBgShow{
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 0;
+        pointer-events: none;
+    }
+    .clickMeImgBgShow.active{
+        background-image: url(./img/wjzq_zxzh_guang2.png);
+    }
+    // 支付1z币的图案
+    .clickMeImg{
+        margin: ptr(28) 0 ptr(10) ptr(25);
+        background-image: url(./img/wjzq_zxzh_xing.png);
+        @include imgForContent(193, 67);
+    }
+    // 点击箭头
+    .clickArrow{
+        background-image: url(./img/wjzq_jiantou.png);
+        @include imgForContent(46, 51);
+        @include blockCenter;
+        pointer-events: none;
+    }
+    // 点击文字
+    .clickText{
+        background-image: url(./img/click_me_text.png);
+        @include imgForContent(175, 50);
+        @include blockCenter;
+        pointer-events: none;
+    }
+    // 智账余额
+    .contentAccount{
+        position: relative;
+        background-image: url(./img/wjzq_zxzh_yue.png);
+        @include imgForContent(299, 176);
+        color: #fad28c;
+        font-size: ptr(26);
+        padding-top: ptr(125);
+        text-align: center;
+    }
+    // 智账背景
+    .contentAccountBg{
+        position: absolute;
+        @include imgForContent(351, 228);
+        top: ptr(-26);
+        left: ptr(-26);
+    }
+    .contentAccountBg.active{
+        background-image: url(./img/wjzq_zxzh_yueguang.png);
+    }
+    // 移动到智账下的箭头，边距会变
+    .contentAccount .clickArrow{
+        margin-top: ptr(16);
+    }
+    .contentLantern{
+        background-image: url(./img/wjzq_wjz_dl.png);
+        @include imgForContent(119, 249);
+    }
+
+}
+
+// 游戏规则
+.rule{
+    position: relative;
+    display: inline-block;
+    padding: 0 1px;
+    left: ptr(25);
+    top: ptr(48);
+    font-size: ptr(28);
+    color: #ffef6c;
+    text-decoration: none;
+    border-bottom: 1px solid #ffef6c;
+    z-index: 10;
+}
+.ruleLayer{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 999;
+    transition: all 0.2s ease-out;
+    transform: translate3d(0, 100%, 0);
+}
+.ruleLayer.show{
+    transform: translate3d(0, 0, 0);
+}
+.ruleBg{
+    position: relative;
+    @include imgForContent(570, 480);
+    background-image: url(./img/wjzq_gz_tc.png);
+    vertical-align: middle;
+    color: #333;
+
+    .ruleTitle{
+        display: block;
+        text-align: center;
+        font-size: ptr(32);
+        height: ptr(100);
+        line-height: ptr(100);
+
+        .iconContent{
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: ptr(30) ptr(28) ptr(30) ptr(28);
+
+            .iconClose{
+                position: relative;
+                @include imgForContent(22, 22);
+                background-image: url(./img/wjzq_chacha.png);
+                vertical-align: middle;
+                line-height: ptr(22);
+            }
+        }
+    }
+
+    p{
+        padding: 0 ptr(30) 0 ptr(30);
+        font-size: ptr(26);
+        text-align: left;
+        line-height: 1.5;
+    }
+    p.p1{
+        padding-top: ptr(20);
+    }
+    .footer{
+        position: absolute;
+        display: block;
+        width: 100%;
+        bottom: ptr(20);
+        font-size: ptr(24);
+        text-align: center;
+    }
+}
+
+// 转盘样式，大圆盘背景
+.contentTurntable{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: ptr(700);
+    max-width: 100%;
+    height: ptr(700);
+    margin: 0 auto;
+    background: url(./img/wjzq_zhuanpan.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    overflow: hidden;
+    z-index: 9;
+
+    // 跑马灯
+    .truntableLight{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: ptr(615);
+        height: ptr(615);
+        background: url(./img/wjzq_dengguang.gif) no-repeat;
+        background-size: contain;
+    }
+    // 转盘角度背景
+    .truntableWheel{
+        display: block;
+        width: ptr(531);
+        height: ptr(531);
+        background: url(./img/qjzq_neiyuan.png) no-repeat;
+        background-size: contain;
+        transform-origin: center center;
+        
+    }
+    // 中奖转盘旋转的可能的角度和时间
+    @for $i from 0 through 9 {
+        .truntableWheel.award-#{$i}{
+            transform: rotate(#{4320 - 36*$i}deg) translate3d(0, 0, 0);
+            transition: all 8s ease-in-out;
+        }
+    }
+    
+    // 奖品
+    .awardContent{
+        position: absolute;
+        display: inline-block;
+        vertical-align: top;
+        height: ptr(265);
+        width: ptr(110);
+        left: 50%;
+        margin-left: ptr(-55);
+        text-align: center;
+        font-size: 12px;
+        padding: ptr(10) ptr(15);
+        transform-origin: center bottom;
+
+        .awardImg{
+            max-width: ptr(80);
+            max-height: ptr(60);
+            min-height: ptr(40);
+            display: block;
+            margin: ptr(5) auto ptr(10);
+            pointer-events: none;
+        }
+        .awardText{
+            display: block;
+            color: white;
+            pointer-events: none;
+        }
+    }
+    // 奖品旋转的角度，10个奖品
+    @for $i from 0 through 9 {
+        .awardContent:nth-of-type(#{$i+1}){
+            transform: rotate(#{36*$i}deg);
+        }
+    }
+    
+    // 按钮，居中显示，具体点击以其他方式代替
+    .truntableImg{
+        position: absolute;
+        top: ptr(85);
+        left: 50%;
+        @include imgForContent(183, 348);
+        margin-left: ptr(-91);
+        background-image: url(./img/wjzq_kaishi_hui.png);
+        pointer-events: none;
+
+        .truntableBtn{
+            position: absolute;
+            display: block;
+            height: ptr(183);
+            width: ptr(183);
+            bottom: 0;
+            cursor: pointer;
+            pointer-events: all;
+        }
+    }
+    .truntableImg.active{
+        background-image: url(./img/wjzq_kaishi.png);
+    }
+}
+// 赢家样式
+.contentWinner{
+    position: absolute;
+    bottom: 0;
+    display: block;
+    text-align: left;
+    padding: 0 ptr(30);
+    border-top: ptr(20) solid rgba(0, 0, 0, 0.12);
+    border-bottom: ptr(40) solid rgba(0, 0, 0, 0.12);
+    bottom: 0;
+    width: 100%;
+    max-height: ptr(250);
+    overflow: hidden;
+    color: #b4b4b4;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: ptr(23);
+    pointer-events: none;
+
+    .item{
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: ptr(5) 0;
+    }
+    .item.active{
+        color: #FF0000;
+    }
+}
+
+// 宝箱样式
+.contentBox{
+    position: fixed;
+    right: ptr(24);
+    bottom: ptr(24);
+    @include imgForContent(241, 228);
+    background-image: url(./img/wjzq_bx@2x.png);
+}
+
+// 加载失败样式
+.fail_load{
+    position:fixed;
+    top: 0;
+    width: 100%;
+    background-color:#fff;
+    z-index: 9999;
+    .pic{
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        i{
+            margin-top: ptr(200);
+            display: block;
+            width: ptr(246);
+            height: ptr(289);
+        }
+    }
+    .text{
+        margin:ptr(28) 0; 
+        color:#999;
+        font-size: ptr(38);
+        text-align: center;
+    }
+    .link_a{
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        p{
+            font-size: ptr(30);
+            color:#fd9d0a;
+            text-decoration: none;
+            border-bottom:1px solid #fd9d0a;
+        } 
+    } 
+}

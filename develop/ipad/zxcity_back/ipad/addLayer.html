@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>优惠弹出层</title>
+    <link rel="stylesheet" href="../assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/addLayer.css"/>
+    <link rel="stylesheet" href="../assets/kindeditor-4.1.7/themes/default/default.css"/>
+</head>
+<body>
+<div class="plarLayer">
+    <!-- <h3>图片设置</h3> -->
+    <form>
+        <div class="plarLayer_container">
+            <div class="plarLayer_lft">
+                <div class="plarLayer-class">
+                    <div class="form-group">
+                        <label for="disabledClass">请选择大类：</label>
+                        <select id="disabledClass" class="form-control">
+                            <option>商品</option>
+                            <option>服务</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleName">商品名称：</label>
+                    <input type="text" class="form-control" id="exampleName" disabled="true">
+                </div>
+                <div class="form-group">
+                    <label for="examplePrice">商品价格：</label>
+                    <input type="text" class="form-control" id="examplePrice" disabled="true">
+                </div>
+                <!--商业介绍-->
+                <div class="plarContent">
+                    <p>商品详细介绍：</p>
+                    <div class="plarContent-text">
+                        <textarea style="width: 100%; height: 144px;" id="detail" name="detail" class="form-control required" aria-required="true" ></textarea>
+                    </div>
+                </div>
+                <!--滚动字幕-->
+                <div class="plarContent">
+                    <p>滚动条字幕：</p>
+                    <textarea class="form-control" rows="3">hahahah</textarea>
+                </div>
+            </div>
+            <div class="plarLayer_rgt">
+                <div class="showImg">
+                    <img src="image/placeholder_img_01.png" />
+                </div>
+                <a href="javascript:;" class="plarLayer_file">【<span>设置图片</span>】
+                    <input type="file" accept="image/png,image/gif" name="file">
+                </a>
+            </div>
+        </div>
+        <div class="pplar-import">
+            <button class="pplBtn pplImport" type="button" value="导入">导入</button>
+        </div>
+    </form>
+</div>
+<script src="../assets/js/jquery-1.8.2.min.js"></script>
+<script src="../assets/layer/layer.js"></script>
+<script src="../assets/kindeditor-4.1.7/kindeditor-all-min.js"></script>
+<script src="../assets/kindeditor-4.1.7/lang/zh_CN.js"></script>
+</body>
+</html>

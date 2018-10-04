@@ -1,0 +1,85 @@
+body {
+    background-color: #f4f4f4;
+}
+
+#main {
+    width: 1140px;
+    margin: 0 auto;
+    padding: 0 10px 0 30px;
+    background: #ffffff;
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    .account {
+        &:after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+        .title {
+            margin: 0 0 20px 10px;
+            .number {
+                font-size: 86px;
+                font-weight: bold;
+                font-style: italic;
+                color: #7ecff5;
+            }
+            .catalogName {
+                position: relative;
+                font-size: 22px;
+                color: #333333;
+                left: -40px;
+                top: -15px;
+            }
+        }
+        .videoContent {
+            float: left;
+            position: relative;
+            width: 245px;
+            height: 150px;
+            margin: 0 30px 30px 0;
+            background-image: url(../img/video.png);
+            -webkit-background-size: contain;
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            .b-layer {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background: black;
+                opacity: .5;
+            }
+            .txt {
+                span:nth-child(1) {
+                    position: absolute;
+                    left: 20px;
+                    top: 40px;
+                    color: #ffffff;
+                    font-size: 34px;
+                    font-weight: bold;
+                }
+                span:nth-child(2) {
+                    position: absolute;
+                    left: 22px;
+                    top: 85px;
+                    color: #ffffff;
+                    font-size: 17px;
+                    font-weight: bold;
+                }
+                span:nth-child(3) {
+                    position: absolute;
+                    right: 27px;
+                    top: 60px;
+                    width: 35px;
+                    height: 35px;
+                    background: url(../img/play.png) no-repeat 0 0;
+                }
+            }
+        }
+    }
+}

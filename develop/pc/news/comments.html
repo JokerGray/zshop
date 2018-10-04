@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="智享头条">
+<meta name="description" content="智享头条">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/layui/css/layui.css" />
+<link rel="stylesheet" href="css/animate.min.css">
+<link type="text/less" rel="stylesheet/less" rev="stylesheet/less" href="css/index.less" />
+
+<head>
+    <meta charset="UTF-8">
+    <title>智享头条</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        .words{
+            width: 760px;
+            float: left;
+            font-size: 16px;
+            line-height: 40px;
+        }
+        .words .title{
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .words .page span{
+            text-indent: 2em;
+            display: block;
+        }
+        .textr{
+            text-align: right;
+            font-weight: bold;
+        }
+        .mr{
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="hidden" id="navHid" value="index">
+    <input type="hidden" id="lastHid">
+    <!-- 吸顶头部 -->
+    <div class="headBox">
+        <!--首页头部-->
+        <script src="util/header.js"></script>
+
+        <!--首页导航-->
+        <div class="nav">
+            <div class="container">
+                <ul id="navUl"></ul>
+            </div>
+        </div>
+    </div>
+    <!--首页主体内容-->
+    <div class="main">
+        <div class="container">
+            <div class="words">
+                <p class="title">跟帖评论自律管理承诺书</p> 
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp为深入贯彻十八届四中全会依法治国的精神，落实国家互联网信息办公室“依法管网、依法办网、依法上网”的要求，本网站为完善跟帖评论自律管理，现公开作出如下承诺：
+            　　<br>一、本网站所称跟帖评论服务，是指通过运营网络互动传播技术平台，供用户对本网站传播的各类信息发表评论意见(包括但不限于语音、文字、图片、音频、视频等信息)的服务。
+            　　<br>二、本网站致力使跟帖评论成为文明、理性、友善、高质量的意见交流。在推动跟帖评论业务发展的同时，不断加强相应的信息安全管理能力，完善跟帖评论自律，切实履行社会责任，遵守国家法律法规，尊重公民合法权益，尊重社会公序良俗。
+            　　<br>三、本网站坚持用户以真实身份信息注册账号、使用跟帖评论服务。
+            　　<br>四、本网站承诺、并诚请所有用户，使用跟帖评论服务将自觉遵守不得逾越法律法规、社会主义制度、国家利益、公民合法权益、社会公共秩序、道德风尚和信息真实性等“七条底线”。
+            　　<div class="page">
+                五、本网站承诺、并诚请所有用户不发表下列信息：
+                　　<span>(一)反对宪法确定的基本原则的；</span>
+                    <span>(二)危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的；</span>
+                    <span>(三)损害国家荣誉和利益的；</span>
+                    <span>(四)煽动民族仇恨、民族歧视，破坏民族团结的；</span>
+                    <span>(五)煽动地域歧视、地域仇恨的；</span>
+                    <span>(六)破坏国家宗教政策，宣扬邪教和迷信的；</span>
+                    <span>(七)散布谣言，扰乱社会秩序、破坏社会稳定的；</span>
+                    <span>(八)散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的；</span>
+                    <span>(九)侮辱或者诽谤他人，侵害他人合法权益的；</span>
+                    <span>(十)对他人进行暴力恐吓、威胁，实施人肉搜索的；</span>
+                    <span>(十一)未获得未满18周岁未成年人法定监护人的书面同意，传播该未成年人的隐私信息的；</span>
+                    <span>(十二)散布污言秽语，损害社会公序良俗的；</span>
+                    <span>(十三)侵犯他人知识产权的；</span>
+                    <span>(十四)散布商业广告，或类似的商业招揽信息；</span>
+                    <span>(十五)使用本网站常用语言文字以外的其他语言文字评论的；</span>
+                    <span>(十六)与所评论的信息毫无关系的；</span>
+                    <span>(十七)所发表的信息毫无意义的，或刻意使用字符组合以逃避技术审核的；</span>
+                    <span>(十八)法律、法规和规章禁止传播的其他信息。</span>
+                </div>
+                六、对违反上述承诺的用户，本网站将视情况采取预先警示、拒绝发布、删除跟帖、短期禁止发言直至永久关闭账号等管理措施。对涉嫌违法犯罪的跟帖评论将保存在案、并在接受有关政府部门调查时如实报告。</p>
+                七、本网站承诺，完善公众举报平台，欢迎用户监督举报各类不法传播活动和违法有害信息，以共同营造清朗的网络空间。</p>
+
+                <p class="textr mr">承诺人：马长安</p>
+                <p class="textr">2016年10月19日</p>
+            </div>
+            <!--右侧主体内容-->
+            <script src="util/mainRight.js"></script>
+            <script src="util/right.js"></script>
+        </div>
+    </div>
+
+    <!--登录注册模态框 start-->
+    <script src="util/loginModal.js"></script>
+    <!--登录注册模态框 end-->
+    <!--[if lt IE 9]>
+        <script>
+            window.location.href = "tip.html";
+        </script>
+    <![endif]-->
+    <script src="assets/less.min.js"></script>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="util/qq.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="util/commonRight.js"></script>
+    <script src="js/comments.js"></script>
+    <script src="js/login.js"></script>
+
+
+    <script id="rArticleTpl" type="text/html">
+        {{# layui.each(d, function(index, item){ }}
+        <li class="r_list_li">
+            <a target="_blank" href="articleDetail.html?articleId={{item.reArticleId || ''}}">
+                    {{# if(item.scCmsResourcesList[0]){ }}
+                        <img class="cover" src= {{item.scCmsResourcesList[0].resourcesUrl}} alt="pic">
+                        {{# } else{ }}
+                            <img class="cover" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498663703314&di=f8aa83f28b484d81dec5e3fd95e35083&imgtype=0&src=http%3A%2F%2Fpic1.ooopic.com%2Fuploadfilepic%2Fziku%2F2008-08-10%2FOOOPIC_vipvip_200808100447544fba4b47ffc89841135.jpg"
+                                alt="pic">
+                            {{# } }}
+                                <div class="content">
+                                    <p>{{item.reArticleTitle}}</p>
+                                </div>
+                </a>
+        </li>
+        {{# }); }}
+    </script>
+    <script id="rVideoTpl" type="text/html">
+        {{# layui.each(d, function(index, item){ }}
+        <li class="r_list_li">
+            <a target="_blank" href="videoDetail.html?articleId={{item.reArticleId || ''}}">
+                    {{# if(item.scCmsResourcesList[0]){ }}
+                        <img class="cover" src= {{item.scCmsResourcesList[0].resourcesUrl}} alt="pic">
+                        {{# } else{ }}
+
+                            {{# } }}
+                                <div class="content">
+                                    <p>{{item.reArticleTitle}}</p>
+                                    <p class="info">
+                                        <span>{{item.reArticleCount || '0'}}次播放</span>
+                                        <span>.</span>
+                                        <span>{{item.commentCount || '0'}}次评论</span>
+                                    </p>
+                                </div>
+                </a>
+        </li>
+        {{# }); }}
+    </script>
+    <script id="rImgTpl" type="text/html">
+        {{# layui.each(d, function(index, item){ }}
+        <a class="wonderful_list" target="_blank" href="imgDetail.html?articleId={{item.reArticleId || ''}}">
+                {{# var num=0 }}
+                    {{# layui.each(item.scCmsResourcesList, function(i, e){ }}
+                        {{# if(e.resourcesType=='image' ){ }}
+                            {{# num++ }}
+                                {{# } else if(e.resourcesType=='cover' ){ }}
+                                    <img src= {{e.resourcesUrl}} alt="pic" class="wonderful_img">
+                                    {{# } }}
+                                        {{# }); }}
+                                            <i class="img_num">{{num}}图</i>
+                                            <p class="wonderful_content">{{item.reArticleTitle}}</p>
+            </a> {{# }); }}
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>脸圈申请认证</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/facecircle.css" />  
+</head>
+<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/artTemplate.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/plupload-2.1.2/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/upload.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+
+<body>
+        <div class="chose_type">
+                <span class="clint-type" data-type="0">脸圈主脸</span>
+                <span class="clint-type active" data-type="1">脸圈主播</span>
+                <div class="form-group form-inline shop-box">
+                    <select name="myShop" id="shop" class="form-control">
+                        <option value="1">食材店铺</option>
+                        <option value="1">食材店铺</option>
+                    </select>
+                </div>
+        </div>
+        <div class="nav_top">
+                <div class="btn-group btn-navlist" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default navbtn1">申请认证</button>
+                    <button type="button" class="btn btn-active navbtn2">平台认证</button>
+                    <!-- <button type="button" class="btn btn-default navbtn3">店面确认</button> -->
+                    <button type="button" class="btn btn-default navbtn4">已认证</button>
+                </div>
+                <div class="btn-group btn-delete" id="deleteBtn" style="display: none;">
+                    <button type="button" class="btn btn-active"><img src="img/delete.png"></button>
+                </div>
+                <div class="btn-group btn-searchs" role="group" aria-label="...">
+                    <!--<button type="button" class="btn btn-default">-->
+                    <div class="input-append date form_date btn btn-default" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="z-index: 999;">
+                        <input size="16" type="text" value="" readonly="" placeholder="请选择日期" id="topdate" class="btn btn-default">
+                        <span class="add-on"><i class="icon-th"></i></span>
+                        <!--<span class="clender-back"><img src="img/xiala.png"/></span>-->
+                    </div>
+                    <input type="hidden" id="dtp_input2" value="">
+                    <!--</button>-->
+                    <button type="button" class="btn btn-sear btn-active"><img src="img/fangdajing.png"></button>
+                </div>
+                <div class="btn-group dropdown btn-alls" style="display: none;">
+                    <button type="button" class="btn btn-default" id="alls-button">全部</button>
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <img src="img/xiala.png">
+                      </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">全部</a></li>
+                        <li><a href="#">已读</a></li>
+                        <li><a href="#">未读</a></li>
+                    </ul>
+                </div>
+            </div> 
+            <div id="page" class="page">
+                    <div id="faceStep" class="face-step">
+                        <div class="face-step-item face-step-fl">
+                             <ul id="anchors" class="anchor-list">
+                                <li class="anchor-item status1 active">
+                                        <img src="http://oss-cn-hangzhou.aliyuncs.com/tsnrhapp/user/photos/701a7278e5a16a526371fb2d76342d5e.png?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0">
+                                        <p class="apply_name">
+                                            弗兰克
+                                        </p>
+                                        <p><span class="apply_date">01-04</span><span class="apply_time">15:10</span></p>
+                                        <span class="apply_yue"></span>
+                                        <span class="apply_point"></span>
+                                </li>  
+                                 <li class="anchor-item status2">
+                                        <img src="http://oss-cn-hangzhou.aliyuncs.com/tsnrhapp/user/photos/bd3df8c3b03969757051e248b7c3aeb6.png?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0">
+                                        <p class="apply_name">
+                                            弗兰克
+                                        </p>
+                                        <p><span class="apply_date">01-04</span><span class="apply_time">15:10</span></p>
+                                        <span class="apply_yue"></span>
+                                        <span class="apply_point"></span>
+                                </li>  
+                                <li class="anchor-item status3">
+                                        <img src="http://oss-cn-hangzhou.aliyuncs.com/tsnrhapp/user/photos/701a7278e5a16a526371fb2d76342d5e.png?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0">
+                                        <p class="apply_name">
+                                            弗兰克
+                                        </p>
+                                        <p><span class="apply_date">01-04</span><span class="apply_time">15:10</span></p>
+                                        <span class="apply_yue"></span>
+                                        <span class="apply_point"></span>
+                                </li>                                                                
+                             </ul>
+                        </div>
+                        <div class="face-step-item face-step-fr">
+                            
+                        </div>
+                    </div>
+            </div> 
+
+            <!-- 数据请求错误页面显示,请插入到page页面 -->
+            <script type="text/html" id="errorPage">
+                <div  class="error-page"></div>
+            </script>      
+</body>
+<!-- <script src="js/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/locales/bootstrap-datetimepicker.zh-CN.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/distpicker.data.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/distpicker.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/YMDClass.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/echarts.js" type="text/javascript" charset="utf-8"></script> -->
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>库存管理</title>
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="../../../assets/bootstrap-table/bootstrap-table.min.css"> -->
+    <link rel="stylesheet" href="../../../assets/laydate-v5.0.9/theme/default/laydate.css">
+    <link rel="stylesheet" href="../../../assets/layui-v2.2.2/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/medical.css">
+    <link rel="stylesheet" href="inventory.css">
+</head>
+
+<body>
+    <!-- 列表 -->
+    <div class="container-fluid" style="margin-top:2rem;padding:0 30px;min-height: 800px;" id="inventory-main">
+        <!-- 标题控制栏-->
+        <div class="title clearfix">
+            <!-- 左边栏 -->
+            <div class="top-title left-title">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline form-drug">
+                            <label class="layui-form-label" style="width: auto;padding: 9px 0px;">药品类型 : </label>
+                            <div class="layui-input-block" style="margin-left: 85px;">
+                                <select name="drug-type" lay-verify="drug-type" id="drug-type">
+                                    <!-- <option value="">全部</option>
+                                    <option value="1">西药</option>
+                                    <option value="2">中成药</option>
+                                    <option value="3">中药</option> -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline form-inventory">
+                            <label class="layui-form-label" style="width: auto;left:30px;">库存量 : </label>
+                            <div class="layui-input-block">
+                                <select name="inventory-type" lay-verify="inventory-type" id="inventory-type">
+                                    <option value="">全部</option>
+                                    <option value="0">正常</option>
+                                    <option value="1">不足</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="left-title search-title">
+     
+             
+ 
+                <div class="right-title top-tool row">
+
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" id="search-name" placeholder="药品名称" maxlength="15">
+                    </div>
+                    <div class="col-xs-2">
+                        <button class="btn btn-info" type="button" id="inventory-search">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true">
+                        </button>
+                    </div>
+                </div>
+         
+            </div>
+        </div>
+        <!-- -->
+        <div class="inventory container-content">
+            <table id="inventory-drug">
+                
+            </table>
+        </div>
+        <!-- 无搜索 或者无数据-->
+        <div class="no-data" style="display: none;">
+            <img src="../assets/img/noSearch.png" alt="" id="no-search">
+            <img src="../assets/img/noData.png" alt="" id="no-data">
+        </div>
+    </div>
+    <div class="container-fluid" style="margin-top:2rem;padding:0 30px;display: none;" id="inventory-info">
+        <!-- 头部-->
+        <div class="header">
+            <!-- 左边栏 -->
+            <div class="goback">
+                <span class="layui-icon  layui-icon-left">&#xe603;</span>
+                <span>返回</span>
+            </div>
+        </div>
+        <div class="container-content" style="display: none;" id="content-storage">
+            <!-- 入库 -->
+            <table id="table-storage" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>药品名称</th>
+                        <th>药品规格</th>
+                        <th>入库数量</th>
+                        <th>单位</th>
+                        <th>单价( 元 )</th>
+                        <th>进货总价( 元 )</th>
+                        <th>入库单位</th>
+                    </tr>
+                </thead>
+                <tbody class="layui-form">
+                </tbody>
+            </table>
+            <div class="line"></div>
+            <!-- 入库信息-->
+            <div class="inventory-data">
+                <div class="inventory-title">
+                    <span>入库信息</span>
+                </div>
+                <div class="inventory-content">
+                    <p class="content-date">
+                        <label for="storage-date">入库时间 : </label>
+                        <input type="text" id="storage-input">
+                        <span class="img-date" id="storage-date" style="font-size: 0px;"></span>
+                    </p>
+                    <p class="content-remarks">
+                        <label for="storage-remarks">备注 : </label>
+                        <textarea name="desc" maxlength="200" placeholder="老会员(字数限制200以内)" onpropertychange="this.style.posHeight=this.scrollHeight " id="storage-remarks"></textarea>
+                    </p>
+                </div>
+                <div class="inventory-save">
+                    <button id="storage-save">保存</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-content" id="content-delivery">
+            <!-- 出库 -->
+            <table id="table-delivery" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>药品名称</th>
+                        <th>药品规格</th>
+                        <th>出库数量</th>
+                        <th>单位</th>
+                        <th>出库单位</th>
+                    </tr>
+                </thead>
+                <tbody class="layui-form">
+                </tbody>
+            </table>
+            <div class="line"></div>
+            <!-- 出库信息-->
+            <div class="inventory-data">
+                <div class="inventory-title">
+                    <span>出库信息</span>
+                </div>
+                <div class="inventory-content layui-form">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <p class="content-date">
+                                <label for="delivery-date">出库时间 : </label>
+                                <input type="text" id="delivery-input">
+                                <span class="img-date" id="delivery-date" style="font-size: 0px;"></span>
+                            </p>
+                        </div>
+                        <div class="layui-inline">
+                            <!-- <label class="layui-form-label" style="width: auto;">出库方式:</label> -->
+                            <label>出库方式 :</label>
+                            <div class="layui-input-block">
+                                <select name="delivery-type" lay-verify="delivery-type" id="delivery-type" value="药品领用">
+                                    <option value="6">药品领用</option>
+                                    <option value="11">药品损耗</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline" id="delivery-leader">
+                            <!-- <label class="layui-form-label" style="width: auto;">领用人:</label> -->
+                            <label>领用人 : </label>
+                            <div class="layui-input-block">
+                                <select name="delivery-leader" lay-verify="delivery-leadere" id="leader">
+                                    <!-- <option value="0">零度</option>                           -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="content-remarks">
+                        <label for="delivery-remarks">备注 : </label>
+                        <textarea name="desc" maxlength="200" placeholder="分批次领用(字数限制200以内)" onpropertychange="this.style.posHeight=this.scrollHeight " id="delivery-remarks"></textarea>
+                    </p>
+                </div>
+                <div class="inventory-save">
+                    <button id="delivery-save">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/html" id="dlg-warning-tpl">
+        <div class="dlg-warning">
+            <div class="dlg-warning-title">
+                预警
+            </div>
+            <div class='dlg-warning-content'>
+                <p>预警数量:</p>
+                <input type="text" placeholder="请填写正整数" id="input-warning"    maxlength="8"
+                onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"  
+                onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}" >
+                <div class='dlg-warning-ctrl'>
+                    <span class='dlg-warning-cancel'>取消</span>
+                    <span class='dlg-warning-ok'>确定</span>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!--库存管理搜索后表格 -->
+    <script type="text/html" id="drug-type-tpl">
+        <thead>
+            <tr>
+                <th>药品类型</th>
+                <th>药品名称</th>
+                <th>规格</th>
+                <th>单价( 元 )</th>
+                <th>零售单价( 元 )</th>
+                <th>库存总量</th>
+                <th>操作</th>
+            </tr>   
+        </thead>
+        <tbody>
+            {{each list value index}}
+                <tr data-id="index">
+                    <td></td>
+                    <td>{{value.goodsName}}</td>
+                    <td>{{value.stockName}}</td>
+                    <td>{{value.formatUnitPrice}}</td>
+                    <td >{{value.shopStockBalance}}</td>
+                    <td>{{value.formatMoney}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </script>
+    <!--入库详情 表格 -->
+    <script type="text/html" id="storage-tpl">
+        <tr goodsId="{{data.goodsId}}" stockId="{{data.stockId}}">
+            <td>{{data.goodsName}}</td>
+            <td>{{data.stockName}}</td>
+            <td>
+                <input type="text" value="" data-type="number"   maxlength="8"
+                 onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"  
+                onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}" >
+            </td>
+            <td>
+                {{data.units || ''}}
+            </td>
+            <td>
+                <input type="text" value="{{data.price}}" maxlength="8" data-type="price" onkeyup="clearNoNum(this)">
+            </td>
+            <td data-type="totalPrice">
+                0
+            </td>
+            <td>
+                <div class="layui-input-block" style="width:250px;margin:0 auto;">
+                    <select name="storage-work" lay-verify="storage-work" id="storage-work" value="{{data.shopNames && data.shopNames[0]}}">
+                        {{each data.shopNames value index}}
+                            <option value="{{value.shopId || index}}">{{value.shopName}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </td>
+        </tr>
+    </script>
+    <!--出库详情 表格 -->
+    <script type="text/html" id="delivery-tpl">
+        <tr goodsId="{{data.goodsId}}" stockId="{{data.stockId}}" goodsName="{{data.goodsName}}" stockBalance="{{data.stockBalance}}">
+            <td>{{data.goodsName}}</td>
+            <td>{{data.stockName}}</td>
+            <!-- 出库数量-->
+            <td>  
+                <input type="text" value="" data-type="delivery-number"   maxlength="8"
+                onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"  
+                onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}">
+            </td>
+            <td>
+                {{data.units || ''}}
+            </td>
+            <td>
+                <div class="layui-input-block" style="width:250px;margin:0 auto;">
+                    <select name="inventory-work" lay-verify="inventory-work" id="inventory-work" value="{{data.shopNames && data.shopNames[0]}}">
+                        <!-- <option value="0">1111</option> -->
+                        {{each data.shopNames value index}}
+                            <option value="{{value.shopId || index}}">{{value.shopName}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </td>
+        </tr>
+    </script>
+    <script type="text/html" id="category-id-tpl">
+        <option value="">全部</option>
+        {{each list value index}}
+            <option value="{{value.id}}">{{value.categoryName}}</option>
+        {{/each}}                          
+    </script>
+    <script src="../../../assets/jquery/jquery.min.js"></script>
+    <script src="../../../assets/layer/layer.js"></script>
+    <script src="../../../assets/laydate-v5.0.9/laydate.js"></script>
+    
+    <script src="../../../assets/layui-v2.2.2/layui.all.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <script src="../../../assets/artTemplate/template-web.js"></script>
+    <script src="../assets/js/comm.js"></script>
+
+
+    <script src="inventory.js"></script>
+    <script>
+         
+        function clearNoNum(obj){
+            if (obj.value != '' && obj.value.substr(0, 1) == '.') {
+                obj.value = "";
+            }
+            obj.value = obj.value.replace(/^0*(0\.|[1-9])/, '$1');//解决 粘贴不生效
+            obj.value = obj.value.replace(/[^\d.]/g, "");  //清除“数字”和“.”以外的字符
+            obj.value = obj.value.replace(/\.{2,}/g, "."); //只保留第一个. 清除多余的     
+            obj.value = obj.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+            obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3');//只能输入两个小数     
+            if (obj.value.indexOf(".") < 0 && obj.value != "") {//以上已经过滤，此处控制的是如果没有小数点，首位不能为类似于 01、02的金额
+                if (obj.value.substr(0, 1) == '0' && obj.value.length == 2) {
+                    obj.value = obj.value.substr(1, obj.value.length);
+                }
+            }  
+        }
+    </script>
+</body>
+
+</html>

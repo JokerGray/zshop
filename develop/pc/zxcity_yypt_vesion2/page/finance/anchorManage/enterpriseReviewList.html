@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+    <title>企业审核</title>
+	<link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../../../common/css/reset.css" />
+	<link rel="stylesheet" href="../../../common/css/layTab.css" />
+	<style media="screen" type="text/css">
+ 		.dTitle{
+    		font-size: 23px;
+    		margin: 12px 0;    /* 24px 0; */
+    		text-align: center;
+    	}
+   
+   		.control-label{
+    		padding-top: 7px;
+		    margin-bottom: 0;
+		    text-align: justify;
+		    display: inline-block;
+		    max-width: 100%;
+		    font-weight: 700;
+		    font-family: \5FAE\8F6F\96C5\9ED1,arial,sans-serif;
+		    color: #333;
+		    font-size: 14px;
+		    line-height: 24px;
+    	}
+
+
+    	input[type=radio]{
+    		box-sizing: border-box;
+    		padding: 0;
+    		vertical-align: middle;
+    		margin: 4px 10px 0 10px;
+    		line-height: normal;
+    		display: inline-block;
+    	}
+    	.pull-left {
+    		float: left!important;
+    	}
+    	.pull-right{
+    		float: right!important;
+    	}
+    	.form-item{
+    		margin:10px 56px;
+    	}
+    	.form-control{
+		    width: 67%;
+		    padding: 6px 12px;
+		    font-size: 14px;
+		    line-height: 1.42857143; 
+		    color: #555;
+		    background-color: #fff;
+		    opacity: 1;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    	}
+    	.form-control:focus{
+    		border-color: #66afe9;
+    		outline: 0;
+    		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    	}
+    </style>
+</head>
+<body>
+	<div class="tool-box layui-form">
+   		<ul class="tool-box-ul clearfix">
+			<!-- 商户名称   -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">商户名称：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="" placeholder="输入商户名称" class="layui-input" id="merchantName" maxlength="20"> 
+					</div>
+				</div>
+			</li>
+			<!-- 发票号   -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">发票号：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="" placeholder="输入发票号" class="layui-input" id="invoiceNo" maxlength="20"> 
+					</div>
+				</div>
+			</li>
+			<!-- 流水号 -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">流水号：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="" placeholder="输入流水号" class="layui-input" id="serialNumber" maxlength="20"> 
+					</div>
+				</div>
+			</li>
+     		<!-- 时间开始 -->
+           	<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="stTime">申请日期：</label>
+					<div class="layui-input-inline startDate">
+						<input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+					</div>
+				</div>
+			</li>				
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="endTim">至：</label>
+					<div class="layui-input-inline endDate">
+						<input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+					</div>
+				</div>
+			</li>
+            <!-- 时间结束 -->   
+        </ul>
+    </div>
+     
+    <div class="tool-add-box clearfix">
+		<button class="layui-btn add" id="exportBtn" style="top: -10px;margin-left: 10px;">导出excel</button>
+		<button class="layui-btn add" id="resetBtn" style="top: -10px;">重置</button>
+		<button class="layui-btn add" id="searchBtn" style="top: -10px;">搜索</button>
+	</div>
+		
+	<div class="layui-app">
+		<div class="app-table" style="margin-top: 10px;" >
+			<table lay-filter="merchantTable" id="merchantTable"></table>
+			<div id="layTablePage"></div>
+		</div>
+	</div>
+	
+	<script type="text/html" id="barDemo">
+    	<button class="layui-btn my-btn" lay-event="view">确认</button>
+    </script>
+
+</body>
+</html>
+
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="../../../common/assets/template-web.js"></script>
+<script type="text/javascript" src="enterpriseReviewList.js"></script>
+
+<script type="text/html" id="invoiceTpl">
+<div class="container-fluid">
+	<form class="">
+		<div class="layout-top">
+			<h1 class="dTitle">主播企业发票审核</h1>
+			<input type="hidden" value="{{id}}" id="dialogReviewId">
+			<input type="hidden" value="{{commissionId}}" id="commissionId">
+		</div>
+				
+		<div class="layout-content">
+			<div class="pull-left">
+				<div class="form-item">
+					<label class="control-label"><b class="required-icon"></b>申请企业名称：</label>
+					<span id="">{{row.invoiceCompany}}</span>
+				</div>
+				<div class="form-item">
+					<label class="control-label"><b class="required-icon"></b>申请发票号：</label>
+					<span id="">{{row.invoiceNo}}</span>
+				</div>
+				<div class="form-item">
+					<label class="control-label"><b class="required-icon"></b>企业名称是否一致：</label>
+					<input type="radio" name="reviewInvoiceCompany" value="0">是
+					<input type="radio" name="reviewInvoiceCompany" value="1">否
+				</div>
+
+				<div class="form-item">
+					<label class="control-label"><b class="required-icon"></b>信用代码是否一致：</label>
+					<input type="radio" name="reviewInvoiceTin" value="0">是
+					<input type="radio" name="reviewInvoiceTin" value="1">否
+				</div>
+
+				<div class="form-item">
+					<label class="control-label"><b class="required-icon"></b>发票金额是否一致或大于支付金额：</label>
+					<input type="radio" name="reviewInvoiceAmount" value="0">是
+					<input type="radio" name="reviewInvoiceAmount" value="1">否
+				</div>
+
+				<div class="form-item">
+					<label class="control-label"><b class="required-icon">*</b>审核意见：</label>
+					<input type="radio" name="reviewStatus" value="0">不通过
+					<input type="radio" name="reviewStatus" value="1">通过
+					<input type="radio" name="reviewStatus" value="2">超时
+				</div>
+
+				<div class="form-item">
+					<label class="control-label"><b class="required-icon">*</b>发票金额：</label>
+					<input class="form-control" type="text" id="invoiceAmount" maxlength="16">
+				</div>
+
+				<div class="form-item">
+					<label class="control-label" style="position: relative;top:-55px;margin-right: 7px;"><b class="required-icon"></b>备注信息：</label>
+					<textarea class="form-control"  id="comment" style="height: 60px;width: 252px;"></textarea>
+				</div>
+			</div>
+			<div class="" style="position: relative;left: -16px;top: 10px;">
+				<div class="form-item">
+					<label class="control-label"><b class="required-icon"></b>纳税人识别号：</label>
+					<span id="">{{row.invoiceTIN}}</span>
+				</div>
+				<div class="form-item">
+					<label class="control-label"><b class="required-icon"></b>申请支付金额：</label>
+					<span id="">{{row.realMoney}}</span>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+</script>
+
+
+
+<script type="text/html" id="reviewTpl">
+<div class="container-fluid">
+	<form class="">
+		<div class="layout-top">
+			<h1 class="dTitle">主播企业佣金审核</h1>
+		</div>
+
+		<div class="layout-content">
+			<input type="hidden" value="{{row.id}}" id="dialogReviewId">
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>支付金额：</label>
+				<span id="piggy">{{row.realMoney}}</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>发票审核状态：</label>
+				<span id="piggy">{{row.reviewType == 1 ? '已审核' : '未审核'}}</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>发票审核时间：</label>
+				<span id="piggy">{{row.reviewTime}}</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon">*</b>审核意见：</label>
+				<input type="radio" name="status" value="1">通过
+				<input type="radio" name="status" value="2">不通过
+			</div>
+			<div class="form-item">
+				<label class="control-label" style="position:relative;top:-50px;"><b class="required-icon">*</b>意见信息：</label>
+				<textarea class="form-control" rows="3" id="comment" maxlength="255"></textarea>
+			</div>
+			<div class="form-item">
+				<button class="layui-btn layui-btn-normal" style="border-radius:4px;margin-left:80px;" type="button" id="reviewBtn">提交</button>
+			</div>
+		</div>
+	</form>
+</div>
+</script>
+
+
+
+<script type="text/html" id="reviewMessageTpl">
+<div class="container-fluid">
+	<div class="layout-top">
+		<h1 class="dTitle">消息发送</h1>
+	</div>
+			
+	<div class="layout-content">
+		<form class="">
+			<input type="hidden" value="{{row.id}}" id="dialogReviewId">
+			<input type="hidden" value="{{row.userId}}" id="receiverId">
+					
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>收件人：</label>
+				<span style="margin-left:20px;" class="">{{row.name && row.name ? row.name : row.merchantName}}</span>
+			</div>
+					
+			<div class="form-item">
+				<label style="position: relative;top: -50px;" class="control-label" style=""><b class="required-icon">*</b>信息内容：</label>
+				<textarea class="form-control" rows="3" id="comment" maxlength="255"></textarea>
+			</div>
+					
+			<div class="form-item">
+				<button class="layui-btn layui-btn-normal" style="border-radius:4px;margin-left:80px;" type="button" id="sendBtn">提交</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="row">
+		<table id="tableMsg"></table>
+	</div>
+</div>
+</script>

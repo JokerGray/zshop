@@ -1,0 +1,341 @@
+body {
+    font-size: 16px;
+    -webkit-overflow-scrolling: touch; /*流畅滚动*/
+}
+
+body, p, ul, ol, dl, label {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #333;
+}
+
+a:hover, a:focus, a:link, a:active {
+    color: #fe6869;
+    text-decoration: none;
+}
+
+input[type=text][readonly] {
+    background-color: #eee;
+    border-color: #ccc;
+}
+
+label {
+    display: inline-block;
+}
+
+thead > tr > th {
+    background-color: #fe6869;
+    color: #fff;
+    text-align: center;
+}
+
+a, button, input, optgroup, select, textarea {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /*去掉a、input和button点击时的蓝色外边框和灰色半透明背景*/
+}
+
+a, img {
+    -webkit-touch-callout: none; /*禁止长按链接与图片弹出菜单*/
+}
+
+iframe {
+    border: 0;
+    width: 100%;
+    height: 98vh;
+    overflow-y: auto;
+}
+
+.hide {
+    display: none !important;
+}
+
+input:-webkit-autofill {
+    background-color: rgb(250, 255, 189);
+    background-image: none;
+    color: rgb(0, 0, 0);
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+body,
+.main-wrapper {
+    height: 100%;
+    background-color: #f2f2f2;
+}
+
+.main-title {
+    position: relative;
+    height: 3.375rem;
+    text-align: center;
+    background-color: #fff;
+    border-bottom: 1px solid #dadada;
+}
+
+.main-title .title {
+    line-height: 3;
+    margin-top: 0;
+}
+
+.main-title .return-icon {
+    position: absolute;
+    display: block;
+    left: 2.1rem;
+    top: .8rem;
+    width: 1.25rem;
+    height: 1.65rem;
+    background-image: url(../image/return_icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.button {
+    margin: 0;
+}
+
+.btn-default {
+    margin: 0;
+    padding: .375rem 1rem .5rem 1rem;
+    background-color: #fff;
+    border: 1px solid #fe6869;
+    color: #fe6869;
+    font-size: 0.875rem;
+}
+
+.btn-default + .btn-default {
+    margin-left: .5rem;
+}
+
+.btn-default:hover,
+.btn-default:focus {
+    background-color: #fe6869;
+    color: #fff;
+}
+
+.btn-normal {
+    margin: 0;
+    padding: .375rem 1rem .5rem 1rem;
+    background-color: #fe6869;
+    border: 1px solid #fe6869;
+    color: #fff;
+    font-size: 0.875rem;
+}
+
+.btn-normal + .btn-normal {
+    margin-left: .5rem;
+}
+
+.btn-normal:hover,
+.btn-normal:focus {
+    background-color: #ef5c5c;
+    color: #fff;
+}
+
+.pageview {
+    text-align: center;
+}
+
+.f-dropdown.open {
+    height: 320px;
+    overflow-y: auto;
+}
+
+ul.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 1.25rem 0;
+    border-radius: 0.25rem;
+}
+
+ul.pagination li {
+    font-size: 1.5rem;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:hover,
+.pagination > .active > a:focus {
+    background-color: #fe6869;
+    border-color: #fe6869;
+    color: #fff;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: #fe6869;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 0.5rem;
+}
+
+.table thead > tr > th {
+    background-color: #fe6869;
+    color: #fff;
+    font-weight: normal;
+}
+
+.table thead > tr > th,
+.table tbody > tr > td {
+    text-align: center;
+    font-size: 16px;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    border-top: 1px solid #ddd;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #f9f9f9;
+}
+
+.layui-layer-title {
+    background-color: #ddd !important;
+    color: #333 !important;
+    text-align: center;
+    font-size: 16px !important;
+}
+
+/*.layui-layer-setwin{
+    position: fixed!important;
+    top:10px!important;
+}*/
+.layui-layer-setwin .layui-layer-close1 {
+    width: 20px;
+    height: 20px;
+    background-image: url(../image/close_btn_grey.png) !important;
+    background-position: 0 0 !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.nodata {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    color: #666;
+    font-size: 1.25rem;
+    text-align: center;
+    background: #fff;
+}
+
+.select2-search {
+    display: none !important;
+}
+
+/*
+table{
+    width:96%;
+    border-spacing: 0;
+    border-collapse:collapse;
+}
+table thead>tr>th{
+    background-color: #fe6869;
+    color:#fff;
+}
+table thead>tr>th,
+table tbody>tr>td{
+    text-align: center;
+}
+table tr.even, table tr.alt, table tr:nth-of-type(even){
+    background-color:#f4f4f4;
+}
+table tbody>tr:hover{
+    background-color:#fafdbf;
+}
+ul.pagination li.current a,
+ul.pagination li.current button{
+    background-color:#fe6869;
+}
+*/
+
+/*paging插件样式更改开始*/
+.ui-paging-container ul {
+    height: 2.5rem;
+}
+
+.ui-paging-container ul li {
+    padding: 0;
+    width: 1.9rem;
+    height: 2.4rem;
+    line-height: 2.4rem;
+    text-align: center;
+    font-size: 1rem;
+    border: 0.0625rem solid #ccc !important;
+    color: #ccc !important;
+    vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.ui-paging-container ul li.focus {
+    background-color: #fe6869 !important;
+    color: #FFFFFF !important;
+}
+
+.ui-paging-container li.ui-pager-disabled,
+.ui-paging-container li.ui-pager-disabled:hover {
+    border: none !important;
+}
+
+.ui-paging-container ul .js-page-first,
+.ui-paging-container ul .js-page-last {
+    display: none;
+}
+
+.ui-paging-container ul .js-page-next {
+    background: url("../../common/image/right.png") no-repeat center;
+    -webkit-background-size: 1.25rem 1.25rem;
+    background-size: 1.25rem 1.25rem;
+}
+
+.ui-paging-container ul .js-page-prev {
+    background: url("../../common/image/left.png") no-repeat center;
+    -webkit-background-size: 1.25rem 1.25rem;
+    background-size: 1.25rem 1.25rem;
+}
+/*paging插件样式更改结束*/
+
+/*jeDate插件样式更改开始*/
+/*.jedateblue {*/
+    /*border-color: #fe6869!important;*/
+/*}*/
+/*.jedateblue .jedatetop {*/
+    /*background: #fe6869!important;*/
+    /*border-color: #fe6869!important;*/
+/*}*/
+/*.jedateblue .jedaul li.action {*/
+    /*background: #fe6869!important;*/
+/*}*/
+/*.jedateblue .jedatebot .jedatebtn span {*/
+    /*background: #fe6869!important;*/
+/*}*/
+/*.jedateblue .jedatesetm .ymdropul li.action {*/
+    /*background-color: #fe6869!important;*/
+/*}*/
+/*.jedateblue .jedatetopym p span.jedateymchok {*/
+    /*background-color: #fe6869!important;*/
+/*}*/
+/*.jedateblue .jedatesety .ymdropul li.action {*/
+    /*background: #fe6869!important;*/
+/*}*/
+/*.jedateblue .jedateym .triangle:hover {*/
+    /*background-color: #fe4e53!important;*/
+/*}*/
+/*.jedateblue .jedatebot {*/
+    /*background: #fff!important;*/
+/*}*/
+/*jeDate插件样式更改结束*/

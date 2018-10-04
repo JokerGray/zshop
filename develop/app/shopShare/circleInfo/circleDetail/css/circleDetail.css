@@ -1,0 +1,604 @@
+.contain{
+    width: 100%;
+    height: auto;
+    font-size: 16px;
+    padding-bottom: 5rem;
+    font-family:PingFang-SC-Medium;
+}
+.contain .top{
+    height: 13rem;
+    display: flex;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+.contain .top-left{
+    flex: 0.4;
+    height: auto;
+    margin-top: 5rem;
+}
+.contain img{
+    display: block;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 10px;
+}
+.top-center{
+    flex: 1;
+    margin-top: 5rem;
+    color:#fff;
+}
+.top-center h4{
+    font-size:1.8rem;
+    margin: 0;
+}
+.bg{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    filter: blur(30px);
+}
+.top-box{
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    right: 2rem;
+    left: 2rem;
+}
+.top-right{
+    flex: 0.5;
+    margin-top: 3rem;
+    text-align: right;
+}
+.top-center .add-num{
+    font-size:1.5rem;
+    display: block;
+    overflow:hidden; /*内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    white-space:nowrap; /*不换行 */
+    margin-top:0.5rem;
+}
+.remark{
+    font-size:1.2rem;
+    display: block;
+    width:10rem;
+    overflow:hidden; /*内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    white-space:nowrap; /*不换行 */
+    margin-top:0.5rem;
+}
+.top-right span{
+    display: block;
+    width: 7rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    background: rgba(255,255,255,1);
+    border-radius: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 50% auto 0;
+    float: right;
+}
+/*中间部分*/
+.shop{
+    width: 100%;
+    position: relative;
+}
+.shop .look-shop{
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+}
+.shop .look-shop img{
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+    float: left;
+    margin-right: 2rem;
+}
+.shop .look-shop span{
+    display: inline-block;
+    height: 4rem;
+    line-height: 4rem;
+}
+.down{
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    background: url(../../../images/qz_circledetail_down.png) no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+.care{
+    width: 8rem;
+    height: auto;
+    position: absolute;
+    top: 11rem;
+    z-index: 4;
+    right: 1rem;
+    text-align: center;
+}
+.care .care-icon.acve{
+    background: #D6D4D4 url("../../../images/qz_circledetail_zhucheng@2x.png") no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+.care .care-icon{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+    background: #FFCA3C url(../../../images/qz_circledetail_zhucheng@2x.png) no-repeat;
+    background-position: center;
+    margin: 0 auto 1rem;
+    background-size: 50%;
+}
+.care span{
+    color:#666666;
+    font-size: 1.5rem;
+}
+.shop-nav{
+    display: flex;
+}
+.shop-nav .nav-item{
+    flex: 1;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.shop-nav .nav-item img{
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto;
+}
+/*列表*/
+.shop-list{
+    padding:0 2rem 1rem;
+}
+.shop-list .list-tab{
+    width: 100%;
+    height: 7rem;
+}
+.shop-list .list-tab .tab-nav{
+    display: inline-block;
+    float: left;
+    height: 6rem;
+    line-height: 6rem;
+    padding: 0 2rem 2rem 0;
+}
+.shop-list .list-tab .tab-nav span{
+    font-size: 2rem;
+    color:#ababab;
+}
+.shop-list .list-tab .tab-nav.active span{
+    border-bottom: 4px solid #ffca3d;
+    font-size: 2.5rem;
+    color: #000;
+    padding-bottom: 1rem;
+}
+.list-detail{
+    width: 100%;
+}
+.list-detail .item{
+    width: 100%;
+    height: auto;
+    display: flex;
+    border-bottom: 1px solid #dfdfdf;
+    padding-bottom: 1rem;
+}
+.list-detail .item .actively-left{
+    flex: 0.5;
+    position: relative;
+}
+.list-detail .item .actively-right{
+    flex: 1;
+}
+.item .actively-left img{
+    display: block;
+    width: 12rem;
+    height: 8rem;
+    border-radius: 1rem;
+}
+.item .actively-left .actively-tip{
+    position: absolute;
+    border: none;
+    top: 0.5rem;
+    left: -0.5rem;
+    width: 5rem;
+    height: 3rem;
+    line-height: 3rem;
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    background: url(../../../images/baom.png) no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+.actively-tip.gray{
+    background: url(../../../images/baomgray.png) no-repeat;
+}
+.actively .item{
+    margin-bottom: 1rem;
+}
+.actively-right .actively-title{
+    font-size: 1.6rem;
+    font-weight: 500;
+    color:#222222;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    margin-left: 2rem;
+}
+.actively-right .active-adress{
+    margin: 1rem 0 1rem 2rem;
+    font-size: 1.4rem;
+    color: #999999;
+}
+.al-add{
+    color:#dfdfdf;
+    border:1px solid #dfdfdf;
+}
+.actively-right .actively-date{
+    font-size: 1.3rem;
+    color: #999999;
+    margin-left: 2rem;
+    height: auto;
+    overflow: hidden;
+}
+.actively-date div{
+    display: inline-block;
+}
+.actively-date div:first-child{
+    float: left;
+}
+.actively-date div:last-child{
+    float: right;
+    color: #FB6F3C;
+    font-size: 1.6rem;
+}
+.actively-date span{
+    font-size: 1.2rem;
+}
+.active-add{
+    float: right;
+    font-size: 2rem;
+    color: #FF6521;
+    border: 1px solid #FF6521;
+    padding: 1rem 5rem;
+    border-radius: 2rem;
+    margin-top: 2rem;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    height: 5rem;
+    display: flex;
+    width: 100%;
+}
+.footer div{
+    flex: 1;
+    text-align: center;
+}
+.footer span{
+    display: block;
+    width: 10rem;
+    height: 3rem;
+    line-height: 3rem;
+    margin: 0 auto;
+    background: #FFBA3C;
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    border-radius: 2rem;
+}
+.no-data{
+    display: none;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.no-data img{
+    display: block;
+    margin:3rem auto;
+    width: 20rem;
+    height: 14rem;
+}
+/*店铺隐藏显示*/
+.hid-shop{
+    display: none;
+    padding: 0 2rem;
+    height: 16rem;
+    background:  #F7F7F7;
+    overflow: auto;
+}
+.shop-items{
+    display: flex;
+}
+.hid-shop .shop-left{
+    flex: 0.3;
+    margin-top:2rem;
+}
+.hid-shop .shop-left img{
+    display: block;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 1rem;
+}
+.hid-shop .shop-center{
+    flex: 1;
+    margin-top:2rem;
+}
+.hid-shop .shop-right{
+    flex: 0.5;
+}
+.hid-shop .shop-center h4{
+    font-size: 2rem;
+    font-weight: 500;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.hid-shop .shop-center .shop-address{
+    margin-top:2rem;
+    font-size: 3.2rem;
+    color: #999999;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.hid-shop .shop-center .address-icon{
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    float: left;
+    background: url("../../../images/qz_circledetail_location@2x.png") no-repeat;
+    background-position: center;
+}
+.hid-shop .shop-right span{
+    display: block;
+    width: 15rem;
+    height: 6rem;
+    line-height: 6rem;
+    background:linear-gradient(90deg,rgba(255,186,60,1) 0%,rgba(255,202,60,1) 100%);
+    border-radius: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    margin: 25% auto 0;
+    float: right;
+    color:#fff;
+}
+/*动态*/
+.dynamic .item{
+    display: block;
+    border-bottom: none;
+}
+.dynamic .dynamic-top{
+    width: 100%;
+    margin:0 1rem 1rem 0;
+    display: flex;
+    height: auto;
+    overflow: hidden;
+}
+.dynamic .dynamic-top .dynamic-tl{
+    flex: 0.1;
+}
+.dynamic-tl img{
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+}
+.dynamic .dynamic-top  .dynamic-tc{
+    padding-left: 2rem;
+    flex: 1;
+    margin-top:0.5rem;
+}
+.dynamic-tc .dynamic-name{
+    font-size: 1.6rem;
+    color: #333333;
+    font-weight: 500;
+    overflow:hidden; //超出的文本隐藏
+    text-overflow:ellipsis; //溢出用省略号显示
+    white-space:nowrap; //溢出不换行
+}
+.dynamic-tc .dynamic-time{
+    font-size: 1.4rem;
+    color:#999999;
+}
+.dynamic-tr{
+    text-align: right;
+    flex: 0.1;
+}
+.dynamic-tr .more-icon{
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    background: url(../../../images/qz_circledetail_select1@2x.png) no-repeat;
+    background-position: right;
+    background-size: 100%;
+    float: right;
+}
+.dynamic-center .dynamic-text{
+    width: 100%;
+    font-size: 1.6rem;
+    color: #333333;
+    font-weight: 500;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    margin-bottom: 1rem;
+}
+.dynamic-center .dynamic-img{
+    width: 100%;
+    position: relative;
+}
+.dynamic-img .item-img{
+    display: flex;
+}
+.dynamic-img .item-img .img-list{
+    flex: 0.35;
+    overflow: hidden;
+}
+.dynamic-img .img-list img{
+    display: block;
+    width: 10rem;
+    height: 10rem;
+}
+/*.dynamic-img .img-list:nth-child(2) img{*/
+    /*margin: 0 auto;*/
+/*}*/
+.dynamic-img .img-list:nth-child(3) img{
+    float: left;
+}
+.dynamic-bottom{
+    display: flex;
+    margin: 2rem 0 0;
+}
+.dynamic-bottom .dynamic-button{
+    flex: 1;
+    font-size: 1.4rem;
+    color:#666666;
+    text-align: center;
+    position: relative;
+}
+.dynamic-bottom .dynamic-button i{
+    position: absolute;
+    top: 0.1rem;
+    left: 25%;
+}
+.dynamic-bottom .dynamic-button .share-icon{
+    display: inline-block;
+    width: 1.4rem;
+    height: 1.4rem;
+    background: url(../../../images/qz_circledetail_share@2x.png) no-repeat;
+    background-position: center;
+    margin-right: 0.6rem;
+    background-size: 100%;
+    left: 21%;
+}
+.dynamic-bottom .dynamic-button .discuss-icon{
+    display: inline-block;
+    width: 1.4rem;
+    height: 1.4rem;
+    background: url(../../../images/qz_circledetail_comment@2x.png) no-repeat;
+    background-position: center;
+    margin-right: 0.6rem;
+    background-size: 100%;
+}
+.dynamic-bottom .dynamic-button .cars-icon{
+    display: inline-block;
+    width: 1.4rem;
+    height: 1.4rem;
+    background: url(../../../images/qz_circledetail_like@2x.png) no-repeat;
+    background-position: center;
+    margin-right: 0.6rem;
+    background-size: 100%;
+}
+.img-num{
+    position: absolute;
+    z-index: 2;
+    right: 1.2rem;
+    top: 1rem;
+    color: #fff;
+    font-size: 1.5rem;
+}
+.dynamic-video{
+    width: 100%;
+    height: auto;
+}
+.dynamic-video video{
+    height: 22rem;
+    max-width: 100%;
+}
+
+.actively{
+    display: none;
+}
+.gray{
+    border:1px solid #999;
+    color:#999;
+}
+.dynamic-bottom .dynamic-button:first-child span{
+    margin-left: 0.8rem;
+}
+/*顶部*/
+.head{
+    position: absolute;
+    top:3vw;
+    left: 3vw;
+    z-index:4;
+}
+.head .back{
+    display: block;
+    width: 4vw;
+    height: 4vw;
+    background: url(../../../images/qz_circledetail_return@2x.png) no-repeat;
+    background-size: 80%;
+    background-position: center;
+}
+/*引导*/
+#model{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    z-index: 9999;
+    color: #333333;
+    background: url(../../../images/line.png) no-repeat 96% 0.2rem;
+    background-size: 0.7rem 0.58rem;
+    height: 12vh;
+    width: 100%;
+    background-color:#ffffff;
+}
+
+#model div{
+    display: flex;
+    align-items: center;
+    height: 6vh;
+    line-height: 6vh;
+    margin-left: 2vw;
+}
+
+#model img{
+    margin-left: 0.15rem
+}
+
+#dot{
+    width: 5vw;
+    height: 5vw;
+}
+
+#broswer{
+    width: 30vw;
+    height: 6vw;
+}
+
+#shade{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 888;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+
+
+
+
+

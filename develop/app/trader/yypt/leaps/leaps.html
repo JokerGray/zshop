@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>飞跃体系</title>
+	<!-- CssCommon -->
+	<link rel="stylesheet" type="text/css" href="../../assets/layui-v2.2.2/css/layui.css" />
+	<link rel="stylesheet" type="text/css" href="../../assets/ztree/css/zTreeStyle/zTreeStyle.css" />
+
+	<style>
+		body{
+			
+		}
+		.bg0e {
+			background: #0ecbbb;
+		}
+
+		.title {
+			margin-bottom: 40px;
+			position: relative;
+		}
+
+		.title:after {
+			position: absolute;
+			content: '';
+			width: 100%;
+			border-bottom: 1px dashed #dce0de;
+			top: 50%;
+		}
+
+		.app-wrap {
+			padding: 50px 0 0 50px;
+			overflow-y: auto;
+			overflow-x: hidden;
+			
+		}
+
+		.layui-form-label {
+			width: auto;
+			padding: 9px 0;
+		}
+
+		html,
+		body {
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			font-size: 16px;
+			color: #666666;
+			background: #efefef;
+		}
+
+		.header {
+			overflow: hidden;
+			margin-bottom: 45px;
+		}
+
+		.main {
+			overflow: hidden;
+			height: 100%;
+			position: relative;
+			min-height: 600px;
+			margin-right: 20px;
+		}
+
+		.layui-form-item {
+			clear: none;
+		}
+
+		.ztree_box {
+			width: 340px;
+			background: none;
+			float: left;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		.detail_box {
+			margin-left: 320px;
+			background: #fff;
+			padding: 45px 0 0 45px;
+			overflow: hidden;
+			min-height: 340px;
+			position: absolute;
+		}
+
+		.detail_box>div {
+			float: left;
+		}
+
+		.ul_box {
+			overflow: hidden;
+		}
+
+		.ul_box li {
+			float: left;
+			margin-bottom: 75px;
+		}
+
+		.dl_box {
+			color: #333;
+			font-weight: bold;
+		}
+
+		.dl_box h3 {
+			font-size: 18px;
+			margin-bottom: 25px;
+		}
+
+		.dl_box h4 {
+			font-size: 14px;
+		}
+
+		.dl_box dt {
+			float: left;
+			width: 64px;
+			height: 64px;
+			border-radius: 50%;
+			overflow: hidden;
+			background: #dce0de;
+			margin-right: 15px;
+		}
+
+		.dl_box dd {
+			float: left;
+			width: 175px;
+		}
+
+		.li_box {
+			min-height: 64px;
+			text-align: center;
+			position: relative;
+		}
+
+		.li_box {
+			width: 254px;
+		}
+
+		.li_box p {
+			margin-bottom: 25px;
+		}
+
+		.li_box h3 {
+			font-size: 18px;
+			color: #333;
+		}
+
+		.li_box:after {
+			content: '';
+			position: absolute;
+			width: 3px;
+			height: 100%;
+			background: #0ecbbb;
+			left: 0;
+			top: 0;
+		}
+
+		.li_box2:after {
+			background: #38c1ff;
+		}
+
+		.li_box3:after {
+			background: #e7e7e5;
+			height: 20px;
+			width: 4px;
+		}
+
+		.ul_box2 li {
+			/*float: right;*/
+
+			width: 254px;
+		}
+
+		.ul_box2 div {
+			width: 150px;
+			margin: 0 auto;
+			height: 150px;
+			border-radius: 50%;
+			border: 15px solid #f3f3f3;
+		}
+
+		.ul_box2 h3 {
+			margin-top: 50px;
+			margin-bottom: 15px;
+		}
+
+		.level0 {
+			/*height: 38px;*/
+			line-height: 38px
+		}
+
+		.ztree li {
+			position: relative;
+		}
+
+		.ztree li span.button.roots_close {
+			background-position: 0px 0;
+		}
+
+		.ztree li span.button.center_close {
+			background-position: 0px 0;
+			margin-top: 10px;
+		}
+
+		.ztree li span.button.roots_open {
+			background-position: -18px 0;
+		}
+
+		.ztree li span.button.bottom_close {
+			background-position: 0px 0;
+		}
+
+		.ztree li span.button.root_close {
+			background-position: 0px 0;
+		}
+
+		.ztree li span.button.root_open {
+			background-position: -18px 0;
+		}
+
+		.ztree li span.button.bottom_open {
+			background-position: -18px 0;
+		}
+
+		.ztree li span.button.center_open {
+			background-position: -18px 0;
+		}
+
+		.ztree li span.button.switch {
+			margin-top: 10px;
+		}
+
+		.ztree li span.button.ico_docu {
+			width: 0;
+			margin-right: 0;
+		}
+
+		.ztree li span.button.ico_open {
+			width: 0;
+			margin-right: 0;
+		}
+
+		.ztree li span.button {
+			background-image: url("images/left_menuForOutLook.png");
+			position: absolute;
+		}
+
+		.ztree li span.button.ico_close {
+			display: none;
+		}
+
+		.ztree li a {
+			height: 38px;
+			line-height: 38px;
+			width: 100%;
+			padding: 0;
+			padding-left: 20px;
+		}
+
+		.ztree li a.curSelectedNode {
+			height: 38px;
+			line-height: 38px;
+			border: none;
+			width: 100%;
+			background: #fff;
+			opacity: 1;
+			color: #0ecbbb;
+			padding: 0;
+			padding-left: 20px;
+		}
+
+		.ztree li ul.line {
+			background: none;
+		}
+
+		.ztree {
+			padding: 0;
+		}
+	</style>
+	<style>
+		.ul_tab {
+			width: 100%;
+			overflow: hidden;
+			border-bottom: 1px solid #dce0de;
+			line-height: 42px;
+
+
+		}
+
+		.ul_tab li {
+			width: 178px;
+			margin-right: 5px;
+			float: left;
+			border: 1px solid #dce0de;
+			text-align: center;
+			margin-bottom: -1px;
+			cursor: pointer;
+		}
+
+		.ul_tab li.active {
+			background: #fff;
+		}
+		.tableBox{
+			position: relative;
+			background: #fff;
+			overflow: hidden;
+		}
+		.tableSelect{
+			position: absolute;
+			top: 11px;
+			left: 20px;
+			width: 178px;
+			max-height: 200px;
+			z-index: 999;
+			
+		}
+		.tableSelect .layui-input-block{
+			margin-left: 0;
+			
+		}
+		.tableSelect .layui-input{
+			border-radius: 30px
+		}
+		.layui-table thead tr{
+			background: #fff;
+			color: #666;
+		}
+		.layui-table-view .layui-table td, .layui-table-view .layui-table th{
+			padding: 10px 0;
+    		font-size: 16px;
+		}
+		.layui-input, .layui-select, .layui-textarea, .layui-table-cell{
+			height: auto;
+			line-height: 35px;
+			margin: 0 auto;
+		}
+		.layui-table, .layui-table-view{
+			margin: 0;
+		}
+		.message_box{
+			line-height: 60px;
+			height: 60px;
+		}
+		.layui-table td, .layui-table th, .layui-table-fixed-r, .layui-table-header, .layui-table-page, .layui-table-tips-main, .layui-table-tool, .layui-table-view, .layui-table[lay-skin=row], .layui-table[lay-skin=line]{
+			border-color: #dce0de;
+		}
+		.message_box{
+			overflow: hidden;
+			color: #000;
+		}
+		.fl{float: left;padding-left: 5px;}
+		.fr{float: right;padding-right: 5px;}
+		.timeBox{
+			cursor: pointer;
+		}
+		.timeBox em{
+			font-style:normal;
+			margin: 0 10px;
+		}
+		.timeBox i{
+			display: inline-block;
+			position: relative;
+			height: 0px;
+			width: 0px;
+			border-top: 6px solid transparent;
+			border-right: 6px solid #00acfd;
+			border-bottom: 6px solid transparent;
+		}
+		.timeBox i.right{
+			border-right: 6px solid transparent;
+			border-left: 6px solid #00acfd;
+		}
+		.messageBox span{
+			width: 38px;
+			height: 38px;
+			background: #fff;
+			display: inline-block;
+			overflow: hidden;
+			border-radius: 50%;
+			vertical-align: middle;
+			line-height: 40px;
+			border: 1px solid #dce0de;
+			padding: 3px;
+		}
+		.messageBox img{
+			width: 110%;
+			height: 110%;
+			margin-left: -5%;
+			margin-top: -5%;
+			font-size: 0;
+			
+			
+		}
+		.layui-table-view .layui-table{
+			width: 100%;
+		}
+		.layui-table-view .layui-table td{
+			height: 125px;
+		}
+		.img1{
+			width: 58px;
+			height: 58px;
+			border: 1px solid #dce0de;
+			border-radius: 5px;
+		}
+		.name_box dl{
+			overflow: hidden;
+		}
+		.name_box dt{
+			float: left;
+			margin-right: 6px;
+			border-radius: 5px;
+		}
+
+		.name_box dd{
+			margin-right: 6px;
+			line-height: 23px;
+
+		}
+		.name_box h3{
+			overflow: hidden;
+			color: #333;
+			font-size: 16px;
+			margin-bottom: 14px;
+		}
+		.name_box em{
+			float: right;
+			font-style:normal;
+		}
+		.name_box p{
+			color: #999;
+		}
+		.tableBox{
+			min-height: 500px;
+		}
+		.goBack{
+			width: auto;
+			float: left;
+			margin-top: 10px;
+			background: #1be0d6;
+			margin-right: 40px;
+			padding: 0 25px;
+			display: none;
+			/* line-height: 60px; */
+		}
+	</style>
+</head>
+
+<body>
+	<div class="app-wrap layui-row">
+		<!-- <p class="title">发展商户信息</p> -->
+		<ul class="ul_tab">
+			<li class="active" data-type="0">层级展示</li>
+			<li data-type="1">表格展示</li>
+		</ul>
+
+		<div class="main">
+			<div class="header layui-form" style="margin-top: 20px;">
+				<div class="layui-form-item ">
+					<label class="layui-form-label">商户名称：</label>
+					<div class="layui-input-block" style="margin-left: 0px; width: 180px;float: left; ">
+						<input type="text" class="layui-input" id="nodeName" placeholder="输入商户名称">
+					</div>
+					<button class="layui-btn bg0e" style="margin-left: 20px;" id="searchBtn">查询</button>
+				</div>
+			</div>
+			<div class="ztree_box">
+				<ul id="tree" class="ztree"></ul>
+			</div>
+			<div class="detail_box">
+				<div class="detail_top">
+					<ul class="ul_box">
+						<li>
+							<dl class="dl_box">
+								<dt><img src="" alt=""></dt>
+								<dd>
+									<h3 id="ToOrgName">&nbsp;</h3>
+									<h4 id="toLevelName">&nbsp;</h4>
+								</dd>
+							</dl>
+						</li>
+						<li class="li_box li_box1">
+							<p>（直接）商户数量</p>
+							<h3 id="directCount">&nbsp;</h3>
+						</li>
+						<li class="li_box li_box2">
+							<p>（间接）商户数量</p>
+							<h3 id="indirectCount">&nbsp;</h3>
+						</li>
+					</ul>
+				</div>
+				<div class="detail_bottom">
+					<ul class="ul_box ul_box2">
+						<li></li>
+						<li class="li_box li_box3">
+							<p>累计回款金额</p>
+							<div>
+								<h3 id="shareUserSumTaxPrice">&nbsp;</h3>
+								<img src="images/1.jpg" height="51" width="65" />
+							</div>
+
+						</li>
+						<li class="li_box li_box3">
+
+							<p>累计佣金金额</p>
+							<div>
+								<h3 id="allShareMoney">&nbsp;</h3>
+								<img src="images/2.jpg" height="51" width="65" />
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div style="display:none;" class="main">
+			<div class="message_box ">
+				<button class=" goBack layui-btn layui-btn-radius" ><i class="layui-icon">&#xe65c;</i> 返回上一级</button>
+				<!-- <div class="fl timeBox">
+					<i class="left"></i><em id="date">2018年7月</em><i class="right"></i>
+				</div> -->
+				<div class="fr messageBox">
+					<!-- <span><img src="images/1.jpg" alt=""></span> 发展商户总数3000家。合作商户1000家，市级代理：500家，省级代理：600家，女人花事业部：500家，总回款：1000万 -->
+				</div>
+			</div>
+			<div class="tableBox layui-form">
+				<div class=" tableSelect" id="tableSelect">
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<select name="" id="upgradeType" lay-filter="upgradeType" class="layui-select">
+								<option value="">全部商户</option>
+								<option value="2">合作商户</option>
+								<option value="3">市级代理</option>
+								<option value="4">省级代理</option>
+								<option value="5">女人花事业部</option>
+
+							</select>
+						</div>
+					</div>
+
+				</div>
+				<table id="tableNo" lay-filter="tableNo" class="layui-table tableNo">
+				</table>
+				<div id="laypageLeft" class="layui-laypage fr"></div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+<!-- jSCommon -->
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/layui-v2.2.2/layui.js"></script>
+<script src="../common/js/util.js"></script>
+
+<!--jSCurr-->
+<!-- jSCommon -->
+<script type="text/javascript" src="../../assets/ztree/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="../../assets/ztree/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="../../assets/ztree/js/jquery.ztree.exedit.js"></script>
+<script>
+	$(function () {
+		
+		var h = $('.detail_box').height();
+		$('.ztree_box').height(h + 45);
+		var userId = GetQueryString('userId');
+
+		var page = 1;
+		var rows = 15;
+
+		// console.log(userId)
+		var USER_URL = {
+			RESOURCETREE: 'user/msLeaps', //(权限树)
+			SINGLERESOURCE: 'user/leapsRightInfo', //(结构详情),
+			NEWLEAPSTABLE: 'user/leapsUpgradeViewPage',//表格结构列表
+		};
+		var form, layer, table, laypage
+		layui.use(['form', 'layer', 'table', 'laypage', 'laydate'], function () {
+			form = layui.form, layer = layui.layer, table = layui.table, laypage = layui.laypage, laydate = layui.laydate;
+
+			var date = new Date();
+			var yy = date.getFullYear()
+			var MM = date.getMonth() + 1;
+			$("#date").html(yy + '年' + MM + '月')
+			$("i.right").click(function (e) {
+				if (MM > 11) {
+					yy++
+					MM = 1;
+				} else {
+					MM++;
+				}
+
+				$("#date").html(yy + '年' + MM + '月')
+				init_obj()
+			})
+			$("i.left").click(function (e) {
+				if (MM <= 1) {
+					yy--;
+					MM = 12
+				} else {
+					MM--;
+				}
+
+				$("#date").html(yy + '年' + MM + '月')
+				init_obj()
+			})
+			laydate.render({
+				elem: '#date',
+				type: 'month',
+				format: 'yyyy年MM月',
+				btns: ['now', 'confirm'],
+				done: function (value, date) {
+					console.log(value)
+					console.log(date)
+					yy = date.year;
+					MM = date.month
+					init_obj()
+				}
+			})
+			form.render()
+			//加载左侧导航树 加载导航树
+			function getTree() {
+				var setting = {
+					check: {
+						enable: false,
+						chkStyle: "checkbox",
+						radioType: "all",
+						nocheckInherit: true,
+						chkDisabledInherit: true
+					},
+					data: {
+						simpleData: {// 数据对应的赋值
+							enable: true,
+							idKey: "shareToUserId",
+							pIdKey: "shareUserId",
+							rootPId: 0
+						}
+					},
+					view: {
+						showIcon: true
+					},
+
+					callback: {
+						//绑定点击事件
+						onClick: zTreeOnClick
+					}
+				};
+
+				reqAjaxAsync(USER_URL.RESOURCETREE, JSON.stringify({ userId: userId })).done(function (res) {
+					//发起请求
+					if (res.code == 1) {
+						var treeData = res.data;
+						$.each(treeData, function (i, item) {
+							item.name = item.ToOrgName + '(' + item.toLevelName + ')'
+						})
+						console.log(treeData)
+						console.log(setting)
+						treeObj = $.fn.zTree.init($("#tree"), setting, treeData);//设置权限树
+						var nodes = $.fn.zTree.getZTreeObj("tree").getNodes();//获取权限树所有节点
+						getDetails(nodes[0])//获取第一个详情
+						console.log(nodes[0])
+						console.log($('#' + nodes[0]['tId'] + '_a'))
+						//						$('#'+nodes[0].tId+'_a').addClass('curSelectedNode')
+					} else {
+						layer.msg(res.msg);
+					}
+				});
+			}
+			getTree();
+			$('#searchBtn').click(function () {
+				getNodes()
+			})
+			//监听键盘事件
+			$(document).keydown(function (event) {
+				if (event.keyCode == 13) {
+					getNodes()
+				}
+			});
+
+			//点击事件
+			function zTreeOnClick(event, treeId, treeNode) {
+				getDetails(treeNode);
+			};
+
+			//搜索左侧列表
+			function getNodes() {
+				var str = $.trim($('#nodeName').val());
+				// var node = treeObj.getNodesByFilter(filter, true); // 仅查找一个节点
+				var nodes = treeObj.getNodesByParamFuzzy("name", str, null); // 查找节点集合
+
+				if (nodes.length > 0) {
+					treeObj.selectNode(nodes[0]);//选中节点
+
+					getDetails(nodes[0])
+				} else {
+					layer.msg('暂无此商家')
+				}
+			}
+			//获取右侧详情
+			function getDetails(treeNode) {
+				var ToOrgName = treeNode.ToOrgName;//名称
+				var toLevelName = treeNode.toLevelName;//等级
+				var indirectCount = 0;//间接数量
+				var directCount = 0;//直接数量
+				var allShareMoney = 0;//累计回款
+				var params = {
+					userId: treeNode.shareToUserId
+				}
+				reqAjaxAsync(USER_URL.SINGLERESOURCE, JSON.stringify(params)).done(function (res) {
+					if (res.code === 1) {
+						var datas = res.data;
+						$('#ToOrgName').html(ToOrgName);
+						$('#toLevelName').html(toLevelName);
+						$('#indirectCount').html(datas.indirectCount);
+						$('#directCount').html(datas.directCount);
+						$('#allShareMoney').html('¥' + getMoneyFormat(datas.allShareMoney));
+						$('#shareUserSumTaxPrice').html('¥' + getMoneyFormat(datas.shareUserSumTaxPrice));
+					} else {
+						layer.msg(res.msg);
+					}
+
+				})
+			}
+
+			//查询某一条
+			function getDetail(resourceId) {
+				var param = {
+					id: resourceId
+				};
+				reqAjaxAsync(USER_URL.SINGLERESOURCE, JSON.stringify(param)).done(function (res) {
+					if (res.code == 1) {
+						var row = res.data;
+						var id = row.id || "";
+						var pid = row.parentid || "";
+						var name = row.name || "";//组织机构名称
+						var level = row.level || "";//级别
+						if (level == 1 || level == 2) {
+							$('#user').show();
+							$('#merchant').hide()
+							$('#addbtn').show();
+							var backUserId = row.backUserId;
+							if (backUserId) {
+								$('#uesrBind').val("");
+								var param = {
+									userId: backUserId
+								}
+								reqAjaxAsync(USER_URL.DETIAL, JSON.stringify(param)).done(function (res) {
+									if (res.code == 1) {
+										if (res.data != null) {
+											if (res.data.username) {
+
+												var userid = res.data.id;
+												// console.log(res.data)
+												var username = res.data.username;
+												$('#uesrBind').val(username);
+												$('#uesrBind').attr("userid", userid);
+											}
+										}
+									}
+								})
+							}
+
+						} else if (level == 3) {
+							$('#merchantBind').val("")
+							$('#merchant').show();
+							$('#user').hide();
+							$('#addbtn').hide();
+							var merchantId = row.merchantId;
+							if (merchantId) {
+								var param = {
+									merchantId: merchantId
+								}
+								reqAjaxAsync(USER_URL.INFOBYID, JSON.stringify(param)).done(function (res) {
+									if (res.code == 1) {
+										if (res.data != null) {
+											if (res.data.org_name) {
+												var org_name = res.data.org_name;
+												var merchant_id = res.data.merchant_id;
+												$('#merchantBind').val(org_name)
+												$('#merchantBind').attr("merchantid", merchant_id)
+											}
+										}
+									}
+								})
+							}
+						}
+
+						var parth = row.imagePath || "img/upload.png"//图片地址
+						$("#moduleName").val(name);
+						$('#level').val(level);
+						$("#uploadImgsee").attr('src', parth);
+					} else {
+						layer.msg(res.msg);
+					}
+				});
+			};
+
+
+			//表格
+			function tableInit(tableId, cols, pageCallback, pageLeft) {
+				var tableIns, tablePage;
+				//1.表格配置
+				tableIns = table.render({
+					id: tableId,
+					elem: '#' + tableId,
+					// height: 'full-185',
+					cols: cols,
+					page: false,
+					// even: true,
+					// skin: 'line',
+					limit: 15
+				});
+				//2.第一次加载
+				pageCallback(page, rows).done(function (res) {
+					//第一页，一页显示15条数据
+					if (res.code == 1) {
+						tableIns.reload({
+							data: res.data
+						})
+					} else {
+						layer.msg(res.msg)
+					}
+					//3.left table page
+					var page_options = {
+						elem: pageLeft,
+						count: res ? res.total : 0,
+						layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+						limits: [15, 30],
+						limit: 15
+					}
+					page_options.jump = function (obj, first) {
+						tablePage = obj;
+
+						//首次不执行
+						if (!first) {
+							pageCallback(obj.curr, obj.limit).done(function (resTwo) {
+								if (resTwo && resTwo.code == 1)
+									tableIns.reload({
+										data: resTwo.data,
+										limit: obj.limit
+									});
+								else
+									layer.msg(resTwo.msg);
+							})
+
+						}
+					}
+
+					laypage.render(page_options);
+
+					return {
+						tablePage,
+						tableIns
+					};
+				});
+			}
+
+			function init_obj() {
+				var objs = tableInit('tableNo', [
+					[{
+						title: '',
+						align: 'left',
+						field: 'name',
+						width: 400,
+						event:'click'
+
+					}, {
+						title: '合作商户(3650元)',
+						align: 'center',
+						field: 'cooperativeMerchant',
+						width: 224,
+						event:'click'
+					}, {
+						title: '市级代理(5万元)',
+						align: 'center',
+						field: 'municipalAgent',
+						width: 224,
+						event:'click'
+					}, {
+						title: '省级代理(10万元)',
+						align: 'center',
+						field: 'provincialAgent',
+						width: 330,
+						event:'click'
+					}, {
+						title: '女人花事业部(28万元)',
+						align: 'center',
+						field: 'womanFlower',
+						width: 300,
+						event:'click'
+					}]
+				],
+
+					pageCallback, 'laypageLeft'
+				);
+			}
+			function pageCallback(page, rows) {
+				var createTime = ''
+				if (MM < 10 &&( MM+"").length<2) {
+					MM = '0'+MM
+				}
+				createTime = yy + '-' + MM
+				var createTime = yy + '-' + MM
+				var params = {
+					page: page,
+					rows: rows,
+					userId:shareUserIdArr[shareUserIdArr.length-1] || userId,
+					levelId: $("#upgradeType").val() || '',
+					// createTime: createTime
+				}
+				return getData(USER_URL.NEWLEAPSTABLE, JSON.stringify(params))
+			}
+			function getData(url, params) {
+				return reqAjaxAsync(url, params).done(function (res) {
+					if (res.data.pageInfo && res.data.pageInfo.length) {
+						console.log(res)
+						// var dataExpansion = res.dataExpansion;
+						var datas = res.data.pageInfo;
+						var sharingStatistics = res.data.sharingStatistics;
+						// <span><img src="images/1.jpg" alt=""></span> 
+						// <img src="images/1.jpg" class="img1">
+						if(sharingStatistics){
+							$(".messageBox").html(`
+						发展商户总数${sharingStatistics.cooperativeMerchant+sharingStatistics.municipalAgent+sharingStatistics.provincialAgent+sharingStatistics.womanFlower}家。合作商户${sharingStatistics.cooperativeMerchant}家，
+						市级代理：${sharingStatistics.municipalAgent}家，
+						省级代理：${sharingStatistics.provincialAgent}家，
+						女人花事业部：${sharingStatistics.womanFlower}家，总回款：${sharingStatistics.money}万`)
+						}else{
+							$(".messageBox").html('')
+						}
+						
+						var dataArr = [];
+						$.each(datas, function (i, item) {
+							var di = item;
+							var div = `<div class="name_box">
+												<dl>
+													<dt>
+														
+													</dt>
+													<dd>
+														<h3>
+															<span>${di.levelName}</span>
+															<em>回款：${di.money || 0}元</em>
+														</h3>
+														<p>${di.merchantName}</p>
+													</dd>
+												</dl>
+											</div>`
+							di.name = div
+							di.cooperativeMerchant = di.cooperativeMerchant || 0+ '家';
+							di.municipalAgent = di.municipalAgent || 0 + '家';
+							di.provincialAgent = di.provincialAgent|| 0  + '家';
+							di.womanFlower =di.womanFlower || 0  + '家';
+							dataArr.push(di);
+						})
+						res.data = dataArr;
+					}else{
+						res.data = []
+					}
+				})
+			}
+			$(".ul_tab").on('click', 'li', function (e) {
+				var index = $(this).index();
+				$(this).addClass('active').siblings().removeClass('active')
+				$(this).parents('.ul_tab').siblings('.main').eq(index).show().siblings('.main').hide();
+				if(index>0){
+					$(".goBack").hide();
+					shareUserIdArr=[];
+					init_obj()
+				}else{
+					var date = new Date();
+					yy = date.getFullYear()
+					MM = date.getMonth() + 1;
+					$("#upgradeType").val('')
+					$("#date").html(yy + '年' + MM + '月')
+					form.render()
+				}
+			})
+			// $(".tableSelect").height($(".tableSelect").find('option').length*43)
+
+			form.on('select(upgradeType)', function (obj) {
+				init_obj()
+			})
+			// 记录层级关系
+			var shareUserIdArr=[];
+			table.on('tool(tableNo)',function(obj){
+				var reData = obj.data;
+				console.log(reData)
+				if(obj.event == 'click' && reData.money){
+					//有层级关系就记录下来
+					shareUserIdArr.push(reData.shareUserId)
+					$(".goBack").show()
+					init_obj()
+				}
+			})
+			$(".goBack").click(function(e){
+				//返回上一级就删除一个层级关系
+				shareUserIdArr = shareUserIdArr.slice(0,-1);
+				if(!shareUserIdArr.length){
+					$(".goBack").hide()
+				}
+				init_obj()
+			})
+		})
+	
+
+
+	})
+
+
+</script>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>轮播设置-店铺</title>
+        <link rel="stylesheet" href="../assets/hplus/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/storeCarousel.css">
+    </head>
+    <body>
+        <div class="pop-main">
+            <div class="pop-content">
+                <div class="pop-pic-show pull-left">
+                    <div id="storeCarouselShow" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators">
+                        <li data-target="#storeCarouselShow" data-slide-to="0" class="active"></li>
+                        <li data-target="#storeCarouselShow" data-slide-to="1"></li>
+                        <li data-target="#storeCarouselShow" data-slide-to="2"></li>
+                      </ol>
+                      <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                          <img src="image/placeholder_img_01.png" alt="...">
+                          <div class="carousel-caption">
+                            呵呵呵呵
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="pop-pic-set pull-right">
+                    <div id="addPicBox" class="add-pic-btn">
+                        <div class="num-box pull-left">
+                            <span class="pic-num">1</span>
+                        </div>
+                        <button type="button" class="btn add-btn"><i class="glyphicon glyphicon-plus"></i></button>
+                        <button type="button" class="btn remove-btn pull-right"><i class="glyphicon glyphicon-minus"></i></button>
+                    </div>
+                    <div class="edit-pic-info">
+
+                    </div>
+                </div>
+                <div class="handle-btn">
+                    <button type="button" class="btn">保存</button>
+                    <button type="button" class="btn">取消</button>
+                </div>
+            </div>
+        </div>
+
+        <script id="formTemplate" type="text/template">
+            <div class="sub-form">
+                <div class="form-group">
+                    <label>名称：</label>
+                    <input type="text" name="picName" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>说明介绍：</label>
+                    <textarea class="multi-text" name="picDesc"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>添加图片：</label>
+                    <div class="upload-pic">
+                        <div class="show-img">
+                            <input type="text" name="picUrl">
+                            <img src="image/placeholder_img_01.png" alt="pladceholder figure">
+                        </div>
+                        <a href="javascript:;" class="upload-pic-btn">【<span>设置图片</span>】
+                            <input type="file" accept="image/png,image/gif" name="file">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <script src="../assets/js/jquery-1.8.2.min.js"></script>
+        <script src="../assets/layer/layer.js"></script>
+        <script src="js/carousel.js"></script>
+        <script src="js/storeCarousel.js"></script>
+    </body>
+</html>

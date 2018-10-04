@@ -1,0 +1,104 @@
+.main-title{
+    background-color: #fff;
+}
+.main-title .link-btn{
+    position:absolute;
+    top:0.7rem;
+    right:2rem;
+    width:4.5rem;
+    height:2.125rem;
+    line-height: 2.125rem;
+    border:0.063rem solid #fe6869;
+    font-size:0.875rem;
+}
+.main-content{
+    padding:1.5rem;
+    height:92%;
+}
+.main-content .container{
+    background-color: #fff;
+    height:100%;
+    overflow:hidden;
+}
+.search-box{
+    padding:1rem;
+}
+.search-box .search-inner{
+    position: relative;
+    width:40%;
+    padding-left:1.5rem;
+    margin:0 auto;
+}
+.search-box .search-inner .icon{
+    position: absolute;
+    left:0;
+    top:50%;
+    margin-top:-0.5rem;
+    display:inline-block;
+    width:1rem;
+    height:1rem;
+    background-image: url(../image/search_icon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.search-box .search-inner .search-txt{
+    display: inline-block;
+    margin:0;
+    padding:0.5rem 0.25rem 0;
+    border-width: 0 0 1px 0;
+    box-shadow: none;
+    font-size: 1rem;
+}
+.search-box .search-inner .cancel-btn{
+    position:absolute;
+    right:0;
+    top:50%;
+    margin-top:-0.563rem;
+    width:1.125rem;
+    height:1.125rem;
+    background-image: url(../image/cancel_icon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.search-list-box{
+    height:88%;
+    margin-top:1rem;
+    padding-bottom:2rem;
+    padding-left:3.125rem;
+    overflow-y: auto;
+}
+.search-list .nodata{
+    padding:1.5rem;
+    text-align: center;
+    font-size:1.5rem;
+    color:#666;
+}
+.search-list .list-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:1.5rem 1.5rem 1.5rem 0;
+    border-bottom:0.063rem solid #dadada;
+    color:#333;
+    cursor: pointer;
+}
+.search-list .list-item:hover{
+    background-color:#eee;
+}
+
+.search-list .list-item .name,
+.search-list .list-item .mobile,
+.search-list .list-item .card-num{
+    display: inline-block;
+    width:28%;
+}
+
+.list-item .arrow-icon{
+    display:inline-block;
+    width:0.875rem;
+    height:1.375rem;
+    background-image:url(../image/arrow_grey.png);
+    background-repeat: no-repeat;
+    background-size:cover;
+}

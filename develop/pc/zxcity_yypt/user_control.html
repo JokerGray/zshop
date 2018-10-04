@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>用户管理</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="common/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="common/css/modal.css"/>
+    <link rel="stylesheet" href="common/assets/layui/css/layui.css"/>
+    <link rel="stylesheet" href="common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" href="user_control/usercontrol.css"/>
+</head>
+<body>
+<div class="container-fluet" id="body-box">
+    <div class="row body-left-nav">
+        <div class="col-xs-12" id="content">
+            <div class="common-title">
+                系统管理 - <span class="jurisdiction-title-name">用户管理</span>
+            </div>
+            <div class="row common-search">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label class="control-lable">姓名 : </label>
+                        <input type="text" class="form-control layui-input search-input longinput" id="searchName" placeholder="请输入信息">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-lable">用户类型：</label>
+                        <select class="form-control" id="userTypeSelector">
+                            <option value="">--请选择--</option>
+                            <option value="1">后台用户</option>
+                            <option value="2">代理商</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-lable">手机号码：</label>
+                        <input type="text" class="form-control layui-input search-input longinput" id="searchPhone" placeholder="请输入信息" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'');" maxlength="11">
+                    </div>
+                    <button class="btn btn-success" type="button" id="searchUser">
+                        <i class="search-icon"></i><span>查询</span>
+                    </button>
+                </form>
+                <button type="button" class="btn btn-info add-users" id="newRole" data-toggle="modal" data-target="#add-newuser">
+                    <i class="add-icon"></i>新增用户
+                </button>
+            </div>
+            <!-- 表格 -->
+            <div class="row common-table">
+                <table class="table table-hover">
+                    <thead>
+                    <tr class="active">
+                        <th>序号</th>
+                        <th>账号</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>手机号</th>
+                        <th style="width: 150px;">角色</th>
+                        <th style="width:200px;">是否锁定</th>
+                        <th>最后操作时间</th>
+                        <th style="width: 310px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="userBody">
+                    </tbody>
+                </table>
+            </div>
+            <!-- 分页 -->
+            <div class="clearfix common-page pag-tot">
+                <div id="paging-box-count">
+                    共有<i></i>页，每页<i></i>条
+                </div>
+                <div id="paging-box" class="basic-jump"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 模态框 -->
+<div class="modal fade" id="add-newuser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+</div>
+</body>
+
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script type="text/javascript" src="common/js/util/util.js"></script>
+<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+<script src="common/js/util/pub.js"></script>
+<script type="text/javascript" src="common/js/login_success.js"></script>
+<script type="text/javascript" src="common/js/util/changePassword.js"></script>
+<script type="text/javascript" src="common/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+<!--jSCurr-->
+<!-- 树状图 js -->
+<script src="common/assets/zTree_v3/js/jquery.ztree.core.min.js"></script>
+<script src="common/assets/zTree_v3/js/jquery.ztree.excheck.min.js"></script>
+
+<script type="text/javascript" src="common/js/util/browser.min.js"></script>
+<script type="text/babel" src="user_control/usercontrol.js"></script>
+
+</html>

@@ -1,0 +1,322 @@
+
+* {
+    box-sizing: border-box;
+    /* 在X5新内核Blink中，在排版页面的时候，会主动对字体进行放大，会检测页面中的主字体，当某一块字体在我们的判定规则中，认为字号较小，并且是页面中的主要字体，就会采取主动放大的操作。然而这不是我们想要的，可以采取给最大高度解决 */
+    max-height: 100000px;
+     
+    
+  }
+  
+  *:before, *:after {
+      box-sizing: border-box;
+    max-height: 100000px;
+  }
+  
+  *, *:before, *:after {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  
+  html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th,textarea, td {
+    border: 0 none;
+    font-size: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+  }
+  
+  em, strong {
+    font-style: normal;
+  }
+  
+  ul, ol, li {
+    list-style: none;
+  }
+  
+  body {
+      font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","\5FAE\8F6F\96C5\9ED1",Arial,sans-serif;
+      line-height: 1.5;
+      color: #333;
+      /* background-color: #f2f2f2; */
+      font-size: 0.24rem;
+    /* background-color: #ffffff; */
+      
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  .box {
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow: hidden;
+  }
+.banxin{
+    width: 100%;
+    height: 100%;
+    padding: 0 0.3rem;
+}
+.lunbo{
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide{
+    height: 7.5rem;
+}
+.swiper-slide img{
+    width: 100%;
+    height: 100%;
+}
+.swiper-pagination{
+    width: 0.82rem;
+    height: 0.48rem;
+    background-color:rgba(97, 86, 63, 0.4);
+    /* margin-top: 0.5rem; */
+    font-family: PingFang-SC-Medium;
+    font-size: 0.24rem;
+    color: #ffffff;
+    line-height: 0.48rem;
+    border-radius: 37px;
+    margin-left: 6.4rem;
+    margin-bottom: 0.23rem;
+    
+}
+.biaoti{
+    width: 100%;
+    height: 100%;
+    margin-top: 0.3rem;
+}
+.biaoti p{
+    font-family: PingFang-SC-Medium;
+    font-size: 0.36rem;
+    color: #333333;
+}
+.main{
+    margin-top: 0.3rem;
+    width: 100%;
+    height: 0.36rem;
+}
+.main span{
+    height: 100%;
+    line-height: 0.36rem;
+    font-family: PingFang-SC-Bold;
+    font-size: 0.28rem;
+    color: #f44040;
+}
+.span1{
+    display: block;
+    width: 1.18rem;
+    text-align: center;
+   float: left;
+   border: 1px solid #f44040;
+   border-radius: 5px;
+}
+.span-one .span2{
+    font-size: 0.36rem;
+    margin-left: 0.08rem;
+}
+.main .span3{
+    display: block;
+    float: left;
+    color: #333333;
+    margin-left: 0.3rem;
+    /* border: 1px solid #FF8A09; */
+    /* border-radius: 5px; */
+}
+.cont{
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    width: 100%;
+    height: 0.28rem;
+    /* display: flex;
+    flex-direction:row;
+    justify-content:space-between; */
+}
+.cont span{
+    height: 100%;
+    line-height: 0.28rem;
+    font-family: PingFang-SC-Regular;
+    font-size: 0.26rem;
+    color: #474747;
+}
+.cont .span-one{
+    display: block;
+    min-width: 1.16rem;
+    font-size: 0.28rem;
+    float: left;
+    color: #f44040;
+}
+.span-one .span2{
+    color: #f44040;
+}
+.cont .span-two{
+    display: block;
+    float: left;
+    margin-left: 0.3rem;
+}
+.cont .span-four{
+    display: block;
+    float:right;
+}
+.fenge{
+    width: 100%;
+    height: 0.2rem;
+    background-color: #f8f8f8;
+}
+.content{
+    width: 100%;
+    height: 1.75rem;
+    border: 1px solid #e5e5e5;
+    /* overflow: hidden; */
+}
+.content .image{
+    width: 0.9rem;
+    height: 0.9rem;
+    margin-top: 0.4rem;
+    display: block;
+    float: left;
+}
+.content .image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.content .jieshao{
+    width: 1.2rem;
+    height: 0.9rem;
+    float: left;
+    margin-left: 0.2rem;
+    /* background-color: #ccc; */
+    margin-top: 0.4rem;
+}
+.content .jieshao .wanX{
+    height: 0.4rem;
+    width: 100%;
+    line-height: 0.4rem;
+    font-family: PingFang-SC-Medium;
+    font-size: 0.3rem;
+    color: #666666;
+}
+.content .jieshao .JNeng{
+    width: 100%;
+    height: 0.3rem;
+    margin-top: 0.1rem;
+    overflow: hidden;
+}
+.content .jieshao .JNeng div{
+     width: 0.28rem;
+     float: left;
+     height: 100%;
+     margin-right: 0.1rem;
+
+}
+.content .jieshao .JNeng div img{
+    width: 0.3rem;
+    height: 0.3rem;
+}
+.content2{
+    height: 100%;
+    width: 100%;
+    border: 1px solid #e5e5e5;
+}
+.content2 .add-D{
+    width: 100%;
+    /* height: 1.1rem; */
+    font-family: PingFang-SC-Regular;
+    font-size: 0.32rem;
+    color: #333333;
+    line-height: 0.5rem;
+    padding: 0.2rem 0;
+
+}
+.content2 .address{
+    border-bottom: 1px solid #e5e5e5;
+    width: 100%;
+    height: 1.1rem;
+    font-family: PingFang-SC-Regular;
+    font-size: 0.32rem;
+    color: #333333;
+    line-height: 1.1rem;
+}
+
+
+.content3{
+    /* height: 2.2rem; */
+    width: 100%;
+    border: 1px solid #e5e5e5;
+}
+.content3 .time-D{
+    width: 100%;
+    font-family: PingFang-SC-Regular;
+    font-size: 0.32rem;
+    padding: 0.3rem 0;
+    color: #333333;
+}
+.content3 .time{
+    width: 100%;
+    height: 1.1rem;
+    line-height: 1.1rem;
+    font-family: PingFang-SC-Regular;
+    font-size: 0.32rem;
+    color: #333333;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
+
+.xiangqing{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e5e5e5;
+}
+.FW-xiangqing,.Zh{
+    width: 100%;
+    height: 1.1rem;
+    font-family: PingFang-SC-Regular;
+    font-size: 0.32rem;
+    color: #333333;
+    line-height: 1.1rem;
+}
+.XQ-content{
+    height: 100%;
+    width: 100%;
+    /* background-color: #ccc; */
+}
+.XQ-content .xiangqing-P{
+    padding-top: 0.4rem;
+    font-family: PingFang-SC-Regular;
+    font-size: 0.32rem;
+    color: #333333;
+    padding-bottom: 0.3rem;
+    /* letter-spacing: 0.05rem; */
+    /* text-align: center; */
+    /* text-align:justify; */
+}
+.xiangqing-P span{
+    font-family: PingFang-SC-Regular;
+    font-size: 0.32rem;
+    color: #333333;
+    
+}
+.xiangqing-P a{
+    display: block;
+    color: #4f8cf8;
+    margin-bottom: 0.4rem;
+}
+.hidden{
+    display: none;
+} 
+.show{
+    display: block;
+}     
+
+     
+
+
+

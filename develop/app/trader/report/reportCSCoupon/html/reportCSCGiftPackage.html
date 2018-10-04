@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>礼包统计</title>
+    <link rel="stylesheet" href="../../../assets/common/css/common.css">
+    <link rel="stylesheet" href="../../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../css/reportCSCGiftPackage.css">
+</head>
+<body>
+<!--title和关闭按钮-->
+<div class="header">
+    <span>礼包统计</span>
+    <i class="closeBtn">关闭</i>
+</div>
+<!--路径显示和筛选框-->
+<div class="path-filter">
+    <div class="path">
+        <span class="time"> </span>
+        <i> > </i>
+        <span class="shopName"> </span>
+    </div>
+    <!--<div class="filter layui-form">-->
+        <!--<select id="giftPackageCate" lay-filter="giftPackageCate"> </select>-->
+    <!--</div>-->
+</div>
+<!--礼包数量统计-->
+<div class="giftPackageCount">
+    <ul class="clearfix">
+        <li>
+            <div></div>
+            <div>
+                <p>礼包总数</p>
+                <h4 id="allTotal"> </h4>
+            </div>
+        </li>
+        <li>
+            <div></div>
+            <div>
+                <p>礼包领取数量</p>
+                <h4 id="getTotal"> </h4>
+            </div>
+            <div id="getTotalCompare"> </div>
+        </li>
+        <li>
+            <div></div>
+            <div>
+                <p>礼包使用数量</p>
+                <h4 id="useTotal"> </h4>
+            </div>
+            <div id="useTotalCompare"> </div>
+        </li>
+    </ul>
+</div>
+<!--礼包列表-->
+<div class="giftPackageList">
+    <div class="title-export">
+        <div class="title">
+            <span class="active" data-type="1">领取明细</span>
+            <span data-type="2">使用明细</span>
+        </div>
+        <div class="export">
+            <a href="JavaScript:;" id="exportBtn">
+                <i> </i>
+                <span>导出</span>
+            </a>
+        </div>
+        <div class="search layui-form">
+            <input type="text" id="keyWord" placeholder="请输入礼包描述" autocomplete="off">
+            <button id="searchBtn" lay-submit lay-filter="searchBtn">搜索</button>
+        </div>
+    </div>
+    <div class="tableBox">
+        <table class="layui-table get">
+            <colgroup>
+                <!--<col width="60">-->
+                <!--<col width="150">-->
+                <!--<col width="80">-->
+                <!--<col width="210">-->
+                <!--<col width="160">-->
+                <!--<col width="90">-->
+                <!--<col width="80">-->
+                <!--<col width="90">-->
+                <!--<col width="100">-->
+                <col width="60">
+                <col width="150">
+                <col width="150">
+                <col width="100">
+                <col width="100">
+                <col width="100">
+                <col width="100">
+                <col width="120">
+                <col width="130">
+                <col width="100">
+                <col width="150">
+                <col width="120">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>礼包名称</th>
+                <th>礼包描述</th>
+                <th>礼包价值</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>礼包类型</th>
+                <th>券号</th>
+                <th>用户名称</th>
+                <th>用户电话</th>
+                <th>领取时间</th>
+                <th>状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr>-->
+                <!--<td>01</td>-->
+                <!--<td>进店礼包</td>-->
+                <!--<td>200.00</td>-->
+                <!--<td>2018-08-30</td>-->
+                <!--<td>2018-08-30</td>-->
+                <!--<td>自动礼包</td>-->
+                <!--<td>TY201820182018</td>-->
+                <!--<td>福西西fcc0616</td>-->
+                <!--<td>2018-08-30 14:28</td>-->
+                <!--<td>已兑换</td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+        <table class="layui-table use">
+            <colgroup>
+                <!--<col width="60">-->
+                <!--<col width="150">-->
+                <!--<col width="80">-->
+                <!--<col width="210">-->
+                <!--<col width="160">-->
+                <!--<col width="90">-->
+                <!--<col width="80">-->
+                <!--<col width="90">-->
+                <!--<col width="100">-->
+                <col width="60">
+                <col width="150">
+                <col width="150">
+                <col width="100">
+                <col width="100">
+                <col width="100">
+                <col width="100">
+                <col width="120">
+                <col width="130">
+                <col width="100">
+                <col width="150">
+                <!--<col width="140">-->
+                <col width="120">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>礼包名称</th>
+                <th>礼包描述</th>
+                <th>礼包价值</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>礼包类型</th>
+                <th>券号</th>
+                <th>用户名称</th>
+                <th>用户电话</th>
+                <th>使用时间</th>
+                <!--<th>状态</th>-->
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr>-->
+                <!--<td>01</td>-->
+                <!--<td>进店礼包</td>-->
+                <!--<td>200.00</td>-->
+                <!--<td>2018-08-30</td>-->
+                <!--<td>2018-08-30</td>-->
+                <!--<td>自动礼包</td>-->
+                <!--<td>TY201820182018</td>-->
+                <!--<td>福西西fcc0616</td>-->
+                <!--<td>2018-08-30 14:28</td>-->
+                <!--<td>已兑换</td>-->
+                <!--<td>-->
+                    <!--<a href="javascript:;">查看详情</a>-->
+                <!--</td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+    <div class="pageBox">
+        <div id="pageSelector"></div>
+    </div>
+</div>
+</body>
+<script src="../../../assets/jquery/jquery.min.js"></script>
+<script src="../../../assets/artTemplate/template-web.js"></script>
+<script src="../../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../../assets/common/js/utils.js"></script>
+<script src="../js/reportCSCGiftPackage.js"></script>
+<!--礼包使用详情(废弃)-->
+<script id="" type="text/html">
+    <div class="top">
+        <span>礼包领用详情</span>
+        <i class="closeBtn">×</i>
+    </div>
+    <div class="title">
+        <i> </i>
+        <span>礼包基本信息</span>
+    </div>
+    <div class="baseInfo clearfix">
+        <div class="left">
+            <p>
+                <label>礼包名称：</label>
+                <span>进店礼包</span>
+            </p>
+            <p>
+                <label>礼包价值：</label>
+                <b>￥1,000.00</b>
+            </p>
+            <p>
+                <label>活动有效日期：</label>
+                <span>2018-08-02 ~ 2018-08-27</span>
+            </p>
+            <p>
+                <label>兑换时间：</label>
+                <span>2天</span>
+            </p>
+            <p>
+                <label>指定商品：</label>
+                <span>共10件</span>
+            </p>
+        </div>
+        <div class="right">
+            <img src="../images/1.png" alt="">
+            <p>进行中</p>
+            <div>
+                <span>
+                    <span>领取数量</span>
+                    <b>100</b>
+                </span>
+                <i> | </i>
+                <span>
+                    <span>使用数量</span>
+                    <b>100</b>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="title-filter-export clearfix">
+        <div class="title">
+            <i> </i>
+            <span>礼包基本信息</span>
+        </div>
+        <div class="export">
+            <a href="javascript:;" id="detailExportBtn">
+                <i> </i>
+                <span>导出</span>
+            </a>
+        </div>
+        <div class="filter layui-form">
+            <select id="statusSelector" lay-filter="statusSelector"> </select>
+        </div>
+    </div>
+    <div class="detailTableBox">
+        <table class="layui-table">
+            <colgroup>
+                <col width="60">
+                <col width="150">
+                <col width="100">
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col width="100">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>券号</th>
+                <th>用户名称</th>
+                <th>领取时间</th>
+                <th>使用时间</th>
+                <th>兑换商品</th>
+                <th>状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>01</td>
+                <td>TY278987425182</td>
+                <td>福西西fcc0616</td>
+                <td>2016-11-29 16:30</td>
+                <td>2016-11-29 16:30</td>
+                <td>法国进口原装水氧精华套装</td>
+                <td>已使用</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="detailPageBox">
+        <div id="detailPageSelector"></div>
+    </div>
+</script>
+<!--礼包使用详情-->
+<script id="detailTpl" type="text/html">
+    <div class="top">
+        <span>礼包领用详情</span>
+        <i class="closeBtn">×</i>
+    </div>
+    <div class="packageMsg">
+        <div>
+            <span>礼包名称：{{data[0][0].NAME}}</span>
+            <span>券号：{{data[0][0].CODE}}</span>
+            <span>使用时间：{{data[0][0].time}}</span>
+        </div>
+        <!--<div>-->
+            <!--<a href="javascript:;">-->
+                <!--<i> </i>-->
+                <!--<span>导出</span>-->
+            <!--</a>-->
+        <!--</div>-->
+    </div>
+    <div class="detailTableBox">
+        {{if GoodsType == 0}}
+        <table class="layui-table auto">
+            <colgroup>
+                <col width="80">
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>商品名称</th>
+                <th>商品类型</th>
+                <th>数量</th>
+                <th>价格</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each data[1] item index}}
+            <tr>
+                <td>{{index+1}}</td>
+                <td>{{item.goodsName}}</td>
+                <td>{{item.STATUS}}</td>
+                <td>{{item.num}}</td>
+                <td>{{item.money||0.00}}</td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{else if GoodsType == 1}}
+        <table class="layui-table manual">
+            <colgroup>
+                <col width="60">
+                <col width="600">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>领取内容</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each data[1] item index}}
+            <tr>
+                <td>{{index+1}}</td>
+                <td>{{item.gdes}}</td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{/if}}
+    </div>
+</script>
+</html>

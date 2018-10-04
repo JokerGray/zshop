@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>智享城市运营管理平台</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="login/login.css" />
+</head>
+<body>
+    <div class="wrapper">
+       <div class="wrapper-box">
+            <div class="header-inner clearfix">
+                <div class="logo"><img src="common/image/logo.png"></div>
+                <div class="tit">智享城市运营管理平台</div>
+            </div>
+            <div class="login-wrap">
+                 <div class="login-wrap-tit">用户登录</div>
+                 <div class="base-login">
+                <div class="input-field">
+                    <i class="setIcon-amdin"></i>
+                    <i class="setIcon-x"></i>
+                    <input id="username" type="text" name="username" autocomplete="off" spellcheck="false" placeholder="智享账户" class="user-color"  maxlength="18"   onkeyup="this.value=this.value.replace(/[一-龥]/g,'')" >
+                </div>
+                <div class="input-field">
+                    <i class="setIcon-key"></i>
+                    <i id="view" class="setIcon-view"></i>
+                    <input id="password" type="password" name="password" autocomplete="off" spellcheck="false" placeholder="密码" class="user-color" maxlength="16" onkeyup="this.value=this.value.replace(/[一-龥]/g,'')">
+                </div>
+               <!-- <div class="input-field clearfix">
+                    <input id="security" type="text" name="security" autocomplete="off" spellcheck="false" placeholder="验证码" class="security-plc">
+                    <img src="login/image/yzm.png"  class="security" alt="" />
+                </div>-->
+                <div class="input-field clearfix radio-box">
+                   <input type="radio"  id="radio" />
+                   <label for="radio">记住账户密码</label>
+                   <!--<a href="javascript:void(0)">忘记密码？</a>-->
+                </div>
+                <div class="input-field login-btn">
+                <a id="sendSubmit" href="#" class="btn btn-danger" role="button">登录</a>
+                </div>
+            </div>
+            </div>
+      </div>
+    </div>
+</body>
+
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="common/js/util/util.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+<!-- JSCurrent -->
+<script type="text/javascript" src="common/js/hideShowPassword.min.js"></script>
+<script type="text/javascript" src="common/js/modernizr.custom.js"></script>
+<script type="text/javascript" src="login/login.js"></script>
+
+</html>

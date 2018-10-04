@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="stylesheet" type="text/css" href="../../../assets/bootstrap/css/bootstrap.min.css"/>
+		<script src="../../../assets/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/plupload-2.3.1/js/moxie.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/plupload-2.3.1/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/plupload-2.3.1/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="./setCircle.css"/>
+		<title></title>
+	
+	</head>
+	<body >
+		<form id="myform" method="post">
+			<div class="container-fluid ">
+				<div class="row box">
+					<div class="header">
+						创建圈子
+					</div>
+					<div class="content">
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for="upFace"><i class="must">*</i>上传圈子头像&nbsp;:</label>
+							<div class="upFace" >
+								<img src="../image/upFace.png" alt="" id="upFace"/>
+								<input type="hidden" name="face" id="url" value="" />
+							</div>
+							<input type="hidden" name="faceImg" />
+						</div>
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for="circleName"><i class="must ">*</i>圈子名称&nbsp;:<span class="textHint">(字数限制2~10个字)</span></label>
+						
+							<input type="text"  name="circleName" class="circleName" id="circleName" placeholder="如:某某某" pattern="\S{1,10}$" maxlength="10" required/>
+						</div>
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for="">店铺名称&nbsp;:</label>
+							<p class="storeName">痔疮旗舰店</p>
+						</div>
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for=""><i class="must ">*</i>圈子标签&nbsp;:<span class="textHint">(只能选择一个)</span></label>
+							<div class="markBox" id="markBox">
+								
+								<input type="hidden" name="serviceMark" id="serviceMark" >
+							</div>
+						</div>
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for=""><i class="must ">*</i>加圈方式&nbsp;:</label>
+							<div class="opt">
+								<input class="magic-radio" type="radio"  name="radio" id="r1" value="0" checked>
+								<label for="r1" class="radioLabel">无需审核直接进圈子</label>
+							</div>
+							<div class="opt">
+								<input class="magic-radio" type="radio" name="radio" id="r2" value="1" >
+								<label for="r2" class="radioLabel">需要管理员审核</label>
+							</div>
+
+						</div>
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for="circleDuc"><i class="must ">*</i>圈子介绍&nbsp;:</label>
+							<textarea name="circleDuc" id="circleDuc" class="circleDuc" ></textarea>
+						</div>
+					</div>
+					<div class="btnBox">
+						<button type="button" class="btn btn-default toBack" id="toBack"> 取 消 </button>
+						<button type="button" class="btn btn-info submitBtn " id="submitBtn" > 提 交 </button>
+					</div>
+				</div>
+			</div>
+		</form>
+	
+	</body>
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>  <!-- 根据IP获取省市 -->
+	<script src="./setCircle.js"></script>	
+</html>

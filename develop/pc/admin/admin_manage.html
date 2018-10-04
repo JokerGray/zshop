@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+	<title>管理员管理·管理员后台</title>
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="assets/layui/css/layui.css" />
+	<link rel="stylesheet" href="css/zx.css" />
+	<link rel="stylesheet" href="css/adminManage.css" />
+	<!--[if lt IE 9]>
+	   <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<script src="util/head.js"></script>
+	<input type="hidden" id="menuHid" value="admin_manage">
+	<div class="container">
+		<div class="wrapper clearfix">
+			<script src="util/menu.js"></script>
+			<div id="page_R" class="right pull-right">
+				<div id="search_box" class="clearfix">
+					<div id="penName_box" class="fl">
+						<p class="penName_tit">姓名</p>
+						<input id="penName_inp" class="penName_inp" type="text">
+					</div>
+					<div id="autherName_box" class="fl">
+						<p class="autherName_tit">登录名称</p>
+						<input id="autherName_inp" class="autherName_inp" type="text">
+					</div>
+					<div id="field_box" class="fl">
+						<p class="field_tit">角色类型</p>
+						<select id="inputValue" class="form-control signform-input select" name="authorityType">
+							<option value="">请选择</option>
+						</select>
+					</div>
+					<div id="time_box" class="fl">
+						<p class="field_tit">密码</p>
+						<input id="password_inp" class="autherName_inp" type="text">
+					</div>
+					<div id="bindUser_box" class="fl">
+						<p class="field_tit">绑定账号</p>
+						<form class="layui-form" action="">
+							<select id="bindInpValue" name="modules" lay-verify="required" lay-search="" lay-filter="test">
+								<option value="">直接选择或搜索选择</option>
+							</select>
+						</form>
+					</div>
+					<div id="search_icon" class="fl">添加</div>
+				</div>
+				<div id="article_box" class="clearfix">
+					<div class="adminTabBox">
+						<ul id="adminTab" class="adminTab clearfix">
+							<li id="tabAll" class="fl active" cmsnewUserid="">全部</li>
+						</ul>
+					</div>
+					<div class="table account_table">
+						<div id="account_Table" class="table-left">
+							<div class="panel panel-default">
+								<table class="table table-hover">
+									<thead id="table_head">
+										<th>姓名</th>
+										<th>角色类型</th>
+										<th>登录名称</th>
+										<th>添加时间</th>
+										<th></th>
+										<th></th>
+									</thead>
+									<tbody id="tableCon"></tbody>
+                	            </table>
+                	        </div>
+                	    </div>
+                	    <div id="page" class="text-center"></div>
+                	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="updateData" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  	<div class="updateDataBox modal-dialog" role="document">
+	    	<div class="modal-content">
+	      		<div class="updateInpBox clearfix">
+					<div id="NameBox" class="fl">
+						<p class="NameTit">姓名</p>
+						<input id="NameInp" class="NameInp" type="text">
+					</div>
+					<div id="autherNameBox" class="fl">
+						<p class="autherNameTit">登录名称</p>
+						<input id="autherNameInp" class="autherNameInp" type="text">
+					</div>
+					<div id="postBox" class="fl">
+						<p class="postTit">角色类型</p>
+						<select id="postInp" class="form-control signform-input select" name="authorityType"></select>
+					</div>
+					<div id="passwordBox" class="fl">
+						<p class="passwordTit">密码</p>
+						<input id="passwordInp" class="passwordInp" type="text">
+					</div>
+					<div id="modifyBindUserBox" class="fl">
+						<p class="field_tit">绑定账号</p>
+						<form class="layui-form" action="">
+							<select id="modifyBindInpValue" name="modules" lay-verify="required" lay-search="" lay-filter="modifyTest">
+								<option value="">直接选择或搜索选择</option>
+							</select>
+						</form>
+					</div>
+	      		</div>
+	      		<div class="updateBtnBox modal-footer">
+	        		<button id="updateBtn" type="button" class="btn btn-primary" data-dismiss="modal">确认修改</button>
+	        		<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	      		</div>
+	    	</div>
+	  	</div>
+	</div>
+	<script src="assets/jquery-1.10.2.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/layui/lay/dest/layui.all.js"></script>
+	<script src="assets/countUp.min.js"></script>
+	<script src="util/util.js"></script>
+	<script src="util/pub.js"></script>
+	<script src="js/adminManage.js"></script>
+	<script id="tableList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+        <tr>
+            <td class="userName">{{item.username || ''}}</td>
+			{{# if(item.cmsNewRoles && item.cmsNewRoles.name){ }}
+        		<td class="adminType" cmsnewUserid="{{item.cmsnewUserid || ''}}">{{item.cmsNewRoles.name || ''}}</td>
+        	{{# } else{ }}
+        		<td class="adminType" cmsnewUserid="{{item.cmsnewUserid || ''}}">{{''}}</td>
+			{{# } }} 	
+			<td class="usercode">{{item.usercode || ''}}</td>
+			<td class="createtime">{{item.createtime || ''}}</td>
+			<td class="tab_cancel" id={{item.id || ''}}>删除</td>
+			<td><button class="tabNotice_btn" type="button" data-toggle="modal" data-target="#updateData" name="{{item.name || ''}}" userId="{{item.bangsubscription || ''}}">修改</button></td>
+        </tr>    
+        {{#  }); }}
+
+        {{#  if(d.length == 0){ }}
+        	<td colspan="8"></td>
+        {{#  } }} 
+    </script>
+</body>
+</html>	

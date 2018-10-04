@@ -1,0 +1,305 @@
+.right {
+	min-height: 750px;
+}
+#page_R {
+	padding: 20px 30px;
+}
+
+/*搜索框*/
+#search_icon, #searchInp, #artSearchIcon, #artSearchInp {
+	height: 35px;
+	box-sizing: border-box;
+}
+
+#searchInp, #artSearchInp {
+	line-height: 35px;
+	margin-right: 10px;
+	padding: 0 0 0 15px;
+	width: 230px;
+}
+#artSearchBox {
+	margin-right: 60px;
+}
+/*搜索框*/
+
+/*添加新标签和置顶专题按钮*/
+#addNewLabel, #addArtcleIcon, #subStickIcon {
+	padding: 0 10px;
+	height: 33px;
+	line-height: 33px;
+	cursor: pointer;
+	background-color: #FFA893;
+	color: #fff;
+	border-radius: 4px;
+	display: inline-block;
+}
+
+#addNewLabel {
+	margin-bottom: 30px;
+}
+
+#addNewLabel span, #addArtcleIcon span, #subStickIcon span {
+	display: inline-block;
+	vertical-align: 10%;
+}
+
+#addNewLabel i, #addArtcleIcon i, #subStickIcon i {
+	font-size: 20px;
+	margin-right: 5px;
+	height: 31px;
+	line-height: 31px;
+}
+
+#addArtcleIcon {
+	background-color: #FFA893;
+	margin-right: 30px;
+}
+
+#subStickIcon {
+	background-color: #1DBFAF;
+}
+/*添加新标签*/
+
+/*表格*/
+#table_head th, #addArtTableHead th {
+	text-align: center;
+	padding: 0;
+	height: 40px;
+	line-height: 40px;
+	background-color: #f5f5f5;
+}
+
+#isCheckAll span, #artIsCheckAll span, #contriIsCheckAll span, #searchIsCheckAll span {
+	vertical-align: middle;
+	margin-left: 6px;
+}
+
+#multiSelectBox, .singleSelectBox, #artMultiSelBox, .artSingleSelBox, #subInArtMultiSel, .subInArtSingleSel, #artShMultiSelBox, .artShSingleSel {
+	height: 18px;
+	width: 18px;
+	display: inline-block;
+	background-image: url(../images/uncheck.png);
+	background-size: 18px;
+	-webkit-background-size: 18px;
+	vertical-align: middle;
+}
+
+#multiSelectBox.active, .singleSelectBox.active, #artMultiSelBox.active, .artSingleSelBox.active, 
+.subInArtSingleSel.active, #subInArtMultiSel.active, #artShMultiSelBox.active, .artShSingleSel.active {
+	background-image: url(../images/checked.png);
+}
+
+#tableCon > tr > td, #addArtTableCon > tr > td, #subDetailArtCon > tr > td, #addShArtTableCon > tr > td {
+	padding: 0;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.sccmsspecialname {
+	max-width: 80px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.operateTab > div {
+	width: 33.3%;
+}
+
+.artOperateTab > div {
+	width: 50%;
+}
+
+.table i.glyphicon {
+	color: #FFA893;
+	margin-right: 7px;
+}
+
+#tableFoot td, #addArtTableFoot td, #addShArtTableFoot td {
+	text-align: center;
+	padding: 0;
+	height: 40px;
+	line-height: 40px;
+}
+
+#checkedNum, #artCheckedNum, #subInCheckedNum {
+	color: #FFA893;
+}
+
+#page, #artPage, #subDArtPage {
+	/*position: absolute;
+	bottom: 10px;
+	left: 44%;
+	margin-left: -70px;*/
+}
+
+#delTotalOpera, .optTotalOpera, #subInArtMultiDel, #subInArtMultiDel {
+	padding: 0;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+/*表格*/
+
+/*添加新专题模态框*/
+.addSubjectDialog {
+	width: 900px;
+	margin-top: 120px;
+}
+
+.addSubjectBox {
+	width: 900px;
+}
+
+.addSubTop {
+	border-bottom: 0;
+}
+
+.addSubTitle {
+	text-align: center;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+#addTextarea {
+	width: 650px;
+	height: 150px;
+}
+
+.formRadioBox {
+	margin-top: 7px;
+}
+
+.formRadioBox input:nth-child(2) {
+	margin-left: 50px;
+}
+
+#addSubBtnBox {
+	border-top: 0;
+	text-align: center;
+}
+
+#addSubBtnBox button {
+	color: #fff;
+	margin: 0 30px;
+}
+
+#confirmAddSub {
+	background-color: #2BC6FF;
+}
+
+#cancelAddSub {
+	padding: 6px 25px;
+}
+
+#selectfiles {
+	background-color: #FFFFFF;
+    padding: 5px 20px;
+    border: 1px solid #F0F0EE;
+    display: inline-block;
+}
+
+#previews {
+	width: 650px;
+}
+
+#previews img {
+	display: inline-block;
+}
+/*添加新专题模态框*/
+
+/*专题详情模态框*/
+#addArticle {
+	z-index: 5000;
+}
+#subNumDetail {
+	margin-top: 10px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	margin-left: 202px;
+	width: 712px;
+	box-sizing: border-box;
+}
+
+#subNumDetail > div {
+	width: 170px;
+	box-sizing: border-box;
+}
+
+#subNumDetail > div:first-child {
+	width: 200px;
+	border-right: 1px solid #ddd;
+}
+
+#subNumDetail > div {
+	margin: 20px 0;
+	text-align: center;
+}
+
+#subNumDetail > div > #subNumDName {
+	font-size: 16px;
+	font-weight: 600;
+	padding-bottom: 10px;
+	text-align: center;
+	max-width: 195px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#subNumDetail > div > #subNumDInp {
+	margin: 0;
+	padding: 7px 10px;
+	margin-left: 30px;
+	text-align: center;
+}
+
+#subNumDetail > div > span {
+	color: #FFA893;
+	font-size: 15px;
+}
+
+#subNumDetail > div > #subArtNum, #subNumDetail > div > #subCommentNum, #subNumDetail > div > #subVisitNum {
+	font-size: 25px;
+	display: inline-block;
+	padding-top: 5px;
+}
+
+.subIconBox {
+	margin: 20px 30px 20px 0;
+}
+
+.subInArtOperTab {
+	width: 150px;
+}
+
+/*专题详情模态框*/
+
+/*添加新文章模态框*/
+.addArtDialog {
+	width: 1100px;
+	margin-top: 100px;
+}
+
+.addArtBox {
+	width: 1100px;
+}
+
+.totalArtBox {
+	padding-left: 30px;
+	height: 30px;
+	line-height: 30px;
+	color: #999;
+}
+
+#totalArt {
+	color: #FFA893;
+}
+
+#subDetailArtL, #addArticleBox, #addShArticleBox {
+	padding: 0 30px;
+}
+
+/*添加新文章模态框*/

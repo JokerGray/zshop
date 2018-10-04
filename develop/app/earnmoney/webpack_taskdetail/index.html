@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <meta id="meta_title" itemprop="name" content=""/>
+    <meta id="meta_introduce" itemprop="image" content="favicon.ico" />
+    <meta id="meta_imgUrl" itemprop="description" name="description" content="" />
+    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+    <title>跳转中...</title>
+</head>
+<body>
+    <div class="app">
+
+        <div class="content_title">
+            <div>
+                <div class="task_tag">
+                    <span>抢标任务</span>
+                    <span class="price_content">¥ <span id="taskPrice">---</span>/<span>人</span id="taskUnit"></span>
+                </div>
+                <div class="createTime" id="createTime"></div>
+            </div>
+            <div class="task_title">需要“<span id="taskTitle"></span>”</div>
+            <table class="task_property_table">
+                <tr>
+                    <td>总需人数：<span id="taskNeedPerson">-</span>人</td>
+                    <td class="text-right">抢标人数：<span id="taskbidPerson">-</span>人</td>
+                </tr>
+                <tr>
+                    <td>审核通过：<span id="taskConfirmedPerson">-</span>人</td>
+                    <td class="text-right">剩余人数：<span id="taskremaindePerson">-</span>人</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content_employer">
+            <table class="task_employer">
+                <tr>
+                    <td><span class="employer_tag">雇主</span></td>
+                    <td><img id="userPic" class="employer_pic"></td>
+                    <td><span class="employer_name" id="userName">---</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content_demand">
+            <div class="task_tag_top">任务需求</div>
+            <div class="task_content" id="taskDemand"></div>
+        </div>
+
+        <div class="content_demand content_photo">
+            <div class="task_tag_top">任务照片</div>
+            <div class="task_img" id="resources"></div>
+        </div>
+    </div>
+
+    <a class="download hidden" href="#">
+        <img src="./src/img/download.png" alt="">
+    </a>
+
+    <script src="//apps.bdimg.com/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="static/layer/mobile/layer.js"></script>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</body>
+</html>

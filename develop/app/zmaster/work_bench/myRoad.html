@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的升级之路</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" href="pages/myRoad/myRoad.css">
+</head>
+<body>
+    <div class="app">
+        <div class="container app-bg">
+            <div class="z_box">
+                <ul class="z_box_ul">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="apply" style="display: none;" data-type="0">
+        提交升级申请
+    </div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/zepto.min.js"></script>
+
+<script src="assets/layer/layer.js"></script>
+<script src="js/util.js"></script>
+<script>
+    $(function(){
+        var TOTAL={
+            percent:0,
+            step:0,
+            total0:300000,
+            upLevel:100,
+        }
+        var USER_URL={
+            WAYTOUP:'user/wayToUpgrade',//获取升级之路的信息
+            UPWAY:'user/insLeapsUpgrade ',//申请升级
+        }
+        var params={
+            merchantId:GetQueryString('merchantId'),
+            userId:GetQueryString('userId')
+        }
+        reqAjaxAsync(USER_URL.WAYTOUP,JSON.stringify(params)).done(function (res) {
+            if(res.code ==1){
+                var data = res.data;
+                var lists = data.chargeLevelTypeList;
+                console.log(res.data);
+                var str = ``;
+                var className = ['f4b','f16','f58','f25c h68','fd8 h68']
+                params.newMerchantLevel
+                for (var i = 0; i < lists.length; i++) {
+                    var obj = lists[i];
+                    if(obj.upgradingType == 1){
+                        str+=`<li class="normal">
+                        <h3 class="title">${obj.levelName}<b></b></h3>
+                        <p><i></i>开通费${obj.amount}元</p>
+                        <span class="hk">回款${obj.upgradingConditions/10000}万
+                              <div class="percent_box">
+                                <em></em>
+                                <span>完成100%</span>
+                            </div>
+                        </span>
+                        <s class="line"></s>
+                        <s class="line lineActive"></s>
+                    </li>`
+                    }else if(obj.upgradingType == 2){ //发展多少家
+                        str+=`<li class="normal">
+                        <h3 class="title">${obj.levelName}<b></b></h3>
+                        <p><i></i>直接、间接开发有${obj.upgradingConditions}家“${obj.upgradingConditionsName}”</p>
+                        <span class="hk">已发展${data.completionNum || 0}家${obj.upgradingConditionsName}
+                              <div class="percent_box">
+                                <em></em>
+                                <span>完成100%</span>
+                            </div>
+                        </span>
+                        <s class="line"></s>
+                        <s class="line lineActive"></s>
+                    </li>`
+                    }else if(obj.upgradingType == 3){
+                        str+=`<li class="normal">
+                        <h3 class="title">${obj.levelName}<b></b></h3>
+                        <p><i></i>发展5家以上的“运营中心”</p>
+                        <span class="hk">已发展${data.amount}家+${data.upgradingConditionsName}
+                              <div class="percent_box">
+                                <em></em>
+                                <span>完成100%</span>
+                            </div>
+                        </span>
+                        <s class="line"></s>
+                        <s class="line lineActive"></s>
+                    </li>`
+                    }
+                }
+                $('.z_box_ul').html(str);
+                TOTAL.percent = data.percentage*100;//进行的百分比
+                TOTAL.step = data.merchantLevel.orgLevel;//第几级
+                var lists = $('.z_box_ul').find('li');
+                var str = ``;
+
+                $.each(lists,function (index, item) {
+
+                    if(index+2<= TOTAL.step){
+                        $(item).addClass('active').removeClass('normal');
+                        $(item).find('.lineActive').css({
+                            height:'100%'
+                        })
+                        $('.percent_box').hide();
+                        if(index+2 === TOTAL.step){
+                            $(item).find('.percent_box').show().html('<em style="width:'+TOTAL.percent.toFixed(0)+'%"></em>'+'<span>完成'+TOTAL.percent.toFixed(2)+'%</span>')
+
+                            $(item).find('.lineActive').css({
+                                height:TOTAL.percent+'%'
+                            })
+                        }
+                    }
+                    console.log(index)
+                })
+                var els =  $('.apply');
+                if(data.reviewStatus > 0 && data.reviewStatus < 3){
+                    els.html('升级申请审核中').attr('data-type','1')
+                }else if(data.reviewStatus == 4){
+                    els.html('审核拒绝').attr('data-type',data.reviewStatus)
+                }
+                if(TOTAL.percent >= TOTAL.upLevel){
+                    els.show();
+                }else{
+                    els.hide();
+                }
+
+            }
+        })
+        $('.apply').on('tap',function () {
+            var el = $(this)
+            var type = $(this).attr('data-type');
+            if(type == 0){
+                reqAjaxAsync(USER_URL.UPWAY,JSON.stringify(params)).done(function (res) {
+                    if(res.code == 1){
+                        layer.msg('提交申请成功')
+                        el.html('升级申请审核中').attr('data-type','1')
+                    }
+                })
+            }else if(type == 1){
+                window.location.href = 'myRoadDetail.html?userId='+params.userId+'&merchantId='+params.merchantId;
+            }else if(type == 4){
+                window.location.href = 'myRoadDetail.html?userId='+params.userId+'&merchantId='+params.merchantId;
+            }
+
+        })
+    })
+
+    $('body').on('click','.li_box_span',function () {
+        var str = ''
+        if($(this).find('i').hasClass('iclick')){
+            $(this).html('展开<i></i>')
+            $(this).find('i').removeClass('iclick');
+        }else{
+            $(this).html('收起<i></i>')
+            $(this).find('i').addClass('iclick');
+
+        }
+        $(this).prev().slideToggle('normal');
+        $(this).parents('li').siblings().find('div.li_box_text').slideUp().next().html('展开<i></i>').removeClass('iclick');
+        var h = $('.z_box').height();
+//        $('.z_box_ul:after').css({
+//            height:h*0.4+0.2+'vw'
+//        })
+
+    })
+</script>
+</html>

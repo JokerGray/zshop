@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<meta http-equiv="Cache-Control" content="no-siteapp">
+	<title>查看个人积分</title>
+	<link rel="stylesheet" href="../../assets/layui-v2.2.2/css/layui.css">
+	<link rel="stylesheet" href="integral.css">
+</head>
+
+<body ondragstart="return false;" oncontextmenu="return false;">
+
+		<div class="content">
+			<!-- <div class="content-title">
+				等级规则
+			</div> -->
+			<div class="content-img">
+				<img id="levelImg" src="img/dj.png" />
+			</div>
+			<div class="content-name">
+				<span id="txtUserName"></span>的等级：<span id="textcurrentLevel"></span> &nbsp;&nbsp;&nbsp;积分：<span id="txtCredits"></span>分
+			</div>
+			<div class="layui-progress"  lay-filter="demo">
+				<div class="layui-progress-bar layui-bg-orange" lay-percent="50%" style="width:50%;"></div>
+			</div>
+			<div class="content-text" id="notTop">
+				<p>还需<span id="txtNextLevelPoint"></span>积分值，就能升级为<span id="txtNextLevel"></span></p>
+				<p class="no-points layui-hide">暂无积分</p>
+			</div>
+			<div class="content-text" id="arriveTop" style="display: none">该会员已经达到满级</div>
+			<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+				<ul class="layui-tab-title">
+					<li class="layui-this">等级说明</li>
+					<li>积分明细</li>
+					<li>消费明细</li>
+				</ul>
+				<div class="layui-tab-content clearfix">
+					<div class="layui-tab-item layui-show clearfix">
+						<ul class="grade-list">
+						</ul>
+					</div>
+					<div class="layui-tab-item">
+						<table id="creditsTable" border="1" cellspacing="0" cellpadding="0" class="integral-table"></table>
+					</div>
+					<div class="layui-tab-item">
+						<table id="consumeTable" border="1" cellspacing="0" cellpadding="0" class="integral-table"></table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../assets/hplus/js/jquery.min.js"></script>
+	<script src="../../assets/layer/layer.js"></script>
+	<script src="../../assets/layui-v2.2.2/layui.js"></script>
+	<script src="integral.js"></script>
+
+</html>

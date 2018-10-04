@@ -1,0 +1,641 @@
+/*common*/
+ul li{
+    list-style: none;
+}
+li{
+    list-style: none;
+}
+.addPopular-container{
+    width: 1024px;
+    height: 668px;
+    overflow-y: auto;
+}
+.addPopular-container .addPopular-nav{
+    margin:20px 23px 0;
+    height: 39px;
+}
+.addPopular-nav ul{
+    display: inline-block;
+    height: auto;
+    overflow: hidden;
+    padding: 0;
+}
+.addPopular-nav ul li{
+    display: inline-block;
+    float: left;
+    font-size: 15px;
+    padding: 8px 20px;
+    background: #ccc;
+    color:#666;
+    border:1px solid #999;
+    box-sizing: border-box;
+    margin-right:-1px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.addPopular-nav ul li:last-child{
+    margin-right:0;
+}
+.addPopular-nav ul li.active{
+    background: #fff;
+}
+.addPopular-container .addPopular-content{
+    margin:0 23px 20px;
+    border:1px solid #ccc;
+    margin-top: -1px;
+    padding: 20px;
+    height: auto;
+    overflow: hidden;
+}
+/*添加商品*/
+.form-group label{
+    color:#666;
+}
+.pop-main .pop-title{
+    height:32px;
+    line-height: 32px;
+    background-color: #eee;
+    color:#666;
+}
+.pop-content .attribute-set{
+    width:50%;
+    height:100%;
+}
+.pop-content .pop-pic-set{
+    position:relative;
+    width:50%;
+    height:100%;
+}
+.pop-pic-set .add-pic-btn{
+    height:30px;
+}
+.add-pic-btn .pic-num,
+.add-pic-btn .btn{
+    float:left;
+    display:inline-block;
+    width:40px;
+    height:30px;
+    line-height: 30px;
+    color:#666;
+    border-radius:0;
+}
+.add-pic-btn .pic-num{
+    border:1px solid #ccc;
+    text-align:center;
+    font-size:18px;
+}
+.add-pic-btn .btn{
+    padding:0;
+    margin:0;
+}
+.multi-text{
+    width:100%;
+}
+.upload-pic{
+    width:368px;
+    height: 240px;
+    text-align: center;
+    margin: 0 auto;
+}
+.upload-pic img{
+    width:368px;
+    height:240px;
+}
+.upload-pic .upload-pic-btn{
+    position: relative;
+    display: inline-block;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #666;
+    text-decoration: none;
+    line-height: 20px;
+    font-size: 13px;
+    margin-top:10px;
+}
+.upload-pic .upload-pic-btn span{
+    color: #999;
+}
+.upload-pic .upload-pic-btn input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.upload-pic .upload-pic-btn:hover {
+    background: #fff;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+.type-mark{
+    font-weight: normal;
+    color:#999;
+}
+.type-list .type-item{
+    line-height:32px;
+    font-size:16px;
+    color:#666;
+}
+.type-item .select-icon{
+    display:inline-block;
+    width:22px;
+    height:22px;
+    margin-top:4px;
+    margin-right:10px;
+    background:url(../../../../images/storeback/shopDisplayManager/sameShow/blue.png) no-repeat;
+    background-position:-120px 0;
+}
+.type-item .select-icon.selected{
+    background-position:-168px 0;
+}
+.type-item input[type=checkbox],
+.type-item input[type=radio]{
+    width:18px;
+    height:18px;
+    margin-right:3px;
+    vertical-align: text-bottom;
+}
+.type-item .item-name{
+    display:inline-block;
+    margin-right:15px;
+}
+.type-item .sub-item-list{
+    clear:both;
+    width:100%;
+    padding-left:25px;
+}
+.type-item .edit-box .edit-icon,
+.type-item .edit-box .remove-icon{
+    cursor:pointer;
+    margin-right:5px;
+}
+.STOCK_CLASS .remove-icon{
+    color:#f46767;
+    font-size: 16px;
+    padding: 5px 0;
+}
+.sub-item-list label{
+    margin-left:8px;
+    margin-bottom:0;
+    vertical-align: text-bottom;
+    font-weight: normal;
+}
+.type-list{
+    width:50%;
+}
+.type-list .attr-list-box{
+    height:285px;
+    overflow-y:auto;
+    background-color: #eee;
+    border: 1px solid #ccc;
+}
+.attr-list-box ul{
+    padding-left: 20px;
+}
+.type-list .btn-box{
+    margin-top:15px;
+}
+.type-list .btn-box .submit-btn{
+    width:72px;
+    margin-left:20px;
+}
+.show-list-body{
+    width: 50%;
+    height: auto;
+}
+.show-list{
+    height: 255px;
+    width: 95%;
+    overflow-y: auto;
+    margin-top: 30px;
+}
+.show-list>table{
+    width: 92%;
+    float: right;
+    color:#666;
+}
+.show-list>table thead{
+    border: 1px solid #ccc;
+    border-bottom:0;
+    background: #f8f8f8;
+}
+.show-list>table tr td{
+    border-top: 1px solid #ccc;
+}
+.show-list table th,
+.show-list table td{
+    text-align: center;
+}
+.show-list table input[type=text]{
+    width:60px;
+    height:26px;
+    padding:0 5px;
+}
+/**添加自定义规格*/
+.add-type-box{
+    width:380px;
+    padding:20px;
+}
+.addPopular-size .btn-sure{
+    background: #66d3b8;
+    color:#fff;
+}
+.add-type-box input[type=text]{
+    width:160px;
+    height:32px;
+    padding:0 5px;
+    margin-right:15px;
+}
+.add-type-box .item-list>li{
+    position:relative;
+    display:inline-block;
+    float:left;
+    margin:0 10px 10px;
+    border:1px solid #ddd;
+}
+.add-type-box .item-list>li span{
+    display:block;
+    padding:5px 12px;
+}
+.add-type-box .item-list>li .remove-btn{
+    position:absolute;
+    top:-8px;
+    right:-8px;
+    color:#666;
+    font-size:18px;
+    text-decoration: none;
+}
+.add-type-box .item-list>li.selected{
+    border-color:#f70;
+}
+.add-type-box .submit-btn{
+    display:block;
+    width:72px;
+    margin:0 auto;
+}
+.addPopular-size{
+    height: 598px;
+    padding-top: 230px;
+}
+.show-list-body .pplBtn{
+    margin: 10px 0 0 60%;
+    font-size: 16px;
+    background: #34a4ea;
+    color:#fff;
+}
+/*添加服务卡*/
+.addService{
+    width: 50%;
+}
+.addService label{
+    text-align: left !important;
+    padding: 0 0 5px 0 !important;
+}
+.addPopular-tab .addService-up{
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+.addService .col-sm-10{
+    padding: 0;
+}
+.service-page .page-tab{
+    height:36px;
+    width:100%;
+    border-bottom:1px solid #eee;
+    background-color:#eee;
+}
+
+.page-tab .tab-link{
+    display:block;
+    float:left;
+    height:36px;
+    line-height:36px;
+    width:80px;
+    margin-right:15px;
+    font-size:16px;
+    text-align:center;
+    color:#666;
+}
+.page-tab .tab-link.active{
+    background-color:#999;
+    color:#eee;
+}
+.service-wrapper{
+    margin:0 auto;
+}
+
+.serviceContainer label{
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    padding-top:0 !important;
+}
+.serviceContainer{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+.service-body {
+    height: auto;
+    overflow: hidden;
+}
+.service-body .service-up{
+    width: 50%;
+    height: auto;
+    overflow: hidden;
+}
+.service-name{
+    width:100%;
+}
+.form-group{
+    margin:0 0 15px 0 !important;
+}
+.service-name .form-control{
+    width:100%;
+    height: 31px;
+    line-height: 31px;
+    margin: 0;
+    padding: 0 5px;
+}
+.service-up .service-img{
+    width: 300px;
+    height: 250px;
+    margin: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.service-img img{
+    display: block;
+    width: 368px;
+    height: 240px;
+    margin:50px auto;
+}
+.service-down{
+    width: 50%;
+    height: auto;
+    overflow: hidden;
+    float: right;
+    padding-left: 20px;
+    text-align: center;
+}
+.service-down .service-lft{
+    width: 40%;
+    padding: 0 15px;
+    float: left;
+}
+.service-down .addCard{
+    width: 100%;
+    padding: 0;
+    float: right;
+}
+.service-card{
+    margin-bottom:15px;
+}
+.service-card label{
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+}
+.service-card .service-card-body{
+    border:1px solid #ccc;
+    padding: 10px 20px;
+}
+.service-card-content{
+    padding: 0;
+}
+.service-card-content .service-card-select{
+    width: 80%;
+    position: relative;
+}
+.service-card-select .card-id{
+    width: 350px;
+    height: 29px;
+    line-height: 29px;
+    float: left;
+    border: 0;
+    padding: 0 5px;
+}
+.service-card-input .btn{
+    height: 30px;
+    position: absolute;
+    right: -1px;
+    top: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+.service-card-input .btn:focus{
+    outline: none;
+}
+.service-card-input .btn:active{
+    box-shadow: 0;
+}
+.service-card-input{
+    width: 350px;
+    height: 31px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: relative;
+}
+.service-card-input:focus{
+    border-color: #66afe9;
+    outline: 0;
+}
+.service-card-select .card-detail{
+    display: none;
+    height: auto;
+    left: 0;
+    max-height: 150px;
+    overflow: auto;
+    position: absolute;
+    top: 31px;
+    width: 350px;
+}
+.service-card-select .card-detail.actve{
+    display: block;
+}
+.card-detail table{
+    background: #fff;
+}
+.card-detail table tr th{
+    background: rgb(235, 235, 228);
+    font-size: 13px;
+    padding: 0 8px;
+    height: 31px;
+    line-height: 31px;
+    color: #666;
+}
+.card-detail table tr td{
+    font-size: 13px;
+    background: #fff;
+    padding: 0 8px;
+    height: 31px;
+    line-height: 31px;
+    color: #666;
+}
+.service-card .service-card-name{
+    margin-bottom: 5px;
+    display: inline-block;
+    padding: 0;
+    text-align: left;
+    line-height: 34px;
+    height: 34px;
+}
+.service-card-body .card-detail-btn{
+    background: #66d3b8;
+    color:#fff;
+    margin-left: 20px;
+    height: 31px;
+}
+.service-card-numBody{
+    width: 100px;
+    float: left;
+    height: 31px;
+    margin-left: 100px;
+}
+.service-card-numBody .service-card-num{
+    margin-bottom:5px;
+    float: left;
+}
+.service-card-numBody .card-add-num{
+    width: 50px;
+    float: right;
+}
+.card-add-num .form-control{
+    height: 31px;
+}
+.service-card-priceBody{
+    width: 130px;
+    margin-left: 15px;
+    height: 31px;
+    float: left;
+}
+.service-card-priceBody .service-card-price{
+    float: left;
+}
+.service-card-priceBody .card-add-price{
+    float: right;
+    width: 80px;
+}
+.card-add-price .form-control{
+    height: 31px;
+}
+.service-card .btn-primary{
+    height: 31px;
+    margin-left: 10px;
+}
+.addCard-info .control-label{
+    float: left;
+    padding-top: 7px !important;
+}
+.addCard-info .add-cardname{
+    width: 300px;
+    float: left;
+}
+.addCard{
+    height:245px;
+    overflow-y:auto;
+}
+.addCard table{
+    width:100%;
+    border-left:0;
+    border-right: 0;
+
+}
+.addCard table>tbody>tr>td{
+    border:0;
+    text-align: center;
+    height: 31px;
+}
+.addCard table>thead>tr>th{
+    border:0;
+    text-align: center;
+}
+.add-cardPrice{
+    height: 31px;
+    line-height: 31px;
+    width:80px;
+    padding: 0 5px;
+}
+.addCard table>tbody>tr>td .btn{
+    height: 26px;
+    padding-top:3px;
+}
+button.dim{
+    margin-bottom:0!important;
+}
+.price-sum .control-label{
+    margin-bottom: 5px;
+}
+.price-sum .form-control{
+    height: 31px;
+    padding: 0 5px;
+    line-height: 31px;
+    width:100%;
+    margin-right: 5px;
+}
+.addCard-table thead{
+    width: 100%;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+.addCard-table tr{
+    width: 100%;
+}
+.service-info{
+    width: 100%;
+    margin-top: 15px;
+}
+.service-img-label{
+    float: left;
+}
+
+.upload-pic-btn{
+    position: relative;
+    display: inline-block;
+    padding: 4px 100px;
+    overflow: hidden;
+    color: #666;
+    text-decoration: none;
+    line-height: 10px;
+    font-size: 13px;
+    margin-top:10px;
+}
+.upload-pic-btn span{
+    color: #999;
+}
+.upload-pic-btn input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.upload-pic-btn:hover {
+    background: #fff;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+.addService-img{
+    width: 50%;
+}
+.addService-img .upload-pic{
+    margin-top:50px;
+}
+.addPopular-tab .pplBtn{
+    margin: 10px 0 0 80%;
+    font-size: 16px;
+    background: #34a4ea;
+    color:#fff;
+}
+.addCard table tr th{
+    background: #f8f8f8;
+}
+.addPopular-tab .pplBtns{
+    margin: 135px 0 0 30%;
+    font-size: 16px;
+    background: #34a4ea;
+    color: #fff;
+}

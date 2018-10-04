@@ -1,0 +1,364 @@
+body {
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+/**顶部时间选择和店铺选择*/
+.top {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+}
+.top .path {
+  float: left;
+}
+.top .path > i {
+  font-family: SimSun;
+  font-weight: 700;
+}
+.top .path .shopName {
+  font-size: 16px;
+  color: #333333;
+}
+.top .shopFilter {
+  float: right;
+  width: 150px;
+  margin-top: 8px;
+}
+.mainContent {
+  padding: 0 20px;
+}
+/**评论总览*/
+.commentsOverview {
+  width: 100%;
+  min-height: 166px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  margin: 18px 0;
+  font-size: 0;
+}
+.commentsOverview > label {
+  display: inline-block;
+  vertical-align: top;
+  width: 10%;
+  font-size: 15px;
+  color: #333333;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+.commentsOverview > ul {
+  display: inline-block;
+  vertical-align: top;
+  width: 90%;
+  font-size: 15px;
+  color: #333333;
+}
+.commentsOverview > ul > li {
+  float: left;
+  padding-top: 60px;
+  margin: 0 5%;
+  width: 155px;
+}
+.commentsOverview > ul > li:first-of-type {
+  margin-left: 0;
+}
+.commentsOverview > ul > li > div {
+  margin-top: 16px;
+}
+.commentsOverview > ul > li > div h4 {
+  font-size: 26px;
+  font-weight: 700;
+  display: inline-block;
+}
+.commentsOverview > ul > li > div > div {
+  display: inline-block;
+  vertical-align: top;
+}
+/**商品评论明细*/
+.goodsCommentList {
+  border: 1px solid #dddddd;
+  background-color: #fff;
+}
+.goodsCommentList .filterBox {
+  padding: 12px 20px 9px 20px;
+}
+.goodsCommentList .filterBox > p {
+  float: left;
+  margin-top: 6px;
+}
+.goodsCommentList .filterBox .filterContent {
+  float: right;
+}
+.goodsCommentList .filterBox .filterContent > div {
+  display: inline-block;
+  width: 150px;
+  vertical-align: top;
+  margin-left: 6px;
+}
+.goodsCommentList .filterBox .filterContent > div .layui-input,
+.goodsCommentList .filterBox .filterContent > div .layui-select {
+  height: 34px;
+}
+.goodsCommentList .filterBox .filterContent > div.keyBox {
+  position: relative;
+  z-index: 2;
+}
+.goodsCommentList .filterBox .filterContent > div.keyBox > ul {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+  z-index: 1;
+  width: 100%;
+  display: none;
+  max-height: 250px;
+  overflow-y: auto;
+}
+.goodsCommentList .filterBox .filterContent > div.keyBox > ul li {
+  width: 100%;
+  padding: 8px 6px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+.goodsCommentList .filterBox .filterContent > div.keyBox > ul li:hover {
+  background-color: #eeeeee;
+}
+.goodsCommentList .filterBox .filterContent > div.btnBox {
+  width: 80px;
+}
+.goodsCommentList .filterBox .filterContent > div.btnBox > button {
+  width: 100%;
+  height: 34px;
+  background-color: #fff;
+  border: 1px solid #d2d2d2;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  color: #333333;
+}
+.goodsCommentList .filterBox .filterContent > div.btnBox > a {
+  display: block;
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  background-color: #fff;
+  border: 1px solid #d2d2d2;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  text-align: center;
+}
+.goodsCommentList .filterBox .filterContent > div.btnBox > a > i {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: -6px;
+}
+.goodsCommentList .filterBox .filterContent > div.btnBox > a > span {
+  vertical-align: middle;
+  color: #333333;
+}
+.goodsCommentList .tableBox {
+  padding: 0 20px;
+  overflow-y: auto;
+  height: 438px;
+}
+.goodsCommentList .tableBox table {
+  margin: 0;
+}
+.goodsCommentList .tableBox table thead > tr > th,
+.goodsCommentList .tableBox table tbody > tr > td {
+  padding: 8px 9px;
+}
+.goodsCommentList .tableBox table thead > tr > th:nth-of-type(1),
+.goodsCommentList .tableBox table tbody > tr > td:nth-of-type(1) {
+  text-align: center;
+}
+.goodsCommentList .tableBox table thead > tr > th:last-of-type,
+.goodsCommentList .tableBox table tbody > tr > td:last-of-type {
+  text-align: right;
+}
+.goodsCommentList .tableBox table thead > tr > th:last-of-type a,
+.goodsCommentList .tableBox table tbody > tr > td:last-of-type a {
+  color: #1e9fff;
+}
+.goodsCommentList .tableBox table tbody > tr > td:nth-last-of-type(2) > span:nth-of-type(2) {
+  vertical-align: sub;
+}
+.goodsCommentList .pageSelectorBox {
+  padding: 0 20px;
+}
+.goodsCommentList .pageSelectorBox > div {
+  float: right;
+}
+/**遮罩层*/
+.mask {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: none;
+}
+/**评论详情弹窗*/
+.detailPage .title {
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  background-color: #353B53;
+  padding: 0 10px 0 20px;
+}
+.detailPage .title > span {
+  color: #ffffff;
+  font-size: 14px;
+}
+.detailPage .title > i {
+  float: right;
+  width: 34px;
+  height: 34px;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+.detailPage .goodsInfo {
+  width: 100%;
+  padding: 30px 40px 10px 40px;
+}
+.detailPage .goodsInfo > div {
+  display: inline-block;
+  vertical-align: top;
+}
+.detailPage .goodsInfo > div.goodsImage > img {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+.detailPage .goodsInfo > div.goodsMsg {
+  margin-left: 16px;
+}
+.detailPage .goodsInfo > div.goodsMsg p {
+  font-size: 14px;
+  margin-top: 8px;
+}
+.detailPage .goodsInfo > div.goodsMsg p:nth-of-type(1) {
+  margin-top: 0;
+}
+.detailPage .goodsInfo > div.goodsMsg p label {
+  color: #999999;
+}
+.detailPage .goodsInfo > div.goodsMsg p span {
+  color: #333333;
+  font-weight: 700;
+  display: inline-block;
+  width: 600px;
+  vertical-align: top;
+}
+.detailPage .line {
+  padding: 0 40px;
+}
+.detailPage .totalScore {
+  padding: 0 40px;
+}
+.detailPage .totalScore i {
+  vertical-align: sub;
+  margin-left: 6px;
+  font-size: 14px;
+  color: #666666;
+}
+.detailPage .commentContent {
+  padding: 10px 40px;
+}
+.detailPage .commentContent p {
+  font-size: 15px;
+  color: #333333;
+  width: 580px;
+}
+.detailPage .cateScore {
+  padding: 0 40px;
+}
+.detailPage .cateScore > div {
+  display: inline-block;
+  margin-right: 18px;
+}
+.detailPage .cateScore > div > label {
+  font-size: 15px;
+  color: #333333;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+.detailPage .cateScore > div .layui-rate li i.layui-icon {
+  font-size: 16px;
+}
+.detailPage .commentImages {
+  padding: 20px 30px;
+  font-size: 0;
+}
+.detailPage .commentImages img {
+  margin: 0 10px;
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+}
+.detailPage .commentImages > video {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+/**查看视频弹窗*/
+.videoPage .videoBox {
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+}
+.videoPage .videoBox video {
+  width: 100%;
+  height: 100%;
+}
+.videoPage .videoBox video::-webkit-media-controls {
+  overflow: hidden !important;
+}
+.videoPage .videoBox video::-webkit-media-controls-enclosure {
+  width: calc(112%);
+  margin-left: auto;
+}
+.layui-rate li i.layui-icon {
+  font-size: 14px;
+}
+/**好，中，差评图标*/
+.starIcon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 23px;
+}
+.starIcon.hao {
+  background: url("../images/ic_haoping.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.starIcon.zhong {
+  background: url("../images/ic_zhongping.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.starIcon.cha {
+  background: url("../images/ic_chaping.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+/*# sourceMappingURL=reportCSGoodsComment.css.map */

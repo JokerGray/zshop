@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工资设置</title>
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/bootstrap-table/bootstrap-table.min.css"/>
+	<link rel="stylesheet" href="css/common.css"> 
+	<style>
+		.contain{
+			padding:0 55px;
+			font-family: '微软雅黑'; 
+		}
+		.info{
+			padding:10px 0;
+			border:1px solid #eee;
+			font-size: 15px;
+		}
+		.info span{
+			margin-right: 15px;
+		}
+		
+		.modifyMoney{
+			margin-top: 20px;
+			text-align: center;
+			font-size: 15px;
+		}
+		.modifyMoney input{
+			width: 150px;
+			height: 30px;
+			padding-left: 10px;
+		}
+		
+
+ 	</style>
+</head>
+<body>
+	<div class="contain">
+		<div class="info">
+			<label>姓名：</label>
+			<span class="userName"></span>
+
+			<label>职务：</label>
+			<span class="position"></span>
+
+			<label>所属店铺：</label>
+			<span class="shopName"></span>
+		</div>
+
+		<div class="modifyMoney">
+			<label>固定底薪金额：</label>
+			<input type="text" class="basicSalary" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)" maxlength="11"> 元
+		</div>
+	</div>
+
+	<script src="../../assets/jquery/jquery.min.js"></script>
+	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../assets/layer/layer.js"></script>
+	<link rel="stylesheet" href="../../assets/check_index/layer/skin/default/layer.css"/>
+
+	<!-- bootstrap-table -->
+	<script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+	<script src="js/common.js"></script>
+	<script>
+		// 如果url 中有中文，则用 此方法 获取url 中文
+		function GetQueryString_new(name){
+		    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		    var r = window.location.search.substr(1).match(reg);//注意这行
+		    if(r!=null){
+		        return  decodeURI(r[2]);//解码一次
+		    }else{
+		        return null;
+		    }
+		}
+
+		var merchantId = GetQueryString_new('merchantId');
+		var userName = GetQueryString_new('userName');
+		var userId = GetQueryString_new('userId');
+		var shopName = GetQueryString_new('shopName');
+		var positionName = GetQueryString_new('positionName');
+		var basicSalary = GetQueryString_new('basicSalary');
+
+		$('.userName').text(userName);
+		$('.position').text(positionName);
+		$('.shopName').text(shopName);
+
+		if(basicSalary == 'null' || basicSalary == '' || basicSalary == 'undefined'){
+			$('.basicSalary').val(parseFloat(0).toFixed(2));
+		}else{
+			$('.basicSalary').val(parseFloat(basicSalary).toFixed(2));
+		}
+
+		// 获取 
+		function doSubmit(){
+			var data = {
+			    userId : userId,
+			    basicSalary : $('.basicSalary').val() 
+			};
+			return data;
+		}
+
+
+		// 金额 校验
+		function moneyCheck(self){
+		    if($(self).val().length <= 8){
+		        if($(self).val().length==1){
+		            $(self).val($(self).val().replace(/[^0-9]/g,''));
+		        } else {
+		            $(self).val($(self).val().replace(/[^0-9.]/g,''));
+		            $(self).val($(self).val().replace(/\.{2,}/g,"."));
+		            $(self).val($(self).val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+
+		            if($(self).val().split('.')[1] != undefined && $(self).val().split('.')[1].length > 2){
+				      	$(self).val($(self).val().split('.')[0] +'.'+ $(self).val().split('.')[1].substring(0,2));
+				    }
+		        }
+		    }else{
+		        $(self).val($(self).val().replace(/[^0-9.]/g,''));
+		        $(self).val($(self).val().replace(/\.{2,}/g,"."));
+		        $(self).val($(self).val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+
+		        // 整数 金额超过 8 位
+		        if($(self).val() > 99999999.99){
+		            $(self).val($(self).val().substring(0,8));
+		        }
+
+		        if($(self).val().split('.')[1] != undefined && $(self).val().split('.')[1].length > 2){
+			      	$(self).val($(self).val().split('.')[0] +'.'+ $(self).val().split('.')[1].substring(0,2));
+			    }
+		    }
+		} 
+		
+	</script>
+</body>
+</html>

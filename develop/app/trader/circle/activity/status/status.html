@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>活动状态页面</title>
+    <link href="../../../assets/angular-1.4.6/select.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="status.css">
+    
+    <style>
+        .top-title{
+            border-bottom: 2px solid #ddd;
+        }
+        .top-title .title-name{
+            display: inline-block;
+            line-height: 1;
+            padding: 16px 0 12px 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: #20c7cd;
+            border-bottom: 4px solid #23c6cb;
+        }
+        .form-padding{
+            padding: 2rem 0;
+        }
+        .tips-no-padding{
+            padding: 7px 0;
+        }
+    </style>
+    
+</head>
+<body ng-app="myApp">
+    <div class="container" ng-controller="statusController">
+        <div class="top-title" >
+            <span class="title-name">活动状态</span>
+            <div class="top-edit" ng-if="showEditBtn" ng-click="openEditPage()">
+                <span class=""><i class="glyphicon glyphicon glyphicon-edit"></i> 编辑活动</span>
+            </div>
+            
+            <!-- <span class="title-name">活动状态</span> -->
+        </div>
+
+        <div id="stepbar"  style="margin:20px auto 0"></div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-horizontal form-padding">
+                    <div class="form-group">
+                        <label for="activityName" class="col-sm-2 control-label">发起人：</label>
+                        <div class="col-sm-4">
+                            <span class="label-text" ng-bind="activeStatusData.username"></span>
+                        </div>
+                        <label for="activityName" ng-if="actype ==2" class="col-sm-2 control-label">审核人：</label>
+                        <div class="col-sm-4" ng-if="actype ==2">
+                            <span class="label-text" ng-bind="activeStatusData.nextAudUserName"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate" class="col-sm-2 control-label">活动名称：</label>
+                        <div class="col-sm-4">
+                             <span class="label-text" ng-bind="activeStatusData.name"></span>
+                        </div>
+
+                        <label for="startDate" class="col-sm-2 control-label">活动时间：</label>
+                        <div class="col-sm-4">
+                             <span class="label-text" ng-bind="activeStatusData.startTime"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if='activeStep<6 && actype ==2'>
+                        <label for="place" class="col-sm-2 control-label">人均费用：</label>
+                        <div class="col-sm-4">
+                            <span class="label-text" >{{activeStatusData.perBudget | number:2}}</span>元
+                        </div>
+                        <label for="place" class="col-sm-2 control-label">总金额：</label>
+                        <div class="col-sm-4">
+                            <span class="label-text" >{{activeStatusData.totalMoney | number:2}}</span>元
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if='activeStep>=6 && actype ==2'>
+                        <label for="place" class="col-sm-2 control-label">人均费用：</label>
+                        <div class="col-sm-4">
+                            <span class="label-text" >{{activeStatusData.realBudget | number:2}}</span>元
+                        </div>
+                        <label for="place" class="col-sm-2 control-label">总金额：</label>
+                        <div class="col-sm-4">
+                            <span class="label-text" >{{activeStatusData.realMoney | number:2}}</span>元
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if='actype ==1'>
+                            <label for="place" class="col-sm-2 control-label">人均费用：</label>
+                            <div class="col-sm-4">
+                                <span class="label-text" >{{activeStatusData.perBudget | number:2}}</span>元
+                            </div>
+                            <label for="place" class="col-sm-2 control-label">总金额：</label>
+                            <div class="col-sm-4">
+                                <span class="label-text" >{{activeStatusData.totalMoney | number:2}}</span>元
+                            </div>
+                        </div>
+                    <div class="text-group-gray refuse-input" ng-if='activeStep==5'>
+                        <div class="text-group-active-title">活动申请信息</div>
+                        <div class="form-group">
+                            <label for="place" class="col-sm-2 control-label">原人均费用：</label>
+                            <div class="col-sm-4">
+                                <span class="label-text" >{{activeStatusData.perBudget | number:2}}</span>元
+                            </div>
+                            <label for="place" class="col-sm-2 control-label">参加人数：</label>
+                            <div class="col-sm-4">
+                                <span class="label-text" ng-bind="activeStatusData.JoinNum"></span>人
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="place" class="col-sm-2 control-label">已申请金额：</label>
+                            <div class="col-sm-4">
+                                <span class="label-text" >{{activeStatusData.totalMoney | number:2}}</span>元
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-group-blue" ng-if='activeStep==5'>
+                            <div class="text-group-balance-title">经费结余申请信息</div>
+                        <div class="form-group">
+                            <label for="place" class="col-sm-2 control-label">实际人均费用：</label>
+                            <div class="col-sm-4">
+                                <span class="label-text" >{{activeStatusData.realBudget | number:2}}</span>元
+                            </div>
+                            <label for="place" class="col-sm-2 control-label">实际参加人数：</label>
+                            <div class="col-sm-4">
+                                <span class="label-text"  ng-bind="activeStatusData.JoinNum"></span>人
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            
+                            <label for="place" class="col-sm-2 control-label">实际总金额：</label>
+                            <div class="col-sm-4">
+                                <span class="label-text" >{{activeStatusData.realMoney | number:2}}</span>元
+                            </div>
+                            <div ng-if="activeStatusData.giveOrGet<=0" style="color:red">
+                                <label for="place" class="col-sm-2 control-label">应退还：</label>
+                                <div class="col-sm-4">
+                                    <span class="label-text" >{{activeStatusData.give | number:2}}</span>元
+                                </div>
+                            </div>
+                            <div ng-if="activeStatusData.giveOrGet>0" style="color:red">
+                                <label for="place" class="col-sm-2 control-label">应补齐：</label>
+                                <div class="col-sm-4">
+                                    <span class="label-text" >{{activeStatusData.get | number:2}}</span>元
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                </div>
+                <div class="panel">
+                    <div class="panel-body backgroud-f7">
+                        <div class="table-title">参与人员（<span ng-bind='activeMembers.length'></span>人）</div>
+                        <div class="table-title-r" ng-if="activeStep==4 && isMyAc ==1" ng-click="changeMembers()">
+                            <span class=""><i class="glyphicon glyphicon glyphicon-edit"></i> 修改参加人员</span>
+                        </div>
+                        <table id="table" class="table-hovered">
+                            <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>电话号码</th>
+                                    <th>小组</th>
+                                    <th>剩余活动经费</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in activeMembers" >
+                                    <td ng-bind="data.userName"></td>
+                                    <td ng-bind="data.phone"></td>
+                                    <td ng-bind="data.detailName"></td>
+                                    <td ng-class="{true :'red-td'}[data.finance < activeStatusData.perBudget]" ng-bind="data.finance"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div ng-if='showCheckBtn'>
+                    <div  class="col-md-12" style="margin-bottom:10px;" ng-if='activeStep==2'>
+                        <div class="form-group">
+                            <button type="button" ng-click="activerefuseOpenModel();" class="btn btn-default btn-new-danger col-md-4 col-md-offset-1">拒绝活动申请</button>
+                            <button type="button" ng-click="activeAgreeOpenModel();"  class="btn btn-default btn-green-default col-md-4 col-md-offset-1">同意活动申请</button>
+                        </div>
+                    </div>
+                    <div  class="col-md-12" style="margin-bottom:10px;" ng-if='activeStep==3'>
+                        <div class="form-group">
+                            <button type="button" ng-click="refuseMoneyOpenModel();" class="btn btn-default btn-new-danger col-md-4 col-md-offset-1">拒绝发放活动经费</button>
+                            <button type="button" ng-click="accessMoneyOpenModel();"  class="btn btn-default btn-green-default col-md-4 col-md-offset-1">同意发放活动经费</button>
+                        </div>
+                    </div>
+                    
+                    
+                    <div  class="col-md-12" style="margin-bottom:10px;" ng-if='activeStep==5'>
+                        <div class="form-group">
+                            <button type="button" ng-click="refuseBalanceOpenModel();" class="btn btn-default btn-new-danger col-md-4 col-md-offset-1">拒绝结余申请</button>
+                            <button type="button" ng-click="accessBalanceOpenModel();"  class="btn btn-default btn-green-default col-md-4 col-md-offset-1">同意并进入结余发放</button>
+                        </div>
+                    </div>
+                    <div  class="col-md-12" style="margin-bottom:10px;" ng-if='activeStep==6'>
+                        <div class="form-group">
+                            <button type="button" ng-click="refuseGiveLeftMoneyOpenModel();" class="btn btn-default btn-new-danger col-md-4 col-md-offset-1">拒绝发放活动结余</button>
+                            <button type="button" ng-click="accessGiveLeftMoneyOpenModel();"  class="btn btn-default btn-green-default col-md-4 col-md-offset-1">同意发放活动结余</button>
+                        </div>
+                    </div>
+                </div>
+                <div  ng-if='activeStep==4 && isMyAc ==1' class="col-md-12" style="margin-bottom:10px;" ng-if='activeStep==4 && isMyAc ==1'>
+                    <div class="form-group">
+                        <button type="button" ng-click="balanceApplyOpenModel();" class="btn btn-default btn-green-default  col-md-4 col-md-offset-3">结余申请</button>
+                    </div>
+                </div>
+                
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="phone-cell history-box">
+                    <!-- <div id="timeline-container-label-picto" type="text"></div> -->
+
+                    <div class="checkTitle">审批记录</div>
+
+                    <div class="cell-box" ng-if="actype==2" ng-repeat="history in historyDatas track by $index">
+                        <div class="cell-box-label" >
+                            <span ng-bind="history.operatorTime"></span>
+                            <div class="step-circle step-circle-blue" ng-if='$index ==0 && history.operatorStatus !=2'>
+                                <span class="glyphicon glyphicon-ok" style="color:aliceblue;" aria-hidden="true"></span>
+                            </div>
+                            <div class="step-circle step-circle-red" ng-if='$index ==0 && history.operatorStatus ==2'>
+                                <span class="glyphicon glyphicon-remove" style="color:aliceblue; "  aria-hidden="true"></span>
+                            </div>
+                            <div class="step-circle step-circle-grey" ng-if='$index !=0'>
+                                <span class="glyphicon glyphicon-chevron-up" style="color:aliceblue; left:1px;"  aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="cell-box-right">
+                            <div class="cell-box-right-status" ng-bind="history.tip">
+                                
+                            </div>
+                            <div class="cell-box-right-name" ng-bind="history.operatorName">
+                                
+                            </div>
+                            <div class="cell-box-remark" ng-bind="history.operatorRemark">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cell-box">
+                        <div class="cell-box-bottom-label">
+                            <span ng-bind="activeStatusData.createTime"></span>
+
+                            <div class="step-circle step-circle-grey">
+                                    <span class="glyphicon glyphicon-chevron-up" style="color:aliceblue; left:1px;"  aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="cell-box-right">
+                            <div ng-if="actype==2" class="cell-box-right-status">活动发布</div>
+                            <div ng-if="actype==1" class="cell-box-right-status">活动补录</div>
+                            <div class="cell-box-right-name" ng-bind="activeStatusData.username">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../../../assets/jquery/jquery.min.js"></script>
+    <script src="../../../assets/stepbar/stepbar.js"></script>
+    <script src="../../../assets/angular-1.4.6/angular.js"></script>
+    <script src="../../../assets/angular-1.4.6/select.min.js"></script>
+    
+    <script src="../../../assets/layer/layer.js"></script>
+    <script src="../../../assets/angular-1.4.6/ng-layer.js"></script>        
+
+    <script src="../../../assets/angular-1.4.6/ui-bootstrap.min.js"></script>
+    <script src="../../../assets/angular-1.4.6/ui-bootstrap-tpls.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    
+    <script src="../../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
+    
+    <script src="status.js"></script>
+    
+    <script>
+        //方法已移动到status.js angular的控制器中
+        // function openEditPage(){     
+        //     var merchantId = getUrlParam('merchantId');
+        //     var userId = getUrlParam('userId');
+        //     var active_id = localStorage.getItem('status_active_id');
+        //     layer.open({
+        //         type: 2,
+        //         content: '../add-or-edit/add-or-edit.html?merchantId='+merchantId+'&&userId='+userId+ '&&type=1'+'&&activityId='+active_id,
+        //         title: false,
+        //         btn: false,
+        //         area: ['80%', '80%'],
+        //         // success : function(){
+                    
+        //         // }
+        //     });
+            
+        // }
+        //获取url中的参数
+        // function getUrlParam(name) {
+        //     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        //     var r = window.location.search.substr(1).match(reg); //匹配目标参数
+        //     if (r != null) return unescape(r[2]); return null; //返回参数值
+        // }
+    </script>
+</body>
+</html>

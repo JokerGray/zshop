@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>收入提取明细</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="../../../common/css/reset.css" />
+		<link rel="stylesheet" href="../../../common/css/layTab.css" />
+	</head>
+
+	<body>
+		<div class="tool-box layui-form">
+			<ul class="tool-box-ul clearfix">
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label">收入类型：</label>
+						<div class="layui-input-inline">
+							<select id="selectview2" lay-search>
+								<option value="-1">--全部--</option>
+								<option value="1">转盘</option>
+                                <option value="2">智币销售</option>
+                                <option value="3">直播预存</option>
+                                <option value="4">专业制作</option>
+                                <option value="5">商户升级</option>
+                                <option value="12">头条</option>
+							</select>
+						</div>
+					</div>
+				</li>			
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label" id="stTime">提取日期：</label>
+						<div class="layui-input-inline startDate">
+							<input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+						</div>
+					</div>
+				</li>				
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label" id="endTim">至：</label>
+						<div class="layui-input-inline endDate">
+							<input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+						</div>
+					</div>
+				</li>
+				<button class="layui-btn" id="searchBtn">搜索</button>
+				<button class="layui-btn" id="resetBtn">重置</button>
+			</ul>
+		</div>
+		<div class="tool-add-box clearfix">
+			<button class="layui-btn my-btn add" lay-event="add" id="addButton">导出excel</button>
+			<!--<button class="layui-btn my-btn add" lay-event="add" id="setButton">设置</button>-->
+		</div>
+		<div class="layui-app">
+			<div class="app-table">
+				<table lay-filter="merchantTable" id="merchantTable"></table>
+				<div id="amount"></div>
+				<div id="layTablePage"></div>
+			</div>
+		</div>
+		
+		
+		<script type="text/html" id="barDemo">
+		    <button class="layui-btn my-btn" lay-event="view">确认</button>
+		</script>
+
+
+	</body>
+
+</html>
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript">
+	/* jsorcss('css','profitExtractLog'); */
+	jsorcss('js','profitExtractLog');
+</script>

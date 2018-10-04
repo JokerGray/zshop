@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品统计详情-店外购物</title>
+    <link rel="stylesheet" href="../../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../../../assets/common/css/common.css">
+    <link rel="stylesheet" href="../css/goodsStatisticsDetail.css">
+</head>
+<body>
+<!--title和关闭按钮-->
+<div class="header">
+    <span>商品销售详情</span>
+    <i class="closeBtn">关闭</i>
+</div>
+<!--路径显示和tabNav按钮-->
+<div class="path-radio">
+    <div class="path">
+        <span class="date"> </span>
+        <i> > </i>
+        <span class="shopName"> </span>
+    </div>
+    <!--<div class="radioBtn">-->
+        <!--<ul class="clearfix">-->
+            <!--<li class="active">-->
+                <!--<i> </i>-->
+                <!--<span>店外购物</span>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<i> </i>-->
+            <!--<span>店内下单</span>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+</div>
+<!--商品概览（商品信息，销冠）-->
+<div class="goodsOverview">
+    <ul class="clearfix">
+        <li>
+            <img src="" alt="" id="goodsPic">
+            <div>
+                <p>
+                    <label>商品名称：</label>
+                    <span id="goodsName" title=""> </span>
+                </p>
+                <!--<p>-->
+                    <!--<label>商品类目：</label>-->
+                    <!--<span>保健商品</span>-->
+                <!--</p>-->
+                <p>
+                    <label>收藏数量：</label>
+                    <span id="favAccount"> </span>
+                </p>
+                <p>
+                    <label>原价：</label>
+                    <span id="goodsPrice"> </span>
+                </p>
+            </div>
+        </li>
+        <li>
+            <p class="clearfix">
+                <label>商品销售额</label>
+                <span id="saleComparison"> </span>
+            </p>
+            <h4>
+                <sub>￥</sub>
+                <b id="saleMoney"> </b>
+            </h4>
+            <p class="clearfix">
+                <label>销量</label>
+                <span id="saleNum"> </span>
+            </p>
+        </li>
+        <li>
+            <p class="clearfix">
+                <label>商品退款金额</label>
+                <span id="returnComparison"> </span>
+            </p>
+            <h4>
+                <sub>￥</sub>
+                <b id="returnMoney"> </b>
+            </h4>
+            <p class="clearfix">
+                <label>件数</label>
+                <span id="returnNum"> </span>
+            </p>
+        </li>
+        <li>
+            <p class="clearfix">
+                <label>商品销售冠军</label>
+                <!--<span>与昨日持平</span>-->
+            </p>
+            <h4 id="topShopName">
+
+            </h4>
+            <p class="clearfix">
+                <label>销售总额</label>
+                <span id="topMoney"> </span>
+            </p>
+        </li>
+    </ul>
+</div>
+<!--销量走势-->
+<div class="goodsSaleTrend">
+    <div id="trend"></div>
+</div>
+<!--商品销售明细-->
+<div class="goodsSaleList">
+    <div class="title-export">
+        <div class="title">商品销售明细</div>
+        <div class="exportBox">
+            <a href="JavaScript:;" id="exportBtn">
+                <i> </i>
+                <span>导出</span>
+            </a>
+        </div>
+    </div>
+    <div class="reportTable">
+        <table class="layui-table online">
+            <colgroup>
+                <col width="80">
+                <col width="200">
+                <col width="150">
+                <col width="150">
+                <col width="100">
+                <col width="100">
+                <col width="100">
+                <col width="200">
+                <col width="150">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>订单编号</th>
+                <th>店铺名称</th>
+                <th>用户名称</th>
+                <th>用户电话</th>
+                <th>销售数量</th>
+                <th>销售金额</th>
+                <th>销售时间</th>
+                <th>销售状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr>-->
+                <!--<td>01</td>-->
+                <!--<td>ZXCSSHOP201808111441511710005</td>-->
+                <!--<td>武汉楚河汉界店</td>-->
+                <!--<td>福西西fcc0616</td>-->
+                <!--<td>13000000000</td>-->
+                <!--<td>10</td>-->
+                <!--<td>1,000.00</td>-->
+                <!--<td>2018-08-27 10:00</td>-->
+                <!--<td>待发货</td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+    <div class="pageBox">
+        <div id="pageSelector"></div>
+    </div>
+</div>
+</body>
+<script src="../../../assets/jquery/jquery.min.js"></script>
+<script src="../../../assets/artTemplate/template-web.js"></script>
+<script src="../../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../../assets/echart/echarts.min.js"></script>
+<script src="../../../assets/common/js/utils.js"></script>
+<script src="../js/goodsStatisticsDetail.js"></script>
+</html>

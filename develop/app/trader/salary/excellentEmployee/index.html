@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>优秀员工奖</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            overflow: hidden;
+        }
+        .nav{
+            width: 8.33%;
+            height: 929px;
+            background-color: #4d5579;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
+        }
+        .top{
+            width: 100%;
+            height: 136px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-left: 162px;
+            background: #353b53;
+        }
+        .main{
+            position: absolute;
+            width: 91.67%;
+            height: 100%;
+            top: 136px;
+            padding-left: 8.33%;
+            z-index: 2;
+        }
+        .main iframe{
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            position: relative;
+            z-index: 99999999;
+        }
+    </style>
+</head>
+<body>
+<div class="nav"></div>
+<div class="top"></div>
+<div class="main">
+    <!--<iframe src="reportCSDayBusiness.html?merchantId=623&backUserName=女人花管理员&backUserId=10317" frameborder="0"></iframe>-->
+    <iframe src="excellentEmployee.html?merchantId=623&backUserName=女人花管理员&backUserId=10987" frameborder="0"></iframe>
+</div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script>
+    $(function () {
+        $('.nav').height($(window).height());
+        // $('.main').width($(window).width()-$('.nav').width());
+        $('.main').height($(window).height()-$('.top').height());
+    })
+</script>
+</html>

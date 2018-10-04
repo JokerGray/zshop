@@ -1,0 +1,86 @@
+body{
+	background:#f2f2f2;
+}
+#saleList{
+	height:816px;
+	overflow-y:auto;
+}
+.list-item{
+	height:270px;
+	background:#fff;
+	margin-bottom:12px;
+}
+.list-item .customer-info{
+	display:flex;
+	align-items: center;
+	justify-content:space-between;
+	height:84px;
+	padding-left:62px;
+	padding-right:56px;
+	font-size:34px;
+	color:#333;
+	border-bottom:2px solid #d2d2d2;
+}
+.list-item .order-info{
+	position:relative;
+	display: flex;
+	justify-content: space-between;
+	padding-left:62px;
+	padding-right:56px;
+	padding-top:26px;
+}
+.order-info .media {
+	max-width: 65%;
+}
+.order-info .media .media-left{
+	margin-right:32px;
+}
+.order-info .media .media-left img{
+	width:182px;
+	height:134px;
+}
+.order-info .media .media-heading{
+	color:#fe6869;
+	font-size:30px;
+	word-break: break-all;
+	display: -webkit-box;
+	-webkit-line-clamp:2;
+	-webkit-box-orient:vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+}
+.order-info .media p{
+	font-size:30px;
+	color:#333;
+	margin:0;
+	line-height:1.6;
+}
+.order-info .media p .num{
+	margin-right:64px;
+}
+.order-info .state{
+	display:flex;
+	align-items: center;
+	padding-top:70px;
+}
+.order-info .state .money{
+	font-size:30px;
+	color:#fe6869;
+}
+.order-info .state .money b{
+	font-size:50px;
+}
+.order-info .state .status{
+	display:inline-block;
+	height:52px;
+	line-height: 52px;
+	padding-left:6px;
+	padding-right:6px;
+	margin-left:30px;
+	border:1px solid rgb(220,220,220);
+	border-radius:4px;
+	font-size:28px;
+	color:#999;
+	text-align: center;
+}

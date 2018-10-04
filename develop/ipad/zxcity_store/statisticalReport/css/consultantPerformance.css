@@ -1,0 +1,191 @@
+.echats-wrap {
+	position: relative;
+}
+.tab-bar {
+	overflow: hidden;
+	padding: 10px;
+}
+.tab-bar .tab-bar-colspan {
+	display: inline-block;
+	overflow: hidden;
+	margin: 10px 0 10px 50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+}
+.tab-bar .tab-bar-colspan li {
+	display: inline-block;
+	background-color: #FE6869;
+	padding: 1px;
+	float: left;
+	text-align: center;
+}
+.tab-bar .tab-bar-colspan li:first-child {
+	padding-right: 0;
+}
+.tab-bar .tab-bar-colspan li:last-child {
+	padding-left: 0;
+}
+.tab-bar .tab-bar-colspan li a {
+	display: block;
+	width: 100px;
+	height: 36px;
+	line-height: 36px;
+	color: #FE6869;
+	background-color: #FFFFFF;
+	font-size: 16px;
+}
+.tab-bar .tab-bar-colspan li.active {
+	background-color: #FE6869;
+}
+.tab-bar .tab-bar-colspan li.active a {
+	color: #FFFFFF;
+	background-color: #FE6869;
+}
+.tab-bar.absolute {
+	position: absolute;
+	right: 10%;
+	top: 0;
+	padding: 0;
+	z-index: 99999;
+}
+.tab-bar.absolute .tab-bar-colspan {
+	width: 160px;
+	margin: 0 0 0 50%;
+}
+.tab-bar.absolute .tab-bar-colspan li {
+	background-color: #d98b41;
+}
+.tab-bar.absolute .tab-bar-colspan li a {
+	width: 50px;
+	height: 22px;
+	line-height: 22px;
+	color: #d98b41;
+	background-color: #FFFFFF;
+}
+.tab-bar.absolute .tab-bar-colspan li.active {
+	background-color: #d98b41;
+}
+.tab-bar.absolute .tab-bar-colspan li.active a {
+	color: #FFFFFF;
+	background-color: #d98b41;
+}
+.echats-salesconsumption {
+	position: relative;
+	width: 80%;
+	margin: 0 auto;
+	height: 250px;
+}
+.echats-pie {
+	height: 300px;
+}
+.pie-wrap {
+	padding-top: 40px;
+	position: relative;
+}
+.echats-date-wrap {
+	height: 40px;
+}
+
+.echats-pie .nodata {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+}
+.echats-pie .nodata p {
+	color: #999999;
+	margin: 0;
+}
+.layui-layer-dialog .layui-layer-content {
+	font-size: 16px;
+	padding: 20px;
+	line-height: 1.4275;
+}
+.startTime, .endTime {
+	width: 120px!important;
+}
+
+.maintitle {
+	background-color: #F2F2F2;
+	text-align:center;
+}
+
+
+.search-bar {
+	background-color: #FFFFFF;
+	padding: 15px 20px;
+	text-align: center;
+}
+
+.table tbody tr td, .table thead tr th {
+	text-align: center;
+}
+
+.table thead tr th {
+	background-color: #FE6869;
+	color: #FFF;
+	font-size: 16px;
+	border-bottom: none!important;
+}
+
+.pageview {
+	text-align: center;
+}
+
+
+.layui-layer-title {
+	height: 42px;
+	line-height: 42px;
+	font-size: 18px;
+}
+
+.layui-layer-setwin {
+	top: 6px;
+	right: 6px;
+}
+
+.layui-layer-setwin a {
+	width: 30px;
+	height: 30px;
+}
+.date-selector{
+	position:absolute;
+	top:-6px;
+	right:30%;
+}
+/*
+.echartPieWrap {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+}
+
+#echartPieSales,
+#echartPieConsume {
+	position: relative;
+	height: 400px;
+}
+
+#echartPieSales {
+	border-right: 1px solid #ccc;
+}
+
+#echartPieSales .nodata,
+#echartPieConsume .nodata {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+}
+
+.nodata p {
+	color: #999999;
+}
+*/

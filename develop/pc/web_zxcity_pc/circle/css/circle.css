@@ -1,0 +1,749 @@
+/*通用*/
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: normal;
+    font-style: normal;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section {
+    display: block;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a {
+    color: #7e8c8d;
+    text-decoration: none;
+    -webkit-backface-visibility: hidden;
+    cursor: pointer;
+}
+li {
+    list-style: none;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
+    outline: none;
+    outline-offset: 0;
+}
+.btn.active, .btn:active{
+    box-shadow: 0 0 0;
+}
+body{
+    background: #f4f4f4;
+}
+.clear{clear: both;}
+.jiange{
+    height: 46px;
+    background: #fff;
+    width:100%;
+}
+.circleContainer{
+    min-width: 1140px;
+    margin: 22px auto 0;
+    padding: 0;
+}
+/*活动/动态/相册相关*/
+.circleContainer .circleLft{
+    width: 785px;
+    float: left;
+}
+/*活动*/
+.circleLft .circle-activity{
+    width:100%;
+    background:#fff;
+    margin-bottom:36px ;
+}
+.circle-activity h3{
+    text-align: center;
+    height: 112px;
+    line-height: 112px;
+    padding: 0 19px;
+    position: relative;
+    font-size:40px;
+    font-weight: 600;
+    color:#333;
+}
+.circle-activity h3 .circle-share{
+    position: absolute;
+    right:0;
+    top:43px;
+    height: 26px;
+    line-height: 26px;
+}
+.circle-activity h3 .circle-share span{
+    color:#666;
+    font-size: 18px;
+    float:left;
+}
+.circle-share .shareList{
+    display: inline-block;
+}
+.circle-share .shareList li{
+    width:27px;
+    float:left;
+    margin-right:10px;
+}
+.shareList li a{
+    display:block;
+    width:27px;
+    height: 26px;
+}
+.shareList li .qzone{
+    background: url("../../common/images/qzoneIcon.png") no-repeat;
+}
+.shareList li .sina{
+    background: url("../../common/images/sinaIcon.png") no-repeat;
+}
+.shareList li .qq{
+    background: url("../../common/images/qqIcon.png") no-repeat;
+}
+.circle-activity .activityDetail{
+    padding: 0px 19px;
+}
+.activityDetail .activityImg{
+    width:100%;
+    height: 420px;
+    overflow: hidden;
+    position: relative;
+}
+.activityDetail .activityImg img{
+    display: block;
+    width: 100%;
+}
+.activityImg .activityLayer{
+    position: absolute;
+    z-index: 2;
+    left: 24px;
+    bottom:20px;
+    width:699px;
+    height: 91px;
+}
+.activityLayer .activityPrice{
+    width: 182px;
+    height: 91px;
+    float: left;
+}
+.activityPrice span{
+    display: block;
+    width: 100%;
+    height: 55px;
+    color: #fff;
+    font-size: 36px;
+    font-weight: 500;
+    text-align: center;
+    background: url(../img/activeBtn.png) no-repeat;
+    border-radius: 10px;
+    background-size: 100%;
+}
+.activityPrice .actPice{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../img/bigactiveBtn.png) no-repeat;
+    border-radius: 10px;
+    background-size: 100%;
+    line-height: 70px;
+}
+.activityPrice s{
+    display: block;
+    width: 100%;
+    height: 42px;
+    color: #fff;
+    margin-top: -7px;
+    font-size: 22px;
+    text-align: center;
+    background: #484848;
+    line-height: 42px;
+    border-radius: 0px 0px 10px 10px;
+}
+.activityLayer .activityTime{
+    margin-left: 19px;
+    display: inline-block;
+    color:#fff;
+    height: 91px;
+    padding-top: 5px;
+    float: left;
+}
+.activityLayer .activityTime>span{
+    font-size: 21.95px;
+}
+.activityTime .activity-countDown{
+    font-size:32.2px;
+    margin-top: 6px;
+}
+.activityTime .activity-countDown span{
+    display: inline-block;
+    float: left;
+}
+.activity-countDown .activity-hours,
+.activity-countDown .activity-minute,
+.activity-countDown .activity-seconds {
+    padding: 0px 8px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+.activityLayer .activitySign{
+    float: right;
+    font-size: 24px;
+    color:#fff;
+    line-height: 151px;
+}
+.activityDetail-info{
+    margin-bottom:35px;
+}
+.activityDetail-info .activityTitle{
+    width:699px;
+    margin:0 auto;
+    font-size: 40px;
+    color:#333;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+    padding:36px 0 21px;
+}
+.activityDetail-info  .activityDate{
+    width:699px;
+    margin:0 auto;
+    color: #999;
+    font-size: 30px;
+}
+.activityDetail-info .activityTip{
+    width:699px;
+    margin:22px auto;
+    overflow: hidden;
+}
+.activityDetail-info .activityTip li{
+    font-size: 24px;
+    color: #ff4e62;
+    border: 1px solid #ff4e62;
+    display: inline-block;
+    float: left;
+    padding:0 5px;
+    border-radius:5px;
+    margin-right:22px;
+}
+.activityDetail>a{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: #ff6060;
+    height: 104px;
+    line-height: 104px;
+    background: #fff;
+}
+.activityDetail a span{
+    margin-right:20px;
+}
+/*动态*/
+.circleLft .circle-dynamic{
+    width:100%;
+    background:#fff;
+    margin-bottom:36px ;
+}
+.circle-dynamic h3{
+    text-align: center;
+    height: 112px;
+    line-height: 112px;
+    margin: 0 19px;
+    font-size:40px;
+    font-weight: 600;
+    color:#333;
+    border-bottom:1px solid #eee;
+}
+.circle-dynamic .dynamicDetail{
+    margin: 0 0 0 44px;
+}
+.dynamicDetail .dynamicDetail-info{
+    width:100%;
+    padding: 17px 0;
+}
+.dynamicDetail-info .dynamic-headImg{
+    height: 68px;
+    padding-right: 20px;
+}
+.dynamic-headImg .dynamic-headtx{
+    width:68px;
+    height: 68px;
+    overflow: hidden;
+    border-radius: 100%;
+    float: left;
+    margin-right:22px;
+}
+.dynamic-headImg .dynamic-headtx img{
+    display: block;
+    width: 68px;
+}
+.dynamic-headImg .dynamic-userName{
+    font-size: 28px;
+    color:#333;
+    display: inline-block;
+    height: 68px;
+    line-height: 68px;
+    float: left;
+}
+.dynamic-headImg .dynamic-date{
+    display: inline-block;
+    height: 68px;
+    line-height: 68px;
+    font-size: 22px;
+    color:#666;
+    float: right;
+    margin-right: 20px;
+}
+.dynamicDetail-info .dynamicTit{
+    clear: both;
+    font-size: 28px;
+    color:#333;
+    margin: 22px 40px 39px 0;
+}
+.dynamicDetail-info .dynamicImgs li{
+    width:220px;
+    height: 220px;
+    overflow: hidden;
+    margin-right: 20px;
+    float: left;
+}
+.dynamicDetail>a{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: #ff6060;
+    height: 104px;
+    line-height: 104px;
+    background: #fff;
+}
+.dynamicDetail a span{
+    margin-right:20px;
+}
+/*相册*/
+.circleLft .circle-album{
+    width:100%;
+    background:#fff;
+    margin-bottom:36px ;
+}
+.circle-album h3{
+    text-align: center;
+    height: 112px;
+    line-height: 112px;
+    margin: 0 19px;
+    font-size:40px;
+    font-weight: 600;
+    color:#333;
+}
+.circle-album .albumDetail{
+    margin: 0 20px 0 44px;
+}
+.albumDetail .albumDetail-info{
+    width:340px;
+    height: 420px;
+    float: left;
+    margin-right:20px;
+}
+.albumDetail-info .fengeLine1{
+    display: block;
+    width:276px;
+    height: 2px;
+    background: #fcfcfc;
+    margin: 0 auto 8px;
+}
+.albumDetail-info .fengeLine2{
+    display: block;
+    width:300px;
+    height: 2px;
+    background: #f6f6f6;
+    margin: 0 auto 8px;
+}
+.albumDetail-info .albumDetail-img{
+    width: 340px;
+    height: 320px;
+    overflow: hidden;
+    cursor: pointer;
+    border:1px solid #dfdfdf;
+}
+.albumDetail-img img{
+    display: block;
+    width:340px;
+}
+.albumDetail-info .albumTit{
+    height: 80px;
+    line-height: 80px;
+    font-size: 30px;
+    border: 1px solid #dfdfdf;
+    color: #333;
+    box-shadow: 0 0 8px #ccc;
+    padding: 0 8px;
+    background-color: white;
+}
+.albumTit a{
+    display: inline-block;
+    height: 40px;
+}
+.albumTit a .albumTit-text{
+    display: block;
+    color:#333;
+    width: 240px;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.albumTit a .albumNum{
+    float: right;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    color:#333;
+    text-align: right;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.albumDetail>a{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: #ff6060;
+    height: 104px;
+    line-height: 104px;
+    background: #fff;
+}
+.albumDetail>a span{
+    margin-right:20px;
+}
+/*右侧用户信息以及活跃玩家圈*/
+.circleContainer .circleRgt{
+    margin-left:812px;
+}
+.circleRgt .circleUser{
+    width:100%;
+    height: auto;
+    margin-bottom: 21px;
+    background: #fff;
+}
+.circleUser .userUp{
+    padding: 16px 14px 14px;
+}
+.userUp .userUp-img{
+    display: block;
+    width:90px;
+    height: 90px;
+    float: left;
+    margin-right:18px;
+    overflow: hidden;
+    border-radius: 100%;
+    background-size: 100%;
+    background: url("../img/userImg.png") no-repeat;
+}
+.userUp .userInfo-rgt{
+    margin-left: 108px;
+}
+.userInfo-rgt .userInfo-up{
+   width: 100%;
+    height: 45px;
+    margin-bottom:10px;
+}
+.userInfo-up .userInfo-name{
+    width:120px;
+    overflow: hidden;
+    float: left;
+}
+.userInfo-up .userInfo-name span{
+    display: block;
+    width:120px;
+    font-size: 17.6px;
+    color: #333;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.userInfo-up .userInfo-name .userInfo-star{
+    width:120px;
+    margin-top:12px;
+}
+.userInfo-star i{
+    display: block;
+    float: left;
+    width: 8px;
+    height: 8px;
+    background: url("../img/redstar.png") no-repeat;
+}
+.userInfo-up .userInfo-care{
+    display: block;
+    width:72px;
+    height: 30px;
+    float: right;
+    background: url("../img/care.png") no-repeat;
+}
+.userInfo-rgt .userInfo-allInfo{
+    width:100%;
+    height: 49px;
+}
+.userInfo-allInfo li{
+    width:100px;
+    height: 49px;
+    line-height: 22px;
+    border:1px solid #d1d1d1 ;
+    border-radius: 5px;
+    color:#333;
+    font-size: 9px;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+}
+.userInfo-allInfo li:last-child{
+    float: right;
+}
+.userInfo-allInfo li span:first-child {
+    font-size: 15px;
+    color:#ff5761;
+    display: block;
+}
+.userInfo-allInfo .allInfoSec{
+    margin:0 3.5%;
+}
+.circleUser .userTxt{
+    padding: 0px 14px 14px;
+    font-size: 14px;
+    color:#979797;
+}
+/*玩家圈*/
+.circleRgt .circlePlayer{
+    height: auto;
+    width: 100%;
+}
+.circlePlayer h4{
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    background: #7a70ee;
+    border-radius: 5px 5px 0 0;
+    padding:0 14px;
+    font-size: 20px;
+}
+.circlePlayer h4 .topIocn{
+    display: block;
+    width: 13px;
+    height: 20px;
+    background: url("../img/topIcon.png") no-repeat;
+    float: left;
+    margin-top: 15px;
+    margin-right: 12px;
+}
+
+.circlePlayer .hotSaleList{
+    width: 100%;
+}
+.circlePlayer .hotSaleList li{
+    padding: 19px 14px 6px;
+    background: #fff;
+    height: 125px;
+    position: relative;
+    overflow: hidden;
+}
+.hotSaleList li .topHead{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.hotSaleList li .topHead i{
+    display: block;
+    width: 30px;
+    height: 40px;
+    position: absolute;
+    top: 2px;
+}
+.topHead .topNum1{
+    background: url("../img/topNum1.png") no-repeat;
+}
+.topHead .topNum2{
+    background: url("../img/topNum2.png") no-repeat;
+}
+.topHead .topNum3{
+    background: url("../img/topNum3.png") no-repeat;
+}
+.topHead .topNum4{
+    background: url("../img/topNum4.png") no-repeat;
+}
+.topHead .topNum5{
+    background: url("../img/topNum5.png") no-repeat;
+}
+.hotSaleList li .topHead img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #efefef;
+}
+.hotSaleList li .topInfo{
+    margin-left: 117px;
+    height: 100px;
+}
+.topInfo .topInfo-message{
+    font-size: 20px;
+    color:#666;
+    width: 183px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.topInfo .topInfo-userName{
+    font-size: 18px;
+    color:#ccc;
+    margin:11px 0 18px;
+    width: 183px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.topInfo .fans{
+    display: inline-block;
+    float: left;
+    margin-right: 24px;
+    font-size: 18px;
+    color:#666;
+}
+.topInfo .fans i{
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: url("../img/heart.png") no-repeat;
+    float: left;
+}
+.topInfo .fans span,.topInfo .service span{
+    display: block;
+    height: 18px;
+    margin-left: 23px;
+    line-height: 18px;
+}
+.topInfo .service{
+    display: inline-block;
+    font-size: 18px;
+    color:#666;
+}
+.topInfo .perNum i{
+    display: block;
+    width: 20px;
+    height: 19px;
+    background: url(../img/personNum.png) no-repeat;
+    background-position: center;
+    background-size: 100%;
+    margin-right: 5px;
+    float: left;
+}

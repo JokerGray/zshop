@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../common/css/common.css">
+    <link rel="stylesheet" href="../../../assets/layui-v2.3.0/css/layui.css" media="all">
+    <!-- <link rel="stylesheet" href="../../../assets/layui-v2.2.2/css/layui.css"> -->
+    <link rel="stylesheet" href="css/passwork.css">
+    <script type="text/javascript" src="../common/js/vue.js"></script>
+    <title>交班</title>
+</head>
+
+<body>
+    <div class="app layui-fluid" id="app">
+        <div class="title">
+            <div>
+                <div class="title-header">当班信息</div>
+                <div class="title-header-data">
+                    <div class="data-time">当班时间:&nbsp;
+                        <span></span>
+                    </div>
+                    <!-- <div>收银台:&nbsp;
+                        <span v-text="dutyData.stationId"></span>
+                    </div> -->
+                    <div class="data-name">交班人:&nbsp;
+                        <span></span>
+                    </div>
+                    <!-- <div>当班时间:&nbsp;
+                        <span v-text="dutyData.startDate"></span>
+                        <span> 至 </span>
+                        <span v-text="dutyData.endDate"></span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="header clearfix">
+            <div class="header-tabs">
+                <span :class="{active:tabType == 1}" data-type="1" @click="handleTab(1)">交班</span>
+                <span :class="{active:tabType == 2}" data-type="2" @click="handleTab(2)">历史交接</span>
+            </div>
+            <div class="header-date" v-show="tabType == 2">
+                <span>消费期间</span>
+                <div class="date-box date-start">
+                    <input class="date-time" maxlength="20">
+                    <i></i>
+                </div>
+                <span>&nbsp;-&nbsp;</span>
+                <div class="date-box date-end">
+                    <input class="date-time" maxlength="20">
+                    <i></i>
+                </div>
+            </div>
+
+        </div>
+        <div class="tab-contents" v-show="tabType == 1">
+            <table id="table" class="layui-table" lay-skin="line"> 
+                <colgroup>
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>收款方式</th>
+                        <th>备用金</th>
+                        <th>班次收入</th>
+                        <th>销售</th>
+                        <th>充值</th>
+                        <th>交接金额</th>
+                        <th>实际交接金额</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in passworkData" :paymentMethod="item.payType">
+                        <td v-text="getPayMethod(item.payType)"></td>
+                        <td>
+                            <div class="td-petty" v-show="item.payType == 2">
+                                <input type="text" v-model="pettyCash" maxlength="15" >
+                            </div>
+                        </td>
+                        <td class="handTotal" v-text="formatMoney(item.handTotal)"></td>
+                        <td class="sale" v-text="formatMoney(item.sale)"></td>
+                        <td class="recharge" v-text="formatMoney(item.recharge)"></td>
+                        <td class="handOver" v-text="formatMoney(item.handOver)"></td>
+                        <td class="realHandOver" v-text="formatMoney(item.realHandOver)"></td>
+                        <td style="max-width: 300px;" v-text="item.remark"></td>
+                        <td ><div v-show="isEdit(index)" class="remark-edit">修改</div></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <!-- 合计 -->
+                    <tr class="tr-total">
+                        <td>合计</td>
+                        <td v-text="formatMoney(cashAmount)"></td>
+                        <td v-text="formatMoney(handAmount)"></td>
+                        <td v-text="formatMoney(saleAmount)"></td>
+                        <td v-text="formatMoney(rechargeAmount)"></td>
+                        <td v-text="formatMoney(handOver)"></td>
+                        <td v-text="formatMoney(realHandOver)"></td>
+                        <td ></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <button class="btn-submit">提交交接金额</button>
+        </div>
+        <div class="tab-contents" v-show="tabType == 2" id="history-content" style="display:none;">
+            <table id="table-history"></table>
+            <!-- <table class="layui-table" lay-skin="line">
+                <colgroup>
+                    <col width="150">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>交接人</th>
+                        <th>交接时间</th>
+                        <th>备用金</th>
+                        <th>班次收入</th>
+                        <th>销售</th>
+                        <th>充值</th>
+                        <th>交接金额</th>
+                        <th style="min-width: 130px;">备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-show="handOverList && handOverList.length == 0 ? true : false"><td>无数据</td></tr>
+                    <tr v-show="handOverList" v-for="(item,index) in handOverList" v-key="index">
+                        <td v-text="item.name"></td>
+                        <td v-text="item.handOverTime"></td>
+                        <td v-text="item.reserveFundTotal"></td>
+                        <td v-text="formatMoney(item.shiftIncomeTotal)"></td>
+                        <td v-text="formatMoney(item.salesTotal)"></td>
+                        <td v-text="formatMoney(item.rechargeTotal)"></td>
+                        <td :class="{prominent:item.handOverDetail != null}" v-text="formatMoney(item.handOverTotal)"></td>
+                        <td v-text="item.handOverDetail"></td>
+                    </tr>
+                </tbody>
+            </table> -->
+            <div id="page-history" class="table-r"></div>
+        </div>
+         
+    </div>
+    <div id="submit-success" style="display: none;">
+        <div class="submit-content">
+            <img src="../common/img/sumbit_success.png" alt="">
+            <p class="submit-title">提交成功!</p>
+            <p class="submit-price">交班金额:￥<span></span></p>
+        </div>
+    </div>
+    <div id="remark-dlg" style="display: none;">
+        <div class="remark-content">
+            <input class="remark-price" type="text" maxlength="15" oninput="clearNoNum(this,100000000)" placeholder="输入金额">
+            <div class="remark-title">
+                <p>备注</p>
+                <textarea class="remark-data" maxlength="100"></textarea>
+            </div>
+            <button class="btn-ok">确定</button>
+        </div>
+    </div>
+
+    <script type="text/html" id="rank-img-box">
+        <div class="rank-img-box">
+            {{# if(d.LAY_INDEX==1){ }}
+                <img src="img/top1.png" alt="">
+            {{# }else if(d.LAY_INDEX==2){  }}
+                <img src="img/top2.png" alt="">
+            {{# }else if(d.LAY_INDEX == 3){ }}
+                <img src="img/top3.png" alt="">
+            {{# }else{ }}
+                {{d.LAY_INDEX}}
+            {{# } }}
+        </div>
+    </script>
+    <script type="text/javascript" src="../../../assets/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../assets/layui-v2.3.0/layui.js"></script>
+     
+    <script type="text/javascript" src="../../../assets/common/js/utils.js"></script>
+    <!-- <script type="text/javascript" src="../../../assets/layui-v2.2.2/layui.all.js"></script> -->
+    <!--<script src="../../../assets/laydate-v5.0.9/laydate.js"></script>-->
+    <!--<script type="text/javascript" src="../../../assets/laydate/laydate.js"></script>-->
+    <script type="text/javascript" src="../common/js/common.js"></script>
+     
+    <script type="text/javascript" src="js/passwork.js"></script>
+    <script type="text/javascript">
+ 
+        var app = new Vue({
+                el: '#app',
+                data: {
+ 
+                    tabType: 1,
+                    pettyCash:  '0',    //备用金
+                    passworkData: [],   //当前交班信息
+                    handOverList: [],
+                    cashAmount: '0.00',          //备用金
+                    handAmount: '0.00',          //班次收入
+                    saleAmount: '0.00',          //销售
+                    rechargeAmount: '0.00',      //充值
+                    handOver: '0.00',           //交接金额
+                    realHandOver: '',          //实际交接金额
+                    isEditRealHandOver: false,  //是否已修改 现金 实际交际金额
+                },
+                created: function(){
+                    // this.passworkData = passworkAry;
+                },
+                watch: {
+                    pettyCash: function (newValue, oldValue){
+                        var value = formatInputNum(newValue,100000);
+                        this.pettyCash = value;
+                        this.cashAmount = Number(this.pettyCash).toFixed(2);
+                        var obj = this.passworkData[0];
+                        this.passworkData[0].handOver = Number(obj.handTotal) +  Number(this.cashAmount);
+                        //
+                        //修改交接金额
+                        var realHandOver = 0;
+                        for(var i=0;i<this.passworkData.length;i++){
+                            var obj = this.passworkData[i];
+                            realHandOver += Number(obj.handOver);
+                        }
+                        this.handOver = realHandOver;
+                        if(!this.isEditRealHandOver) {
+                            this.passworkData[0].realHandOver = this.passworkData[0].handOver;
+                        }
+                        //修改全部实际交接金额
+                        var tmp = 0;
+                        for (var i = 0; i < this.passworkData.length; i++) {
+                            tmp += this.passworkData[i].realHandOver;
+                        }
+                        this.realHandOver = tmp;
+                    },
+                },
+                methods: {
+                    handleTab: function(type){
+                        this.tabType = type;
+                        if(type == 1){
+                            // getHandOverInfo();
+                        }else {
+                            search();
+                        } //交班
+                    },
+                    //获取付款方式
+                    getPayMethod: function(index){
+                        switch (index) {
+                            case 2:
+                                return '现金';
+                                break;
+                            case 4:
+                                return '微信';
+                            case 5:
+                                return '支付宝';
+                            case 6:
+                                return '信用卡';
+                            case 7:
+                                return '银行卡';
+                            default:
+                                break;
+                        }
+                        return '';
+                    },
+ 
+                    //编辑处理
+                    handleEdit: function(index){
+                        showRemark(tr);
+                    },
+                    //是否可以修改
+                    isEdit(index){
+                        if(this.passworkData[index].payType == 2 || this.passworkData[index].payType == 4 || this.passworkData[index].payType  ==5){
+                            return true;
+                        }
+                        return false;
+                    },
+                    //统计
+                    amount: function(){
+                        this.cashAmount = 0;
+                        this.handAmount = 0;
+                        this.saleAmount = 0;
+                        this.rechargeAmount = 0;
+                        this.handOver = 0;
+                        // this.realHandOver = 0;
+                        // 计算交接金额
+                        var ary = this.passworkData && this.passworkData;
+                        this.handAmount = 0;
+                        var i = 0;
+                        for(i = 0; i<ary.length;i++){
+                            this.handAmount += Number(ary[i].handTotal);
+                            this.saleAmount += Number(ary[i].sale);
+                            this.rechargeAmount += Number(ary[i].recharge);
+                            var handOver =  Number(ary[i].handTotal);
+                            this.$set(this.passworkData[i], 'handOver', handOver);              //交接金额
+                            this.$set(this.passworkData[i], 'realHandOver', handOver);          //实际交接金额
+                            this.handOver += handOver; 
+                        }
+                        
+                        this.handAmount = Number(this.handAmount).toFixed(2);
+                        this.saleAmount = Number(this.saleAmount).toFixed(2);
+                        this.rechargeAmount = Number(this.rechargeAmount).toFixed(2);
+                        this.handOver = Number(this.handOver).toFixed(2);
+                        this.realHandOver = this.handOver;
+                    }
+                }
+            })
+    </script>
+</body>
+
+
+</html>

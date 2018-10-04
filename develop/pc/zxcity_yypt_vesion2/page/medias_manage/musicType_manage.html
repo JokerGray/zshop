@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>APP管理 -全民炫音视频管理</title>
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="medias_manage.css">
+</head>
+
+<body>
+    <div id="anchor_check">
+         
+        <div class="tool-box layui-form" style="margin-top: 20px;padding:0 20px;">
+            <div class="layui-form-item clearfix">
+                <button class="layui-btn" id="addType">+新增类型</button>
+                <button class="layui-btn" id="sort">+类型排序</button>
+            </div>
+        </div>
+        <div class="layui-app">
+            <table style="margin-top:20px;" id="tablelist" lay-filter="tablelist"></table>
+            <!--分页-->
+            <div id="laypageLeft" class="table-rgt"></div>
+        </div>
+    </div>
+ 
+    <!-- 新增类型 -->
+    <div class="add-music layui-form" id="addgd" style="display: none;">
+        <div class="layui-form-item" style="padding:20px;">
+            <label class="form-label" for="fixName">类型:</label>
+            <div class="layui-input-inline">
+                <input type="text"  maxlength="10" class="layui-input" id="musicType" lay-verify="required">
+            </div>
+        </div>
+    </div>
+    <!--分类排序-->
+    <div id="updateType" style="display: none;">
+        <div class="title">
+            类型排序
+            <span>(拖动排序)</span>
+        </div>
+        <div id="edit-area">
+            <!--<div class="type-item">华语流行</div>-->
+        </div>
+    </div>
+</body>
+<script type="text/html" id="indexTpl">
+        {{d.LAY_TABLE_INDEX+1}}
+</script>
+<script type="text/html" id="barCtrl">
+    <button class="layui-btn layui-btn-small layui-btn-danger my-btn" lay-event="delete">
+        <i class="layui-icon">&#xe640;</i>删除</button>
+</script>
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="Sortable.min.js"></script>
+<script type="text/javascript" src="musicType.js"></script>
+
+</html>

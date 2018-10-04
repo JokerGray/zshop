@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>智享课堂</title>
+    <!-- CssCommon -->
+
+    <link rel="stylesheet" type="text/css" href="../../../common/css/reset.css" />
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="zxcity_class_list.css" />
+</head>
+
+<body>
+    <div class="header clearfix">
+        <div class="tool-box layui-form">
+            <ul class="tool-box-ul clearfix">
+                <li class="tool-box-li">
+                    <div class="layui-form-item">
+                        <div class="layui-input-inline">
+                            <input type="text" id="search_box"  maxlength="20" placeholder=" 输入课程名称、主讲老师、时间" class="layui-input">
+                        </div>
+                    </div>
+                </li>
+                <button class="layui-btn" id="search-btn">搜索</button>
+                <button class="layui-btn" id="add-course"  data-target="#add-course">+ 新增课程</button>
+            </ul>
+        </div>
+    </div>
+
+    <div id="app" class="table-list">
+        <table lay-filter="table" id="table"></table>
+        <div id="laypageLeft" class="table-rgt"></div>
+    </div>
+
+    <script type="text/html" id="class-tpl">
+        <div class="class-content">
+            <img src="{{d.cover}}" alt="{{d.cover}}">
+            <div class="class-right">
+                {{# if (d.name && !d.resource){  }}
+                    <p class="fir">课程标题:<span>{{d.name}}</span></p>
+                {{# }else if(d.name ){ }}
+                    <p>课程标题:<span>{{d.name}}</span></p>
+                 {{# }  }}
+                {{# if (d.resource){ }}
+                    <p>课程地址:<span>{{d.resource}}</span></p>
+                {{# } }}
+            </div>
+        </div>
+    </script>
+    <script type="text/html" id="duration-tpl">
+        <div class="duration">
+            <p>{{d.duration}}</p>
+            <p class="class-desc">课程简介</p>
+        </div>
+
+    </script>
+    <script type="text/html" id="price-tpl">
+        <div class="online-price">
+            {{# if (d.online == 1){ }}
+                {{# if (d.price == 0){ }}
+                    <p class="fee">免费</p>
+                {{# }else {  }}
+                    <p>收费</p>
+                    <p><span class="content-price">￥{{d.price}}</span></p>
+                {{# } }}
+            {{# }else if (d.online == 2){ }}
+                {{# if (d.price == 0){ }}
+                    <p class="fee">免费</p>
+                {{# }else {  }}
+                    <p>报名</p>
+                    <p>定座费<span class="content-price">￥{{d.price}}</span></p>
+                {{# } }}
+            {{# } }}
+        </div>
+
+    </script>
+
+    <script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-sm layui-btn-normal my-btn" lay-event='look'>
+            <i class="layui-icon">&#xe615;</i> 查看
+        </button>
+        <button class="layui-btn layui-btn-sm layui-layui-btn-warm my-btn" lay-event='change'>
+            <i class="layui-icon">&#xe642;</i> 修改
+        </button>
+        <button class="layui-btn layui-btn-sm  layui-btn-danger my-btn" lay-event="del">
+            <i class="layui-icon">&#xe640;</i> 删除
+        </button>
+    </script>
+</body>
+
+
+<!-- jSCommon -->
+
+<!-- <script type="text/javascript" src="../common/js/util/pub.js"></script> -->
+
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript" src="../../../common/assets/layui/layui.all.js"></script>
+
+ 
+<script type="text/javascript" src="../../../common/js/yyCache.js"></script>
+<!-- <script type="text/javascript" src="../../common/js/common.js"></script> -->
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+ 
+<script type="text/javascript" src="zxcity_class_list.js"></script>
+
+</html>

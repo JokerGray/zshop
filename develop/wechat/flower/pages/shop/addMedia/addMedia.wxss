@@ -1,0 +1,111 @@
+/* pages/shop/addMedia/addMedia.wxss */
+@import '/pages/index/index.wxss';
+@import '/pages/shop/newshop/newshop';
+/* .drawer_screen{
+  height: 43%;
+} */
+/* .shopHeader{
+  height: 700rpx;
+} */
+.media-box{
+    overflow: hidden;
+}
+.media-box textarea{
+    font-size: 30rpx;
+    width: 100%;
+    min-height: 185rpx;
+}
+.video-box{
+    margin: 20rpx 0;
+    width: 300rpx;
+    min-height: 170rpx;
+    overflow: hidden;
+    position: relative;
+    border: 1rpx solid #E6E6E6;
+    /* background: #E6E6E6; */
+}
+/* .video-box image{
+    display: block;
+    width: auto;
+    height: 100%;
+    align-content: center;
+    line-height: 180rpx;
+} */
+.video-box .empty{
+    display: block;
+    width: auto;
+    /* height: 100%; */
+    height: 180rpx;
+    align-content: center;
+    line-height: 180rpx;
+    margin: auto;
+}
+.video-box video{
+    /* display: block; */
+    width: auto;
+    height: 180rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.controls {
+  position: relative;
+  height: 100%;
+  top: 0;
+  left:0;
+  right: 0;
+  bottom:0;
+  display: flex;
+}
+.play{
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 50%;
+    text-align: center;
+    align-content: center;
+    /* border: 1rpx solid #E6E6E6; */
+    margin: auto;
+    margin-top: 30rpx;
+    line-height: 130rpx;
+}
+.playAdd{
+  font-size: 155rpx;
+  font-weight	:200;
+  color: #E6E6E6;
+}
+/* .play image{
+    width: 22rpx;
+    height: 30rpx;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20rpx;
+} */
+.time{
+    font-family: 'PingFang-SC-Regular';
+    position: absolute;
+    right: 8rpx;
+    bottom: 8rpx;
+    font-size: 16rpx;
+    background: rgba(0,0,0,.6);
+    width: 52rpx;
+    text-align: center;
+    color: #fff;
+}
+.switch-box{
+    font-size: 30rpx;
+    color: #333333;
+    line-height: 108rpx;
+}
+.switch-box>view{
+border-bottom: 1rpx solid #E6E6E6;
+}
+.add-btn{
+    color: #FF226E;
+    font-size: 32rpx;
+    line-height: 66rpx;
+    border: 2rpx solid #FF226E;
+    text-align: center;
+    border-radius: 10rpx;
+    margin-top: 180rpx;
+    background-color: #fff;
+}

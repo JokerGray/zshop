@@ -1,0 +1,589 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+		<title>热活动详情</title>
+		<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			html,
+			body {
+				font-size: 16px;
+				font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
+				height: 100%;
+			}
+			
+			.hidden {
+				display: none !important;
+			}
+			
+			.content {
+				padding-bottom: 3.1rem;
+			}
+			
+			.content.notActive {
+				padding-bottom: 0;
+			}
+			
+			.container {
+				display: block;
+				padding: 0.75rem 0.5rem;
+			}
+			
+			.title {
+				display: block;
+				padding-bottom: 1.25rem;
+				color: #333;
+				font-size: 1.25rem;
+				line-height: 1.2;
+			}
+			
+			.info {
+				display: flex;
+				padding-bottom: 0.25rem;
+				font-size: 0.9rem;
+				color: #999;
+			}
+			
+			.info>span {
+				display: block;
+				line-height: 1.25;
+				letter-spacing: 0.25px;
+			}
+			
+			.info .infoDetail {
+				flex: 1;
+				padding-left: 0.5rem;
+			}
+			
+			.line {
+				display: block;
+				margin: 0.6rem 0;
+				/*margin: 0.9rem 0 1.1rem;*/
+				border-bottom: 0.0625rem solid #ddd;
+			}
+			
+			.detail {
+				display: block;
+				font-size: 0.9rem;
+				color: #333;
+				line-height: 1.25;
+				padding: 0.5rem 0 0.7rem;
+			}
+			
+			.detail p {
+				line-height: 1.5;
+			}
+			
+			.detailPicUrlContent {
+				display: block;
+				height: auto;
+				overflow: hidden;
+			}
+			
+			.detailPicUrl {
+				display: block;
+				margin: 0 auto;
+				max-width: 100%;
+			}
+			/*已有报名人数*/
+			
+			.friendsContent {
+				display: block;
+				padding: 0 0.5rem;
+				border-top: 0.75rem solid #f8f8f8;
+				border-bottom: 0.75rem solid #f8f8f8;
+				line-height: 2.5rem;
+			}
+			
+			.friendsContent .iconPerson {
+				display: inline-block;
+				height: 1.15rem;
+				width: 1.25rem;
+				vertical-align: middle;
+			}
+			
+			.friendsContent .textNumber {
+				display: inline-block;
+				font-size: 0.8rem;
+				color: #333;
+			}
+			
+			.friendsContent .toDetail {
+				display: inline-block;
+				font-size: 0.8rem;
+				color: #666;
+				float: right;
+			}
+			
+			.friendsContent .iconDetail {
+				display: inline-block;
+				height: 0.8rem;
+				vertical-align: top;
+				margin: 0.8rem 0 0 0.5rem;
+			}
+			/*报名按钮*/
+			
+			.signup {
+				position: fixed;
+				display: block;
+				width: 100%;
+				left: 0;
+				bottom: 0;
+				background-color: #4b9dff;
+				color: #fff;
+				font-size: 1.1rem;
+				line-height: 3.1rem;
+				text-align: center;
+			}
+			/*晒单*/
+			
+			.shareContent {
+				display: block;
+				padding: 1.5rem 0.75rem;
+			}
+			
+			.shareTopContent {
+				position: relative;
+				display: block;
+				justify-content: space-between;
+				align-content: center;
+			}
+			
+			.shareTopContent .text {
+				display: inline-block;
+				padding-left: 0.5rem;
+				font-size: 1.5rem;
+				line-height: 1;
+				height: 1.5rem;
+				color: #349CEE;
+				border-left: 2px solid #349CEE;
+			}
+			
+			.shareTopContent .icon {
+				float: right;
+				display: inline-block;
+				font-size: 0.8rem;
+				line-height: 1rem;
+				padding: 0.1rem 0.35rem;
+				border-radius: 1rem;
+				border: 1px solid #FF9D2A;
+			}
+			
+			.shareTopContent .icon a {
+				color: #FF9D2A;
+			}
+			
+			.articleContent {
+				display: flex;
+				margin-top: 1.5rem;
+			}
+			
+			.articleContent .dot {
+				display: inline-block;
+				width: 0.5rem;
+				height: 1rem;
+				margin: 0.2rem 0.5rem 0 0;
+				background: url(../img/ckkf_rhd_dian.png) no-repeat;
+				background-size: 100%;
+				background-position: center;
+			}
+			
+			.articleContent .article {
+				display: block;
+				flex: 1;
+			}
+			
+			.articleContent .article .time {
+				display: block;
+				padding: 0.1rem 1rem;
+				font-size: 0.8rem;
+				letter-spacing: 0.5px;
+				color: #fff;
+				background: url(../img/ckkf_rhd_shijianzhou.png) no-repeat;
+				background-size: contain;
+			}
+			
+			.articleContent .article .paragraph {
+				display: block;
+				padding: 0.25rem 0;
+				font-size: 0.9rem;
+				color: #333;
+			}
+			
+			.mediaContent {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			
+			.mediaContent .media {
+				position: relative;
+				display: block;
+				padding-right: 3px;
+				margin-bottom: 0.25rem;
+				flex: 1;
+			}
+			
+			.mediaContent .media.hasImg {
+				width: 33%;
+				min-width: 30%;
+				max-width: 50%;
+				max-height: 300px;
+				overflow: hidden;
+			}
+			
+			.mediaContent .media img,
+			.mediaContent .media video {
+				display: block;
+				max-width: 100%;
+				width: 100%;
+			}
+			
+			.mediaContent .media .cover {
+				position: absolute;
+				display: block;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				background: url(../img/video_play_icon.png) no-repeat;
+				background-position: center;
+				background-size: 30%;
+				pointer-events: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="content notActive">
+			<div class="container">
+				<div class="title name"></div>
+				<div class="info">
+					<span class="infoType">时间：</span>
+					<span class="infoDetail detailBeginTime"></span>
+				</div>
+				<div class="info">
+					<span class="infoType">地点：</span>
+					<span class="infoDetail place"></span>
+				</div>
+				<div class="info">
+					<span class="infoType">主办方：</span>
+					<span class="infoDetail detailUserName"></span>
+				</div>
+				<div class="line"></div>
+				<div class="detail"></div>
+				<div class="detailPicUrlContent" id="detailPicUrlContent"></div>
+			</div>
+
+			<div class="friendsContent">
+				<img class="iconPerson" src="../img/ckkf_rhd_renshu.png" />
+				<span class="textNumber">已有<span class="enrollListNum"></span>人报名</span>
+				<a id="member" class="toDetail" href="#">立即查看 <img class="iconDetail" src="../img/ckkf_rhd_gd.png" /></a>
+			</div>
+
+			<!--晒单-->
+			<div class="shareContent">
+				<div class="shareTopContent">
+					<div class="text">活动晒单</div>
+					<div class="icon">
+						<a href="join.html">去晒单</a>
+					</div>
+				</div>
+
+				<div id="example" class="articleContent hidden">
+					<div class="dot"></div>
+					<div class="article">
+						<div class="time videoAlbumTime"></div>
+						<div class="paragraph videoAlbumDescription"></div>
+						<div class="mediaContent">
+							<div class="media">
+								<video controls="controls" src=""></video>
+								<div class="cover"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="loadmoreContent" id="loadmore">
+				<div class="weui-loadmore">
+					<i class="weui-loading"></i>
+					<span class="weui-loadmore__tips">正在加载</span>
+				</div>
+				<div class="weui-loadmore weui-loadmore_line hidden">
+					<span class="weui-loadmore__tips">没有更多数据</span>
+				</div>
+			</div>
+		</div>
+
+		<a id="signup" class="signup hidden" href="#">立即报名</a>
+
+		<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+		<script src="http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.2/weui.min.js"></script>
+		<script type="text/javascript">
+			var CITYID = 4201;
+			// 判断当前环境是否测试环境
+			function isDevEnv() {
+				var arr = ['localhost', '192.168', '127.0.0', 'test'];
+				for(var i = 0; i < arr.length; i++) {
+					if(location.hostname.indexOf(arr[i]) > -1) return true;
+				}
+				return false;
+			}
+			var id = getQueryString('id');
+			$(function() {
+				FastClick.attach(document.body);
+				// 立即查看链接
+				document.getElementById("member").href = 'activity_member.html?id=' + id;
+				getData();
+				// 滚动加载数据
+				$(window).on('scroll', scrollLoadData);
+				// 点击播放视频
+				$('video').live('click', function() {
+					this.play();
+					$(this).siblings('.cover').hide();
+				})
+				// 点击跳转详情
+				$('.shareContent').on('click', '.articleContent', function() {
+					var search = '?id=' + $(this).data('id') + '&videoalbumid=' + $(this).data('videoalbumid');
+					window.location.href = 'activity_share.html' + search;
+				})
+			})
+			// 获取url中的参数
+			function getQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				return r !== null ? decodeURI(r[2]) : null;
+			}
+
+			// 获取数据
+			function getData() {
+				if(!id) {
+					$('a').addClass('hidden');
+					return weui.alert('暂无数据！')
+				};
+				$.ajax({
+					type: "post",
+					dataType: 'json',
+					url: "/zxcity_restful/ws/rest",
+					headers: {
+						apikey: sessionStorage.getItem('apikey') || 'test'
+					},
+					data: {
+						cmd: 'activityNew/getActivityDetail',
+						data: JSON.stringify({
+							id: id
+						}),
+						version: 1
+					},
+					beforeSend: function() {
+						loading = weui.loading('加载中……');
+					},
+					complete: function() {
+						loading.hide();
+					},
+					success: function(data) {
+						if(data.code == 1) {
+							setData(data.data);
+							getActivityList();
+						} else {
+							weui.alert(data.msg);
+						}
+					},
+					error: function(err) {
+						weui.alert('请求超时，请重试……');
+					}
+				});
+			}
+
+			// 设置界面数据
+			function setData(obj) {
+				$('.name').text(obj.name);
+				var time = new Date(obj.startTime.replace(/-/g, "/"));
+				// 活动报名表页面链接
+				document.getElementById("signup").href = 'activity_application.html?id='+id+'&time='+time.getTime();
+
+				var cover = "<img src='" + obj.cover + "' style='width:100%;padding-bottom:17px;'><br>" + obj.content;
+				$('.detailBeginTime').text(time.pattern("MM月dd日  EE HH:mm"));
+				$('.place').text(obj.address);
+				$('.detailUserName').text('荆楚创客');
+				$('.detail').html(cover);
+				var detailPicUrlList = obj.contentUrl.split(',');
+				for(var i=0;i <detailPicUrlList.length; i++){
+					$('.detailPicUrlContent').append('<img src="'+ detailPicUrlList[i] +'">');
+				}
+				
+				$('.enrollListNum').text(obj.joinNumber);
+				// 活动状态为报名中才能报名
+				if(obj['status'] == 1) {
+					$('#signup').removeClass('hidden');
+					$('.content.notActive').removeClass('notActive');
+				}
+				// 活动封面上下居中
+				$('.detailPicUrlContent').each(function() {
+					this.scrollTop = (this.scrollHeight - this.offsetHeight) / 2
+				})
+
+			}
+
+			var loadingStatus = false;
+			// 获取活动晒单
+			function getActivityList() {
+				if(!id) return;
+				if(loadingStatus) return;
+				$.ajax({
+					type: "post",
+					dataType: 'json',
+					url: "/zxcity_restful/ws/rest",
+					data: {
+						cmd: 'circle/showActivityForCof',
+						data: JSON.stringify({
+							detailCityId: CITYID,
+							sStartpage: parseInt($('.articleContent').length / 10) + 1,
+							sPagerows: 10,
+							activityId: id
+						}),
+						version: 1
+					},
+					beforeSend: function() {
+						loading = weui.loading('加载晒单...');
+						loadingStatus = true;
+					},
+					complete: function() {
+						loading.hide();
+						loadingStatus = false;
+					},
+					success: function(data) {
+						if(data.code == 1) {
+							setShareData(data.data, data.total);
+						} else {
+							weui.alert(data.msg);
+						}
+					},
+					error: function(err) {
+						weui.alert('请求超时，请重试……');
+					}
+				});
+			}
+
+			// 设置活动晒单数据
+			function setShareData(arr, total) {
+				for(var i = 0; i < arr.length; i++) {
+					var data = arr[i]['videoAlbum'];
+
+					var dom = $('#example').clone();
+					dom.removeClass('hidden').removeAttr('id');
+					dom.find('.videoAlbumTime').text(data['videoAlbumTime'].substr(0, 10));
+					dom.find('.videoAlbumDescription').text(data['videoAlbumDescription']);
+
+					dom.data('id', data['userId']);
+					dom.data('videoalbumid', data['videoAlbumId']);
+
+					var urls = data['urls'];
+					if(urls.length == 0) {
+						dom.find('.mediaContent').remove();
+						$('.shareContent').append(dom);
+						continue;
+					}
+					// 根据类型判断
+					var type = data['videoAlbumType'];
+					// 4（文字，根据urls判断，已忽略）
+					// 5（图片，最多9张）
+					// 6（视频）
+					if(type == 6) {
+						dom.find('video').attr('src', urls[0]).attr('poster', data['videoAlbumCoverUrl'])
+						$('.shareContent').append(dom);
+						continue;
+					}
+					dom.find('.media').remove();
+
+					var size = (parseInt(urls.length / 3) + (urls.length % 3 > 0 ? 1 : 0)) * 3;
+					var content = dom.find('.mediaContent');
+					for(var j = 0; j < size; j++) {
+						content.append('<div class="media hasImg"></div>')
+					}
+					for(var j = 0; j < urls.length; j++) {
+						content.find('.hasImg').eq(j).append('<img src="' + urls[j] + '">');
+					}
+					content.find('.hasImg')
+					$('.shareContent').append(dom);
+					// 超过一张图，使用正方形显示
+					if(urls.length > 1) setImgSquare(dom)
+				}
+
+				// 判断是否已加载完毕，是，则取消对应样式
+				if($('.articleContent').length - 1 == total) {
+					$('#loadmore .weui-loadmore_line').removeClass('hidden').siblings().addClass('hidden');
+				}
+			}
+
+			// 检测是否需要加载数据
+			function canLoad() {
+				// 若正在加载，则不需要加载
+				if(loadingStatus) return false;
+				// 当前面板若无更多数据，即total已满，则不需要加载
+				var needLoading = $('#loadmore .weui-loadmore_line').hasClass('hidden');
+				return needLoading
+			}
+
+			// 滚动判断是否加载数据
+			function scrollLoadData() {
+				// 到达底部才刷新
+				var toBottom = window.innerHeight + document.body.scrollTop + 80 > document.body.scrollHeight;
+				if(!toBottom) return;
+				if(!canLoad()) return;
+				getActivityList()
+			}
+
+			// 设置图片为正方形
+			function setImgSquare(dom) {
+				var width = dom.find('.article').width() / 3;
+				dom.find('.media').each(function() {
+					$(this).css('max-height', width);
+				})
+			}
+			// 时间格式化
+			Date.prototype.pattern = function(fmt) {
+				var o = {
+					"M+": this.getMonth() + 1,
+					"d+": this.getDate(),
+					"h+": this.getHours() % 12 == 0 ? 12 : this.getHours() % 12,
+					"H+": this.getHours(),
+					"m+": this.getMinutes(),
+					"s+": this.getSeconds(),
+					"q+": Math.floor((this.getMonth() + 3) / 3),
+					"S": this.getMilliseconds()
+				};
+				var week = {
+					"0": "\u65e5",
+					"1": "\u4e00",
+					"2": "\u4e8c",
+					"3": "\u4e09",
+					"4": "\u56db",
+					"5": "\u4e94",
+					"6": "\u516d"
+				};
+				if(/(y+)/.test(fmt)) {
+					fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length))
+				}
+				if(/(E+)/.test(fmt)) {
+					fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "\u661f\u671f" : "\u5468") : "") + week[this.getDay() + ""])
+				}
+				for(var k in o) {
+					if(new RegExp("(" + k + ")").test(fmt)) {
+						fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)))
+					}
+				}
+				return fmt
+			};
+		</script>
+	</body>
+
+</html>

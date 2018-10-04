@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<link rel="stylesheet" href="../../common/assets/css/bootstrap.css" />
+<link rel="stylesheet" href="../../common/assets/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" href="../../common/css/common.css" />
+<link rel="stylesheet" href="../css/storePerformance.css" />
+
+</head>
+<body>
+	<div class="maintitle">
+		<a class="return-icon" onclick="history.go(-1)"><img
+			src="../../myHomePage/img/icon_fanhui.png"></a>
+		<h1 class="title">
+			<span id="shopName"></span>业绩
+		</h1>
+	</div>
+	<div class="main-content">
+		<div id="salsumpTab" class="tab-bar">
+			<div class="tab-bar-colspan">
+				<ul>
+					<li class="active"><a href="javascript:void(0)">业绩</a></li>
+					<li><a href="javascript:void(0)">项目量</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="echats-wrap">
+			<div class="echats-date-wrap">
+				<div id="salsumpHistogramDate" class="date-wrap hidden">
+					<div class="form-inline date-selector">
+						<input type="text" class="form-control datetime start-time" readonly="readonly" /> 至 <input type="text" class="form-control datetime end-time" readonly="readonly" /> <button class="btn btn-danger" id="salsumpHistogramBtn">确定</button>
+					</div>
+				</div>
+				<div class="tab-bar absolute">
+					<div id="salsumptimeTab" class="tab-bar-colspan">
+						<ul>
+							<li class="active"><a href="javascript:void(0)">月</a></li>
+							<li><a href="javascript:void(0)">年</a></li>
+							<li><a href="javascript:void(0)">更多</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="echats-salesconsumption" id="echartPic-salesconsumption"></div>
+
+		</div>
+		<div class="container-fluid pie-wrap">
+			<div id="salsumpPieDate" class="date-wrap hidden">
+				<div class="form-inline date-selector">
+					<input type="text" class="form-control datetime start-time" readonly="readonly" /> 至 <input type="text" class="form-control datetime end-time" readonly="readonly" /> <button class="btn btn-danger" id="salsumpPieBtn">确定</button>
+				</div>
+			</div>
+			<div class="tab-bar absolute">
+				<div id="salsumptimePieTab" class="tab-bar-colspan">
+					<ul>
+						<li class="active"><a href="javascript:void(0)">月</a></li>
+						<li><a href="javascript:void(0)">年</a></li>
+						<li><a href="javascript:void(0)">更多</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="echats-pie" id="echartPic-sales-pie"></div>
+			</div>
+			<div class="col-sm-6">
+				<div class="echats-pie" id="echartPic-consumption-pie"></div>
+			</div>
+		</div>
+	</div>
+<script src="../../common/assets/js/jquery-1.10.2.js"></script>
+<script src="../../common/assets/js/jquery.bootpag.min.js"></script>
+<script src="../../common/assets/js/echarts.simple.min.js"></script>
+<script src="../../common/assets/js/layer/layer.js"></script>
+<script src="../../common/assets/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="../../common/assets/js/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../common/js/util/util.js"></script>
+<script src="../js/storePerformanceDetails.js"></script>
+</body>
+</html>

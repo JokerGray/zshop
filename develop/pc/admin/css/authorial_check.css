@@ -1,0 +1,420 @@
+#search_box {
+    padding: 0 20px 0 130px;
+    position: relative;
+    margin-top: 40px;
+}
+
+#search_box>div {
+    margin-right: 20px;
+}
+
+#search_box>div:last-child {
+    margin-right: 0;
+}
+
+#penName_box>p,
+#autherName_box>p,
+#field_box>p,
+#date_box>p,
+#timeBox>p {
+    margin-bottom: 10px;
+}
+
+#penName_box,
+#autherName_box,
+#field_box,
+#date_box {
+    text-align: center;
+}
+
+#penName_inp[type='text'],
+#autherName_inp[type='text'],
+#start[type='text'],
+#end[type='text'] {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 34px;
+    vertical-align: bottom;
+    text-align: center;
+    padding: 11px 0;
+}
+
+#field_box .field_opt,
+#field_box .field_opt>button {
+    width: 100%;
+}
+
+#date_box .btn-group button {
+    width: 100%;
+}
+
+#date_box .btn-group1 {
+    padding-left: 0;
+}
+
+#date_box .btn-group2 {
+    padding-right: 0;
+}
+
+.middle_line {
+    position: absolute;
+    bottom: 30px;
+}
+
+#mLine1 {
+    left: 350px;
+}
+
+#mLine2 {
+    left: 597px;
+}
+
+#search_icon {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 28px;
+    margin-left: 10px;
+    /*position: absolute;
+	bottom: 0;
+	right: 0;*/
+}
+
+#search_icon img {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+#selection_date {
+    padding: 10px 20px 10px 30px;
+    height: 80px;
+    line-height: 60px;
+}
+
+.seleDate_day li:nth-child(1),
+.seleDate_day li:nth-child(2),
+.seleDate_day li:nth-child(3) {
+    padding-right: 30px;
+    color: #D4D4D4;
+    font-size: 16px;
+}
+
+.seleDate_day li:nth-child(3) {
+    position: relative;
+}
+
+.seleDate_day li:nth-child(3):after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    height: 22px;
+    width: 2px;
+    background-color: #D4D4D4;
+}
+
+#timeBox {
+    text-align: center;
+}
+
+#start {
+    margin-right: 10px;
+}
+
+#start[type='text'],
+#end[type='text'] {
+    width: 170px;
+}
+
+.seleDate_day .selection_opt {
+    margin-top: 12px;
+}
+
+#account_Table {
+    padding: 0 30px;
+}
+
+.tabNotice_icon span {
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+    background-color: #00B7EE;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.tabNotice_btn {
+    height: 25px;
+    line-height: 25px;
+    width: 45px;
+    background: #FFA893;
+    color: #fff;
+    border-radius: 3px;
+    border: 0;
+}
+
+.tabNotice_btn.blue {
+    background: rgb(47, 215, 198);
+}
+
+.tabNotice_btn.gray {
+    background: rgb(204, 204, 204);
+}
+
+#table_head th {
+    text-align: center;
+    padding: 0;
+    height: 40px;
+    line-height: 40px;
+    background-color: #f5f5f5;
+}
+
+#page {
+    /*position: absolute;
+    bottom: 0;
+    left: 44%;
+    margin-left: -70px;*/
+}
+
+#statement_con>tr>td {
+    padding: 0;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+/*弹出框1*/
+
+.modal-body1 {
+    height: 720px;
+    overflow: auto;
+}
+
+#myModal .modal-dialog1 {
+    margin: 50px auto;
+    width: 1200px;
+}
+
+#myModal .modal-content {
+    width: 1200px;
+}
+
+.modal-footer,
+.modal-header {
+    border: 0;
+}
+
+.modal-title {
+    text-align: center;
+    font-size: 20px;
+    font-family: '黑体';
+    font-weight: 600;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+.modal-footer button.btn,
+.modal-footer .btn+.btn {
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-left: 30px;
+    margin-right: 30px;
+    color: #fff;
+    border: 0;
+}
+
+.modalPass {
+    background: #30C7FF;
+}
+
+.modalNotPass {
+    background: #FF6F6F;
+}
+
+.modalShield {
+    background: #BBBBBB;
+}
+
+.form-group {
+    display: inline-block;
+}
+
+.control-label i {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    -webkit-background-size: 18px;
+    background-size: 18px;
+    vertical-align: middle;
+}
+
+.control-label .myModal_icon {
+    background-image: url(../images/rectangle.png);
+}
+
+.control-label .myModal_icon.active {
+    background-image: url(../images/rectangleCancel.png);
+}
+
+.control-label .notPass_icon {
+    background-image: url(../images/rectangleCancel.png);
+}
+
+.selectName {
+    margin-left: 5px;
+    margin-right: 3px;
+    color: #A9A9A9;
+    font-weight: 100;
+}
+
+.modal-content form .form-group1 {
+    margin-bottom: 0;
+    padding-right: 0;
+    height: 50px;
+    line-height: 49px;
+}
+
+#form_headshot {
+    height: 50px;
+    width: 50px;
+    background: #fafafa;
+    border: 0;
+}
+
+.instructionBox {
+    padding-left: 117px;
+}
+
+.instructionBox label {
+    width: 117px;
+    margin-left: -117px;
+    margin-bottom: 0;
+}
+
+.instructionCon {
+    width: 97%;
+}
+
+.instructionBox1 {
+    padding-left: 114px;
+}
+
+.instructionBox1 label {
+    width: 114px;
+    margin-left: -114px;
+    margin-bottom: 0;
+}
+
+.instructionCon1 {
+    width: 100%;
+}
+
+.checkDetail {
+    margin-bottom: 0;
+}
+
+#IDcard_photo,
+#subIDcard_photo {
+    width: 100%;
+    background: #fafafa;
+    border: 0;
+}
+
+#certificate_photo {
+    height: 100px;
+    width: 100px;
+    vertical-align: top;
+    background: #fafafa;
+    border: 0;
+}
+
+.IDcardBox label span {
+    width: 84px;
+}
+
+.IDcardBox label i {
+    margin-top: 10px;
+}
+
+.IDcardBox1 {
+    margin-top: 30px;
+}
+
+
+/*弹出框1*/
+
+
+/*弹出框2*/
+
+#NotPass {
+    z-index: 2000;
+}
+
+.modal-dialog2 {
+    width: 1200px;
+    margin-top: 150px;
+}
+
+.modal-content2 form {
+    padding: 0 50px;
+    height: 485px;
+    overflow: auto;
+}
+
+.NotPass {
+    background: #FF8B6F;
+}
+
+.NotPass_beca {
+    width: 1060px;
+    height: 400px;
+    margin-left: 15px;
+    margin-top: 30px;
+    padding: 15px;
+    /*box-sizing: border-box;*/
+}
+
+#notPassForm {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#notPassForm label {
+    padding-right: 20px;
+}
+
+.IDcardSelect label {
+    float: left;
+}
+
+.IDcardSelect label i,
+.IDcardSelect label span {
+    float: left;
+}
+
+
+/*弹出框2*/
+
+
+/*弹出大图*/
+
+.photoEnlargeBox {
+    width: 600px;
+    z-index: 4000;
+    position: absolute;
+    top: 0;
+    left: 190px;
+}
+
+.photoEnlarge {
+    width: 100%;
+    z-index: 4000;
+}

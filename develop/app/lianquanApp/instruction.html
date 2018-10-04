@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />		
+		<title>申请主脸说明</title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;box-sizing: border-box;}
+			body,html{width: 100%;height: 100%;background:#f5f5f5;}
+			body{padding-top:0.15rem;}
+			.contBox{width:100%;background:#fff;padding:0 0.1rem 0.1rem;margin-bottom: 0.1rem;}
+			.contBox_title{height:0.4rem;line-height:0.4rem;border-bottom:1px solid #e5e5e5;font-size:0.16rem;padding-left:0.05rem;color:#272727;font-weight:600;margin-bottom:0.1rem;}
+			.contBox>p{font-size:0.14rem;color:#a8a8a8;line-height:0.26rem;padding-left:0.1rem;}
+		</style>
+	</head>
+	<script type="text/javascript">
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if (!clientWidth) return;
+						docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+					};
+				if (!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);
+			})(document, window);
+	</script>
+
+	<body>
+		<div class="contBox">
+			<div class="contBox_title">主脸认证条件</div>
+			<p>1.有清晰的头像</p>
+			<p>2.粉丝数不少于50人</p>			
+		</div>
+		<div class="contBox">
+			<div class="contBox_title">主脸认证福利</div>
+			<p>1.获得的礼物，将可以获得丰富的分成福利</p>
+			<p>2.拥有专有身份标识</p>
+			<p>3.拥有不定期参加专业培训主脸的机会</p>						
+		</div>
+		<div class="contBox">
+			<div class="contBox_title">申请主脸说明</div>
+			<p>1.用户需选定云店店铺，申请成为该云店店铺主脸</p>
+			<p>2.发送申请后，云店会给适合的用户发送邀约通知</p>	
+			<p>3.邀约面谈后，与云店签订协议成为主脸</p>						
+		</div>
+		<!-- <input type="button" value="申请"></input> -->
+
+
+	</body>
+
+</html>

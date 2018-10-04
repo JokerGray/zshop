@@ -1,0 +1,143 @@
+/*禁止选择*/
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+ 
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+ }
+ .layui-btn.my-btn{
+     height: 28px;
+     line-height: 28px;
+     padding: 0 16px;
+     font-size: 12px;
+ }
+ .layui-table, .layui-table-view {
+      margin:0!important;
+     }
+ /*common*/
+ .p0{
+     padding: 0!important;
+ }
+ .w30{
+     width: 30%!important;
+ }
+ .mr5{
+     margin-right: 5%!important;
+ }
+ .tr90{
+     transform: rotate(90deg)!important;
+ }
+ .dn{
+     display: none!important;
+     }
+ /*common end*/
+ 
+ 
+ ul.tool-box-ul {
+     padding: 25px 25px 0 0;
+ }
+ 
+ ul.tool-box-ul>li.tool-box-li {
+     width: 250px;
+
+     margin-right: 20px;
+     float: left;
+
+ }
+ .tool-add-box{
+     padding: 0 35px;
+ }
+ 
+ 
+ div.layui-input-inline {
+     width: 100%!important;
+ }
+ 
+ #search-btn {
+    width: 112px;
+    height: 38px;
+}
+ ul.tool-box-ul>li.tool-box-li .tool-box-label {
+     display: block;
+     font: normal 14px/2em "微软雅黑";
+ }
+
+ .showImg {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+ }
+ .showImg .imgs {
+    width: 100px;
+    height: 100px;
+    background-color: #5cb85c;
+ }
+ table td .layui-table-cell {
+    height: 100%;
+ }
+.table-rgt {
+    text-align: right;
+}
+ .modal {
+    padding-top: 50px; 
+ }
+ .layui-form .layui-form-item:first-child {
+     margin: 0 auto;
+ }
+.layui-form .layui-form-item:nth-child(2) {
+    margin: 20px 20px 0;
+    border: 1px solid #5cb85c;
+ }
+ .layui-form .layui-form-item:nth-child(3) {
+     margin-top: 20px;
+ }
+ .btn-right {
+    margin-left: 380px;
+ }
+ 
+ .layui-btn.my-btn {
+    height: 28px;
+    line-height: 28px;
+    padding: 0 16px;
+    font-size: 12px;
+}
+ /*table 顶部边框*/
+.layui-border-box.layui-table-view {
+    border-top:2px solid #009688;
+}
+.layui-table, .layui-table-view {
+	width: 100% !important;
+}
+
+
+/*屏蔽 video 全屏按钮 */
+
+video::-webkit-media-controls-fullscreen-button {
+    display: none;
+}
+
+video::-media-controls-fullscreen-button {
+    display: none;
+}
+
+.my-bar {
+    height: 29px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+}

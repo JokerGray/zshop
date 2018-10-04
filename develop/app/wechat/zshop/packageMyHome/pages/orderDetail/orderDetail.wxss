@@ -1,0 +1,442 @@
+page,.content{
+    height: 100%;
+    font-family: PingFang-SC-Regular;
+    background: #f8f8f8;
+    width: 100%;
+}
+.content .top{
+  width: 100%;
+  margin-bottom:10rpx;
+  position: relative;
+}
+.content .top .detail-type{
+  width: 100%;
+  height: 256rpx;
+}
+
+.code-img{
+  text-align: center;
+}
+.code-img .img-box{
+  width: 100%;
+  height: 100%;
+}
+.code-img image{
+  width: 320rpx;
+  height: 320rpx;
+}
+.order-tit{
+  width: 400rpx;
+  display:-webkit-box;
+  word-break:break-all;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.detail-type image{
+  width: 100%;
+  height: 100%;
+}
+.detail-type .common-type{
+  position: absolute;
+  z-index: 1;
+  top:50rpx;
+  left: 30rpx;
+  color:#fff;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+}
+.user-info{
+  position: absolute;
+  z-index: 1;
+  background: #fff;
+  border-radius: 15rpx;
+  width: 80%;
+  top:140rpx;
+  left: 10%;
+  margin-left: -30rpx;
+  padding:30rpx 30rpx;
+  box-shadow: 1px 1px 5px #dfdfdf;
+}
+.user-info .address{
+  width: 100%;
+  height: auto;
+}
+.address .user-phone{
+  width: 100%;
+  height: auto;
+}
+.send-type image{
+  width: 50rpx;
+  height: 44rpx;
+  margin-right: 30rpx;
+  float:left;
+}
+.address image{
+  width: 40rpx;
+  height: 44rpx;
+  margin-right:30rpx;
+  float:left;
+}
+.siz-three{
+  font-size: 30rpx;
+  color:#333;
+  font-family: PingFang-SC-Medium;
+}
+.siz-four{
+  font-size: 26rpx;
+  color:#666;
+  margin-top:20rpx;
+}
+.send-type{
+  /* margin-bottom:30rpx;
+  padding-bottom: 30rpx; */
+}
+.express-type,.user-phone{
+  line-height: 44rpx;
+}
+.express{
+  border-bottom:1px solid #e4e4e4;
+  margin-bottom:30rpx;
+  padding-bottom: 30rpx;
+}
+.user-phone .siz-three{
+  margin-right: 30rpx;
+}
+/*发货状态*/
+.order-box{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-bottom:15rpx;
+}
+.order-box .order-type{
+  padding:30rpx 20rpx 0 30rpx;
+}
+.order-box .order-num{
+  padding-left: 30rpx;
+}
+.order-box .order-time{
+  padding: 0 0 30rpx 30rpx;
+}
+/*商品*/
+.detail{
+  width: 100%;
+  box-sizing: border-box; 
+  align-items: center;
+  border-bottom: 1px solid #F2F2F2;
+  background: #fff;
+}
+.detail .goods{
+  margin-top:10rpx;
+}
+.detail .goods:first-child{
+  margin-top:0;
+}
+.detail-list{
+  padding-bottom: 100rpx;
+}
+.content .detail .detail-top{
+  color:#323232;
+  font-size:30rpx;
+  height:90rpx;
+  line-height: 90rpx;
+  width:100%;
+  overflow:hidden;
+  position: relative;
+}
+.detail-top .detail-tit{
+  padding:0 15rpx 0 85rpx;
+  float: left;
+}
+.detail-top image:first-child{
+  width: 34rpx;
+  height: 36rpx;
+  position: absolute;
+  top:29rpx;
+  left: 40rpx;
+}
+.detail-top image:last-child{
+  width: 22rpx;
+  height: 22rpx;
+}
+.goods{
+  overflow:hidden;
+  background: #f8f8f8;
+}
+.goods .good-content{
+  display: flex;
+}
+.goods .good-left{
+  flex: 0.5;
+  vertical-align:middle;
+}
+.goods .item-select{
+  width: 40rpx;
+  height: 40rpx;
+  float: left;
+  position: absolute;
+  top:50%;
+  margin-top:-20rpx;
+  left:31rpx;
+}
+.goods .good-img{
+  display:inline-block;
+  width:180rpx;
+  height:180rpx;
+  border-radius:5px;
+  margin:25rpx;
+}
+.goods .right-info{
+  flex:1;
+  font-size: 30rpx;
+}
+.right-info text:first-child{
+  display: -webkit-box;
+  margin: 30rpx 30rpx 30rpx 0;
+}
+.right-info text:nth-child(2){
+  color:#989898;
+  padding:5rpx 0rpx;
+  margin-bottom:25rpx;
+}
+.right-info .detail-down{
+  margin-top:30rpx;
+  height:auto;
+  overflow:hidden;
+}
+.right-info .detail-down text:first-child{
+  display:inline-block;
+  margin:0;
+  font-size: 30rpx;
+  color:#ff0036;
+}
+.right-info .detail-down text:last-child{
+  background: none;
+  font-size: 24rpx;
+  float: right;
+  margin-right: 15rpx;
+}
+/*支付类型*/
+.pay-box{
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+.pay-box view{
+  height: 80rpx;
+  border-bottom:1px solid #e4e4e4;
+  line-height: 80rpx;
+  padding: 0 20rpx;
+}
+.pay-box view text:first-child{
+  float: left;
+}
+.pay-box view text:last-child{
+  float: right;
+  margin:0;
+}
+/*联系商家*/
+.phone{
+  width: 100%;
+  background: #fff;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+.phone image{
+  width: 30rpx;
+  height: 30rpx;
+}
+/*金额相关*/
+.money-box{
+  margin:15rpx 0;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  padding: 30rpx 0;
+}
+.money-box view{
+  margin:0;
+  padding: 0 15rpx 20rpx 15rpx; 
+}
+.money-box view:last-child{
+  padding-bottom: 0;
+}
+.money-box view text:last-child{
+  float: right;
+}
+.money-box .true-price{
+  color:#ff0036;
+  font-size: 28rpx;
+}
+/*按钮*/
+.ctronl-btn{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 30rpx;
+  background: #fff;
+  z-index:33;
+  background: #fff;
+}
+.ctronl-btn button{
+  width: 180rpx;
+  height: 70rpx;
+  font-size: 28rpx;
+  float: right;
+  margin:15rpx 20rpx;
+}
+.ctronl-btn .reimburse-btn,.ctronl-btn .cancel-btn,.ctronl-btn .return-btn,.ctronl-btn .delete-btn,.ctronl-btn .audit-btn{
+  background: #fff;
+  color:#333;
+  border:1px solid #333;
+}
+.ctronl-btn .shipments-btn,.ctronl-btn .pay-btn,.ctronl-btn .take-btn,.ctronl-btn .appraise-btn{
+  background: #fb452c;
+  color:#fff;
+  border:1px solid #fb452c;
+}
+.appraise-btn{
+  width:100rpx;
+  font-size:23rpx;
+  color:#fb452c !important;
+  border:1px solid #fb452c;
+  float:right;
+  height:50rpx;
+  line-height:50rpx;
+  margin-top:15rpx;
+}
+.ziti{
+  margin:15rpx 0;
+  background: #fff;
+  padding: 15rpx 0;
+}
+.ziti text{
+  display: block;
+  text-align: center;
+}
+.ziti text:last-child{
+  color:orange;
+}
+.small-size1{
+  font-size: 25rpx;
+  color:#fb452c;
+}
+.red{
+  color:#fb452c;
+}
+.rgt{
+  float: right;
+}
+.detail-down>.red{
+  background: #f8f8f8 !important;
+  color:#fb452c !important;
+}
+.small-size2{
+  font-size: 22rpx;
+}
+.shif{
+  font-size: 30rpx;
+}
+
+/* 拼单 */
+.spell{
+  padding:20rpx 20rpx 10rpx 30rpx;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.spellinfo{
+  color: #333;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+}
+.userlist{
+  padding:20rpx 20rpx 20rpx 30rpx;
+  display: flex;
+  border-bottom: 1px #eee solid;
+}
+.userpic{
+	height: 120rpx;
+	white-space: nowrap;
+	display: flex;
+  flex: 1;
+  overflow: hidden;
+  padding-right: 60rpx;
+}
+.useritem{
+  width: 132rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  margin-left: -40rpx;
+}
+.useritem:first-child{
+  margin-left: 0;
+}
+.useritem image.headportrait{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.mainicon-wrap{
+  width: 64rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.mainicon{
+  width: 64rpx;
+  height: 40rpx;
+}
+.operationbtn{
+  width: 148rpx;
+  height: 60rpx;
+  margin-top: 30rpx;
+}
+.invitebtn{
+  width: 100%;
+  height: 60rpx;
+  background: #fb452c;
+  color: #fff;
+  font-size: 28rpx;
+  padding: 0;
+  text-align: center;
+  line-height: 60rpx;
+}
+.detailbtn{
+  width: 100%;
+  height: 60rpx;
+  border:1px #999 solid;
+  color: #999;
+  font-size: 28rpx;
+  padding: 0;
+  text-align: center;
+  line-height: 60rpx;
+}
+.ctronl-btn button.invite-btn{
+  width: 242rpx;
+}
+.usersimg{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  bottom: 10rpx;
+  left:20rpx;
+  border-radius: 100%;
+}
+.user-address{
+  width:600rpx;
+  overflow:hidden;
+  display:-webkit-box;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2; 
+}

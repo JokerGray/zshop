@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>新增商户申请</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="../../common/css/reset.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css"/>-->
+		<link rel="stylesheet" href="../../common/assets/zTree_v3/css/metroStyle/metroStyle.css" />
+	</head>
+
+	<body>
+		<div class="tool-box layui-form">
+			<ul class="tool-box-ul clearfix">
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label"><b class="required-icon">＊</b>角色名：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="roleName" lay-verify="required|phone" maxlength="11"> 
+						</div>
+					</div>
+				</li>
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label"><b class="required-icon">＊</b>商户名：</label>
+						<div class="layui-input-inline">
+							<select id="commercialList" lay-verify="required" lay-search  placeholder="支持输入选择" lay-filter="commercialList">
+								
+							</select>
+						</div>
+					</div>
+				</li>
+				
+				<button class="layui-btn" id="searchBtn">搜索</button>
+				<button class="layui-btn" id="resetBtn">重置</button>
+			</ul>
+		</div>
+		<div class="tool-add-box clearfix">
+			<button class="layui-btn my-btn add" lay-event="add" id="addButton">新增</button>
+		</div>
+		<div class="layui-app clearfix">
+			<div class="app-ztree" id="appZtree">
+				<table lay-filter="merchantLeftTable" id="merchantLeftTable"></table>
+				<div id="layTableLeftPage"></div>
+			</div>
+			<div class="app-table">
+				<h2 id="myListName">已关联用户列表,角色名称:老板(管理员)</h2>
+				<div id="btnCon">
+					<button class="layui-btn my-btn" id="addKv">
+					  <i class="layui-icon">&#xe61f;</i> 添加角色用户
+					</button>
+				</div>
+				<table lay-filter="merchantRightTable" id="merchantRightTable"></table>
+				<div id="layTableRightPage"></div>
+			</div>
+		</div>
+		
+		
+		<script type="text/html" id="barDemo">
+			<button class="layui-btn my-btn" lay-event="change"><i class="layui-icon">&#xe642;</i>修改</button>
+			<button class="layui-btn my-btn" lay-event="delete"><i class="layui-icon">&#xe640;</i>删除</button>
+		</script>
+		
+		<script type="text/html" id="innerBar">
+			<button class="layui-btn my-btn" lay-event="grant">授权</button>
+		</script>
+		
+		
+		<div id="layerFormDiv" class='layui-form clearfix' lay-filter="layerFormDiv">
+			<table lay-filter="layerForm" id="layerForm"></table>
+			<div id="layerFormPage"></div>
+		</div>
+		
+		
+		<div id="changeLayer" class='layui-form clearfix' lay-filter="changeLayer">
+			<div class="app-layer">
+				<div class="package clearfix">
+					<div class="package-title">商户权限</div>
+				</div>
+				<div class="app-layer-content clearfix">
+					<div class="left-app">
+						<ul class="tool-box-ul layui-form clearfix p0">
+							<li class="tool-box-li mr5">
+								<div class="layui-form-item">
+									<label class="tool-box-label"><b class="required-icon">＊</b>角色名：</label>
+									<div class="layui-input-inline">
+										<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="one" lay-verify="required" maxlength="11"> 
+									</div>
+								</div>
+							</li>
+							<li class="tool-box-li mr5">
+								<div class="layui-form-item">
+									<label class="tool-box-label"><b class="required-icon">＊</b>是否可用：</label>
+									<div class="layui-input-inline">
+										<select id="two" lay-verify="required">
+											<option value="0">否</option>
+											<option value="1">是</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li class="tool-box-li mr5">
+								<div class="layui-form-item">
+									<label class="tool-box-label"><b class="required-icon">＊</b>商户名称：</label>
+									<div class="layui-input-inline">
+										<select id="three" lay-verify="required">
+											
+										</select>
+									</div>
+								</div>
+							</li>
+							<li class="tool-box-li mr5">
+								<div class="layui-form-item">
+									<label class="tool-box-label"><b class="required-icon">＊</b>是否管理员：</label>
+									<div class="layui-input-inline">
+										<select id="four" lay-verify="required">
+											<option value="0">否</option>
+								            <option value="1">是</option>
+										</select>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="mid-line">
+						
+					</div>
+					<div class="right-app">
+						<div class="layui-form-item">
+							<h4 id="fatherTree">商户权限</h4>
+		    				<ul id="treeDemo" class="ztree"></ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+	
+
+</html>
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script>
+<script type="text/javascript">
+	jsorcss('css','merchants_permissions');
+	jsorcss('js','merchants_permissions');
+</script>

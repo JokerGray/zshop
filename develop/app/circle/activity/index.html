@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="wekit">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./static/flexible/flexible.js"></script>
+    <script src="./static/artTemplate/artTemplate.js"></script>
+    <script src="./static/share/share.js"></script>
+    <title>活动详情</title>
+</head>
+<body>
+        <div id="header" style="max-width: 1024px;margin:0 auto;">
+				<div class="header_logo">
+					<img src="./src/img/logo.png">
+				</div>
+				<div class="header_load btn">
+					打开
+				</div>
+
+			</div>
+    <div class="content">
+    </div>
+    <a href="javascrpt:;" class="footer download_link"> <img src="./src/img/footer.png" alt=""> </a>
+    <div id="contBlank" style="display: none;">
+        <span class="blank_icon"></span>
+        <p class="msg_miss">哎呀！您访问的地址不存在</p>
+    </div>
+
+    <div class="model">
+        <div class="model_cont">
+            <p class="text1">1、点击右上角的&nbsp;&nbsp;<span></span></p>
+            <p class="text2">2、选择&nbsp;&nbsp;<span></span></p>
+            <div class="pointTo"></div>
+        </div>
+    </div>
+    
+    <script type="text/html" id="showCont">
+        
+        <div class="activity-img"  >
+            <img src="<%=data.cover%>?x-oss-process=image/resize,m_fill,h_488,w_750" alt="">
+        </div>
+        <div class="activity-details">
+             <%if(data.namingName){%>
+                    <div class="namingName"><%=data.namingName%></div>
+             <%}%>
+                <h3 class="ac-name"><%=data.name%></h3>
+                <p class="ac-time ">活动时间 <span><%=data.startTime%></span></p>
+                <p class="ac-site ">活动地址 <span><%=data.address%></span></p>
+                <p class="ac-charge ">¥<%=data.avePrice%></p>
+        </div>
+        <%if(data.namingShopName){%>
+            <div class="namingShopName">由<%=data.namingShopName%>冠名</div>
+            <%}%>
+        <%if(data.sponsorNumber>0){%> 
+        <div class="sponsor">赞助者: <span class="sponsorNumber">获得<%=data.sponsorNumber%>家赞助</span> 
+            <div class="more">
+                    <a href="javascript:;">
+                    </a>
+                </div>
+        </div>
+            <%}%>  
+        <div class="activity-publisher">
+
+            <div class="face clearfix" onclick="gotoCircle(<%=data.circleId%>)">
+                <a href="javascript:;">
+                    <img src="<%=data.circleLogo%>?x-oss-process=image/resize,m_fill,h_70,w_70" alt="">
+                </a>
+                <div class="publisher">
+
+                    <p class="pub-title">发布者</p>
+                    <h3 class="pub-name"><%=data.circleName%></h3>
+                    <%if(data.circleType==2){%>
+                        <div class="shop"></div>
+                        <%}%>
+                </div>
+            </div>
+            <%if(data.joinList){%>
+            <div class="participator">
+                <p class="par-title">已报名(<%=data.joinNumber%>)</p>
+                <ul class="par-list">
+                <%if(data.joinNumber!=0){%>
+                   <%for(var i=0;i<data.joinList.length;i++){%>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="<%=data.joinList[i].userPic%>"  class="userFace">
+                            <p class="userName"><%=data.joinList[i].userName%></p>
+                        </a>
+                    </li>
+                    <%}%>
+                </ul>
+                <div class="more">
+                    <a href="javascript:;">
+                    </a>
+                </div>
+                <%}%>
+            </div>
+            <%}%>
+        </div>
+        <div class="activity-presentation">
+            <div class="content-title">
+                活动详情
+            </div>
+            <p><%=data.content%></p>
+             <%if(data.contentVideo){%>
+            <div class="videoBox">
+                    <video src="<%=data.contentVideo%>" class="video" poster="<%=data.contentCoverUrl%>"></video>
+                    <img class="play" src="./src/img/qz_hdxq_bfan@2x.png" alt="">
+            </div>
+            <%}%> 
+            <%if(data.contentUrl){%>
+                <%if(data.contentUrl.split(',')){%>
+                    <%for(var i = 0 ; i < data.contentUrl.split(',').length; i++){%>
+                    <div class="imgBox">
+                            <img class="contentImg" alt="" src="<%=data.contentUrl.split(",")[i]%>">
+                    </div>
+                    <%}%>
+                <%}else{%>
+                    <div class="imgBox">
+                            <img class="contentImg" alt="" src="<%=data.contentUrl%>">
+                    </div>
+                <%}%>
+            <%}%>
+        </div>
+    </script>
+    <script type="text/html" id="showBlank">
+            <div class="error">
+                <%=msg%>
+            </div>
+    </script>
+    <script src="./static/pub/pub.js"></script>
+
+</body>
+</html>

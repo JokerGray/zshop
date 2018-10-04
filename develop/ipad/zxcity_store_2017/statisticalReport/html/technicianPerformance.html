@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <link rel="stylesheet" href="../../common/assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../common/assets/paging/dist/paging.css">
+    <link rel="stylesheet" href="../../common/assets/jedate/skin/jedate.css">
+    <link rel="stylesheet" href="../../common/assets/jedate/skin/mystyle.css">
+    <link rel="stylesheet" href="../../common/css/common.css"/>
+    <!--<link rel="stylesheet" href="../../common/assets/datetimepicker/bootstrap-datetimepicker.min.css"/>-->
+    <link rel="stylesheet" href="../css/technicianPerformance.css"/>
+    <!-- JQUERY SCRIPTS -->
+
+</head>
+<body>
+<div class="main-title">
+    <a href="javascript:;" class="return-icon"></a>
+    <h5 class="title">消耗业绩</h5>
+</div>
+<div class="main-content">
+    <div class="search-bar">
+        <div class="form-inline date-wrap">
+            <input type="text" id="startTime" class="form-control datetime start-time" readonly="readonly"/> 至 <input
+                type="text" id="endTime" class="form-control datetime end-time" readonly="readonly"/> 技师 <input
+                type="text" id="waiterName" class="form-control"/>
+            <button type="button" class="btn btn-danger" id="searchBtn">查询</button>
+        </div>
+    </div>
+    <table class="table table-striped table-hover technicianPerformance-List">
+        <thead>
+        <tr>
+            <th>服务人员名称</th>
+            <th>所属店铺</th>
+            <th>绩效金额</th>
+            <th>订单量</th>
+        </tr>
+        </thead>
+        <tbody id="technicianPerformance">
+        </tbody>
+    </table>
+    <div id="page-selection" class="pageview"></div>
+</div>
+<script src="../../common/assets/jquery.min.js"></script>
+<script src="../../common/assets/jquery.bootpag.min.js"></script>
+<script src="../../common/assets/layer/layer.js"></script>
+<!--<script src="../../common/assets/datetimepicker/bootstrap-datetimepicker.min.js"></script>-->
+<!--<script src="../../common/assets/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>-->
+<script src="../../common/assets/jedate/jquery.jedate.min.js"></script>
+<script src="../../common/assets/paging/dist/paging.js"></script>
+<script src="../../common/js/common.js"></script>
+<script src="../js/technicianPerformance.js"></script>
+</body>
+</html>

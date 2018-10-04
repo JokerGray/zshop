@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <script src="../common/flexible.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <!--<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">-->
+  <title>请假详情</title>
+  <link rel="stylesheet" href="../common/layer_mobile/need/layer.css">
+  <link type="text/css" rel="stylesheet" href="css/leaveDetails.css">
+</head>
+<body>
+
+<div class="title_tab">
+  <p class="back_imgBtn">
+    <img src="img/createType/nav_icon_back@3x.png" class="back_tab to_menu">
+  </p>
+  请假详情
+</div>
+
+<!--<div>-->
+  <!--<p class="title_tab"><img src="img/createType/nav_icon_back@3x.png" class="back_tab commonback_tab">请假详情</p>-->
+<!--</div>-->
+
+<div id="leaveList">
+<!--请假信息-->
+  <div class="topBox">
+    <!--<div class="topPart">-->
+      <!--<div class="topHead">-->
+        <!--<div class="headImg">-->
+          <!--<span class="nameImg">小</span>-->
+        <!--</div>-->
+        <!--<div class="rightPart">-->
+          <!--<p class="nameTitle">-->
+            <!--<span>小白商铺</span>-->
+            <!--<span class="level-item level-one">普通</span>-->
+          <!--</p>-->
+          <!--<p class="timePrompt">2017-11-10 11:41:04 提交</p>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<ul class="sencondHead">-->
+        <!--<li>-->
+          <!--<span>审批类型</span>-->
+          <!--<span>请假类型</span>-->
+
+        <!--</li>-->
+        <!--<li>-->
+          <!--<span>请假类型</span>-->
+          <!--<span>婚假</span>-->
+        <!--</li>-->
+        <!--<li >-->
+          <!--<span>开始时间</span>-->
+          <!--<span class="time">2018-02-21 23:59:00</span>-->
+        <!--</li>-->
+        <!--<li >-->
+          <!--<span>结束时间</span>-->
+          <!--<span class="time">2018-02-21 23:59:00</span>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<span>请假原因</span>-->
+          <!--<span>请假类型</span>-->
+        <!--</li>-->
+        <!--<li class="imgTips">-->
+          <!--<span>图片</span>-->
+          <!--<img src="img/createType/record.png" alt="">-->
+          <!--<img src="img/createType/record.png" alt="">-->
+          <!--<img src="img/createType/record.png" alt="">-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</div>-->
+  </div>
+
+<!--审批记录-->
+  <div class="approvalRecord">
+    <p class="recordTips">
+      <img src="img/createType/record.png" alt="">
+      <span>审批记录</span>
+    </p>
+    <ul class="approvalPath">
+      <!--<li>-->
+        <!--<p class="oneTab">-->
+          <!--<span class="dotImg"></span>-->
+          <!--<span>小白商铺</span>-->
+          <!--<span>发我申请</span>-->
+          <!--<span class="time">2014-11-02 11:41:11</span>-->
+        <!--</p>-->
+        <!--<p class="reason">结婚结婚结婚</p>-->
+      <!--</li>-->
+    </ul>
+  </div>
+</div>
+<!--操作按钮-->
+<div class="operateBtn">
+<!--1.只能撤销-->
+  <div class="commomBtn typeOne">
+    <div class="release">
+     撤销
+    </div>
+  </div>
+  <!--2.只能查看没有按钮-->
+  <div class="commomBtn TypeTwo">
+  </div>
+  <!--3.归档人-->
+  <div class="commomBtn typeThree">
+    <div class="deliver">
+      转交
+    </div>
+    <div class="agree">
+      同意
+    </div>
+    <div class="reject">
+      拒绝
+    </div>
+    <div  class="release">
+      撤销
+    </div>
+  </div>
+  <!--4.审批人-->
+  <div class="commomBtn typeFour">
+    <!--<div class="archive">-->
+     <!--提交归档-->
+    <!--</div>-->
+    <div class="deliver">
+      转交
+    </div>
+    <div class="reject">
+     拒绝
+    </div>
+    <div  class="release">
+      撤销
+    </div>
+  </div>
+  <!--5.发起人和归档人-->
+  <div class="commomBtn typeFive">
+    <div class="release">
+     撤销
+    </div>
+    <div class="agree">
+      同意
+    </div>
+    <div class="deliver">
+     转交
+    </div>
+  </div>
+  <!--6.发起人和创建人-->
+  <div class="commomBtn typeSix">
+    <div  class="release">
+     撤销
+    </div>
+    <!--<div class="archive">-->
+      <!--提交归档-->
+    <!--</div>-->
+    <div class="deliver">
+     转交
+    </div>
+  </div>
+</div>
+
+<!--查看大图-->
+<div class="motai" id="mo" >
+    <div class="close" id="close">×</div>
+   <img class="motaiimg" id="moimg" >
+</div>
+
+<!--同意，拒绝，撤销弹框-->
+<div class="rejectBox">
+    <div class="innerBox">
+      <p class="title">是否同意此申请？</p>
+      <input type="text" placeholder="请输入理由" maxlength="120" class="reason">
+      <div >
+        <div class="deleteBtn commonbtn">取消</div>
+        <div class="certainBtn commonbtn">确定</div>
+      </div>
+    </div>
+</div>
+
+<script src="../common/jquery-1.11.1.min.js"></script>
+<script src="../common/util.js"></script>
+<script type="text/javascript" src="../common/layer_mobile/layer.js"></script>
+<script src="js/leaveDetails.js"></script>
+</body>
+</html>

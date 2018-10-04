@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0" />
+        <title>发布</title>
+        <!-- FONTAWESOME STYLES-->
+        <link href="../../common/assets/css/font-awesome.css" rel="stylesheet" />
+        <!-- GOOGLE FONTS-->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+        <!-- BOOTSTRAP STYLES-->
+        <link href="../../common/assets/css/bootstrap.css" rel="stylesheet" />
+        <link href="../../common/css/common.css" rel="stylesheet" />
+        <link href="../css/new.css"rel='stylesheet' type='text/css' />
+        <link rel="stylesheet" href="../js/kindeditor-4.1.7/themes/default/default.css" />
+        <link rel="stylesheet" href="../js/kindeditor-4.1.7/themes/example1/example1.css" />
+    </head>
+    <body>
+        <div class="uploadContainer">
+            <div class="uploadShare">
+                <a class="show-back" href="javascript:history.back(-1);"><img src="../../myHomePage/img/icon_fanhui.png"></a>
+            </div>
+            <div class="upload-form">
+                <!--<form method="post">-->
+                    <div class="upload-form-title form-group">
+                        <input type="text" class="form-title-input form-control" name="add-title" id="title" placeholder="标题（5-30字）" maxlength='30'>
+                        <span class="upload-form-total"><i class="upload-form-num">0</i>/30</span>
+                    </div>
+                    <div class="plarContent">
+                        <div class="plarContent-text">
+                            <textarea style="width: 100%; height: 822px;" id="detail" name="detail" class="form-control required" aria-required="true" ></textarea>
+                        </div>
+                    </div>
+                    <div class="upload-form-btn">
+                        <button class="upload-form-submit btn" id="btnSubmit" type="button">发布</button>
+                        <button class="upload-form-back btn" type="button" onclick="javascript:history.back(-1);">取消</button>
+                    </div>
+                <!--</form>-->
+            </div>
+        </div>
+
+    </body>
+
+
+        <!-- JQUERY SCRIPTS -->
+        <script src="../../common/assets/js/jquery-1.10.2.js"></script>
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="../../common/assets/js/bootstrap.min.js"></script>
+        <!-- <script src="../js/kindeditor-4.1.7/kindeditor-all-min.js"></script> -->
+        <script src="../js/kindeditor-4.1.7/kindeditor.js"></script>
+        <script src="../js/kindeditor-4.1.7/plugins/image/image.js"></script>
+        <script src="../js/kindeditor-4.1.7/plugins/preview/preview.js"></script>
+        <script src="../js/kindeditor-4.1.7/plugins/plainpaste/plainpaste.js"></script>
+        <script src="../js/kindeditor-4.1.7/plugins/wordpaste/wordpaste.js"></script>
+        <script src="../js/kindeditor-4.1.7/lang/zh_CN.js"></script>
+        <script src="../../common/assets/js/layer/layer.js"></script>
+        <script src="../../common/js/util/util.js"></script>
+        <script type="text/javascript" src="../js/new.js"></script>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>视频分析 - 智享城市·智享头条</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/articleAnalysis.css" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="articleAnalysis">
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div class="right pull-right">
+                <div class="tab-panel newslist-tab">
+                    <ul class="tabinner">
+                        <li id="navAll"><a href="articleAnalysis.html">内容分析</a></li>
+                        <li id="navPublished" class="active"><a href="currTimeAnalysis.html">实时分析</a></li>
+                    </ul>
+                </div>
+                <div class="right-content" id="right-content">
+                    <div class="analyseType" style="margin-bottom: 0;">
+                        <a id="articleAnaly" class="active" href="#">文章实时数据</a>
+                        <a id="videoAnaly" href="#">视频实时数据</a>
+                    </div>
+                    <p class="promptMess" style="margin-bottom: 0;">提示：每天上午更新数据，统计区间为七日前至此时的数据，与手机客户端展示的实时数值不同。</p>
+                    <div class="currArtTable table account_table" style="margin-top: 5px;">
+                        <div id="account_Table" class="table-left">
+                            <div class="panel panel-default">
+                                <table class="table table-hover">
+                                    <thead id="table_head">
+                                        <th>文章名称</th>
+                                        <th>日期</th>
+                                        <th>阅读</th>
+                                        <th>点赞</th>
+                                    </thead>
+                                    <tbody id="currArtTab"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="currArtpage" class="text-center"></div>
+                    </div>
+                    <div class="currVideoTable table account_table hide" style="margin-top: 5px;">
+                        <div id="account_Table" class="table-left">
+                            <div class="panel panel-default">
+                                <table class="table table-hover">
+                                    <thead id="table_head">
+                                        <th>视频名称</th>
+                                        <th>日期</th>
+                                        <th>播放</th>
+                                        <th>点赞</th>
+                                    </thead>
+                                    <tbody id="currVideoTab"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="currVideopage" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="assets/echarts/echarts.js"></script>
+    <script src="js/currTimeAnalysis.js"></script>
+    <script id="artTable" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+        <tr>
+            <td class="tableConTit" title={{item.scCmsAarticleTitle || ''}}>{{item.scCmsAarticleTitle || ''}}</td>
+            <td>{{item.visitTime || '0'}}</td>
+            <td>{{item.dayVisitNumber || '0'}}</td>
+            <td>{{item.priase || '0'}}</td>
+        </tr>    
+        {{#  }); }}
+
+        {{#  if(d.length === 0){ }}
+        <td></td>
+        {{#  } }} 
+    </script>
+    <script id="videoTable" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+        <tr>
+            <td class="tableConTit" title={{item.scCmsAarticleTitle || ''}}>{{item.scCmsAarticleTitle || ''}}</td>
+            <td>{{item.visitTime || '0'}}</td>
+            <td>{{item.dayVisitNumber || '0'}}</td>
+            <td>{{item.priase || '0'}}</td>
+        </tr>    
+        {{#  }); }}
+
+        {{#  if(d.length === 0){ }}
+        <td></td>
+        {{#  } }} 
+    </script>
+</body>
+</html>

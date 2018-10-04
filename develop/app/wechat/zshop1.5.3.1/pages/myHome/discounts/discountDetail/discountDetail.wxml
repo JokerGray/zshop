@@ -1,0 +1,85 @@
+<login-component login-type-property="{{loginType}}" bindresusermevent="resusermevent" bindresmevent="resmevent" ></login-component>
+
+<view class='discountDetail {{couponType==06?"yellow":"red"}}'>
+<canvas canvas-id="shareCanvas" style='width:720rpx; height:568rpx; position:fixed; top: 99999rpx;' hidden='{{canvasHidden}}'></canvas>
+
+  <view class='list discount {{share==0?"marginTop88":"marginTop216"}}' wx:if="{{couponType=='06'}}">
+      <view class='supernatant' wx:if="{{share==1&&discountsNew.userCouponLogCount==1||share==2&&discountsNew.userCouponLogCount==1}}">
+        <text>请打开智享云店小程序-我的-查看优惠券</text>
+        <image class='delete' bindtap='hide' src='../../images/youhuiquan_guanbi@2x.png'></image>
+      </view>
+      
+     <view class='con'>
+      <image class="shopIcon" src='{{discountsNew.shopLogoUrl}}'></image>
+      <view class='shopname color666 font28 namecheck'>{{discountsNew.shopName}}</view>
+      <view class='font40 {{discountsNew.expireState!=0||res.data.data.couponUseDate != null?"color999":"colorred"}}' wx:if="{{discountsNew.promGoodsType==0 ||discountsNew.promGoodsType==1}}">{{discountsNew.couponInstruction}}</view>
+      <view class='font36 text-overflow fontWeight color333' wx:if="{{discountsNew.promGoodsType==1}}" wx:for="{{descArr}}" wx:key="{{index}}">{{item}}</view>
+      <view class='font36 text-overflow fontWeight color333' wx:if="{{discountsNew.promGoodsType==0}}" >{{quanDetail}}</view>
+      <view wx:if="{{discountsNew.userCouponLogCount==1}}" class='color999 font26'>{{discountsNew.userCouponExpireTime}}</view>
+      <!-- userCouponLogCount 0 分享进入没有领取礼包 1 已领取 null 分享再得的礼包 直接显示已领取完不让顾客领取 -->
+      <!-- promStatus 反参0-进行中; 1-分享结束; 2-删除;-->
+      <view wx:if="{{share==1&&discountsNew.userCouponLogCount==0&&promStatus==0}}" class='bindGet' bindtap='bindGet'>立即领取</view>
+      <view wx:if="{{share==1&&discountsNew.userCouponLogCount==0&&promStatus==1}}">该礼包已过期</view>
+      <!-- 礼包已删除显示 礼包分享再或的礼包不让领取这样显示  -->
+      <view wx:if="{{share==1&&discountsNew.userCouponLogCount==0&&promStatus==2 ||share==1&&discountsNew.couponShare == 0&&discountsNew.userCouponLogCount==null}}">该礼包已领取完</view>
+      <view wx:if="{{share==1&&discountsNew.userCouponLogCount==1 ||share==4}}" class='getcon'>您已经领取过该礼包</view>
+      <image wx:if="{{discountsNew.expireState!=0}}" class="img" src="../../images/yd_yiguoqi@2x.png"></image>
+      <image wx:if="{{discountsNew.couponLogStatus ==3}}" class="img" src="../../images/yd_yishiyong@2x.png"></image>
+      <view class="cicrl cicleLeft {{couponType==06?'yellow':'red'}}"></view>
+      <view class="cicrl cicleRight {{couponType==06?'yellow':'red'}}"></view>
+    </view> 
+     <view class='info' wx:if="{{discountsNew.couponShare==1&&discountsNew.couponShared==0&&share==0}}">
+      <view>分享再获好礼</view>
+      <button open-type='share' data-shoplogourl="{{discountsNew.shopLogoUrl}}" style='background:#fb8b33;'>分享</button> 
+    </view>
+     <view class='info noshare' wx:if="{{discountsNew.couponShare==1&&discountsNew.couponShared==1&&share==0}}">
+      <view>分享再获好礼</view>
+      <button open-type='share' data-shoplogourl="{{discountsNew.shopLogoUrl}}" style='background:#999;' >分享</button> 
+    </view>  
+    <view class='serial'>
+      <image wx:if="{{share==0||share==2 ||showMa==1}}" bindtap="previewImg" mode="scaleToFill" src="{{imagePath}}"></image>
+       <view wx:if="{{share==0||share==2 || showMa==1}}"><text>序列号:{{discountsNew.couponCode}}</text></view>
+    </view>
+    <view class='call'>
+       <image src="../../images/wode_quandetail_phone@2x.png" bindtap='call' data-phone="{{discountsNew.shopPhone}}"></image>  
+       <text>{{discountsNew.shopAddress}}</text> 
+    </view>
+  </view>
+  <view class='list' wx:else>
+    <view class='con'>
+      <image class="shopIcon" src='{{discounts.shopLogoUrl}}'></image>
+      <view class='shopname color666 font28'>{{discounts.shopName}}</view>
+      <view class='font36 fontWeight color333'>{{discounts.instruction}}</view>
+      <view class='color999 font26'>有效期至：{{discounts.beginTime}}至{{discounts.endTime}}</view>
+      <view class="cicrl cicleLeft {{couponType==06?'yellow':'red'}}"></view>
+      <view class="cicrl cicleRight {{couponType==06?'yellow':'red'}}"></view>
+    </view>
+    <view class='info'>
+      <view class='font30'>使用说明</view>
+      <view>1.本优惠券不可叠加使用</view>
+      <view>2.本店只适用于云店消费</view>
+      <view>3.退款仅退实际支付金额</view>
+      <view>4.最终解释权归商家所有</view>
+      <view wx:if="{{canLimitGoods==1}}">5.限指定商品使用</view>
+    </view>
+    <view class='goods' wx:if="{{canLimitGoods==1}}">指定商品</view>
+    <view class='wrapList' wx:if="{{canLimitGoods==1}}" >
+      <view class='mylist' wx:for="{{limitGoods}}" wx:key="key" bindtap='goodsInfo' data-shopId="{{item.shopId}}" data-goodsId="{{item.goodsId}}">
+        <image src='{{item.goodsPictureUrl}}'></image>
+        <view class='text-overflow'>{{item.goodsName}}</view>
+        <view class='colorred text-overflow'>￥:{{item.goodsPrice}}</view>
+      </view>
+    </view>
+  </view>
+  <view id='shareBox'>
+    <image wx:if="{{couponType==06}}" class="location" bindtap="location" src="../../images/wode_quandetail_add@2x.png"></image> 
+    <button open-type='share'>
+      <image src='../../../../images/shouye_btn@2x.png' id='share'></image>
+    </button>
+    <image src='../../../../images/fenxinag_btn@2x.png' id='goback' bindtap='goback'></image>
+  </view>
+</view>
+<view class="canvas-box">
+<canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas"/>
+</view>
+<canvas canvas-id='discountCanvas' style='width:480rpx;height:400rpx;' id='discountCanvas'></canvas>

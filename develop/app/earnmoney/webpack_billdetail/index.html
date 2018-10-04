@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <meta id="meta_title" itemprop="name" content=""/>
+    <meta id="meta_introduce" itemprop="image" content="favicon.ico" />
+    <meta id="meta_imgUrl" itemprop="description" name="description" content="" />
+    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+    <title>账单详情</title>
+</head>
+<body>
+
+    <div class="content">
+        <!-- 所有背景 -->
+        <div class="all-layer" ontouchmove="event.preventDefault();">
+
+            <!-- 时间选择 -->
+            <div class="chart-layer-content">
+                <div class="chart-time-content">
+                    <span class="chart-time">----年--月</span>
+                    <span class="icon-touch">
+                        <i class="icon-time"></i>
+                    </span>
+                </div>
+                <div class="chart-layer">
+                    <div class="time-item active">---- 年 -- 月</div>
+                    <div class="time-item">---- 年 -- 月</div>
+                    <div class="time-item">---- 年 -- 月</div>
+                    <div class="time-item">---- 年 -- 月</div>
+                    <div class="time-item">---- 年 -- 月</div>
+                </div>
+            </div>
+
+            <!-- 账单类别选择 -->
+            <div class="category-layer-content">
+                <div class="bill-condition-content">
+                    <span class="bill-text">账单明细</span>
+                    <span class="icon-select icon-category">
+                        <span>分类</span>
+                        <i class="icon-arrowdown"></i>
+                    </span>
+                    <span class="icon-select icon-time">
+                        <span>时间</span>
+                        <i class="icon-arrowdown"></i>
+                    </span>
+                </div>
+                <!-- 类别选择 -->
+                <div class="category-content">
+                    <div class="category-item active" value="0">全 部</div>
+                    <div class="category-item" value="1">抢 标 赚</div>
+                    <div class="category-item" value="2">转 文 赚</div>
+                    <div class="category-item" value="3">分 享 赚</div>
+                </div>
+                <!-- 日历 -->
+                <div class="calendar-content">
+                    <div class="date-content">
+                        <div class="year-content"></div>
+                        <div class="month-content"></div>
+                        <div class="date-cover"></div>
+                    </div>
+                    <div class="date-footer">
+                        <span class="date-selected" id="dateSelected" value="">2017-11</span>
+                        <span class="date-btn">确定</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bg-content">
+            <p class="profit-text">总共盈利</p>
+            <p class="profit-money"><span class="profit-unit">¥</span><span id="totalProfit">---</span></p>
+            <table class="profit-table" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th class="border-right">
+                        线上总盈利
+                        <span class="icon-question profit-up">
+                            <p>线上总盈利--分享赚和转文赚共获得的金额，将存入智享账户。</p>
+                        </span>
+                    </th>
+                    <th class="padding-left">
+                        线下总盈利
+                        <span class="icon-question profit-down">
+                            <p>线下总盈利--抢标赚所得金额，将在线下完成支付，此处只做记录。</p>
+                        </span>
+                    </th>
+                </tr>
+                <tr>
+                    <td class="border-right" id="onlineProfit">---</td>
+                    <td class="padding-left" id="offlineProfit">---</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="chart-time-content">
+            <span class="chart-time">----年--月</span>
+            <span class="icon-touch">
+                <i class="icon-time"></i>
+            </span>
+        </div>
+        
+        <div class="chart-profit-content">
+            <img src="src/img/wjzq_hst@3x.png" alt="">
+            <span class="chart-profit-text">总盈利</span>
+            <span class="chart-profit" id="monthTotalProfit">----</span>
+        </div>
+
+        <div class="piechart-content">
+            <canvas id="piechart" width="200" height="200"></canvas>
+        </div>
+
+        <div class="chart-profit-content">
+            <img src="src/img/wjzq_hst@3x.png" alt="">
+            <span class="chart-profit-text">盈利趋势</span>
+        </div>
+
+        <div class="linechart-content">
+            <canvas id="linechart" width="200" height="120"></canvas>
+        </div>
+
+        <div class="bill-condition-content">
+            <span class="bill-text">账单明细</span>
+            <span class="icon-select icon-category">
+                <span>分类</span>
+                <i class="icon-arrowdown"></i>
+            </span>
+            <span class="icon-select icon-time">
+                <span>时间</span>
+                <i class="icon-arrowdown"></i>
+            </span>
+        </div>
+
+        <div class="bill-content">
+            <div class="search-content">
+                <span class="search-time">2017-11</span>
+                <span class="search-profit">总收入 ¥<span id="monthProfit">----</span></span>
+            </div>
+            
+            <div class="load-more">
+                <span class="loading"></span> 加载中...
+            </div>
+        </div>
+    </div>    
+    <!-- 数据加载失败占位图 -->
+    <div class="fail_load" style="display: none">
+        <div class="pic">
+            <i></i>
+        </div>
+        <p class="text">网络连接失败</p>
+        <div class="link_a">
+            <p class="load_btn">点击重新加载</p>
+        </div>
+    </div>
+    <!-- 模板 -->
+    <script id="detailTpl" type="text/html">
+        <div class="search-list">
+            <span class="type-text">抢标赚</span>
+            <div class="share-content">
+                <div class="share-title">
+                    <span class="offline">线下</span>
+                    <span class="taskTitle">-----</span>
+                    <span class="finishTime">--.-- --:--</span>
+                </div>
+                <div class="share-viewed zwz">
+                    <span>被点击<span class="clicknum">---</span>次</span>
+                    <span class="taskPrice">+---</span>
+                </div>
+                <div class="share-viewed qbz">
+                    <span>已完成线下支付</span>
+                    <span class="taskPrice">+---</span>
+                </div>
+                <div class="share-viewed fxz">
+                    <span>使用了<span class="sharenum">---</span>次</span>
+                    <span class="taskPrice">+---</span>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script src="//apps.bdimg.com/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="static/layer/mobile/layer.js"></script>
+</body>
+</html>

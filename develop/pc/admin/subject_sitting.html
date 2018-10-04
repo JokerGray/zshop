@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+	<title>专题设置·管理员后台</title>
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="assets/layui/css/layui.css" />
+	<link rel="stylesheet" href="css/zx.css" />
+	<link rel="stylesheet" href="css/subject_sitting.css" />
+</head>
+<body>
+	<script src="util/head.js"></script>
+	<input type="hidden" id="menuHid" value="subject_sitting">
+	<div class="container">
+		<div class="wrapper clearfix">
+			<script src="util/menu.js"></script>
+			<div id="page_R" class="right pull-right">
+				<div id="search_box" class="clearfix">
+					<div id="search_icon" class="fr cur-p"><img src="images/search.png" alt=""></div>
+					<input id="searchInp" class="searchInp fr" type="text" placeholder="请输入关键字搜索" maxlength="10">
+				</div>
+				<div id="addNewLabel" data-toggle="modal" data-target="#addSubject"><i class="glyphicon glyphicon-plus"></i><span>添加新专题</span></div>
+				<div id="article_box" class="clearfix">
+					<div class="table account_table">
+						<div id="addSubTable" class="table-left">
+							<div class="panel panel-default">
+								<table class="table table-hover">
+									<thead id="table_head">
+										<th id="isCheckAll" class="cur-p"><i id="multiSelectBox"></i><span>全选</span></th>
+										<th>专题</th>
+										<th>文章总数</th>
+										<th>浏览量</th>
+										<th>评论量</th>
+										<th>操作</th>
+									</thead>
+									<tbody id="tableCon"></tbody>
+									<tfoot id="tableFoot">
+										<tr>
+											<td class="optTotalOpera">选中：<span id="checkedNum">0</span></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td id="delTotalOpera" class="cur-p"><i class="glyphicon glyphicon-trash"></i>删除此专题</td>
+										</tr>
+									</tfoot>
+                	            </table>
+                	        </div>
+                	    </div>
+                	    <div id="page" class="text-center"></div>
+                	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="addSubject" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    	<div class="addSubjectDialog modal-dialog modal-dialog2" role="document">
+      		<div class="addSubjectBox modal-content modal-content2">
+      			<div class="addSubTop modal-header">
+        		  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      				<h4 class="addSubTitle">添加新专题</h4>
+        		</div>
+        		<form class="form-horizontal">
+  					<div class="form-group">
+  						<label for="inputEmail3" class="col-sm-2 control-label">专题名称</label>
+  						<div class="col-sm-3">
+  						    <input type="email" class="form-control" id="inputEmail3" placeholder="请输入专题名称" maxlength="10">
+  						</div>
+  					</div>
+  					<div class="form-group">
+  					  	<label for="inputPassword3" class="col-sm-2 control-label">封面</label>
+  					  	<div class="col-sm-5">
+  					    	<span class="localUpload cur-p" id="selectfiles">添加图片</span>
+  					    	<span class="red ml10">*发表文章必须要有图片</span>
+  					    	<!-- <div class="mt10">
+                        	    <span>选择添加数量</span>
+                        	    <span class="btn btn-submit mr10 ml10" id="aImgBtn">一图</span>
+                        	    <span class="btn btn-default" id="threeImgBtn">三图</span>
+                        	</div> -->
+                        	<div class="form-content mt20" id="previews" class="clearfix"></div>
+  					  	</div>
+  					</div>
+  					<div class="form-group">
+  					  	<label for="inputPassword3" class="col-sm-2 control-label">专题描述</label>
+  					  	<div class="col-sm-5">
+  					    	<textarea name="" id="addTextarea" class="form-control" placeholder="请输入专题描述" maxlength="100"></textarea>
+  					  	</div>
+  					</div>
+					<div class="form-group">
+  					  	<label for="inputPassword3" class="col-sm-2 control-label">是否特殊专题</label>
+  					  	<div class="col-sm-5 formRadioBox">
+							<input id="isSpecial" type="radio" name="radio" value="1" checked="checked">是 
+							<input id="notSpecial" type="radio" name="radio" value="0">否
+  					  	</div>
+  					</div>
+				</form>
+        		<div id="addSubBtnBox" class="modal-footer">
+        		  	<button id="confirmAddSub" class="btn" type="button">确认添加</button>
+        		  	<button id="cancelAddSub" class="modalShield btn" type="button" data-dismiss="modal">取消</button>
+        		</div>
+      		</div>
+    	</div>
+  	</div>
+  	<div id="addArticle" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    	<div class="addArtDialog modal-dialog modal-dialog2" role="document">
+      		<div class="addArtBox modal-content modal-content2">
+      			<div class="addSubTop modal-header">
+        		  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      				<h4 class="addSubTitle">添加文章</h4>
+        		</div>
+        		<div id="artSearchBox" class="clearfix">
+					<div id="artSearchIcon" class="fr"><img src="images/search.png" alt=""></div>
+					<input id="artSearchInp" class="searchInp fr" type="text" placeholder="请输入关键字搜索" maxlength="10">
+				</div>
+				<div id="contributeArt" class="show">
+					<div class="totalArtBox">
+						<span>共计投稿文章：</span><span id="totalArt"></span>
+					</div>
+        			<div id="addArticleBox" class="clearfix">
+						<div class="table account_table clearfix" style="height: 460px;">
+							<div id="addArtTable" class="table-left">
+								<div class="panel panel-default">
+									<table class="table table-hover">
+										<thead id="addArtTableHead">
+											<th id="contriIsCheckAll" class="cur-p"><i id="artMultiSelBox"></i><span>全选</span></th>
+											<th>文章</th>
+											<th>频道</th>
+											<th>作者</th>
+											<th>浏览量</th>
+											<th>评论量</th>
+											<th>操作</th>
+										</thead>
+										<tbody id="addArtTableCon"></tbody>
+										<tfoot id="addArtTableFoot">
+											<tr>
+												<td class="optTotalOpera">选中：<span id="artCheckedNum"></span></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td class="artOperateTab cur-p">
+													<div id="addTotContriIcon" class="fl cur-p" data-toggle="modal" data-target="">
+														<i class="glyphicon glyphicon-plus"></i>添加
+													</div>
+													<div id="delTotContriIcon" class="fl cur-p"><i class="glyphicon glyphicon-trash"></i>删除</div>
+												</td>
+											</tr>
+										</tfoot>
+                		            </table>
+                		        </div>
+                		    </div>
+                		    <div id="artPage" class="text-center"></div>
+                		</div>
+					</div>
+				</div>
+				<div id="storeHouseArt" class="hide">
+					<div class="totalArtBox">
+						<span>共计搜索文章：</span><span id="shTotalArt"></span>
+					</div>
+        			<div id="addShArticleBox" class="clearfix">
+						<div class="table account_table clearfix" style="height: 460px;">
+							<div id="addShArtTable" class="table-left">
+								<div class="panel panel-default">
+									<table class="table table-hover">
+										<thead id="addArtTableHead">
+											<th id="searchIsCheckAll" class="cur-p"><i id="artShMultiSelBox"></i><span>全选</span></th>
+											<th>文章</th>
+											<th>频道</th>
+											<th>作者</th>
+											<th>浏览量</th>
+											<th>评论量</th>
+											<th>操作</th>
+										</thead>
+										<tbody id="addShArtTableCon"></tbody>
+										<tfoot id="addShArtTableFoot">
+											<tr>
+												<td class="optTotalOpera">选中：<span id="artShCheckedNum"></span></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td>
+													<div id="storeToSubTotal" class="cur-p" data-toggle="modal" data-target="">
+														<i class="glyphicon glyphicon-plus"></i>添加
+													</div>
+												</td>
+											</tr>
+										</tfoot>
+                		            </table>
+                		        </div>
+                		    </div>
+                		    <div id="artShPage" class="text-center"></div>
+                		</div>
+					</div>
+				</div>
+      		</div>
+    	</div>
+  	</div>
+  	<div id="subDetails" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    	<div class="addArtDialog modal-dialog modal-dialog2" role="document">
+      		<div class="addArtBox modal-content modal-content2">
+      			<div class="addSubTop modal-header">
+        		  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      				<h4 class="addSubTitle">专题详情</h4>
+        		</div>
+        		<div id="subNumDetail" class="clearfix">
+					<div class="subNumDNameBox fl">
+						<p id="subNumDName" class="show"></p>
+						<input id="subNumDInp" class="hide" type="text" value="" maxlength="100">
+						<span id="modifySubName" class="cur-p">修改</span>
+					</div>
+					<div class="fl">
+						<p>文章总数</p>
+						<span id="subArtNum"></span>
+					</div>
+					<div class="fl">
+						<p>评论量</p>
+						<span id="subCommentNum"></span>
+					</div>
+					<div class="fl">
+						<p>浏览量</p>
+						<span id="subVisitNum"></span>
+					</div>
+				</div>
+				<div class="subIconBox fr clearfix">
+					<div id="addArtcleIcon" class="fl" data-toggle="modal" data-target="#addArticle"><i class="glyphicon glyphicon-plus"></i><span>添加文章</span></div>
+					<div id="subStickIcon" class="fl"><i class="glyphicon glyphicon-arrow-up"></i><span>置顶专题</span></div>
+				</div>
+        		<div id="subDetailArtL" class="clearfix">
+					<div class="table account_table clearfix" style="height: 460px;">
+						<div id="subDArtTable" class="table-left">
+							<div class="panel panel-default">
+								<table class="table table-hover">
+									<thead id="addArtTableHead">
+										<th id="artIsCheckAll" class="cur-p"><i id="subInArtMultiSel"></i><span>全选</span></th>
+										<th>文章</th>
+										<th>频道</th>
+										<th>作者</th>
+										<th>浏览量</th>
+										<th>评论量</th>
+										<th>操作</th>
+									</thead>
+									<tbody id="subDetailArtCon"></tbody>
+									<tfoot id="addArtTableFoot">
+										<tr>
+											<td class="optTotalOpera">选中：<span id="subInCheckedNum"></span></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td class="subInArtOperTab cur-p">
+												<div id="subInArtMultiDel" class="cur-p"><i class="glyphicon glyphicon-trash"></i>删除</div>
+											</td>
+										</tr>
+									</tfoot>
+                	            </table>
+                	        </div>
+                	    </div>
+                	    <div id="subDArtPage" class="text-center"></div>
+                	</div>
+				</div>
+      		</div>
+    	</div>
+  	</div>
+  	
+  	<!-- 点击上传图片的按钮 -->
+  	<div id="localBtn"></div>
+	<script src="assets/jquery-1.10.2.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/plupload-2.1.2/js/plupload.full.min.js "></script>
+	<script src="assets/layui/lay/dest/layui.all.js"></script>
+	<script src="assets/countUp.min.js"></script>
+	<script src="util/util.js"></script>
+	<script src="util/pub.js"></script>
+	<script src="js/subject_sitting.js"></script>
+	<script id="tableList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}   
+        <tr scCmsSpecialId={{item.scCmsSpecialId || ''}}>
+			<td><i class="singleSelectBox cur-p"></i></td>												
+			<td class="sccmsspecialname cur-p" data-toggle="modal" data-target="#subDetails" title={{item.scCmsSpecialName || ''}}>{{item.scCmsSpecialName || ''}}</td>												
+			<td>{{item.articleNumber || '0'}}</td>												
+			<td>{{item.specialBrowser || '0'}}</td>	
+			<td>{{item.commentNumber || '0'}}</td>												
+			<td class="operateTab" scCmsSpecialId={{item.scCmsSpecialId || ''}}>
+				<div class="stickOperate fl cur-p"><i class="glyphicon glyphicon-arrow-up"></i>置顶</div>
+				<div class="ArtListBtn fl cur-p" data-toggle="modal" data-target="#addArticle"><i class="glyphicon glyphicon-plus"></i>添加</div>
+				<div class="deleteOperate fl cur-p"><i class="glyphicon glyphicon-trash"></i>删除</div>
+			</td>	 
+		</tr>	
+        {{#  }); }}
+
+        {{#  if(d.length == 0){ }}
+        <td colspan="8"></td>
+        {{#  } }} 
+    </script>
+    <script id="artTabList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}   
+        <tr articleId={{item.articleId}}>
+			<td><i class="artSingleSelBox cur-p"></i></td>											
+			<td class="sccmsspecialname" title={{item.articleTitle || ''}} articleId={{item.articleId || ''}}><a href="javascript:;" target="_blank">{{item.articleTitle || ''}}</a></td>		
+			{{# if(item.scCmsChannel && item.scCmsChannel.channelName){ }}										
+				<td>{{item.scCmsChannel.channelName}}</td>
+			{{# } else{ }}
+				<td>{{''}}</td>
+			{{# } }}
+			{{# if(item.scCmsSubscription && item.scCmsSubscription.subscriptionName){ }}												
+				<td>{{item.scCmsSubscription.subscriptionName}}</td>	
+			{{# } else{ }}
+				<td>{{''}}</td>
+			{{# } }}
+			<td>{{item.articleBrowser || '0'}}</td>	
+			<td>{{item.commentNum || '0'}}</td>												
+			<td class="artOperateTab">
+				<div class="addContriIcon fl cur-p" data-toggle="modal" data-target=""><i class="glyphicon glyphicon-plus"></i>添加</div>
+				<div class="delContriIcon fl cur-p"><i class="glyphicon glyphicon-trash"></i>删除</div>
+			</td>	 
+		</tr>
+        {{#  }); }}
+
+        {{#  if(d.length == 0){ }}
+        <td colspan="8"></td>
+        {{#  } }} 
+    </script>
+    <script id="subDetailArtList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}   
+        <tr articleId={{item.articleId}}>
+			<td><i class="subInArtSingleSel cur-p"></i></td>											
+			<td class="sccmsspecialname" title={{item.articleTitle || ''}} articleId={{item.articleId || ''}}><a href="javascript:;" target="_blank">{{item.articleTitle || ''}}</a></td>
+			{{# if(item.scCmsChannel && item.scCmsChannel.channelName){ }}
+				<td>{{item.scCmsChannel.channelName}}</td>	
+			{{# } else{ }}
+				<td>{{''}}</td>
+			{{# } }}	
+			{{# if(item.scCmsSubscription && item.scCmsSubscription.subscriptionName){ }}										
+				<td>{{item.scCmsSubscription.subscriptionName}}</td>	
+			{{# } else{ }}
+				<td>{{''}}</td>
+			{{# } }}	
+			<td>{{item.articleBrowser || '0'}}</td>	
+			<td>{{item.commentNum || '0'}}</td>												
+			<td class="subInArtOperTab">
+				<div class="subInArtDel cur-p"><i class="glyphicon glyphicon-trash"></i>删除</div>
+			</td>	 
+		</tr>
+        {{#  }); }}
+
+        {{#  if(d.length == 0){ }}
+        <td colspan="8"></td>
+        {{#  } }} 
+    </script>
+    <script id="storeArtList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}   
+        <tr articleId={{item.articleId}}>
+			<td><i class="artShSingleSel cur-p"></i></td>											
+			<td class="sccmsspecialname" title={{item.articleTitle || ''}} articleId={{item.articleId || ''}}><a href="javascript:;" target="_blank">{{item.articleTitle || ''}}</a></td>
+			{{# if(item.scCmsChannel && item.scCmsChannel.channelName){ }}
+			<td>{{item.scCmsChannel.channelName}}</td>
+			{{# } else{ }}
+				<td>{{''}}</td>
+			{{# } }}				
+			{{# if(item.scCmsSubscription && item.scCmsSubscription.subscriptionName){ }}								
+				<td>{{item.scCmsSubscription.subscriptionName}}</td>	
+			{{# } else{ }}
+				<td>{{''}}</td>
+			{{# } }}
+			<td>{{item.articleBrowser || '0'}}</td>	
+			<td>{{item.commentNum || '0'}}</td>												
+			<td class="subInArtOperTab">
+				<div class="storeToSub cur-p"><i class="glyphicon glyphicon-plus"></i>添加</div>
+			</td>	 
+		</tr>
+        {{#  }); }}
+
+        {{#  if(d.length == 0){ }}
+        <td colspan="8"></td>
+        {{#  } }} 
+    </script>
+</body>
+</html>	

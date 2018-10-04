@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/layui/css/layui.css" />
+<link rel="stylesheet" href="css/animate.min.css">
+<link type="text/less" rel="stylesheet/less" rev="stylesheet/less" href="css/myFollow.less" />
+
+<head>
+    <meta charset="UTF-8">
+    <title>智享头条</title>
+</head>
+
+<body>
+    <!--首页头部-->
+    <script src="util/headerChild.js"></script>
+    <script src="util/navChild.js"></script>
+    <div class="main">
+        <div class="container">
+            <div class="myMessBox">
+                <img class="bannerImg" src="img/banner.png" alt="">
+                <div class="myIntroBox clearfix">
+                    <div class="fl">
+                        <img id="myHeadIcon" class="myHeadIcon fl" src="img/gg.png" alt="">
+                        <div class="myIntroTextBox fl">
+                            <span id="myIntroName" class="myIntroName"></span>
+                            <span id="myAuthorType" class="myAuthorType"></span>
+                            <p id="myIntroTalk" class="myIntroTalk"></p>
+                        </div>
+                    </div>
+                    <button id="topFollowBtn" class="followBtn fr"></button>
+                </div>
+            </div>
+            <!--左侧内容-->
+            <div class="left fl">
+                <ul id="myNav" class="myNav clearfix">
+                    <li id="navAttention"><a class="active" href="javascript:;" typeCode="1001">筑城</a></li>
+                    <li id="navFollow"><a href="javascript:;" typeCode="1002">粉丝</a></li>
+                </ul>
+                <div id="followConBox" class="followConBox"></div>
+                <p id="moreListBtn" class="moreConBtn cur-p">点击查看更多</p>
+            </div>
+            <!--右侧主体内容-->
+            <div class="right fr">
+                <div class="myFollowBox clearfix">
+                    <div>
+                        <p id="myFollowNum" class="myFollowNum"></p>
+                        <p class="myFollowType">筑城</p>
+                    </div>
+                    <div>
+                        <p id="enshrinedNum" class="myFollowNum"></p>
+                        <p class="myFollowType">粉丝</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="company">
+        <div>
+            <a class="J-company-name"> © 2017 智享头条</a>
+            <a href="comments.html" target="_blank">跟帖评论自律管理承诺书</a>
+        </div>
+        <div>
+            <span>网络文化经营许可证</span>
+            <span>违法和不良信息举报：010-58341833</span>
+            <span>公司名称：尖叫时刻（武汉）传媒有限公司</span>
+        </div>
+    </div>
+    <!--登录注册模态框 start-->
+    <script src="util/loginModal.js"></script>
+    <!--登录注册模态框 end-->
+    <!--[if lt IE 9]>
+        <script>
+            window.location.href = "tip.html";
+        </script>
+    <![endif]-->
+    <script src="assets/less.min.js"></script>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/lazyload/jquery.lazyload.js"></script>
+    <script src="util/qq.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/myFollow.js"></script>
+    <script id="followList" type="text/html">
+        {{# layui.each(d, function(index, item){ }} 
+            <div id="followUserBox" class="followUserBox clearfix" userId="{{item.id || ''}}">
+                <div class="followUser fl clearfix">
+                    <img id="followUserIcon" class="followUserIcon fl" src="{{item.userpic || ''}}" alt="">
+                    <div class="followUserTextBox fl">
+                        <span id="followUserName" class="followUserName">{{item.username || ''}}</span>
+                        <p id="followUserTalk" class="followUserTalk">{{item.signature || ''}}</p>
+                    </div>
+                </div>
+                {{# var uuid = localStorage.getItem('userId')}}
+                {{# if(uuid!=item.id){ }}
+                    {{# if(item.hasConcern == 0){ }}
+                        <button class="followListBtn followBtn fr" isFollow="0">筑城</button>
+                    {{# } else if(item.hasConcern == 1){ }}
+                        <button class="followListBtn followBtn active fr" isFollow="1">已筑城</button>
+                    {{# } }}
+                {{# } }}
+            </div>
+        {{# }); }}
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+}
+.uploadContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background: url(../image/discount_default.png) no-repeat;
+    background-size: 100%;
+}
+.uploadContainer .uploadShare{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    line-height: 44px;
+}
+.uploadShare .show-back{
+    display: block;
+    color:#333;
+    font-size: 40px;
+    padding: 42px 60px;
+    background: #fff;
+    font-weight: 600;
+}
+.show-back img{
+    display: block;
+    width: 20px;
+    height: 33px;
+}
+.uploadShare .upload-img{
+    float: right;
+    display: block;
+    width: 44px;
+    height: 44px;
+    border-radius: 100%;
+}
+.upload-img img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+.uploadContainer .upload-form{
+    width: 92%;
+    margin-left: 60px;
+}
+.upload-form .form-group{
+    height: 84px;
+    line-height: 84px;
+    border: 1px solid #999;
+    margin-bottom: 36px;
+    position: relative;
+}
+.upload-form input{
+    width: 100%;
+    border: 0;
+    height: 80px;
+    line-height: 80px;
+    padding: 0;
+    float: left;
+    text-indent: 48px;
+    font-size: 32px;
+    background: #eee;
+}
+.upload-form-btn{
+    display: inline-block;
+    float: right;
+    margin-top: 15px;
+}
+.upload-form-btn .upload-form-submit{
+    margin-right: 10px;
+}
+.upload-form-btn{
+    margin-top:82px;
+}
+.upload-form-btn .btn{
+    width: 200px;
+    height: 80px;
+    font-size: 30px;
+}
+.upload-form-btn .upload-form-submit{
+    background: #a58f64;
+    color: #fff;
+}
+.upload-form-btn .upload-form-back{
+    background: #dddddd;
+    color: #999;
+}
+.upload-form-total{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 84px;
+    line-height: 84px;
+    color: #666;
+    z-index: 3;
+    padding: 0 24px;
+    font-size: 32px;
+}
+.upload-form-total i{
+    font-style: normal;
+}
+.layui-layer-dialog {
+    min-width: 300px !important;
+}
+.layui-layer-title {
+    font-size: 32px !important;
+}
+.layui-layer-content{
+    font-size:32px !important;
+    text-align: center;
+}
+.layui-layer-setwin a{
+    width: 40px  !important;
+    height: 40px !important;
+}
+.layui-layer-btn a{
+    height: 50px !important;
+    line-height: 50px !important;
+    font-size: 28px !important;
+    padding: 0 30px !important;
+}

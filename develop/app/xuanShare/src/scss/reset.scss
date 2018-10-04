@@ -1,0 +1,496 @@
+/*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0
+}
+
+progress {
+  vertical-align: baseline
+}
+
+template,
+[hidden] {
+  display: none
+}
+
+a {
+  background-color: transparent
+}
+
+a:active,
+a:hover {
+  outline-width: 0
+}
+
+abbr[title] {
+  border-bottom: 0;
+  text-decoration: underline;
+  text-decoration: underline dotted
+}
+
+b,
+strong {
+  font-weight: inherit
+}
+
+b,
+strong {
+  font-weight: bolder
+}
+
+dfn {
+  font-style: italic
+}
+
+h1 {
+  font-size: 2em;
+  margin: .67em 0
+}
+
+mark {
+  background-color: #ff0;
+  color: #000
+}
+
+small {
+  font-size: 80%
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline
+}
+
+sub {
+  bottom: -.25em
+}
+
+sup {
+  top: -.5em
+}
+
+img {
+  border-style: none
+}
+
+svg:not(:root) {
+  overflow: hidden
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em
+}
+
+figure {
+  margin: 1em 40px
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit
+}
+
+optgroup {
+  font-weight: 700
+}
+
+button,
+input,
+select {
+  overflow: visible
+}
+
+button,
+input,
+select,
+textarea {
+  margin: 0
+}
+
+button,
+select {
+  text-transform: none
+}
+
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer
+}
+
+[disabled] {
+  cursor: default
+}
+
+button,
+html [type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0
+}
+
+button:-moz-focusring,
+input:-moz-focusring {
+  outline: 1px dotted ButtonText
+}
+
+fieldset {
+  border: 1px solid silver;
+  margin: 0 2px;
+  padding: .35em .625em .75em
+}
+
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal
+}
+
+textarea {
+  overflow: auto
+}
+
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box;
+  padding: 0
+}
+
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto
+}
+
+[type=search] {
+  -webkit-appearance: textfield
+}
+
+[type=search]::-webkit-search-cancel-button,
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block
+}
+
+body {
+  line-height: 1
+}
+
+ol,
+ul {
+  list-style: none
+}
+
+blockquote,
+q {
+  quotes: none
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+body {
+  background-color: #eee;
+  -webkit-tap-highlight-color: transparent;
+  font-family: STHeiti, Microsoft YaHei, Helvetica, Arial, sans-serif
+}
+
+a {
+  text-decoration: none
+}
+
+input,
+textarea,
+button {
+  border: 0;
+  outline: 0;
+  padding: 0;
+  margin: 0
+}
+.clearfix::after{
+  visibility: hidden;
+  font-size: 0;
+  display: block;
+  height: 0;
+  content: '';
+  clear: both;
+}
+.footer{
+  width:100%;
+  background:#e35055;
+  img{
+    width:100%;
+  }
+}
+.model {
+  width: 100%;
+  height: 6.67rem;
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  display: none;
+  .model_cont{
+    width: 100%;
+    height: 1.65rem;
+    background: #fff;
+    padding-top: 0.35rem;
+    padding-left: 0.75rem;
+    position: relative;
+    z-index: 1000;
+    .text1{
+      height: 0.3rem;
+      line-height: 0.3rem;
+      font-size: 0.16rem;
+      color: #131313;
+      span{
+        display: inline-block;
+        width: 0.3rem;
+        height: 0.3rem;
+        background: url(../img/moreheng@2x.png) no-repeat center center;
+        background-size: 100% 100%;
+        transform: translateY(0.1rem);
+      }
+    }
+    .text2{
+      height: 0.3rem;
+      line-height: 0.3rem;
+      font-size: 0.16rem;
+      color: #131313;
+      margin-top: 0.23rem;
+      span{
+        display: inline-block;
+        width: 1.45rem;
+        height: 0.3rem;
+        background: url(../img/liulanqi@2x.png) no-repeat center center;
+        background-size: 100% 100%;
+        transform: translateY(0.1rem);
+      }
+    }
+    .pointTo{
+      position: absolute;
+      width: 0.7rem;
+      height: 0.58rem;
+      background: url(../img/shape_up@2x.png) no-repeat center center;
+      background-size: 100% 100%;
+      top: 0.08rem;
+      right: 0.2rem;
+    }
+  }
+}
+.no-data{
+  text-align: center;
+  height:1rem;
+  line-height:1rem;
+  color:#11dbd6;
+}
+// css3动画
+.reload{
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background:#151724;
+  position: absolute;
+}
+.loadings{
+  position: absolute;
+  width:30%;
+  height:0.3rem;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+}
+.load{
+  width:20px;
+  height:20px;
+  background: #fff;
+  border-radius:50%;
+  animation: trunbig 1s infinite;
+}
+.load:nth-child(2){
+  animation-delay: 0.2s;
+}
+.load:nth-child(3){
+  animation-delay:0.4s;
+}
+@keyframes trunbig{
+  50%{transform:scale(0.5,0.5)}
+}

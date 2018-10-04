@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../common/css/common.css">
+    <link rel="stylesheet" href="../../../assets/common/css/reset.css">
+    <link rel="stylesheet" href="../../../assets/layui-v2.3.0/css/layui.css" media="all">
+    <link rel="stylesheet" href="css/takeout.css">
+    <title>外卖</title>
+</head>
+
+<body>
+    <div class="app layui-fluid" id="app">
+        <div class="header clearfix">
+            <div class="header-tabs">
+                <span class="active" data-type="0">待处理(<span>0</span>)</span>
+                <span data-type="2">待配送(<span>0</span>)</span>
+                <span data-type="3">配送中(<span>0</span>)</span>
+                <span data-type="4">已完成(<span>0</span>)</span>
+            </div>
+            <div class="header-search" data-type="1">
+                <input type="text" maxlength="20" placeholder="单号、手机号、地址">
+                <span>搜索</span>
+            </div>
+        </div>
+        <div class="tab-contents">
+            <div class="content-left">
+                <div class="tab-content" data-type="0" id="pending" >
+                    <table id="table-pending" lay-filter="table-pending"></table>
+                    <div id="page-pending" class="table-r"></div>
+                </div>
+                <div class="tab-content" data-type="2" id="distribution" style="display: none;">
+                    <table id="table-distribution"></table>
+                    <div id="page-distribution" class="table-r"></div>
+                </div>
+                <div class="tab-content" data-type="3" id="dispatching" style="display: none;">
+                    <table id="table-dispatching"></table>
+                    <div id="page-dispatching" class="table-r"></div>
+                </div>
+                <div class="tab-content" data-type="4" id="done" style="display: none;">
+                    <table id="table-done"></table>
+                    <div id="page-done" class="table-r"></div>
+                </div>
+            </div>
+            <div class="content-details" style="display:none;">
+                <div class="order-title">
+                    <p>订单详情</p>
+                    <i class="layui-icon layui-icon-close"></i>
+                </div>
+                <div class="order-content">
+                    <div class="order-header">
+                        <div class="order-info">
+                            <span>配送时间: </span>
+                            <div>
+                                立即配送
+                            </div>
+                            <!-- <span class="order-status">订单取消</span> -->
+                        </div>
+                        <div class="order-info order-taste">
+                            <span>备注: </span>
+                            <div>变态辣。多放啦</div>
+                        </div>
+                        <div class="order-info order-address">
+                            <span>收货地址: </span>
+                            <div>武昌区中北路青鱼嘴撒撒XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div>
+                        </div>
+            
+                        <div class="order-people">
+                            <span class="order-name">涨选手</span>
+                            <div class="order-phone">18824263361</div>
+                        </div>
+                        <div class="order-time">
+                            <span>订单时间:</span>
+                            <div>2018-10-22 14:20:22</div>
+                        </div>
+                        <div class="order-number">
+                            <span>订单编号:</span>
+                            <div>122312313155215512</div>
+                        </div>
+                        <div class="order-foods">
+                             
+                                <!-- <span>商品</span>
+                                <span class="foods-num"></span>
+                                <span>￥</span><span class="foods-price">110.00</span> -->
+                            
+                            <!-- <div class="pay-method">
+                                微信支付
+                            </div> -->
+                        </div>
+            
+                    </div>
+                    <div class="order-body">
+                        <div class="order-food-list">
+                            <div class="food-item">
+                                <div class="food-name">番茄炒蛋</div>
+                                <div class="food-num">X<span>1</span></div>
+                                <div class="food-price">￥<span>45.00</span></div>
+                            </div>
+                            <div class="food-item">
+                                <div class="food-name">番茄炒蛋</div>
+                                <div class="food-num">X<span>1</span>
+                                </div>
+                                <div class="food-price">￥<span>45.00</span>
+                                </div>
+                            </div>
+                            <div class="food-item">
+                                <div class="food-name">番茄炒蛋</div>
+                                <div class="food-num">X<span>1</span>
+                                </div>
+                                <div class="food-price">￥<span>45.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-food-info clearfix">
+                            
+                            <div class="food-discount-list">
+                                <!-- <div class="food-discount"><span>优惠:</span><div>满减15元，红包10元</div> -->
+                            </div>
+                             
+                            <div class="food-amount"><span>合计: </span><div>￥85.00元</div>
+                            </div>
+                            <div class="food-payment"><span>实付: </span><div>￥85.00元</div>
+                            </div>
+                            <div class="food-remarks">
+                                <span>备注:</span>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 订单配送进度 -->
+                <div class="order-progress" style="display: none;">
+                    <div class="progress">
+                        <div class="progress-line"></div>
+                        <div class="progress-content">
+                            <div>已出店</div>
+                            <div>12:40:25 送餐员取走外卖</div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-line"></div>
+                        <div class="progress-content">
+                            <div>已到铁机路</div>
+                            <div>距离10km 预计15分钟内到达</div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-line"></div>
+                        <div class="progress-content">
+                            <div>已到岳家嘴</div>
+                            <div>距离5km 5分钟到</div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-line"></div>
+                        <div class="progress-content">
+                            <div>已到达目的地</div>
+                            <div>13:10送达 待签收</div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-line"></div>
+                        <div class="progress-content">
+                            <div>交易完成</div>
+                            <div>已签收</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-footer">
+                    <span class="btn-reject">拒绝</span>
+                    <span class="btn-ok">接单</span>
+                </div>
+                <!--代配送 -->
+                <div class="order-pending-dispatch" style="display: none;">
+                    <span class="btn-print">打印</span>
+                    <span class="btn-invalid">作废</span>
+                    <span class="btn-pack">打包配送</span>
+                </div>
+                <!-- 申请退款 -->
+                <div class="order-refund" style="display: none;">
+                    <span class="refund-reject">拒绝</span>
+                    <span class="refund-ok">同意</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--拒绝订单弹框 -->
+    <div id="reject-order" class="layui-form" style="display: none;">
+        <div class="layui-form">
+            <div class="reject-title">拒绝原因</div>
+            <select id="reject-select">
+                <option value="1">超出配送范围</option>
+                <option value="2">店铺已经打烊</option>
+                <option value="3">菜品已售完</option>
+                <option value="0">其它</option>
+            </select>
+            <textarea class="layui-textarea" name="" id="" placeholder="请填写自定义理由"></textarea>
+            <div class="reject-ctl">
+                <button class="reject-btn">拒绝</button>
+            </div>   
+        </div>
+    </div>
+    <script type="text/html" id="phone-tpl">
+        <div class="name">{{d.linkName}}</div>
+        <div class="phone">{{d.linkPhone}}</div>
+    </script>
+    <script type="text/html" id="good-tpl">
+        <div class="good-info">{{d.productTotal || '1'}}/￥{{d.totalPrice}}</div>
+        <div class="">{{d.deliverTime || ''}}</div>
+    </script>
+    <script type="text/html" id="order-time-tpl">
+        <div class="order">{{d.orderId}}</div>
+        <div class="time">{{d.createdTime}}</div>    
+    </script>
+    <script type="text/html" id="address-tpl">
+        <div class="address">{{d.address}}</div> 
+    </script>
+    <script type="text/html" id="toolbar">
+        <span class="recieving" lay-event='recieving'>接单</span>
+        <span class="reject" lay-event='reject'>拒绝</span>
+    </script>
+    <script type="text/html" id="rank-img-box">
+        <div class="rank-img-box">
+            {{# if(d.LAY_INDEX==1){ }}
+                <img src="img/top1.png" alt="">
+            {{# }else if(d.LAY_INDEX==2){  }}
+                <img src="img/top2.png" alt="">
+            {{# }else if(d.LAY_INDEX == 3){ }}
+                <img src="img/top3.png" alt="">
+            {{# }else{ }}
+                {{d.LAY_INDEX}}
+            {{# } }}
+        </div>
+    </script>
+    <!-- -->
+    <script type="text/javascript" src="../../../assets/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../assets/layui-v2.3.0/layui.js"></script>
+    <script type="text/javascript" src="../../../assets/common/js/utils.js"></script>
+
+    <!--<script src="../../../assets/laydate-v5.0.9/laydate.js"></script>-->
+    <!--<script type="text/javascript" src="../../../assets/laydate/laydate.js"></script>-->
+    <script type="text/javascript" src="../common/js/common.js"></script>
+    <script type="text/javascript" src="../common/js/vue.js"></script>
+    <script type="text/javascript" src="js/takeout.js"></script>
+</body>
+</html>

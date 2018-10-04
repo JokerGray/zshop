@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
+    -webkit-highlight: none;
+    -webkit-tap-highlight-color: transparent;
+    font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F5F5F5
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #999
+}
+
+html,
+body {
+    font-size: 16px;
+    color: #333;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.container{
+	position: relative;
+	display: block;
+    width: 100%;
+    margin: 15px auto 0;
+	max-width: 640px;
+	padding: 10px;
+    background-color: #fff;
+}
+
+.title{
+	display: block;
+	margin-bottom: 15px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #333;
+}
+.userName{
+	font-size: 13px;
+	color: #f66c19;
+}
+.publishDate{
+	font-size: 12px;
+	margin-left: 10px;
+}
+.nameContent{
+	height: 42px;
+	margin-top: 12px;
+	padding-top: 12px;
+	background-color: #f8f8f8;
+}
+.nameContent .name{
+	display: block;
+	border-left: 2px solid #f66c19;
+	padding-left: 8px;
+	font-size: 13px;
+}
+.context{
+	display: block;
+	margin: 10px 0;
+	font-size: 13px;
+	color: #666;
+	line-height: 1.5;
+}
+.imgContent img{
+	display: block;
+	margin: 0 auto 10px;
+	max-width: 100%;
+	height: auto;
+}
+.signUp{
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+}
+.container.main{
+	margin: 0 auto 15px;
+	border-top: 1px solid #dadada;
+	padding-top: 0;
+}
+.userContent{
+	display: block;
+}
+.userContent .user{
+	float: left;
+	margin-top: 13px;
+	width: 30px;
+	height: 30px;
+}
+.userContent .userInfo{
+	display: block;
+	margin-left: 38px;
+	padding: 10px 0;
+	border-bottom: 1px solid #dadada;
+}
+.userContent .userPic{
+	max-width: 100%;
+	max-height: 100%;
+	height: auto;
+	border-radius: 100%;
+}
+.userContent .userName{
+	font-size: 13px;
+	color: #333;
+	font-weight: bold;
+}
+.userContent .createTime{
+	margin-top: 3px;
+	font-size: 11px;
+	color: #999;
+}

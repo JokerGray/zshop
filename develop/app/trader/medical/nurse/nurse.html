@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>护士站</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/laydate-v5.0.9/theme/default/laydate.css">
+    <link rel="stylesheet" href="../../assets/layui-v2.2.2/css/layui.css">
+    <!-- <link rel="stylesheet" href="../../assets/bootstrap-table/bootstrap-table.min.css"> -->
+    <link rel="stylesheet" href="../../assets/select2/select2.min.css">
+    <!-- <link rel="stylesheet" href="../../../../assets/ztree/css/metroStyle/metroStyle.css"> -->
+    <link rel="stylesheet" href="../regist/regist.css">
+    <link rel="stylesheet" href="nurse.css">
+</head>
+
+<body>
+    <!-- 顾客列表 -->
+    <div class="container-fluid" id="patientBox" style="margin-top:2rem;">
+        <div class="top-title">
+            <span class="title-name active" id="waiting">门诊顾客</span>
+            <span class="title-name" id="receive">执行记录</span>
+            <span class="title-name" id="complete">顾客一览</span>            
+        </div>
+        <div class="top-tool row">
+            <div class="col-xs-7">
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="width: auto;">日期：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+                    </div>
+                    <span> - </span>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="searchName" placeholder="顾客姓名">
+            </div>
+            <div class="col-xs-2">
+                <button class="btn btn-info" type="button">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true">
+                </button>
+            </div>            
+        </div>
+        <div class="row row-body">
+            <div class="table-info waiting">
+                <div class="regist-list"></div>               
+            </div>
+            <div class="table-info receive">
+                <div class="regist-list">
+                    <table id="receiveTable" class="table-hovered"></table>
+                </div>
+            </div>
+            <div class="table-info complete">
+                <div class="regist-list">
+                    <table id="completeTable" class="table-hovered"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 顾客接待 -->
+    <div class="container-fluid" id="patientDetail" style="margin-top:2rem;display: none;">
+        <button class="layui-btn layui-btn-primary layui-btn-sm" id="backHome" style="display: block;"><i class="layui-icon">&#xe603;</i>返回</button>
+        <div class="info-table clearfix">
+            <div class="search-row search-date">
+                <input type="text" class="input-body" id="startDate1" placeholder="开始时间">
+                <span> - </span>
+                <input type="text" class="input-body" id="endDate1" placeholder="结束时间">
+            </div>
+            <div class="search-row">
+                <div class="input-group">
+                    <input type="text" id="searchTxt" class="form-control" placeholder="姓名/电话号码">
+                    <span class="input-group-btn">
+                        <button class="btn btn-info" type="button">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true">
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="search-row" id="patientList">
+            </div>
+            
+            
+        </div>
+        <div class="info-list" style="width: 80%;">
+            <div style="overflow: hidden;background-color: #fff;">
+                <div class="info-box">
+                    <div class="info-top">
+                        <span class="member-name" id="memberName"></span>
+                        <span class="member-name" id="gender"></span>
+                        <span class="member-name"><b id="age">0</b>岁</span>
+                        <b id="allergy"></b>
+                        <span class="member-name" id="phone"></span>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin: 0;width: 80%;"> 
+            <ul class="layui-tab-title" id="layuiTab" style="background-color: #fff;">
+                <li class="medical-record layui-this">顾客信息</li>
+                <li class="check-opt">检验项目</li>
+                <li class="test-opt">检查项目</li>
+                <li class="treat-opt">治疗项目</li>
+                <li class="west-opt">护士站</li>
+                <!-- <li class="china-opt">中成药方</li> -->
+                <li class="livBeauty-opt">美容</li>
+                <li class="advice-opt">医嘱</li>
+            </ul>
+            <div class="layui-tab-content">
+                <!-- 门诊病历 -->
+                <div class="layui-tab-item clearfix layui-show">
+                    <div class="row row-body">
+                        <!-- 顾客登记 -->
+                        <div class="table-info patientRegist" id="customerInfo">
+                            <input type="hidden" id="processId">
+                            <!-- 顾客信息 -->
+                            <!-- <div class="card-info patient-info" id="patientInfo"style="height: 512px;"> -->
+                            <div class="card-info patient-info" id="patientInfo"style="height: 190px;">
+                                <div class="table-title">
+                                    <span class="title-word">顾客信息</span>   
+                                </div>                
+                                <div class="input-row" style="margin-top: 30px;">
+                                    <div class="col-xs-4" style="position: relative;">
+                                        <span class="input-name">顾客姓名:</span>
+                                        <input type="text" class="input-body patient-name" id="memberNameInfo" placeholder="请输入顾客姓名" maxlength="10" minlength="2">
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <span class="input-name">手机号码:</span>
+                                        <input type="text" class="input-body" id="mobile" placeholder="请输入手机号码" maxlength="11">
+                                    </div>
+                                    <div class="col-xs-4 personSex">
+                                        <span class="input-name">顾客性别:</span>
+                                        <div class="patient-sex">
+                                            <input type="radio" id="female" value="0" name="sex" />
+                                            <label for="female">女</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" id="male" value="1" name="sex" />
+                                            <label for="male">男</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" id="secret" checked="checked" value="2" name="sex" />
+                                            <label for="secret">保密</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="col-xs-4">
+                                        <span class="input-name">顾客生日:</span>
+                                        <input type="text" class="input-body" id="birthday" style="margin-right: 5px;">
+                                    </div>     
+                                    <div class="col-xs-4">
+                                        <span class="input-name">顾客年龄:</span>
+                                        <input type="text" class="input-body" id="ageMaster" disabled="disabled" style="margin-right: 5px;">岁
+                                    </div>     
+                                    <div class="col-xs-4">
+                                        <span class="input-name">身份证:</span>
+                                        <input type="text" class="input-body" id="idNumber" placeholder="" maxlength="18">
+                                    </div>
+                                    <!-- <div class="col-xs-3">
+                                        <span class="input-name">来源:</span>
+                                        <select class="select-body" name="" id=""></select>
+                                    </div> -->
+                                </div>      
+                                <div class="input-row dataResource">
+                                    <div class="col-xs-4">  
+                                        <span class="input-name">数据来源:</span>
+                                        <select class="input-body" id="dataSource" style="width: auto">
+                                            <option value="0">请选择来源</option>
+                                            <option value="7">美团</option>
+                                            <option value="8">更美APP</option>
+                                            <option value="9">自进</option>
+                                            <option value="10">老带新</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-4" id="showIntroducer" style="display:none">
+                                        <span class="input-name">介绍人:</span>
+                                        <input class="input-body" id="introducer" >
+                                    </div>
+                                    <div class="more-info moreInfo">详细信息<span class="glyphicon glyphicon-menu-down arrow customer" aria-hidden="true"></span></div>
+                                </div>
+                                <!-- <div class="input-row">
+                                    <div class="col-xs-4">
+                                        <span class="input-name">国籍:</span>
+                                        <input type="text" class="input-body" placeholder="">
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <span class="input-name">民族:</span>
+                                        <input type="text" class="input-body" placeholder="">
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <span class="input-name">职业:</span>
+                                        <input type="text" class="input-body" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="col-xs-4">
+                                        <span class="input-name">ABO血型:</span>
+                                        <input type="text" class="input-body" placeholder="">
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <span class="input-name">RH血型:</span>
+                                        <input type="text" class="input-body" placeholder="">
+                                    </div>
+                                </div> -->
+                                <div class="input-row" style="margin-top: 20px;">
+                                    <div class="col-xs-12">
+                                        <span class="input-name">住址:</span>
+                                        <select class="input-body" name="province" id="province" style="width: auto"></select>
+                                        <select class="input-body" name="city" id="city" style="width: auto"></select>
+                                        <input type="text" class="input-body input800" id="street" placeholder="详细地址" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="col-xs-4">
+                                        <span class="input-name">身高:</span>
+                                        <input type="text" class="input-body" id="height" placeholder="请输入身高" maxlength="7">cm
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <span class="input-name">体重:</span>
+                                        <input type="text" class="input-body" id="weight" placeholder="请输入体重" maxlength="7">kg
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <span class="input-name">三围:</span>
+                                        <input type="text" class="input-body" id="bustWaistHips">
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="col-xs-4 radioSingular maritalStatus">
+                                        <span class="input-name">婚姻状况:</span>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="0" name="maritalStatus" checked id="unmarried"/>
+                                            <label for="unmarried">已婚</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="1" name="maritalStatus" id="married"/>
+                                            <label for="married">未婚</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4 radioSingular livingEnvironment">
+                                        <span class="input-name">居住环境:</span>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="0" name="livingEnvironment" checked id="beQuiet"/>
+                                            <label for="beQuiet">安静</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="1" name="livingEnvironment" id="ordinary"/>
+                                            <label for="ordinary">普通</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="2" name="livingEnvironment" id="noisy"/>
+                                            <label for="noisy">嘈杂</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4 radioSingular sleepQuality">
+                                        <span class="input-name">平均睡眠:</span>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="0" name="sleepQuality" checked id="adequate"/>
+                                            <label for="adequate">充足</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="1" name="sleepQuality" id="inadequate"/>
+                                            <label for="inadequate">不充足</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="col-xs-4">
+                                        <span class="input-name">运动项目:</span>
+                                        <input type="text" class="input-body" id="sports" placeholder="请输入运动项目">
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <span class="input-name">运动目的:</span>
+                                        <input type="text" class="input-body" id="sportPurpose" placeholder="请输入运动目的">
+                                    </div>
+                                    <div class="col-xs-4 radioSingular physicalActivity">
+                                        <span class="input-name">运动量:</span>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="0" name="physicalActivity" checked id="less"/>
+                                            <label for="less">少</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="1" name="physicalActivity" id="many"/>
+                                            <label for="many">多</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="col-xs-4">
+                                        <span class="input-name">联系人:</span>
+                                        <input type="text" class="input-body" id="contact" placeholder="请输入联系人姓名" maxlength="12">
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <span class="input-name">联系人电话:</span>
+                                        <input type="text" class="input-body" id="contactPhone" placeholder="请输入联系人电话" maxlength="11">
+                                    </div>
+                                    <!-- <div class="col-xs-4">
+                                        <span class="input-name">介绍人:</span>
+                                        <select class="input-body" id="introducer" style="width: auto"></select>
+                                    </div> -->
+                                </div>
+                                <div class="input-row">
+                                    <div class="col-xs-12">
+                                        <span class="input-name">备注:</span>
+                                        <input type="text" class="input-body input90" id="remark" placeholder="" maxlength="200">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 身体信息 -->
+                            <div class="card-info body-info">
+                                <div class="table-title">
+                                    <span class="title-word">身体信息</span>   
+                                </div>   
+                                <div class="input-row">
+                                    <div class="col-xs-4">
+                                        <span class="input-name">平常体温:</span>
+                                        <input type="text" class="input-body" id="temperature" placeholder="请输入体温" maxlength="5"><span style="margin-left: 5px;">℃</span>
+                                    </div>
+                                    <div class="col-xs-4 radioSingular contactLenses">
+                                        <span class="input-name">使用隐形眼镜:</span>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="0" name="contactLenses" checked id="noLenses"/>
+                                            <label for="noLenses">不使用</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="1" name="contactLenses" id="softMirror"/>
+                                            <label for="softMirror">软镜</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="2" name="contactLenses" id="hardMirror"/>
+                                            <label for="hardMirror">硬镜</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4 radioSingular personalCharacter">
+                                        <span class="input-name">性格:</span>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="0" name="personalCharacter" checked id="introvert"/>
+                                            <label for="introvert">内向</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="1" name="personalCharacter" id="moveWell"/>
+                                            <label for="moveWell">好动</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="2" name="personalCharacter" id="all"/>
+                                            <label for="all">动静皆宜</label>
+                                        </div>
+                                    </div>
+                                </div>    
+                                <div class="input-row">
+                                    <div class="col-xs-4 radioSingular makeup">
+                                        <span class="input-name">是否化妆:</span>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="0" name="makeup" checked id="noLenses2"/>
+                                            <label for="noLenses2">不化妆</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="1" name="makeup" id="softMirror2"/>
+                                            <label for="softMirror2">淡妆</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="2" name="makeup" id="hardMirror3"/>
+                                            <label for="hardMirror3">浓妆</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4 radioSingular skinCondition">
+                                        <span class="input-name">皮肤状态:</span>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="0" name="skinCondition" checked id="skinGood"/>
+                                            <label for="skinGood">良好</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="1" name="skinCondition" id="skinPoor"/>
+                                            <label for="skinPoor">较差</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="2" name="skinCondition" id="skinAdverse"/>
+                                            <label for="skinAdverse">恶劣</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4 radioSingular healthyState">
+                                        <span class="input-name">健康状态:</span>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="0" name="healthyState" checked id="healthyGood"/>
+                                            <label for="healthyGood">良好</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="1" name="healthyState" id="healthyPoor"/>
+                                            <label for="healthyPoor">较差</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="2" name="healthyState" id="healthyAdverse"/>
+                                            <label for="healthyAdverse">恶劣</label>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="input-row">
+                                    <div class="col-xs-4 radioSingular pregnancy">
+                                        <span class="input-name">是否怀孕:</span>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="0" name="pregnancy" checked id="noLenses1"/>
+                                            <label for="noLenses1">否</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="1" name="pregnancy" id="softMirror1"/>
+                                            <label for="softMirror1">是</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4 menstruation radioSingular menstrualPhysiology">
+                                        <span class="input-name">月经生理:</span>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="0" name="menstrualPhysiology" checked id="menstrualPhysiology1"/>
+                                            <label for="menstrualPhysiology1">顺调</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="1" name="menstrualPhysiology" id="menstrualPhysiology2"/>
+                                            <label for="menstrualPhysiology2">不顺调</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="2" name="menstrualPhysiology" id="menstrualPhysiology3"/>
+                                            <label for="menstrualPhysiology3">轻微痛经</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" value="3" name="menstrualPhysiology" id="menstrualPhysiology4"/>
+                                            <label for="menstrualPhysiology4">剧痛</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="more-info moreDetail">详细信息<span class="glyphicon glyphicon-menu-down arrow bodyDetail" aria-hidden="true"></span></div>
+                                </div>   
+                                <div class="input-row morbidity" style="margin-top: 30px;">
+                                    <div class="col-xs-9" style="width: 67%;">
+                                        <span class="input-name">病态:</span>
+                                        <div class="patient-sex">
+                                            <input type="checkbox" id="morbidity1" value="0" name="" />
+                                            <label for="morbidity1">贫血</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="checkbox" id="morbidity2" value="0" name="" />
+                                            <label for="morbidity2">便秘</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="checkbox" id="morbidity3" value="0" name="" />
+                                            <label for="morbidity3">肠胃疾病</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="checkbox" id="morbidity4" value="0" name="" />
+                                            <label for="morbidity4">糖尿病</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="checkbox" id="morbidity5" value="0" name="" />
+                                            <label for="morbidity5">心脏病</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="checkbox" id="morbidity6" value="0" name="" />
+                                            <label for="morbidity6">高血压</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="checkbox" id="morbidity7" value="0" name="" />
+                                            <label for="morbidity7">易疲劳</label>
+                                        </div>
+                                        <div class="patient-sex rest">
+                                            <input type="checkbox" id="morbidity8" value="0" name="" />
+                                            <label for="morbidity8">其他</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3 ipt" style="width: 28%;">
+                                        <input type="text" class="input-body input100" id="otherPathological" disabled="disabled" placeholder="" maxlength="200">
+                                    </div>
+                                </div>            
+                                <div class="input-row radioDisabled">
+                                    <div class="col-xs-3 radioSingular allergy" style="width: 20%">
+                                        <span class="input-name">过敏史:</span>
+                                        <div class="patient-sex" data-flag="0">
+                                            <input type="radio" id="allergyNo" value="no" name="allergy" checked="checked"/>
+                                            <label for="allergyNo">否</label>
+                                        </div>
+                                        <div class="patient-sex" data-flag="1">
+                                            <input type="radio" id="allergyYes" value="yes" name="allergy" />
+                                            <label for="allergyYes">是</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-9 ipt">
+                                        <input type="text" class="input-body input100" id="allergyPro" disabled="disabled" placeholder="" maxlength="200" tip="请填写过敏史!">
+                                    </div>
+                                </div>
+                                <div class="input-row radioDisabled" style="margin-top: 30px;">
+                                    <div class="col-xs-3 radioSingular generalDrugs" style="width: 20%">
+                                        <span class="input-name">常用药物:</span>
+                                        <div class="patient-sex" data-flag="0">
+                                            <input type="radio" id="generalDrugs1" value="no" name="generalDrugs" checked="checked"/>
+                                            <label for="generalDrugs1">否</label>
+                                        </div>
+                                        <div class="patient-sex" data-flag="1">
+                                            <input type="radio" id="generalDrugs2" value="yes" name="generalDrugs" />
+                                            <label for="generalDrugs2">是</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-9 ipt">
+                                        <input type="text" class="input-body input100" id="generalDrugs" disabled="disabled" placeholder="" maxlength="200" tip="请填写常用药物!">
+                                    </div>
+                                </div>
+                                    <div class="input-row radioDisabled" style="margin-top: 30px;">
+                                        <div class="col-xs-3 radioSingular historical" style="width: 20%">
+                                            <span class="input-name">过往病史:</span>
+                                            <div class="patient-sex" data-flag="0">
+                                                <input type="radio" id="historical1" value="no" name="historical" checked="checked"/>
+                                                <label for="historical1">否</label>
+                                            </div>
+                                            <div class="patient-sex" data-flag="1">
+                                                <input type="radio" id="historical2" value="yes" name="historical" />
+                                                <label for="historical2">是</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-9 ipt">
+                                            <input type="text" class="input-body input100" id="historical" disabled="disabled" placeholder="" maxlength="200" tip="请填写常用药物!">
+                                        </div>
+                                    </div>
+                                <div class="input-row radioDisabled" style="margin-top: 30px;">
+                                    <div class="col-xs-3 radioSingular weightHis" style="width: 20%">
+                                        <span class="input-name">减肥经历:</span>
+                                        <div class="patient-sex" data-flag="0">
+                                            <input type="radio" id="weightHisNo" value="no" name="weightHis" checked="checked"/>
+                                            <label for="weightHisNo">否</label>
+                                        </div>
+                                        <div class="patient-sex" data-flag="1">
+                                            <input type="radio" id="weightHisYes" value="yes" name="weightHis" />
+                                            <label for="weightHisYes">是</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-9 ipt">
+                                        <span class="input-name">减肥方法:</span>
+                                        <input type="text" class="input-body" style="width: 88%" id="loseWeight" disabled="disabled" placeholder="" maxlength="200" tip="请填写减肥方法!">
+                                    </div>
+                                </div>
+                                <div class="input-row radioDisabled" style="margin-top: 30px;">
+                                    <div class="col-xs-3 radioSingular effect" style="width: 20%">
+                                        <span class="input-name">减肥效果:</span>
+                                        <div class="patient-sex" data-flag="0">
+                                            <input type="radio" id="effectNo" value="no" name="effect" checked="checked"/>
+                                            <label for="effectNo">失败</label>
+                                        </div>
+                                        <div class="patient-sex" data-flag="1">
+                                            <input type="radio" id="effectYes" value="yes" name="effect" />
+                                            <label for="effectYes">成功</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-9 ipt">
+                                        <span class="input-name">原因:</span>
+                                        <input type="text" class="input-body" style="width: 88%" id="reason" disabled="disabled" placeholder="" maxlength="200" tip="请填写减肥原因!">
+                                    </div>
+                                </div>
+                                <div class="input-row hairdressing" style="margin-top: 30px;">
+                                    <div class="col-xs-5" style="width: 40%">
+                                        <span class="input-name">美容环境:</span>
+                                        <div class="patient-sex">
+                                            <input type="checkbox" id="cosmeticEnvironment1" value="0" name="cosmeticEnvironment"/>
+                                            <label for="cosmeticEnvironment1">用手摸面</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="checkbox" id="cosmeticEnvironment2" value="0" name="cosmeticEnvironment" />
+                                            <label for="cosmeticEnvironment2">用手擦眼</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="checkbox" id="cosmeticEnvironment3" value="0" name="cosmeticEnvironment" />
+                                            <label for="cosmeticEnvironment3">用手擦鼻</label>
+                                        </div>
+                                        <div class="patient-sex rest">
+                                            <input type="checkbox" id="cosmeticEnvironment4" value="0" name="cosmeticEnvironment" />
+                                            <label for="cosmeticEnvironment4">其他</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 ipt" style="width: 55%;">
+                                        <input type="text" class="input-body input100" id="otherEnvironment" disabled="disabled" placeholder="" maxlength="200">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 咨询信息 -->
+                            <div class="card-info consult-info">
+                                <div class="table-title">
+                                    <span class="title-word">咨询信息</span>
+                                </div>
+                                <div class="input-row" style="margin-top: 30px;">
+                                    <div class="col-xs-6">
+                                        <span class="input-name">咨询项目:</span>
+                                        <select class="input-body serviceProject"  id="serviceProject" style="width: 70%;"></select>
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="col-xs-6">
+                                        <span class="input-name">咨询院长:</span>
+                                        <select class="input-body advUser" id="advUser" style="width: 70%;"></select>
+                                    </div>
+                                    <!-- <div class="col-xs-6">
+                                        <span class="input-name">就诊医生:</span>
+                                        <input type="text" class="input-body input388" placeholder="">
+                                        <span class="selection">（选填）</span>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <!-- 历史咨询 -->
+                            <div id="consultHistory">
+                                <!-- <div class="card-info consult-history">
+                                    <div class="table-title">
+                                        <span class="title-word">历史咨询</span>
+                                    </div>
+                                    <div class="input-row">
+                                        <div class="col-xs-6">
+                                            <span class="input-name">咨询项目:</span>
+                                            <span id="serviceHistory">-</span>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <span class="input-name">咨询院长:</span>
+                                            <span id="serviceAdv">-</span>
+                                        </div>
+                                    </div>
+                                    <div class="input-row" style="margin-top: 30px;">
+                                        <div class="col-xs-6">
+                                            <span class="input-name">备注:</span>
+                                            <span id="remarkHistory">-</span>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <!-- 登记列表 -->
+                        <div class="table-info registList">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label" style="width: auto;">登记时间：</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+                                        </div>
+                                        <span> - </span>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <span class="input-name">咨询项目:</span>
+                                    <select class="input-body service" id="service1" style="width: auto"></select>
+                                </div>
+                                <div class="col-xs-2">
+                                    <span class="input-name">咨询院长:</span>
+                                    <select class="input-body advUser" id="advUser1" style="width: auto"></select>
+                                </div>
+                                <div class="col-xs-2">
+                                    <input type="text" class="form-control" id="searchParam" placeholder="姓名/电话号码">
+                                </div>
+                                <div class="col-xs-2">
+                                    <button class="btn btn-info" onclick="searchParam()" type="button">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row regist-table">
+                                <div class="col-xs-12">
+                                    <table id="registTable" class="table-hovered"></table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 预约登记 -->
+                        <div class="table-info reserveList">
+                            <!-- 顾客信息 -->
+                            <div class="card-info patient-info" style="height: 200px;">
+                                <div class="table-title">
+                                    <span class="title-word" style="margin-top: 48px;">顾客信息</span>
+                                </div>
+                                <div class="input-row" style="margin-top: 30px;">
+                                    <div class="col-xs-4">
+                                        <span class="input-name">顾客姓名:</span>
+                                        <input type="text" class="input-body patient-name" id="memberName1" placeholder="请输入顾客姓名" maxlength="10" minlength="2">
+                                        <span class="glyphicon glyphicon-remove remove-info" id="removeInfo1" aria-hidden="true"></span>
+                                        <button class="search-old" id="searchOld1" type="button">搜索老客户</button>
+                                        <div class="search-box">
+                                            <table id="searchList1" class="table-hovered"></table>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <span class="input-name">手机号码:</span>
+                                        <input type="text" class="input-body" id="mobile1" placeholder="请输入手机号码" maxlength="11">
+                                    </div>
+                                    <div class="col-xs-4 personSex1">
+                                        <span class="input-name">顾客性别:</span>
+                                        <div class="patient-sex">
+                                            <input type="radio" id="female1" checked="checked" value="0" name="sex1" />
+                                            <label for="female1">女</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" id="male1" value="1" name="sex1" />
+                                            <label for="male1">男</label>
+                                        </div>
+                                        <div class="patient-sex">
+                                            <input type="radio" id="secret1" value="2" name="sex1" />
+                                            <label for="secret1">保密</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="col-xs-4">
+                                        <span class="input-name">顾客生日:</span>
+                                        <input type="text" class="input-body" id="birthday1" style="margin-right: 5px;">
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <span class="input-name">顾客年龄:</span>
+                                        <input type="text" class="input-body" id="age1" disabled="disabled" style="margin-right: 5px;">岁
+                                    </div>
+                                </div>
+                                <div class="input-row dataResource1">
+                                    <div class="col-xs-4">
+                                        <span class="input-name">数据来源</span>
+                                        <select class="input-body" id="dataSource1" style="width: auto">
+                                            <option value="">请选择来源</option>
+                                            <option value="7">美团</option>
+                                            <option value="8">更美APP</option>
+                                            <option value="9">自进</option>
+                                            <option value="10">老带新</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-4" id="showIntroducer1" style="display:none">
+                                        <span class="input-name">介绍人:</span>
+                                        <select class="input-body" id="introducer1" style="width: auto"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 咨询信息 -->
+                            <div class="card-info consult-info">
+                                <div class="table-title">
+                                    <span class="title-word">咨询信息</span>
+                                </div>
+                                <div class="input-row" style="margin-top: 30px;">
+                                    <div class="col-xs-6">
+                                        <span class="input-name">咨询项目:</span>
+                                        <select class="input-body service" id="service2" style="width: auto"></select>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span class="input-name">到院时间:</span>
+                                        <input type="text" class="input-body input388" id="arriveTime">
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="col-xs-6">
+                                        <span class="input-name">咨询院长:</span>
+                                        <select class="input-body advUser" id="advUser2" style="width: auto"></select>
+                                    </div>
+                                    <!-- <div class="col-xs-6">
+                                        <span class="input-name">就诊医生:</span>
+                                        <input type="text" class="input-body input388" placeholder="">
+                                        <span class="selection">（选填）</span>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="col-xs-12 text-center input-row">
+                                <button class="btn btn-info" onclick="submitInfo1()">保存</button>
+                            </div>
+                        </div>
+                        <!-- 预约查看 -->
+                        <div class="table-info lookList">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label" style="width: auto;">到院时间：</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="startDate1" placeholder="开始时间">
+                                        </div>
+                                        <span> - </span>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="endDate1" placeholder="结束时间">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <span class="input-name">咨询项目:</span>
+                                    <select class="input-body service" id="service3" style="width: auto"></select>
+                                </div>
+                                <div class="col-xs-2">
+                                    <input type="text" class="form-control" id="searchParam1" placeholder="姓名/电话号码">
+                                </div>
+                                <div class="col-xs-2">
+                                    <button class="btn btn-info" onclick="searchParam1()" type="button">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row regist-table">
+                                <div class="col-xs-12 top-row">
+                                    <span class="time-title">上午 ( 08:30-12:00 )</span>
+                                    <button class="btn btn-info" style="float: right;" onclick="changeFlow(this)">收起</button>
+                                    <!-- <a class="refresh-btn" title='刷新' href='javascript:;' onclick='refresh()'><img src='../img/circle.png'> </a> -->
+                                </div>
+                                <div class="regist-list" id="morningList">
+                                    <!-- <div class="regist-box">
+                                        <div class="regist-content">
+                                            <div class="content-line">
+                                                <b class="patient-name">占南弦</b>
+                                                <span class="patient-age">35</span>岁
+                                                <span class="patient-sex">男</span>
+                                                <span class="patient-phone">13886055527</span>
+                                            </div>
+                                            <div class="content-line">到店时间：<b class="arrive-time">2018-06-30 08:30:00</b></div>
+                                            <div class="content-line">咨询项目：<b class="patient-content">开眼角、全身抽脂、双眼皮、开眼角、光子嫩肤、假体隆鼻</b></div>
+                                            <div class="content-line">咨询院长：<b class="patient-docter">温暖</b></div>
+                                        </div>
+                                        <div class="btn-list">
+                                            <a href="javascript:;" class="change-btn">转换者</a>
+                                            <a href="javascript:;" class="change-btn">删除</a>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="row regist-table">
+                                <div class="col-xs-12 top-row">
+                                    <span class="time-title">下午 ( 14:00-22:00 )</span>
+                                    <button class="btn btn-info" style="float: right;" onclick="changeFlow(this)">收起</button>
+                                    <!-- <a class="refresh-btn" title='刷新' href='javascript:;' onclick='refresh()'><img src='../img/circle.png'> </a> -->
+                                </div>
+                                <div class="regist-list" id="afternoonList">
+                                    <!-- <div class="regist-box">
+                                        <div class="regist-content">
+                                            <div class="content-line">
+                                                <b class="patient-name">占南弦</b>
+                                                <span class="patient-age">35</span>岁
+                                                <span class="patient-sex">男</span>
+                                                <span class="patient-phone">13886055527</span>
+                                            </div>
+                                            <div class="content-line">到店时间：<b class="arrive-time">2018-06-30 08:30:00</b></div>
+                                            <div class="content-line">咨询项目：<b class="patient-content">开眼角、全身抽脂、双眼皮、开眼角、光子嫩肤、假体隆鼻</b></div>
+                                            <div class="content-line">咨询院长：<b class="patient-docter">温暖</b></div>
+                                        </div>
+                                        <div class="btn-list">
+                                            <a href="javascript:;" class="change-btn">转换者</a>
+                                            <a href="javascript:;" class="change-btn">删除</a>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 检验项目 -->
+                <div class="layui-tab-item">
+                    <table id="checkList" class="table-hovered"></table>
+                    <div class="line" style="margin-top: 0;"></div>
+                    <span class="history-title">
+                        <span class="orange"></span>
+                        <span class="">历史信息</span>
+                    </span>
+                    <table id="historyTable" class="table-hovered"></table>
+                </div>
+                <!-- 检查项目 -->
+                <div class="layui-tab-item clearfix">
+                    <table id="testList" class="table-hovered"></table>
+                    <div class="line" style="margin-top: 0;"></div>
+                    <span class="history-title">
+                        <span class="orange"></span>
+                        <span class="">历史信息</span>
+                    </span>
+                    <table id="historyTable1" class="table-hovered"></table>
+                </div>
+                <!-- 治疗项目 -->
+                <div class="layui-tab-item clearfix">
+                    <table id="treatList" class="table-hovered"></table>
+                    <div class="line" style="margin-top: 0;"></div>
+                    <span class="history-title">
+                        <span class="orange"></span>
+                        <span class="">历史信息</span>
+                    </span>
+                    <table id="historyTable2" class="table-hovered"></table>
+                </div>
+                <!-- 西药处方 -->
+                <div class="layui-tab-item clearfix">
+                    <table id="medicalTable" class="table-hovered"></table>
+                    <div class="line" style="margin-top: 0;"></div>
+                    <span class="history-title">
+                        <span class="orange"></span>
+                        <span class="">历史信息</span>
+                    </span>
+                    <table id="historyMedicalTable" class="table-hovered"></table>
+                </div>
+                <!-- 治疗项目 -->
+                <div class="layui-tab-item clearfix">
+                    <table id="livBeautyList" class="table-hovered"></table>
+                    <div class="line" style="margin-top: 0;"></div>
+                    <span class="history-title">
+                        <span class="orange"></span>
+                        <span class="">历史信息</span>
+                    </span>
+                    <table id="historyTable6" class="table-hovered"></table>
+                </div>
+                <!-- 中成药方 -->
+                <!-- <div class="layui-tab-item clearfix">
+                    <table id="medicalTable1" class="table-hovered"></table>
+                    <div class="line" style="margin-top: 0;"></div>
+                    <span class="history-title">
+                        <span class="orange"></span>
+                        <span class="">历史信息</span>
+                    </span>
+                    <table id="historyMedicalTable1" class="table-hovered"></table>
+                </div> -->
+                <!-- 医嘱 -->
+                <div class="layui-tab-item clearfix">
+                    <div class="special-box">
+                        <div class="special-row">
+                            <span class="input-name">医嘱:</span>
+                            <span class="info-span" id="advice">-</span>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="history-list clearfix">
+                        <span class="history-title">
+                            <span class="orange"></span>
+                            <span class="">历史医嘱</span>
+                        </span>
+                    </div>
+                    <div class="special-box" id="adviceList">
+                        <!-- <div class="time-title">2018-07-23</div>
+                        <div class="special-row">
+                            <span class="input-name">医嘱:</span>
+                            <span class="info-span">无</span>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- </div> -->
+        
+    </div>
+        
+        
+    </div>
+
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <script src="../../assets/layer/layer.js"></script>
+    <script src="../../assets/laydate-v5.0.9/laydate.js"></script>
+    <script src="../../assets/layui-v2.2.2/layui.js"></script>
+    <script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../../assets/select2/select2.min.js"></script>
+    <!-- <script src="../../assets/Icc-combo.js"></script> -->
+    <!-- <script src="../../assets/PCASClass.js"></script> -->
+    <script src="nurse1.js"></script>
+    <script>
+        layui.use('element', function () {
+                var element = layui.element;
+
+                //…
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+ul {
+	list-style: none;
+}
+.clearfix:after{
+　　　　　　content:"";
+　　　　　　height:0;
+　　　　　　line-height:0;
+　　　　　　display:block;
+　　　　　　visibility:hidden;
+　　　　　　clear:both
+}
+.clearfix{
+　　zoom:1;
+}
+.content {
+	padding: 20px 60px 0 60px;
+	position: relative;
+}
+
+.content-title {
+	position: absolute;
+	top: 20px;
+	right: 60px;
+	color: #3c394a;
+	font-size: 17px;
+	text-align: right;
+}
+
+.content-img {
+	width: 100%;
+	display: block;
+	text-align: center;
+}
+.layui-tab-content {
+	padding: 20px 0 !important;
+}
+
+.content-name {
+	width: 100%;
+	text-align: center;
+	color: #000000;
+	font-size: 16px;
+	padding: 26px 0;
+}
+
+.content-text {
+	width: 100%;
+	font-size: 16px;
+	color: #323848;
+	text-align: center;
+	padding: 20px 0;
+}
+
+.grade-list {
+	width: 100%;	
+}
+
+.grade-list li{
+	width: 100%;
+	padding: 30px 0 20px 0;
+	border-bottom: 1px solid #e2e2e2;	
+	height: auto;
+	float: left;
+}
+.grade-list li:last-child {
+	border-bottom: none;
+}
+.grade-list li:first-child {
+	padding-top:0;
+}
+.grade-list  .grade-img {
+	width: 58px;
+	height: 85px;
+	object-fit: cover;
+	display: inline-block;
+	float: left;
+}
+.grade-list  .grade-img img {
+	width: 100%;
+	height: auto;
+	display: block;
+	margin-top: 10px;
+}
+.grade-list  .grade-text {
+	padding-left: 20px;
+    float: left;
+    width: 85%;
+}
+.grade-list  .grade-text span:first-child{
+	font-size: 18px;
+	color: #2e2f31;
+	display: block;
+	padding:5px 0;
+}
+
+.grade-list  .grade-text span:last-child{
+	/* color: #a6a6a6; */
+	font-size: 16px;
+	display: block;
+}
+
+.integral-table {
+	width: 100%;
+	border:1px solid #e1e1e1;
+}
+.integral-table tr td{
+	border-right:none;
+	border-left:none;
+	padding: 10px 20px;
+}
+.integral-table .table-title {
+	display: block;
+	color: #363636;
+	font-size: 16px;
+}
+.integral-table .table-time {
+	display: block;
+	color: #b7b7b7;
+	font-size: 12px;
+	margin-top: 5px;
+}
+
+.table-integral1 {
+	display: inline-block;
+	color: #f0ab4e;
+}
+.table-integral2 {
+	display: inline-block;
+	color: #979797;
+}
+
+.layui-tab-title li{
+	border: 1px solid #dfdfdf;
+	border-bottom: none;
+	border-right: none;
+}
+.layui-tab-title li:last-child{
+	border-right: 1px solid #dfdfdf;
+}
+
+.layui-this {
+	background: #21bdaf;
+	color: #fff !important;
+	border-bottom: none !important;
+}
+.layui-this:after{
+	border-bottom: none !important;
+}

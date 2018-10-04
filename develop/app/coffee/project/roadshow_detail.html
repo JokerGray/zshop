@@ -1,0 +1,227 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<title>微路演详情</title>
+	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css"> 
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		    font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
+		}
+		html,body {
+			color: #333;
+		} 
+		.hidden{
+			display: none !important;
+		}
+		
+		.content{
+			display: block;
+			padding: 1rem 0.75rem;
+		}
+		.articleTitle{
+			display: block;
+			padding-bottom: 1rem;
+			font-size: 1.25rem;
+			font-weight: 700;
+		}
+		.timeContent{
+			display: block;
+			margin-bottom: 0.5rem;
+			font-size: 0.8rem;
+			color: #999;
+		}
+		.timeContent p{
+			padding-bottom: 0.5rem;
+		}
+		.timeContent p span{
+			padding-left: 0.5rem;
+		}
+		
+		.articleContent{
+			display: block;
+			padding: 1rem 0;
+			font-size: 0.9rem;
+			letter-spacing: 0.5px;
+			border-top: 1px solid #eee;
+			color: #111;
+		}
+		.articleContent p{
+			margin: 0.5rem 0;
+		}
+		.articleContent img{
+			display: block;
+			max-width: 100%;
+		}
+		.articleContent p>span>span{
+			display: block;
+			max-width: 100%;
+			overflow: scroll;
+			-webkit-overflow-scrolling: touch;
+		}
+		/*嵌入的iframe视频需要居中*/
+		.articleContent iframe{
+			display: block;
+			max-width: 100% !important;
+    		border: none;
+    		box-sizing: border-box;
+		}
+		/*多媒体*/
+		.mediaContent{
+			display: block;
+		}
+		.mediaContent img{
+			display: block;
+			margin: 0.5rem auto 0;
+			max-width: 100%;
+		}
+		.mediaContent .videoContent{
+			position: relative;
+		}
+		.mediaContent .videoContent .cover{
+			position: absolute;
+			display: block;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			background: url(../img/video_play_icon.png) no-repeat;
+			background-position: center;
+			background-size: 30%;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<div class="articleTitle"></div>
+		<div class="timeContent">
+			<p>时间：<span class="releaseTime"></span></p>
+			<p>主办方：<span class="subscriptionName"></span></p>
+		</div>
+		<div class="articleContent"></div>
+		<div class="mediaContent">
+			<div class="videoContent">
+				<video width="100%" poster="" id="video">
+					当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+				</video>
+				<div class="cover"></div>
+			</div>
+		</div>
+	</div>
+	<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+	<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.2/weui.min.js"></script>
+	<script type="text/javascript">
+		var id = getQueryString('id');
+		$(function(){
+			getData();
+			$('.mediaContent .videoContent .cover').click(function(){
+				document.getElementById("video").play();
+				$(this).remove();
+			})
+		})
+		// 获取url中的参数
+		function getQueryString(name){
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+			var r = window.location.search.substr(1).match(reg);
+			return r !== null ? decodeURI(r[2]) : null;
+		}
+		
+		// 获取数据
+		function getData(){
+			if(!id) return weui.alert('暂无数据！');
+			
+			var loading;
+			$.ajax({
+				type:"post",
+				dataType: 'json',
+				url:"/zxcity_restful/ws/rest",
+				data:{
+					cmd: 'cms_new/selectOnlyOneArticle',
+					data: JSON.stringify({
+						articleId: id
+					}),
+					version: 1
+				},
+				beforeSend: function () {
+					loading = weui.loading('查询中...');
+				},
+				complete: function () {
+					loading.hide();
+				},
+				success: function (data) {
+					if(data.code == 1){
+						setData(data.data)
+					} else {
+						weui.alert(data.msg);
+					}
+				},
+				error: function (err) {
+					weui.alert('请求超时，请重试……');
+				}
+			});
+		}
+		
+		// 设置数据
+		function setData(data){
+			$('.articleTitle').text(data['articleTitle']);
+			var time = new Date(data['releaseTime'].replace(/-/g, "/"));
+			$('.releaseTime').text(time.pattern("MM月dd日  EE HH:mm"));
+			$('.subscriptionName').text(data['subscriptionName']);
+			$('.articleContent').html(data['articleContent']);
+			var list = data['scCmsResourcesList'];
+			var type = list[0]['resourcesType'];
+			if(type == 'video'){
+				$('.videoContent video').attr('poster', list[0]['resourcesUrl']);
+				$('.videoContent video').attr('src', list[0]['videoUrl']);
+				return;
+			}
+			$('.videoContent').remove();
+			for (var i=0; i<list.length; i++) {
+				$('.mediaContent').append('<img src="'+ list[i]['resourcesUrl'] +'">');
+			}
+			
+			// 嵌入的iframe视频居中显示——没法处理
+			$('.articleContent iframe').each(function(){
+				this.width = '100%';
+				$(this).css('width', $('.articleTitle').width()+'px !important');
+			})
+		}
+		
+		Date.prototype.pattern=function(fmt) {         
+		    var o = {         
+			    "M+" : this.getMonth()+1, //月份
+			    "d+" : this.getDate(), //日 
+			    "h+" : this.getHours()%12 == 0 ? 12 : this.getHours()%12, //小时 
+			    "H+" : this.getHours(), //小时
+			    "m+" : this.getMinutes(), //分
+			    "s+" : this.getSeconds(), //秒 
+			    "q+" : Math.floor((this.getMonth()+3)/3), //季度
+			    "S" : this.getMilliseconds() //毫秒 
+		    };
+		    var week = {
+			    "0" : "\u65e5",
+			    "1" : "\u4e00",
+			    "2" : "\u4e8c",
+			    "3" : "\u4e09",
+			    "4" : "\u56db",
+			    "5" : "\u4e94",
+			    "6" : "\u516d"
+		    };
+		    if(/(y+)/.test(fmt)){
+		        fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+		    }
+		    if(/(E+)/.test(fmt)){
+		        fmt=fmt.replace(RegExp.$1, ((RegExp.$1.length>1) ? (RegExp.$1.length>2 ? "\u661f\u671f" : "\u5468") : "")+week[this.getDay()+""]);
+		    }
+		    for(var k in o){
+		        if(new RegExp("("+ k +")").test(fmt)){
+		            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+		        }
+		    }
+		    return fmt;
+		}
+	</script>
+</body>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>请假管理</title>
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/bootstrapDatePicker/css/datetimepicker.css">
+    <link rel="stylesheet" href="../../../assets/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="rest.css">
+</head>
+<body ng-app="restApp">
+    <div class="top-title">
+        请假编辑
+    </div>
+    <div class="container-fluid main h-420" ng-controller="editRestController">
+        <div class="content">
+            <div class="row col-md-4">
+                <label for="">请选择请假成员</label>
+            </div>
+            <div class="row m-b-30 col-md-10">
+                <input type="email" class="form-control" id="person_name" placeholder="请假成员" ng-model="leavePerson.userName" ng-disabled="true">
+                <!-- <ui-select ng-model="leavePerson.person">  
+                    <ui-select-match>  
+                        <span ng-bind="$select.selected.userName">  </span>  
+                    </ui-select-match>  
+                    <ui-select-choices repeat="person in (persons | filter:$select.search) track by person.userId ">  
+                        <span ng-bind="person.userName">  </span>  
+                    </ui-select-choices>  
+                </ui-select>   -->
+                <span class="tips" ng-if='!has_person'>请选择请假人员</span>
+            </div>
+
+            <div class="form-group ">
+                <label for="startDate" class='top-f10'>开始时间：</label>
+                <label class="input-group col-xs-4 line-tab">
+                    <input type="text" class="form-control" id="startDate" placeholder=""  ng-model="leave_start_time">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </label>
+                <label for="endDate"  class='top-f10'>—</label>
+                <label class="input-group col-xs-4 line-tab">
+                    <input type="text" class="form-control" id="endDate" placeholder=""  ng-model="leave_end_time">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </label>
+                <div class="col-xs-2 leave-days">共计：<span ng-bind="leave_days" id="leave_days"></span> 天</div>
+            </div>
+            <!-- <div class="row ">
+                <label for="startDate" class="col-xs-2">开始时间：</label>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="input-group " >
+                        <input type="text" class="form-control" id="startDate" placeholder="" ng-model="leave_start_time">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                </div>
+                <span class="col-xs-1">
+                    <label>—</label>
+                </span>
+                <div class="col-xs-4 m-l-f20">
+                    <div class="input-group ">
+                        <input type="text" class="form-control" id="endDate" placeholder="" ng-model="leave_end_time">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                </div>
+
+                <div class="col-xs-2 leave-days">共计：<span ng-bind="leave_days" id="leave_days"></span> 天</div>
+            </div> -->
+            <div class="row">
+                <div class="tips col-xs-4" ng-if='!has_start_time'>请选择请假开始时间</div>
+                <div class="col-xs-1"></div>
+                <div class="tips col-xs-4" ng-if='!has_end_time'>请选择请假结束时间</div>
+            </div>
+            <div class="row leave-btn-box">
+                <button class="btn btn-cancel" ng-click="cancel()">取消</button>
+                <button class="btn btn-queren" ng-click="submitLeave()">确认</button>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+
+    <script src="../../../assets/jquery/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../assets/layer/layer.js"></script>
+    <script src="../../../assets/angular-1.4.6/angular.js"></script>
+    <link href="../../../assets/angular-1.4.6/select.min.css" rel="stylesheet">
+    <script src="../../../assets/angular-1.4.6/select.min.js"></script>    
+    <script src="../../../assets/angular-1.4.6/ui-bootstrap.min.js"></script>
+    <script src="../../../assets/angular-1.4.6/ui-bootstrap-tpls.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="rest.js"></script>
+</body>
+</html>

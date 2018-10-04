@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>服务分类管理</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="service/service.css" />
+</head>
+<body>
+    <div class="wrapper-main">
+        <div class="layui-row layui-col-md6 layui-col-sm12 main-box">
+            <div class="header1 layui-form ovh">
+                <div class="layui-form-item layui-col-md4">
+                    <label class="" for="">分类名称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="feedbackInfo" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-md8 ">
+                    <label class=" w100" for="">&nbsp;</label>
+                    <div class="layui-input-block right">
+                        <button class="layui-btn" id="searchBtn">查询</button>
+                        <button class="layui-btn" id="restBtn">重置</button>
+                        <button class="layui-btn fr addBtn"><i class="layui-icon">&#xe608;</i>新增服务</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="main">
+                <table id="tableNo" lay-filter="tableNo"></table>
+                <div class="layui-laypage" id="page"></div>
+            </div>
+        </div>
+        <div class="layui-row layui-col-md6 layui-col-sm12 main-box">
+            <div class="header layui-form clearfix">
+                <div class="layui-form-item layui-col-md4">
+                    <label class="" for="">子分类名称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="feedbackInfos" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-md8 ">
+                    <label class=" w100" for="">&nbsp;</label>
+                    <div class="layui-input-block right">
+                        <button class="layui-btn" id="searchBtn1">查询</button>
+                        <button class="layui-btn" id="restBtn1">重置</button>
+                        <button class="layui-btn fr addBtn" data-type="1"><i class="layui-icon">&#xe608;</i>新增子服务</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="main">
+                <table id="tableNo1" lay-filter="tableNo"></table>
+                <div class="layui-laypage" id="page1"></div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-sm" lay-event='edit'>修改</button>
+    </script>
+    <!--弹出层-->
+    <div id="addDemo" class="layui-form addDemo">
+        <div class="layui-form-item">
+            <label for="" class="">分类名称：</label>
+            <div class="layui-input-block">
+                <input type="text" lay-verify="required"  id="categoryName" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="" class="">排序:</label>
+            <div class="layui-input-block">
+                <input type="text" lay-verify="required|number"  id="sort" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item coverPic">
+            <label for="" class="">分类封面:</label>
+            <div class="layui-input-block img_box">
+                <img src="../../common/images/upload.png" id="coverPic" alt="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="" class="">分类图标:</label>
+            <div class="layui-input-block img_box">
+                <img src="../../common/images/upload.png" id="categoryIcon" alt="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="" class="">夜间模式图标:</label>
+            <div class="layui-input-block img_box">
+                <img src="../../common/images/upload.png" id="greyUrl" alt="">
+            </div>
+        </div>
+
+
+    </div>
+    <script type="text/javascript" src="../../common/assets/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+    <script type="text/javascript" src="../../common/js/util.js"></script>
+    <script type="text/javascript" src="../../common/js/yyCache.js"></script>
+
+    <!--//上传-->
+    <script src="../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="../../common/js/upload.js"></script>
+
+    <script type="text/javascript" src="service/service.js"></script>
+
+
+</body>
+</html>

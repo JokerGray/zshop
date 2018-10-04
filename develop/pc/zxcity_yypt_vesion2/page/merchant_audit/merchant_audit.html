@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商户注册审核</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../common/css/bootstrap.min.css" media="all"/>
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css"/>
+    <link rel="stylesheet" href="../../common/assets/zTree_v3/css/metroStyle/metroStyle.css"/>
+    <link rel="stylesheet" href="merchant_audit.css">
+</head>
+<body>
+<div class="layui-row layui-fluid">
+    <ul class="layui-form layui-col-sm12 layui-col-md12 clearfix input-box">
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="">手机号：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" maxlength="11" class="layui-input" id="merchantName">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="">开始时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off"  class="layui-input" id="jurisdiction-begin">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="">结束时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="jurisdiction-end">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <label>&nbsp;</label>
+            <div class="fl">
+                <button class="layui-btn" id="toolSearch">搜索</button>
+                <button class="layui-btn" id="toolRelize">重置</button>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="layui-fluid">
+    <div class="layui-app tool-box clearfix">
+        <div class="fl tab_box">
+            <button class="layui-btn active" data-type="0">
+                待审核
+            </button>
+            <button class="layui-btn op5" data-type="-1">
+               已审核
+            </button>
+        </div>
+    </div>
+</div>
+<div class="layui-row layui-fluid" id="tableBox">
+    <div class="app-table">
+        <table id="tableNo" lay-filter="tableNo"></table>
+        <div id="laypageLeft" class="fr"></div>
+    </div>
+</div>
+<!--lay-event='detail' 这个是绑定事件没有这个就绑定不了事件-->
+
+<script type="text/html" id="barDemo">
+    {{#  if(d.status == 0){ }}
+    <button class="layui-btn layui-btn-md" lay-event='nodetail'><i class="layui-icon">&#xe615;</i>查看</button>
+    <button class="layui-btn layui-btn-md" lay-event='change'>通过</button>
+    <button class="layui-btn layui-btn-md layui-btn-danger" lay-event='del'>不通过</button>
+    {{#  } }}
+
+    {{#  if(d.status >= 1){ }}
+    <button class="layui-btn layui-btn-md" lay-event='nodetail'><i class="layui-icon">&#xe615;</i>查看</button>
+    {{#  } }}
+</script>
+
+<script type="text/html" id="barDemor">
+    <button class="layui-btn layui-btn-md" lay-event='detail'><i class="layui-icon">&#xe615;</i>查看</button>
+
+    <!--<button class="layui-btn layui-btn-small layui-btn-normal" lay-event='appdetail'>
+        <i class="layui-icon">&#xe615;</i> 申请人详情
+    </button>-->
+</script>
+
+<!--modal-->
+<div id="demo111" class='layui-form clearfix layui-row disn layer-box'>
+
+    <div class="layui-progress layui-progress-big progress-my disn" lay-filter="progross" lay-showPercent="true" id="progross">
+        <div class="layui-progress-bar layui-bg-green" lay-percent="25%"></div>
+    </div>
+
+    <div class="app-layer layui-col-sm12 layui-col-md12">
+        <div class="package clearfix">
+            <div class="package-title">查看商户</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+            <ul class="layui-form clearfix p0">
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">账号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="" autocomplete="off" lay-verify="required" class="layui-input" id="lookName" disabled readonly>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">商户名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" lay-verify="required"    id="lookdesig">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 lookguild trade">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">类型：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control layui-input h30" id="regular" lay-filter="trade"></select>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 lookguild">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">所属行业：</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input"    id="lookguild">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 lookguild trade">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">所属行业：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control layui-input h30" id="trade" lay-filter="trade"></select>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 rigTem disn">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">行业模板：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control layui-input h30" id="templet" lay-filter="templet">
+                            </select>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="layui-col-md4 lookUsername">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">管理员名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input"     id="lookUsername">
+                        </div>
+                    </div>
+                </li>
+
+                <li class="layui-col-md4">
+                    <div class="mr20">
+                        <div class="layui-form-item w50">
+                            <label class="tool-box-label">省</label>
+                            <div class="layui-input-block p0">
+                                <input type="text" class="layui-input"  disabled  readonly id="lookprovi">
+
+                            </div>
+                        </div>
+                        <div class="layui-form-item fr w50">
+                            <label class="tool-box-label">市：</label>
+                            <div class="layui-input-block p0">
+                                <input type="text" class="layui-input"  disabled  readonly id="lookcity">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 ">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">下单类型：</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" lay-skin="primary" id="set1" lay-filter="set1" title="服务下单" value="0">
+                            <input type="checkbox" lay-skin="primary" id="set2" lay-filter="set2" title="销售下单" value="1">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md12">
+                    <div class="layui-form-item xiadan_box">
+                        <label class="tool-box-label "><b class="required-icon">＊</b>销售下单：</label>
+                        <div class="layui-input-block">
+                            <ul class="xiadan clearfix" style="">
+                                <li class="layui-form-item">
+                                    <h3>支付方式</h3>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="set3" value="0" title="后支付" checked >
+                                        <input type="radio" name="set3" value="1" title="先支付" >
+                                    </div>
+                                    <p>【文字说明文字】</p>
+                                    <em><i class="layui-icon ime">&#xe605;</i></em>
+                                </li>
+                                <li class="layui-form-item">
+                                    <h3>设备选择</h3>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="set4" value="0" title="可选" checked>
+                                        <input type="radio" name="set4" value="1" title="必选" >
+                                    </div>
+                                    <p>【文字说明文字】</p>
+                                    <em><i class="layui-icon ime">&#xe605;</i></em>
+                                </li>
+                                <li class="layui-form-item">
+                                    <h3>订单状态</h3>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="set5" value="0" title="不改变" checked>
+                                        <input type="radio" name="set5" value="1" title="改变" >
+                                    </div>
+                                    <p>【文字说明文字】</p>
+                                    <em><i class="layui-icon ime">&#xe605;</i></em>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="disb">
+                    <div class="layui-form-item layui-col-md4">
+                        <label class="tool-box-label">营业执照正面：</label>
+                        <div class="layui-input-block">
+                            <div class="img-box">
+                                <img src="../../common/images/placeholder.png"  id="lookbuss" class="zImg" alt="">
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">手持营业执照：</label>
+                        <div class="layui-input-block">
+                            <div class="img-box">
+                            <img src="../../common/images/placeholder.png" id="lookbussback" class="zImg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="disb">
+                    <div class="layui-form-item layui-col-md4">
+                        <label class="tool-box-label">身份证正面：</label>
+                        <div class="layui-input-block">
+                            <div class="img-box">
+                            <img src="../../common/images/placeholder.png"  id="lookid" class="zImg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">身份证反面：</label>
+                        <div class="layui-input-block">
+                            <div class="img-box">
+                            <img src="../../common/images/placeholder.png"  id="lookidback" class="zImg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="disb disn userNameword">
+                    <div class="layui-form-item layui-col-md4">
+                        <label class="tool-box-label">姓名：</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" lay-verify="required"    id="userNameword">
+
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 disn userPassword">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">身份证号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" lay-verify="required"   id="userPassword">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--补全商户 第四步 商户权限初始化-->
+<div id="thirdDemo" class='layui-form clearfix layer-box disn' lay-filter="promissReset">
+    <div class="layui-progress layui-progress-big progress-my" lay-filter="progross" lay-showPercent="true">
+        <div class="layui-progress-bar layui-bg-green" lay-percent="75%"></div>
+    </div>
+    <div class="app-layer">
+        <div class="package clearfix">
+            <div class="package-title">商户权限</div>
+        </div>
+        <div class="app-layer-content clearfix p0">
+            <div class="left-app">
+                <ul class="tool-box-ul layui-form clearfix p0">
+                    <li class="tool-box-li mr5 w70">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label"><b class="required-icon">＊</b>角色名称：</label>
+                            <div class="layui-input-inline">
+                                <ul id="mervchantRole" class="rolename text-center">
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="mid-line">
+            </div>
+            <div class="right-app">
+                <div class="layui-form-item">
+                    <h4 id="fatherTree">商户权限</h4>
+                    <ul id="treedem" class="ztree"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--审核不通过-->
+<div id="fiveDemo" class='layui-form clearfix layer-box disn'>
+    <div class="app-layer">
+        <div class="package clearfix">
+            <div class="package-title">审核意见</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+            <ul class="layui-form clearfix p0">
+                <li>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <textarea type="text" id="addAudit" lay-verify="required"  name="title" required   class="layui-input layui-textarea" maxlength="100"></textarea>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--app补全第一步-->
+
+<div id="secondDemo" class='layui-form clearfix layer-box disn'>
+    <!--addName subscription fixdepartment-->
+    <div class="layui-progress layui-progress-big progress-my" lay-filter="progross" lay-showPercent="true" >
+        <div class="layui-progress-bar layui-bg-green" lay-percent="50%"></div>
+    </div>
+    <div class="app-layer">
+        <div class="package clearfix">
+            <div class="package-title">头条初始化</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+
+            <ul class="layui-form clearfix p0">
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="" autocomplete="off" lay-verify="required" class="layui-input" id="addName" >
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">类型：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control layui-input h30" id="fixdepartment">
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script>
+
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="merchant_audit.js"></script>
+</body>
+</html>

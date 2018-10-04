@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+    <title>我的首页详情页</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/foundation/5.5.3/css/foundation.min.css">
+    <link rel="stylesheet" href="../common/css/common.css">
+    <link rel="stylesheet" href="css/myHomeDetail.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="maintitle">
+            <a class="return-icon" href="javascript:void(0);" onclick="history.go(-1);"><img src="image/icon_fanhui.png" /></a>
+            <h5 class="title">我的首页详情页</h5>
+            <div id="module1-select" class="module1-select hide">
+                <ul class="select-ul">
+                    <li data-type="1">最近一个月到店会员</li>
+                    <li data-type="2">最近一个月注册会员</li>
+                    <li data-type="3">1~2个月未到店会员</li>
+                    <li data-type="4">1~2个月未沟通会员</li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="module-content">
+                <div id="module1" class="hide">
+                    <div class="show-content">
+                        <div class="show-item table-list">
+                            <table class="table table-modul">
+                                <thead>
+                                <tr>
+                                    <th width="18%">客户名</th>
+                                    <th width="22%">客户编号</th>
+                                    <th width="30%">手机号</th>
+                                    <th width="30%">时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div class="pageview" id="page1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="module8" class="hide">
+                    <div class="show-content">
+                        <div class="show-item table-list">
+                            <table class="table table-modul">
+                                <thead>
+                                <tr>
+                                    <th width="15%">类型</th>
+                                    <th width="15%">赠送数量</th>
+                                    <th width="35%">赠送时间</th>
+                                    <th width="25%">名称</th>
+                                    <th width="10%">单价</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <div class="pageview" id="page8"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="module2" class="hide">
+                    <div class="show-content">
+                        <div class="show-item table-list">
+                            <table class="table table-modul">
+                                <thead>
+                                <tr>
+                                    <th>客户</th>
+                                    <th>商品</th>
+                                    <th>数量/总金额</th>
+                                    <th>状态</th>
+                                    <th>时间</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <div class="pageview" id="page2"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div id="module2" class="hide">
+                    <div class="show-content">
+                        <div class="show-item table-list">
+                            <table class="table table-modul">
+                                <thead>
+                                <tr>
+                                    <th>客户</th>
+                                    <th>商品</th>
+                                    <th>数量/总金额</th>
+                                    <th>状态</th>
+                                    <th>时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div id="page2" class="pageview"></div>
+                        </div>
+                    </div>
+                </div>-->
+                <div id="module5" class="hide">
+                    <div class="show-item table-list">
+                        <table class="table table-modul">
+                            <thead>
+                            <tr>
+                                <th>会员编号</th>
+                                <th>客户姓名</th>
+                                <th>电话</th>
+                                <th>会员类型</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <div id="page5" class="pageview"></div>
+                    </div>
+                </div>
+                <div id="module6" class="hide">
+                    <table class="table table-modul">
+                        <thead>
+                        <tr>
+                            <th>卡名</th>
+                            <th>总次数</th>
+                            <th>使用次数</th>
+                            <th>剩余次数</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <div id="page6" class="pageview"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery 库 -->
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- JavaScript 文件 -->
+   <script src="http://cdn.static.runoob.com/libs/foundation/5.5.3/js/foundation.min.js"></script>
+    <!-- modernizr.js 文件 -->
+   <script src="http://cdn.static.runoob.com/libs/foundation/5.5.3/js/vendor/modernizr.js"></script>
+    <script src="../common/js/util.js"></script>
+    <script src="../common/assets/js/jquery.bootpag.min.js"></script>
+    <script src="js/myHomeDetail.js"></script>
+</body>
+</html>

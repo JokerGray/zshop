@@ -1,0 +1,24 @@
+{
+  "presets": [
+    ["env", {
+      "modules": false
+    }],
+    "stage-2"
+  ],
+  "plugins": [
+    "transform-runtime",
+    ["transform-modules", {
+      "cube-ui": {
+        "transform": "cube-ui/lib/${member}",
+        "kebabCase": true,
+        "style": {
+          "ignore": ["create-api", "better-scroll"]
+        }
+      }
+    }]
+  ],
+  "env": {
+    "test": {
+      "presets": ["env", "stage-2"]    }
+  }
+}

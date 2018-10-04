@@ -1,0 +1,63 @@
+body{
+    height:100vh;
+    padding-top:1.875rem;
+    padding-bottom:9rem;
+}
+.detail-wrapper{
+    padding:0 .625rem;
+    margin-bottom:9rem;
+    background-color: #fff;
+}
+
+.main-content{
+    height:100%;
+}
+.main-content .title{
+    color:#323232;
+    font-size: 2.75rem;
+}
+.main-content .time{
+    margin-top:1.875rem;
+    margin-bottom:3.375rem;
+    color:#c3c3c3;
+    font-size:1.5rem;
+}
+.main-content .content *{
+    color:#323232;
+    font-size:1.875rem;
+}
+.main-content .content img{
+    display:block;
+    margin:1rem auto;
+}
+
+.other{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:8.75rem;
+    padding:2.5rem .625rem;
+    background-color:#fff;
+    border-top:2px solid #f2f2f2;
+    font-size:1.875rem;
+    color:#888;
+}
+
+.other .publisher .pic{
+    width:4rem;
+    height:4rem;
+    margin-right:1.25rem;
+    border-radius: 100%;
+}
+.other .like .like-btn{
+    display:inline-block;
+    width:2.438rem;
+    height:2.438rem;
+    background:url(../image/like_icon_40.png) no-repeat 0 0;
+    vertical-align: text-bottom;
+}
+.other .like .like-btn.active,
+.other .like .like-btn:hover{
+    background-position: -38px 0;
+}

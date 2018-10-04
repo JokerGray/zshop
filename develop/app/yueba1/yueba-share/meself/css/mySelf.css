@@ -1,0 +1,468 @@
+* {
+    box-sizing: border-box;
+    /* 在X5新内核Blink中，在排版页面的时候，会主动对字体进行放大，会检测页面中的主字体，当某一块字体在我们的判定规则中，认为字号较小，并且是页面中的主要字体，就会采取主动放大的操作。然而这不是我们想要的，可以采取给最大高度解决 */
+    max-height: 100000px;
+  }
+  
+  *:before, *:after {
+      box-sizing: border-box;
+    max-height: 100000px;
+  }
+  
+  *, *:before, *:after {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  
+  html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th,textarea, td {
+    border: 0 none;
+    font-size: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+  }
+  
+  em, strong {
+    font-style: normal;
+  }
+  
+  ul, ol, li {
+    list-style: none;
+  }
+  
+  body {
+      font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","\5FAE\8F6F\96C5\9ED1",Arial,sans-serif;
+      line-height: 1.5;
+      color: #333;
+      background-color: #f2f2f2;
+      font-size: 0.24rem;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  .box {
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+.main{
+  width: 100%;
+   /* background-color: #ffffff;  */
+  height: 5.68rem;
+  /* background-image: url(../image/pic_clear.png); */
+  /* background-repeat: no-repeat; */
+  /* background-origin: border-box; */
+  /* background-position: center center; */
+  /* background-size: cover;
+  filter:blur(6px);
+  box-sizing: border-box;
+  -webkit-filter:blur(6px);
+
+-moz-filter:blur(6px);
+
+-o-filter:blur(6px);
+
+-ms-filter:blur(6px); */
+
+}
+.main img{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  box-sizing: border-box;
+  -webkit-filter:blur(6px);
+
+-moz-filter:blur(6px);
+
+-o-filter:blur(6px);
+
+-ms-filter:blur(6px);
+filter:blur(6px);
+
+}
+.dian i{
+  width: 0.08rem;
+  height: 0.08rem;
+  border-radius: 50%;
+  background-color: black;
+  display: block;
+  float: left;
+  margin-right: 0.05rem;
+  margin-top: 0.2rem;
+}
+.header{
+  height: 1.2rem;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 0.01rem solid gray;
+  position: fixed;
+ 
+}
+.header .pice{
+  height: 0.71rem;
+  width: 0.71rem;
+  float: left;
+  /* border: 1px solid #CD0000; */
+  margin-top: 0.25rem;
+  margin-left: 0.34rem;
+}
+.zxcs{
+  display: block;
+  float: left;
+  color: #333333;
+  font-size: 0.3rem;
+  font-weight: 600;
+  font-family: PingFang-SC-Medium;
+  line-height: 0.44rem;
+  text-align: center;
+  margin-left: 0.24rem;
+  margin-top: 0.40rem;
+}
+.openapp{
+  height: 0.50rem;
+  float: right;
+  margin-right: 0.31rem;
+  margin-top: 0.35rem;
+}
+.openapp span{
+  display: block;
+  height: 100%;
+  float: left;
+  width: 1.21rem;
+  text-align: center;
+  font-size: 0.26rem;
+  font-family: PingFang-SC-Medium;
+  line-height: 0.5rem;
+  color: #ffffff;
+  border-radius: 5px;
+  margin-left: 0.31rem;
+  background-color: #CD0000;
+}
+.header .pice img{
+  width: 100%;
+  height: 100%;
+}
+.cont{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: -0.2rem;
+  z-index: -1;
+}
+.tuxiang{
+  width: 100%;
+  margin: 0 auto;
+  height: 5.68rem;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.tuxiang .top{
+  width: 100%;
+  margin-top: 1.0rem;
+  overflow: hidden;
+}
+.top .img1{
+  display: block;
+    width: 1.97rem;
+    height: 1.97rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: #D3CAC2;
+}
+.img1 img{
+  width: 1.91rem;
+  height: 1.91rem;
+  margin-left: 0.03rem;
+    margin-top: 0.03rem;
+  border-radius: 50%;
+}
+.shoucang{
+  margin-left: 1.06rem;
+  float: left;
+  
+}
+.opcative{
+  width: 100%;
+  height: 5.68rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #333;
+  opacity: 0.4;
+
+}
+.zhengshu,.shoucang{
+  height: 0.9rem;
+  width: 0.9rem;
+  background-color: rgba(71, 70, 64, 0.4);
+  margin-top: 0.7rem;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 0.28rem;
+  border: 1px solid #ffffff;
+  font-family: PingFang-SC-Regula;
+}
+.zhengshu{
+  float: right;
+  margin-right: 1.06rem;
+}
+ .small{
+  display: block;
+   margin: 0 auto;
+  width: 0.6rem;
+  display: block;
+  text-align: center;
+  /* border: 1px solid #474640; */
+}
+.p1,.p3{
+  margin-top: 0.23rem;
+  height: 0.24rem;
+  line-height: 0.24rem;
+}
+.p2,.p4{
+  margin-top: 0.10rem;
+  height: 0.21rem;
+  line-height: 0.21rem;
+  font-family: PingFang-SC-Medium;
+}
+.bottom{
+  width: 2.45rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.bottom h3{
+  /* height: 0.36rem; */
+ font-family: PingFang-SC—Medium;
+ font-size: 0.36rem;
+ color: #ffffff;
+ text-align: center;
+ line-height: 0.35rem;
+ margin-top: 0.4rem;
+}
+.bottom span{
+  width: 100%;
+  height: 0.5rem;
+  display: block;
+  margin-top: 0.2rem;
+}
+.bottom span img{
+  height: 100%;
+  width: 1.5rem;
+  display: block;
+  margin: 0 auto;
+}
+.bottom span p{
+  width: 0.88rem;
+  height: 0.22rem;
+  line-height: 0.22rem;
+  display: block;
+  margin-top: -0.3rem;
+  margin-left:  1.0rem;
+  font-family: PingFang-SC—Medium;
+  font-size: 0.22rem;
+  color: #ffffff;
+}
+.bottom a{
+  display: block;
+  height: 0.6rem;
+  border: 1px solid #ffffff;
+  margin-top: 0.5rem;
+  border-radius: 0.2rem;
+}
+.bottom a p{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  color: #ffffff;
+  font-family: PingFang-SC—Medium;
+  font-size: 0.33rem;
+  line-height: 0.6rem;
+  
+}
+.fenge{
+  overflow: hidden;
+    width: 100%;
+    height: 0.95rem;
+    margin-top: -0.6rem;
+    background-color: #ffffff;
+    border-top-left-radius: 0.2rem;
+    border-top-right-radius: 0.2rem;
+    border-bottom: 1px solid #F8F8F8;
+}
+.fenge .jineng{
+  width:0.90rem;
+  height: 0.3rem;
+  margin-top: 0.4rem;
+  margin-left: 0.3rem;
+} 
+.fenge .jineng span{
+  text-align: center;
+  display: block;
+  color: #333333;
+  height: 0.3rem;
+  font-family: PingFang-SC—Medium;
+  line-height: 0.3rem;
+  float: left;
+}
+.first{
+  font-size: 0.3rem;
+  width: 0.6rem;
+}
+.DAN{
+  height: 100%;
+  float: left;
+  font-size: 0.24rem;
+  line-height: 0.28rem;
+  color: #474747;
+}
+.fenge .jineng .last{
+  margin-left: 0.1rem;
+  font-size: 0.28rem;
+}
+.content{
+  width: 100%;
+
+  background-color: #ffffff;
+}
+.content .JN1{
+  width: 6.9rem;
+  height: 3.08rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.pic{
+  width: 2.56rem;
+  height: 2.56rem;
+  margin-top: 0.3rem;
+  float: left;
+}
+.pic img{
+  width: 100%;
+  height: 100%;
+}
+.right{
+  /* width: 3.07rem; */
+  height: 2.56rem;
+  float: left;
+  margin-top: 0.3rem;
+  margin-left: 0.64rem;
+}
+.right h1{
+  /* width: 1.7rem; */
+    width: 100%;
+    /* height: 0.36rem; */
+  line-height: 0.36rem;
+  /* text-align: center; */
+  font-family: PingFang-SC—Bold;
+  font-size: 0.33rem;
+  color: #333333;
+}
+.right .DZan{
+  width: 100%;
+  height: 0.25rem;
+  margin-top: 0.23rem;
+}
+.right .DZan ul{
+  float: left;
+    height: 100%;
+    width: 1.35rem;
+}
+.right .DZan ul li{
+  height: 100%;
+  width: 0.25rem;
+  float: left;
+  margin-right: 0.02rem;
+}
+.right .DZan ul li img{
+  width: 100%;
+  height: 100%;
+}
+.right .DZan .startLevel{
+  width: 0.38rem;
+  height: 100%;
+  display: block;
+  text-align: center;
+  float: left;
+  line-height: 0.25rem;
+  font-family: PingFang-SC—Regular;
+  font-size: 0.24rem;
+  color: #474747;
+}
+.right .DZan p{
+  display: block;
+  height: 100%;
+  width: 0.72rem;
+  line-height: 0.25rem;
+  float: left;
+  font-family: PingFang-SC—Regular;
+  font-size: 0.24rem;
+  color: #474747;
+  margin-left: 0.2rem;
+}
+.fuwu{
+  display: block;
+  height: 100%;
+  width: 0.4rem;
+  line-height: 0.25rem;
+  float: left;
+  font-family: PingFang-SC—Regular;
+  font-size: 0.24rem;
+  color: #474747;
+}
+ .right .home{
+  width: 1.11rem;
+  height: 0.34rem;
+  border: 1px solid #F85E5E;
+  margin-top: 0.28rem;
+  border-radius: 5px; 
+  line-height: 0.3rem;
+  text-align: center;
+  font-family: PingFang-SC—Bold;
+  font-size: 0.24rem;
+  color: #f44040;
+}
+.right .jiage{
+  width: 1.3rem;
+  height: 0.33rem;
+  margin-top: 0.8rem;
+  font-family: PingFang-SC—Bold;
+  color: #f44040;
+}
+.right .jiage span{
+  display: block;
+  /* float: left; */
+  font-family: PingFang-SC—Bold;
+  color: #f44040;
+}
+.one{
+  width: 0.2rem;
+  float: left;
+  height: 100%;
+  font-size: 0.24rem;
+}
+.two{
+  line-height: 0.33rem;
+  height: 100%;
+  width: 1.07rem;
+  float: left;
+  font-size: 0.33rem;
+  margin-left: 0.03rem;
+}
+.hidden{
+  display: none;
+}
+.TOP{
+  height: 1.2rem;
+    width: 100%;
+    background-color: #F1F1F1;
+    top: 0;
+    left: 0;
+}
+  

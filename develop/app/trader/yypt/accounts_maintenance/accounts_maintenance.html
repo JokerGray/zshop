@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>收支项目维护</title>
+    <!--<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="../../assets/layui-v2.2.2/css/layui.css">
+    <!--<link href="../../assets/hplus/css/plugins/iCheck/custom.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/accounts_maintenance.css">
+</head>
+<body>
+    <div class="main-wapper layui-row">
+        <div class="hearder layui-clear">
+            <ul class="layui-form layui-col-md12">
+                <li class="layui-col-md3 layui-col-lg2">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" for="">收支类别:</label>
+                        <div class="layui-input-block">
+                            <select class="layui-input" id="incOrExp_search">
+                                <option value="">全部</option>
+                                <option value="1">收入</option>
+                                <option value="2">支出</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md3 layui-col-lg2">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" for="">账目类型:</label>
+                        <div class="layui-input-block" >
+                            <input type="text" class="layui-input" id="accountCategoryName_search">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md3 layui-col-lg2">
+                    <div class="layui-form-item">
+                        <button class="layui-btn main-color-bg ml25" id="searchBtn">查询</button>
+                        <button class="layui-btn main-color-bg ml25" id="restBtn">重置</button>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="btn-box">
+                <button class="layui-btn" id="addBtn">新增</button>
+            </div>
+            <div class="table-box">
+                <div id="tableNo" lay-filter="tableNo" class="layui-table">
+                </div>
+                <div id="laypageLeft" class="bg-white layui-clear"></div>
+            </div>
+
+        </div>
+    </div>
+    <!--新增模板-->
+    <div id="addDemo" class="addDemo layui-form" lay-filter="addDemo">
+        <ul class="">
+            <li class="layui-form-item">
+                <label class="layui-form-label" for="">收支类别:</label>
+                <div class="layui-input-block">
+                    <select class="layui-input" id="incOrExp" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="1">收入</option>
+                        <option value="2">支出</option>
+                    </select>
+                </div>
+            </li>
+            <li class="layui-form-item">
+                <label class="layui-form-label" for="">账目类型:</label>
+                <div class="layui-input-block">
+                    <input type="text" id="accountCategoryName" maxlength="24" class="layui-input" lay-verify="required">
+                </div>
+            </li>
+            <li class="layui-form-item">
+                <label class="layui-form-label" for="">备注:</label>
+                <div class="layui-input-block">
+                    <textarea name="" id="remarks" class="layui-textarea"  maxlength="100" cols="30" rows="10">
+                    </textarea>
+                </div>
+            </li>
+        </ul>
+        <div>
+            <button class="layui-btn main-color-bg p35" lay-submit="" lay-filter="sub">确认</button>
+            <button class="layui-btn bgf3 p35" id="cancel">取消</button>
+        </div>
+    </div>
+<script type="text/html" id="barDemo">
+    {{# if(d.merchantId != 0){ }}
+    <button class="layui-btn layui-btn-sm layui-circle circle" lay-event="edit"> <i class="layui-icon">&#xe642;</i></button>
+    <button class="layui-btn layui-btn-sm layui-circle circle" lay-event="del"> <i class="layui-icon">&#x1006;</i></button>
+    {{# } }}
+</script>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<!--<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>-->
+<script src="../../assets/layui-v2.2.2/layui.js"></script>
+<!--<script src="../../assets/hplus/js/plugins/iCheck/icheck.min.js"></script>-->
+<script src="../common/js/jquery.nicescroll.js"></script>
+<script src="../common/js/util.js"></script>
+<!-- <script type="text/javascript" src="../../assets/_common/zxcity_ms.js"></script>-->
+<script src="js/accounts_maintenance.js"></script>
+</body>
+</html>

@@ -1,0 +1,681 @@
+@import "index.less";
+.main {
+    margin-top: 44px;
+    h2.articleTitle {
+        line-height: 40px;
+        font-size: 30px;
+        margin-top: 12px;
+        margin-bottom: 4px;
+        color: #333;
+        font-weight: 700;
+        position: relative;
+        display: block;
+        p{
+            width: 678px
+        }
+        span {
+            color: #999;
+            font-size: 24px;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+    .artcleDescri {
+        font-size: 14px;
+        margin: 20px 0;
+        .artcleDescriTit {
+            width: 130px;
+            p {
+                position: relative;
+                padding-left: 40px;
+                color: #878787;
+            }
+            p::before {
+                content: '';
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                top: -7px;
+                left: 0;
+            }
+            .startTime::before {
+                background: url(../img/start.png) no-repeat center center;
+            }
+            .endTime::before {
+                background: url(../img/end.png) no-repeat center center;
+            }
+            .voteRule::before {
+                background: url(../img/guize.png) no-repeat center center;
+            }
+            .voteDesc::before {
+                background: url(../img/miaoshu.png) no-repeat center center;
+            }
+        }
+        .artcleDescriCont {
+            width: 630px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+    }
+    .articleInfo {
+        height: 52px;
+        line-height: 52px;
+        overflow: hidden;
+        margin: 20px 0;
+        .articleAvatar {
+            width: 52px;
+            height: 52px;
+            display: block;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .articleAuthor {
+            font-size: 14px;
+            margin-right: 20px;
+            p {
+                height: 26px;
+                line-height: 26px;
+            }
+        }
+        // .follow {
+        //     width: 100px;
+        //     height: 40px;
+        //     display: block;
+        //     margin-top: 6px;
+        //     cursor: pointer;
+        //     background-size: 80px 35px;
+        //     background: url(../img/follow.png) center center no-repeat;
+        //     &.active {
+        //         background: url(../img/followed.png) center center no-repeat;
+        //     }
+        // }
+    }
+    .articleContent,
+    .articleContent>div {
+        font-size: 16px;
+        line-height: 28px;
+        color: #222;
+        word-wrap: break-word;
+        &>p {
+            margin: 16px 0;
+        }
+        img,
+        video {
+            max-width: 100% !important;
+            display: block;
+            margin: 10px auto;
+        }
+    }
+    .voteBox {
+        padding: 40px 0;
+        .voteSearchBox {
+            .searchVote {
+                padding: 14px 16px;
+                border: 1px solid #D2D2D2;
+                border-radius: 4px;
+                width: 630px;
+                margin-left: 30px;
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+            .searchVoteBtn {
+                height: 49px;
+                margin-left: 10px;
+            }
+        }
+        .voteList {
+            padding: 0 35px;
+            position: relative;
+            overflow: hidden;
+            font-size: 16px;
+            .swiper-button-prev, .swiper-container .swiperBtn {
+                width: 26px;
+                height: 44px;
+                position: absolute;
+                top: 50%;
+                margin-top: -22px;
+                cursor: pointer;
+            }
+            .swiper-button-prev, .swiper-container .swiper-button-prev {
+                left: 0px;
+                background: url(../img/zuofan.png);
+            }
+            .swiper-button-prev, .swiper-container .swiper-button-next {
+                right: 0px;
+                background: url(../img/youfan.png);
+            }
+            .multiVoteUl {
+                ul {
+                    min-width: 2000px;
+                    height: 740px;
+                    li {
+                        width: 690px;
+                        height: 100%;
+                        display: flex;
+                        flex-flow: row wrap;
+                        align-content: flex-start;
+                        box-sizing: border-box;
+                        div {
+                            background-color: white;
+                            flex: 0 0 31.88%;
+                            width: 222px;
+                            box-shadow: -15px 15px 10px -15px #706665;
+                            border: 1px solid #D7D7D7;
+                            margin-left: 10px;
+                            margin-bottom: 10px;
+                            height: 360px;
+                            border-radius: 10px;
+                            padding: 10px;
+                            font-size: 16px;
+                            img {
+                                width: 100%;
+                                height: 230px;
+                                border-radius: 10px;
+                                cursor: pointer;
+                            }
+                            .voteLNum {
+                                color: #575376;
+                                font-weight: 900;
+    
+                            }
+                            .voteTicketIcon {
+                                position: relative;
+                                color: #ED242A;
+                                padding-left: 25px;
+                            }
+                            .voteTicketIcon::before {
+                                content: '';
+                                width: 20px;
+                                height: 20px;
+                                position: absolute;
+                                top: -1px;
+                                left: 0;
+                                background: url(../img/hot.png) no-repeat center center;
+                            }
+                            p {
+                                margin-top: 10px;
+                            }
+                            .voteLBtn {
+                                padding: 5px 18px;
+                                color: #9272f9;
+                                border: 2px solid #9272f9;
+                                border-radius: 5px;
+                                font-size: 14px;
+                                margin-left: 70px;
+                                margin-top: 10px;
+                            }
+                            .voteLBtn.active {
+                                color: #cccccc;
+                                border: 2px solid #cccccc;
+                            }
+                        }
+                    }
+                }
+            }
+            .doneMultiVoteUl {
+                padding: 10px 0;
+                li {
+                    box-shadow: -10px 15px 10px -15px #706665;
+                    width: 100%;
+                    padding: 10px 60px 10px 20px;
+                    font-size: 16px;
+                    font-weight: 900;
+                    border-left: 1px solid #EBEBEB;
+                    border-radius: 15px;
+                    span:first-child {
+                        display: inline-block;
+                        width: 30px;
+                        height: 30px;
+                        line-height: 30px;
+                        text-align: center;
+                        background-color: #ee5454;
+                        color: #fff;
+                        border-radius: 4px;
+                        margin-right: 20px;
+                    }
+                    img {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 8px;
+                        margin-right: 20px;
+                    }
+                    .dVnum {
+                        color: #54537f;
+                        margin: 0 20px;
+                    }
+                    .dVtotalTick {
+                        display: inline-block;
+                        height: 60px;
+                        line-height: 60px;
+                        position: relative;
+                        padding-left: 25px;
+                    }
+                    .dVtotalTick::before {
+                        content: '';
+                        width: 20px;
+                        height: 20px;
+                        position: absolute;
+                        top: 17px;
+                        left: 0;
+                        background: url(../img/hot.png) no-repeat center center;
+                    }
+                }
+            }
+            .singleVote {
+                border-right: 1px solid #E6E6E6;
+                border-left: 1px solid #E6E6E6;
+                border-bottom: 1px solid #E6E6E6;
+                border-radius: 15px;
+                padding: 0 20px;
+                ul {
+                    li {
+                        padding: 20px 20px 20px 50px;
+                        position: relative;
+                        border-bottom: 1px solid #E6E6E6;
+                        .radio {
+                            display: inline-block;
+                            width: 20px;
+                            height: 20px;
+                            background: url(../img/ty.png) no-repeat center center;
+                            background-size: 20px 20px;
+                            position: absolute;
+                            top: 20px;
+                            left: 10px;
+                            margin: 0;
+                        }
+                        .radio.checked {
+                            background: url(../img/purpleradio.png) no-repeat center center;
+                            background-size: 20px 20px;
+                        }
+                    }
+                }
+                .singleVBtn {
+                    width: 100%;
+                    text-align: center;
+                    padding: 30px 0;
+                    button {
+                        display: inline-block;
+                        padding: 6px 30px;
+                        border: 2px solid #9071FA;
+                        color: #9071FA;
+                        border-radius: 8px;
+                    }
+                }
+            }
+            .doneSingleVote {
+                ul {
+                    border-right: 1px solid #E6E6E6;
+                    border-left: 1px solid #E6E6E6;
+                    border-bottom: 1px solid #E6E6E6;
+                    border-radius: 15px;
+                    padding: 0 10px;
+                    li {
+                        font-size: 16px;
+                        padding: 20px 20px 20px 40px;
+                        border-bottom: 1px solid #E6E6E6;
+                        position: relative;
+                        .singleVotenum {
+                            width: 25px;
+                            height: 25px;
+                            line-height: 25px;
+                            text-align: center;
+                            background-color: #EF5354;
+                            color: #ffffff;
+                            border-radius: 5px;
+                            position: absolute;
+                            left: 0;
+                            top: 25px;
+                        }
+                        p {
+                            span {
+                                color: #989898;
+                                font-size: 14px;
+                                margin-left: 5px;
+                            }
+                        }
+                        .progressBar {
+                            height: 30px;
+                            line-height: 30px;
+                            .outBar {
+                                width: 430px;
+                                height: 5px;
+                                background-color: #cdcdcd;
+                                position: relative;
+                                margin-top: 13px;
+                                .innerBar {
+                                    background-color: #a6dcfe;
+                                    height: 5px;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                }
+                            }
+                            span {
+                                color: #989898;
+                                margin-left: 30px;
+                            }
+                        }
+                        .voteTIcon {
+                            position: relative;
+                            color: #ED242A;
+                            padding-left: 25px;
+                            margin-top: 3px;
+                            margin-left: 20px;
+                        }
+                        .voteTIcon::before {
+                            content: '';
+                            width: 20px;
+                            height: 20px;
+                            position: absolute;
+                            top: -1px;
+                            left: 0;
+                            background: url(../img/hot.png) no-repeat center center;
+                        }
+                    }
+                    li:last-child {
+                        border-bottom: 0;
+                    }
+                }
+                .doneVoteFlag {
+                    text-align: center;
+                    font-size: 18px;
+                    color: #9b9b9b;
+                    padding-top: 20px;
+                }
+            }
+            .voteTotalPage {
+                margin-top: 20px;
+                text-align: center;
+                font-size: 16px;
+                span {
+                    margin: 0 10px;
+                }
+            }
+        }
+    }
+}
+.votePlayerInfo {
+    .votePlayerIBox {
+        width: 1200px;
+        height: 800px;
+        margin-top: 80px;
+        .vpModalHeader {
+            position: relative;
+            button {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: #c0c0c0;
+                color: #fff;
+                font-size: 40px;
+                font-weight: 100;
+                text-align: center;
+                line-height: 10px;
+                position: absolute;
+                right: -15px;
+                top: -15px;
+                opacity: 1;
+                span {
+                    display: inline-block;
+                    line-height: 10px;
+                    height: 16px;
+                }
+
+            }
+        }
+        .votePlayerImgBox {
+            width: 800px;
+            height: 800px;
+            .vpSwiperBig {
+                height: 80%;
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                .swiper-slide {
+                    width: 800px;
+                    height: 640px;
+                    background-size: cover;
+                    background-position: center;
+                }
+                .swiper-slide-active {
+                    opacity: 1;
+                }
+            }
+            .vpSwiperSmall {
+                width: 100%;                    
+                height: 20%;
+                padding: 10px 0;
+                background-color: black;
+                .swiper-slide {
+                    width: 200px;
+                    height: 140px;
+                    opacity: 0.4;
+                    background-size: cover;
+                    background-position: center;
+                }
+                .swiper-slide-active {
+                    opacity: 1;
+                }
+            }
+        }
+        .votePlayerCon {
+            height: 800px;
+            width: 398px;
+            font-size: 16px;
+            padding: 10px 22px 20px 20px;
+            position: relative;
+            .votePlayerCTit {
+                display: inline-block;
+                width: 25%;
+                color: #878787;
+                p {
+                    text-align: center;
+                    padding-bottom: 20px;
+                }
+            }
+            .votePlayerCAns {
+                display: inline-block;
+                width: 75%;
+                p {
+                    padding-bottom: 20px;
+                }
+            }
+            .vpBtnBox {
+                position: absolute;
+                width: 356px;
+                bottom: 120px;
+                text-align: center;
+                button {
+                    padding: 7px 45px;
+                    border: 3px solid #9272f9;
+                    border-radius: 8px;
+                    color: #9272f9;
+                    font-size: 18px;
+                    font-weight: 900;
+                }
+                button.active {
+                    color: #cccccc;
+                    border: 2px solid #cccccc;
+                }
+            }
+        }
+    }
+}
+
+.answerBox {
+    font-size: 14px;
+    .answerBoxAuthor {
+        margin: 20px 0;
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        p {
+            margin-top: 5px;
+            color: #7E7E7E;
+        }
+        p:nth-child(2) {
+            font-weight: 600;
+        }
+        .follow {
+            width: 80px;
+            height: 35px;
+            display: block;
+            margin-top: 8px;
+            cursor: pointer;
+            background: url(http://192.168.11.22:1088/img/follow.png) center center no-repeat;
+            background-size: 80px 35px;
+            background-size: contain;
+            &.active {
+                background: url(../img/followed.png) center center no-repeat;
+                background-size: 80px 35px;
+            }
+        }
+    }
+    .answerBoxInfo {
+        p {
+            margin-bottom: 20px;
+        }
+        .answerBottom {
+            margin-top: 20px;
+            height: 30px;
+            line-height: 30px;
+            .answerDatas {
+                span {
+                    color: #9A9A9A;
+                    padding: 0 7px 0 10px;
+                    border-left: 1px solid #E5E5E5;
+                }
+                span:first-child {
+                    padding-left: 0;
+                    border-left: 0;
+                }
+            }
+        }
+        .answerContent {
+            width: 760px;
+            word-wrap: break-word; 
+            img {
+                display: block;
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+.quesAnswerBox {
+    .answerTab {
+        span {
+            font-size: 18px;
+            font-weight: 900;
+            padding-left: 15px;
+            border-left: 4px solid #F37578;
+        }
+    }
+    .infoAnswerTab {
+        padding: 0 100px;
+        border-bottom: 1px solid #DADADA;
+        margin-top: 10px;
+        span {
+            display: inline-block;
+            color: #FF7070;
+            padding-bottom:3px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        span:nth-child(2) i {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-image: url(../images/click.png);
+            background-size: 15px;
+            margin-right: 5px;
+        }
+        span.active {
+            border-bottom: 3px solid #FF7070;
+        }
+    }
+    .answerList {
+        position: relative;
+        .moreAnsBtn {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #fff;
+            opacity: 0.6;
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            color: #3f88f1;
+            i {
+                display: inline-block;
+                position: relative;
+                width: 30px;
+                height: 15px;
+                left: 45px;
+                bottom: 20px;
+            }
+            i:before, i:after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                left: 0;
+            }
+            i::before {
+                top: 3px;
+                border-top: 13px solid #3f88f1;
+                border-bottom: 13px solid transparent;
+                border-left: 13px solid transparent;
+                border-right: 13px solid transparent;
+            }
+            i::after {
+                top: 0;
+                border-top: 13px solid #fff;
+                border-bottom: 13px solid transparent;
+                border-left: 13px solid transparent;
+                border-right: 13px solid transparent;
+            }
+        }
+    }
+}
+
+.editorBox {
+    position: relative;
+    margin: 20px 0 10px 0;
+    .editorBtn {
+        position: absolute;
+        right: 20px;
+        bottom: 30px;
+        background-color: #2FD7C6;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 0px #2FD7C6!important;
+    }
+}
+
+.r_list {
+    .content {
+        vertical-align: top;
+        position: relative;
+        div {
+            position: absolute;
+            bottom: 0;
+            span {
+                vertical-align: middle;
+                text-align: right;
+                display: inline-block;
+                margin-left: 135px;
+            }
+            img {
+                width: 50px;
+                height: 20px;
+            }
+        }
+    }
+} 

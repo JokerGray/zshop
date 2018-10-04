@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+  <title>公告设置</title>
+  <link rel="stylesheet" type="text/css" href="../common/css/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../common/css/layui-v2.1.2/css/layui.css">
+  <link rel="stylesheet" type="text/css" href="../common/multiple-select/multiple-select.css">
+  <link rel="stylesheet" type="text/css" href="css/announcementSetting.css">
+</head>
+<body>
+<div id="announcement">
+  <div class="title">
+    <p>公告设置</p>
+    <button class="btn">添加管理员</button>
+  </div>
+  <div class="table-container">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>名称</th>
+        <th>管辖范围</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>老板</td>
+        <td>朵以彩妆、朵以武昌店</td>
+        <td>
+          <a href="javascript:void(0)" class="edit">编辑</a>
+          <a href="javascript:void(0)" class="delete">取消管理员</a>
+        </td>
+      </tr>
+      <tr>
+        <td>老板</td>
+        <td>朵以彩妆、朵以武昌店</td>
+        <td>
+          <a href="javascript:void(0)">编辑</a>
+          <a href="javascript:void(0)">取消管理员</a>
+        </td>
+      </tr>
+      <tr>
+        <td>老板</td>
+        <td>朵以彩妆、朵以武昌店</td>
+        <td>
+          <a href="javascript:void(0)">编辑</a>
+          <a href="javascript:void(0)">取消管理员</a>
+        </td>
+      </tr>
+      <tr>
+        <td>老板</td>
+        <td>朵以彩妆、朵以武昌店</td>
+        <td>
+          <a href="javascript:void(0)">编辑</a>
+          <a href="javascript:void(0)">取消管理员</a>
+        </td>
+      </tr>
+      <tr>
+        <td>老板</td>
+        <td>朵以彩妆、朵以武昌店</td>
+        <td>
+          <a href="javascript:void(0)">编辑</a>
+          <a href="javascript:void(0)">取消管理员</a>
+        </td>
+      </tr>
+      <tr>
+        <td>老板</td>
+        <td>朵以彩妆、朵以武昌店</td>
+        <td>
+          <a href="javascript:void(0)">编辑</a>
+          <a href="javascript:void(0)">取消管理员</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prompt">
+    <div class="subtitle">温馨提示</div>
+    <ul>
+      <li>默认情况下</li>
+      <li>1、单店经理发的公告,本店所有人见</li>
+      <li>2、多店经理发的公告,所管辖的店铺的所有人可见</li>
+      <li>3、老板发的公告</li>
+    </ul>
+  </div>
+</div>
+
+<!--添加管理员弹窗-->
+<div id="details-1" style="display: none;">
+  <div class="title">
+    <button class="btn active">指定角色</button>
+    <button class="btn">指定个人</button>
+  </div>
+  <div class="edit-area">
+    <form role="form" class="form-horizontal" id="template-1">
+      <div class="form-group">
+        <div class="row">
+          <label class="control-label col-xs-2">选择店铺：</label>
+          <div class="col-xs-4">
+            <select class="form-control">
+              <option>请选择角色</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <label class="control-label col-xs-2">管辖范围：</label>
+          <div class="col-xs-4">
+            <select class="form-control">
+              <option>请选择</option>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            <select class="form-control">
+              <option>选择店铺</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+    <form role="form" class="form-horizontal" id="template-2" style="display: none;">
+      <div class="form-group">
+        <div class="row">
+          <label class="control-label col-xs-2">选择店铺：</label>
+          <div class="col-xs-4">
+            <select class="form-control">
+              <option>请选择角色</option>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            <select class="form-control">
+              <option>请选择员工</option>
+            </select>
+          </div>
+        </div>
+        <div class="choose-area">
+          <div class="subtitle">已选员工</div>
+          <div class="choose-container">
+            <p class="item-name">
+              汪佳佳
+              <i class="delete">X</i>
+            </p>
+            <p class="item-name">
+              汪佳佳
+              <i class="delete">X</i>
+            </p>
+            <p class="item-name">
+              汪佳佳
+              <i class="delete">X</i>
+            </p>
+            <p class="item-name">
+              汪佳佳
+              <i class="delete">X</i>
+            </p>
+            <p class="item-name">
+              汪佳佳
+              <i class="delete">X</i>
+            </p>
+            <p class="item-name">
+              汪佳佳
+              <i class="delete">X</i>
+            </p>
+            <p class="item-name">
+              汪佳佳
+              <i class="delete">X</i>
+            </p>
+
+          </div>
+        </div>
+        <div class="row">
+          <label class="control-label col-xs-2">管辖范围：</label>
+          <div class="col-xs-4">
+            <select class="form-control">
+              <option>请选择</option>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            <select class="form-control">
+              <option>选择店铺</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="prompt">
+    <div class="subtitle">温馨提示</div>
+    <ul>
+      <li>默认情况下</li>
+      <li>1、单店经理发的公告,本店所有人见</li>
+      <li>2、多店经理发的公告,所管辖的店铺的所有人可见</li>
+      <li>3、老板发的公告</li>
+    </ul>
+  </div>
+</div>
+
+<!--编辑弹窗-->
+<div id="details-2" style="display: none;">
+  <form role="form" class="form-horizontal">
+    <div class="form-group">
+      <div class="row">
+        <label class="control-label col-xs-2">名称</label>
+        <div class="col-xs-4">
+          <span class="form-control">老板</span>
+        </div>
+      </div>
+      <div class="row">
+        <label class="control-label col-xs-2">管辖范围</label>
+        <div class="col-xs-4">
+          <select class="form-control">
+            <option>请选择</option>
+          </select>
+        </div>
+        <div class="col-xs-4">
+          <select class="form-control">
+            <option>选择店铺</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="prompt">
+    <div class="subtitle">温馨提示</div>
+    <ul>
+      <li>默认情况下</li>
+      <li>1、单店经理发的公告,本店所有人见</li>
+      <li>2、多店经理发的公告,所管辖的店铺的所有人可见</li>
+      <li>3、老板发的公告</li>
+    </ul>
+  </div>
+</div>
+
+<script type="text/javascript" src="../common/js/jquery-1.11.1.min.js"></script>
+<!--<script type="text/javascript" src="../common/css/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/js/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript"
+        src="../common/js/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js"></script>-->
+<script type="text/javascript" src="../common/css/layui-v2.1.2/layui.all.js"></script>
+<script type="text/javascript" src="../common/js/util.js"></script>
+<script type="text/javascript" src="../common/multiple-select/multiple-select.js"></script>
+<script type="text/javascript" src="js/announcementSetting.js"></script>
+</body>
+</html>

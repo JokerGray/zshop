@@ -1,0 +1,141 @@
+.search-bar {
+	overflow: hidden;
+	padding: 10px 20px 30px;
+}
+.table thead th, .table tbody td {
+	text-align: center;
+}
+.table thead th {
+	background-color: #FE6869;
+	color: #FFFFFF;
+	font-size: 16px;
+	border-bottom: none!important;
+}
+.pageview {
+	text-align: center;
+}
+
+.echats-wrap {
+	position: relative;
+}
+.tab-box {
+	height:auto;
+	overflow: hidden;
+	padding: 10px;
+	text-align: center;
+}
+.tab-box .tab-box-colspan {
+	display: inline-block;
+	overflow: hidden;
+}
+.tab-box .tab-box-colspan li {
+	display: inline-block;
+	background-color: #FE6869;
+	padding: 1px;
+	float: left;
+	text-align: center;
+}
+.tab-box .tab-box-colspan li:first-child {
+	padding-right: 0;
+}
+.tab-box .tab-box-colspan li:last-child {
+	padding-left: 0;
+}
+.tab-box .tab-box-colspan li a {
+	display: block;
+	width: 100px;
+	height: 36px;
+	line-height: 36px;
+	color: #FE6869;
+	background-color: #FFFFFF;
+	font-size: 16px;
+}
+.tab-box .tab-box-colspan li.active {
+	background-color: #FE6869;
+}
+.tab-box .tab-box-colspan li.active a {
+	color: #FFFFFF;
+	background-color: #FE6869;
+}
+.date-wrap{
+	text-align:center;
+	margin-bottom:0.5rem;
+}
+.date-wrap .datetime{
+	display: inline-block;
+    width: 7.5rem;
+    margin-bottom: 0;
+}
+
+.tab-box.absolute {
+	position: absolute;
+	right: 5%;
+	top: 5px;
+	padding: 0;
+	z-index: 99999;
+}
+.tab-box.absolute .tab-box-colspan {
+	width: 160px;
+}
+.tab-box.absolute .tab-box-colspan li {
+	background-color: #d98b41;
+}
+.tab-box.absolute .tab-box-colspan li a {
+	width: 50px;
+	height: 22px;
+	line-height: 22px;
+	color: #d98b41;
+	background-color: #FFFFFF;
+}
+.tab-box.absolute .tab-box-colspan li.active {
+	background-color: #d98b41;
+}
+.tab-box.absolute .tab-box-colspan li.active a {
+	color: #FFFFFF;
+	background-color: #d98b41;
+}
+.echats-salesconsumption {
+	position: relative;
+	width: 90%;
+	margin: 0 auto;
+	height: 250px;
+}
+.echats-pie {
+	height: 300px;
+}
+.pie-wrap {
+	position: relative;
+}
+.pie-wrap .date-box{
+	height:40px;
+}
+
+.echats-date-wrap {
+	height: 40px;
+}
+
+.echats-pie .nodata {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+}
+.echats-pie .nodata p {
+	color: #999999;
+	margin: 0;
+}
+.layui-layer-dialog .layui-layer-content {
+	font-size: 16px;
+	padding: 20px;
+	line-height: 1.4275;
+}
+.startTime, .endTime {
+	width: 120px!important;
+}
+.date-selector{
+	position:absolute;
+	top:-6px;
+	right:30%;
+}

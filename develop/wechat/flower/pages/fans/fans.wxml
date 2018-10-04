@@ -1,0 +1,38 @@
+<!--pages/fans/fans.wxml-->
+<view class='msg-box' wx:for='{{commentList}}' wx:for-index="index" wx:for-item="item" wx:key='id'>
+    <view class='msg-item'>
+        <view class='msg-img msg-img-head'>
+            <image src='{{item.userPice}}'></image>
+        </view>
+        <view class='msg-text'>
+            <view class='msg-title'>
+                <text class='msg-h3'>{{item.userName}}</text>
+                <view class='msg-time msg-fans'>
+                    <text>粉丝: {{item.fansNum}}</text><text>关注: {{item.followNum}}</text>
+                <!-- {{item.time}} -->
+                </view>
+            </view>
+            <view class='msg-content' bindtap='userinfoFollowMe'>
+                <block wx:if="{{item.concern == ture}}">
+                    <view class='fans-content '>
+                        <image src='/images/add.png'></image><text>关注</text>
+                    </view>
+                </block>
+                <block wx:if="{{item.concern == false}}">
+                    <view class='fans-content fans-content1'>
+                        <image src='/images/yes.png'></image><text>已关注</text>
+                    </view>
+                </block>
+                 <!-- <block wx:if="{{item.concern}}">
+                    <view class='fans-content fans-content2'>
+                        <image src='/images/exchange.png'></image><text>互相关注</text>
+                    </view>
+                </block> -->
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="weui-loadmore" wx:if='{{commentList.length==0}}'>
+   <view class="weui-loadmore__tips">暂无数据</view>
+</view>

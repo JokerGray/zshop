@@ -1,0 +1,415 @@
+body {
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+/**title和关闭按钮*/
+.header {
+  width: 100%;
+  height: 40px;
+  background-color: #5e637a;
+  line-height: 40px;
+  padding: 0 10px 0 20px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+.header > span {
+  float: left;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+.header > i {
+  float: right;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+}
+/**路径显示和tabNav按钮*/
+.path-radio {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+  margin-top: 40px;
+}
+.path-radio .path {
+  float: left;
+  font-size: 16px;
+  color: #333333;
+}
+.path-radio .path i {
+  font-family: SimSun;
+  font-weight: 700;
+}
+.path-radio .radioBtn {
+  float: right;
+}
+.path-radio .radioBtn ul li {
+  float: left;
+  margin-left: 20px;
+  font-size: 14px;
+  color: #333333;
+  cursor: pointer;
+}
+.path-radio .radioBtn ul li i {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #dddddd;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background-color: #fff;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.path-radio .radioBtn ul li.active i {
+  border: 6px solid #1e9fff;
+}
+/**主要内容*/
+.main {
+  padding: 0 20px;
+}
+.main .inShop {
+  display: none;
+}
+/**统计概览*/
+.overview {
+  width: 100%;
+}
+.overview ul li {
+  float: left;
+  width: 400px;
+  height: 98px;
+  background-color: #fff;
+  padding: 16px 20px;
+  margin-top: 20px;
+}
+.overview ul li div {
+  float: left;
+}
+.overview ul li div:first-of-type {
+  width: 46px;
+  height: 46px;
+  background: url("../images/ic_xscjbishu.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.overview ul li div:nth-of-type(2) {
+  margin-left: 10px;
+}
+.overview ul li div:nth-of-type(2) p {
+  font-size: 15px;
+  color: #333333;
+}
+.overview ul li div:nth-of-type(2) h4 {
+  font-size: 26px;
+  color: #333333;
+  font-weight: 700;
+  margin-top: 16px;
+}
+.overview ul li div:nth-of-type(3) {
+  float: right;
+  color: #666666;
+}
+.overview ul li:nth-of-type(2) {
+  margin: 20px 40px 0 40px;
+}
+.overview ul li:nth-of-type(2) div:first-of-type {
+  background: url("../images/ic_yjsdingdan.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.overview ul li:nth-of-type(3) div:first-of-type {
+  background: url("../images/ic_wjsdingdan.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+/**订单走势图*/
+.orderTrend {
+  width: 100%;
+  height: 300px;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+  margin-top: 20px;
+}
+.orderTrend > div {
+  width: 100%;
+  height: 100%;
+}
+/**报表*/
+.reportContent {
+  background-color: #fff;
+  padding: 0 20px;
+  margin-top: 20px;
+  /**报表内容*/
+  /**报表内容*/
+}
+.reportContent .title-export {
+  width: 100%;
+  height: 55px;
+  line-height: 54px;
+}
+.reportContent .title-export .title {
+  float: left;
+}
+.reportContent .title-export .title span {
+  font-size: 15px;
+  color: #333333;
+}
+.reportContent .title-export .export {
+  float: right;
+}
+.reportContent .title-export .export a {
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+  line-height: 34px;
+  border: 1px solid #dddddd;
+  text-align: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.reportContent .title-export .export a i {
+  display: inline-block;
+  width: 24px;
+  height: 23px;
+  vertical-align: -6px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.reportContent .tableBox {
+  padding-bottom: 10px;
+  height: 441px;
+  overflow-y: auto;
+}
+.reportContent .tableBox table {
+  margin: 0;
+}
+.reportContent .tableBox table td,
+.reportContent .tableBox table th {
+  padding: 9px;
+}
+.reportContent .tableBox table td:first-of-type,
+.reportContent .tableBox table th:first-of-type {
+  text-align: center;
+}
+.reportContent .tableBox table td:last-of-type,
+.reportContent .tableBox table th:last-of-type {
+  text-align: right;
+}
+.reportContent .tableBox table td:last-of-type a,
+.reportContent .tableBox table th:last-of-type a {
+  color: #1e9fff;
+}
+.reportContent .tableBox table td:nth-last-of-type(3) {
+  white-space: nowrap;
+}
+/**分页*/
+.pageBox {
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+.pageBox > div {
+  height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+}
+.pageBox > div > div {
+  float: right;
+}
+/**店外购物订单详情*/
+.onlineDetail .top {
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  background-color: #353B53;
+}
+.onlineDetail .top span {
+  font-size: 14px;
+  color: #FFFFFF;
+  float: left;
+  margin-left: 20px;
+}
+.onlineDetail .top i {
+  float: right;
+  color: #FFFFFF;
+  font-size: 20px;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  text-align: center;
+  margin-right: 10px;
+}
+.onlineDetail .detailContent {
+  padding: 0 20px;
+}
+.onlineDetail .detailContent .orderStatus {
+  padding: 20px 0;
+}
+.onlineDetail .detailContent .orderStatus > div {
+  width: 100px;
+  text-align: center;
+  margin: 0 auto;
+}
+.onlineDetail .detailContent .orderStatus > div img {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+}
+.onlineDetail .detailContent .orderStatus > div p {
+  margin-top: 10px;
+}
+.onlineDetail .detailContent .orderInfo {
+  width: 100%;
+  border: 1px solid #cccccc;
+  background-color: #fbfbfb;
+  padding: 0 0 20px 20px;
+}
+.onlineDetail .detailContent .orderInfo > div {
+  margin-top: 16px;
+}
+.onlineDetail .detailContent .orderInfo > div label {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 15px;
+  color: #333333;
+}
+.onlineDetail .detailContent .orderInfo > div > div {
+  display: inline-block;
+  vertical-align: top;
+}
+.onlineDetail .detailContent .orderInfo > div > div p {
+  font-size: 15px;
+  color: #333333;
+  line-height: 22px;
+}
+.onlineDetail .detailContent .goodsInfo {
+  max-height: 250px;
+  margin: 10px 0;
+  overflow-y: auto;
+}
+.onlineDetail .detailContent .goodsInfo table {
+  border-color: #cccccc;
+  margin: 0;
+}
+.onlineDetail .detailContent .goodsInfo table td,
+.onlineDetail .detailContent .goodsInfo table th {
+  text-align: center;
+  padding: 9px 0;
+  border-color: #cccccc;
+}
+.onlineDetail .detailContent .goodsInfo table tbody tr:hover {
+  background-color: transparent;
+}
+.onlineDetail .detailContent .goodsInfo table .goodsMsg {
+  text-align: left;
+  padding-left: 10px;
+}
+.onlineDetail .detailContent .goodsInfo table .goodsMsg img {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+  border: 1px solid #cccccc;
+}
+.onlineDetail .detailContent .goodsInfo table .goodsMsg div {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  margin-left: 6px;
+}
+.onlineDetail .detailContent .goodsInfo table .goodsMsg div p {
+  line-height: 26px;
+  width: 148px;
+}
+.onlineDetail .detailContent .goodsInfo table .goodsMsg div p:first-of-type {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.onlineDetail .detailContent .payType-money .payType {
+  float: left;
+}
+.onlineDetail .detailContent .payType-money .payType span {
+  font-size: 14px;
+  color: #333333;
+}
+.onlineDetail .detailContent .payType-money .payType span:last-of-type {
+  color: #666666;
+}
+.onlineDetail .detailContent .payType-money .money {
+  float: right;
+}
+.onlineDetail .detailContent .payType-money .money span:first-of-type {
+  font-size: 14px;
+  color: #333333;
+}
+.onlineDetail .detailContent .payType-money .money span:last-of-type {
+  font-size: 20px;
+  color: #ff0606;
+}
+/**店内购物订单详情*/
+.inShopDetail .top {
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  background-color: #353B53;
+}
+.inShopDetail .top span {
+  font-size: 14px;
+  color: #FFFFFF;
+  float: left;
+  margin-left: 20px;
+}
+.inShopDetail .top i {
+  float: right;
+  color: #FFFFFF;
+  font-size: 20px;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  text-align: center;
+  margin-right: 10px;
+}
+.inShopDetail .orderBaseInfo {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+}
+.inShopDetail .orderBaseInfo span {
+  margin-left: 20px;
+  font-size: 16px;
+  color: #333333;
+}
+.inShopDetail .orderBaseInfo span i {
+  color: #ff3030;
+  font-weight: 700;
+}
+.inShopDetail .detailTableBox {
+  padding: 0 20px;
+  overflow-y: auto;
+}
+.inShopDetail .detailTableBox table {
+  margin: 0;
+}
+.inShopDetail .detailTableBox table td:first-of-type,
+.inShopDetail .detailTableBox table th:first-of-type {
+  text-align: center;
+}
+/*# sourceMappingURL=dayOrderDetail.css.map */

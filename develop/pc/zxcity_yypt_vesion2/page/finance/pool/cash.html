@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+    <title>提现明细报表</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../../../common/css/reset.css" />
+	<link rel="stylesheet" href="../../../common/css/layTab.css" />
+	<style media="screen" type="text/css">
+    	.dTitle{
+    		font-size: 23px;
+    		margin: 12px 0;    /* 24px 0; */
+    		text-align: center;
+    	}
+    	.dContent{
+    		margin: 0 20px;   /* 0 50px; */
+    		text-align: center;
+    	}
+    	.control-label{
+    		padding-top: 7px;
+		    margin-bottom: 0;
+		    text-align: justify;
+		    display: inline-block;
+		    width: 120px;
+		    max-width: 100%;
+		    font-weight: 700;
+		    font-family: \5FAE\8F6F\96C5\9ED1,arial,sans-serif;
+		    color: #333;
+		    font-size: 14px;
+		    line-height: 24px;
+    	}
+    	.pull-left{
+    		float: left!important;
+    	}
+    	.pull-right{
+    		float: right!important;
+    		
+    	}
+    	.form-control{
+    		/* display: inline; */
+		    width: 48%;
+		    height: 20px;
+		    padding: 6px 12px;
+		    font-size: 14px;
+		    line-height: 1.42857143; 
+		    color: #555;
+		    background-color: #fff;
+		    opacity: 1;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    	}
+    	.form-control:focus{
+    		border-color: #66afe9;
+    		outline: 0;
+    		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    	}
+    	.form-control[readonly]{
+    		background-color: #eee;
+    		opacity: 1;
+    	}
+    	
+    	.pull-right .form-control{
+    		left: -25px;
+    		position: relative;
+    	}
+    	.pull-left .form-control{margin-left: -20px;}
+    	
+    	.from-item{
+    		margin: 10px 25px;   /*  20px 0;  */
+    	}
+    	input[type=radio]{
+    		box-sizing: border-box;
+    		padding: 0;
+    		vertical-align: middle;
+    		margin: 4px 0 0;
+    		line-height: normal;
+    		display: inline-block;
+    	}
+    	.myRadio{
+		    width: 100%;
+		    height: 34px;
+		    font-size: 14px;
+		    color: #555;
+		    background-color: #fff;
+		    background-image: none;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    	}
+    	.myRadio:focus{
+    		border-color: #66afe9;
+    		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    		outline: 5px auto -webkit-focus-ring-color;
+    		outline-offset: -2px;
+    	}
+    	.left{
+    		position: relative;
+    		left: 160px;
+    		top: -30px;
+    	}
+    	.mylabel{
+    		position: relative;
+    		left: 300px;
+    		top: -62px;
+    	}
+    	.mylabel2{
+    		position: relative;
+    		left: 58px;
+    		top: -62px;
+    	}
+    	.right{
+    		position: relative;
+    		left: 425px;
+    		top: -92px;
+    	}
+    	.line{
+    		position: relative;
+    		left: 1px;
+    		top: -92px;
+    	}
+    	.txt{
+    		position: relative;
+    		left: -92px;
+    		top: -92px;
+    	}
+    </style>
+</head>
+<body>
+	<div class="tool-box layui-form">
+		<ul class="tool-box-ul clearfix">
+			<!-- 状态开始 申请/1 审核通过/2 审核不通过/3 支付完成/4 退回申请 -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">状态：</label>
+					<div class="layui-input-inline">
+						<select id="selectview2" lay-search>
+							<option value="-1">-- 全部 --</option>
+	                    	<option value="0">申请</option>
+	                      	<option value="1">审核通过</option>
+	                        <option value="2">审核不通过</option>
+	                      	<option value="3">支付完成</option>
+	                      	<option value="4">退回申请</option>
+						</select>
+					</div>
+				</div>
+			</li>			
+			<!-- 账户名称    -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">账户名称：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="" placeholder="输入账户名称" class="layui-input" id="accountnamer" maxlength="20"> 
+					</div>
+				</div>
+			</li>
+    		<!-- 时间开始 -->
+           	<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="stTime">申请日期：</label>
+					<div class="layui-input-inline startDate">
+						<input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+					</div>
+				</div>
+			</li>				
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="endTim">至：</label>
+					<div class="layui-input-inline endDate">
+						<input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+					</div>
+				</div>
+			</li>
+            <!-- 时间结束 -->   
+   		</ul>
+	</div>
+
+	<div class="tool-add-box clearfix">
+		<button class="layui-btn add" id="exportBtn" style="top: -10px;margin-left: 10px;">导出excel</button>
+		<button class="layui-btn add" id="resetBtn" style="top: -10px;">重置</button>
+		<button class="layui-btn add" id="searchBtn" style="top: -10px;">搜索</button>
+	</div>
+
+	<div class="layui-app">
+		<div class="app-table" style="margin-top: 10px;" >
+			<table lay-filter="merchantTable" id="merchantTable"></table>
+			<div id="layTablePage"></div>
+		</div>
+	</div>
+
+	<script type="text/html" id="barDemo">
+    	<button class="layui-btn my-btn" lay-event="view">确认</button>
+    </script>
+		
+
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="../../../common/assets/template-web.js"></script>
+<script type="text/javascript" src="cash.js"></script>
+</body>
+</html>

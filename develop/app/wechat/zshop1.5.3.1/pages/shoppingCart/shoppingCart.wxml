@@ -1,0 +1,76 @@
+<view class='content'>
+  <scroll-view class='detail-list' scroll-y='true' >
+    <view class='detail' wx:if="{{goodlist.length>0}}" wx:for='{{goodlist}}' wx:for-index="inx" wx:key="id" data-index="{{inx}}">
+        <view class='detail-top' >
+          <view class='detail-title'>
+           <image class="item-select" bindtap="shopSelect"  data-is="{{item.checked}}" data-index="{{inx}}" data-shopId="{{item.shopId}}" src="{{item.checked?'img/comment_select.png':'img/comment_normal.png'}}" />
+          <text>{{item.shopName}}</text>
+          </view>
+          <view class='back' bindtap="shopSkip" data-shopid="{{item.shopId}}">
+            <image src='../../../images/yundian_spxq_gengduo.png'></image>
+          </view>
+        </view>
+        <view class='goods' wx:for='{{item.goodsList}}' wx:for-item='items' wx:key="goods">
+          <view class='good-content inner txt' bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-pindex="{{inx}}" data-index="{{index}}"  data-goodsId="{{items.goodsId}}" data-id="{{items.id}}" data-shopId="{{item.shopId}}" data-stockId="{{items.stockId}}"  style="{{items.txtStyle}}"> 
+            <view class='good-left' data-pindex="{{inx}}" data-index="{{index}}" data-id="{{items.id}}">
+              <image class="item-select"  data-pindex="{{inx}}" data-index="{{index}}" data-id="{{items.id}}" src="{{items.checked?'img/comment_select.png':'img/comment_normal.png'}}" bindtap="switchSelect" />
+                <image data-goodsId="{{items.goodsId}}" data-shopid="{{item.shopId}}" bindtap="goodsSkip" class='good-img' src='{{items.goodsImageUrl}}' bindtap="switchSelect" data-pindex="{{inx}}" data-index="{{index}}" ></image>
+            </view>
+            <view class='right-info'>
+              <text>{{items.goodsName}}</text>
+              <text class="stock-info" wx:if="{{items.stockName!=''}}">{{items.stockName}}</text>
+              <view class='detail-down'>
+                <view class='pric'>
+                  <text class="small-size">￥</text><text wx:if="{{items.stockId}}">{{items.stockPrice}}</text>
+                  <text wx:else>{{items.goodsPrice}}</text>
+                </view>
+                <view class="stepper">
+                <!-- 减号 -->
+                  <text class="minus"  data-pindex="{{inx}}" data-index="{{index}}" data-goodid="{{items.goodsId}}" data-stockId="{{items.stockId}}" bindtap="bindMinus" data-stockban = "{{items.stockBalance}}">-</text>
+                <!-- 数值 -->
+                  <input type="number" data-pindex="{{inx}}" data-index="{{index}}" data-goodid="{{items.goodsId}}"  data-stockId="{{items.stockId}}" value="{{items.number}}" data-stockban = "{{items.stockBalance}}" disabled='disabled'  maxlength="3" />
+                <!-- 加号 -->
+                  <text class="add normal" data-goodid="{{items.goodsId}}"  data-index="{{index}}" data-pindex="{{inx}}" data-stockId="{{items.stockId}}" data-stockban = "{{items.stockBalance}}" bindtap="bindPlus">+</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view bindtap='remove' class="inner delete" data-index="{{index}}" data-id="{{items.id}}" data-pindex="{{inx}}" data-goodsId="{{items.goodsId}}" data-shopId="{{item.shopId}}" data-stockId="{{items.stockId}}">
+            <view>删除</view>
+          </view>
+        </view>  
+    </view>
+    <view class="empt" wx:if="{{goodlist.length==0}}">
+      <image class="empty" src="../../images/yundian_kby_gouwuchekong@2x.png"></image>
+      <text>购物车空空如也哦</text>
+      <text>赶紧抢点东西慰劳自己吧</text>
+    </view>
+  </scroll-view>
+  
+  <view class='account-box'>
+    <view class="acount-lft">
+      <view class='all'>
+      <image class="item-select" data-is='{{isAllSelect}}' bindtap="allSelect" src="{{isAllSelect?'img/comment_select.png':'img/comment_normal.png'}}" />
+        <text class="allselect">全选</text>
+      </view>
+      <view class='sum-box'>
+        合计：<view class='sum-price'><text class="small-size">￥</text><span class="nummoney">{{totalMoney}}</span></view>
+      </view>
+    </view>
+    <!-- <view class="all-del"  >
+      <image src="img/delete.png"></image>
+    </view> -->
+    <view class='sum-info' wx:if="{{isEdit==0}}"> <!--未编辑-->
+      <view class='account-btn'
+         bindtap="edits" hover-class="other-button-hover"> 编辑 </view>
+      <view class='account-btn'
+         bindtap="default" hover-class="other-button-hover"> 结算 </view>
+    </view>
+     <view class='sum-info' wx:if="{{isEdit==1}}"> <!--正在编辑-->
+      <view class='account-btn'
+         bindtap="over" hover-class="other-button-hover"> 完成 </view>
+      <view class='account-btn'
+         bindtap="allDel" hover-class="other-button-hover"> 删除 </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,172 @@
+/*
+ * 公共属性
+ */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica Neue, Helvetica, PingFang SC,
+		\5FAE\8F6F\96C5\9ED1, Tahoma, Arial, sans-serif;
+	font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-family: inherit;
+}
+
+ul, li, dl, dt, dd {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+a:link, a:hover {
+	text-decoration: none;
+}
+
+img {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+}
+
+/**导航*/
+header{
+	height:84px;
+	overflow:hidden;
+}
+.top-nav{
+	width:100%;
+	height:100px;
+	overflow-x: auto;
+	background-color: #000;
+}
+.top-nav ul{
+	width:900px;
+	padding-left:15px;
+	overflow:hidden;
+}
+.top-nav ul>li{
+	float:left;
+	height:100%;
+}
+.top-nav ul>li a{
+	display:block;
+	padding:15px;
+	font-size:18px;
+	color:#fff;
+	text-align: center;
+}
+
+.top-nav ul>li a.disabled{
+	color:#999;
+}
+.top-nav ul>li a.active,
+.top-nav ul>li a:not(.disabled):hover{
+	color:#fe6869;
+}
+.top-nav ul>li a .nav-item-icon{
+	display:block;
+	width:30px;
+	height:30px;
+	margin:0 auto;
+	background-size:cover;
+	background-repeat: no-repeat;
+}
+.top-nav ul>li:nth-child(1) a .nav-item-icon{
+	background-image:url(../image/app_nav_wdsy.png);
+}
+.top-nav ul>li:nth-child(2)  a .nav-item-icon{
+	background-image:url(../image/app_nav_mdsy.png);
+}
+.top-nav ul>li:nth-child(3)  a .nav-item-icon{
+	background-image:url(../image/app_nav_khyy.png);
+}
+.top-nav ul>li:nth-child(4)  a .nav-item-icon{
+	background-image:url(../image/app_nav_xhkd.png);
+}
+.top-nav ul>li:nth-child(5)  a .nav-item-icon{
+	background-image:url(../image/app_nav_gdgl.png);
+}
+.top-nav ul>li:nth-child(6)  a .nav-item-icon{
+	background-image:url(../image/app_nav_pb.png);
+}
+.top-nav ul>li:nth-child(7)  a .nav-item-icon{
+	background-image:url(../image/app_nav_ddgl.png);
+}
+.top-nav ul>li:nth-child(8)  a .nav-item-icon{
+	background-image:url(../image/app_nav_khgl.png);
+}
+.top-nav ul>li:nth-child(9)  a .nav-item-icon{
+	background-image:url(../image/app_nav_tjbb.png);
+}
+.top-nav ul>li:nth-child(1) a.active .nav-item-icon,
+.top-nav ul>li:nth-child(1) a:hover .nav-item-icon{
+	background-image:url(../image/app_nav_wdsy_active.png);
+}
+.top-nav ul>li:nth-child(2) a.active .nav-item-icon,
+.top-nav ul>li:nth-child(2) a:hover .nav-item-icon{
+	background-image:url(../image/app_nav_mdsy_active.png);
+}
+/**未开放菜单暂时屏蔽选中效果--勿删*/
+/*.top-nav ul>li:nth-child(3) a.active .nav-item-icon,
+.top-nav ul>li:nth-child(3) a:hover .nav-item-icon{
+	background-image:url(../image/app_nav_khyy_active.png);
+}
+.top-nav ul>li:nth-child(4) a.active .nav-item-icon,
+.top-nav ul>li:nth-child(4) a:hover .nav-item-icon{
+	background-image:url(../image/app_nav_xhkd_active.png);
+}
+.top-nav ul>li:nth-child(5) a.active .nav-item-icon,
+.top-nav ul>li:nth-child(5) a:hover .nav-item-icon{
+	background-image:url(../image/app_nav_gdgl_active.png);
+}
+.top-nav ul>li:nth-child(6) a.active .nav-item-icon,
+.top-nav ul>li:nth-child(6) a:hover .nav-item-icon{
+	background-image:url(../image/app_nav_pb_active.png);
+}
+.top-nav ul>li:nth-child(7) a.active .nav-item-icon,
+.top-nav ul>li:nth-child(7) a:hover .nav-item-icon{
+	background-image:url(../image/app_nav_ddgl_active.png);
+}
+.top-nav ul>li:nth-child(8) a.active .nav-item-icon,
+.top-nav ul>li:nth-child(8) a:hover .nav-item-icon{
+	background-image:url(../image/app_nav_khgl_active.png);
+}
+.top-nav ul>li:nth-child(9) a.active .nav-item-icon,
+.top-nav ul>li:nth-child(9) a:hover .nav-item-icon{
+	background-image:url(../image/app_nav_tjbb_active.png);
+}*/
+
+/*
+ * 内容页公共组件
+ */
+.main-content {
+	position: relative;
+	overflow: hidden;
+	background-color:#f8f8f8;
+}
+
+/*
+ * 分页组件主体
+ */
+.pagination {
+	padding: 0;
+	margin: 0;
+}
+
+.pagination>li>a, .pagination>li>span {
+	color: #FE6869;
+}
+
+.pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus,
+	.pagination>li>span:focus {
+	color: #FE6869;
+}
+
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover,
+	.pagination>.active>span:hover, .pagination>.active>a:focus,
+	.pagination>.active>span:focus {
+	background-color: #FE6869;
+	border-color: #FE6869;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>收入主页</title>
+	<link rel="stylesheet" href="./profit/css/profit.css">
+	<link type="text/css" rel="stylesheet" href="zCoin/css/zCoin.css">
+  	<link rel="stylesheet" type="text/css" href="../common/plugins/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-table.min.css">
+ 	<link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap-datepicker/css/bootstrap-datepicker.css">
+	<style>
+		#pageContent {
+			margin-top: 65px;
+		}
+		#searchBtn {
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+
+<!--头部搜索框-->	
+<ul class="seacrch ml20 fl" id="datepicker" data-link-field="dtp_input1">
+  <li style="margin-top: 4px;">时间范围:</li>
+  <li>
+  	<input type="text" class="form-control h34 datepickerwid sechwidth" readonly name="start" id="qBeginTime" placeholder="开始日期" data-date-format="yyyy-mm-dd" style="margin-top: 5px;" />
+  </li>
+  <li>
+    -
+  </li>
+  <li>
+    <input type="text" class="form-control h34 datepickerwid sechwidth" readonly name="end" id="qEndTime" placeholder="截止日期" data-date-format="yyyy-mm-dd" style="margin-top: 5px;" />
+  </li>
+  <li>
+    <img src="headlines/img/searchImg.png" id="searchBtn" style="margin-top: 3px;" >
+  </li>
+</ul>
+
+<div class="container-fluid">
+	<div class="row">
+		<ul id="pageContent">
+			<li class="ele-block zhuanpan">
+				<div class="block-title">转盘（+）</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">&yen;</label><label class="block-sub-content" id="turnTable">100</label></p>
+				</div>
+			</li>
+			<li class="ele-block zbyucun">
+				<div class="block-title">直播预存（+）</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">&yen;</label><label class="block-sub-content" id="livePrestorage">100</label></p>
+				</div>
+			</li>
+			<li class="ele-block zbgoumai">
+				<div class="block-title">智币充值（+）</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">&yen;</label><label class="block-sub-content" id="zSell">100</label></p>
+				</div>
+			</li>
+			<li class="ele-block zyzz">
+				<div class="block-title">专业制作（+）</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">&yen;</label><label class="block-sub-content" id="professionalProduction">100</label></p>
+				</div>
+			</li>
+			<li class="ele-block shsj">
+				<div class="block-title">商户升级（+）</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">&yen;</label><label class="block-sub-content" id="merchantUpgrade">100</label></p>
+				</div>
+			</li>
+			<li class="ele-block tt">
+				<div class="block-title">头条（+）</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">&yen;</label><label class="block-sub-content" id="headlines">0.00</label></p>
+				</div>
+			</li>
+			<li class="ele-block lwfcunru">
+				<div class="block-title">劳务费存入（+）</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">&yen;</label><label class="block-sub-content" id="laborCostStorage">100</label></p>
+				</div>
+			</li>
+			<li class="ele-block chognzhang">
+				<div class="block-title">冲账（+）</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">&yen;</label><label class="block-sub-content">0.00</label></p>
+				</div>
+			</li>
+			<li class="ele-block shourutiqu">
+				<div class="block-title">收入提取（-）</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">&yen;</label><label class="block-sub-content" id="profitExtract">100</label></p>
+				</div>
+			</li>
+			<li class="ele-block zbyjfafang">
+				<div class="block-title">主播佣金发放（-）</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">&yen;</label><label class="block-sub-content" id="anchorCommission">100</label></p>
+				</div>
+			</li>
+			<li class="ele-block classRoom">
+				<div class="block-title">智享课堂购买（+）</div>
+				<div class="block-content">
+					<p><label class="block-sub-title">&yen;</label><label class="block-sub-content" id="classRoom">100</label></p>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+</div>
+
+</body>
+
+<script type="text/javascript" src="../../common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table.v1.11.0.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/account_common.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/str.js"></script>
+<script type="text/javascript" src="../../common/js/num.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+  
+<script type="text/javascript" src="profitHome.js"></script>
+</html>

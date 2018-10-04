@@ -1,0 +1,437 @@
+
+.flexbox{
+  display: -webkit-flex; /* Safari */
+  display: flex; 
+}
+.flexbox-1{ 
+  -webkit-flex: 1; 
+  -moz-flex: 1; 
+  flex: 1;
+}
+@redtext:#fb452c;
+@greytext:#999;
+@darktext:#333;
+
+// 文字大小行高
+.font-dpr(@font-size) {
+  font-size: @font-size;
+  line-height: @font-size *1.5;
+  [data-dpr="2"] & {
+      font-size: @font-size * 2;
+      line-height: @font-size *3;
+  }
+
+  [data-dpr="3"] & {
+      font-size: @font-size * 3;
+      line-height: @font-size *4.5;
+  }
+}
+//仅设置文字大小 
+.fontd(@font-size) {
+  font-size: @font-size;
+  [data-dpr="2"] & {
+      font-size: @font-size * 2;
+  }
+  [data-dpr="3"] & {
+      font-size: @font-size * 3;
+  }
+}
+//仅设置文字行高 
+.line-height-dpr(@font-size) {
+  line-height: @font-size *1.5;
+  [data-dpr="2"] & {
+    line-height: @font-size *3;
+  }
+  [data-dpr="3"] & {
+    line-height: @font-size *4.5;
+  }
+}
+// 圆角
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+// 文字显示两行 显示不全 使用省略号代替
+.textellplist-tworow{
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2; 
+}
+.textellipsis{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+// 去掉按钮默认样式
+.btndefault{
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+// @media screen and (min-width: 769px){
+// .wap-wrap {
+//     width: 768px;
+//     margin: 0 auto;
+//   }
+// }
+// .wap-wrap{
+//   max-width: 10.24rem;
+//   margin: 0 auto;
+// }
+
+h1{
+  .font-dpr(18px);
+}
+
+h2{
+  .font-dpr(16px);
+}
+
+h3{
+  .font-dpr(15px);
+}
+
+h4{
+  .font-dpr(14px);
+}
+
+h5{
+  .font-dpr(13px);
+}
+
+h6{
+  .font-dpr(12px);
+}
+
+.spelltop{
+  background: #fff;
+  .product{
+    &:extend(.flexbox);
+    justify-content:space-between;
+    padding: .27rem;
+    .product-img{
+      width: 3.54rem;
+      height: 3.54rem;
+      overflow: hidden;
+      &>img{
+        width: 100%;
+        height: auto;
+      }
+    }
+    .product-info{
+      &:extend(.flexbox-1);
+      padding: 0 .27rem;
+      position: relative;
+      h2{
+        &:extend(.textellplist-tworow);
+      }
+    }
+
+    .product-info-text{
+      position: absolute;
+      bottom: 0;
+      .line-height-dpr(14px);
+      .pricecon{
+        float: left;
+        color: @redtext;
+
+        .code{
+          .fontd(14px);
+        }
+        .pricetext{
+          .fontd(18px);
+          font-family: PingFang Bold;
+        }
+      }
+      .product-info-status{
+        margin-left: .13rem;
+        float: left;
+        .fontd(12px);
+        color: @greytext;
+        .line-height-dpr(16px);
+      }
+    }
+  }
+}
+
+.join{
+  padding: .4rem .67rem 0 .8rem;
+  
+  .join-prompt{
+    .font-dpr(15px);
+    text-align: center;
+    margin: .4rem 0 .4rem;
+    .redtext{
+      color: @redtext;
+    }
+  }
+}
+
+// 参与拼单按钮
+.joinwrap{
+  padding: 0 .27rem;
+  .joinbtn{
+    display: block;
+    width: 100%;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    text-align: center;   
+    background: @redtext;
+    color: #fff; 
+    .border-radius(.13rem);
+    .fontd(16px);
+    &:extend(.btndefault);
+  }
+}
+
+// 拼单规则
+.spell{
+  height: 1.33rem;
+  line-height:1.33rem;
+  border: 1px #ccc solid;
+  border-width: 1px 0;
+  margin: .4rem 0 0 0 ;
+  .fontd(15px);
+ padding: 0 .27rem;
+ span.light{
+   float: right;
+   color: @greytext;
+   text-align: right;
+ }
+}
+
+.productwrap{
+  background: #eaeaea;
+  padding-top: .27rem;
+  .productcon{
+    background: #fff;
+    padding: .27rem .27rem;
+  }
+
+  ul.productlist{
+    &:extend(.clearfix);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    & > li{
+      display: block;
+      width: 4.6rem;      
+      // float: left;
+      margin-bottom: .27rem;
+      .imgcon{
+        width: 100%;
+        height: 4.47rem;
+        overflow: hidden;
+        img{
+          width: 100%;
+          height: auto;
+          border-top-left-radius:0.13rem;
+          -webkit-border-top-left-radius:0.13rem; /* Safari */
+          -moz-border-top-left-radius: 0.13rem;
+          border-top-right-radius:0.13rem;
+          -webkit-border-top-right-radius:0.13rem; /* Safari */
+          -moz-border-top-right-radius: 0.13rem;
+
+        }
+      }
+      .productlist-info{
+        padding: .27rem .27rem 0 .27rem;
+        border: 1px #d4d4d4  solid;
+        border-top: 0;
+        .productlist-info-tit{
+          &:extend(.textellipsis);
+          color: @darktext;
+        }
+        .productlist-info-status{
+          margin:.4rem 0;
+          .line-height-dpr(22px);
+          .status-price{
+            width: 50%;
+            float: left;
+            color: @redtext;
+            overflow: hidden;
+            span.code{
+              .fontd(12px);
+            }
+            span.listprice{
+              .fontd(16px);
+            }
+          }
+          .status-num{
+            width: 50%;
+            float: right;
+            .fontd(13px);
+            color: @greytext;
+            text-align: right;
+          }
+        }
+      }
+      &:nth-of-type(odd){
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.swiper-container {
+  width: 100%;
+  // height: 1.33rem;
+}
+.swiper-slide {
+  width: 1.33rem;
+  text-align: center;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+  display: block;
+  height:  1.33rem;
+  // margin-left:.4rem;
+  // &:first-child{
+  //   margin-left: 0;
+  // }
+}
+
+
+// .groupcon{
+//   li{
+//     display: block;
+//     height:  1.33rem;
+//     float: left;
+//     margin-left:.4rem;
+//     &:first-child{
+//       margin-left: 0;
+//     }
+//   }
+// }
+.single{
+  width: 1.75rem;
+  height:1.59rem;
+  position: relative;
+  & >img.parter-pic{
+    width: 1.33rem;
+    height: 1.33rem;
+    .border-radius(50%);
+    position: absolute;
+    bottom: .13rem;
+    left:.13rem;
+  }
+}
+.swiper-slide:nth-of-type(1) .single{
+  .owericon{
+    display: block;
+    width: .85rem;
+    height: .53rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("../images/@2x/yundian_pinzhu@2x.png") left top no-repeat;
+    background-size: contain;
+  }
+}
+
+// 拼单规则
+.rulelayer{
+  display: none;
+  .rulttit{
+    .font-dpr(18px);
+    color: @darktext;
+    text-align: center;
+    border-bottom: 1px #ccc solid;
+    padding: .4rem 0 ;
+  }
+  .rultext{
+    color:#666;
+    ul.rulelist{
+      padding: .4rem;
+      li{
+        .fontd(16px);
+        .line-height-dpr(20px);
+        font-family: PingFangSC-Regular;      
+        .cricle{
+          .fontd(21px);
+          padding-right: .13rem;
+        }
+      }
+    }
+  }
+}
+// 拼单规则 弹窗样式自定义
+.rulepage{
+  &.layui-layer{
+    .border-radius(.13rem);
+    .layui-layer-setwin .layui-layer-close2{
+      width: .73rem;
+      height: .73rem;
+      top:-.37rem;
+      right: -.37rem;
+      background:  url("../images/@2x/yundian_dnxd_guanbi@2x.png") left top no-repeat;
+      background-size: contain;      
+    }
+  }
+
+}
+
+// 分享
+.sharelay{
+  width: 8.48rem;
+  margin: 0 auto;
+  display: none;
+  .arrow{
+    width: 1.36rem;
+    height: 2.68rem ;
+    background: url("../images/@2x/yundian_fx_jiantou@2x.png") right top no-repeat;
+    background-size: contain;
+    float: right;
+    img.arrowicon{
+      width: 100%;
+    }
+  }
+  .sharetext{
+    width: 100%;
+    height: 3.85rem;
+    background: #fff;
+    .border-radius(.13rem);
+    text-align: center;
+    margin-top: .8rem;
+    display: flex;
+    justify-content:center;
+    align-items:Center;
+    .shaeront{
+      font-family: PingFang Bold;
+      color: @darktext;
+      .font-dpr(18px);
+      .iredtext{
+        color: @redtext;
+      }
+      .shertwo{
+        .font-dpr(15px);
+        color: @greytext;
+        margin-top: .2rem;
+      }
+    }
+  }
+}
+
+.share{
+  &.layui-layer{
+    background-color: rgba(0, 0, 0, 0)!important;
+  }
+}

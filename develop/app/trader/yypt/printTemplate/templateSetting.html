@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>打印模板三</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/layui-v2.2.2/css/layui.css">
+    <link rel="stylesheet" href="../common/css/common-style.css">
+    <link rel="stylesheet" href="css/templateSetting.css">
+    <link rel="stylesheet" href="css/templateCommon.css">
+</head>
+<body class="view-body">
+<div class="main-wrapper">
+    <div class="template-box">
+        <div class="template-nav">
+            <div class="nav-list acv" data-type="A4">
+                <i class="big-size"></i>
+                <span>A4</span>
+            </div>
+            <div class="nav-list" data-type="RM80">
+                <i class="middle-size"></i>
+                <span>80mm小票</span>
+            </div>
+            <div class="nav-list" data-type="RM58">
+                <i class="small-size"></i>
+                <span>58mm小票</span>
+            </div>
+        </div>
+        <div class="ctrol-btn">
+            <button id="saveBtn" type="button" class="layui-btn layui-btn-sm">保存</button>
+            <button id="setTemp" type="button" class="layui-btn layui-btn-sm layui-btn-primary">保存并设置为模板</button>
+            <button id="viewBtn" type="button" class="layui-btn layui-btn-sm layui-btn-primary">预览</button>
+        </div>
+        <!--左侧-->
+        <div class="template-content">
+            <div class="content-list">
+                <div class="hr"></div>
+                <div class="artic-list">
+                    <div class="artic-content">
+                        <link rel="stylesheet" href="http://zxcity-backstage.oss-cn-hangzhou.aliyuncs.com/print/tplcss/bootstrap.min.css">
+                        <link rel="stylesheet" href="http://zxcity-backstage.oss-cn-hangzhou.aliyuncs.com/print/tplcss/templateCommon.css">
+                        <div class="content-box a4 acv">
+                            <div class="content-title cura" data-is="H">
+                            </div>
+                            <div class="content-body">
+                            </div>
+                            <div class="content-article" data-is="B">
+                            </div>
+                            <div class="content-foot">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--80mm-->
+                <div class="artic-list">
+                    <div class="artic-content">
+                        <link rel="stylesheet" href="http://zxcity-backstage.oss-cn-hangzhou.aliyuncs.com/print/tplcss/bootstrap.min.css">
+                        <link rel="stylesheet" href="http://zxcity-backstage.oss-cn-hangzhou.aliyuncs.com/print/tplcss/templateCommon.css">
+                        <div class="content-box eight-size">
+                            <div class="content-title cura" data-is="H">
+                            </div>
+                            <div class="content-top">
+                            </div>
+                            <div class="content-body" data-is="B">
+
+                            </div>
+                            <div class="content-footer">
+                            </div>
+                            <div class="footer-text">
+                                欢迎下次光临
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 58mm-->
+                <div class="artic-list">
+                    <div class="artic-content">
+                        <link rel="stylesheet" href="http://zxcity-backstage.oss-cn-hangzhou.aliyuncs.com/print/tplcss/bootstrap.min.css">
+                       <link rel="stylesheet" href="http://zxcity-backstage.oss-cn-hangzhou.aliyuncs.com/print/tplcss/templateCommon.css">
+                        <div class="content-box five-size ">
+                            <div class="content-title cura" data-is="H">
+                            </div>
+                            <div class="content-top">
+                            </div>
+                            <div class="content-body" data-is="B">
+                            </div>
+                            <div class="content-footer">
+                            </div>
+                            <div class="footer-text">
+                                欢迎下次光临
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--58end-->
+            </div>
+        </div>
+        <!--右侧-->
+        <div class="setting-rgt layui-form">
+            <div class="basic-value">
+                <div class="rgt-list">
+                    <h4>表头<span><input type="checkbox" name="all" title="全选" lay-skin="primary" lay-filter="all"></span><button type="button" class="hsave layui-btn layui-btn-sm" data-type="2">确定</button></h4>
+                    <div class="rgt-box">
+                    </div>
+                </div>
+                <div class="rgt-list">
+                    <h4>表体<span><input type="checkbox" name="all" title="全选" lay-skin="primary" lay-filter="all"></span><button type="button" class="bsave layui-btn layui-btn-sm" data-type="2">确定</button></h4>
+                    <div class="rgt-box">
+                    </div>
+                </div>
+                <div class="rgt-list">
+                    <h4>表尾<span><input type="checkbox" name="all" title="全选" lay-skin="primary" lay-filter="all"></span><button type="button" class="fsave layui-btn layui-btn-sm" data-type="2">确定</button></h4>
+                    <div class="rgt-box">
+                    </div>
+                </div>
+            </div>
+            <div class="change-btn">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">修改名称：</label>
+                    <div class="layui-input-block">
+                        <input id="changeName" type="text" name="title" required  lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" id="walkAlone">
+                    <div class="layui-input-block">
+                        <input id="alone" type="checkbox" name="like[write]" title="独行显示" lay-filter="isradio" data-type="0">
+                    </div>
+                </div>
+                <div class="layui-form-item word-size">
+                    <label class="layui-form-label">字号：</label>
+                    <div class="layui-input-block">
+                        <select name="city" id="fontSize">
+                            <option value=""></option>
+                            <option value="12px">12px</option>
+                            <option value="13px">13px</option>
+                            <option value="14px">14px</option>
+                            <option value="15px">15px</option>
+                            <option value="16px">16px</option>
+                            <option value="17px">17px</option>
+                            <option value="18px">18px</option>
+                            <option value="19px">19px</option>
+                            <option value="20px">20px</option>
+                            <option value="22px">22px</option>
+                            <option value="24px">24px</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">字体：</label>
+                    <div class="layui-input-block">
+                        <select name="font-styl" id="fontFamily">
+                            <option value=""></option>
+                            <option value='"Helvetica Neue", Helvetica, Arial, sans-serif'>Arial</option>
+                            <option value="Microsoft YaHei">微软雅黑</option>
+                            <option value="SimSun">宋体</option>
+                            <option value="FangSong">仿宋</option>
+                            <option value="SimHei">黑体</option>
+                            <option value="KaiTi">楷体</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item lastbtn" >
+                    <button id="changeSure" type="button" class="layui-btn layui-btn-sm">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--预览-->
+<div class="view">
+
+</div>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/layui-v2.2.2/layui.all.js"></script>
+<script src="../../assets/hplus/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../common/js/jquery.nicescroll.js"></script>
+<script src="../common/js/util.js"></script>
+<script src="js/templateCommon.js"></script>
+<script src="js/templateSetting.js"></script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+.main-content{
+    height:92%;
+}
+.content-title{
+    height:50px;
+    line-height: 50px;
+    padding-left:32px;
+    background-color: #f7f7f7;
+    border-bottom:1px solid #e5e5e5;
+    font-size:16px;
+    color:#333;
+}
+.content-box{
+    position: relative;
+    height:100%;
+    padding-left:300px;
+    background-color:#fcfcfc;
+}
+.orgazation-tree{
+    position:absolute;
+    left:0;
+    top:0;
+    height:90%;
+    width:280px;
+    padding: 0 10px;
+    background-color: #f7f7f7;
+}
+.orgazation-tree .tree-title{
+    display:block;
+    height:52px;
+    line-height: 52px;
+    padding-left:20px;
+    font-size:16px;
+    color:#303030;
+}
+.orgazation-tree .tree-title .icon{
+    display:inline-block;
+    width:10px;
+    height:10px;
+    margin-right:12px;
+    background-color: #303030;
+    vertical-align: middle;
+}
+.tree-box{
+    height:95%;
+    overflow: auto;
+}
+.detail-box{
+    width:100%;
+    padding-top:36px;
+}
+.layui-form-label{
+    width:auto;
+}
+.layui-form-item .layui-input-inline{
+    width:auto;
+}
+.detail-box .search-box{
+    text-indent: 20px;
+}
+.search-box .search-input{
+    width:418px;
+    height:34px;
+}
+.search-box .search-btn{
+    width:100px;
+    height:34px;
+    margin-left:10px;
+    background-color:#2cbb4e;
+    border-color: #2cbb4e;
+    color:#fff;
+    font-size:14px;
+    line-height: 34px;
+}
+.search-box .search-btn .icon{
+    display: inline-block;
+    width:14px;
+    height:14px;
+    margin-right:8px;
+    background:url(../../common/image/search_icon.png) no-repeat;
+    vertical-align: text-bottom;
+}
+
+.detail-box .add-btn,
+.detail-box .add-btn:hover{
+    width:140px;
+    height:40px;
+    line-height: 40px;
+    margin:8px 0 14px;
+    padding:0;
+    background-color:#00c1de;
+    font-size: 14px;
+    color:#fff;
+}
+.add-btn .icon{
+    display:inline-block;
+    width:15px;
+    height:15px;
+    margin-right:8px;
+    background:url(../../common/image/add_icon.png) no-repeat;
+    vertical-align: text-bottom;
+}
+
+.detail-box .table-box{
+    margin:22px 50px;
+}
+.table{
+    border:1px solid #e5e5e5;
+}
+.table tbody>tr{
+    color:#666;
+    font-size:14px;
+}
+.table tbody>tr:hover{
+    background-color:#f5f5f5;
+}
+.table thead>tr>th, .table tbody>tr>td{
+    border: 1px solid #e5e5e5;
+    text-align: center;
+    vertical-align: middle;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+}
+.table thead>tr>th:last-child{
+    width: 200px;
+}
+.table thead>tr>td:last-child{
+    width: 200px;
+    text-align: center;
+}
+.table th{
+    background-color: #f3f3f3;
+    color:#333;
+    font-size:16px;
+}
+.handle-btn{
+    color:#666;
+}
+.edit-btn{
+    margin-right:20px;
+}
+.handle-btn .icon{
+    display:inline-block;
+    vertical-align: middle;
+    margin-right:5px;
+}
+.edit-btn .icon{
+    width:21px;
+    height:20px;
+    background: url(../../common/image/edit_icon.png) no-repeat;
+}
+.remove-btn .icon{
+    width:24px;
+    height:24px;
+    background: url(../../common/image/remove_icon.png) no-repeat;
+}
+.set-btn{
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #22b8e5;
+    color: #fff;
+}
+.set-btn:hover{
+    color:#fff;
+}
+.form-horizontal .control-label .required-icon,
+.form-horizontal .tips{
+    color:#ff0000;
+}
+.set-service-box,
+.add-orgazation-box{
+    padding:20px;
+}
+/**ztree css*/
+ul.ztree{
+    width:260px;
+    padding-left:17px;
+}
+.ztree{
+    padding:0;
+    background-color:#ededed;
+}
+
+
+.ztree li ul {
+    margin: 0;
+}
+.ztree * {font-size: 100%;font-family:"Microsoft Yahei",Verdana,Simsun,"Segoe UI Web Light","Segoe UI Light","Segoe UI Web Regular","Segoe UI","Segoe UI Symbol","Helvetica Neue",Arial}
+.ztree li {line-height:50px;}
+.ztree li a {width:auto;height:50px;padding-top: 0px;border:none;background-color: transparent;}
+.ztree li a:hover {text-decoration:none; background-color: transparent;}
+.ztree li a span.button.switch {visibility:hidden}
+.ztree.showIcon li a span.button.switch {visibility:visible}
+.ztree li a.curSelectedNode {
+    background-color:transparent;
+    border:0;
+    border-bottom: 2px solid #c8432b;
+    height:50px;
+}
+.ztree li span {line-height:50px;}
+.ztree li span.button {margin-top: -7px;}
+.ztree li span.button.switch {width: 16px;height: 16px;}
+
+
+.ztree li span.button {background-image:url("../../common/assets/zTree_v3/css/myStyle/tree_icon.png"); }
+.ztree li span.button.switch.level0 {width: 16px; height:16px}
+.ztree li span.button.switch.level1 {width: 16px; height:16px}
+.ztree li span.button.noline_close {background-position: 0 0;}
+.ztree li span.button.noline_open {background-position: -16px 0 ;}
+.ztree li span.button.noline_close.level0  {background-position: 0 0;}
+.ztree li span.button.noline_open.level0{background-position: -16px 0;}
+/*
+.ztree li {
+    line-height: 54px;
+}
+.ztree li.level0{
+    border-bottom:1px solid #fff;
+    overflow-x: hidden;
+}
+.ztree li a {
+    height: 54px;
+    padding-top: 0px;
+    background-color: #ededed;
+}
+
+.ztree li:hover,
+.ztree li:hover a{
+    background-color: #e5e5e5;
+}
+.ztree li a:hover {
+    text-decoration: none;
+    background-color: #e5e5e5;
+}
+.ztree li.selected{
+    background-color:#ccc;
+}
+.ztree li a.curSelectedNode {
+    background-color:#ccc;
+    width:100%;
+    height: 54px;
+    border: 0;
+}
+.ztree li span.node_name{
+    display:inline-block;
+    margin-right:5px;
+}*/
+/*
+.ztree li span.button.add {
+    margin-left:2px;
+    margin-right: -1px;
+    background-position:-144px 0;
+    vertical-align:top;
+    *vertical-align:middle
+}
+.ztree li span.button{
+    background-image:url(../../common/assets/zTree_v3/css/myStyle/tree_icon.png)
+}
+.ztree li span.button.add{
+    margin:0 5px;
+    background-position:-48px 0;
+    vertical-align: middle;
+}
+.ztree li span.button.edit{
+    width:18px;
+    margin:0 5px;
+    background-position:-62px 0;
+    vertical-align: middle;
+}
+.ztree li span.button.remove{
+    margin:0 5px;
+    background-position:-79px 0;
+    vertical-align: middle;
+}
+.ztree li span.button.add:hover{
+    background-position: 0 0;
+}
+.ztree li span.button.edit:hover{
+    background-position:-14px 0;
+}
+.ztree li span.button.remove:hover{
+    background-position:-31px 0;
+}
+.ztree li span.button.noline_open{
+    background-position:-32px -16px;
+}
+.ztree li span.button.noline_close,
+.ztree li a span.button.switch {
+    width:16px;
+    height:16px;
+    background-position:-48px -16px;
+}
+.ztree li a input.rename {
+    height:30px;
+    width:80px;
+    padding:0;
+    margin:0;
+	font-size:14px;
+    border:1px #7EC4CC solid;
+    *border:0px;
+}*/

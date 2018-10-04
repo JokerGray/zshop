@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+    <title>主播</title>
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+	<style media="screen" type="text/css">
+    	.dTitle{
+    		font-size: 23px;
+    		margin: 24px 0;
+    		text-align: center;
+    	}
+    	.dContent{
+    		margin: 0 50px;
+    		text-align: center;
+    	}
+    	.control-label{
+    		padding-top: 7px;
+		    margin-bottom: 0;
+		    text-align: justify;
+		    display: inline-block;
+		    width: 120px;
+		    max-width: 100%;
+		    font-weight: 700;
+		    font-family: \5FAE\8F6F\96C5\9ED1,arial,sans-serif;
+		    color: #333;
+		    font-size: 14px;
+		    line-height: 24px;
+    	}
+    	.pull-left{
+    		float: left!important;
+    	}
+    	.pull-right{
+    		float: right!important;
+    		
+    	}
+    	.form-control{
+    		/* display: inline; */
+		    width: 48%;
+		    height: 20px;
+		    padding: 6px 12px;
+		    font-size: 14px;
+		    line-height: 1.42857143; 
+		    color: #555;
+		    background-color: #eee;
+		    opacity: 1;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    	}
+    	.pull-right .form-control{
+    		left: -25px;
+    		position: relative;
+    	}
+    	.pull-left .form-control{margin-left: -5px;}
+    	
+    	.from-item{
+    		margin: 20px 0;
+    	}
+    </style>
+</head>
+<body>
+	<div class="container-fluid" style="margin-top: 30px;">
+		<form class="layui-form">
+			<div class="layui-form-item top" style="padding-top: 0px;">
+				<h1 class="dTitle">主播详细信息</h1>
+			</div>
+	
+			<div class="dContent">
+				<div class="pull-left">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>账号：</label>
+					    <input readonly class="form-control" id="userCode" type="text">
+					</div>
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>手机号：</label>
+					    <input readonly class="form-control" id="phone" type="text">
+					</div>
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>性别：</label>
+					    <input readonly class="form-control" id="userSex" type="text">
+					</div>
+        		</div>
+
+				<div class="pull-right">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>用户昵称：</label>
+				        <input readonly  class="form-control" id="userName" type="text" >
+				    </div>
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>是否锁定：</label>
+				        <input readonly  class="form-control" id="locked" type="text" >
+				    </div>
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>注册状态：</label>
+				        <input readonly  class="form-control" id="registType" type="text" >
+				    </div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/assets/layui/layui.all.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="anchorInfo.js"></script>
+</body>
+</html>

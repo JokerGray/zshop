@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <title>代理结构</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="agent_construction/agent_construction.css" />
+</head>
+<body>
+    <!--common-head-->
+    <div class="container-fluet" id="body-box">
+        <div class="row body-left-nav" >
+            <!--左侧栏导航end-->
+            <div class="jurisdiction-content">
+                <div class="jurisdiction-title">
+                    分销系统 - <span class="jurisdiction-title-name">代理结构</span>
+                </div>
+                <div class="row jurisdiction-info">
+                    <!--结构树-->
+                    <div class="col-xs-2 system-nav">
+                        <h4><span class="glyphicon glyphicon-stop"></span>代理结构</h4>
+                        <ul class="navList">
+                        </ul>
+                    </div>
+                    <!--结构树end-->
+                    <div class="col-xs-10 jurisdiction-right-body">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label class="jurisdiction-label" for="jurisdiction-name">组织名称：</label>
+                                <input type="text" class="form-control" id="jurisdiction-name" placeholder="请输入名称" >
+                            </div>
+                            <div class="form-group">
+                                <label class="jurisdiction-label" for="jurisdiction-phone">手机号：</label>
+                                <input type="text" class="form-control" id="jurisdiction-phone" placeholder="请输入手机号" >
+                            </div>
+                            <div class="form-group">
+                                <label class="jurisdiction-label">类型：</label>
+								<select id="feedbacktType" class="selectpicker show-tick form-control">
+									<option>--全部--</option>
+									<option>组织</option>
+									<option>系统用户</option>
+									<option>商户代理人</option>
+									<option>商户用户</option>
+								</select>
+							</div>
+                            <button type="button" class="btn btn-success" id="searchBtn">
+                                <i class="glyphicon glyphicon-search"></i>查询
+                            </button>
+                        </form>
+                        <button type="button" class="btn btn-info add-users" data-toggle="modal" data-target="#add-newuser"><i class="glyphicon glyphicon-plus font-xs"></i>增加</button>
+                        <div class="row system-detail">
+                            <table class="table table-bordered table-hover" id="system-table">
+                                <thead>
+                                <tr class="active">
+                                    <th>序号</th>
+                                    <th>名称</th>
+                                    <th>手机号</th>
+                                    <th>类型</th>
+                                    <th>创建时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div class="clearfix p20">
+                                <div id="paging-box-count">
+
+                                </div>
+                                <div id="paging-box" class="basic-jump"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<!-- jSCommon -->
+	<!-- jSCommon -->
+	<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+	<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+
+	<script type="text/javascript" src="common/js/common.js"></script>
+	<script type="text/javascript" src="common/js/login_success.js"></script>
+	<script type="text/javascript" src="common/js/util/changePassword.js"></script>
+	<script type="text/javascript" src="common/js/util/util.js"></script>
+
+	<!--jSCurr-->
+	<script type="text/javascript" src="common/js/util/pub.js"></script>
+<script type="text/javascript" src="agent_construction/agent_construction.js"></script>
+</html>

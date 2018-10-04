@@ -1,0 +1,606 @@
+body{
+    height:100vh;
+    background-color:#f7f7f7;
+    // -moz-user-select: -moz-none;
+    // -khtml-user-select: none;
+    // -webkit-user-select: none;
+}
+em,i{
+    font-style: normal;
+}
+.main-wrapper{
+    height:100%;
+    .layui-row{
+        height:100%;
+    }
+    .con-left, .con-mid, .con-right{
+        height:100%;
+        padding:1.5rem 0.5rem;    
+    }
+    .con-left .order-detail,
+    .con-mid .member-wrapper,
+    .con-right .pay-wrapper{
+        position: relative;
+        height:100%;
+        background-color:#fff;
+        box-shadow:0 0.5rem 0.5rem rgba(0, 0, 0, 0.16);
+    }
+}
+.order-detail{
+    position: relative;
+    font-size:1.125rem;
+    color:#333;
+    .order-title{
+        height:3rem;
+        line-height: 3rem;
+        background-color:#353B53;
+        color:#fff;
+        font-size:1rem;
+        text-align: center;
+    }
+    .order-top{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        height:4rem;
+        padding:0 0.5rem;
+        border-bottom:1px solid #eee;
+    }
+    .order-num{
+        padding:0.75rem 0.5rem;
+        border-bottom:1px solid #eee;
+        p{
+            line-height: 1.5;
+        }
+    }
+    .order-list{
+        overflow-y:auto;
+        ul > li.order-item{
+            display:flex;
+            justify-content: space-between;
+            padding:0.5rem;
+            //改
+           
+            border:2px solid transparent;
+            border-bottom:1px solid #eee;
+            .desc{
+                color:#999;
+                font-size:0.875rem;
+            }
+        }
+        ul > li.order-item-hover{
+            border: 2px solid @be0;
+            box-shadow:inset 0 0 2px @c4;
+        }
+        .num{
+            text-align: right;
+        }
+        .name{
+            i{
+                font-size: 14px;
+                vertical-align: top;
+                margin-left: 10px;
+                padding:0 5px;
+                background: @c19b;
+                color: #fff;
+                border-radius: 5px;
+                line-height:22px;
+            }
+            i.liu{
+                background: @kong;
+                margin-top: 2px;
+            }
+
+        }
+
+    }
+    .order-total{
+        .total, .surcharge, .discount, .preferential{
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            height:5rem;
+            padding:0 0.5rem;
+            border-bottom:1px solid #eee;
+        }
+        .preferential input{
+            width:8rem;
+            height:2rem;
+            padding:0.25rem;
+            border-radius: 0.25rem;
+            border: 1px solid #707070;
+            box-shadow: none;
+            outline: 0;
+        }
+        .should-pay{
+            padding:1rem 0.5rem;
+            color:#FF7B7C;
+            font-size:1.375rem;
+            text-align: right;
+        }
+    }
+    .btn-contol{
+        text-align: right;
+        padding:0 0.5rem;
+        .print-btn{
+            width:7.5rem;
+            height:3rem;
+            background-color:#F2B323;
+            border-radius: 0.25rem;
+            color:#fff;
+            font-size:1.375rem;
+            
+        }
+    }
+    
+}
+.order-handle{
+    position: absolute;
+    top: 0rem;
+    right: -12rem;
+    height: 100%;
+    width: 10rem;
+    padding:0 1rem;
+    background-color: #fff;
+    z-index: 99;
+    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.16);
+    button{
+        display:block;
+        width:100%;
+        margin:1rem 0;
+    }
+    .order-edit{
+        padding-top:3rem;
+    }
+    
+    .layui-btn+.layui-btn{
+        margin-left:0;
+    }
+
+}
+.con-mid{
+    .member-login{
+        padding:1rem 0.5rem;
+        .title{
+            padding:1rem 0;
+            font-size:1.375rem;
+            color:#333;
+            text-align: center;
+        }
+        .phone-input{
+            border-radius:0.25rem;
+            border-color:#707070;
+        }
+        .login-btn{
+            width:100%;
+            margin:1rem 0;
+            border-radius: 0.25rem;
+            background-color:#FF7B7C;
+            font-size:1.125rem;
+        }
+    }
+    .member-info{
+        .title{
+            font-size:1.375rem;
+            height:4rem;
+            line-height: 4rem;
+            text-align: center;
+            border-bottom:1px solid #eee;
+        }
+        .info{
+            padding:1rem;
+            border-bottom:1px solid #eee;
+            p{
+                font-size:1.125rem;
+                color:#333;
+            }
+        }
+        .list{
+            .goods-list{
+                padding:1rem;
+                font-size:1.125rem;
+                line-height: 2;
+                overflow-y: auto;
+                dt,dd{
+                    padding:0.5rem 0;
+                    border-bottom:1px solid #eee;
+                }
+            }
+        }
+        .bottom-btns{
+            position: absolute;
+            left:1rem;
+            right:1rem;
+            bottom:2rem;
+            button{
+                width:100%;
+                margin:1rem 0 0;
+                font-size:1rem;
+                color:#fff;
+            }
+            .member-pay-btn{
+                background-color:#29B3FB;
+            }
+            .exit-btn{
+                background-color: #FF7B7C;
+            }
+        }
+    }
+}
+.pay-wrapper{
+    .pay-top{
+        position: relative;
+        height:6rem;
+        line-height: 6rem;
+        .actual-price{
+            font-size:2rem;
+            color:#FF7B7C;
+            text-align: center;
+        }
+        .change-price-btn{
+            position:absolute;
+            right:1rem;
+            top:50%;
+            margin-top:-1rem;
+        }
+    }
+    .pay-type{
+        .type-list{
+            display:table;
+            width:96%;
+            border-collapse: collapse;
+            margin:0 auto;
+        }
+        .type-item{
+            display: table-cell;
+            width:6rem;
+            height:6rem;
+            text-align: center;
+            font-size:1.25rem;
+            border:1px solid #707070;
+            vertical-align: middle;
+            .type-icon{
+                display:block;
+                width:3rem;
+                height:3rem;
+                margin:0 auto;
+                background-repeat: no-repeat;
+                background-size:contain;
+            }
+            .type-xj{
+                background-image:url(../image/cy_xianjin@2x.png);
+            }
+            .type-zfb{
+                background-image:url(../image/cy_zhifubao@2x.png);
+            }
+            .type-wx{
+                background-image:url(../image/cy_weixin@2x.png);
+            }
+            .type-yhk{
+                background-image:url(../image/cy_yinhangka@2x.png);
+            }
+            .type-xyk{
+                background-image:url(../image/cy_xinyongka@2x.png);
+            }
+
+        }
+        .type-item.active{
+            -moz-box-shadow: 0 0 1rem #FF7B7C inset;
+            -webkit-box-shadow: 0 0 1rem #FF7B7C inset;
+            box-shadow: 0 0 1rem #FF7B7C inset;
+        }
+        .type-item+.type-item{
+            margin-left:-1px;
+        }
+        
+    }
+    .actual-pay{
+        .change-num{
+            margin:1rem 0;
+            text-align: center;
+            font-size:1.375rem;
+            color:#333;
+        }
+        .money{
+            margin:0 auto;
+            width:90%;
+            height:3rem;
+            padding:0 0.75rem;
+            border:1px solid #707070;
+            border-radius:0.25rem;
+            color:#FF7B7C;
+            font-size:1.875rem;
+            text-align: right;
+            .money-input{
+                display:inline-block;
+                width:60%;
+                height: 100%;
+                border: 0;
+                color:#FF7B7C;
+            }
+            .clear-btn{
+                display:inline-block;
+                width:2rem;
+                height:2rem;
+                vertical-align: middle;
+                background:url(../image/clear_icon.png) no-repeat;
+                background-size:contain;
+            }
+        }
+        .num-box{
+            width:92%;
+            margin:0 auto;
+            padding:1rem 0;
+            .num-table{
+                border-radius: 0.25rem;
+                text-align: center;
+                tr:hover{
+                    background-color:#fff;
+                }
+                tr>td{
+                    font-size:3rem;
+                    color:#333;
+                }
+                tr>td:not(.pay-col){
+                    height:4rem; 
+                }
+                tr>td:active:not(.pay-col){
+                    -moz-box-shadow: 0 0 10px #aaa inset;
+                    -webkit-box-shadow: 0 0 10px #aaa inset;
+                    box-shadow: 0 0 10px #aaa inset;
+                }
+                .pay-col{
+                    width:15%;
+                    line-height: 1.5;
+                    background-color:#FF7B7C;
+                    color:#fff;
+                }
+            }
+
+        }
+        
+    }
+}
+
+
+@zang: #CECECE;
+@d1:#d1d1d1;;
+@fz20:20px;
+@c84:#848484;
+@base-color:#333333;
+@be0:#1BE0D6;
+@zhan:#FF7B7C;
+@ccc:#CCCCCC;
+@e5:#e5e5e5;
+@c4:#c4c4c4;
+@c19b:#19bb89;
+@kong:#29B3FB;
+//规格相关区域
+
+.handle_spec{
+    display: none;
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    right: -240px;
+    width: 238px;
+    background: #fff;
+    z-index: 98;
+    box-shadow: 0 0 5px @zang;
+    border: 1px solid @d1;
+    h3{
+      font-size: @fz20;
+      text-align:center;
+      // margin-top: 28px;
+    }
+    &_box{
+      padding:28px;
+      box-sizing: border-box;
+      // height: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+    li{
+      height: 55px;
+      width: 100%;
+      line-height:53px; 
+      margin-bottom: 21px;
+    }
+    &_btn{
+      border-radius: 10px;
+      text-align:center; 
+      width: 100%;
+      height: 100%;
+      background: none;
+      border: 1px solid @c84;
+      color: @base-color;
+      font-size: @fz20;
+    }
+    &_special{
+      border-top:1px solid @e5;
+      border-bottom:1px solid @e5;
+      padding: 20px 0;
+     }
+    &_btn_normal{
+      border: 1px solid @c4;
+      color:@c4;
+    }
+    &_btn_special{
+      border: 1px solid @be0;
+      color:@be0;
+    }
+    
+    &_btn:hover{
+      color:unset;
+      opacity: 1;
+    }
+    &_btn_normal:hover{
+      color:@c4;
+    }
+    &_btn_special:hover{
+      color:@be0;
+    } 
+    li.handle_spec_operation{
+      position: absolute;
+      bottom: 0;
+      height: auto;
+      width: 182px;
+      button{
+        margin-left: 0!important;
+        height: 55px;
+        margin-top: 20px;
+        color:#fff;
+      }
+    }
+    li.handle_spec_special{
+        
+    }
+    &_submit{
+      background: @zhan;
+      border: 1px solid @zhan;
+    }
+    &_cancel{
+      background: @ccc;
+      border: 1px solid @ccc;
+    }
+  }
+  //选择服务人员
+.cancular_li{
+    input{
+      background: none;
+      border:none;
+      display: inline-block;
+      width:100px;
+      text-align: center;
+    }
+    .icon{
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      background: url("../../common/img/cy_jian@3x.png") no-repeat 0 0;
+      background-size:35px auto;
+      vertical-align: middle;
+    }
+    .add{
+      background: url("../../common/img/cy_jia@3x.png") no-repeat 0 0;
+      background-size:35px auto;
+  
+    }
+  }
+  //弹窗
+  .layer_me{
+    background: none;
+    border-radius: 10px!important;
+
+  }
+  
+  .moneyBox{
+      display: none;
+      background: #fff;
+      border-radius: 10px;
+      width: 412px;
+      .moneyTitle{
+          text-align: center;
+          font-size: 16px;
+          line-height: 60px;
+          border-bottom: 1px solid @zang;
+          position: relative;
+          i{
+            position: absolute;
+            top: 21px;
+            right: 22px;
+            width: 20px;
+            height: 20px;
+            background: url('../../common/img/cy_guanbi_black.png') no-repeat 0 0;
+            cursor: pointer;
+      
+          }
+      }
+      .layui-input-block{
+          margin-left: 0;
+          margin: 20px 0;
+      }
+      .layui-input{
+          line-height: 58px;
+          height: auto;
+          border-radius: 8px;
+          font-size: 20px;
+
+      }
+      .layui-table, .layui-table-view{
+          margin: 0;
+      }
+      .actual-pay{
+        padding:0 26px 26px;
+        .num-box{
+            width: 100%;
+            padding: 0;
+        }
+      }
+      button{
+          margin-top: 26px;
+          height: 56px;
+          background: @zhan;
+          font-size: @fz20;
+          border-radius: 8px;
+          width: 100%;
+      }
+  }
+  
+//客人离开
+body .layer_me{
+    background: none;
+    box-shadow: none;
+  }
+  .leaving{
+      display: none;
+      width: 498px;
+      // height: 398px;
+      border-radius: 10px;
+      border: 1px solid #707070;
+      text-align:center;
+      padding: 35px 0;
+      position: relative;
+      background:#fff;
+      p{font-size: 28px;line-height: 72px;}
+      p.p2{
+        font-size: 26px; line-height: 52px;
+        color:@zhan;
+      }
+      i{
+        position: absolute;
+        top: 21px;
+        right: 22px;
+        width: 20px;
+        height: 20px;
+        background: url('../../common/img/cy_guanbi_black.png') no-repeat 0 0;
+        cursor: pointer;
+  
+      }
+      .btn_box{
+        margin-top: 20px;
+      }
+      button{
+        border-radius: 8px;
+        font-size: 18px;
+        margin:0 15px;
+        
+      }
+      .cancel{
+        background: @ccc;
+      }
+      .submit{
+        background: @zhan;
+      }
+      img{margin:0 auto;}
+  }
+
+  
+  .line_m{text-decoration:line-through;font-size: 14px;color: #b7bcb8; margin:0 10px;}
+  .hyj_span{
+      color: #e6382f;
+  }

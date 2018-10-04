@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>新增商户申请</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="../../common/css/reset.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css"/>-->
+		<link rel="stylesheet" href="../../common/assets/zTree_v3/css/metroStyle/metroStyle.css" />
+		<!--<link rel="stylesheet" href="basic_permissions.css" media="all" />-->
+	</head>
+
+	<body>
+		<div class="tool-box layui-form">
+			<ul class="tool-box-ul clearfix">
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label"><b class="required-icon">＊</b>权限名称：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="name" lay-verify="required|phone" maxlength="11"> 
+						</div>
+					</div>
+				</li>
+				
+				<button class="layui-btn" id="searchBtn">搜索</button>
+				<button class="layui-btn" id="resetBtn">重置</button>
+			</ul>
+		</div>
+		<div class="tool-add-box clearfix" style="padding: 0 35px 0 25px;">
+			<button class="layui-btn fl" id="spread"><i class="layui-icon">&#xe630;</i>展开</button><button class="layui-btn my-btn add" lay-event="add" id="addButton">新增</button>
+		</div>
+		<div class="layui-app clearfix">
+			<div class="app-ztree">
+				<h4 id="fatherTree">商户权限&nbsp;-&nbsp;基础权限</h4>
+		    	<ul id="treeDemo" class="ztree"></ul>
+			</div>
+			<div class="app-table">
+				<table lay-filter="merchantTable" id="merchantTable"></table>
+				<div id="layTablePage"></div>
+			</div>
+		</div>
+		
+		
+		<script type="text/html" id="barDemo">
+			<button class="layui-btn my-btn" lay-event="change"><i class="layui-icon">&#xe642;</i>修改</button>
+		</script>
+		
+		
+		<div id="addLayer" class='layui-form clearfix' lay-filter="addLayer">
+			<div class="app-layer">
+				<div class="package clearfix">
+					<div class="package-title">基础权限</div>
+					<div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+					</div>
+				</div>
+				<div class="app-layer-content">
+					<ul class="tool-box-ul layui-form clearfix p0">
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label"><b class="required-icon">＊</b>权限名：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="one" lay-verify="required" maxlength="11"> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label"><b class="required-icon">＊</b>权限地址：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="two" lay-verify="required" maxlength="12">
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label"><b class="required-icon">＊</b>权限代码：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="three" lay-verify="required" maxlength="12">
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label"><b class="required-icon">＊</b>资源类型：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="four" lay-verify="required" maxlength="12">
+
+									<!--<select id="four" lay-verify="required">-->
+							              <!--<option value="topmenu">topmenu</option>-->
+							              <!--<option value="menu">menu</option>-->
+							              <!--<option value="button">button</option>-->
+									<!--</select>-->
+
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label"><b class="required-icon">＊</b>是否可用：</label>
+								<div class="layui-input-inline">
+									<select id="five" lay-verify="required">
+										<option value="1">是</option>
+		              					<option value="0">否</option>
+									</select>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="layer-place">
+						展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+
+</html>
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<!--<script type="text/javascript" src="../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>-->
+<!--<script type="text/javascript" src="upload.js"></script>-->
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script>
+<script src="basic_permissions.js"></script>
+<script type="text/javascript">
+	jsorcss('css','basic_permissions');
+//	jsorcss('js','basic_permissions');
+</script>

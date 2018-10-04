@@ -1,0 +1,230 @@
+.pull-left {
+  float: left !important;
+}
+.pull-right {
+  float: right !important;
+}
+.clear{
+    clear:both;
+}
+p, ul, li{
+    margin:0;
+    padding:0;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    width:100%;
+    height:100%;
+}
+body{
+    background-color:#f4f4f4;
+}
+.video-box{
+    width:100%;
+    max-height:12.813rem;
+    overflow:hidden;
+    background-color: #fff;
+    padding:0.625rem 0;
+}
+.main-wrapper{
+    padding:0.625rem .75rem;
+    background-color: #fff;
+}
+.article-box .article-title{
+    font-size:1.375rem;
+    color:#53537d;
+    font-weight: bold;
+}
+.article-box .video-title{
+    font-size:1rem;
+    color:#333;
+    width:100%;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.video-play-count{
+    line-height: 1.125rem;
+    color:#999;
+    font-size:0.688rem;
+    margin-bottom:0.625rem;
+}
+.article-box .anthor-info{
+    margin:1.25rem auto;
+    overflow: hidden;
+}
+.anthor-info .anthor-pic{
+    width:2.5rem;
+    height:2.5rem;
+    margin-right:0.75rem;
+    border-radius:100%;
+    background-color:#eee;
+}
+.anthor-info .info .name{
+    margin-bottom:0.375rem;
+    font-size:1.063rem;
+    color:#3c3b3b;
+}
+.anthor-info .info .time{
+    font-size:0.75rem;
+    color:#787878;
+}
+.article-content{
+    margin-bottom:50px;
+    font-size:1.125rem;
+    color:#333;
+}
+.handle-box{
+    height:0.875rem;
+    line-height: 0.875rem;
+    margin-bottom:0.75rem;
+}
+.handle-box .icon{
+    display:inline-block;
+    width:0.938rem;
+    height:0.875rem;
+    background-repeat: no-repeat;
+    background-size:cover;
+    vertical-align: text-bottom;
+}
+.handle-box .like-icon{
+    background-image: url(../img/like_icon.png);
+}
+.handle-box .unlike-icon{
+    background-image: url(../img/unlike_icon.png);
+}
+.handle-box .count{
+    display:inline-block;
+    font-size:0.938rem;
+    color:#787878;
+    margin-right:0.625rem;
+}
+.recomend-list ul>li{
+    position:relative;
+    height:5.25rem;
+    padding:0.5rem 0;
+    border-bottom:1px solid #eee;
+}
+
+.recomend-list ul>li.show-img{
+    padding:0.5rem 6.25rem 0.5rem 0;
+}
+
+.recomend-list ul>li .info .title{
+    display:block;
+    color:#53537d;
+    font-size:1rem;
+    font-weight: bold;
+}
+.recomend-list ul>li.show-img  .info .title{
+    height:3.875rem;
+}
+
+.recomend-list ul>li .info .detail{
+    height:1.5rem;
+    line-height:1.5;
+    color:#a7a7a7;
+    font-size:0.75rem;
+}
+.recomend-list ul>li .detail .count{
+    display:inline-block;
+    margin:0 0.625rem;
+    background:url(../img/msg_icon.png) no-repeat left center;
+    background-size:  66% 66%;
+    padding-left:0.875rem;
+}
+.recomend-list ul>li .poster{
+    position:absolute;
+    right:0.375rem;
+    top:0.5rem;
+    width:5rem;
+    height:5rem;
+    border-radius:.5rem;
+    background-color:#eee;
+}
+
+.comments-box{
+    margin-top:1.25rem;
+    background-color: #fff;
+}
+.comments-box .comment-title{
+    height:2.813rem;
+    line-height: 2.813;
+    padding-left:0.75rem;
+    border:1px solid #eee;
+    font-size:0.938rem;
+    color:#787878;
+}
+.comments-list ul>li{
+    position:relative;
+    padding:0.625rem .75rem 0.625rem 3.438rem;
+    border-bottom:1px solid #eee;
+}
+.comments-list ul>li.empty{
+    padding:0.625rem 0;
+    background-color:#f4f4f4;
+    text-align: center;
+    color:#666;
+}
+.comments-list ul>li .ava{
+    position:absolute;
+    left:0.75rem;
+    top:0.625rem;
+    width:2.063rem;
+    height:2.063rem;
+    border-radius:100%;
+    background-color:#eee;
+}
+.comments-list ul>li .info{
+    position:relative;
+}
+.comments-list ul>li .info .name{
+    line-height: 2.063;
+    font-size:0.938rem;
+    color:#9189f2;
+}
+.comments-list ul>li .info .content{
+    font-size:0.938rem;
+    color:#333;
+}
+.comments-list ul>li .info .time{
+    display:inline-block;
+    line-height: 1.5;
+    font-size:0.75rem;
+    color:#787878;
+}
+
+.comments-list ul>li .handle-box{
+    position:absolute;
+    right:0.75rem;
+    top:0.625rem;
+}
+.comments-list ul>li .handle-box .count{
+    vertical-align: text-bottom;
+}
+.more-btn{
+    display:block;
+    width:70%;
+    height:3rem;
+    line-height: 3;
+    margin:0.625rem auto 1.563rem;
+    border-radius:.5rem;
+    text-align: center;
+    color:#666;
+    background-color:#ccc;
+}
+.app-download a {
+    display: block;
+    border: 1px solid #f0f8ff;
+    margin-top: 2.4rem;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    color:#f0f8ff;
+    background-color: #696969;
+}

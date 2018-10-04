@@ -1,0 +1,68 @@
+.app {
+	width: calc(100% - 100px);
+	padding: 50px 0;
+	margin: 0 auto;	
+}
+
+.app-ul .app-li{
+	cursor: pointer;
+	float: left;
+	width: 180px;
+	height: 80px;
+	margin: 10px;
+	border: 1px solid #E8E8E8;
+}
+.select-li{
+	position: relative;
+}
+.select-li>i{
+	position: absolute;
+	right: 2px;
+	top: 2px;
+	padding: 2px;
+	font-size: 20px;
+	display: none;
+	color: #fff;
+}
+.select-li:hover{
+	background-color: #00A0E8;
+}
+.select-li:hover>i{
+	display: block;
+	
+}
+.select-li:hover>a{
+	color: #fff;
+}
+
+
+
+
+#add-menu>a{
+	width: 100%;
+	height: 100%;
+}
+#add-menu>a>i{
+	float: left;
+	font-style: normal;
+	height: 100%;
+	line-height: 78px;
+	text-align: center;
+}
+#add-menu>a>i.fa{
+	width: 80px;
+	font-size: 70px;
+	color: #00A0E8;
+}
+#add-menu>a>i.tit{
+	margin-top: 2px;
+}
+
+.app-ul .app-li>a{
+	width: 100%;
+	font-style: normal;
+	height: 100%;
+	line-height: 80px;
+	text-align: center;
+}
+

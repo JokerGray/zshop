@@ -1,0 +1,568 @@
+/**index.wxss**/
+/* @import "/pages/nwe/shop.wxss"; */
+/* 首页开始 */
+.main{
+  width: 100%;
+}
+.userinfo {
+  position: relative;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  /* position: absolute; */
+  justify-content: flex-start;
+  width: 100%;
+  height: 120rpx;
+  overflow: hidden;
+}
+.userinfo-avatar{
+  display: inline-block;
+  /* margin-left: 20rpx; */
+  width: 80rpx;
+  height: 80rpx;
+  border: 5rpx solid #b6b6b6;
+  border-radius: 50%;
+  z-index: 5;
+}
+.userinfo-nickname{
+  font-size: 31rpx;
+  margin-left: 15rpx;
+  font-weight: Bold;
+  color: #000;
+}
+.userinfoShop{
+  margin-left: 20rpx;
+  line-height: 50rpx;
+  height: 40rpx;
+  width: 76rpx;
+ 
+}
+/* 点击进入详情页 */
+.userDetailed{
+  /* background-color: red; */
+  width: 250rpx;
+  height: 120rpx;
+}
+/* //已经关注 */
+.AlruserinfoFollow{
+  position: absolute;
+  right: 15rpx;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+  top: 30rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  width: 150rpx;
+  border-radius: 30rpx;
+  background-color: #DADADA;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  padding: 0;
+}
+/* 关注 */
+.userinfoFollow{
+  position: absolute;
+  right: 15rpx;
+  top: 30rpx;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  width: 150rpx;
+  border-radius: 30rpx;
+  background-color: #FF226E;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  padding: 0;
+}
+/* // 中间视频内容部分 */
+.videoContent{
+  margin-top: 15rpx;
+  margin-left: 20rpx;
+  /* border-bottom: 1rpx solid red； */
+}
+
+.videText{
+  font-size: 30rpx;
+  color: #333333;
+  width: 700rpx;
+  font-family: 'PingFang-SC-Medium';
+}
+/* 视频的样式视频--横着 */
+.videoC{
+  width: 480rpx;
+  height: 880rpx;
+  border-radius: 11rpx;
+  margin-top: 15rpx;
+  overflow: hidden;
+  display: block;
+}
+/* 竖着的视频样式 */
+.videEnd{
+  margin-top: 15rpx;
+  border-radius: 11rpx;
+  width: 98.5%;
+  overflow: hidden;
+   display: block;
+   height: 225px;
+}
+.videoupload{
+  height: 138rpx;
+  width: 138rpx;
+  position: fixed;
+  bottom: 80rpx;
+  left: 595rpx;
+}
+/* //到家服务 */
+.serviceShop{
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+  /* z-index: 111111; */
+  width: 122rpx;
+  height: 40rpx;
+  overflow: none;
+}
+.serviceShopUp{
+  /* position: relative; */
+  position: absolute;
+  bottom: 40rpx;
+  left: 350rpx;
+  /* z-index: 111111; */
+  width: 122rpx;
+  height: 40rpx;
+  overflow: none;
+}
+/* 查看店铺 */
+.lookshopdiv{
+  width:174rpx;
+  height:46rpx;
+  background:rgba(0,0,0,.1);
+  border-radius:9rpx;
+  margin-top: 20rpx;
+  margin-bottom: 25rpx;
+  padding: 0
+}
+.lookshopdiv text{
+  width:103rpx;
+  font-size:24rpx;
+  font-family:PingFang-SC-Medium;
+  color:rgba(102,102,102,1);
+  padding-left: 6rpx;
+  display: inline-block;
+  line-height: 46rpx;
+  vertical-align: text-top
+}
+.lookshop{
+  height: 46rpx;
+  width: 46rpx;
+  margin-left: 11rpx;
+  display: inline-block;
+  vertical-align:text-top;
+}
+.videoData{
+  display: flex;
+  margin-top: 15rpx;
+  font-size: 26rpx;
+  color: #999999;
+}
+.videoDataOne{
+  width: 120rpx;
+}
+.videoDataTwo{
+  margin-left: 20rpx;
+}
+/* //最后的三个按钮，收场，转发 */
+.bottomImg{
+  display: flex;
+  /* align-content: center; */
+  margin-top: 25rpx;
+}
+.bottomImg image{
+  height: 36rpx;
+  width: 38rpx;
+  /* margin-top: 25rpx; */
+}
+.bottomImgtwo{
+  margin-left: 103rpx;
+}
+.bottomImgthree{
+  position: absolute;
+  top: 0rpx;
+  left:0rpx;
+  margin-top: 0rpx;
+}
+.bottomImg button{
+  background-color: #fff;
+  border: none;
+  height: 36rpx;
+  width: 20rpx;
+  /* margin-top: 25rpx; */
+  text-align: right;
+  margin-left: 475rpx;
+}
+button::after{
+border: none;
+border-radius: 0;
+}
+/* 下面的线 */
+.line{
+width:702rpx;
+height:2rpx;
+margin-top: 15rpx;
+background:rgba(237,237,237,1); 
+}
+/* //解决手机端问题 */
+video{
+  position: none;
+}
+.model-img{
+    /* width: 100%; */
+    height: 480rpx;
+}
+.model-btn{
+    position:absolute;
+    left:0rpx;
+    top:0;
+    bottom:0rpx;
+    right:0;
+    margin:auto;
+    width:100rpx;
+    height:100rpx;
+    border-radius:50%;
+    background-color: rgba(0,0,0,.3);
+}
+.triangleplay{
+  position:absolute;
+    left:40%;
+    top:40%;
+    /* margin:auto; */
+    width:100rpx;
+    height:100rpx;
+    border-radius:50%;
+    background-color: rgba(0,0,0,.3);
+}
+
+.play-icon{
+    margin:28rpx 42rpx;
+    border-top:26rpx solid transparent;
+    border-left:36rpx solid #fff;
+    border-bottom:22rpx solid transparent;
+}
+/* 弹出框 */
+.drawer_screen {  
+  width: 100%;  
+  height: 100%;  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  z-index: 10000;  
+  /* background: #000; */
+  background: rgba(0,0,0,0.6);  
+  /* opacity: 0.5;   */
+  overflow: hidden;  
+}
+
+/* //查看商店 */
+.cartlist-float{
+  width: 100%; 
+  /* overflow: hidden;   */
+  position: fixed;   
+  bottom: 0rpx;
+  z-index: 10000;
+  border-radius: 20rpx 20rpx 0rpx 0rpx;
+  height: 518rpx;
+  background: #fff;
+  /* bottom: -600rpx; */
+  background-color: white;
+  /* transform:translateY(0px); */
+  /* transition:transform 1s ease 2s; */
+   -webkit-transform: translateY(100%); 
+   transform: translateY(100%); 
+}
+.comment-float{
+  height: 640rpx;
+}
+/* //关键的商店 */
+.label-cart-bar{
+  padding-top: 20rpx;
+  font-size:28rpx;
+  /* margin-left: 23rpx; */
+  width:735rpx;
+  padding-left: 15rpx;
+  height:40rpx;
+  font-weight: bold;
+  font-family:PingFang-SC-Bold;
+  color:rgba(19,19,19,1);
+  border-radius: 20rpx 20rpx 0rpx 0rpx; 
+}
+.label-cart-bar>text{
+  padding-left: 5rpx;
+  width:14rpx;
+  height:21rpx;
+  font-size:26rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(19,19,19,1);
+}
+.cart-scroll-list{
+  /* height:450rpx; */
+  color: #fff;
+}
+.lookshop-list{
+  background: #fff;
+  /* height: 518rpx; */
+  width: 750rpx;
+  display: flex;
+  padding: 10rpx;
+  border-bottom: 1rpx solid #F1F1F1;
+}
+.lookshop-list cover-image{
+  width:90rpx;
+  height:90rpx;
+  margin-left: 14rpx;
+  margin-top: 20rpx;
+  border-radius: 11rpx;
+  border: 20rpx 20rpx 0rpx 0rpx;
+}
+.lookshop-list image{
+  width:90rpx;
+  height:90rpx;
+  margin-left: 14rpx;
+  margin-top: 20rpx;
+  border-radius: 11rpx;
+  border: 20rpx 20rpx 0rpx 0rpx;
+}
+.loolshop-name{
+  margin-top: 20rpx;
+  width:400rpx;
+  height:32rpx;
+  font-size:28rpx;
+  font-family:PingFang-SC-Bold;
+  color:#333333;
+  font-weight: 600;
+  margin-left: 24rpx;
+}
+.loolshop-content{
+  width:412rpx;
+  margin-top: 17rpx;
+  height:40rpx;
+  font-size:25rpx;
+  font-family:PingFang-SC-Medium;
+  color:#999999;
+  margin-left: 24rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* //进入商店 */
+.loolshopIn{
+  position: absolute;
+  right: 15rpx;
+  font-size: 28rpx;
+  margin-top: 30rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  width: 150rpx;
+  border-radius: 30rpx;
+  background-color: #FF226E;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* 评论的样式 */
+.showcomment{
+  width:600rpx;
+  /* height:79rpx; */
+  font-size:30rpx;
+  font-family:PingFang-SC-Medium;
+  color:rgba(51,51,51,1);
+  line-height:45rpx;
+  padding-top: 10rpx;
+  margin-left: 22rpx;
+}
+.showcomment-reply{
+  width:570rpx;
+  height:110rpx;
+  /* display: flex; */
+  background:rgba(247,247,247,1);
+   margin-left: 20rpx;
+   margin-top: 20rpx;
+   padding-left: 21rpx;
+}
+.showcomment-reply label{
+  width: 20rpx;
+  font-size:26rpx;
+  font-weight: 600;
+  line-height:45rpx;
+}
+.showcomment-reply text{
+  width:559rpx;
+  height:70rpx;
+  font-size:26rpx;
+  font-family:PingFang-SC-Medium;
+  color:#999999;
+  line-height:45rpx;
+  margin-left: 15rpx;
+}
+.shopheader{
+width:750rpx;
+height:100rpx;
+background:#F7F7F7;
+border-radius:20px 20px 0px 0px;
+display: flex;
+align-items: center;
+justify-content: content;
+}
+.shopheadertop{
+  /* height:100px; */
+  font-size:32rpx;
+  width: 640rpx;
+  font-family:PingFang-SC-Bold;
+  color:#131313;
+  text-align: center;
+  font-weight: 600;
+  line-height: 100rpx;
+}
+.shopheadercomtent{
+  width: 750rpx;
+  height: 150rpx;
+  background: #fff;
+}
+.shopheaderinp{
+width:675rpx;
+height:98rpx;
+background:rgba(247,247,247,1);
+border-radius:8rpx;
+padding-left: 24rpx;
+margin-left: 24rpx;
+margin-top: 30rpx;
+}
+/* 发布商品店 */
+
+.shop{
+  width: 100%;
+  height: 750rpx;
+  overflow: hidden;  
+  position: fixed;   
+  bottom: 0rpx;
+  z-index: 100000;
+  border-radius: 20rpx 20rpx 0rpx 0rpx; 
+  background: #fff;
+}
+.shopheader{
+  width:750rpx;
+  height:100rpx;
+  background:#F7F7F7;
+  border-radius:20px 20px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: content;
+}
+.shopheadertop{
+  /* height:100px; */
+  font-size:32rpx;
+  width: 640rpx;
+  font-family:PingFang-SC-Bold;
+  color:#131313;
+  text-align: center;
+  font-weight: 600;
+  line-height: 100rpx;
+}
+.shopheadercomtent{
+  width: 750rpx;
+  height: 150rpx;
+  background: #fff;
+}
+.shopheaderinp{
+width:675rpx;
+height:98rpx;
+background:rgba(247,247,247,1);
+border-radius:8rpx;
+padding-left: 24rpx;
+margin-left: 24rpx;
+margin-top: 30rpx;
+}
+
+
+/* 添加商店 */
+.addshopheader{
+  display: flex;
+  justify-content:center;
+  align-items:center;
+}
+.shopimage{
+  width: 26rpx;
+  height: 26rpx;
+  border: 1rpx dashed #F7F7F7;
+  line-height: 100rpx; 
+  display: block;
+  padding-left: 24rpx;
+}
+.shopheadertopright{
+  font-size:26rpx;
+  width: 150rpx;
+  font-family:PingFang-SC-Medium;
+  color:rgba(19,19,19,1);
+  line-height: 100rpx;
+  padding-right: 24rpx;
+}
+/* //确定按钮 */
+.shopbottom{
+  width:750rpx;
+  height:90rpx;
+  background:rgba(255,34,110,1);
+  opacity:0.98;
+  border-radius:20rpx 20rpx 0rpx 0rpx;
+  position: absolute;
+  bottom: 0;
+  font-size: 36rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #fff;
+}
+
+/* //评论 */
+.comment-Bottom{
+  text-align: center;
+  height: 310rpx;
+  width: 100%;
+  font-size: 29rpx;
+  margin-top: 200rpx;
+}
+
+.cbottom-inp {
+  width:702rpx;
+  height:100rpx;
+  /* background:rgba(247,247,247,1); */
+  border-radius:38px;
+  margin-left: 24rpx;
+  /* margin-top: 390rpx; */
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  /* position: fixed; */
+  /* bottom: 8rpx; */
+
+}
+.cbottom-inp input{
+    width: 91%;
+    height: 70rpx;
+    border: 1px solid #e1e1e1; 
+    padding-left: 8%;
+    font-size: 29rpx;
+    line-height:70rpx;
+    z-index: 100;
+    font-weight:500;
+    border-radius:38px;
+    margin-bottom: 30rpx;
+}
+.bottomFiex{
+  position: fixed;
+  /* bottom: rpx; */
+  /* opacity: 0.5; */
+  background: #fff;
+}

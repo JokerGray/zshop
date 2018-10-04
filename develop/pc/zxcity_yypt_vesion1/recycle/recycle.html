@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>回收站</title>
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="css/recycle.css" />
+</head>
+<body>
+    <div class="common-container">
+        <div class="jurisdiction-content">
+            <div class="title">
+                <h4>回收站</h4>
+                <hr />
+            </div>
+            <div class="jurisdiction-center">
+                <div class="repon-rightl">
+                    <button class="layui-btn layui-btn-normal" id="addQs">一键还原</button>
+                    <button class="layui-btn layui-btn-primary" id="delBtn">彻底删除</button>
+                </div>
+                <!--列表-->
+                <div class="repon-table">
+                    <table class="layui-table" lay-filter="table" lay-even lay-skin="nob" id="table" lay-data="{id: 'table'}">
+                    </table>
+                    <div id="laypageLeft" class="table-rgt"></div>
+                    <script type="text/html" id="barDemo">
+                        <i class="fa fa-mail-reply" lay-event="restore" style="font-size:18px;cursor: pointer"></i>
+                        <i class="layui-icon" lay-event="del" style="font-size: 25px;cursor: pointer">&#xe640;</i>
+                    </script>
+                    <script type="text/html" id="effcettime">
+                        <span style="display: none" class="auditStatus">{{d.auditStatus}}</span>
+                        <span style="display: none" class="biztablename">{{d.biztablename}}</span>
+                        <span style="display: none" class="bizid">{{d.bizid}}</span>
+                        <span style="display: none" class="ids">{{d.id}}</span>{{d.title}}
+                    </script>
+                    <script type="text/html" id="effcettime1">
+                        {{#  if(d.type ==1){ }}
+                        问题
+                        {{#  } else { }}
+                        知识点
+                        {{#  } }}
+                    </script>
+                    <script type="text/html" id="effcettime2">
+                        {{#  if(d.auditStatus ==1){ }}
+                        有效
+                        {{#  } else { }}
+                        无效
+                        {{#  } }}
+                    </script>
+                </div>
+            </div>
+
+
+               <!--内容详情end-->
+            <!--查看详情-->
+            <div class="infomation">
+                <h4>详情<i class="info-close"></i></h4>
+                <div class="tip-titl">
+                </div>
+                <div class="info-content">
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui-2.2.5/layui/layui.all.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="../common/js/util/util.js"></script>
+    <script type="text/javascript" src="../common/js/common.js"></script>
+    
+    <script type="text/javascript" src="../common/js/util/pub.js"></script>
+    <!-- jSMyself-->
+    <script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.exedit.js"></script>
+    <script type="text/javascript" src="js/recycle.js"></script>
+</body>
+</html>

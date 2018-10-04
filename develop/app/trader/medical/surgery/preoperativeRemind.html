@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>术前提醒</title>
+	<script src="../../assets/jquery/jquery.min.js"></script>
+
+	<script src="../../assets/layer/layer.js"></script>
+	<link rel="stylesheet" href="../../assets/check_index/layer/skin/default/layer.css"/>
+
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+	<script src="../../assets/layui-v2.3.0/layui.js"></script>
+
+	<link rel="stylesheet" href="../../assets/bootstrapDatePicker/css/bootstrap-datetimepicker.min.css">
+	<script src="../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="src/iconfont/iconfont.css">
+	<!-- bootstrap-table -->
+	<link rel="stylesheet" type="text/css" href="../../assets/bootstrap-table/bootstrap-table.min.css"/> 
+	<script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+	<script src="src/js/common.js"></script>
+	<link rel="stylesheet" href="src/css/common.css">
+
+	<style>
+		
+		.message p{
+			text-align: center;
+		    font-size: 16px;
+		    padding-top: 15px;
+		    color: #23c8c9;
+		    font-weight: bold;
+		}
+		.message .messageInfo{
+			width: 350px;
+		    height: 180px;
+		    border: 1px solid #999;
+		    margin-left: 25px;
+		    border-radius: 5px;
+		    margin-top: 15px;
+		    padding:10px; 
+		    resize:none;
+		}
+		.cancelBtn,.sendBtn{
+			display: inline-block;
+		    text-align: center;
+		    width: 150px;
+		    height: 30px;
+		    border: 1px solid #999;
+		    border-radius: 5px;
+		    line-height: 30px;
+		    font-weight: bold;
+		}
+
+		.sendBtn:hover{
+			color:#fff;
+		}
+		.sendBtn:link{
+			color:#fff;
+		}
+		.sendBtn{
+			background: #23c8c9;
+			color:#fff;
+			border-color: #23c8c9;
+		}
+
+		.messageInfo p{
+			font-size: 13px;
+		    color: #333;
+		    text-align: left;
+		    padding: 0;
+		    line-height: 20px;
+		}
+	</style>   
+</head>
+<body>
+	<div class="contain">
+		<div class="header cl">
+			<div class="fl navTab">
+				<a class="remind active" href="preoperativeRemind.html">术前提醒</a><a class="waitSurgery">待手术</a><a class="hasSurgery">已手术</a>
+			</div>
+			<div class="fr">
+				<label>日期：</label>
+				<input type="text" class="startTime"> - <input type="text" class="endTime">
+				<input type="text" class="search" placeholder="顾客姓名/顾客电话" >
+				<a href="javascript:;" class="searchBtn" onclick="searchBtn()">
+					<i class="iconfont icon-sousuo1"></i>
+				</a>
+			</div>
+		</div>
+		<div class="contentList">
+			<div class="table-tool-content">
+				<div class="container-fluid table-content">
+					<table class="table table-hover table-condensed" id="surgeryList">
+						
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		var merchantId = getQueryString('merchantId');
+		// var bgTime = $('.startTime').val();
+		// var edTime = $('.endTime').val();
+		$(document).ready(function(){
+			var bgTime = year + '-' + month + '-01';
+            var edTime = curDate.Format('yyyy-MM-dd');
+            tableInit('',1,bgTime,edTime);
+			// tableInit(merchantId,1,bgTime,edTime)
+			$('.remind').attr({'href':'preoperativeRemind.html?merchantId='+getQueryString('merchantId')});
+			$('.waitSurgery').attr({'href':'forSurgery.html?merchantId='+getQueryString('merchantId')});
+			$('.hasSurgery').attr({'href':'hasSuigery.html?merchantId='+getQueryString('merchantId')});
+		});
+
+        function tableInit(searchParam,status,bgTime,edTime){
+            $('#surgeryList').bootstrapTable({
+                url: '/zxcity_restful/ws/rest',
+                method: 'post',
+                ajaxOptions:{
+                    headers:{
+                        apikey: 'test'
+                    }
+                },
+                contentType: "application/x-www-form-urlencoded",
+                queryParams: function(params){
+                    var p = {
+                        cmd: 'medical/getMedicalSurgerys',
+                        data: JSON.stringify({
+                            merchantId:merchantId,
+                            searchParam:searchParam,
+                            status:status,
+                            bgTime:bgTime,
+                            edTime:edTime,
+                            page:params.offset/params.limit + 1,
+							rows:params.limit,
+							type:1
+                        }),
+                        version: 1
+                    }
+                    return p;
+                },
+                responseHandler: function(res){
+                    res.rows = res.data
+                    return res;
+                },
+                sidePagination: "server",
+                pageNumber:1,
+                pageSize: 10,
+                pageList: [10, 25, 50, 100],
+                striped: true,
+                pagination: true,
+                sortable: false,
+                cardView: false,
+                detailView: false,
+                columns: [
+                    { title: '序号', width: 50, align: 'center',formatter: function (value, row, index) {
+                        	var pageSize=$('#surgeryList').bootstrapTable('getOptions').pageSize;//通过表的#id 可以得到每页多少条
+			                var pageNumber=$('#surgeryList').bootstrapTable('getOptions').pageNumber;//通过表的#id 可以得到当前第几页
+			                return pageSize * (pageNumber - 1) + index + 1;//返回每条的序号： 每页条数 * （当前页 - 1 ）+ 序号
+                    	}
+                    },
+					{ field: 'operationId', title: '手术id',visible: false, align: 'center'},
+                    { field: 'memberName', title: '顾客姓名', width: 100, align: 'center'},
+                    { field: 'gender', title: '性别', width: 100, align: 'center',formatter:function(val, row, index){
+                    		if(val == 0){
+                    			return '女';
+                    		}else if(val == 1){
+                    			return '男';
+                    		}else if(val == 2){
+                    			return '保密';
+                    		}
+                    	}
+                    },
+                    {field: 'age', title: '年龄', width: 100, align: 'center'},
+                	{field: 'mobile', title: '手机号码', width: 100, align: 'center'},
+                	{field: 'advUserName', title: '咨询院长', width: 100, align: 'center'},
+                	{field: 'startTime', title: '手术时间', width: 100, align: 'center'},
+                	{field: 'purchaseName', title: '手术项目', width: 100, align: 'center'},
+                	{ field: 'orderId', title: '操作', width: 100, align: 'center',formatter: function(val, row, index){
+                        	return '<button type="button" class="sendMessage" onclick="clickBtn(this)">发送短信</button>'
+                    	}
+                	},
+                ]
+                
+            });
+
+            // 按钮点击
+            // $('#surgeryList').on('click', 'button.btn', function (e) {
+            //     var dataAll = $('#surgeryList').bootstrapTable('getData');
+            //     var index = $(this).parent().parent().index();
+            //     console.log('监听table的按钮点击');
+            //     // console.log(dataAll[index]);
+            // });
+        }
+
+
+        // 另一种按钮点击事件
+        function clickBtn(btn) {
+            var dataAll = $('#surgeryList').bootstrapTable('getData');
+            var index1 = $(btn).parent().parent().index();
+
+            var index = layer.open({
+            	type: 1,
+				title: false, //不显示标题
+				closeBtn : 0,
+				area: ['400px', '300px'], //宽高
+				content: `<div class="message">
+							<p>发送短信</p>
+							<textarea name="" class="messageInfo"></textarea>
+							<div style="padding:10px 25px;overflow:hidden;">
+								<a href="javascript:;" class="cancelBtn fl">取消</a>
+								<a href="javascript:;" class="sendBtn fr">发送</a>
+							</div>
+						</div>`,
+				cancel: function(){
+				}
+            })
+            // console.log(dataAll[index].memberName);
+
+            $('.messageInfo').val('温馨提示：'+dataAll[index1].memberName+'您好，您申请预约的'+dataAll[index1].purchaseName+'项目已经预约成功，预约'+dataAll[index1].startTime+'到院后出示您手机预约信息以及您的就诊姓名，电话，确认无误后导医护士会优先指导您到就诊。\r\n医院地址：地铁4号线拦江路下，6号线马鹦路下，都从B出口出来。\r\n医院电话：15527214007 / 027-83778575\r\n悦辰医疗整形医院短信');
+
+            // 取消按钮
+            $('.cancelBtn').on('click',function(){
+            	layer.close(index);
+            });
+
+            // 发送按钮
+            $('.sendBtn').on('click',function(){
+            	var phone = dataAll[index1].mobile;
+				var operationId = dataAll[index1].operationId;
+            	var msg = $('.messageInfo').val();
+            	var cmd = 'medical/sendMedicalMsg';
+            	var def = reqAjax(cmd, {
+					phone : phone,
+					msg : msg,
+					operationId:operationId
+				});	
+				def.then(function(data){
+					layer.close(index);
+					layer.msg(data.msg);
+					searchBtn();
+				}); 
+            });
+        }
+
+        // 点击 搜索按钮
+        function searchBtn(){
+        	$('#surgeryList').bootstrapTable('destroy');
+        	var searchParam = $('.search').val().trim('');
+			var status = 1;
+			var bgTime = $('.startTime').val();
+			var edTime = $('.endTime').val();
+        	tableInit(searchParam,status,bgTime,edTime)
+        }
+	</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>粉丝分析 - 智享城市·智享头条</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/fans.css" />
+</head>
+
+<body>
+    <div class="box">
+        <img src="images/2.jpg" />
+    </div>
+    <div class="wrap">
+        <div class="wrap-left">
+            <img id="userpics" src="" />
+            <div class="wrap-right">
+                <ul>
+                    <li id="sername"></li>
+                    <li id="signature"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-panel newslist-tab">
+            <ul class="tabinner">
+                <li class="active" id="aticleLi">文章</li>
+                <li><a id="fansFanA">粉丝</a></li>
+                <li><a id="fansLove">关注</a></li>
+            </ul>
+        </div>
+        <ul id="r_articalList"></ul>
+        <div id="page" class="text-center"></div>
+    </div>
+
+    <script src="assets/jquery-1.10.2.js "></script>
+    <script src="assets/layui/lay/dest/layui.all.js "></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js "></script>
+    <script src="util/util.js "></script>
+    <script src="util/pub.js "></script>
+    <script src="js/fans.js" type="text/javascript" charset="utf-8"></script>
+    <script id="getFansScript" type="text/html">
+        {{# layui.each(d, function(index, item){ }}
+        <li class="articleLis clearfix">
+            <div class="carousel_box fl">
+                <a class="art_imgBox" href="articleDetail.html?articleId={{item.articleId}}" target="_blank">
+                    {{# var scCmsResourcesList = item['scCmsResourcesList']; }}
+                    {{# for(var i = 0; i<scCmsResourcesList.length; i++){    }}
+                    {{# var list = scCmsResourcesList[i]['resourcesType'];   }}
+                    {{#     if(list != 'image' ) { }}
+                                <img class="art_imgIcon fl" src="{{scCmsResourcesList[i]['resourcesUrl']}}" alt="">
+                    {{#     } }}
+                    {{# } }}
+                </a>
+                <div class="leftArrow">&lt;</div>
+                <div class="rightArrow">&gt;</div>
+            </div>
+            <div class="art_info fl">
+                <a class="art_title cur-p" href="articleDetail.html?articleId={{item.articleId}}" target="_blank" isExamine={{item.isExamine}} isDraft={{item.isDraft}} stick={{item.stick}}>{{item.articleTitle}}</a><span class="art_stick"></span>
+                <span class="artTit_icon"></span><span class="artTit_imgs"></span>
+                <p class="art_time"><span class="art_type">{{item.label}}</span>{{item.releaseTime}}</p>
+                <p class="art_data">
+                    阅读：<span>{{item.visitorNum || 0}}</span> 评论：
+                    <span>{{item.commentNum || 0}}</span> 转发：
+                    <span>{{item.forwardNumber || 0}}</span> 收藏：
+                    <span>{{item.enshrinedNum || 0}}</span>
+                </p>
+            </div>
+        </li>
+        {{# }); }}
+    </script>
+</body>
+
+</html>

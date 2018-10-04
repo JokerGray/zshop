@@ -1,0 +1,842 @@
+* {
+  box-sizing: border-box;
+  &::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+  }
+  &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 10px;
+    //-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    //background: rgba(0,0,0,0.2);
+    background-color: #e5e5e5;
+  }
+  &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    //-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background: rgba(0,0,0,0);
+  }
+}
+
+body {
+  background-color: #EFEFEF;
+}
+
+.layoutBody {
+  width: 68.259%;
+  margin: 20px auto;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+//顶部tab页
+.tabNav {
+  width: 100%;
+  height: 60px;
+  padding: 0 40px;
+  position: relative;
+  ul {
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #EBEBEB;
+    li {
+      display: inline-block;
+      font-size: 14px;
+      color: #333333;
+      padding: 0 30px;
+      line-height: 58px;
+      cursor: pointer;
+      &.active {
+        border-bottom: 2px solid #1be0d6;
+        color: #1be0d6;
+      }
+    }
+
+  }
+  .shopSelect {
+    position: absolute;
+    right: 40px;
+    top: 14px;
+    select {
+      width: 130px;
+      height: 32px;
+      font-size: 12px;
+      padding-left: 30px;
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+    }
+  }
+}
+
+//筛选条件
+.filterBox {
+  width: 100%;
+  padding: 20px 0 20px 20px;
+  .showWhat {
+    overflow: hidden;
+    margin-bottom: 30px;
+    label {
+      width: 80px;
+      text-align: right;
+      display: inline-block;
+      font-size: 14px;
+      color: #333333;
+      vertical-align: middle;
+    }
+    ul {
+      display: inline-block;
+      vertical-align: middle;
+      width: 86.333%;
+      li {
+        float: left;
+        margin-right: 20px;
+        cursor: pointer;
+        i {
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          border: 1px solid #1be0d6;
+          vertical-align: middle;
+          margin-right: 6px;
+        }
+        span {
+          font-size: 14px;
+          color: #5F5F5F;
+          vertical-align: middle;
+        }
+        &.active {
+          i {
+            background: url("../images/selected.png") no-repeat center;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+  .timePeople {
+    width: 100%;
+    .dateRangeSelect {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 50px;
+      label {
+        width: 80px;
+        display: inline-block;
+        text-align: right;
+        vertical-align: middle;
+        font-size: 14px;
+        color: #333333;
+      }
+      > div {
+        display: inline-block;
+        > input {
+          width: 180px;
+          height: 32px;
+          border: 1px solid #d9d9d9;
+          outline: none;
+          text-align: center;
+          font-size: 14px;
+          color: #5F5F5F;
+        }
+        > span {
+          font-size: 14px;
+          color: #333333;
+          padding: 0 10px;
+        }
+      }
+    }
+    .dateDaySelect {
+      display: none;
+      vertical-align: middle;
+      margin-right: 120px;
+      label {
+        width: 80px;
+        display: inline-block;
+        text-align: right;
+        vertical-align: middle;
+        font-size: 14px;
+        color: #333333;
+      }
+      input{
+        width: 110px;
+        height: 32px;
+        border: 1px solid #ebebeb;
+        font-size: 12px;
+        color: #5f5f5f;
+        padding-left: 10px;
+        background: url("../images/icon-calender.fw.png") no-repeat 90px 9px;
+      }
+
+    }
+    .peopleSelect {
+      display: inline-block;
+      vertical-align: middle;
+      label {
+        display: inline-block;
+        font-size: 14px;
+        color: #333333;
+      }
+      .peopleSelectBtn {
+        display: inline-block;
+        width: 110px;
+        height: 32px;
+        line-height: 32px;
+        font-size: 14px;
+        color: #333333;
+        border: 1px solid #d9d9d9;
+        padding-left: 10px;
+        background: url("../images/icon_arrow.png") no-repeat top right;
+        -webkit-background-size: 32px;
+        background-size: 32px;
+        cursor: pointer;
+      }
+    }
+  }
+
+}
+
+.line {
+  width: 100%;
+  padding: 0 40px;
+  height: 1px;
+  hr{
+    margin: 0;
+  }
+  //border-top: 1px solid #ebebeb;
+  //margin: 0 auto;
+}
+
+//导出报表按钮
+.exportBtn {
+  padding: 16px 20px;
+  button {
+    outline: none;
+    border: none;
+    width: 130px;
+    height: 28px;
+    background-color: #1be0d6;
+    color: #ffffff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+  }
+}
+
+//报表内容
+.reportContent {
+  padding: 0 20px;
+  position: relative;
+  //月报表
+  >.month {
+    overflow: auto;
+    padding-bottom: 20px;
+    display: block;
+    #month-table {
+      margin: 0;
+      thead {
+        tr {
+          th {
+            min-width: 100px;
+            max-width: 100px;
+            height: 100px;
+            text-align: center;
+            color: #333333;
+            padding: 0;
+            &.shopName {
+              min-width: 160px;
+            }
+            &.date {
+              position: relative;
+              span {
+                font-weight: 700;
+                &:first-of-type {
+                  position: absolute;
+                  top: 32px;
+                  left: 50%;
+                  -webkit-transform: translateX(-150%);
+                  -moz-transform: translateX(-150%);
+                  -ms-transform: translateX(-150%);
+                  -o-transform: translateX(-150%);
+                  transform: translateX(-150%);
+                }
+                &:last-of-type {
+                  position: absolute;
+                  bottom: 24px;
+                  left: 60%;
+                  //right: 26px;
+                  //right: 50%;
+                  //-webkit-transform: translateX(300%);
+                  //-moz-transform: translateX(300%);
+                  //-ms-transform: translateX(300%);
+                  //-o-transform: translateX(300%);
+                  //transform: translateX(300%);
+                }
+              }
+            }
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            //text-align: center;
+            //padding: 0 5px;
+            padding: 0 0;
+            height: 90px;
+            color: #5F5F5F;
+            > p {
+              font-size: 12px;
+              text-decoration: underline;
+              padding: 0 2px;
+              //padding: 0 10px;
+              &.non-normal {
+                color: #FF796B;
+              }
+            }
+            &.lateDuration, &.LeaveEarlyDuration, &.non-workDuration {
+              text-decoration: underline;
+              cursor: pointer;
+            }
+            &.attendanceDetailBtn{
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+  //日报表
+  >.day {
+    font-size: 14px;
+    width:80%;
+    min-width: 600px;
+    overflow-y: auto;
+    display: none;
+    padding-bottom: 20px;
+    .layui-table{
+      margin: 0;
+      thead{
+        tr{
+          color: #333333;
+          th{
+            padding: 9px 0;
+          }
+        }
+      }
+      tbody{
+        tr{
+          td{
+            padding: 9px 0;
+            .non-normal{
+              text-decoration: underline;
+              color: #FF796c;
+            }
+          }
+        }
+      }
+    }
+
+  }
+  //打卡时间
+  >.time {
+    display: none;
+    overflow: auto;
+    width: 100%;
+    padding-bottom: 20px;
+    .layui-table{
+      margin:0;
+      thead {
+        tr {
+          th {
+            color: #333333;
+            padding: 0;
+            &.date {
+              position: relative;
+              span {
+                &:first-of-type {
+                  position: absolute;
+                  top: 6px;
+                  left: 50%;
+                  -webkit-transform: translateX(-150%);
+                  -moz-transform: translateX(-150%);
+                  -ms-transform: translateX(-150%);
+                  -o-transform: translateX(-150%);
+                  transform: translateX(-150%);
+                }
+                &:last-of-type {
+                  position: absolute;
+                  bottom: 6px;
+                  left: 60%;
+                }
+              }
+            }
+          }
+        }
+      }
+      tbody{
+        tr{
+          td{
+            padding: 9px 0;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+//选择考勤人员弹窗
+.selectWaiter {
+  -webkit-border-radius: 8px!important;
+  -moz-border-radius: 8px!important;
+  border-radius: 8px!important;
+  .layui-layer-content{
+    -webkit-border-radius: 8px!important;
+    -moz-border-radius: 8px!important;
+    border-radius: 8px!important;
+    .title {
+      width: 100%;
+      height: 70px;
+      background-color: #353b53;
+      color: #1ae0d5;
+      font-size: 24px;
+      line-height: 70px;
+      text-align: center;
+    }
+    .selectorBox {
+      width: 100%;
+      height: 506px;
+      //height: 70%;
+      padding: 0 52px;
+      overflow: hidden;
+      .waiting, .selected {
+        width: 350px;
+        height: 100%;
+        > span {
+          display: block;
+          font-size: 20px;
+          color: #333333;
+          padding: 25px 0 15px 0;
+        }
+        > div {
+          width: 100%;
+          height: 440px;
+          max-height: 440px;
+          min-height: 220px;
+          //height: 100%;
+          border: 1px solid #e3e3e3;
+          background-color: #f4f6f8;
+          -webkit-border-radius: 6px;
+          -moz-border-radius: 6px;
+          border-radius: 6px;
+          overflow-y: auto;
+        }
+      }
+      .waiting {
+        float: left;
+        form {
+          padding-left: 12px;
+          margin-top: 12px;
+          .keyword {
+            width: 312px;
+            height: 40px;
+            outline: none;
+            border: 1px solid #e3e3e3;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #333333;
+            padding-left: 40px;
+            background: url("../images/icon-search.png") no-repeat 10px 9px;
+            -webkit-background-size: 22px;
+            background-size: 22px;
+            background-color: #fff;
+          }
+        }
+        .waiters {
+          padding-left: 16px;
+          .allSelectBox {
+            margin-top: 24px;
+            > i {
+              display: inline-block;
+              width: 14px;
+              height: 14px;
+              border: 1px solid #d9d9d9;
+              -webkit-border-radius: 4px;
+              -moz-border-radius: 4px;
+              border-radius: 4px;
+              vertical-align: middle;
+              background-color: #fff;
+              &.active {
+                border: 0;
+                background: url("../images/selected.png") no-repeat center;
+                -webkit-background-size: 100%;
+                background-size: 100%;
+              }
+            }
+            > span {
+              display: inline-block;
+              font-size: 16px;
+              color: #333333;
+              vertical-align: middle;
+              margin-left: 16px;
+            }
+          }
+          .waiterItem {
+            margin-top: 20px;
+            li {
+              font-size: 0;
+              margin: 10px 0;
+              .selectBtn {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                border: 1px solid #d9d9d9;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                vertical-align: middle;
+                background-color: #fff;
+                &.active {
+                  border: 0;
+                  background: url("../images/selected.png") no-repeat center;
+                  -webkit-background-size: 100%;
+                  background-size: 100%;
+                }
+              }
+              p {
+                display: inline-block;
+                font-size: 16px;
+                vertical-align: middle;
+                margin-left: 10px;
+                .waiterName {
+                  display: inline-block;
+                  width: 154px;
+                  color: #333333;
+                  vertical-align: middle;
+                }
+                .phoneNum {
+                  vertical-align: middle;
+                  .phoneIcon {
+                    display: inline-block;
+                    width: 14px;
+                    height: 14px;
+                    background: url("../images/icon-phone.fw.png") no-repeat center;
+                    -webkit-background-size: 100%;
+                    background-size: 100%;
+                    vertical-align: middle;
+                  }
+                  b {
+                    font-size: 14px;
+                    color: #999999;
+                    vertical-align: middle;
+                    margin-left: 12px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .selected {
+        float: right;
+        .selectedContent {
+          overflow-y: auto;
+          ul {
+            padding-left: 44px;
+            margin-top: 16px;
+            li {
+              margin: 14px 0;
+              .waiterName {
+                display: inline-block;
+                width: 154px;
+                font-size: 16px;
+                color: #333333;
+                vertical-align: middle;
+              }
+              .phoneNum {
+                vertical-align: middle;
+                .phoneIcon {
+                  display: inline-block;
+                  width: 14px;
+                  height: 14px;
+                  background: url("../images/icon-phone.fw.png") no-repeat center;
+                  -webkit-background-size: 100%;
+                  background-size: 100%;
+                  vertical-align: middle;
+                }
+                b {
+                  vertical-align: middle;
+                  font-size: 14px;
+                  color: #999999;
+                  margin-left: 12px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .btnBox {
+      width: 100%;
+      text-align: center;
+      padding-top: 20px;
+      padding-bottom: 10px;
+      font-size: 0;
+      //position: absolute;
+      //bottom: 20px;
+      button {
+        width: 100px;
+        height: 40px;
+        outline: none;
+        border: none;
+        font-size: 18px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        margin: 0 16px;
+        &.cancelBtn {
+          background-color: #fff;
+          color: #333333;
+          border: 1px solid #ebebeb;
+        }
+        &.yesBtn {
+          background-color: #1eccc6;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+//查看异常次数汇总弹窗
+.lateTotal{
+  -webkit-border-radius: 8px!important;
+  -moz-border-radius: 8px!important;
+  border-radius: 8px!important;
+  .layui-layer-content{
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    .title{
+      width: 100%;
+      height: 41px;
+      line-height: 41px;
+      background-color: #353b53;
+      font-size: 14px;
+      color: #1ae0d5;
+      padding-left: 10px;
+    }
+    .lateList{
+      height: 179px;
+      overflow: auto;
+      .th{
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        background-color: #f7f7f7;
+        font-size: 0;
+        padding: 0 34px;
+        span{
+          display: inline-block;
+          width: 33.3333%;
+          text-align: left;
+          font-size: 14px;
+          color: #333333;
+        }
+      }
+      .tb{
+        width: 100%;
+        padding: 0 24px;
+        ul{
+          li{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            font-size: 0;
+            border-bottom: 1px solid #ebebeb;
+            padding: 0 10px;
+            span{
+              display: inline-block;
+              width: 33.333%;
+              font-size: 14px;
+              color: #5F5F5F;
+            }
+            &.nodata{
+              span{
+                width: 100%;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//考勤详情弹窗
+.attendanceDetail{
+  -webkit-border-radius: 8px!important;
+  -moz-border-radius: 8px!important;
+  border-radius: 8px!important;
+  .layui-layer-content {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    .title{
+      width: 100%;
+      height: 41px;
+      background-color: #353b53;
+      font-size: 14px;
+      color: #1ae0d5;
+      line-height: 41px;
+      padding-left: 10px;
+      position: relative;
+      .closeBtn{
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 0;
+        right: 0;
+        font-size: 30px;
+        color: #1ae0d5;
+        cursor: pointer;
+        text-align: center;
+      }
+    }
+    .userName{
+      padding: 12px 0 12px 28px;
+      span{
+        display: inline-block;
+        vertical-align: middle;
+        &.nameIcon{
+          width: 50px;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          background-color: #1eccc6;
+          color: #ffffff;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+        &.name{
+          font-size: 16px;
+          color: #333333;
+        }
+      }
+    }
+    .timeDsc{
+      font-size: 14px;
+      color: #333333;
+      padding-left: 35px;
+    }
+    .detailContent{
+      width: 100%;
+      height: 146px;
+      padding: 10px 25px;
+      overflow-y: auto;
+      ul{
+        border: 1px solid #ebebeb;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+        li{
+          font-size: 0;
+          border-bottom: 1px solid #ebebeb;
+          height: 40px;
+          span{
+            display: inline-block;
+            font-size: 14px;
+            color: #333333;
+            width: 15%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-left: 1px solid #ebebeb;
+            vertical-align: top;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            &:nth-of-type(3),&:nth-of-type(4){
+              width: 20%;
+            }
+            &:nth-of-type(1){
+              border-left: 0;
+            }
+            >img{
+              width: 35px;
+              height: 35px;
+              display: inline-block;
+              vertical-align: top;
+              margin-top: 2px;
+            }
+            &.non-normal{
+              text-decoration: underline;
+              color: #FF796c;
+            }
+          }
+          &:first-of-type{
+            background-color: #f7f7f7;
+          }
+          &:last-of-type{
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+//select2公共样式
+.select2-container--default {
+  vertical-align: middle;
+  font-size: 12px;
+  .select2-selection--single {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    height: 32px;
+    border: 1px solid #d9d9d9;
+    .select2-selection__rendered {
+      width: 100%;
+      line-height: 32px;
+      color: #333333;
+      position: absolute;
+      z-index: 1;
+      padding-left: 30px;
+      overflow: hidden; /*超出部分隐藏*/
+      white-space: nowrap; /*不换行*/
+      text-overflow: ellipsis; /*超出部分文字以...显示*/
+    }
+    .select2-selection__arrow {
+      width: 128px;
+      height: 30px;
+      background: url("../images/selectstore.png") no-repeat top left;
+      -webkit-background-size: 100%;
+      background-size: 100%;
+      b {
+        display: none
+      }
+    }
+  }
+}
+.select2-container--open {
+  font-size: 12px;
+  .select2-results__option--highlighted[aria-selected] {
+    background-color: #1be0d6;
+  }
+  .select2-dropdown {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+  }
+  .select2-results__option {
+    padding: 4px 6px;
+  }
+}

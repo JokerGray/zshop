@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="wekit">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./static/flexible/flexible.js"></script>
+    <script src="./static/artTemplate/artTemplate.js"></script>
+    <script src="./static/share/share.js"></script>
+    <title>风采详情</title>
+</head>
+<body style="font-size: 12px;max-width: 640px;margin: 0 auto;">
+        <div id="header">
+            <div class="header_logo">
+                <img src="./src/img/logo.png">
+            </div>
+            <div class="header_load btn">
+                打开
+            </div>
+        </div>
+    <div class="content  padding-24">
+        
+    </div>
+
+    <a href="/24hours/share24/getPackage.html?sn=15w0&yw=circle&cp=1" class="footer download_link"> <img src="./src/img/footer.png" alt=""> </a>
+
+    <div id="contBlank" style="display: none;">
+        <span class="blank_icon"></span>
+        <p class="msg_miss">哎呀！您访问的地址不存在</p>
+    </div>
+
+    <div class="model">
+        <div class="model_cont">
+            <p class="text1">1、点击右上角的&nbsp;&nbsp;<span></span></p>
+            <p class="text2">2、选择&nbsp;&nbsp;<span></span></p>
+            <div class="pointTo"></div>
+        </div>
+    </div>
+
+    
+
+    <script type="text/html" id="showBlank">
+            <div class="error">
+                <%=msg%>
+            </div>
+    </script>
+    <script src="./static/pub/pub.js"></script>
+
+    <script type="text/html" id="showCont">
+        <div class="content-top" onclick="gotoCircle({{data.id}})">
+            <div class="user-info">
+                <div class="user-icon">
+                    <img id="userLogo" src="{{data.logo}}" alt="">
+                </div>
+                <div class="user-text">
+                    <div class="user-title" id="fansName">{{data.video.userName}}</div>
+                    <div class="user-name">
+                        <b id="merchantName">{{data.name}}</b>
+                        <!-- <img src="./src/img/shanghubiao.png" alt=""> -->
+                    </div>
+                </div>
+            </div>
+            <div class="user-info-time">{{data.video.publishDate}}</div>
+        </div>
+        <div class="content-word">
+           {{data.video.description}}
+        </div>
+
+        {{if data.video.videoAlbumType==2}}
+        <div class="videoBox">
+            <video src="{{data.video.urls[0]}}" class="video" poster="{{data.video.coverUrl}}" preload='auto' x5-video-player-type='h5' x5-video-player-fullscreen="true" playsinline="true" webkit-playsinline="true"></video>
+            <img class="play" src="./src/img/qz_hdxq_bfan@2x.png" alt="">
+        </div>
+        {{/if}}
+        {{if data.video.videoAlbumType==1}}
+        <div class="fengcai-album" id="coverImg">
+            {{each data.video.urls as url index}}
+                <div class='fengcai-album-list'>
+                    <img src='{{url}}'>
+                </div>
+            {{/each}}
+        </div>
+        {{/if}}
+        {{if data.video.commentList.allLikeList }}
+            <div class="zan">
+                <div class="zan-word">
+                    赞
+                </div>
+                <div class="zan-photos">
+                    {{each data.video.commentList.allLikeList as like index}}
+                    <div class="user-icon">
+                        <img id="userLogo" src="{{like.sMemberImgName}}" alt="">
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+        {{if data.video.commentList.commentList.length !=0}}
+            <div class="comment">
+                {{each data.video.commentList.commentList as comment index}}
+                <div class="comment-author">
+                    <div class="comment-author-info">
+                        <div class="comment-author-icon">
+                            <img id="userLogo" src="{{comment.sMemberImgName}}" alt="">
+                        </div>
+                        <div class="user-text">
+                            <div class="user-title" id="fansName">{{comment.sUserCode}}</div>
+                            <div class="commet-time">
+                                <span id="merchantName">2018-11-12 16:00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="comment-detail-box">
+                    <div class="comment-detail">
+                        {{comment.sCommentContent}}
+                    </div>
+                    {{if comment.lsccr.length !=0}}
+                    <div class="other-comment">
+                        {{each comment.lsccr as reply index}}
+                        <p>
+                            <span class="user-name">{{reply.replyUserCode}}</span>回复<span class="user-name">{{reply.repliedUserCode}}：</span>{{reply.replyContent}}
+                        </p>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+                    {{if comment.lsccr.length >1}}
+                    <span class="comment-all">全部评论↓</span>
+                    {{/if}}
+                </div>
+                {{/each}}
+            </div>
+        {{/if}}
+    </script>
+
+</body>
+</html>

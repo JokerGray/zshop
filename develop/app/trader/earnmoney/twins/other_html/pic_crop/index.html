@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<headlang="zh-cn">
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache, must-revalidate">
+		<meta http-equiv="expires" content="0">
+
+		<link href="../../../../assets/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="../../../../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="../../../../assets/hplus/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+		<link href="../../../../assets/hplus/css/animate.min.css" rel="stylesheet">
+		<link href="../../../../assets/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+		<link rel="stylesheet" href="index.css">
+		<!-- jquery -->
+		<script type="text/javascript" src="../../../../assets/hplus/js/jquery.min.js"></script>
+
+		<!--layer弹出层插件-->
+		<script type="text/javascript" src="../../../../assets/layer/layer.js"></script>
+		
+		<!-- iCheck选择框样式 -->
+		<link href="../../../../assets/hplus/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<script src="../../../../assets/hplus/js/plugins/iCheck/icheck.min.js"></script>
+
+		<!-- 弹层title样式统一 -->
+		<link rel="stylesheet" href="../../../../assets/check_index/layer/skin/default/layer.css"/>
+
+		<script type="text/javascript">
+			var ctx = '';
+		</script>
+
+		<script src="../../../../assets/Jcrop-0.9.12/js/jquery.Jcrop.js"></script>
+		<script src="../../../../assets/Jcrop-0.9.12/js/jquery.Jcrop.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../../../assets/Jcrop-0.9.12/css/jquery.Jcrop.css"/>
+		<script src="../../../../assets/Jcrop-0.9.12/js/jquery.color.js" type="text/javascript" charset="utf-8"></script>
+		<title>图片裁剪</title>
+	</head>
+	<body>
+		<input type="hidden" name="imgClass" id="imgClass" value="videoUrl" />
+		<div class="content ">
+			<a href="javascript:void(0)" class="selectImg">
+      			<input type="file" id="ipt"  accept="image/jpg,image/jpeg,image/png">选择图片
+    		</a>
+			<p class="title">预览区</p>
+			<div class="showBox">
+				<img  class="showImg"  id="showImg" />
+			</div>
+
+			  <input type="hidden" id="uploadNow">
+			
+			 <div class="preview">
+    			<div class="previewContainer">
+    				<img  class="jcropPreview"/>
+    			</div>
+    			<p class="desc" >图片尺寸:200*200像素</p>
+				<button type="" onclick="uploadCrop()" class="cropBtn">裁剪图片</button>
+    			<input type="hidden" value="" id="logoImg">
+      			<input type="hidden" value="" id="bgImg"/>
+  			</div>
+		</div>
+	</body>
+	<!-- jSCommon -->
+	<script src="../../../../assets/plupload-2.3.1/js/moxie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../../assets/plupload-2.3.1/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../../assets/plupload-2.3.1/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>
+	<script src="index.js"></script>
+</html>

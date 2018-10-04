@@ -1,0 +1,356 @@
+body {
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.layui-input,
+.layui-select {
+  height: 34px;
+}
+/**顶部时间选择和店铺选择*/
+.time-shop {
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid #ccc;
+}
+.time-shop .timeTab {
+  float: left;
+}
+.time-shop .timeTab ul {
+  font-size: 0;
+  padding-top: 19px;
+}
+.time-shop .timeTab ul li {
+  display: inline-block;
+  width: 97px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 16px;
+  color: #707070;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.time-shop .timeTab ul li.active {
+  border: none;
+  background-color: #fff;
+}
+.time-shop .shopSelector {
+  float: right;
+  width: 150px;
+  margin-top: 15px;
+  margin-right: 20px;
+}
+/**时间选择和路径显示*/
+.time-path {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+}
+.time-path > div {
+  display: inline-block;
+  vertical-align: middle;
+}
+.time-path > div.timeIcon {
+  vertical-align: -7px;
+}
+.time-path > div.timeIcon i {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/common/img/dateIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.time-path > div.timeSelector > div:nth-of-type(1) {
+  width: 90px;
+}
+.time-path > div.timeSelector > div:nth-of-type(2) {
+  display: none;
+}
+.time-path > div.timeSelector > div:nth-of-type(2) span {
+  padding: 0 10px;
+  font-size: 16px;
+  color: #333333;
+}
+.time-path > div.timeSelector > div:nth-of-type(3) {
+  width: 190px;
+  display: none;
+}
+.time-path > div.timeSelector input {
+  width: 100%;
+  height: 24px;
+  color: #1e9fff;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  vertical-align: middle;
+}
+.time-path > div.path {
+  font-size: 16px;
+  color: #333333;
+}
+.time-path > div.path i {
+  font-family: SimSun;
+}
+.time-path > div.linkBtn {
+  float: right;
+}
+.time-path > div.linkBtn a {
+  font-size: 14px;
+  color: #1e9fff;
+}
+.time-path > div.linkBtn a i {
+  font-family: SimSun;
+}
+/**礼券总数*/
+.ticketCount ul li {
+  float: left;
+  width: 400px;
+  height: 98px;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+  margin: 20px;
+}
+.ticketCount ul li div:nth-of-type(1) {
+  float: left;
+  width: 46px;
+  height: 46px;
+  background: url("../images/ic_lyyhq.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  margin: 20px 20px 0 20px;
+}
+.ticketCount ul li div:nth-of-type(2) {
+  float: left;
+  color: #333333;
+}
+.ticketCount ul li div:nth-of-type(2) p {
+  font-size: 15px;
+  margin-top: 20px;
+}
+.ticketCount ul li div:nth-of-type(2) h4 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 14px;
+}
+.ticketCount ul li div:nth-of-type(3) {
+  float: right;
+  font-size: 14px;
+  color: #666666;
+  margin: 20px 20px 0 0;
+}
+.ticketCount ul li:nth-of-type(2) div:nth-of-type(1) {
+  background: url("../images/ic_syyhq.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+/**优惠券领用和使用走势*/
+.ticketTrend {
+  padding: 0 20px;
+}
+.ticketTrend > div {
+  width: 100%;
+  height: 300px;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+}
+/**优惠券明细*/
+.ticketList {
+  padding: 0 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.ticketList .tab-filter-export {
+  width: 100%;
+  height: 55px;
+  line-height: 54px;
+  background-color: #fff;
+}
+.ticketList .tab-filter-export .tab {
+  float: left;
+}
+.ticketList .tab-filter-export .tab a {
+  display: inline-block;
+  height: 34px;
+  line-height: 34px;
+  font-size: 16px;
+  color: #333333;
+  margin-left: 20px;
+}
+.ticketList .tab-filter-export .tab a.active {
+  border-bottom: 2px solid #1e9fff;
+}
+.ticketList .tab-filter-export .filter {
+  float: right;
+  width: 150px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.ticketList .tab-filter-export .export {
+  float: right;
+  margin-right: 20px;
+}
+.ticketList .tab-filter-export .export a {
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  border: 1px solid #d2d2d2;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  font-size: 14px;
+  color: #333333;
+}
+.ticketList .tab-filter-export .export a i {
+  display: inline-block;
+  vertical-align: -6px;
+  width: 24px;
+  height: 23px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.ticketList .tableBox {
+  padding: 0 20px 10px 20px;
+  background-color: #fff;
+  height: 440px;
+  overflow-y: auto;
+}
+.ticketList .tableBox table {
+  margin: 0;
+}
+.ticketList .tableBox table th,
+.ticketList .tableBox table td {
+  padding: 9px;
+}
+.ticketList .tableBox table th:first-of-type,
+.ticketList .tableBox table td:first-of-type {
+  text-align: center;
+}
+.ticketList .tableBox .use {
+  display: none;
+}
+.ticketList .tableBox .use th:last-of-type,
+.ticketList .tableBox .use td:last-of-type {
+  text-align: right;
+}
+.ticketList .tableBox .use th:last-of-type a,
+.ticketList .tableBox .use td:last-of-type a {
+  color: #1e9fff;
+}
+.ticketList .pageBox {
+  padding: 0 20px;
+  background-color: #fff;
+  height: 55px;
+}
+.ticketList .pageBox > div {
+  float: right;
+}
+/**优惠券使用详情弹窗*/
+.useDetail .top {
+  height: 34px;
+  line-height: 34px;
+  background-color: #353B53;
+  padding: 0 10px 0 20px;
+}
+.useDetail .top span {
+  font-size: 14px;
+  color: #FFFFFF;
+}
+.useDetail .top i {
+  float: right;
+  width: 34px;
+  text-align: center;
+  font-size: 20px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.useDetail .ticketInfo {
+  padding: 0 20px;
+  position: relative;
+}
+.useDetail .ticketInfo .info p:nth-of-type(1) {
+  font-size: 16px;
+  color: #333333;
+  margin: 16px 0 6px 0;
+}
+.useDetail .ticketInfo .info p:nth-of-type(1) span {
+  margin-right: 40px;
+}
+.useDetail .ticketInfo .info p:nth-of-type(1) span:first-of-type {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 230px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.useDetail .ticketInfo .info p:nth-of-type(1) span:last-of-type {
+  margin-right: 0;
+}
+.useDetail .ticketInfo .info p:nth-of-type(2) > i {
+  font-size: 16px;
+  color: #666666;
+  margin: 0 6px;
+}
+.useDetail .ticketInfo .info p:nth-of-type(2) > span {
+  font-size: 16px;
+  color: #666666;
+}
+.useDetail .ticketInfo .info p:nth-of-type(2) > span > span:nth-of-type(2) {
+  color: #ff3030;
+}
+.useDetail .ticketInfo .detailExport {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.useDetail .ticketInfo .detailExport a {
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  border: 1px solid #d2d2d2;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  font-size: 14px;
+  color: #333333;
+}
+.useDetail .ticketInfo .detailExport a i {
+  display: inline-block;
+  vertical-align: -6px;
+  width: 24px;
+  height: 23px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.useDetail .useDetailList {
+  padding: 0 20px;
+  height: 450px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+.useDetail .useDetailList table {
+  margin: 0;
+}
+/*# sourceMappingURL=reportCSCoupon.css.map */

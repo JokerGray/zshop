@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>炫话题</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/qmxtopic.css">
+    <!-- rem布局 -->
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+
+                    if (clientWidth <= 750) {
+                        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                    } else {
+                        docEl.style.fontSize = '200px';
+                    }
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+<body>
+    <!-- 请跳转至浏览器 -->
+    <div class="model">
+        <div class="model_cont">
+            <p class="text1">1、点击右上角的&nbsp;&nbsp;
+                <span></span>
+            </p>
+            <p class="text2">2、选择&nbsp;&nbsp;
+                <span></span>
+            </p>
+            <div class="pointTo"></div>
+        </div>
+    </div>
+    <div class="page" id="pageMain"></div>
+    <script type="text/html" id="content">
+        <div class="title"><span class="tplog">#&nbsp;&nbsp;</span><%=data.dazzleLabel.labelName%></div>
+        <div class="tpcont">
+            <%=#data.dazzleLabel.description%>
+        </div>
+        <div class="items clearfix">
+            <span class="playlogo"></span>
+            全民炫官方
+            <span class="item-right">
+                <span class="item-lg love toApp"></span>
+                <span class="num" style="margin-right:0.27rem;"><%=data.praiseSum%></span>
+                <span class="item-lg record toApp"></span>
+                <span class="num"><%=data.dazzleSum%></span>
+            </span>
+        </div>
+        <ul id="vdlist" class="my-vdlist clearfix">
+            <%for(var i=0;i<data.dazzleInfosByLabel.length;i++){%>
+                <li class="vd-item toHtml" data-dazzleid="<%=data.dazzleInfosByLabel[i].dazzleId%>" data-userid="<%=data.dazzleInfosByLabel[i].userId%>" style="background-image: url(<%=data.dazzleInfosByLabel[i].coverUrl%>?x-oss-process=image/resize,m_fill,w_248,h_360,limit_0)">
+                    &nbsp;
+                    <%if(i<3){%>
+                         <span class="rank">No.<%=(i+1)%></span>
+                    <%}%>
+                </li>
+            <%}%>
+        </ul>
+        <p class="more">更多精彩，请前往客户端体验..</p>
+        <div class="footer toAds">
+                <img src="img/footer.png" alt="">
+        </div>	
+    </script>
+    <script type="text/html" id="noData">
+        <p class="no-data">没有更多数据...</p>
+    </script>
+
+</body>
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/artTemplate.js"></script>
+<script src="js/util.js"></script>
+<script src="js/fastclick.js"></script>
+<script src="js/qmxtopic.js"></script>
+
+</html>

@@ -1,0 +1,138 @@
+ul{
+    margin:0;
+    padding:0;
+}
+li{
+    list-style: none;
+}
+.all-detail-wrapper{
+    position: relative;
+    width:1024px;
+    height:668px;
+    border:1px solid #eee;
+}
+.all-detail-wrapper .top-toolbar{
+    position:relative;
+    height:44px;
+    width:100%;
+    text-align: center;
+}
+.top-toolbar select{
+    height:44px;
+    font-size:18px;
+    vertical-align: top;
+}
+.top-toolbar .page-title{
+    display:inline-block;
+    width:70px;
+    height:44px;
+    line-height: 44px;
+    border:1px solid #999;
+    text-align: center;
+    font-size:23px;
+    color:#ccc;
+}
+.top-toolbar .return-icon{
+    position:absolute;
+    left:20px;
+    top:4px;
+    font-size:23px;
+    color:#a58f64;
+    text-decoration: none;
+}
+.all-detail-wrapper .all-detail-content{
+    padding-top:15px;
+    padding-left:15px;
+    overflow:hidden;
+}
+
+.detail-list ul>li{
+    position:relative;
+    display:block;
+    float:left;
+    width:130px;
+    height:130px;
+    padding-top:30px;
+    margin-left:30px;
+    margin-bottom:30px;
+    background-color:#ccc;
+    border:1px solid #999;
+    border-radius:8px;
+    text-align: center;
+    color:#333;
+}
+.detail-list ul>li .remove-btn{
+    position:absolute;
+    top:8px;
+    right:5px;
+    display:block;
+    background-color:#666;
+    width:28px;
+    height:6px;
+    border:1px solid #999;
+}
+
+.detail-list ul>li .num{
+    font-size:24px;
+}
+
+.all-detail-content .add-detail-link{
+    display:block;
+    float:left;
+    width:130px;
+    height:130px;
+    margin-left:30px;
+    background: url(../image/add_pic_icon_02.png) no-repeat;
+    background-size: cover;
+}
+
+/**弹框*/
+.layui-layer.layui-layer-rim{
+    border:none;
+}
+.pop-layer{
+    position:relative;
+    width:100%;
+    height:100%;
+    padding:20px 30px 0 30px;
+    border:1px solid #ccc;
+}
+.pop-layer .title{
+    margin-bottom:30px;
+    font-size:18px;
+    color:#666;
+    text-align: center;
+}
+.pop-layer .control-label{
+    width:25%;
+    font-size:15px;
+    color:#666;
+}
+.pop-layer .form-control{
+    width:70%;
+}
+.pop-layer .handle-btn{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    border-top:1px solid #999;
+}
+.pop-layer .handle-btn .submit-btn,
+.pop-layer .handle-btn .cancel-btn{
+    display:block;
+    float:left;
+    height:30px;
+    width:50%;
+    font-size:20px;
+    text-align: center;
+    text-decoration: none;
+}
+.pop-layer .handle-btn .submit-btn{
+    background-color: #999;
+    color:#fff;
+}
+.pop-layer .handle-btn .cancel-btn{
+    background-color: #fff;
+    color:#999;
+}

@@ -1,0 +1,149 @@
+/* pages/store/dynamic/dynamic.wxss */
+.dynamic {
+  align-items: flex-start;
+  letter-spacing: 2rpx;
+  padding: 0 30rpx 30rpx 30rpx;
+}
+
+.dynamic .dynamicBox{
+  margin-bottom: 40rpx;
+}
+
+.dynamic .headBox{
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  align-items: center;
+  margin-bottom: 25rpx;
+}
+
+.dynamic .headPic image{
+  width: 102rpx;
+  height: 102rpx;
+  border-radius: 50%;
+}
+
+.dynamic .userName,.dynamic .dynamicText{
+  font-size: 34rpx;
+  word-break: break-all;
+}
+
+.dynamic .storeName{
+  font-size: 32rpx;
+}
+
+.dynamic .infoBox{
+  width: 488rpx;
+  padding-left: 20rpx;
+  line-height: 50rpx;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+}
+
+.date{
+  font-size: 24rpx;
+  color: #989898;
+}
+
+.dynamic .infoBox image{
+  width:30rpx;
+  height: 28rpx;
+  margin-right: 15rpx;
+}
+
+.dynamic .store{
+  display: flex;
+  align-items: center;
+}
+
+.dynamic .dynamicText{
+  margin-bottom: 25rpx;
+}
+
+.dynamic .dynamicText text{
+  display: inline-block;
+  width: 100%;
+  color: #4a4a4a;
+}
+
+.dynamic .imageBox image{
+  height: 220rpx;
+  margin-right: 15rpx;
+  border-radius: 12rpx;
+}
+
+.dynamic .imageBox image.type1{
+  width: 690rpx;
+  height: 350rpx;
+}
+
+.dynamic .imageBox image.type2{
+  width: 337.5rpx;
+}
+
+.dynamic .imageBox image.type3{
+  width: 220rpx;
+}
+
+.dynamic .videoBox video{
+  width: 100%;
+}
+
+.dynamic .imageBox image.type1{
+  margin: 0
+}
+
+.dynamic .imageBox image.type2:nth-child(2n){
+  margin: 0
+}
+
+.dynamic .imageBox image.type3:nth-child(3n){
+  margin: 0
+}
+
+.dynamic .readInfo{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #999999;
+  font-size: 26rpx;
+  padding: 25rpx 0;
+}
+
+.dynamic .readInfo image{
+  width:36rpx;
+  height: 30rpx;
+  margin-right: 15rpx;
+}
+
+.dynamic .replyInfo,.dynamic .reply,.dynamic.like{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dynamic .reply{
+  margin-right: 50rpx;
+}
+
+.blank{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  letter-spacing: 2rpx;
+}
+
+.blank image{
+  width: 334rpx;
+  height: 330rpx;
+  margin-top: 250rpx;
+}
+
+.blank text{
+  font-size: 29rpx;
+  color: #969696;
+  line-height: 80rpx;
+}

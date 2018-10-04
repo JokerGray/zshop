@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compitable" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+        <title>我的首页详情页</title>
+        <link rel="stylesheet" href="../../common/assets/css/bootstrap.css"/>
+		<link rel="stylesheet" href="../../common/css/common.css"/>
+        <link rel="stylesheet" href="../../common/assets/css/bootstrap-datetimepicker.min.css" />
+        <link rel="stylesheet" href="../css/myHomeDetail.css">
+    </head>
+    <body>
+        <div class="maintitle">
+            <a class="return-icon" href="javascript:void(0);" onclick="history.go(-1);"><img src="../img/icon_fanhui.png" /></a>
+			<h1 class="title">我的首页详情页</h1>
+        </div>
+        <div class="main-content">
+            <div class="date-wrap">
+                <div class="form-inline date-selector hide">
+                    <input type="text" class="form-control datetime start-time" readonly="readonly">至<input type="text" class="form-control datetime end-time" readonly="readonly">
+                    <button type="button" class="btn">确定</button>
+                </div>
+                <div class="date-tab">
+                    <div class="btn-group">
+    					<button type="button" class="btn month active" data-rel="month">月</button>
+    					<button type="button" class="btn year" data-rel="year">年</button>
+    					<button type="button" class="btn more" data-rel="more">更多</button>
+    				</div>
+                </div>
+            </div>
+            <div class="module-content">
+                <div id="module1" class="chart-div hide">
+                    <div class="chart-tab">
+                        <div class="btn-group">
+                            <button type="button" class="btn active">展示图表</button>
+                            <button type="button" class="btn">明细列表</button>
+                        </div>
+                    </div>
+                    <div class="show-content">
+                        <div class="show-item chart-content">
+                            <div class="line-chart" id="customerOverviewLineChart"></div>
+                        </div>
+                        <div class="show-item table-list hide">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>客户名</th>
+                                        <th>客户编号</th>
+                                        <th>手机号</th>
+                                        <th>时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <div class="pageview" id="page1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="module8" class="chart-div hide">
+                    <div class="chart-tab">
+                        <div class="btn-group">
+                            <button type="button" class="btn active">展示图表</button>
+                            <button type="button" class="btn">明细列表</button>
+                        </div>
+                    </div>
+                    <div class="show-content">
+                        <div class="show-item chart-content">
+                            <div class="pie-chart" id="pieChart_module8"></div>
+                            <div class="bar-chart" id="barChart_module8"></div>
+                        </div>
+                        <div class="show-item table-list hide">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>商品类型</th>
+                                        <th>赠送数量</th>
+                                        <th>赠送时间</th>
+                                        <th>商品名称</th>
+                                        <th>商品单价</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <div class="pageview" id="page8"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="module2" class="hide">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>客户</th>
+                                <th>商品</th>
+                                <th>数量</th>
+                                <th>总金额</th>
+                                <th>时间</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <div id="page2" class="pageview"></div>
+                </div>
+                <div id="module5" class="hide">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>会员编号</th>
+                                <th>客户姓名</th>
+                                <th>电话</th>
+                                <th>会员类型</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <div id="page5" class="pageview"></div>
+                </div>
+                <div id="module6" class="hide">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>卡名</th>
+                                <th>总次数</th>
+                                <th>使用次数</th>
+                                <th>剩余次数</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <div id="page6" class="pageview"></div>
+                </div>
+            </div>
+        </div>
+
+
+<script src="../../common/assets/js/jquery-1.10.2.js"></script>
+<script src="../../common/assets/js/bootstrap.min.js"></script>
+<script src="../../common/assets/js/echarts.simple.min.js"></script>
+<script src="../../common/assets/js/jquery.bootpag.min.js"></script>
+<script src="../../common/assets/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="../../common/assets/js/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../common/js/util/util.js"></script>
+<script src="../js/myHomeDetail.js"></script>
+    </body>
+</html>

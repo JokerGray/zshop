@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>等级设置</title>
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
+
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			font-family: '微软雅黑';
+		}
+		.paddingValue{
+			padding:15px 50px 0 50px;
+		}
+		.nav{
+			border-bottom: 10px solid #f7f7f7;
+			padding:30px 50px 0 50px;
+		}
+		.levelSet,.integralSet,.integralGoods{
+			display: inline-block;
+			text-align: center;
+			text-decoration: none;
+			padding: 19px 50px;
+			background:#f1f1f1;
+			color:#6f6f6f;
+			border-top-right-radius: 8px;
+			border-top-left-radius: 8px;
+			font-size: 16px;
+		}
+		
+		.nav>a.active{
+			background:#1cc1ae;
+			color:#fff;
+		}
+
+		.addLevel{
+			text-align: right;
+		}
+		.addLevel a{
+			display: inline-block;
+			text-decoration: none;
+			background: #f9ac57;
+			color:#fff;
+			padding: 8px 18px;
+    		border-radius: 3px;
+		}
+		.levelSetContent table{
+			border-collapse:collapse;
+			width: 100%;
+		}
+		.levelSetContent tr,th,td{
+			text-align: center;
+		}
+		.levelSetContent th{
+			color:#fff;
+			font-size: 16px;
+			background: #26c3b1;
+		}
+
+		.levelSetContent .levelLogo,.levelSetContent .level,.levelSetContent .integralCount,.levelSetContent .note,.levelSetContent .operation{
+			padding:15px 0;
+
+		}
+		.levelSetContent .levelLogo,.levelSetContent .level,.levelSetContent .integralCount{
+			width: 15%;
+		}
+		.levelSetContent .note{
+			width: 40%;
+		}
+		.levelSetContent .operation{
+			width: 25%;
+		}
+
+		.levelSetContent tbody tr{
+			height: 80px;
+		}
+		.levelSetContent tbody tr td:first-of-type{
+			border-left: 1px solid #ddd;
+		}
+		.levelSetContent tbody tr td{
+			border-right: 1px solid #ddd;
+			border-bottom: 1px solid #ddd;
+		}
+		.levelSetContent tr img{
+			/*width: 60px;*/
+		}
+		
+		.levelSetContent tbody tr a{
+			display: inline-block;
+			width: 62px;
+			height: 26px;
+			line-height: 26px;
+			text-decoration: none;
+			border:1px solid #37c9b7;
+			border-radius: 5px;
+			font-size: 14px;
+			color: #37c9b7;
+		} 
+
+
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<a href="levelSet.html" class="levelSet active">等级设置</a>
+		<a href="integralSet.html" class="integralSet">积分设置</a>
+		<a href="integralGoods.html" class="integralGoods">积分商品</a>
+	</div>
+
+	<div class="addLevel paddingValue">
+		<a href="javascript:;" onclick="addLevel()">新增等级</a>
+	</div>
+
+	<div class="levelSetContent paddingValue">
+		<table>
+			<thead>
+				<tr>
+					<th class="levelLogo"></th>
+					<th class="level">等级名称</th>
+					<th class="integralCount">所需积分</th>
+					<th class="note">备注</th>
+					<th class="operation">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr style="display: none;">
+					<td class="levelNumber">
+						<img src="image/LV1.png" alt="">
+					</td>
+					<td class="levelName">
+						LV1
+					</td>
+					<td class="pointValue">
+						2000
+					</td>
+					<td class="remarks">
+						享受到店8折优惠，名免费全身按摩2次和送节日小礼品
+					</td>
+					<td>
+						<a href="javascript:;" class="editor" onclick="editor(this)">
+							<i class="iconfont icon-bianji"></i>
+							编辑
+						</a>
+						<a href="javascript:;" class="delete" onclick="deleteLevel(this)">
+							<i class="iconfont icon-shanchu"></i>
+							删除
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script src="assets/jquery.min.js"></script>
+	<script src="assets/layer/layer.js"></script>
+	<link rel="stylesheet" href="assets/check_index/layer/skin/default/layer.css"/>
+	<script src="src/js/common.js"></script>
+	<script src="src/js/levelSet.js"></script>
+</body>
+</html>

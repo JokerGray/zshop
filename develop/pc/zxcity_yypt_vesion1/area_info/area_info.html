@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>参数设置</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../common/css/common_v2.css"/>
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css"/>
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css"/>
+    <link rel="stylesheet" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="css/area_info.css"/>
+</head>
+<body>
+
+    <!--公共头部部门-->
+    <div id="common-tool" class="clearfix p4">
+        <div id="search">
+            <button class="layui-btn layui-btn-small layui-btn-primary">
+                <i class="layui-icon">&#xe615;</i> 搜索
+            </button>
+        </div>
+        <div id="rig-tool" class="clearfix">
+            <button class="layui-btn layui-btn-small layui-btn-primary" id="setting">
+                <i class="layui-icon">&#xe61f;</i> 添加
+            </button>
+            <button class="layui-btn layui-btn-small layui-btn-primary" id="refresh">
+                <i class="layui-icon">&#x1002;</i> 刷新
+            </button>
+        </div>
+    </div>
+    <div id="search-tool" class="clearfix">
+        <div class="input-group">
+            <span class="pull-left">省名称:</span>
+            <input type="text" class="form-control media-input" placeholder="请输入省名称" id="inquireInputType" maxlength="10">
+        </div>
+        <div class="input-group">
+            <button class="layui-btn layui-btn-small layui-btn-normal" id="find">
+                搜索
+            </button>
+            <button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+                重置
+            </button>
+        </div>
+        <div id="search-tool-show">
+        </div>
+    </div>
+    <!--公共头部部分-->
+
+
+
+<div id="app" class="clearfix" style="width: 100%;">
+    <div class="roleTable" style="width: 24%;float: left;margin-right: 1%">
+        <table class="layui-table" id="provincialList" lay-filter="provincialList" style="overflow:auto">
+
+        </table>
+        <div id="laypageLeft"></div>
+        <script type="text/html" id="barDemo1">
+            <button class="layui-btn layui-btn-small layui-btn-normal" lay-event="add">
+                <i class="layui-icon">&#xe654;</i> 添加
+            </button>
+            <button class="layui-btn layui-btn-small" lay-event="edit"><i class="layui-icon">&#xe6b2;</i>修改</button>
+            <button class="layui-btn layui-btn-danger layui-btn-small" lay-event="del"><i
+                    class="layui-icon">&#xe640;</i>删除
+            </button>
+        </script>
+    </div>
+    <div class="roleTable1" style="width: 24%;float: left;margin-right: 1%">
+        <table class="layui-table" id="cityList" lay-filter="cityList">
+
+        </table>
+
+    </div>
+    <div class="roleTable2" style="width: 24%;float: left;margin-right: 1%">
+        <table class="layui-table" id="countiesList" lay-filter="countiesList">
+
+        </table>
+
+    </div>
+    <div class="roleTable3" style="width: 24%;float: left">
+        <table class="layui-table" id="streetList" lay-filter="streetList">
+
+        </table>
+        <script type="text/html" id="barDemo2">
+            <button class="layui-btn layui-btn-small" lay-event="edit"><i class="layui-icon">&#xe6b2;</i>修改</button>
+            <button class="layui-btn layui-btn-danger layui-btn-small" lay-event="del"><i
+                    class="layui-icon">&#xe640;</i>删除
+            </button>
+        </script>
+    </div>
+</div>
+<!-- 分页 -->
+<div class="tab-content">
+    <div id="tabs-1" class="tab-pane" role="tabpanel">
+        <table id="table-1" lay-filter="agent-list"></table>
+
+        <div id="footpager1" class="footpager footpager-style"></div>
+    </div>
+    <div id="tabs-2" class="tab-pane" role="tabpanel">
+        <table id="table-2" lay-filter="agent-list"></table>
+        <div id="footpager2" class="footpager footpager-style"></div>
+    </div>
+    <div id="tabs-3" class="tab-pane" role="tabpanel">
+        <table id="table-3" lay-filter="agent-list"></table>
+        <div id="footpager3" class="footpager footpager-style"></div>
+    </div>
+    <div id="tabs-4" class="tab-pane" role="tabpanel">
+        <table id="table-4" lay-filter="agent-list"></table>
+        <div id="footpager4" class="footpager footpager-style"></div>
+    </div>
+</div>
+</div>
+
+</div>
+
+
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+<script type="text/javascript" src="../common/assets/vue/vue.min.js"></script>
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/login_success.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="js/area_info.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+</html>

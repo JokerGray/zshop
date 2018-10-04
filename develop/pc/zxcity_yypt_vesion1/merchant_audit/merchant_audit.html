@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商户注册审核</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/merchant_audit.css" />
+</head>
+<body>
+<div id="common-tool" class="clearfix p4">
+    <div id="search">
+        <button class="layui-btn layui-btn-small layui-btn-primary">
+            <i class="layui-icon">&#xe615;</i> 搜索
+        </button>
+    </div>
+</div>
+<div id="search-tool" class="clearfix">
+    <div class="input-group">
+        <span class="pull-left">商户名:</span>
+        <input type="text" class="form-control media-input"  id="merchantName" maxlength="11">
+    </div>
+    <div class="input-group">
+        <span class="pull-left">手机号:</span>
+        <input type="text" class="form-control media-input"  id="phoneNumber" maxlength="11">
+    </div>
+    <div class="input-group lasttime input-medium date-picker" data-date-format="yyyy-mm-dd">
+        <div class="input-group">
+            <span  class="jurisdiction-label pull-left" for="jurisdiction-begin">注册时间：</span>
+            <div class='date form-control' id='datetimepicker1'>
+                <input name="dtBegin" type="text"  id="jurisdiction-begin" readonly placeholder="-请选择-" >
+                <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+        <div class="input-group">
+            <span class="jurisdiction-label pull-left" for="jurisdiction-end">至 </span>
+            <div class='date form-control' id='datetimepicker2'>
+                <input name="dtEnd" type="text"  id="jurisdiction-end" readonly placeholder="-请选择-" >
+                <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group">
+        <button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearch">
+            搜索
+        </button>
+        <button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+            重置
+        </button>
+    </div>
+    <!--<div id="search-tool-show" class="highsearch">
+        <i class="fa fa-angle-double-down"></i>
+    </div>-->
+</div>
+<div class="tab-title">
+    <ul>
+        <li class="active" data-num="0"><a>待审核</a></li>
+        <li data-num="1"><a>审核通过</a></li>
+        <li data-num="2" class="">审核拒绝</li>
+    </ul>
+</div>
+<div class="table-lt clearfix">
+    <div id="noAudit" class="table-list clearfix">
+        <table lay-filter="tableNo" id="tableNo"></table>
+        <div id="laypageLeft" class="table-rgt"></div>
+    </div>
+    <div id="audit" class="table-list clearfix">
+        <table lay-filter="table" id="table"></table>
+        <div id="laypageright" class="table-rgt"></div>
+    </div>
+</div>
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-small layui-btn-normal" lay-event='nodetail'>
+        <i class="layui-icon">&#xe615;</i> 查看
+    </button>
+    {{#  if(d.status == 0){ }}
+    <button class="layui-btn layui-btn-small layui-layui-btn-warm" lay-event='change'>
+        通过
+    </button>
+    <button class="layui-btn layui-btn-small  layui-btn-danger" lay-event="del">
+        不通过
+    </button>
+    {{#  } }}
+
+    <!--<button class="layui-btn layui-btn-small layui-btn-normal" lay-event='appnodetail'>
+        <i class="layui-icon">&#xe615;</i> 申请人详情
+    </button>-->
+
+</script>
+
+<script type="text/html" id="barDemor">
+    <button class="layui-btn layui-btn-small layui-btn-normal" lay-event='detail'>
+        <i class="layui-icon">&#xe615;</i> 查看
+    </button>
+    <!--<button class="layui-btn layui-btn-small layui-btn-normal" lay-event='appdetail'>
+        <i class="layui-icon">&#xe615;</i> 申请人详情
+    </button>-->
+</script>
+<script type="text/html" id="titleTpl">
+    <span class="layui-input-block" style="display: none">{{d.step}}</span>{{d.eq}}
+</script>
+
+
+
+
+<!--modal-->
+<!--查看-->
+<div id="lookDemo" class='layui-form clearfix tipdemo'>
+    <div class="looktit">
+        <img src="img/audit_1.jpg">
+    </div>
+    <div class="leftCon">
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">账号：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="lookName" maxlength="20">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">商户名称：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="lookdesig" maxlength="20">
+            </div>
+        </div>
+        <div class="layui-form-item look" >
+            <label class="layui-form-label flex">所属行业：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="lookguild">
+            </div>
+        </div>
+        <div class="layui-form-item pass">
+        	<label class="layui-form-label flex">所属行业</label>
+        	<div class="layui-input-block flex" id="tradeBox">
+        		<select class="form-control layui-input h30" id="trade" lay-filter="trade"></select>
+        	</div>
+        </div>
+
+        <!--<div class="layui-form-item look" >-->
+            <!--<label class="layui-form-label flex">类型：</label>-->
+            <!--<div class="layui-input-block flex">-->
+                <!--<select class="form-control layui-input h30 regular"  ></select>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="layui-form-item pass">
+            <label class="layui-form-label flex">类型：</label>
+            <div class="layui-input-block flex">
+                <select class="form-control layui-input h30 regular" id="regular" ></select>
+            </div>
+        </div>
+
+        <div class="layui-form-item busimg">
+            <label class="layui-form-label flex">营业<br>执照正：</label>
+            <div class="layui-input-block flex">
+            	<img id="lookbuss" src="" class="zImg"/>
+            </div>
+        </div>
+        <div class="layui-form-item busimg">
+            <label class="layui-form-label flex">身份证照<br>正面：</label>
+            <div class="layui-input-block flex">
+                <img id="lookid" src="" class="zImg"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item userinfoo">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>姓名：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="userNameword" lay-verify="required">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>下单类型：</label>
+            <div class="layui-input-block" style="padding-left: 20px;">
+                <input type="checkbox" lay-skin="primary" id="set1" lay-filter="set1" title="服务下单" value="0">
+                <input type="checkbox" lay-skin="primary" id="set2" lay-filter="set2" title="销售下单" value="1">
+            </div>
+        </div>
+    </div>
+    <div class="rightCon">
+        <div class="layui-form-item pass">
+            <label class="layui-form-label flex">店铺名称：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="shopName" lay-verify="required" maxlength="20">
+
+            </div>
+        </div>
+
+        <div class="layui-form-item" id="rigTem">
+            <label class="layui-form-label flex"><b class="required-icon"></b>行业模板：</label>
+            <div class="layui-input-block flex" id="templetBox">
+                <select class="form-control layui-input h30" id="templet" lay-filter="templet">
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">管理员名称：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="lookUsername" maxlength="20">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">省市：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="lookprovi" disabled>
+                <input type="text" name="title" class="layui-input h30" id="lookcity" disabled>
+            </div>
+        </div>
+
+        <div class="layui-form-item busimg">
+            <label class="layui-form-label flex">营业<br>执照副：</label>
+            <div class="layui-input-block flex">
+                <img id="lookbussback" src="" class="zImg"/>
+            </div>
+        </div>
+        <div class="layui-form-item busimg">
+            <label class="layui-form-label flex">手持身份证<br>正面：</label>
+            <div class="layui-input-block flex">
+                <img id="lookidback" src="" class="zImg"/>
+            </div>
+        </div>
+        <div class="layui-form-item userinfoo">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>身份证号：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="userPassword" lay-verify="required|identity">
+            </div>
+        </div>
+        <div class="layui-form-item userinfoo">
+            <label class="layui-form-label flex">性别</label>
+            <div class="layui-input-block" style="padding-left: 20px;">
+                <input type="radio" title="男" name="userSex" value="0" checked>
+                <input type="radio" title="女" name="userSex" value="1">
+            </div>
+        </div>
+
+
+
+
+        <!--<div class="layui-form-item visiable">-->
+            <!--<label class="layui-form-label flex"></label>-->
+            <!--<div class="layui-input-block flex">-->
+                <!--<input type="text" name="title" class="layui-input h30" disabled>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+    <div class="layui-form-item xiadan_box">
+        <label class="layui-form-label flex"><b class="required-icon">＊</b>销售下单：</label>
+        <div class="layui-input-block flex">
+            <ul class="xiadan clearfix" style="">
+                <li class="layui-form-item">
+                    <h3>支付方式</h3>
+                    <div class="layui-input-block">
+                        <input type="radio" name="set3" value="0" title="后支付" checked >
+                        <input type="radio" name="set3" value="1" title="先支付" >
+                    </div>
+                    <p>【文字说明文字】</p>
+                    <em><i class="layui-icon ime">&#xe605;</i></em>
+                </li>
+                <li class="layui-form-item">
+                    <h3>设备选择</h3>
+                    <div class="layui-input-block">
+                        <input type="radio" name="set4" value="0" title="可选" checked>
+                        <input type="radio" name="set4" value="1" title="必选" >
+                    </div>
+                    <p>【文字说明文字】</p>
+                    <em><i class="layui-icon ime">&#xe605;</i></em>
+                </li>
+                <li class="layui-form-item">
+                    <h3>订单状态</h3>
+                    <div class="layui-input-block">
+                        <input type="radio" name="set5" value="0" title="不改变" checked>
+                        <input type="radio" name="set5" value="1" title="改变" >
+                    </div>
+                    <p>【文字说明文字】</p>
+                    <em><i class="layui-icon ime">&#xe605;</i></em>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--头条初始化-->
+<div id="secondDemo" class='layui-form clearfix tipdemo'>
+    <div class="looktit">
+        <img src="img/audit_2.jpg">
+    </div>
+    <div class="leftCon">
+        <div class="layui-form-item">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>名称：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="addName" lay-verify="required"  autocomplete="off" maxlength="10">
+            </div>
+        </div>
+    </div>
+    <div class="rightCon">
+        <div class="layui-form-item">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>类型：</label>
+            <div class="layui-input-block flex" id="subscription">
+                <select  class="layui-input h30" id="fixdepartment">
+                    <option value="">选择</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<!--商户权限初始化-->
+<div id="thirdDemo" class='layui-form clearfix tipdemo'>
+    <div class="looktit">
+        <img src="img/audit_3.jpg">
+    </div>
+    <div class="leftCon">
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">角色名称：</label>
+            <div class="layui-input-block flex">
+                <ul id="mervchantRole" class="rolename">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="rightCon">
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">角色权限：</label>
+            <div class="layui-input-block flex">
+                <ul class='ztree' lay-filter='test' id='treedem'>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--商户注册第四步-->
+<div id="fourDemo" class='layui-form clearfix tipdemo'>
+    <div class="centerCon">
+        <div class="layui-form-item ">
+            <label class="layui-form-label"><b class="required-icon">＊</b>审核意见：</label>
+            <div class="layui-input-block">
+                <textarea type="text" id="addAudit" lay-verify="required"  name="title" required   class="layui-input " maxlength="100"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<!--app详情-->
+<div id="appDemo" class='layui-form clearfix tipdemo'>
+    <div class="leftCon">
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">账号：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="infoAccount" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">城市：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="infoCity" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">性别：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="infoSex" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">真实姓名：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="infotrueName" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">身份证号：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="infoNumber" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item busimg">
+            <label class="layui-form-label flex">身份证正面：</label>
+            <div class="layui-input-block flex">
+                <img id="infoIDz" src=""/>
+            </div>
+        </div>
+        <div class="layui-form-item busimg">
+            <label class="layui-form-label flex">身份证反面：</label>
+            <div class="layui-input-block flex">
+                <img id="infoIDf" src=""/>
+            </div>
+        </div>
+    </div>
+    <div class="rightCon">
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">昵称：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="infoName" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">生日：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="infoBirthday" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">标签：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" id="infoTag" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">邮箱：</label>
+            <div class="layui-input-block flex">
+                    <input type="text" name="title" class="layui-input h30" id="infoEmail" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item visiable">
+            <label class="layui-form-label flex"></label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title" class="layui-input h30" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item busimg">
+            <label class="layui-form-label flex">手持营业<br>执照：</label>
+            <div class="layui-input-block flex">
+                <img id="infoIDhand" src=""/>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.exedit.js"></script>
+<script type="text/javascript" src="js/zoomify.min.js"></script>
+<script type="text/javascript" src="js/merchant_audit.js"></script>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no" name="format-detection" />
+		<meta content="email=no" name="format-detection" />
+    <title>粉丝福利--已支付</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="//apps.bdimg.com/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="static/layer/mobile/layer.js"></script>
+    <script src="static/turn.min.js"></script>
+    <script src="static/qrcode.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        // 检查是否初次进入，确定动画效果
+        // 盖章特效后卷起
+        if (checkIfFirstTimeOpen()) {
+          $('#seal').addClass('active')
+          $('.seal-img').addClass('show')
+          setTimeout(curl, 1300)
+        } else{
+          $('.seal-img').addClass('show')
+        }
+      })
+      // 获取url中的参数
+      function getQueryString (name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+        var r = window.location.search.substr(1).match(reg)
+        return r !== null ? encodeURI(r[2]) : ''
+      }
+
+      // 检测是否首次进入该界面
+      function checkIfFirstTimeOpen () {
+        var result = false
+        try {
+          result = sessionStorage.hasOwnProperty('pay')
+        } catch (error) {}
+        return result;
+      }
+
+      // 生成二维码
+      function createQRcode(serNo) {
+        if(!serNo) return;
+        // 生成二维码
+        $('.qrcode').each(function(){
+          new QRCode(this, {
+            text: serNo,
+            width: $('.qrcode').width(),
+            height: $('.qrcode').height(),
+            colorDark: '#000',
+            colorLight: 'transparent',
+            correctLevel: QRCode.CorrectLevel.H
+          })
+        })
+      }
+
+      // 卷起特效
+      function curl () {
+        // 第一次进入才有卷起的动作，因此需要把这玩意去掉
+        try {
+          sessionStorage.clear()
+        } catch (error) {}
+        var paid = document.getElementById('paid')
+        paid.style.visibility = 'visible'
+        $('#book').turn({
+          width: paid.offsetWidth * 2,
+          height: paid.offsetHeight,
+          autoCenter: false
+        })
+        $("#book").bind("end", function(event, pageObject, turned){
+          $("#book").hide()
+        });
+        $('#book').css({
+          position: 'absolute',
+          left: $('#content').offset().left * 2 - document.body.clientWidth  + 'px'
+        }).turn('next')
+      }
+
+      // 分享页面
+      function share(data){
+        var imgUrl = data.data.couponPic;
+        var title = '粉丝福利 - 已支付';
+        var introduce = data.data.couponDemand
+        $.ajax({
+            type: "post",
+            url: "/zxcity_restful/ws/rest",
+            dataType: 'json',
+            headers: {
+                apikey: sessionStorage.getItem('apikey') || 'test'
+            },
+            data: {
+                cmd: 'game/getSign',
+                data: JSON.stringify({
+                    url: location.href
+                }),
+                version: 1
+            },
+            success: function(res) {
+                wx.config({
+                    debug: false,
+                    appId: 'wxe50dd59beab1e644',
+                    timestamp: res.data.timestamp,
+                    nonceStr: res.data.nonceStr,
+                    signature: res.data.signature,
+                    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareWeibo', 'onMenuShareQZone', 'onMenuShareQZone']
+                });
+                var options = {
+                    title: title,
+                    desc: introduce,
+                    link: location.href,
+                    imgUrl: imgUrl
+                }
+                wx.ready(function(){
+                    wx.onMenuShareTimeline({
+                        title: introduce,
+                        link: location.href,
+                        imgUrl: imgUrl
+                    });
+                    wx.onMenuShareAppMessage($.extend({
+                        type: '',
+                        dataUrl: ''
+                    }, options));
+                    wx.onMenuShareQQ(options);
+                    wx.onMenuShareWeibo(options);
+                    wx.onMenuShareQZone(options);
+                    wx.onMenuShareQZone(options);
+                })
+            }
+        });
+      }
+
+      // 提示语句
+      function toast(msg){
+          return layer.open({type: 0,content: msg, style:"color:#fff;background-color:rgba(0,0,0,0.7);font-size:14px;letter-spacing: 1px;", shade:"background-color:rgba(0,0,0,0.1)"})
+      }
+      
+      // 加载状态
+      function loading(msg){
+          return layer.open({type: 2})
+      }
+    </script>
+  </body>
+</html>

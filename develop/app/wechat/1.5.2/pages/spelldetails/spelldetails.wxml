@@ -1,0 +1,131 @@
+<!--pages/spelldetails/spelldetails.wxml-->
+<view class='wrap'>
+  <view class="main" style="flex-direction:row;">
+    <view class="productimg">
+      <image src='{{pictureUrl}}' data-src=''></image> 
+    </view>
+    <!-- 主商品信息 -->
+    <view class='info'>
+      <text class='title'>{{goodsTitle}}</text>
+      <view class='detail'>
+        <view>
+          <span class="code">￥</span>
+          <span class='price'>{{discountPrice}}</span>
+          <span class='number'>已拼{{groupOrderListLength}}单</span>
+        </view>
+      </view>
+    </view>
+    <!-- 主商品信息 end-->
+  </view>
+
+  <!-- 拼团成员 -->
+  <view class='grouplist'>
+    <scroll-view scroll-x upper-threshold="750rpx" class='groupscroll'>
+      <!-- 参团用户 -->
+      <view class='groupbox'>
+        <view wx:for="{{data.groupOrderList}}" wx:key="*this" wx:for-index="gdx" wx:for-item="group" class='scroll-view-item useritem'>
+          <image class="headportrait" src='{{group.userpic}}' data-src=''></image> 
+          <view class='scroll-view-icon' wx:if="{{gdx == 0}}">
+            <image class='mainicon' src='images/yundian_pinzhu@2x.png' data-src=''></image>
+          </view>
+       </view>
+       <view wx:for="{{lackUser}}" class='userbox' wx:key="*this" wx:for-index="ldx" wx:for-item="lackUser">
+        <image src='images/yundian_pindantouxiang@2x.png'></image>
+       </view>
+      </view>
+      <!-- 参团用户 end-->      
+    </scroll-view>
+  </view>
+  <!-- 拼团成员 end-->
+  <!-- 0 进行中 -->
+  <view wx:if="{{timeStatus==0}}">
+    <!-- 1 拼主  -->
+    <view wx:if="{{isMaster==1}}">
+      <view class='status' wx:if="{{count!=0}}">
+        仅剩<span class='redtext'>{{lackUser}}</span>个名额，<text wx:if="{{d>0}}">{{d?d:0}}天</text><text>{{h?h:0}}</text>:<text>{{m?m:0}}</text>:<text>{{s?s:0}}</text>后结束
+      </view>
+      <view class='status' wx:else>
+        <image class="faileicon" bindtap='closeMask' src='images/yundain_tixing@2x.png'></image>
+        拼单已过期
+      </view>
+
+      <button wx:if="{{count!=0}}" open-type='share' class='spellbtn' hover-class='spellbtn-hover'>邀请好友拼单</button>
+      <button wx:else bindtap="againInitiate" class='spellbtn' hover-class='spellbtn-hover'>再次发起拼单</button>
+    </view>
+    <!-- 0 非拼主 -->
+    <view wx:elif="{{isMaster==0}}">
+      <view class='status'  wx:if="{{count!=0}}">
+        仅剩<span class='redtext'>{{lackUser}}</span>个名额，<text wx:if="{{d>0}}">{{d?d:0}}天</text><text>{{h}}</text>:<text>{{m}}</text>:<text>{{s}}</text>后结束
+      </view>
+      <view class='status' wx:else>
+        <image class="faileicon" bindtap='closeMask' src='images/yundain_tixing@2x.png'></image>
+        拼单已过期
+      </view>
+
+      <button wx:if="{{count!=0}}" class='spellbtn' hover-class='spellbtn-hover' bindtap="participate">参与拼单</button>
+      <button wx:else bindtap="againInitiate" class='spellbtn' hover-class='spellbtn-hover'>再次发起拼单</button>
+    </view>
+  </view>
+  <!-- 1 成团 -->
+  <view wx:if="{{timeStatus==1}}">
+    <view class='status success-status'>
+      <image class="faileicon" bindtap='closeMask' src='images/yundain_chengoing@2x.png'></image>
+      拼单成功
+    </view>
+    <button class='spellbtn' hover-class='spellbtn-hover' bindtap="primary">继续逛逛</button>
+  </view>
+  <!-- 2 过期失败 或未付款 -->    
+  <view wx:if="{{timeStatus==2}}">
+    <view class='status failtext' wx:if="{{orderStatusVo==1}}">
+      <image class="faileicon" bindtap='closeMask' src='images/yundain_tixing@2x.png'></image>
+      待付款
+    </view>
+    <view class='status failtext' wx:if="{{orderStatusVo!=1}}">
+      <image class="faileicon" bindtap='closeMask' src='images/yundain_tixing@2x.png'></image>
+      拼单失败
+    </view>
+    <button class='spellbtn' hover-class='spellbtn-hover' bindtap="againInitiate">再次发起拼单</button>
+  </view>
+
+
+  <!-- 拼团规则 -->
+  <view class='spllrule'>
+     <text class='ruletit'  bindtap="showRule">拼单规则</text>
+     <text class='ruletext'>好友拼单·人满发货·人不满退款</text>
+  </view>
+  <!-- 拼团规则 end-->
+  <view class='listwrap'>
+    <view class='listcon'>
+    <!-- 单个推荐 -->
+      <view wx:for="{{moreGroupList}}" wx:key="*this"  wx:for-index="mdx" wx:for-item="groupList"  class='product-item'>
+        <view class='itemimg-con'>
+          <image class="itemimg" src='{{groupList.pictureUrl}}' data-src='' data-goodsid='{{groupList.itemId}}' data-groupid='{{groupList.groupId}}' data-shopid='{{groupList.shopId}}'   bindtap='goToGroupBuy'></image> 
+        </view>
+         <view class='itemtext'>
+            <text class='itemtitle'>{{pictureUrl.itemTitle}}</text>
+            <view class='intro'>
+              <view class='intro-price'><span class='intro-code'>￥</span>{{groupList.discountPrice}}</view>
+              <view class='intro-number'>已拼{{groupList.num}}单</view>
+            </view>
+         </view>
+      </view>
+    <!-- 单个推荐 end-->
+    </view>
+  </view>
+  
+  <!-- 拼单规则 弹窗 -->
+  <view class='stock-mask' catchtouchmove='preventTouchMove' catchtap='closeMask' wx:if='{{showStock}}'></view> 
+  <view class='stock-box' wx:if='{{showStock}}'>
+    <image class='mask-close-btn' bindtap='closeMask' src='images/yundian_dnxd_guanbi@2x.png'></image>
+    <view class='stock-box-title'>如何参加拼单</view>
+    <view class='stock-box-content'>
+      <view class='stock-box-content-text'>
+        <view class="testdetail"><span class="cricle">·</span>发起拼单或参加别人的拼单</view>
+        <view class="testdetail"><span class="cricle">·</span>在规定的时间内，邀请好友参加拼单</view>
+        <view class="testdetail"><span class="cricle">·</span>未达拼单人数，款项将自动原路返还</view>
+      </view>
+    </view>
+  </view>
+  <!-- 拼单规则 弹窗 end-->
+  
+</view>

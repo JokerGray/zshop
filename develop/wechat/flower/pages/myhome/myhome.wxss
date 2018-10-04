@@ -1,0 +1,278 @@
+/**myhome.wxss**/
+/*header*/
+button::after{
+border: none;
+border-radius: 0;
+}
+button{
+/* border-radius: 0; */
+  width: 63rpx;
+  height: 63rpx;
+  border-radius: 8rpx;
+  display: inline-block;
+  background:  rgba(0,0,0,0.2);
+  /* padding: 0; */
+  font-size: 18rpx;
+  /* margin-right: 30rpx; */
+}
+.header{
+  padding:0 24rpx 0 30rpx;
+  min-height: 408rpx;
+  position: relative;
+  overflow: hidden
+}
+
+.userinfoShopImg{
+  /* margin-left: 255rpx; */
+  /* line-height: 50rpx; */
+  height: 10rpx;
+  width: 35rpx;
+}
+.pointText{
+  height: 60rpx;
+  width: 80rpx;
+  /* background-color: red; */
+  line-height: 40rpx;
+  position: absolute;
+  right: 5rpx;
+  text-align: center;
+}
+.filter{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 2;
+
+}
+.filter-img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  filter: blur(10px);
+  width: 100%;
+  overflow: hidden
+}
+.filter-img image{
+  width: 100%;
+  height: 100%
+}
+.filter-text{
+ position: relative;
+ z-index: 4;
+ overflow: hidden;
+
+
+}
+.shop-box{
+  float: left;
+  width: 422rpx;
+  height: 408rpx;
+}
+.user-box{
+  color: #fff;
+  margin-top: 24rpx;
+}
+.radius{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+   overflow: hidden;
+   margin-bottom: 12rpx;
+   position: relative;
+}
+.radius image{
+  display: block;
+ width: 130rpx;
+ height: 130rpx;
+ position: absolute;
+  border: 2rpx solid #fff;
+  border-radius: 50%;
+  margin-left: 8rpx;
+  margin-top: 8rpx;
+}
+.user-box>text{
+  display: block;
+}
+.title{
+  font-size: 34rpx;
+  font-weight: bold;
+  line-height: 52rpx;
+}
+.phone{
+  font-size: 22rpx;
+  line-height: 38rpx;
+  font-family: 'PingFang SC';
+}
+.gz{
+  font-size: 28rpx;
+  line-height: 90rpx;
+}
+.gz text{
+  padding-left: 10rpx;
+}
+.sline{
+   margin: 0 20rpx; 
+}
+.btn-box{
+  font-size: 24rpx;
+  margin-top: 15rpx;
+}
+.btn-box text{
+  padding: 5rpx 15rpx;
+  background: rgba(0,0,0,0.2);
+  border-radius: 20rpx;
+  margin-right: 12rpx;
+  font-size: 24rpx;
+}
+.share-box{
+   margin-top: 68rpx;
+   margin-left: 422rpx;
+   display: flex;
+   justify-content:flex-end;
+   
+}
+.share-box view{
+  width: 63rpx;
+  height: 63rpx;
+  border-radius: 8rpx;
+  display: inline-block;
+  background:  rgba(0,0,0,0.2);
+  margin-right: 30rpx;
+}
+.share-box view:last-child{
+  margin-right: 0
+}
+.share-box image{
+  width: 70%;
+  height: 70%;
+  margin: 0 auto;
+  display: block;
+  margin-top: 8rpx;
+} 
+
+/*滑动模块*/
+.window-tab{
+  color: #666;
+  background: #F8F8F8;
+  line-height: 70rpx;
+  font-size: 30rpx;
+  position: relative;
+}
+.window-tab text{
+  width: 50%;
+  text-align: center;
+  display: inline-block
+}
+.window-tab view{
+  width: 160rpx;
+  height: 2rpx;
+  background: #FF226E;
+  bottom: 0;
+  position: absolute;
+  transition: all 0.5s;
+}
+.line1{
+left:105rpx;
+}
+.line2{
+left: 480rpx;
+}
+/* 首页开始 */
+@import "/pages/index/index.wxss";
+
+/* //视频编辑模态框 */
+.switch-box{
+    font-size: 30rpx;
+    color: #333333;
+    line-height: 108rpx;
+}
+
+.switch-header{
+  width: 750rpx;
+  height: 80rpx;
+  display: flex;
+  /* justify-content: center; */
+  justify-content:space-between;
+  border-radius: 20rpx 20rpx 0 0 ;
+}
+
+.switch-delDox{
+  height: 80rpx;
+  width: 240rpx;
+}
+.videoSet{
+  width:240rpx;
+  text-align: center;
+  height:60rpx;
+  line-height: 60rpx;
+  font-size:32rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(102,102,102,1);
+}
+.videoDelete{
+  width:210rpx;
+  height:60rpx;
+  font-size:30rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height: 60rpx;
+  text-align: right;
+  margin-right: 30rpx;
+}
+.switch-content{
+  margin-top: 25rpx;
+  /* margin-left: 25rpx; */
+  width:750rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  font-size:30rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  vertical-align: middle;
+}
+.switch-content text {
+  padding-left: 25rpx;
+}
+.switch-content switch{
+  padding-right: 20rpx;
+}
+.line{
+  /* margin-left: 25rpx; */
+  /* width:702px; */
+  height:1px;
+  background:rgba(230,230,230,1);
+}
+.line2{
+  margin-top: 20rpx;
+  /* width:750rpx; */
+  height:20rpx;
+  background:rgba(248,248,248,1);
+}
+.line2{
+  margin-top: 20rpx;
+  /* width:750rpx; */
+  height:20rpx;
+  background:rgba(248,248,248,1);
+}
+.videoBottom{
+  width:68rpx;
+  height:80rpx;
+  line-height: 80rpx;
+  font-size:34rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(255,34,110,1);
+  margin: auto;
+}
+
+

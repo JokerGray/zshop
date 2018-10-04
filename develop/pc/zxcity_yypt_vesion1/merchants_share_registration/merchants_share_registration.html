@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>分享注册信息查询</title>    <!-- CssCommon -->
+    <!--<link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="merchants_manage_money.css" />
+</head>
+<body>
+
+    <div class="header layui-form layui-row ">
+    <div class="btn-box">
+        <button class="layui-btn layui-btn-small layui-btn-primary" id="searchToggle" data-type="off"><i class="layui-icon">&#xe615;</i>搜索</button>
+        <div class="fr">
+            <button class="layui-btn layui-btn-small" id="excelBtn"><i class="layui-icon ">&#xe609;</i>导出</button>
+        </div>
+    </div>
+    <ul class="header_ul clearfix" style="display: none">
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="" for="">分享人昵称：</label>
+                <div class="layui-input-block">
+                    <input type="text" id="recommendUserNames" class="layui-input">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="" for="">分享人手机号：</label>
+                <div class="layui-input-block">
+                    <input type="text" id="recommendPhones" maxlength="11" lay-verify="number"  class="layui-input">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="" for="">分享人是否为商户：</label>
+                <div class="layui-input-block">
+                    <select name="" class="layui-select" id="recommendIsMerchants">
+                        <option value="">全部</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </div>
+            </div>
+        </li>
+
+
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="" for="">是否为员工分享：</label>
+                <div class="layui-input-block">
+                    <select name="" class="layui-select" id="isEmployeeShares">
+                        <option value="">全部</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="" for="">分享员工昵称：</label>
+                <div class="layui-input-block">
+                    <input type="text" id="employeeUserNames" class="layui-input">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="" for="">分享员工手机号：</label>
+                <div class="layui-input-block">
+                    <input type="text" id="employeePhones"  maxlength="11"  lay-verify="number" class="layui-input">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="" for="">被分享人昵称：</label>
+                <div class="layui-input-block">
+                    <input type="text" id="toUserNames" class="layui-input">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="" for="">被分享人手机号：</label>
+                <div class="layui-input-block">
+                    <input type="text" id="toPhones" class="layui-input">
+                </div>
+            </div>
+        </li>
+
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="" for="">被分享人是否为商户：</label>
+                <div class="layui-input-block">
+                    <select name="" class="layui-select" id="toIsMerchants">
+                        <option value="">全部</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="" for="">被分享人注册时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" id="date" readonly class="layui-input">
+                </div>
+            </div>
+        </li>
+
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="" for="">&nbsp;</label>
+                <div class="layui-input-block">
+                    <button class="layui-btn" id="searchBtn">查询</button>
+                    <button class="layui-btn" id="restBtn">重置</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+    </div>
+    <div class="wrapper-main ">
+
+        <div class="main">
+            <table id="tableNo" lay-filter="tableNo"></table>
+            <div class="layui-laypage" id="page"></div>
+        </div>
+    </div>
+    <script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-small" lay-event='edit'><i class="layui-icon">&#xe642;</i>修改</button>
+        <button class="layui-btn layui-btn-small" lay-event='del'><i class="layui-icon">&#xe640;</i>删除</button>
+
+    </script>
+    <!--弹出层-->
+    <div id="addDemo" class="layui-form addDemo">
+        <div class="layui-form-item">
+            <label for="" class="layui-form-label">打款方式名:</label>
+            <div class="layui-input-block">
+                <input type="text" lay-verify="required" id="paymentName" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="" class="layui-form-label">排序序号:</label>
+            <div class="layui-input-block">
+                <input type="text" lay-verify="required|number"  id="orderBy" class="layui-input">
+            </div>
+        </div>
+        <!--<div class="layui-form-item tac">-->
+            <!--<button class="layui-btn">确定</button>-->
+            <!--<button class="layui-btn layui-btn-primary">取消</button>-->
+        <!--</div>-->
+
+
+    </div>
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.js"></script>
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+    <script type="text/javascript" src="merchants_share_registration.js"></script>
+
+
+</body>
+</html>

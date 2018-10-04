@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+	<title>入驻申请表</title>
+	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css"> 
+	<link rel="stylesheet" type="text/css" href="../css/settled_application.css"/>
+</head>
+<body>
+	<form id="form">
+		<div class="weui-cells weui-cells_form" id="memberGroup">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">团队名称</label></div>
+                <div class="weui-cell__bd">
+                    <input name="teamName" type="text" class="weui-input" maxlength="100" required emptyTips="请输入团队名称！" placeholder="请输入团队名称" >
+                </div>
+            </div>
+            
+            <div class="weui-flex">
+	            <div class="weui-flex__item">
+	            	<div class="weui-cell">
+		                <div class="weui-cell__hd"><label class="weui-label half">姓名</label></div>
+		                <div class="weui-cell__bd">
+		                    <input name="leaderName" class="weui-input" maxlength="20" required type="text" emptyTips="请输入姓名！" placeholder="请输入姓名">
+		                </div>
+		            </div>
+	            </div>
+	            <div class="weui-flex__item">
+	            	<div class="weui-cell">
+		                <div class="weui-cell__hd"><label class="weui-label half">性别</label></div>
+		                <div name="leaderSex" class="weui-cell__bd text-center" onclick="selectSex(this)">男</div>
+		                <div class="weui-cell__ft">
+		                    <span class="weui-icon-downIcon"></span>
+		                </div>
+		            </div>
+	            </div>
+	        </div>
+	        
+	        <div class="weui-cell" id="phoneContent">
+                <div class="weui-cell__hd"><label class="weui-label">联系电话</label></div>
+                <div class="weui-cell__bd">
+                    <input name="leaderPhone" id="phone" class="weui-input" onchange="removeRandomCode()" maxlength="11" required pattern="^1[0-9]{10}$" emptyTips="请输入手机号" notMatchTips="手机号格式不正确" type="number" placeholder="请输入手机号">
+                </div>
+            </div>
+            
+            <div class="weui-flex">
+	            <div class="weui-flex__item">
+	            	<div class="weui-cell" id="captchaContent">
+		                <div class="weui-cell__hd"><label class="weui-label">验证码</label></div>
+		                <div class="weui-cell__bd">
+		                    <input name="randomcode" id="randomCode" onblur="checkRandomCode()" class="weui-input" required type="number" maxlength="10" placeholder="请输入验证码">
+		                </div>
+		            </div>
+	            </div>
+            	<div class="captcha">
+            		<a id="captchaBtn" href="javascript:getCaptcha();" class="weui-btn weui-btn_primary">获取验证码</a>
+            	</div>
+            </div>
+            
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">身份证号</label></div>
+                <div class="weui-cell__bd">
+                    <input name="leaderIdentity" class="weui-input" type="text" required pattern="^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$" maxlength="18" placeholder="输入你的身份证号码" emptytips="请输入身份证号码" notmatchtips="请输入正确的身份证号码">
+                </div>
+            </div>
+            
+            <div class="weui-flex">
+	            <div class="weui-flex__item">
+	            	<div class="weui-cell">
+		                <div class="weui-cell__hd"><label class="weui-label half">学历</label></div>
+		                <div class="weui-cell__bd" name="leaderEducation" id="leaderEducation" onclick="selectEduction(this)">本科</div>
+		                <div class="weui-cell__ft">
+		                    <span class="weui-icon-downIcon"></span>
+		                </div>
+		            </div>
+	            </div>
+	            <div class="weui-flex__item">
+	            	<div class="weui-cell">
+		                <div class="weui-cell__hd"><label class="weui-label half">生日</label></div>
+		                <div class="weui-cell__bd" id="leaderBirthday" name="leaderBirthday" onclick="selectBirthday(this)"></div>
+		                <div class="weui-cell__ft">
+		                    <span class="weui-icon-downIcon"></span>
+		                </div>
+		            </div>
+	            </div>
+	        </div>
+            
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">常用邮箱</label></div>
+                <div class="weui-cell__bd">
+                    <input name="leaderEmail" class="weui-input" type="text" required pattern="^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$" maxlength="200" placeholder="邮箱用于接收附件" emptytips="请输入您的邮箱！" notmatchtips="请输入正确的邮箱地址！">
+                </div>
+            </div>
+            
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">通讯地址</label></div>
+                <div class="weui-cell__bd">
+                    <input name="leaderAddress" required class="weui-input" type="text" placeholder="请填写通讯地址">
+                </div>
+            </div>
+            
+            <div class="weui-cells__title introduce">项目介绍</div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea name="teamIntroduce" required emptyTips="请输入项目介绍" class="weui-textarea" placeholder="须涵盖产品/服务介绍、产品特色优势，市场分析预测、项目发展预期等" rows="5"></textarea>
+                </div>
+            </div>
+            
+            <div class="weui-cells__title team">管理团队情况</div>
+            
+            <div id="teamMemberContent">
+            	<div class="teamMember hide">
+	            	<div class="weui-flex">
+			            <div class="weui-flex__item">
+			            	<div class="property">姓名：<span class="text applyerName">XXX</span></div>
+			            	<div class="property">职务：<span class="text applyerDuty">XXX</span></div>
+			            	<div class="property">出生：<span class="text applyerBirthday">XXX</span></div>
+			            </div>
+			            <div class="weui-flex__item">
+			            	<div class="property hasEdit">
+			            		<span class="edit" onclick="toEditMember(this)"><img src="../img/ckkf_bianji.png"/>编辑</span>
+			            	</div>
+			            	<div class="property">学历：<span class="text applyerEducation">XXX</span></div>
+			            	<div class="property">电话：<span class="text applyerPhone">XXX</span></div>
+			            </div>
+		        	</div>
+	            </div>
+            </div>
+            
+            
+            <div class="addTeamMember" onclick="toAddMember()">
+            	<div class="text"><img src="../img/ckkf_tianjia.png"/> 添加团队成员</div>
+            	<div class="subtext">至少添加一位团队成员</div>
+            </div>           
+            
+            <a href="javascript:submitForm();" class="weui-btn weui-btn_primary btn-submit">提交</a>
+        </div>
+    </form>
+        
+	<!--添加或修改成员-->
+	<form id="memberForm">
+		<div class="weui-cells weui-cells_form hide" id="memberContent">
+			<div class="weui-flex">
+	            <div class="weui-flex__item">
+	            	<div class="weui-cell">
+		                <div class="weui-cell__hd"><label class="weui-label half">姓名</label></div>
+		                <div class="weui-cell__bd">
+		                    <input id="applyerName" class="weui-input" maxlength="20" required type="text" emptyTips="请输入姓名！" placeholder="请输入姓名">
+		                </div>
+		            </div>
+	            </div>
+	            <div class="weui-flex__item">
+	            	<div class="weui-cell">
+		                <div class="weui-cell__hd"><label class="weui-label half">职务</label></div>
+		                    <input id="applyerDuty" class="weui-input" maxlength="10" required type="text" emptyTips="请输入职务名称！" placeholder="请输入职务名称">
+		            </div>
+	            </div>
+	        </div>
+	        
+	        <div class="weui-flex">
+	            <div class="weui-flex__item">
+	            	<div class="weui-cell">
+		                <div class="weui-cell__hd"><label class="weui-label half">学历</label></div>
+		                <div class="weui-cell__bd" id="applyerEducation" onclick="selectEduction(this)">本科</div>
+		                <div class="weui-cell__ft">
+		                    <span class="weui-icon-downIcon"></span>
+		                </div>
+		            </div>
+	            </div>
+	            <div class="weui-flex__item">
+	            	<div class="weui-cell">
+		                <div class="weui-cell__hd"><label class="weui-label half">生日</label></div>
+		                <div class="weui-cell__bd" id="applyerBirthday" onclick="selectBirthday(this)"></div>
+		                <div class="weui-cell__ft">
+		                    <span class="weui-icon-downIcon"></span>
+		                </div>
+		            </div>
+	            </div>
+	        </div>
+	        
+	        <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">联系电话</label></div>
+                <div class="weui-cell__bd">
+                    <input id="applyerPhone" type="number" maxlength="11" class="weui-input" required pattern="^1[0-9]{10}$" emptyTips="请输入手机号" notMatchTips="手机号格式不正确" placeholder="请输入手机号">
+                </div>
+            </div>
+            <a id="addBtn" href="javascript:addMember();" class="weui-btn weui-btn_primary btn-info">添加</a>
+            <div id="editBtn" class="weui-flex">
+				<div class="weui-flex__item">
+					<a href="javascript:delMember();" class="weui-btn weui-btn_warn btn-warn">删除</a>
+	            </div>
+	            <div class="weui-flex__item">
+					<a href="javascript:editMember();" class="weui-btn weui-btn_primary btn-info">确定</a>
+				</div>
+			</div>
+		</div>
+	</form>
+	
+	<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.2/weui.min.js"></script>
+	<script src="../js/settled_application.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			FastClick.attach(document.body);
+		})
+	</script>
+</body>
+</html>

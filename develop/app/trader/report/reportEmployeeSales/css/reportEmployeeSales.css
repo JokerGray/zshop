@@ -1,0 +1,545 @@
+body {
+  background-color: #f7f7f7;
+}
+.top {
+  width: 100%;
+  height: 68px;
+  background-color: #fff;
+  font-size: 0;
+}
+.top > div {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  font-size: 16px;
+  padding-top: 20px;
+}
+.top .timeNav {
+  width: 40%;
+  padding-left: 20px;
+  font-size: 0;
+  position: relative;
+}
+.top .timeNav a {
+  display: inline-block;
+  width: 139px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  font-size: 20px;
+  color: #333333;
+  background-color: #f7f7f7;
+  -webkit-border-radius: 6px 6px 0 0;
+  -moz-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+  margin-right: 10px;
+}
+.top .timeNav a.active {
+  background-color: #1dbfaf;
+  color: #ffffff;
+}
+.top .timeNav .timeRange {
+  width: 456px;
+  height: 54px;
+  line-height: 54px;
+  background-color: #ffffff;
+  position: absolute;
+  left: 169px;
+  top: 70px;
+  border: 1px solid #dddddd;
+  padding: 0 20px;
+  display: none;
+  z-index: 2;
+}
+.top .timeNav .timeRange input {
+  width: 148px;
+  height: 34px;
+  vertical-align: middle;
+  border: 1px solid #666666;
+  font-size: 17px;
+  color: #666666;
+  padding-left: 10px;
+}
+.top .timeNav .timeRange button {
+  width: 62px;
+  height: 34px;
+  background-color: #fff;
+  font-size: 17px;
+  color: #999999;
+  vertical-align: middle;
+  border: 1px solid #999999;
+  margin-left: 18px;
+}
+.top .timeNav .timeRange span {
+  font-size: 17px;
+  color: #666666;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+.top .filterBox {
+  text-align: right;
+  width: 60%;
+}
+.top .filterBox > div {
+  display: inline-block;
+  margin-right: 40px;
+}
+.top .filterBox > div label {
+  font-size: 16px;
+  color: #333333;
+  margin-right: 10px;
+}
+.top .filterBox > div select {
+  width: 160px;
+  height: 36px;
+}
+.path {
+  width: 100%;
+  height: 59px;
+  line-height: 58px;
+  font-size: 16px;
+  color: #333333;
+  padding-left: 40px;
+}
+.path i {
+  font-family: SimSun;
+  font-weight: 700;
+}
+.greatBox {
+  width: 100%;
+  margin-top: -10px;
+  min-height: 170px;
+}
+.greatBox ul {
+  overflow: hidden;
+  width: 100%;
+}
+.greatBox ul li {
+  float: left;
+  width: 21.628%;
+  min-width: 328px;
+  height: 150px;
+  border-top: 2px solid #dedede;
+  background-color: #fff;
+  margin: 10px 1.54%;
+}
+.greatBox ul li .topTitle {
+  font-size: 16px;
+  color: #333333;
+  height: 45px;
+  line-height: 45px;
+  border-bottom: 1px solid #dedede;
+  padding-left: 3%;
+}
+.greatBox ul li .greatDetail {
+  overflow: hidden;
+  width: 100%;
+  height: 105px;
+  padding: 0 20px 0 20px;
+  font-size: 0;
+}
+.greatBox ul li .greatDetail span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 20px;
+}
+.greatBox ul li .greatDetail span:nth-of-type(1) {
+  width: 100%;
+  font-size: 24px;
+  color: #666666;
+  font-weight: 700;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2) {
+  width: 100%;
+  color: #666666;
+  font-size: 0;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2) i {
+  display: inline-block;
+  font-size: 16px;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2) i:first-of-type {
+  width: 30%;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2) i:last-of-type {
+  width: 70%;
+  text-align: right;
+}
+.filterTab {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #fff;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+.filterTab .tabNav {
+  display: inline-block;
+  width: 419px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 0;
+  border: 1px solid #fca259;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.filterTab .tabNav a {
+  display: inline-block;
+  width: 139px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  color: #333333;
+  font-size: 16px;
+}
+.filterTab .tabNav a.active {
+  background-color: #fca259;
+  color: #ffffff;
+}
+.filterTab .searchBox {
+  float: right;
+  min-width: 54%;
+  height: 100%;
+  text-align: right;
+  padding-right: 40px;
+}
+.filterTab .searchBox .goodsType {
+  display: none;
+  margin-right: 20px;
+}
+.filterTab .searchBox .goodsType label {
+  font-size: 16px;
+  color: #333333;
+  margin-right: 10px;
+}
+.filterTab .searchBox .goodsType select {
+  width: 160px;
+  height: 36px;
+  outline: none;
+  font-size: 16px;
+  color: #333333;
+  padding-left: 10px;
+  border: 1px solid #dddddd;
+}
+.filterTab .searchBox .waiter {
+  display: inline-block;
+}
+.filterTab .searchBox .waiter label {
+  font-size: 16px;
+  color: #333333;
+  margin-right: 10px;
+}
+.filterTab .searchBox .waiter select {
+  width: 160px;
+  height: 36px;
+  outline: none;
+  font-size: 16px;
+  color: #333333;
+  padding-left: 10px;
+  border: 1px solid #dddddd;
+}
+.filterTab .searchBox .productSearch {
+  display: none;
+  margin-left: 20px;
+}
+.filterTab .searchBox .productSearch label {
+  font-size: 16px;
+  color: #333333;
+  margin-right: 10px;
+}
+.filterTab .searchBox .productSearch input {
+  width: 160px;
+  height: 36px;
+  outline: none;
+  font-size: 16px;
+  color: #333333;
+  padding-left: 10px;
+  border: 1px solid #aaa;
+}
+.filterTab .searchBox .productSearch button {
+  width: 68px;
+  height: 36px;
+  outline: none;
+  border: 1px solid #aaaaaa;
+  background-color: #fff;
+  font-size: 16px;
+  color: #999999;
+  margin-left: 15px;
+}
+.filterTab .searchBox .eaportBtn {
+  display: inline-block;
+  margin-left: 10px;
+}
+.filterTab .searchBox .eaportBtn a {
+  display: block;
+  width: 110px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #f8ac59;
+  font-size: 16px;
+}
+.content {
+  width: 100%;
+  background-color: #fff;
+  border: 20px solid #f7f7f7;
+  height: 445px;
+}
+.content .serviceReport {
+  padding: 0 20px;
+  display: inline-block;
+  width: 100%;
+  font-size: 0;
+  visibility: hidden;
+}
+.content .serviceReport .table {
+  display: inline-block;
+  width: 45%;
+}
+.content .serviceReport .chart {
+  display: inline-block;
+  width: 53%;
+  height: 405px;
+  vertical-align: top;
+  margin-left: 2%;
+  overflow-x: auto;
+}
+.content .serviceReport .chart .chartTitle {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 10px;
+  font-size: 0;
+  border-bottom: 1px solid #ddd;
+}
+.content .serviceReport .chart .chartTitle span {
+  display: inline-block;
+  width: 50%;
+  font-size: 16px;
+  color: #333333;
+}
+.content .serviceReport .chart .chartTitle span:nth-of-type(2) {
+  text-align: right;
+}
+.content .serviceReport .chart .chartTitle span i {
+  color: #999;
+}
+.content .serviceReport .chart .echartBox {
+  width: 100%;
+  overflow-x: auto;
+}
+.content .productReport {
+  width: 100%;
+  padding: 0 20px;
+  display: none;
+  visibility: hidden;
+}
+.content .clientReport {
+  width: 100%;
+  padding: 0 20px;
+  display: none;
+  visibility: hidden;
+  font-size: 0;
+}
+.content .clientReport .table {
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+}
+.content .clientReport .chart {
+  display: inline-block;
+  width: 53%;
+  height: 405px;
+  margin-left: 2%;
+  overflow-x: auto;
+}
+.content .clientReport .chart .chartTitle {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 10px;
+  font-size: 0;
+  border-bottom: 1px solid #ddd;
+}
+.content .clientReport .chart .chartTitle span {
+  display: inline-block;
+  width: 50%;
+  font-size: 16px;
+}
+.content .clientReport .chart .chartTitle span:nth-of-type(2) {
+  text-align: right;
+}
+.content .clientReport .chart .chartTitle span i {
+  color: #999;
+}
+.content .clientReport .chart .chartTitle span i.active {
+  color: #333333;
+}
+.content .clientReport .chart .echartBox {
+  width: 100%;
+  overflow-x: auto;
+}
+.content .layui-none {
+  font-size: 16px;
+}
+.content .layui-table-body tbody td:nth-of-type(1) .layui-table-cell {
+  padding: 0 5px;
+}
+.content .layui-table-header thead th:nth-of-type(1) .layui-table-cell {
+  text-align: center;
+}
+.mask {
+  width: 100%;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.1);
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: none;
+}
+.pageBox {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+}
+.pageBox > div.pageTips {
+  visibility: hidden;
+  display: inline-block;
+}
+.pageBox > div.pageTips p {
+  font-size: 14px;
+  color: #666666;
+}
+.pageBox > div:nth-of-type(2) {
+  float: right;
+}
+.pageBox > div:nth-of-type(2) .layui-laypage {
+  margin: 0;
+}
+.orderDetail .detailTop {
+  width: 100%;
+  height: 42px;
+  background-color: #3a4057;
+  line-height: 42px;
+  padding: 0 20px;
+}
+.orderDetail .detailTop span {
+  font-size: 14px;
+  color: rgba(27, 224, 214, 0.98);
+}
+.orderDetail .detailTop .closeIcon {
+  font-size: 30px;
+  color: rgba(27, 224, 214, 0.98);
+  float: right;
+  cursor: pointer;
+}
+.orderDetail .complex {
+  height: 36px;
+  line-height: 36px;
+  margin-top: 30px;
+  padding: 0 60px;
+}
+.orderDetail .complex > .detailPath {
+  font-size: 16px;
+  color: #666666;
+}
+.orderDetail .complex > .detailPath i {
+  display: inline-block;
+  vertical-align: bottom;
+  max-width: 240px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.orderDetail .complex .serviceSelect {
+  float: right;
+}
+.orderDetail .complex .serviceSelect label {
+  font-size: 16px;
+  color: #333333;
+  vertical-align: middle;
+}
+.orderDetail .complex .serviceSelect select {
+  width: 160px;
+  height: 36px;
+  font-size: 16px;
+  color: #333333;
+}
+.orderDetail .complex .serviceSelect .detailExportBtn {
+  display: inline-block;
+  width: 110px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  background-color: #f8ac59;
+  color: #fff;
+  font-size: 16px;
+  margin-left: 10px;
+}
+.orderDetail .detailContent {
+  width: 100%;
+  padding: 10px 60px;
+  height: 406px;
+  overflow-y: auto;
+}
+.orderDetail .detailContent .layui-table td,
+.orderDetail .detailContent .layui-table th {
+  padding: 7px 15px;
+  color: #666666;
+}
+.orderDetail .layui-layer-btn {
+  padding: 44px 60px;
+}
+.orderDetail .layui-layer-btn .layui-layer-btn0 {
+  background-color: #f1f1f1!important;
+  border: 1px solid #dedede!important;
+  color: #333333;
+}
+.orderDetail .pageBox {
+  padding-right: 60px;
+}
+.layui-table th,
+.layui-table td {
+  font-size: 14px !important;
+}
+.select2-container {
+  text-align: left;
+}
+.select2-container .select2-selection--single {
+  height: 36px !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+.select2-container .select2-selection--single .select2-selection__rendered {
+  line-height: 36px;
+  color: #333333;
+}
+.select2-container .select2-selection--single .select2-selection__arrow {
+  height: 36px;
+}
+.select2-container .select2-selection--single .select2-selection__arrow b {
+  border-color: #999 transparent transparent transparent;
+  border-width: 8px 5px 0 5px;
+  margin-left: -6px;
+  margin-top: -4px;
+}
+.select2-container--open {
+  z-index: 100000000!important;
+}
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-color: transparent transparent #999 transparent;
+  border-width: 0 5px 8px 5px;
+  margin-left: -6px;
+  margin-top: -6px;
+}
+.layui-table-tips-c {
+  font-size: 12px;
+  line-height: 18px;
+  padding: 1px;
+}
+/*# sourceMappingURL=reportEmployeeSales.css.map */

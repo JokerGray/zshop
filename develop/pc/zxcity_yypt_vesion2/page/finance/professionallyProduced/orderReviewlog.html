@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>专业制作工单审核记录</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../../common/css/reset.css" />
+    <link rel="stylesheet" href="../../../common/css/layTab.css" />
+    <style type="text/css">
+        #setBtn {
+            width: 112px;
+            height: 38px;
+            position: relative;
+            top: 27px;
+        }
+        .dTitle{
+            font-size: 23px;
+            margin: 12px 0;
+            text-align: center;
+        }
+        ul.tool-box-ul>li.tool-box-li {
+            width: 200px;
+            margin-right: 20px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div class="tool-box layui-form">
+    <ul class="tool-box-ul clearfix">
+        <!-- 商户名称 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">商户：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" placeholder="输入商户名称" class="layui-input" id="orgName" maxlength="30">
+                </div>
+            </div>
+        </li>
+        <!-- 工单号 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">工单号：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" placeholder="输入工单号" class="layui-input" id="workNo" maxlength="30">
+                </div>
+            </div>
+        </li>
+        <!-- 审核状态 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">审核状态：</label>
+                <div class="layui-input-inline">
+                    <select name="" id="reviewStatus">
+                        <option value="" selected>-- 全部 --</option>
+                        <option value="1">审核通过</option>
+                        <option value="2">审核不通过</option>
+                    </select>
+                </div>
+            </div>
+        </li>
+        <!-- 工单类型 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">工单类型：</label>
+                <div class="layui-input-inline">
+                    <select name="" id="online">
+                        <option value="" selected>-- 全部 --</option>
+                        <option value="1">线上工单</option>
+                        <option value="2">线下工单</option>
+                    </select>
+                </div>
+            </div>
+        </li>
+        <!-- 项目类型 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">项目类型：</label>
+                <div class="layui-input-inline">
+                    <select name="" id="workItem">
+                        <option value="" selected>-- 全部 --</option>
+                        <option value="0">视频拍摄</option>
+                        <option value="1">720全景</option>
+                    </select>
+                </div>
+            </div>
+        </li>
+        <!-- 时间开始 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label" id="stTime">提交审核日期：</label>
+                <div class="layui-input-inline startDate">
+                    <input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+                </div>
+            </div>
+        </li>
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label" id="endTim">至：</label>
+                <div class="layui-input-inline endDate">
+                    <input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+                </div>
+            </div>
+        </li>
+        <!-- 时间结束 -->
+    </ul>
+</div>
+
+<!--操作按钮-->
+<div class="tool-add-box clearfix">
+    <button class="layui-btn add" id="setBtn" style="top: -10px;margin-left: 10px;">设置</button>
+    <button class="layui-btn add" id="searchBtn" style="top: -10px;">搜索</button>
+</div>
+
+<!--表格开始-->
+<div class="layui-app">
+    <div class="app-table" style="margin-top: 10px;" >
+        <table lay-filter="table" id="table"></table>
+        <div id="layTablePage"></div>
+    </div>
+</div>
+<!--表格结束-->
+
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/assets/template-web.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="application/javascript">
+    jsorcss('js', 'orderReviewlog');
+</script>
+</body>
+</html>
+
+<script type="text/html" id="settingsTpl">
+    <form class="layui-form" style="margin-top: 20px;">
+        <div class="layui-fluid">
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">工单号</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="workNo" lay-skin="switch" {{if workNo}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">账户名称</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="merchantName" lay-skin="switch" {{if merchantName}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">商户名称</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="orgName" lay-skin="switch" {{if orgName}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">平台角色</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="rolesStr" lay-skin="switch" {{if rolesStr}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">工单制作项目</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="workItems" lay-skin="switch" {{if workItems}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">制作状态</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="workStatus" lay-skin="switch" {{if workStatus}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">工单类型</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="zyzzInfoId" lay-skin="switch" {{if zyzzInfoId}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">工单来源</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="sourceName" lay-skin="switch" {{if sourceName}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">应收账款</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="reviewReceivable" lay-skin="switch" {{if reviewReceivable}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">实际收款</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="reviewActualReceivable" lay-skin="switch" {{if reviewActualReceivable}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">推荐人员</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="refUserName" lay-skin="switch" {{if refUserName}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">推荐提成</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="reviewRefAmount" lay-skin="switch" {{if reviewRefAmount}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">制作人员</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="workUserName" lay-skin="switch" {{if workUserName}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">制作提成</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="reviewWorkAmount" lay-skin="switch" {{if reviewWorkAmount}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">工单完成时间</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="finishTime" lay-skin="switch" {{if finishTime}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">审核人员</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="reviewYyName" lay-skin="switch" {{if reviewYyName}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">审核备注</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="reviewRemark" lay-skin="switch" {{if reviewRemark}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">审核时间</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="reviewTime" lay-skin="switch" {{if reviewTime}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">财务审核状态</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="reviewStatus" lay-skin="switch" {{if reviewStatus}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">操作</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="id" lay-skin="switch" {{if id}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>
+
+<script type="text/html" id="userInfoTpl">
+    <div class="layui-fluid">
+        <form class="layui-form" style="margin: 20px 0px;">
+            <div class="layui-row">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="username" class="layui-input" disabled value="{{data.username}}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户性别：</label>
+                        <div class="layui-input-block">
+                            <!--Todo: 可能为空-->
+                            <input type="radio" name="usersex" title="男" {{if data.usersex == '男'}} checked {{/if}} disabled>
+                            <input type="radio" name="usersex" title="女" {{if data.usersex == '女'}} checked {{/if}} disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md6 layui-col-md6">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">手机号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="phone" class="layui-input" disabled value="{{data.phone}}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户生日：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="userbirth" class="layui-input" value="{{data.userbirth}}" disabled/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md3 layui-col-md3">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">地址信息：</label>
+                        <div class="layui-input-block">
+                            <!--Todo: 前缀 “城市编码：”-->
+                            <input type="text" name="cityId" class="layui-input" disabled value="城市编码：{{data.cityId}}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md3 layui-col-md3">
+                    <div style="margin-left: 20px;">
+                        <input type="text" name="cityName" class="layui-input" disabled value="{{data.cityName}}"/>
+                    </div>
+                </div>
+                <div class="layui-col-md5 layui-col-md5">
+                    <div style="margin-left: 20px;">
+                        <input type="text" name="residence" class="layui-input" disabled value="{{data.residence}}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否锁定：</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="locked" {{if data.locked === 1 }} checked {{/if}} lay-skin="switch" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md7 layui-col-sm7">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否删除：</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="isdel" {{if data.isdel === 1}} checked {{/if}} lay-skin="switch" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">激活状态：</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="activeStatus" {{if data.activeStatus === 0}} checked {{/if}} lay-skin="switch" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm7 layui-col-md7">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户性质：</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="ismerchant" value="0" title="平台用户" {{if data.ismerchant === 0}} checked {{else}}  disabled {{/if}}>
+                            <input type="radio" name="ismerchant" value="1" title="商户" {{if data.ismerchant === 1}} checked {{else}} disabled {{/if}}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户类型：</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isadmin" value="0" title="操作员" {{if data.isadmin === 0}} checked {{else}}  disabled {{/if}}>
+                            <input type="radio" name="isadmin" value="1" title="管理员" {{if data.isadmin === 1}} checked {{else}}  disabled {{/if}}>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm7 layui-col-md7">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">实名认证：</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isrealname" value="-1" title="审核不通过" {{if data.isrealname === -1}} checked {{else}}  disabled {{/if}}>
+                            <input type="radio" name="isrealname" value="0" title="未认证" {{if data.isrealname === 0}} checked {{else}}  disabled {{/if}}>
+                            <input type="radio" name="isrealname" value="1" title="待审核" {{if data.isrealname === 1}} checked {{else}}  disabled {{/if}}>
+                            <input type="radio" name="isrealname" value="2" title="已认证" {{if data.isrealname === 2}} checked {{else}}  disabled {{/if}}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm11 layui-col-md11">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">注册方式：</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="regMode" value="0" title="APP注册" {{if data.regMode === 0}} checked {{else}}  disabled {{/if}}>
+                            <input type="radio" name="regMode" value="1" title="商户注册" {{if data.regMode === 1}} checked {{else}}  disabled {{/if}}>
+                            <input type="radio" name="regMode" value="2" title="商户会员" {{if data.regMode === 2}} checked {{else}}  disabled {{/if}}>
+                            <input type="radio" name="regMode" value="3" title="商户员工" {{if data.regMode === 3}} checked {{else}}  disabled {{/if}}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">签约开店：</label>
+                        <div class="layui-input-block">
+                            <!--Todo: unknown field-->
+                            <input type="radio" name="shop" value="0" title="已开通" disabled>
+                            <input type="radio" name="shop" value="1" title="未开通" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">签约作家：</label>
+                        <div class="layui-input-block">
+                            <!--Todo: unknow field-->
+                            <input type="radio" name="headline" value="0" title="开通" disabled>
+                            <input type="radio" name="headline" value="1" title="未开通" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">签约类型：</label>
+                        <div class="layui-input-block">
+                            <!--Todo: unknow field-->
+                            <input type="radio" name="type" value="0" title="主脸" disabled>
+                            <input type="radio" name="type" value="1" title="主播" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">商户编号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="bindingMerchantId" class="layui-input" disabled value="{{data.bindingMerchantId}}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">店铺编号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="bindingShopId" class="layui-input" disabled value="{{data.bindingShopId}}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">创建时间：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="createtime" class="layui-input" disabled value="{{data.createtime}}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">修改时间：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="lasttime" class="layui-input" disabled value="{{data.lasttime}}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户头像：</label>
+                        <div class="layui-input-block">
+                            <!--userpic-->
+                            <img style="width:280px; height: 350px;" src="{{data.userpic}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+
+<script type="text/html" id="previewTpl">
+    <div class="layui-fluid">
+        <form class="layui-form" id="form-data">
+            <div class="layui-row">
+                <h1 class="dTitle">专业制作工单审核</h1>
+            </div>
+            <!--隐藏域-->
+            <input type="hidden" name="id" value="{{_id}}"/>
+            <div class="layui-row">
+                <div class="layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">工单号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="workNo" class="layui-input" disabled value="{{_workNo}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md-offset1 layui-col-sm-offset1 layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">账户名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="merchantName" class="layui-input" disabled value="{{_merchantName}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">商户名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="orgName" class="layui-input" disabled value="{{_orgName}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md-offset1 layui-col-sm-offset1 layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">工单来源：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="workSource" class="layui-input" disabled value="{{_workSource}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">工单制作项目：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="workItems" class="layui-input" disabled value="{{_workItems}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md-offset1 layui-col-sm-offset1 layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">制作状态：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="workStatus" class="layui-input" disabled value="{{if _workStatus === '0'}} 制作中 {{else}} 制作完成 {{/if}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">视频制作费用：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="reviewVideoReceivable" class="layui-input" disabled value="{{_reviewVideoReceivable | fmoney}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md-offset1 layui-col-sm-offset1 layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">全景制作费用：</label>
+                        <div class="layui-input-block">
+                            <!-- Todo: 720p  reviewPanoramicReceivable-->
+                            <input type="text" name="review720vrReceivable" class="layui-input" disabled value="{{_reviewPanoramicReceivable}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">应收账款：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="reviewReceivable" class="layui-input" disabled value="{{_reviewReceivable | fmoney}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md-offset1 layui-col-sm-offset1 layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">实收账款：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="reviewActualReceivable" class="layui-input" value="{{_reviewActualReceivable | fmoney}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">推荐人员：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="refUserName" class="layui-input" disabled value="{{_refUserName}}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md-offset1 layui-col-sm-offset1 layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">制作人员：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="workUserName" class="layui-input" disabled value="{{_workUserName}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">推荐提成：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="reviewRefAmount" class="layui-input" value="{{_reviewRefAmount}}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md-offset1 layui-col-sm-offset1 layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">制作提成：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="reviewWorkAmount" class="layui-input" value="{{_reviewWorkAmount}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md5 layui-col-sm5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">审核意见：</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="reviewStatus" value="1" title="通过" {{if _reviewStatus === '1' }} checked{{/if}}>
+                            <input type="radio" name="reviewStatus" value="2" title="不通过" {{if _reviewStatus === '2' }} checked{{/if}}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md11 layui-col-sm11">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">意见信息：</label>
+                        <div class="layui-input-block">
+                            <textarea class="layui-textarea" name="reviewRemark" rows="3" maxlength="100" placeholder="备注字数不能超出100">{{_reviewRemark}}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>

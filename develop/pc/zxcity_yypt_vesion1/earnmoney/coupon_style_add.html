@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Pragma" content="no-cache"> 
+    <meta http-equiv="Cache-Control" content="no-cache"> 
+    <meta http-equiv="Expires" content="0"> 
+    <title>新增卡券</title>
+    
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/coupon_style_add.css">
+</head>
+
+<body>
+    <div class="container" style="padding-bottom: 8px;padding-top: 8px;">
+        <form>
+            <div class="form-group">
+                <label>票券样式</label>
+                <div class="well text-center">
+                    <h3 class="text-center">点击选择图片</h3>
+                    <img id="cardUrl" src="" alt="">
+                    <div class="progressContent">
+                        <div class="text-info"></div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="add()"><i class="fa fa-save"></i> 提交</button>
+            <button type="button" class="btn btn-danger" onclick="cancle()"><i class="fa fa-close"></i> 取消</button>
+        </form>
+    </div>
+    
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="./js/earnmoney_common.js"></script>
+    <script type="text/javascript" src="./js/coupon_style_add.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name=format-detection content="telephone=no">
+    <title></title>
+    <link rel="stylesheet" href="css/shareArticle.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div id="commodityShare">
+        <div class="video-box"></div>
+        <div class="main-wrapper">
+            <section class="article-box">
+                <div class="video-title"></div>
+                <div class="video-play-count"></div>
+                <div class="handle-box clear">
+                    <div class="like pull-left">
+                        <a class="icon like-icon" href="javascript:void(0);"></a>
+                        <span class="count">0</span>
+                    </div>
+                    <div class="unlike pull-left">
+                        <a class="icon unlike-icon" href="javascript:void(0);"></a>
+                        <span class="count">0</span>
+                    </div>
+                </div>
+                <div class="anthor-info">
+                    <div class="anthor-pic pull-left"><img src="" alt=""></div>
+                    <div class="info pull-left">
+                        <p class="name"></p>
+                        <p class="time"></p>
+                    </div>
+                </div>
+            </section>
+            <div class="shop border_bottom isComment">
+                <img class="shoplogo" src="img/shoplogo.png" alt="">
+                <img class="line" src="img/line.png" alt="">
+                <p class="eng">THE　CLOUD　STORES</p>
+                <div class="content_list">
+                </div>
+                <div class="more">点击查看更多</div>
+            </div>
+            <div class="recomend-list isComment">
+                <ul class="margin">
+                    <!-- <li>
+                            <div class="info">
+                                <a class="title" href="#"></a>
+                                <div class="detail">
+                                    <span class="name">程程</span>
+                                    <span class="count">1260</span>
+                                    <span class="time">2017-04-18</span>
+                                </div>
+                            </div>
+                            <div class="poster">
+                                <img src="" alt="">
+                            </div>
+                        </li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="comments-box isComment">
+            <div class="comment-title">评论<span class="count"></span></div>
+            <div class="comments-list">
+                <ul>
+                    <!-- <li>
+                            <div class="ava"></div>
+                            <div class="info">
+                                <p class="name">小兔子</p>
+                                <div class="content">人民的民义啦啦啦啦哈哈哈哈哈哈</div>
+                                <div>
+                                    <span class="time">10-10 15:20</span>
+                                </div>
+                            </div>
+                            <div class="handle-box">
+                                <a class="icon like-icon" href="javascript:void(0);"></a>
+                                <span class="count">56</span>
+                            </div>
+                        </li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="app-download isPack">
+            <a href="javascript:;" id="downloadA">
+                <div class="bg">
+                    <div class="floatleft">  
+                        <img src="img/qmx_share_xiazai.png" alt="按钮"> 
+                        智享城市
+                    </div>
+                    <div class="floatright">下载</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div id="weixin_pageto" class="wx_layer" style="display: none;">
+        <div id="msgBox" class="msg_box">
+            <p>1.点击右上角的</p>
+            <p>2.选择</p>
+            <span class="msg_arrow"></span>
+            <span class="msg_point"></span>
+            <span class="msg_txt"></span>
+        </div>
+    </div>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="assets/layer_mobile/layer.js"></script>
+    <script src="js/jweixin-1.2.0.js"></script>
+    <script src="assets/fingerprint2.min.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/shareVideo.js"></script>
+</body>
+
+</html>

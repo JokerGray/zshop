@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>累计佣金</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" user-scalable="no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" href="assets/swiper-4.0.7/dist/css/swiper.min.css" />
+    <link rel="stylesheet" href="css/dropload.css">
+    <link rel="stylesheet" href="pages/moneyList/moneyList.css">
+
+</head>
+<body class="gray-bg">
+    <div class="app" id="app" v-cloak>
+        <ul class="list_ul">
+            <!-- <li v-for="item in itemList" :key="item.id">
+                <h3 class="list_ul_top">
+                    <span class="fl c999">{{item.referenceAuditTime}}</span>
+                    <span class="fr redf7">￥{{item.shareAmount}}</span>
+                </h3>
+                <div class="list_ul_center">
+                    <img class="circle img_circle" src="" alt=""> <span>{{item.orgName}}</span>
+                </div>
+                <p class="list_ul_bottom"><i :class="item.class"></i>{{item.levelName}}<span>{{item.amount}}</span></p>
+            </li> -->
+            
+            <li  v-for="item in itemList" :key="item.id">
+                <h3 class="list_ul_top">
+                    <span class="fl c999">{{item.referenceAuditTime}}</span>
+                    <span class="fr "><i class="c999">佣金</i><em class="redf7">￥{{item.shareAmount}}</em></span>
+                </h3>
+                <div class="list_ul_center">
+                   <span>{{item.orgName}}</span>
+                </div>
+                <p class="list_ul_bottom"><i :class="item.class">{{item.first}}</i>{{item.levelName}}<span>费用：{{item.amount}}元</span></p>
+            </li>
+            <!-- <li>
+                <h3 class="list_ul_top">
+                    <span class="fl c999">2018年6月29日14:18:14</span>
+                    <span class="fr "><i class="c999">佣金</i><em class="redf7">￥180.00</em></span>
+                </h3>
+                <div class="list_ul_center">
+                   <span>智能美肤馆</span>
+                </div>
+                <p class="list_ul_bottom"><i class="circle d3">合</i>合作商户<span>费用：3650元</span></p>
+            </li>
+            <li>
+                <h3 class="list_ul_top">
+                    <span class="fl c999">2018年6月29日14:18:14</span>
+                    <span class="fr "><i class="c999">佣金</i><em class="redf7">￥180.00</em></span>
+                </h3>
+                <div class="list_ul_center">
+                   <span>智能美肤馆</span>
+                </div>
+                <p class="list_ul_bottom"><i class="circle f4b">合</i>合作商户<span>费用：3650元</span></p>
+            </li> -->
+        </ul>
+    </div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="pages/pageThree/vue.js"></script>
+<script src="js/dropload.min.js"></script>
+
+<script src="js/fastclick.js"></script>
+<script src="assets/layer/layer.js"></script>
+<script src="js/util.js"></script>
+<script>
+//    $('.app').hide();
+    var USER_URL={
+//        GETDATA:'user/commissionsDetails',//获取相关信息
+        GETLIST:'user/commissionsDetails',//获取分页
+    }
+    var VUEDATA={
+        itemList:[],
+        total:0,
+
+    }
+    var app = new Vue({
+        el:'#app',
+        data:VUEDATA,
+        created:function () {
+            getData()
+            console.log(this.$data)
+        }
+
+    })
+    function getData(){
+        var params = {
+            page:1,
+            rows:4,
+            userId: GetQueryString('userId')||'',
+        }
+        reqAjaxAsync(USER_URL.GETLIST,JSON.stringify(params)).done(function (res) {
+            if(res.code == 1){
+                var datas = res.data;
+                console.log(res)
+                VUEDATA.total = res.total;
+                setData(VUEDATA.itemList,datas)
+
+            }
+        }).done(function (res) {
+            if( VUEDATA.total>= params.rows){
+                $('body').dropload({
+                    scrollArea : window,
+                    loadDownFn : function(me){
+                        params.page++;
+                        // 拼接HTML
+                        var result = ``;
+                        var localList = JSON.parse(window.sessionStorage.getItem('VUEDATALIST'));
+                        if(localList.length === VUEDATA.total){//判断缓存数据和请求数据 长度是否相等
+                            // 为了测试，延迟1秒加载
+                            setTimeout(function(){
+                                // 每次数据插入，必须重置
+//                            me.lock();
+                                // 无数据
+                                me.noData();
+                                me.resetload();
+                            },1000);
+                            VUEDATA.itemList = JSON.parse(window.sessionStorage.getItem('VUEDATALIST'))
+                            return false;
+                        }else{
+                            reqAjaxAsync(USER_URL.GETLIST,JSON.stringify(params)).done(function (res) {
+                                if(res.code == 1){
+                                    var data = res.data;
+//                            console.log(datas)
+                                    if(data.length > 0){
+                                        setData(VUEDATA.itemList,data)
+                                        // 如果没有数据
+                                        window.sessionStorage.setItem('VUEDATALIST',JSON.stringify(VUEDATA.itemList))
+                                        console.log(JSON.parse(window.sessionStorage.getItem('VUEDATALIST')))
+                                    }else{
+                                        // 锁定
+                                        me.lock();
+                                        // 无数据
+                                        me.noData();
+                                    }
+                                    // 为了测试，延迟1秒加载
+                                    setTimeout(function(){
+                                        // 插入数据到页面，放到最后面
+//                                $('.lists').append(result);
+                                        // 每次数据插入，必须重置
+                                        me.resetload();
+                                    },500);
+                                }else{
+                                    layer.msg(res.msg);
+                                }
+                            })
+                        }
+
+
+
+                    }
+                });
+            }else if(res.data.length === 0){
+                $('.lists').html(`<li class="nodata">暂无数据</li>`)
+            }
+
+        })
+        function setData(arrList,data){
+            for (var i = 0; i < data.length; i++) {
+                data[i].class = 'circle d'+data[i].levelTypeId;
+                data[i].first=data[i].levelName.slice(0,1)
+                arrList.push(data[i]);
+            }
+            window.sessionStorage.setItem('VUEDATALIST',JSON.stringify(VUEDATA.itemList))
+        }
+    }
+    $('.shop_list_ul').on('touchstart touchmove touchend','li', function(event) {
+            if($(this).hasClass('nodata'))return
+            switch(event.type) {
+                case 'touchstart':
+                    falg = false;
+                    break;
+                case 'touchmove':
+                    falg = true;
+                    break;
+                case 'touchend':
+                    if( !falg ) {
+                        var userid = $(this).attr('data-userid');
+                        var merchantid =$(this).attr('data-merchantid');
+                        var orgName = encodeURI(encodeURI($(this).attr('data-name')));
+                        window.location.href=`myBusiness.html?userId=${userid}&merchantId=${merchantid}&orgName=${orgName}`
+
+                    } else {
+                        console.log('滑动');
+                    }
+                    break;
+            }
+        });
+
+</script>
+
+<!--<script src="assets/swiper-4.0.7/dist/js/swiper.min.js"></script>-->
+</html>

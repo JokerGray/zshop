@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>个人主页</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="stylesheet" href="css/amazeui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/fontawesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/my.css" />
+	</head>
+
+	<body>
+		<div class="container" id="app" v-cloak>
+			<header>
+				<div class="header-img">
+					<div class="bj">
+						<img src="img/my/game_bg_home_page_arc.png" />
+					</div>
+					<div class="logo-img">
+						<img v-if="findUser.userpic==''||findUser.userpic==null||findUser.userpic==undefined" src="img/com/com.png" />
+						<img v-else v-bind:src="findUser.userpic" />
+					</div>
+				</div>
+				<div class="header-box">
+					<div class="am-g header-name">
+						<div class="am-u-sm-12">
+							<div class="name" v-html="findUser.username"></div>
+							<div class="info" v-html="findUser.signature"></div>
+						</div>
+					</div>
+					<div class="am-g header-btn">
+						<div class="am-u-sm-6">
+							<button type="button" class="am-btn fortification  am-round"><img src="img/my/game_ic_wihte_zhucheng.png"/>筑城</button>
+							<img class="img1" src="img/my/game_shape_bg_user_home_page_zhucheng_shadow.png" />
+						</div>
+						<div class="am-u-sm-6">
+							<button type="button" class="am-btn chat  am-round"><img src="img/my/game_ic_user_home_page_chat.png"/>聊天</button>
+							<img class="img2" src="img/my/game_shape_bg_user_home_page_chat_shadow.png" />
+						</div>
+					</div>
+					<div class="am-g header-num">
+						<div class="am-u-sm-4">
+							<span v-html="findUser.followNum||'0'"></span>
+							<span>关注</span>
+						</div>
+						<div class="am-u-sm-4">
+							<span v-html="findUser.fansNum||'0'"></span>
+							<span>粉丝</span>
+						</div>
+						<div class="am-u-sm-4">
+							<span v-html="findUser.praiseNum||'0'"></span>
+							<span>点赞</span>
+						</div>
+					</div>
+					<div class="am-g family" v-bind:class="findUser.scGameFamily==null||findUser.scGameFamily==''||findUser.scGameFamily==undefined?'hide':'show'">
+						<div class="am-u-sm-6">
+							<span>家族</span>
+						</div>
+						<div class="am-u-sm-6">
+							<span>IKUN家族<i class="fa fa-angle-right"></i></span>
+						</div>
+					</div>
+					<div class="am-g family">
+						<div class="am-u-sm-6">
+							<span>共发表{{total||'0'}}个动态</span>
+						</div>
+						<div class="am-u-sm-6">
+							<span><i class="fas fa-th"></i></span>
+						</div>
+					</div>
+				</div>
+			</header>
+			<div class="content-list">
+				<div class="list" v-for="(item,idx) in dynamicData">
+					<div class="am-g family">
+						<div class="am-u-sm-6">
+							<span><img src="img/my/game_ic_user_home_pagetime.png"/>{{item.publishTime | getDate}}</span>
+						</div>
+						<div class="am-u-sm-6">
+							<span></span>
+						</div>
+					</div>
+					<ul class="am-gallery am-avg-sm-3
+  am-avg-md-3 am-avg-lg-4 am-gallery-default" v-bind:index='idx'>
+						<li v-for="(pic,index) in item.pictureList">
+							<div class="am-gallery-item">
+								<div class="item-a">
+									<img class="img" v-bind:src="pic.fileUrl" @click="previewImg(index,$event)" />
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="loading loading-load1">
+					<img src="img/com/loading.gif" />加载中...
+				</div>
+				<div class="loading loading-noData1">
+					我也是有底线的...
+				</div>
+			</div>
+			<div class="swiper-container">
+				<div class="am-pureview-actions am-active">
+					<a href="javascript: void(0)" class="am-icon-chevron-left" @click="close"></a>
+				</div>
+				<div class="swiper-wrapper">
+				</div>
+				<div class="swiper-pagination swiper-pagination-white"></div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="js/amazeui.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					total: '',
+					findUser: {},
+					dynamicData: [],
+					imgSlider: [],
+					param: {
+						queryUserId:getParams('queryUserId'),
+						userId:getParams('userId')
+					},
+					params: {
+						page: "0",
+						userId:getParams('userId'),
+						row: "10"
+					}
+				},
+				methods: {
+					previewImg: function(index, event) {
+						var idx = event.path[4].getAttribute("index");
+						app.imgSlider = [].concat(app.dynamicData[idx].pictureList);
+						$(".swiper-container").fadeIn('fast');
+						var swiper = new Swiper('.swiper-container', {
+							zoom: true,
+							virtual: true,
+							pagination: {
+								el: '.swiper-pagination',
+								type: 'fraction',
+							},
+							on: {
+								click: function() {
+									$(".swiper-container").fadeOut('fast');
+									this.virtual.slides.length = 0;
+									this.virtual.cache = [];
+									swiperStatus = false;
+								},
+							},
+						});
+						for(i = 0; i < app.imgSlider.length; i++) {
+							swiper.virtual.appendSlide('<div class="swiper-zoom-container"><img src="' + app.imgSlider[i].fileUrl + '" /></div>');
+						}
+						swiper.slideTo(index);
+						swiperStatus = true;
+
+					},
+					close: function() {
+						$(".swiper-container").fadeOut('fast');
+						app.imgSlider = [];
+					}
+				}
+			});
+			var my = {
+				init() {
+					//获取个人主页头部数据
+					reqAjaxAsync("game/findUserInfo", JSON.stringify(app.param)).done(function(res) {
+						if(res.code == 1) {
+							app.findUser = res.data;
+						}
+					});
+					//获取个人动态数据
+					reqAjaxAsync("game/findPictureRecordInfo", JSON.stringify(app.params)).done(function(res) {
+						$(".loading-load1").show();
+						setTimeout(function() {
+							if(res.code == 1) {
+								app.total = res.total;
+								app.dynamicData = res.data;
+								$(".loading-load1").hide();
+								$(".loading-noData1").show();
+								if(app.dynamicData == '') {
+									$(".noData1").show();
+									$(".loading-noData1").hide();
+								} else {
+									$(".noData1").hide();
+								}
+							} else {
+								com.tooltip(res.msg);
+							}
+						}, 500);
+					});
+					$(window).scroll(function() {
+						var scrollTop = $(this).scrollTop();	
+						var scrollHeight = $(document).height();
+						var windowHeight = $(this).height();
+						if(scrollTop + windowHeight == scrollHeight) {
+							if(app.params.page * app.params.row < app.total) {
+								$(".loading-load1").show();
+								$(".loading-noData1").hide();
+								++app.params.page;								
+								reqAjaxAsync("game/findPictureRecordInfo", JSON.stringify(app.params)).done(function(res) {
+									if(res.data.length < 10) {
+										$(".loading-load1").hide();
+										$(".loading-noData1").show();
+									};
+									app.dynamicData = app.dynamicData.concat(res.data);
+								})
+							}
+						}
+					})
+				},
+			}
+			my.init();
+		</script>
+	</body>
+
+</html>

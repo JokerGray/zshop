@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>动态详情</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="stylesheet" href="css/amazeui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/fontawesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/detail.css" />
+	</head>
+
+	<body>
+		<div class="container" id="app" v-cloak>
+			<header>
+				<div class="am-g header-btn">
+					<div class="am-u-sm-8">
+						<div class="logo">					
+							<img v-if="scGameSysUser.userpic==''||scGameSysUser.userpic==null||scGameSysUser.userpic==undefined" src="img/com/com.png" />
+							<img v-else v-bind:src="scGameSysUser.userpic" />
+						</div>
+						<div class="logo-title">
+							<span v-html="scGameSysUser.username"></span>
+							<span>{{publishTime|getDate}}</span>
+						</div>
+
+					</div>
+					<!--<div class="am-u-sm-4 fortification-btn">
+						<button type="button" class="am-btn fortification  am-round"><img src="img/my/game_ic_wihte_zhucheng.png"/>筑城</button>
+					</div>-->
+				</div>
+				<div class="am-g description">
+					<div class="am-u-sm-12">
+						<span>{{fileDescribe}}</span>
+					</div>
+				</div>
+				<div class="show-img">
+					<ul data-am-widget="gallery" class="am-gallery am-avg-sm-3
+  am-avg-md-3 am-avg-lg-4 am-gallery-default" data-am-gallery="{ pureview: true }">
+						<li v-for="item in pictureList">
+							<div class="am-gallery-item">
+								<a class="item-a" v-bind:href="item.fileUrl" class="">
+									<img v-bind:src="item.fileUrl" />
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="showShop" style="display:none">
+				  	<p id="storeTitle">关联云店</p>
+					<div id="shopListBox">
+						<div id="shopList"></div>
+					</div>
+				</div>
+				<div class="am-g gif-box">
+					<div class="am-u-sm-6">
+						<span gif>礼物榜</span>
+					</div>
+					<div class="am-u-sm-6">
+						<span class="total">累计:{{gamePictureRecord.receiveGiftPrice}}</span><span class="img3"><img src="img/detail/lq_dongtai_zhibi.png"/></span><span class="flower">{{gamePictureRecord.gifitNum}}</span><span class="img3"><img src="img/detail/lq_dongtai_xianhua.png"/></span>
+					</div>
+				</div>
+				<div class="swiper-container">
+					<div class="swiper-wrapper" id="swiper">
+					</div>
+				</div>
+			</header>
+			<div class="am-accordion-content">
+				<div class="am-g comment">
+					<span>评论</span>
+					<span>{{commentCount || '0'}}</span>
+				</div>
+				<div class="">
+					<article class="am-comment" v-for="(item,index) in commentList">
+						<a href="javascript:;">
+							<img v-if="item.fromSysUser.userpic==''||item.fromSysUser.userpic==null||item.fromSysUser.userpic==undefined" src="img/com/default.png" alt="" class="am-comment-avatar" width="48" height="48" />
+							<img v-else  v-bind:src="item.fromSysUser.userpic" alt="" class="am-comment-avatar" width="48" height="48" />							
+						</a>
+
+						<div class="am-comment-main">
+							<div class="">
+								<span class="comment-name">{{item.fromSysUser.username|| '张三'}}</span>
+								<div class="comment-time">
+									{{item.commentTime |date}}
+								</div>
+							</div>
+							<div class="am-comment-bd">
+								<span class="comment-content">{{item.commentContent}}</span>
+								<div v-if="item.scGameComment==null||item.scGameComment==undefined||item.scGameComment==''">
+								</div>
+								<div v-else>
+									<span class="reply">回复</span>
+									<span class="reply-name">{{item.fromSysUser.username}}：</span>
+									<span class="reply-content">{{item.scGameComment.commentContent}}</span>
+								</div>
+							</div>
+						</div>
+					</article>
+					<div class="loading loading-load1">
+					<img src="img/com/loading.gif" />加载中...
+					</div>
+					<div class="loading loading-noData1">
+						无更多评论...
+					</div>
+					<div class="noData1 noData">
+						<img src="img/com/noData.png" /> 没有评论数据
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="js/amazeui.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="../assets/layer/layer.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/detail.js"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					scGameSysUser: {},
+					detailData: [],
+					gamePictureRecord:{},
+					giftGradeRecordId:[],
+					publishTime: '',
+					pictureList: '',
+					fileDescribe:'',
+					commentList:[],
+					commentCount:'',
+					total:'',
+					param: {
+						pictureRecordId:getParams('pictureRecordId'),
+						page: '0',
+						userId:getParams('userId'),
+						row: '10'
+					},
+					params:{
+					  	pictureRecordId:getParams('pictureRecordId'),
+					    page: '0',
+					    row: '10'
+					}
+				},
+				methods: {
+					previewImg: function() {
+					   var swiper = new Swiper('.swiper-container', {
+					      slidesPerView: 5,
+					      spaceBetween: 25,
+					   });
+					},
+				},
+				mounted (){ 
+					this.previewImg();
+				}
+
+			});
+			var my = {
+				init() {
+					//获取详情数据
+					reqAjaxAsync("game/findPictureRecord", JSON.stringify(app.param)).done(function(res) {
+						if(res.code == 1) {
+							app.isShowShop = res.data.gamePictureRecord.isShowShop;
+							app.gamePictureRecord = res.data.gamePictureRecord
+							app.scGameSysUser = res.data.gamePictureRecord.scGameSysUser;
+							app.publishTime = res.data.gamePictureRecord.publishTime;
+							app.pictureList = res.data.gamePictureRecord.pictureList;
+							app.fileDescribe = res.data.gamePictureRecord.pictureList[0].fileDescribe;
+							app.giftGradeRecordId = res.data.giftGradeRecordId;
+							my.applyData(app.giftGradeRecordId);
+							if(app.isShowShop == 0){
+		                    	$("#showShop").hide()
+		                    }else{
+		                    	$("#showShop").show()                  	
+							}
+						}
+					});				
+					reqAjaxAsync("game/findRecordCommentList", JSON.stringify(app.params)).done(function(res) {
+						$(".loading-load1").show();
+						setTimeout(function() {
+							if(res.code == 1) {
+								$(".loading-load1").hide();
+								app.total = res.total
+								app.commentList = res.data.commentList;
+								app.commentCount = res.data.commentCount;
+								if(app.commentList == '') {
+									$(".noData1").show();
+								} else {
+									$(".noData1").hide();
+								}
+							}else {
+								com.tooltip(res.msg);
+							}
+						}, 500);
+					});	
+					$(window).scroll(function() {
+						var scrollTop = $(this).scrollTop();
+						var scrollHeight = $(document).height();
+						var windowHeight = $(this).height();
+						if(scrollTop + windowHeight == scrollHeight) {
+							if(app.params.page * app.params.row < app.total) {
+								$(".loading-load1").show();
+								$(".loading-noData1").hide();
+								++app.params.page;
+								reqAjaxAsync("game/findRecordCommentList", JSON.stringify(app.params)).done(function(res) {
+									if(res.data.commentList.length < 10) {
+										$(".loading-load1").hide();
+										$(".loading-noData1").show();
+									};
+									app.commentList = app.commentList.concat(res.data.commentList);
+								})
+							}
+						}
+					})
+				},
+				applyData(data){
+					var html = '';
+					for(i = 0; i <data.length; i++) {		
+						if(data[i].totalGiftPrice ==0){
+							html += '<div class="swiper-slide"><img src="' + data[i].userpic + '" /><div class="list-content"><span>'+ data[i].number+ '</span><span class="img3"><img src="img/detail/lq_dongtai_xianhua.png"/></span></div></div>';
+						}else{
+							html += '<div class="swiper-slide"><img src="' + data[i].userpic + '" /><div class="list-content"><span>'+ data[i].totalGiftPrice+ '</span><span class="img3"><img src="img/detail/lq_dongtai_zhibi.png"/></span></div></div>';
+						}
+					}
+					$("#swiper").html(html);	
+				}
+			}
+			my.init();
+		</script>
+	</body>
+
+</html>

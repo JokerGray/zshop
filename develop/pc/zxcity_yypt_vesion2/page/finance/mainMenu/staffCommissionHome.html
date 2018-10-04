@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>员工提成主页面</title>
+  <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="../../../common/css/reset.css">
+  <link rel="stylesheet" href="../../../common/css/layTab.css" />
+
+  <style media="screen">
+      body{background: #f9f9f9;min-width: 1400px;}
+      .layout-left{cursor: pointer;height: 200px;width: 400px;background: -webkit-gradient(linear, 0 0, 0 bottom, from(#AD48F4), to(#7551e1));margin-top: 290px;margin-left: 260px;border-radius: 6px;position: relative;float: left;}
+      .content-left{float: left;width: 50%;height: 100%;position: relative;}
+      .content-left-top{margin-top: 35px;margin-left: 50px;}
+      .content-left-top img{border-radius: 50%;background: #7A3CBE;}
+      .content-left-button{bottom: 20px;left: 45px;position: absolute;}
+      .content-left-button a{display: block;float: left;}
+      .content-left-button img{display: block;float: left;margin-top: 4px;margin-left: 9px;}
+      .content-right{text-align: center;position: relative;top: 36px;right: 40px;}
+      .content-right p{color: #ffffff;font-family: MicrosoftYahei;font-size: 30px;word-break: break-all;margin-bottom: 15px;}
+      .content-right dd{color: #ffffff;}
+      a{text-decoration: none;color: #fff;}
+      .layout-center{width: 80px;float: left;position: relative;margin-top: 25px;margin-left: 40px;}
+      .layout-right ul{list-style: none;float: left;margin-top: 20px;margin-left: 20px;}
+      .layout-right ul li{cursor: pointer;height: 200px;width: 500px;background: #fff;border-radius: 6px;margin: 32px 2px;}
+      .layout-right ul li .top{height: 65px;}
+      .layout-right ul li .bottom{position: relative;overflow: hidden;height: 135px;}
+      .layout-right ul li .bottom img{float: right;right: -10px;top: 10px;position: absolute;}
+      .layout-right ul li .top p{width: 50%;text-align: center;float: left;line-height: 65px;margin: auto;font-family: MicrosoftYahei;font-size: 23px;}
+      .live-shadow{box-shadow: 0 0 10px 1px #EC8CA5;}
+      .headline-shadow{box-shadow: 0 0 10px 1px #F9B48A;}
+      .merchant-shadow{box-shadow: 0 0 10px 1px #8792F2;}
+      .live-top{border-bottom: 1px solid #EC8CA5;}
+      .headline-top{border-bottom: 1px solid #F9B48A;}
+      .merchant-top{border-bottom: 1px solid #8792F2;}
+      .live-title{color: #EC8CA5;}
+      .headline-title{color: #F9B48A;}
+      .merchant-title{color:#8792F2;}
+      .bottom div{margin: 20px 73px;font-family: MicrosoftYahei;font-size: 23px;}
+      #searchBtn {cursor: pointer;}
+  </style>
+</head>
+<body>
+	<div class="layout-top tool-box layui-form">
+	    <!--头部搜索框 -->
+		<ul class="tool-box-ul clearfix">
+	        <!-- 时间开始 -->
+	        <li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="stTime">时间：</label>
+					<div class="layui-input-inline startDate">
+						<input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+					</div>
+				</div>
+			</li>				
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="endTim">至：</label>
+					<div class="layui-input-inline endDate">
+						<input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+					</div>
+				</div>
+			</li>
+	        <!-- 时间结束 -->                    
+			<button class="layui-btn" id="searchBtn">查询</button>
+		</ul>
+	</div>
+	
+  	<div classs="content">
+		<div class="layout-left" id="total">
+		    <!-- 劳务费统计  -->
+		    <div class="content-left">
+		        <div class="content-left-top">
+		          <img  src="staffCommission/img/Staff-commission.png" alt="">
+		        </div>
+		    </div>
+		    <div class="content-right">
+		         <p id="totalAmount">0.00</p>
+		         <dd>提成金额</dd>
+		    </div>
+		</div>  
+		
+		<div class="layout-center">
+		    <img src="staffCommission/img/line--one.png">
+		</div>
+		<div class="layout-right">
+		    <ul>
+		      <li class="live-shadow" id="live">
+		          <div class="top live-top">
+		              <p class="live-title">直播佣金</p>
+		          </div>
+		          <div class="bottom">
+		              <div>
+		                <span>提成金额:</span>
+		                <span id="liveAmount">0.00</span>
+		              </div>
+		              <div>
+		                <span>人数:</span>
+		                <span id="liveNumber">0</span>
+		              </div>
+		              <img src="staffCommission/img/commission.png" style="top: 7px;">
+		          </div>
+		      </li>
+		      <li class="headline-shadow" id="headline">
+		        <div class="top headline-top">
+		            <p class="headline-title">头条推广</p>
+		        </div>
+		        <div class="bottom">
+		            <div>
+		              <span>提成金额:</span>
+		              <span id="headlineAmount">0.00</span>
+		            </div>
+		            <div>
+		              <span>人数:</span>
+		              <span id="headlineNumber">0</span>
+		            </div>
+		            <img src="staffCommission/img/news.png">
+		        </div>
+		      </li>
+		      <li class="merchant-shadow" id="merchantUpgrade">
+		        <div class="top merchant-top">
+		            <p class="merchant-title">商户升级</p>
+		        </div>
+		        <div class="bottom">
+		            <div>
+		              <span>提成金额:</span>
+		              <span id="merchantAmount">0.00</span>
+		            </div>
+		            <div>
+		              <span>人数:</span>
+		              <span id="merchantNumber">0</span>
+		            </div>
+		            <img src="staffCommission/img/upgrade.png" style="right: 12px;">
+		        </div>
+		      </li>
+		    </ul>
+		</div>
+	</div>
+</body>
+  
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+  
+<script type="text/javascript">    
+	jsorcss('js','staffCommissionHome');
+</script>
+</html>

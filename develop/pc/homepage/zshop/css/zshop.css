@@ -1,0 +1,567 @@
+html {
+	font-family: MicrosoftYahei
+}
+
+.Nav {
+	display: none;
+	height: 80px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	background-color: rgba(0, 0, 0, .12)
+}
+
+.Nav .index-nav {
+	width: 12rem;
+	margin: 0 auto
+}
+
+.Nav .index-nav a {
+	transition: all 1s ease
+}
+
+.Nav .index-nav .title-logo {
+	float: left;
+	height: 80px;
+	width: 200px;
+	padding-top: 16px;
+	line-height: 80px;
+	font-size: 26px;
+	color: #fff
+}
+
+.Nav .index-nav .title-logo img {
+	float: left;
+    height: 47px;
+    width: 47px;
+	vertical-align: middle
+}
+.Nav .index-nav .title-logo p{
+	display: block;
+	padding-left: 57px;
+    padding-top: 5px;
+	font-size: 16px;
+	white-space: nowrap;
+    line-height: 16px;
+}
+.Nav .index-nav ul {
+	float: right
+}
+
+.Nav .index-nav ul li {
+	float: left;
+	padding: 0 .1rem
+}
+
+.Nav .index-nav ul li:first-child {
+	margin-left: 0
+}
+
+.Nav .index-nav ul li:last-child {
+	margin-right: 0
+}
+
+.Nav .index-nav ul li a {
+	display: block;
+	height: 80px;
+	line-height: 80px;
+	font-size: .18rem;
+	font-weight: 700;
+	color: #fff;
+	box-sizing: border-box
+}
+
+.Nav .index-nav ul li a.visited {
+	color: #000;
+	border-bottom: 3px solid #e84545
+}
+
+.Nav .index-nav ul li a:hover {
+	color: #000;
+	border-bottom: 3px solid #e84545
+}
+
+.section>div {
+	width: 12rem;
+	margin: 0 auto;
+	line-height: 100%
+}
+
+#full {
+	display: none
+}
+
+.index {
+	background: url(../img/web_zhanshiduan_shouyebg.png) no-repeat center/cover;
+	padding-top: 1.5rem;
+	box-sizing: border-box;
+	overflow-y: hidden
+}
+
+.index>div {
+	margin-top: -1.5rem;
+	position: relative;
+	padding-top: 1.5rem;
+	box-sizing: border-box
+}
+
+.index .index-title {
+	color: #fff
+}
+
+.index .index-title h3 {
+	font-size: .6rem;
+	font-weight: 700
+}
+
+.index .index-title p {
+	font-size: .26rem
+}
+
+.index .index-title a {
+	display: block;
+	border-radius: 5px;
+	width: 2.92rem;
+	height: .74rem;
+	font-size: .3rem;
+	text-align: center;
+	line-height: .74rem;
+	margin-bottom: .5rem;
+	color: #fff
+}
+
+.index .index-title a.btn1 {
+	background-color: #04d298
+}
+
+.index .index-title a.btn2 {
+	background-color: #0084ff
+}
+
+.index .index-logo {
+	margin-right: -1.5rem;
+	position: relative
+}
+
+.index .index-logo li {
+	position: absolute
+}
+
+.index .index-logo li .index-logo1 {
+	width: 1.59rem;
+	height: 1.59rem;
+	z-index: 10;
+	left: -1.3rem;
+	top: -1rem
+}
+
+.index .index-logo li .index-logo2 {
+	width: 1.54rem;
+	height: 1.54rem;
+	z-index: 10;
+	left: -3.3rem;
+	top: 1.5rem
+}
+
+.index .index-logo li .index-logo3 {
+	width: 2.46rem;
+	height: 2.46rem;
+	z-index: 10;
+	left: -5.3rem;
+	top: 4rem
+}
+
+.index .index-logo li .index-logo4 {
+	width: 2.87rem;
+	height: 2.87rem;
+	z-index: 10;
+	left: 6.5rem;
+	top: 1rem
+}
+
+.index .index-logo li .index-logo5 {
+	width: 1.66rem;
+	height: 1.66rem;
+	z-index: 10;
+	left: 4.5rem;
+	top: -4rem
+}
+
+.index .index-logo li .index-logo6 {
+	width: 1.54rem;
+	height: 1.54rem;
+	z-index: 10;
+	left: 2.5rem;
+	top: -2rem
+}
+
+.index .index-logo img {
+	width: 7.96rem;
+	height: 5.63rem;
+	position: relative;
+	z-index: 9
+}
+
+.index .next {
+	position: absolute;
+	bottom: .5rem;
+	left: 50%
+}
+
+.one {
+	background: url(../img/web_zhanshiduan_erping.png) no-repeat center/cover;
+	padding-top: 2.1rem;
+	box-sizing: border-box;
+	overflow-y: hidden
+}
+
+.one>div {
+	margin-top: -2.1rem;
+	position: relative;
+	padding-top: 2.1rem;
+	box-sizing: border-box
+}
+
+.one .one-title h3 {
+	font-family: Sans-serif;
+	font-size: 1rem;
+	color: #333;
+	font-weight: 700
+}
+
+.one .one-title div {
+	width: 4px;
+	height: .63rem;
+	background-color: #333;
+	margin-bottom: .2rem
+}
+
+.one .one-title h5 {
+	margin: 0;
+	padding: 0;
+	font-weight: 700;
+	font-size: .3rem;
+	line-height: .6rem;
+	color: #333;
+	position: relative
+}
+
+.one .one-title h5:after {
+	content: "";
+	display: block;
+	position: absolute;
+	background-color: #9cc1ff;
+	height: .14rem;
+	bottom: .1rem;
+	left: 0;
+	width: 3rem;
+	z-index: -1
+}
+
+.one .one-title h5.h5-second::after {
+	width: 1.2rem
+}
+
+.one .one-title p {
+	margin-top: .36rem;
+	font-size: .2rem;
+	line-height: .22rem;
+	color: #333
+}
+
+.one .one-video {
+	margin-top: -1rem
+}
+
+.one .one-video,
+.one .one-video video {
+	width: 8.08rem;
+	height: 5.6rem;
+	position: relative
+}
+
+.one .one-video i {
+	position: absolute;
+	width: 1.2rem;
+	height: 1.2rem;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%)
+}
+
+.one .one-video .video-check {
+	margin-top: .56rem;
+	width: 2.2rem;
+	height: .87rem
+}
+
+.two {
+	background: url(../img/web_zhanshiduan_sanping_bg.png) no-repeat center/cover;
+	padding-top: 2rem;
+	box-sizing: border-box;
+	overflow-y: hidden
+}
+
+.two>div {
+	margin-top: -2rem;
+	position: relative;
+	padding-top: 2rem;
+	box-sizing: border-box
+}
+
+.two .two-video,
+.two .two-video video {
+	width: 8.08rem;
+	height: 5.6rem;
+	position: relative
+}
+
+.two .two-video i {
+	position: absolute;
+	width: 1.2rem;
+	height: 1.2rem;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%)
+}
+
+.two .two-video .video-check {
+	margin-top: .3rem;
+	width: 2.2rem;
+	height: .87rem
+}
+
+.two .two-title {
+	margin-top: -.9rem;
+	text-align: right
+}
+
+.two .two-title h3 {
+	font-family: Sans-serif;
+	font-size: 1rem;
+	color: #333;
+	font-weight: 700
+}
+
+.two .two-title div {
+	border-right: 4px solid #333;
+	height: .63rem;
+	margin-bottom: .2rem
+}
+
+.two .two-title h5 {
+	margin: 0;
+	padding: 0;
+	font-weight: 700;
+	font-size: .3rem;
+	line-height: .6rem;
+	color: #333;
+	position: relative;
+	z-index: 1
+}
+
+.two .two-title h5:after {
+	content: "";
+	display: block;
+	position: absolute;
+	background-color: #9cc1ff;
+	height: .14rem;
+	bottom: .1rem;
+	right: 0;
+	width: 3.5rem;
+	z-index: -1
+}
+
+.two .two-title h5.h5-second::after {
+	width: 1.6rem
+}
+
+.two .two-title p {
+	margin-top: .36rem;
+	font-size: .2rem;
+	line-height: .2rem;
+	color: #333;
+	text-align: left
+}
+
+.three {
+	background: url(../img/web_zhanshiduan_erping.png) no-repeat center/cover;
+	padding-top: 2.1rem;
+	box-sizing: border-box;
+	overflow-y: hidden
+}
+
+.three>div {
+	margin-top: -2.1rem;
+	position: relative;
+	padding-top: 2.1rem;
+	box-sizing: border-box
+}
+
+.three .one-title h3 {
+	font-family: Sans-serif;
+	font-size: 1rem;
+	color: #333;
+	font-weight: 700
+}
+
+.three .one-title div {
+	width: 4px;
+	height: .63rem;
+	background-color: #333;
+	margin-bottom: .2rem
+}
+
+.three .one-title h5 {
+	margin: 0;
+	padding: 0;
+	font-weight: 700;
+	font-size: .3rem;
+	line-height: .6rem;
+	color: #333;
+	position: relative
+}
+
+.three .one-title h5:after {
+	content: "";
+	display: block;
+	position: absolute;
+	background-color: #9cc1ff;
+	height: .14rem;
+	bottom: .1rem;
+	left: 0;
+	width: 3rem;
+	z-index: -1
+}
+
+.three .one-title h5.h5-second::after {
+	width: 1.6rem
+}
+
+.three .one-title p {
+	margin-top: .36rem;
+	font-size: .2rem;
+	line-height: .22rem;
+	color: #333
+}
+
+.three .one-video {
+	margin-top: -1rem
+}
+
+.three .one-video,
+.three .one-video video {
+	width: 8.08rem;
+	height: 5.6rem;
+	position: relative
+}
+
+.three .one-video i {
+	position: absolute;
+	width: 1.2rem;
+	height: 1.2rem;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%)
+}
+
+.three .one-video .video-check {
+	margin-top: .56rem;
+	width: 2.2rem;
+	height: .87rem
+}
+
+.four {
+	background: url(../img/web_zhanshiduan_sanping_bg.png) no-repeat center/cover;
+	padding-top: 2rem;
+	box-sizing: border-box;
+	overflow-y: hidden
+}
+
+.four>div {
+	margin-top: -2rem;
+	position: relative;
+	padding-top: 2rem;
+	box-sizing: border-box
+}
+
+.four .two-video,
+.four .two-video video {
+	width: 8.08rem;
+	height: 5.6rem;
+	position: relative
+}
+
+.four .two-video i {
+	position: absolute;
+	width: 1.2rem;
+	height: 1.2rem;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%)
+}
+
+.four .two-video .video-check {
+	margin-top: .3rem;
+	width: 2.2rem;
+	height: .87rem
+}
+
+.four .two-title {
+	margin-top: -.9rem;
+	text-align: right
+}
+
+.four .two-title h3 {
+	font-family: Sans-serif;
+	font-size: 1rem;
+	color: #333;
+	font-weight: 700
+}
+
+.four .two-title div {
+	border-right: 4px solid #333;
+	height: .63rem;
+	margin-bottom: .2rem
+}
+
+.four .two-title h5 {
+	margin: 0;
+	padding: 0;
+	font-weight: 700;
+	font-size: .3rem;
+	line-height: .6rem;
+	color: #333;
+	position: relative;
+	z-index: 1
+}
+
+.four .two-title h5:after {
+	content: "";
+	display: block;
+	position: absolute;
+	background-color: #9cc1ff;
+	height: .14rem;
+	bottom: .1rem;
+	right: 0;
+	width: 3.5rem;
+	z-index: -1
+}
+
+.four .two-title h5.h5-second::after {
+	width: 1.6rem
+}
+
+.four .two-title p {
+	margin-top: .36rem;
+	font-size: .2rem;
+	line-height: .2rem;
+	color: #333;
+	text-align: left
+}
+
+.gone {
+	display: none
+}

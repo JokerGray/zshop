@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>头道汤组织结构配置</title>
+	    <!-- CssCommon -->
+	    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+	    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+	    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+	    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+	    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+	    <!-- CssSinglepage-->
+	    <link rel="stylesheet" type="text/css" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+	    <link rel="stylesheet" type="text/css" href="css/tdt_organization.css" />
+	</head>
+	<body>
+		<div class="common-container">
+		    <div class="jurisdiction-content">
+		        <div class="jurisdiction-left">
+		            <div class="jurisdiction-trees">
+		                <div class="trees-title">
+		                    <button id="addbtn" class="layui-btn layui-btn-small layui-btn-primary p8" data-level="-1">
+					            <i class="layui-icon">&#xe61f;</i> 添加
+					        </button>
+					        <button id="chaBtn" class="layui-btn layui-btn-small layui-btn-primary p8">
+					            <i class="layui-icon">&#xe63c;</i> 修改
+					        </button>
+		                    <button id="deletebtn" class="layui-btn layui-btn-small layui-btn-primary p8">
+		                        <i class="layui-icon">&#xe640;</i> 删除
+		                    </button>
+		                    <button id="refreshbtn" class="layui-btn layui-btn-small layui-btn-primary p8">
+		                        <i class="layui-icon">&#x1002;</i> 刷新
+		                    </button>
+		                </div>
+		                <div class="trees-box">
+		                    <h4>头道汤组织结构</h4>
+		                    <ul id="tree" class="ztree"></ul>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="jurisdiction-right">
+		            <div class="layui-form">
+			            <div class="jurisdiction-add">
+			                <button class="layui-btn layui-btn-small layui-btn-primary savebtn" id="saveBtn" lay-submit lay-filter="saveBtn">保存</button>
+			            </div>
+			            <div class="addcontent">
+			               <div class="addcontent-title">组织结构</div>
+			               <div class="addcontent-table">
+		                       <div class="layui-form-item bitian">
+		                           <label class="layui-form-label"><b class="required-icon">＊</b>组织机构名称：</label>
+		                           <div class="layui-input-block">
+		                               <input type="text" id="moduleName" name="title" required  lay-verify="required"  autocomplete="off" class="layui-input " maxlength="10" data-num="0" readonly>
+		                           </div>
+		                       </div>
+		                       <div class="layui-form-item bitian" id="levelBox">
+		                           <label class="layui-form-label"><b class="required-icon">＊</b>级别：</label>
+		                           <div class="layui-input-block">
+		         						<select class="form-control" id="level" autocomplete="off" disabled>
+		         							<option value="">--请选择--</option>
+		         							<option value="1">连锁总部</option>
+		         							<option value="2">片区</option>
+		         							<option value="3">商户</option>
+		         						</select>       					         
+		                           </div>
+		                       </div>
+		                       <div class="layui-form-item" id="user">		
+		                           <label class="layui-form-label">绑定用户：</label>
+		                           <div class="layui-input-block">
+		                               <input type="text" style="width:150px" id="uesrBind" readonly>
+		                               <button class="layui-btn layui-btn-small layui-btn-primary" id="chose">选择用户</button>
+		                               <button class="layui-btn layui-btn-small layui-btn-primary" id="empty">清空用户绑定</button>
+		                           </div>
+		                       </div>
+		                       <div class="layui-form-item" id="merchant">		
+		                           <label class="layui-form-label"><b class="required-icon">＊</b>绑定商户：</label>
+		                           <div class="layui-input-block">
+		                               <input type="text" style="width:150px" id="merchantBind" readonly>
+		                               <button class="layui-btn layui-btn-small layui-btn-primary" id="chosemer">选择商户</button>
+		                               <button class="layui-btn layui-btn-small layui-btn-primary" id="emptyr">清空商户绑定</button>
+		                           </div>
+		                       </div>
+		                        <div class="layui-form-item imgid " id="imgonlysee">
+					                <label class="layui-form-label" >图片:</label>
+					                <div class="layui-input-block" >
+					                    <img src="img/upload.png" id="uploadImgsee" class="signform-face-img" style="width:255px;height:160px"/ disabled>
+					
+					                </div>
+	            				</div> 
+		                       <div class="layui-form-item imgid " id="img">
+					                <label class="layui-form-label" >图片:</label>
+					                <div class="layui-input-block" >
+					                    <img src="img/upload.png" id="uploadImg" class="signform-face-img" style="width:255px;height:160px"/ disabled>
+					
+					                </div>
+	            				</div>  
+			               </div>
+			           </div>
+		            </div>
+		        </div>
+		    </div>
+		    
+		    
+		 </div>
+		 
+		<!-- layer-->
+		<div id="agentAdd">
+			<div class="tool-box layui-form">
+				<ul class="tool-box-ul clearfix p0">
+					<li class="tool-box-li">
+						<div class="layui-form-item">
+							<label class="tool-box-label">用户名</label>
+							<div class="layui-input-inline">
+								<input type="text" name="" class="layui-input" id="userName" >
+							</div>
+						</div>
+					</li>
+					<li class="tool-box-li">
+						<div class="layui-form-item">
+							<label class="tool-box-label">手机号</label>
+							<div class="layui-input-inline">
+								<input type="text" name=""  class="layui-input" id="phone" >
+							</div>
+						</div>
+					</li>
+
+					<button class="layui-btn searchBtnLayer" id="searchBtn">搜索</button>
+					<button class="layui-btn resetBtnLayer" id="resetBtn">重置</button>
+				</ul>
+			</div>
+			<div class="app-table">
+				<table lay-filter="merchantTableLayer" id="merchantTableLayer"></table>
+				<div id="layTablePageLayer"></div>
+			</div>
+		</div>
+
+
+		<!-- layer-->
+		<div id="agentAdd1">
+			<div class="tool-box layui-form">
+				<ul class="tool-box-ul clearfix p0">
+					<li class="tool-box-li">
+						<div class="layui-form-item">
+							<label class="tool-box-label">商户名</label>
+							<div class="layui-input-inline">
+								<input type="text" name="" class="layui-input" id="merName" >
+							</div>
+						</div>
+					</li>										
+					<button class="layui-btn searchBtnLayer" id="searchBtn1" style="margin-top: 33px;">搜索</button>
+					<button class="layui-btn resetBtnLayer" id="resetBtn1" style="margin-top: 33px;">重置</button>
+				</ul>
+			</div>
+			<div class="app-table">
+				<table lay-filter="merchantTableLayer1" id="merchantTableLayer1"></table>
+				<div id="layTablePageLayer1"></div>
+			</div>
+		</div>
+	<!-- jSCommon -->
+	<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+	
+	<script type="text/javascript" src="../common/js/yyCache.js"></script>
+	<script type="text/javascript" src="../common/js/util/util.js"></script>
+	<script type="text/javascript" src="../common/js/common.js"></script>
+
+	
+	<script type="text/javascript" src="../common/js/util/pub.js"></script>
+	<!-- jSCommon -->
+	<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.core.js"></script>
+	<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.excheck.js"></script>
+	<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.exedit.js"></script>
+	<script type="text/javascript" src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+	<script type="text/javascript" src="js/upload.js"></script>
+	<script type="text/javascript" src="js/tdt_organization.js"></script>
+	</body>
+</html>

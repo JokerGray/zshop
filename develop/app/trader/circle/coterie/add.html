@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <title>圈子-创建圈子</title>
+  <link rel="stylesheet" type="text/css" href="../../assets/bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="./css/add.css">
+</head>
+<body>
+  <div class="header">创建圈子</div>
+
+  <div class="main">
+
+    <label class="main-title">圈子头像</label>
+    <div class="main-content" id="potrait">
+      <input id="circlePortrait" type="hidden">
+      <img class="thumbnail" src="./img/zxht_qz_shangchuan@3x.png" alt="">
+      <div class="progressContent" style="display: none;">
+        <div class="text-info"></div>
+        <div class="progress">
+            <div class="progress-bar" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <label class="main-title">圈子名称</label>
+    <div class="main-content">
+      <input id="circleName" class="form-control" type="text" placeholder="请输入名称，2-10个字" maxlength="10">
+    </div>
+
+    <label class="main-title">圈子简介</label>
+    <div class="main-content summary">
+      <textarea id="circleIntroduce" class="form-control" cols="30" rows="10" placeholder="请输入简介，200字以内" maxlength="200"></textarea>
+    </div>
+
+    <div class="main-title">圈子标签<span> ( 请选择圈子标签，单选 ) </span></div>
+    <div class="main-content tags"></div>
+
+    <div class="main-title">圈子地点</div>
+    <div class="main-content">
+      <label class="choose-location">选择位置</label>
+      <div class="area-content">
+        <select id="province" class="form-control"></select>
+        <span>省</span>
+        <select id="city" class="form-control"></select>
+        <span>市</span>
+        <select id="district" class="form-control"></select>
+        <span>区</span>
+        <select id="town" class="form-control">
+          <option value="">--- 全部 ---</option>
+        </select>
+        <span>街道</span>
+      </div>
+      <div class="choose-location">
+          <label>详细位置：</label><span id="releaseAddress"></span>
+          <input id="lat" type="hidden">
+          <input id="lng" type="hidden">
+      </div>
+      <iframe id="iframe" class="location" src="../map.html"></iframe>
+    </div>
+
+    <div class="main-title">加圈方式</div>
+    <div class="main-content adopt joinType">
+      <label><input type="radio" name="joinType" value="0" checked><i></i><span>无需审核</span></label>
+      <label><input type="radio" name="joinType" value="1"><i></i><span>需要审核</span></label>
+    </div>
+
+    <div class="main-title">圈子能否被领养</div>
+    <div class="main-content adopt">
+      <label><input type="radio" name="isAdopts" value="1" checked><i></i><span>是</span></label>
+      <label><input type="radio" name="isAdopts" value="0"><i></i><span>否</span></label>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button type="button" class="btn btn-warning" onclick="checkBeforeSave()">提交</button>
+  </div>
+  <script src="../../assets/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../assets/common/js/utils.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../assets/layer/layer.js"></script>
+  <script src="../../assets/plupload-2.3.1/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../assets/plupload-2.3.1/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script src="./js/add.js"></script>
+
+  <script id="tagsTpl" type="text/html">
+    <button type="button" class="btn btn-default">生活</button>
+  </script>
+</body>
+</html>

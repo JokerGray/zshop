@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>商品条码绑定</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/layui-v2.2.2/css/layui.css">
+    <link rel="stylesheet" href="../../assets/bootstrap-table/bootstrap-table.css">
+    <link rel="stylesheet" href="../../assets/ztree/css/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet" href="css/code_bound.css">
+</head>
+<body>
+<script type="text/javascript">
+    var ctx = '';
+</script>
+<input type="hidden" id="userId">
+<input type="hidden" id="shopId">
+    <div class="main-wrapper">
+        <div class="main-top">
+            <div class="form-group">
+                <label for="searchName">商品名称：</label>
+                <input type="text" class="form-control" id="searchName" placeholder="请输入商品名称或条形码" maxlength="24">
+            </div>
+            <div class="form-group class">
+                <label for="searchClass">所属分类：</label>
+                <input type="email" class="form-control" id="searchClass" placeholder="点击选择所属分类" readonly>
+            </div>
+            <button class="btn btn-default glyphicon glyphicon-search" type="button" id="search"></button>
+        </div>
+        <div class="main-table">
+            <div class="table-left">
+                <h4>查询结果</h4>
+                <div id="apptable" class="apptable">
+                    <table id="table">
+                    </table>
+                </div>
+                <div class="btn-group">
+                    <a id="btnAdd" class="select btn-add">
+                        选择
+                    </a>
+                </div>
+            </div>
+            <div class="table-left layui-form">
+                <h4>待绑定</h4>
+                <div class="bounding ">
+                    <table id="listBound" class="account-table table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>商品名称</th>
+                            <th>商品规格</th>
+                            <th>所属分类</th>
+                            <th>条形码</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="nodata">暂无数据查看</div>
+                </div>
+                <div class="btn-group rgt">
+                    <button  id="btnSum" lay-submit class="select" lay-filter="sub">
+                        提交
+                    </button >
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--商品分类-->
+    <div id="treeBox" class="merchant-classify popup">
+        <ul class="ztree" id="ztree"></ul>
+    </div>
+    <!-- jquery组件 -->
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/layui-v2.2.2/layui.all.js"></script>
+    <script src="../../assets/bootstrap-table/bootstrap-table.js"></script>
+    <script src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <!-- iCheck选择框样式 -->
+    <script src="../../assets/ztree/js/jquery.ztree.core.js"></script>
+    <script src="../../assets/ztree/js/jquery.ztree.exedit.js"></script>
+    <script src="../../assets/ztree/js/jquery.ztree.excheck.js"></script>
+    <script src="../common/js/util.js"></script>
+    <script src="js/code_bound.js"></script>
+</body>
+</html>

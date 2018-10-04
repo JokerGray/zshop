@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>员工销售统计</title>
+    <link rel="stylesheet" href="../../assets/common/css/common.css">
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../../assets/select2-v4.0.6/css/select2.min.css">
+    <link rel="stylesheet" href="./css/reportEmployeeSales.css">
+</head>
+<body>
+<!--顶部时间tab页和店铺选择，员工选择-->
+<div class="top">
+    <div class="timeNav">
+        <a href="javascript:;" class="thisMonth active">本月</a>
+        <a href="javascript:;" class="selfTime">自定义时间</a>
+        <div class="timeRange">
+            <input type="text" id="startDate" autocomplete="off" value="" onfocus="blur()" onclick="blur()">
+            <span>至</span>
+            <input type="text" id="endDate" autocomplete="off" value="" onfocus="blur()" onclick="blur()">
+            <button id="sure">确定</button>
+        </div>
+    </div>
+    <div class="filterBox">
+        <div>
+            <label>店铺 </label>
+            <select id="shopSelector">
+                <option value="null"> </option>
+            </select>
+        </div>
+        <!--<div>-->
+            <!--<label>员工</label>-->
+            <!--<select id="waiterSelector">-->
+                <!--<option value="11">全部</option>-->
+            <!--</select>-->
+        <!--</div>-->
+    </div>
+</div>
+<!--路径导航-->
+<div class="path">
+    <span class="pathTime">本月</span><i> > </i>
+    <span class="pathShopName"> </span>
+</div>
+<!--业绩之最展示-->
+<div class="greatBox"></div>
+<!--条件tab栏和服务选择-->
+<div class="filterTab">
+    <div class="tabNav">
+        <a href="javascript:;" data-class="serviceReport" class="active">按服务</a>
+        <a href="javascript:;" data-class="productReport">按商品</a>
+        <a href="javascript:;" data-class="clientReport">按客户</a>
+    </div>
+    <div class="searchBox">
+        <div class="goodsType">
+            <label>商品类型</label>
+            <select id="goodsTypeSelector">
+                <option value="null">全部</option>
+                <option value="1">商品</option>
+                <option value="2">服务</option>
+                <option value="3">服务卡</option>
+                <option value="4">服务套餐</option>
+                <option value="5">服务套盒</option>
+            </select>
+        </div>
+        <div class="waiter">
+            <label>员工</label>
+            <select id="waiterSelector">
+                <option value="null">全部</option>
+            </select>
+        </div>
+        <div class="productSearch">
+            <form action="javascript:;">
+                <label>商品</label>
+                <input type="text" class="productKeyword" placeholder="搜索商品名称">
+                <button>搜索</button>
+            </form>
+        </div>
+        <div class="eaportBtn">
+            <a href="javascript:;">导出EXCEL</a>
+        </div>
+    </div>
+</div>
+<!--页面主体显示-->
+<div class="content">
+    <div class="serviceReport">
+        <div class="table">
+            <table id="serviceReport" lay-filter="serviceReport">
+                <thead>
+                <tr>
+                    <!--<th lay-data="{field: 'num', width:60,minWidth:60, fixed:'left',event:'detail',style:'text-align:center'}">序号</th>-->
+                    <!--<th lay-data="{field: 'shopName', width:213,minWidth:213,event:'detail'}">店铺名称</th>-->
+                    <!--<th lay-data="{field: 'waiterName', width:185,minWidth:185,event:'detail'}">员工</th>-->
+                    <!--<th lay-data="{field: 'serviceCount',width:230,minWidth:230,sort:true,event:'detail'}">服务单次数（次）</th>-->
+                    <!--<th lay-data="{field: 'waiterId',width:0,minWidth:0,event:'detail',style:'display:none'}"></th>-->
+                    <!--<th lay-data="{field: 'shopId',width:0,minWidth:0,event:'detail',style:'display:none'}"></th>-->
+                    <th lay-data="{field: 'num', width:60,minWidth:60, fixed:'left',event:'detail',style:'text-align:center'}">序号</th>
+                    <th lay-data="{field: 'shopName',event:'detail'}">店铺名称</th>
+                    <th lay-data="{field: 'waiterName',event:'detail'}">员工</th>
+                    <th lay-data="{field: 'serviceCount',event:'detail'}">服务单次数</th>
+                    <th lay-data="{field: 'specialServiceCount',event:'detail'}">指定服务单次数</th>
+                    <th lay-data="{field: 'specialServiceDiscount',event:'detail'}">指定服务单率</th>
+                    <th lay-data="{field: 'waiterId',width:-1,minWidth:-1,event:'detail',style:'display:none'}"></th>
+                    <th lay-data="{field: 'shopId',width:-1,minWidth:-1,event:'detail',style:'display:none'}"></th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div class="pageBox">
+                <div class="pageTips">
+                    <p>
+                        显示<span class="from">1</span>到<span class="to">10</span>项，共<span class="total">57</span>项
+                    </p>
+                </div>
+                <div id="servicePageSelect"></div>
+            </div>
+        </div>
+        <div class="chart">
+            <div class="chartTitle">
+                <span>服务单统计前十排行</span>
+                <span>人员排行</span>
+            </div>
+            <div class="echartBox">
+                <div class="serviceChartContent" style="width: 880px;height:340px;"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="productReport">
+        <table id="productReport" lay-filter="productReport">
+            <thead>
+            <tr>
+                <!--<th lay-data="{field: 'num', width:60,minWidth:60, fixed:'left',style:'text-align:center'}">序号</th>-->
+                <!--<th lay-data="{field: 'shopName', width:200,minWidth:200}">店铺名称</th>-->
+                <!--<th lay-data="{field: 'goodsName', width:550,minWidth:550}">商品名称</th>-->
+                <!--<th lay-data="{field: 'salesman', width:176,minWidth:176}">销售员工</th>-->
+                <!--<th lay-data="{field: 'purchaseNumTotal', width:176,minWidth:176,sort:true}">销售数量</th>-->
+                <!--<th lay-data="{field: 'consumeTime', width:260,minWidth:260}">销售时间</th>-->
+                <!--<th lay-data="{field: 'actualPaymentTotal',width:250,minWidth:250,sort:true}">销售价格（元）</th>-->
+                <th lay-data="{field: 'num', width:60,minWidth:60, fixed:'left',style:'text-align:center'}">序号</th>
+                <th lay-data="{field: 'shopName'}">店铺名称</th>
+                <th lay-data="{field: 'goodsName'}">商品名称</th>
+                <th lay-data="{field: 'salesman'}">销售员工</th>
+                <th lay-data="{field: 'purchaseNumTotal'}">销售数量</th>
+                <th lay-data="{field: 'consumeTime'}">销售时间</th>
+                <th lay-data="{field: 'actualPaymentTotal'}">销售价格（元）</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="pageBox">
+            <div class="pageTips">
+                <p>
+                    显示<span class="from">1</span>到<span class="to">10</span>项，共<span class="total">57</span>项
+                </p>
+            </div>
+            <div id="productPageSelect"></div>
+        </div>
+    </div>
+    <div class="clientReport">
+        <div class="table">
+            <table id="clientReport" lay-filter="clientReport">
+                <thead>
+                <tr>
+                    <!--<th lay-data="{field: 'num', width:60,minWidth:60, fixed:'left',style:'text-align:center'}">序号</th>-->
+                    <!--<th lay-data="{field: 'shopName', width:206,minWidth:206}">店铺名称</th>-->
+                    <!--<th lay-data="{field: 'waiterName', width:160,minWidth:160}">员工</th>-->
+                    <!--<th lay-data="{field: 'serviceCount',minWidth:120,sort:true}">服务人头数</th>-->
+                    <th lay-data="{field: 'num', width:60,minWidth:60, fixed:'left',style:'text-align:center'}">序号</th>
+                    <th lay-data="{field: 'shopName'}">店铺名称</th>
+                    <th lay-data="{field: 'waiterName'}">员工</th>
+                    <th lay-data="{field: 'serviceCount'}">服务人头数</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div class="pageBox">
+                <div class="pageTips">
+                    <p>
+                        显示<span class="from">1</span>到<span class="to">10</span>项，共<span class="total">57</span>项
+                    </p>
+                </div>
+                <div id="clientPageSelect"></div>
+            </div>
+        </div>
+        <div class="chart">
+            <div class="chartTitle">
+                <span>服务人头统计前十排行</span>
+                <span><i class="active">人员排行</i></span>
+            </div>
+            <div class="echartBox">
+                <div class="chartContent" style="width: 880px;height:340px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--时间选择遮罩-->
+<div class="mask"></div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/echart/echarts.min.js"></script>
+<script src="../../assets/layer-v3.1.1/layer.js"></script>
+<script src="../../assets/layui-v2.3.0/layui.js"></script>
+<script src="../../assets/select2-v4.0.6/js/select2.full.min.js"></script>
+<script src="../../assets/select2-v4.0.6/js/i18n/zh-CN.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="./js/reportEmployeeSales.js"></script>
+<!--单项服务单数量弹窗-->
+<script type="text/html" id="orderDetailTpl">
+    <div class="detailTop">
+        <span>单项服务工单数量</span>
+        <i class="closeIcon">×</i>
+    </div>
+    <div class="complex">
+        <span class="detailPath">
+            员工：{{list.waiterName}} > <i class="serviceName" title="全部服务">全部服务</i>
+        </span>
+        <div class="serviceSelect">
+            <label>服务</label>&nbsp;&nbsp;
+            <select id="serviceSelect">
+                <option value="">全部服务</option>
+                {{each service.data value i}}
+                <option value="{{value.goodsServiceId}}">{{value.serviceName}}</option>
+                {{/each}}
+            </select>
+            <a href="javascript:;" class="detailExportBtn">导出EXCEL</a>
+        </div>
+    </div>
+    <div class="detailContent">
+        <table class="layui-table" lay-even>
+            <colgroup>
+                <col width="60">
+                <col width="488">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th style="text-align: center">序号</th>
+                <th>服务项目</th>
+                <th>次数</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each list.data item index}}
+            <tr>
+                <td style="text-align: center">{{(index+1)<10?'0'+(index+1):(index+1)}}</td>
+                <td>{{item.serviceName}}</td>
+                <td>{{item.serviceCount}}</td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <div class="pageBox">
+        <div class="pageTips">
+            <p>
+                显示<span class="from">1</span>到<span class="to">10</span>项，共<span class="total">57</span>项
+            </p>
+        </div>
+        <div id="detailPageSelect"></div>
+    </div>
+</script>
+<!--冠军报告-->
+<script type="text/html" id="greatTpl">
+    <ul>
+        <li>
+            <p class="topTitle">服务冠军</p>
+            <div class="greatDetail">
+                <span class="name" title="{{data.waiterName}}">{{data.waiterName}}</span>
+                <span class="greatContent">
+                    <i>服务人头数：</i>
+                    <i>{{data.serviceCount}}</i>
+                </span>
+            </div>
+        </li>
+        <li>
+            <p class="topTitle">销售冠军</p>
+            <div class="greatDetail">
+                <span class="name" title="{{data.achiUsername}}">{{data.achiUsername}}</span>
+                <span class="greatContent">
+                    <i>销售业绩：</i>
+                    <i>￥{{$imports.moneyFormat(data.achiCount)}}</i>
+                </span>
+            </div>
+        </li>
+        <li>
+            <p class="topTitle">服务次数最高</p>
+            <div class="greatDetail">
+                <span class="name" title="{{data.HightServcieUsername}}">{{data.HightServcieUsername}}</span>
+                <span class="greatContent">
+                    <i>服务次数：</i>
+                    <i>{{data.HightServcieCount}}次</i>
+                </span>
+            </div>
+        </li>
+        <li>
+            <p class="topTitle">商品销售额最高</p>
+            <div class="greatDetail">
+                <span class="name" title="{{data.HightSaleUsername}}">{{data.HightSaleUsername}}</span>
+                <span class="greatContent">
+                    <i>销售额：</i>
+                    <i>￥{{$imports.moneyFormat(data.HightSaleCount)}}</i>
+                </span>
+            </div>
+        </li>
+    </ul>
+</script>
+</html>

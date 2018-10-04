@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>模板设置</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="basic_setting/basic_setting.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/modal.css" />
+    <!-- CssSinglepage-->
+
+</head>
+<body>
+    <div class="container-fluet" id="head">
+        <div class="row row-inhert">
+            <div class="col-md-2 row-inhert">
+                <img src="common/image/zx_logo.png" class="row-logo-img" />
+            </div>
+            <div class="col-md-5 row-inhert">
+                <nav class="navbar head-nav" role="navigation"> 
+                    <div class="container-fluid"> 
+                        <ul class="nav navbar-nav navbar-left ml10"> 
+                            <li class="ml20" id="contorl-left"><a href="#"><span class="glyphicon mr10 glyphicon-th-list"></span>左侧</a></li> 
+                            <li class="ml20"><a href="index.html" target="_self"><span class="glyphicon mr10 glyphicon-home"></span>首页</a></li> 
+                            <li class="ml20"><a href="#"><span class="glyphicon mr10 glyphicon-off"></span>退出</a></li> 
+                        </ul> 
+                    </div> 
+                </nav>
+            </div>
+            <div class="col-md-5 row-inhert">
+                  <nav class="navbar navbar-default" role="navigation">
+                        <ul class="nav navbar-nav pull-right navbar-user p20">
+                            <li>
+                                <img src="dfdf.png" alt="" id="user-pic" />
+                            </li>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Javascrit <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a id="action-1" href="#">meter</a></li>
+                                    <li><a href="#">EJB</a></li>
+                                    <li><a href="#">Jasper Report</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">分离的链接</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">另一个分离的链接</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>  
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluet" id="body-box">
+        <div class="row body-left-nav" >
+            <div class="col-md-1 left-nav" id="accordion">
+              <div class="list-group">
+                <h4 class="list-group-item">
+                    <a data-toggle="collapse" data-parent="#accordion" 
+                    href="#collapseOne">
+                    基础设置
+                    </a>
+                </h4>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <a href="module_setting.html" class="list-group-item active" target=" ">
+                            <h4 class="list-group-item-heading">
+                            <i class="argument"></i>
+                                模块设置
+                            </h4>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">
+                            <i class="config"></i>
+                                参数配置
+                            </h4>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">
+                            <i class="versions"></i>
+                                版本管理
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="list-group">
+                <h4 class="list-group-item">
+                    <a data-toggle="collapse" data-parent="#accordion" 
+                    href="#collapseTwo">
+                    人员管理
+                    </a>
+                </h4>
+                <div id="collapseTwo" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">
+                            <i class="role"></i>
+                                系统角色
+                            </h4>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">
+                            <i class="jurisdiction"></i>
+                                权限管理
+                            </h4>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">
+                            <i class="supervise"></i>
+                                用户管理
+                            </h4>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">
+                            <i class="organization"></i>
+                                系统组织
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-11" id="right-box">
+                    <ol class="breadcrumb">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">基础设置</a></li>
+                        <li class="active">模板设置</li>
+                    </ol>
+                <div class="row p35">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-info add-users" data-toggle="modal" data-target="#add-newuser"><i class="glyphicon glyphicon-plus font-xs"></i>新增模块</button>
+                    </div>
+                </div>
+                    <div class="row p20">
+                        <table class="table table-bordered table-hover">
+                              <thead>
+                                <tr class="active">
+                                  <th>序号</th>
+                                  <th>模块名称</th>
+                                  <th>编码</th>
+                                  <th>模块分类</th>
+                                  <th>链接地址</th>
+                                  <th>是否有效</th>
+                                  <th>最后操作时间</th>
+                                  <th>操作</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>01</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td class="row remove-modifier">
+                                     <div class="col-md-6">
+                                        <i class="glyphicon glyphicon-pencil m5 green"></i>修改
+                                     </div>
+                                     <div class="col-md-6">
+                                         <i class="glyphicon glyphicon-minus-sign m5 red"></i>
+                                             删除
+                                     </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>02</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td class="row remove-modifier">
+                                     <div class="col-md-6">
+                                        <i class="glyphicon glyphicon-pencil m5 green"></i>修改
+                                     </div>
+                                     <div class="col-md-6">
+                                         <i class="glyphicon glyphicon-minus-sign m5 red"></i>
+                                             删除
+                                     </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td class="row remove-modifier">
+                                     <div class="col-md-6">
+                                        <i class="glyphicon glyphicon-pencil m5 green"></i>修改
+                                     </div>
+                                     <div class="col-md-6">
+                                         <i class="glyphicon glyphicon-minus-sign m5 red"></i>
+                                             删除
+                                     </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td class="row remove-modifier">
+                                     <div class="col-md-6">
+                                        <i class="glyphicon glyphicon-pencil m5 green"></i>修改
+                                     </div>
+                                     <div class="col-md-6">
+                                         <i class="glyphicon glyphicon-minus-sign m5 red"></i>
+                                             删除
+                                     </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td class="row remove-modifier">
+                                     <div class="col-md-6">
+                                        <i class="glyphicon glyphicon-pencil m5 green"></i>修改
+                                     </div>
+                                     <div class="col-md-6">
+                                         <i class="glyphicon glyphicon-minus-sign m5 red"></i>
+                                             删除
+                                     </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td class="row remove-modifier">
+                                     <div class="col-md-6">
+                                        <i class="glyphicon glyphicon-pencil m5 green"></i>修改
+                                     </div>
+                                     <div class="col-md-6">
+                                         <i class="glyphicon glyphicon-minus-sign m5 red"></i>
+                                             删除
+                                     </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td class="row remove-modifier">
+                                     <div class="col-md-6">
+                                        <i class="glyphicon glyphicon-pencil m5 green"></i>修改
+                                     </div>
+                                     <div class="col-md-6">
+                                         <i class="glyphicon glyphicon-minus-sign m5 red"></i>
+                                             删除
+                                     </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td class="row remove-modifier">
+                                     <div class="col-md-6">
+                                        <i class="glyphicon glyphicon-pencil m5 green"></i>修改
+                                     </div>
+                                     <div class="col-md-6">
+                                         <i class="glyphicon glyphicon-minus-sign m5 red"></i>
+                                             删除
+                                     </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                  <td>Tanmay</td>
+                                  <td>Bangalore</td>
+                                   <td class="row remove-modifier">
+                                     <div class="col-md-6">
+                                        <i class="glyphicon glyphicon-pencil m5 green"></i>修改
+                                     </div>
+                                     <div class="col-md-6">
+                                         <i class="glyphicon glyphicon-minus-sign m5 red"></i>
+                                             删除
+                                     </div>
+                                  </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="clearfix p20 pag-tot">
+                      <div id="paging-box-count">
+                          共有<i>19</i>页，每页<i>9</i>条
+                      </div>
+                    <div id="paging-box" class="basic-jump"></div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+    <!-- modal -->
+    <div class="modal fade" id="add-newuser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    新增模块
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                        <span class="input-group-addon">模块名称:</span>
+                        <input type="text" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                          <span class="input-group-addon">模块分类:</span>
+                            <select id="basic" class="selectpicker show-tick form-control">
+                              <option>cow</option>
+                              <option data-subtext="option subtext">bull</option>
+                              <option class="get-class">ox</option>
+                            </select>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                          <span class="input-group-addon">是否有效:</span>
+                            <select id="basic" class="selectpicker show-tick form-control">
+                              <option>cow</option>
+                              <option data-subtext="option subtext">bull</option>
+                            </select>
+                    </div>
+                    <br>
+                    <div class="input-group">           
+                        <span class="input-group-addon">模块编码:</span>
+                        <input type="text" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">链接地址:</span>
+                         <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                    <br>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn">
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/js/jqPaginator.min.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+<script type="text/javascript" src="common/js/laypage.js"></script>
+<!--jSCurr-->
+<script type="text/javascript" src="basic_setting/paging.js"></script>
+</html>

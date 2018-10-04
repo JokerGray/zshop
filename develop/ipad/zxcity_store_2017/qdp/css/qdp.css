@@ -1,0 +1,215 @@
+*{
+    margin:0;
+    padding: 0;
+}
+html,body{
+    font-size:100%;
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+}
+.main-wrapper{
+    width:100%;
+    height:100vh;
+    padding-left:1.25rem;
+    background-color:#f2f2f2;
+    color:#fff;
+    overflow:hidden;
+}
+.main-wrapper .main-content{
+    width: 102%;
+    height: 100%;
+    overflow-y: auto;
+}
+.main-content .main-top{
+    padding:0.5rem 1rem 1.125rem;
+    overflow: hidden;
+}
+.main-top .return-icon{
+    display: inline-block;
+    height: 2rem;
+    width: 2.75rem;
+}
+.main-top .return-icon img{
+    display: block;
+    width: 40%;
+}
+.main-top .exit-btn{
+    display:block;
+    width:2rem;
+    height:2.125rem;
+    margin-right:3%;
+    background:url(../image/icon_exit.png) no-repeat;
+    background-size: contain;
+}
+
+.main-content .take-list{
+    width: 98%;
+}
+.take-list li{
+
+}
+.take-list li .inner-box{
+    position: relative;
+    height: 270px;
+    margin-bottom:2.5rem;
+    background-color: #fff;
+    /*min-width: 280px;*/
+    box-shadow: 2px 2px 6px #ccc;
+}
+.take-list li .count-num{
+    display: block;
+    position: absolute;
+    top: -15px;
+    right: -5px;
+    width:30px;
+    height:30px;
+    line-height:30px;
+    text-align: center;
+    border-radius: 100%;
+    background: #fff;
+    color: #fe6869;
+}
+.detail-container{
+    width: 100%;
+    height: 264px;
+    overflow: hidden;
+}
+.take-list .top-info{
+    width: 100%;
+    padding: 10px 2%;
+    background: #fe6869;
+    overflow: hidden;
+    font-size: 16px;
+}
+.top-info .order-info{
+    width:70%;
+}
+
+.top-info .order-info p{
+    font-size:0.875rem;
+}
+.top-info .take-all-btn{
+    margin: 6px 0 0 0;
+    padding: .375rem 0.75rem .5rem 0.75rem;
+    background-color: #fe6869;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius:0.25rem;
+    font-size: 0.875rem;
+}
+
+.order-list{
+    width: 104%;
+    height: 180px;
+    overflow-y: scroll;
+    background-color:#fff;
+}
+.order-list .order-item{
+    font-size: 16px;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    padding: 0 6% 0 3%;
+    height: 60px;
+
+}
+.order-item .name{
+    float: left;
+    width: 72%;
+    padding: 19px 0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+    color:#333;
+}
+.order-item .btn{
+    float: right;
+    width: 60px;
+    height: 34px;
+    margin-top: 12px;
+    padding:0;
+    border-width:1px;
+    border-radius: 0.25rem;
+    border-style: solid;
+}
+.order-item .take-btn{
+    background-color: #fff;
+    color:#fe6869;
+    border-color:#fe6869;
+}
+.order-item .over-btn{
+    background-color: #fff;
+    color:#999;
+    border-color:#999;
+}
+.order-item .disable-btn{
+    background: #fff url(../image/icon_disabled.png) no-repeat;
+    background-size: auto;
+    background-position: center;
+    border-color:#f6b37f;
+}
+.gray-btn{
+    background-color: #fff;
+    color:#999;
+    border-color:#999;
+}
+/*样式layer*/
+body .demo-class .layui-layer-title {
+    padding: 0 80px 0 20px;
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    color: #333;
+    overflow: hidden;
+    background-color: #F8F8F8;
+    border-radius: 2px 2px 0 0;
+}
+body .demo-class .layui-layer-setwin a {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    font-size: 46px;
+    _overflow: hidden;
+}
+body .demo-class .layui-layer-content {
+    position: relative;
+    padding: 20px;
+    line-height: 30px;
+    word-break: break-all;
+    overflow: hidden;
+    font-size: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-indent: 30px;
+}
+
+@media only screen and (max-width: 50em){
+    .top-info .order-info{
+        width:65%;
+    }
+    .top-info .take-all-btn{
+        padding: .25rem 0.5rem .35rem 0.5rem;
+    }
+    .order-item .name{
+        font-size:0.875rem;
+    }
+    .order-item .btn{
+        width: 3.375rem;
+        height: 1.875rem;
+        font-size: 0.875rem;
+    }
+}
+.nodata{
+    width:100%!important;
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商户入驻管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <link rel="stylesheet" href="merchant_enter_manage.css">
+</head>
+<body>
+<div class="main-wapper layui-fluid layui-row">
+    <div class="header layui-form clearfix">
+        <ul class="layui-col-md12">
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item ">
+                    <label class="" for="">手机号：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="phones">
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item ">
+                    <label class="" for="">商户名称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="merchantNames">
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item ">
+                    <label class="" for="">真实姓名：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="realNames">
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item ">
+                    <label class="" for="">省市：</label>
+                    <div class="layui-input-block province_box">
+                        <select name="" class="layui-select"   id="citySelector1">
+                            <option value="">选择市</option>
+
+                        </select>
+                        <select name="" class="layui-select" id="provinceSelector1" lay-filter="provinceSelector1">
+                            <option value="">选择省</option>
+                        </select>
+
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item ">
+                    <label class="" for="">创建时间：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="date">
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item ">
+                    <label class="" for="">&nbsp;</label>
+                    <button class="layui-btn" id="searchBtn">搜索</button>
+                    <button class="layui-btn" id="restBtn">重置</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="main clearfix">
+        <div class="tab_box">
+            <button class="layui-btn active" data-type="0">
+                未联系
+            </button>
+            <button class="layui-btn op5" data-type="1">
+                已联系
+            </button>
+        </div>
+        <div class="app-table">
+            <table id="tableNo" lay-filter="tableNo"></table>
+            <div class="layui-laypage" id="laypage"></div>
+        </div>
+    </div>
+</div>
+<!--操作按钮-->
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event='detail'>
+        <i class="layui-icon">&#xe615;</i> 查看
+    </button>
+    <button class="layui-btn layui-btn-sm layui-layui-btn-warm" lay-event='change'>
+        <i class="layui-icon">&#xe6b2;</i> 去处理
+    </button>
+</script>
+<!--查看，去处理-->
+<div id="addDemo" class='layui-form clearfix layui-row disn layer-box'>
+    <div class="app-layer layui-col-sm12 layui-col-md12">
+        <div class="app-layer-content">
+            <ul class="layui-form clearfix p0">
+                <li class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">手机号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="" autocomplete="off"  lay-verify="required" class="layui-input fl w70" id="phone">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">真实姓名：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="" autocomplete="off"  class="layui-input fl w70" id="realName">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">商户名：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="" autocomplete="off"  class="layui-input fl w70" id="merchantName">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">身份证号：</label>
+                        <div class="layui-input-block" >
+                            <input type="text" name="" placeholder="" autocomplete="off"  class="layui-input fl w70" id="idCardNo">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">城市：</label>
+                        <div class="layui-input-block province_box2">
+                            <input type="text" lay-verify="" name="money"  class="layui-input"  id="userprovice">
+                            <input type="text" lay-verify="" name="money"  class="layui-input"  id="usercity">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">创建时间：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="" autocomplete="off"  class="layui-input fl w70" id="createTime">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">身份证正面：：</label>
+                        <div class="layui-input-block">
+                            <img id="cardFrontPhoto" src="../../common/images/placeholder.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">身份证反面：</label>
+                        <div class="layui-input-block">
+                            <img id="cardBackPhoto" src="../../common/images/placeholder.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">营业执照正面照：</label>
+                        <div class="layui-input-block">
+                            <img id="licenseFront" src="../../common/images/placeholder.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="layui-col-md12">
+                        <label class="tool-box-label">备注：</label>
+                        <div class="layui-input-block">
+                            <textarea class="disb" id="remarks" style=" width: 100%; padding: 10px;" placeholder="请输入认证意见" name="" cols="30" rows="5"></textarea>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<!--jquery 可以在layui 里面引用-->
+<script type="text/javascript" src="../../common/assets/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="merchant_enter_manage.js"></script>
+
+</body>
+</html>

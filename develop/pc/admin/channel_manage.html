@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <title>频道维护·管理员后台</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/subject_sitting.css" />
+    <link rel="stylesheet" href="css/channel_manage.css" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="channel_manage">
+    <input type="hidden" id="channelIdHid">
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div id="page_R" class="right pull-right">
+                <div id="search_box" class="clearfix">
+                    <div id="search_icon" class="fr cur-p"><img src="images/search.png" alt=""></div>
+                    <input id="searchInp" class="searchInp fr" type="text" placeholder="请输入频道名称">
+                </div>
+                <div id="addNewLabel" data-toggle="modal" data-target="#addSubject"><i class="glyphicon glyphicon-plus"></i><span>添加新频道</span></div>
+                <div id="article_box" class="clearfix">
+                    <div class="table account_table">
+                        <div id="account_Table" class="table-left">
+                            <div class="panel panel-default">
+                                <table class="table table-hover">
+                                    <thead id="table_head">
+                                        <!--<th id="isCheckAll"><img id="multiSelectBox" class="multiSelectBox" src="images/uncheck.png"><span>全选</span></th>-->
+                                        <th>频道</th>
+                                        <th>频道地址</th>
+                                        <th>文章总数</th>
+                                        <th>作者总数</th>
+                                        <th>操作</th>
+                                    </thead>
+                                    <tbody id="tableCon"></tbody>
+                                    <!--<tfoot id="tableFoot">
+                                        <tr>
+                                            <td>选中：<span id="checkedNum"></span></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="cur-p text-right"><i class="glyphicon glyphicon-trash"></i>删除此频道</td>
+                                        </tr>
+                                    </tfoot>-->
+                                </table>
+                            </div>
+                        </div>
+                        <div id="page" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--添加新频道-->
+    <div id="addSubject" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="addSubjectDialog modal-dialog modal-dialog2" style="width:400px" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border:0;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="addSubTitle">添加新频道</h4>
+                </div>
+                <div class="modal-body">
+                    <label for="channelNameTxt">请输入频道名称：</label>
+                    <input type="text" id="channelNameTxt" class="channelNameTxt" maxlength="2" placeholder="请输入频道名称">
+                    <label for="channelNameTxt">请输入频道地址：</label>
+                    <select name="" id="channelUrlTxt" class="channelNameTxt">
+                        <option value="">--请选择--</option>
+                        <option value="hot">热点</option>
+                        <option value="videoList">视频</option>
+                        <option value="image">图集</option>
+                    </select>
+                    <!--<input type="text" id="channelUrlTxt" class="channelNameTxt" placeholder="请输入频道地址">-->
+                    <p class="red">*例如:hot:热点,videoList:视频,image:图集</p>
+                </div>
+                <div class="modal-footer addSubBtnBox">
+                    <button id="confirmAddSub" class="btn" type="button">确认添加</button>
+                    <button id="cancelAddSub" class="modalShield btn" type="button" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--更改频道-->
+    <div id="editSubject" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="addSubjectDialog modal-dialog modal-dialog2" style="width:400px" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border:0;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="addSubTitle">更改频道名称</h4>
+                </div>
+                <div class="modal-body">
+                    <label for="channelNameTxt2">请输入频道名称：</label>
+                    <input type="text" id="channelNameTxt2" class="channelNameTxt" maxlength="2" placeholder="请输入专题名称">
+                    <label for="channelNameTxt">请输入频道地址：</label>
+                    <select name="" id="channelUrlTxt2" class="channelNameTxt">
+                        <option value="">--请选择--</option>
+                        <option value="hot">热点</option>
+                        <option value="videoList">视频</option>
+                        <option value="image">图集</option>
+                    </select>
+                    <p class="red">*例如:hot:热点,videoList:视频,image:图集</p>
+                </div>
+                <div class="modal-footer addSubBtnBox">
+                    <button id="confirmAddSub2" class="btn confirmAddSub" type="button">确认更改</button>
+                    <button class="modalShield btn" type="button" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--删除领域提示-->
+    <div id="delSubject" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="addSubjectDialog modal-dialog modal-dialog2" style="width:400px" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border:0;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="addSubTitle">删除领域</h4>
+                </div>
+                <div class="modal-body">
+                    <span class="red">频道还有作者或文章未转移，不能删除!</span>
+                </div>
+                <div class="modal-footer addSubBtnBox">
+                    <button id="confirmAddSub3" class="btn confirmAddSub" type="button">去转移</button>
+                    <button class="modalShield btn" type="button" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--转移文章-->
+    <div id="articleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="addSubjectDialog modal-dialog modal-dialog2" style="width:500px" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border:0;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="addSubTitle">转移频道文章</h4>
+                </div>
+                <div class="modal-body" style="height:450px;">
+                    <div>将<span class="red" id="channelSpan"></span>频道里的<span class="red" id="articleNum"></span>篇文章转移至:</div>
+                    <div class="clearfix auto">
+                        <ul class="channelUl"></ul>
+                    </div>
+                </div>
+                <div class="modal-footer addSubBtnBox">
+                    <button id="confirmArticleBtn" class="btn confirmAddSub" type="button">确认转移</button>
+                    <button class="modalShield btn" type="button" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--转移作者-->
+    <div id="authorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="addSubjectDialog modal-dialog modal-dialog2" style="width:400px" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border:0;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="addSubTitle">转移作者</h4>
+                </div>
+                <div class="modal-body" style="height:450px;">
+                    <div>将<span class="red" id="channelSpan2"></span>频道里的<span class="red" id="authorNum"></span>位作者转移至:</div>
+                    <div class="clearfix auto">
+                        <ul class="channelUl"></ul>
+                    </div>
+                </div>
+                <div class="modal-footer addSubBtnBox">
+                    <button id="confirmAuthorBtn" class="btn confirmAddSub" type="button">确认转移</button>
+                    <button class="modalShield btn" type="button" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/countUp.min.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/channel_manage.js"></script>
+    <script id="tableList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}   
+        <tr>
+			<!--<td><img class="singleSelectBox" src="images/uncheck.png"></td>-->
+			<td>{{item.channelName}}</td>												
+            <td>{{item.iconUrl || ''}}</td>												
+			<td>{{item.channelArticleNumber || 0}}</td>
+            <td>{{item.channelpeopleNumber || 0}}</td>												
+			<td class="operateTab">
+				<div class="fl cur-p editBtn" data-toggle="modal" data-target="#editSubject" channelId={{item.channelId}} channelName={{item.channelName}} channelUrl={{item.iconUrl}}><i class="
+glyphicon glyphicon-pencil"></i>更改名称</div>
+				<div class="fl cur-p articleBtn" data-toggle="modal" data-target="#articleModal" channelId={{item.channelId}} channelName={{item.channelName}} channelArticleNumber={{item.channelArticleNumber || 0}}>
+                    <i class="glyphicon glyphicon-share"></i>转移文章</div>
+				<div class="fl cur-p authorBtn" data-toggle="modal" data-target="#authorModal" channelId={{item.channelId}} channelName={{item.channelName}} channelpeopleNumber={{item.channelpeopleNumber || 0}}>
+                    <i class="glyphicon glyphicon-share"></i>转移作者</div>
+				<div class="fl cur-p delBtn" channelId={{item.channelId}} channelName={{item.channelName}} channelArticleNumber={{item.channelArticleNumber || 0}} channelpeopleNumber={{item.channelpeopleNumber || 0}}><i class="glyphicon glyphicon-trash"></i>删除</div>
+			</td>	 
+		</tr>
+        {{#  }); }}
+    </script>
+
+</body>
+
+</html>

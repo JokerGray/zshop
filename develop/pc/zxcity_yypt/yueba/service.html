@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>服务分类管理</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../framework/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" href="yueba_common.css">
+
+</head>
+
+<body>
+    <ol class="breadcrumb">
+        <li><a href="#">App管理</a></li>
+        <li><a href="#">约吧</a></li>
+        <li class="active">服务分类管理</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6">
+                <div id="toolbar" class="bars">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="feedbackInfo">分类名称</label>
+                            <input type="text" class="form-control" id="feedbackInfo">
+                        </div>
+                        <button type="button" class="btn btn-default" onclick="refreshTable()"><i class="fa fa-search"></i> 查询</button>
+                        <button type="button" class="btn btn-primary" onclick="openPage(1)"><i class="fa fa-plus"></i> 新增服务</button>
+                    </form>
+                </div>
+                <table id="table" class="table table-hover"></table>
+            </div>
+            <div class="col-xs-6">
+                <div id="subToolbar" class="bars">
+                    <button style="margin-left: 24px;" type="button" class="btn btn-primary" onclick="openPage(2)"><i class="fa fa-plus"></i> 新增子服务</button>
+                </div>
+                <table id="childTable" class="table table-hover"></table>
+            </div>
+        </div>
+    </div>
+
+    <script id="tplForm" type="text/html">
+        <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> test</button>
+        <span>test</span>
+    </script>
+
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="yueba_common.js"></script>
+    <script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="../framework/bootstrap/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../framework/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+
+    <script type="text/javascript">
+        var TableInit = function(id, url, columns, param) {
+            var oTableInit = new Object();
+            //初始化Table
+            oTableInit.Init = function() {
+                $('#' + id).bootstrapTable({
+                    url: url,
+                    method: 'POST',
+                    contentType: "application/x-www-form-urlencoded",
+                    ajaxOptions: {
+                        headers: {
+                            apikey: apikey
+                        }
+                    },
+                    responseHandler: function(res) {
+                        res.rows = res.data.categoryList;
+                        return res;
+                    },
+                    queryParams: oTableInit.queryParams,
+                    undefinedText: '-',
+                    toolbar: '#toolbar',
+                    toolbarAlign: 'right',
+                    cache: false,
+                    pagination: false,
+                    sortable: false,
+                    sidePagination: "server",
+                    pageNumber: 1,
+                    pageSize: 10,
+                    pageList: [10, 25, 50, 100],
+                    strictSearch: false,
+                    clickToSelect: false,
+                    uniqueId: 'id',
+                    columns: columns
+                });
+            };
+            //得到查询的参数
+            oTableInit.queryParams = function(params) {
+                params['sort'] = params.sort;
+                params['order'] = params.order;
+                params['page'] = params.offset / params.limit + 1;
+                params['rows'] = params.limit;
+                var pagination = {
+                    pagination: {
+                        page: params.offset / params.limit + 1,
+                        rows: params.limit
+                    },
+                    versionValue: -1
+                }
+
+                if ($('#feedbackInfo').val().length > 0) pagination['feedbackInfo'] = $('#feedbackInfo').val()
+
+                params['cmd'] = 'newservice/getCategoryList';
+                params['data'] = JSON.stringify(pagination);
+                params['version'] = version;
+
+                if (!param) return params;
+
+                for (var k in param) params[k] = param[k]
+                return params;
+            };
+            return oTableInit;
+        };
+        $(function() {
+            tableInit()
+        })
+
+        function tableInit() {
+            var columns = [{
+                field: 'index',
+                title: '序号',
+                width: 80,
+                searchable: false,
+                align: 'center',
+                formatter: function(value, row, index) {
+                    var options = $('#table').bootstrapTable('getOptions');
+                    return (options.pageNumber - 1) * options.pageSize + index + 1
+                }
+            }, {
+                field: 'categoryName',
+                title: '分类名称',
+                width: 200,
+                align: 'center'
+            }, {
+                field: 'sort',
+                title: '优先级',
+                searchable: false,
+                width: 200,
+                align: 'center',
+                formatter: function(value, row, index) {
+                    return value
+                }
+            }, {
+                field: 'id',
+                title: '操作',
+                searchable: false,
+                width: 200,
+                align: 'center',
+                formatter: function(value, row, index) {
+                    return '<button class="btn btn-info btn-sm" onclick="openPage(3, this)">修改</button>'
+                }
+            }];
+
+            Table = new TableInit('table', '/zxcity_restful/ws/rest', columns, {})
+            Table.Init();
+            // 初始化子列表
+            $('#childTable').bootstrapTable({
+                columns: columns,
+                toolbar: '#subToolbar',
+                toolbarAlign: 'right',
+                sidePagination: 'client',
+                pagination: true,
+                cache: false,
+                search: true,
+                searchTimeOut: 200
+            });
+            // 点击事件，显示下一级分类
+            $('#table').on('click-row.bs.table', function(e, row, tr) {
+                tr.addClass('active').siblings().removeClass('active');
+                $('#childTable').bootstrapTable('resetSearch');
+                $('#childTable').bootstrapTable('load', row.categoryList);
+            })
+        }
+
+        function refreshTable() {
+            $('#table').bootstrapTable('refresh');
+            $('#childTable').bootstrapTable('resetSearch');
+            $('#childTable').bootstrapTable('load', []);
+        }
+
+        // 打开增、改界面
+        // flag，1、2、3，新增主分类，新增子分类，修改分类
+        function openPage(flag, btn) {
+            var title = '新增服务分类'
+            var params = {};
+            if (flag == 2) {
+                title = '新增子服务分类';
+                if ($('#table tr.active').index() < 0) return layer.msg('请选择主分类！', {
+                    icon: 2
+                })
+                params = $('#table').bootstrapTable('getData')[$('#table tr.active').index()];
+            }
+            if (flag == 3) {
+                title = '修改服务分类';
+                var table = $(btn).parents('table');
+                var tr = $(btn).parents('tr');
+                // 主服务分类和子服务分类的数据获取方法不一样
+                params = table.bootstrapTable('getData')[table.attr('id') == 'table' ? tr.index() : tr.data('index')];
+            }
+            params._flag = flag;
+            localStorage.serviceData = JSON.stringify(params)
+            layer.open({
+                type: 2,
+                title: title,
+                content: 'service_add.html',
+                area: ['400px', '600px']
+            })
+        }
+    </script>
+</body>
+
+</html>

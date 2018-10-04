@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+		<link rel="stylesheet" href="../common/assets/foundation-v5.5.3/foundation.min.css">
+		<link rel="stylesheet" href="../common/assets/paging/dist/paging.css">
+		<link rel="stylesheet" href="../common/css/common.css"/>
+		<link rel="stylesheet" href="css/customerManagement.css"/>
+		<title>客户管理</title>
+	</head>
+	<body>
+		<div class="main-wrapper">
+			<div class="main-title">
+                <h5 class="title">客户管理</h5>
+            </div>
+			<div id="mainTab" class="main-tab">
+				<div class="tab-inner">
+					<button type="button" class="btn active" data-rel="all">全部客户</button>
+					<button type="button" class="btn" data-rel="regular">熟客</button>
+				</div>
+			</div>
+			<div class="main-content">
+				<div class="con-top">
+					<div class="search-box">
+						<input type="text" class="search-text" id="keyword">
+						<button type="button" class="btn-normal search-btn" id="searchBtn">查询</button>
+					</div>
+					<div class="btn-group">
+						<button class="btn btn-normal hide" id="btnAdd">添加熟客</button>
+						<button class="btn-default birth-link-btn" id="birthLink">生日提醒</button>
+					</div>
+				</div>
+				<div class="table-box">
+					<table id="customerTable" class="table">
+						<thead>
+							<tr>
+								<th>客户名称</th>
+								<th>电话</th>
+								<th>会员编号</th>
+								<th>会员类型</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+					<div class="pageview" id="customerPage"></div>
+				</div>
+			</div>
+		</div>
+
+
+		<script src="../common/assets/jquery.min.js"></script>
+		<script src="../common/assets/jquery.bootpag.min.js"></script>
+		<script src="../common/assets/layer/layer.js"></script>
+		<script src="../common/assets/paging/dist/paging.js"></script>
+		<script src="../common/js/common.js"></script>
+		<script src="js/customerManagement.js"></script>
+	</body>
+</html>

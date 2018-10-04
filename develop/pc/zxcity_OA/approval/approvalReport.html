@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+        <meta name="renderer" content="webkit|ie-comp|ie-stand">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+        <title>审批统计</title>
+        <link rel="stylesheet" href="../assets/paging/dist/paging.css">
+        <link rel="stylesheet" href="../assets/layui-v2.3.0/layui/css/layui.css">
+        <link rel="stylesheet" href="../common/css/reset.css">
+        <link rel="stylesheet" href="css/approvalReport.css">
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="main-top">
+                <h3 class="title pull-left">审批统计</h3>
+                <div class="date-wrap pull-left">
+                    <span>时间：</span>
+                    <input type="text" class="dateRange" placeholder="" id="dateRange">
+                </div>
+                <div class="search-box pull-right">
+                    <input type="text" class="search-input" placeholder="输入审批编号、姓名进行搜索">
+                    <a href="javascript:;" class="search-btn" id="searchBtn"></a>
+                </div>
+            </div>
+            <div class="main-content">
+                <ul class="list clearfix">
+                    <!-- <li class="list-item">
+                        <div class="icon">李</div>
+                        <div class="info">
+                            <div class="title">
+                                <div>
+                                    <span class="name">李由的请假</span><span class="badge badge-1">普通</span>
+                                </div>
+                                <span class="time">2018-06-15 9:00:00</span>
+                            </div>
+                            <p>请假类型：事假</p>
+                            <p>开始时间：2018-06-13 09:00</p>
+                            <p>结束时间：2018-06-13 12:00</p>
+                        </div>
+                        <div class="handle-box">
+                            <div class="status"><i class="status-icon status-pending"></i>审批中</div>
+                            <a href="javascript:;" class="detail-link">查看详情</a>
+                        </div>
+                    </li> -->
+
+
+                </ul>
+                <div id="listPage" ></div>
+            </div>
+        </div>
+
+
+        <script type="text/html" id="approvalDetailTpl1">
+            <div class="detail-box">
+                <div class="detail-title">{{scLeave.createByName}}的{{eTypeName}}<span class="badge badge-{{scLeave.priorityLevel}}">{{priorityLevel}}</span></div>
+                <div class="detail-time">{{scLeave.applyTime}}</div>
+                <table class="table info-table">
+                    <tr>
+                        <td><i>*</i>审批编号</td>
+                        <td>{{scLeave.leaveNo}}</td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>所属店铺</td>
+                        <td>
+                            {{each scLeave.shopNames item index}}
+                                {{item}}
+                                {{if index < scLeave.shopNames.length-1 }}、{{/if}}
+                            {{/each}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>审批类型</td>
+                        <td>
+                            {{if scLeave.eventType == 1}}请假审批
+                            {{else if scLeave.eventType == 2}}销假审批
+                            {{else if scLeave.eventType == 3}}补卡审批
+                            {{else}} 其他
+                            {{/if}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>请假类型</td>
+                        <td>
+                            {{if scLeave.leaveType == 1}}事假
+                            {{else if scLeave.leaveType == 2}}病假
+                            {{else if scLeave.leaveType == 3}}调休
+                            {{else if scLeave.leaveType == 4}}婚假
+                            {{else if scLeave.leaveType == 5}}丧假
+                            {{else if scLeave.leaveType == 6}}工伤假
+                            {{else}} 其他
+                            {{/if}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>开始时间</td>
+                        <td>{{scLeave.startTime}}</td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>结束时间</td>
+                        <td>{{scLeave.endTime}}</td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>请假原因</td>
+                        <td>{{scLeave.reason}}</td>
+                    </tr>
+                    <tr>
+                        <td>图片</td>
+                        <td>
+                            <div class="pic-box">
+                                {{if pics && pics.length > 0}}
+                                    {{each pics oPic i}}
+                                        <img class="detail-pic" src="{{oPic}}">
+                                    {{/each}}
+                                {{/if}}
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="approval-record">
+                    <p class="record-title">审批记录<span class="tips">{{if processTips}}（{{processTips}}）{{/if}}</span></p>
+                    <div class="record-box">
+                        <table class="table record-table">
+                            <thead>
+                                <tr>
+                                    <td colspan="2">审批人</td>
+                                    <td>执行操作</td>
+                                    <td>时间</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{each rList item index}}
+                                    <tr>
+                                        <td><span class="icon-circle">{{item.sysBackUserName.substring(0,1)}}</span></td>
+                                        <td>{{item.sysBackUserName}}</td>
+                                        <td>
+                                            {{each opTypeArr op n}}
+                                                {{if n+1 == item.operateType}}
+                                                {{op[n+1]}}
+                                                {{/if}}
+                                            {{/each}}
+                                        </td>
+                                        <td>{{item.approvalTime}}</td>
+                                    </tr>
+                                    {{if (scLeave.scProcessRule && scLeave.scProcessRule.processType == 1) && (index < rList.length -1)}}
+                                    <tr>
+                                        <td><i class="arrow"></i></td>
+                                        <td colspan="3"></td>
+                                    </tr>
+                                    {{/if}}
+                                {{/each}}
+
+                            </tbody>
+                            {{if scLeave.adjunctList.length > 0}}
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4">抄送人<span class="tips">{{if infoTips}}（{{infoTips}}）{{/if}}</span></td>
+                                </tr>
+                                {{each scLeave.adjunctList obj i}}
+                                <tr>
+                                    <td><span class="icon-circle">{{obj.userName.substring(0,1)}}</span></td>
+                                    <td>{{obj.userName}}</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                {{/each}}
+                            </tfoot>
+                            {{/if}}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="approvalDetailTpl2">
+            <div class="detail-box">
+                <div class="detail-title">{{scLeave.createByName}}的{{eTypeName}}<span class="badge badge-{{scLeave.priorityLevel}}">{{priorityLevel}}</span></div>
+                <div class="detail-time">{{scLeave.applyTime}}</div>
+                <table class="table info-table">
+                    <tr>
+                        <td><i>*</i>审批编号</td>
+                        <td>{{scLeave.leaveNo}}</td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>所属店铺</td>
+                        <td>
+                            {{each scLeave.shopNames item index}}
+                                {{item}}
+                                {{if index < scLeave.shopNames.length-1 }}、{{/if}}
+                            {{/each}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>审批类型</td>
+                        <td>
+                            {{if scLeave.eventType == 1}}请假审批
+                            {{else if scLeave.eventType == 2}}销假审批
+                            {{else if scLeave.eventType == 3}}补卡审批
+                            {{else}} 其他
+                            {{/if}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>请假类型</td>
+                        <td>
+                            {{if scLeave.leaveType == 1}}事假
+                            {{else if scLeave.leaveType == 2}}病假
+                            {{else if scLeave.leaveType == 3}}调休
+                            {{else if scLeave.leaveType == 4}}婚假
+                            {{else if scLeave.leaveType == 5}}丧假
+                            {{else if scLeave.leaveType == 6}}工伤假
+                            {{else}} 其他
+                            {{/if}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>开始时间</td>
+                        <td>{{scLeave.startTime}}</td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>结束时间</td>
+                        <td>{{scLeave.endTime}}</td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>请假原因</td>
+                        <td>{{scLeave.reason}}</td>
+                    </tr>
+                    <tr>
+                        <td>图片</td>
+                        <td>
+                            <div class="pic-box">
+                                {{if pics && pics.length > 0}}
+                                    {{each pics oPic i}}
+                                        <img class="detail-pic" src="{{oPic}}">
+                                    {{/each}}
+                                {{/if}}
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="approval-record">
+                    <p class="record-title">原审批记录<i class="unfold-icon"></i></p>
+                    <div class="record-box">
+                        <a class="unfold-link" href="javascript:;">原审批记录{{statusDes}}</a>
+                        <table class="table record-table hide">
+                            <thead>
+                                <tr>
+                                    <td colspan="2">审批人</td>
+                                    <td>执行操作</td>
+                                    <td>时间</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{each rList item index}}
+                                    <tr>
+                                        <td><span class="icon-circle">{{item.sysBackUserName.substring(0,1)}}</span></td>
+                                        <td>{{item.sysBackUserName}}</td>
+                                        <td>
+                                            {{each opTypeArr op n}}
+                                                {{if n+1 == item.operateType}}
+                                                {{op[n+1]}}
+                                                {{/if}}
+                                            {{/each}}
+                                        </td>
+                                        <td>{{item.approvalTime}}</td>
+                                    </tr>
+                                    {{if (scLeave.scProcessRule && scLeave.scProcessRule.processType == 1) && (index < rList.length -1)}}
+                                    <tr>
+                                        <td><i class="arrow"></i></td>
+                                        <td colspan="3"></td>
+                                    </tr>
+                                    {{/if}}
+                                {{/each}}
+
+                            </tbody>
+                            {{if scLeave.adjunctList.length > 0}}
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4">抄送人<span class="tips">{{if infoTips}}（{{infoTips}}）{{/if}}</span></td>
+                                </tr>
+                                {{each scLeave.adjunctList obj i}}
+                                <tr>
+                                    <td><span class="icon-circle">{{obj.userName.substring(0,1)}}</span></td>
+                                    <td>{{obj.userName}}</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                {{/each}}
+                            </tfoot>
+                            {{/if}}
+                        </table>
+                    </div>
+                    <p class="record-title">申请撤销<span class="tips">{{if processTips}}（{{processTips}}）{{/if}}</span></p>
+                    <div class="record-box">
+                        <table class="table record-table">
+                            <thead>
+                                <tr>
+                                    <td colspan="2">审批人</td>
+                                    <td>执行操作</td>
+                                    <td>时间</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{each undoList item index}}
+                                    <tr>
+                                        <td><span class="icon-circle">{{item.sysBackUserName.substring(0,1)}}</span></td>
+                                        <td>{{item.sysBackUserName}}</td>
+                                        <td>
+                                            {{each opTypeArr op n}}
+                                                {{if n+1 == item.operateType}}
+                                                {{op[n+1]}}
+                                                {{/if}}
+                                            {{/each}}
+                                        </td>
+                                        <td>{{item.approvalTime}}</td>
+                                    </tr>
+                                    {{if (scLeave.scProcessRule && scLeave.scProcessRule.processType == 1) && (index < rList.length -1)}}
+                                    <tr>
+                                        <td><i class="arrow"></i></td>
+                                        <td colspan="3"></td>
+                                    </tr>
+                                    {{/if}}
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="approvalDetailTpl3">
+            <div class="detail-box">
+                <div class="detail-title">{{scLeave.createByName}}的{{eTypeName}}<span class="badge badge-{{scLeave.priorityLevel}}">{{priorityLevel}}</span></div>
+                <div class="detail-time">{{scLeave.applyTime}}</div>
+                <table class="table info-table">
+                    <tr>
+                        <td><i>*</i>审批编号</td>
+                        <td>{{scLeave.leaveNo}}</td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>所属店铺</td>
+                        <td>
+                            {{each scLeave.shopNames item index}}
+                                {{item}}
+                                {{if index < scLeave.shopNames.length-1 }}、{{/if}}
+                            {{/each}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>审批类型</td>
+                        <td>
+                            {{if scLeave.eventType == 1}}请假审批
+                            {{else if scLeave.eventType == 2}}销假审批
+                            {{else if scLeave.eventType == 3}}补卡审批
+                            {{else}} 其他
+                            {{/if}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>补卡日期</td>
+                        <td>
+                            {{scLeave.startTime.substring(0,10)}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>补卡班次</td>
+                        <td>
+                            {{if scLeave.scWorkGrade}}
+                                {{scLeave.scWorkGrade.gradeName}} {{scLeave.scWorkGrade.startTime}}-{{scLeave.scWorkGrade.endTime}}
+                            {{/if}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>补卡类型</td>
+                        <td>
+                            {{if scLeave.leaveType == 7}} 上班卡
+                            {{else if scLeave.leaveType == 8}} 下班卡
+                            {{/if}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>缺卡原因</td>
+                        <td>{{scLeave.reason}}</td>
+                    </tr>
+                    <tr>
+                        <td>图片</td>
+                        <td>
+                            <div class="pic-box">
+                                {{if pics && pics.length > 0}}
+                                    {{each pics oPic i}}
+                                        <img class="detail-pic" src="{{oPic}}">
+                                    {{/each}}
+                                {{/if}}
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="approval-record">
+                    <p class="record-title">审批记录<span class="tips">{{if processTips}}（{{processTips}}）{{/if}}</span></p>
+                    <div class="record-box">
+                        <table class="table record-table">
+                            <thead>
+                                <tr>
+                                    <td colspan="2">审批人</td>
+                                    <td>执行操作</td>
+                                    <td>时间</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{each rList item index}}
+                                    <tr>
+                                        <td><span class="icon-circle">{{item.sysBackUserName.substring(0,1)}}</span></td>
+                                        <td>{{item.sysBackUserName}}</td>
+                                        <td>
+                                            {{each opTypeArr op n}}
+                                                {{if n+1 == item.operateType}}
+                                                {{op[n+1]}}
+                                                {{/if}}
+                                            {{/each}}
+                                        </td>
+                                        <td>{{item.approvalTime}}</td>
+                                    </tr>
+                                    {{if (scLeave.scProcessRule && scLeave.scProcessRule.processType == 1) && (index < rList.length -1)}}
+                                    <tr>
+                                        <td><i class="arrow"></i></td>
+                                        <td colspan="3"></td>
+                                    </tr>
+                                    {{/if}}
+                                {{/each}}
+
+                            </tbody>
+                            {{if scLeave.adjunctList.length > 0}}
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4">抄送人<span class="tips">{{if infoTips}}（{{infoTips}}）{{/if}}</span></td>
+                                </tr>
+                                {{each scLeave.adjunctList obj i}}
+                                <tr>
+                                    <td><span class="icon-circle">{{obj.userName.substring(0,1)}}</span></td>
+                                    <td>{{obj.userName}}</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                {{/each}}
+                            </tfoot>
+                            {{/if}}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="approvalDetailTpl4">
+            <div class="detail-box">
+                <div class="detail-title">{{scLeave.createByName}}的{{eTypeName}}<span class="badge badge-{{scLeave.priorityLevel}}">{{priorityLevel}}</span></div>
+                <div class="detail-time">{{scLeave.applyTime}}</div>
+                <table class="table info-table">
+                    <tr>
+                        <td><i>*</i>审批编号</td>
+                        <td>{{scLeave.leaveNo}}</td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>所属店铺</td>
+                        <td>
+                            {{each scLeave.shopNames item index}} {{item}} {{if index
+                            < scLeave.shopNames.length-1 }}、{{/if}}
+                                {{/each}} </td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>申请内容</td>
+                        <td>{{scLeave.attachmentName}}</td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>审批详情</td>
+                        <td>{{scLeave.reason}}</td>
+                    </tr>
+                    <tr>
+                        <td>图片</td>
+                        <td>
+                            <div class="pic-box">
+                                {{if pics && pics.length > 0}} {{each pics oPic i}}
+                                <img class="detail-pic" src="{{oPic}}"> {{/each}} {{/if}}
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="approval-record">
+                    <p class="record-title">审批记录<span class="tips">{{if processTips}}（{{processTips}}）{{/if}}</span></p>
+                    <div class="record-box">
+                        <table class="table record-table">
+                            <thead>
+                                <tr>
+                                    <td colspan="2">审批人</td>
+                                    <td>执行操作</td>
+                                    <td>时间</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{each rList item index}}
+                                <tr>
+                                    <td><span class="icon-circle">{{item.sysBackUserName.substring(0,1)}}</span></td>
+                                    <td>{{item.sysBackUserName}}</td>
+                                    <td>
+                                        {{each opTypeArr op n}} {{if n+1 == item.operateType}} {{op[n+1]}} {{/if}} {{/each}}
+                                    </td>
+                                    <td>{{item.approvalTime}}</td>
+                                </tr>
+                                {{if (scLeave.scProcessRule && scLeave.scProcessRule.processType == 1) && (index
+                                < rList.length
+                                    -1)}} <tr>
+                                    <td><i class="arrow"></i></td>
+                                    <td colspan="3"></td>
+                                    </tr>
+                                    {{/if}} {{/each}}
+
+                            </tbody>
+                            {{if scLeave.adjunctList.length > 0}}
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4">抄送人<span class="tips">{{if infoTips}}（{{infoTips}}）{{/if}}</span></td>
+                                </tr>
+                                {{each scLeave.adjunctList obj i}}
+                                <tr>
+                                    <td><span class="icon-circle">{{obj.userName.substring(0,1)}}</span></td>
+                                    <td>{{obj.userName}}</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                {{/each}}
+                            </tfoot>
+                            {{/if}}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="approvalDetailTpl6">
+            <div class="detail-box">
+                <div class="detail-title">{{scLeave.createByName}}的{{eTypeName}}<span class="badge badge-{{scLeave.priorityLevel}}">{{priorityLevel}}</span></div>
+                <div class="detail-time">{{scLeave.applyTime}}</div>
+                <table class="table info-table">
+                    <tr>
+                        <td><i>*</i>审批编号</td>
+                        <td>{{scLeave.leaveNo}}</td>
+                    </tr>
+                    <tr>
+                        <td><i>*</i>所属店铺</td>
+                        <td>
+                            {{each scLeave.shopNames item index}} {{item}} {{if index
+                            < scLeave.shopNames.length-1 }}、{{/if}} {{/each}} </td>
+                    </tr>
+                    <tr>
+                       <td class="sub-list" colspan="2">
+                          {{each scLeave.listExpense item i}}
+                            <table class="table sub-table">
+                                <tr class="title-tr">
+                                    <td colspan="2">报销明细（{{i+1}}）</td>
+                                </tr>
+                                <tr>
+                                    <td>报销金额（元）</td>
+                                    <td>{{item.expense}}</td>
+                                </tr>
+                                <tr>
+                                    <td>报销类型</td>
+                                    <td>{{item.claimType}}</td>
+                                </tr>
+                                <tr>
+                                    <td>时间</td>
+                                    <td>{{item.claimTime}}</td>
+                                </tr>
+                                <tr>
+                                    <td>费用明细</td>
+                                    <td>{{item.expenseInfo}}</td>
+                                </tr>
+                            </table>
+                          {{/each}}
+                       </td>
+                    </tr>
+                    <tr>
+                        <td>总报销金额（元）</td>
+                        <td>{{expenseCount}}</td>
+                    </tr>
+                    <tr>
+                        <td>图片</td>
+                        <td>
+                            <div class="pic-box">
+                                {{if pics && pics.length > 0}} {{each pics oPic i}}
+                                <img class="detail-pic" src="{{oPic}}"> {{/each}} {{/if}}
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="approval-record">
+                    <p class="record-title">审批记录<span class="tips">{{if processTips}}（{{processTips}}）{{/if}}</span></p>
+                    <div class="record-box">
+                        <table class="table record-table">
+                            <thead>
+                                <tr>
+                                    <td colspan="2">审批人</td>
+                                    <td>执行操作</td>
+                                    <td>时间</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{each rList item index}}
+                                <tr>
+                                    <td><span class="icon-circle">{{item.sysBackUserName.substring(0,1)}}</span></td>
+                                    <td>{{item.sysBackUserName}}</td>
+                                    <td>
+                                        {{each opTypeArr op n}} {{if n+1 == item.operateType}} {{op[n+1]}} {{/if}} {{/each}}
+                                    </td>
+                                    <td>{{item.approvalTime}}</td>
+                                </tr>
+                                {{if (scLeave.scProcessRule && scLeave.scProcessRule.processType == 1) && (index
+                                < rList.length -1)}} <tr>
+                                    <td><i class="arrow"></i></td>
+                                    <td colspan="3"></td>
+                                    </tr>
+                                    {{/if}} {{/each}}
+
+                            </tbody>
+                            {{if scLeave.adjunctList.length > 0}}
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4">抄送人<span class="tips">{{if infoTips}}（{{infoTips}}）{{/if}}</span></td>
+                                </tr>
+                                {{each scLeave.adjunctList obj i}}
+                                <tr>
+                                    <td><span class="icon-circle">{{obj.userName.substring(0,1)}}</span></td>
+                                    <td>{{obj.userName}}</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                {{/each}}
+                            </tfoot>
+                            {{/if}}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+
+    <script src="../common/js/jquery-1.11.1.min.js"></script>
+    <script src="../assets/paging/dist/paging.js"></script>
+    <script src="../assets/layer-v3.1.1/layer.js"></script>
+    <script src="../assets/laydate-v5.0.9/laydate.js"></script>
+    <script src="../assets/artTemplate/template-web.js"></script>
+    <script src="../common/js/util.js"></script>
+    <script>
+        var newScript = document.createElement('script');
+        newScript.src = "./js/approvalReport.js?v=" + Math.random();
+        $('body').append(newScript);
+    </script>
+
+    </body>
+</html>

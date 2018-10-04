@@ -1,0 +1,48 @@
+<div class="tools-lightbox">
+    <div class="panel-default">
+        <div class="padding-15">
+            <div class="col-md-12">
+                <!-- <h5 class="tools-line-h tools-m-0">您确定要拒绝活动申请吗？</h6> -->
+            </div>
+        </div>
+    
+        <div>
+            <div class="form-group">
+                <div class="modal-text-label">
+                    <span>人均预算:</span>
+                </div>
+                <div class="modal-text-content">
+                    <span  ng-bind="activeStatusData.realBudget"></span>元
+                </div>
+                <div class="modal-text-label">
+                    <span>参加人数:</span>
+                </div>
+                <div class="modal-text-content">
+                    <span ng-bind="activeStatusData.JoinNum"></span>人
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="modal-text-label">
+                    <span>总金额:</span>
+                </div>
+                <div class="modal-text-content">
+                    <span ng-bind="activeStatusData.realMoney"></span>元
+                </div>
+                <!-- <div class="modal-text-label">
+                    <span>已申请金额:</span>
+                </div>
+                <div class="modal-text-content">
+                    <span> 16000 元</span>
+                </div> -->
+            </div>
+            
+        </div>
+
+        <div class="status-modal-footer">
+            <div class="col-md-12">
+                <button class="btn modal-btn-new-danger  col-md-5" ng-click="cancel()" id="cancel">再想一想</button>
+                <button class="btn modal-btn-green-default  col-md-5" ng-click="acceptBtn()" id="access">同意</button>
+            </div>
+        </div>
+    </div>
+</div>

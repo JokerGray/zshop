@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<link href="../../common/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="../css/scheduling.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container-fluid">
+		<header>
+			<div class="row" id="header_row">
+				<div class="col-sm-4">
+					<a href="javascript:void (0);" onclick="backZxcityStoreApp()"><img
+						src="../img/icon_fanhui.png" /></a>
+				</div>
+				<div class="col-sm-4 text-center">主管排班</div>
+				<div class="col-sm-4 text-right">
+					<span id="saveBtn" >保存</span>
+					<div class="modal fade bs-example-modal-sm" tabindex="-1"
+						role="dialog" aria-labelledby="mySmallModalLabel"
+						aria-hidden="true" id="myModal">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+								<img src="../img/baocunchenggong@2x.png" />
+								<p>保存成功</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="main-top">
+				<div class="select-date">
+					<div class="select-day">
+						<a id="selectDateBtn" href="javascript:void(0);"> <span
+							id="currentDateShow" class="selected-cur-date"> </span> <input
+							id="dateSelector" type="hidden"> <span
+							class="select-bottom-arrow"></span>
+						</a>
+					</div>
+					<div class="date-list-box">
+						<a class="prev" href="javascript:void(0);"></a> <a
+							class="next" href="javascript:void(0);"></a>
+						<div class="date-list-inner">
+							<div class="date-list"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<section>
+			<ul id="work-group">
+			<!--
+				<li class="worker"><img
+					src="../../common/assets/img/find_user.png" />
+					<div class="username">娜娜</div>
+					<div class="more_relex">
+						<span>加班</span> <span>请假</span>
+					</div>
+					<ul class="daytime">
+						<li>早<img src="../img/plusicon.png"/><span class="glyphicon glyphicon-ban-circle" ></span></li>
+						<li>中<img src="../img/plusicon.png"/><span class="glyphicon glyphicon-ban-circle" ></span></li>
+						<li>晚<img src="../img/plusicon.png"/><span class="glyphicon glyphicon-ban-circle" ></span></li>
+						<li>全<img src="../img/plusicon.png"/><span class="glyphicon glyphicon-ban-circle" ></span></li>
+						<li>休</li>
+					</ul>
+					
+				</li>
+  			-->
+			</ul>
+		</section>
+		<div id="ajaxMaskLayer">
+			<h1>正在进行数据请求，<br>网络可能过慢，请稍候！！</h1>
+		</div>
+	</div>
+
+	<script src="../../common/assets/js/jquery-1.10.2.js"></script>
+	<script src="../../common/assets/js/bootstrap.min.js"></script>
+	<script src="../../common/assets/js/layer/layer.js"></script>
+	<script src="../../common/js/util/util.js"></script>
+	<script src="../../common/assets/js/My97DatePicker/WdatePicker.js"></script>	
+ 	<script src="../js/scheduling.js"></script> 
+ 	<!---->
+</body>
+</html>

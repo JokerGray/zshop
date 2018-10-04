@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>智享城市·24小时 - 登录</title>
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/rent.css" />
+		<link rel="stylesheet" href="css/login.css" />
+	    <!--[if lt IE 9]>
+	      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	    <![endif]-->
+	    <script src="js/jquery-1.10.2.js"></script>
+	    <script src="assets/layer/layer.js"></script>
+	    <script src="js/until/util.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="header">
+				<div class="header-inner clearfix">
+					<div class="logo pull-left"><img src="images/logo.png" ></div>				
+				</div>
+			</div>
+			<div class="login-wrap">
+				<div class="base-login">
+					<div class="input-field">
+						<input id="username" type="text" name="username" autocomplete="off" spellcheck="false" placeholder="手机号">
+					</div>
+					<div class="input-field">
+						<input id="password" type="password" name="password" autocomplete="off" spellcheck="false" placeholder="密码">
+					</div>
+					<div class="action">
+						<div class="clearfix">
+							<input id="remember" class="remember" type="checkbox" name="remember" value="">
+							<label for="remember">一个月内免登录</label>
+							<label class="pull-right">
+								<a  class="linelight" href="forget.html">忘记密码</a>							
+							</label>
+						</div>
+					</div>
+					<a href="javascript:void(0)" id="sendSubmit" class="btn btn-block btn-lg login-btn btn-submit">登录</a>
+					<div class="clearfix relex">
+						<span>还没有智享城市·24小时账号，您可以</span>
+						<a class="linelight" href="register_step1.html">立即注册</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="lib/login.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#sendSubmit').click(function(){
+					var userName=$('#username').val();
+					var passNum=$('#password').val();
+					$.ajax({
+						type:"post",
+						url:"",
+						data:{
+							"cmd": "",
+							"data":"{'userName':"+userName+",'password':"+passNum+"}",
+							"version":"1"
+						},
+						berforeSend:function(request){
+							request.setRequestHeader("apikey",sessionStorage.getItem("apikey"));
+						},
+						success: function(re){
+							if(result=="1"){
+								location.href="index.html"
+							}else if(result=="2"){
+								
+							}
+						},
+						error: function(re){
+							var data=JSON.stringify(re);
+						}
+					});
+				})
+			})
+		</script>
+	</body>
+</html>

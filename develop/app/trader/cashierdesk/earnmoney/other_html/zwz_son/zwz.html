@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	
+	<link href="../../../../assets/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/animate.min.css" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	<!-- 共用的样式 -->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/css/common.css"></link>
+	<!--此页面的样式-->
+	<link rel="stylesheet" href="css/index.css">
+	<!-- jquery -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/jquery.min.js"></script>
+	<!-- bootstrap -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/bootstrap.min.js"></script>
+	
+	<!--layer弹出层插件-->
+	<script type="text/javascript" src="../../../../assets/layer/layer.js"></script>
+	<!-- 弹层title样式统一 -->
+	<link rel="stylesheet" href="../../../../assets/check_index/layer/skin/default/layer.css">
+
+	<!-- bootstrap-table -->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/hplus/css/plugins/bootstrap-table/bootstrap-table.min.css" /> 
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<!-- echarts -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/echarts/echarts.min.js"></script>
+	<!-- morris -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/morris/raphael-2.1.0.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/morris/morris.js"></script>
+
+	<title>转文赚窗口</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row formContent">
+			<div class="col-xs-12 ellipsis">
+				<label>转文赚标题：</label>
+				<span class="title"></span>
+			</div>
+			<div class="col-xs-4 ellipsis">
+				<label>总金额：</label>
+				<span class="total_money"></span>
+			</div>
+			<div class="col-xs-4 ellipsis">
+				<label>已支付：</label>
+				<span class="paid"></span>
+			</div>
+			<div class="col-xs-4 ellipsis">
+				<label>单次点击价：</label>
+				<span class="click"></span>
+			</div>
+			<div class="col-xs-4 ellipsis">
+				<label>限定阅读量：</label>
+				<span class="limit-read"></span>
+			</div>
+			<div class="col-xs-4 ellipsis">
+				<label>已阅读：</label>
+				<span class="read-count">1 次</span>
+			</div>
+			<div class="col-xs-4 ellipsis">
+				<a class="text-info" href="" target="_blank">查看原转发文章</a>
+			</div>														
+		</div>
+		<div class="chartContent" id="chartContent"></div>
+		<input type="hidden" id="reprintId" value="194">
+	</div>
+	<script type="text/javascript" src="../../src/common.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" Content="text/html" charset="UTF-8">
+  <meta name='apple-itunes-app' content='app-id=1146700782'>
+  <title>智享城市扫码</title>
+  <link rel="stylesheet" href="css/ewm.css">
+</head>
+<body>
+<div id="weixin_pageto">
+  <div class="txt">请点击右上角<img src="image/_more@3x.png"/>从浏览器中打开</div>
+  <img src="image/shape_up@3x.png" alt="" class="uparrow">
+</div>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/util.js"></script>
+<script type="text/javascript">
+  //获取参数
+  var userId = getUrlParams('sn');
+  var apptype = getUrlParams('apptype');
+  var subtype = getUrlParams('subtype');
+  var shopId = getUrlParams('shopId');
+  var fromscan = getUrlParams('fromscan');
+  var visitFrom = getUrlParams('visitFrom');
+  var facilityId = getUrlParams('facilityId');
+  var merchantId = getUrlParams('merchantId');
+  //跳转app地址
+  //跳转app地址
+  var $ios_app = "CityNRH://?apptype=" + apptype + "&subtype=" + subtype + "&shopId=" + shopId + "&shopid=" + shopId + "&fromscan=" + fromscan + "&visitFrom=" + visitFrom + "&facilityId=" + facilityId;
+  //云店扫码
+  if (visitFrom == 1) {
+    var $android_app = "selfapp://izxcs/openwith?apptype=" + apptype + "&subtype=" + subtype + "&shopId=" + shopId + "&shopid=" + shopId + "&fromscan=" + fromscan + "&visitFrom=" + visitFrom;
+    //店内扫码
+  } else if (visitFrom == 2) {
+    var $android_app = "smartcity://izxcs/openwith_shop_chosegoods?merchantId=" + merchantId + "&shopId=" + shopId + "&shopid=" + shopId + "&visitFrom=" + visitFrom + "&facilityId=" + facilityId + "&from_smartmaster=true";
+  }
+
+
+  //下载注册地址
+  var $download_url = "/yueba/yundian/shareGift/getPackage.html?userId="+userId;
+  console.log($download_url);
+  //礼包注册页
+  var $libao_url="/yueba/yundian/shareGift/Package.html?shopId="+shopId+"&userId="+userId;
+  console.log($libao_url);
+  function openApp() {
+    var fData = {
+                    "shopId": shopId
+                }
+    //判断为android
+    if (navigator.userAgent.match(/android/i)) {
+      //微信
+      if (navigator.userAgent.match(/MicroMessenger/i) == 'MicroMessenger') {
+        $('#weixin_pageto').show();
+        //QQ内置浏览器
+      } else if (navigator.userAgent.indexOf('MQQBrowser') > -1 && navigator.userAgent.indexOf(' TBS') > -1) {
+        $('#weixin_pageto').show();
+      } else {
+        var last = Date.now();
+        var doc = window.document;
+        var ifr = doc.createElement('iframe');
+        ifr.src = $android_app;
+        ifr.style.cssText = 'display:none;border:0;width:0;height:0;';
+        doc.body.appendChild(ifr);
+        setTimeout(function () {
+          doc.body.removeChild(ifr);
+          //setTimeout回小于2000一般为唤起失败
+          if (Date.now() - last < 4000) {
+                // 领取礼包  
+                if(shopId){
+                    reqAjaxAsync('coupon/selectScCouponExchange', JSON.stringify(fData)).done(function (res){
+                        if(res.code==1){
+                            if(res.data !=null){
+                                window.location.href = $libao_url;   //礼包注册页面（红）
+                            }else{
+                                window.location.href = $download_url; //智享城市注册页面（蓝）
+                            }
+                        }else{
+                          window.location.href = $download_url;
+                        }
+                    })
+                } 
+          }
+        }, 3000);
+      }
+      //判断为IOS
+    } else if (navigator.userAgent.match(/iPhone|iPod|iPad/i)) {
+      //微信
+      if (navigator.userAgent.match(/MicroMessenger/i) == 'MicroMessenger') {
+        $('#weixin_pageto').show();
+        //QQ内置浏览器
+      } else if (navigator.userAgent.indexOf(' QQ') > -1) {
+        $('#weixin_pageto').show();
+      } else {
+        // var doc=window.document;;
+        // var ifr=doc.createElement('iframe');
+        // ifr.src = $ios_app;
+        // ifr.style.cssText = 'display:none;border:0;width:0;height:0;';
+        // doc.body.appendChild(ifr);
+        window.location.href = $ios_app;
+        setTimeout(function () {
+                // 领取礼包  
+                if(shopId){
+                    reqAjaxAsync('coupon/selectScCouponExchange', JSON.stringify(fData)).done(function (res){
+                        if(res.code==1){
+                            if(res.data !=null){
+                                window.location.href = $libao_url;   //礼包注册页面（红）
+
+                            }else{
+                                window.location.href = $download_url; //智享城市注册页面（蓝）
+                            }
+                        }else{
+                          window.location.href = $download_url;
+                        }
+                    })
+                } 
+        }, 3000);
+      }
+    } else {
+      //判断为pc
+                // 领取礼包  
+                if(shopId){
+                    reqAjaxAsync('coupon/selectScCouponExchange', JSON.stringify(fData)).done(function (res){
+                      debugger
+                        if(res.code==1){
+                            if(res.data !=null){
+                                window.location.href = $libao_url;   //礼包注册页面（红）
+                            }else{
+                                window.location.href = $download_url; //智享城市注册页面（蓝）
+                            }
+                        }else{
+                          window.location.href = $download_url;
+                        }
+                    })
+                } 
+    }
+  }
+  openApp();
+</script>
+</body>
+</html>

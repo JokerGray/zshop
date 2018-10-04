@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Pragma" content="no-cache"> 
+    <meta http-equiv="Cache-Control" content="no-cache"> 
+    <meta http-equiv="Expires" content="0">
+    <title>任务说明管理——添加或修改</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="container-fluid" style="padding-top: 8px;">
+        <form class="form-inline" autocomplete="false">
+            <div class="form-group">
+                <label for="name">序列号</label>
+                <input type="text" class="form-control" id="name" maxlength="10">
+            </div>
+            <div class="form-group">
+                <label for="sort">排序</label>
+                <input type="text" class="form-control" id="sort" maxlength="2">
+            </div>
+            <div class="form-group">
+                <label for="value">说明内容</label>
+                <textarea style="resize:none;" rows="9" class="form-control" id="value" maxlength="500"></textarea>
+            </div>
+            <button type="button" class="btn btn-info" onclick="save()">提交</button>
+            <button type="button" class="btn btn-default" onclick="cancle()">取消</button>
+        </form>
+    </div>
+
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="./js/earnmoney_common.js"></script>
+    <script type="text/javascript" src="./js/task_add.js"></script>
+
+</body>
+
+</html>

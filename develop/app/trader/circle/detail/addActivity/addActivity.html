@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="stylesheet" type="text/css" href="../../../assets/bootstrap/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../../../assets/bootstrapDatePicker/css/datetimepicker.css">
+		<link rel="stylesheet" href="../../../assets/select2/select2.min.css" />
+		<script src="../../../assets/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.zh-CN.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../../../assets/layer/layer.js"></script>
+		<script src="../../../assets/plupload-2.3.1/js/moxie.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/plupload-2.3.1/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/plupload-2.3.1/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/select2/select2.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="./addActivity.css"/>
+		<title></title>
+	
+	</head>
+	<body >
+		<form id="myform" method="post">
+			<input type="hidden" name="place" value=""/>
+			<input type="hidden" name="lat" value=""/>
+			<input type="hidden" name="lng" value=""/>
+			<input type="hidden" name="adcode" id="adcode" value="" />
+			<div class="container-fluid " style="display: none;">
+				<div class="row box">
+					<div class="header">
+						发布活动
+					</div>
+					<div class="content">
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for="upFace"><i class="must">*</i>封面图片&nbsp;:<span class="textHint">点击上传背景照</span></label>
+							<div class="upFace" >
+								<div class="imgshadow" style="display: none;"></div>
+								<img src="../image/upFace.png" alt="" id="upFace"/>
+								<input type="hidden" name="face" id="url" value="" />
+							</div>
+							<input type="hidden" name="faceImg" />
+						</div>
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for="circleName"><i class="must ">*</i>活动名称&nbsp;:<span class="textHint">(字数限制5~25个字)</span></label>
+							<input type="text"  name="circleName" class="circleName" id="circleName" placeholder="如:某某某" pattern="\S{4,25}$" maxlength="25" required/>
+						</div>
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for="activityDate"><i class="must">*</i>活动时间&nbsp;:</label>
+							<label class="date"  for="activityDate">
+								<input type="text" name="activityDate"  class="activityDate" id="activityDate"> <span class="glyphicon glyphicon-calendar"></span>
+							</label>
+							
+						</div>
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for="address"><i class="must">*</i>活动地址&nbsp;:</label>
+							<label for="address" class="addressLabel">
+								<span class="glyphicon glyphicon-map-marker"></span><input type="text" name="address" id="address" class="address">
+							</label>
+							
+						</div>
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for="avePrice"><i class="must">*</i>人均价格&nbsp;:<span class="textHint">(活动价格为0时则为免费活动)</span></label>
+							<input type="text" name="avePrice" onkeyup="clearNoNum(this);" id="avePrice" maxlength="10" class="avePrice"> 
+						</div>
+						<div class="col-xs-12 selectCon">
+							<label class="mylabel" >发起圈子:</label>
+							<select name="selectCircle" id="selectCircle" class="selectCircle" style="width: 300px;">
+								
+							</select>
+						</div>
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for="">报名资格&nbsp;:</label>
+							<div class="opt">
+								<input class="magic-radio" type="radio"  name="radio" id="r1" value="0" checked>
+								<label for="r1" class="radioLabel">所有人 <span class="textHint">(所有人均可参加活动)</span> </label>
+							</div>
+							<div class="opt">
+								<input class="magic-radio" type="radio" name="radio" id="r2" value="1" >
+								<label for="r2" class="radioLabel">仅限圈内 <span class="textHint">(仅限此圈子内的人参加,其他人只能查看)</span></label>
+							</div>
+
+						</div>
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for="circleDuc"><i class="must">*</i>活动说明&nbsp;:</label>
+							<textarea name="circleDuc" id="circleDuc" class="circleDuc" maxlength="500" placeholder="说点什么呗~!(500字以内)"></textarea>
+						</div>
+						<div class="col-xs-12 form-group">
+							<div class="videoContent " id="videoBox" >
+								<div class="closeImg" style="display: none;" onclick="clearVideo(this)"></div>
+								<div class="noSrc">
+									<img src="../image/pl.png" alt="" />
+									<h5>上传</h5>
+								</div>
+								<input type="hidden" name="videoUrl" id="videoUrl" value="" />
+								<img id="videoShow" class="videoShow">
+							</div>
+						</div>
+						<div class="mediaBox ">
+							<div class="pictureBox clearfix"  >
+								<div class="imgContent " id="imgBox" style="display: none;">
+									<div class="closeImg" onclick="closeImg(this)" style="display: none;"></div>
+									<div class="noSrc" >
+										<img src="../image/pl.png" alt="" />
+										<h5>上传</h5>
+									</div>
+									<img id="imgShow" class="imgShow" >
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 form-group">
+								<label class="mylabel" for="naming">是否能被冠名&nbsp;:</label>
+							<div class="beggerSwitch">
+									<input type="checkbox" name="naming" id="naming" class="beggerCheckbox" checked>
+									<label for="naming" class="namingLabel switchLabel">
+									</label>
+							</div>
+						</div>
+
+						<div class="col-xs-12 form-group" >
+								<label class="mylabel" for="begger">是否能被赞助&nbsp;:</label>
+								<div class="beggerSwitch">
+										<input type="checkbox" name="begger" id="begger" class="beggerCheckbox" checked>
+										<label for="begger" class="beggerLabel switchLabel">
+										</label>
+								</div>
+
+						</div>
+					</div>
+					<div class="btnBox">
+						<button type="button" class="btn btn-default toBack" id="toBack">取消</button>
+						<button type="button" class="btn btn-info submitBtn " id="submitBtn" >提交</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	
+	</body>
+	<script src="./addActivity.js"></script>
+</html>

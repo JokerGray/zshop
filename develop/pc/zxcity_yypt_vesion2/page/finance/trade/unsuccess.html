@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>失败交易明细</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="../../../common/css/reset.css" />
+	</head>
+
+	<body>
+		<div class="tool-box layui-form">
+			<ul class="tool-box-ul clearfix">
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label">付款方账户：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="" placeholder="请输入付款方账户"  class="layui-input" id="payAccount" > 
+						</div>
+					</div>
+				</li>
+				<!--<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label"><b class="required-icon">＊</b>账户类别：</label>
+						<div class="layui-input-inline">
+							<select id="accountType" lay-verify="required" lay-search>
+								<option value="">--全部--</option>
+								<option value="0">APP注册</option>
+								<option value="1">老板账户</option>
+								<option value="2">商户会员</option>
+							</select>
+						</div>
+					</div>
+				</li>				-->
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label" id="stTime">失败日期：</label>
+						<div class="layui-input-inline startDate">
+							<input type="text" class="layui-input" id="startDate" placeholder="YYYY-MM-DD">
+						</div>
+					</div>
+				</li>				
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label" id="endTim">至：</label>
+						<div class="layui-input-inline endDate">
+							<input type="text" class="layui-input" id="endDate" placeholder="YYYY-MM-DD">
+						</div>
+					</div>
+				</li>
+				<button class="layui-btn" id="searchBtn">搜索</button>
+				<button class="layui-btn" id="resetBtn">重置</button>
+			</ul>
+		</div>
+		<div class="tool-add-box clearfix">
+			<button class="layui-btn my-btn add" lay-event="add" id="addButton">导出excel</button>
+			<!--<button class="layui-btn my-btn add" lay-event="add" id="setButton">设置</button>-->
+		</div>
+		<div class="layui-app">
+			<div class="app-table">
+				<table lay-filter="merchantTable" id="merchantTable"></table>
+				<div id="layTablePage"></div>
+			</div>
+		</div>
+		
+		
+		<script type="text/html" id="detial">
+			<span style="color: #337ab7;cursor:pointer">{{d.orderNum}}</span>
+		</script>
+
+		<div id="addLayer" class='layui-form clearfix' lay-filter="addLayer">
+			<div class="app-layer">
+				<div class="package clearfix">
+					<div class="package-title">详情</div>
+					<div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+					</div>
+				</div>
+				<div class="app-layer-content">
+					<ul class="tool-box-ul layui-form clearfix p0">
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">交易流水号：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="serialNo" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">订单号：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="relationNo" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>	
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">付款方账户：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="payerNo" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">付款方户名：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="payerName" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">失败时间：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="billTime" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">交易金额：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="money" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">收款方账户：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="payeeNo" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">收款方户名：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="payeeName" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">备注：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="remark" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>						
+					</ul>
+					<div class="layer-place">
+						展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+
+<script type="text/javascript">
+	jsorcss('css','unsuccess');
+	jsorcss('js','unsuccess');
+</script>

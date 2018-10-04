@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+    <title>劳务审核</title>
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../../../common/css/reset.css" />
+ 	<link rel="stylesheet" href="../../../common/css/layTab.css" />
+ 	<style media="screen" type="text/css">
+ 		.dTitle{
+    		font-size: 23px;
+    		margin: 12px 0;    /* 24px 0; */
+    		text-align: center;
+    	}
+   
+   		.control-label{
+    		padding-top: 7px;
+		    margin-bottom: 0;
+		    text-align: justify;
+		    display: inline-block;
+		    max-width: 100%;
+		    font-weight: 700;
+		    font-family: \5FAE\8F6F\96C5\9ED1,arial,sans-serif;
+		    color: #333;
+		    font-size: 14px;
+		    line-height: 24px;
+    	}
+
+
+    	input[type=radio]{
+    		box-sizing: border-box;
+    		padding: 0;
+    		vertical-align: middle;
+    		margin: 4px 10px 0 10px;
+    		line-height: normal;
+    		display: inline-block;
+    	}
+    	.pull-left {
+    		float: left!important;
+    	}
+    	.pull-right{
+    		float: right!important;
+    	}
+    	.form-item{
+    		margin:10px 50px;
+    	}
+    	.form-control{
+		    width: 67%;
+		    padding: 6px 12px;
+		    font-size: 14px;
+		    line-height: 1.42857143; 
+		    color: #555;
+		    background-color: #fff;
+		    opacity: 1;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    	}
+    	.form-control:focus{
+    		border-color: #66afe9;
+    		outline: 0;
+    		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    	}
+    	span{
+    		margin-left: 18px;
+    	}
+    </style>
+</head>
+<body>
+	<div class="tool-box layui-form">
+   		<ul class="tool-box-ul clearfix">
+			<!-- 账户类别   -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">商户名称：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="" placeholder="输入商户名称" class="layui-input" id="merchantName" maxlength="20"> 
+					</div>
+				</div>
+			</li>
+            <!-- 纳税人姓名   -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">纳税人姓名：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="" placeholder="输入纳税人姓名" class="layui-input" id="name" maxlength="20"> 
+					</div>
+				</div>
+			</li>
+            <!-- 流水号   -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">流水号：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="" placeholder="输入流水号" class="layui-input" id="serialNumber" maxlength="20"> 
+					</div>
+				</div>
+			</li>
+			<!-- 时间开始 -->
+           	<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="stTime">申请日期：</label>
+					<div class="layui-input-inline startDate">
+						<input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+					</div>
+				</div>
+			</li>				
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="endTim">至：</label>
+					<div class="layui-input-inline endDate">
+						<input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+					</div>
+				</div>
+			</li>
+            <!-- 时间结束 -->   
+		</ul>
+	</div>
+	
+    <div class="tool-add-box clearfix">
+		<button class="layui-btn add" id="exportBtn" style="top: -10px;margin-left: 10px;">导出excel</button>
+		<button class="layui-btn add" id="resetBtn" style="top: -10px;">重置</button>
+		<button class="layui-btn add" id="searchBtn" style="top: -10px;">搜索</button>
+	</div>
+	
+	<div class="layui-app">
+		<div class="app-table" style="margin-top: 10px;" >
+			<table lay-filter="merchantTable" id="merchantTable"></table>
+			<div id="layTablePage"></div>
+		</div>
+	</div>
+	
+	<script type="text/html" id="barDemo">
+    	<button class="layui-btn my-btn" lay-event="view">确认</button>
+    </script>
+		
+</body>
+</html>           	    
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="../../../common/assets/template-web.js"></script>
+<script type="text/javascript" src="laborCostsReviewList.js"></script>
+
+
+<script type="text/html" id="reviewTpl">
+<div class="container-fluid">
+	<form class="">
+		<div class="layout-top">
+			<h1 class="dTitle">主播劳务佣金审核</h1>
+		</div>
+			
+		<div class="layout-content">
+			<input type="hidden" value="{{row.id}}" id="dialogReviewId">
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>支付金额：</label>
+				<span id="piggy">{{row.laborTaxCalculationVo.paymentAmount}} （人民币）</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon">*</b>审核意见：</label>
+				<input type="radio" name="status" value="1">通过
+				<input type="radio" name="status" value="2">不通过
+			</div>
+			<div class="form-item">
+				<label class="control-label" style="position: relative;top: -50px;"><b class="required-icon">*</b>意见信息：</label>
+				<textarea class="form-control" rows="3" id="comment" maxlength="255"></textarea>
+			</div>
+			<div class="form-item">
+				<button class="layui-btn layui-btn-normal" style="border-radius:4px;margin-left:80px;" type="button" id="reviewBtn">提交</button>
+			</div>
+		</div>
+	</form>
+</div>
+</script>
+
+
+<script type="text/html" id="viewTpl">
+<div class="container-fluid">
+	<form class="">
+		<div class="layout-top">
+			<h1 class="dTitle">商户劳务佣金详情清单</h1>
+		</div>
+			
+		<div class="layout-content">
+			<input type="hidden" value="{{id}}" id="dialogReviewId">
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>申请猪仔数量：</label>
+				<span id="">{{row.money}}</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>核算总金额为：</label>
+				<span id="">{{row.money}} / 10 = {{row.realMoney}}</span> （人民币） <span class="" style="font-size: 9px;color: #ccc;margin-left: 20px;">猪仔：人民币=10:1</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>报税姓名：</label>
+				<span id="">{{row.name}}</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>身份证号：</label>
+				<span id="">{{row.idNumber}}</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>手机号：</label>
+				<span id="">{{row.phone}}</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>申请金额：</label>
+				<span id="">{{row.realMoney}}</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>当月申请金额：</label>
+				<span id="">{{row.laborTaxCalculationVo.laborCostsCount}}</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>当月已产生税额：</label>
+				<span id="">{{row.laborTaxCalculationVo.laborTaxCount}}</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>税率：</label>
+				<span id="">{{row.laborTaxCalculationVo.taxRate}}</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>速算扣除数：</label>
+				<span id="">{{row.laborTaxCalculationVo.quickDeduction}}</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>应缴个税：</label>
+				<span id="">{{row.laborTaxCalculationVo.shouldPayATax}}</span>
+			</div>
+			<div class="form-item">
+				<label class="control-label"><b class="required-icon"></b>支付金额：</label>
+				<span id="">{{row.laborTaxCalculationVo.paymentAmountCalculationFormula}}</span>
+			</div>
+		</div>
+	</form>
+</div>
+</script>

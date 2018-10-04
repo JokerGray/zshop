@@ -1,0 +1,146 @@
+body{
+  background:#F7F7F7;
+}
+*{
+  box-sizing: border-box;
+}
+@corlor:#25C7C0;
+
+  //新增类型
+.title{
+  height:90px;
+  background: white;
+  position: relative;
+  button{
+    float: right;
+    width: 100px;
+    background:#F8AB59;
+    margin-right:50px;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+}
+
+//中间表格
+.content{
+  padding: 35px 110px;
+
+  table{
+
+
+  thead{
+    th{
+      background: #1dbfaf;
+      color: white;
+      height: 50px;
+      text-align: center;
+      font-size: 20px;
+      width: 10%;
+      border-right: none;
+    }
+  }
+
+  tbody{
+    .layui-table-cell {
+      height: 30px;
+      line-height: 30px;
+    }
+    td{
+      height: 65px;
+      line-height: 65px;
+      color: #999999;
+      font-size: 17px;
+      text-align: center;
+      width: 10%;
+      border-right: none;
+
+    }
+  }
+  //操作按钮
+  .tabicon{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background:@corlor ;
+    margin-right: 15px;
+    cursor: pointer;
+    i{
+      font-size: 25px;
+      color: white;
+      float: left;
+      //margin-top:-2px ;
+      margin-left: 2px;
+    }
+    .delete{
+      margin-top:2px ;
+    }
+  }
+  }
+}
+
+//新增弹框
+
+
+#addBox{
+  display: none;
+  padding: 20px 30px;
+  color: #666666;
+
+
+
+  .layui-form-item{
+    margin-bottom: 30px;
+  }
+
+  label{
+    width: 100px;
+  }
+  .show{
+    margin-right: 10px;
+  }
+
+  .picCheck{
+    position: relative;
+
+    .layui-unselect{
+      margin-right: 40px;
+    }
+
+    img{
+      position: absolute;
+      top: 0px;
+      left: 30px;
+      width: 36px;
+      height: 36px;
+    }
+    .file{
+      left: 120px;
+    }
+    .success{
+      left: 212px;
+    }
+  }
+
+  .layui-form-switch{
+    width: 56px;
+    height: 24px;
+    line-height: 24px;
+  }
+
+
+}
+
+//选择店铺
+
+#thechooseShop{
+  position: absolute;
+  top:30px;
+  left: 115px;
+  font-size: 16px;
+
+  select{
+    width: 200px;
+    height: 30px;
+  }
+}

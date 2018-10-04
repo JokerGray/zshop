@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compation" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+		<title>厨师屏</title>
+		<link href="../common/assets/css/bootstrap.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../common/assets/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<link href="../common/css/common.css" rel="stylesheet" />
+		<link href="./cookscreen.css" rel="stylesheet" />
+
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="main-top">
+                <div class="duty-title pull-left">
+                    <a class="return-icon" href="javascript:void(0);"  onclick="history.go(-1);"></a>
+                    <select id="positionSelector"></select>
+                </div>
+                <div class="order-dishes-title pull-right">未完成订单</div>
+            </div>
+            <div class="main-content">
+                <div class="duty-box">
+                    <div class="duty-list">
+                        <div id="todoList" class="duty-list-inner"></div>
+                    </div>
+                </div>
+                <div class="order-dishes-box">
+                    <div class="order-list-show">
+                        <ul id="orderList" class="order-dishes-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../common/assets/jquery.min.js"></script>
+        <script src="../common/assets/layer/layer.js"></script>
+        <script src="../common/js/common.js"></script>
+        <script src="../common/assets/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+        <script src="../common/assets/jquery-ui-1.12.1.custom/jquery.ui.touch-punch.js"></script>
+        <script src="cookscreen.js"></script>
+
+    </body>
+</html>

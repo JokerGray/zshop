@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=format-detection content="telephone=no">
+    <title>分享</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/share.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_urs11gjs42ikke29.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+</head>
+
+<script>
+    ! function(e) {
+        function t(a) {
+            if (i[a]) return i[a].exports;
+            var n = i[a] = {
+                exports: {},
+                id: a,
+                loaded: !1
+            };
+            return e[a].call(n.exports, n, n.exports, t), n.loaded = !0, n.exports
+        }
+        var i = {};
+        return t.m = e, t.c = i, t.p = "", t(0)
+    }([function(e, t) {
+        "use strict";
+        Object.defineProperty(t, "__esModule", {
+            value: !0
+        });
+        var i = window;
+        t["default"] = i.flex = function(e, t) {
+            var a = e || 100,
+                n = t || 1,
+                r = i.document,
+                o = navigator.userAgent,
+                d = o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),
+                l = o.match(/U3\/((\d+|\.){5,})/i),
+                c = l && parseInt(l[1].split(".").join(""), 10) >= 80,
+                p = navigator.appVersion.match(/(iphone|ipad|ipod)/gi),
+                s = i.devicePixelRatio || 1;
+            p || d && d[1] > 534 || c || (s = 1);
+            var u = 1 / s,
+                m = r.querySelector('meta[name="viewport"]');
+            m || (m = r.createElement("meta"), m.setAttribute("name", "viewport"), r.head.appendChild(m)), m.setAttribute("content", "width=device-width,user-scalable=no,initial-scale=" + u + ",maximum-scale=" + u + ",minimum-scale=" + u), r.documentElement.style.fontSize = a / 2 * s * n + "px"
+        }, e.exports = t["default"]
+    }]);
+    flex(100, 1);
+</script>
+
+<body>
+    <header>
+        <div class="header_bg blur"></div>
+        <div class="header_bg_black"></div>
+        <div class="header_con">
+            <img src="img/logo.png" alt="" class="fl" id="resourcesUrl">
+            <div class="fl header_right">
+                <h2>#<span id="scCmsSpecialName">智享头条</span>#</h2>
+                <p class="fistr_p">
+                    <span>浏览</span>
+                    <span id="specialBrowser"></span>
+                    <span>讨论</span>
+                    <span id="commentNumber"></span>
+                </p>
+                <p class="last_p">
+                </p>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div id="scCmsSpecialDescribe" class="text-overflow3"></div>
+    </section>
+    <section >
+        <h3 class="toparrow">
+            <img src="img/top.png" alt="置顶" class="fl mr10">
+            <span class="top red fl">置顶</span>
+        </h3>
+        <div class="clear" id="container"></div>
+    </section>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/share.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,530 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>家族首页</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="stylesheet" href="css/amazeui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/fontawesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/family.css" />
+	</head>
+
+	<body>
+		<div class="container" id="app" v-cloak>
+			<header>
+				<div class="am-g head-top">
+					<div class="am-u-sm-8">
+						<div class="head-img">
+							<img v-if="scGameFamily.familyPic==''||scGameFamily.familyPic==null||scGameFamily.familyPic==undefined" src="img/com/com.png" />
+							<img v-else v-bind:src="scGameFamily.familyPic" />
+						</div>
+						<ul class="head-title">
+							<li class="title-name" v-html="scGameFamily.familyName"></li>
+							<li class="title-id" v-cloak>ID:{{scGameFamily.roomId}}</li>
+							<li class="title-tag">
+								<span v-for="item in scGameFamily.labelName" v-html="item"></span>
+							</li>
+						</ul>
+					</div>
+					<!--<div class="am-u-sm-4" v-if="gameFamilyInfo.joinFamily==true" v-cloak>
+						<button type="button" class="am-btn am-btn-default am-round">已加入</button>
+					</div>
+					<div class="am-u-sm-4" v-else-if="gameFamilyInfo.joinFamily==false" v-cloak>
+						<button type="button" class="am-btn am-btn-default am-round">未加入</button>
+					</div>-->
+				</div>
+				<div class="am-g head-info">
+					<div class="am-u-sm-6">
+						<div class="head-num" v-html="scGameFamily.memeberNumber||'0'" v-cloak></div>
+						<div class="head-people">家族成员</div>
+					</div>
+					<div class="am-u-sm-6">
+						<div class="head-num" v-cloak>NO.{{scGameFamily.popularityNum||'0'}}<span>家族排名</span></div>
+						<div class="head-people" v-cloak>{{scGameFamily.sumPopularity||'0'}}人气值</div>
+					</div>
+				</div>
+			</header>
+			<div class="am-accordion-content">
+				<div v-if="scGameFamily.notice==''||scGameFamily.notice==null||scGameFamily.notice==undefined"></div>
+				<div class="content-title" v-else>
+					<span><img src="img/family/lq_family_gonggao.png"/></span>
+					<span>【重要公告】{{scGameFamily.notice}}</span>
+				</div>
+				<div data-am-widget="tabs" class="am-tabs am-tabs-default">
+					<ul class="am-tabs-nav am-cf">
+						<li class="am-active">
+							<a href="[data-tab-panel-0]">最新</a>
+						</li>
+						<li class="">
+							<a href="[data-tab-panel-1]">最热</a>
+						</li>
+						<li class="">
+							<a href="[data-tab-panel-2]">精华</a>
+						</li>
+					</ul>
+					<div class="am-tabs-bd">
+						<div data-tab-panel-0 class="am-tab-panel am-active" v-bind:index="1">
+							<ul class="">
+								<li class="list" v-for="(item,index) in newFamilyTrends" v-bind:index="index" v-cloak>
+									<div class="am-g content-list-box">
+										<div class="am-u-sm-8">
+											<div class="content-list-img">
+												<img v-if="item.scGameSysUser.userpic==''||item.scGameSysUser.userpic==null||item.scGameSysUser.userpic==undefined" src="img/com/default.png" />
+												<img v-else v-bind:src="item.scGameSysUser.userpic" />
+											</div>
+											<ul class="content-list-title">
+												<li class="" v-html="item.scGameSysUser.username"></li>
+												<li class="">{{item.publishTime|date}}</li>
+											</ul>
+										</div>
+										<div class="am-u-sm-4 content-list-icon">
+											<i class="fas fa-ellipsis-h"></i>
+										</div>
+									</div>
+									<div class="content-list-tag">
+										<span class="tag-img" v-if="item.istop==2">
+											<img src="img/family/lq_family_zhiding.png"/>
+										</span>
+										<span class="tag-img" v-if="item.boutique==2">
+											<img src="img/family/lq_family_jiajing.png"/>
+										</span>
+										<span v-html="item.fileDescribe"></span>
+									</div>
+									<ul class="am-gallery am-avg-sm-3
+  am-avg-md-3 am-avg-lg-4 am-gallery-default">
+										<li v-for="(pic,index) in item.pictureList">
+											<div class="am-gallery-item">
+												<div class="item-a">
+													<img v-bind:src="pic.fileUrl" @click="previewImg(index,$event)" />
+												</div>
+											</div>
+										</li>
+									</ul>
+									<ul class="content-list-option am-avg-sm-3">
+										<li>
+											<span class="img"><img src="img/family/lq_family_gift.png"/></span>
+											<span v-html="item.gifitNum||'送礼'"></span>
+										</li>
+										<li>
+											<span class="img"><img src="img/family/lq_family_pinglun.png"/></span>
+											<span v-html="item.commentNum||0"></span>
+										</li>
+										<li>
+											<span class="img">
+												<img v-if="item.praise == false" src="img/family/lq_family_like.png"/>
+												<img v-else src="img/family/lq_family_liked.png"/>
+											</span>
+											<span v-html="item.praiseNum||'0'"></span>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<div class="loading loading-load0">
+								<img src="img/com/loading.gif" />加载中...
+							</div>
+							<div class="loading loading-noData0">
+								我也是有底线的...
+							</div>
+							<div class="noData0 noData">
+								<img src="img/com/noData.png" /> 没有更多数据
+							</div>
+						</div>
+						<div data-tab-panel-1 class="am-tab-panel" v-bind:index="2">
+							<ul>
+								<li class="list" v-for="(item,index) in hotFamilyTrends" v-bind:index="index" v-cloak>
+									<div class="am-g content-list-box">
+										<div class="am-u-sm-8">
+											<div class="content-list-img">
+												<img v-bind:src="item.scGameSysUser.userpic" />
+											</div>
+											<ul class="content-list-title">
+												<li class="" v-html="item.scGameSysUser.username"></li>
+												<li class="">{{item.publishTime|date}}</li>
+											</ul>
+										</div>
+										<div class="am-u-sm-4 content-list-icon">
+											<i class="fas fa-ellipsis-h"></i>
+										</div>
+									</div>
+									<div class="content-list-tag">
+										<span class="tag-img" v-if="item.istop==2">
+											<img src="img/family/lq_family_zhiding.png"/>
+										</span>
+										<span class="tag-img" v-if="item.boutique==2">
+											<img src="img/family/lq_family_jiajing.png"/>
+										</span>
+										<span v-html="item.fileDescribe"></span>
+									</div>
+									<ul  class="am-gallery am-avg-sm-3
+  am-avg-md-3 am-avg-lg-4 am-gallery-default">
+										<li v-for="(pic,index) in item.pictureList">
+											<div class="am-gallery-item">
+												<div class="item-a">
+													<img v-bind:src="pic.fileUrl" @click="previewImg(index,$event)" />
+												</div>
+											</div>
+										</li>
+									</ul>
+									<ul class="content-list-option am-avg-sm-3">
+										<li>
+											<span class="img"><img src="img/family/lq_family_gift.png"/></span>
+											<span v-html="item.gifitNum||'送礼'"></span>
+										</li>
+										<li>
+											<span class="img"><img src="img/family/lq_family_pinglun.png"/></span>
+											<span v-html="item.commentNum||0"></span>
+										</li>
+										<li>
+											<span class="img">
+												<img v-if="item.praise == false" src="img/family/lq_family_like.png"/>
+												<img v-else src="img/family/lq_family_liked.png"/>
+											</span>
+											<span v-html="item.praiseNum||'0'"></span>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<div class="loading loading-load1">
+								<img src="img/com/loading.gif" />加载中...
+							</div>
+							<div class="loading loading-noData1">
+								我也是有底线的...
+							</div>
+							<div class="noData1 noData">
+								<img src="img/com/noData.png" /> 没有更多数据
+							</div>
+						</div>
+						<div data-tab-panel-2 class="am-tab-panel" v-bind:index="3">
+							<ul>
+								<li class="list" v-for="(item,index) in eliteFamilyTrends" v-bind:index="index" v-cloak>
+									<div class="am-g content-list-box">
+										<div class="am-u-sm-8">
+											<div class="content-list-img">
+												<img v-bind:src="item.scGameSysUser.userpic" />
+											</div>
+											<ul class="content-list-title">
+												<li class="" v-html="item.scGameSysUser.username"></li>
+												<li class="">{{item.publishTime|date}}</li>
+											</ul>
+										</div>
+										<div class="am-u-sm-4 content-list-icon">
+											<i class="fas fa-ellipsis-h"></i>
+										</div>
+									</div>
+									<div class="content-list-tag">
+										<span class="tag-img" v-if="item.istop==2">
+											<img src="img/family/lq_family_zhiding.png"/>
+										</span>
+										<span class="tag-img" v-if="item.boutique==2">
+											<img src="img/family/lq_family_jiajing.png"/>
+										</span>
+										<span v-html="item.fileDescribe"></span>
+									</div>
+									<ul class="am-gallery am-avg-sm-3
+  am-avg-md-3 am-avg-lg-4 am-gallery-default">
+										<li v-for="(pic,index) in item.pictureList">
+											<div class="am-gallery-item">
+												<div class="item-a">
+													<img v-bind:src="pic.fileUrl" @click="previewImg(index,$event)" />
+												</div>
+											</div>
+										</li>
+									</ul>
+									<ul class="content-list-option am-avg-sm-3">
+										<li>
+											<span class="img"><img src="img/family/lq_family_gift.png"/></span>
+											<span v-html="item.gifitNum"></span>
+										</li>
+										<li>
+											<span class="img"><img src="img/family/lq_family_pinglun.png"/></span>
+											<span v-html="item.commentNum"></span>
+										</li>
+										<li>
+											<span class="img">
+												<img src="img/family/lq_family_like.png"/>
+												<img style="display: none;" src="img/family/lq_family_liked.png"/>
+											</span>
+											<span v-html="item.praiseNum"></span>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<div class="loading loading-load2">
+								<img src="img/com/loading.gif" />加载中...
+							</div>
+							<div class="loading loading-noData2">
+								我也是有底线的...
+							</div>
+							<div class="noData2 noData">
+								<img src="img/com/noData.png" /> 没有更多数据
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-container">
+				<div class="am-pureview-actions am-active">
+					<a href="javascript: void(0)" class="am-icon-chevron-left" @click="close"></a>
+				</div>
+				<div class="swiper-wrapper">
+				</div>
+				<div class="swiper-pagination swiper-pagination-white"></div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/amazeui.min.js"></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					noData: false,
+					gameFamilyInfo: {},
+					scGameFamily: {},
+					newFamilyTrends: [],
+					hotFamilyTrends: [],
+					eliteFamilyTrends: [],
+					imgSlider: [],
+					total0: '',
+					total1: '',
+					total2: '',
+					param0: {
+						page: "0",
+						familyId:getParams('familyId'),
+						row: "10"
+					},
+					param1: {
+						page: "0",
+						familyId:getParams('familyId'),
+						row: "10"
+					},
+					param2: {
+						page: "0",
+						familyId:getParams('familyId'),
+						row: "10"
+					},
+					params: {
+						userId:getParams('userId'),
+						familyId:getParams('familyId')
+					}
+				},
+				methods: {
+					previewImg: function(index, event,data) {
+						var idx = event.path[5].getAttribute("index");
+						var index = event.path[7].getAttribute("index");
+						if (index==1) {
+							app.imgSlider = [].concat(app.newFamilyTrends[idx].pictureList);
+						} else if (index==2){
+							app.imgSlider = [].concat(app.hotFamilyTrends[idx].pictureList);
+						}else if (index==3){
+							app.imgSlider = [].concat(app.eliteFamilyTrends[idx].pictureList);
+						};
+						$(".swiper-container").fadeIn('fast');
+						var swiper = new Swiper('.swiper-container', {
+							zoom: true,
+							virtual: true,
+							pagination: {
+								el: '.swiper-pagination',
+								type: 'fraction',
+							},
+							on: {
+								click: function() {
+									$(".swiper-container").fadeOut('fast');
+									this.virtual.slides.length = 0;
+									this.virtual.cache = [];
+									swiperStatus = false;
+								},
+							},
+						});
+						for(i = 0; i < app.imgSlider.length; i++) {
+							swiper.virtual.appendSlide('<div class="swiper-zoom-container"><img src="' + app.imgSlider[i].fileUrl + '" /></div>');
+						}
+						swiper.slideTo(index);
+						swiperStatus = true;
+
+					},
+					close: function() {
+						$(".swiper-container").fadeOut('fast');
+						app.imgSlider = [];
+					}
+				}
+			});
+			var my = {
+				init() {
+					//获取家族圈主页上部信息
+					reqAjaxAsync("game/gameFamilyInfo", JSON.stringify(app.params)).done(function(res) {
+							setTimeout(function() {
+								if(res.code == 1) {
+									app.gameFamilyInfo = res.data;
+									app.scGameFamily = res.data.scGameFamily
+								}
+							}, 500);
+						}),
+
+						$('.am-tabs-nav ').find('a').eq(0).on('opened.tabs.amui', function(e) {
+							my.initScroll();
+						}),
+
+						$('.am-tabs-nav ').find('a').eq(1).on('opened.tabs.amui', function(e) {
+							$(window).scroll(function(){
+								var scrollTop = $(this).scrollTop();
+								var scrollHeight = $(document).height();
+								var windowHeight = $(this).height();
+								if(scrollTop + windowHeight == scrollHeight) {
+									if(app.param1.page * app.param1.row < app.total1) {
+										$(".loading-load1").show();
+										$(".loading-noData1").hide();
+										++app.param1.page;
+										reqAjaxAsync("game/hotFamilyTrends", JSON.stringify(app.param1)).done(function(res) {
+											if(res.data.hotFamilyTrends.length < 10) {
+												$(".loading-load1").hide();
+												$(".loading-noData1").show();
+											};
+											app.hotFamilyTrends = app.hotFamilyTrends.concat(res.data.hotFamilyTrends);
+											my.com(app.hotFamilyTrends);
+										})
+									}
+								}
+							})
+						}),
+
+						$('.am-tabs-nav ').find('a').eq(2).on('opened.tabs.amui', function(e) {
+							$(window).scroll(function(){
+								var scrollTop = $(this).scrollTop();
+								var scrollHeight = $(document).height();
+								var windowHeight = $(this).height();
+								if(scrollTop + windowHeight == scrollHeight) {
+									if(app.param2.page * app.param2.row < app.total2) {
+										$(".loading-load2").show();
+										$(".loading-noData2").hide();
+										++app.param2.page;
+										reqAjaxAsync("game/eliteFamilyTrends", JSON.stringify(app.param2)).done(function(res) {
+											if(res.data.eliteFamilyTrends.length < 10) {
+												$(".loading-load2").hide();
+												$(".loading-noData2").show();
+											};
+											app.eliteFamilyTrends = app.eliteFamilyTrends.concat(res.data.eliteFamilyTrends);
+											my.com(app.eliteFamilyTrends);
+										})
+									}
+								}
+							})
+						})
+				},
+				//最新消息加载
+				newMessage() {
+					reqAjaxAsync("game/newFamilyTrends", JSON.stringify(app.param0)).done(function(res) {
+						$(".loading-load0").show();
+						setTimeout(function() {
+							if(res.code == 1) {
+								if(res.data.newFamilyTrends == '') {
+									$(".noData0").show();
+									$(".loading-noData0").hide();
+								} else {
+									$(".noData0").hide();
+									app.newFamilyTrends = app.newFamilyTrends.concat(res.data.newFamilyTrends);
+									app.total0 = res.data.total;
+									my.com(app.hotFamilyTrends);
+									$(".loading-noData0").show();
+								}
+								$(".loading-load0").hide();
+							} else {
+								com.tooltip(res.msg);
+							}
+						}, 500);
+					});
+				},
+				//最热消息加载
+				hotMessage() {
+					reqAjaxAsync("game/hotFamilyTrends", JSON.stringify(app.param1)).done(function(res) {
+						$(".loading-load1").show();
+						setTimeout(function() {
+							if(res.code == 1) {
+								if(res.data.hotFamilyTrends == '') {
+									$(".noData1").show();
+									$(".loading-noData1").hide();
+								} else {
+									$(".noData1").hide();
+									app.hotFamilyTrends = app.hotFamilyTrends.concat(res.data.hotFamilyTrends);
+									app.total1 = res.data.total;
+									my.com(app.hotFamilyTrends);
+									$(".loading-noData1").show();
+								}
+								$(".loading-load1").hide();
+							} else {
+								com.tooltip(res.msg);
+							}
+						}, 500);
+					});
+				},
+				//精华消息加载
+				eliteMessage() {
+					//获取最热数据
+					reqAjaxAsync("game/eliteFamilyTrends", JSON.stringify(app.param2)).done(function(res) {
+						$(".loading-load2").show();
+						setTimeout(function() {
+							if(res.code == 1) {
+								if(res.data.eliteFamilyTrends == '') {
+									$(".noData2").show();
+									$(".loading-noData2").hide();
+								} else {
+									$(".noData2").hide();
+									app.eliteFamilyTrends = app.eliteFamilyTrends.concat(res.data.eliteFamilyTrends);
+									app.total2 = res.data.total;									
+									my.com(app.eliteFamilyTrends);
+									$(".loading-noData2").show();
+								}
+								$(".loading-load2").hide();
+							} else {
+								com.tooltip(res.msg);
+							}
+						}, 500);
+					});
+				},
+				//获取动态文本
+				com(data) {
+					for(var i = 0; i < data.length; i++) {
+						data[i].fileDescribe = data[i].pictureList[0].fileDescribe;
+					}
+				},
+				initScroll() {
+					$(window).scroll(function(){
+						var scrollTop = $(this).scrollTop();
+						var scrollHeight = $(document).height();
+						var windowHeight = $(this).height();
+						if(scrollTop + windowHeight == scrollHeight) {
+							if(app.param0.page * app.param0.row < app.total0) {
+								$(".loading-load0").show();
+								$(".loading-noData0").hide();
+								++app.param0.page;
+								reqAjaxAsync("game/newFamilyTrends", JSON.stringify(app.param0)).done(function(res) {
+									if(res.data.newFamilyTrends.length < 10) {
+										$(".loading-load0").hide();
+										$(".loading-noData0").show();
+									};
+									app.newFamilyTrends = app.newFamilyTrends.concat(res.data.newFamilyTrends);
+									my.com(app.hotFamilyTrends);
+								})
+							}
+						}
+					})
+				}
+			}
+			my.newMessage();
+			my.hotMessage();
+			my.eliteMessage();
+			my.init();
+			my.initScroll();
+		</script>
+	</body>
+
+</html>

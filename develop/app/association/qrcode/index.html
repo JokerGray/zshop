@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+    
+</head>
+<body>
+    <div class="contant">
+        <div id="chihe"><span class="Name"></span></div>
+        <div class="floor">
+            <input type="hidden" id="qrText" value="">
+            <div id="img">
+                <img src="image/img.png" alt="">
+            </div>
+            <div id="imgDiv">
+            </div>
+        </div>
+        <span class="saomiao">
+          <p>扫描二维码，加入社群</p>
+        </span>
+    </div>
+    
+    <script src="js/index.js"></script>
+    <script src="js/flexible.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.qrcode.min.js"></script>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+<script>
+    $(document).ready(function(){
+      setDownload();
+      getData();
+      createQr();
+    })
+    //生成二维码
+    // var paht=protocol+'//'+host+'/association/qrcode/index.html?id='+id+'&sn='+sn+'&yw=association&cp=1&jumpParams='+jumpParams
+    function createQr(){
+      document.createElement('canvas').getContext('2d');
+      var str = $('#qrText').val();
+      var valText=str.replace(/qrcode/g, "asso_info");
+      console.log(valText);
+      var reg=/^[\u0391-\uFFE5]+$/; 
+      var name=getQueryString('name');
+      if(valText!=""&&!reg.test(valText)){ 
+        $('#imgDiv').qrcode({render:"canvas",height:180, width:180,correctLevel:0,text:valText});
+          
+      }else{
+        $('#imgDiv').qrcode({render:"canvas",height:180, width:180,correctLevel:0,text:utf16to8(valText)});
+      }
+     
+      var mycanvas1=document.getElementsByTagName('canvas')[0];
+      var img = convertCanvasToImage(mycanvas1);
+      $('#imgDiv').append(img);
+    }
+    // 字符编码
+    function utf16to8(str) {  
+      var out, i, len, c;  
+      out = "";  
+      len = str.length;  
+      for(i = 0; i < len; i++) {  
+        c = str.charCodeAt(i);
+        if ((c >= 0x0001) && (c <= 0x007F)) {  
+          out += str.charAt(i);  
+        } else if (c > 0x07FF) {  
+          out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));  
+          out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));  
+          out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+        } else {  
+          out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));  
+          out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+        }  
+      }  
+      return out;  
+    }
+    //以图片形式显示二维码
+    function convertCanvasToImage(canvas) {
+      var image = new Image();
+      image.src = canvas.toDataURL("image/png");
+      canvas.remove()
+      return image;
+    }
+	 // 获取url参数，没有就''
+   function getQueryString(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+    var r = window.location.search.substr(1).match(reg);
+    return r !== null ? decodeURI(r[2]) : '';
+  }
+  function setDownload(){
+        var sn = getQueryString('sn');
+        var id=getQueryString('id');
+        var jumpParams =getQueryString('jumpParams');
+        var protocol = window.location.protocol;
+        var host=window.location.host;
+        var qrurl=protocol+'//'+host+'/association/qrcode/index.html?id='+id+'&sn='+sn+'&yw=association&cp=1&jumpParams='+jumpParams;
+        $('#qrText').val(qrurl);
+      }
+
+      function getData() {
+      var id=getQueryString('id');
+      // var id=1;
+      $.ajax({
+        type: "post",
+        url: "/zxcity_restful/ws/rest",
+        headers: {
+          apikey: sessionStorage.getItem('apikey') || 'test'
+        },
+        data: {
+          cmd: 'association/getOrgById',
+          data: JSON.stringify({"id":id}),
+          version: 1
+        },
+        success: function(r) {
+          if(r.code==1){
+            var name;
+            name=r.data.name;
+            $('.Name').text(name);
+          }
+        },
+        error: function(r) {
+          console.log(r)
+        }
+      });
+
+      
+
+
+
+    }
+</script>
+</body>
+</html>

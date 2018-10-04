@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>通知公告</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="strategy_setting/strategy_setting.css" />
+</head>
+<body>
+    <div class="common-container" id="body-box">
+        <div class="row body-left-nav" >
+                <div class="common-title">
+                    运营策略管理 - <span class="jurisdiction-title-name">策略管理</span>
+                </div>
+                  <div class="row common-search">
+                      <form class="form-inline" role="form">
+                          <div class="form-group">
+                              <label class="control-lable">策略名称：</label>
+                              <input type="text" class="layui-input search-input media-input longinput" placeholder="请输入策略名称" id="inquireInput">
+                          </div>
+                          <div class="form-group">
+                                <label class="jurisdiction-label">用户类型：</label>
+								<select id="feedbacktType" class="selectpicker show-tick form-control">
+									<option value="">--全部--</option>
+									<option value="0">个人用户</option>
+									<option value="1">商户</option>
+								</select>
+						   </div>
+						   <div class="form-group">
+                                <label class="jurisdiction-label">用户等级：</label>
+								<select id="feedbacktUser" class="selectpicker show-tick form-control">
+									<option value="">--全部--</option>
+									<option value="0">普通用户</option>
+									<option value="1">普通商户</option>
+									<option value="2">代理商户</option>
+									<option value="3">合作商户</option>
+								</select>
+						   </div>
+                          <button class="btn btn-success" type="button" id="inquire">
+                              <i class="search-icon"></i>查询
+                          </button>
+                      </form>
+                      <a href="javascript:void(0);"  class="btn btn-info add-users" id="add-users" data-toggle="modal" data-target="#add-newuser"><i class="add-icon"></i>新增</a>
+                  </div>
+                    <div class="common-table" id="common-table">
+                        <table class="table table-hover">
+                              <thead>
+                                <tr class="active">
+                                  <th>序号</th>
+                                  <th>策略名称</th>
+                                  <th>用户类型</th>
+                                  <th>用户等级</th>
+                                  <th>功能编码</th>
+                                  <th>取值类型</th>
+                                  <th>取值</th>
+                                  <th>业务说明</th>
+                                  <th>操作</th>
+                                </tr>
+                              </thead>
+                              <tbody id="tbodyParameter">
+                              	
+                              </tbody>
+                    </table>
+                </div>
+                <div class="common-page">
+                      <div id="paging-box-count">
+                          
+                      </div>
+                    <div id="paging-box" class="basic-jump"></div>
+                </div>
+                
+        </div>
+
+    </div>
+    <!-- modal -->
+    <div class="modal fade" id="add-newuser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    新增策略
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group p20">
+                        <span class="input-group-addon">策略名称:</span>
+                        <input type="text" class="form-control newname" id="addName">
+                    </div>
+                    <div class="input-group p20">
+                          <span class="input-group-addon">用户类型:</span>
+                            <select id="addType" class="selectpicker show-tick form-control">
+                              <option>个人用户</option>
+                              <option>商户</option>
+                            </select>
+                    </div>
+                    <div class="input-group p20">
+                          <span class="input-group-addon">用户等级:</span>
+                            <select id="addLevel" class="selectpicker show-tick form-control">
+                              <option class="one">普通用户</option>
+                              <option class="two">普通商户</option>
+                              <option class="three">合作商户</option>
+                              <option class="four">代理商户</option>
+                            </select>
+                    </div>
+                    <div class="input-group p20">
+                        <span class="input-group-addon">功能编码:</span>
+                        <input type="text" class="form-control newname" id="addCode">
+                    </div>
+                    <div class="input-group p20">
+                          <span class="input-group-addon">取值类型:</span>
+                            <select id="addValueType" class="selectpicker show-tick form-control">
+                              <option>整数</option>
+                              <option>布尔</option>
+                              <option>小数</option>
+                              <option>文本</option>
+                              <option>天数</option>
+                            </select>
+                    </div>
+                    <div class="input-group p20">
+                        <span class="input-group-addon">取值:</span>
+                        <input type="text" class="form-control newname" id="addValue">
+                    </div>
+                    <div class="input-group p20">
+                          <span class="input-group-addon">应用范围:</span>
+                            <select id="addGround" class="selectpicker show-tick form-control">
+                              <option>--全部--</option>
+                              <option>店铺</option>
+                              <option>商户</option>
+                            </select>
+                    </div>
+                     <div class="input-group p20">
+                        	<span class="input-group-addon">业务描述:</span>
+                         <textarea class="form-control remarks" rows="6" id="addRemarks"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn" id="add-parameters">
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+   <!-- modal -->
+    <div class="modal fade" id="change-newuser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    修改策略
+                </h4>
+            </div>
+            <div class="modal-body">
+                 <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group p20">
+                        <span class="input-group-addon">策略名称:</span>
+                        <input type="text" class="form-control newname" id="chaName">
+                    </div>
+                    <div class="input-group p20">
+                          <span class="input-group-addon">用户类型:</span>
+                            <select id="chaType" class="selectpicker show-tick form-control">
+                              <option>个人用户</option>
+                              <option>商户</option>
+                            </select>
+                    </div>
+                    <div class="input-group p20">
+                          <span class="input-group-addon">用户等级:</span>
+                            <select id="chaLevel" class="selectpicker show-tick form-control">
+                              <option class="one">普通用户</option>
+                              <option class="two">普通商户</option>
+                              <option class="three">合作商户</option>
+                              <option class="four">代理商户</option>
+                            </select>
+                    </div>
+                    <div class="input-group p20">
+                        <span class="input-group-addon">功能编码:</span>
+                        <input type="text" class="form-control newname" id="chaCode">
+                    </div>
+                    <div class="input-group p20">
+                          <span class="input-group-addon">取值类型:</span>
+                            <select id="chaValueType" class="selectpicker show-tick form-control">
+                              <option>整数</option>
+                              <option>布尔</option>
+                              <option>小数</option>
+                              <option>文本</option>
+                              <option>天数</option>
+                            </select>
+                    </div>
+                    <div class="input-group p20">
+                        <span class="input-group-addon">取值:</span>
+                        <input type="text" class="form-control newname" id="chaValue">
+                    </div>
+                    <div class="input-group p20">
+                          <span class="input-group-addon">应用范围:</span>
+                            <select id="chaGround" class="selectpicker show-tick form-control">
+                              <option>--全部--</option>
+                              <option>店铺</option>
+                              <option>商户</option>
+                            </select>
+                    </div>
+                     <div class="input-group p20">
+                        	<span class="input-group-addon">业务描述:</span>
+                         <textarea class="form-control remarks" rows="6" id="chaRemarks"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn" id="saveParemeterconfig">
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   <!-- modal -->
+    <div class="modal fade" id="showNotice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    	策略
+                </h4>
+            </div>
+            <div class="modal-body">
+            		<div class="common-table">
+					<table class="table table-hover">
+	                              <tbody id="modal-tbody">
+	                              </tbody>
+	                </table>
+	                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+
+<script type="text/javascript" src="common/js/login_success.js"></script>
+<script type="text/javascript" src="common/js/util/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/util.js"></script>
+<script type="text/javascript" src="common/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+
+<!--jSCurr-->
+
+<script type="text/javascript" src="strategy_setting/strategy_setting.js"></script>
+<script type="text/javascript" src="common/js/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/pub.js"></script>
+</html>

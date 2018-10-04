@@ -1,0 +1,760 @@
+*{
+  box-sizing: border-box;
+  &::-webkit-scrollbar{
+    width: 4px;
+    height: 2px;
+  }
+  &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.3);
+  }
+  &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+  }
+}
+body{
+  background-color: #f0f0f0;
+}
+.layoutBody{
+  width: 68.259%;
+  background-color: #fff;
+  margin: 0 auto;
+  border: 1px solid #e0e0e0;
+  margin-top: 20px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.header{
+  width: 100%;
+  height: 60px;
+  line-height: 59px;
+  padding: 0 40px;
+  div{
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 0;
+    span{
+      display: inline-block;
+      font-size: 14px;
+      color: #1be0d6;
+      border-bottom: 2px solid #1be0d6;
+    }
+  }
+}
+//店铺选择
+.selectShop{
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  position: relative;
+  font-size: 0;
+  margin-top: 22px;
+  label{
+    float: left;
+    width: 16.333%;
+    height: 32px;
+    color: #333333;
+    font-size: 14px;
+    text-align: right;
+  }
+  select{
+    float: left;
+    width: 130px;
+    height: 32px;
+    outline: none;
+    border: 1px solid #d9d9d9;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    padding-left: 30px;
+    font-size: 12px;
+    color: #1be0d6;
+    background: url("../images/selectstore.png") no-repeat scroll right center transparent;
+  }
+  .select2-container--default{
+    .select2-selection--single{
+      background: url("../images/selectstore.png") no-repeat center;
+      -webkit-background-size: 100%;
+      background-size: 100%;
+      .select2-selection__rendered{
+        padding-right: 30px;
+        padding-left: 30px;
+        color: #1be0d6;
+        font-size: 12px;
+      }
+      .select2-selection__arrow {
+        display: none;
+      }
+    }
+  }
+}
+//考勤方式
+.setAttendanceType{
+  font-size: 0;
+  margin-top: 40px;
+  >label{
+    display: inline-block;
+    width: 16.333%;
+    height: 32px;
+    color: #333333;
+    font-size: 14px;
+    text-align: right;
+    vertical-align: top;
+  }
+  .settingContent{
+    display: inline-block;
+    font-size: 14px;
+    color: #5f5f5f;
+    width: 55.833%;
+    .typeOne{
+      width: 100%;
+      height: 100%;
+      .typeOne-directions{
+        width: 100%;
+        height: 28px;
+        line-height: 28px;
+        margin-top: 10px;
+        >span{
+          float: left;
+        }
+        >div{
+          float: right;
+          i{
+            vertical-align: middle;
+            font-style: normal;
+          }
+          select{
+            width: 100px;
+            height: 28px;
+            outline: none;
+            border:1px solid #d9d9d9;
+            font-size: 14px;
+            color: #333333;
+            margin-left: 10px;
+            padding-left: 10px;
+            appearance:none;
+            -moz-appearance:none;
+            -webkit-appearance:none;
+            background: url("../images/attendance_arrow.png") no-repeat scroll right center transparent;
+          }
+        }
+        .select2-container--default{
+          .select2-selection--single{
+            height: 28px;
+            .select2-selection__rendered{
+              line-height: 28px;
+            }
+            .select2-selection__arrow {
+              width: 26px;
+              height: 26px;
+            }
+          }
+        }
+      }
+      .typeOne-detail{
+        width: 100%;
+        border: 1px solid #ebebeb;
+        margin-top: 4px;
+        padding: 0 14px;
+        .typeOne-detail-title{
+          width: 100%;
+          height: 52px;
+          line-height: 52px;
+          border-bottom: 1px solid #ebebeb;
+          >span{
+            width: 50%;
+            float: left;
+            top: 0;
+            left:0;
+            font-size: 14px;
+            color: #333333;
+            &:last-of-type{
+              float: right;
+              text-align: right;
+            }
+          }
+        }
+        .typeOne-detail-content{
+          width: 100%;
+          //height: 60px;
+          padding: 8px 0;
+          line-height: 26px;
+          overflow: hidden;
+          >.address{
+            float: left;
+            text-align: left;
+            width: 91%;
+            h4{
+              font-size: 16px;
+              color: #333333;
+              margin-bottom: 2px;
+            }
+          }
+          .editBtn{
+            width: 9%;
+            float: right;
+            text-align: right;
+            color: #1be0d6;
+          }
+        }
+      }
+    }
+    .typeTwo{
+      margin-top: 60px;
+      .typeTwo-detail{
+        margin-top: 10px;
+        width: 100%;
+        border: 1px solid #ebebeb;
+        padding: 0 14px;
+        .typeTwo-detail-title{
+          width: 100%;
+          height: 50px;
+          line-height: 50px;
+          border-bottom: 1px solid #ebebeb;
+          font-size: 0;
+          span{
+            display: inline-block;
+            font-size: 14px;
+            color: #333333;
+            &:first-of-type{
+              width: 47%;
+            }
+            &:last-of-type{
+              width: 9%;
+              text-align: right;
+            }
+            &:nth-of-type(2){
+              width: 44%;
+            }
+          }
+        }
+        .typeTwo-detail-content{
+          width: 100%;
+          ul{
+            li{
+              width: 100%;
+              height: 60px;
+              line-height: 60px;
+              font-size: 0;
+              border-bottom: 1px solid #ebebeb;
+              &:last-of-type{
+                border-bottom: 0;
+              }
+              span{
+                display: inline-block;
+                font-size: 14px;
+                color: #333333;
+                vertical-align: middle;
+                &:first-of-type{
+                  width: 47%;
+                  text-overflow:ellipsis;
+                  white-space:nowrap;
+                  overflow:hidden
+                }
+                &:last-of-type{
+                  width: 9%;
+                  text-align: right;
+                  color: #1be0d6;
+                  cursor: pointer;
+                }
+                &:nth-of-type(2){
+                  width: 44%;
+                }
+              }
+            }
+          }
+        }
+      }
+      .addWifi{
+        display: block;
+        font-size: 14px;
+        color: #1be0d6;
+        padding: 8px 0;
+      }
+      .punchStyle{
+        width: 100%;
+        margin-top: 10px;
+        ul{
+          li{
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+            -moz-user-select:none; /*火狐*/
+            -webkit-user-select:none; /*webkit浏览器*/
+            -ms-user-select:none; /*IE10*/
+            -khtml-user-select:none; /*早期浏览器*/
+            user-select:none;
+            i{
+              display: inline-block;
+              width: 14px;
+              height: 14px;
+              border: 1px solid #1be0d6;
+              vertical-align: middle;
+              margin-right: 10px;
+              &.active{
+                background: url("../images/selected.png") no-repeat center;
+                -webkit-background-size: 100%;
+                background-size: 100%;
+              }
+            }
+            &:nth-of-type(2){
+              margin: 0 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//设置上班时间
+.setAttendanceTime{
+  width: 100%;
+  //height: 32px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+  >label{
+    float: left;
+    width: 16.333%;
+    height: 32px;
+    line-height: 32px;
+    color: #333333;
+    font-size: 14px;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .timeSelectBox{
+    float: left;
+    width: 83%;
+    height: 32px;
+    font-size: 0;
+    vertical-align: middle;
+    >div{
+      float: left;
+      vertical-align: middle;
+      height: 32px;
+      line-height: 32px;
+      &:last-of-type{
+        margin-left: 50px;
+      }
+      >label{
+        display: inline-block;
+        width: 70px;
+        height: 32px;
+        font-size: 14px;
+        color: #333333;
+        vertical-align: middle;
+      }
+      input{
+        width: 130px;
+        height: 32px;
+        vertical-align: middle;
+        border: 1px solid #ebebeb;
+        outline: none;
+        padding-left: 10px;
+        background: url("../images/icon_arrow.png") no-repeat top right;
+        -webkit-background-size: 32px 32px;
+        background-size: 32px 32px;
+        color: #333333;
+      }
+    }
+  }
+}
+
+//保存设置按钮
+.saveBtnBox{
+  padding-left: 22%;
+  margin-top: 120px;
+  margin-bottom: 50px;
+  button{
+    width: 80px;
+    height: 30px;
+    outline: none;
+    border: none;
+    background-color: #1be0d6;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+  }
+}
+
+//添加WiFi弹窗样式
+.addWifiPage{
+  -webkit-border-radius: 6px!important;
+  -moz-border-radius: 6px!important;
+  border-radius: 6px!important;
+  .layui-layer-btn{
+    height: 57px;
+    border-top: 1px solid #ebebeb;
+    padding:0;
+    a{
+      width: 80px;
+      height: 36px;
+      line-height: 36px;
+      font-size: 14px;
+      padding: 0;
+      text-align: center;
+      margin-top: 0;
+      &.layui-layer-btn0{
+        background-color: #1be0d6;
+        border: none;
+      }
+    }
+  }
+  .title{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid #ebebeb;
+    padding: 0 15px;
+    span{
+      float: left;
+      font-size: 14px;
+      color: #333333;
+    }
+    i{
+      float: right;
+      cursor: pointer;
+      font-size: 24px;
+      color: #999999;
+    }
+
+  }
+  .setWifiContent{
+    width: 100%;
+    margin-top: 10px;
+    >div{
+      margin-bottom: 20px;
+      >label{
+        display: inline-block;
+        width: 120px;
+        font-size: 14px;
+        color: #333333;
+        text-align: right;
+      }
+      >input{
+        width: 300px;
+        height: 36px;
+        outline: none;
+        border: 1px solid #ebebeb;
+        padding-left: 10px;
+        font-size: 14px;
+        &::-webkit-input-placeholder{
+          color: #cccccc;
+        }
+        &::-moz-placeholder{
+          color: #cccccc;
+        }
+        &::-ms-input-placeholder{
+          color: #cccccc;
+        }
+      }
+    }
+  }
+  p{
+    font-size: 14px;
+    color: #5f5f5f;
+    padding-left: 40px;
+    margin-top: -4px;
+  }
+}
+
+//修改考勤地址弹窗
+.editAddressPage,.layui-layer-page{
+  -webkit-border-radius: 6px!important;
+  -moz-border-radius: 6px!important;
+  border-radius: 6px!important;
+  .layui-layer-content{
+    -webkit-border-radius: 6px!important;
+    -moz-border-radius: 6px!important;
+    border-radius: 6px!important;
+  }
+  .mapBox{
+    width: 100%;
+    height: 477px;
+    background-color: #cccccc;
+    position: relative;
+    .panel {
+      width: 214px;
+      //height: 200px;
+      background-color: #ffffff;
+      color: #333;
+      border: 1px solid silver;
+      box-shadow: 3px 4px 3px 0 silver;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      //overflow-y: auto;
+      line-height: 20px;
+      z-index: 9999;
+      padding: 10px 11px;
+      font-size: 12px;
+      #input {
+        width: 196px;
+        height: 26px;
+        border: 1px solid #ebebeb;
+        outline: none;
+        padding-left: 4px;
+        font-size: 14px;
+        &::-webkit-input-placeholder{
+          color: #999999;
+        }
+        &::-moz-placeholder{
+          color: #999999;
+        }
+        &::-ms-input-placeholder{
+          color: #999999;
+        }
+      }
+      .tips{
+        font-size: 14px;
+        color: #333333;
+      }
+
+    }
+  }
+  .resultBox{
+    width: 100%;
+    height: 103px;
+    border: 1px solid #ebebeb;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 30px;
+    >div{
+      height: 30px;
+      font-size: 0;
+      margin-top: 16px;
+      >label{
+        font-size: 14px;
+        color: #333333;
+        vertical-align: middle;
+      }
+      .addressName,.addressDetail{
+        display: inline-block;
+        vertical-align: middle;
+        width: 220px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #cccccc;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #333333;
+        padding-left: 10px;
+      }
+      .addressDetail{
+        border: none;
+        width: 57%;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        overflow:hidden
+      }
+      .addressName{
+        outline: none;
+      }
+    }
+    .btns{
+      position: absolute;
+      top: 33px;
+      right: 20px;
+      font-size: 0;
+      margin-top: 0;
+      button{
+        width: 80px;
+        height: 36px;
+        color: #333333;
+        font-size: 14px;
+        border: 1px solid #ebebeb;
+        outline: none;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        background-color: #fff;
+        &.yesBtn{
+          background-color: #1be0d6;
+          color: #ffffff;
+          margin-left: 28px;
+        }
+      }
+    }
+  }
+}
+
+//选择生效方式弹窗
+#EffectiveType{
+  .tips{
+    text-align: center;
+    line-height: 24px;
+    margin-top: 30px;
+    p:nth-of-type(1){
+      font-size: 16px;
+      font-weight: 700;
+      color: #000;
+    }
+    p:nth-of-type(2){
+      font-size: 14px;
+      color: #333333;
+      font-weight: 700;
+    }
+  }
+  .selectItem{
+    width: 100%;
+    margin-top: 10px;
+    ul{
+      li{
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        font-size: 16px;
+        color: #00ccc0;
+        border-bottom: 1px solid #eeeeee;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+//select2公共样式
+.select2-container--default{
+  vertical-align: middle;
+  font-size: 14px;
+  .select2-selection--single{
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    height: 32px;
+    border: 1px solid #d9d9d9;
+    .select2-selection__rendered{
+      line-height: 32px;
+      color: #333333;
+    }
+    .select2-selection__arrow {
+      width: 30px;
+      height: 30px;
+      background: url("../images/icon_arrow.png") no-repeat center;
+      -webkit-background-size: 100%;
+      background-size: 100%;
+      b{
+        display: none
+      }
+    }
+  }
+}
+.select2-container--open{
+  font-size: 14px;
+  .select2-results__option--highlighted[aria-selected]{
+    background-color: #1be0d6;
+  }
+  .select2-dropdown{
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+  }
+  .select2-results__option{
+    padding: 4px 6px;
+  }
+}
+//重置地图搜索接口的最大高度
+.amap-ui-poi-picker-sugg-container{
+  max-height: 410px!important;
+}
+
+//隐藏时间选择器的秒
+.layui-laydate{
+  .layui-laydate-main{
+    .layui-laydate-content{
+      .layui-laydate-list{
+        >li{
+          width: 50%;
+          &:nth-of-type(3){
+            display: none!important;
+          }
+          ol{
+            li{
+              //width: 100%;
+              padding-left: 54px;
+              //text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//2018年7月23日15:22:06
+i.checki{
+  cursor: pointer;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #1be0d6;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+i.checkActive{
+  background: url(../images/selected.png) no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.c1b{
+  background: #1be0d6;
+}
+.fl{
+  float: left;}
+.m0a{
+  margin: 0 auto;
+  display: block;
+}
+.layui-form-label{
+  width:auto;
+}
+.time_list_box{
+  margin: 10px 0;
+  width: 100%;
+  border: 1px solid #ebebeb;
+  padding: 0 14px;
+  .ul1{
+    border-bottom: 1px solid #ebebeb;
+  }
+  ul{
+
+  }
+  li{
+    float: left;
+    font-size: 14px;
+    color: #333;
+    line-height: 50px
+  }
+  li.tar{
+    text-align: right;
+  }
+  li.tac{
+    text-align: center;
+  }
+  a{
+    color: #1be0d6;
+    margin-left:10%;
+  }
+}
+#addTimeLayer{
+  padding: 10px;
+  .span{
+    padding: 9px 15px;
+  }
+
+}
+.ul2No{
+  line-height: 50px;
+}
+.tac{
+  text-align: center;
+}

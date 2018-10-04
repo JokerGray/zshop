@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>支付宝手续费配置</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../../common/css/reset.css" />
+    <link rel="stylesheet" href="../../../common/css/layTab.css" />
+    <style type="text/css">
+        #setBtn {
+            width: 112px;
+            height: 38px;
+            position: relative;
+            top: 27px;
+        }
+        .dTitle{
+            font-size: 23px;
+            margin: 12px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row" style="margin-top: 50px;">
+        <div class="layui-col-lg2">
+            <form class="layui-form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">版本号：</label>
+                    <div class="layui-input-block">
+                        <select name="yearVersion" id="yearVersion">
+                            <option value="-1">-- 选择版本 --</option>
+                            <!--Todo: 动态查询-->
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="layui-col-lg2" style="margin-left: 20px;">
+            <div class="layui-form-item">
+                <button id="addConfigBtn" class="layui-btn layui-btn-normal"><i class="layui-icon layui-icon-add-1"></i>添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--操作按钮-->
+<div class="tool-add-box clearfix">
+    <button class="layui-btn add" id="exportBtn" style="top: -10px;margin-left: 10px;">导出Excel</button>
+    <button class="layui-btn add" id="setBtn" style="top: -10px;">设置</button>
+    <button class="layui-btn add" id="searchBtn" style="top: -10px;">搜索</button>
+</div>
+
+<!--表格开始-->
+<div class="layui-app">
+    <div class="app-table" style="margin-top: 10px;" >
+        <table lay-filter="table" id="table"></table>
+        <div id="layTablePage"></div>
+    </div>
+</div>
+<!--表格结束-->
+
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/assets/template-web.js"></script>
+<script type="text/javascript" src="../../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="application/javascript">
+    jsorcss('js', 'alipayFeeConfiguration');
+</script>
+</body>
+</html>
+
+<!--templates-->
+<script type="text/html" id="yearVersionTpl">
+    {{each list}}
+    <option value="{{$value}}">{{$value}}</option>
+    {{/each}}
+</script>
+
+<script type="text/html" id="settingsTpl">
+    <form class="layui-form" style="margin-top: 20px;">
+        <div class="layui-fluid">
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">版本</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="yearVersion" lay-skin="switch" {{if yearVersion}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">月限额</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="monthlyLimit" lay-skin="switch" {{if monthlyLimit}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">支付类型</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="paymentTypes" lay-skin="switch" {{if paymentTypes}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">支付操作</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="paymentOperationName" lay-skin="switch" {{if paymentOperationName}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">收费标准</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="chargeRatio" lay-skin="switch" {{if chargeRatio}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">有效起始时间</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="effectiveStartTime" lay-skin="switch" {{if effectiveStartTime}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">有效结束时间</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="effectiveEndTime" lay-skin="switch" {{if effectiveEndTime}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">操作</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="id" lay-skin="switch" {{if id}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>
+
+<script type="text/html" id="addConfigTpl">
+    <div class="layui-fluid">
+        <form class="layui-form" id="form-data" style="margin: 50px 0px 30px;">
+            <div class="layui-row">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">版 本：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="yearVersion" class="layui-input" id="version" placeholder="选择年份">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm5 layui-col-md5 layui-col-sm-offset1 layui-col-md-offset1">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">支付类型：</label>
+                        <div class="layui-input-block">
+                            <select name="paymentTypes">
+                                <option value="-1">-- 选择类型 --</option>
+                                <option value="1">支付宝</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm4 layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">收费标准：</label>
+                        <div class="layui-input-block">
+                            <input type="number" class="layui-input" name="chargeRatio" />
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm1 layui-col-md1">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="text-align: left;">%</label>
+                    </div>
+                </div>
+                <div class="layui-col-sm5 layui-col-md5 layui-col-sm-offset1 layui-col-md-offset1">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">支付操作：</label>
+                        <div class="layui-input-block">
+                            <select name="paymentOperationId">
+                                <option value="-1">-- 选择操作 --</option>
+                                <option value="1">进账</option>
+                                <option value="2">出账</option>
+                                <option value="3">单笔进账</option>
+                                <option value="4">单笔出账</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">有效日期：</label>
+                        <div class="layui-input-block">
+                            <input name="effectiveStartTime" id="effectiveStartTime" type="text" class="layui-input" placeholder="输入起始日期" />
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">至：</label>
+                        <div class="layui-input-block">
+                            <input name="effectiveEndTime" id="effectiveEndTime" type="text" class="layui-input" placeholder="输入结束日期" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm8 layui-col-md8">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否限额：</label>
+                        <div class="layui-input-block">
+                            <input type="radio" lay-filter="monthlyLimit" name="monthlyLimit" value="0" title="限额">
+                            <input type="radio" lay-filter="monthlyLimit" name="monthlyLimit" value="1" title="不限额">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row layui-hide" id="monthlyMinimumAmount">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">最小限额：</label>
+                        <div class="layui-input-block">
+                            <input type="number" class="layui-input" name="monthlyMinimumAmount" placeholder="最小限额">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row layui-hide" id="monthlyMaximumAmount">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">最大限额：</label>
+                        <div class="layui-input-block">
+                            <input type="number" class="layui-input" name="monthlyMaximumAmount" placeholder="最大限额">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+
+<script type="text/html" id="updateConfigTpl">
+    <div class="layui-fluid">
+        <form class="layui-form" id="form-data2" style="margin: 50px 0px 30px;">
+            <div class="layui-row">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">版 本：</label>
+                        <div class="layui-input-block">
+                            <input type="text" value="{{_yearVersion}}" name="yearVersion" class="layui-input" id="version2" placeholder="选择年份">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm5 layui-col-md5 layui-col-sm-offset1 layui-col-md-offset1">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">支付类型：</label>
+                        <div class="layui-input-block">
+                            <select name="paymentTypes">
+                                <option value="-1">-- 选择类型 --</option>
+                                <option {{if _paymentTypes === '1'}} selected {{/if}} value="1">支付宝</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm4 layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">收费标准：</label>
+                        <div class="layui-input-block">
+                            <input type="number" class="layui-input" name="chargeRatio" value="{{_chargeRatio}}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm1 layui-col-md1">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="text-align: left;">%</label>
+                    </div>
+                </div>
+                <div class="layui-col-sm5 layui-col-md5 layui-col-sm-offset1 layui-col-md-offset1">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">支付操作：</label>
+                        <div class="layui-input-block">
+                            <select name="paymentOperationId">
+                                <option value="-1">-- 选择操作 --</option>
+                                <option {{if _paymentOperationId === '1'}} selected {{/if}} value="1">进账</option>
+                                <option {{if _paymentOperationId === '2'}} selected {{/if}} value="2">出账</option>
+                                <option {{if _paymentOperationId === '3'}} selected {{/if}} value="3">单笔进账</option>
+                                <option {{if _paymentOperationId === '4'}} selected {{/if}} value="4">单笔出账</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">有效日期：</label>
+                        <div class="layui-input-block">
+                            <input name="effectiveStartTime" value="{{_effectiveStartTime}}" id="effectiveStartTime2" type="text" class="layui-input" placeholder="输入起始日期" />
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">至：</label>
+                        <div class="layui-input-block">
+                            <input name="effectiveEndTime" value="{{_effectiveEndTime}}" id="effectiveEndTime2" type="text" class="layui-input" placeholder="输入结束日期" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm8 layui-col-md8">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否限额：</label>
+                        <div class="layui-input-block">
+                            <input type="radio" lay-filter="monthlyLimit" name="monthlyLimit" value="0" title="限额" {{if _monthlyLimit === '0' }} checked {{/if}}>
+                            <input type="radio" lay-filter="monthlyLimit" name="monthlyLimit" value="1" title="不限额" {{if _monthlyLimit === '1' }} checked {{/if}}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row {{if _monthlyLimit === '1' }} layui-hide {{/if}}" id="monthlyMinimumAmount2">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">最小限额：</label>
+                        <div class="layui-input-block">
+                            <input type="number" class="layui-input" name="monthlyMinimumAmount" value="{{_monthlyMinimumAmount}}" placeholder="最小限额">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row {{if _monthlyLimit === '1' }} layui-hide {{/if}}" id="monthlyMaximumAmount2">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">最大限额：</label>
+                        <div class="layui-input-block">
+                            <input type="number" class="layui-input" name="monthlyMaximumAmount" value="{{_monthlyMaximumAmount}}" placeholder="最大限额">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+
+

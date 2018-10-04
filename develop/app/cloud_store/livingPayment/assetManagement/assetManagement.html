@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+  <title>资产管理</title>
+  <link rel="stylesheet" type="text/css" href="../common/css/layui-v2.2.2/css/layui.css">
+  <link rel="stylesheet" href="css/assetManagement.css">
+</head>
+<body>
+
+<!--<div id="thechooseShop">-->
+  <!--<span>选择店铺：</span>-->
+  <!--<select id="selectShop" >-->
+    <!--&lt;!&ndash;<option value="">1111</option>&ndash;&gt;-->
+  <!--&lt;!&ndash;</select>&ndash;&gt;-->
+<!--</div>-->
+  <!--增加按钮-->
+  <div class="addBtn">
+    <span class="layui-btn addHouse">
+      <i class="layui-icon">&#xe608;</i> 楼栋/单元号录入
+    </span>
+  </div>
+  <!--头部面板-->
+  <ul class="title_panel">
+    <li class="building active">楼栋/门牌号</li>
+    <li class="vehicle">车辆</li>
+  </ul>
+  <!--中间内容-->
+  <div class="content">
+   <!--楼栋门牌号-->
+    <div class="house">
+      <!--搜索框/新增按钮-->
+      <form class="layui-form houseFORM" action="">
+        <div class="layui-form-item">
+          <label class="layui-form-label">楼栋号：</label>
+          <div class="layui-input-inline">
+            <input type="text"   placeholder="请输入楼栋号" autocomplete="off" class="layui-input " maxlength="10">
+          </div>
+          <label class="layui-form-label">单元号：</label>
+          <div class="layui-input-inline">
+            <input type="text"  placeholder="请输入单元号" autocomplete="off" class="layui-input" maxlength="10">
+        </div>
+          <label class="layui-form-label">门牌号：</label>
+          <div class="layui-input-inline">
+            <input type="text"  placeholder="请输入门牌号" autocomplete="off" class="layui-input" maxlength="10">
+          </div>
+          <span class="layui-btn searchHouseBtn">
+            <i class="layui-icon">&#xe615;</i>
+          </span>
+          <span class="layui-btn addAssert layui-btn-warm">
+            <i class="layui-icon">&#xe608;</i> 新增
+          </span>
+          </div>
+      </form>
+      <!--楼栋表格-->
+      <table class="layui-hide" id="test" lay-filter="tableHouse" ></table>
+    </div>
+    <!--车辆-->
+    <div class="car" style="display: none">
+      <!--搜索-->
+      <form class="layui-form carForm" action="">
+        <div class="layui-form-item">
+          <label class="layui-form-label">车牌号：</label>
+          <div class="layui-input-inline">
+            <input type="text" name="password"  lay-verify="required" placeholder="请输入车牌号" autocomplete="off" class="layui-input" maxlength="10">
+          </div>
+          <label class="layui-form-label">姓名：</label>
+          <div class="layui-input-inline">
+            <input type="text" name="password"  lay-verify="required" placeholder="请输入车主姓名" autocomplete="off" class="layui-input" maxlength="8">
+          </div>
+          <label class="layui-form-label">手机号：</label>
+          <div class="layui-input-inline">
+            <input type="text" name="password" onkeyup="value=value.replace(/[^\d]/g,'')"  lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input" maxlength="11">
+          </div>
+          <label class="layui-form-label">车型：</label>
+          <div class="layui-input-inline">
+            <input type="text" name="password"  lay-verify="required" placeholder="请输入车型" autocomplete="off" class="layui-input" maxlength="11">
+          </div>
+          <span class="layui-btn searchCarBtn">
+            <i class="layui-icon">&#xe615;</i>
+          </span>
+          <span class="layui-btn addCar layui-btn-warm">
+            <i class="layui-icon">&#xe608;</i> 新增
+          </span>
+        </div>
+      </form>
+
+      <table class="layui-hide" id="carTable" lay-filter="tableCar" ></table>
+    </div>
+
+    <div id="laypageLeft" class="table-rgt"></div>
+  </div>
+
+  <!--操作-->
+  <script type="text/html" id="checkboxTpl">
+    <a class="tabicon" lay-event="to_edit"><i class="layui-icon" >&#xe642;</i></a>
+    <a class="tabicon" lay-event="to_del"><i class="layui-icon delete_tab">&#x1006;</i></a>
+  </script>
+
+  <!--是否绑定-->
+  <script type="text/html" id="sexTpl">
+    {{#  if(d.hadOwner||d.status === 1){ }}
+    <span 	class="layui-btn layui-btn-sm"
+           style="background:#1DC0AF "
+           lay-event="to_unbind"
+    >是</span>
+    {{#  } else { }}
+    <span 	class="layui-btn layui-btn-sm"
+           style="background:#f8ac59"
+           lay-event="to_bind">绑定业主</span>
+    {{#  } }}
+  </script>
+
+  <!--添加单元楼层弹框-->
+  <div id="addBuilding">
+    <div class="leftPart">
+        <p class="firstFloor">
+          <span >楼栋号</span>
+          <span class="addBlock corlor">
+            <i class="layui-icon corlor">
+              &#xe654;</i>
+            新增楼栋号
+          </span>
+        </p>
+      <ul class="blockNumber">
+        <!--<li>-->
+          <!--<span class="number">一号楼</span>-->
+          <!--<i class="layui-icon corlor editBlock">&#xe642;</i>-->
+          <!--<i class="layui-icon corlor delBlock">&#x1006;</i>-->
+        <!--</li>-->
+      </ul>
+    </div>
+    <div class="rightPart">
+      <p class="title">单元号</p>
+
+      <ul class="rightContent">
+        <!--<li>-->
+          <!--<span class="addUnit corlor"><i class="layui-icon corlor">&#xe654;</i>新增单元号</span>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<span class="number">一号楼</span>-->
+          <!--<i class="layui-icon  editBlock">&#xe642;</i>-->
+          <!--<i class="layui-icon  delBlock">&#x1006;</i>-->
+        <!--</li>-->
+     </ul>
+    </div>
+
+  </div>
+
+  <!--新增资产管理-->
+  <div id="assert">
+    <form class="layui-form" lay-filter="testHOUSE" action="">
+      <div class="layui-form-item">
+        <label class="layui-form-label">楼栋号</label>
+        <div class="layui-input-block">
+          <select name="home" class="homeOption" lay-verify="required" lay-filter="homeOption" >
+            <!--<option value=""></option>-->
+          </select>
+        </div>
+      </div>
+      <div class="layui-form-item">
+
+
+        <label class="layui-form-label">单元号</label>
+        <div class="layui-input-block">
+          <select name="unit" class="unitOption" lay-verify="required" lay-filter="unitOption">
+            <!--<option value=""></option>-->
+          </select>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label door">门牌号</label>
+        <div class="layui-input-inline">
+          <input type="text"  placeholder="请输入门牌" autocomplete="off" class="layui-input doorNember" maxlength="5">
+        </div>
+      </div>
+    </form>
+  </div>
+
+<!--新增业主-->
+  <div id="owner">
+    <form class="layui-form" action="">
+      <div class="layui-form-item">
+        <label class="layui-form-label ">业主名</label>
+        <div class="layui-input-inline">
+          <input type="text" placeholder="请输入业主姓名" autocomplete="off" class="layui-input ownerName" maxlength="10">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label ">手机号</label>
+        <div class="layui-input-inline">
+          <input  type="text" onkeyup="value=value.replace(/[^\d]/g,'')"  placeholder="请输入手机号"   autocomplete="off" class="layui-input ownerPhone"  maxlength="11">
+        </div>
+      </div>
+    </form>
+  </div>
+  <!--新增车辆-->
+  <div id="addvehical">
+    <form class="layui-form" action="">
+      <div class="layui-form-item">
+        <label class="layui-form-label ">车牌号</label>
+        <div class="layui-input-inline">
+          <input type="text" name="password" required lay-verify="required" placeholder="请输入车牌号" autocomplete="off" class="layui-input addCarNumber" maxlength="7">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label ">车主名</label>
+        <div class="layui-input-inline">
+          <input type="text" name="password" required lay-verify="required" placeholder="请输入车主名" autocomplete="off" class="layui-input addOwner" maxlength="10">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label ">手机号</label>
+        <div class="layui-input-inline">
+          <input type="text" name="password" onkeyup="value=value.replace(/[^\d]/g,'')" required placeholder="请输入手机号" autocomplete="off" class="layui-input ownerPhone" maxlength="11">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label ">车型</label>
+        <div class="layui-input-inline">
+          <input type="text" name="password" required lay-verify="required" placeholder="请输入车型" autocomplete="off" class="layui-input carType" maxlength="11">
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+<script type="text/javascript" src="../common/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../common/css/layui-v2.2.2/layui.all.js"></script>
+<script type="text/javascript" src="../common/js/util.js"></script>
+<script src="js/assetManagement.js"></script>
+</body>
+</html>

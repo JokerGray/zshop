@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>通知公告</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="message_notice/message_notice.css" />
+</head>
+<body>
+    <div class="common-container" id="body-box">
+        <div class="row body-left-nav" >
+                <div class="common-title">
+                    公告管理 - <span class="jurisdiction-title-name">通知公告</span>
+                </div>
+                  <div class="row common-search">
+                      <form class="form-inline" role="form">
+                          <div class="form-group">
+                              <label class="control-lable">公告标题：</label>
+                              <input type="text" class="layui-input search-input media-input longinput" placeholder="请输入公告标题" id="inquireInput">
+                          </div>
+                          <button class="btn btn-success" type="button" id="inquire">
+                              <i class="search-icon"></i>查询
+                          </button>
+                      </form>
+                      <a href="javascript:void(0);"  class="btn btn-info add-users" id="add-users" data-toggle="modal" data-target="#add-newuser"><i class="add-icon"></i>新增</a>
+                  </div>
+                    <div class="common-table" id="common-table">
+                        <table class="table table-hover">
+                              <thead>
+                                <tr class="active">
+                                  <th>序号</th>
+                                  <th>标题</th>
+                                  <th>来源</th>
+                                  <th>是否发布</th>
+                                  <th>发布人</th>
+                                  <th>类型</th>
+                                  <th>发布时间</th>
+                                  <th>操作</th>
+                                </tr>
+                              </thead>
+                              <tbody id="tbodyParameter">
+                                <tr class=''>
+                                	<td class="td1">1</td>
+                                	<td class="td2">订单</td>
+                                	<td class="td3">订单</td>
+                                	<td class="td4">订单</td>
+                                	<td class="td5">订单</td>
+                                	<td class="td6">订单</td>
+                                	<td class="td7">订单</td>
+                                	<td class="notice" style="display: none;"></td>
+                                	<td class='row remove-modifier td8'>
+                                		<div class='details' data-toggle='modal'  data-target='#showNotice'>
+                                			公告详情
+                                		</div>
+                                		<div class='change-parameter' data-toggle='modal'  data-target='#change-newuser'>
+                                			<i class='edicticon'></i>修改
+                                		</div>
+                                		<div class='delete-parameter'>
+                                			<i class='glyphicon glyphicon-minus-sign m5 red delete'></i> 删除
+                                		</div>
+                                	</td>
+                                </tr>
+                              </tbody>
+                    </table>
+                </div>
+                <div class="common-page">
+                      <div id="paging-box-count">
+                          
+                      </div>
+                    <div id="paging-box" class="basic-jump"></div>
+                </div>
+                
+        </div>
+
+    </div>
+    <!-- modal -->
+    <div class="modal fade" id="add-newuser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    新增公告
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group p20">
+                        <span class="input-group-addon">标题:</span>
+                        <input type="text" class="form-control newname" id="addTit">
+                    </div>
+                    <div class="input-group p20">
+                        <span class="input-group-addon">来源:</span>
+                        <input type="text" class="form-control newname" id="addSouce">
+                    </div>
+                    <div class="input-group p20">
+                          <span class="input-group-addon">类型:</span>
+                            <select id="addType" class="selectpicker show-tick form-control">
+                              <option>通知公告</option>
+                              <option>消息提醒</option>
+                            </select>
+                    </div>
+                    <div class="input-group p20">
+                          <span class="input-group-addon">是否发布:</span>
+                            <select id="addinfo" class="selectpicker show-tick form-control">
+                              <option>是</option>
+                              <option>否</option>
+                            </select>
+                    </div>
+                    <div class="input-group p20">
+                        <span class="input-group-addon">内容:</span>
+                        <textarea id="demo" style="display: none;"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn" id="add-parameters">
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+   <!-- modal -->
+    <div class="modal fade" id="change-newuser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    修改公告
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group p20">
+                        <span class="input-group-addon">标题:</span>
+                        <input type="text" class="form-control newname" id="chaTit">
+                    </div>
+                    <div class="input-group p20">
+                        <span class="input-group-addon">来源:</span>
+                        <input type="text" class="form-control newname" id="chaSouce"> 
+                    </div>
+                    <div class="input-group p20">
+                          <span class="input-group-addon">类型:</span>
+                            <select id="chaType" class="selectpicker show-tick form-control">
+                              <option>通知公告</option>
+                              <option>消息提醒</option>
+                            </select>
+                    </div>
+                    <div class="input-group p20">
+                          <span class="input-group-addon">是否发布:</span>
+                            <select id="chainfo" class="selectpicker show-tick form-control">
+                              <option>是</option>
+                              <option>否</option>
+                            </select>
+                    </div>
+                    <div class="input-group p20">
+                        <span class="input-group-addon">内容:</span>
+                        <textarea id="change" style="display: none;"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn" id="saveParemeterconfig">
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+   <!-- modal -->
+    <div class="modal fade" id="showNotice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    	公告
+                </h4>
+            </div>
+            <div class="modal-body">
+					<h2 id="noticeTitle">公告标题</h2>
+					<div class="noticeFrom">
+						<div class="iBox">
+							<span class="first">来源:<span id="from">脸圈</span></span>
+							<span>2016 02-02-02</span>
+						</div>
+					</div>
+					<div id="noticeContent">
+						本日发现飞飞飞本日发现飞飞飞本日发现飞飞飞本日发现飞飞飞本日发现飞飞飞本日发现飞飞飞本日发现飞飞飞本日发现飞飞飞
+					</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+
+<script type="text/javascript" src="common/js/login_success.js"></script>
+<script type="text/javascript" src="common/js/util/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/util.js"></script>
+<script type="text/javascript" src="common/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+
+<!--jSCurr-->
+
+<script type="text/javascript" src="message_notice/message_notice.js"></script>
+<script type="text/javascript" src="common/js/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/pub.js"></script>
+</html>

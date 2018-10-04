@@ -1,0 +1,334 @@
+body{
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.layui-input, .layui-select{
+  height: 34px;
+}
+/**顶部tab栏和店铺选择*/
+.navBarAndShopSelect{
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid #cccccc;
+  padding: 0 20px;
+  .navBar{
+    float: left;
+    margin-top: 20px;
+    font-size: 0;
+    a{
+      display: inline-block;
+      vertical-align: middle;
+      width: 97px;
+      height: 45px;
+      line-height: 45px;
+      text-align: center;
+      background-color: #eee;
+      color: #707070;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      -webkit-border-radius: 4px 4px 0 0;
+      -moz-border-radius: 4px 4px 0 0;
+      border-radius: 4px 4px 0 0;
+      margin-right: 20px;
+      &.active{
+        border: none;
+        background-color: #fff;
+      }
+    }
+  }
+  .shopSelector{
+    float: right;
+    width: 150px;
+    margin-top: 15px;
+  }
+}
+/**路径栏*/
+.path{
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+  >div{
+    i{
+      font-family: SimSun;
+    }
+    &:nth-of-type(1){
+      float: left;
+      >span{
+        font-size: 16px;
+        color: #333333;
+      }
+    }
+    &:nth-of-type(2){
+      float: right;
+      >a{
+        font-size: 14px;
+        color: #1e9fff;
+      }
+      .collage{
+        //display: none;
+      }
+      .skill{
+        display: none;
+      }
+    }
+  }
+}
+.mainContent{
+  /**统计概览*/
+  .StatisticalOverview{
+    width: 100%;
+    height: 138px;
+    padding: 20px;
+    .collage,.skill{
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: 2px 2px 6px #dfdfdf,-2px -2px 6px #dfdfdf;
+      font-size: 0;
+      li{
+        display: inline-block;
+        width: 25%;
+        text-align: center;
+        font-size: 16px;
+        position: relative;
+        &::after{
+          position: absolute;
+          content: '';
+          width: 1px;
+          height: 40px;
+          border-left: 1px solid #cccccc;
+          right: 0;
+          top: 27px;
+        }
+        p{
+          font-size: 15px;
+          color: #666666;
+          margin-top: 16px;
+        }
+        h4{
+          font-weight: 700;
+          font-size: 26px;
+          color: #333333;
+          margin-top: 18px;
+        }
+        &:last-of-type{
+          &::after{
+            border: none;
+          }
+        }
+      }
+    }
+    .collage{
+      //display: none;
+    }
+    .skill{
+      display: none;
+      width: 75%;
+      li{
+        width: 33.3333%;
+      }
+    }
+  }
+  /**报表主体内容*/
+  .mainReport{
+    padding: 0 20px;
+    .title-filter{
+      width: 100%;
+      height: 55px;
+      line-height: 55px;
+      background-color: #fff;
+      padding: 0 20px;
+      .tableTitle{
+        float: left;
+        font-size: 15px;
+        color: #333333;
+        .collage{
+          //display: none;
+        }
+        .skill{
+          display: none;
+        }
+      }
+      .filterBox{
+        float: right;
+        padding-top: 11px;
+        div{
+          float: left;
+          font-size: 14px;
+          vertical-align: middle;
+          &.typeSelector{
+            width: 100px;
+            .layui-input, .layui-select{
+              -webkit-border-radius: 2px 0 0 2px;
+              -moz-border-radius: 2px 0 0 2px;
+              border-radius: 2px 0 0 2px;
+              border-right: none;
+            }
+          }
+          &.keyWordBox,&.statusSelector,&.skillStatus{
+            width: 150px;
+            margin-right: 10px;
+          }
+          &.exportBox{
+            a{
+              display: block;
+              width: 80px;
+              height: 34px;
+              line-height: 34px;
+              text-align: center;
+              border: 1px solid #d2d2d2;
+              -webkit-border-radius: 2px;
+              -moz-border-radius: 2px;
+              border-radius: 2px;
+              >i{
+                display: inline-block;
+                width: 24px;
+                height: 23px;
+                background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+                -webkit-background-size: 100%;
+                background-size: 100%;
+                vertical-align: -6px;
+              }
+              >span{
+                display: inline-block;
+              }
+            }
+          }
+          &.searchBtn{
+            line-height: normal;
+            margin-right: 10px;
+            button{
+              width: 80px;
+              height: 34px;
+              border: 1px solid #dddddd;
+              background-color: #fff;
+              font-size: 14px;
+              color: #333333;
+              -webkit-border-radius: 2px;
+              -moz-border-radius: 2px;
+              border-radius: 2px;
+            }
+          }
+        }
+        .skill{
+          display: none;
+        }
+      }
+    }
+    .tableContent{
+      padding: 0 20px;
+      height: 430px;
+      overflow-y: auto;
+      background-color: #fff;
+      .layui-table{
+        margin: 0;
+        >thead>tr>th,
+        >tbody>tr>td{
+          padding: 9px 7px;
+        }
+        >thead>tr>th:nth-of-type(1),
+        >tbody>tr>td:nth-of-type(1){
+          text-align: center;
+        }
+        >thead>tr>th:last-of-type,
+        >tbody>tr>td:last-of-type{
+          text-align: right;
+          a{
+            color: #1e9fff;
+          }
+        }
+      }
+      .collage{
+        //display: none;
+      }
+      .skill{
+        display: none;
+        >thead>tr>th:last-of-type,
+        >tbody>tr>td:last-of-type{
+          text-align: left;
+        }
+      }
+    }
+    .pageBox{
+      background-color: #fff;
+      padding: 0 20px;
+      height: 55px;
+      >div{
+        float: right;
+      }
+    }
+  }
+}
+
+/**拼团详情*/
+.collageDetail{
+  .header{
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    background-color: #353B53;
+    padding: 0 10px 0 20px;
+    >span{
+      float: left;
+      font-size: 14px;
+      color: #fff;
+    }
+    >i{
+      float: right;
+      width: 34px;
+      height: 34px;
+      text-align: center;
+      line-height: 34px;
+      font-size: 22px;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+  .baseInfo{
+    width: 100%;
+    min-height: 60px;
+    line-height: 60px;
+    padding: 0 10px 0 20px;
+    >span{
+      font-size: 16px;
+      color: #333333;
+      margin-right: 6%;
+      &:first-of-type{
+        display: inline-block;
+        max-width: 690px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+      }
+      &:last-of-type{
+        margin-right: 0;
+      }
+    }
+  }
+  .detailTable{
+    padding: 0 20px;
+    height: 468px;
+    overflow-y: auto;
+    >table{
+      margin-top:0;
+      td,th{
+        padding: 9px 10px;
+      }
+      td:nth-of-type(1),
+      th:nth-of-type(1){
+        text-align: center;
+      }
+    }
+  }
+}

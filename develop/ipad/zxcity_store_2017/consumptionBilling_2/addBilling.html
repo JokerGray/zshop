@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compation" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+        <title>新增工单</title>
+        <link rel="stylesheet" href="../common/assets/foundation-v5.5.3/foundation.min.css">
+        <link rel="stylesheet" href="../common/assets/select2/select2.min.css">
+		<link rel="stylesheet" href="../common/css/common.css">
+		<link rel="stylesheet" href="css/addBilling.css" />
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="main-title">
+                <a href="javascript:;" class="return-icon"></a>
+                <h5 class="title">新增工单</h5>
+            </div>
+            <div class="main-content">
+                <div class="row">
+                    <div class="medium-4 columns con-left">
+                        <div id="customerInfoBox" class="customer-info">
+                            <p><label>客户姓名：</label><a href="javascript:;"  class="customer-name"></a></p>
+                            <p><label>客户电话：</label><span class="customer-mobile"></span></p>
+                            <p><label>开 单  人：</label><span class="salesman"></span></p>
+                        </div>
+                        <div class="remarks-history">
+                            <p class="title">备注历史记录</p>
+                            <div class="list-box">
+                                <ul id="remarkRecordList">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="medium-8 columns con-right">
+                        <div id="billingList" class="billing-list">
+                        </div>
+                        <button type="button" class="btn-normal add-btn" id="addBillingBtn">增加工单</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script src="../common/assets/jquery.min.js"></script>
+		<script src="../common/assets/foundation-v5.5.3/foundation.min.js"></script>
+		<script src="../common/assets/foundation-v5.5.3/modernizr.js"></script>
+		<script src="../common/assets/layer/layer.js"></script>
+		<script src="../common/assets/select2/select2.min.js"></script>
+        <!-- <script src="../common/assets/template-web.js"></script> -->
+		<script src="../common/js/common.js"></script>
+        <script src="js/addBilling.js"></script>
+    </body>
+</html>

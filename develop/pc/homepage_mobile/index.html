@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    function isAndroid () {
+      var u = window.navigator.userAgent;
+      return u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+    }
+    function isIOS () {
+      var u = window.navigator.userAgent;
+      return !!u.match(/\(i[^;]+;( u;)? CPU.+Mac OS X/);
+    }
+    var hashUrl = location.hash.split('/')[1] || '';
+    // 非android或ios，跳转到PC端官网
+    if(!(isAndroid() || isIOS())) {
+      var url = '//www.izxcs.com'
+      if(hashUrl && hashUrl != 'zhome') url = url + '/' + hashUrl;
+      window.location.replace(url)
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+  <meta name="keywords" content="智享城市,智享店务,智大师,智享后台">
+  <meta name="description" content="智享城市·智慧经营·智慧生活，实体+互联网新型商业模式，商家最全面的营销与运营管理平台，让所有实体升级转型为互联网公司">
+  <link rel="icon" type="image/x-icon" href="./static/favicon.ico">
+  <title>智享城市</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="./static/layer/layer.js"></script>
+</body>
+</html>

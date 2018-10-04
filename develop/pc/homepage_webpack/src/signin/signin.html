@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智创工场-用户登陆</title>
+    ${require('../common/header.html')}
+</head>
+
+<body>
+    <div class="signin-container">
+        <div class="signin-content">
+            <img class="title-logo" src="../common/img/logo.png" alt="">
+            <h3 class="signin-title text-center">欢迎登陆智享城市</h3>
+    
+            <form class="form-horizontal" id="form" autocomplete="off">
+                <div class="form-group">
+                    <select class="phone-locate" name="phoneLocate" id="phoneLocate">
+                        <option value="china">中国大陆</option>
+                    </select>
+                    <input type="text" class="input-phone" name="phone" id="phone" required placeholder="请输入手机号码" maxlength="11">
+                    <div class="hand-line"></div>
+                </div>
+                <div class="form-group" style="padding-bottom: 15px;">
+                    <input type="password" class="input-pwd" name="pwd" id="pwd" required placeholder="请输入密码" minlength="6" maxlength="16">
+                    <div class="hand-line"></div>
+                    <i class="iconfont icon-eye-close" id="showPwd"></i>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox" id="remember">
+                        <i class="iconfont icon-check"></i>
+                        <span class="auto-login">自动登录</span>
+                    </div>
+                    <div class="btn-two">
+                        <a href="/signup.html" class="jump">注册</a>
+                        <a href="/resetPassword.html" class="jump">忘记密码</a>
+                    </div>
+                </div>
+                <div class="form-group" style="top: 10px;">
+                    <button type="submit" class="btn btn-block" >登录</button>
+                </div>
+            </form>
+            <!-- <div class="text-right" style="margin-top: 35px;">
+                <small class="tool-left"><a href="/signup.html">国际手机号登录</a></small>
+                <small class="tool-right"><a href="#">其他账号登录<img src="../common/img/arrow_right-down.png"></a></small>
+            </div> -->
+        </div>
+        <div class="support">
+            <div>鄂网文（2017）9247-211号</div>
+            <div class="copyright">Copyright © 2018 izxcs.com <a href="/">智享城市</a> 版权所有 保留一切权利 鄂ICP备15013752号-2</div>
+        </div>
+    </div>
+    ${require('../common/footer.html')}
+</body>
+
+</html>

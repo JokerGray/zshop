@@ -1,0 +1,241 @@
+.homePage{
+	background-color: #f2f2f2;
+}
+.layui-layer, .layui-layer-shade{
+	position: absolute!important;
+}
+.main-title a{
+	position: absolute;
+	right:3%;
+	top:0.875rem;
+	display:block;
+	color:#fe6869;
+}
+
+#customerTabBox{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 70px;
+	background-color: #fff;
+}
+
+#customerTabBox .customer-tab{
+	height:35px;
+}
+
+#customerTabBox .customer-tab button{
+	width: 95px;
+	height: 35px;
+	font-size: 15px;
+	color: #fe6869;
+	background-color: #fff;
+	border:1px solid #fe6869;
+}
+
+#customerTabBox .customer-tab button.active{
+	color: #fff;
+	background-color: #fe6869;
+}
+#tabCon1 table{
+	border-collapse: separate;
+	border-spacing: 0 6px;
+}
+#tabCon1 table td{
+	background:#fff;
+	border:0;
+}
+#tabCon1 table td+td{
+	border-left:8px solid #f2f2f2;
+}
+#tabCon1 .half-item{
+	width:50%;
+}
+
+.item-1 ul>li{
+	float:left;
+	font-size:14px;
+	color:#959694;
+	text-align: left;
+}
+.item-1 ul>li:nth-child(odd){
+	width:64%;
+}
+.item-2 .sub-item{
+	float:left;
+	width:50%;
+	text-align:center;
+	font-size:14px;
+	color:#959694;
+}
+.item-2 .sub-item p{
+	color:#db9757;
+	font-size:28px;
+}
+
+.item-3 td, .item-4 td{
+	text-align:center;
+}
+.item-3 td span,
+.item-4 td span{
+	color:#959694;
+}
+.item-4 td p{
+	font-size:40px;
+}
+#customerChart1{
+	width:100%;
+	height:320px;
+}
+
+#tabCon2{
+	max-height:600px;
+	overflow-y:auto;
+}
+
+#tabCon2 .card-list{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-top:13px;
+}
+.card-list .card-item{
+	position:relative;
+	width:49.5%;
+	background:#fff;
+	margin-bottom:11px;
+	padding:20px;
+}
+
+.card-list .card-item dt{
+	font-size:20px;
+	line-height: 2;
+}
+
+.card-list .card-item dd{
+	font-size:17px;
+	color:#999;
+	line-height: 2;
+}
+
+.card-list .card-item .detail-show-link{
+	position:absolute;
+	right:13px;
+	top:16px;
+	font-size:16px;
+	color:#fe6869;
+}
+
+.list-item{
+	position:relative;
+	display:flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 130px;
+	margin-top: 10px;
+	padding-left:25px;
+	padding-right:35px;
+	background-color: #FFFFFF;
+	text-align: left;
+	font-size: 16px;
+	color: #333333;
+}
+
+.list-item ul{
+	padding-top:9px;
+}
+
+.list-item ul>li.sub-item:nth-child(2){
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+.list-item ul>li.sub-item i{
+	display:inline-block;
+	width:2em;
+	height:1em;
+}
+
+.list-item .item-btn{
+	position: absolute;
+	right:35px;
+	bottom:11px;
+}
+
+.list-item .item-btn button{
+	width:120px;
+	height:36px;
+	font-size:15px;
+	border:2px solid #fe6869;
+}
+
+.list-item .item-btn .new-drawer-btn{
+	background-color:#fe6869;
+	color:#fefefe;
+}
+
+.list-item .item-btn .check-order-btn{
+	background-color:#fff;
+	color:#fe6869;
+}
+.pageview{
+	text-align: center;
+	margin-top:10px;
+}
+#tabCon3 .table thead tr th,
+#tabCon3 .table tbody tr td {
+	text-align: center;
+}
+#tabCon3 .table thead th {
+	background-color: #FE6869;
+	color: #FFFFFF;
+	border-bottom: none;
+	font-weight: normal;
+}
+
+#tabCon3 .table tbody>tr>td{
+	height:36px;
+	line-height: 36px;
+}
+#tabCon3 .table .btn{
+	width:85px;
+	height:34px;
+	border:1px solid #fe6869;
+	color:#fe6869;
+	background:#fff;
+}
+
+#tabCon3 .table .btn:hover{
+	color:#fff;
+	background:#fe6869;
+	border:1px solid #fe6869;
+}
+
+/*
+body .customer-layer .layui-layer-title{
+	color:#fff;
+	background:#fe6869;
+	text-align:center;
+	height:54px;
+	line-height: 54px;
+	font-size:24px;
+}
+
+body .customer-layer .layui-layer-setwin{
+	width:30px;
+	height:30px;
+}*/
+
+/*paging插件样式修改开始*/
+.ui-paging-container ul {
+	height: 3.0rem;
+}
+
+.ui-paging-container ul li {
+	width: 2.4rem;
+	height: 3.0rem;
+	line-height: 3.0rem;
+	font-size: 1.5rem;
+}
+/*paging插件样式修改结束*/

@@ -1,0 +1,71 @@
+<!--pages/shop/addMedia/addMedia.wxml-->
+<view class='media-box p24'>
+     <textarea class='textarea' bindinput="bindTextAreaBlur" value='{{textarea}}'  auto-height placeholder="添加视频描述（选填）..." />
+     <view class='video-box'  style='height:{{height}}'>
+     <!-- data-url='../mediaPreview/mediaPreview?width=300&height=100' -->
+        <view class='empty'  style='{{status?"display:none":""}}' >
+            <view class='play' bindtap='chooseVideo'>
+            <!-- <image src='/images/huahuo_shouye_play@3x.png'></image> -->
+              <text class='playAdd'>+</text>
+            </view>
+            <!-- <text class='time'>0:00</text> -->
+        </view>
+        <video objectFit='cover' id='prew_video' style='height:{{height}}; width:{{width}}' src='{{src}}' controls="{{false}}" show-center-play-btn="{{false}}"  hidden='{{!status}}'>
+            <cover-view class="controls" bindtap='chooseVideo' data-url='{{url}}'></cover-view>
+            <!-- <cover-view class='time'>{{duration}}</cover-view> -->
+        </video>
+     </view>
+     <!-- <view class='switch-box'>
+        <view>
+            <text>是否到家服务</text>
+            <switch class='fr' color='#ff226e' data-i='home' bindchange="switchCheck" checked='{{serveChecked}}'/>
+        </view>
+        <view>
+            <text>是否到店服务</text>
+            <switch class='fr' color='#ff226e' data-i='shop'  bindchange="switchCheck" checked='{{shopChecked}}' />
+        </view>
+        <view>
+            <text>寻求店家合作</text>
+            <switch class='fr' color='#ff226e' data-i='merchant' bindchange="switchCheck" checked='{{cooperateChecked}}'/>
+        </view>
+     </view> -->
+     <progress percent="{{percentNum}}" hidden='{{!status}}' show-info active />
+     <!-- <view class='add-btn' bindtap='release' disabled>发布</view> -->
+     <button  class='add-btn' bindtap='release' disabled='{{disabled}}'> 发布</button>
+</view>
+
+
+
+<!-- //暂时不用 -->
+<!-- //视频发布 模态框-->
+<view class="drawer_screen" bindtap="showAddshop" data-statu="close" wx:if="{{showAddshop}}"></view>
+<view class="shop shopHeader" wx:if="{{showAddshop}}">
+  <cover-view class='shopheader'>
+    <cover-image class='shopimage' src='/images/detailed/huahuo_shoptc_close@2x.png' bindtap='showAddshop'></cover-image>
+    <cover-view class='shopheadertop'>填写店铺信息</cover-view>
+  </cover-view>
+  <view class='shopheadercom'>
+    <input class='shopheaderinp' bindinput='userNameInput' placeholder="请输入店铺名称" />
+  </view>
+  <cover-view class='shopbottom' bindtap='shopnamesend'>确定</cover-view>
+</view>
+
+
+
+<!-- //添加店铺信息 -->
+<view class="drawer_screen" bindtap="showCartList" data-statu="close" wx:if="{{showShop}}"></view>
+<view class="shop" wx:if="{{showShop}}">
+    <view class='shopheader addshopheader'>
+      <image class='shopimage' src='../../../images/detailed/huahuo_shoptc_close@2x.png' bindtap='closenewshop'></image>
+      <view class='shopheadertop'style='padding-left:100rpx;width:500rpx;'>填写店铺信息</view>
+      <view class='shopheadertopright' bindtap='newaddshop' >添加新店铺</view>
+    </view>
+    <view class='lookshop-list' wx:for='{{shopComment}}'wx:key='unqie' bindtap = 'sendDetail'>
+            <image        src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLhpCNoXf1fPRmNTacXOekNDO76tZ33TAkS8s0JfjWqu7YpbItoJ8EorAhPgPGlhT2lmFXIBQOFRw/132'style="border-radius:50%;"></image>
+            <view>
+              <view class='loolshop-name'>{{item.useraddShop}}</view>
+              <view class='showcomment'>{{item.userNameShop}}</view>
+            </view>
+    </view>
+    <view class='shopbottom' bindtap='sendShopVideo'>确定</view>
+</view>

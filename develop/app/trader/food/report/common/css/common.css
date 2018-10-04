@@ -1,0 +1,250 @@
+ 
+body {
+    font-family: 'Microsoft Yahei' !important;
+    font-size: 18px;
+}
+.header{
+
+}
+ .clearfix:after{
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0;
+}
+.clearfix{
+    zoom:1;
+}
+
+.app {
+    padding: 20px 30px !important;
+}
+.layui-laypage a,
+.layui-laypage span{
+    box-sizing: border-box;
+}
+
+.header-tabs{
+    border-radius:5px;
+    border:2px solid rgba(27,224,214,1);
+    float: left;
+    height:38px;
+    box-sizing: border-box;
+}
+
+.header-info {
+    float: left;
+    margin-left: 20px;
+    height: 38px;
+}
+.header-info {
+
+}
+.header-tabs>span.active {
+    background-color: #1BE0D6;
+    color: #fff;
+}
+
+.header-tabs>span {
+    width:100px;
+    height:100%;
+    line-height: 34px;
+    cursor: pointer;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #333;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: -2px;
+}
+
+.header-tabs span+span{
+    margin-left: -4px;
+}
+
+ 
+
+.header-date {
+    height:38px;
+    float: left;
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.date-time {
+    width: 150px;
+    height:36px;
+    line-height:38px;
+    box-sizing: border-box;
+}
+.date-box {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+.date-box>input{
+    border: none;
+    background-color: #fff;
+}
+
+.date-box>i{
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background: url(../img/cy_rili.png) no-repeat center /24px 24px;
+    position: absolute;
+    z-index: 10;
+    right: 8px;
+    top: 7px;
+    cursor: pointer;
+}
+
+.layui-table-view .layui-table{
+    width: 100%!important;
+}
+
+.layui-table-body{overflow: hidden!important;}
+
+
+.my-select{
+    font-size: 0px;
+    vertical-align: top;
+    position: relative;
+}
+.my-select input{
+    width: 160px;
+    height: 38px;
+    vertical-align: top;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 18px;
+    padding-left: 16px;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.my-select-icon{
+    background-color: #1BE0D6;
+    color: #fff;
+    display: inline-block;
+    height: 38px;
+    width: 38px;
+    text-align: center;
+    line-height: 38px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    font-size: 26px;
+}
+.my-select i{
+    font-size: 24px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.my-select .my-dl{
+    width: 100%;
+    position: absolute;
+    top: 42px;
+    left: 0;
+    font-size: 18px;
+    left: 0;
+    padding: 5px 0;
+    z-index: 999;
+    min-width: 100%;
+    border: 1px solid #d2d2d2;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.12);
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.my-select i.rotate {
+    transform:rotate(180deg);
+    -ms-transform:rotate(180deg);  
+    -moz-transform:rotate(180deg); 	 
+    -webkit-transform:rotate(180deg);  
+    -o-transform:rotate(180deg); 
+    top: -2px;	 
+}
+
+.my-select .my-dl dd{
+    height: 38px;
+    line-height: 38px;
+    padding: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.my-select .my-dl dd:hover{
+    background-color: #eeeeee;
+    color:#333;
+}
+.my-dd-this{
+    background-color: #1BE0D6;
+    color: #fff;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #999;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #999;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #999;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #999;
+}
+/* table page右*/
+.table-r{
+    text-align: right;
+}
+
+.mg-t-20{
+    margin-top: 20px;
+}
+
+.mg-l-20{
+    margin-left: 20px;
+}
+
+
+/*修改选中颜色样式 */
+::selection {
+    color:#FFFFFF;
+    background-color:#1BE0D6;
+    text-shadow:none;
+}
+::-moz-selection {
+    color:#FFFFFF;
+    background-color:#1BE0D6;
+    text-shadow:none;
+}
+
+::-webkit-selection {
+    color:#FFFFFF;
+    background-color:#1BE0D6;
+    text-shadow:none;
+}
+
+
+.header-button .layui-input-block{margin-left: 0;}
+
+.header-buttonbutton{
+    border-radius: 5px;
+}
+.header-button .searchBtn{background: #1BE0D6;}
+.header-button .restBtn{background: #29B3FB;}

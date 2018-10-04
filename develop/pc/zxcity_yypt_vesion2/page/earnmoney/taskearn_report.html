@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>抢标赚数据统计</title>    <!-- CssCommon -->
+    <!--<link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="taskearn_report/taskearn_report.css" />
+</head>
+<body>
+    <div class="wrapper-main">
+        <div class="header layui-form clearfix">
+            <ul class="layui-form layui-col-sm12 layui-col-md12 clearfix input-box">
+                <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="">发布人：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="请输入" class="layui-input" id="userName">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="">任务名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="请输入" class="layui-input" id="taskTitle">
+                        </div>
+                    </div>
+                </li>
+
+                <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="">状态：</label>
+                        <div class="layui-input-block">
+                            <select name="" id="taskStatus" class="layui-select" >
+                                <option value="">全部</option>
+                                <option value="1">进行中</option>
+                                <option value="2">已完成</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                    <div class="layui-form-item">
+                        <label class="">发布时间：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" class="layui-input" id="date" readonly>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                    <label>&nbsp;</label>
+                    <div class="fl">
+                        <button class="layui-btn" id="searchBtn">搜索</button>
+                        <button class="layui-btn" id="restBtn">重置</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="chartStatisics layui-row">
+            <div class="chart layui-col-sm9" id="chart" style="height: 250px"></div>
+            <div class="statistics layui-col-sm3">
+                <ul class="stat-list">
+                    <li>
+                        <h2 class="no-margins finishMoneyTotal">0</h2>
+                        <small>已完成总金额</small>
+                        <div class="progress progress-mini">
+                            <div style="width: 100%;" class="progress-bar"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <h2 class="no-margins ongoingConMoneyTotal">0</h2>
+                        <small>已发放总金额</small>
+                        <div class="progress progress-mini">
+                            <div style="width: 100%;" class="progress-bar"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <h2 class="no-margins ongoingTotalMoneyTotal">0</h2>
+                        <small>未发放总金额</small>
+                        <div class="progress progress-mini">
+                            <div style="width: 100%;" class="progress-bar"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <table id="tableNo" lay-filter="tableNo"></table>
+            <div class="layui-laypage" id="page"></div>
+        </div>
+    </div>
+    <script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-sm" lay-event='edit'><i class="layui-icon">&#xe642;</i>审核</button>
+    </script>
+
+    <script type="text/javascript" src="../../common/assets/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+    <script type="text/javascript" src="../../common/js/util.js"></script>
+    <script type="text/javascript" src="../../common/js/yyCache.js"></script>
+    <script src="../../common/js/echarts.js"></script>
+
+    <script type="text/javascript" src="taskearn_report/taskearn_report.js"></script>
+
+
+</body>
+</html>

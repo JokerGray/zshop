@@ -1,0 +1,170 @@
+.common-container{
+    position: relative;
+    height: 100%;
+}
+.jurisdiction-content{
+    height: 100%;
+    background: #fff;
+    position: relative;
+}
+.jurisdiction-content h4{
+    font-size: 16px;
+    color:#000;
+}
+.jurisdiction-content .title hr{
+    height: 4px;
+}
+
+
+/*列表部分*/
+.jurisdiction-center{
+    height: 800px;
+    margin-left: 400px;
+    padding: 15px 30px 15px 0;
+}
+.jurisdiction-center h4{
+    display: inline-block;
+    float: left;
+    height: 38px;
+    line-height: 38px;
+}
+.jurisdiction-center .search-box{
+    height: 38px;
+    width: 300px;
+    margin-right: 15px;
+    float: left;
+    border-radius: 5px;
+    border: 1px solid #3b96e5;
+}
+.jurisdiction-center .repon-rightl{
+    float: right;h
+}
+.jurisdiction-center .detail{
+    width: 100%;
+    height: 690px;
+    overflow: auto;
+}
+.detail .detail-list{
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    border:1px solid #dfdfdf;
+    padding: 10px;
+    cursor: pointer;
+}
+.detail .detail-list:hover,.detail .aov{
+    background: #e5ecf2;
+}
+.detail .detail-list .detail-top{
+    padding-bottom: 5px;
+    overflow: hidden;
+}
+.detail-list .detail-top .detail-title{
+    width: 180px;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.detail-statu{
+    padding: 2px 3px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    float: right;
+}
+.redbg{
+    background: #f4887b;
+}
+.blubg{
+    background: #0ebcef;
+}
+.redCol{
+    color:#f4887b;
+}
+.blueCol{
+    color:#0ebcef;
+}
+.datail-content{
+    clear: none;
+    width: 227px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.detail-foot{
+    width: 100%;
+    overflow: hidden;
+    height: auto;
+}
+.detail-foot .detail-user{
+    display: inline-block;
+    color:#72716f;
+    float: left;
+}
+.detail-user img{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    float: left;
+    margin-right: 5px;
+}
+.detail-foot .create-time{
+    color:#72716f;
+    line-height: 20px;
+    float: right;
+}
+.repon-table{
+    clear: both;
+    padding-top: 15px;
+}
+.repon-table .layui-table-view{
+    border: none;
+}
+.repon-table .layui-table td, .layui-table th, .layui-table-header, .layui-table-tool, .layui-table-view, .layui-table[lay-skin=row], .layui-table[lay-skin=line]{
+    border-right: 0;
+}
+
+/*左侧部分*/
+.jurisdiction-content .jurisdiction-left{
+    width: 300px;
+    height: 100%;
+    overflow: auto;
+    float: left;
+    border: 1px solid #dfdfdf;
+    position: absolute;
+    bottom: 0;
+    padding: 15px 0;
+}
+.jurisdiction-left h4{
+    font-size: 16px;
+    padding: 10px 0 15px 15px;
+}
+.jurisdiction-left ul{
+    width: 100%;
+    height: auto;
+}
+.jurisdiction-left ul li{
+    height: 35px;
+    line-height: 35px;
+    width: 100%;
+    cursor: pointer;
+    padding: 0 25px;
+}
+.jurisdiction-left ul li.acv{
+    background: #e6e6e6;
+    color:#00a0ea;
+}
+.jurisdiction-left ul li .order-num{
+    float: right;
+}
+.jurisdiction-left .diy-search{
+    margin-top:15px;
+}
+.jurisdiction-left ul li:hover{
+    background: #e6e6e6;
+    color:#00a0ea;
+}
+

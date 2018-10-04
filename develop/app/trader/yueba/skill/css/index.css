@@ -1,0 +1,334 @@
+body{
+ height: 100%;
+  font-family: Microsoft YaHei, Arial;
+  font-size: 13px;
+  color: #676a6c;
+  overflow-x: hidden;
+}
+.myTitle{
+    /* position: fixed; */
+    display: block;
+    width: 100%;
+    background-color: #353b53;
+    font-size: 2rem;
+    padding: 1rem;
+    z-index: 1;
+}
+.text-center{
+    text-align: center;
+}
+.text-info{
+    color: #23c6c8;
+}
+ 
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #c0c0c0;
+    width: 100%;
+}
+.tab thead{
+    width: 100%;
+    /* background-color: #23c6c8; */
+    border:1px solid red;
+     
+} 
+ th,td{
+     border: 1px solid #d0d0d0;
+     padding: 10px;
+     text-align: center;
+ }
+ th{
+     background-color: #23c6c8;
+     line-height: 50px;
+     font:bold 16ps "微软雅黑";
+     text-align: center !important;
+ }
+/* 手机背景 */
+.bg-shouji {
+    display: flex;
+    flex-direction: column;
+    width: 391px;
+    height: 780px;
+    margin: 0 auto;
+    /* box-sizing: border-box !important; */
+    /* overflow: hidden; */
+    padding: 62px 25.5px 60px 26.5px;
+    background: url(../image/bg-ipx.png) no-repeat;
+}
+/* 手机标题 */
+.bg-shouji .phone_title {
+    display: block;
+    padding: 0;
+    height: 44px;
+    background-color: #609bfa;
+    color: #fff;
+    font-size: 17px;
+    overflow: hidden;
+    z-index: 99;
+    font-weight: 500;
+    line-height: 44px;
+    text-align: center;
+}
+.phone_title .phone_icon {
+    display: table-cell;
+    height: 100%;
+    padding: 13px 10px;
+    cursor: pointer;
+}
+.fa-plus:before {
+    content: "\f067";
+}
+#poneTitle {
+    display: table-cell;
+    height: 100%;
+    padding: 13px 10px;
+    cursor: pointer;
+    display: block;
+    padding: 0;
+    height: 44px;
+    background-color: #609bfa;
+}
+.statusContent {
+    display: block;
+    background-color: #fff;
+    text-align: center;
+}
+.shadow {
+    box-shadow: 0px 2px 2px #ccc;
+    z-index: 1;
+}
+.statusContent span.active {
+    color: #000;
+    font-weight: bold;
+    border-bottom: 2px solid #4e8af7;
+}
+.statusContent span {
+    display: inline-block;
+    padding: 5px;
+    margin: 0 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.phone_content, .phone_publish {
+    position: relative;
+    display: block;
+    flex: 1;
+    background-color: #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.addTaskContent {
+    padding: 12px 16px;
+    background-color: #eee;
+}
+.addTask {
+    display: block;
+    padding: 2rem 0;
+    border: 2px dashed #00d2e7;
+    border-radius: 4px;
+    color: #00d2e7;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+}
+.myTask{
+    display: block;
+    padding: 12px; 
+    background-color: #fff;
+    border-bottom: 10px solid #eee;
+    cursor: pointer;
+}
+.myTask.selected{
+    background-color: #f6fffc;
+}
+.myTask .shopName{
+    display: block;
+    padding: 5px 0;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+.myTask .shopName .icon-shop-empty{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    background: url(../image/yb_shop.png) no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+.myTask .shopName span{
+    vertical-align: middle;
+}
+.myTask .typeContent{
+    display: block;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #333;
+}
+.myTask .typeContent .categoryUrl{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+}
+.myTask .typeContent span{
+    vertical-align: bottom;
+}
+.myTask .skillContent{
+    position: relative;
+    display: block;
+    padding: 0 0 12px;
+}
+.myTask .skillContent .picContent{
+    display: inline-block;
+    width: 120px;
+    height: 78px;
+    text-align: center;
+    overflow: hidden;
+    float:left;
+}
+.myTask .skillContent .picContent img{
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.myTask .skillContent .skillDetailContent{
+    display: block;
+    padding: 0 0 0 130px;
+}
+.myTask .skillContent .serviceName{
+    font-size: 14px;
+    color: #333;
+    line-height: 1;
+    padding-bottom: 9px;
+}
+.myTask .isMe {
+    text-align: right;
+    color: #488bf7;
+}
+.myTask .rateContent{
+    line-height: 1;
+}
+.myTask .rateContent .rate{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-image: url(../image/yb_xq_jbxx@2x.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.myTask .rateContent .rate.half{
+    background-image: url(../image/yb_xq_huangban@2x@2x.png);
+}
+.myTask .rateContent .rate.down{
+    background-image: url(../images/yb_xq_huixx@2x.png);
+}
+.myTask .rateContent span{
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 12px;
+    color: #666;
+}
+.myTask .priceContent{
+    font-size: 16px;
+    color: #ff8001;
+    line-height: 1;
+    padding-top: 25px;
+}
+.myTask .updateTime, .myTask .erasure{
+    font-size: 12px;
+    color: #999;
+    line-height: 1;
+}
+.myTask .erasure{
+    display: inline-block;
+    margin-top: -2px;
+    margin-right: 3px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #4f8bf7;
+    border: 1px solid #4f8bf7;
+    box-shadow: 0 0 8px rgba(79, 139, 247, 0);
+    float: right;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+.myTask .erasure:hover{
+    box-shadow: 0 0 8px rgba(79, 139, 247, 1);
+}
+/*关闭的技能*/
+.myTask.off, .myTask.off div, .myTask.off span{
+    color: #666;
+}
+.myTask.off img{
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;
+}
+.myTask.off .rateContent .rate{
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;
+}
+.myTask.off .erasure{
+    display: none !important;
+}
+.pone{
+    border-left: 1px dashed #A67227;
+    border-right: 1px dashed #A67227;
+}
+.container-fluid {
+padding-right: 15px;
+padding-left: 15px;
+margin-right: auto;
+margin-left: auto;
+}
+
+.Ican-list .btn1{
+    box-sizing: border-box;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 18px;
+    height: 35px;
+    background-color: #fff;
+    width: 200px;
+    border-radius: 35px;
+    margin-top: 20px;
+    outline:none;
+}
+.Ican-list .active1{
+    color: #fff;
+    background-color: #353B53;
+    background-image: none;
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+.Ican-span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #353B53;
+  color: #fff;
+  text-align: center;
+  line-height: 20px;
+  box-shadow: none;
+  margin-right: 10px;
+} 
+.active2{
+    background-color: #fff;
+    color:#353B53;
+}

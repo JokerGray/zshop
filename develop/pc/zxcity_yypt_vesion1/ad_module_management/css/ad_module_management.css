@@ -1,0 +1,412 @@
+
+        html {
+            /* overflow: auto; */
+        }
+        body {
+            /* height: 100%; */
+            margin: 0;
+            
+        }
+
+
+        .clear {
+            clear: both;
+            display: block;
+        }
+        .btn-wide {
+            width: 10rem;
+        }
+
+        [v-cloak] {
+            display: none;
+            }
+
+
+
+        /********************  Override  ******************/
+
+        .nav-tabs {
+            background: #F5F6F6;}
+
+        .nav-tabs.nav-justified>li>a {
+            border-bottom: 0!important;
+        }
+
+        /*--- 分页 ---*/
+
+        .layui-laypage a:first-of-type {
+            border-radius: 0.35rem 0 0 0.35rem!important;
+        }
+
+        .layui-laypage a:last-of-type {
+            border-radius: 0 0.35rem 0.35rem 0!important;
+        }
+
+        .layui-laypage a,
+        .layui-laypage button,
+        .layui-laypage input,
+        .layui-laypage select,
+        .layui-laypage span {
+
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 1rem!important;
+            font-weight: 400!important;
+        }
+
+        .layui-laypage .layui-laypage-curr .layui-laypage-em {
+            background-color: #0275d8;
+        } 
+
+        .carousel {
+            position: initial!important;
+        }
+        /* .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+            display: block!important;
+            max-width: 100%!important;
+            min-height:100%!important;
+            height: auto!important;
+
+        } */
+
+        .image-fluid {
+            width: 100%;
+            height: 28rem;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        .video-fluid {
+            width: 100%;
+            height: 28rem;
+        }
+
+        .pager {
+            margin: 0!important;
+        }
+
+
+        .panel-body {
+            text-align: center!important;
+        }
+
+        
+        /******************** ./Override ******************/
+
+
+
+
+        /*-------------- 标签 -------------*/
+
+        #tbRegionType {
+            padding-left: 12rem;
+            padding-right: 10rem;
+            padding-top: 1rem;
+            font-size: large;
+        }
+
+
+        #pnlRegions {
+            border-top: 0.1rem solid #ccc;
+            margin-top: -0.1rem;
+            background: #fff;
+        }
+
+        #vueWrapper {
+            min-height: 100%;
+            position: relative;
+            /* overflow: hidden; */
+
+        }
+
+        #adPlaceholder {
+
+            margin-top: 1rem;
+        }
+
+        #adContainer {
+
+            margin-bottom: 3rem;
+
+        }
+
+        #pnlAlert {
+            position: fixed;
+            z-index: 8888;
+            bottom: 0rem;
+            width: 100%;
+            height: 130px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        #pnlAlert .alert {
+            margin-bottom: 0.75rem!important;
+            float: right;
+            clear: both;
+        }
+
+        #pnlModuleButtons {
+            position: fixed;
+            z-index: 9999;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #fff;
+            border-top: 1px solid #f4f4f4;
+            display: none;
+            padding-top:0.75rem;
+        }
+
+        /*-------------- ./标签 -------------*/
+
+
+
+
+
+        /*-------------- 广告位 ------------*/ 
+        #ph-1 {
+            border: 1rem solid #ccc;
+            min-height: 30rem;
+            max-height: 30rem;
+            padding: 0!important; 
+            background-color:#000;
+        }
+
+        #ph-2 {
+            border: 1rem solid #ccc; 
+            max-height: 30rem;
+            min-height: 30rem;
+            padding: 0!important;
+              
+            background-color:#000;
+        }
+
+        #ph-1.active {
+            border: 1rem solid #5C4185!important;
+
+        }
+
+        #ph-2.active {
+            border: 1rem solid #5C4185!important;
+        }
+        /*-------------- ./广告位 ------------*/ 
+
+
+        /*--------------   广告  --------------*/
+
+        .card {
+            position: relative;
+            /* display: -ms-flexbox;
+            display: flex; */
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid rgba(0, 0, 0, .125);
+            border-radius: .25rem;
+
+            /* float: left; */
+            display: inline-block;
+            width: 20rem;
+            padding: .75rem;
+            margin-bottom: 2rem;
+            /* border: 0; */
+            margin-right: 2rem;
+        }
+
+        .card-img-top {
+            width: 100%;
+            border-top-left-radius: calc(.25rem - 1px);
+            border-top-right-radius: calc(.25rem - 1px);
+            height: 160px;
+        }
+
+        .card>img {
+            margin-bottom: .75rem;
+
+            display: inline;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .card-title {
+            font-size: 1.2rem!important;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-weight: 800!important;
+        }
+
+        .card-title small {
+            color: gray;
+            font-weight: normal;
+        }
+
+        .card-text {
+            font-size: 85%;
+        }
+
+        .card-body {
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            padding: 0.25rem!important;
+            text-align: left!important;
+        }
+        
+        /*--------------  ./广告  --------------*/
+
+
+        /*---- 面板切换 ---*/
+        .easy1 {
+            /* padding: 20px; */
+            /* background-color: pink; */
+            overflow: hidden;
+        }
+
+        .easy2 {
+            display: none;
+            /* padding: 20px; */
+            /* background-color: orange; */
+            overflow: hidden;
+        }
+
+        /*-------------- 省市下位patch -----------*/
+        .advertising-top {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            z-index: 9999;
+            background: #F5F6F6;
+            height:3rem;
+        }
+        
+        .advertising-top .area-name {
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;		  
+            overflow: hidden;
+            white-space: nowrap; 
+            max-width: 80px;
+            display: inline-block;
+            vertical-align:middle;
+        }
+        .advertising-top .area-input {
+            vertical-align:middle;
+        } 
+        .advertising-top .area-all {
+            width: 700px!important;
+        }
+
+        
+
+
+
+        /*--------- 详情标题 ----------*/
+        .ph-header {
+            height: 4rem;
+            /* margin-left: 2rem; */
+            padding-left: 2rem;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .ph-header>h1 {
+            font-size: x-large!important;
+            line-height: 4rem!important;
+        }
+
+
+
+        
+
+        /*------------ 地址1和地址2 ---------*/
+        .form-group {
+            margin-bottom: 0;
+            padding: 10px 0;
+        }
+
+        .form-group:first-child {
+            border-color: transparent;
+        }
+
+        .form-control {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border-width: 2px;
+            min-height: 40px;
+            height: auto;
+        }
+
+        .form-control:focus {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        .form-vertical {
+            counter-reset: fieldset;
+        }  
+        .form-vertical fieldset {
+            padding-top: 10px;
+            margin: 50px 0;
+            margin-left: 50px;
+            width: 80%;
+        }
+
+        .form-vertical fieldset label {
+            margin-right: 3rem;
+            margin-bottom: 3rem;
+            width: 20rem;
+            line-height: 4rem;
+            font-size: large;
+            text-align: left;
+            padding-left: 2rem; /* 距离左边框 */
+        }
+
+        .form-vertical fieldset>legend {
+            padding-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .form-vertical fieldset>legend:before {
+            content: counter(fieldset);
+            counter-increment: fieldset;
+            position: absolute;
+            left: 25px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 15px;
+            text-align: center;
+            background-color: #428bca;
+            color: white;
+            font-size: 75%;
+            font-weight: bold;
+        }
+
+        .iradio_square-blue.checked {
+            background-position: -168px 0;
+        }
+
+        .iradio_square-blue {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
+            width: 22px;
+            height: 22px;
+            background: url(../image/blue.png) no-repeat;
+            background-position: -120px 0;
+            border: none;
+            cursor: pointer;
+            margin-right: 1rem; /* 距离右边的文字 */
+        }
+
+
+        label.btn span{ 
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;		  
+            overflow: hidden;
+            white-space: nowrap; 
+            max-width: 170px;
+            display: inline-block;
+            vertical-align:middle;
+        }
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>新增区域信息</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="commission_manage/commission_manage.css" />
+</head>
+<body>
+    <div class="addsystem">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">父区域编号：</label>
+                <div class="layui-input-block common-name">
+                    <input id="pidCode" name="title" lay-verify="title" autocomplete="off"  class="layui-input form-control" type="text" disabled>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">区域名称：</label>
+                <div class="layui-input-block common-name">
+                    <input id="systemName" placeholder="必填" name="title" lay-verify="title" autocomplete="off"  class="layui-input" type="text" maxlength="22">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">编号：</label>
+                <div class="layui-input-block common-name">
+                    <input id="areaCode" placeholder="必填" name="title" lay-verify="title" autocomplete="off"  class="layui-input form-control" type="text" maxlength="6">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">经度：</label>
+                <div class="layui-input-block common-name">
+                    <input id="longitude" placeholder="选填" name="title" lay-verify="title" autocomplete="off"  class="layui-input" type="text" maxlength="8">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">纬度：</label>
+                <div class="layui-input-block common-name">
+                    <input id="latitude" placeholder="选填" name="title" lay-verify="title" autocomplete="off"  class="layui-input" type="text" maxlength="8">
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- jSCommon -->
+    <script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="common/js/util/util.js"></script>
+    <script type="text/javascript" src="common/js/common.js"></script>
+    <script type="text/javascript" src="area_info/addarea.js"></script>
+</body>
+</html>

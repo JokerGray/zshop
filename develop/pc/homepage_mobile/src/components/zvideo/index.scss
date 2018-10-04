@@ -1,0 +1,112 @@
+// 用于计算rem的方法
+@function pxToRem($px) {
+    @return ($px/1) * 0.01rem;
+}
+// 隐藏方案
+.hide{
+  opacity: 0 !important;
+}
+.section{
+  background-color: #f7f9fc;
+  padding-top: pxToRem(88);
+  overflow: auto;
+  height: 100%;
+}
+.header{
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 100%;
+  height: pxToRem(88);
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  background-color: #fff;
+  line-height: 0;
+  box-shadow: 0 0 pxToRem(5) #777;
+  overflow: none;
+  z-index: 999;
+}
+.header>div{
+  display: inline-block;
+  font-size: pxToRem(24);
+  line-height: pxToRem(88);
+  text-align: center;
+}
+.header>div span{
+  display: inline-block;
+  padding: 0 pxToRem(13);
+  line-height: pxToRem(52);
+  border: pxToRem(2) solid transparent;
+  box-sizing: border-box;
+  transition: all 0.25s ease-out;
+}
+.header>div.active span{
+  color: #4693fd;
+  border: pxToRem(2) solid #4693fd;
+  border-radius: pxToRem(52);
+}
+.banner{
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.videoContent{
+  display: block;
+  position: relative;
+  padding-bottom: pxToRem(88);
+  background-color: #f7f9fc;
+  border-radius: pxToRem(5);
+}
+.videoContent:before, .videoContent:after{
+  display: table;
+  content: " ";
+  box-sizing: border-box;
+  clear: both;
+}
+.videoContent .content{
+  display: block;
+  float: left;
+  width: 50%;
+  padding: pxToRem(15);
+  line-height: 0;
+  box-sizing: border-box;
+}
+.videoContent .content .video{
+  position: relative;
+  display: block;
+  height: pxToRem(212);
+  background-color: #fff;
+  border-bottom: pxToRem(1) solid rgba(0,0,0,0.12);
+}
+.videoContent .content .video img{
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  border-top-left-radius: pxToRem(5);
+  border-top-right-radius: pxToRem(5);
+}
+.videoContent .content .text{
+  display: block;
+  height: pxToRem(114);
+  font-size: pxToRem(26);
+  text-align: center;
+  color: #333;
+  line-height: pxToRem(114);
+  background-color: #fff;
+  border-bottom-left-radius: pxToRem(5);
+  border-bottom-right-radius: pxToRem(5);
+}
+.videoContent .cover{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: url(./img/play_icon.png) no-repeat center;
+  background-size: 30%;
+  pointer-events: none;
+}

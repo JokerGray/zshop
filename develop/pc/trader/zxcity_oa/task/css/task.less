@@ -1,0 +1,375 @@
+
+
+@charset "UTF-8";
+@import url(../../common/css/reset);
+
+@corlor: #1BE0D7;
+
+//滚动条宽度
+::-webkit-scrollbar {
+  width: 0;
+}
+
+//滚动条槽宽颜色
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+//滚动条颜色
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+//滚动条鼠标悬停颜色
+::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
+}
+
+body {
+  font-family: 'microsoft yahei';
+  font-size: 14px;
+  color: #333333;
+  background: #F0F0F0;
+}
+
+//非常紧急
+.level-3 {
+  display: inline-block;
+  width: 65px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #ff5715;
+  border-radius: 5px;
+  vertical-align: 2px;
+  //margin: 0 0 0 5px;
+}
+
+//紧急
+.level-2 {
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #f9a11c;
+  border-radius: 5px;
+  vertical-align: 2px;
+  //margin: 0 0 0 5px;
+}
+
+//普通
+.level-1 {
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #b3b3b3;
+  border-radius: 5px;
+  vertical-align: 2px;
+  //margin: 0 0 0 5px;
+}
+
+.icon-9 {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: url(../../images/icon-9.png) no-repeat;
+  vertical-align: -2px;
+  //margin: 0 5px 0 0;
+}
+
+.icon-8 {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: url(../../images/icon-8.png) no-repeat;
+  vertical-align: -2px;
+  //margin: 0 5px 0 0;
+}
+
+#task {
+  height: auto;
+  background-color: #ffffff;
+  padding: 0 40px;
+  margin: 20px 250px;
+  min-width: 1052px;
+
+  //头部
+  .title {
+    height: 60px;
+    margin: 0;
+    border-bottom: 1px solid #ebebeb;
+    position: relative;
+    ul {
+
+      height: 100%;
+      li {
+        float: left;
+        width: 65px;
+        height: 100%;
+        line-height: 60px;
+        text-align: center;
+        margin: 0 60px 0 0;
+        cursor: pointer;
+        color: #1eccc6;
+        border-bottom: 2px solid #1eccc6;
+      }
+    }
+    button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #1eccc6;
+      color: #ffffff;
+    }
+  }
+  //内容
+  .item-list {
+    height: 670px;
+    overflow-y: auto;
+    .item {
+      line-height: 24px;
+      padding: 22px 0;
+      border-bottom: 1px solid #ebebeb;
+      .subtitle {
+        font-size: 16px;
+        color: #333333;
+
+      }
+      .content {
+        width: 950px;
+        color: #666666;
+        //font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 14px;
+      }
+      .time {
+
+        margin-top: 5px;
+        a{
+          color: #999999;
+        }
+
+      }
+    }
+
+  }
+
+  #paging-box-r {
+    height: 56px;
+    .layui-laypage {
+      float: right !important;
+    }
+
+  }
+
+}
+
+//发布任务弹出框
+#details {
+  display: none;
+  padding: 20px 20px 5px 20px;
+  .flag {
+    color: #ff0000;
+  }
+  .layui-form-label {
+    width: 122px;
+  }
+
+  .layui-form-item label {
+    font-size: 14px;
+    color: #606060;
+  }
+
+  .layui-input-block {
+    width: 503px;
+    margin-left: 122px;
+    line-height: 36px;
+    &:after {
+      display: table;
+      content: '';
+      clear: both;
+    }
+  }
+  .level-item {
+    float: left;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    text-align: center;
+    margin: 5px 20px 0 0;
+    cursor: pointer;
+    &:nth-of-type(3) {
+      width: 80px;
+    }
+    &:nth-of-type(1).active {
+      background-color: #b3b3b3;
+      color: #ffffff;
+    }
+    &:nth-of-type(2).active {
+      background-color: #f9a11c;
+      color: #ffffff;
+    }
+    &:nth-of-type(3).active {
+      background-color: #ff5715;
+      color: #ffffff;
+    }
+  }
+
+  .layui-layedit {
+    width: 570px;
+    margin: 0 0 0 55px;
+  }
+
+  #editor {
+    width:597px;
+    margin: 0 0 0 30px;
+  }
+
+.timeBtn{
+  position: relative;
+
+  .dateBtn{
+    position: absolute;
+    top: 2px;
+    right: 7px;
+  }
+}
+
+}
+
+//任务详情弹出框
+#detail-2 {
+
+  //滚动条宽度
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+
+  //滚动条槽宽颜色
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  //滚动条颜色
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  //滚动条鼠标悬停颜色
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: transparent;
+  }
+
+  font-family: SimHei;
+  display: none;
+  padding: 30px 50px;
+  //position: relative;
+  .taskdone {
+    position: absolute;
+    top: 0;
+    left: 410px;
+    display: none;
+    opacity: 0.5;
+  }
+  .toConfirm {
+    cursor: pointer;
+    background: url(../../images/review.png) no-repeat;
+    position: absolute;
+    top: 59px;
+    right: 0;
+    width: 184px;
+    height: 44px;
+    padding-top: 10px;
+    z-index: 200000000000000000;
+    span {
+      color: white;
+      margin-left: 45px;
+      cursor: pointer;
+    }
+  }
+  .title {
+    margin-bottom: 10px;
+    .theme{
+      margin-top: 10px;
+    }
+
+    b {
+      font-size: 16px;
+      margin-right: 30px;
+      font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+      font-weight: bold;
+    }
+
+    span {
+      font-size: 12px;
+      color: #999999;
+    }
+  }
+  .content {
+    padding: 20px 0;
+    max-height:470px;
+    overflow-y: auto;
+
+    h1{
+      font-size: 36px;
+
+    }
+    h2{
+      font-size: 30px;
+    }
+    h3{
+      font-size: 24px;
+    }
+    h4{
+      font-size: 18px;
+    }
+    h5{
+      font-size: 12px;
+    }
+
+    p {
+
+      img {
+        display: table;
+        margin: 10px 0;
+        max-height: 490px;
+        max-width: 400px;
+      }
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 21px;
+      width: 600px;
+      left: 50px;
+      border-bottom: 1px solid #E8E8E8;
+      //margin-bottom: 10px;
+
+      span {
+        position: absolute;
+        top: -8px;
+        left: 200px;
+        font-size: 12px;
+        color: #A7A7A7;
+        height: 30px;
+        background: white;
+        padding: 0 20px;
+      }
+    }
+
+  }
+
+}

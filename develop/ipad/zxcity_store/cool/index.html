@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+
+    <title></title>
+    <style></style>
+    <meta name="format-detection" content="telephone=no"/>
+    <script type="text/javascript">
+        var iScale = 1;
+        iScale = iScale / window.devicePixelRatio;
+        document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=' + iScale + ',minimum-scale=' + iScale + ',maximum-scale=' + iScale + '">')
+    </script>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+        var iWidth = document.documentElement.clientWidth;
+        document.getElementsByTagName('html')[0].style.fontSize = iWidth / 16 + 'px';
+    </script>
+    <style type="text/css">
+        /*reset*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        /*reset*/
+
+        /*common*/
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+
+        .headerwrap .headerzhan {
+            padding-top: 2.730666666666667rem;
+        }
+
+        .footerwrap .footerzhan {
+            padding-bottom: 1.92rem;
+        }
+
+        .l {
+            float: left
+        }
+
+        .r {
+            float: right;
+        }
+
+        .clearfix:after {
+            content: '';
+            display: block;
+            clear: both;
+            height: 0;
+        }
+
+        .clearfix {
+            *zoom: 1
+        }
+
+        .suojin {
+            padding-left: 2em;
+        }
+
+        .comment .headcommon {
+            width: 100%;
+            height: 0.4906666666666667rem;
+
+        }
+
+        .comment .headcommon .lxian {
+            position: relative;
+        }
+
+        .comment .headcommon .lxian .line1 {
+            height: 1px;
+            width: 4.330666666666667rem;
+            display: block;
+            background-color: #666666;
+            position: absolute;
+            top: 0.256rem;
+            left: 0;
+        }
+
+        .comment .headcommon .lxian .line2 {
+            height: 1px;
+            width: 4.010666666666667rem;
+            display: block;
+            background-color: #666666;
+            position: absolute;
+            left: 2.325333333333333rem;
+            top: 0.4266666666666667rem;
+        }
+
+        .comment .headcommon > p {
+            font-size: 0.5rem;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+            color: #777777;
+        }
+
+        .comment .headcommon .rxian {
+            position: relative;
+        }
+
+        .comment .headcommon .rxian .line1 {
+            height: 1px;
+            width: 4.330666666666667rem;
+            display: block;
+            background-color: #666666;
+            position: absolute;
+            top: 0.256rem;
+            right: 0;
+        }
+
+        .comment .headcommon .rxian .line2 {
+            height: 1px;
+            width: 4.010666666666667rem;
+            display: block;
+            background-color: #666666;
+            position: absolute;
+            right: 2.325333333333333rem;
+            top: 0.4266666666666667rem;
+        }
+
+        .comment .contentcommon {
+            width: 100%;
+        }
+
+        .comment .contentcommon ul {
+            margin: 0 auto;
+            width: 95.2%;
+            /*background-color: #fff;*/
+        }
+
+        .comment .contentcommon ul li {
+            width: 95.2%;
+            /*height: 3.050666666666667rem;*/
+            border-bottom: 1px solid #999999;
+            display: inline-block;
+
+        }
+
+        .comment .contentcommon ul li:last-of-type {
+            width: 95.2%;
+            /*height: 3.050666666666667rem;*/
+            border-bottom: none;
+            display: inline-block;
+
+        }
+
+        .comment .contentcommon ul li .headicon {
+            background: url(../../images/Uicosm.png) no-repeat 0 0;
+            display: inline-block;
+            width: 0.9173333333333333rem;
+            height: 0.9813333333333333rem;
+            -webkit-background-size: cover;
+            background-size: cover;
+            margin-left: 0;
+            margin-top: 0.5rem;
+            border-radius: 50%;
+            float: left;
+        }
+
+        .comment .contentcommon ul li h4 {
+            font-size: 0.48rem;
+            color: #dedfe2;
+            font-weight: 500;
+            margin-left: 0.3rem;
+            margin-top: 0.5rem;
+            float: left;
+        }
+
+        .comment .contentcommon ul li .time {
+            font-size: 0.46rem;
+            color: #5c5f67;
+            margin-left: 0.3rem;
+            margin-top: 0.5rem;
+        }
+
+        .comment .contentcommon ul li > p {
+            width: 92.35574229691877%;
+            font-size: 0.512rem;
+            color: #9b9c9f;
+            margin-left: 1.2rem;
+            margin-top: -0.25rem;
+            line-height: 0.64rem;
+            margin-bottom: 0.4rem;
+            float: left;
+            max-height: 100%;
+        }
+
+        .comment .contentcommon ul li > div {
+            display: inline-block;
+            float: right;
+            width: 1.4rem;
+            height: 60px;
+        }
+
+        .comment .contentcommon ul li > div > span {
+            background: url(img/dianzan.png) no-repeat 0 0;
+            display: block;
+            width: 0.4906666666666667rem;
+            height: 0.448rem;
+            /* position: absolute; */
+            margin-top: -0.6rem;
+            -webkit-background-size: cover;
+            background-size: cover;
+            float: left;
+            overflow: hidden;
+        }
+
+        .comment .contentcommon ul li > div > p {
+            font-size: 0.3913333333333333rem;
+            /* position: absolute; */
+            margin-top: -0.6rem;
+            color: #999999;
+            float: left;
+            overflow: hidden;
+            margin-left: 0.7rem;
+        }
+
+        /*common*/
+
+        @media all and (min-width: 320px) {
+            /*header*/
+            header {
+                width: 100%;
+                height: 2.730666666666667rem;
+                position: fixed;
+                left: 0;
+                top: 0;
+                z-index: 10;
+            }
+
+            header .wrap {
+                position: relative;
+                width: 100%;
+                height: 2.730666666666667rem;
+                background: url(../../images/bg.png) no-repeat 0 0;
+                -webkit-background-size: cover;
+                background-size: cover;
+
+            }
+
+            header .wrap .toUp {
+                position: absolute;
+                left: 0.384rem;
+                top: 1.450666666666667rem;
+                background: url(../../images/toUp.png) no-repeat 0 0;
+                width: 0.384rem;
+                height: 0.6826666666666667rem;
+                -webkit-background-size: cover;
+                background-size: cover;
+                display: block;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+            }
+
+            header .wrap > h2 {
+                font-size: 0.64rem;
+                color: white;
+                position: absolute;
+                left: 6.933333333333333rem;
+                top: 1.450666666666667rem;
+            }
+
+            header .wrap .cross {
+                background: url(../../images/cross.png) no-repeat 0 0;
+                width: 0.8533333333333333rem;
+                height: 0.8533333333333333rem;
+                -webkit-background-size: cover;
+                background-size: cover;
+                position: absolute;
+                right: 0.4rem;
+                top: 1.450666666666667rem;
+                display: block;
+            }
+
+            /*header*/
+            /*autor*/
+            .autor {
+                width: 100%;
+                height: 1.877333333333333rem;
+                background-color: #7a70ee;
+                position: relative;
+            }
+
+            .autor .lside {
+                width: 100%;
+            }
+
+            .autor .lside span:nth-of-type(1) {
+                width: 1.216rem;
+                height: 1.216rem;
+                -webkit-background-size: cover;
+                background-size: cover;
+                position: absolute;
+                left: 0.384rem;
+                top: 0.2986666666666667rem;
+                display: block;
+                border-radius: 50%;
+            }
+
+            .autor .lside h4 {
+                position: absolute;
+                left: 2rem;
+                top: 0.2986666666666667rem;
+                font-size: 0.512rem;
+                color: white;
+            }
+
+            .autor .lside .time {
+                position: absolute;
+                left: 2rem;
+                top: 1.1rem;
+                font-size: 0.2986666666666667rem;
+                color: #bbbcbe;
+            }
+
+            .autor .lside .eye {
+                background: url(img/eyemini.png) no-repeat 0 0;
+                width: 0.3626666666666667rem;
+                height: 0.2986666666666667rem;
+                display: block;
+                position: absolute;
+                left: 5.3rem;
+                top: 1.14rem;
+                -webkit-background-size: cover;
+                background-size: cover;
+            }
+
+            .autor .lside p:nth-of-type(2) {
+                position: absolute;
+                left: 5.9rem;
+                top: 1.1rem;
+                font-size: 0.2986666666666667rem;
+                color: #bbbcbe;
+            }
+
+            .autor .rside {
+
+            }
+
+            .autor .rside span {
+                background: url(../../images/focused.png) no-repeat 0 0;
+                width: 1.984rem;
+                height: 0.9386666666666667rem;
+                display: block;
+                position: absolute;
+                right: 0.6rem;
+                top: 0.4rem;
+                -webkit-background-size: cover;
+                background-size: cover;
+            }
+
+            /*autor*/
+            /*news*/
+            .news {
+                position: relative;
+                width: 100%;
+                /*height: 16.64rem;*/
+                background-color: #ffffff;
+            }
+
+            .news .pic {
+                width: 16rem;
+                height: 11.968rem;
+            }
+
+            .news .pic video {
+                padding-top: 0.6rem;
+                padding-bottom: 0.6rem;
+                width: 16rem;
+                height: 10.6rem;
+            }
+
+            .news > p {
+                width: 15.06133333333333rem;
+                font-size: 0.5693333333333333rem;
+                color: white;
+                /*left: 0.4266666666666667rem;*/
+                margin-left: 50%;
+                margin-top: 0.4rem;
+                line-height: 0.896rem;
+                transform: translate(-50%, 0);
+                max-height: 99999rem;
+            }
+
+            .news .newsfooter {
+                width: 100%;
+                padding: 0.4rem 0;
+                overflow: hidden;
+                background-color: gray;
+                margin-bottom: -1px;
+            }
+
+            .news .newsfooter > div {
+            }
+
+            /*.news .newsfooter>span{
+               width: 1px;
+               height: 0.768rem;
+               display: block;
+               color: #999999;
+            }
+            .news .newsfooter>span:nth-of-type(1){
+               position: absolute;
+               left: ;
+               top: ;
+            }
+            .news .newsfooter>span:nth-of-type(2){
+               position: absolute;
+               left: ;
+               top: ;
+            }*/
+            .news .newsfooter .p1 {
+                width: 33.24444444444444%;
+                height: 0.768rem;
+                position: relative;
+            }
+
+            .news .newsfooter .p1 span {
+                background: url(img/like.png) no-repeat 0 0;
+                width: 0.4906666666666667rem;
+                height: 0.448rem;
+                display: block;
+                position: absolute;
+                left: 1.642666666666667rem;
+                top: 0.1493333333333333rem;
+                -webkit-background-size: cover;
+                background-size: cover;
+            }
+
+            .news .newsfooter .p1 p {
+                font-size: 0.4266666666666667rem;
+                color: #ffffff;
+                position: absolute;
+                left: 2.35rem;
+                top: 0.12rem;
+            }
+
+            .news .newsfooter .p2 {
+                width: 33.24444444444444%;
+                height: 0.768rem;
+                position: relative;
+                margin-left: 5.340444444444444rem;
+                margin-top: -0.768rem;
+                border-right: 1px solid #999999;
+                float: left;
+                display: inline-block;
+            }
+
+            .news .newsfooter .p2 span {
+                background: url(../../images/zhuanfa.png) no-repeat 0 0;
+                width: 0.4693333333333333rem;
+                height: 0.4693333333333333rem;
+                display: block;
+                position: absolute;
+                left: 1.642666666666667rem;
+                top: 0.1493333333333333rem;
+                -webkit-background-size: cover;
+                background-size: cover;
+            }
+
+            .news .newsfooter .p2 p {
+                font-size: 0.4266666666666667rem;
+                color: #939395;
+                position: absolute;
+                left: 2.35rem;
+                top: 0.12rem;
+            }
+
+            .news .newsfooter .p3 {
+                width: 33.24444444444444%;
+                height: 0.768rem;
+                position: relative;
+                float: right;
+                display: inline-block;
+                margin-top: -0.768rem;
+            }
+
+            .news .newsfooter .p3 span {
+                background: url(../../images/share.png) no-repeat 0 0;
+                width: 0.4693333333333333rem;
+                height: 0.4693333333333333rem;
+                display: block;
+                position: absolute;
+                left: 1.642666666666667rem;
+                top: 0.1493333333333333rem;
+                -webkit-background-size: cover;
+                background-size: cover;
+            }
+
+            .news .newsfooter .p3 p {
+                font-size: 0.4266666666666667rem;
+                color: #939395;
+                position: absolute;
+                left: 2.35rem;
+                top: 0.12rem;
+            }
+
+            /*news*/
+            .comment {
+                width: 100%;
+                background-color: #f2f2f2;
+                /*height: 30rem;*/
+                position: relative;
+                min-height: 12rem;
+            }
+
+            .comment .head {
+                height: 1.28rem;
+            }
+
+            .comment .head p {
+                position: absolute;
+                left: 0.384rem;
+                top: 0.4266666666666667rem;
+                font-size: 0.45rem;
+                color: #bbbbbe;
+            }
+
+            .comment .head p span {
+                padding-left: 0.2rem;
+                font-size: 0.45rem;
+                color: #ffffff;
+            }
+
+            .comment .hot {
+
+            }
+
+            .comment .hot .hothead {
+
+            }
+
+            .send {
+                display: none;
+                width: 100%;
+                height: 1.877333333333333rem;
+                background-color: #12254f;
+                position: fixed;
+                bottom: 1.877333333333333rem;
+                left: 0;
+            }
+
+            .send .emoji {
+                background: url(../../images/b_03.png) no-repeat 0 0;
+                width: 0.9386666666666667rem;
+                height: 0.9386666666666667rem;
+                -webkit-background-size: cover;
+                background-size: cover;
+                margin-left: 0.576rem;
+                margin-top: 0.4693333333333333rem;
+                float: left;
+            }
+
+            .send form {
+
+            }
+
+            .send form #sendMes {
+                width: 11.264rem;
+                height: 1.408rem;
+                background-color: white;
+                border-radius: 0.25rem;
+                margin-left: 0.576rem;
+                margin-top: 0.2346666666666667rem;
+                font-size: 0.6rem;
+                text-indent: 1em;
+                outline: none;
+            }
+
+            .send form #sendSubmit {
+                width: 1.578666666666667rem;
+                height: 1.408rem;
+                line-height: 1.408rem;
+                text-align: center;
+                -webkit-appearance: none;
+                appearance: none;
+                background-color: #12254f;
+                border: none;
+                font-size: 0.512rem;
+                color: #f4f5f6;
+                float: right;
+                margin-right: 0.5333333333333333rem;
+                margin-top: 0.2346666666666667rem;
+            }
+
+            /*comment*/
+            /*footer*/
+            footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 1.92rem;
+            }
+
+            footer .wrap {
+                width: 100%;
+                height: 1.92rem;
+                background-color: #12254f;
+            }
+
+            footer .wrap > ul {
+                width: 100%;
+                height: 1.92rem;
+                position: relative;
+            }
+
+            footer .wrap > ul .part > p {
+                font-size: 0.512rem;
+                color: #ffffff;
+                position: absolute;
+                left: 2.1rem;
+                top: 0.65rem;
+            }
+
+            footer .wrap > ul .n1 {
+                width: 25%;
+                height: 1.92rem;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            footer .wrap > ul .n1 > span {
+                background: url(../../images/footzan.png) no-repeat 0 0;
+                display: block;
+                width: 0.7893333333333333rem;
+                height: 0.7253333333333333rem;
+                -webkit-background-size: cover;
+                background-size: cover;
+                position: absolute;
+                left: 0.9813333333333333rem;
+                top: 0.576rem;
+            }
+
+            footer .wrap > ul .n1 > p {
+
+            }
+
+            footer .wrap > ul .n2 {
+                width: 25%;
+                height: 1.92rem;
+                position: absolute;
+                left: 25%;
+                top: 0;
+            }
+
+            footer .wrap > ul .n2 > span {
+                background: url(../../images/comment.png) no-repeat 0 0;
+                display: block;
+                width: 0.8106666666666667rem;
+                height: 0.8106666666666667rem;
+                -webkit-background-size: cover;
+                background-size: cover;
+                position: absolute;
+                left: 0.9813333333333333rem;
+                top: 0.576rem;
+            }
+
+            footer .wrap > ul .n2 > p {
+
+            }
+
+            footer .wrap > ul .n3 {
+                width: 25%;
+                height: 1.92rem;
+                position: absolute;
+                left: 50%;
+                top: 0;
+            }
+
+            footer .wrap > ul .n3 > span {
+                background: url(../../images/footzhuan.png) no-repeat 0 0;
+                display: block;
+                width: 0.8106666666666667rem;
+                height: 0.8106666666666667rem;
+                -webkit-background-size: cover;
+                background-size: cover;
+                position: absolute;
+                left: 0.9813333333333333rem;
+                top: 0.576rem;
+            }
+
+            footer .wrap > ul .n3 > p {
+
+            }
+
+            footer .wrap > ul .n4 {
+                width: 25%;
+                height: 1.92rem;
+                position: absolute;
+                left: 75%;
+                top: 0;
+            }
+
+            footer .wrap > ul .n4 > span {
+                background: url(../../images/footfen.png) no-repeat 0 0;
+                display: block;
+                width: 0.7466666666666667rem;
+                height: 0.7466666666666667rem;
+                -webkit-background-size: cover;
+                background-size: cover;
+                position: absolute;
+                left: 0.9813333333333333rem;
+                top: 0.576rem;
+            }
+
+            footer .wrap > ul .n4 > p {
+
+            }
+
+            /*footer*/
+            .erweima {
+            }
+
+            .erweima a {
+                display: block;
+                border: 1px solid aliceblue;
+                margin-top: 2.4rem;
+                height: 2rem;
+                line-height: 2rem;
+                font-size: 0.6rem;
+                text-align: center;
+                color: aliceblue;
+                background-color: dimgrey;
+            }
+        }
+    </style>
+</head>
+<body>
+<section class="autor">
+    <div class="l lside">
+        <span></span>
+        <h4></h4>
+        <p class="time"></p>
+        <span class="eye"></span>
+        <p></p>
+    </div>
+</section>
+<section class="news">
+    <div class="pic">
+        <video>
+
+        </video>
+    </div>
+    <p></p>
+    <div class="newsfooter">
+        <div class="p1">
+            <span></span>
+            <p class="count"></p>
+        </div>
+    </div>
+</section>
+<section class="comment">
+    <div class="head">
+        <p>评论<span></span></p>
+    </div>
+    <div class="hot">
+        <div class="headcommon hothead">
+            <div class="l lxian">
+                <span class="line1"></span>
+                <span class="line2"></span>
+            </div>
+            <p>热门评论</p>
+            <div class="r rxian">
+                <span class="line1"></span>
+                <span class="line2"></span>
+            </div>
+        </div>
+        <div class="contentcommon hotcontent">
+            <ul>
+                <!--<li>-->
+                <!--<span class="headicon"></span>-->
+                <!--<h4>吃货大王</h4>-->
+                <!--<span class="time">04.22  10:42</span>-->
+                <!--<p>影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生</p>-->
+                <!--<div class="dianzan">-->
+                <!--<p>2000</p>-->
+                <!--<span></span>-->
+
+                <!--</div>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+    <div class="lasted">
+        <div class="headcommon lastedhead">
+            <div class="l lxian">
+                <span class="line1"></span>
+                <span class="line2"></span>
+            </div>
+            <p>最新评论</p>
+            <div class="r rxian">
+                <span class="line1"></span>
+                <span class="line2"></span>
+            </div>
+        </div>
+        <div class="contentcommon lastedcontent">
+            <ul>
+                <!--<li>-->
+                <!--<span class="headicon"></span>-->
+                <!--<h4>吃货大王</h4>-->
+                <!--<span class="time">04.22  10:42</span>-->
+                <!--<p>影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生影片故事灵感来源于一起真实事件：1992年，品学兼优、身-->
+                <!--为运动健将的美国大学生</p>-->
+                <!--<div class="dianzan">-->
+                <!--<p>2000</p>-->
+                <!--<span></span>-->
+                <!--</div>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+    <section class="send">
+        <div class="emoji"></div>
+        <form target="id_iframe">
+            <input type="text" name="" id="sendMes"/>
+            <input type="submit" value="发送" id="sendSubmit"/>
+        </form>
+        <iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>
+    </section>
+    <div class="erweima">
+        <a href="http://www.izxcs.com/erweima.php">下载智享城市App查看更多精彩内容</a>
+    </div>
+</section>
+</body>
+<script>
+    //var apikey = sessionStorage.getItem('apikey') == null ? "test" : sessionStorage.getItem('apikey');
+    (function () {
+
+        var theurl = location.search;
+        var keyObj = {};
+        var lpart = [];
+        var rpart = [];
+        var oArr;
+        var reqArr = [];
+        var theRequest = {};
+
+        if (theurl.indexOf("?") != -1) {
+            var str = theurl.substr(1);
+            var strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0].toLowerCase()] = unescape(strs[i].split("=")[1]);
+                lpart.push(strs[i].split('=')[0]);
+                rpart.push(strs[i].split('=')[1]);
+                var curArr = [lpart[i], rpart[i]];
+                reqArr[i] = curArr;
+                oArr = reqArr[i];
+                if (strs[i].split("=")[0].toLowerCase() == 'userid') {
+                    var keyUserId = strs[i].split("=")[0].toLowerCase();
+                    var keyUserIdValue = decodeURI(strs[i].split("=")[1])
+                }
+                if (strs[i].split("=")[0].toLowerCase() == 'coolid') {
+                    var coolIdValue = decodeURI(strs[i].split("=")[1])
+                }
+                if (strs[i].split("=")[0].toLowerCase() == 'coolvideotypeid') {
+                    var coolVideoTypeIdValue = decodeURI(strs[i].split("=")[1])
+                }
+            }
+
+        }
+        var apikey = theRequest['apikey'];
+        if(coolVideoTypeIdValue == "2"){
+        	document.title = "电子名片";
+        }else{
+        	document.title = "我要炫";
+        }
+
+        //获取文章详情
+        $.ajax({
+            type: 'POST',
+            url: '/zxcity_restful/ws/rest',
+            dataType: 'json',
+            data: {
+                'cmd': 'circle/getCBID',
+                'data': '{"coolId":' + coolIdValue + ',"sCurrUserId":' + keyUserIdValue + ',"coolVideoTypeId":' + Number(coolVideoTypeIdValue) + '}',
+                'version': '1'
+            },
+            beforeSend: function (request) {
+                request.setRequestHeader("apikey", apikey);
+            },
+            success: function (re) {
+                //Dom
+                var theVideo = $('.pic>video');
+                var theArtical = $('.news>p');
+                var theAuthor = $('.autor>.lside');
+                //var playNum = $('.p1>p');
+
+                //data
+                var parent = re.data;
+                var hotCommentAjax = parent.mPlmap.hotCommentList;
+                var newCommentAjax = parent.mPlmap.newestCommentList;
+                var pinglunStr = '<li><span class="headicon"></span><h4>吃货大王</h4><span class="time">04.22  10:42</span><p></p><div class="dianzan"><p>2000</p><span></span></div></li>';
+                var authorAjax = parent.sysUser;
+                var authorImg = authorAjax.userpic;
+                var authorName = authorAjax.username;
+                var authorTime = parent.coolTime;
+                var authorPlaytime = parent.coolPlayTimes;
+                var hotnewsCount = parent.mPlmap.totalLikeCount ? parent.mPlmap.totalLikeCount : 0;
+
+                theVideo.attr('poster', '' + parent['coolCoverPic'] + '').attr('src', '' + parent['coolFileAddress'] + '').attr('controls', 'controls');
+                theArtical.html('' + parent['coolDecrip'] + '');
+                theAuthor.find('span').eq(0).css('background', 'url(' + authorImg + ')').css('backgroundSize', 'cover');
+                theAuthor.find('h4').html('' + authorName + '');
+                theAuthor.find('.time').html('' + authorTime + '');
+                theAuthor.find('p').eq(1).html('' + authorPlaytime + '');
+               // playNum.html('' + authorPlaytime + '');
+
+
+                //热门评论
+                if (hotCommentAjax.length != 0) {
+                    for (var i = 0; i < hotCommentAjax.length; i++) {
+                        var hotLi = $(parseDom(pinglunStr));
+                        hotLi.find('.headicon').css('background', 'url(' + hotCommentAjax[i]['sMemberImgName'] + ')').css('backgroundSize', 'cover');
+                        hotLi.children('p').html('' + hotCommentAjax[i]['sCommentContent'] + '');
+                        hotLi.find('.time').html('' + hotCommentAjax[i]['sCommentDate'] + '');
+                        hotLi.find('h4').html('' + hotCommentAjax[i]['sUserCode'] + '');//智享城市+userId
+                        if (hotCommentAjax[i]['sLikeCount'] == null) {
+                            hotLi.find('.dianzan>p').html('0');
+                        } else {
+                            hotLi.find('.dianzan>p').html('' + hotCommentAjax[i]['sLikeCount'] + '');
+                        }
+                        //用户名为空
+                        hotCommentAjax[i]['sUserCode'] == null && hotLi.find('h4').html('智享城市' + keyUserIdValue + '');
+                        $('.hot>.hotcontent>ul').append(hotLi);
+                    }
+                }
+
+                //最新评论
+                if (newCommentAjax.length != 0) {
+                    for (var i = 0; i < newCommentAjax.length; i++) {
+                        var newLi = $(parseDom(pinglunStr));
+                        newLi.find('.headicon').css('background', 'url(' + newCommentAjax[i]['sMemberImgName'] + ')').css('backgroundSize', 'cover');
+                        newLi.children('p').html('' + newCommentAjax[i]['sCommentContent'] + '');
+                        newLi.find('.time').html('' + newCommentAjax[i]['sCommentDate'] + '');
+                        newLi.find('h4').html('' + newCommentAjax[i]['sUserCode'] + '');
+                        newLi.find('.dianzan>p').html('' + newCommentAjax[i]['sLikeCount'] + '');
+                        newLi.find('.dianzan>span').css('background', 'url(img/dianzan.png)').css('backgroundSize', 'cover');
+                        if (newCommentAjax[i]['sLikeCount'] == null) {
+                            newLi.find('.dianzan>p').html('0');
+                        } else {
+                            newLi.find('.dianzan>p').html('' + newCommentAjax[i]['sLikeCount'] + '');
+                        }
+                        //用户名为空
+                        newCommentAjax[i]['sUserCode'] == null && newLi.find('h4').html('智享城市' + keyUserIdValue + '');
+                        $('.lasted>.lastedcontent>ul').append(newLi);
+                    }
+                }
+
+                //没有评论
+
+                if (parent.mPlmap.totalCount == 0) {
+                    $('.comment').children('.head').hide();
+                    $('.comment').children('.hot').hide();
+                    $('.comment').children('.send').hide();
+                    $('body').css('backgroundColor', '#12254f');
+                }
+
+                //获取热评数量
+                //if (hotnewsCount != 0) {
+                $('.newsfooter .p1').find('.count').text(hotnewsCount);
+                //}
+            },
+
+
+            error: function (re) {
+                console.log(re)
+            }
+
+
+        })
+    })()
+
+    // 字符串转换为DOM
+    function parseDom(arg) {
+        var objE = document.createElement("div");
+        objE.innerHTML = arg;
+        return objE.childNodes;
+    }
+</script>
+</html>

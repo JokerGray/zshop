@@ -1,0 +1,754 @@
+@corlor: #1BE0D7;
+
+
+//滚动条宽度
+::-webkit-scrollbar {
+  width: 0;
+}
+
+//滚动条槽宽颜色
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+//滚动条颜色
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+//滚动条鼠标悬停颜色
+::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
+}
+body {
+  font-family: 'microsoft yahei';
+  font-size: 14px;
+  color: #333333;
+  background:#F0F0F0;
+}
+//非常紧急
+.level-3 {
+  display: inline-block;
+  background-color: #ff5715;
+}
+//紧急
+.level-2 {
+  background-color: #f9a11c;
+}
+//普通
+.level-1 {
+  background-color: #b3b3b3;
+}
+
+//主页内容
+.all{
+  margin: 20px 250px;
+  padding: 20px 40px;
+  background: white;
+  width: 1060px;
+  position: relative;
+  //全部
+  .cheackall {
+    display: none;
+    position: absolute;
+    top: 78px;
+    right: 135px;
+    width: 150px;
+    border: 1px solid gainsboro;
+    background: white;
+    z-index: 1111000;
+    cursor: pointer;
+    box-shadow: 0 0 6px 2px #eeeeee;
+    //box-shadow: 1px 1px 5px #888888;
+    li {
+      border-bottom: 1px solid gainsboro;
+      padding: 5px 10px;
+      text-align: center;
+    }
+    li:last-child {
+      border: none;
+    }
+  }
+  //头部
+  .head {
+    width: 100%;
+    height: 35px;
+    border-bottom: 1px solid gainsboro;
+    position: relative;
+    li {
+      height: 35px;
+      cursor: pointer;
+    }
+    li.active {
+      color: @corlor;
+      border-bottom: 2px solid @corlor;
+    }
+    li:first-child{
+      position: absolute;
+      top: -2px;
+      left: 0px;
+    }
+    li:nth-child(2) {
+      position: absolute;
+      top: -2px;
+      left: 100px;
+    }
+    li:nth-child(3) {
+      position: absolute;
+      top: -2px;
+      right: 70px;
+      //margin-right: 20px;
+      cursor: pointer;
+      a {
+        width: 50px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        height: 30px;
+        color: white;
+        background: @corlor;
+      }
+    }
+    li:nth-child(4) {
+     position: absolute;
+      top: -2px;
+      right: 0px;
+      width: 50px;
+
+      img {
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+    }
+
+  }
+
+  //导航
+  .title {
+    margin-top: 20px;
+    height: 12px;
+
+
+    a {
+      cursor: pointer;
+    }
+    a:first-child {
+      padding-right: 20px;
+      border-right: 1px solid gainsboro;
+      margin-right: 20px;
+    }
+    a.active {
+      color: @corlor;
+    }
+  }
+
+  //中间内容
+  .centre {
+    padding: 0 50px;
+    //width: 1010px;
+    height: 652px;
+    margin-top: 15px;
+    ul {
+      float: left;
+      padding-top: 15px;
+      width: 440px;
+      margin: 10px 15px;
+      border: 1px solid gainsboro;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0 0 6px 2px #eeeeee;
+      li {
+        margin-left: 60px;
+        margin-bottom: 5px;
+      }
+      .leftIMG {
+        margin-left: 0;
+        position: absolute;
+        top: 0;
+        left: 0px;
+        .firstImg {
+          position: absolute;
+          top: 17px;
+          left: 20px;
+          z-index: 100000;
+        }
+        span {
+          position: absolute;
+          top: 41px;
+          left: 34px;
+          border-right: 1px solid gainsboro;
+          height: 73px;
+        }
+        .secondImg {
+          position: absolute;
+          top: 114px;
+          left: 25px;
+        }
+
+      }
+      .nameProval {
+        a {
+          color: @corlor;
+        }
+        b{
+          color: #747474;
+          font-weight: normal;
+        }
+      }
+      .lilevelType {
+        margin-bottom: 34px;
+        height: 18px;
+        span {
+          font-size: 12px;
+          margin: 0 5px;
+          padding: 2px 5px;
+          border-radius: 5px;
+          color: white;
+        }
+      }
+      .litoProval {
+        margin-bottom: 15px;
+      }
+      .lilastChild {
+        width: 440px;
+        height: 35px;
+        border-radius: 5px;
+        background: #F0F0F0;
+        margin: 0;
+        //查看详情
+        a {
+          display: inline-block;
+          padding: 4px 10px;
+          background: white;
+          float: right;
+          margin-top: 5px;
+          border-radius: 7px;
+          margin-right: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+
+  }
+
+  #pageNo {
+    position: absolute;
+   bottom:-4px;
+    right: 25px;
+  }
+}
+
+//发起审批
+#details-2 {
+  display: none;
+  padding: 10px 35px 0 35px;
+
+  ::-webkit-input-placeholder { /* WebKit browsers */
+    color: @corlor;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: @corlor;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: @corlor;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: @corlor;
+  }
+
+  .flag {
+    color: red;
+  }
+  .toCheack {
+    position: relative;
+    .layui-form-label {
+      position: absolute;
+      top: 2px;
+      left: -40px;
+      width: 120px;
+    }
+  }
+  .layui-input-block {
+    position: relative;
+
+    &.cheackproval {
+      padding: 0;
+    }
+    //添加审批人
+    .addPerson {
+      margin-top: 5px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    //已选择的审批人
+    .havePerson {
+      display: none;
+      position: absolute;
+      top: 5px;
+      left: 0px;
+      min-width: 70px;
+      height: 20px;
+      background: @corlor;
+      color: white;
+      padding: 5px;
+      border-radius: 10px;
+      cursor: pointer;
+      i {
+        color: white;
+        float: right;
+        margin-top: 2px;
+        cursor: pointer;
+        margin-left: 10px;
+      }
+    }
+
+    //邮件通知
+    .layui-form-checkbox {
+      position: absolute;
+      top: 5px;
+      right: 0;
+      margin-right: 0;
+      padding-right: 0;
+      //z-index: 10000000000;
+      span {
+        padding-right: 0;
+      }
+    }
+
+    //等级
+    .level-item {
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid gainsboro;
+      border-radius: 5px;
+      margin-top: 5px;
+      margin-right: 10px;
+      cursor: pointer;
+      &:hover {
+        color: white;
+      }
+    }
+    .level-item:nth-child(1).active {
+      background-color: #b3b3b3;
+      color: white;
+    }
+    .level-item:nth-child(1):hover {
+      background-color: #b3b3b3;
+
+    }
+    .level-item:nth-child(2).active {
+      background-color: #f9a11c;
+      color: white;
+    }
+    .level-item:nth-child(2):hover {
+      background-color: #f9a11c;
+
+    }
+    .level-item:nth-child(3).active {
+      background-color: #ff5715;
+      color: white;
+    }
+    .level-item:nth-child(3):hover {
+      background-color: #ff5715;
+    }
+
+    //添加图片 附件
+    .tocommom {
+      position: absolute;
+      top: 9px;
+      left: 10px;
+      color: @corlor;
+      cursor: pointer;
+
+    }
+
+    #iptPic {
+      width: 420px;
+      min-height: 38px;
+      border: 1px solid gainsboro;
+      .parentPic {
+        position: relative;
+        float: left;
+        width: 68px;
+        margin-top: 35px;
+        i {
+          position: relative;
+          top: -24px;
+          left: 58px;
+          font-size: 16px;
+          cursor: pointer;
+        }
+        img {
+          width: 50px;
+          height: 50px;
+
+        }
+      }
+
+    }
+    #iptFile {
+      width: 420px;
+      min-height: 38px;
+      border: 1px solid gainsboro;
+      .fileShow {
+        border: 1px solid gainsboro;
+        margin: 35px 10px 10px 10px;
+        padding: 5px;
+        .name {
+          display: inline-block;
+          margin: -5px 15px;
+          width: 200px;
+          font-weight: bold;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        img {
+          width: 30px;
+          height: 30px;
+        }
+        a {
+          font-size: 14px;
+          color: #BFBFBF;
+        }
+
+        .delFile {
+          float: right;
+          margin-right: 10px;
+          margin-top: 7px;
+          cursor: pointer;
+        }
+
+      }
+    }
+
+  }
+  //请假理由
+
+  textarea:-ms-input-placeholder {
+    color: #666;
+  }
+  textarea::-webkit-input-placeholder {
+    color: #666;
+  }
+  textarea:-moz-placeholder {
+    color: #666;
+  }
+  .reason {
+
+    width: 488px;
+    height: 100px;
+    border: 1px solid gainsboro;
+    margin-left: 45px;
+    resize: none;
+  }
+
+  .layui-layer-btn0 {
+    border-radius: 10px;
+  }
+  .layui-layer-btn1 {
+    border-radius: 10px;
+  }
+}
+
+//审批详情弹出框
+#details-1 {
+  //width: 600px;
+  .flag{
+    color: red;
+  }
+  padding: 10px 40px;
+  .divtitle {
+    span {
+      display: inline-block;
+      font-size: 13px;
+      color: white;
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+    b {
+      font-size: 18px;
+      margin-right: 30px;
+    }
+  }
+
+  .inform {
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  .table-border {
+    width: 510px;
+    font-size: 14px;
+    //margin: 15px 0;
+    border: 1px solid gainsboro;
+    tr {
+      border: 1px solid gainsboro;
+      td {
+
+        height: 35px;
+        padding-left: 15px;
+        .flag {
+          color: #ff0000;
+        }
+
+        &:nth-of-type(1) {
+          width: 94px;
+          background-color: #f5f5f5;
+        }
+        &:nth-of-type(2) {
+          color: #333333;
+        }
+
+      }
+    }
+    .detailPic {
+      padding-left: 51px;
+      height: 45px;
+    }
+    .detailFile {
+      padding-left: 52px;
+      height: 45px;
+
+    }
+
+    //图片大小
+    .picShow {
+      .real {
+        width: 40px;
+        height: 37px;
+        margin-right: 20px;
+      }
+
+      #mo{
+        display: none;/*隐藏*/
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.7);
+        top: 0px;
+        left: 0px;
+        z-index:1000000000000000000;
+      }
+      #moimg{
+        display: block;
+        margin:100px auto;
+        max-width: 40%;
+      }
+      #moimg{
+        -webkit-animation: first 1s;
+        -o-animation: first 1s;
+        animation: first 1s;
+      }
+      @keyframes first{
+        from{transform: scale(0.1);}
+        to{transform: scale(1);}
+      }
+      .close{
+        font-size: 40px;
+        font-weight: bold;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color:#f1f1f1;
+      }
+      .close:hover,
+      .close:focus{
+        color:#bbb;
+        cursor:pointer;
+      }
+      @media only screen and(max-width:750px ) {
+        #moimg{
+          width: 100%;
+        }
+      }
+
+
+    }
+
+    //附件
+    .tofileShow {
+      width: 330px;
+      height: 30px;
+      border: 1px solid gainsboro;
+      padding: 2px;
+      position: relative;
+
+      .name {
+        display: inline-block;
+
+        width: 240px;
+        font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 30px;
+        height: 30px;
+        margin-left: 46px;
+      }
+      img {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 30px;
+        height: 25px;
+        margin-right: 20px;
+      }
+
+      .delFile {
+        float: right;
+        margin-right: 10px;
+        margin-top: 7px;
+        cursor: pointer;
+      }
+
+    }
+  }
+
+  //审批记录
+  .recording {
+    padding-top: 10px;
+    max-height: 210px;
+    overflow-y: auto;
+    table {
+      margin-top: 10px;
+      width: 510px;
+      font-size: 14px;
+      border: 1px solid gainsboro;
+      thead {
+        background: #f5f5f5;
+
+      }
+      th {
+        height: 40px;
+        border: 1px solid gainsboro;
+        &:nth-child(1) {
+          width: 100px;
+        }
+        &:nth-child(2) {
+          width: 230px;
+        }
+
+      }
+      td {
+        height: 40px;
+        padding-left: 10px;
+        text-align: center;
+        border: 1px solid gainsboro;
+        &:nth-child(1) {
+          width: 100px;
+        }
+        &:nth-child(2) {
+          width: 100px;
+        }
+
+      }
+
+      .opinion{
+        color:grey;
+        font-size: 10px;
+
+      }
+
+    }
+  }
+
+}
+
+//选择审批人
+#details-3 {
+  padding: 20px;
+  position: relative;
+  .left-nav {
+    float: left;
+    width: 27%;
+
+    margin-right: 20px;
+    background-color: #ededed;
+    #treeDemo1 {
+      max-height: 450px;
+      overflow-y: auto;
+      width: 100%;
+      overflow-x: auto;
+      //overflow: hidden;
+    }
+  }
+
+  .right-content {
+    float: left;
+    width: 70%;
+    position: relative;
+    .searchBtn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      width: 67px;
+      height: 45px;
+    }
+
+    .toChoose {
+      padding-left: 20px;
+      cursor: pointer;
+      width: 88%!important;
+    }
+
+    td{
+      text-align: center;
+    }
+    thead {
+      th{
+        background:#2FC4B5;
+        color: white;
+        text-align: center;
+      }
+
+    }
+    .btn-info {
+      display: inline-block;
+      padding: 3px 6px;
+      background: #2FC4B5;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      font-size: 14px;
+
+    }
+
+    .layui-table td, .layui-table th {
+      padding: 10px;
+    }
+
+    //转交备注
+    .remark {
+      display: none;
+     position:absolute;
+      width: 200px;
+      height: 40px;
+      left: 0;
+      top: 300px;
+    }
+    .toEmail{
+      display: none;
+      position:absolute;
+      top: 382px;
+      right: 10px;
+    }
+
+    //分页
+    #paging-box-r {
+      position: absolute;
+      top: 400px;
+      right: 0px;
+    }
+  }
+}
+
+
+
+
+

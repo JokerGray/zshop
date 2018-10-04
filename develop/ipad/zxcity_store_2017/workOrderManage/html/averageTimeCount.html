@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>服务平均时间统计</title>
+    <link rel="stylesheet" href="../../common/css/common.css">
+    <link rel="stylesheet" href="../../common/assets/jedate/skin/jedate.css">
+    <link rel="stylesheet" href="../../common/assets/jedate/skin/mystyle.css">
+    <link rel="stylesheet" href="../../common/assets/select2/select2.min.css">
+    <link rel="stylesheet" href="../../common/assets/paging/dist/paging.css">
+    <link rel="stylesheet" href="../css/averageTimeCount.css">
+</head>
+<body>
+<div class="header">
+    <a href="javascript:;" class="goBack"></a>
+    <div class="navTab">
+        <a href="javascript:;" class="active" data-type="11">工单完成间隔时间</a>
+        <a href="javascript:;" data-type="22">完成服务平均时间</a>
+    </div>
+</div>
+<div class="searchRequirement">
+    <div class="orderCompleteTime-searchRequirement">
+        <!--<div class="keyword-waiterNum">-->
+            <!--<span>服务员编号：</span>-->
+            <!--<select id="waiterId-selector">-->
+                <!--&lt;!&ndash;坑&ndash;&gt;-->
+            <!--</select>-->
+        <!--</div>-->
+        <a href="javascript:;" class="searchBtn">查询</a>
+        <div class="keyword-date">
+            <span>查询日期：</span>
+            <input id="searchDate" onclick="blur()">
+        </div>
+        <div class="keyword-waiterName">
+            <span>服务人员：</span>
+            <input type="text" class="waiterName">
+        </div>
+        <!--<div class="keyword-serviceName">-->
+            <!--<span>服务名称：</span>-->
+            <!--<input type="text" class="serviceName">-->
+        <!--</div>-->
+    </div>
+    <div class="serviceCompleteTime-searchRequirement">
+        <div class="keyword-waiterName">
+            <span>服务人员：</span>
+            <input type="text" id="waiterName">
+        </div>
+        <div class="keyword-time">
+            <span>时间段：</span>
+            <input id="startTime" onclick="blur()">
+            <span>至</span>
+            <input id="endTime" onclick="blur()">
+        </div>
+        <div class="keyword-serviceName">
+            <span>服务名称：</span>
+            <input type="text" id="serviceName">
+        </div>
+        <a href="javascript:;" class="searchBtn">查询</a>
+    </div>
+</div>
+<div class="resultList">
+    <div class="orderCompleteTime-list">
+        <div class="listTitle">
+            <span>服务人员</span>
+            <span>平均间隔时间</span>
+        </div>
+        <div class="listContent">
+            <!--坑-->
+        </div>
+    </div>
+    <div class="serviceCompleteTime-list">
+        <div class="listTitle">
+            <span>服务人员</span>
+            <span>平均时间</span>
+            <span>服务名称</span>
+        </div>
+        <div class="listContent">
+
+        </div>
+        <div class="serviceCompleteTime-select-page"></div>
+    </div>
+</div>
+</body>
+<!--<script type="text/html" id="waiterTpl">-->
+    <!--<option value="">—请选择—</option>-->
+    <!--{{each data item index}}-->
+    <!--<option value="{{item.id}}">{{item.id}}</option>-->
+    <!--{{/each}}-->
+<!--</script>-->
+<script type="text/html" id="orderCompleteTimeTpl">
+    <ul>
+        {{if data.length === 0}}
+        <li>暂无数据</li>
+        {{/if}}
+        {{each data item index}}
+        {{if index%2===0}}
+        <li style="background-color: #fff;">
+            <span>{{item.waiterName}}</span>
+            <span>{{item.intvTime}}分钟</span>
+        </li>
+        {{else}}
+        <li>
+            <span>{{item.waiterName}}</span>
+            <span>{{item.intvTime}}分钟</span>
+        </li>
+        {{/if}}
+        {{/each}}
+    </ul>
+</script>
+<script type="text/html" id="serviceCompleteTimeTpl">
+    <ul>
+        {{if data.length===0}}
+        <li>暂无数据</li>
+        {{/if}}
+        {{each data item index}}
+        {{if index%2 === 0}}
+        <li style="background-color: #FFFFFF">
+            <span>{{item.waiterName}}</span>
+            <span>{{item.diffTime}}分钟</span>
+            <span>{{item.serviceName}}</span>
+        </li>
+        {{else}}
+        <li>
+            <span>{{item.waiterName}}</span>
+            <span>{{item.diffTime}}分钟</span>
+            <span>{{item.serviceName}}</span>
+        </li>
+        {{/if}}
+        {{/each}}
+    </ul>
+</script>
+<script src="../../common/assets/jquery.min.js"></script>
+<script src="../../common/js/common.js"></script>
+<script src="../../common/assets/layer/layer.js"></script>
+<script src="../../common/assets/select2/select2.min.js"></script>
+<script src="../../common/assets/jedate/jquery.jedate.min.js"></script>
+<script src="../../common/assets/paging/dist/paging.js"></script>
+<script src="../../common/assets/template-web.js"></script>
+<script src="../../common/js/base.js"></script>
+<script src="../js/averageTimeCount.js"></script>
+</html>

@@ -1,0 +1,512 @@
+body{
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+/**顶部条件选项栏*/
+.topFilterBox{
+  width: 100%;
+  height: 65px;
+  background-color: #f3f3f4;
+  font-size: 0;
+  border-bottom: 1px solid #cccccc;
+  >div{
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  .timeFilter{
+    width: 60%;
+    height: 100%;
+    ul{
+      width: 100%;
+      height: 100%;
+      li{
+        float: left;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        padding: 0 30px;
+        border-top: 1px solid #cccccc;
+        border-left: 1px solid #cccccc;
+        border-right: 1px solid #cccccc;
+        margin-left: 20px;
+        margin-top: 20px;
+        cursor: pointer;
+        color: #707070;
+        -webkit-border-radius: 4px 4px 0 0;
+        -moz-border-radius: 4px 4px 0 0;
+        border-radius: 4px 4px 0 0;
+        font-size: 16px;
+        &.active{
+          background-color: #fff;
+          border: none;
+        }
+      }
+    }
+  }
+  .shopFilter{
+    width: 40%;
+    height: 100%;
+    line-height: 65px;
+    text-align: right;
+    padding-right: 20px;
+    >div{
+      display: inline-block;
+      >label{
+        font-size: 14px;
+        color: #333333;
+        vertical-align: middle;
+      }
+      >div{
+        display: inline-block;
+        width: 150px;
+        margin-left: 10px;
+        vertical-align: middle;
+      }
+      .exportBtn{
+        display: inline-block;
+        width: 80px;
+        height: 34px;
+        line-height: 28px;
+        text-align: center;
+        background-color: #fff;
+        font-size: 12px;
+        color: #333333;
+        border: 1px solid #cccccc;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        margin-left: 4px;
+        vertical-align: middle;
+        >.exportIcon{
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+          line-height: 24px;
+          background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+          vertical-align: middle;
+        }
+        >span{
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+/**路径显示*/
+.path{
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding-left: 20px;
+  font-size: 16px;
+  .dateIcon{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url("../../../assets/common/img/dateIcon.png") no-repeat center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    vertical-align: -5px;
+  }
+  >input{
+    color: #1E9FFF;
+    margin-left: 4px;
+    height: 34px;
+    padding-left: 32px;
+    background: url("../../../assets/common/img/dateIcon.png") no-repeat left 3px;
+    -webkit-background-size: 24px 24px;
+    background-size: 24px 24px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    &.selectedDate{
+      width: 116px;
+    }
+    &.selectedMonth{
+      width: 94px;
+      display: none;
+    }
+    &.selectedYear{
+      width: 72px;
+      display: none;
+    }
+    &.selfDate{
+      width: 220px;
+      display: none;
+    }
+  }
+  .arrowIcon{
+    font-family: SimSun;
+    margin:0 4px 0 0;
+    font-weight: 700;
+  }
+}
+/**统计概览*/
+.reportOverview{
+  width: 100%;
+  min-height: 118px;
+  background-color: #f3f3f4;
+  padding:0 20px;
+  ul{
+    font-size: 0;
+    padding: 5px 0;
+    li{
+      float: left;
+      width: 20%;
+      min-width: 300px;
+      height: 98px;
+      background-color: #fff;
+      margin: 5px 0;
+      border: 1px solid #cccccc;
+      >p{
+        padding: 0 16px;
+        margin-top: 16px;
+        color: #666666;
+        font-size: 16px;
+        span:first-of-type{
+          float: left;
+        }
+        span:last-of-type{
+          float: right;
+        }
+        .itemText{
+          max-width: 230px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow:ellipsis;
+        }
+      }
+      h4{
+        font-size: 20px;
+        color: #333333;
+        padding: 16px 16px 0 16px;
+        sub{
+          font-size: 14px;
+          vertical-align: text-bottom;
+        }
+      }
+    }
+  }
+}
+/**品项走势图*/
+.OverviewTrend{
+  width: 100%;
+  height: 300px;
+  background-color: #f3f3f4;
+  padding: 0 20px;
+  .canvasBox{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #cccccc;
+    background-color: #fff;
+  }
+}
+/**中部筛选栏*/
+.middleFilterBOx{
+  width: 100%;
+  min-height: 55px;
+  background-color: #fff;
+  border-left: 20px solid #f3f3f4;
+  border-right: 20px solid #f3f3f4;
+  margin-top: 20px;
+  .tabNav{
+    float: left;
+    padding-left: 10px;
+    ul{
+      li{
+        float: left;
+        margin: 0 10px;
+        margin-top: 18px;
+        padding-bottom: 4px;
+        color: #999999;
+        cursor: pointer;
+        font-size: 16px;
+        &.active{
+          border-bottom: 2px solid #1E9FFF;
+        }
+      }
+    }
+  }
+  .middleFilterContent{
+    float: right;
+    line-height: 55px;
+    >div{
+      display: inline-block;
+      margin-right: 20px;
+      color: #707070;
+      >label{
+        font-size: 14px;
+
+        margin-right: 6px;
+      }
+      >.layui-form{
+        display: inline-block;
+        width: 150px;
+      }
+      >.searchBtn{
+        width: 80px;
+        height: 34px;
+        outline: none;
+        background-color: #fff;
+        border: 1px solid #cccccc;
+      }
+      &.card,&.product,&.package,&.setBox{
+        display: none;
+      }
+    }
+  }
+}
+/**报表内容*/
+.tableBox{
+  width: 100%;
+  height: 450px;
+  overflow-y: auto;
+  background-color: #fff;
+  border-left: 20px solid #f3f3f4;
+  border-right: 20px solid #f3f3f4;
+  padding: 0 20px;
+  .formCard,.formProduct,.formPackage,.formSetBox{
+    display: none;
+  }
+  //.formProject{
+  //  thead>tr>th:nth-of-type(3),
+  //  thead>tr>th:nth-of-type(4),
+  //  tbody>tr>td:nth-of-type(3),
+  //  tbody>tr>td:nth-of-type(4){
+  //    text-align: right;
+  //    width: 100px;
+  //  }
+  //}
+  //.formCard{
+  //  thead>tr>th:nth-of-type(3),
+  //  thead>tr>th:nth-of-type(4),
+  //  thead>tr>th:nth-of-type(5),
+  //  thead>tr>th:nth-of-type(6),
+  //  thead>tr>th:nth-of-type(7),
+  //  tbody>tr>td:nth-of-type(3),
+  //  tbody>tr>td:nth-of-type(4),
+  //  tbody>tr>td:nth-of-type(5),
+  //  tbody>tr>td:nth-of-type(6),
+  //  tbody>tr>td:nth-of-type(7){
+  //    text-align: right;
+  //    width: 100px;
+  //  }
+  //}
+  .layui-table{
+    margin-top: 0;
+    thead>tr>th,
+    tbody>tr>td{
+      text-align: right;
+    }
+    thead>tr>th:nth-of-type(1),
+    tbody>tr>td:nth-of-type(1){
+      text-align: center;
+    }
+    thead>tr>th:nth-of-type(2),
+    tbody>tr>td:nth-of-type(2){
+      text-align: left;
+    }
+    tbody>tr>td{
+      .seeProjectDetail,
+      .seeCardDetail,
+      .seeProductDetail,
+      .seePackageDetail,
+      .seeSetBoxDetail{
+        color: #1E9FFF;
+      }
+    }
+  }
+}
+/**分页选择器*/
+.pageSelectorBox{
+  width: 100%;
+  height: 55px;
+  background-color: #fff;
+  border-left: 20px solid #f3f3f4;
+  border-right: 20px solid #f3f3f4;
+  padding-right: 20px;
+  #reportPageSelector{
+    float: right;
+  }
+}
+//详情弹窗
+.projectDetail,.cardDetail,.productDetail,.packageDetail,.setBoxDetail{
+  .top{
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    background-color: #353B53;
+    padding: 0 20px;
+    color: #fff;
+    >span{
+      float: left;
+      font-size: 14px;
+    }
+    >i{
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+  .descAndExport{
+    width: 100%;
+    height: 60px;
+    line-height: 58px;
+    padding: 0 20px;
+    .descPath{
+      float: left;
+      font-size: 16px;
+      color: #333333;
+      .descName{
+        display: inline-block;
+        vertical-align: middle;
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+      }
+      >i{
+        font-family: SimSun;
+      }
+    }
+    .detailRadio{
+      float: left;
+      ul{
+        li{
+          float: left;
+          margin-left: 20px;
+          cursor: pointer;
+          >i{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #cccccc;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            vertical-align: middle;
+          }
+          >span{
+            font-size: 14px;
+            color: #333333;
+            margin-left: 5px;
+            vertical-align: middle;
+          }
+          &.active{
+            >i{
+              border: none;
+              background: url("../../../assets/common/img/selectedIcon.png") no-repeat center;
+              -webkit-background-size: 100%;
+              background-size: 100%;
+            }
+          }
+        }
+      }
+    }
+    .detailExportBtn{
+      float: right;
+      width: 80px;
+      height: 34px;
+      font-size: 14px;
+      border: 1px solid #cccccc;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      line-height: 34px;
+      text-align: center;
+      margin-top: 13px;
+      >i{
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+        -webkit-background-size: 100%;
+        background-size: 100%;
+        vertical-align: -6px;
+      }
+    }
+  }
+  .detailContent{
+    padding: 0 20px;
+    >div{
+      overflow-y: auto;
+      >table{
+        margin-top: 0;
+        //>thead>tr>th:nth-of-type(2),
+        //>thead>tr>th:nth-of-type(3),
+        //>thead>tr>th:nth-of-type(4),
+        //>thead>tr>th:nth-of-type(5),
+        //>thead>tr>th:nth-of-type(8),
+        //>thead>tr>th:nth-of-type(9),
+        //>thead>tr>th:nth-of-type(11){
+        //  width: 120px;
+        //}
+        //>thead>tr>th:nth-of-type(6),
+        //>thead>tr>th:nth-of-type(7){
+        //  min-width: 120px;
+        //}
+        //>thead>tr>th:nth-of-type(10){
+        //  width: 150px;
+        //}
+        td, th{
+          padding: 9px 4px;
+          min-width: 80px;
+        }
+        >thead>tr>th:first-of-type,
+        >tbody>tr>td:first-of-type{
+          width: 80px;
+          text-align: center;
+        }
+      }
+    }
+
+  }
+  .detailPageBox{
+    padding: 0 20px;
+    height: 55px;
+    .detailTotal{
+      float: left;
+      line-height: 55px;
+      span{
+        font-size: 16px;
+        color: #333333;
+        >b{
+          color: #ff3030;
+        }
+      }
+    }
+    >div:nth-of-type(2){
+      float: right;
+    }
+  }
+  .packageName,.setBoxName{
+    display: none;
+  }
+}
+//layui下拉框样式
+.layui-form{
+  .layui-form-select{
+    text-align: left;
+     dl{
+       max-width: 100%;
+     }
+  }
+}
+.layui-input{
+  height: 34px;
+  border-color: #cccccc;
+  color: #707070;
+  font-size: 14px;
+}

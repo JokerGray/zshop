@@ -1,0 +1,112 @@
+.main-tab{
+    padding:0.938rem 0;
+    background-color: #fff;
+}
+.main-tab .button-group{
+    display: flex;
+    justify-content: center;
+}
+.main-tab .button-group .btn{
+    float:left;
+    margin:0;
+    font-size:1rem;
+}
+.main-tab .button-group .btn+.btn{
+    margin-left:-1px;
+}
+.main-tab .button-group .btn.active{
+    background-color: #fe6869;
+    color:#fff;
+}
+.list-box{
+    padding:0.938rem 0 0.938rem 0.938rem;
+}
+.birth-list{
+    display:flex;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+}
+.birth-list .list-item{
+    width:32%;
+    margin-right:1.33%;
+    margin-bottom:1.25rem;
+    padding:1rem 0.625rem 0.75rem;
+    background-color: #fff;
+}
+
+
+.birth-list .list-item .columns{
+    padding-left:0;
+    padding-right:0.5rem;
+}
+.birth-list .list-item .ava{
+    position:relative;
+    width:4.375rem;
+    height:4.375rem;
+    overflow: hidden;
+}
+.list-item .ava .birth-icon{
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:1.25rem;
+    height:1.25rem;
+    background-image:url(../image/birth_icon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.list-item .info .name{
+    color:#333;
+}
+.list-item .info .birth-date,
+.list-item .info .nowaday{
+    color:#999;
+    font-size:0.875rem;
+}
+.list-item .msg{
+    text-align: center;
+}
+.list-item .msg .send-msg-btn{
+    display: block;
+    text-align: center;
+    font-size:0.875rem;
+    color:#fe6869;
+}
+.list-item .msg .send-msg-btn .icon{
+    display: block;
+    width:1.75rem;
+    height:1.75rem;
+    margin:0 auto;
+    background-image:url(../image/birth_gift_icon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.list-item .msg .send-msg-num{
+    font-size:0.75rem;
+    color:#999;
+}
+.nodata{
+    color: #666;
+    font-size: 1.125rem;
+    text-align: center;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: #fff;
+}
+.add-box{
+    padding:1.5rem;
+    height:100%;
+}
+.add-box textarea{
+    width:100%;
+    height:100%;
+    resize:none;
+}
+.layui-layer-iframe .layui-layer-btn,
+.layui-layer-page .layui-layer-btn{
+    text-align: center;
+}
+.layui-layer-btn0{
+    background-color: #fe6869!important;
+    border-color:#fe6869!important;
+}

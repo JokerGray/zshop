@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>新增组织</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="system_organization/addsystem_organization.css" />
+</head>
+<body>
+    <div class="addsystem">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">组织名称：</label>
+                <div class="layui-input-block common-name">
+                    <input name="title" lay-verify="title" autocomplete="off"  class="layui-input" type="text" id="systemName">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">组织类型：</label>
+                <div class="layui-input-block systemSize">
+                    <select name="interest" lay-filter="aihao">
+                        <option value="1"  selected="">集团</option>
+                        <option value="2">部门</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">优先级：</label>
+                <div class="layui-input-block">
+                    <input name="title" lay-verify="title" autocomplete="off"  class="layui-input" type="text" id="systemLevel" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="2">
+                </div>
+            </div>
+            <input type="hidden" value="" class="systemId">
+            <input type="hidden" value="" class="systempId">
+            <p class="addsystem-text">*排序号为1-99，排序号越大，优先级越高</p>
+        </form>
+    </div>
+    <!-- jSCommon -->
+    <script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript">
+        $("#systemLevel").keyup(function () {
+            $(this).val($(this).val().replace(/^0/,''));
+        })
+    </script>
+</body>
+</html>

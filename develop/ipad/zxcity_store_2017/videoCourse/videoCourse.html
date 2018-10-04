@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="css/videocourse.css">
+</head>
+<body>
+<header>视频教程</header>
+<nav id="navs">
+    <a href="javascript:;" class="active" data-videoType="11">智享城市<sub>APP</sub></a>
+    <a href="javascript:;" data-videoType="22">智大师<sub>APP</sub></a>
+    <a href="javascript:;" data-videoType="33">智享店务</a>
+    <a href="javascript:;" data-videoType="44">智享后台</a>
+</nav>
+<main id="videoBox">
+    <!--坑-->
+</main>
+</body>
+<script src="../common/js/base.js"></script>
+<script src="../common/assets/jquery.min.js"></script>
+<script src="../common/assets/layer/layer.js"></script>
+<script src="../common/assets/template-web.js"></script>
+<script src="https://s3.ssl.qhres.com/!fd546749/chimee-player.browser.js" type="text/javascript"></script>
+<script src="js/videocourse.js"></script>
+<script type="text/html" id="video">
+    <!--<div class="videoBox">-->
+        <!--{{if url}}-->
+        <!--<video src="{{url}}" autoplay controls></video>-->
+        <!--{{/if}}-->
+    <!--</div>-->
+    <div class="chimee-container">
+        <video tabindex="-1"></video>
+    </div>
+</script>
+<script type="text/html" id="videoListTpl">
+    {{if data.length!==0}}
+    <ul id="videoList">
+        {{each data item index}}
+        <li data-videoUrl="{{item.videoUrl}}">
+            <div class="imgBox"><img src="assets/images/timg.png" alt=""></div>
+            <p>{{item.title}}</p>
+        </li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <div class="noDataImg">
+        <p>暂无视频教程，敬请期待！</p>
+    </div>
+    {{/if}}
+</script>
+</html>

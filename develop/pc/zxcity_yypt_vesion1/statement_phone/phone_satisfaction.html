@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>报表电话满意度自定义确认</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-2.2.5/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" type="text/css" href="../statement_data/css/common_statement.css" />
+    <link rel="stylesheet" type="text/css" href="css/statement_phone.css" />
+</head>
+<body>
+<div class="common-container">
+    <div class="content-top">
+        <div class="select-box">
+            <div class="button-box">
+                <div class="dropdowns">
+                    <button class="btn btn-default dropdown" type="button">
+                        <span class="selectVal">昨天</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdow-menu downNav" >
+                        <li class="acv">昨天</li>
+                        <li>最近七天</li>
+                        <li>
+                            <div class="time-select">
+                                <h4>自定义范围</h4>
+                                <div class="time-info">
+                                    <div class="input-group lasttime input-medium date-picker" data-date-format="yyyy-mm-dd">
+                                        <div class="input-group">
+                                            <div class='date form-control' class="datetimepicker2">
+                                                <input name="dtBegin" type="text" class="jurisdiction-begin2" placeholder="-请选择-" readonly="readonly">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group lasttime input-medium date-picker endtime" data-date-format="yyyy-mm-dd">
+                                        <div class="input-group">
+                                            <div class='date form-control' class="datetimepicker3">
+                                                <input name="dtBegin" type="text"  class="jurisdiction-begin3" placeholder="-请选择-" readonly="readonly">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary sure">确认</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="btn btn-primary">导出报表</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="table-box">
+        <div class="down-list-box clearfix">
+            <table class="layui-hide" id="table" lay-filter="table"></table>
+            <div id="laypageLeft" class="table-rgt"></div>
+        </div>
+    </div>
+</div>
+</body>
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-2.2.5/layui/layui.all.js"></script>
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../statement_data/js/common_statement.js"></script>
+<script type="text/javascript" src="js/phone_satisfaction.js"></script>
+</html>

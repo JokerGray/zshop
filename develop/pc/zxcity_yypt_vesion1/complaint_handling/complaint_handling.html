@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>参数设置</title>
+		<!-- CssCommon -->
+		<link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+		<link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../common/css/common_v2.css" />
+		<link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+		<link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+		<link rel="stylesheet" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+		<link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+		<!-- CssSinglepage-->
+		<link rel="stylesheet" type="text/css" href="css/complaint_handling.css" />
+	</head>
+
+	<body>
+		<div id="common-tool" class="clearfix p4">
+			<div id="search">
+				<button class="layui-btn layui-btn-small layui-btn-primary">
+			  <i class="layui-icon">&#xe615;</i> 搜索
+			</button>
+			</div>
+			<div id="rig-tool" class="clearfix">
+				<button class="layui-btn layui-btn-small layui-btn-primary" id="refresh">
+			  <i class="layui-icon">ဂ</i> 刷新
+			</button>
+			</div>
+		</div>
+
+		<div id="search-tool" class="clearfix">
+			<div class="input-group">
+				<span class="pull-left">标题:</span>
+				<input type="text" class="form-control media-input" placeholder="请输入标题" id="publisherTitle" maxlength="18">
+			</div>
+			<div class="input-group">
+		        <span class="pull-left">板块：</span>
+		        <select class="form-control platesel" id="platebox">
+		        </select>
+		    </div>
+			<div class="input-group lasttime input-medium date-picker" data-date-format="yyyy-mm-dd">
+				<div class="input-group">
+					<span class="jurisdiction-label pull-left" for="jurisdiction-begin">开始时间：</span>
+					<div class='date form-control' id='datetimepicker1'>
+						<input name="dtBegin" type="text" id="jurisdiction-begin" placeholder="-请选择-">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</div>
+				</div>
+				<div class="input-group">
+					<span class="jurisdiction-label pull-left" for="jurisdiction-end">至 </span>
+					<div class='date form-control' id='datetimepicker2'>
+						<input name="dtEnd" type="text" id="jurisdiction-end" placeholder="-请选择-">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</div>
+				</div>
+			</div>
+			<div class="input-group">
+				<button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearch">
+						搜索
+					</button>
+				<button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+						重置
+					</button>
+			</div>
+		</div>
+		<div id="vesion-tool" class="clearfix">
+			<div class="vesion act" data-plateType='1'>智享城市app</div>
+			<div class="vesion" data-plateType='2'>智大师app</div>
+			<div class="vesion" data-plateType='3'>智享店务pad</div>
+			<div class="vesion" data-plateType='4'>智享后台</div>
+		</div>
+		<div id="app" class="clearfix">
+			<div id="search">
+				<ul class="search-ul clearfix">
+					<li class="search-li act" data-tipoffStatus="0">待处理</li>
+					<li class="search-li" data-tipoffStatus="1">已处理</li>
+				</ul>
+			</div>
+			<div id="tableBox">
+				<table lay-filter="demo" id="demo" class="mtb0"></table>
+				<div id="laypageLeft"></div>
+			</div>
+		</div>
+		<script type="text/html" id="barDemo">
+			{{# if(d.tipoffStatus == '0'){ }}
+			<button class="layui-btn layui-btn-small layui-layui-btn-warm" lay-event='change'>
+			  <i class="layui-icon">&#xe6b2;</i> 去处理
+			</button> {{# } else { }}
+			<button class="layui-btn layui-btn-small layui-btn-normal" lay-event='detail'>
+			  <i class="layui-icon">&#xe615;</i> 查看
+			</button> {{# } }}
+		</script>
+
+		<!--modal-->
+		<div id="demo111" class='layui-form clearfix' lay-filter="seach">
+			<div class="leftCon">
+				<div class="layui-form-item h180">
+					<label class="layui-form-label flex">反馈内容：</label>
+					<div class="layui-input-block flex">
+						<textarea name="desc" class="layui-textarea" maxlength="250" height="160" id="problemsSuggestion"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="rightCon">
+				<div class="layui-form-item h180">
+					<label class="layui-form-label flex"><i class="star">*</i>回复内容：</label>
+					<div class="layui-input-block flex">
+						<textarea name="desc" placeholder="请输入回复内容" lay-verify="required" class="layui-textarea" maxlength="250" height="160" id="reply"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+	<!-- jSCommon -->
+	<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+	<script type="text/javascript" src="../common/js/yyCache.js"></script>
+	<script type="text/javascript" src="../common/js/common.js"></script>
+	<script type="text/javascript" src="../common/js/login_success.js"></script>
+	
+	<script type="text/javascript" src="../common/js/util/util.js"></script>
+	<script type="text/javascript" src="../common/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../common/js/common.js"></script>
+	<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+	<!--jSCurr-->
+	<script type="text/javascript" src="js/complaint_handling.js"></script>
+	
+	<script type="text/javascript" src="../common/js/util/pub.js"></script>
+
+</html>

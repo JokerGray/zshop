@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>申请审核信息</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" href="pages/myRoadDetail/myRoadDetail.css">
+</head>
+<body>
+    <div class="app" style="display: none">
+        <div class="header mb15">
+            <dl class="header_dl">
+                <dt><img src="29.png" alt=""></dt>
+                <dd>
+                    <h3 id="orgName"></h3>
+                    <!--<p>1533333333</p>-->
+                </dd>
+            </dl>
+            <div class="tiaojian">
+                <span class="oldLevel"></span><img src="img/d_03.jpg" alt=""><span class="newLevel"></span>
+            </div>
+        </div>
+        <div class="container mb15">
+            <h3><i></i>升级条件</h3>
+            <div class="line">
+                <div class="range">
+                    <p class="oldLevel">&nbsp;</p>
+                    <span></span>
+                </div>
+                <div class="range range1">
+                    <p class="newLevel">&nbsp;</p>
+                    <span></span>
+                </div>
+            </div>
+            <p class="count">&nbsp;</p>
+        </div>
+        <div class="statusBox">
+            <h3>审核状态</h3>
+            <div class="circle refuse">
+                已拒绝
+            </div>
+            <p class="disn">恭喜升级申请通过</p>
+        </div>
+    </div>
+    <div class="apply" style="display: none;" data-type="0">
+        重新提交升级申请
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/zepto.min.js"></script>
+<script src="assets/layer/layer.js"></script>
+<script src="js/util.js"></script>
+    <script>
+        $(function(){
+            var params={
+                merchantId:GetQueryString('merchantId'),
+                userId:GetQueryString('userId')
+            }
+            var USER_URL={
+                WAYTOUP:'user/wayToUpgrade',//获取升级之路的信息
+                UPWAY:'user/insLeapsUpgrade ',//申请升级
+            }
+            getDetails()
+            function getDetails() {
+                return reqAjaxAsync(USER_URL.WAYTOUP,JSON.stringify(params)).done(function (res) {
+                    if(res.code == 1){
+                        var datas = res.data;
+                        console.log(datas)
+
+                        var chargeLevelTypeList = datas.chargeLevelTypeList;
+                        var orgLevel = datas.merchantLevel.orgLevel;
+                        var orgLevelName = ''
+                        var newOrgLevel = -1;
+                        var newOrgLevelName = '';
+                        var str = ''
+                        $.each(chargeLevelTypeList,function (i, item) {
+                            if(orgLevel == item.levelTypeId){
+                                orgLevelName = item.levelName
+                                newOrgLevel = item.levelTypeId+1;
+                                if(item.upgradingType == 1){
+                                    str+='已回款'+datas.completionNum+'元'
+                                }else{
+                                    str+='已发展'+datas.completionNum+'家'+item.upgradingConditionsName
+                                }
+
+                            }
+                            if(newOrgLevel == item.levelTypeId){
+                                newOrgLevelName = item.levelName
+                            }
+                        })
+                        $('#orgName').html(datas.merchantLevel.orgName);
+                        $('.oldLevel').html(orgLevelName);
+                        $('.newLevel').html(newOrgLevelName)
+
+                        $('.count').html(str)
+                        var reviewStatus = datas.reviewStatus;
+                        if(reviewStatus>3){
+                            $('.apply').show();
+                            $('.circle').addClass('refuse').html('已拒绝')
+                        }else{
+                            $('.circle').addClass('shenhe').html('审核中')
+                        }
+                        $('.app').show();
+                    }
+                })
+            }
+            $('.apply').on('tap',function () {
+                var el = $(this)
+                var type = $(this).attr('data-type');
+                if(type == 0){
+                    $(this).attr('data-type','1');
+                    reqAjaxAsync(USER_URL.UPWAY,JSON.stringify(params)).done(function (res) {
+                        if(res.code == 1){
+                            layer.msg('提交申请成功')
+                            setTimeout(function () {
+                                window.location.href = 'myRoad.html?userId='+params.userId+'&merchantId='+params.merchantId;
+                            },2000)
+                        }
+                    })
+                }
+
+
+            })
+        })
+
+    </script>
+</body>
+</html>

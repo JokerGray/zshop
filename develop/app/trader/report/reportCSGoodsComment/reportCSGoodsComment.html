@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>评论统计</title>
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../../assets/common/css/common.css">
+    <link rel="stylesheet" href="./css/reportCSGoodsComment.css">
+</head>
+<body>
+<!--店铺选择-->
+<div class="top">
+    <div class="path">
+        <span class="shopName"></span>
+        <i> > </i>
+    </div>
+    <div class="shopFilter layui-form">
+        <select id="shopSelector" lay-filter="shopSelector" lay-search></select>
+    </div>
+</div>
+<div class="mainContent">
+    <!--评论总览-->
+    <div class="commentsOverview">
+        <label>评论总览</label>
+        <ul class="clearfix">
+            <li>
+                <p>店铺得分</p>
+                <div>
+                    <h4></h4>
+                    <div id="shopScore"></div>
+                </div>
+            </li>
+            <li>
+                <p>描述相符得分</p>
+                <div>
+                    <h4></h4>
+                    <div id="dscScore"></div>
+                </div>
+            </li>
+            <li>
+                <p>发货速度得分</p>
+                <div>
+                    <h4></h4>
+                    <div id="ShipScore"></div>
+                </div>
+            </li>
+            <li>
+                <p>服务态度得分</p>
+                <div>
+                    <h4></h4>
+                    <div id="attitudeScore"></div>
+                </div>
+            </li>
+            <li>
+                <p>商品评论总数</p>
+                <div>
+                    <h4></h4>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--商品评论明细-->
+    <div class="goodsCommentList">
+        <div class="filterBox clearfix">
+            <p>商品评论明细</p>
+            <div class="filterContent layui-form">
+                <div>
+                    <select id="commentSelector" lay-filter="commentSelector" lay-search>
+                        <option value="">全部评论</option>
+                        <option value="1">好评</option>
+                        <option value="2">中评</option>
+                        <option value="3">差评</option>
+                    </select>
+                </div>
+                <div>
+                    <select id="isPicture" lay-filter="isPicture" lay-search>
+                        <option value="">是否晒图（全部）</option>
+                        <option value="1">有图</option>
+                        <option value="2">无图</option>
+                    </select>
+                </div>
+                <div class="keyBox">
+                    <input type="text" id="keyword" class="layui-input" placeholder="请输入商品名称" autocomplete="off">
+                    <input type="hidden" id="goodsId" value="">
+                    <ul></ul>
+                </div>
+                <!--<div class="btnBox">-->
+                    <!--<button id="searchBtn">搜索</button>-->
+                <!--</div>-->
+                <div class="btnBox">
+                    <a class="exportBtn" href="javascript:;">
+                        <i> </i>
+                        <span>导出</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="tableBox">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="80">
+                    <col width="200">
+                    <col width="200">
+                    <col width="250">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col width="250">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>商品名称</th>
+                    <th>订单编号</th>
+                    <th>用户名称</th>
+                    <th>描述相符(星)</th>
+                    <th>发货速度(星)</th>
+                    <th>服务态度(星)</th>
+                    <th>晒图</th>
+                    <th>评论</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>艾灸温灸套盒</td>-->
+                    <!--<td>2018080208021158</td>-->
+                    <!--<td>刘袁多美</td>-->
+                    <!--<td>4</td>-->
+                    <!--<td>4</td>-->
+                    <!--<td>4</td>-->
+                    <!--<td>6</td>-->
+                    <!--<td>-->
+                        <!--<span class="starIcon zhong"></span>-->
+                        <!--<span>中评</span>-->
+                    <!--</td>-->
+                    <!--<td><a href="javascript:;">查看详情</a></td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+        <div class="pageSelectorBox clearfix">
+            <div id="pageSelect"></div>
+        </div>
+    </div>
+</div>
+<div class="mask"></div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/layui-v2.3.0/layui.js"></script>
+<!--<script src="../../assets/layer-v3.1.1/layer.js"></script>-->
+<script src="../../assets/common/js/utils.js"></script>
+<script src="./js/reportCSGoodsComment.js"></script>
+<script id="detailTpl" type="text/html">
+    <div class="title">
+        <span>订单详情</span>
+        <i class="closeIcon">×</i>
+    </div>
+    <div class="goodsInfo">
+        <div class="goodsImage">
+            <img src="{{data.pictureUrl}}">
+        </div>
+        <div class="goodsMsg">
+            <p>
+                <label>商品名称：</label>
+                <span>{{data.goodsName}}</span>
+            </p>
+            <p>
+                <label>商品规格：</label>
+                <span>{{data.stockName || "----"}}</span>
+            </p>
+            <p>
+                <label>评论时间：</label>
+                <span>{{data.commentDate}}</span>
+            </p>
+            <!--<p>-->
+                <!--<label>收藏数量：</label>-->
+                <!--<span>999</span>-->
+            <!--</p>-->
+            <!--<p>-->
+                <!--<label>原价：</label>-->
+                <!--<span>398.00</span>-->
+            <!--</p>-->
+        </div>
+    </div>
+    <div class="line">
+        <hr>
+    </div>
+    <div class="totalScore">
+        {{if data.commentType == 1}}
+        <span class="starIcon hao"></span>
+        <i>好评</i>
+        {{else if data.commentType == 2}}
+        <span class="starIcon zhong"></span>
+        <i>中评</i>
+        {{else if data.commentType == 3}}
+        <span class="starIcon cha"></span>
+        <i>差评</i>
+        {{/if}}
+    </div>
+    <div class="commentContent">
+        <p>“{{data.commentContent}}”</p>
+    </div>
+    <div class="cateScore">
+        <div>
+            <label>描述相符</label>
+            <div id="dscSame"></div>
+        </div>
+        <div>
+            <label>发货速度</label>
+            <div id="shipSpeed"></div>
+        </div>
+        <div>
+            <label>服务态度</label>
+            <div id="serviceAttitude"></div>
+        </div>
+    </div>
+    <div class="commentImages" id="layer-photos">
+        {{each imagesList item index}}
+        <img src="{{item}}">
+        {{/each}}
+        {{each videoUrlList value i}}
+        <video src="{{value}}" autoplay muted loop></video>
+        {{/each}}
+    </div>
+</script>
+<script id="videoTpl" type="text/html">
+    <div class="videoBox">
+        <video src="{{videoSrc}}" autoplay controls></video>
+    </div>
+</script>
+<script>
+    $(function () {
+        // $('.tableBox').height($(window).height()-$('.top').height()-$('.commentsOverview').outerHeight(true)-$('.goodsCommentList p').outerHeight(true)-57)
+    })
+</script>
+</html>

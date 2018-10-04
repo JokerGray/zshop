@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+        <title>客户预约</title>
+        <link rel="stylesheet" href="../common/assets/foundation-v5.5.3/foundation.min.css">
+        <link rel="stylesheet" href="../common/assets/jedate/skin/jedate.css">
+        <link rel="stylesheet" href="../common/assets/jedate/skin/mystyle.css">
+        <link rel="stylesheet" href="../common/css/common.css">
+        <link rel="stylesheet" href="css/customerReservation.css">
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="main-title">
+                <!-- <a href="javascript:;" class="return-icon"></a> -->
+                <h5 class="title">客户预约</h5>
+                <div id="reservationTab" class="main-tab">
+    				<a class="tab-item active" href="javascript:;" data-rel="roomReservation" data-list="roomReservationList">房间预定</a>
+    				<a class="tab-item" href="javascript:;" data-rel="signIn">客户签到</a>
+    			</div>
+            </div>
+            <div class="main-content">
+                <div id="roomReservation">
+                    <div class="top-div">
+                        <input class="sel-condition" id="selDate1" type="text" readonly>
+                        <div class="sel-condition sel-tech1">
+                            <a id="selTechnician1" href="javascript:;" data-dropdown="techSelector1" class="dropdown"><span>选择技师</span><i class="icon"></i></a>
+                            <ul id="techSelector1" data-dropdown-content class="f-dropdown">
+                            </ul>
+                        </div>
+                        <div class="sel-condition sel-room1 hide">
+                            <a id="selRoom1" href="javascript:;" data-dropdown="roomSelector1" class="dropdown"><span>选择房间</span><i class="icon"></i></a>
+                            <ul id="roomSelector1" data-dropdown-content class="f-dropdown">
+                            </ul>
+                        </div>
+                        <button type="button" id="searchBtn1" class="btn-normal">查询</button>
+                        <button type="button" id="addReservationBtn" class="btn-normal">新增预约</button>
+                    </div>
+                    <ul class="middle-div">
+                        <li><span class="status-icon status-icon-1"></span>空闲</li>
+                        <li><span class="status-icon status-icon-2"></span>选中</li>
+                    </ul>
+                    <div class="bottom-div">
+                        <ul id="roomReservationList" class="hide"></ul>
+					    <ul id="technicianReservationList"></ul>
+                    </div>
+                </div>
+                <div class="hide" id="signIn">
+                    <div class="top-div">
+                        <input class="sel-condition" id="selDate2" type="text" readonly>
+                        <div class="sel-condition sel-tech2">
+                            <a id="selTechnician2" href="javascript:;" data-dropdown="techSelector2" class="dropdown"><span>选择技师</span><i class="icon"></i></a>
+                            <ul id="techSelector2" data-dropdown-content class="f-dropdown">
+                            </ul>
+                        </div>
+                        <div class="sel-condition sel-customer">
+                            <a id="selCustomer" href="javascript:;" data-dropdown="customerSelector" class="dropdown"><span>选择客户</span><i class="icon"></i></a>
+                            <ul id="customerSelector" data-dropdown-content class="f-dropdown">
+                            </ul>
+                        </div>
+                        <button type="button" id="searchBtn2" class="btn-normal">查询</button>
+                    </div>
+                    <div class="bottom-div"><div id="signInList"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../common/assets/jquery.min.js"></script>
+        <script src="../common/assets/foundation-v5.5.3/foundation.min.js"></script>
+        <script src="../common/assets/foundation-v5.5.3/modernizr.js"></script>
+        <script src="../common/assets/layer/layer.js"></script>
+        <script src="../common/assets/jedate/jquery.jedate.min.js"></script>
+        <script src="../common/js/common.js"></script>
+        <script src="js/customerReservation.js"></script>
+    </body>
+</html>

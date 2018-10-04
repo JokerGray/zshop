@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>审批设置</title>
+    <link rel="stylesheet" href="../common/css/reset.css">
+    <link rel="stylesheet" href="../assets/malihu-custom-scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="../assets/layui-v2.3.0/layui/css/layui.css">
+    <link rel="stylesheet" href="./css/approvalSetting.css">
+</head>
+<body>
+    <div class="layout">
+        <!--顶部tab栏-->
+        <div class="tabNav">
+            <a href="javascript:;">审批设置</a>
+        </div>
+        <!--默认审批人和默认抄送人-->
+        <div class="setting_people">
+            <div class="defaultApprovalPeople">
+                <label>默认审批人</label>
+                <div>
+                    <p>（点击头像可删除）</p>
+                    <ul class="approvalPeopleBox"></ul>
+                </div>
+            </div>
+            <div class="defaultCopyPeople">
+                <label>默认抄送人</label>
+                <div>
+                    <p>（点击头像可删除）</p>
+                    <ul class="copyPeopleBox"></ul>
+                </div>
+            </div>
+        </div>
+        <!--设置审批方式和通知抄送人设置-->
+        <div class="setting_type">
+            <div class="approvalType">
+                <label>设置审批方式</label>
+                <ul>
+                    <li class="active" data-processType="1">
+                        <i class="selectIcon"></i>
+                        <span>依次审批（审批人依次审批）</span>
+                    </li>
+                    <li data-processType="2">
+                        <i class="selectIcon"></i>
+                        <span>必须所有审批人同意</span>
+                    </li>
+                    <li data-processType="3">
+                        <i class="selectIcon"></i>
+                        <span>一名审批人同意或拒绝即可</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="noticeType">
+                <label>通知抄送人</label>
+                <ul>
+                    <li class="active" data-informType="1">
+                        <i class="selectIcon"></i>
+                        <span>发起时通知</span>
+                    </li>
+                    <li data-informType="2">
+                        <i class="selectIcon"></i>
+                        <span>全部同意后通知</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--保存设置按钮-->
+        <div class="btns">
+            <button class="saveBtn">保存设置</button>
+        </div>
+    </div>
+</body>
+<script src="../assets/jquery/jquery.min.js"></script>
+<script src="../assets/artTemplate/template-web.js"></script>
+<script src="../assets/layui-v2.3.0/layui/layui.all.js"></script>
+<script src="../assets/layer-v3.1.1/layer.js"></script>
+<script src="../common/js/util.js"></script>
+<script src="../assets/malihu-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./js/approvalSetting.js"></script>
+<!--选择审批人弹窗-->
+<script type="text/html" id="selectPeopleTpl">
+    <div class="title">{{title}}</div>
+    <div class="mainContent">
+        <div class="selectBox">
+            <p>选择：</p>
+            <div class="selectContent">
+                <div class="search">
+                    <form action="javascript:;">
+                        <input type="text" placeholder="搜索">
+                    </form>
+                </div>
+                <div class="items">
+                    {{each select item index}}
+                    <div class="item">
+                        <h4><i class="triangleIcon"></i><span class="shopName">{{item.orgName}}</span></h4>
+                        <ul>
+                            {{each item.userList v i}}
+                            {{if v.select}}
+                            <li class="active" data-id="{{v.id}}">
+                                <div class="name">
+                                    <i class="sIcon"></i>
+                                    <span>{{v.username}}</span>
+                                </div>
+                                <div class="phoneNum">
+                                    <i class="pIcon"></i>
+                                    <span>{{v.phone}}</span>
+                                </div>
+                            </li>
+                            {{else}}
+                            <li data-id="{{v.id}}">
+                                <div class="name">
+                                    <i class="sIcon"></i>
+                                    <span>{{v.username}}</span>
+                                </div>
+                                <div class="phoneNum">
+                                    <i class="pIcon"></i>
+                                    <span>{{v.phone}}</span>
+                                </div>
+                            </li>
+                            {{/if}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <div class="selectedBox">
+            <p>已选：</p>
+            <div class="selectedContent">
+                <ul>
+                    {{each selected value INDEX}}
+                    <li data-id="{{value.id}}">
+                        <div class="name">
+                            <i class="No">{{INDEX+1}}</i>
+                            <span>{{value.username}}</span>
+                        </div>
+                        <div class="phoneNum">
+                            <i class="pIcon"></i>
+                            <span>{{value.phone}}</span>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="btnBox">
+        <button class="cancel">取消</button>
+        <button class="sure">确定</button>
+    </div>
+</script>
+<!--默认审批人-->
+<script type="text/html" id="listApprovalTpl">
+    {{each $data item index}}
+    <li data-userId="{{item.userId}}">
+        <div class="approvalPeopleName">
+            <span>{{item.userName.substr(0,1)}}</span>
+            <s>{{item.userName}}</s>
+        </div>
+        <i class="arrowIcon"></i>
+    </li>
+    {{/each}}
+    <li class="approvalAddBtn addBtn">
+        <!--<i class="arrowIcon"></i>-->
+        <div class="approvalPeopleName">
+            <span>+</span>
+            <s></s>
+        </div>
+    </li>
+</script>
+<!--默认抄送人-->
+<script type="text/html" id="listAdjunctTpl">
+    {{each $data item index}}
+    <li data-userId="{{item.userId}}">
+        <div class="approvalPeopleName">
+            <span>{{item.userName.substr(0,1)}}</span>
+            <s>{{item.userName}}</s>
+        </div>
+    </li>
+    {{/each}}
+    <li class="copyAddBtn addBtn">
+        <div class="approvalPeopleName">
+            <span>+</span>
+            <s></s>
+        </div>
+    </li>
+</script>
+<script type="text/html" id="searchTpl">
+    {{each $data item index}}
+    <div class="item">
+        <h4><i class="triangleIcon"></i><span class="shopName">{{item.orgName}}</span></h4>
+        <ul>
+            {{each item.userList v i}}
+            {{if v.select}}
+            <li class="active" data-id="{{v.id}}">
+                <div class="name">
+                    <i class="sIcon"></i>
+                    <span>{{v.username}}</span>
+                </div>
+                <div class="phoneNum">
+                    <i class="pIcon"></i>
+                    <span>{{v.phone}}</span>
+                </div>
+            </li>
+            {{else}}
+            <li data-id="{{v.id}}">
+                <div class="name">
+                    <i class="sIcon"></i>
+                    <span>{{v.username}}</span>
+                </div>
+                <div class="phoneNum">
+                    <i class="pIcon"></i>
+                    <span>{{v.phone}}</span>
+                </div>
+            </li>
+            {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+    {{/each}}
+</script>
+</html>

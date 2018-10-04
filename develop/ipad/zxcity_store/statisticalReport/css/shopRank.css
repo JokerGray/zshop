@@ -1,0 +1,250 @@
+header {
+  width: 100%;
+  height: 182px;
+  background-color: #f2f2f2;
+}
+header div a {
+  float: left;
+  margin-left: 46px;
+  margin-top: 74px;
+}
+header div a img {
+  width: 22px;
+  height: 34px;
+}
+header div h2 {
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  transform: translateX(-50%);
+  font-size: 38px;
+  color: #333333;
+  font-weight: bold;
+}
+header div:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+#contentBody .showContent .column {
+  margin-top: 95px;
+  margin-bottom: 103px;
+}
+#contentBody .showContent .column ul li.active {
+  position: relative;
+  background-color: #fe6869;
+}
+#contentBody .showContent .column ul li.active a img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 36px;
+}
+#contentBody .showContent .column ul li.active a p {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 38px;
+}
+#contentBody .showContent .column ul li.active a:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+#contentBody .showContent .column ul li.active:after {
+  content: '';
+  width: 294px;
+  height: 294px;
+  display: block;
+  border-radius: 50%;
+  border: 10px solid #fe8687;
+  position: absolute;
+  left: -15px;
+  top: -15px;
+}
+#contentBody .showContent .column ul li {
+  float: left;
+  position: relative;
+  width: 264px;
+  height: 264px;
+  border-radius: 50%;
+  background-color: #e6e6e6;
+}
+#contentBody .showContent .column ul li a {
+  width: 264px;
+  height: 264px;
+  display: inline-block;
+}
+#contentBody .showContent .column ul li a img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 36px;
+}
+#contentBody .showContent .column ul li a p {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 38px;
+}
+#contentBody .showContent .column ul li:nth-of-type(1) {
+  margin-left: 230px;
+}
+#contentBody .showContent .column ul li:nth-of-type(2) {
+  margin-left: 154px;
+}
+#contentBody .showContent .column ul li:nth-of-type(3) {
+  margin-left: 128px;
+}
+#contentBody .showContent .column ul li:nth-of-type(4) {
+  margin-left: 164px;
+}
+#contentBody .showContent .column ul:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+#contentBody .showContent .timeCircle {
+  float: left;
+  margin-bottom: 118px;
+}
+#contentBody .showContent .timeCircle ul {
+  margin-left: 230px;
+}
+#contentBody .showContent .timeCircle ul li {
+  width: 188px;
+  height: 70px;
+  border: 2px solid #fe6869;
+  float: left;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fe6869;
+  text-align: center;
+  line-height: 70px;
+}
+#contentBody .showContent .timeCircle ul li.active {
+  background-color: #fe6869;
+  color: #fff;
+}
+#contentBody .showContent .timeCircle ul:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+#contentBody .showContent .turnButton {
+  float: right;
+  margin-right: 256px;
+}
+#contentBody .showContent .turnButton div {
+  position: relative;
+  width: 182px;
+  height: 86px;
+  background-color: #fe6869;
+  border-radius: 43px;
+}
+#contentBody .showContent .turnButton div p {
+  float: left;
+  font-size: 24px;
+  color: #fff;
+  font-weight: bold;
+  line-height: 86px;
+  padding: 0;
+}
+#contentBody .showContent .turnButton div p:nth-of-type(1) {
+  margin-left: 22px;
+}
+#contentBody .showContent .turnButton div p:nth-of-type(2) {
+  float: right;
+  margin-right: 22px;
+}
+#contentBody .showContent .turnButton div p.active {
+  color: #fe6869;
+}
+#contentBody .showContent .turnButton div p:nth-of-type(1).active:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: '销售';
+  display: block;
+  width: 86px;
+  height: 86px;
+  background-color: #fff;
+  border-radius: 50%;
+  text-align: center;
+}
+#contentBody .showContent .turnButton div p:nth-of-type(2).active:after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  content: '消耗';
+  display: block;
+  width: 86px;
+  height: 86px;
+  background-color: #fff;
+  border-radius: 50%;
+  text-align: center;
+}
+#contentBody .showContent:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+#contentBody .dataContent .dataHead {
+  width: 100%;
+  height: 90px;
+  background-color: #fe6869;
+}
+#contentBody .dataContent .dataHead ul {
+  height: 90px;
+}
+#contentBody .dataContent .dataHead ul li {
+  font-size: 36px;
+  float: left;
+  font-weight: bold;
+  color: #fff;
+  line-height: 90px;
+}
+#contentBody .dataContent .dataBody ul .data ul {
+  height: 106px;
+}
+#contentBody .dataContent .dataBody ul .data ul li {
+  position: absolute;
+  line-height: 106px;
+  float: left;
+  height: 106px;
+  color: #333;
+  font-size: 32px;
+}
+#contentBody .dataContent .dataBody ul .data ul li:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+#contentBody .dataContent .dataBody ul .data ul:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+#contentBody .dataContent .dataBody ul .data:nth-child(even) {
+  background-color: #f6f6f6;
+}

@@ -1,0 +1,246 @@
+html,
+body,
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,0.1) inset !important;//关于解决输入框背景颜色
+    -webkit-text-fill-color: rgba(255,255,255,0.1)!important;//关于接输入框文字颜色
+}
+@font-face{
+    font-family: 'bdzyjt';
+    src:url(../common/fonts/BDZYJT.ttf);
+}
+/*初始化palceholder*/
+input.user-color::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
+    font-size: 18px;
+    font-family: '微软雅黑';
+    color: #4e4d4d; 
+} 
+input.user-color:-moz-placeholder, textarea:-moz-placeholder { 
+    font-size: 18px;
+    font-family: '微软雅黑';
+    color: #4e4d4d; 
+} 
+input.user-color::-moz-placeholder, textarea::-moz-placeholder { 
+    font-size: 18px;
+    font-family: '微软雅黑';
+    color: #4e4d4d; 
+} 
+input.user-color:-ms-input-placeholder, textarea:-ms-input-placeholder { 
+    font-size: 18px;
+    font-family: '微软雅黑';
+    color: #4e4d4d; 
+}
+input.security-plc::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
+    font-size: 16px;
+    font-family: '微软雅黑';
+    color: #999999; 
+} 
+input.security-plc:-moz-placeholder, textarea:-moz-placeholder { 
+    font-size: 16px;
+    font-family: '微软雅黑';
+    color: #999999;  
+} 
+input.security-plc::-moz-placeholder, textarea::-moz-placeholder { 
+    font-size: 16px;
+    font-family: '微软雅黑';
+    color: #999999; 
+} 
+input.security-plc:-ms-input-placeholder, textarea:-ms-input-placeholder { 
+    font-size: 16px;
+    font-family: '微软雅黑';
+    color: #999999;  
+}  
+/* icon */
+.setIcon-amdin{
+    background:url(image/amdin.png) 0px 0px no-repeat;    
+    width: 24px;
+    height: 26px;
+    position:absolute;
+    top: 5px;
+    left: 0;
+    opacity:filter:alpha(opacity=50); /* IE */  
+            moz-opacity:0.5; /* 老版Mozilla */  
+            khtml-opacity:0.5; /* 老版Safari */  
+            opacity: 0.5; /* 支持opacity的浏览器*/  
+    transition: opacity .3s; 
+            
+}
+.setIcon-amdin.act{
+    opacity: 1;
+}
+.setIcon-x{
+    background:url(image/x.png) 0px 0px no-repeat;    
+    width: 13px;
+    height: 14px;
+    position:absolute;
+    top: 16px;
+    right: 20px;
+    cursor:pointer;
+            
+}
+.setIcon-key{
+    background:url(image/key.png) 0px 0px no-repeat;    
+    width: 18px;
+    height: 32px;
+    position:absolute;
+    top: 2px;
+    left: 0px;
+    opacity:filter:alpha(opacity=50); /* IE */  
+            moz-opacity:0.5; /* 老版Mozilla */  
+            khtml-opacity:0.5; /* 老版Safari */  
+            opacity: 0.5; /* 支持opacity的浏览器*/ 
+    transition: opacity .3s;             
+}
+.setIcon-key.act{
+    opacity:1;
+}
+.setIcon-view{
+    background:url(image/view.png) 0px 0px no-repeat;    
+    width: 18px;
+    height: 12px;
+    position:absolute;
+    top: 18px;
+    right: 16px;
+    cursor:pointer;
+    background-size: 100%;
+            
+}
+.setIcon-openview{
+    background:url(image/openView.png) 0px 0px no-repeat;
+    width: 18px;
+    height: 12px;
+    position:absolute;
+    top: 18px;
+    right: 16px;
+    cursor:pointer;
+    background-size: 100%;
+
+}
+.wrapper {
+    position: relative;
+    background-image: url(image/login_bg.png);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size:cover;
+}
+.wrapper .wrapper-box {
+    width: 688px;
+    height: 588px;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+}
+
+.wrapper .header-inner .logo{
+    float: left;
+    margin-top: 10px;
+}
+.wrapper .header-inner .tit{
+    float: right;
+    font-family: 'bdzyjt';
+    font-size: 60px;
+    color:#fff;
+    font-weight: normal;
+}
+.login-wrap{
+    width: 500px;
+    height: 460px;
+    border:1px solid #454545;
+    margin:0 auto;
+    margin-top: 60px;
+}
+.login-wrap .login-wrap-tit{
+    background:rgba(0,0,0,.5);
+    height: 54px;
+    font:normal 18px/54px '微软雅黑';
+    color:#fff;
+    text-align: center;
+    border-bottom: 1px dashed #454545 ;
+}
+.login-wrap .base-login{
+    padding:20px 50px;
+}
+.login-wrap .input-field{
+    position:relative;
+}
+input[type='text'],
+input[type='password'] {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: 0 none;
+    border-bottom: 1px solid #5f5f5f;
+    font:normal 18px/44px '微软雅黑';
+    color:#eaeaea;
+    margin-top: 20px;
+    text-indent: 36px;
+}
+input[name='security']{
+    display: block;
+    width: 166px;
+    background-color: transparent;
+    border: none;
+    outline: 0 none;
+    border-bottom: 1px solid #5f5f5f;
+    font:normal 18px/44px '微软雅黑';
+    color:#eaeaea;
+    margin-top: 20px;
+    text-indent: 36px;
+    float: left;
+}
+.input-field .security{
+    float:right;
+    width: 120px;
+    height: 36px;
+    margin-right: 10px;
+    margin-top: 29px;
+    cursor:pointer;
+}
+.login-wrap .radio-box{
+    padding:35px 0;
+}
+.login-wrap .radio-box input{
+    float: left;
+    width: 16px;
+    height: 16px;
+}
+.login-wrap .radio-box label{
+    float: left;
+    margin-left: 20px;
+    font-size: 16px;
+    color:#999;
+    font-family: '微软雅黑';
+    font-weight: normal;
+
+}
+.login-wrap .radio-box a{
+    float: right;
+    font-size: 16px;
+    color:#6e151c;
+    font-family: '微软雅黑';
+}
+.base-login .input-field.login-btn{
+    width: 400px;
+    height: 50px;
+}
+.base-login .input-field.login-btn>a{
+    width: 100%;
+    font:normal 18px/50px '微软雅黑';
+    color:#fff;
+    padding: 0;
+}
+#username{
+    width: 398px;
+    height: 45px;
+}
+#password{
+    width: 398px;
+    height: 45px;
+}

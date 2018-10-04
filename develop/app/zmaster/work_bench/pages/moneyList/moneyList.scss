@@ -1,0 +1,154 @@
+
+@function vm($px) {
+  @return ($px / 750) * 100vw;
+}
+@mixin ell() {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+$vm_base: 750;
+$color_base:#333333;
+$wihte:#fff;
+$dark:#000;
+$bdc:#dadada;
+$bdt:#f0eeee;
+$c999:#999999;
+$c666:#666666;
+$money:#f04d06;
+$line:#e1aa5f;
+$req:#f89750;
+$red:#f72e41;
+$font_h3:vm(36);
+$font_p:vm(28);
+$font_num:vm(40);
+
+
+$f88:#f88952;
+$f16:#f16399;
+$f25:#25cdd3;
+$f4bb:#4bb046;
+$f585:#5858ed;
+$d8:#d84967;
+
+
+.fl{
+  float: left;}
+.fr{
+  float: right;
+}
+.redf7{
+  color: $red;
+}
+ul,li,dd,dt{
+  box-sizing: border-box;
+}
+.tac{
+  text-align: center;}
+.h3{
+  font-size:$font_h3;
+}
+.p{
+  font-size:$font_p;
+}
+.font-num{
+  font-size:$font_num;
+}
+
+.c666{
+  color: $c666;}
+.c999{
+  color: $c999;
+}
+.p24{
+  padding:0 vm(24);}
+.border-radius10{
+  border-radius: vm(10);
+}
+.border-radius5{
+  border-radius: vm(5);
+}
+.posr{
+  position: relative;}
+*{box-sizing: border-box;}
+body,html{
+  width:100%;
+  height: 100%;}
+body{font-family: "Helvetica Neue", Helvetica, "PingFang SC", '微软雅黑', Tahoma, Arial, sans-serif;
+  color: $color_base;}
+.app{
+  margin-top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+a{
+  color: $color_base;
+}
+a:hover{
+  color: $color_base;
+}
+//佣金列表
+.list_ul{
+  font-size:vm(36);
+
+  margin-top:5px;
+  margin-bottom:vm(25);
+  &_top{
+    line-height:vm(57);
+    overflow: hidden;
+    font-size: vm(36);
+  
+  }
+  i{
+    font-style: normal;
+  }
+  &_center{
+    line-height:vm(59);
+    font-size:vm(36);
+  }
+  &_bottom{
+    line-height:vm(55);
+    font-size:vm(28);
+    display: inline-block;
+    background: #eee;
+    margin: vm(12) 0;
+    padding:0 vm(8);
+    border-radius:vm(55);
+    color: $c666;
+    span{
+      margin-left:vm(20);
+    }
+  }
+  li{
+    padding:vm(26);
+    border-bottom:1px solid #f0eeee;
+
+  }
+}
+.circle{
+  display: inline-block;
+  width: vm(44);
+  height: vm(44);
+  border-radius: 50%;
+  background: #b7b8b7;
+  text-align:center;
+  line-height: vm(44);
+  // margin-left:vm(55);
+  color: $wihte;
+  margin-right:vm(14);
+}
+.d2{background: #059dfd;}
+.d3{ background: #36be46;  }
+.d4{ background:#fba056;}
+.d5{ background: #fe649e;}
+.d6{ background: #ff4c5d;  }
+.d7{ background: $d8;  }
+
+.img_circle{
+  vertical-align: middle;
+  width:vm(50);
+  height:vm(50);
+  margin-left:0;
+  margin-right:vm(22);
+}

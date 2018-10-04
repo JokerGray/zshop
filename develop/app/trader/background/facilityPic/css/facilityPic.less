@@ -1,0 +1,264 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+body{
+  &::-webkit-scrollbar{
+    width: 6px;
+    height: 2px;
+  }
+  &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.3);
+  }
+  &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+  }
+}
+a{
+  text-decoration: none;
+  &:link,&:visited,&:hover,&:active{
+    color: #000;
+    text-decoration: none;
+  }
+}
+ul,li{
+  list-style: none;
+}
+.clearfix::after{
+  display: block;
+  content: '';
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.clearfix{
+  zoom: 1;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+  background-color: #f3f3f4;
+}
+.main-top {
+  padding:16/32rem;
+  font-size:18/32rem;
+  color: #353b53;
+  select{
+    font-size:18/32rem;
+    color: #353b53;
+  }
+}
+.main-content{
+  display:flex;
+  justify-content: flex-start;
+  .con-left{
+    width:55%;
+    margin-right:2%;
+  }
+  .con-right{
+    width:42%;
+  }
+}
+.con-left{
+  .con-title{
+    display:flex;
+    justify-content: space-between;
+    height:1.725rem;
+    padding:0 16/32rem;
+    background-color: #353b53;
+    border-radius: 2px;
+    text-align: right;
+      .tab-box{
+        display:flex;
+        justify-content: flex-start;
+        color:#fff;
+        margin:0;
+        padding-left:1rem;
+        .tab-li{
+          line-height: 1.725rem;
+          padding:0 1rem;
+          font-size: 20/32rem;
+          cursor: pointer;
+        }
+        .tab-li:hover,
+        .active{
+          color:#2fc4b5;
+          border-bottom:3px solid #2fc4b5;
+        }
+      }
+      .download-link{
+        display: inline-block;
+        line-height: 1.725rem;
+        color:#fff;
+        font-size: 20/32rem;
+      }
+  }
+  .list-tab{
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    padding-left:30/32rem;
+    margin-top:30/32rem;
+    .tab-item{
+      display: inline-block;
+      width:96/32rem;
+      height:46/32rem;
+      line-height: 46/32rem;
+      border:solid 1/32rem transparent;
+      text-align: center;
+      font-size:18/32rem;
+      color:#666;
+      &.active{
+        color:#353b53;
+        border-radius: 46/32rem;
+        border-color: #353b53;
+      }
+    }
+  }
+}
+.no-data{
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color:#ccc;
+  img{
+    width:35%;
+    height:35%;
+    margin-bottom:1rem;
+  }
+}
+
+.list-con{
+  height:25rem;
+  padding-left:30/32rem;
+  overflow-y:auto;
+}
+
+.list-item{
+  float: left;
+  position: relative;
+  width: 150/32rem;
+  height: 150/32rem;
+  //border: 1/32rem solid #999;
+  border-radius:10/32rem;
+  text-align: center;
+  padding-top: 36/32rem;
+  background-color: #ffffff;
+  margin-right: 34/32rem;
+  margin-top: 30/32rem;
+  border: 2/32rem solid #2fc4b5;
+        h4{
+          font-size: 30/32rem;
+          color: #23c6c8;
+          font-weight: 400;
+          padding-left: 6/32rem;
+          overflow: hidden;
+          white-space: nowrap;/*不换行*/
+          text-overflow:ellipsis;/*超出部分文字以...显示*/
+        }
+        p{
+          font-size: 14/32rem;
+          color: #23c6c8;
+          margin-top: 10/32rem;
+        }
+        .erCodeIcon{
+          position: absolute;
+          width: 29/32rem;
+          height: 29/32rem;
+          background: url("../image/erweima_small.png") no-repeat right top;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+          top: 0/32rem;
+          right: 0/32rem;
+          cursor: pointer;
+          -webkit-border-radius: 0 8/32rem 0 0;
+          -moz-border-radius: 0 8/32rem 0 0;
+          border-radius: 0 8/32rem 0 0;
+        }
+        &::before{
+          position: absolute;
+          content: '';
+          width: 6/32rem;
+          height: 90/32rem;
+          left: -4/32rem;
+          top:22/32rem;
+          background-color: #23c6c8;
+         
+        }
+}
+
+.con-right{
+  .right-title{
+    height:1.725rem;
+    line-height: 1.725rem;
+    font-size:26/32rem;
+    font-style: bold;
+    color:#353b53;
+  }
+  .show-box{
+    width:480/32rem;
+    height:656/32rem;
+  }
+}
+
+//select2参插件样式修改开始
+.select2-container{
+  //z-index: 3;
+  .select2-selection--single{
+    height: 34px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    border-color: #353b53;
+    .select2-selection__rendered{
+      line-height: 34px;
+    }
+    .select2-selection__arrow{
+      height: 34px;
+      b{
+        border-color: #353b53 transparent transparent transparent;
+      }
+    }
+  }
+}
+.select2-results__option{
+  font-size: 16px;
+}
+.select2-container--default.select2-container--open{
+  .select2-selection--single{
+    .select2-selection__arrow{
+      b{
+        border-color: transparent transparent #353b53 transparent;
+      }
+    }
+  }
+  .select2-results__option--highlighted[aria-selected]{
+    background-color: rgba(29, 191, 175, 0.7);
+  }
+  .select2-results>.select2-results__options{
+    &::-webkit-scrollbar{
+      width: 2px;
+      height: 2px;
+    }
+    &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+      border-radius: 0;
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.3);
+    }
+    &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      border-radius: 0;
+      background: rgba(0,0,0,0.1);
+    }
+  }
+}
+//select2参见样式修改结束

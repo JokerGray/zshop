@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+        <title>账户</title>
+        <link rel="stylesheet" href="../common/assets/css/bootstrap.css" />
+        <link rel="stylesheet" href="../common/assets/css/bootstrap-table.min.css" />
+        <link rel="stylesheet" href="account.css"/>
+    </head>
+    <body>
+    <div class="accountContainer">
+        <div class="import-msearch" id="toolbar">
+            <input type="text" class="search-text" id="keyword" name="keyword" placeholder="搜索关键字">
+            <button id="btnSel" type="button" class="btn search-btn" onclick="changeShop()" >搜索</button>
+        </div>
+        <div class="account-detail">
+            <table id="list" class="account-table table table-striped table-hover">
+            </table>
+            <div class="hr" style="height: 100px"></div>
+        </div>
+    </div>
+        <!-- jquery组件 -->
+        <script src="../common/assets/js/jquery-1.10.2.js"></script>
+        <!--<script src="../common/assets/js/bootstrap.min.js"></script>-->
+        <script src="../common/assets/js/bootstrap-table.js"></script>
+        <script src="../common/assets/js/bootstrap-table-zh-CN.js"></script>
+        <script src="../common/js/util/util.js"></script>
+        <script src="../common/assets/js/layer/layer.js"></script>
+        <script src="account.js"></script>
+    </body>
+</html>

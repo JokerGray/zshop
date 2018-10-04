@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App用户管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../../common/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../common/css/reset.css" />
+
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="stylesheet" href="../../common/assets/zTree_v3/css/metroStyle/metroStyle.css" />
+    <link rel="stylesheet" href="layer.css">
+
+    <link rel="stylesheet" href="manage_account.css">
+    <style>
+
+        #tableBox{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="tool-box layui-form layui-row">
+    <ul class="tool-box-ul clearfix layui-col-sm12 layui-col-md12">
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">账号：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="usercode" lay-verify="required|phone" maxlength="11">
+                </div>
+            </div>
+        </li>
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">昵称：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="username" lay-verify="required" maxlength="12">
+                </div>
+            </div>
+        </li>
+        <li class="tool-box-li">
+            <div class="layui-form-item ">
+                <label class="tool-box-label">是否锁定：</label>
+                <div class="layui-input-inline">
+                    <select id="locked" lay-verify="required">
+                        <option value="">--全部--</option>
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </div>
+            </div>
+        </li>
+        <li class="tool-box-li">
+            <div class="layui-form-item ">
+                <label class="tool-box-label">云信状态：</label>
+                <div class="layui-input-inline">
+                    <select id="app-status" lay-verify="required">
+                        <option value="">--全部--</option>
+                        <option value="1">已绑定</option>
+                        <option value="2">未绑定</option>
+                    </select>
+                </div>
+            </div>
+        </li>
+        <li class="tool-box-li" style="padding-top: 33px;">
+            <button class="layui-btn" id="toolSearch">搜索</button>
+            <button class="layui-btn" id="toolRelize">重置</button>
+            <button class="layui-btn" id="appRetry">云信重试</button>
+        </li>
+    </ul>
+</div>
+<div id="app" class="layui-app clearfix layui-row">
+    <div id="tableBox" class="layui-col-sm12 layui-col-md12">
+        <table lay-filter="demo" id="demo" class="mtb0"></table>
+        <div id="laypageLeft"></div>
+    </div>
+</div>
+
+<div id="tong" class="" style="display:none;width: 550px;"><img src="" style="display:block;max-width: 100%; width: 100%;"></div>
+
+	<div class="retry-progress-dialog hide">
+		<fieldset>
+			<legend>批量操作</legend>
+			<h3>正在重试关联云信帐号...</h3>
+				
+			<div class="layui-progress"  lay-filter="nim-progress">
+				<div class="layui-progress-bar layui-bg-orange" lay-percent="0%"></div>
+			</div> 
+			<div class="close-button" onclick="$('.retry-progress-dialog').addClass('hide')">关闭</div>
+		</fieldset>
+   
+	</div>
+
+
+
+
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-sm layui-btn layui-mybtn" lay-event='detail'>
+        <i class="layui-icon">&#xe615;</i> 查看
+    </button>
+    <button class="layui-btn layui-btn-sm layui-btn layui-mybtn" lay-event='change'>
+        <i class="layui-icon">&#xe6b2;</i> 修改
+    </button>
+    <button class="layui-btn layui-btn-sm layui-mybtn" lay-event="reset">
+        <i class="layui-icon">&#xe631;</i>密码重置
+    </button>
+    {{# if(d.ismerchant != '1'){ }}
+    <button class="layui-btn layui-btn-sm  layui-btn layui-mybtn" lay-event="level">
+        <i class="layui-icon">&#xe631;</i>升级为商户
+    </button>
+    {{# } }}
+    {{# if(d.activeStatus == '1'){ }}
+    <button class="layui-btn layui-btn-sm  layui-btn layui-btn-danger layui-mybtn" lay-event="active">
+       激活用户
+    </button>
+    {{# } }}
+
+</script>
+
+
+<!--users -->
+<script type="text/html" id="app-status-tpl"> 
+    {{# if(d.registType == 1){ }}
+        已绑定
+    {{# }else { }}
+        <button class="layui-btn layui-btn-sm layui-btn" lay-event='retry1'>
+            重试
+        </button>
+    {{# } }}
+</script>
+<script type="text/html" id="app-zregist-tpl"> 
+    {{# if(d.zusercode == null){ }}
+      未注册
+    {{# }else{ }}
+        {{# if(d.zregistType == 1){ }}
+            已注册
+        {{# }else if(d.zregistType == 2){  }}
+            <button class="layui-btn layui-btn-sm layui-btn" lay-event='retry2'>
+                重试
+            </button>
+        {{# } }}
+    {{# } }} 
+</script>
+
+
+<script type="text/html" id="audio">
+    <div class="layui-form">
+        <div class="layui-form-item">
+            <div class="">
+                {{# if(d.locked == 0){ }}
+                <input type="checkbox" checked lay-skin="switch"  lay-text="启用|锁定"  lay-filter="switchTest" >
+                {{#  } else { }}
+                <input type="checkbox"   lay-skin="switch"  lay-text="启用|锁定" lay-filter="switchTest">
+                {{#  } }}
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<script type="text/html" id="status">
+    {{# if(d.isrealname == 0){ }}
+    <div class="layui-table-cell laytable-cell-8-_isrealname" >未认证</div>
+    {{# }else if(d.isrealname == 1){ }}
+    <div class="layui-table-cell laytable-cell-8-_isrealname" style="color: #1E9FFF;">待审核</div>
+    {#  }else if(d.isrealname == -1){ }}
+    <div class="layui-table-cell laytable-cell-8-_isrealname" style="color: #009688;">不通过</div>
+    {{#  } else if(d.isrealname == 2){ }}
+    <div class="layui-table-cell laytable-cell-8-_isrealname" style="color: #5FB878;">已认证</div>
+    {{#  } else { }}
+    <div class="layui-table-cell laytable-cell-8-_isrealname" >未认证</div>
+    {{#  } }}
+</script>
+
+
+
+<!--modal-->
+<div id="demo111" class='layui-form clearfix layui-row ' lay-filter="seach">
+    <div class="app-layer demo111 layui-col-sm12 layui-col-md12">
+        <div class="package clearfix">
+            <div class="package-title">App用户信息</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+            <ul class="tool-box-ul layui-form clearfix p0">
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">账户：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoAccount" disabled lay-verify="required|phone" maxlength="11" readonly>
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">昵称：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoName" disabled  maxlength="11" readonly>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">城市：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoCity" disabled  readonly>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">生日：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoBirthday" disabled  readonly>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">性别：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoSex" disabled   readonly>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">标签：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoTag" disabled  maxlength="12" readonly>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">姓名：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infotrueName" disabled   >
+                        </div>
+                    </div>
+                </li>
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">邮箱：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoEmail" disabled  readonly>
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">身份证：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoNumber" disabled  maxlength="18" >
+                        </div>
+                    </div>
+                </li>
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">身份证正面：</label>
+                        <div class="layui-img-box">
+                            <img src="" alt="" id="infoIDz1" class=""/>
+                            <img src="" alt="" id="infoIDz2" class=""/>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">身份证反面：</label>
+                        <div class="layui-img-box">
+                            <img src="" alt="" id="infoIDf1" class=""/>
+						  <img src="" alt="" id="infoIDf2" class=""/>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">手持身份证正面照：</label>
+                        <div class="layui-img-box">
+                            <img src="" alt="" id="infoIDhand1" class=""/>
+						  <img src="" alt="" id="infoIDhand2" class=""/>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--改版-->
+
+
+
+<!--modal-->
+<div id="demo222" class='layui-form clearfix layui-row' lay-filter="seachr">
+    <div class="leftCon">
+        <div class="layui-form-item h48">
+            <label class="layui-form-label flex"><i class="star">*</i>用户账号：</label>
+            <div class="layui-input-block flex">
+                <input type="text" lay-verify="required" class="layui-input h30" id="changeAccount" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item h48">
+            <label class="layui-form-label flex"><i class="star">*</i>用户昵称：</label>
+            <div class="layui-input-block flex">
+                <input lay-verify="required" type="text" class="layui-input h30" id="changeName" maxlength="18">
+            </div>
+        </div>
+    </div>
+    <div class="rightCon">
+        <div class="layui-form-item h48">
+            <label class="layui-form-label flex"><i class="star">*</i>密码：</label>
+            <div class="layui-input-block flex">
+                <input lay-verify="required|pass"  type="text" class="layui-input h30" id="changepassword"  maxlength="12">
+            </div>
+        </div>
+
+        <div class="layui-form-item h48">
+            <label class="layui-form-label flex"><i class="star">*</i>锁定状态：</label>
+            <div class="layui-input-block flex">
+                <select lay-verify="required"  id="changeLock">
+                    <option value="1">锁定</option>
+                    <option value="0">启用</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="passLevel h48">
+        <label class="layui-form-label flex mBorder">密码等级</label>
+        <div class="layui-input-block clearfix levelbox" id="levelBox" >
+            <li class="act">弱</li>
+            <li>中</li>
+            <li>强</li>
+        </div>
+    </div>
+</div>
+
+<!--modal 升级为商户-->
+
+
+<div id="oneDemo" class='layui-form clearfix tipdemo layui-row'>
+    <div class="layui-progress layui-progress-big" lay-filter="progross" lay-showPercent="true" id="progross">
+        <div class="layui-progress-bar layui-bg-green" lay-percent="0"></div>
+    </div>
+    <div class="app-layer layui-col-sm12 layui-col-md12">
+        <div class="package clearfix">
+            <div class="package-title">商户信息</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+            <ul class="tool-box-ul layui-form clearfix p0">
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>商户名称：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" lay-verify="required" class="layui-input" id="udesig" >
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>所属行业：</label>
+                        <div class="layui-input-inline">
+                            <!--uBussiness-->
+                            <select class="form-control layui-input h30" id="uBussiness" lay-filter="uBussiness"></select>
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>商户类型：</label>
+                        <div class="layui-input-inline">
+                            <!--uBussiness-->
+                            <select class="form-control layui-input h30" id="uType" lay-filter="uType"></select>
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>行业模板：</label>
+                        <div class="layui-input-inline">
+                            <!--payment-->
+                            <select class="form-control layui-input h30" id="templet" lay-filter="templet"></select>
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>是否生活缴费：</label>
+                        <div class="layui-input-inline">
+                            <!--uBussiness-->
+                            <select class="form-control layui-input h30" id="payment" lay-filter="payment">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>省市：</label>
+                        <div class="layui-input-inline layui-select-box">
+                            <!--uBussiness-->
+                            <select class="form-control layui-input h30" id="provinceSelector2" lay-filter="provinceSelector2">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                            <select class="form-control layui-input h30" id="citySelector2" lay-filter="citySelector2">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">下单类型：</label>
+                        <div class="layui-input-inline">
+                            <input type="checkbox" lay-skin="primary" id="set1" lay-filter="set1" title="服务下单" value="0">
+                            <input type="checkbox" lay-skin="primary" id="set2" lay-filter="set2" title="销售下单" value="1">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md12 ">
+                    <div class="layui-form-item xiadan_box" id="xiadan_box">
+                        <label class="tool-box-label " style="line-height: 2em;">销售下单：</label>
+                        <div class="layui-input-block" style="margin-left: 0!important;">
+                            <ul class="xiadan clearfix" style="">
+                                <li class="layui-form-item">
+                                    <h3>支付方式</h3>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="set3" value="0" title="后支付" checked >
+                                        <input type="radio" name="set3" value="1" title="先支付" >
+                                    </div>
+                                    <p>【文字说明文字】</p>
+                                    <em><i class="layui-icon ime">&#xe605;</i></em>
+                                </li>
+                                <li class="layui-form-item">
+                                    <h3>设备选择</h3>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="set4" value="0" title="可选" checked>
+                                        <input type="radio" name="set4" value="1" title="必选" >
+                                    </div>
+                                    <p>【文字说明文字】</p>
+                                    <em><i class="layui-icon ime">&#xe605;</i></em>
+                                </li>
+                                <li class="layui-form-item">
+                                    <h3>订单状态</h3>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="set5" value="0" title="不改变" checked>
+                                        <input type="radio" name="set5" value="1" title="改变" >
+                                    </div>
+                                    <p>【文字说明文字】</p>
+                                    <em><i class="layui-icon ime">&#xe605;</i></em>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+    <div class="app-layer layui-col-sm12 layui-col-md12">
+        <div class="package clearfix">
+            <div class="package-title">营业执照信息</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+            <ul class="tool-box-ul layui-form clearfix p0">
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">上传营业执照正面：（小于5M）</label>
+                        <div class="layui-img-box">
+                            <img src="img/upload.png"  id="uploadImg1" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">上传营业执照正面：（小于5M）</label>
+                        <div class="layui-img-box">
+                            <img src="img/upload.png"  id="uploadImg2" alt="">
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+    <div class="app-layer layui-col-sm12 layui-col-md12">
+        <div class="package clearfix">
+            <div class="package-title">身份证信息</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+            <ul class="tool-box-ul layui-form clearfix p0">
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>上传身份证正面：（小于5M）</label>
+                        <div class="layui-img-box">
+                            <img src="img/upload.png"  id="uploadImg3" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>上传身份证反面：（小于5M）</label>
+                        <div class="layui-img-box">
+                            <img src="img/upload.png"  id="uploadImg4" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 mr5">
+
+                </li>
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>姓名：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="name"   >
+                        </div>
+                    </div>
+                </li>
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>身份证号：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="identificationno"    >
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+<!--头条初始化-->
+<div id="secondDemo" class='layui-form clearfix tipdemo layui-row'>
+    <!--addName subscription fixdepartment-->
+    <div class="layui-progress layui-progress-big" lay-filter="progross" lay-showPercent="true" id="progross2">
+        <div class="layui-progress-bar layui-bg-green" lay-percent="25%"></div>
+    </div>
+    <div class="app-layer layui-col-sm12 layui-col-md12">
+        <div class="package clearfix">
+            <div class="package-title">头条初始化</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+            <ul class="tool-box-ul layui-form clearfix p0">
+
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>名称：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" placeholder="" autocomplete="off" lay-verify="required" class="layui-input" id="addName" >
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li w30 mr5">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>类型：</label>
+                        <div class="layui-input-inline" id="subscription">
+                            <!--uBussiness-->
+                            <select class="form-control layui-input h30" id="fixdepartment">
+                                <option value="">选择</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+<!--商户权限初始化-->
+<div id="thirdDemo" class='layui-form clearfix tipdemo layui-row'>
+    <div class="layui-progress layui-progress-big" lay-filter="progross" lay-showPercent="true" id="progross3">
+        <div class="layui-progress-bar layui-bg-green" lay-percent="50%"></div>
+    </div>
+    <div class="leftCon layui-col-sm6 layui-col-md6">
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">角色名称：</label>
+            <div class="layui-input-block flex">
+                <ul id="mervchantRole" class="rolename">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="rightCon layui-col-sm6 layui-col-md6">
+        <div class="layui-form-item">
+            <label class="layui-form-label flex">角色权限：</label>
+            <div class="layui-input-block flex">
+                <ul class='ztree' lay-filter='test' id='treedem'>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+
+<script type="text/javascript" src="../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="../../common/js/zoomify.min.js"></script>
+<script type="text/javascript" src="../../common/js/upload.js"></script>
+<!--<script type="text/javascript" src="../../common/js/yyCache.js"></script>-->
+<!--<script type="text/javascript" src="../../common/js/common.js"></script>-->
+<!--<script type="text/javascript" src="../../common/js/pub.js"></script>-->
+<script type="text/javascript" src="manage_account.js"></script>
+</body>
+<!--<script type="text/javascript">-->
+    <!--jsorcss('js', 'manage_account');-->
+<!--</script>-->
+</html>

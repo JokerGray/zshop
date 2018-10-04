@@ -1,0 +1,65 @@
+// 颜色等定义
+$blue: #007bff;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #28a745;
+$teal: #20c997;
+$cyan: #17a2b8;
+$white: #fff;
+$gray: #6c757d;
+$gray-dark: #343a40;
+$primary: #007bff;
+$secondary: #6c757d;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #343a40;
+$ddd:#ddd;
+$c999:#999;
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+$font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+$font-family-aliyun: 'microsoft yahei ui',"Microsoft YaHei",-apple-system,BlinkMacSystemFont,"SF Pro SC","SF Pro Text","Helvetica Neue",Helvetica,"PingFang SC","Segoe UI",Roboto,"Hiragino Sans GB",'arial',SimSun,sans-serif;
+
+// 字体大小
+$size-base: 14px;
+$size-mini: 12px;
+$size-md:16px;
+$size-lg:18px;
+
+// 边框颜色
+$border-color: #f2f2f2;
+
+// 常见可集成样式
+// 图片图标常见样式
+@mixin img_icon($w, $h) {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: $w;
+    height: $h;
+}
+
+// 绝对垂直居中
+@mixin c_vertical{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+// 绝对水平居中
+@mixin c_horizontal{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}

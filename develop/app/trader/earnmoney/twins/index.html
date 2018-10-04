@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link href="../../assets/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+	<link href="../../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+	<link href="../../assets/hplus/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+	<link href="../../assets/hplus/css/animate.min.css" rel="stylesheet">
+	<link href="../../assets/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	<!-- jquery -->
+	<script type="text/javascript" src="../../assets/hplus/js/jquery.min.js"></script>
+	<!-- bootstrap -->
+	<script type="text/javascript" src="../../assets/hplus/js/bootstrap.min.js"></script>
+	<!-- 左侧手风琴菜单-->
+	<script type="text/javascript" src="../../assets/hplus/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<!--jQuery滚动条特效插件jQuery slimScroll-->
+	<script type="text/javascript" src="../../assets/hplus/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<!--layer弹出层插件-->
+	<script type="text/javascript" src="../../assets/layer/layer.js"></script>
+
+	<!-- 弹层title样式统一 -->
+	<link rel="stylesheet" href="../../assets/check_index/layer/skin/default/layer.css">
+
+	<link rel="stylesheet" href="src/css/index.css">
+
+	<script type="text/javascript">
+		var ctx = '';
+	</script>
+
+	<title>双胞胎页面</title>
+</head>
+<body style="background: #f7f7f7;">
+	<input type="hidden" id="userId">
+	<input type="hidden" id="shopId">
+
+	<div class="container-fluid" style="padding-top: 2rem;" ondragstart="return false;">
+		<div class="row">
+			<div class="col-lg-2 hidden-md hidden-sm hidden-xs" id="listTips">
+				<h1 class="text-info">提示：</h1>
+				<h5><span class="textNumber">1</span>发布<span class="titleText">抢标赚</span></h5>
+				<h5><span class="textNumber">2</span>查看<span class="titleText">抢标赚</span>订单</h5>
+			</div>
+			<div class="col-lg-2 hidden-md hidden-sm hidden-xs" id="detailTips" style="display: none;">
+				<h1 class="text-info">提示：</h1>
+				<h5><span class="textNumber">1</span>展示区域<br>(显示预览效果)</h5>
+				<h5><span class="textNumber">2</span>发布填写区域</h5>
+			</div>
+			<div class="col-lg-4 col-md-5 col-sm-12" style="border-right: 2px dashed #00d0e3;border-left: 2px dashed #00d0e3;">
+				<div class="bg_shouji">
+					<div class="newDate"></div>
+					<div class="phone_title top_title">
+						<span class="phone_icon pull-left fa fa-plus" style="visibility: hidden;"></span>
+						<span id="phoneTitle">抢标赚</span>
+						<span id="addPublish" class="phone_icon pull-right fa fa-plus" style="visibility: hidden;"></span>
+					</div>
+					<div class="phone_content tab-content">
+						<div class="pulish_title">
+							<div class="addTask">
+								<i class="fa fa-plus"></i> <span class="addText">发布抢标赚任务</span>
+							</div>
+							
+                            <div class="content">
+                                <!-- 抢标赚模块 -->
+                                <div class="qbzContent" style = 'display: block'>
+                                    <div class="myTask" style="display: none">
+                                        <div class="taskPerson">
+                                            <div class="left fl">
+                                                <div class="userPic fl">
+                                                    <img src="" alt="" class="">
+                                                </div>
+                                                <div class="userName fl">良品铺子</div>
+                                                <div class="shopStatus fl"></div>
+                                            </div>
+                                            <div class="right fr">
+                                                <div class="fr">
+                                                    <em></em><span class="time">10.20</span>
+                                                </div>
+                                                <div class="dot fr"></div>
+                                                <div class="fr">
+                                                    <i></i><span class="hot">1500</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="banner">
+                                            <div class="content">
+                                                <p>需要“<span class="taskTitle"></span>”</p>
+                                                <div class="sign" style="display: none">
+                                                    <span class="generalize"></span><span class="location">武汉</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="explain">
+                                            <p>你不必把杯白酒干了，喝到胃穿孔你不必把杯白酒干了，喝到胃穿孔你不必把杯白酒干</p>
+                                        </div>
+                                        <div class="qbz_message">
+                                            <div class="money fl">
+                                                <span></span><span class="earnMoney">17000.00元</span>
+                                            </div>
+                                            <div class="count fr">
+                                                <span><span class="taskConfirmedPerson">0</span> / <span class="taskNeedPerson">0</span></span></span>
+                                                <span>中标人数</span>
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="loadMore" style="display: none;">
+										<span class="loadMoreText" onclick="qbzInit()">加载更多</span>
+									</div>
+                                </div>
+
+                                <!-- 转文赚模块 -->
+                                <div class="zwzContent" style = 'display: none'>
+                                    <section class="myTask" style="display: none">
+                                        <div class="taskPerson">
+                                            <div class="left fl">
+                                                <div class="userPic fl">
+                                                    <img src="http://img06.tooopen.com/images/20170306/tooopen_sy_200676715868.jpg" alt="">
+                                                </div>
+                                                <div class="userName fl">良品铺子</div>
+                                                <div class="shopStatus fl"></div>
+                                            </div>
+                                            <div class="right fr">
+                                                <span class="share"></span><span class="taskConfirmedForwardNum">1500</span>
+                                            </div>
+                                        </div>
+                                        <div class="contentCenter">
+                                            <div class="taskPic fl">
+                                                <img src="" alt="">
+                                            </div>
+                                            <div class="explain">
+                                                <p class="taskTitle">良品铺子"和和美美"十月婚典，你们是最可爱的人！</p>
+                                                <p class="author" style="display: none">作者： 秦东河</p>
+                                            </div>
+                                        </div>
+                                        <div class="contentBottom">
+                                            <div class="fl">
+                                                <span></span><span class="taskPrice">0.02元</span>				
+                                            </div>
+                                            <div class="fr">
+                                                <span>剩余 <span class="residue_money">3,385.05</span> 元可转发</span>
+                                            </div>
+                                        </div>
+                                    </section>
+									<div class="loadMore" style="display: none;">
+										<span class="loadMoreText" onclick="zwzInit()">加载更多</span>
+									</div>
+                                </div>
+
+                                <!-- 分享赚模块 -->
+                                <div class="fxzContent" style = 'display: none'>
+                                    <div class="fxzTask">
+                                        <div class="myTask"  style="display: none">
+                                            <div class="coupon">
+												<div class="couponStatus">上架</div>
+                                                <div class="circle_left"></div>
+                                                <div class="circle_right"></div>
+                                                <div class="couponTop">
+                                                    <div class="tip">
+                                                        <span class="xianjia">现价<span class="couponPresenPrice"></span></span>
+                                                        <del>原价<span class="couponOriginaPrice"></span></del>
+                                                    </div>
+                                                </div>
+                                                <div class="couponBottom">
+                                                    <div class="title"></div>
+                                                    <p class="couponDemand"></p>
+                                                    <div class="couponShare">
+                                                        <span class="fl">赚¥<span class="couponCashback"></span><span class="decimals"></span></span>
+                                                        <span class="fr"><span class="sharenum"></span>人分享</span>	
+                                                    </div>
+													<div class="finish" style="display: none"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="loadMore" style="display: none;">
+										<span class="loadMoreText" onclick="fxzInit()">加载更多</span>
+									</div>
+                                </div>
+
+								<!-- 玩家赚模块 -->
+								<div class="wjzContent" style="display: none">
+									<div class="myTask" style="display: none">
+										<div class="shareContent">
+											<div class="shareDetail">
+												<div class="prizeTitle">油焖大虾一份</div>
+												<div class="priceText">价值:<span class="prizePrice">20元</span></div>
+												<div class="timeText">到期时间<span class="expireTime">2016-01-01</span></div>
+											</div>
+											<div class="couponDetail">
+												<img class="prizeStyle" src="http://oss-cn-hangzhou.aliyuncs.com/tsnrhapp/earnmoney/shareearn/1c64ba2267484eee897075c70c0c3152.png">
+												<div class="prizeStatus">上架</div>
+											</div>
+										</div>
+									</div>
+									<div class="loadMore" style="display: none;">
+										<span class="loadMoreText" onclick="wjzInit()">加载更多</span>
+									</div>
+								</div>
+                            </div>
+						</div>
+						
+						<!-- 点击详情页面 -->
+						<div class="phone_publish" style="display: none;">
+							<div class="phone_title">
+								<span id="iconBack" class="phone_icon pull-left fa fa-angle-left"></span>
+								<span id="publishTitle">抢标赚详细</span>
+								<span class="phone_icon pull-right fa fa-plus" style="visibility: hidden;"></span>
+							</div>
+							<div class="publish_content">
+								<!--抢标赚 发布详情-->
+								<div class="qbzDetail" class="publish_detail">
+									<div class="articleHeader">
+										<div class="priceLabel">
+											<span style="margin: 0 0.5rem;">抢标任务</span>
+											<span class="taskPriceContent"> ¥ <span class="taskPrice"></span>/人</span>
+										</div>
+										<div>
+											<h3>需要“<span class="taskTitle"></span>”</h3>
+											<div class="spaceBetween">
+												<span>总需要人数：<span class="taskNeedPerson"></span>人</span>
+												<span>抢标人数：0人</span>
+											</div>
+											<div class="spaceBetween">
+												<span>审核通过：0人</span>
+												<span>剩余人数：0人</span>
+											</div>
+										</div>
+									</div>
+									
+									<div class="articleUser">
+										<span class="userLabel">雇主</span>
+										<span class="userPic"><img></span>
+										<span class="userName"></span>
+										<span class="cityLogo"></span>
+									</div>
+									
+									<div class="articleProgress">
+										<span class="progressNo active">1</span><span class="progressBar active"></span>
+										<span class="progressNo">2</span><span class="progressBar"></span>
+										<span class="progressNo">3</span><span class="progressBar"></span>
+										<span class="progressNo">4</span><span class="progressBar"></span>
+										<span class="progressNo">5</span>
+									</div>
+									
+									<div class="articleTaskDemand">
+										<div class="taskLogo">任务需求</div>
+										<pre class="taskDemand"></pre>
+									</div>
+									
+									<div class="articleTaskPic">
+										<div class="taskLogo">任务照片</div>
+										<div class="taskPicContent"></div>
+									</div>
+								</div>
+								<!--转文赚 发布详情-->
+								<div class="zwzDetail">
+									<div class="contentTop">
+										<div class="content">
+											<div class="taskLogo">任务说明</div>
+											<ul class="dictionaryList">
+											</ul>
+										</div>
+									</div>
+									<div class="contentTop">
+										<div class="content">
+											<div class="taskLogo">转发内容</div>
+											<iframe class="articleUrl" src=""></iframe>
+										</div>
+									</div>
+									<div class="contentBottom">
+										<span class="contentText">每次浏览奖励：<span class="taskPrice">0.15</span>元</span> <span class="shareBtn">分享</span>
+									</div>
+								</div>
+								<!--分享赚 发布详情-->
+								<div class="fxzDetail">
+									<div class="couponOut"></div>
+									<div class="couponContent">
+										<div class="imgContent">
+											<img class="imgSrc" src="../../assets/css/earnmoney/bg_photo.png">
+										</div>
+										<div class="detailContent">
+											<div class="shopName"></div>
+											<div class="couponDemand"></div>
+											<div class="couponOriginalPriceText">原价: <span class="couponOriginalPrice">0</span> 元</div>
+										</div>
+										<div class="payContent">
+											<div class="payPrice">支付 <span class="couponPresentPrice">0</span> 元</div>
+											<div class="enjoyText">即可享用</div>
+											<div class="expireTime" id="expireTime"></div>
+										</div>
+									</div>
+								</div>
+								<!--玩家转 发布详情-->
+								<div class="wjzDetail">
+									<div class="shareContent">
+										<div class="shareDetail">
+											<div class="prizeTitle"></div>
+											<div class="priceText">价值:<span class="prizePrice"></span></div>
+											<div class="timeText">到期时间<span class="expireTime"></span></div>
+										</div>
+										<div class="couponDetail">
+											<img class="prizeStyle" src="">
+											<div class="shelveStatus"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 底部tab导航 -->
+					<ul id="tab" class="phone_tab nav nav-tabs" role="tablist">
+						<li class="active"><a id="qbz" data-toggle="tab">抢标赚</a></li>
+						<li><a id="zwz" data-toggle="tab">转文赚</a></li>
+						<li><a id="fxz" data-toggle="tab">分享赚</a></li>
+						<li><a id="wjz" data-toggle="tab">玩家转</a></li>
+					</ul>
+				</div>			
+			</div>
+			<div class="col-lg-6 col-md-7 col-sm-12 pulish_content">
+				<iframe width="100%" class="myIframe" id="myIframe" src=""></iframe>
+			</div>
+		</div>					
+	</div>
+</body>
+<script src="src/js/common.js"></script>
+<script src="src/js/index.js"></script>
+</html>

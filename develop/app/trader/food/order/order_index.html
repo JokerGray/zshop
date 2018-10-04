@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>堂食</title>
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../common/css/rest.css">
+    <link rel="stylesheet" href="css/order_index.css">
+</head>
+
+<body>
+    <div class="app" id="app">
+        <!-- 头部搜索区域 -->
+        <div class="header layui-form" style="display:none">
+            <!-- 楼层选择 -->
+            <div class="header_floor_wai">
+                <div class="header_floor_nei">
+                    <ul class="header_floor">
+                        <li class="active">全部</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- 状态选择 -->
+            <div class="choose_box header_status layui-form-item">
+                <div class="layui-input-block">
+                    <select class="layui-select" name="" id="deviceType" lay-filter="deviceType">
+                        <option value="">全部状态</option>
+                        <option value="0">空闲</option>
+                        <option value="1">开台</option>
+                        <option value="2">占用</option>
+                        <option value="3">脏台</option>
+                    </select>
+                </div>
+            </div>
+            <!-- 状态说明 -->
+            <div class="header_discript">
+                <ul class="header_discript_ul" >
+                    <li class="kong">空闲</li>
+                    <li class="zhan">占用</li>
+                    <!-- <li class="yu">预约</li> -->
+                    <li class="zang">脏台</li>
+                </ul>
+            </div>
+        </div>
+        <!-- 点餐及订单操作区域 -->
+        <div class="main">
+            <!-- 座位列表 -->
+            <div class="place_list main_list">
+                <ul class="place_ul clearfix">
+                    <!-- <li class="place_box place_box_kong">
+                        <div class="place_title">
+                            <span>{{item.title}}|{{item.maxNum}}人</span><i class="icon">预</i>
+                        </div>
+                        <div class="place_center">
+                            <div class="place_kong">
+                                <button class="place_btn place_btn_start">开始</button>
+                            </div>
+                            <div class="place_start">
+                                <div class="place_start_choose" style="display: none;">
+                                    <div class="div_tips">5分钟</div>
+                                    <button class="place_btn place_btn_eat">点餐</button>
+                                    <button class="place_btn place_btn_leave">离开</button>
+                                </div>
+                                <div class="place_start_msg" style="display: none;">
+                                    <div class="div_tips div_tips_money">&yen;800.00</div>
+                                    <div class="div_tips div_tips_num">2/5</div>
+                                    <div class="div_tips div_timps_time">15分钟</div>
+                                </div>
+                            </div>
+
+                            <div class="place_yu">
+                                <div class="div_tips div_tips_peple">王小姐</div>
+                                <div class="div_tips div_tips_phone">1852285221</div>
+                                <div class="div_tips div_timps_date">08-28 11:30</div>
+                            </div>
+
+                            <div class="place_zang"></div>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- 订单操作 -->
+            <div class="order_handle">
+                <div class="handle_title">
+                    订单详情 <i class="icon_del"></i>
+                </div>
+                <div class="handle_center">
+                    <ul class="handle_center_ul">
+                        <li class="lh50 fz22" id="place_num">桌号：A2</li>
+                        <li class="cancular_li menu_control_no lh65">人数：
+                            <i class="icon sub"></i>
+                            <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" onkeydown="value=value.replace(/[^\d]/g,'')" maxlength="3"
+                                value="1" id="cancular">
+                            <i class="icon add"></i>
+                        </li>
+                        
+                        <li class="cancular_li menu_control cancular_li_new" >
+                            人数: <span id="peopleNumNew">2</span>人<span class="peopleControl"></span>
+                            <div class="posa_box">
+                                <i class="icon sub"></i>
+                                <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" onkeydown="value=value.replace(/[^\d]/g,'')" maxlength="3"
+                                    value="1" id="cancularnew">
+                                <i class="icon add"></i>
+                            </div>
+                            
+                        </li>
+                        <li class="menu_control lh50 line" id="waiterNew" >
+                            服务员:王玉儿
+                        </li>
+                        <li class="layui-form menu_control_no line" id="waiterOld">
+                            服务员:
+                            <div class="choose_box choose_box2 layui-form-item">
+                                <div class="layui-input-block">
+                                    <select class="layui-select" name="" id="players">
+                                        <!-- <option value="">无服务员</option> -->
+                                       
+                                    </select>
+                                </div>
+                            </div>
+                        </li>
+                       
+                        <li class="order_num_box lh50 line menu_control" >
+                            <p id="order_num">订单编号：</p>
+                            <p id="order_time">下单时间：</p>
+                        </li>
+                        <li class="menu menu_control"  >
+                            <ul class="menu_list" id="menu_list">
+                                <!-- <li class="menu_item">
+                                    <h3 class="menu_name">
+                                        <span>西冷牛排西冷牛排西冷牛排西冷牛排西冷牛排</span>
+                                        <em>
+                                            <i>00:15</i>
+                                            <s>X2</s>
+                                        </em>
+                                    </h3>
+                                    <P class="menu_tips">
+                                        <b><span>五成熟</span><span>黑椒汁</span><span>五成熟</span><span>黑椒汁</span><span>五成熟</span></b>
+
+                                        <em>
+                                            <i>已出菜</i>
+                                            <s>&yen;280.00</s>
+                                        </em>
+                                    </P>
+                                </li> -->
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="menu_total menu_control" style="display:none" id="menu_total_waiter">
+                        <span>服务费：</span><em>合计：&yen;</em>
+                    </div>
+                    <div class="menu_total menu_control" id="menu_total">
+                        <span>商品总数：</span><em>合计：&yen;</em>
+                    </div>
+                </div>
+                <div class="handle_bottom">
+                    <!-- 没点菜显示 -->
+                    <div class="handle_bottom_box menu_control_no">
+                        <button class="layui-btn no_eat">暂不点餐</button>
+                        <button class="layui-btn yes_eat">点菜</button>
+                    </div>
+                    <!-- 点完菜显示 -->
+                    <div class="handle_bottom_box handle_bottom_box_zhan menu_control" >
+                        <button class="layui-btn print_btn_cookie" style="display:none">打印到后厨</button>
+                        <button class="layui-btn print_btn">打印</button>
+                        <button class="layui-btn add_food">加菜</button>
+                        <button class="layui-btn square_accounts">结账</button>
+                    </div>
+                </div>
+                <div class="handle_spec" id="handle_spec">
+                    <!-- 显示退菜界面 -->
+                    <ul class="handle_spec_box">
+                        <li class="">
+                            <button class="layui-btn handle_spec_btn handle_spec_btn_price">单价：&yen;<em></em></button>
+                        </li>
+                        <!-- <li class=" cancular_li">
+                            <i class="icon sub"></i>
+                            <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" onkeydown="value=value.replace(/[^\d]/g,'')" maxlength="3"
+                                value="1" id="cancularer">
+                            <i class="icon add"></i>
+                        </li>
+                        <li class="">
+                                <button class="layui-btn handle_spec_btn handle_spec_btn_normal" data-type="stock">规格</button>
+                        </li>
+                        <li class="">
+                                <button class="layui-btn handle_spec_btn handle_spec_btn_normal" data-type="recipes">做法</button>
+                        </li> -->
+                        <li class="handle_spec_special">
+                                <button class="layui-btn handle_spec_btn handle_spec_btn_special" id="delFood">退菜</button>
+                        </li>
+                        <!-- <li class="handle_spec_operation">
+                            <button class="layui-btn handle_spec_btn handle_spec_submit">确定</button>
+                            <button class="layui-btn handle_spec_btn handle_spec_cancel">取消</button>
+                        </li> -->
+                    </ul>
+                    <!-- 选择规格区域 -->
+                    <div class="handle_spec" id="handle_norms">
+                            <ul class="handle_spec_box" id="handle_spec_box_norms">
+                                <!-- <li>
+                                        <h3>选择做法</h3>
+                                </li>
+                                <li class="">
+                                        <button class="layui-btn handle_spec_btn">番茄汁</button>
+                                </li>
+                                <li class="">
+                                        <button class="layui-btn handle_spec_btn handle_spec_btn_special">番茄汁</button>
+                                </li>
+                                <li class="">
+                                        <button class="layui-btn handle_spec_btn">蜂蜜芥末汁</button>
+                                </li> -->
+                            </ul>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="leaving layui-form" id="leaving" lay-filter='leaving'>
+        <i class="del"></i>
+        <img src="img/likai.png" alt="">
+        <p>客人是否离开?</p>
+        <div class="btn_box">
+            <button class="layui-btn cancel">取消</button>
+            <button class="layui-btn submit" lay-submit>确定</button>
+        </div>
+    </div>
+
+    <div class="leaving layui-form" id="tuiDemo" lay-filter='leaving'>
+        <i class="del"></i>
+        <img src="img/tui.png" alt="">
+        <p>是否退菜?</p>
+        <div class="btn_box">
+            <button class="layui-btn cancel">取消</button>
+            <button class="layui-btn submit" lay-submit>确定</button>
+        </div>
+    </div>
+    <div class="leaving layui-form" id="qingzhuo" lay-filter='leaving'>
+            <i class="del"></i>
+            <img src="img/qingzhuo.png" alt="">
+            <p>是否清理完成?</p>
+            <div class="btn_box">
+                <button class="layui-btn cancel">取消</button>
+                <button class="layui-btn submit" lay-submit>确定</button>
+            </div>
+    </div>
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <script src="../../assets/layui-v2.2.2/layui.js"></script>
+    <script src="../common/js/webprinter_1.8.js"></script>
+    <script src="../common/js/miniUtils.js"></script>
+    <script src="js/order_index.js"></script>
+</body>
+
+</html>

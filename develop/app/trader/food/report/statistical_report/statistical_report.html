@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../common/css/common.css"  >
+    <link rel="stylesheet" href="../../../assets/layui-v2.3.0/css/layui.css" media="all">
+    <link rel="stylesheet" href="css/statistical_report.css">
+    <title>统计报表</title>
+</head>
+<body>
+    <div class="app layui-fluid">
+        <div class="header clearfix">
+            <div class="header-tabs">
+                <span class="active" data-type="1">商品销售排行榜</span>
+                <span data-type="2">当日营业额统计</span>
+            </div>
+            <div class="header-date">
+                <span>日期</span>
+                <div class="date-box date-start" >
+                    <input class="date-time" maxlength="20">
+                    <i></i>
+                </div>
+                <span>&nbsp;-&nbsp;</span>
+                <div class="date-box date-end">
+                    <input class="date-time" maxlength="20">
+                    <i></i>
+                </div>
+            </div>
+                <div class="header-date type2">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" for="">商品名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="goodsName"  class="layui-input" placeholder="商品名称">
+                        </div>
+                    </div>
+                </div>
+                <div class="header-date type2">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="">商品类别</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="categoryName" class="layui-input" placeholder="商品类别">
+                            </div>
+                        </div>
+                    </div>
+                <div class="header-date header-button type2">
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn searchBtn">搜索</button><button class="layui-btn restBtn">重置</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="tab-contents">
+            <div class="tab-content" data-type="1" id="rank-list">
+                <div class="tab-title">商品销售排行榜</div>
+                <table id="table-rank"></table>
+                <div id="page-rank" class="table-r"></div>
+            </div>
+            <div class="tab-content" data-type="2" id="statistics" style="display: none;">
+                <div class="tab-title">营业额统计</div>
+                <div class="content-business">
+                    <ul class="clearfix business-list layui-row">
+                        <li class="business-total layui-col-xs6 layui-col-sm6 layui-col-md4">
+                            <p>营业总额（现金）</p>
+                            <p class="business-price">￥<span>0.00</span></p>
+                        </li>
+                        <li class="business-food layui-col-xs6 layui-col-sm6 layui-col-md4">
+                            <p>堂食营业总额（现金）</p>
+                            <p class="business-price">￥<span>0.00</span></p>
+                            <p class="business-order">订单数:<span>0</span></p>
+                        </li>
+                        <li class="business-recharge layui-col-xs6 layui-col-sm6 layui-col-md4">
+                            <p>会员充值</p>
+                            <p class="business-price">￥<span>0.00</span></p>
+                            <p class="business-order">订单数:<span>0</span></p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-title">账单明细</div>
+                <table id="table-bill"></table>
+                <div id="page-bill" class="table-r"></div>
+            </div>
+        </div>
+ 
+    </div>
+    <script type="text/html" id="rank-img-box">
+        <div class="rank-img-box">
+            {{# if(d.LAY_INDEX==1){ }}
+                <img src="img/top1.png" alt="">
+            {{# }else if(d.LAY_INDEX==2){  }}
+                <img src="img/top2.png" alt="">
+            {{# }else if(d.LAY_INDEX == 3){ }}
+                <img src="img/top3.png" alt="">
+            {{# }else{ }}
+                {{d.LAY_INDEX}}
+            {{# } }}
+        </div>
+    </script>
+    <script type="text/javascript" src="../../../assets/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../assets/layui-v2.3.0/layui.js"></script>
+    <script type="text/javascript" src="../../../assets/common/js/utils.js"></script>
+
+    <!--<script src="../../../assets/laydate-v5.0.9/laydate.js"></script>-->
+    <!--<script type="text/javascript" src="../../../assets/laydate/laydate.js"></script>-->
+    <script type="text/javascript" src="../common/js/common.js"></script>
+    <script type="text/javascript" src="js/statistical_report.js"></script>
+</body>
+
+
+</html>

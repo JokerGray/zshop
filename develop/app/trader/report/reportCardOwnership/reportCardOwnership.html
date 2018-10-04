@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>会员卡项服务统计</title>
+    <link rel="stylesheet" href="../../assets/common/css/common.css">
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="css/reportCardOwnership.css">
+</head>
+<body>
+<form action="javascript:;" class="layui-form">
+    <!--顶部tab栏-->
+    <div class="navTabBox">
+        <div class="navList">
+            <ul>
+                <li class="active" data-type="1">卡项统计</li>
+                <!--<li data-type="2">服务统计</li>-->
+            </ul>
+        </div>
+        <div class="cardFilter">
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="text"
+                           name="cardName"
+                           placeholder="请输入卡项名称"
+                           autocomplete="off"
+                           id="cardName"
+                           class="layui-input">
+                </div>
+            </div>
+            <button class="layui-btn layui-btn-primary"
+                    lay-submit
+                    lay-filter="formDemo">搜索
+            </button>
+            <div>
+                <a class="exportBtn" href="javascript:;">
+                    <i class="exportIcon"></i>
+                    <span>导出</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--报表内容-->
+    <div class="reportContent">
+        <div class="card">
+            <p>全部卡项统计</p>
+            <div class="tableBox">
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="40">
+                        <col width="350">
+                        <col width="200">
+                        <col width="200">
+                        <col width="200">
+                        <col width="200">
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>卡项名称</th>
+                        <th>卡项类型</th>
+                        <th>卡项次数/时长</th>
+                        <th>卡项拥有人数</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--<tr>-->
+                        <!--<td>1</td>-->
+                        <!--<td>水循环终身卡</td>-->
+                        <!--<td>终身卡</td>-->
+                        <!--<td>不限次数</td>-->
+                        <!--<td>1000</td>-->
+                        <!--<td><a href="JavaScript:;">查看详情</a></td>-->
+                    <!--</tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--<div class="service"></div>-->
+    </div>
+    <div class="pageBox clearfix">
+        <div id="pageSelector"></div>
+    </div>
+</form>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../assets/layer-v3.1.1/layer.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/echart/echarts.min.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="js/reportCardOwnership.js"></script>
+<script id="cardDetailTpl" type="text/html">
+    <div class="top">
+        <span>卡项详情</span>
+        <i>×</i>
+    </div>
+    <div class="descAndExport">
+        <div class="descPath">
+            <span class="descName" title="{{serviceCardName}}">{{serviceCardName}}</span>
+            <i>></i>
+        </div>
+        <a href="javascript:;" class="detailExportBtn">
+            <i></i>
+            <span>导出</span>
+        </a>
+    </div>
+    <div class="detailTable">
+        <table class="layui-table">
+            <colgroup>
+                <col width="40">
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>顾客名称</th>
+                <th>购买日期</th>
+                <th>总次数/截止日期</th>
+                <th>已使用次数</th>
+            </tr>
+            </thead>
+            <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>刘袁多美</td>-->
+                    <!--<td>2018-08-13 09:29</td>-->
+                    <!--<td>2018-08-13 09:29</td>-->
+                    <!--<td>1</td>-->
+                <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+    <div class="detailPageBox clearfix">
+        <div id="detailPageSelect"></div>
+    </div>
+</script>
+</html>

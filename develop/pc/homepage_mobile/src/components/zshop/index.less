@@ -1,0 +1,311 @@
+.swiper-slide {
+  text-align: center;
+  overflow: hidden;
+  padding-top: .8rem;
+  box-sizing: border-box;
+}
+
+.swiper-box {
+  transform: translateY(0);
+  .item1 {
+    background: url(./img/web_zhanshiduan_shouyebg.png) no-repeat center/cover;
+    font-family: PingFang-SC-Medium;
+    color: #fff;
+    box-sizing: border-box;
+    h3 {
+      margin-top: 0.5rem;
+      font-size: 0.5rem;
+      line-height: 1rem;
+      letter-spacing: 1px;
+      transform: translateY(-300%);
+      &.show {
+        transform: translateY(0);
+        transition: all 1s ease;
+      }
+    }
+    h5 {
+      font-family: MicrosoftYaHei;
+      font-size: .24rem;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(-700%);
+      &.show {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 1s ease 1s;
+      }
+    }
+    .content {
+      margin-top: 1rem;
+      position: relative;
+      .cont-img {
+        position: relative;
+        z-index: 2;
+        transform: scale(0) rotate(-360deg);
+        opacity: 0;
+        &.show {
+          opacity: 1;
+          transform: scale(1) rotate(0);
+          transition: all .5s ease;
+        }
+      }
+      .icon {
+        position: absolute;
+        &.icon1 {
+          top: 0;
+          left: .5rem;
+          z-index: 1;
+          opacity: 0;
+          transform: translateX(-200%);
+          &.show {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all .3s ease .2s;
+          }
+        }
+        &.icon2 {
+          top: 50%;
+          transform: translateY(-50%) translateX(-200%);
+          left: .1rem;
+          z-index: 1;
+          opacity: 0;
+          &.show {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+            transition: all .3s ease .5s;
+          }
+        }
+        &.icon3 {
+          bottom: 0;
+          transform: translateY(30%) translateX(-200%);
+          left: .1rem;
+          z-index: 3;
+          opacity: 0;
+          &.show {
+            opacity: 1;
+            transform: translateY(30%) translateX(0);
+            transition: all .4s ease 1s;
+          }
+        }
+        &.icon4 {
+          bottom: 0;
+          right: .1rem;
+          z-index: 3;
+          opacity: 0;
+          transform: translateX(200%) translateY(30%);
+          &.show {
+            opacity: 1;
+            transform: translateX(0) translateY(30%);
+            transition: all .3s ease 1.3s;
+          }
+        }
+        &.icon5 {
+          top: 50%;
+          right: .1rem;
+          z-index: 1;
+          opacity: 0;
+          transform: translateX(200%);
+          &.show {
+            opacity: 1;
+            transform: translateX(0) translateY(-50%);
+            transition: all .3s ease 1.6s;
+          }
+        }
+        &.icon6 {
+          top: 0;
+          right: .5rem;
+          transform: translateX(200%);
+          z-index: 1;
+          opacity: 0;
+          &.show {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all .3s ease 1.9s;
+          }
+        }
+      }
+    }
+    a {
+      margin-top: 1.5rem;
+      display: inline-block;
+    }
+    .arrow {
+      transform: translateY(-1000%);
+      opacity: 0;
+      &.show {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 1s ease 2.2s;
+      }
+    }
+  }
+  .item2 {
+    background: url(./img/web_zhanshiduan_erping.png) no-repeat center/cover;
+    text-align: center;
+    .title {
+      margin-top: 1rem;
+      box-sizing: border-box;
+      margin-bottom: .68rem;
+      img {
+        width: 1.09rem;
+        height: .86rem;
+        float: left;
+        margin-left: .64rem;
+      }
+      .title-cont {
+        float: left;
+        font-family: MicrosoftYaHei;
+        font-weight: bold;
+        font-size: .24rem;
+        margin-left: .54rem;
+        h3 {
+          font-size: .3rem;
+          color: #333;
+          position: relative;
+          text-align: left;
+          &:nth-child(1) {
+            margin-top: .2rem;
+            width: 2.94rem;
+            &:after {
+              content: "";
+              display: block;
+              height: .14rem;
+              width: 2.94rem;
+              position: absolute;
+              bottom: -.07rem;
+              background-color: rgb(156, 193, 255);
+              z-index: -1;
+            }
+          }
+          &:nth-child(2) {
+            margin-top: .22rem;
+            width: 1.48rem;
+            &:after {
+              content: "";
+              display: block;
+              height: .14rem;
+              width: 1.48rem;
+              position: absolute;
+              bottom: -.07rem;
+              background-color: rgb(156, 193, 255);
+              z-index: -1;
+            }
+            &.three {
+              width: 1.79rem;
+              &:after {
+                width: 1.79rem;
+              }
+            }
+          }
+        }
+        p {
+          margin-top: .4rem;
+          text-align: left;
+        }
+      }
+    }
+    video {
+      display: block;
+      margin: 0 auto;
+      margin-top: .68rem;
+      border-top: none;
+      width: 6.44rem;
+      height: 4.36rem;
+    }
+    // .video {
+    //     display: block;
+    //     margin: 0 auto;
+    //     width: 6.44rem;
+    //     height: 5rem;
+    //     padding: 0;
+    //     text-align: center;
+    //     // background-color: gold;
+    //     video {
+    //         width: 6.44rem;
+    //         height: 4.36rem;
+    //     }
+    // }
+    a {
+      display: block;
+      float: right;
+      margin: .46rem .52rem 0 0;
+    }
+  }
+  .item3 {
+    // background-color: green;
+    background: url(./img/web_zhanshiduan_sanping_bg.png) no-repeat center/cover;
+    text-align: center;
+    .title {
+      margin-top: 1rem;
+      margin-bottom: .68rem;
+      img {
+        width: 1.09rem;
+        height: .86rem;
+        float: right;
+        margin-right: .77rem;
+      }
+      .title-cont {
+        float: right;
+        font-family: MicrosoftYaHei;
+        font-weight: bold;
+        font-size: .24rem;
+        margin-right: .29rem;
+        text-align: right;
+        h3 {
+          font-size: .3rem;
+          color: #333;
+          position: relative;
+          z-index: 3;
+          ;
+          text-align: right;
+          display: inline-block;
+          &:nth-of-type(1) {
+            margin-top: .2rem;
+            width: 3.49rem;
+            &:after {
+              content: "";
+              display: block;
+              height: .14rem;
+              width: 3.49rem;
+              position: absolute;
+              bottom: -.07rem;
+              background-color: rgb(156, 193, 255);
+              z-index: -1;
+            }
+          }
+          &:nth-of-type(2) {
+            margin-top: .22rem;
+            width: 1.79rem;
+            &:after {
+              content: "";
+              display: block;
+              height: .14rem;
+              width: 1.79rem;
+              position: absolute;
+              bottom: -.07rem;
+              background-color: rgb(156, 193, 255);
+              z-index: -1;
+            }
+          }
+        }
+        p {
+          margin-top: .4rem;
+          text-align: left;
+        }
+      }
+    }
+    video {
+      display: block;
+      margin: 0 auto;
+      margin-top: .68rem;
+      border-top: none;
+      width: 6.44rem;
+      height: 4.36rem;
+    }
+    a {
+      display: block;
+      float: left;
+      margin: .46rem 0 0 .52rem;
+    }
+  }
+}

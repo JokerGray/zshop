@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>投放历史 - 智享城市·智享头条</title>
+    <!-- Bootstrap -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/ad_history.css" />
+    <!--[if lt IE 9]>
+	      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="self_adHistory">
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div class="right pull-right">
+                <form id="selectForm">
+                    <div id="search_box" class="clearfix">
+                        <div id="advertisingSpace" class="fl">
+                            <p class="advertisingSpTit">广告位</p>
+                            <select id="advertisingSpSel">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                        <!-- <div id="advertisingSource" class="fl">
+                            <p class="advertisingSoTit">广告类型</p>
+                            <select id="advertisingSoSel">
+                                <option value="">请选择</option>
+                            </select>
+                        </div> -->
+                        <div id="advertisingTime" class="fl">
+                            <p class="advertisingTTit">申请投放时间</p>
+                            <input id="start" class="fl" type="text">
+                            <input id="end" class="fl" type="text">
+                        </div>
+                        <div id="search_icon" class="fl"><img id="searchIcon" class="cur-p" src="images/search.png" alt=""></div>
+                    </div>
+                </form>
+                <div class="advertiseData">
+                    <div class="advertiseDataBox">
+                        <p>投放广告条数</p>
+                        <p id="advertNum" class="advertiseDataNum"></p>
+                    </div>
+                    <div class="advertiseDataBox">
+                        <p>展现次数</p>
+                        <p id="adShowNum" class="advertiseDataNum"></p>
+                    </div>
+                    <div class="advertiseDataBox">
+                        <p>点击次数</p>
+                        <p id="adClickNum" class="advertiseDataNum"></p>
+                    </div>
+                </div>
+                <div id="" class="advertiseList clearfix">
+                    <div>
+                        <ul id="tabinner" class="tabinner clearfix">
+                            <li class="fl" type="1">已上架</li>
+                            <li class="fl" type="2">已下架</li>
+                            <li class="fl" type="3">已过期</li>
+                            <li class="fl" type="4">已驳回</li>
+                            <li class="fl active" type="">全部</li>
+                        </ul>
+                    </div>
+                    <div id="advertiseTable" class="table advertiseTable account_table">
+                        <div class="table-left">
+                            <div class="panel panel-default">
+                                <table class="table table-hover">
+                                    <thead class="advertiseTabHead">
+                                        <th>序号</th>
+                                        <th>广告位</th>
+                                        <th>广告类型</th>
+                                        <th>标签数</th>
+                                        <th>展示量</th>
+                                        <th>点击量</th>
+                                        <th>投放时间</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </thead>
+                                    <tbody id="advertiseTabBody" class="advertiseTabBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="page" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="advertiseDetail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="advertiseDBox modal-dialog modal-dialog2" role="document">
+            <div class="advertiseDMain modal-content modal-content2">
+                <div class="advertiseDTit modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4>广告详情</h4>
+                </div>
+                <div class="advertiseDCon clearfix">
+                    <div class="adDConLeft fl">
+                        <div>
+                            <p class="adDConLabel">投放广告位：</p>
+                            <span id="adDConPosition"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">状态：</p>
+                            <span id="adDConIsPutaway" class="adDConstate"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">展示量：</p>
+                            <span id="adDConShowNum"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">点击量：</p>
+                            <span id="adDConClickNum"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">广告来源：</p>
+                            <span id="adDConSource"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">广告类型：</p>
+                            <span id="adDConType"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">申请投放时间：</p>
+                            <span id="adDConTime"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">添加标签：</p>
+                            <div id="adDConTagList" class="adDConTagList">
+                                <span class="adDConTag">明星</span>
+                                <span class="adDConTag">明星</span>
+                                <span class="adDConTag">明星</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">提交时间：</p>
+                            <span id="adDConCreateTime"></span>
+                        </div>
+                    </div>
+                    <div id="adDConRight" class="adDConRight fr">
+                        <div class="adDConRightTit">
+                            <span>广告样式</span>
+                            <span id="adDConRType"></span>
+                        </div>
+                        <div id="adDConRSetImg" class="adDConRSetBox clearfix">
+                            <div class="adDConRSetLeft fl">
+                                <p id="advStyleResTitle"></p>
+                                <p class="adDConRSetBottom"><span class="adDConRSetBIcon">[广告]</span></p>
+                            </div>
+                            <img id="adDConRSetRight" class="fr" src="" alt="">
+                        </div>
+                        <div id="adDConRSetImgList" class="adDConRSetBox clearfix">
+                            <p id="advStyleImgLTitle" class="advStyleResTitle"></p>
+                            <div id="adDConRSetImgsBox" class="adDConRSetImgList"></div>
+                            <p class="adDConRIcon">[广告]</p>
+                        </div>
+                        <div id="adDConRSetVideo" class="adDConRSetBox clearfix">
+                            <p id="advStyleVideoTitle" class="advStyleResTitle"></p>
+                            <div id="adDConRSetVideoUrl" class="adDConRSetImgList"></div>
+                            <p class="adDConRIcon">[广告]</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="advertiseDBtnBox" class="modal-footer">
+                    <button id="putawayBtn" type="button" class="btn btn-default" data-dismiss="modal">下架</button>
+                    <button id="delBtn" type="button" class="btn btn-default" data-dismiss="modal">删除</button>
+                    <button id="cancelBtn" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/ad_history.js"></script>
+    <script id="adList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+            <tr advId='{{item.scCmsAdvId || ''}}'>
+                <td>1</td>
+                <td class="adPosition">{{item.scCmsAdvPlaceName || ''}}</td>
+                <td class="adSource">{{item.scCmsAdvSourceName || ''}}</td>
+                {{# var str = item.scCmsAdvLable || '', arr = []}}
+                {{# if(!isNull(str)){ }} 
+                    {{# arr = str.split(',')}}
+                    {{# str = arr.length}}
+                {{# } }}
+                <td>{{str}}</td>
+                <td class="adShowNum">{{item.scCmsAdvShowNumber || '0'}}</td>
+                <td class="adClickNum">{{item.scCmsAdvClickNumber || '0'}}</td>
+                <td class="adTime">{{(item.scCmsAdvStart).replace(".0","") || ''}}~{{(item.scCmsAdvEnd).replace(".0","") || ''}}</td>
+                <td class="checkStatus">
+                    {{# var state = '';}}
+                    {{# var currentTime = new Date().getTime(); }}
+                    {{# var endTime = (new Date(item.scCmsAdvEnd)).getTime(); }}
+                    {{# if(endTime < currentTime){ }}
+                        <span class="invalid">已过期</span>
+                        {{# state = '已过期';}}
+                    {{# } else { }}
+                        {{# if(item.scCmsAdvExamine == 0){ }}
+                            <span class="invalid">待审核</span>
+                            {{# state = '待审核';}}
+                        {{# } else if(item.scCmsAdvExamine == 2){ }}
+                            <span class="invalid">已驳回</span>
+                            {{# state = '已驳回';}}
+                        {{# } else if(item.scCmsAdvExamine == 1){ }}
+                            {{# if(item.scCmsAdvState == 1){ }}
+                                <span>已上架</span>
+                                {{# state = '已上架';}}
+                            {{# } else if(item.scCmsAdvState == 2){ }}
+                                <span class="active">已下架</span>
+                                {{# state = '已下架';}}
+                            {{# } }}
+                        {{# } else if(item.scCmsAdvExamine == 4 && item.scCmsAdvState == 4){ }}
+                            <span class="invalid">已完成</span>
+                        {{# } }}
+                    {{# } }}
+                </td>
+                <td> 
+                    <button class="checkBtn" data-toggle="modal" data-target="#advertiseDetail" 
+                    adShowNum="{{item.scCmsAdvShowNumber || '0'}}" adClickNum="{{item.scCmsAdvClickNumber || '0'}}">查看</button> 
+                    {{# if(state == '已过期'){ }}
+                        <button class="operateBtn rePublish">重新发布</button>
+                    {{# } else if(state == '已下架'){ }}
+                        <button class="operateBtn isPutawayBtn active" scCmsAdvState="1">上架</button>
+                    {{# } else if(state == '已上架'){ }}
+                        <button class="operateBtn isPutawayBtn" scCmsAdvState="2">下架</button>
+                    {{# } }}
+                    <button class="delBtn">删除</button>                                                
+                </td>
+            </tr>
+        {{#  }); }}
+    </script>
+    <script id="advStyleList" type="text/html"> 
+        {{# var advSinglePic = JSON.parse(d.advStyleRes.scCmsAdvStyleResJson) }}
+        {{# if(d.advStyle.scCmsAdvStyleType == 6){ }}        <!--单图-->
+            <div class="adDConRightTit">
+                <span>广告样式</span>
+                <span id="adDConRType">(单图)</span>
+            </div>
+            <div id="adDConRSetImg" class="adDConRSetBox clearfix">
+                <div class="adDConRSetLeft fl">
+                    <p id="advStyleResTitle">{{d.advStyleRes.scCmsAdvStyleResTitle || ''}}</p>
+                    <p class="adDConRSetBottom"><span class="adDConRSetBIcon">[广告]</span></p>
+                </div>
+                <img id="adDConRSetRight" class="fr" src="{{advSinglePic[0].resourcesUrl}}" alt="">
+            </div>
+        {{# } else if(d.advStyle.scCmsAdvStyleType == 7){ }}     <!--三图-->
+            <div class="adDConRightTit">
+                <span>广告样式</span>
+                <span id="adDConRType">(三图)</span>
+            </div>
+            <div id="adDConRSetImgList" class="adDConRSetBox clearfix">
+                <p id="advStyleImgLTitle" class="advStyleResTitle">{{d.advStyleRes.scCmsAdvStyleResTitle || ''}}</p>
+                <div id="adDConRSetImgsBox" class="adDConRSetImgList">
+                    {{#  layui.each(advSinglePic, function(index, item){ }}
+                        <img src="{{item.resourcesUrl}}" alt="">
+                    {{# }); }}
+                </div>
+                <p class="adDConRIcon">[广告]</p>
+            </div>
+        {{# } else if(d.advStyle.scCmsAdvStyleType == 8){ }}     <!--视频-->
+            <div class="adDConRightTit">
+                <span>广告样式</span>
+                <span id="adDConRType">(视频)</span>
+            </div>
+            <div id="adDConRSetVideo" class="adDConRSetBox clearfix">
+                <p id="advStyleVideoTitle" class="advStyleResTitle">{{d.advStyleRes.scCmsAdvStyleResTitle || ''}}</p>
+                <div id="adDConRSetVideoUrl" class="adDConRSetImgList">
+                    <video src="{{advSinglePic[0].videoUrl}}" poster="{{advSinglePic[0].resourcesUrl}}" controls="controls"></video>
+                </div>
+                <p class="adDConRIcon">[广告]</p>
+            </div>
+        {{# } }}  
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,216 @@
+/* 左侧 */
+.top-title{
+    border-bottom: 2px solid #ddd;
+}
+.must{
+    color: rgb(217, 82, 78);
+    line-height: 28px;
+    font-size: 14px;
+    display: inline-block;
+    margin-left: -12px;
+    margin-right: 5px;
+}
+.top-title .title-name{
+    display: inline-block;
+    line-height: 1;
+    padding: 16px 0 12px 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #20c7cd;
+    border-bottom: 4px solid #23c6cb;
+}
+.form-padding{
+    padding: 2rem 0;
+}
+.tips-no-padding{
+    padding: 7px 0;
+}
+.upFace{
+	height: 192px;
+	width: 340px;
+}
+.upFace img{
+	height: 100%;
+	width: 100%;
+}
+.imgshadow{
+	height: 192px;
+	width: 340px;
+	z-index: 2;
+	position: absolute;
+	background-color: rgba(0,0,0,.3);
+}
+.imgshadow::after{
+	content: "点击修改背景照片";
+	color: #fff;
+	font-size: 18px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+}
+/* 右侧 */
+.phone-bg{
+    display: block;
+    margin: 2rem auto;
+    width: 390px;
+    height: 780px;
+    background: url(./img/phone-bg.png) no-repeat;
+    background-size: contain;
+    position: relative;
+}
+.left-state{
+    display: inline-block;
+    position: relative;
+    top: 35px;
+    left: 50px;
+    color: #fff;
+}
+.right-state{
+    background: url(./img/zhuangtailan.png) no-repeat;
+    background-size: contain;
+    display: inline-block;
+    width: 60px;
+    height: 15px;
+    position: relative;
+    top: 40px;
+    right: -262px;
+}
+.back-btn{
+    background: url(./img/icon-back.png) no-repeat;
+    background-size: contain;
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    position: absolute;
+    top: 40px;
+    left: 14px;
+}
+.cover-cover{
+    display: inline-block;
+    width: 340px;
+    height: 100%;
+    position: absolute;
+    background: rgba(0,0,0,0.3);
+}
+.cover-img{
+    background: url(./img/disney.jpg) no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    width: 340px;
+    height: 29%;
+    position: relative;
+    top: 3px;
+    right: -26px;
+    z-index: -10;
+}
+.user-info{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+.user-info>.user-icon{
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.user-info>.user-icon>img{
+    width: 100%;
+    height: 100%;
+}
+.user-info>.user-text{
+    display: inline-block;
+    vertical-align: top;
+    color: #fce09e;
+    margin-left: 8px;
+    font-size: 14px;
+}
+.activity-about{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.activity-about::-webkit-scrollbar{
+  display:none;
+}
+.detail-info{
+    position: relative;
+    left: 40px;
+    top: 10px;
+}
+.detail-info b{
+    font-weight: 500;
+}
+.detail-info div{
+    height: 24px;
+    line-height: 24px;
+}
+.detail-info>.detail-title{
+    font-size: 18px;
+    font-weight: 550;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 280px;
+    display: inline-block;
+    vertical-align: top;
+}
+.detail-info>.detail-addr>b{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 280px;
+    display: inline-block;
+    vertical-align: top;
+}
+.active-process{
+    position: relative;
+    top: 15px;
+    left: 40px;
+}
+.active-process>.title-bar{
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background-color: #A87C4E;
+    margin-right: 9px;
+    vertical-align: text-bottom;
+}
+.active-process>.process-content{
+    height: 342px;
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 17;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 310px;
+}
+.select-people{
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.save-btn{
+    margin-bottom: 10px;
+}
+#perBudget{
+    display: none;
+    float: left;
+    line-height: 35px;
+    height: 35px;
+    padding-left: 15px;
+    padding-right: 10px;
+}
+#staffCheck{
+    display: none;
+}

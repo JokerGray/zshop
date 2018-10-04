@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>脸圈个人页</title>
+	<link rel="stylesheet" type="text/css" href="assets/layer/need/layer.css" />
+	<link rel="stylesheet" type="text/css" href="css/personal.css">
+	<script>
+		(function (doc, win) {
+			var docEl = doc.documentElement,
+				resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+				recalc = function () {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth) return;
+					docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+				};
+			if (!doc.addEventListener) return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+	<script src="assets/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/artTemplate.js" type="text/javascript"></script>
+	<script src="assets/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/personal.js" type="text/javascript"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</head>
+
+<body>
+	<div id="content"></div>
+	<!-- 请跳转至浏览器 -->
+	<div class="model">
+		<div class="model_cont">
+			<p class="text1">1、点击右上角的&nbsp;&nbsp;
+				<span></span>
+			</p>
+			<p class="text2">2、选择&nbsp;&nbsp;
+				<span></span>
+			</p>
+			<div class="pointTo"></div>
+		</div>
+	</div>
+
+	<script type="text/html" id="showCont">
+			<div class="show">
+				<div class="coverbg"></div>
+				<%if(data.userMain.scGamePicture){%>				
+				<img src="<%=data.userMain.scGamePicture.fileUrl%>?x-oss-process=image/resize,m_fill,w_375,h_375,limit_0" />
+					<%}else{%>
+				<div class="backImg">
+					<img src="image/personalIcon/nodata.png">
+				</div>
+					<%}
+				%>
+				<div class="information">
+					<p class="userName"><%=data.userMain.scGameUser.username%></p>
+					<p class="user-detail">
+					<%if(data.userMain.scGameUser.usersex=='男'){%>
+							<span class="gender male"></span>
+						<%}else if(data.userMain.scGameUser.usersex=='女'){%>
+							<span class="gender famale"></span>
+						<%}
+					%>
+						<span class="age texts"><%=data.userMain.age%>&nbsp;岁</span>
+						<span class="distance"></span><span class="age texts">&nbsp;<%=data.userMain.distance%>Km</span>
+						<span class="loved"></span>
+						<span class="age texts"><%=data.userMain.scGameUser.likesCount%>人喜欢</span>
+					</p>
+
+					<%if(data.userMain.scGameUser.signature){%>
+						<p class="announce"><%=data.userMain.scGameUser.signature%></p>
+						<%}else{%>
+						<p class="announce">这个人很懒，未发表签名~QAQ</p>
+						<%}
+					%>
+					<!-- <div class="likeit">喜欢Ta</div> -->
+				</div>
+			</div>
+			<div class="cont_title">
+				<p>等级</p>
+				<div class="pz_right"><span class="user-lv lv<%=data.expGrade%>"></span><span class="user-lv-name lvname<%=data.expGrade%>"></span></div>
+			</div>
+			<div class="cont_title">
+				<p>最近访客</p>
+				<div class="pz_right">
+			           <%if(data.visitRecordList.length<=5){%>
+			                   <%for(var i=0;i<data.visitRecordList.length;i++){%>
+									<span class="guest_img"><img src="<%=data.visitRecordList[i].userpic%>?x-oss-process=image/resize,m_fill,w_50,h_50,limit_0"/></span>
+			                   <%}
+			                   %>
+			           <%}else if(data.visitRecordList.length>5){%>
+			                   <%for(var i=0;i<5;i++){%>
+									<span class="guest_img"><img src="<%=data.visitRecordList[i].userpic%>?x-oss-process=image/resize,m_fill,w_50,h_50,limit_0"/></span>
+			                   <%}
+			                   %>
+			           <%}
+			           %>
+		
+				</div>
+			</div>
+			<div class="cont_title">
+				<p>最近被约</p>
+				<div class="pz_right">
+			           <%if(data.todayYueList.length<=5){%>
+			                   <%for(var i=0;i<data.todayYueList.length;i++){%>
+									<span class="guest_img"><img src="<%=data.todayYueList[i].userpic%>?x-oss-process=image/resize,m_fill,w_50,h_50,limit_0"/></span>
+			                   <%}
+			                   %>
+			           <%}else if(data.todayYueList.length>5){%>
+			                   <%for(var i=0;i<5;i++){%>
+									<span class="guest_img"><img src="<%=data.todayYueList[i].userpic%>?x-oss-process=image/resize,m_fill,w_50,h_50,limit_0"/></span>
+			                   <%}
+			                   %>
+			           <%}
+			           %>
+				
+				</div>
+			</div>
+			<div class="cont_title">
+				<p>礼物榜</p>
+				<div class="pz_right pr_right">
+			           <%if(data.giftList.length<=5){%>
+			                   <%for(var i=0;i<data.giftList.length;i++){%>
+									<span class="guest_img"><img src="<%=data.giftList[i].userpic%>?x-oss-process=image/resize,m_fill,w_50,h_50,limit_0"/></span>
+			                   <%}
+			                   %>
+			           <%}else if(data.giftList.length>5){%>
+			                   <%for(var i=0;i<5;i++){%>
+									<span class="guest_img"><img src="<%=data.giftList[i].userpic%>?x-oss-process=image/resize,m_fill,w_50,h_50,limit_0"/></span>
+			                   <%}
+			                   %>
+			           <%}
+			           %>
+
+				</div>
+				<span class="sd_pre">送礼</span>
+			</div>
+
+			<%if(data.queryMyDazzleList.scDazzleDazzleInfoList.length>0){%>
+					<div class="cont_box">
+						<div class="cont_box_title">
+							Ta的炫
+						</div>
+						<div class="cont_box_imgs_xuan">
+							<%for(var i=0;i<data.queryMyDazzleList.scDazzleDazzleInfoList.length;i++){%>
+									<div class="img_box_xuan">
+										<div class="coverpic"></div>
+										<img src="<%=data.queryMyDazzleList.scDazzleDazzleInfoList[i].coverUrl%>?x-oss-process=image/resize,m_fill,w_270,h_360,limit_0"/>
+										<span class="play_btn toApp"></span>
+										<p><%=data.queryMyDazzleList.scDazzleDazzleInfoList[i].introduce%></p>
+									</div>
+								<%}
+							%>
+						</div>
+					</div>
+				<%}
+			%>
+			
+
+			<%if(data.serviceList.length>0){%>
+			<div class="cont_box">
+				<div class="cont_box_title">
+					Ta的约吧
+				</div>
+				<div class="cont_box_imgs_yb">
+							<%for(var i=0;i<data.serviceList.length;i++){%>
+									<div class="img_box_yb toApp">
+										<img src="<%=data.serviceList[i].resourceList[0].resourceUrl%>?x-oss-process=image/resize,m_fill,w_200,h_200,limit_0"/>
+										<p><%=data.serviceList[i].serviceName%></p>
+									</div>
+								<%}
+							%>
+				</div>
+			</div>
+				<%}
+			%>
+
+			<%if(data.ted.taskList.length>0){%>
+				<div class="cont_box">
+						<div class="cont_box_title">
+								Ta的任务
+						</div>
+						<div class="cont_box_imgs_rw">
+								<%for(var i=0;i<data.ted.taskList.length;i++){%>
+										<%if(data.ted.taskList[i].taskType=='1'){%>
+											<div class="img_box_rw toApp">
+												<img src="<%=data.ted.taskList[i].taskInfo.userPic%>?x-oss-process=image/resize,m_fill,w_170,h_170,limit_0"/>
+												<span class="tk_type1">抢标任务</span>
+												<span class="tk_pt1">赚</span>
+												<p class="money"><span>￥<%=data.ted.taskList[i].taskInfo.taskPrice%></span>&nbsp;元/单次点击</p>
+												<p class="title"><%=data.ted.taskList[i].taskInfo.taskTitle%></p>
+											</div>										
+										<%}else if(data.ted.taskList[i].taskType=='2'){%>
+											<div class="img_box_rw toApp">
+												<img src="<%=data.ted.taskList[i].reprint.taskPic%>?x-oss-process=image/resize,m_fill,w_170,h_170,limit_0"/>
+												<span class="tk_type2">转文任务</span>
+												<span class="tk_pt2">赚</span>
+												<p class="money"><span>￥<%=data.ted.taskList[i].reprint.taskPrice%></span>&nbsp;元/人</p>
+												<p class="title"><%=data.ted.taskList[i].reprint.taskTitle%></p>
+											</div>
+										<%}%>
+									<%}
+								%>
+						</div>											
+				</div>
+			<%}%>	
+
+			<%if(data.joinedCircle.length>0){%>
+				<div class="cont_box">
+					<div class="cont_box_title">
+						Ta的圈子
+					</div>
+					<div class="cont_box_imgs_qz">
+								<%for(var i=0;i<data.joinedCircle.length;i++){%>
+										<div class="img_box_qz toApp">
+											<img src="<%=data.joinedCircle[i].detailTitlePic%>?x-oss-process=image/resize,m_fill,w_170,h_170,limit_0"/>
+											<p><%=data.joinedCircle[i].detailName%></p>
+										</div>
+									<%}
+								%>
+					</div>
+				</div>
+					<%}
+				%>				
+
+			<%if(data.shopList.length>0){%>
+			<div class="cont_box">
+				<div class="cont_box_title">
+					Ta的生活
+				</div>
+				<div class="cont_box_imgs_sh">
+							<%for(var i=0;i<data.shopList.length;i++){%>
+									<div class="img_box_sh toApp">
+										<img src="<%=data.shopList[i].picUrl%>?x-oss-process=image/resize,m_fill,w_240,h_190,limit_0"/>
+										<p><%=data.shopList[i].favName%></p>
+									</div>
+								<%}
+							%>
+				</div>
+			</div>
+				<%}
+			%>
+
+			<%if(data.articleList.length>0){%>
+				<div class="cont_box">
+					<div class="cont_box_title">
+						Ta的头条
+					</div>
+					<div class="cont_box_imgs_mw">
+								<%for(var i=0;i<data.articleList.length;i++){%>
+										<div class="img_box_mw toApp">
+											<img src="<%=data.articleList[i].scCmsResourcesList[0].resourcesUrl%>?x-oss-process=image/resize,m_fill,w_170,h_170,limit_0"/>
+											<p class="img_title"><%=data.articleList[i].articleTitle%></p>
+											<p class="img_dt"><%=data.articleList[i].releaseTime.substring(5,10)%>&nbsp;&nbsp;&nbsp;&nbsp;<%=data.articleList[i].articleBrowser%>已读</p>
+										</div>
+									<%}
+								%>
+					</div>
+				</div>
+					<%}
+				%>				
+
+	
+			<div id="footer" class="toApp"><img src="image/footer.png"></div>
+		</script>
+	<script type="text/html" id="showBlank">
+			<div class="blankPage">
+				<p class="warning">哎呀！您访问的地址不存在</p>
+				<p class="warningText">账号被冻结或脸圈已删除</p>
+			</div>
+			<div class="cont_blank"></div>
+		</script>
+</body>
+
+</html>

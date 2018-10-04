@@ -1,0 +1,691 @@
+html, body{
+    background-color: #F9F9F9;
+    /* font-family: -apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif; */
+    font-family: tahoma,arial,sans-serif;
+    font-size: 14px;
+}
+body{
+    overflow-y: scroll;
+}
+a{
+    text-decoration:none;
+}
+a:hover{
+    text-decoration:none;
+}
+.clearfix{ *zoom:1;}
+.clearfix:after {
+	content:".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+	font-size:0;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    height: 4px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background: #fff ;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color:rgba(230,230,230, 0.7);
+}
+::-webkit-scrollbar-thumb:hover {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color:rgba(230,230,230, 1);
+}   
+.input-body{
+    width: 56%;
+    min-width: 200px;
+    height: 34px;
+    padding: 4px 10px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #999;
+    border-radius: 4px;
+}
+html input[disabled] {
+    cursor: not-allowed;
+    border-color:#ccc;
+    background-color: #eee; 
+}
+.select-body{
+    height: 34px;
+    line-height: 34px;
+    border-color: #999;
+    border-radius: 4px;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+textarea{
+    padding: 5px;
+    resize: none;
+    vertical-align: top;
+}
+.text-area{
+    width: 85%;
+}
+.btn-info {
+    background-color: #23c6c8;
+    border-color: #23c6c8;
+    color: #FFF;
+}
+.btn-info[disabled] {
+    background-color: #eee;
+}
+.btn-info.active, .btn-info:active, .btn-info:focus, .btn-info:hover, .open .dropdown-toggle.btn-info {
+    background-color: #21b9bb;
+    border-color: #21b9bb;
+    color: #FFF;
+}
+.btn-white{
+    background-color: #fff;
+    border-color: #23c6c8;
+    color: #23c6c8;
+}
+.btn-white.active, .btn-white:active, .btn-white:focus, .btn-white:hover, .open .dropdown-toggle.btn-white {
+    /* background-color: #21b9bb; */
+    border-color: #21b9bb;
+    color: #21b9bb;
+}
+.add-table-row{
+    color:#21b9bb;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.add-table-row>span{
+    margin-right: 4px;
+}
+.red{
+    color:red;
+}
+.selection{
+    font-size: 16px;
+    color: #999;
+}
+.input388{
+    width: 388px;
+}
+.input800{
+    width: 800px;
+}
+.input90{
+    width: 90%;
+}
+.top-title{
+    float: left;
+}
+.top-title>span.title-name{
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #D3D3D3;
+    box-sizing: border-box;
+    margin-right: -5px; 
+}
+.top-title>span.title-name{
+    border-right: 0;
+}
+.top-title>span.title-name:first-child{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.top-title>span.title-name:last-child{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border: 1px solid #D3D3D3;
+}
+div.top-tool{
+    float: right;
+    width: 50%;
+}
+.top-title>span.active{
+    color: #fff;
+    background: #22C7CA;
+}
+.row-body{
+    margin-top: 20px;
+    height: 800px;
+}
+input[type="radio"] + label::before {
+    content: "\a0"; /*不换行空格*/
+    display: inline-block;
+    vertical-align: text-top;
+    font-size: 16px;
+    width: 1em;
+    height: 1em;
+    margin-right: .4em;
+    border-radius: 50%;
+    border: 1px solid #22C7CA;
+    text-indent: .15em;
+    line-height: 1; 
+}
+input[type="radio"]:checked + label::before {
+    background-color: #22C7CA;
+    background-clip: content-box;
+    padding: .2em;
+}
+input[type="radio"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+.more-info{
+    color: #22C7CA;
+    float: right;
+    margin: 8px 10px;
+    cursor: pointer;
+}
+.arrow{
+    font-size: 14px;
+    margin-left: 5px;
+}
+.input100{
+    width: 100%;
+}
+/* 重置select2样式 */
+.select2-container--default .select2-selection--single{
+    height: 34px
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    line-height: 34px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    height: 34px;
+}
+/* 重置layui样式 */
+.layui-tab-brief>.layui-tab-title .layui-this{
+    color:#21C7C9;
+    font-weight: 550;
+}
+.layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after {
+    border-bottom: 3px solid #21C7C9;
+}
+.layui-tab-item{
+    background-color: #fff;
+}
+.layui-tab-content{
+    padding: 0;
+    padding-top: 20px;
+}
+/* 重置boostrap-table样式 */
+.table thead{
+    background: #D7E1FA;
+}
+/* 患者表格 */
+.regist-list{
+    min-width: 1600px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.regist-list>.regist-box{
+    display: inline-block;
+    width: 17%;
+    height: 142px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #21C7C9;
+    color: #fff;
+    margin: 20px 10px 10px 30px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.regist-list>.regist-box>.regist-content{
+    padding: 10px 0 0 20px;
+    height: 100px;
+}
+.regist-list>.regist-box>.regist-content>.content-line{
+    line-height: 24px;
+    display: -webkit-box;
+}
+.regist-list>.regist-box>.regist-content>.content-line:nth-child(2){
+    margin-top: 6px;
+}
+.regist-list>.regist-box>.regist-content>.content-line>.patient-content{
+    vertical-align: top;
+    width: 72%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.regist-list>.regist-box>.regist-content>.content-line>b{
+    font-weight: 500;
+}
+.regist-list>.regist-box>.regist-content>.content-line>.patient-name{
+    font-weight: 550;
+    font-size: 16px;
+    margin-right: 10px;
+}
+.regist-list>.regist-box>.regist-content>.content-line>.patient-sex{
+    margin-left: 5px;
+    margin-right: 20px;
+}
+.regist-list>.regist-box>.btn-list{
+    display: inline-block;
+    width: 100%;
+    background: #fff;
+    height: 40px;
+    line-height: 32px;
+    box-sizing: border-box;
+}
+.regist-list>.regist-box>.btn-list>.change-btn{
+    display: inline-block;
+    width: 49%;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 16px;
+}
+.regist-list>.regist-box>.btn-list>.change-btn:first-child{
+    border-right: 1px solid #ccc; 
+    margin: 5px 0;
+    height: 80%;
+}
+.regist-list>.regist-box>.btn-list>.receive-btn{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    line-height: 36px;
+    text-align: center;
+    font-size: 16px;
+}
+/* 患者详情 */
+.info-list{
+    border-radius: 4px;
+    overflow: hidden; 
+    margin-top: 20px;
+}
+.complete-btn{
+    line-height: 14px;
+    font-size: 14px;
+    width: 120px;
+    margin: 12px 20px;
+}
+.info-box{
+    float: left;
+    width: 290px;
+    height: 64px;
+    background-color:#E6E6E6; 
+    cursor: pointer;
+}
+.info-box>.info-top{
+    overflow: hidden;
+}
+.info-box>.info-top>.member-name{
+    float: left;
+    margin: 8px 10px;
+}
+.info-box>.info-top>#allergy{
+    float: left;
+    margin: 8px 0;
+    font-weight: normal;
+    font-size: 12px;
+    background-color: #D94E4A;
+    color: #fff;
+    border-radius: 4px;
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+}
+.info-box>.info-bottom{
+    float: left;
+    margin-left: 10px;
+}
+.show-list{
+    width: 288px;
+    position: absolute;
+    z-index: 10;
+    height: 470px;
+    background: #fff;
+    box-shadow: 2px 3px 3px #888888;
+    overflow-y: auto;
+    display: none;
+}
+.show-list .input-row{
+    margin-top: 10px;
+}
+.show-list .input-row .input-name{
+    width: 74px;
+}
+.show-list .input-body{
+    min-width: 180px;
+    width: 180px;
+    height: 30px;
+}
+.show-list .input-row .show-btn{
+    width: 104px;
+    height: 22px;
+    line-height: 10px;
+}
+.line{
+    float: left;
+    border: 1px dashed #888;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.show-list .show-remark{
+    padding: 5px;
+    resize: none;
+    vertical-align: top;
+}
+.show-list .show-title{
+    float: left;
+    color:  #22C7CA;
+    font-weight: 600;
+    margin: 20px 0 5px 10px;
+}
+.show-list .patient-title{
+    float: left;
+    background-color:  #F7F7F7;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-weight: 550;
+    padding-left: 10px;
+}
+.show-list .patient-list{
+    float: left;
+    width: 100%;
+    padding: 4px 10px;
+}
+.show-list .patient-list>.patient-box{
+    float: left;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+}
+.show-list .patient-list>.patient-box>.patient-btn{
+    float: right;
+    height: 24px;
+    line-height: 10px;
+    margin-top: 3px;
+}
+/* 门诊病历------------------ */
+.table-info{
+    display: none;
+    margin-left: 10px;
+    min-width: 1600px;
+}
+.table-info.waiting{
+    display: block;
+}
+.card-info{
+    background: #fff;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.patient-info{
+    height: 190px;
+    transition: all 0.25s ease;
+}
+.remove-info{
+    position: absolute;
+    right: 164px;
+    font-size: 18px;
+    top: 8px;
+    cursor: pointer;
+    display: none;
+}
+.table-title{
+    display: inline-block;
+    height: 100%;
+    width: 42px;
+    float: left;
+}
+.table-title>.title-word{
+    display: inline-block;
+    color: #fff;
+    font-weight: 550;
+    font-size: 18px;
+    word-wrap: break-word;
+    letter-spacing: 4px;
+    text-align: center;
+}
+.patient-info>.table-title{
+    background: #22C7CA;
+}
+.patient-info>.table-title>.title-word{
+    transition: all 0.25s ease;
+    margin-top: 15px;
+}
+.patient-info>.print-btn-group{
+    float: right;
+}
+.body-info{
+    margin-top: 20px;
+    height: 220px;
+}
+.body-info>.table-title{
+    background: #258FF1;
+}
+.body-info>.table-title>.title-word{
+    margin-top: 6px;
+}
+.consult-info{
+    margin-top: 20px;
+    height: 150px;
+}
+.consult-info>.table-title{
+    background: #5CB75C;
+}
+.consult-info>.table-title>.title-word{
+    margin-top: 6px;
+}
+.consult-info .consult-btn{
+        float: right;
+    height: 26px;
+    line-height: 15px;
+    width: 80px;
+}
+.consult-history{
+    margin-top: 20px;
+    height: 120px;
+}
+.consult-history>.table-title>.title-word{
+    margin-top: 7px;
+}
+.consult-history>.table-title{
+    background: #FF7930;
+}
+
+.input-row{
+    margin-top: 20px;
+    color: #333;
+    display: inline-block;
+    float: left;
+    width: 95%;
+    /* overflow: hidden; */
+}
+.input-row .input-name{
+    margin-right: 10px;
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+.input-row .patient-name{
+    border: 1px solid #ccc !important;
+    padding-right: 30px;
+    border-radius: 4px;
+}
+.input-row .search-old{
+    margin-left: -5px;
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    height: 34px;
+    background: #22C7CA;
+    color: #fff;
+    border: 0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    vertical-align: top;
+}
+.input-row .search-old:hover{
+    background: #1AB7B9;
+}
+.input-row .patient-sex{
+    display: inline-block;
+    margin-right: 8%;
+}
+.record-row{
+    margin-top: 10px;
+    color: #333;
+    display: inline-block;
+    float: left;
+    width: 95%;
+}
+.record-row .input-name{
+    margin-right: 10px;
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+}
+.record-row .body-input{
+    margin-right: 20px;
+}
+.gray-block{
+    height: 20px;
+    background: #F9F9F9;
+    float: left;
+    width: 100%;
+}
+.history-title{
+    float: left;
+    margin: 10px 15px;
+}
+.history-title>.orange{
+    background-color: #EA9260;
+    display: inline-block;
+    width: 4px;
+    height: 14px;
+    vertical-align: top;
+    margin-top: 2px;
+    margin-right: 10px;
+    border-radius: 2px;
+}
+#historyList .time-title{
+    background-color: #F3F3F3;
+    border-radius: 6px;
+    width: 90px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin-left: 14px;
+    margin-bottom: 6px;
+}
+#historyList .history-row{
+    /* height: 24px; */
+    line-height: 24px;
+}
+#historyList .input-name{
+    margin-right: 10px;
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+}
+#historyList .line{
+    float: inherit;
+}
+.danwei{
+    font-weight: 500;
+    color:#ccc;
+}
+/* 检查项目----------------------------- */
+.special-box{
+    padding: 15px;
+}
+.special-title{
+    /* margin-left:15px;
+    margin-bottom:10px; */
+}
+.special-box>.special-title>.blue{
+    background-color: #22C7C9;
+    display: inline-block;
+    width: 4px;
+    height: 14px;
+    vertical-align: top;
+    margin-top: 2px;
+    margin-right: 10px;
+    border-radius: 2px;
+}
+.special-box .special-row{
+    margin-top: 10px;
+    color: #333;
+    display: inline-block;
+    width: 100%;
+}
+.special-box .special-row .input-name{
+    margin-right: 10px;
+    display: inline-block;
+}
+.special-box .special-money{
+    color:#FC8C4E;
+    font-size: 20px;
+}
+.special-box .normal-money{
+    font-size: 20px;
+}
+#adviceList{
+    padding: 10px;
+}
+#adviceList .time-title{
+    background-color: #F3F3F3;
+    border-radius: 6px;
+    width: 90px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+}
+#adviceList .special-row{
+    margin-bottom: 15px;
+}
+#adviceList .input-name{
+    margin-right: 10px;
+    display: inline-block;
+    width: 60px;
+    text-align: right;
+}
+.pic-box{
+    width: 100%;
+    height: 800px;
+    overflow:auto;
+}
+.morbidity .patient-sex{
+    margin-right: 5% !important;
+}
+.pic-box .img-detail{
+    width: 160px;
+    height: 160px;
+    margin: 10px;
+    overflow: hidden;
+    float: left;
+}
+.img-detail img{
+    height: 100%;
+}
+.btn-default{
+    background-color: #fff;
+    border-color: #333;
+    color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

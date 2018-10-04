@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Pragma" content="no-cache"> 
+    <meta http-equiv="Cache-Control" content="no-cache"> 
+    <meta http-equiv="Expires" content="0"> 
+    <title>新增服务分类</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/service_add.css">
+</head>
+
+<body>
+    <div class="container-fluid content">
+        <!--默认为顶级分类-->
+        <input type="hidden" id="categoryId" value="0">
+        <form>
+            <div class="form-group">
+                <label for="categoryName">分类名称</label>
+                <input type="text" class="form-control" maxlength="5" id="categoryName">
+            </div>
+            <div class="form-group">
+                <label for="sort">排序</label>
+                <input type="text" class="form-control" maxlength="3" id="sort">
+            </div>
+            <div class="form-group hasInputFile">
+                <label>分类封面</label>
+                <div class="well">
+                    <h3 class="text-center">点击选择图片</h3>
+                    <img id="coverPic" src="" alt="">
+                    <div class="progressContent">
+                        <div class="text-info"></div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group hasInputFile">
+                <label>分类图标</label>
+                <div class="well">
+                    <h3 class="text-center">点击选择图片</h3>
+                    <img id="categoryIcon" src="" alt="">
+                    <div class="progressContent">
+                        <div class="text-info"></div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group hasInputFile">
+                <label>夜间模式图标</label>
+                <div class="well">
+                    <h3 class="text-center">点击选择图片</h3>
+                    <img id="greyUrl" src="" alt="">
+                    <div class="progressContent">
+                        <div class="text-info"></div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-info" onclick="insertOrUpdate()">提交</button>
+            <button type="button" class="btn btn-default" onclick="cancle()">取消</button>
+        </form>
+    </div>
+
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="./js/yueba_common.js"></script>
+    <script type="text/javascript" src="./js/service_add.js"></script>
+</body>
+
+</html>

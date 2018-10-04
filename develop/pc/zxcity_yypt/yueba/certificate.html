@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>证书审核管理</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" href="../framework/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="yueba_common.css">
+
+</head>
+
+<body>
+    <ol class="breadcrumb">
+        <li><a href="#">App管理</a></li>
+        <li><a href="#">约吧</a></li>
+        <li class="active">证书审核管理</li>
+    </ol>
+    <div class="container-fluid">
+        <div id="toolbar" class="bars">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="skillName">证书名称</label>
+                    <input type="text" class="form-control" id="skillName">
+                </div>
+                <div class="form-group">
+                    <label for="serviceName">服务名称</label>
+                    <input type="text" class="form-control" id="serviceName">
+                </div>
+                <div class="form-group">
+                    <label for="userName">用户名</label>
+                    <input type="text" class="form-control" id="userName">
+                </div>
+                <button type="button" class="btn btn-default" onclick="refreshTable()"><i class="fa fa-search"></i> 查询</button>
+            </form>
+        </div>
+        <table id="table" class="table table-hover table-bordered"></table>
+    </div>
+
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="yueba_common.js"></script>
+    <script type="text/javascript" src="../common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="../framework/bootstrap/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../framework/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+
+    <script type="text/javascript">
+        var TableInit = function(id, url, columns, param) {
+            var oTableInit = new Object();
+            //初始化Table
+            oTableInit.Init = function() {
+                $('#' + id).bootstrapTable({
+                    url: url,
+                    method: 'POST',
+                    contentType: "application/x-www-form-urlencoded",
+                    ajaxOptions: {
+                        headers: {
+                            apikey: apikey
+                        }
+                    },
+                    responseHandler: function(res) {
+                        res.rows = res.data;
+                        return res;
+                    },
+                    queryParams: oTableInit.queryParams,
+                    undefinedText: '-',
+                    toolbar: '#toolbar',
+                    striped: true,
+                    cache: false,
+                    pagination: true,
+                    sortable: false,
+                    sidePagination: "server",
+                    pageNumber: 1,
+                    pageSize: 10,
+                    pageList: [10, 25, 50, 100],
+                    strictSearch: false,
+                    clickToSelect: false,
+                    uniqueId: 'id',
+                    columns: columns
+                });
+            };
+            //得到查询的参数
+            oTableInit.queryParams = function(params) {
+                params['sort'] = params.sort;
+                params['order'] = params.order;
+                params['page'] = params.offset / params.limit + 1;
+                params['rows'] = params.limit;
+                var pagination = {
+                    pagination: {
+                        page: params.offset / params.limit + 1,
+                        rows: params.limit
+                    }
+                }
+
+                if ($('#serviceName').val().length > 0) pagination['serviceName'] = $('#serviceName').val()
+                if ($('#userName').val().length > 0) pagination['userName'] = $('#userName').val()
+                if ($('#skillName').val().length > 0) pagination['skillName'] = $('#skillName').val()
+
+                params['cmd'] = 'newservice/findExaminingCertList';
+                params['data'] = JSON.stringify(pagination);
+                params['version'] = version;
+
+                if (!param) return params;
+
+                for (var k in param) params[k] = param[k]
+                return params;
+            };
+            return oTableInit;
+        };
+        $(function() {
+            tableInit();
+
+        })
+
+        function tableInit() {
+            var columns = [{
+                field: 'index',
+                title: '序号',
+                width: 80,
+                align: 'center',
+                formatter: function(value, row, index) {
+                    var options = $('#table').bootstrapTable('getOptions');
+                    return (options.pageNumber - 1) * options.pageSize + index + 1
+                }
+            }, {
+                field: 'certName',
+                title: '证书名称',
+                width: 200,
+                align: 'center'
+            }, {
+                field: 'skill.serviceName',
+                title: '服务名称',
+                width: 200,
+                align: 'center'
+            }, {
+                field: 'skill.servicePrice',
+                title: '服务价格（元）',
+                width: 200,
+                align: 'center'
+            }, {
+                field: 'skill.userName',
+                title: '发布人',
+                width: 200,
+                align: 'center'
+            }, {
+                field: 'skill.createTime',
+                title: '创建',
+                width: 200,
+                align: 'center'
+            }, {
+                field: 'id',
+                title: '操作',
+                width: 200,
+                align: 'center',
+                formatter: function(value, row, index) {
+                    return '<button type="button" class="btn btn-info" onclick="openExamLayer(this)">审核</button>'
+                }
+            }];
+
+            Table = new TableInit('table', '/zxcity_restful/ws/rest', columns, {})
+            Table.Init()
+        }
+
+        function refreshTable() {
+            $('#table').bootstrapTable('refresh')
+        }
+
+        // 打开证书审核页面
+        function openExamLayer(btn) {
+            var data = $('#table').bootstrapTable('getData')[$(btn).parents('tr').index()];
+            localStorage.certificateData = JSON.stringify(data);
+            layer.open({
+                type: 2,
+                title: '技能证书审核',
+                content: 'certificate_exam.html',
+                area: ['1000px', '750px']
+            })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta name=format-detection content="telephone=no">
+    <title>旗下店铺</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/shareMerchant.css">
+    <script type="text/javascript">
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if(clientWidth<1200){
+                        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                    }else{
+                        docEl.style.fontSize='320px';
+                    }
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+    <div class="page">
+         <div class="shop-info">
+                <div class="top-shadow"></div>
+                <div class="user">
+                </div>
+                <div class="shop-name">
+                </div>
+         </div>
+         <div class="shop-title">
+             [&nbsp;旗下云店&nbsp;]
+         </div>
+         <div class="shop-list">
+            <!-- 左侧展示图片 -->
+            <!-- <div class="shop-box shop-sg">
+                <div class="shop">
+                    <div class="shopImg">
+                        <img src="http://zxcity-app.oss-cn-hangzhou.aliyuncs.com/face/TCk8BckZAa.jpg" alt="图片">
+                        <div class="shop-local">
+                            <span class="loca-lg"></span>
+                            <p>武昌区中北路东沙大厦武昌区中北路东沙大2222厦</p>
+                        </div>
+                    </div>
+                    <div class="shopInfo">
+                        <img src="http://zxcity-app.oss-cn-hangzhou.aliyuncs.com/face/TCk8BckZAa.jpg" alt="图片">
+                        <div class="user-img-bt"></div>
+                        <p class="shopName">女人花香港店</p>
+                        <p class="fans">粉丝：14.6万</p>
+                        <p class="phone-num">15172190654</p>
+                        <span class="phone-logo"></span>
+                        <div class="enter"></div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- 右侧展示图片 -->
+            <!-- <div class="shop-box shop-db">
+                <div class="shop">
+                        <div class="shopInfo">
+                                <img src="http://zxcity-app.oss-cn-hangzhou.aliyuncs.com/face/TCk8BckZAa.jpg" alt="图片">
+                                <div class="user-img-bt"></div>
+                                <p class="shopName">女人花香港店</p>
+                                <p class="fans">粉丝：14.6万</p>
+                                <p class="phone-num">15172190654</p>
+                                <span class="phone-logo"></span>
+                                <div class="enter"></div>
+                        </div>
+                        <div class="shopImg">
+                                <img src="http://zxcity-app.oss-cn-hangzhou.aliyuncs.com/face/TCk8BckZAa.jpg" alt="图片">
+                                <div class="shop-local">
+                                    <span class="loca-lg"></span>
+                                    <p>武昌区中北路东沙大厦武昌区中北路东沙大2222厦</p>
+                                </div>
+                        </div>
+                </div>
+            </div>   -->
+         </div>
+    </div>
+    <!-- 领取礼包 -->
+    <div class="page-download toApp">
+        <!-- <img src="img/btn.png" alt=""> -->
+        <div class="bg">
+            <div class="floatleft">  
+                <img src="img/qmx_share_xiazai.png" alt="按钮"> 
+                智享城市
+            </div>
+            <div class="floatright">下载</div>
+        </div>
+    </div> 
+    <!-- 微信跳入app引流 -->
+    <div id="wxLayer" class="wx_layer" style="display:none;">
+        <div id="msgBox" class="msg_box">
+            <P>1.点击右上角的</P>
+            <p>2.选择</p>
+            <span class="msg_arrow"></span>
+            <span class="msg_point"></span>
+            <span class="msg_txt"></span>
+        </div>
+    </div>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="assets/layer_mobile/layer.js"></script>
+    <script src="js/jweixin-1.2.0.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/shareMerchant.js"></script>
+</body>
+</html>

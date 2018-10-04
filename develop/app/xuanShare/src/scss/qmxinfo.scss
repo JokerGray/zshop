@@ -1,0 +1,174 @@
+html{
+    max-width: 750px;
+    margin: 0 auto;
+}
+body{
+    background: #151724;
+    font-size: 0.14rem;
+    color:#fff;
+    height:100%;
+    .page{
+        height:100%;
+        max-width:750px;
+        margin:0 auto;
+        .user-bg{
+            width:100%;
+            height: 3.3rem;
+            background-color:#161823;
+            position: relative;
+            .no-data{
+                transform: translateY(1rem);
+            }
+            img{
+                width:100%;
+                height: 100%;
+                z-index:-1;
+            }
+            .user{
+                position: absolute;
+                width:100%;
+                height: 101%;
+                opacity:0.9;
+                background-color:#161823;
+                left:0;
+                top: 0;
+                img{
+                    width:1rem;
+                    height: 1rem;
+                    border-radius:50%;
+                    top:0.7rem;
+                    left: 0;
+                    right:0;
+                    position: absolute;
+                    margin:auto;
+                }
+                .sex{
+                    width: 0.23rem;
+                    height: 0.23rem;
+                    top:1.46rem;
+                    left:2.1rem;
+                    position: absolute;
+                }
+                .sex.male{
+                    background:url('../img/qmx_detail_boy@3x.png') no-repeat center center;
+                    background-size:100% 100%;
+                }
+                .sex.female{
+                    background:url('../img/qmx_detail_girl@3x.png') no-repeat center center;
+                    background-size:100% 100%;
+                }                
+                .user-txt{
+                    margin-top:1.9rem;
+                    .username{
+                        font-size:0.22rem;
+                        text-align: center;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        padding: 0 0.6rem;
+                    }
+                    .sign{
+                        text-align: center;
+                        margin-top:0.1rem;
+                        margin-bottom:0.25rem;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden; 
+                        padding:0 0.3rem;                       
+                    }
+                    .atts{
+                        .atts-item{
+                            float: left;
+                            width:33.3%;
+                            text-align: center;
+                            .atts-item-sp{
+                                display: inline-block;
+                                width:0.6rem;
+                                text-align: center;
+                                .num{
+                                    font-size: 0.24rem;
+                                    font-weight:600;
+                                    margin-bottom:0.09rem;
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+        .vd-nav{
+            width:100%;
+            .vd-nav-item{
+                width:50%;
+                float: left;
+                height: 0.45rem;
+                line-height:0.45rem;
+                text-align: center;
+                background: #151724;
+                color: #7b7b7f;
+                position: relative;
+                font-weight: bold;
+            }
+            .vd-nav-item.active{
+                font-size:0.16rem;
+                color: #fff;
+            }
+            .vd-nav-item.active:after{
+                position: absolute;
+                display: block;
+                content: '';
+                margin: auto;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width:0.3rem;
+                height: 0.02rem;
+                background:#05f3cb;
+                border-radius:0.01rem;
+            }
+        }
+        .my-vdlist{
+            width:100%;
+            .vd-item{
+                width:33%;
+                padding-top:43.8%;
+                float: left;
+                margin-right:0.5%;
+                margin-bottom:0.05rem;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-color: #5b5d66;
+                position: relative;
+                .play{
+                    position: absolute;
+                    display: block;
+                    width:0.085rem;
+                    height: 0.12rem;
+                    background:url('../img/qmx_detail_bofang@2x.png') no-repeat center center;
+                    background-size:100% 100%;
+                    bottom: 0.07rem;
+                    left: 0.07rem;
+                }
+                .plnum{
+                    position: absolute;
+                    display: block;
+                    width:0.085rem;
+                    height: 0.12rem;
+                    bottom: 0.07rem;
+                    left: 0.3rem;                    
+                }
+            }
+            .vd-item:nth-of-type(3n){
+                margin-right:0;
+            }
+        }
+        .more{
+            text-align: center;
+            height:0.6rem;
+            line-height: 0.6rem;
+            color: #5b5d65;
+        }
+    }
+}

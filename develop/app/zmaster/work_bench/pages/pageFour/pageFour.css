@@ -1,0 +1,237 @@
+.app{
+	background-color: #fff;
+	margin-top: 2vh;
+}
+h2.tit{
+	position: relative;
+	height: 4.3vh;
+	background-color: #fff;
+	font-size:  2.8vh;
+	line-height: 4.3vh;
+	color: #323232;
+	font-family: PingFang-SC-Medium;
+	text-align: center;
+	padding: 2vh;
+}
+i.left-corol{
+	position: absolute;
+	left: 3vw;
+	top: 3vh;
+	width: 3vw;
+	height: 3.5vh;
+	background: url(../../img/left.png) 0 0 no-repeat;
+	background-size: contain;
+}
+.titselect{
+	border: 0;
+	font-size: 2.8vh;
+}
+.year-box{
+	font-size: 2.2vh;
+	border-radius: 5px;
+	border: 1px solid #f6b37f;
+	position: absolute;
+	right: 0.5vw;
+	top: 2.2vh;
+}
+.year-box div{
+	width: 10vw;
+	height: 4.3vh;
+	line-height: 4.3vh;
+	text-align: center;
+	float: left;
+	color:#ccc;
+}
+.year-box div.actv{
+	background: #f6b37f;
+	color: #fff;
+}
+.sum-money{
+	width: 100%;
+	height: 15vh;
+	background: #fff7f3;
+}
+.sum-money span{
+	display: block;
+}
+.sum-money .sum-tit{
+	padding: 3vh 3vw 2vh;
+	color:#666666;
+	font-size: 2.2vh;
+}
+.sum-money .sum-num{
+	padding-left: 3vw;
+	font-size: 2.4vh;
+	color:#e62020;
+}
+.swiper-container{
+	width: 100%;
+	height: 100%;
+	border:1px solid #e5e5e5;
+	border-left: 0;
+	border-right:0;
+}
+.swiper-container .area-ul{
+	width: 100%;
+	height: 100%;
+}
+.swiper-container .area-ul div{
+	width: 10vh;
+	height: 100%;
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+}
+.swiper-container .area-ul div span{
+	display: inline-block;
+	color: #666;
+	width: 5vh;
+	height: 5vh;
+	line-height: 5vh;
+	font-size: 2.1vh;
+	margin-top: 1vh;
+}
+.swiper-container .area-ul div.actv span{
+	border-radius: 100%;
+	background: #fedac4;
+	color:#000000;
+}
+#monthBox1{
+	/*display: none;*/
+}
+.now{
+	width: 100%;
+	border-bottom:1px solid #e5e5e5;
+	overflow: hidden;
+}
+.firstnow.now{
+	padding: 2vh 0;
+}
+.sum-money.no{
+	background: #fff;
+}
+.now .second-date{
+	padding: 3vh 3vw 2vh;
+	font-size: 2.2vh;
+	color:#000;
+}
+.now .second-left{
+	width: 50%;
+	float: left;
+	color:#666666;
+	text-indent: 3vw;
+}
+.now .second-right{
+	width: 50%;
+	color:#666666;
+	float: right;
+}
+.second-left div,.second-right div{
+	width: 50%;
+	height: auto;
+	padding: 0 0 2vh;
+	font-size: 2.1vh;
+}
+.now .second-right .right-ratio{
+	color:#000;
+	margin-left: 2vh;
+}
+.left-num{
+	font-size: 2.4vh;
+	color: #e62020;
+}
+.right-num{
+	font-size: 2.4vh;
+	color: #020202;
+}
+.botm{
+	width: 100%;
+	height: auto;
+	border-bottom:1px solid #dfdfdf;
+	overflow: hidden;
+}
+.common-left{
+	width: 20%;
+	text-align: center;
+	color:#000000;
+	font-size: 2.3vh;
+	float: left;
+}
+.common-left .circle{
+	display: block;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	margin: 3vh auto 2vh;
+}
+.common-left span{
+	display: block;
+	width: 2.3vh;
+	margin:0 auto;
+}
+.blue{
+	background: #47c5fd;
+}
+.green{
+	background: #53a960;
+}
+.yellow{
+	background: #f5921d;
+}
+.common-right{
+	width: 80%;
+	float: right;
+	margin: 2vh 0;
+}
+.common-right table{
+	width: 100%;
+	height: auto;
+}
+.common-right table tr{
+	height: 5vh;
+	color:#666666;
+}
+.common-right table tr td{
+	width: 33%;
+	font-size:2.2vh ;
+}
+.select{
+	display: inline-block;
+	margin: 0 auto;
+}
+.selectval input{
+	display: inline-block;
+	width: 30vw;
+}
+.selectval i{
+	font-size: 3vh;
+}
+.selectlist{
+	display: none;
+	position: relative;
+    z-index: 1000000;
+	background: #fff;
+	border: 1px solid #dfdfdf;
+	box-shadow: 1px 1px 10px #ccc;
+}
+.selectlist li{
+	padding: 1vh;
+}
+.selectlist li.acvt{
+	background: #fff7f3;
+}
+.splider{
+	width: 100%;
+	height: 7vh;
+	position: relative;
+}
+.swiper-container{
+	position: absolute;
+	background: #fff;
+}
+.monthBox{
+	z-index: 2;
+}
+.monthBox1{
+	z-index: 1;
+}

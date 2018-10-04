@@ -1,0 +1,248 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: normal;
+    font-style: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a {
+    color: #7e8c8d;
+    text-decoration: none;
+    -webkit-backface-visibility: hidden;
+    cursor: pointer;
+}
+ul li {
+    list-style: none;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
+    outline: none;
+    outline-offset: 0;
+}
+.btn.active, .btn:active{
+    box-shadow: 0 0 0;
+}
+.clear{
+    clear: both;
+}
+/*popular*/
+.pplarContainer{
+    width: 1024px;
+    height: 668px;
+    position: relative;
+    z-index: 2;
+}
+.pplarContainer .pplarImgs{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: -1;
+}
+.pplarImgs .pplar-default{
+    width: 100%;
+    height: 100%;
+    background: url(../image/discount_default.png) no-repeat;
+    background-size: 100%;
+}
+.pplarImgs:first-child .pplarImg_wrapper{
+	display: block;
+}
+.pplarImgs .pplarImg_wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: none;
+}
+.pplarImg_wrapper .pplarImg{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.pplarImg img{
+   /* position: absolute;
+    left: 0;
+    top: 0;*/
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.pplarImg_wrapper .pplarText{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    line-height: 50px;
+    color:#fff;
+    background: rgba(0,0,0,.6);
+    z-index: 2;
+    padding: 0 10px;
+    font-size: 18px;
+    width:100%;
+}
+.pplar-slider{
+    width:8000%;
+    height: 49px;
+}
+.pplar-slider div{
+    float:left;
+}
+.pplar-slider ul{
+    float:left;
+    height:49px;
+    overflow:hidden;
+    zoom:1;
+}
+.pplar-slider ul li{
+    float:left;
+    line-height:49px;
+    list-style:none;
+}
+.pplarContainer .pplarTabs{
+    margin:74px;
+    display: inline-block;
+}
+.pplarTabs ul{
+    height: auto;
+    overflow: hidden;
+}
+.pplarTabs ul li{
+	  width:240px;
+    height: 38px;
+    line-height: 38px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-bottom: 14px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.5);
+}
+.pplarTab_wrapper .pplarTop{
+    display: none;
+    float: left;
+    width: 61px;
+    height: 38px;
+    font-size: 24px;
+    text-align: center;
+    background:#fff;
+    color: #47484d;
+}
+.pplarTab_wrapper:first-child .pplarTop{
+	display: block;
+}
+.pplarTab_wrapper .pplarNum-body{
+    width: 61px;
+    height: 38px;
+    float: left;
+    position: relative;
+    background: #293134;
+}
+.pplarNum-body .pplarNum{
+    display: block;
+    width: 61px;
+    height: 38px;
+    font-size: 24px;
+    text-align: center;
+    background:#272e34;
+    color: #fff;
+}
+.pplarNum-body .pplar-arrow{
+    display: block;
+    width: 28px;
+    height: 38px;
+    background: url(../image/popular_jtou.png) no-repeat;
+    position: absolute;
+    background-size: 60%;
+    background-position: center;
+    right: -18px;
+}
+.pplarTab_wrapper:first-child .pplarName{
+	display: none;
+}
+.pplarTab_wrapper .pplarName{
+	  display:block;
+	  float:left;
+	  width:140px;
+    font-size: 18px;
+    color: #666;
+    padding: 0 10px;
+    height: 38px;
+    line-height: 38px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+.pplarTab_wrapper input{
+    display: none;
+    float: left;
+    height: 38px;
+    line-height: 38px;
+}
+.pplarTab_wrapper span{
+    display: inline-block;
+    float: left;
+    height: 38px;
+    line-height: 38px;
+}
+.pplarTab_wrapper span:last-child{
+    float: right;
+    color:#999;
+    padding: 0 10px;
+}
+.pplarTabs .pplarTab_add{
+    height: 38px;
+    line-height: 38px;
+    border:1px solid #999;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-bottom: 14px;
+    background: #eee;
+    cursor: pointer;
+    overflow: hidden;
+}
+.pplarTab_add span:first-child{
+    display: block;
+    float: left;
+    width: 61px;
+    height: 38px;
+    font-size: 24px;
+    line-height: 38px;
+    text-align: center;
+    color: #fff;
+    background: #999;
+    top: 0;
+}
+.pplarTab_add .pplarAddName{
+    font-size: 18px;
+    color: #666;
+    padding: 0 10px;
+    height: 38px;
+    line-height: 38px;
+}
+/*文字滚动*/
+ul.pplTxt-marquee{
+    display: block;
+    height: 49px;
+    line-height: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+ul.pplTxt-marquee li {
+    display: block;
+    left: 0;
+    line-height: 49px;
+    padding: 3px 5px;
+    position: absolute;
+    text-indent: 0.8em;
+    top: -999em;
+    white-space: nowrap;
+}

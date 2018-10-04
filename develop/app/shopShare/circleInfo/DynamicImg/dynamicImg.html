@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <title>动态详情</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/layer/theme/default/layer.css">
+    <link rel="stylesheet" href="css/dynamicImg.css">
+</head>
+<body>
+    <div class="contain">
+        <div class="head img-list" onclick="back()"><i class="back black"></i>动态详情</div>
+        <div class="head video-list" onclick="back()"><i class="back"></i></div>
+        <div class="video-list">
+            <video controls="controls"> </video>
+        </div>
+        <div class="hid-shop img-hid">
+            <div class="shop-items">
+                <div class="shop-left">
+                    <img class="circle-tx" src="">
+                </div>
+                <div class="shop-center">
+                    <h4 class="circle-nams"></h4>
+                    <div class="add-num"></div>
+                </div>
+                <div class="shop-right">
+                    <span onclick="openApp()">去圈子</span>
+                </div>
+            </div>
+        </div>
+        <div class="img-box">
+            <div class="dynamic-top">
+                <div class="dynamic-tl">
+                    <img src="">
+                </div>
+                <div class="dynamic-tc">
+                    <div class="dynamic-name"></div>
+                    <div class="dynamic-time"></div>
+                </div>
+            </div>
+            <div class="dynamic-center">
+                <!--<div class="dynamic-text">-->
+                    <!--当你的噩梦里再也没有恶龙和沼泽，而全都是生活难题的那一刻。-->
+                <!--</div>-->
+                <div class="dynamic-img">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="hid-shop video-hid">
+            <div class="shop-items">
+                <div class="shop-left">
+                    <img class="circle-tx" src="">
+                </div>
+                <div class="shop-center">
+                    <h4 class="circle-nams"></h4>
+                    <div class="add-num"></div>
+                </div>
+                <div class="shop-right">
+                    <span onclick="openApp()">去圈子</span>
+                </div>
+            </div>
+        </div>
+        <!--<div class="discuss">-->
+            <!--<h4>评论</h4>-->
+            <!--<div class="discuss-box">-->
+                <!--<div class="discuss-item">-->
+
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="no-data">-->
+                <!--暂无评论 快来抢沙发-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="footer">-->
+            <!--<div class="footer-input">-->
+                <!--<input type="text" placeholder="我来说一说">-->
+            <!--</div>-->
+
+            <!--<div class="footer-btn">-->
+                <!--<div class="comment">-->
+                    <!--<i class="discuss-icon">-->
+                    <!--</i>-->
+                    <!--<span class="discuss-num">0</span>-->
+                <!--</div>-->
+                <!--<div class="cares">-->
+                    <!--<i class="cares-icon"></i>-->
+                    <!--<span class="cares-num">0</span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="hr"></div>
+        <!--引导-->
+        <div id="model" style="display:none;">
+            <div>1. 点击右上角的<img src="../../images/dot.png" id="dot"></div>
+            <div>2. 选择<img src="../../images/open.png" id="broswer"></div>
+        </div>
+        <div id="shade" style="display:none;"></div>
+    </div>
+    <div class="allWrapper" id="openApp">
+        <div id="infoBox" >
+            <img src="../../images/qmx_share_xiazai.png" id="logo">
+            智享城市
+        </div>
+        <div id="open" onclick="openApp()">下载</div>
+    </div>
+    <script src="../../assets/js/jquery-2.1.0.js"></script>
+    <script src="../../assets/layer/layer.js"></script>
+    <script src="../common/js/common.js?v=1"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="js/dynamicImg.js"></script>
+</body>
+</html>

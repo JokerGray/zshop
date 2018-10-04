@@ -1,0 +1,144 @@
+*{margin: 0;padding: 0;list-style: none;font-family: "微软雅黑";text-decoration: none;}
+body,html{width: 100%;height: 100%;}
+.btn:focus,.btn:active:focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn.active.focus {outline: none;box-shadow: none;}
+.allWrapper{width: 100%;height: 100%;overflow-y: hidden;}
+.allWrapper .row{width: 100%;height: 100%;margin-left: 0px;}
+.allWrapper .container-fluid{padding: 0px;margin-left: 0px;margin-right: 0px;width: 100%;height: 100%;}
+/*左边导航部分*/
+.navbar{background-color: #353b53;height: 100%;border-radius: 0px;padding: 0px;border: none;width: 8.33%;float: left;margin-bottom: 0px;}
+.navbar .logo{height: 136px;padding-top: 15%;text-align: center;background: url(../images/baixian.png) no-repeat 50% 100%;}
+.navbar .nav li{height: 122px;color: #FFFFFF;text-align: center;cursor: pointer;padding-right: 0px;border-left: solid 4px #353b53;padding-top: 26px;}
+/*修改*/
+.navbar .nav li a{display:none}
+.navbar .nav li img{margin-bottom: 10px;}
+.navbar .back a:hover,.navbar .back a:focus{background-color: transparent;text-decoration: none;color: #1dccc5;border-left: solid 4px #1dccc5;}
+
+.navbar .nav li:hover,.navbar .nav li.on{color: #1dccc5;border-left: solid 4px #1dccc5;}
+.navbar .nav li.on{color: #1dccc5;border-left: solid 4px #1dccc5;}
+.navbar .nav li .back{color: #FFFFFF;}
+.navbar .back img{margin-bottom: 10px;}
+.navbar .nav .li-menu{background-color: #5e637a;display: none;margin-bottom: 0px;}
+.navbar .nav .li-menu dd {height: 30px;line-height: 30px;text-align: center;cursor: pointer;color: #a2a2a2;outline: none;}
+.navbar .nav .li-menu dd span{display: block;width: 100%;height: 30px;color: #a2a2a2;}
+.navbar .nav .li-menu dd span:hover,.navbar .nav .li-menu dd span.on{color: #FFFFFF;}
+.navbar .back{height: 122px;text-align: center;}
+.navbar .back a{display: block;width: 100%;height: 122px;border-left: solid 4px #353b53;padding-top: 26px;}
+.navbar .back a{color: #FFFFFF;}
+.navbar .back a:hover,.navbar .back a:focus{background-color: transparent;text-decoration: none;color: #1dccc5;border-left: solid 4px #1dccc5;}
+/*内容部分*/
+/*内容顶部部分*/
+.content{padding: 0px;margin-right: 0px;height: 100%;width: 91.67%;float: left;margin-bottom: 0px;}
+.content i{text-align: center;cursor: pointer;color: #7c868f;}
+.content .content-head{height: 80px;line-height: 80px;}
+.content .content-head .left-menu{padding: 0px;}
+.content .content-head .head-menu{padding: 0px;}
+.content .content-head i{cursor: pointer;}
+.content .content-head h3{color: #60d2d3;display: inline-block;margin-bottom: 0px;}
+/* .content .content-head .headpic{width: 54px;height: 54px;border: solid 1px grey;margin-top: 13px;margin-bottom: 13px;border-radius: 27px;} */
+.content .content-head .headpic{width: 52px;height: 52px;margin-top: 13px;margin-bottom: 13px;border-radius: 27px;overflow:hidden;position:relative;}
+.content .content-head .headpic img{width: 52px;height: 52px;position: absolute;top: 0;left: 0;z-index: -999;}
+h3{line-height: 80px;text-align: center;margin-top: 0px;}
+.content .content-head .head-menu{height: 80px;}
+.content .content-head .head-menu .col-sm-2,.content .content-head .head-menu .col-sm-4{padding: 0;}
+.content .content-head .head-menu button{border: none;height: 80px;border-radius: 0px;}
+.content .content-head .head-menu .dropdown{height: 80px;}
+.content .content-head .head-menu #dropdownMenu1{width: 100%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.content .content-head .head-menu .dropdown .dropdown-menu{border-radius: 0px;}
+.content .card-option{height: 56px;background-color: #353b53;color: #6e6e6e;}
+.content .card-option span{height: 56px;text-align: center;/*border-right: solid 1px #f2f0f3;*/}
+.content .card-option i{font-style: normal;}
+.content .card-option .card{height: 56px;line-height: 56px;font-size: 16px;padding: 0px;overflow: hidden;}
+.content .card-option .card .card1{padding: 0px;background-color: #353b53;color: #FFFFFF;cursor: pointer;text-align: center;position: relative;}
+.content .card-option .card .card1 i{color: #a2a2a2;}
+.content .card-option .card .card1.on i{color: #FFFFFF;}
+.content .card-option .card .card1.on{background-color: #5e637a;}
+.content .card-option .option{height: 56px;line-height: 56px;text-align: center;padding: 0px;text-align: center;font-size: 16px;}
+.content .card-option .option .col-sm-2{padding: 0px;}
+.content .card-option .option .dropdown{height: 56px;padding: 0px;}
+.content .card-option .option .dropdown button{border-radius: 0px;border: none;width: 100%;margin-top: 0px;font-size: 16px;color: #FFFFFF;}
+.content .card-option .option .dropdown .dropdown-menu{border-radius: 0px;}
+.content .card-option .row .card1{background:url(../images/baixian2.png) no-repeat 0px 0px}
+.btn-default{background-color: transparent;}
+.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover{background-color:transprent}
+.btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {background-color: transparent;}
+i.col-sm-1 img{width:100%;}
+/*字体图标部分*/
+@font-face {
+  font-family: 'iconfont';
+  src: url('../iconfont/iconfont.eot');
+  src: url('../iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../iconfont/iconfont.woff') format('woff'),
+  url('../iconfont/iconfont.ttf') format('truetype'),
+  url('../iconfont/iconfont.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:40px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* .iconfont9{font-size: 45px;} */
+/* .iconfont10{font-size: 30px;} */
+/* .iconfont11{font-size:42px;} */
+.iconfont12{font-size: 30px;height: 80px;}
+.iconfont13{line-height: 56px;font-size: 18px;}
+.iconfont14{font-size: 25px;height: 56px;}
+.iconfont15{font-size: 25px;height: 56px;}
+@media only screen and (min-width: 2300px) and (max-width:2900px){
+	.navbar .nav li{height: 170px;}
+	.navbar .nav li img{width: 50px;height: 54px;margin-bottom: 20px;}
+	.back a{height: 170px;}
+	.navbar .back a{height: 170px;}
+	.navbar .back img{width: 50px;height: 54px;margin-bottom: 20px;}
+	.navbar .nav li span{font-size: 22px;}
+	.back a{font-size: 22px;}
+	.navbar .nav .li-menu dd{height: 50px;line-height: 50px;font-size: 22px;}
+	.navbar .nav .li-menu dd span{height: 50px;}
+	.content .content-head{height: 120px;line-height: 120px;}
+	.content .card-option,.content .card-option span,.content .card-option .option .dropdown{height: 86px;line-height: 86px;}
+	.navbar .logo{height: 206px;padding-top: 32%;}
+	h3{line-height: 120px;}
+	.content .content-head h3{font-size: 34px;}
+	.content .content-head .head-menu{height: 120px;}
+	.content .card-option .card{height: 86px;line-height: 86px;font-size: 24px;}
+	.content .content-head .headpic{width: 70px;height: 70px;border-radius: 35px;margin-top: 25px;margin-bottom: 25px;}
+	.content .content-head .headpic img{width: 70px;height: 70px;}
+	.btn{font-size: 18px;}
+	.dropdown-menu{font-size: 18px;}
+	.content .card-option .option .dropdown button{font-size: 20px;}
+	.iconfont13{font-size: 24px;}
+	.iconfont14,.iconfont15{line-height: 86px;}
+}
+@media (max-width:1700px) {
+	.content .card-option .card{font-size: 15px;}
+	.content .card-option .option .dropdown button{font-size: 15px;}
+}
+@media (max-width:1620px) {
+	.content .card-option .card{font-size: 14px;}
+	.content .card-option .option .dropdown button{font-size: 14px;}
+}
+@media (max-width:1450px) {
+	.btn{font-size: 12px;}
+	.dropdown-menu{font-size: 13px;}
+	.iconfont13{font-size: 15px;}
+	.content .card-option .card{font-size: 13px;}
+	.content .card-option .option .dropdown button{font-size: 13px;}
+	.content .content-head .headpic{width: 46px;height: 46px;border-radius: 23px;margin-top: 17px;margin-bottom: 17px;}
+	.content .content-head .headpic img{width: 46px;height: 46px;}
+}
+@media (max-width:1300px) {
+	.content .card-option .card{font-size: 13px;}
+	.navbar .logo{height: 100px;}
+	.navbar .logo img{width: 70%;}
+	.navbar .nav li{font-size: 13px;height: 100px;}
+	.navbar .nav li .iconfont{font-size: 35px;}
+	.iconfont9{font-size: 35px;line-height: 35px;margin-top: 20px;}
+	.iconfont10{font-size: 20px;padding-left: 25px;}
+	.iconfont11{font-size:32px;}
+	.content .content-head .left-menu{width: 20%;}
+	.content .content-head .head-menu{width: 30%;}
+	.content .content-head h3{font-size: 22px;width: 50%;}
+	.content .card-option .card{font-size: 12px;}
+	.content .card-option .option .dropdown button{font-size: 12px;}
+}

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>飞跃体系升级管理</title>    <!-- CssCommon -->
+    <!--<link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="leaps_up_manage.css" />
+</head>
+<body>
+
+    <div class="header layui-form layui-row ">
+        <div class="btn-box">
+            <button class="layui-btn layui-btn-small layui-btn-primary" id="searchToggle" data-type="off"><i class="layui-icon">&#xe615;</i>搜索</button>
+        </div>
+        <ul class="header_ul clearfix" style="display: none">
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item">
+                    <label class="" for="">商户名：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="merchantNames">
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item">
+                    <label class="" for="">手机号：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="phones">
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item">
+                    <label class="" for="">审核状态：</label>
+                    <div class="layui-input-block">
+                        <select name="" class="layui-select" id="merchantTradeIds">
+                            <option value="">--全部--</option>
+                            <option value="1">待审核</option>
+                            <option value="2">财务审核中</option>
+                            <option value="3">审核通过</option>
+                            <option value="4">审核拒绝</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item">
+                    <label class="" for="">时间：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="date">
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item">
+                    <label class="" for="">&nbsp;</label>
+                    <div class="layui-input-block">
+                        <button class="layui-btn" id="searchBtn">查询</button>
+                        <button class="layui-btn" id="restBtn">重置</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="wrapper-main ">
+        <div class="main">
+            <table id="tableNo" lay-filter="tableNo"></table>
+            <div class="layui-laypage" id="page"></div>
+        </div>
+    </div>
+
+    <script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-small" lay-event='detail'><i class="layui-icon">&#xe615;</i>查看</button>
+        {{# if (d.reviewStatus == 1) {}}
+        <button class="layui-btn layui-btn-small" lay-event='edit'><i class="layui-icon">&#xe642;</i>审核</button>
+        {{# } }}
+    </script>
+
+    <script id="barDemoUser" type="text/html">
+        <button style="width: 100%;" class="layui-btn layui-btn-small" lay-event="ok">
+            确认
+        </button>
+    </script>
+    <!--弹出层-->
+    <div id="addDemo" class="layui-form addDemo layui-row" >
+        <div class="layui-form-item layui-col-sm6">
+            <label for="" class="layui-form-label">商户名:</label>
+            <div class="layui-input-block">
+                <input type="hidden" id="merchantId">
+                <input type="text" class="layui-input" readonly id="merchantName" value="">
+            </div>
+        </div>
+        <div class="layui-form-item layui-col-sm6">
+            <label for="" class="layui-form-label">手机号:</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" readonly id="phone" value="">
+            </div>
+        </div>
+        <div class="layui-form-item layui-col-sm6">
+            <label for="" class="layui-form-label">目前商户等级:</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" readonly id="oldMerchantLevelName" value="">
+            </div>
+        </div>
+        <div class="layui-form-item layui-col-sm6">
+            <label for="" class="layui-form-label">目标商户等级:</label>
+            <div class="layui-input-block">
+                <input type="hidden" class="layui-input"  id="newMerchantLevel" >
+                <input type="text" class="layui-input" readonly id="newMerchantLevelName" value="">
+            </div>
+        </div>
+        <div class="layui-form-item layui-col-sm6">
+            <label for="" class="layui-form-label">升级条件:</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" readonly id="levelOldNumStr" value="">
+            </div>
+        </div>
+        <div class="layui-form-item layui-col-sm6">
+            <label for="" class="layui-form-label">实际达成情况:</label>
+            <div class="layui-input-block autoBox">
+                <input type="text" class="layui-input" readonly id="levelNewNumStr" value="">
+                <button class="layui-btn" id="recommendUserBtn">查看明细</button>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-col-sm6 editBox">
+            <label for="" class="layui-form-label">升级类型:</label>
+            <div class="layui-input-block">
+                <select name="" id="jumpMerchantLevel" lay-filter="jumpMerchantLevel">
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item layui-col-sm6 dowmLevelName editBox">
+            <label for="" class="layui-form-label">收款方:</label>
+            <div class="layui-input-block">
+                <input type="radio" title="未收款" name="payeeType" value="0" checked>
+                <input type="radio" title="公司收款" name="payeeType" value="1" >
+                <input type="radio" title="荆州收款" name="payeeType" value="2" >
+
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-col-sm6 editBox">
+            <label for="" class="layui-form-label">商户来源:</label>
+            <div class="layui-input-block">
+                <select name="" id="source" lay-verify="required">
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item layui-col-sm6 editBox">
+            <label for="" class="layui-form-label">分享人:</label>
+            <div class="layui-input-block autoBox">
+                <!--<input type="hidden" readonly  class="layui-input" id="newShareUser" value="">-->
+                <input type="text" readonly  class="layui-input" id="oldUserName" value="">
+                <!--<button class="layui-btn"  id="recommendUserBtn">选择分享人</button>-->
+                <input type="hidden" readonly  class="layui-input" id="oldShareUser" value="">
+
+            </div>
+        </div>
+        <div class="layui-form-item layui-col-sm12 editBox">
+            <label for="" class="layui-form-label">打款备注:</label>
+            <div class="layui-input-block">
+                <textarea name="" id="remark" cols="30" rows="5" class="layui-textarea"></textarea>
+            </div>
+        </div>
+    </div>
+    <!--分享人列表-->
+    <div id="recommendUserTip" class='layui-form recommendUserTip clearfix layui-row' style="display: none;padding: 20px;min-height: 500px">
+        <div class="clearfix mb10 inputBox">
+            <div class="layui-form-item layui-col-sm3">
+                <label for="" class="">手机号:</label>
+                <div class="layui-input-block">
+                    <input type="text"  class="layui-input" id="recommendUserPhone">
+                </div>
+            </div>
+            <div class="layui-form-item layui-col-sm3">
+                <label for="" class="">商户名称:</label>
+                <div class="layui-input-block">
+                    <input type="text"  class="layui-input" id="recommendOrgName">
+                </div>
+            </div>
+            <div class="layui-form-item layui-col-sm6">
+                <label for="" class="">&nbsp;</label>
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-sm" id="toolSearch2">搜索</button>
+                    <button class="layui-btn layui-btn-sm" id="toolRelize2">重置</button>
+                    <!-- <span id="userNow" style="margin-left: 20px;">当前分享人：</span> -->
+                </div>
+            </div>
+        </div>
+        <div class="table-lt clearfix">
+            <div class="table-list clearfix">
+                <table lay-filter="recommendUserTab"  id="recommendUserTab"></table>
+                <div id="laypageUser" class="table-rgt"></div>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.js"></script>
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+    <script type="text/javascript" src="leaps_up_manage.js"></script>
+
+
+</body>
+</html>

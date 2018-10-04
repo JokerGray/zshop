@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+    <title>我的首页</title>
+    <link rel="stylesheet" href="../../common/assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../common/css/common.css"/>
+    <link rel="stylesheet" href="../css/myHomePage.css"/>
+</head>
+<body class="homePage">
+<div class="main-title container-fluid">
+    <div class="row">
+        <div class="col-xs-1">
+            <a class="return-icon" href="javascript:void(0);" onclick="backZxcityStoreApp()">
+                <img src="../img/icon_fanhui.png"/>
+            </a>
+        </div>
+        <div class="col-xs-offset-2 col-xs-6">
+            <h1 class="title">我的首页</h1>
+        </div>
+    </div>
+</div>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="recording-module module-1">
+                    <div class="module-title">客户回访</div>
+                    <div class="module-con container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 dividing-line">
+                                <div class="item">
+                                    <p class="sub-title">最近一个月到店会员</p>
+                                    <a class="color-grey count-num" id="oneMonthCome" href="javascript:void(0);"
+                                       data-type="1">0</a>
+                                </div>
+                                <div class="item">
+                                    <p class="sub-title">最近一个月注册会员</p>
+                                    <a class="color-grey count-num" id="oneMonthRegister" href="javascript:void(0);"
+                                       data-type="2">0</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="item">
+                                    <p class="sub-title">1~2个月未到店会员</p>
+                                    <a class="color-grey count-num" id="twoMonthNotCome" href="javascript:void(0);"
+                                       data-type="3">0</a>
+                                </div>
+                                <div class="item">
+                                    <p class="sub-title">1~2个月未沟通会员</p>
+                                    <a class="color-grey count-num" id="twoMonthNotCommunicatee"
+                                       href="javascript:void(0);"
+                                       data-type="4">0</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <!--  <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="recording-module module-2">
+                    <div class="module-title">今日预售</div>
+                    <div class="module-con">
+                        <div class="item">
+                            <p><span>￥</span><b id="imprest" class="count-num">0</b></p>
+                            <span class="color-grey sub-title">总订金</span>
+                        </div>
+                        <div class="item">
+                            <p id="presalesNum" class="count-num">0</p>
+                            <span class="color-grey sub-title">总人数</span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="recording-module module-3">
+                    <div class="module-title"><a href="javascript:void(0);">我的销售业绩</a></div>
+                    <div class="module-con">
+                        <div id="salesChart" class="bar-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="recording-module module-4">
+                    <div class="module-title"><a href="javascript:void(0);">我的消耗业绩</a></div>
+                    <div class="module-con">
+                        <div id="consumptionChart" class="bar-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="recording-module module-5">
+                    <div class="module-title">新客分析</div>
+                    <div class="module-con">
+                        <div class="pull-left">
+                            <div class="item">
+                                <p id="todayRegister" class="count-num" data-type="3">0</p>
+                                <span class="color-grey sub-title">今日新客人数</span>
+                            </div>
+                            <div class="item">
+                                <p id="monthRegister" class="count-num" data-type="2">0</p>
+                                <span class="color-grey sub-title">本月新客人数</span>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <div id="newCustomerChart" class="radius-chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="recording-module module-6">
+                    <div class="module-title">客户卡项预警</div>
+                    <div class="module-con container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 dividing-line">
+                                <div class="item">
+                                    <p class="sub-title"></p>
+                                    <span class="color-grey count-num"></span>
+                                </div>
+                                <div class="item">
+                                    <p class="sub-title"></p>
+                                    <span class="color-grey count-num"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="item">
+                                    <p class="sub-title"></p>
+                                    <span class="color-grey count-num"></span>
+                                </div>
+                                <div class="item">
+                                    <p class="sub-title"></p>
+                                    <span class="color-grey count-num"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="recording-module module-8">
+                    <div class="module-title">赠送统计</div>
+                    <div class="module-con">
+                        <div class="pull-left">
+                            <div class="item">
+                                <p id="todayLargess" class="count-num" data-type="3">0</p>
+                                <span class="color-grey sub-title">今日赠送</span>
+                            </div>
+                            <div class="item">
+                                <p id="monthLargess" class="count-num" data-type="1">0</p>
+                                <span class="color-grey sub-title">本月已赠送</span>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <div id="sendCountChart" class="radius-chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="recording-module module-7">
+            <div class="module-title">提醒</div>
+            <div class="module-con container-fluid">
+                <div class="row">
+                    <div class="col-md-6 dividing-line">
+                        <div class="item">
+                            <p class="sub-title">销售预测</p>
+                            <span class="color-grey count-num">80</span>
+                        </div>
+                        <div class="item">
+                            <p class="sub-title">明日预约</p>
+                            <span class="color-grey count-num">80</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="item">
+                            <p class="sub-title">四星以下</p>
+                            <span class="color-grey count-num">80</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+</div>
+<!-- /. WRAPPER  -->
+<script src="../../common/assets/js/jquery-1.10.2.js"></script>
+<script src="../../common/assets/js/bootstrap.min.js"></script>
+<script src="../../common/assets/js/echarts.simple.min.js"></script>
+<script src="../../common/assets/js/layer/layer.js"></script>
+<script src="../../common/js/util/util.js"></script>
+<script src="../js/myHomePage.js"></script>
+</body>
+</html>

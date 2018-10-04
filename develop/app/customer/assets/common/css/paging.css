@@ -1,0 +1,62 @@
+/*paging插件样式更改开始*/
+.ui-paging-container ul {
+    height: 30px;
+}
+
+.ui-paging-container ul li {
+    padding: 0;
+    width: 30px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    border-right: 0!important;
+    border-left: 1px solid #ddd !important;
+    color: #999 !important;
+    vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 0;
+    -webkit-border-radius: 0!important;
+    -moz-border-radius: 0!important;
+    border-radius: 0!important;
+    background-color: #fff;
+}
+.ui-paging-container ul li.focus{
+    border-right: 1px solid #ddd!important;
+}
+.ui-paging-container ul .js-page-next{
+    border-right: 1px solid #ddd!important;
+}
+
+.ui-paging-container ul li.focus,
+.ui-paging-container ul li:hover{
+    background-color: #f4f4f4 !important;
+    color: #666666 !important;
+}
+
+.ui-paging-container li.ui-pager-disabled,
+.ui-paging-container li.ui-pager-disabled:hover {
+    border: none !important;
+}
+
+.ui-paging-container ul .js-page-first,
+.ui-paging-container ul .js-page-last {
+    display: none;
+}
+
+.ui-paging-container ul .js-page-next {
+    background: url("../img/right_999.png") no-repeat center;
+    -webkit-background-size: 50%;
+    background-size: 50%;
+    background-color: #fff;
+}
+
+.ui-paging-container ul .js-page-prev {
+    background: url("../img/left_999.png") no-repeat center;
+    -webkit-background-size: 50%;
+    background-size: 50%;
+    background-color: #fff;
+}
+/*paging插件样式更改结束*/

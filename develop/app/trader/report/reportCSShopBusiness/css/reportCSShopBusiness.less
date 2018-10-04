@@ -1,0 +1,385 @@
+body{
+   background-color: #f3f3f4;
+ }
+.clearfix::after {
+  content: " ";
+  display: block;;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.layui-input, .layui-select{
+  height: 34px;
+}
+/**顶部时间选择和店铺选择*/
+.time-shop{
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid #ccc;
+  .timeTab{
+    float: left;
+    ul{
+      font-size: 0;
+      padding-top: 19px;
+      li{
+        display: inline-block;
+        width: 97px;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        font-size: 16px;
+        color: #707070;
+        border-top: 1px solid #cccccc;
+        border-left: 1px solid #cccccc;
+        border-right: 1px solid #cccccc;
+        -webkit-border-radius: 4px 4px 0 0;
+        -moz-border-radius: 4px 4px 0 0;
+        border-radius: 4px 4px 0 0;
+        margin-left: 20px;
+        cursor: pointer;
+        &.active{
+          border: none;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  .shopSelector{
+    float: right;
+    width: 150px;
+    margin-top: 15px;
+    margin-right: 20px;
+  }
+}
+/**时间选择和路径显示*/
+.time-path{
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+  >div{
+    display: inline-block;
+    vertical-align: middle;
+    &.timeIcon{
+      vertical-align: -7px;
+      i{
+        display: block;
+        width: 24px;
+        height: 24px;
+        background: url("../../../assets/common/img/dateIcon.png") no-repeat center;
+        -webkit-background-size: 100%;
+        background-size: 100%;
+      }
+    }
+    &.timeSelector{
+      >div:nth-of-type(1){
+        //display: none;
+        width: 90px;
+      }
+      >div:nth-of-type(2){
+        display: none;
+        span{
+          padding: 0 10px;
+          font-size: 16px;
+          color: #333333;
+        }
+      }
+      >div:nth-of-type(3){
+        width: 190px;
+        display: none;
+      }
+      input{
+        width: 100%;
+        height: 24px;
+        color: #1e9fff;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        vertical-align: middle;
+      }
+    }
+    &.path{
+      font-size: 16px;
+      color: #333333;
+      i{
+        font-family: SimSun;
+      }
+    }
+    &.radioBtn{
+      float: right;
+      ul{
+        li{
+          float: left;
+          margin-left: 20px;
+          cursor: pointer;
+          i{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            border: 1px solid #cecece;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+          }
+          span{
+            font-size: 14px;
+            color: #333333;
+            margin-left: 6px;
+          }
+          &.active{
+            i{
+              border: 6px solid #1e9fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/**营业概览*/
+.Overview{
+  width: 100%;
+  padding: 0 20px;
+  margin-top: 20px;
+  .online{
+    width: 100%;
+    min-height: 98px;
+    background-color: #fff;
+    //border: 1px solid #ccc;
+    //border-bottom: none;
+    li{
+      float: left;
+      width: 33.333333%;
+      min-height: 98px;
+      border: 1px solid #cccccc;
+      cursor: pointer;
+      &:nth-of-type(1){
+        i{
+          background: url("../images/ic_zhifujine.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+      &:nth-of-type(2){
+        border-left: none;
+        border-right: none;
+        i{
+          background: url("../images/ic_cjjianshu.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+      &:nth-of-type(3){
+        i{
+          background: url("../images/ic_xscjbishu.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+      &.active{
+        border-top: 4px solid #1e9fff;
+        border-bottom: none;
+      }
+      >div{
+        float: left;
+        &:nth-of-type(1){
+          margin-left: 8%;
+          margin-top: 15px;
+          margin-right: 4%;
+          i{
+            display: block;
+            width: 46px;
+            height: 46px;
+          }
+        }
+        &:nth-of-type(2),
+        &:nth-of-type(3){
+          width: 200px;
+          margin-top: 16px;
+          p{
+            font-size: 15px;
+            color: #333333;
+          }
+          h4{
+            font-size: 26px;
+            color: #333333;
+            font-weight: 700;
+            margin-top: 16px;
+          }
+        }
+        &:nth-of-type(3){
+          margin-left: 8%;
+        }
+      }
+    }
+  }
+  .inShop{
+    width: 100%;
+    min-height: 98px;
+    background-color: #fff;
+    display: none;
+    li{
+      float: left;
+      width: 50%;
+      height: 98px;
+      background-color: #fff;
+      border: 1px solid #cccccc;
+      cursor: pointer;
+      div{
+        float: left;
+        &:nth-of-type(1){
+          width: 46px;
+          height: 46px;
+          margin-left: 17%;
+          margin-top: 20px;
+          margin-right: 20px;
+        }
+        &:nth-of-type(2){
+          width:33%;
+          margin-right: 10px;
+        }
+        &:nth-of-type(3){
+          width: 32%;
+        }
+        p{
+          font-size: 15px;
+          color: #333333;
+          margin-top: 20px;
+        }
+        h4{
+          font-size: 26px;
+          color: #333333;
+          font-weight: 700;
+          margin-top: 10px;
+        }
+      }
+      &:nth-of-type(1){
+        border-right: none;
+        div:nth-of-type(1){
+          background: url("../images/ic_cjjianshu.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+      &:nth-of-type(2){
+        div:nth-of-type(1){
+          background: url("../images/ic_xscjbishu.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+      &.active{
+        border-top: 4px solid #1e9fff;
+        border-bottom: none;
+      }
+    }
+  }
+}
+/**走势图*/
+.treads{
+  width: 100%;
+  height: 300px;
+  padding: 0 20px;
+  .trendContent{
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    >div{
+      width: 100%;
+      height: 100%;
+      .saleMoney{
+        display: block;
+      }
+      .saleNum{
+        display: none;
+      }
+      .payNum{
+         display: none;
+       }
+    }
+    &.inShop{
+      display: none;
+    }
+  }
+}
+/**报表*/
+.reportContent{
+  padding: 20px;
+  .title-export{
+    width: 100%;
+    height: 55px;
+    line-height: 55px;
+    background-color: #fff;
+    padding: 0 20px;
+    >div{
+      &:nth-of-type(1){
+        float: left;
+        font-size: 15px;
+        color: #333333;
+      }
+      &:nth-of-type(2){
+        float: right;
+        a{
+          display: inline-block;
+          width: 80px;
+          height: 34px;
+          line-height: 34px;
+          border: 1px solid #dddddd;
+          text-align: center;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          border-radius: 4px;
+          i{
+            display: inline-block;
+            width: 24px;
+            height: 23px;
+            vertical-align: -6px;
+            background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
+        }
+      }
+    }
+  }
+  .tableBox{
+    background-color: #fff;
+    padding:0 20px 20px 20px;
+    height: 470px;
+    overflow-y: auto;
+    table{
+      margin: 0;
+      td:nth-of-type(1),
+      th:nth-of-type(1){
+        text-align: center;
+      }
+      td:last-of-type,
+      th:last-of-type{
+        text-align: right;
+        a{
+          color: #1e9fff;
+        }
+      }
+    }
+  }
+}
+/**分页*/
+.pageBox{
+  width: 100%;
+  height: 55px;
+  padding: 0 20px;
+  background-color: #fff;
+  >div{
+    float: right;
+  }
+}
+
+//body .layui-laydate .layui-this{
+//  background-color: #1e9fff !important;
+//}

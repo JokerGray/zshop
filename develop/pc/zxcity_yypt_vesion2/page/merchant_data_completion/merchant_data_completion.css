@@ -1,0 +1,556 @@
+/*禁止选择*/
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+}
+.layui-btn.my-btn{
+    height: 28px;
+    line-height: 28px;
+    padding: 0 16px;
+    font-size: 12px;
+}
+/*common*/
+.p0{
+    padding: 0!important;
+}
+.w30{
+    width: 30%!important;
+}
+.mr5{
+    margin-right: 5%!important;
+}
+.tr90{
+    transform: rotate(90deg)!important;
+}
+.w70{
+    width: 70%!important;
+}
+.w100{
+    width: 100%!important;
+}
+.dn{
+    display: none!important;
+}
+.h100{
+    height: 100px!important;
+}
+/*common end*/
+
+
+ul.tool-box-ul {
+    padding:25px;
+}
+
+ul.tool-box-ul>li.tool-box-li {
+    width: 250px;
+    margin-right: 20px;
+    float: left;
+}
+
+div.layui-input-inline {
+    width: 100%!important;
+}
+
+ul.tool-box-ul>li.tool-box-li .tool-box-label {
+    display: block;
+    font: normal 14px/2em "微软雅黑";
+}
+
+#searchBtn {
+    width: 112px;
+    height: 38px;
+    position: relative;
+    top: 27px;
+}
+/*搜索框结束*/
+#addBtn{
+    float: right;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+}
+#resetBtn {
+    width: 112px;
+    height: 38px;
+    position: relative;
+    top: 27px;
+}
+
+
+#layTablePage{
+    text-align: right;
+}
+
+html{
+    height: calc(100% - 90px);
+}
+
+
+.h100{
+    height: 100px!important	;
+}
+.h140{
+    height: 140px!important	;
+}
+.h180{
+    height: 180px!important	;
+}
+.h240{
+    height: 240px!important	;
+}
+.h48{
+    height: 48px!important	;
+}
+.h60{
+    height: 60px!important	;
+}
+.h30{
+    height: 30px!important	;
+}
+.h370{
+    height: 370px!important	;
+}
+.plh{
+    width: 90%;
+    height: 90%;
+    opacity: 1;
+}
+
+
+
+/*APP开始*/
+.layui-app{
+    padding: 0px 25px;
+}
+.layui-app .select-search{
+
+}
+.layui-app .select-search .select-search-div{
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 10px;
+    float: left;
+    color: #000000;
+    font: normal 14px/40px "微软雅黑";
+    text-align: center;
+    background-color: #ECECEC;
+    border: 1px silid #C6C6C6;
+    cursor: pointer;
+    transition: all .3s;
+}
+.layui-app .select-search .select-search-div.act{
+    color: #fff;
+    background-color: #009688;
+}
+.layui-app .app-table{
+    margin-top: 25px;
+    border-top: 2px solid #009688;
+}
+.layui-app .app-table div.layui-form{
+    margin-top: 0;
+}
+.layui-app .app-table div.layui-form .layui-table-body{
+    overflow-x: hidden;
+}
+/*分页*/
+#layTablePage{
+    text-align: right;
+}
+/*LAYER*/
+
+#addLayer{
+    display: none;
+    padding: 30px 40px;
+}
+.required-icon{
+    color: red;
+}
+.app-layer{
+    border: 1px solid #E3E3E3;
+    border-top: 2px solid #009688;
+}
+.app-layer .package{
+    height: 40px;
+    line-height: 40px;
+    background-color: #F5F5F5;
+    cursor: pointer;
+}
+.app-layer .package .package-title{
+    float: left;
+    margin-left: 15px;
+}
+.app-layer .package .package-some{
+    float: right;
+}
+.app-layer .package .package-some>i.icon{
+    padding: 5px;
+    color:#009688;
+    display: inline-block;
+    transition: all 0.3s;
+}
+.app-layer .package .package-some>i.description{
+    font-style: normal;
+    color:#000;
+    font-size: 12px;
+}
+.app-layer .package .package-some>i.deg{
+    transform: rotateX(180deg);
+}
+.app-layer .app-layer-content{
+    padding: 35px 60px;
+}
+.app-layer .tool-box-li:nth-of-type(3n){
+    margin-right: 0!important;
+}
+.app-layer .layer-place{
+    display: none;
+    font: normal 12px/30px "微软雅黑";
+    color: #8D8D8D;
+    text-align: center;
+    cursor: pointer;
+}
+.app-layer .layer-place i{
+    font: normal 12px/30px "微软雅黑";
+    color: #8D8D8D;
+    padding: 5px;
+}
+#uploadImg1,#uploadImg2,#uploadImg3,#uploadImg4,#uploadImg5{
+    width: 100%;
+    height: 222px;
+}
+
+
+/*layer*/
+#demo111{
+    padding: 20px 10px 0;
+    display: none;
+}
+
+#demo111>.leftCon,#demo111>.rightCon{
+    width: 50%;
+    float: left;
+}
+#demo111 .layui-input-block {
+    margin-left:112px!important;
+    top: 0;
+}
+#demo111 .layui-form-label {
+    background-color: #F5F5F5;
+    width: 110px;
+    height: 100%;
+    margin-bottom: 0;
+}
+#demo111 .layui-form-item {
+    margin-bottom: 0!important;
+    /*border: 1px solid #E9E9E9;*/
+}
+#demo111 .layui-input, .layui-textarea {
+    width: 98%!important;
+    position: static!important;
+}
+#demo111 .layui-textarea {
+    width: 98%!important;
+    position: static!important;
+    height: 160px!important;
+}
+#demo111 .layui-textarea {
+    min-height: 80px!important;
+}
+#demo111 .layui-form-select {
+    width: 98%!important;
+}
+
+#demo111 #layImg{
+    width: 95%;
+    height: 90%;
+}
+#demo222{
+    padding: 20px 10px 0;
+    display: none;
+}
+
+#demo222>.leftCon,#demo222>.rightCon{
+    width: 50%;
+    float: left;
+}
+#demo222 .layui-input-block {
+    margin-left:112px!important;
+    top: 0;
+}
+#demo222 .layui-form-label {
+    background-color: #F5F5F5;
+    width: 110px;
+    height: 100%;
+    margin-bottom: 0;
+}
+#demo222 .layui-form-item {
+    margin-bottom: 0!important;
+    border: 1px solid #E9E9E9;
+}
+#demo222 .layui-input, .layui-textarea {
+    width: 98%!important;
+    position: static!important;
+}
+#demo222 .layui-textarea {
+    width: 98%!important;
+    position: static!important;
+    height: 160px!important;
+}
+#demo222 .layui-textarea {
+    min-height: 80px!important;
+}
+#demo222 .layui-form-select {
+    width: 98%!important;
+}
+
+#demo222 #layImg{
+    width: 95%;
+    height: 90%;
+}
+#demo222 .passLevel{
+    float: left;
+}
+#demo222 .passLevel .mBorder{
+    border: 1px solid #e6e6e6;
+    border-top: none;
+    border-right: none;
+}
+#demo222 .passLevel .levelbox{
+    width: 668px;
+    height: 59px;
+    border: 1px solid #e6e6e6;
+    border-top:none ;
+    border-left:none ;
+}
+#demo222 .passLevel .levelbox li{
+    float: left;
+    width: 45px;
+    height: 25px;
+    background-color: red;
+    margin: 19px;
+    line-height: 25px;
+    text-align: center;
+    background-color: #E5E5E5;
+    transition: all .3s;
+}
+#demo222 .passLevel .levelbox li.act{
+    background-color: #23B7E5;
+    color: #fff;
+}
+#demo333{
+    display: none;
+}
+#demo333 .addsystem{
+    width: 100%;
+    height: 100%;
+    padding: 30px 0px;
+}
+#demo333 .layui-form-item label .required-icon{
+    color: #ff0000;
+}
+#demo333 .firstlayui{
+    width: 155px !important;
+}
+#demo333 .lastlayui{
+    width: 160px !important;
+    margin-right: 0 !important;
+    float: right !important;
+}
+#demo333 select[disabled]{
+    background-color: #eee;
+    opacity: 1;
+}
+#demo333 .layui-select-disabled .layui-disabled {
+    border-color: #ccc!important;
+    background: #eee;
+    opacity: 1;
+}
+#demo333 .layui-form .layui-form-item{
+    width: 48%;
+    float: left;
+    clear: none;
+}
+#demo333 .layui-form-item label{
+    width: 100px;
+}
+#demo333 .layui-form-item label {
+    width: 160px;
+}
+#demo333 .layui-form-item .layui-input-block{
+    margin-left: 160px;
+}
+#demo333 .pwd-strength .s-level {
+    display: inline-block;
+    width: 80px;
+    height: 36px;
+    line-height: 36px;
+    background-color: #ccc;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+}
+#demo333 .layui-form-select dl{
+    max-height: 120px;
+}
+#demo333 .pwd-strength .level1.active {
+    background-color: #f12e00;
+}
+#demo333 .pwd-strength .level2.active {
+    background-color: #f5851a;
+}
+#demo333 .pwd-strength .level3.active {
+    background-color: #67a201;
+}
+
+/*------------------------------------*/
+#search .search-ul{
+    padding: 0 18px 10px;
+}
+
+#search .search-ul .search-li{
+    margin-right: 48px;
+    float: left;
+    border-bottom: 2px solid transparent;
+    transition: all .3s;
+    height: 36px;
+    line-height: 36px;
+    cursor: pointer;
+}
+#search .search-ul .search-li:hover{
+    border-bottom: 2px solid #02a0ea;
+    color: #02a0ea;
+}
+#search .search-ul .search-li.act{
+    border-bottom: 2px solid #02a0ea;
+    color: #02a0ea;
+}
+/*右侧*/
+#tableBox{
+    float: left;
+    width:100%;
+    /*overflow: hidden;*/
+}
+/*tree*/
+#addName{
+    margin-top: 4px;
+}
+#treeDemo{
+    width: 278px;
+    height: 368px;
+    padding: 8px 20px 0;
+    overflow: auto;
+}
+
+/**/
+#tableBox{
+    position: relative;
+}
+#laypageLeft{
+    float: right;
+}
+
+/**/
+select.form-control{
+    font-size: 12px;
+}
+#hideBox{
+    position: relative;
+}
+#hideBox .holder{
+    width: 100%;
+    height: 100%;
+    background-color: #F5F5F5;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+/*开关样式*/
+.layui-form-switch{
+    margin: 0 auto;
+    width: 80px!important;
+    /*top: -5px!important;*/
+}
+.layui-form-onswitch>i{
+    left: 70px!important;
+}
+#subscription dl{
+    height: 140px;
+}
+/**/
+#oneDemo .leftCon{
+    width: 50%;
+    float: left;
+}
+#oneDemo .rightCon{
+    width: 50%;
+    float: left;
+}
+#oneDemo .imgid>label{
+    display: flex;
+    align-items: center;
+    height: 170px!important;
+}
+.layui-mybtn{
+    height: 28px;
+    line-height: 28px;
+}
+.layui-form-my{
+    text-align: center;}
+
+.layui-table tr td:last-child,.layui-table-view .layui-table th:last-child div{text-align: left}
+
+@media screen and (max-width: 450px){
+    .layui-form-item .layui-input-inline {
+        display: block;
+        float: none;
+        left: -3px;
+        width: auto;
+        margin: 0 0 10px 0px;
+    }
+}
+.layui-table-body{overflow-x: hidden}
+.layui-img-box img{
+    display: block;
+    width: 100%;
+    height: 222px;
+    margin: 5px auto;}
+#progross,#progross2,#progross3{
+    margin:20px 0;}
+.layui-select-box .layui-form-select{
+    display: inline-block;
+    width:49%!important;
+}
+.layui-ul-tab{
+    width:100%;
+    border-bottom:1px solid #ddd;
+    border-top:1px solid #ddd;
+}
+a:hover, a:visited ,a:focus{
+    text-decoration: none;}
+.layui-li-item a{
+    padding: 10px 20px;
+
+}
+.act a{
+    border-bottom:2px solid #009688;}
+.layui-table-view .layui-table{
+    width: 100%;}
+.layer-my{
+    padding: 20px;}
+.progress-my{
+    margin-bottom: 20px;}
+
+.left-app,.right-app{
+    float: left;
+    width: 45%;}
+.left-app li{
+    cursor: pointer;}

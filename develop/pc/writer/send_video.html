@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>发表 - 智享城市·24小时</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/publish.css" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="publish">
+
+    <div class="container">
+        <div class="wrapper clearfix mb30">
+            <script src="util/menu.js"></script>
+            <div class="right pull-right">
+                <div class="crumb">发表</div>
+                <div class="tab-panel publish-tab">
+                    <ul class="tabinner">
+                        <li>
+                            <a href="send_article.html" id="send_article">发表文章</a>
+                        </li>
+                        <li class="active">
+                            <a href="send_video.html" id="send_video">发表视频</a>
+                        </li>
+                        <li>
+                            <a href="send_atlas.html" id="send_atlas">发表图集</a>
+                        </li>
+                        <li>
+                            <a href="send_question.html" id="send_question">发起提问</a>
+                        </li>
+                        <li>
+                            <a href="vote.html" id="vote">发起投票</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right-content">
+                    <!--发表文章-->
+                    <div class="tab-content videos" id="container">
+                        <div class="video-wrap ">
+                            <a class="btn form-btn btn-submit ">上传视频<input type="file " class="video-btn " id="uploadVideo" /></a>
+                            <div class="form-sign">支持绝大多数视频文件格式，大小不超过300MB，较大的视频请压缩后上传</div>
+                            <h4>您所选择的文件列表：</h4>
+                            <div id="videoProgress"></div>
+                            <div id="videoHide"></div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="form-label">标题</div>
+                            <div class="form-content">
+                                <div class="form-input-wrap">
+                                    <input type="text" id="titleTxt" class="form-input" placeholder="请输入标题(5-40字) " maxlength="40" id="text3 " />
+                                    <span class="limit"><em id="fontLen">0</em>/40</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="form-label">视频简介<span class="form-sign ">(选填)</span></div>
+                            <div class="form-content">
+                                <div class="form-input-wrap">
+                                    <textarea class="form-input" name="videocontent" placeholder="请输入内容 " style="height: 170px; " id="videoTxt"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <div class="form-label">封面</div>
+                            <div class="form-content">
+                                <!--<button class="selectArticle">从视频截取</button>-->
+                                <button class="localUpload " id="selectfiles">从本地上传</button>
+                                <div class="form-sign">发表视频必须要有图片</div>
+                                <div id="previews"></div>
+                                <div id="ossfile"></div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <div class="form-label">频道</div>
+                            <div class="form-content ">
+                                <div class="drop">
+                                    <form class="layui-form" action="">
+                                        <select name="modules" lay-verify="required" lay-search="" lay-filter="channelSec" id="articleSec">
+                                            <option value="">可搜索选择</option>
+                                        </select>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--新增需求-两个广告位start-->
+                        <!-- <div class="form-group clearfix">
+                            <div id="adverName1" class="form-label">广告位1</div>
+                            <div class="form-content">
+                                <div id="drop1" class="drop">
+                                    <div class="form-radio">
+                                        <span class="radio" name="3"></span>
+                                        <span class="cur-d">投放平台广告</span>
+                                    </div>
+                                    <div class="form-radio AdSense" data-toggle="modal" data-target="#addArticle" type="1">
+                                        <span class="radio" name="2"></span>
+                                        <span class="cur-d">投放自营广告</span>
+                                    </div>
+                                    <div class="form-radio">
+                                        <span class="radio checked" name="1"></span>
+                                        <span class="cur-d">不投放广告</span>
+                                    </div>
+                                    <div class="form-radio previewPic cur-p" data-toggle="modal" data-target="#previewPic1">
+                                        查看广告位示意图
+                                    </div>
+                                    <br>
+                                    <span id="AdSense1AdvTit" class="red"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div id="adverName2" class="form-label">广告位2</div>
+                            <div class="form-content">
+                                <div id="drop2" class="drop">
+                                    <div class="form-radio">
+                                        <span class="radio" name="3"></span>
+                                        <span class="cur-d">投放平台广告</span>
+                                    </div>
+                                    <div class="form-radio AdSense" data-toggle="modal" data-target="#addArticle" type="2">
+                                        <span class="radio" name="2"></span>
+                                        <span class="cur-d">投放自营广告</span>
+                                    </div>
+                                    <div class="form-radio">
+                                        <span class="radio checked" name="1"></span>
+                                        <span class="cur-d">不投放广告</span>
+                                    </div>
+                                    <div class="form-radio previewPic cur-p" data-toggle="modal" data-target="#previewPic2">
+                                        查看广告位示意图
+                                    </div>
+                                    <br>
+                                    <span id="AdSense2AdvTit" class="red"></span>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!--新增需求-两个广告位end-->
+
+                        <div class="form-group clearfix">
+                            <div class="form-label">标签</div>
+                            <div class="form-content">
+                                <div class="drop ">
+                                    <button class="btn btn-default mr10 " id="selectLabelBtn" data-toggle="modal" data-target="#selectLabelModal">选择标签</button>
+                                    <div class="label-all dis-i-b labelAll"></div>
+                                    <span class="form-tip red dis-n selectTip">*最多只能选择5个标签</span>
+                                    <div class="mt20">
+                                        <input type="text" class="input-name mr10 labelName" id="labelName" placeholder="输入你想要的标签名称" maxlength="6">
+                                        <span class="red dis-n inputTip">*不能超过6个汉字</span>
+                                    </div>
+                                    <div class="mt20">
+                                        <a href="javascript:;" id="submitLabelA">提交</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix scCmsSpecial">
+                            <div class="form-label">专题</div>
+                            <div class="form-content">
+                                <div class="drop">
+                                    <div class="form-radio mr20" id="formRadio">
+                                        <span class="radioS"></span>
+                                        <span class="cur-d">投稿至专题</span>
+                                        <span id="showSpe" class="red"></span>
+                                    </div>
+                                    <button class="btn btn-default mr10" id="specialBtn" data-toggle="modal" data-target="#addSpecialModal">选择专题</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 同步云店头条 -->
+                        <div class="form-group clearfix shopFor" id="cityBox">
+                            <div id="" class="form-label">将店铺同步到详情页</div>
+                            <div class="form-content">
+                                <div id="shopBox" class="drop"></div>
+                            </div>
+                        </div>
+                        <div class="form-btn-wrap clearfix" id="submitBtnAll">
+                            <button class="btn form-btn btn-submit" id="postfiles">发表</button>
+                            <button class="btn form-btn" id="articleDraft">存草稿</button>
+                            <button class="btn form-btn" id="cancleA">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--选择标签模态框 strat-->
+    <div class="modal fade" id="selectLabelModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog zx-modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="zx-modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title font20px">标签选择</h4>
+                </div>
+                <div class="zx-modal-body">
+                    <div class="p20 modalBtnAll"></div>
+                    <div class="p20 red dis-n modalBtnTip">*最多选择5个标签</div>
+                </div>
+                <div class="zx-modal-footer">
+                    <button type="button" class="btn form-btn btn-submit confirm">确认</button>
+                    <button type="button" class="btn form-btn" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--选择标签模态框 end-->
+    <!--添加专题 strat-->
+    <div class="modal fade" id="addSpecialModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog zx-modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="zx-modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    <h4 class="modal-title font20px">专题选择</h4>
+                </div>
+                <div class="zx-modal-body">
+                    <div class="p20" id="specialBox">
+                        <div class="s_header clearfix">
+                            <div class="pull_right">
+                                <a href="javascript:;" id="searchA" class="search_a fr"></a>
+                                <input type="text" id="searchInp" class="fr mr10 search_inp" placeholder="请输入关键字搜索">
+                            </div>
+                        </div>
+                        <div class="s_main clearfix">
+                            <ul id="specialUl"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="zx-modal-footer">
+                    <button type="button" class="btn form-btn btn-submit" data-dismiss="modal" id="specialConBtn">确认</button>
+                    <button type="button" class="btn form-btn" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--添加专题 end-->
+    <div class="dis-n" id="hidDiv"></div>
+    <!--广告 start-->
+    <div id="addArticle" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="addArtDialog modal-dialog modal-dialog2" role="document">
+            <div class="addArtBox modal-content modal-content2">
+                <div class="addSubTop modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="addSubTitle">选择投放广告</h4>
+                </div>
+                <div id="artSearchBox" class="artSearchBox clearfix">
+                    <div id="artSearchIcon" class="fr"><img src="images/search.png" alt=""></div>
+                    <input id="artSearchInp" class="artSearchInp fr" type="text" placeholder="请输入关键字搜索" maxlength="10">
+                </div>
+                <div class="contributeArt">
+                    <div id="addArticleBox" class="clearfix">
+                        <div class="table account_table clearfix" style="height: 460px;">
+                            <div id="addArtTable" class="table-left">
+                                <div class="panel panel-default">
+                                    <table class="table table-hover">
+                                        <thead id="addArtTableHead">
+                                            <th></th>
+                                            <th>广告标题</th>
+                                            <th>投放时间</th>
+                                            <th>状态</th>
+                                            <th>操作</th>
+                                        </thead>
+                                        <tbody id="addAddTableCon" class="addAddTableCon"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="adPage" class="text-center"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="advertiseDBtnBox" class="modal-footer">
+                    <button id="confirmBtn" type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                    <button id="cancelBtn" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="advertiseDetail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="advertiseDBox modal-dialog modal-dialog2" role="document">
+            <div class="advertiseDMain modal-content modal-content2">
+                <div class="advertiseDTit modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4>广告详情</h4>
+                </div>
+                <div class="advertiseDCon clearfix">
+                    <div class="adDConLeft fl">
+                        <div>
+                            <p class="adDConLabel">投放广告位：</p>
+                            <span id="adDConPosition"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">状态：</p>
+                            <span id="adDConIsPutaway" class="adDConstate">已上架</span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">展示量：</p>
+                            <span id="adDConShowNum"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">点击量：</p>
+                            <span id="adDConClickNum"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">广告来源：</p>
+                            <span id="adDConSource"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">广告类型：</p>
+                            <span id="adDConType"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">申请投放时间：</p>
+                            <span id="adDConTime"></span>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">添加标签：</p>
+                            <div id="adDConTagList" class="adDConTagList">
+                                <span class="adDConTag">明星</span>
+                                <span class="adDConTag">明星</span>
+                                <span class="adDConTag">明星</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="adDConLabel">提交时间：</p>
+                            <span id="adDConCreateTime"></span>
+                        </div>
+                    </div>
+                    <div id="adDConRight" class="adDConRight fr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="previewPic1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-dialog2" role="document">
+            <div class="modal-content modal-content2">
+                <!--<img src="images/pic1.png" alt="">-->
+                <img src="" alt="">
+            </div>
+        </div>
+    </div>
+    <div id="previewPic2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-dialog2" role="document">
+            <div class="modal-content modal-content2">
+                <!--<img src="images/pic2.png" alt="">-->
+                <img src="" alt="">
+            </div>
+        </div>
+    </div>
+    <!--广告 end-->
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/publish.js?v=201706161017"></script>
+    <script src="js/send_video.js?v=201707191824"></script>
+    <script id="adList" type="text/html">
+        {{# layui.each(d, function(index, item){ }}
+        <tr scCmsAdvId="{{item.scCmsAdvId || ''}}" scCmsAdvStyleResId={{item.scCmsAdvStyleResId || ''}}>
+            <td><i class="selectBox cur-p"></i></td>
+            <td>{{item.scCmsAdvStyleResTitle || ''}}</td>
+            <td name="advTime">
+                {{item.scCmsAdvStart + '--' + item.scCmsAdvEnd}}
+            </td>
+            <td class="checkStatus">
+                <span class="invalid">已上架</span>
+            </td>
+            <td>
+                <button class="checkBtn" data-toggle="modal" data-target="#advertiseDetail" scCmsAdvClickNumber='{{item.scCmsAdvClickNumber || ' 0 '}}' scCmsAdvShowNumber='{{item.scCmsAdvShowNumber || ' 0 '}}' scCmsAdvPlaceName='{{item.scCmsAdvPlaceName || ' '}}' scCmsAdvSourceId='{{item.scCmsAdvSourceId || '
+                    '}}' scCmsAdvSourceName='{{item.scCmsAdvSourceName || ' '}}' scCmsAdvCreateTime='{{item.scCmsAdvCreateTime || ' '}}' scCmsAdvLable='{{item.scCmsAdvLable || ' '}}'> 
+                        查看
+                    </button>
+            </td>
+        </tr>
+        {{# }); }}
+    </script>
+    <script id="adStyle" type="text/html">
+        {{# var advSinglePic = JSON.parse(d.cmsAdvStyleRes[0].scCmsAdvStyleResJson) }} {{# if(d.scCmsAdvStyle.scCmsAdvStyleType == 6){ }}
+        <!--单图-->
+        <div class="adDConRightTit">
+            <span>广告样式</span>
+            <span id="adDConRType">(单图)</span>
+        </div>
+        <div id="adDConRSetImg" class="adDConRSetBox clearfix">
+            <div class="adDConRSetLeft fl">
+                <p id="advStyleResTitle">{{d.cmsAdvStyleRes[0].scCmsAdvStyleResTitle}}</p>
+                <p class="adDConRSetBottom"><span class="adDConRSetBIcon">[广告]</span></p>
+            </div>
+            <img id="adDConRSetRight" class="fr" src="{{advSinglePic[0].resourcesUrl}}" alt="">
+        </div>
+        {{# } else if(d.scCmsAdvStyle.scCmsAdvStyleType == 7){ }}
+        <!--三图-->
+        <div class="adDConRightTit">
+            <span>广告样式</span>
+            <span id="adDConRType">(三图)</span>
+        </div>
+        <div id="adDConRSetImgList" class="adDConRSetBox clearfix">
+            <p id="advStyleImgLTitle" class="advStyleResTitle">{{d.cmsAdvStyleRes[0].scCmsAdvStyleResTitle}}</p>
+            <div id="adDConRSetImgsBox" class="adDConRSetImgList">
+                {{# layui.each(advSinglePic, function(index, item){ }}
+                <img src="{{item.resourcesUrl}}" alt=""> {{# }); }}
+            </div>
+            <p class="adDConRIcon">[广告]</p>
+        </div>
+        {{# } else if(d.scCmsAdvStyle.scCmsAdvStyleType == 8){ }}
+        <!--视频-->
+        <div class="adDConRightTit">
+            <span>广告样式</span>
+            <span id="adDConRType">(视频)</span>
+        </div>
+        <div id="adDConRSetVideo" class="adDConRSetBox clearfix">
+            <p id="advStyleVideoTitle" class="advStyleResTitle">{{d.cmsAdvStyleRes[0].scCmsAdvStyleResTitle}}</p>
+            <div id="adDConRSetVideoUrl" class="adDConRSetImgList">
+                <video src="{{advSinglePic[0].videoUrl}}" poster="{{advSinglePic[0].resourcesUrl}}" controls="controls"></video>'
+            </div>
+            <p class="adDConRIcon">[广告]</p>
+        </div>
+        {{# } }}
+    </script>
+</body>
+
+</html>

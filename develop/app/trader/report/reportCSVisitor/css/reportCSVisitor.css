@@ -1,0 +1,311 @@
+body {
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.layui-input,
+.layui-select {
+  height: 34px;
+}
+/**顶部时间选择和店铺选择*/
+.time-shop {
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid #ccc;
+}
+.time-shop .timeTab {
+  float: left;
+}
+.time-shop .timeTab ul {
+  font-size: 0;
+  padding-top: 19px;
+}
+.time-shop .timeTab ul li {
+  display: inline-block;
+  width: 97px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 16px;
+  color: #707070;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.time-shop .timeTab ul li.active {
+  border: none;
+  background-color: #fff;
+}
+.time-shop .shopSelector {
+  float: right;
+  width: 150px;
+  margin-top: 15px;
+  margin-right: 20px;
+}
+/**时间选择和路径显示*/
+.time-path {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+}
+.time-path > div {
+  display: inline-block;
+  vertical-align: middle;
+}
+.time-path > div.timeIcon {
+  vertical-align: -7px;
+}
+.time-path > div.timeIcon i {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/common/img/dateIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.time-path > div.timeSelector > div:nth-of-type(1) {
+  width: 90px;
+}
+.time-path > div.timeSelector > div:nth-of-type(2) {
+  display: none;
+}
+.time-path > div.timeSelector > div:nth-of-type(2) span {
+  padding: 0 10px;
+  font-size: 16px;
+  color: #333333;
+}
+.time-path > div.timeSelector > div:nth-of-type(3) {
+  width: 190px;
+  display: none;
+}
+.time-path > div.timeSelector input {
+  width: 100%;
+  height: 24px;
+  color: #1e9fff;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  vertical-align: middle;
+}
+.time-path > div.path {
+  font-size: 16px;
+  color: #333333;
+}
+.time-path > div.path i {
+  font-family: SimSun;
+}
+.time-path > div.typeChange {
+  float: right;
+}
+.time-path > div.typeChange ul li {
+  float: left;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.time-path > div.typeChange ul li i {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  border: 1px solid #D0D0D0;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+.time-path > div.typeChange ul li span {
+  vertical-align: middle;
+}
+.time-path > div.typeChange ul li.active i {
+  border: 6px solid #1e9fff;
+}
+/**报表内容（店铺访客和商品访客）*/
+.mainContent {
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+.mainContent > div.goods {
+  display: none;
+}
+.mainContent > div .visitTotal {
+  padding: 20px 0;
+}
+.mainContent > div .visitTotal ul {
+  background-color: #fff;
+  border: 1px solid #dddddd;
+}
+.mainContent > div .visitTotal ul li {
+  float: left;
+  width: 33.333333%;
+  min-width: 430px;
+  min-height: 98px;
+}
+.mainContent > div .visitTotal ul li div {
+  float: left;
+}
+.mainContent > div .visitTotal ul li div:nth-of-type(1) {
+  width: 20%;
+  height: 46px;
+  margin-top: 20px;
+}
+.mainContent > div .visitTotal ul li div:nth-of-type(2),
+.mainContent > div .visitTotal ul li div:nth-of-type(3) {
+  width: 40%;
+}
+.mainContent > div .visitTotal ul li div p {
+  font-size: 15px;
+  color: #333333;
+  margin-top: 20px;
+}
+.mainContent > div .visitTotal ul li div h4 {
+  font-size: 26px;
+  color: #333333;
+  font-weight: 700;
+  margin-top: 16px;
+}
+.mainContent > div .visitTotal ul li:nth-of-type(1) div:nth-of-type(1) {
+  background: url("../images/ic_shoucang.png") no-repeat center;
+  -webkit-background-size: 46px;
+  background-size: 46px;
+}
+.mainContent > div .visitTotal ul li:nth-of-type(2) {
+  position: relative;
+}
+.mainContent > div .visitTotal ul li:nth-of-type(2) div:nth-of-type(1) {
+  background: url("../images/ic_fangke.png") no-repeat center;
+  -webkit-background-size: 46px;
+  background-size: 46px;
+}
+.mainContent > div .visitTotal ul li:nth-of-type(2)::before,
+.mainContent > div .visitTotal ul li:nth-of-type(2)::after {
+  position: absolute;
+  content: '';
+  width: 1px;
+  height: 45px;
+  border-left: 1px solid #D0D0D0;
+  top: 26px;
+}
+.mainContent > div .visitTotal ul li:nth-of-type(2)::before {
+  left: 0;
+}
+.mainContent > div .visitTotal ul li:nth-of-type(2)::after {
+  right: 0;
+}
+.mainContent > div .visitTotal ul li:nth-of-type(3) div:nth-of-type(1) {
+  background: url("../images/ic_dianjishu.png") no-repeat center;
+  -webkit-background-size: 46px;
+  background-size: 46px;
+}
+.mainContent > div .trendBox > div {
+  width: 100%;
+  height: 300px;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+}
+.mainContent > div .tab-export {
+  width: 100%;
+  height: 55px;
+  line-height: 54px;
+  background-color: #fff;
+  margin-top: 20px;
+}
+.mainContent > div .tab-export .tab {
+  float: left;
+}
+.mainContent > div .tab-export .tab a {
+  display: inline-block;
+  height: 34px;
+  line-height: 34px;
+  font-size: 16px;
+  color: #333333;
+  margin-left: 20px;
+}
+.mainContent > div .tab-export .tab a.active {
+  border-bottom: 2px solid #1e9fff;
+}
+.mainContent > div .tab-export .export {
+  float: right;
+  margin-right: 20px;
+}
+.mainContent > div .tab-export .export a {
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+  line-height: 34px;
+  border: 1px solid #dddddd;
+  text-align: center;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.mainContent > div .tab-export .export a i {
+  display: inline-block;
+  width: 24px;
+  height: 23px;
+  vertical-align: -6px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.mainContent > div .tab-export .search {
+  float: right;
+}
+.mainContent > div .tab-export .search input {
+  width: 150px;
+  height: 34px;
+  padding-left: 10px;
+  border: 1px solid #dddddd;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  margin-right: 6px;
+}
+.mainContent > div .tab-export .search button {
+  width: 80px;
+  height: 34px;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  margin-right: 10px;
+  color: #333333;
+}
+.mainContent > div .tableBox {
+  padding: 0 20px 20px 20px;
+  background-color: #fff;
+  height: 450px;
+  overflow-y: auto;
+}
+.mainContent > div .tableBox table {
+  margin: 0;
+}
+.mainContent > div .tableBox table th:first-of-type,
+.mainContent > div .tableBox table td:first-of-type {
+  text-align: center;
+}
+.mainContent > div .tableBox table:nth-of-type(2) {
+  display: none;
+}
+.mainContent .pageBox {
+  background-color: #fff;
+  padding: 0 20px;
+  height: 55px;
+}
+.mainContent .pageBox > div {
+  float: right;
+}
+/*# sourceMappingURL=reportCSVisitor.css.map */

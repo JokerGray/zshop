@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>收益概览 - 智享城市·智享头条</title>
+    <!-- Bootstrap -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/income.css" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="income">
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div class="right pull-right">
+                <div class="tab-panel newslist-tab">
+                    <ul class="tabinner">
+                        <li class="active">收入</li>
+                    </ul>
+                </div>
+                <div class="income-left">
+                    <div class="income-right col-md-4 col-sm-4">
+                        <ul>
+                            <li>文章收益（昨日）</li>
+                            <li>
+                                <span id="articlemoney">0</span>
+                            </li>
+                            <li>本月:
+                                <span id="articleMonth">0</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="income-right col-md-4 col-sm-4">
+                        <ul>
+                            <li>视频收益（昨日）</li>
+                            <li>
+                                <span id="videomoney">0</span>
+                            </li>
+                            <li>本月:
+                                <span id="videoMonth">0</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="income-right income-top col-md-4 col-sm-4">
+                        <ul>
+                            <li>赞赏（昨日）</li>
+                            <li id="yesterAdmire">0</li>
+                            <li id="thisMouth">本月:<span>0</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-panel newslist-tab box">
+                    <ul class="tabinner kid">
+                        <li class="active">日报表</li>
+                    </ul>
+                </div>
+                <div class="table">
+                    <div id="income_tableR" class="table-left">
+                        <ul>
+                            <li id="searchDay7" class="cur-p" type="day7">7天</li>
+                            <li id="searchDay14" class="cur-p" type="day14">14天</li>
+                            <li id="searchDay30" class="cur-p" type="day30">30天</li>
+                            <li class="laydate-icon mt20 ml20" id="start" style="width:200px;"></li>
+                            <li class="p20">~</li>
+                            <li class="laydate-icon mt20" id="end" style="width:200px;"></li>
+                            <!-- <li class="black fr p20 cur-p" id="export">导出excel</li> -->
+                        </ul>
+                        <div class="table-right">
+                            <table class="layui-table" lay-skin="line">
+                                <thead id="table_thead">
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>总计</th>
+                                        <th>文章展示</th>
+                                        <th>文章收益</th>
+                                        <th>视频收益</th>
+                                        <th>粉丝播放量</th>
+                                        <th>打赏金额</th>
+                                        <th>赞赏次数</th>
+                                        <th>商品收益</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="page"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/income.js"></script>
+    <script id="noticeList" type="text/html">
+        {{# layui.each(d, function(index, item){ }}
+        <tr>
+            <td>{{item.visitedTime}}</td>
+            <td>{{item.totalIncome}}</td>
+            <td>{{item.article}}</td>
+            <td>{{item.articlemoney}}</td>
+            <td>{{item.videomoney}}</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        {{# }); }} {{# if(d.length === 0){ }}
+        <td>暂无数据</td>
+        {{# } }}
+    </script>
+</body>
+</html>

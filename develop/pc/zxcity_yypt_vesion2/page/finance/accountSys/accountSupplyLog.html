@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>资金池补账记录</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../../common/css/reset.css" />
+    <link rel="stylesheet" href="../../../common/css/layTab.css" />
+    <style type="text/css">
+        #setBtn {
+            width: 112px;
+            height: 38px;
+            position: relative;
+            top: 27px;
+        }
+        .dTitle{
+            font-size: 23px;
+            margin: 12px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="tool-box layui-form">
+    <ul class="tool-box-ul clearfix">
+        <!-- 流水号 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">流水号：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" placeholder="输入流水号" class="layui-input" id="serialNo" maxlength="30">
+                </div>
+            </div>
+        </li>
+        <!-- 操作人 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">操作人：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" placeholder="输入操作人" class="layui-input" id="operator" maxlength="30">
+                </div>
+            </div>
+        </li>
+        <!-- 资金池类型 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">资金池类型：</label>
+                <div class="layui-input-inline">
+                    <select name="" id="accountType">
+                        <option value="-1" selected>-- 全部 --</option>
+                        <option value="1">支付宝</option>
+                        <option value="2">微信</option>
+                    </select>
+                </div>
+            </div>
+        </li>
+        <!-- 补账类型 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">补账类型：</label>
+                <div class="layui-input-inline">
+                    <select name="" id="supplyType">
+                        <option value="-1" selected>-- 全部 --</option>
+                        <option value="1">增加</option>
+                        <option value="2">扣除</option>
+                    </select>
+                </div>
+            </div>
+        </li>
+
+        <!-- 时间开始 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label" id="stTime">提交审核日期：</label>
+                <div class="layui-input-inline startDate">
+                    <input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+                </div>
+            </div>
+        </li>
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label" id="endTim">至：</label>
+                <div class="layui-input-inline endDate">
+                    <input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+                </div>
+            </div>
+        </li>
+        <!-- 时间结束 -->
+    </ul>
+</div>
+
+<!--操作按钮-->
+<div class="tool-add-box clearfix">
+    <button class="layui-btn add" id="exportBtn" style="top: -10px;margin-left: 10px;">导出Excel</button>
+    <button class="layui-btn add" id="setBtn" style="top: -10px;">设置</button>
+    <button class="layui-btn add" id="searchBtn" style="top: -10px;">搜索</button>
+    <button class="layui-btn layui-btn-normal" id="addRecordBtn"><i class="layui-icon layui-icon-add-1"></i>新增</button>
+</div>
+
+<!--表格开始-->
+<div class="layui-app">
+    <div class="app-table" style="margin-top: 10px;" >
+        <table lay-filter="table" id="table"></table>
+        <div id="layTablePage"></div>
+    </div>
+</div>
+<!--表格结束-->
+
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/assets/template-web.js"></script>
+<script type="text/javascript" src="../../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="application/javascript">
+    jsorcss('js', 'accountSupplyLog');
+</script>
+</body>
+</html>
+
+<!--templates-->
+<script type="text/html" id="settingsTpl">
+    <form class="layui-form" style="margin-top: 20px;">
+        <div class="layui-fluid">
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">流水号</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="serialNo" lay-skin="switch" {{if serialNo}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">操作人</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="yyUsername" lay-skin="switch" {{if yyUsername}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">资金池类型</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="accountTypeStr" lay-skin="switch" {{if accountTypeStr}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">补账类型</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="supplyTypeStr" lay-skin="switch" {{if supplyTypeStr}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">金额</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="money" lay-skin="switch" {{if money}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">创建时间</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="createTime" lay-skin="switch" {{if createTime}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">补账原因</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="supplyReason" lay-skin="switch" {{if supplyReason}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>
+
+<script type="text/html" id="supplyRecordTpl">
+    <div class="layui-fluid">
+        <form class="layui-form" id="form-data" style="margin-top: 20px;">
+            <div class="layui-row">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span style="color: red;">*</span>资金池类型：</label>
+                        <div class="layui-input-block">
+                            <select name="accountType" lay-verify="required">
+                                <option value="-1">--选择资金池类型--</option>
+                                <option value="1">支付宝</option>
+                                <option value="2">微信</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span style="color: red;">*</span>补账类型：</label>
+                        <div class="layui-input-block">
+                            <select name="supplyType" lay-verify="required">
+                                <option value="-1">--选择补账类型--</option>
+                                <option value="1">增加</option>
+                                <option value="2">扣除</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm5 layui-col-md5">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span style="color: red;">*</span>金额：</label>
+                        <div class="layui-input-block">
+                            <input type="number" name="money" class="layui-input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-sm8 layui-col-md8">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span style="color: red;">*</span>补账原因：</label>
+                        <div class="layui-input-block">
+                            <textarea class="layui-textarea" name="supplyReason" rows="3" placeholder="请输入补账原因（如：异常工单等等）"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>

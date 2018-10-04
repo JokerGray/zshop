@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>添加爆款</title>
+    <link rel="stylesheet" href="../assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/kindeditor-4.1.7/themes/default/default.css"/>
+    <link rel="stylesheet" href="css/addPopular.css">
+</head>
+<body>
+    <div class="addPopular-container">
+        <nav class="addPopular-nav">
+            <ul>
+                <li class="active">商品</li>
+                <li>服务卡</li>
+                <li>服务套餐</li>
+            </ul>
+        </nav>
+        <div class="addPopular-content">
+            <!--添加商品-->
+                <div class="addPopular-tab pop-content" >
+                    <form id="inputForm" name="inputForm" action="addGoods.do" method="post" enctype="multipart/form-data">
+                        <input type="hidden" id="merchantId" name="merchantId" value='${empty scSysOrg ?-1:scSysOrg.merchantId }'>
+                        <input type="hidden" id="categotyId" name="categotyId" value='${categotyId }'>
+                        <input type="hidden" id="downCategoryType" name="downCategoryType" value='0'>
+                        <input id="stocksJSONStr" name="stocksJSONStr" type="hidden"  />
+                        <input type="hidden" id="num" name="num" value='100'>
+                        <div class="clear">
+                            <div class="pop-pic-set pull-left">
+                                <div class="form-group">
+                                    <label>商品名称：</label>
+                                    <input id="goodsName" name="goodsName" type="text" class="form-control" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label>商品价格：</label>
+                                    <input type="text" class="form-control" name="price" id="price" onblur="checkPrice(this)" value="0">
+                                </div>
+                            </div>
+                            <div class="attribute-set pull-right">
+                                <div class="form-group">
+                                    <div class="upload-pic">
+                                        <div class="show-img" id="imgPreview">
+                                            <input type="hidden" name="pictureURL" id="pictureURL" value="" />
+                                            <img src="${ctx}/images/storeback/shopDisplayManager/sameShow/bg_placeholder.png" alt="pladceholder figure">
+                                        </div>
+                                        <a href="javascript:;" class="upload-pic-btn">【<span>设置图片</span>】
+                                            <input type="file" accept="image/jpeg,image/png" name="pictureUrlFile" id="pictureUrlFile" onchange="previewImg(this)">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clear addPopular-size">
+                            <label>商品规格：<span class="type-mark">(可以从已有的商品规格中选择，也可以自定义添加)</span></label>
+                            <div class="clear">
+                                <div class="type-list pull-left">
+                                    <div class="attr-list-box">
+                                        <ul id="attrList">
+                                        </ul>
+                                    </div>
+                                    <div class="btn-box">
+                                        <button class="btn diy-type-btn" type="button">自定义添加</button>
+                                        <button class="btn btn-sure submit-btn" type="button">确定</button>
+                                    </div>
+                                </div>
+                                <div class="show-list-body pull-right">
+                                    <div class="show-list pull-right">
+                                        <table id="typeShowTable" class="table">
+
+                                        </table>
+                                    </div>
+                                    <button class="pplBtn pplImport btn" type="button" value="导入" data-type="商品">导入</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clear">
+                            <label>商品详细介绍：</label>
+                            <div class="multi-text">
+                                <textarea name="detail" id="detail-goods" style="width: 100%; height: 320px;"  class="form-control required" aria-required="true" ></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group clear">
+                            <label>滚动条字幕：</label>
+                            <div class="multi-text">
+                                <textarea class="form-control" rows="3">hahahah</textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            <!--添加商品end-->
+            <!--添加服务卡-->
+                <div class="addPopular-tab service-wrapper service-sub-page">
+                    <form id="inputForm2" class="form-horizontal" method="post" action="addCardOrPackage.do">
+                        <input type="hidden" id="cardOrPackage" name="cardOrPackage" value='1'>
+                    <div class="addService-up">
+                        <div class="addService pull-left">
+                            <div class="form-group clearfix">
+                                <label class="col-sm-4 control-label">基础服务：</label>
+                                <div class="col-sm-10">
+                                    <input id="serviceGrid" type="text"  class="form-control" value="" />
+                                    <input type="hidden" id="serviceId" name="serviceId" value="" />
+                                    <input type="hidden" id="servicePrice" name="servicePrice" value="" />
+                                    <input type="hidden" id="packType" name="packType" value="1" />
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="col-sm-4 control-label">服务卡名称：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="cardName" id="cardName" class="form-control" value="">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="col-sm-4 control-label">服务卡次数：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="packNumber" id="packNumber" class="form-control" onblur="checkNum(this)" value="">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="col-sm-4 control-label">服务卡价格(元)：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="actualPrice" id="actualPrice" onblur="checkPrice(this)" class="form-control" value="">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="col-sm-4 control-label">单次服务价格(元)：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="actualPrice" id="actualsinglePrice" onblur="checkPrice(this)" class="form-control" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="addService-img pull-right">
+                            <div class="form-group">
+                                <div class="upload-pic">
+                                    <div class="show-img" id="imgPreview2">
+                                        <input type="hidden" name="pictureURL" id="pictureURL2" value="" />
+                                        <img src="${ctx}/images/storeback/shopDisplayManager/sameShow/bg_placeholder.png" alt="pladceholder figure">
+                                    </div>
+                                    <a href="javascript:;" class="upload-pic-btn">【<span>设置图片</span>】
+                                        <input type="file" accept="image/jpeg,image/png" name="pictureUrlFile" id="pictureUrlFile2" onchange="previewImg(this)">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clear">
+                        <label>商品详细介绍：</label>
+                        <div class="multi-text">
+                            <textarea name="detail" id="detail-service" style="width: 100%; height: 320px;"  class="form-control required" aria-required="true" ></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group clear">
+                        <label>滚动条字幕：</label>
+                        <div class="multi-text">
+                            <textarea class="form-control" rows="3">hahahah</textarea>
+                        </div>
+                    </div>
+                    <button class="pplBtn pplImport btn" type="button" value="导入" data-type="服务卡">导入</button>
+                   </form>
+                </div>
+            <!--添加服务卡end-->
+            <!--添加服务套餐-->
+                <div class="addPopular-tab service-body-page">
+                    <form id="inputForm3" class="form-horizontal" method="post" action="addCardOrPackage.do">
+                    <div class="service-body">
+                        <div class="service-up pull-left">
+                            <div class="form-group service-name">
+                                <label>服务套餐名称：</label>
+                                <input type="text" class="form-control required" name="packageName" id="packageName" value="" />
+                            </div>
+                            <!--服务卡相关-->
+                            <div class="service-card">
+                                <label>套餐内容：</label>
+                                <div class="service-card-body">
+                                    <div class="form-group">
+                                        <div class="form-group clearfix">
+                                            <label class="col-sm-3 service-card-name control-label">选择服务卡：</label>
+                                            <div class="service-card-content col-sm-7">
+                                                <input id="serviceCardId" type="text"  class="form-control"  />
+                                                <input type="hidden" id="cardId" />
+                                            </div>
+                                        </div>
+                                        <div class="service-card-numBody">
+                                            <label class="service-card-num control-label">数量：</label>
+                                            <div class="card-add-num txt-value">
+                                                <input type="hidden" id="checkCardId" />
+                                                <input type="hidden" id="checkCardName" />
+                                                <input id="serviceNum" class="form-control required valid" value="1" aria-required="true" aria-invalid="false" type="text" onblur="checkNum(this)" value="1">
+                                            </div>
+                                        </div>
+                                        <div class="service-card-priceBody">
+                                            <label class="service-card-price control-label">价格：</label>
+                                            <div class="card-add-price txt-value">
+                                                <input id="servicePriceP" class="form-control required valid" aria-required="true" onblur="checkPrice(this)" type="text" aria-invalid="false">
+                                            </div>
+                                        </div>
+                                        <button class="card-detail-btn btn dim" type="button" >
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                        </button>
+                                    </div>
+                                    <!--添加的服务卡列表-->
+                                    <div class="addCard">
+                                        <!--添加一条-->
+                                        <table class="addCard-table table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th width="40%">服务卡名称</th>
+                                                <th width="20%">数量</th>
+                                                <th width="20%">单价</th>
+                                                <th width="20%"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                        <!--添加一条end-->
+                                    </div><!--添加的服务卡列表end-->
+                                </div>
+                            </div>
+                            <!--服务卡相关end-->
+                            <!--总价格-->
+                            <div class="form-group price-sum">
+                                <label class="control-label">服务套餐价格：</label>
+                                <input id="packageActualPrice" name="packageActualPrice" class=" form-control" type="hidden"  value="" />
+                                <input id="packageActualPriceStr" name="packageActualPriceStr" class=" form-control" type="text" disabled="disabled" value="" />
+                            </div><!--总价格end-->
+                        </div><!--添加相关部分end-->
+                        <!--添加相关部分-->
+                        <div class="service-down pull-right">
+                            <div class="service-img" id="imgPreview3">
+                                <img class="service-imgPreview" src="${ctx}/images/storeback/shopDisplayManager/sameShow/bg_placeholder.png">
+                                <input type="hidden" id="pictureURL3" name="pictureURL" value="" />
+                            </div>
+                            <a href="javascript:;" class="upload-pic-btn">【<span>设置图片</span>】
+                                <input type="file" accept="image/jpeg,image/png" name="image" id="image" onchange="previewImg(this)">
+                            </a>
+                        </div>
+                        <button class="pplBtns pplImport btn" type="button" value="导入" data-type="服务套餐">导入</button>
+                    </div>
+                    <div class="form-group service-info">
+                        <label>商品详细介绍：</label>
+                        <div class="service-info-text">
+                            <textarea style="width: 100%; height: 320px;" id="detail" name="detail"  ></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group clear">
+                        <label>滚动条字幕：</label>
+                        <div class="multi-text">
+                            <textarea class="form-control" rows="3">hahahah</textarea>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            <!--添加服务套餐end-->
+            </form>
+        </div>
+    </div>
+    <script src="../assets/js/jquery-1.8.2.min.js"></script>
+    <script src="../assets/kindeditor-4.1.7/kindeditor-all-min.js"></script>
+    <script src="../assets/kindeditor-4.1.7/lang/zh_CN.js"></script>
+    <script src="../assets/layer/layer.js"></script>
+    <script src="js/addPopular.js"></script>
+    <script src="js/addproduct.js"></script>
+    <script src="js/servicePage.js"></script>
+</body>
+</html>

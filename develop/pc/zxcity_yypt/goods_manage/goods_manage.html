@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>APP管理 -智币商品管理</title>
+  <link rel="stylesheet" href="../framework/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../framework/layui/css/layui.css" />
+  <link rel="stylesheet" type="text/css" href="../common/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="goods_manage.css">
+</head>
+<body>
+	<div id="anchor_check">
+		  <div class="container-fluid">
+		  		<!-- 标题板块 -->
+			    <div class="row subtitle">
+			      <div class="col-xs-12">
+			        APP管理 -智币商品管理
+			      </div>
+			    </div>
+			    <!-- 板块选择 -->
+			    <div class="row title">
+			      <div class="col-xs-12 form-inline">
+			      		<div class="yw-induce">业务板块：</div>
+			      		<ul class="clearfix items">
+			      			<!-- <li class="item active">脸圈</li> -->
+			      		</ul>
+			      </div>
+			    </div>
+			    <!-- 新增物品 -->
+			 <div class="col-xs-12 add_gs"><div class="addbtn" id="adGs">+ 新增商品</div></div>
+			<!-- 列表展示 -->
+		    <div class="row tableBox">
+
+			      <div class="col-xs-12"  id="tablelist">
+<!-- 				        <table class="table table-bordered table-striped"><tbody><tr><th>序号</th><th>名称</th><th>图片</th><th>单价</th><th>操作</th></tr>
+
+				        	<tr id="4606"><td>1</td><td>张三丰</td><td><div class="showImg"><img src="https://oss-cn-hangzhou.aliyuncs.com/tsnrhapp/z/goodsinfo/77c4d188561d47e1af0a023fc904a55e.png"/></div></td><td>22元</td><td><button class="btn btn-success">修改</button><button class="btn btn-danger"  style="margin-left:10px;">删除</button></td></tr>
+
+				        </tbody></table>
+
+				        <table class="table table-bordered table-striped"><tbody>
+				        <tr><th>序号</th><th>姓名</th><th>所属店铺</th><th>店铺ID</th><th>店铺地址</th><th>身份证正面</th><th>身份证反面</th></tr>
+				        </tbody></table><div class="no-data">暂无数据~</div> -->
+
+			      </div>
+			      <!-- 翻页栏 -->
+				  <div class="col-xs-12">
+				  		<div class="page_dt">总页面数 <span style="color:#d9534f;" id="totals">0</span> 条，每页最多显示 <span style="color:#5cb85c;">6</span> 条 </div>
+				  		<div id="pages" class="page"></div>
+				  </div>
+		    </div>
+
+
+		  </div>
+	</div>
+	<!-- 修改商品弹出窗口 -->
+	<div class="modal fade"  role="dialog" id="fixgd">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">修改商品</h4>
+		      </div>
+		      <div class="modal-body">
+		      		<input type="hidden" id="mdGoodsId"></input>
+		      		<form class="form">
+		      			<div class="form-group">
+		        			<label>商品名称：</label><input class="form-control" maxlength="10" type="text" id="mdGoodsName"></input>	
+		      			</div>
+		      		</form>
+		      		<form class="form">
+		      			<div class="form-group">
+		        			<label>商品价格：</label><input class="form-control" maxlength="10" type="text" id="mdGoodsPrice"></input>	
+		      			</div>
+		      		</form>
+		      		<form class="form">
+		      			<div class="form-group">
+		        			<label>商品图片：</label>
+		        			<div class="img_wrap" id="mdGoodsImg">
+		        				<!-- <img src=""> -->
+		        			</div>
+		        			<div class="btn btn-success fix_img" id="fixImg">修改图片</div>
+		      			</div>
+		      		</form>			      				      		
+		      </div>
+		      <div class="modal-footer">
+		        <div type="button" class="btn btn-default" data-dismiss="modal">取消</div>
+		        <div type="button" class="btn btn-primary" id="mdSave">保存</div>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!-- 新增商品弹出窗口 -->
+	<div class="modal fade"  role="dialog" id="addgd">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">新增商品</h4>
+		      </div>
+		      <div class="modal-body">
+		      		<input type="hidden" id="newCtId"></input>
+		      		<form class="form">
+		      			<div class="form-group">
+		        			<label>业务板块：</label><input style="color:#d9534f;font-weight: bold;" class="form-control" type="text" id="newGoodsCategory" readonly="readonly"></input>	
+		      			</div>
+		      		</form>		      		
+		      		<form class="form">
+		      			<div class="form-group">
+		        			<label>商品名称：</label><input class="form-control" type="text" maxlength="10" id="newGoodsName"></input>	
+		      			</div>
+		      		</form>
+		      		<form class="form">
+		      			<div class="form-group">
+		        			<label>商品价格：</label><input class="form-control" type="text" maxlength="10" id="newGoodsPrice"></input>	
+		      			</div>
+		      		</form>
+		      		<form class="form">
+		      			<div class="form-group">
+		        			<label>商品图片：</label>
+		        			<div class="btn btn-success fix_img" id="newImg">上传图片</div>
+		        			<div class="img_wrap" id="newGoodsImg" style="display: none;">
+		        				<!-- <img src=""> -->
+		        			</div>
+		      			</div>
+		      		</form>			      				      		
+		      </div>
+		      <div class="modal-footer">
+		        <div type="button" class="btn btn-default" data-dismiss="modal">取消</div>
+		        <div type="button" class="btn btn-primary" id="newSave">保存</div>
+		      </div>
+		    </div>
+		  </div>
+	</div>
+	<!-- 新增商品删除窗口 -->
+	<div class="modal fade delmodal"  role="dialog" id="delgd">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">是否删除商品？</h4>
+		        <input type="hidden" id="delId"></input>
+		      </div>
+		      <div class="modal-footer">
+		        <div type="button" class="btn btn-default" data-dismiss="modal">取消</div>
+		        <div type="button" class="btn btn-primary" id="delGoods">删除</div>
+		      </div>
+		    </div>
+		  </div>
+	</div>
+</body>
+	<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../framework/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../framework/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script type="text/javascript" src="uploadImg.js"></script>   
+    <script type="text/javascript" src="goods_manage.js"></script>
+</html>

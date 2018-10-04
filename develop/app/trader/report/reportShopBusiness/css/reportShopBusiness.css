@@ -1,0 +1,568 @@
+body {
+  background-color: #f7f7f7;
+}
+.top {
+  width: 100%;
+  height: 68px;
+  background-color: #fff;
+  font-size: 0;
+}
+.top > div {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  font-size: 16px;
+  padding-top: 20px;
+}
+.top .timeNav {
+  width: 40%;
+  padding-left: 20px;
+  font-size: 0;
+  position: relative;
+}
+.top .timeNav a {
+  display: inline-block;
+  width: 139px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  font-size: 20px;
+  color: #333333;
+  background-color: #f7f7f7;
+  -webkit-border-radius: 6px 6px 0 0;
+  -moz-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+  margin-right: 10px;
+}
+.top .timeNav a.active {
+  background-color: #1dbfaf;
+  color: #ffffff;
+}
+.top .timeNav .timeRange {
+  width: 456px;
+  height: 54px;
+  line-height: 54px;
+  background-color: #ffffff;
+  position: absolute;
+  left: 169px;
+  top: 70px;
+  border: 1px solid #dddddd;
+  padding: 0 20px;
+  display: none;
+  z-index: 2;
+}
+.top .timeNav .timeRange input {
+  width: 148px;
+  height: 34px;
+  vertical-align: middle;
+  border: 1px solid #666666;
+  font-size: 17px;
+  color: #666666;
+  padding-left: 10px;
+}
+.top .timeNav .timeRange button {
+  width: 62px;
+  height: 34px;
+  background-color: #fff;
+  font-size: 17px;
+  color: #999999;
+  vertical-align: middle;
+  border: 1px solid #999999;
+  margin-left: 18px;
+}
+.top .timeNav .timeRange span {
+  font-size: 17px;
+  color: #666666;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+.top .filterBox {
+  text-align: right;
+  width: 60%;
+}
+.top .filterBox > div {
+  display: inline-block;
+  margin-right: 40px;
+}
+.top .filterBox > div label {
+  font-size: 16px;
+  color: #333333;
+  margin-right: 10px;
+}
+.top .filterBox > div select {
+  width: 160px;
+  height: 36px;
+}
+.path {
+  width: 100%;
+  height: 59px;
+  line-height: 58px;
+  font-size: 16px;
+  color: #333333;
+  padding-left: 40px;
+}
+.path i {
+  font-family: SimSun;
+  font-weight: 700;
+}
+.greatBox {
+  width: 100%;
+  margin-top: -10px;
+  min-height: 170px;
+}
+.greatBox ul {
+  overflow: hidden;
+  width: 100%;
+}
+.greatBox ul li {
+  float: left;
+  width: 21.628%;
+  min-width: 328px;
+  height: 150px;
+  border-top: 2px solid #dedede;
+  background-color: #fff;
+  margin: 10px 1.54%;
+}
+.greatBox ul li .topTitle {
+  font-size: 16px;
+  color: #333333;
+  height: 45px;
+  line-height: 45px;
+  border-bottom: 1px solid #dedede;
+  padding-left: 3%;
+}
+.greatBox ul li .greatDetail {
+  overflow: hidden;
+  width: 100%;
+  height: 105px;
+  padding: 0 20px;
+  font-size: 0;
+}
+.greatBox ul li .greatDetail span {
+  display: block;
+}
+.greatBox ul li .greatDetail span:nth-of-type(1) {
+  width: 100%;
+  font-size: 28px;
+  color: #666666;
+  font-weight: 400;
+  margin-top: 20px;
+  overflow: hidden;
+  /*超出部分隐藏*/
+  white-space: nowrap;
+  /*不换行*/
+  text-overflow: ellipsis;
+  /*超出部分文字以...显示*/
+}
+.greatBox ul li .greatDetail span:nth-of-type(1).businessMoney,
+.greatBox ul li .greatDetail span:nth-of-type(1).expendMoney {
+  color: #ff3939;
+  font-size: 28px;
+  font-weight: 400;
+}
+.greatBox ul li .greatDetail span:nth-of-type(1).businessMoney sub,
+.greatBox ul li .greatDetail span:nth-of-type(1).expendMoney sub {
+  font-size: 20px;
+  vertical-align: baseline;
+  margin-right: 10px;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2) {
+  width: 100%;
+  color: #666666;
+  font-size: 0;
+  margin-top: 14px;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2) s {
+  text-decoration: none;
+  display: inline-block;
+  width: 30%;
+  font-size: 16px;
+  vertical-align: middle;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2) i {
+  display: inline-block;
+  width: 70%;
+  font-size: 16px;
+  text-align: right;
+  vertical-align: middle;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2) b {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: text-top;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2).up {
+  margin-top: 20px;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2).up i {
+  color: #ff3939;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2).up b {
+  background: url("../../../assets/common/img/up.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2).down {
+  margin-top: 20px;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2).down i {
+  color: #1dbfaf;
+}
+.greatBox ul li .greatDetail span:nth-of-type(2).down b {
+  background: url("../../../assets/common/img/down.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.filterTab {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #fff;
+  padding-left: 20px;
+  margin-top: 10px;
+  position: relative;
+}
+.filterTab .tabNav {
+  display: inline-block;
+  width: 419px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 0;
+  border: 1px solid #fca259;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.filterTab .tabNav a {
+  display: inline-block;
+  width: 139px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  color: #333333;
+  font-size: 16px;
+}
+.filterTab .tabNav a.active {
+  background-color: #fca259;
+  color: #ffffff;
+}
+.filterTab .exportBtn {
+  float: right;
+  margin-right: 50px;
+}
+.filterTab .exportBtn a {
+  display: inline-block;
+  width: 110px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #f8ac59;
+  color: #FFFFFF;
+  font-size: 16px;
+}
+.content {
+  width: 100%;
+  background-color: #fff;
+  border: 20px solid #f7f7f7;
+}
+.content .totalMoneyReport {
+  padding: 0 20px;
+  display: inline-block;
+  width: 100%;
+  min-height: 406px;
+  visibility: hidden;
+}
+.content .incomeReport {
+  width: 100%;
+  padding: 0 20px;
+  display: none;
+  font-size: 0;
+  min-height: 406px;
+  visibility: hidden;
+}
+.content .incomeReport .table {
+  display: inline-block;
+  width: 52.952%;
+}
+.content .incomeReport .chart {
+  display: inline-block;
+  width: 45.915%;
+  vertical-align: top;
+  margin-left: 1%;
+  font-size: 16px;
+  overflow-x: auto;
+}
+.content .incomeReport .chart .chartTitle {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 10px;
+  font-size: 0;
+  border-bottom: 1px solid #ddd;
+}
+.content .incomeReport .chart .chartTitle span {
+  display: inline-block;
+  width: 31%;
+  font-size: 15px;
+}
+.content .incomeReport .chart .chartTitle span:nth-of-type(2) {
+  width: 69%;
+  text-align: right;
+}
+.content .incomeReport .chart .chartTitle span i {
+  color: #999;
+  cursor: pointer;
+}
+.content .incomeReport .chart .chartTitle span i.active {
+  font-size: 15px;
+  color: #333333;
+}
+.content .incomeReport .chart .echartBox {
+  width: 100%;
+  overflow-x: auto;
+}
+.content .expendReport {
+  width: 100%;
+  padding: 0 20px;
+  display: none;
+  min-height: 406px;
+  visibility: hidden;
+}
+.content .expendReport .table {
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+}
+.content .expendReport .chart {
+  display: inline-block;
+  vertical-align: top;
+  width: 52%;
+  margin-left: 2%;
+  overflow-x: auto;
+}
+.content .expendReport .chart .chartTitle {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 10px;
+  font-size: 0;
+  border-bottom: 1px solid #ddd;
+}
+.content .expendReport .chart .chartTitle span {
+  display: inline-block;
+  width: 50%;
+  font-size: 16px;
+  color: #333333;
+}
+.content .expendReport .chart .chartTitle span:nth-of-type(2) {
+  text-align: right;
+}
+.content .expendReport .chart .chartTitle span i {
+  color: #999;
+}
+.content .expendReport .chart .echartBox {
+  width: 100%;
+  overflow-x: auto;
+}
+.content .layui-none {
+  font-size: 16px;
+}
+.content .layui-table-body tbody td:nth-of-type(1) .layui-table-cell {
+  padding: 0 5px;
+}
+.content .layui-table-header thead th:nth-of-type(1) .layui-table-cell {
+  text-align: center;
+}
+.mask {
+  width: 100%;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.1);
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: none;
+}
+.pageBox {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  display: none;
+}
+.pageBox > div.pageTips {
+  display: inline-block;
+}
+.pageBox > div.pageTips p {
+  font-size: 14px;
+  color: #666666;
+}
+.pageBox > div:nth-of-type(2) {
+  float: right;
+}
+.pageBox > div:nth-of-type(2) .layui-laypage {
+  margin: 0;
+}
+.businessDetail .detailTop {
+  width: 100%;
+  height: 42px;
+  line-height: 42px;
+  background-color: #3a4057;
+  padding: 0 20px;
+}
+.businessDetail .detailTop span {
+  font-size: 14px;
+  color: rgba(27, 224, 214, 0.98);
+}
+.businessDetail .detailTop .closeIcon {
+  font-size: 30px;
+  color: rgba(27, 224, 214, 0.98);
+  float: right;
+  cursor: pointer;
+}
+.businessDetail .detailContent {
+  width: 100%;
+  overflow-y: auto;
+}
+.businessDetail .detailContent .chartBox {
+  width: 480px;
+  float: left;
+  padding: 0 40px;
+  display: inline-block;
+}
+.businessDetail .detailContent .tableBox {
+  display: inline-block;
+  float: left;
+  width: 55%;
+  min-width: 533px;
+  padding-left: 40px;
+}
+.businessDetail .detailContent .tableBox .detailPath {
+  margin-top: 27px;
+}
+.businessDetail .detailContent .tableBox .detailPath p {
+  float: left;
+  font-size: 16px;
+  color: #666666;
+  line-height: 40px;
+}
+.businessDetail .detailContent .tableBox .detailPath #exportBtn {
+  float: right;
+  width: 110px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 16px;
+  background-color: #f8ac59;
+}
+.businessDetail .detailContent .tableBox .detailTable {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+  height: 420px;
+}
+.businessDetail .detailContent .tableBox .detailTable .layui-table td,
+.businessDetail .detailContent .tableBox .detailTable .layui-table th {
+  padding: 7px 8px;
+}
+.businessDetail .detailContent .tableBox .layui-none {
+  font-size: 16px;
+  text-align: center;
+}
+.ServicePerformancePage .detailTop {
+  width: 100%;
+  height: 42px;
+  line-height: 42px;
+  background-color: #3a4057;
+  padding: 0 20px;
+}
+.ServicePerformancePage .detailTop span {
+  font-size: 14px;
+  color: rgba(27, 224, 214, 0.98);
+}
+.ServicePerformancePage .detailTop .closeIcon {
+  font-size: 30px;
+  color: rgba(27, 224, 214, 0.98);
+  float: right;
+  cursor: pointer;
+}
+.ServicePerformancePage .performanceDetailContent {
+  padding: 10px 20px;
+  overflow: hidden;
+}
+.ServicePerformancePage .performanceDetailContent p {
+  float: left;
+  font-size: 16px;
+  color: #333333;
+  line-height: 40px;
+}
+.ServicePerformancePage .performanceDetailContent p span {
+  font-weight: 700;
+}
+.ServicePerformancePage .performanceDetailContent .exportBtn {
+  float: right;
+  width: 110px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #FFFFFF;
+  background-color: #f8ac59;
+}
+.ServicePerformancePage .tableBox {
+  padding: 0 20px;
+  overflow-y: auto;
+}
+.ServicePerformancePage .tableBox tbody tr td:first-of-type {
+  padding: 9px 6px;
+}
+.ServicePerformancePage .tableBox .layui-none {
+  font-size: 16px!important;
+  text-align: center;
+}
+.ServicePerformancePage .pageBox {
+  padding: 0 30px;
+}
+.ServicePerformancePage .layui-layer-btn .layui-layer-btn0 {
+  background-color: #F1F1F1;
+  border: 1px solid #ebebeb;
+  color: #333333;
+}
+.layui-table th,
+.layui-table td {
+  font-size: 14px!important;
+}
+.select2-container {
+  text-align: left;
+}
+.select2-container .select2-selection--single {
+  height: 36px!important;
+  -webkit-border-radius: 0!important;
+  -moz-border-radius: 0!important;
+  border-radius: 0!important;
+}
+.select2-container .select2-selection--single .select2-selection__rendered {
+  line-height: 36px;
+  color: #333333;
+}
+.select2-container .select2-selection--single .select2-selection__arrow {
+  height: 36px;
+}
+.select2-container .select2-selection--single .select2-selection__arrow b {
+  border-color: #999 transparent transparent transparent;
+  border-width: 8px 5px 0 5px;
+  margin-left: -6px;
+  margin-top: -4px;
+}
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-color: transparent transparent #999 transparent;
+  border-width: 0 5px 8px 5px;
+  margin-left: -6px;
+  margin-top: -6px;
+}
+.layui-table-tips-c {
+  padding: 1px;
+  line-height: 18px;
+  font-size: 12px;
+}
+/*# sourceMappingURL=reportShopBusiness.css.map */

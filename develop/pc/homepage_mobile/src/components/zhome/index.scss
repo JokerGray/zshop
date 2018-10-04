@@ -1,0 +1,186 @@
+// 用于计算rem的方法
+@function pxToRem($px) {
+    @return ($px/1) * 0.01rem;
+}
+// 隐藏方案
+.hide{
+  opacity: 0 !important;
+}
+// 通用格式
+.swiper-item {
+  display: block;
+  height: 100%;
+  text-align: center;
+  background: #fff;  
+}
+.swiper-item {
+  display: block;
+  padding-top: pxToRem(84);
+  height: 100%;
+  text-align: center;
+  background: #fff;
+  letter-spacing: pxToRem(1);
+  box-sizing: border-box;
+}
+.garyTitle{
+  display: block;
+  padding: pxToRem(10) 0 pxToRem(18);
+  font-size: pxToRem(22);
+  color: #999;
+  text-align: center;
+  line-height: 1;
+}
+// 第一页
+.page1{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: pxToRem(274);
+  background: url(img/web_home_shouye_bg.png) no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  
+  .bgTitle{
+    display: block;
+    margin: 0 auto;
+    font-size: pxToRem(60);
+    color: #fff;
+  }
+  .subtitle{
+    display: block;
+    padding: pxToRem(46) 0 pxToRem(80);
+    font-size: pxToRem(40);
+    color: #eee;
+  }
+  .downIcon{
+    display: block;
+    width: pxToRem(318);
+    margin: 0 auto;
+    border-radius: pxToRem(36);
+    font-size: pxToRem(40);
+    line-height: pxToRem(72);
+    color: #4bb5fa;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  .bgBottom{
+    display: flex;
+    padding-top: pxToRem(174);
+    background: url(img/web_home_shouye_quxian.png) no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+  }
+  .bgBottom>div{
+    flex: 1;
+    text-align: center;
+  }
+  .bgBottom img{
+    display: block;
+    margin: 0 auto;
+  }
+  .bgBottom p{
+    display: block;
+    padding: pxToRem(20) 0;
+    font-size: pxToRem(26);
+    color: #333;
+    text-align: center;
+  }
+  .bgBottom .downContent{
+    display: none;
+    line-height: 0;
+  }
+  .bgBottom .hideBtn{
+    display: inline-block;
+    width: pxToRem(118);
+    margin: 0 auto  pxToRem(40);
+    font-size: pxToRem(26);
+    color: #ff6b57;
+    text-align: center;
+    border: pxToRem(2) solid #ff6b57;
+    line-height: pxToRem(46);
+    border-radius: pxToRem(46);
+  }
+  .bgBottom .hideBtn.show{
+    display: block;
+  }
+}
+
+// 第二页
+.page2, .page3, .page4, .page5{
+  .phoneImg{
+    display: block;
+    margin: pxToRem(20) auto 0;
+    width: pxToRem(350);
+    height: auto;
+  }
+  .title{
+    display: block;
+    font-size: pxToRem(36);
+    padding: pxToRem(40) 0 0;
+    color: #666;
+    text-align: center;
+  }
+  .iconContent{
+    display: block;
+    font-size: pxToRem(20);
+    color: #4bb5fa;
+    text-align: center;
+  }
+  .iconContent span{
+    display: inline-block;
+    padding: pxToRem(2) pxToRem(8);
+    margin: 0 pxToRem(4);
+    border: pxToRem(1) solid #4bb5fa;
+    border-radius: pxToRem(5);
+  }
+  .text{
+    display: block;
+    padding: pxToRem(30) 0 pxToRem(36);
+    margin: 0 pxToRem(55);
+    font-size: pxToRem(26);
+    color: #333;
+    text-align: left;
+    line-height: 1.25;
+    letter-spacing: pxToRem(1.5);
+  }
+  .buttonContent{
+    line-height: 0;
+  }
+  .buttonContent a{
+    display: inline-block;
+    padding: 0 pxToRem(40);
+    font-size: pxToRem(26);
+    line-height: pxToRem(68);
+    border-radius: pxToRem(68);
+    color: #fff;
+  }
+  .bgDetail{
+    background-color: #4bb5fa;
+    box-shadow: 0 pxToRem(8) pxToRem(11) rgba(37, 154, 230, 0.3);
+  }
+  .bgVideo{
+    background-color: #ff6b57;
+    box-shadow: 0 pxToRem(8) pxToRem(11) rgba(255, 80, 56, 0.3);
+  }
+}
+
+// 第三页
+.page3{
+  background-color: #f7f9fc;
+}
+
+// 第四页
+.page4{
+  .phoneImg{
+    margin: pxToRem(80) auto 0;
+    width: 100%;
+  }
+}
+
+// 第五页
+.page5{
+  background-color: #f7f9fc;
+  .phoneImg{
+    margin: pxToRem(214) auto 0;
+  }
+}

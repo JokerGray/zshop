@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>组织成员</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/ztree/css/metroStyle/metroStyle.css">
+    <!-- <link rel="stylesheet" href="../../../assets/select2/select2.min.css"> -->
+    <link rel="stylesheet" href="showdetail.css">
+</head>
+
+<body>
+    <div class="container-fluid" style="margin-top:2rem;">
+        <div class="top-title">
+            <span class="title-sum">基本资料</span>
+            <div class="row row-user">
+                <div class="col-xs-2" style="line-height: 34px">
+                    <span class="title-name">姓名：</span>
+                    <span id="userName">-</span>
+                </div>
+                <div class="col-xs-3" style="line-height: 34px">
+                    <span class="title-name">手机号：</span>
+                    <span id="userPhone">-</span>
+                </div>
+                <div class="col-xs-3" style="line-height: 34px">
+                    <span class="title-name" id="birthdayTitle">生日：</span>
+                    <span id="birthday">-</span>
+                </div>
+                <div class="col-xs-4">
+                    <span class="title-name">身份证：</span>
+                    <input type="text" id="identityCard" disabled="disabled" class="input-body">
+                </div>
+            </div>
+        </div>
+        <div class="row row-user">
+            <div class="col-xs-4">
+                <span class="title-name">子账户：</span>
+                <select class="select-body" name="account" id="account">
+                    <option value=""> -选择类型- </option>
+                </select>
+            </div>
+            <div class="col-xs-6">
+                <span class="title-name">店铺：</span>
+                <select class="select-body" name="shop" id="shop">
+                    <option value=""> -选择店铺- </option>
+                </select>
+            </div>
+            <div class="col-xs-2">
+                <button type="button" class="btn btn-success" id="searchTable">查询</button>
+            </div>
+        </div>
+        <div class="row-user">
+            <div class="title-sum">业务办理
+                <button class="btn btn-info" style="float: right;" onclick="changeFlow(this)">收起</button>
+            </div>
+            <div class="row row-body tablerow">
+                <div class="col-xs-12">
+                    <table id="serviceTable" class="table-hovered"></table>
+                </div>
+            </div>
+        </div>
+        <div class="row-user">
+            <div class="title-sum">服务卡列表
+                <button class="btn btn-info" style="float: right;" onclick="changeFlow(this)">收起</button>
+            </div>
+            <div class="row row-body tablerow">
+                <div class="col-xs-12">
+                    <table id="cardTable" class="table-hovered"></table>
+                    <div class="row">
+                        <div class="col-xs-3 col-xs-offset-8">
+                            <b>合计办卡消费：<span id="totalCost">-</span></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row-user">
+            <div class="title-sum">消费记录
+                <button class="btn btn-info" style="float: right;" onclick="changeFlow(this)">收起</button>
+            </div>
+            <div class="row row-body tablerow">
+                <div class="col-xs-12">
+                    <table id="recordTable" class="table-hovered"></table>
+                </div>
+            </div>
+        </div>
+               
+    </div>
+
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <script src="../../assets/layer/layer.js"></script>
+    <script src="../../assets/ztree/js/jquery.ztree.all.min.js"></script>
+    <script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- <script src="../../../assets/select2/select2.min.js"></script> -->
+    <script src="showdetail.js"></script>
+</body>
+</html>

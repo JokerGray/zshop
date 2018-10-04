@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>通知公告</title>
+    <!-- Css../commonold -->
+    <!-- <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" href="../../common/assets/hplus/css/font-awesome.min93e3.css"> -->
+    <link rel="stylesheet" type="text/css" href="../../common/css/reset.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="../common/css/common.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../common/css/modal.css" /> -->
+    <link rel="stylesheet" type="text/css" href="../../common/assets/layui/css/layui.css" media="all" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="message_notice.css" />
+</head>
+
+<body>
+    <div class="tool-box layui-form" id="search-tool">
+        <ul class="tool-box-ul clearfix">
+            <!-- <li class="tool-box-li">
+                <div class="layui-form-item">
+                    <label class="tool-box-label">
+                        <b class="required-icon">＊</b>消息标题: </label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="msg-title" maxlength="20" placeholder="请输入消息标题进行搜索">
+                    </div>
+                </div>
+            </li> -->
+            <li class="tool-box-li">
+                <div class="layui-form-item">
+                    <label class="tool-box-label">
+                        <b class="required-icon">*</b>产品类型：</label>
+                    <div class="layui-input-inline">
+                        <select class="layui-select" id="msg-type" value="0">
+                            <option value="0">全部</option>
+                            <option value="1">智享后台</option>
+                            <option value="2">智享城市</option>
+                            <option value="3">智大师</option>
+                        </select>
+                    </div>
+            </li>
+            <li class="tool-box-li">
+                <div class="layui-form-item">
+                    <label class="tool-box-label">
+                        <b class="required-icon"></b>搜索内容：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" placeholder="标题 内容 分类名称" id="search-content">
+                    </div>
+                </div>
+            </li>
+            <li class="tool-box-li">
+                <div class="layui-form-item">
+                    <label class="tool-box-label">
+                        <b class="required-icon"></b>搜索起始时间 : </label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" placeholder="YYYY-MM-DD" id="search-start">
+                    </div>
+                </div>
+            </li>
+            <li class="tool-box-li">
+                <div class="layui-form-item">
+                    <label class="tool-box-label">
+                        <b class="required-icon"></b>搜索结束时间 : </label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" placeholder="YYYY-MM-DD" id="search-end">
+                    </div>
+                </div>
+            </li>
+            <button class="layui-btn" id="toolSearch">搜索</button>
+            <button class="layui-btn" id="toolRelize">重置</button>
+ 
+        </ul>
+        <div class="tool-add-box clearfix">
+            <button class="layui-btn add" lay-event="add" id="commonAdd" style="float: right;">添加</button>
+        </div>
+    </div>
+ 
+
+    <div id="message-list" class="tabale-list">
+        <div class="layui-app" style="width:100%">
+            <table lay-filter="table" id="table"></table>
+            <div id="laypageLeft" class="table-rgt"></div>
+        </div>
+
+    </div>
+    <script type="text/html" id="barDemor">
+        <button class="layui-btn layui-btn-small layui-btn-normal my-btn" lay-event='detail'>
+            <i class="layui-icon">&#xe615;</i> 查看
+        </button>
+        <button class="layui-btn layui-btn-small layui-layui-btn-warm my-btn" lay-event='change'>
+            <i class="layui-icon">&#xe642;</i> 修改
+        </button>
+        <button class="layui-btn layui-btn-small  layui-btn-danger my-btn" lay-event="del" id="del">
+            <i class="layui-icon">&#xe640;</i> 删除
+        </button>
+    </script>
+
+    <!-- modal -->
+    <!--查看-->
+    <div id="details" class='layui-form clearfix' style="display: none;">
+        <div class="centerCon">
+            <div class="layui-form-item">
+                <label class="layui-form-label form-label">产品类型：</label>
+                <div class="layui-input-inline">
+                    <select name="detail-type" lay-verify="" id="detail-type" disabled="disabled">
+                            <option value="0">全部</option>
+                            <option value="1">智享后台</option>
+                            <option value="2">智享城市</option>
+                            <option value="3">智大师</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="input-block">
+                    <label class="layui-form-label form-label flex">
+                        <b class="required-icon">＊</b>推送信息：</label>
+                </div>
+                <div class="input-block input-area flex">
+                    <textarea type="text" lay-verify="required" class="layui-textarea" name="title" autocomplete="off" class="layui-input" id="detail-msg" readonly></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label form-label flex">
+                    <b class="required-icon">＊</b>有效时间：</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="detail-date-start" readonly placeholder="yyyy-MM-dd HH:mm:ss">
+                </div>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="detail-date-end" readonly placeholder="yyyy-MM-dd HH:mm:ss">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label form-label flex">
+                    <b class="required-icon">＊</b>推送时间：</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="detail-push-start" placeholder="HH:mm:ss">
+                </div>
+            
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="detail-push-end" placeholder="HH:mm:ss">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label form-label flex">
+                    <b class="required-icon">＊</b>是否发布：</label>
+                <div class="layui-input-block flex">
+                    <input type="radio" name="detail-msg-enable" value="1" title="发布" disabled="disabled">
+                    <input type="radio" name="detail-msg-enable" value="2" title="未发布" disabled="disabled">
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--修改-->
+ 
+    <!--添加-->
+    <div id="addDetail" class='clearfix addDetail layui-form' style="display: none;">
+        <div class="centerCon">
+            <div class="layui-form-item">
+                <label class="layui-form-label form-label">产品类型：</label>
+                <div class="layui-input-inline">
+                    <select name="addBasic" lay-verify="" id="addBasic" value="0"> 
+                            <option value="0">全部</option>
+                            <option value="1">智享后台</option>
+                            <option value="2">智享城市</option>
+                            <option value="3">智大师</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="input-block">
+                    <label class="layui-form-label form-label flex">
+                        <b class="required-icon">＊</b>推送信息：</label>
+                </div>
+                <div class="input-block input-area flex">
+                    <textarea type="text" lay-verify="required" class="layui-textarea" name="title" autocomplete="off" class="layui-input" id="addMsg"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item"> 
+                <label class="layui-form-label form-label flex">
+                <b class="required-icon">＊</b>有效时间：</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="add-date-start" readonly placeholder="yyyy-MM-dd HH:mm:ss">
+                </div>
+
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="add-date-end" readonly  placeholder="yyyy-MM-dd HH:mm:ss">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label form-label flex">
+                    <b class="required-icon">＊</b>推送时间：</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="add-push-start"  placeholder="HH:mm:ss">
+                </div>
+            
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="add-push-end"  placeholder="HH:mm:ss">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label form-label flex">
+                    <b class="required-icon">＊</b>是否发布: </label>
+                <div class="layui-input-block flex">
+                    <input type="radio" name="add-msg-enable" value="1" title="发布" checked>
+                    <input type="radio" name="add-msg-enable" value="2" title="未发布">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- jS../commonold -->
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/layui.all.js"></script>
+ 
+<!-- <script type="text/javascript" src="../../common/js/common.js"></script> -->
+<!-- <script type="text/javascript" src="../../common/js/yyCache.js"></script> -->
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<!-- <script type="text/javascript" src="../../common/js/pub.js"></script> -->
+<!-- jS../commonold -->
+<script type="text/javascript" src="message_notice.js"></script>
+ 
+</html>

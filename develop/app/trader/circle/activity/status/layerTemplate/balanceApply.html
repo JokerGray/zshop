@@ -1,0 +1,107 @@
+<div class="tools-lightbox">
+    <div class="panel-default">
+        <div class="padding-15">
+            <div class="col-md-12">
+                <!-- <h5 class="tools-line-h tools-m-0">您确定要拒绝活动申请吗？</h6> -->
+            </div>
+           
+        </div>
+        <div class="modal-body">
+            <div class="panel">
+                <div class="form-group">
+                        <div class="modal-text-label">
+                            <span>参加人数:</span>
+                        </div>
+                        <div class="modal-text-content">
+                            <span ng-bind="activeData.JoinNum"> </span>人
+                        </div>
+                </div>
+                <div class="form-group">
+                        <div class="modal-text-label">
+                            <span>已申请金额:</span>
+                        </div>
+                        <div class="modal-text-content">
+                            <span >{{activeData.totalMoney | number:2}} </span>元
+                        </div>
+                        <div class="modal-text-label">
+                                <span>原人均费用:</span>
+                            </div>
+                            <div class="modal-text-content">
+                                <span > {{activeData.perBudget | number:2}}</span>元
+                            </div>
+                </div>
+                <div class="form-group">
+                         
+                        <div class="modal-text-label">
+                                <i class="required">*</i>
+                            <span>实际总金额:</span>
+                        </div>
+                        <div class="modal-text-content">
+                            
+                            <div class="inline-b">
+                                <!-- <input type="text" class="form-control inline-b" ng-model='realTotalMoney'> -->
+                                <span >{{realTotalMoney | number:2}}</span>
+                            </div>
+                            <span class="inline-b">  元</span>
+                            <span class="total-money-tips" ng-if="isTotalMoneyTips">请填写数字（不能为负数）</span>
+                        </div>
+                        <div class="modal-text-label">
+                                
+                                <span><i class="required">*</i> 实际人均费用:</span>
+                            </div>
+                            <div class="modal-text-content">
+                                <input type="text" class="form-control inline-b" ng-model="realPerBudget">
+                                <span class="inline-b">元</span>
+                                <span class="total-money-tips" ng-if="isPerBudgetTips">请填写数字（不能为负数）</span>
+                            </div>
+                </div>
+                <div class="form-group  text-color-red">
+                    <div ng-if='giveOrGet<=0'>
+                         <div class="modal-text-label">
+                            <span>应退还:</span>
+                        </div>
+                        <div class="modal-text-content">
+                            <span >{{give | number:2}}元</span>
+                        </div>
+                    </div>
+                    <div ng-if='giveOrGet>0'>
+                        <div class="modal-text-label">
+                            <span>应补齐:</span>
+                        </div>
+                        <div class="modal-text-content">
+                            <span>{{get | number:2}}元</span>
+                        </div>
+                    </div>
+                        
+                </div>
+
+                <div class="form-group">
+                    <div class="modal-text-label-title">
+                        <i class="required">*</i>
+                        <span >选择经费结余审批人</span>
+                    </div>
+                    <div class="col-md-12 refuse-input position-re">
+                            <ui-select ng-model="$parent.chooseNext">  
+                                <ui-select-match placeholder="请选择经费发放审核人">  
+                                    <span ng-show="$select.selected.username" ng-bind="$select.selected.username" >  </span>  
+                                </ui-select-match>  
+                                <ui-select-choices repeat="member in (members | filter:$select.search) track by member.userId">  
+                                    <span ng-bind="member.username">   </span>  
+                                </ui-select-choices>  
+                            </ui-select>
+                            <span class="next-people-tips" ng-if="isNextPeople">请选择经费结余审批人</span>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <div class="status-modal-footer">
+            <div class="col-md-12">
+                <button class="btn modal-btn-new-danger  col-md-5" ng-click="cancel()" id="cancel">再想一想</button>
+                <button class="btn modal-btn-green-default  col-md-5" ng-click="accept()" id="accept">确认申请</button>
+            </div>
+        </div>
+    </div>
+</div>

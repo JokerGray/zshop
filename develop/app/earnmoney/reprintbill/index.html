@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/index.css">
+	<title>转文赚</title>
+</head>
+<body>
+	<nav>
+		<i id="underline"></i>
+		<ul id="nav_box" class="nav_box">
+			<li id="today"><a href="#" class="hover">今日</a></li>
+			<li id="testerday"><a href="#">昨日</a></li>
+			<li id="in_seven_days"><a href="#">近7日</a></li>
+			<li id="almost_one_month"><a href="#">近30日</a></li>
+		</ul>
+	</nav>
+	<div class="date" id="date">2017-01-18至2017-01-24</div>
+	<div class="con_box con_box_one">
+		<div class="con_box_num">
+			<div class="con_list_left">
+				<i class="circle"></i>
+				<p class="l_l_title">
+				总点击数</p>
+				<p id="sumNum" class="l_l_num">0</p>
+			</div>
+			<div class="con_list_right">
+				<i class="circle"></i>
+				<p class="l_r_title">
+				总收入</p>
+				<p class="l_r_num"><span class="l_r_num_icon">￥</span><span id="sumMoney">0.00</span></p>
+			</div>
+		</div>
+		<div class="chart" id="chart_one"></div>
+	</div>
+	<div id="con_box"></div>
+
+
+
+	<script id="ticketData" type="text/html">
+		{{each data as value i}}
+		<div class="con_box">
+			<p class="share_title clearfix">
+				<a href="#">分享<span class="share_taskTitle">“{{value.taskTitle}}”</span></a>
+				<a href="#">单价¥{{value.taskPrice}}</a>
+			</p>
+			<div class="con_box_num">
+				<div class="con_list_left">
+					<i class="circle"></i>
+					<p class="l_l_title">
+					点击数</p>
+					<p id="sumNum" class="l_l_num">{{value.sumMun}}</p>
+				</div>
+				<div class="con_list_right">
+					<i class="circle"></i>
+					<p class="l_r_title">
+					收入</p>
+					<p class="l_r_num"><span class="l_r_num_icon">￥</span><span id="sumMoney">{{value.sumMoney}}</span></p>
+				</div>
+			</div>
+			<div class="chart" id="chart_two{{i}}"></div>
+		</div>	
+		{{/each}}
+	</script>
+	<script src="js/echarts.js"></script>
+	<script src="js/jquery-1.12.2.min.js"></script>
+	<script src="js/template.js"></script>
+	<script src="js/main.js?v=20170919"></script>
+</body>
+</html>

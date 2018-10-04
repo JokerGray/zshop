@@ -1,0 +1,316 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+}
+.flex {
+  display: flex!important;
+  justify-content: center!important;
+  align-items: center!important;
+  height: 100%!important;
+}
+.right {
+  float: right;
+}
+.h100 {
+  height: 100px!important	;
+}
+.h30 {
+  height: 30px!important	;
+}
+.h4 {
+  height: 40px;
+}
+.topcontrol {
+  background: #EDEDED ;
+  margin: 0;
+  padding: 19px 25px;
+}
+.topcontrol .searchbutton {
+  float: left;
+  margin-left: 10px;
+}
+.searchform {
+  display: none;
+  padding: 10px 25px;
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+  position: relative;
+  margin-bottom: 10px;
+}
+.searchform #searchbtn {
+  background: #049FE8 ;
+}
+.searchform div {
+  margin-right: 10px;    z-index: 9999; position: relative;
+}
+.searchform .inputhidden {
+  float: right;
+  margin-right: 30px;
+  color: #00A2E6 ;
+  font-size: 35px;
+  position: relative;
+  font-weight: bold;
+}
+.searchform .inputhidden .iconlft {
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+select #fixdepartment.form-control{
+	padding:0!important
+}
+.content {
+  position: relative;
+  padding-left: 10px;
+  margin-top: 5px;
+}
+.content .trees-box {
+  float: left;
+  width: 260px;
+  height: 720px;
+  border: 1px solid #EEEEEE;
+}
+.content .trees-box .trees-btn {
+  background-color: #EEEEEE ;
+  padding: 5px;
+  position: relative;
+}
+.content .trees-box .side-handle-left {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 10px;
+  height: 40px;
+  color: #049FE8 ;
+  background: gainsboro;
+  font-size: 20px;
+  padding-top: 10px;
+}
+.content .trees-box h4 {
+  background: gainsboro;
+  padding: 5px;
+}
+#closebtn {
+  display: none;
+}
+#demo111 {
+  margin: 20px;
+  display: none;
+  border: 1px solid gainsboro;
+}
+#demo111 .uploadimg {
+  margin-top: 20px;
+}
+#demo111 .signform-face-text {
+  margin-left: 17px;
+}
+#demo111 #loginName {
+  font-size: 12px;
+}
+#demo111 form.innerform {
+  width: 66%;
+  padding-right: 23px;
+  margin-top: 10px!important;
+}
+#demo111 .layui-form-label {
+  width: 16%;
+  height: 30px;
+  line-height: 30px;
+  padding: 0;
+}
+#demo111 .belongs {
+  width: 14%;
+  height: 540px;
+  padding-top: 200px;
+  background: gainsboro;
+  text-align: center;
+}
+#demo111 .righttree {
+  height:540px;
+  /*padding-top: 50px;*/
+}
+#demo111 .righttree .ztree{
+  height: 540px;
+  overflow: auto;
+}
+#app {
+  position: relative;
+  margin-left: 270px;
+}
+#app .side-handle-right {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 10px;
+  height: 40px;
+  color: #049FE8 ;
+  background: gainsboro;
+  font-size: 20px;
+  padding-top: 10px;
+  z-index: 9999;
+}
+.layui-table-view {
+  margin-top: 0!important;
+}
+#demo222 {
+  display: none;
+}
+#demo222 .dptvalue {
+  padding-top: 25px;
+}
+#demo222 .dptbelong {
+  /* padding-top: 25px; */
+}
+#demo222 .userdetail {
+  width: 760px;
+  height: 330px;
+  border: 1px solid gainsboro;
+  margin: 20px;
+  padding: 0;
+}
+#demo222 .userdetail ul {
+  float: left;
+}
+#demo222 .userdetail ul li {
+  margin-top: 20px;
+  padding-left: 25px;
+}
+#demo222 .userdetail .logo,
+#demo222 .userdetail .dptbelong {
+  height: 330px;
+  width: 150px;
+  background: #EFEFEF;
+}
+#demo222 .userdetail .logo li,
+#demo222 .userdetail .dptbelong li {
+  text-align: right;
+  padding-right: 30px;
+}
+#demo222 .userdetail .logo > li:first-child {
+  height: 60px;
+  line-height: 60px;
+}
+#demo222 .topdetail .userdetail .logo > li:first-child {
+  height: 60px;
+  line-height: 60px;
+}
+#demo222 .userdetail .logovalue {
+  height: 330px;
+  width: 250px;
+}
+#demo222 .userdetail .logovalue li {
+  height: 20px;
+}
+#demo222  .topdetail .userdetail .logovalue li:first-child {
+  height: 60px;
+}
+#demo222 img {
+  width: 60px;
+  height: 60px;
+}
+#demo222 .binddetail {
+  width: 760px;
+  height: 170px;
+  margin-left: 20px;
+  border: 1px solid gainsboro;
+  padding: 0;
+  position: relative;
+}
+#demo222 .binddetail p {
+  position: absolute;
+  top: -10px;
+  left: 25px;
+}
+#demo222 .binddetail ul {
+  float: left;
+}
+#demo222 .binddetail ul li {
+  margin-top: 20px;
+  padding-left: 30px;
+}
+#demo222 .binddetail .phonedetail,
+#demo222 .binddetail .register {
+  height: 170px;
+  width: 150px;
+  background: #EFEFEF;
+}
+#demo222 .binddetail .phonedetail li,
+#demo222 .binddetail .register li {
+  text-align: right;
+  padding-right: 30px;
+}
+#demo222 .binddetail .phonevalue {
+  height: 170px;
+  width: 250px;
+}
+#t4,#t2{
+	display: none;
+	position: relative;
+}
+#t4 .place,#t2 .place{
+	position: absolute;
+	left: 40px;
+	top: -8px;
+}
+#t4 .logovalue li:first-child,#t2 .logovalue li:first-child{
+    height: 60px;
+    line-height: 60px;
+}
+#demo222 #t4 .userdetail,#demo222 #t2 .userdetail{
+	height: 200px;
+}
+#demo222 #t4 .logo,#demo222 #t4 .dptbelong{
+	height: 200px;
+}
+#demo222 #t2 .logo,#demo222 #t2 .dptbelong{
+	height: 200px;
+}
+#demo222 #t2 .logo,#demo222 #t2 .logovalue,#demo222 #t2 .dptbelong,#demo222 #t2 .dptvalue{
+	height: 200px;
+}
+
+.layui-form-selected dl{
+  height: 200px;
+}
+#blindApp{
+  display: none;
+}
+.apptable{
+  width: 750px;
+  margin: 0 auto;
+}
+.appSearchbox{
+  padding: 10px 20px;
+}
+#bindApp{
+  background: #00a3d7;
+  color:#fff;
+  padding: 0 5px;
+  text-align: center;
+}
+.table-rgt {
+  /* margin-right: 10px; */
+}
+.ztree {
+  height: 650px;
+  overflow: auto;
+}
+.tabale-list  .layui-table-cell{ height:30px;}
+.searchform .snamei{width: 150px;}
+.searchform .sdeparti{width: 150px; z-index: 9999;position: relative;}
+.searchform .layui-form-select{float: left;}
+.searchform .layui-form-select .layui-edge{ right: 20px;}
+.searchform .sphone{width: 150px;}
+.fl{float: left;}
+.username{width: 120px;}
+.phoneinput{ width: 500px;}
+.appser{ margin-left: 10px;}

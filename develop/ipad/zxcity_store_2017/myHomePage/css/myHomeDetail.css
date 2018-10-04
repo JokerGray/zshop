@@ -1,0 +1,143 @@
+.pageview{
+    display: flex;
+    justify-content: center;
+}
+.main-content{
+    margin-top: 2px;
+}
+.chart-div{
+    margin:0 auto;
+    text-align: center;
+    width:96%;
+    height:650px;
+}
+.chart-div .chart-tab{
+    margin-bottom:10px;
+}
+.chart-div .chart-tab .btn{
+    background-color:#fff;
+    color:#fe6869;
+    border:1px solid #fe6869;
+}
+.chart-div .chart-tab .btn.active{
+    background-color:#fe6869;
+    color:#fff;
+}
+.chart-div .line-chart,
+.chart-div .pie-chart,
+.chart-div .bar-chart{
+    width:100%;
+}
+.chart-div .line-chart{
+    height:540px;
+}
+.chart-div .pie-chart{
+    height:270px;
+}
+.chart-div .bar-chart{
+    height:320px;
+    padding-top:10px;
+    border-top:1px solid #eee;
+}
+.module-content table th{
+    background-color:#f2f2f2;
+    color:#fff;
+    font-size:14px;
+    background-color: #fe6869;
+
+}
+.module-content table th,
+.module-content table td{
+    text-align: center;
+}
+.module-content table td a{
+    color:#fe6869;
+}
+.date-wrap{
+    position:relative;
+    width:100%;
+    height:55px;
+    padding-top:10px;
+    padding-bottom:10px;
+    text-align: center;
+    overflow: hidden;
+}
+.date-wrap .date-tab{
+    position:absolute;
+    right:10%;
+    top:15px;
+}
+.date-selector input[type=text]{
+    width:120px;
+    margin-left:5px;
+    margin-right:5px;
+    font-size:16px;
+    height:2.75rem;
+    border-radius:0.25rem;
+    margin-bottom:0;
+}
+.date-selector .btn{
+    background-color: #fe6869;
+    color:#fff;
+}
+.date-tab .btn{
+    width: 50px;
+    height: 22px;
+    line-height: 22px;
+    padding:0;
+    border:1px solid #d98b41;
+    color: #d98b41;
+    background-color: #fff;
+}
+.date-tab .btn.active{
+   color: #fff;
+   background-color: #d98b41;
+}
+
+/*paging插件样式修改开始*/
+.ui-paging-container ul {
+    height: 3.0rem;
+}
+
+.ui-paging-container ul li {
+    /*padding: 0;*/
+    width: 2.4rem;
+    height: 3.0rem;
+    line-height: 3.0rem;
+    /*text-align: center;*/
+    font-size: 1.5rem;
+    /*border: 0.0625rem solid #ccc !important;*/
+    /*color: #ccc !important;*/
+    /*vertical-align: middle;*/
+    /*-webkit-box-sizing: border-box;*/
+    /*-moz-box-sizing: border-box;*/
+    /*box-sizing: border-box;*/
+}
+
+/*.ui-paging-container ul li.focus {*/
+    /*background-color: #fe6869 !important;*/
+    /*color: #FFFFFF !important;*/
+/*}*/
+
+/*.ui-paging-container li.ui-pager-disabled,*/
+/*.ui-paging-container li.ui-pager-disabled:hover {*/
+    /*border: none !important;*/
+/*}*/
+
+/*.ui-paging-container ul .js-page-first,*/
+/*.ui-paging-container ul .js-page-last {*/
+    /*display: none;*/
+/*}*/
+
+/*.ui-paging-container ul .js-page-next {*/
+    /*background: url("../../common/image/right.png") no-repeat center;*/
+    /*-webkit-background-size: 1.75rem 1.75rem;*/
+    /*background-size: 1.75rem 1.75rem;*/
+/*}*/
+
+/*.ui-paging-container ul .js-page-prev {*/
+    /*background: url("../../common/image/left.png") no-repeat center;*/
+    /*-webkit-background-size: 1.75rem 1.75rem;*/
+    /*background-size: 1.75rem 1.75rem;*/
+/*}*/
+/*paging插件样式修改结束*/

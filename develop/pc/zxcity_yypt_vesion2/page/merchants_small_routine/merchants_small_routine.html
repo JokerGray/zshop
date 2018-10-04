@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小程序商户注册统计</title>
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="merchants_small_routine.css" />
+</head>
+<body>
+    <div class="app-wrap layui-fluid layui-row">
+        <div class="main-box layui-col-md6 layui-col-sm12">
+            <div class="header clearfix">
+                <ul class="header_ul clearfix ">
+                    <li class="layui-col-md3 layui-col-sm6">
+                        <div class="layui-form-item">
+                            <label class="" for="">注册时间：</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="date" readonly class="layui-input">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="layui-col-md3 layui-col-sm6">
+                        <div class="layui-form-item">
+                            <label class="" for="">&nbsp;</label>
+                            <div class="layui-input-block">
+                                <button class="layui-btn" id="searchBtn">查询</button>
+                                <button class="layui-btn" id="restBtn">重置</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="main">
+                <div class="left  ">
+                    <div id="eChart"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="main-box layui-col-md6 layui-col-sm12">
+            <div class="header clearfix">
+                <ul class="header_ul clearfix  ">
+                    <li class="layui-col-md3 layui-col-sm6">
+                        <div class="layui-form-item">
+                            <label class="" for="">注册年份：</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="date2" readonly class="layui-input">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="layui-col-md3 layui-col-sm6">
+                        <div class="layui-form-item">
+                            <label class="" for="">&nbsp;</label>
+                            <div class="layui-input-block">
+                                <button class="layui-btn" id="searchBtn2">查询</button>
+                                <button class="layui-btn" id="restBtn2">重置</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="main">
+                <div class="right  ">
+                    <div id="eChart2"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script type="text/javascript" src="../../common/assets/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+    <script type="text/javascript" src="../../common/js/util.js"></script>
+    <script type="text/javascript" src="../../common/js/yyCache.js"></script>
+
+    <script src="../../common/js/echarts.js"></script>
+    <script src="../../common/js/china.js"></script>
+
+    <script src="merchants_small_routine.js"></script>
+</body>
+</html>

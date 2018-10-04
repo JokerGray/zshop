@@ -1,0 +1,287 @@
+// 第三部分，网红自拍
+.section3{
+    position: relative;
+    margin-top: 190px;
+    border-top: 10px solid #fff;
+    // 模糊背景
+    .title-bg{
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 600px;
+        background-image: url(./img/banner4.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: blur(4px);
+    }
+    // 模糊背景上文字和红色背景
+    .subtitle-content{
+        position: relative;
+        height: 600px;
+
+        .text{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 80px;
+            color: #d70c2a;
+        }
+        .subtitle{
+            display: block;
+            margin: 0 auto;
+            width: 406px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            color: #fff;
+            font-size: 32px;
+            background-image: url(./img/qmwhzptb.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            display: block;
+            bottom: -8px;
+            width: 100%;
+            height: 350px;
+            background-color: rgba($color: #d70c2a, $alpha: 0.9);
+            box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.35);
+        }
+    }
+    // 主要内容
+    .content{
+        margin-top: -300px;
+
+        .title{
+            font-size: 40px;
+            color: #fff;
+            text-align: center;
+            &~p{
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 20px;
+                color: #999;
+                text-align: center;
+            }
+            &~.icon-down{
+                display: block;
+                margin: 0 auto;
+                width: 50px;
+                font-size: 48px;
+                color: #fff;
+                transform: rotate(180deg);
+            }
+        }
+        // 圈子，全民炫外壳
+        .circle-content, .play-content{
+            position: relative;
+            display: block;
+            margin: 0 auto;
+            padding: 18px;
+            width: 650px;
+            height: 968px;
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.35);
+            .swiper-content{
+                overflow: hidden;
+                .swiper-slide{
+                    position: relative;
+                    border-radius: 16px;
+                    overflow: hidden;
+                    background-color: rgba(0,0,0,0.3);
+                }
+            }
+            
+        }
+        // 圈子
+        .circle-content{
+            .swiper-content{
+                height: 765px;
+                .swiper-slide{
+                    img{
+                        position: absolute;
+                        width: 100%;
+                        left: 0;
+                        top: 50%;
+                        height: auto;
+                        transform: translateY(-50%);
+                    }
+                    .usr-content{
+                        position: absolute;
+                        padding: 0 18px 18px 18px;
+                        left: 0;
+                        width: 100%;
+                        bottom: 0;
+                        color: #fff;
+                        background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+                        span, i{
+                            font-size: 24px;
+                            vertical-align: middle;
+                        }
+                        .description{
+                            font-size: 32px;
+                            margin-bottom: 20px;
+                        }
+                    }
+                }
+
+                .swiper-button-next, .swiper-button-prev{
+                    width: 22px;
+                    height: 39px;
+                    right: 36px;
+                    left: inherit;
+                    bottom: inherit;
+                    top: 382px;
+                    background-image: url(./img/qmwh_lq_right_narrow.png);
+                    background-size: auto;
+                    transform: translate3d(0, -50%, 0);
+                    opacity: 0;
+                    transition: all 0.2s ease-out;
+                    visibility: hidden;
+                }
+                .swiper-button-prev{
+                    right: inherit;
+                    left: 36px;
+                    transform: translate3d(0, -50%, 0) rotateY(180deg);
+                }
+                &:hover .swiper-button-next, &:hover .swiper-button-prev {
+                    opacity: 1;
+                    transform: translate3d(5px, -50%, 0);
+                    visibility: visible;
+                }
+                &:hover .swiper-button-prev{
+                    transform: translate3d(-5px, -50%, 0) rotateY(180deg);
+                }
+            }
+            .like-content{
+                display: block;
+                margin: 0 auto;
+                padding: 26px 0;
+                text-align: center;
+                .like, .dislike{
+                    display: inline-block;
+                    width: 100px;
+                    height: 124px;
+                    background-image: url(./img/lq_shouye_xihuan@3x.png);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 90%;
+                    margin: 0 60px;
+                    vertical-align: middle;
+                    cursor: pointer;
+                    transition: all 0.1s ease-out;
+                    &:hover{
+                        background-size: 95%;
+                    }
+                }
+                .dislike{
+                    background-image: url(./img/lq_shouye_buxihuan@3x.png);
+                }
+            }
+        }
+        // 全民炫
+        .play-content{
+            .swiper-content{
+                height: 100%;
+                .swiper-slide{
+                    .cover{
+                        position: absolute;
+                        width: 100%;
+                        left: 0;
+                        top: 50%;
+                        height: auto;
+                        transform: translateY(-50%);
+                    }
+                    .usr-content{
+                        z-index: 999;
+                        position: absolute;
+                        padding: 0 18px 18px 18px;
+                        left: 0;
+                        width: 100%;
+                        bottom: 0;
+                        color: #fff;
+                        background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+                        span, i{
+                            font-size: 24px;
+                            vertical-align: middle;
+                        }
+                        .name{
+                            font-size: 32px;
+                            margin-bottom: 20px;
+                        }
+                    }
+                    .usr-right-content{
+                        z-index: 999;
+                        position: absolute;
+                        right: 0;
+                        bottom: 26px;
+                        width: 100px;
+                        color: #fff;
+
+                        .thumbnail{
+                            display: inline-block;
+                            width: 80px;
+                            height: 80px;
+                            margin: 0;
+                            border-radius: 100%;
+                            border: 1px solid #fff;
+                        }
+                        i{
+                            cursor: pointer;
+                            transition: all 0.1s ease-out;
+                            
+                            &:hover{
+                                transform: scale(1.05);
+                            }
+                        }
+                        .i-plus{
+                            display: inline-block;
+                            width: 30px;
+                            height: 30px;
+                            background: url(./img/qmx_tuijian_jiaguanzhu@3x.png) no-repeat center;
+                            background-size: contain;
+                            margin-top: -20px;
+                        }
+                        .i-heart, .i-comment, .i-transmit{
+                            display: inline-block;
+                            margin-top: 30px;
+                            width: 100%;
+                            height: 50px;
+                            background: url(./img/qmx_tuijian_xihuanwhite@3x.png) no-repeat center;
+                            background-size: contain;
+                        }
+                        .i-comment{
+                            background-image: url('./img/qmx_tuijian_pinglun@3x.png');
+                        }
+                        .i-transmit{
+                            width: 50px;
+                            background-image: url('./img/qmx_detail_share@3x.png');
+                        }
+
+                    }
+                }
+                .swiper-button-next{
+                    width: 70px;
+                    height: 60px;
+                    right: inherit;
+                    bottom: 36px;
+                    left: 50%;
+                    top: inherit;
+                    background-image: url(./img/quanminxuan_narrow.png);
+                    background-size: auto;
+                    transform: translate3d(-50%, 0, 0);
+                    opacity: 0;
+                    transition: all 0.2s ease-out;
+                    visibility: hidden;
+                }
+            }
+            &:hover .swiper-button-next{
+                opacity: 1;
+                transform: translate3d(-50%, 15px, 0);
+                visibility: visible;
+            }
+        }
+    }
+}

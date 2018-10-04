@@ -1,0 +1,207 @@
+ul, ol{
+    margin:0;
+    padding:0;
+}
+li{
+    list-style: none;
+}
+.pop-main{
+    width:1024px;
+    height:668px;
+}
+.pop-main .pop-title{
+    height:32px;
+    line-height: 32px;
+    background-color: #eee;
+    color:#666;
+}
+.pop-main .pop-content{
+    padding:12px;
+}
+.pop-content .attribute-set{
+    width:500px;
+    height:100%;
+    margin-left:20px;
+}
+.pop-content .pop-pic-set{
+    position:relative;
+    width:480px;
+    height:100%;
+}
+.pop-pic-set .add-pic-btn{
+    height:30px;
+}
+.add-pic-btn .pic-num,
+.add-pic-btn .btn{
+    float:left;
+    display:inline-block;
+    width:40px;
+    height:30px;
+    line-height: 30px;
+    color:#666;
+    border-radius:0;
+}
+.add-pic-btn .pic-num{
+    border:1px solid #ccc;
+    text-align:center;
+    font-size:18px;
+}
+.add-pic-btn .btn{
+    padding:0;
+    margin:0;
+}
+.multi-text{
+    width:96%;
+}
+.upload-pic{
+    width:240px;
+    text-align: center;
+}
+.upload-pic img{
+    width:220px;
+    height:180px;
+}
+.upload-pic .upload-pic-btn{
+    position: relative;
+    display: inline-block;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #666;
+    text-decoration: none;
+    line-height: 20px;
+    font-size: 13px;
+    margin-top:10px;
+}
+.upload-pic .upload-pic-btn span{
+    color: #999;
+}
+.upload-pic .upload-pic-btn input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.upload-pic .upload-pic-btn:hover {
+    background: #fff;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+.type-mark{
+    font-weight: normal;
+    color:#999;
+}
+.type-list .type-item{
+    line-height:32px;
+    font-size:16px;
+    color:#666;
+}
+.type-item .select-icon{
+    display:inline-block;
+    width:22px;
+    height:22px;
+    margin-top:4px;
+    margin-right:10px;
+    background:url(../image/blue.png) no-repeat;
+    background-position:-120px 0;
+}
+.type-item .select-icon.selected{
+    background-position:-168px 0;
+}
+.type-item input[type=checkbox],
+.type-item input[type=radio]{
+    width:18px;
+    height:18px;
+    margin-right:3px;
+    vertical-align: text-bottom;
+}
+.type-item .item-name{
+    display:inline-block;
+    margin-right:15px;
+}
+.type-item .sub-item-list{
+    clear:both;
+    width:100%;
+    padding-left:25px;
+}
+.type-item .edit-box .edit-icon,
+.type-item .edit-box .remove-icon{
+	cursor:pointer;
+	margin-right:5px;
+}
+.sub-item-list label{
+    margin-left:8px;
+    margin-bottom:0;
+    vertical-align: text-bottom;
+    font-weight: normal;
+}
+.type-list{
+	width:480px;
+}
+.type-list .attr-list-box{
+	height:285px;
+	overflow-y:auto;
+	background-color: #eee;
+}
+.type-list .btn-box{
+    margin-top:15px;
+}
+.type-list .btn-box .submit-btn{
+    width:72px;
+    margin-left:20px;
+}
+
+.show-list{
+	height:285px;
+  margin-left:20px;
+  width:460px;
+  overflow-y:auto;
+}
+.show-list table th,
+.show-list table td{
+    text-align: center;
+}
+.show-list table input[type=text]{
+    width:60px;
+    height:26px;
+    padding:0 5px;
+}
+/**添加自定义规格*/
+.add-type-box{
+    width:380px;
+    padding:20px;
+}
+.add-type-box input[type=text]{
+    width:160px;
+    height:32px;
+    padding:0 5px;
+    margin-right:15px;
+}
+.add-type-box .item-list>li{
+    position:relative;
+    display:inline-block;
+    float:left;
+    margin:0 10px 10px;
+    border:1px solid #ddd;
+}
+.add-type-box .item-list>li span{
+    display:block;
+    padding:5px 12px;
+}
+.add-type-box .item-list>li .remove-btn{
+    position:absolute;
+    top:-8px;
+    right:-8px;
+    color:#666;
+    font-size:18px;
+    text-decoration: none;
+}
+.add-type-box .item-list>li.selected{
+    border-color:#f70;
+}
+.add-type-box .submit-btn{
+    display:block;
+    width:72px;
+    margin:0 auto;
+}

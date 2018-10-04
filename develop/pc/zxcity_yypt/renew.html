@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>商户续费</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="merchants_manage/renew.css" />
+    <!-- CssSinglepage-->
+</head>
+<body>
+<div class="addsystem">
+    <div class="renew-body">
+        <form class="form-inline">
+            <div class="form-group">
+                <label class="jurisdiction-label" for="jurisdiction-name">基础服务：</label>
+                <input type="text" class="form-control" id="jurisdiction-name" placeholder="请输入信息" value="0">
+                <span class="glyphicon glyphicon-menu-down"></span>
+            </div>
+        </form>
+        <div id="jurisdiction-detail" class="row jurisdiction-detail">
+            注：可参见下表续费相关信息
+            <table class="table table-bordered table-hover" id="jurisdiction-table">
+                <thead>
+                <tr class="active">
+                    <th>序号</th>
+                    <th>计费类型名称</th>
+                    <th>费用(元)</th>
+                    <th>有效天数</th>
+                    <th>开店数量限制</th>
+                    <th>上架商品数量限制</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="clearfix p20">
+                <div id="paging-box-count1">
+
+                </div>
+                <div id="paging-box1" class="basic-jump"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="common/js/util/util.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+<script type="text/javascript" src="merchants_manage/renew.js"></script>
+</body>
+</html>

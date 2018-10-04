@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+        <title>发布</title>
+        <link rel="stylesheet" href="../../common/assets/foundation-v5.5.3/foundation.min.css"/>
+        <link rel="stylesheet" href="../../common/css/common.css"/>
+        <link rel="stylesheet" href="../js/kindeditor-4.1.7/themes/default/default.css" />
+        <!-- <link href="../../common/assets/css/bootstrap.css" rel="stylesheet" /> -->
+        <link href="../css/new.css" rel='stylesheet'/>
+
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="main-title">
+                <a href="javascript:;" class="return-icon"></a>
+            </div>
+            <div class="main-content">
+                <form>
+                    <div>
+                        <label class="inline-label"><b class="required">＊</b>标题：</label><input type="text" class="inline-input" id="title" placeholder="请输入标题（5-30字）" maxlength="30">
+                    </div>
+                    <div>
+                        <label class="inline-label">机构：</label><input type="text" class="inline-input" id="institution" placeholder="非必填项 例如：XX公司XX职务 XX昵称" maxlength="40">
+                    </div>
+                    <div class="view-authority">
+                        <label class="inline-label">查看权限：</label>
+                        <div class="inline-block">
+                            <input type="radio" class="radio-chk" name="viewAuthority" id="viewAuthority1" value="1" checked="checked"><label for="viewAuthority1">所有人可看</label>
+                            <input type="radio" class="radio-chk" name="viewAuthority" id="viewAuthority2" value="2"><label for="viewAuthority2">仅商户可看</label>
+                            <input type="radio" class="radio-chk" name="viewAuthority" id="viewAuthority3" value="3"><label for="viewAuthority3">仅自己可看</label>
+                        </div>
+
+                    </div>
+                    <div class="text-box">
+                        <textarea id="detail" name="detail" class="text-detail"></textarea>
+                        <a href="javascript:;" class="upload-btn" id="uploadBtn"></a>
+                    </div>
+                    <div class="handle-btn">
+                        <button type="button" id="submitBtn" class="btn submit-btn">发布</button>
+                        <button type="button" id="cancelBtn"class="btn cancel-btn">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </body>
+
+
+    <script src="../../common/assets/jquery.min.js"></script>
+    <script src="../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="../js/kindeditor-4.1.7/kindeditor.js"></script>
+    <script src="../js/kindeditor-4.1.7/plugins/plainpaste/plainpaste.js"></script>
+    <script src="../js/kindeditor-4.1.7/plugins/wordpaste/wordpaste.js"></script>
+    <script src="../js/kindeditor-4.1.7/lang/zh_CN.js"></script>
+    <script src="../../common/assets/layer/layer.js"></script>
+    <script src="../../common/js/common.js"></script>
+    <script src="../../common/js/uploadFile.js"></script>
+    <script src="../js/new.js"></script>
+</html>

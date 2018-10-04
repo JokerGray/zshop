@@ -1,0 +1,587 @@
+@charset "utf-8";
+/*!
+ * @名称：base.css
+ * @功能：1、重设浏览器默认样式
+ *       2、设置通用原子类
+ */
+/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+html,
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  color: #333;
+  outline: 0;
+}
+body {
+  min-width: 1220px;
+  overflow-x: hidden;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+}
+i {
+  font-style: normal;
+}
+/* 要注意表单元素并不继承父级 font 的问题 */
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+input {
+  border: 0px;
+  background-color: #fff;
+}
+/* 去掉 table cell 的边距并让其边重合 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*button默认样式*/
+button {
+  background-color: #fff;
+  border: 0;
+}
+/* ie bug：th 不继承 text-align */
+th {
+  text-align: inherit;
+}
+/* 去除默认边框 */
+fieldset,
+img {
+  border: none;
+}
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {
+  display: block;
+}
+/* 去掉 firefox 下此元素的边框 */
+abbr,
+acronym {
+  border: none;
+  font-variant: normal;
+}
+/* 一致的 del 样式 */
+del {
+  text-decoration: line-through;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+  font-style: normal;
+  font-weight: 500;
+}
+/* 去掉列表前的标识，li 会继承 */
+ol,
+ul {
+  list-style: none;
+}
+/* 对齐是排版最重要的因素，别让什么都居中 */
+caption,
+th {
+  text-align: left;
+}
+/* 来自yahoo，让标题都自定义，适应多个系统应用 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 500;
+}
+q:before,
+q:after {
+  content: '';
+}
+/* 统一上标和下标 */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+/* 让链接在 hover 状态下显示下划线 */
+a {
+  color: #222;
+  background: 0 0;
+  text-decoration: none;
+  outline: 0;
+  cursor: pointer;
+}
+a:hover {
+  text-decoration: none;
+}
+a:link {
+  text-decoration: none;
+  color: #333;
+}
+/* 默认不显示下划线，保持页面简洁 */
+ins {
+  text-decoration: none;
+}
+/* 去除 ie6 & ie7 焦点点状线 */
+a:focus,
+*:focus {
+  outline: none;
+}
+/* 清除浮动 */
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+  overflow: hidden;
+}
+.clearfix {
+  zoom: 1;
+  /* for ie6 & ie7 */
+}
+.clear {
+  clear: both;
+  display: block;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  overflow: hidden;
+}
+body,
+html {
+  height: 100%;
+}
+.one {
+  padding-left: 0;
+  padding-right: 0;
+}
+.container {
+  width: 1140px;
+  margin: 0 auto;
+  padding: 0;
+}
+/* 设置浮动，减少浮动带来的 bug */
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.white {
+  background: #fff;
+}
+/* 设置显示和隐藏，通常用来与 js 配合 */
+.hide {
+  display: none;
+}
+.block {
+  display: block;
+}
+.cur-p {
+  cursor: pointer;
+}
+.cur-d {
+  cursor: default;
+}
+/*font*/
+.font14px {
+  font-size: 14px;
+}
+/*display*/
+.dis-b {
+  display: block !important;
+}
+.dis-n {
+  display: none;
+}
+.dis-i {
+  display: inline;
+}
+.dis-i-b {
+  display: inline-block;
+}
+.dis-t {
+  display: table;
+}
+/*color*/
+.gray {
+  color: #999;
+}
+.blue {
+  color: #2BC6FF;
+}
+.red {
+  color: #ff8b6f;
+}
+.black {
+  color: #333;
+}
+.orange {
+  color: #FFA893;
+}
+/*width*/
+.wfull {
+  width: 100%;
+}
+.max-w100px {
+  max-width: 100px;
+}
+.max-w50px {
+  max-width: 50px;
+}
+/*font*/
+.font20px {
+  font-size: 20px;
+}
+.font40px {
+  font-size: 40px;
+}
+a {
+  color: #333;
+}
+a:hover {
+  color: #ffbf14;
+}
+.text-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.form-control:focus {
+  border-color: #ffbf14;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(43, 198, 255, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(43, 198, 255, 0.6);
+}
+/*按钮色*/
+.btn-submit,
+.btn-submit:active {
+  color: #fff;
+  border-color: #ed793d;
+  background-color: #ff8b6f;
+}
+.btn-submit:hover,
+.btn-submit:focus,
+.btn-submit:active:hover {
+  color: #fff;
+  border-color: #ce4727;
+  background-color: #f6623f;
+}
+.btn-blue,
+.btn-blue:active {
+  color: #fff;
+  border-color: #1E9FFF;
+  background-color: #1E9FFF;
+}
+.btn-blue:hover,
+.btn-blue:focus,
+.btn-blue:active:hover {
+  color: #fff;
+  border-color: #1E9FFF;
+  background-color: #1E9FFF;
+}
+/*背景色*/
+.bg-green {
+  background-color: #60d295;
+}
+.bg-blue {
+  background-color: #7cbae5;
+}
+/*循环*/
+.w10 {
+  width: 10px !important;
+}
+.w20 {
+  width: 20px !important;
+}
+.w30 {
+  width: 30px !important;
+}
+.w40 {
+  width: 40px !important;
+}
+.w50 {
+  width: 50px !important;
+}
+.w60 {
+  width: 60px !important;
+}
+.w70 {
+  width: 70px !important;
+}
+.w80 {
+  width: 80px !important;
+}
+.w90 {
+  width: 90px !important;
+}
+.w100 {
+  width: 100px !important;
+}
+.h10 {
+  height: 10px !important;
+}
+.h20 {
+  height: 20px !important;
+}
+.h30 {
+  height: 30px !important;
+}
+.h40 {
+  height: 40px !important;
+}
+.h50 {
+  height: 50px !important;
+}
+.h60 {
+  height: 60px !important;
+}
+.h70 {
+  height: 70px !important;
+}
+.h80 {
+  height: 80px !important;
+}
+.h90 {
+  height: 90px !important;
+}
+.h100 {
+  height: 100px !important;
+}
+.pl10 {
+  padding-left: 10px !important;
+}
+.pl20 {
+  padding-left: 20px !important;
+}
+.pl30 {
+  padding-left: 30px !important;
+}
+.pl40 {
+  padding-left: 40px !important;
+}
+.pl50 {
+  padding-left: 50px !important;
+}
+.pl60 {
+  padding-left: 60px !important;
+}
+.pl70 {
+  padding-left: 70px !important;
+}
+.pl80 {
+  padding-left: 80px !important;
+}
+.pl90 {
+  padding-left: 90px !important;
+}
+.pl100 {
+  padding-left: 100px !important;
+}
+.pr10 {
+  padding-right: 10px !important;
+}
+.pr20 {
+  padding-right: 20px !important;
+}
+.pr30 {
+  padding-right: 30px !important;
+}
+.pr40 {
+  padding-right: 40px !important;
+}
+.pr50 {
+  padding-right: 50px !important;
+}
+.pr60 {
+  padding-right: 60px !important;
+}
+.pr70 {
+  padding-right: 70px !important;
+}
+.pr80 {
+  padding-right: 80px !important;
+}
+.pr90 {
+  padding-right: 90px !important;
+}
+.pr100 {
+  padding-right: 100px !important;
+}
+.ml10 {
+  margin-left: 10px !important;
+}
+.ml20 {
+  margin-left: 20px !important;
+}
+.ml30 {
+  margin-left: 30px !important;
+}
+.ml40 {
+  margin-left: 40px !important;
+}
+.ml50 {
+  margin-left: 50px !important;
+}
+.ml60 {
+  margin-left: 60px !important;
+}
+.ml70 {
+  margin-left: 70px !important;
+}
+.ml80 {
+  margin-left: 80px !important;
+}
+.ml90 {
+  margin-left: 90px !important;
+}
+.ml100 {
+  margin-left: 100px !important;
+}
+.mr10 {
+  margin-right: 10px !important;
+}
+.mr20 {
+  margin-right: 20px !important;
+}
+.mr30 {
+  margin-right: 30px !important;
+}
+.mr40 {
+  margin-right: 40px !important;
+}
+.mr50 {
+  margin-right: 50px !important;
+}
+.mr60 {
+  margin-right: 60px !important;
+}
+.mr70 {
+  margin-right: 70px !important;
+}
+.mr80 {
+  margin-right: 80px !important;
+}
+.mr90 {
+  margin-right: 90px !important;
+}
+.mr100 {
+  margin-right: 100px !important;
+}
+.mt10 {
+  margin-top: 10px !important;
+}
+.mt20 {
+  margin-top: 20px !important;
+}
+.mt30 {
+  margin-top: 30px !important;
+}
+.mt40 {
+  margin-top: 40px !important;
+}
+.mt50 {
+  margin-top: 50px !important;
+}
+.mt60 {
+  margin-top: 60px !important;
+}
+.mt70 {
+  margin-top: 70px !important;
+}
+.mt80 {
+  margin-top: 80px !important;
+}
+.mt90 {
+  margin-top: 90px !important;
+}
+.mt100 {
+  margin-top: 100px !important;
+}
+.mb10 {
+  margin-bottom: 10px !important;
+}
+.mb20 {
+  margin-bottom: 20px !important;
+}
+.mb30 {
+  margin-bottom: 30px !important;
+}
+.mb40 {
+  margin-bottom: 40px !important;
+}
+.mb50 {
+  margin-bottom: 50px !important;
+}
+.mb60 {
+  margin-bottom: 60px !important;
+}
+.mb70 {
+  margin-bottom: 70px !important;
+}
+.mb80 {
+  margin-bottom: 80px !important;
+}
+.mb90 {
+  margin-bottom: 90px !important;
+}
+.mb100 {
+  margin-bottom: 100px !important;
+}

@@ -1,0 +1,22 @@
+<!--pages/comment/comment.wxml-->
+<view class='msg-box' wx:for='{{commentList}}' wx:for-index="index" wx:for-item="item" wx:key='id'>
+    <view class='msg-item'>
+        <view class='msg-img msg-img-head'>
+            <image src='{{item.userPic}}'></image>
+        </view>
+        <view class='msg-text'>
+            <view class='msg-title'>
+                <text class='msg-h3'>{{item.userName}}评论了你:“{{item.commentContent}}”</text>
+                <text class='msg-time'>{{item.createTime}}</text>
+            </view>
+            <view class='msg-content'>
+                <image class='msg-img-bg' src='{{item.coverUrl}}'></image>
+                <image class='play' src='/images/huahuo_shouye_play@3x.png'></image>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="weui-loadmore" wx:if='{{commentList.length==0}}'>
+   <view class="weui-loadmore__tips">暂无评论</view>
+</view>

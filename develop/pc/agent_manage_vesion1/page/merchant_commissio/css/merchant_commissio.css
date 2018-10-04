@@ -1,0 +1,133 @@
+/*禁止选择*/
+.unselectable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+/*common*/
+.p0{
+	padding: 0!important;
+}
+.w30{
+	width: 30%!important;
+}
+.mr5{
+	margin-right: 5%!important;
+}
+.tr90{
+	transform: rotate(90deg)!important;
+}
+.dn{
+	display: none!important;
+	}
+/*common end*/
+
+
+ul.tool-box-ul {
+	padding:19px 25px;
+}
+
+ul.tool-box-ul>li.tool-box-li {
+	width: 250px;
+	margin-right: 20px;
+	float: left;
+}
+
+div.layui-input-inline {
+	width: 100%!important;
+}
+
+ul.tool-box-ul>li.tool-box-li .tool-box-label {
+	display: block;
+	font: normal 14px/2em "微软雅黑";
+}
+
+#searchBtn {
+	width: 112px;
+	height: 38px;
+	position: relative;
+	top: 27px;
+}
+#resetBtn {
+	width: 112px;
+	height: 38px;
+	position: relative;
+	top: 27px;
+}
+/*搜索框结束*/
+#addBtn{
+	float: right;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+}
+
+/*APP开始*/
+.layui-app{
+	padding: 0px 25px;
+}
+.layui-app .select-search .select-search-div{
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	margin-right: 10px;
+	float: left;
+	color: #000000;
+	font: normal 14px/40px "微软雅黑";
+	text-align: center;
+	background-color: #ECECEC;
+	border: 1px silid #C6C6C6;
+	cursor: pointer;
+	transition: all .3s;
+}
+.layui-app .select-search .select-search-div.act{
+	color: #fff;
+	background-color: #009688;
+}
+.layui-app .app-table{
+	margin-top: 25px;
+	border-top: 2px solid #009688;
+}
+.layui-app .app-table div.layui-form{
+	margin-top: 0;
+	}
+.layui-app .app-table div.layui-form .layui-table-body{
+	overflow-x: hidden;
+}
+/*分页*/
+#layTablePage{
+	text-align: right;
+}
+
+button.my-btn{
+	height: 28px;
+    line-height: 28px;
+    padding: 0 16px;
+    font-size: 12px;
+}
+
+.tool-add-box {
+    padding: 0 35px;
+}
+.tool-add-box .add {
+    width: 112px;
+    height: 38px;
+    float: right;
+}
+#setButton{
+	margin-right: 10px;
+}
+/*统计图*/
+#myChart{
+	padding:0 25px;
+	width:auto;
+	height:400px;
+
+}

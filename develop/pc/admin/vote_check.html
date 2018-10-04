@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <title>投票审核·管理员后台</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/vote_check.css" />
+</head>
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="vote_check">
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div id="page_R" class="right pull-right">
+                <div id="search_box" class="clearfix">
+                    <div class="fl">
+                        <p class="">投票名称</p>
+                        <input id="articleTitle" class="searchInp" type="text">
+                    </div>
+                    <div  class="fl">
+                        <p class="">作者</p>
+                        <input id="name" class="searchInp" type="text">
+                    </div>
+                    <div class="fl">
+                        <p class="">领域</p>
+                        <select id="channelId" class="searchInp form-control signform-input select" name="">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                    <div class="timeBox fl">
+                        <p class="">时间</p>
+                        <input type="text" class="fl searchInp" id="startTime" />
+                        <input type="text" class="fl searchInp" id="endTime" />
+                    </div>
+                    <div id="search_icon" class="search_icon fl">
+                        <img src="images/search.png" alt="">
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="table account_table">
+                        <div id="voteTable" class="table-left">
+                            <div class="panel panel-default">
+                                <table class="table">
+                                    <thead id="table_head">
+                                        <th class="w200px">投票</th>
+                                        <th>作者</th>
+                                        <th id="channelNameTh">领域</th>
+                                        <th class="w200px">提交时间</th>
+                                        <th>审核时间</th>
+                                        <th>审核人</th>
+                                        <th>状态</th>
+                                        <th></th>
+                                    </thead>
+                                    <tbody id="voteTbody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="page" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--查看模态框 strat-->
+    <div id="voteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="quesInfoM modal-dialog modal-dialog2" role="document">
+            <div class="quesInfoTpl quesInfoM modal-content modal-content2">
+                <div class="quesInfoMHead modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="quesTitle"></h4>
+                </div>
+                <div class="quesInfoCon clearfix">
+                    <div class="quesInfoBox">
+                        <div class="quesInfoSubTxt">
+                            <span class="authorName"></span>
+                            <span class="quesTime"></span>
+                            <div class="quesInfoTime fr">
+                                投放时间：<span class="voteStartTime"></span> 至
+                                <span class="voteEndTime"></span>
+                            </div>
+                        </div>
+                        <div class="quesCont"></div>
+                        <div id="onlineCelebrity" class="onlineCelebrity"></div>
+                        <div class="quesLabels">
+                            <i class="quesLabelsIcon"></i>
+                            <ul id="quesLabelList" class="quesLabelList"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="voteMFoot modal-footer">
+                    <button id="pushPass" type="button" class="modalPass btn btn-default" data-dismiss="modal">通过</button>
+                    <button id="notPass" type="button" class="modalNotPass btn btn-primary" data-toggle="modal" data-target="#NotPass">不通过</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看模态框 end-->
+    <!-- 不通过审核 -->
+	<div id="NotPass" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-dialog2 notPassModal" role="document">
+            <div class="modal-content modal-content2 notPassCont">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <form>
+                    <div id="notPassForm" class="clearfix"></div>
+                    <textarea id="NotPass_beca" class="NotPass_beca" placeholder="请输入不通过的理由..."></textarea>
+                </form>
+                <div id="notPassBtnBox" class="modal-footer">
+                    <button id="notPassReason" class="NotPass btn" type="button" data-dismiss="modal">提交不通过</button>
+                    <button class="modalShield btn" type="button" data-dismiss="modal">返回</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/countUp.min.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/vote_check.js"></script>
+    <script id="voteTpl" type="text/html">
+        {{# layui.each(d, function(index, item){ }}
+            <tr> 
+                <td class="quesTit">{{item.articleTitle || ''}}</td> 
+                <td>{{item.subscriptionName || ''}}</td>  
+                <td>{{item.channelName || ''}}</td>  
+                <td>{{item.releaseTime || ''}}</td> 
+                <td>{{item.reviewerTime || ''}}</td> 
+                <td>管理员</td> 
+                <td class="isExamine">{{examine(item.isExamine)}}</td> 
+                <td> 
+                    <button class="voteLBtn" type="button" data-toggle="modal" data-target="#voteModal" articleId="{{item.articleId || ''}}" isExamine="{{item.isExamine || ''}}">查看</button> 
+                </td> 
+            </tr>
+        {{#  }); }}
+    </script>
+</body>
+</html>

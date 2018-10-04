@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新建一级小组</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/layer/mobile/need/layer.css">
+    <link rel="stylesheet" href="assets/css/select2.css">
+    <link rel="stylesheet" href="assets/layer/mobile/need/layer.css">
+    <link rel="stylesheet" href="css/organization.css">
+</head>
+<body>
+    <div id="addNewLevel">
+        <div style="display: none" id="upteam">上级组: <span id="upteamName"></span></div>
+        <label class="control-label">小组名称<span class="tip">(1~10个字)</span></label>
+        <div><input class="form-control" placeholder="请输入小组名称" id="teamName" minlength="1" maxlength="10"></div>
+        <label class="control-label">选择领袖</label>
+        <div>
+            <select class="form-control" id="person">
+            </select>
+        </div>
+        <label class="control-label">上传Logo</label>
+        <div class="picUpload">
+            <button id="upload"></button>
+            <div id="preview" class="preview"></div>
+        </div>
+        <label class="control-label">小组口号<span class="tip">(1~20个字)</span></label>
+        <div>
+            <input class="form-control" id="detailTitle" maxlength="20">
+        </div>
+    </div>
+</body>
+<script src="assets/js/jquery-2.1.0.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/select2.full.js"></script>
+<script src="assets/js/zh-CN.js"></script>
+<script src="assets/js/select2.full.js"></script>
+<script src="js/select.js"></script>
+<script src="assets/layer/layer.js"></script>
+<script src="assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script src="assets/js/utilNew.js"></script>
+<script src="js/addNewLevel.js"></script>
+</html>

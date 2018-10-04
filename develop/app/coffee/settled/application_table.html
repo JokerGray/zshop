@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<title>报名成员列表</title>
+		<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				letter-spacing: 0.5px;
+				box-sizing: border-box;
+				-webkit-highlight: none;
+				-webkit-tap-highlight-color: transparent;
+				font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
+			}
+			
+			html,
+			body {
+				font-size: 16px;
+				color: #333;
+			}
+			
+			a {
+				text-decoration: none;
+				color: #2a7cf8;
+			}
+			
+			table {
+				display: table;
+				margin: 25px auto 75px;
+				width: 92%;
+				border-radius: 5px;
+				overflow: hidden;
+				border: 1px solid #dadada;
+			}
+			
+			table td {
+				width: 33%;
+				padding: 0 10px;
+				white-space: nowrap;
+				font-size: 14px;
+				text-align: center;
+				border-right: 1px solid #fff;
+			}
+			
+			table tr td:last-child {
+				border-right: 1px solid transparent;
+			}
+			
+			.table_title {
+				color: #fff;
+				height: 40px;
+				background-color: #509efb;
+			}
+			
+			.t_w {
+				padding-left: 11px;
+				height: 40px;
+				background-color: #FFF;
+			}
+			
+			.t_b {
+				padding-left: 11px;
+				height: 40px;
+				background-color: #f1f7ff;
+			}
+			
+			.sendBtn {
+				position: fixed;
+				display: block;
+				width: 100%;
+				left: 0;
+				bottom: 0;
+				background-color: #4b9dff;
+				color: #fff;
+				font-size: 1.1rem;
+				line-height: 3.1rem;
+				text-align: center;
+				border: none;
+				outline: none;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<table id="table" border="0" cellspacing="0" cellpadding="0">
+			<tr class="table_title">
+				<td>联系人</td>
+				<td>联系电话</td>
+				<td>备注</td>
+			</tr>
+		</table>
+
+		<button type="button" class="sendBtn" onclick="confirmAjax()">发送至邮箱</button>
+
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.2/weui.min.js"></script>
+		<script type="text/javascript">
+			var id = getQueryString('id');
+			$(function() {
+				FastClick.attach(document.body);
+				getData();
+			})
+
+			// 获取url中的参数
+			function getQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				return r !== null ? decodeURI(r[2]) : null;
+			}
+			// 获取数据
+			function getData() {
+				if(!id) return;
+				$.ajax({
+					type: "post",
+					dataType: 'json',
+					url: "/zxcity_restful/ws/rest",
+					headers: {
+						apikey: 'test'
+					},
+					data: {
+						cmd: 'activityNew/getParticipantList',
+						data: JSON.stringify({
+							activityId: id
+						}),
+						version: 1
+					},
+					beforeSend: function() {
+						loading = weui.loading('加载中……');
+					},
+					complete: function() {
+						loading.hide();
+					},
+					success: function(data) {
+						if(data.code == 1) {
+							setData(data.data);
+						} else {
+							weui.alert(data.msg);
+						}
+					},
+					error: function(err) {
+						weui.alert('请求超时，请重试……');
+					}
+				});
+			}
+
+			function setData(arr) {
+				for(var i = 0; i < arr.length; i++) {
+					var tr = $('<tr><td></td><td></td><td></td></tr>');
+					tr.addClass(i % 2 == 0 ? 't_w' : 't_b');
+					tr.find('td').eq(0).text(arr[i].userName.length> 5 ? (arr[i].userName.substr(0, 5) + "...") : arr[i].userName);
+					tr.find('td').eq(1).text(arr[i].phone);
+					tr.find('td').eq(2).text(arr[i].info.length> 5 ? (arr[i].info.substr(0, 5) + '...'): arr[i].info);
+					$('#table').append(tr);
+				}
+			}
+
+			var checking;
+
+			function confirmAjax() {
+				if(!id) return;
+				if(checking) return;
+				var dom = weui.confirm('发送报名成员列表至邮箱？', function() {
+					dom.hide();
+					sendToEmail();
+				})
+			}
+
+			// weui confirm和alert一起使用，会出不来
+			function sendToEmail() {
+				var loading;
+				$.ajax({
+					type: "post",
+					dataType: 'json',
+					url: "/zxcity_restful/ws/rest",
+					headers: {
+						apikey: 'test'
+					},
+					data: {
+						cmd: 'coffee/sendActivityApplyerList',
+						data: JSON.stringify({
+							detailId: id
+						}),
+						version: 1
+					},
+					beforeSend: function() {
+						checking = true;
+						loading = weui.loading('提交中...');
+					},
+					complete: function() {
+						checking = false;
+					},
+					success: function(data) {
+						setTimeout(function() {
+							loading.hide();
+							if(data.code == 1) {
+								weui.toast(data.msg);
+							} else {
+								weui.alert(data.msg);
+							}
+						}, 500)
+					},
+					error: function(err) {
+						checking = false;
+						setTimeout(function() {
+							loading.hide();
+							weui.alert('请求超时，请重试……');
+						}, 500)
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,668 @@
+body {
+  background: #f7f7f7;
+  padding-top: 20px;
+}
+
+
+.centerContent {
+  letter-spacing: 1px;
+}
+
+.centerContent .leftChoose {
+  box-sizing: border-box;
+  height: 900px;
+  padding-top: 35px;
+  padding-left: 2%;
+  border-right: 1px dashed #1FC5C6;
+}
+
+.centerContent .leftChoose .chooseeOperation {
+  font-size: 26px;
+  color: #333A52;
+  margin-bottom: 20px;
+}
+
+.centerContent .leftChoose .managementTab a {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.centerContent .leftChoose .managementTab a.active {
+  background: #333A52;
+  color: white;
+}
+
+.centerContent .leftChoose .commonType {
+  width: 80%;
+  height: 35px;
+  line-height: 35px;
+  padding-left: 18px;
+  background: #dadada;
+  border-radius: 30px;
+  font-size: 18px;
+  color: #999999;
+  cursor: not-allowed;
+}
+
+.centerContent .leftChoose .hasChoose {
+  width: 210px;
+  height: 35px;
+  line-height: 35px;
+  padding-left: 18px;
+  margin-bottom: 20px;
+  border: 1px solid #333A52;
+  background: white;
+  border-radius: 30px;
+  font-size: 18px;
+  color: #333A52;
+  cursor: pointer;
+}
+
+.centerContent .managementTab .layui-form-onswitch {
+  border-color: #21C6C6;
+  background-color: #21C6C6;
+}
+
+.centerContent .managementTab .layui-form-switch {
+  width: 60px;
+  height: 30px;
+  border-radius: 30px;
+  margin-bottom: 13px;
+}
+
+.centerContent .layui-form-switch i {
+  left: 2px;
+  width: 28px;
+  height: 28px;
+  top: 0;
+}
+
+.centerContent .layui-form-onswitch i {
+  left: 29px;
+}
+
+.centerContent .leftChoose .hasChoose span {
+  display: inline-block;
+  background: #333A52;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+}
+
+.centerContent .leftChoose #publishTrends {
+  margin: 25px 0 20px 0;
+}
+
+
+
+.centerContent .middleShow .middlePreview {
+  background: url("../img/phone-bg.png") no-repeat;
+  width: 393px;
+  height: 780px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.centerContent .middlePreview .previewHead {
+  position: absolute;
+  top: 23px;
+  left: 27px;
+  width: 338px;
+  height: 733px;
+  border-radius: 32px;
+}
+
+.iphoneHead {
+  position: absolute;
+  z-index: 999;
+}
+
+.centerContent .previewHead .time_tab {
+  position: absolute;
+  top: 12px;
+  left: 8px;
+  z-index: 155555555;
+  font-size: 15px;
+  font-weight: bolder;
+  color: #414142;
+}
+
+.centerContent .previewHead .tophead {
+  padding-left: 22px;
+  width: 330px;
+  height: 30px;
+}
+
+//中间显示
+.middleSwiper {
+  position: absolute;
+  .blank_img{
+  width: 339px;
+  height: 734px;
+  border-radius: 20px;
+    background: url("../img/kby_meiyoufensi.png") no-repeat center;
+}
+
+  .fistcenter_img{
+    display: none;
+    width: 339px;
+    height: 734px;
+    //background-image: url("../img/img_01.jpg");
+    background-size: 339px 734px;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+  }
+}
+
+//右边显示
+.rightSet .rightSetTab {
+  display: none;
+  min-height: 800px;
+  padding-bottom: 20px;
+  background-color: white;
+  position: relative;
+
+  .rightSetHead p {
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    background-color: #333A52;
+  }
+
+  .mian_content{
+    padding: 20px 40px;
+    //头部title
+    .title{
+      border-left: 2px solid #21C6C6;
+      padding-left: 20px;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+  }
+
+
+  //保存按钮
+.parent_btn{
+  margin-top: 20px;
+  padding-left: 50%;
+}
+
+  //第1屏
+  &:nth-child(1){
+    display: block;
+    .goodsChooseFather{
+      padding: 0 40px ;
+    }
+      .goodsChoose{
+        margin: auto;
+        width: 300px;
+        height: 500px;
+        padding-top:150px;
+        text-align: center;
+        background:#E5E5E5 ;
+        border: 1px solid gainsboro;
+        p{
+          color: #B5B5B5;
+          font-size: 18px;
+          margin-bottom: 10px;
+        }
+      }
+  }
+
+
+  //第2屏and第5屏已选择视频
+  .videoSet{
+    &:after{
+      content: '';
+      height: 0;
+      visibility: hidden;
+      display: block;
+      clear: both;
+    }
+    li{
+      float: left;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      width:30%;
+      height: 180px;
+      border: 5px solid transparent;
+      position: relative;
+      border-radius: 5px;
+
+      &:hover{
+        border: 5px solid #FE925C;
+        .del_btn{
+          display: block;
+        }
+      }
+      img{
+        width: 100%;
+        height: 100%;
+
+      }
+      .del_btn{
+        display: none;
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        background: url("../img/yundian_quanping_shanchu.png") no-repeat;
+        position: absolute;
+        top:5px;
+        right: 5px;
+        z-index: 500;
+      }
+    }
+
+    //选择视频
+    .videoStyle{
+      float: left;
+      margin-top: 3px;
+      margin-bottom: 10px;
+      width:30%;
+      height: 173px;
+      padding-top: 40px;
+      border: 5px solid transparent;
+      position: relative;
+      border-radius: 5px;
+      text-align: center;
+      background:#E5E5E5 ;
+      color: grey;
+      .choose_video{
+        img{
+          width: 70px;
+          height: 70px;
+        }
+      }
+    }
+  }
+
+  //第6屏
+  .have_choosed_goods{
+    li{
+      position: relative;
+      padding: 10px 50px 10px 89px;
+      margin-bottom: 10px;
+      font-size: 18px;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+      .red{
+        color: red;
+      }
+      .img_show{
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 65px;
+        height:65px;
+      }
+
+      .to_del{
+        cursor: pointer;
+        position: absolute;
+        top:10px;
+        right: 0;
+        display: inline-block;
+       font-size: 38px;
+        color:#FC925C ;
+      }
+    }
+  }
+  .add_trends,.add_goods{
+    margin-top: 20px;
+    text-align: center;
+    background:#E5E5E5 ;
+    padding: 15px 0;
+    color: #B5B5B5;
+    cursor: pointer;
+  }
+
+  //&:nth-child(8){
+  //  .have_choosed_goods{
+  //
+  //    li{
+  //      padding: 5px 100px 10px 50px;
+  //      font-size: 11px;
+  //      .img_show{
+  //        position: absolute;
+  //        top:0;
+  //        left: 0;
+  //        width: 40px;
+  //        height:40px;
+  //      }
+  //      .time{
+  //        position: absolute;
+  //        top:0;
+  //        right: 40px;
+  //      }
+  //
+  //      .to_del{
+  //        font-size: 38px;
+  //        margin-top: -11px;
+  //      }
+  //
+  //      .content{
+  //       word-wrap:break-word;
+  //        word-break:normal;
+  //    }
+  //
+  //  }
+  //}
+
+}
+
+//选择视频弹框
+
+#choose_videoBox{
+  display: none;
+  padding: 20px;
+  //中间按钮
+  .centerBtn {
+  margin-bottom: 20px;
+    &:after{
+      content: '';
+      height: 0;
+      visibility: hidden;
+      display: block;
+      clear: both;
+    }
+
+    li{
+      cursor: pointer;
+      float: left;
+      margin: 0 8px 5px 0;
+      padding: 4px 8px;
+      border-radius: 5px;
+      background: #FFE5DA;
+      &.active{
+        background:#FE894D ;
+        color: white;
+      }
+      &:hover{
+        background:#FE894D ;
+        color: white;
+      }
+    }
+  }
+
+  .center_video{
+    padding:0 20px;
+    &:after{
+      content: '';
+      height: 0;
+      visibility: hidden;
+      display: block;
+      clear: both;
+    }
+
+    li{
+      float: left;
+      margin: 0 10px 5px 0;
+      position: relative;
+      width: 160px;
+      height: 160px;
+      z-index: 2;
+      .img_video{
+        width: 100%;
+        height: 100%;
+      }
+      .to_play{
+        cursor: pointer;
+        background-image:url("../img/videoPlay.png") ;
+        background-repeat: no-repeat;
+        background-size: 60%;
+        width:62px;
+        height: 62px;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 80;
+      }
+      .the_cheack{
+          cursor: pointer;
+          width: 37px;
+          height: 37px;
+          background-image: url("../img/yundian_dianpuguanli_weixuan.png");
+          background-repeat: no-repeat;
+          background-size: 60%;
+          position: absolute;
+          top:4px;
+          right: 0px;
+        z-index: 1010;
+        }
+      .to_cheack{
+        display: none;
+        cursor: pointer;
+        width: 37px;
+        height: 37px;
+        background-image: url("../img/videoChecked.png");
+        background-repeat: no-repeat;
+        background-size: 60%;
+        position: absolute;
+        top:5px;
+        right: 0px;
+        z-index: 100;
+      }
+    }
+
+    //选择视频
+    .videoStyle{
+      float: left;
+      margin: 0 10px 5px 0;
+      position: relative;
+      width: 160px;
+      height: 160px;
+      padding-top: 30px;
+      position: relative;
+      text-align: center;
+      background:#E5E5E5 ;
+      color: grey;
+      .choose_video{
+        cursor: pointer;
+        img{
+          width: 70px;
+          height: 70px;
+        }
+      }
+    }
+
+    //选择图片
+    .imgStyle{
+      display: none;
+      float: left;
+      margin: 0 10px 5px 0;
+      position: relative;
+      width: 160px;
+      height: 160px;
+      padding-top: 30px;
+      position: relative;
+      text-align: center;
+      background:#E5E5E5 ;
+      color: grey;
+      .choose_img{
+        cursor: pointer;
+        img{
+          width: 70px;
+          height: 70px;
+        }
+      }
+    }
+
+  }
+}
+
+//设置视频封面弹框
+#cover_box{
+  display: none;
+  padding: 30px;
+  font-size: 18px;
+  .title{
+    border-left: 2px solid #21C6C6;
+    padding-left: 20px;
+    margin-bottom: 15px;
+  }
+
+  .goodsChooseFather{
+    .goodsChoose{
+      margin: auto;
+      width: 300px;
+      height: 400px;
+      text-align: center;
+      background: #E5E5E5;
+      border: 1px solid gainsboro;
+      .chooseImg{
+        margin-top: 100px;
+      }
+      p{
+        color: #B5B5B5;
+      }
+
+    }
+  }
+
+  //已上传图片
+  .haveUpload{
+    padding-left: 100px;
+    display: none;
+    .choosedCoverImg{
+      margin: auto;
+      width: 300px;
+      height: 400px;
+      z-index: 1000;
+    }
+  }
+}
+
+//添加商品弹框
+#choose_goodsBox{
+  display: none;
+  padding: 20px;
+
+  .top_box{
+    position: relative;
+    .search_title{
+      height: 40px;
+      width: 550px;
+      padding-left: 15px;
+      border: 1px solid gainsboro;
+      border-radius: 3px;
+
+    }
+    .have_searched_box{
+      display: none;
+      position: absolute;
+      top:40px;
+      left: 2px;
+      z-index: 1000;
+      border: 1px solid gainsboro;
+      border-top: none;
+      max-height: 400px;
+      overflow-y: auto;
+      li{
+        padding: 8px 5px;
+        width: 544px;
+        //padding-left: 100px;
+        position: relative;
+        background: white;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        &:hover{
+          background: #F0F0F0;
+        }
+        input{
+          margin: 0 20px;
+        }
+
+        img{
+          width: 35px;
+          height: 35px;
+          vertical-align: middle;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+  .title{
+    margin: 15px 0;
+    border-left: 2px solid #21C6C6;
+    padding-left: 20px;
+    font-size: 18px;
+  }
+
+  .add_goods{
+    margin-left: 120px;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    background:#E5E5E5 ;
+    padding-top: 100px;
+    color: #B5B5B5;
+    cursor: pointer;
+  }
+
+  .haveUpload{
+    display: none;
+    //已上传图片
+    #choosedGoodImg{
+      margin-left: 120px;
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+}
+
+//选择动态弹框
+#choose_trendsBox{
+  display: none;
+  padding: 20px;
+  form{
+    margin-bottom: 20px;
+    .to_search{
+      display: inline-block;
+      margin-left: 20px;
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      background: #1BE1D7;
+    }
+  }
+  .to_choose_content{
+    padding: 20px;
+    border: 1px solid gainsboro;
+    li{
+      padding:0 30px;
+      margin-bottom: 15px;
+      position: relative;
+      input{
+        position: absolute;
+        top:0;
+        left: 0;
+      }
+      .time{
+        position: absolute;
+        top:0;
+        right: 0;
+      }
+      .content_img{
+        img{
+          width: 50px;
+          height: 50px;
+          margin-right: 10px;
+        }
+      }
+      .content_title{
+        padding-right: 40px;
+      }
+    }
+  }
+}
+

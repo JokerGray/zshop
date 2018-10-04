@@ -1,0 +1,424 @@
+body {
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+/**顶部时间选择和店铺选择*/
+.top {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+}
+.top .timeFilter {
+  float: left;
+}
+.top .timeFilter #day {
+  width: 106px;
+  height: 34px;
+  background: url("../../../assets/common/img/dateIcon.png") no-repeat left 3px;
+  -webkit-background-size: 24px 24px;
+  background-size: 24px 24px;
+  padding-left: 30px;
+  color: #1e9fff;
+  border: none;
+  cursor: pointer;
+}
+.top .timeFilter > i {
+  font-family: SimSun;
+  font-weight: 700;
+}
+.top .timeFilter .shopName {
+  font-size: 16px;
+  color: #333333;
+}
+.top .shopFilter {
+  float: right;
+  width: 150px;
+  margin-top: 8px;
+}
+/**概况*/
+.overviewBox {
+  padding: 0 20px;
+  margin-top: 20px;
+}
+.overviewBox .overview {
+  width: 100%;
+  min-height: 300px;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+  overflow: hidden;
+}
+.overviewBox .overview .overview-left {
+  float: left;
+  height: 300px;
+  width: 770px;
+}
+.overviewBox .overview .overview-left .timeText {
+  font-size: 16px;
+  color: #333333;
+  padding: 16px 20px;
+}
+.overviewBox .overview .overview-left .payMoney {
+  padding: 0 20px;
+}
+.overviewBox .overview .overview-left .payMoney > div:first-of-type {
+  float: left;
+}
+.overviewBox .overview .overview-left .payMoney > div:first-of-type .moneyIcon {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  background: url("../imgages/ic_zhifujine.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: middle;
+}
+.overviewBox .overview .overview-left .payMoney > div:first-of-type > div {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+.overviewBox .overview .overview-left .payMoney > div:first-of-type > div > p:first-of-type {
+  font-size: 15px;
+  color: #333333;
+  line-height: 30px;
+}
+.overviewBox .overview .overview-left .payMoney > div:first-of-type > div > p:last-of-type {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333333;
+  line-height: 30px;
+}
+.overviewBox .overview .overview-left .payMoney > div:last-of-type {
+  float: right;
+  line-height: 30px;
+}
+.overviewBox .overview .overview-left .payMoney > div:last-of-type > p {
+  font-size: 14px;
+  color: #333333;
+  text-align: right;
+}
+.overviewBox .overview .overview-left .payMoney > div:last-of-type ul li {
+  float: left;
+  margin-left: 20px;
+}
+.overviewBox .overview .overview-left .payMoney > div:last-of-type ul li > i:first-of-type {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+}
+.overviewBox .overview .overview-left .payMoney > div:last-of-type ul li > i:first-of-type.todayIcon {
+  background-color: #1e9fff;
+}
+.overviewBox .overview .overview-left .payMoney > div:last-of-type ul li > i:first-of-type.dayBeforeIcon {
+  background-color: #cccccc;
+}
+.overviewBox .overview .overview-left .payMoney > div:last-of-type ul li > i:last-of-type {
+  font-size: 14px;
+  color: #333333;
+  margin-left: 2px;
+}
+.overviewBox .overview .payMoney-right {
+  float: left;
+  height: 300px;
+  width: 925px;
+  overflow-x: auto;
+  position: relative;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(1) {
+  display: inline-block;
+  width: 40%;
+  vertical-align: top;
+  padding-left: 20px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(1) li {
+  margin-top: 35px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(1) li .listICons {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: middle;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(1) li > div {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 30px;
+  margin-left: 6px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(1) li > div > p:first-of-type {
+  font-size: 15px;
+  color: #333333;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(1) li > div > p:first-of-type span:first-of-type {
+  display: inline-block;
+  width: 90px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(1) li > div > p:first-of-type span:last-of-type {
+  margin-left: 10px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(1) li > div > p:last-of-type {
+  font-size: 20px;
+  color: #333333;
+  font-weight: 700;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(1) li:nth-of-type(1) .listICons {
+  background: url("../imgages/ic_cjjianshu.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(1) li:nth-of-type(2) .listICons {
+  background: url("../imgages/ic_xscjbishu.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(1) li:nth-of-type(3) .listICons {
+  background: url("../imgages/ic_dnshop.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) {
+  display: inline-block;
+  width: 59%;
+  vertical-align: top;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li {
+  float: left;
+  width: 230px;
+  margin: 0 20px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li .listICons {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: middle;
+  margin-top: 6px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li > div {
+  line-height: 30px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li > div > p:first-of-type {
+  font-size: 15px;
+  color: #333333;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li > div > p:first-of-type span:first-of-type {
+  display: inline-block;
+  width: 90px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li > div > p:first-of-type span:last-of-type {
+  margin-left: 10px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li > div > p:last-of-type {
+  font-size: 20px;
+  color: #333333;
+  font-weight: 700;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li:nth-of-type(1) {
+  margin-top: 36px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li:nth-of-type(1) .listICons {
+  background: url("../imgages/ic_fangke.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li:nth-of-type(2) {
+  margin-top: 36px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li:nth-of-type(2) .listICons {
+  background: url("../imgages/ic_shoucang.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li:nth-of-type(3) {
+  margin-top: 25px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li:nth-of-type(3) .listICons {
+  background: url("../imgages/ic_dianjishu.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li:nth-of-type(4) {
+  margin-top: 25px;
+}
+.overviewBox .overview .payMoney-right ul:nth-of-type(2) li:nth-of-type(4) .listICons {
+  background: url("../imgages/ic_yuyue.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.overviewBox .overview .payMoney-right .cutLine {
+  position: absolute;
+  width: 1px;
+  height: 200px;
+  border-left: 1px solid #dddddd;
+  top: 50px;
+  left: 36.5%;
+}
+/**访客转换*/
+.visitorConversionBox {
+  width: 100%;
+  padding: 0 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.visitorConversionBox .visitorConversion {
+  width: 100%;
+  min-height: 390px;
+  background-color: #fff;
+  padding-bottom: 20px;
+  border: 1px solid #dddddd;
+}
+.visitorConversionBox .visitorConversion > p {
+  font-size: 15px;
+  color: #333333;
+  padding: 16px 0 0 20px;
+}
+.visitorConversionBox .visitorConversion .toCollection,
+.visitorConversionBox .visitorConversion .toPay {
+  display: inline-block;
+  width: 383px;
+  margin-left: 18%;
+  padding: 0 40px;
+  font-size: 0;
+  vertical-align: top;
+  margin-top: 20px;
+}
+.visitorConversionBox .visitorConversion .toCollection .top-chart > div,
+.visitorConversionBox .visitorConversion .toPay .top-chart > div {
+  display: inline-block;
+  vertical-align: top;
+}
+.visitorConversionBox .visitorConversion .toCollection .top-chart > div:nth-of-type(2),
+.visitorConversionBox .visitorConversion .toPay .top-chart > div:nth-of-type(2) {
+  width: 123px;
+}
+.visitorConversionBox .visitorConversion .toCollection .top-chart > div:nth-of-type(2) ul,
+.visitorConversionBox .visitorConversion .toPay .top-chart > div:nth-of-type(2) ul {
+  float: right;
+}
+.visitorConversionBox .visitorConversion .toCollection .top-chart > div:nth-of-type(2) ul li,
+.visitorConversionBox .visitorConversion .toPay .top-chart > div:nth-of-type(2) ul li {
+  width: 100%;
+}
+.visitorConversionBox .visitorConversion .toCollection .top-chart > div:nth-of-type(2) ul li:nth-of-type(2),
+.visitorConversionBox .visitorConversion .toPay .top-chart > div:nth-of-type(2) ul li:nth-of-type(2) {
+  margin-top: 30px;
+}
+.visitorConversionBox .visitorConversion .toCollection .top-chart > div:nth-of-type(2) ul li p,
+.visitorConversionBox .visitorConversion .toPay .top-chart > div:nth-of-type(2) ul li p {
+  color: #333333;
+  line-height: 30px;
+}
+.visitorConversionBox .visitorConversion .toCollection .top-chart > div:nth-of-type(2) ul li p:nth-of-type(1),
+.visitorConversionBox .visitorConversion .toPay .top-chart > div:nth-of-type(2) ul li p:nth-of-type(1) {
+  font-size: 15px;
+}
+.visitorConversionBox .visitorConversion .toCollection .top-chart > div:nth-of-type(2) ul li p:nth-of-type(2),
+.visitorConversionBox .visitorConversion .toPay .top-chart > div:nth-of-type(2) ul li p:nth-of-type(2) {
+  font-size: 20px;
+  font-weight: 700;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen > p,
+.visitorConversionBox .visitorConversion .toPay .topTen > p {
+  font-size: 15px;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen > p i,
+.visitorConversionBox .visitorConversion .toPay .topTen > p i {
+  color: #333333;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen > p > span,
+.visitorConversionBox .visitorConversion .toPay .topTen > p > span {
+  color: #999999;
+  cursor: pointer;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen > p > span.active,
+.visitorConversionBox .visitorConversion .toPay .topTen > p > span.active {
+  color: #333333;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen > p:last-of-type,
+.visitorConversionBox .visitorConversion .toPay .topTen > p:last-of-type {
+  margin-top: 20px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #cccccc;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen > p:last-of-type span:first-of-type,
+.visitorConversionBox .visitorConversion .toPay .topTen > p:last-of-type span:first-of-type {
+  float: left;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen > p:last-of-type span:last-of-type,
+.visitorConversionBox .visitorConversion .toPay .topTen > p:last-of-type span:last-of-type {
+  float: right;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen ul,
+.visitorConversionBox .visitorConversion .toPay .topTen ul {
+  height: 250px;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen ul li,
+.visitorConversionBox .visitorConversion .toPay .topTen ul li {
+  margin-top: 6px;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen ul li span,
+.visitorConversionBox .visitorConversion .toPay .topTen ul li span {
+  font-size: 14px;
+  color: #333333;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen ul li span:first-of-type,
+.visitorConversionBox .visitorConversion .toPay .topTen ul li span:first-of-type {
+  float: left;
+  max-width: 225px;
+  overflow: hidden;
+  /*超出部分隐藏*/
+  white-space: nowrap;
+  /*不换行*/
+  text-overflow: ellipsis;
+  /*超出部分文字以...显示*/
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen ul li span:last-of-type,
+.visitorConversionBox .visitorConversion .toPay .topTen ul li span:last-of-type {
+  float: right;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen ul li.noDataTips,
+.visitorConversionBox .visitorConversion .toPay .topTen ul li.noDataTips {
+  width: 100%;
+  height: 250px;
+  text-align: center;
+  margin-top: 0;
+  line-height: 250px;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen ul li.noDataTips i,
+.visitorConversionBox .visitorConversion .toPay .topTen ul li.noDataTips i {
+  font-size: 14px;
+  color: #333333;
+  vertical-align: middle;
+}
+.visitorConversionBox .visitorConversion .toCollection .topTen ul li.noDataTips i:first-of-type,
+.visitorConversionBox .visitorConversion .toPay .topTen ul li.noDataTips i:first-of-type {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: url("../imgages/ic_tishi.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  margin-right: 4px;
+}
+.visitorConversionBox .visitorConversion .toPay {
+  display: inline-block;
+  width: 383px;
+  margin-left: 18%;
+}
+body .layui-laydate .layui-this {
+  background-color: #1e9fff !important;
+}
+/*# sourceMappingURL=reportCSDayBusiness.css.map */

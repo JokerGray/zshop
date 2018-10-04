@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>结算中心 - 智享城市·智享头条</title>
+    <!-- Bootstrap -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/income.css" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="accounting_center">
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div id="page_R" class="right pull-right">
+                <div class="tab-panel newslist-tab">
+                    <ul class="tabinner">
+                        <li class="active">结算中心</li>
+                    </ul>
+                </div>
+                <div class="income-left">
+                    <div class="income-right col-md-4 col-sm-4">
+                        <ul>
+                            <li>最后一笔提现 待打款</li>
+                            <li>
+                                <span id="articlemoney">0</span>
+                            </li>
+                            <li>日起:
+                                <span id="articleMonth">0</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="income-right col-md-4 col-sm-4">
+                        <ul class="income_ul">
+                            <li>可提现金额</li>
+                            <li>
+                                <span id="videomoney">0</span>
+                            </li>
+                            <li>总金额:
+                                <span id="videoMonth">0</span>
+                            </li>
+                            <!--<div id="withDraw_btn">
+                                <button>提现</button>
+                                <p>提现帮助</p>
+                            </div>-->
+                        </ul>
+                    </div>
+                    <div class="income-right income-top col-md-4 col-sm-4">
+                        <ul>
+                            <li>累计提现金额(元)</li>
+                            <li id="totalAmount">0</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="table account_table">
+                    <p id="acconut_tabUnit">本报表内金额单元为(元)</p>
+                    <div id="account_Table" class="table-left">
+                        <div class="panel panel-default">
+                            <table class="table table-hover">
+                                <thead id="table_head">
+                                    <td>时间</td>
+                                    <td>结算周期</td>
+                                    <td>收益合计(含税)</td>
+                                    <td>扣税</td>
+                                    <td>打款金额(扣税)</td>
+                                    <td>打款状态</td>
+                                    <td>查看</td>
+                                </thead>
+                                <tbody id="statement_con"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="page" class="text-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹出框 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">单笔结算详情</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="basic_info">基础信息</p>
+                    <div class="clearfix">
+                        <div class="fl">
+                            <p>时间区间</p>
+                            <p>打款状态</p>
+                            <!-- <p>头条广告(含税)</p> -->
+                            <!-- <p>视频收益(含税)</p> -->
+                            <p>收益合计(含税)</p>
+                            <p class="deduction">扣税</p>
+                            <p>支付金额(税后)</p>
+                        </div>
+                        <div class="fl pop_listRight">
+                            <p class="listFirst"></p>
+                            <p class="listSecond"></p>
+                            <!-- <p class="listThird"></p> -->
+                            <p class="listFouth"></p>
+                            <p class="listFifth deduction"></p>
+                            <p class="listSix"></p>
+                        </div>
+                    </div>
+                    <p class="deductionBottom">★24小时广告和视频收益需扣税(查看扣税计算方式)</p>
+                    <p>★赞赏所得金额无需缴税</p>
+                    <p>★支付金额为实际到帐金额</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">确认</button>
+                </div>
+            </div>
+        </div>
+        <!-- 弹出框 -->
+
+        <script src="assets/jquery-1.10.2.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/layui/lay/dest/layui.all.js"></script>
+        <script src="assets/countUp.min.js"></script>
+        <script src="util/util.js"></script>
+        <script src="util/pub.js"></script>
+        <script src="js/accounting_center.js"></script>
+        <script id="noticeList" type="text/html">
+            {{# layui.each(d, function(index, item){ }}
+            <tr>
+                <td>{{item.lastSettlementTime}}</td>
+                <td><span class="createTime">{{item.createTime}}</span> ~ <span class="lastTime">{{item.lastSettlementTime}}</span></td>
+                <td>{{item.settlementPreTax}}</td>
+                <td>{{item.settlementTaxRevenue}}</td>
+                <td>{{item.settlementAmount}}</td>
+                <td class="settlementState" state={{item.settlementState}}></td>
+                <td class="listDetail cur-p" data-toggle="modal" data-target="#myModal">查看详情</td>
+            </tr>
+            {{# }); }} {{# if(d.length === 0){ }}
+            <td>暂无数据</td>
+            {{# } }}
+        </script>
+</body>
+
+</html>

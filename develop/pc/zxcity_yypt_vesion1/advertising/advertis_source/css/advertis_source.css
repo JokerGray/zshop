@@ -1,0 +1,294 @@
+/*tab切换*/
+.tab-change{
+    width: 160px;
+    margin: 28px auto 0;
+    overflow: hidden;
+    /*float: left;*/
+}
+.tab-change .tablist{
+    width: 50px;
+    text-align: center;
+    float: left;
+    padding: 5px 0;
+    cursor: pointer;
+    font-size: 18px;
+}
+.tab-change .tablist:last-child{
+    float: right;
+}
+.tab-change .acv{
+    border-bottom:2px solid #444;
+}
+.ctronlbox{
+    width: 1380px;
+    margin: 24px auto 0;
+    position: relative;
+}
+.ctronl-btn{
+    display: inline-block;
+    position: absolute;
+    bottom:0;
+    right: 0;
+}
+.ctronl-btn a{
+    display: block;
+    float: left;
+    background: #3b9bff;
+    color:#fff;
+    width: 94px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+}
+.ctronl-btn a:first-child{
+    margin-right: 9px;
+}
+/*内容*/
+.content-all{
+    width: 1380px;
+    margin: 34px auto;
+    overflow: hidden;
+}
+.content-all ul{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.content-all ul li{
+    width: 240px;
+    float: left;
+    margin:0 24px 24px 0;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+    border:1px solid #fff;
+    height: 226px;
+}
+.content-all ul li.avl{
+    border: 1px solid #3b9bff;
+}
+.content-all ul li:nth-of-type(5n+0){
+    margin-right: 0;
+}
+.content-all ul li .layui-form-checkbox{
+    float: right;
+    margin: 0;
+}
+.content-all ul li img{
+    display: block;
+    height: 144px;
+    margin: 0 auto;
+}
+.content-all ul li .detail-name{
+    font-size: 14px;
+    color:#383131;
+    display: block;
+    padding: 15px;
+}
+.content-all ul li .detail-size{
+    font-size: 14px;
+    color:#bbb;
+    display: block;
+    padding:0 15px 15px;
+}
+.chaeck {
+    position: absolute;
+    right: 0;
+    display: none;
+}
+.arealist a:hover{
+    color: #4fa5fe !important;
+}
+/*新增*/
+.demo111{
+    display: none;
+}
+.demo111 .centerCon{
+    width: 95%;
+    margin: 20px auto;
+}
+.centerCon .layui-form-label{
+    width: 120px;
+}
+.centerCon .layui-input-block{
+    margin-left: 120px;
+    width: 200px;
+}
+.centerCon .imgtype{
+    width:800px;
+}
+.centerCon .videotype{
+    width:800px;
+}
+.localUpload{
+    width: 110px;
+    height: 34px;
+    line-height: 34px;
+    cursor: pointer;
+    float: left;
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    margin: 0 5px 5px 0;
+    text-align: center;
+}
+.imgtype .tip{
+    display: inline-block;
+    padding: 8px 0;
+    float: left;
+    margin-right: 15px;
+}
+.cutbtn{
+    color:red;
+    float: left;
+    padding: 8px 0;
+    cursor: pointer;
+    margin-right: 25px;
+}
+.cutbtn:hover{
+    color:#e82323;
+}
+.localUpload:hover{
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.12);
+}
+.showimg{
+    border: 1px solid #e6e6e6;
+    width: 810px;
+    margin-left: 120px;
+    height: 400px;
+    overflow: auto;
+}
+.imglist{
+    position: relative;
+    display: inline-block;
+}
+.imglist i{
+    right: 0;
+}
+.video-wrap{
+    width: 800px;
+    margin-left: 120px;
+    height: 250px;
+}
+.videoHide{
+    border: 1px solid #e6e6e6;
+    height: 320px;
+    width: 100%;
+    overflow: auto;
+    margin-top: 5px;
+}
+.editor_img{
+    border: 1px solid #dfdfdf;
+}
+.redtip{
+    color:red;
+    display: none;
+    padding: 5px 0;
+}
+.videos{
+    display: none;
+}
+.form-btn {
+    position: relative;
+    width: 110px;
+    height: 34px;
+    margin-right: 20px;
+    border:1px solid #dfdfdf;
+    cursor: pointer;
+}
+.video-btn {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+.nodata2 {
+    display: none;
+    text-align: center;
+    height: 500px;
+    width: 100%;
+    background: url(../img/nodata2.png) no-repeat;
+    background-position: center;
+}
+/*详情弹窗*/
+.info{
+    padding: 10px;
+}
+.leftCon{
+    width: 600px;
+    height: 360px;
+    overflow: hidden;
+    float: left;
+    text-align: center;
+    border: 1px solid #c1c1c1;
+}
+.leftCon img,.leftCon video{
+    display: block;
+    height: 360px;
+    margin:0 auto;
+}
+.rightCon{
+    width: 220px;
+    height: 240px;
+    float: right;
+    background: #f5f5f5;
+    border:1px solid #c1c1c1;
+    margin-right: 5px;
+}
+.rightCon .layui-form-item{
+    width: 220px;
+    margin:0;
+}
+.rightCon .layui-form-label{
+    padding: 5px;
+}
+.rightCon .layui-input-block{
+    margin-left: 80px;
+    padding: 5px 0;
+}
+.rightCon .dels{
+    float: right;
+    display: block;
+    width: 68px;
+    height: 38px;
+    line-height: 38px;
+    cursor: pointer;
+    color: #fff;
+    background: #3b96e5;
+    text-align: center;
+    margin: 20px 10px 0 0;
+    border-radius: 5px;
+}
+.btns{
+    cursor: pointer;
+}
+.layui-form-checked i, .layui-form-checked:hover i{
+    color:#3b9bff;
+}
+/*修改勾选框样式*/
+.detail .layui-form-checkbox i {
+    width: 25px;
+    right: 2px;
+}
+
+.detail .layui-form-checkbox {
+    position: relative;
+    height: 25px;
+    line-height: 25px;
+    margin-right: 10px;
+    padding-right: 25px;
+    border: 1px solid #d2d2d2;
+    cursor: pointer;
+    font-size: 0;
+    border-radius: 2px;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+    box-sizing: border-box;
+}

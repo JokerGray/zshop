@@ -1,0 +1,49 @@
+/* pages/comment/comment.wxss */
+@import "/pages/message/message.wxss";
+.msg-box {padding: 0 24rpx;}
+.msg-text{overflow: hidden}
+.msg-title{float: left}
+.msg-img-head{
+    border-radius: 50%;
+    overflow: hidden
+}
+.msg-h3{
+    font-size: 30rpx;
+    width: 455rpx;
+    font-weight: normal;
+    line-height: 40rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.msg-time{
+    line-height: 40rpx;
+    float: left
+}
+.msg-content{
+    width: 138rpx;
+    height: 80rpx;
+    padding-right: 0;
+    float: right;
+    position: relative;
+     text-overflow:ellipsis;
+    white-space:unset;
+    overflow:hidden;
+    border-radius: 8rpx;
+}
+.msg-img-bg{
+    width: 100%;
+    height: 100%;
+    margin:0 auto;
+    margin-left:0;
+
+}
+.play{
+    width: 42rpx;
+    height: 48rpx;
+    position: absolute;
+    left: 52rpx;
+    top: 21rpx;
+}

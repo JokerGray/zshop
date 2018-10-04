@@ -1,0 +1,110 @@
+body {
+  background: #F7F7F7;
+}
+* {
+  box-sizing: border-box;
+}
+.title {
+  height: 90px;
+  background: white;
+  position: relative;
+}
+.title button {
+  float: right;
+  width: 100px;
+  background: #F8AB59;
+  margin-right: 50px;
+  margin-top: 20px;
+  font-size: 16px;
+}
+.content {
+  padding: 35px 110px;
+}
+.content table thead th {
+  background: #1dbfaf;
+  color: white;
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  width: 10%;
+  border-right: none;
+}
+.content table tbody .layui-table-cell {
+  height: 30px;
+  line-height: 30px;
+}
+.content table tbody td {
+  height: 65px;
+  line-height: 65px;
+  color: #999999;
+  font-size: 17px;
+  text-align: center;
+  width: 10%;
+  border-right: none;
+}
+.content table .tabicon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background: #25C7C0;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.content table .tabicon i {
+  font-size: 25px;
+  color: white;
+  float: left;
+  margin-left: 2px;
+}
+.content table .tabicon .delete {
+  margin-top: 2px ;
+}
+#addBox {
+  display: none;
+  padding: 20px 30px;
+  color: #666666;
+}
+#addBox .layui-form-item {
+  margin-bottom: 30px;
+}
+#addBox label {
+  width: 100px;
+}
+#addBox .show {
+  margin-right: 10px;
+}
+#addBox .picCheck {
+  position: relative;
+}
+#addBox .picCheck .layui-unselect {
+  margin-right: 40px;
+}
+#addBox .picCheck img {
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  width: 36px;
+  height: 36px;
+}
+#addBox .picCheck .file {
+  left: 120px;
+}
+#addBox .picCheck .success {
+  left: 212px;
+}
+#addBox .layui-form-switch {
+  width: 56px;
+  height: 24px;
+  line-height: 24px;
+}
+#thechooseShop {
+  position: absolute;
+  top: 30px;
+  left: 115px;
+  font-size: 16px;
+}
+#thechooseShop select {
+  width: 200px;
+  height: 30px;
+}

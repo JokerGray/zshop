@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <title>内容审核</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="common/css/modal.css"/>
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="content_audit/content_audit.css" />
+</head>
+<body>
+<!--common-head-->
+<!--<script src="common/js/util/head.js"></script>-->
+<div class="container-fluet" id="body-box">
+    <div class="row body-left-nav" >
+        <!--左侧栏导航end-->
+        <div class="jurisdiction-content">
+            <div class="common-title">
+                反馈审核 - <span class="jurisdiction-title-name">内容审核</span>
+            </div>
+            <div class="row jurisdiction-info">
+                <div class="jurisdiction-right-body">
+                    <div class="common-search">
+                        <form class="form-inline row" id="searchForm">
+                            <div class="form-group">
+                                <label class="control-lable" for="jurisdiction-name">标题：</label>
+                                <input type="text" class="form-control layui-input longinput" id="jurisdiction-name" placeholder="请输入信息" maxlength="15">
+                            </div>
+                            <!--<div class="form-group col-xs-3">
+                                <label class="control-label">审核对象：</label>
+                                <select class="form-control" id="obj">
+                                </select>
+                            </div>-->
+                            <div class="form-group">
+                                <label class="control-lable">审核状态：</label>
+                                <select class="form-control" id="searchA">
+                                    <option value="">--全部--</option>
+                                    <option value="0">未审核</option>
+                                    <option value="1">已通过</option>
+                                    <option value="2">未通过</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-lable">举报状态：</label>
+                                <select class="form-control" id="searchB">
+                                    <option value="">--全部--</option>
+                                    <option value="1">举报</option>
+                                    <option value="0">正常</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-success" id="searchBtn">
+                                <i class="search-icon"></i>&nbsp;查询
+                            </button>
+                        </form>
+                        <button type="button" class="btn btn-info setting" id="setting" data-toggle="modal" data-target="#modularSet">&nbsp;版块设置</button>
+                        <button type="button" class="btn btn-info setting" id="resetBtn">&nbsp;用户封号</button>
+                    </div>
+                    <!-- 表格 -->
+                    <div class="row common-table">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr class="active">
+                                <th>序号</th>
+                                <th>审核类型</th>
+                                <th style="width:210px;">标题</th>
+                                <th>审核对象</th>
+                                <th>审核状态</th>
+                                <th>举报状态</th>
+                                <th>处理状态</th>
+                                <th>平台用户ID</th>
+                                <th>举报时间</th>
+                                <th style="width:125px;">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="auditBody">
+
+                            </tbody>
+                        </table>
+                        <div class="common-page1">
+                            <div id="paging-box-count">
+
+                            </div>
+                            <div id="paging-box" class="basic-jump"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--版块设置模态框-->
+<div class="modal fade" id="modularSet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title">版块设置</h4>
+            </div>
+            <div class="modal-body">
+                    <button type="button" class="btn btn-info add-users" id="addNew">
+                        <i class="glyphicon glyphicon-plus font-xs"></i>&nbsp;新增
+                    </button>
+
+                <table class="table  table-hover">
+                    <thead>
+                        <tr class="active">
+                            <th>版块名称</th>
+                            <th>版块表名</th>
+                            <th style="width: 230px;">预设状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="board">
+                        <!--<tr>
+                            <td>约吧服务</td>
+                            <td>23132112</td>
+                            <td>
+                                <select name="">
+                                    <option value="0">发布即审核</option>
+                                    <option value="1">发布后审核</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn-lg delBut">
+                                    <i class="glyphicon glyphicon-minus-sign"></i><span>&nbsp;删除</span>
+                                </button>
+                            </td>
+                        </tr>-->
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn" id="saveSet">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--审核模态框-->
+<!--<div class="modal fade" id="modularAudit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title">审核</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="isPass">
+                    <div class="form-group">
+                        &lt;!&ndash;<label>内容</label>&ndash;&gt;
+                        <div id="show" style="width:992px;height:400px;">
+
+                        </div>
+                    </div>
+                        <label class="checkbox-inline">
+                            <input type="radio" class="pass" name="optionsRadiosinline" value="审核通过">审核通过
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" class="noPass" name="optionsRadiosinline" value="不予通过">不予通过
+                        </label>
+                </form>
+                    <div class="fail">
+                        <label class="checkbox-inline">
+                            <input type="radio" name="optionsRadiosinline" value="色情">色情
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="optionsRadiosinline" value="低俗">低俗
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="optionsRadiosinline" value="政治">政治
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="optionsRadiosinline" value="侵权">侵权
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="optionsRadiosinline" value="广告">广告
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="optionsRadiosinline" value="其他">其他
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="extra" rows="4" placeholder="请填写审核意见："></textarea>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn" id="saveAudit">保存</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+</body>
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="common/js/util/util.js"></script>
+<script type="text/javascript" src="common/js/login_success.js"></script>
+<script type="text/javascript" src="common/js/util/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/pub.js"></script>
+<script type="text/javascript" src="common/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+<!--<script type="text/javascript" src="common/assets/datetimepicker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="common/assets/datetimepicker/bootstrap-datepicker.zh-CN.js" charset="UTF-8"></script>-->
+<script type="text/javascript" src="content_audit/content_audit.js"></script>
+</html>

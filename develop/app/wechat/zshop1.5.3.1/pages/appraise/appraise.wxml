@@ -1,0 +1,65 @@
+<!--pages/appraise/appraise.wxml-->
+<!-- 导航栏 -->
+<view class='btn-area clearfix'>
+  <view class='{{num==0?"active":"noactive"}}' bindtap='chose' data-type='0'>全部评价<span>{{all}}</span></view>
+  <view class='{{num==1?"active":"noactive"}}' bindtap='chose' data-type='1'>好评<span>{{nice}}</span></view>
+  <view class='{{num==2?"active":"noactive"}}' bindtap='chose' data-type='2'>中评<span>{{medium}}</span></view>
+  <view class='{{num==3?"active":"noactive"}}' bindtap='chose' data-type='3'>差评<span>{{negative}}</span></view>
+  <view class='{{num==66?"active":"noactive"}}' bindtap='chose' data-type='66'>有图<span>{{hasPic}}</span></view>
+</view>
+<!-- 评价部分 -->
+<view class='main'>
+  <scroll-view scroll-y class="appraise-main">
+    <view class='user' wx:for="{{userData}}" wx:key="key">
+      <view class='user-top'>
+        <image src='{{item.memberImgName}}'></image>
+        <span>{{item.anonymous==1?'匿名评价':item.userCode}}</span>
+        <view class='right'>
+          <view class='star'>
+            <block wx:for="{{item.score}}" wx:key="key">
+              <image src='../../images/fullstar.png'></image>
+            </block>
+            <block wx:for="{{5-item.score}}" wx:key="key">
+              <image src='../../images/emptystar.png'></image>
+            </block>
+          </view>
+        </view>       
+      </view>
+      <text class='text-remark'>{{item.commentContent}}</text>
+      <view class='user-pic clearfix' >
+        <image wx:for="{{item.commentUploadList}}" wx:key="name" src='{{item.filePath}}'></image>  
+      </view> 
+      <view class='user-info clearfix'>
+        <span class='{{item.stockName==null?"hide":"show"}}'>规格: {{item.stockName}}</span>
+        <span>{{item.creatTime}}</span>
+      </view>
+    </view>
+  </scroll-view> 
+  <view class='oppic'>
+    <view class='zw-pic {{hideView?"hide":"show"}}'>
+      <image src='../../images/aparise.png'></image>
+      <text>暂无评价哦</text>
+    </view>  
+  </view>
+</view>
+
+
+  
+<!-- 底部悬浮栏 -->
+<!-- <view class='detail-nav'>
+  <view class='tabBar'>
+    <navigator>
+      <view><image class='icon' src=''></image></view>
+      <view class='text'>客服</view>
+    </navigator>
+    <navigator>
+      <view><image class='icon' src=''></image></view>
+      <view class='text'>店铺</view>
+    </navigator>       
+  </view>
+  <button class='add' bindtap='addCar'>加入购物车</button>
+  <button class='buy' bindtap='immeBuy'>立即购买</button>
+</view> -->
+
+
+             

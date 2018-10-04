@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<title>欢迎页</title>
+	<link href="../../assets/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+	<link href="../../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+	<link href="../../assets/hplus/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+	<link href="../../assets/hplus/css/animate.min.css" rel="stylesheet">
+	<link href="../../assets/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	<!--此页面引入css样式-->
+	<link rel="stylesheet" href="src/index.css">
+	<!-- jquery -->
+	<script type="text/javascript" src="../../assets/hplus/js/jquery.min.js"></script>
+
+	<!-- bootstrap -->
+	<script type="text/javascript" src="../../assets/hplus/js/bootstrap.min.js"></script>
+	
+	<!--layer弹出层插件-->
+	<script type="text/javascript" src="../../assets/layer/layer.js"></script>
+	
+	<!-- bootstrap-table -->
+	<link rel="stylesheet" type="text/css" href="../../assets/hplus/css/plugins/bootstrap-table/bootstrap-table.min.css" /> 
+	<script type="text/javascript" src="../../assets/hplus/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../assets/hplus/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+	<!-- iCheck选择框样式 -->
+	<link href="../../assets/hplus/css/plugins/iCheck/custom.css" rel="stylesheet">
+	<script src="../../assets/hplus/js/plugins/iCheck/icheck.min.js"></script>
+
+	<!-- layDate时间 -->
+	<script src="../../assets/laydate/laydate.js"></script>
+	<script src="../../assets/plugins/laydate/laydate.js"></script>
+
+	<!-- 共用的样式 -->
+	<link rel="stylesheet" type="text/css" href="../../assets/css/common.css"></link>
+
+	<!-- 弹层title样式统一 -->
+	<link rel="stylesheet" href="../../assets/check_index/layer/skin/default/layer.css">
+
+	<script type="text/javascript" src="../../assets/hplus/js/plugins/echarts/echarts.min.js"></script>
+	<style type="text/css">
+		 .layui-laydate-header i{
+            background: #fff;
+            border:0;
+        }
+        input#startTime,input#endTime {
+		    padding-left: 10px;
+		}
+
+		.laydate_bottom{
+			display:none;
+		} 
+		.fl{
+			float: left;
+		}
+		.fr{
+			float: right;
+		}
+		.saixuan{
+			width: 100%;
+			height: 60px;
+			display: flex;
+			align-items:center;
+			border-bottom: 1px solid #e5e6e7;
+		}
+		.filter{
+			height: 30px;
+			width: 100%;
+			line-height: 30px;
+			padding-left: 40px;
+		}
+		.filter>div{
+			padding-right: 40px;
+		}
+		.filter span{
+			font-weight: bold;
+			margin-right: 5px; 
+		}
+		.filter input{
+			display: inline-block;
+			box-sizing: border-box;
+			height: 30px;
+			outline: 0;
+			border:0;
+			border:1px solid #e5e6e7;
+			border-radius: 4px;
+			padding-left: 8px;
+		}
+		.filter select{
+			height: 30px;
+			outline: 0;
+			border:1px solid #e5e6e7;
+			border-radius: 4px;
+			padding-left:5px;
+		}
+		
+		.filter #startTime,.filter #endTime{
+			width: 100px;
+		}
+		.filter .search{
+			padding-right: 40px;
+		}
+		.filter .search >button{
+			height: 30px;
+		    width: 50px;
+		    border: 0;
+		    outline: 0;
+		    background: #23c6c8;
+		    border-radius: 3px;
+		    color: #fff;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="container-fluid white-bg">
+		<ul class="nav nav-tabs nav-top" role="tablist" id="tab">
+	        <li><a id="qbz" data-toggle="tab" href="#qbzContent" aria-expanded="false">抢标赚<span class="no1"></span></a></li>
+	        <li><a id="zwz" data-toggle="tab" href="#zwzContent" aria-expanded="false">转文赚<span class="no2"></span></a></li>
+	        <li><a id="wjz" data-toggle="tab" href="#wjzContent" aria-expanded="false">玩家转<span class="no3"></span></a></li>
+	        <li><a id="fxz" data-toggle="tab" href="#fxzContent" aria-expanded="false">分享赚<span class="no4"></span></a></li>
+	    </ul>
+    </div>
+
+    <div class="gray-bg" style="height: 2rem;"></div>
+	<div class="tab-content white-bg">
+	
+		<!-- 抢标赚 -->
+		<div id="qbzContent" class="tab-pane">
+			<div class="saixuan">
+				<div class="filter">
+					<div class="filter_title fl">
+						<span>任务标题:</span>
+						<input type="text">
+					</div>
+
+					<div class="pulish_shop fl">
+						<span>发布店铺:</span>
+						<select name="" id="" class="selec"> 
+							<option value=""  class="selec_shop" id="qbz_sel">全 部</option>
+						</select>
+					</div>
+
+					<div class="publish_time fl">
+						<span>发布时间:</span>
+						<input type="text" id="startTime" placeholder="年 - 月 - 日 "> - <input type="text" id="endTime" placeholder="年 - 月 - 日 ">
+					</div>
+
+					<div class="status fl">
+						<span>状态:</span>
+						<select name="" id="" >
+							<option value="">全 部</option>
+							<option value="1">进行中</option>
+							<option value="2">已完成</option>
+						</select>
+					</div>
+
+					<div class="search fr">
+						<button id="qbz_search">搜索</button>
+					</div>
+				</div>
+			</div>
+			<div class="table-tool-content">
+			</div>
+			<div class="table-tool-content">
+				<div class="container-fluid table-content">
+					<table class="table table-hover table-condensed" id="qbzTable">
+						
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 转文赚 -->
+		<div id="zwzContent" class="tab-pane">
+			<div class="ibox float-e-margins chart-content">
+				<div class="ibox-title">
+					<h5 class="text-muted">转文赚总体信息</h5>
+					<div class="pull-right">
+						<div class="btn-group date-group">
+							<button type="button" class="btn btn-xs btn-white active" value="1">天</button>
+							<button type="button" class="btn btn-xs btn-white" value="2">月</button>
+							<button type="button" class="btn btn-xs btn-white" value="3">年</button>
+						</div>
+					</div>
+				</div>
+                <div class="ibox-content">
+                	<div class="row">
+                    	<div class="col-sm-9">
+                        	<div class="flot-chart">
+                            	<div class="flot-chart-content" id="zwzChart"></div>
+                           	</div>
+                        </div>
+                        <div class="col-sm-3">
+                        	<ul class="stat-list">
+                                <li>
+                                    <h2 class="no-margins charge">0</h2>
+                                    <small>总支出</small>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 0;" class="progress-bar"></div>
+                                    </div>
+								</li>
+                                <li>
+                                    <h2 class="no-margins reprintNum">0</h2>
+                                    <small>总转发次数</small>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 0;" class="progress-bar"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h2 class="no-margins clickNum">0</h2>
+                                    <small>总点击量</small>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 0;" class="progress-bar"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gray-bg" style="height: 2rem;"></div>
+			<div class="table-tool-content">
+				<div class="container-fluid table-tool">
+					<span class="table-title"><strong>转文赚文章列表</strong></span>
+					<span class="table-title yellow-bg">总共<span class="count">0</span>个转文赚任务正在进行</span>
+				</div>
+			</div>
+			<div class="saixuan">
+				<div class="filter">
+					<div class="filter_title fl">
+						<span>任务标题:</span>
+						<input type="text">
+					</div>
+
+					<div class="pulish_shop fl">
+						<span>发布店铺:</span>
+						<select name="" id="" class="selec"> 
+							<option value=""  class="selec_shop">全 部</option>
+						</select>
+					</div>
+
+					<div class="publish_time fl">
+						<span>发布时间:</span>
+						<input type="text" id="zwz_startTime" placeholder="年 - 月 - 日 "> - <input type="text" id="zwz_endTime" placeholder="年 - 月 - 日 ">
+					</div>
+
+					<div class="status fl">
+						<span>状态:</span>
+						<select name="" id="" >
+							<option value="">全 部</option>
+							<option value="1" >进行中</option>
+							<option value="2">已完成</option>
+						</select>
+					</div>
+
+					<div class="search fr">
+						<button id="zwz_search">搜索</button>
+					</div>
+				</div>
+			</div>
+			<div class="table-tool-content">
+				<div class="container-fluid table-content zwz_table">
+					<table class="table table-hover table-condensed" id="zwzTable">
+						
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<!-- 玩家转 -->
+        <div id="wjzContent" class="tab-pane">
+        	<div class="saixuan">
+				<div class="filter">
+					<div class="filter_title fl">
+						<span>任务标题:</span>
+						<input type="text">
+					</div>
+
+					<div class="pulish_shop fl">
+						<span>发布店铺:</span>
+						<select name="" id="" class="selec"> 
+							<option value=""  class="selec_shop">全 部</option>
+						</select>
+					</div>
+
+					<div class="publish_time fl">
+						<span>发布时间:</span>
+						<input type="text" id="wjz_startTime" placeholder="年 - 月 - 日 "> - <input type="text" id="wjz_endTime" placeholder="年 - 月 - 日 ">
+					</div>
+
+					<div class="status fl">
+						<span>状态:</span>
+						<select name="" id="" >
+							<option value="">全 部</option>
+							<option value="1">上架</option>
+							<option value="2">下架</option>
+							<option value="3">过期</option>
+						</select>
+					</div>
+
+					<div class="search fr">
+						<button id="wjz_search">搜索</button>
+					</div>
+				</div>
+			</div>
+            <div class="table-tool-content"></div>
+			<div class="table-tool-content">
+				<div class="container-fluid table-content">
+					<table class="table table-hover table-condensed" id="wjzTable">
+						
+					</table>
+				</div>
+			</div>
+        </div>
+        
+        <!-- 分享赚 -->
+        <div id="fxzContent" class="tab-pane">
+	        <div class="ibox chart-content float-e-margins">
+				<div class="ibox-title">
+					<h5 class="text-muted">分享赚总体信息</h5>
+					<div class="pull-right">
+						<div class="btn-group date-group">
+							<button type="button" class="btn btn-xs btn-white active" value="1">天</button>
+							<button type="button" class="btn btn-xs btn-white" value="2">月</button>
+							<button type="button" class="btn btn-xs btn-white" value="3">年</button>
+						</div>
+					</div>
+				</div>
+                <div class="ibox-content">
+                	<div class="row">
+                    	<div class="col-sm-9">
+                        	<div class="flot-chart">
+                            	<div class="flot-chart-content" id="fxzChart"></div>
+                           	</div>
+                        </div>
+                        <div class="col-sm-3">
+                        	<ul class="stat-list">
+                                <li>
+                                    <h2 class="no-margins lakeNum">0</h2>
+                                    <small>拉客量</small>
+                                    <div class="stat-percent"></i>
+                                    </div>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 0;" class="progress-bar"></div>
+                                    </div>
+								</li>
+                                <li>
+                                    <h2 class="no-margins zhifuNum">0</h2>
+                                    <small>总已支付量</small>
+                                    <div class="stat-percent"></i>
+                                    </div>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 0;" class="progress-bar"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h2 class="no-margins shareNum">0</h2>
+                                    <small>总转发量</small>
+                                    <div class="stat-percent"></i>
+                                    </div>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 0;" class="progress-bar"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gray-bg" style="height: 2rem;"></div>
+            <div class="table-tool-content">
+				<div class="container-fluid table-tool fl">
+					<span class="table-title"><strong>分享赚任务列表</strong></span>
+					<span class="table-title yellow-bg">总共<span class="count">0</span>个分享赚优惠券上架</span>
+				</div>
+			</div>
+			
+			<div class="saixuan">
+				<div class="filter">
+					<div class="filter_title fl">
+						<span>任务标题:</span>
+						<input type="text">
+					</div>
+
+					<div class="pulish_shop fl">
+						<span>发布店铺:</span>
+						<select name="" id="" class="selec"> 
+							<option value=""  class="selec_shop">全 部</option>
+						</select>
+					</div>
+
+					<div class="publish_time fl">
+						<span>发布时间:</span>
+						<input type="text" id="fxz_startTime" placeholder="年 - 月 - 日 "> - <input type="text" id="fxz_endTime" placeholder="年 - 月 - 日 ">
+					</div>
+
+					<div class="status fl">
+						<span>状态:</span>
+						<select name="" id="" >
+							<option value="">全 部</option>
+							<option value="1">上架</option>
+							<option value="2">下架</option>
+							<option value="4">过期</option>
+						</select>
+					</div>
+
+					<div class="search fr">
+						<button id='fxz_search'>搜索</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="table-tool-content">
+				<div class="container-fluid table-content">
+					<table class="table table-hover table-condensed" id="fxzTable">
+						
+					</table>
+				</div>
+			</div>
+        </div>
+	</div>
+	<script type="text/javascript" src="src/common.js"></script>
+	<script type="text/javascript" src="src/index.js"></script>	
+	<script>
+		var startDate = laydate.render({//渲染开始时间选择  
+    		elem: '#startTime',//通过id绑定html中插入的start  
+		    type: 'date',  
+		    max:'2099-12-31',//设置一个默认最大值         
+		}); 
+		var startDate = laydate.render({//渲染开始时间选择  
+    		elem: '#endTime',//通过id绑定html中插入的start  
+		    type: 'date',  
+		    max:'2099-12-31',//设置一个默认最大值         
+		}); 
+
+		var startDate = laydate.render({//渲染开始时间选择  
+    		elem: '#zwz_startTime',//通过id绑定html中插入的start  
+		    type: 'date',  
+		    max:'2099-12-31',//设置一个默认最大值         
+		}); 
+		var startDate = laydate.render({//渲染开始时间选择  
+    		elem: '#zwz_endTime',//通过id绑定html中插入的start  
+		    type: 'date',  
+		    max:'2099-12-31',//设置一个默认最大值         
+		}); 
+
+		var startDate = laydate.render({//渲染开始时间选择  
+    		elem: '#wjz_startTime',//通过id绑定html中插入的start  
+		    type: 'date',  
+		    max:'2099-12-31',//设置一个默认最大值         
+		}); 
+		var startDate = laydate.render({//渲染开始时间选择  
+    		elem: '#wjz_endTime',//通过id绑定html中插入的start  
+		    type: 'date',  
+		    max:'2099-12-31',//设置一个默认最大值         
+		}); 
+
+		var startDate = laydate.render({//渲染开始时间选择  
+    		elem: '#fxz_startTime',//通过id绑定html中插入的start  
+		    type: 'date',  
+		    max:'2099-12-31',//设置一个默认最大值         
+		}); 
+		var startDate = laydate.render({//渲染开始时间选择  
+    		elem: '#fxz_endTime',//通过id绑定html中插入的start  
+		    type: 'date',  
+		    max:'2099-12-31',//设置一个默认最大值         
+		}); 
+
+
+		var def = reqAjax('earnmoney/getUserManageShopListByBackuser', {
+			userId: userId,
+		});
+		def.then(function(data){
+			for(var i=0;i<data.data.length;i++){
+				 var content = $('.selec_shop').first().clone();
+				 content.text(data.data[i].orgName);
+				 content.attr('value',data.data[i].shopId);
+				 $('.selec').append(content);
+			}
+		});
+	</script>
+</body>
+</html>

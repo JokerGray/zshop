@@ -1,0 +1,260 @@
+<!--pages/store/store.wxml-->
+<view class='container store'>
+  <view class='storeInfo'>
+    <image src='{{bgImage}}' id='back'></image>
+    <view class='headBox'>
+      <view class='headPic'>
+        <image src="{{logoUrl}}"></image>
+      </view>
+      <view class='infoBox'>
+        <text class='storeName'>{{shopName}}</text>
+        <view id='fans'>粉丝数:
+          <text class='fansNum'>{{shopMsg.fansCounter}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='products'>
+      <view class='productsNum'>
+      <navigator url="../proList/proList" hover-class='none' open-type='switchTab'>
+        <text class='num'>{{shopMsg.goodsNum}}</text>
+        <view>全部商品</view>
+      </navigator>
+      </view>
+      <image src='images/whiteline.png'></image>
+      <navigator class='updateNum' url='newGoods/newGoods' hover-class='none'>
+        <text class='num'>{{shopMsg.UpNewNum}}</text>
+        <view>上新</view>
+      </navigator>
+      <image src='images/whiteline.png'></image>
+      <navigator class='activityNum' url='activity/activity' hover-class='none'>
+        <text class='num'>{{shopMsg.activityNum}}</text>
+        <view>活动</view>
+      </navigator>
+    </view>
+  </view>
+  <view class='tabBox'>
+    <view class="manage {{active == 'manage'?'active':'normal'}}" bindtap='tabChange' data-on="storeManage" id='manage'>云店社交</view>
+    <image src='images/greyline.png'></image>
+    <view class="brief {{active == 'brief'?'active':'normal'}}" bindtap='tabChange' data-on="storeBrief" id='brief'>云店简介</view>
+  </view>
+  <!-- 智经营 -->
+  <view class="storeBody {{active == 'manage'?'show':'hidden'}}" id='storeManage'>
+    <view id='dynamic'>
+      <view class='title'>
+        <view class='titleBox'>
+          <image src='images/yundain_dpzy_yddt.png' class='titleName dynamicTitle'></image>
+          <navigator url='../manage/manage?url=dynamic&index=0' hover-class='none'>
+            <image src='images/yundian_gengduohui.png' class='enter'></image>
+          </navigator>
+        </view>
+      </view>
+      <view class='body'>
+      <!-- 云店动态 -->
+        <view class='dynamic' wx:if="{{data.resMap.length>0}}">
+          <view class='dynamicBox'>
+            <view class='headBox' bindtap='goDynamic' data-dynamicid="{{data.resMap[0].videoAlbumId}}">
+              <view class='headPic'>
+                <image src='{{data.resMap[0].logoUrl}}'></image>
+              </view>
+              <view class='infoBox'>
+                <text class='storeName'>{{data.resMap[0].shopName!=''?data.resMap[0].shopName:'暂无店铺'}}</text>
+                <text class='date'>{{data.resMap[0].videoAlbumTime}}</text>
+              </view>
+            </view>
+            <view class='dynamicText' wx:if="{{data.resMap[0].videoAlbumDescription!=''}}" bindtap='goDynamic' data-dynamicid="{{data.resMap[0].videoAlbumId}}">
+              <text>{{data.resMap[0].videoAlbumDescription}}</text>
+            </view>
+            <view class='imageBox' wx:if="{{data.resMap[0].videoAlbumType==1}}" data-length="{{data.resMap[0].mylength}}">
+              <image wx:for="{{data.resMap[0].urls}}" wx:for-item="items" wx:key="index" src="{{items}}" data-src='{{items}}' bindtap='previewImage' data-index="{{data.resMap[0].index}}" class='type1' wx:if="{{data.resMap[0].mylength==1}}"></image>
+              <image wx:for="{{data.resMap[0].urls}}" wx:for-item="items" wx:key="index" src="{{items}}" data-src='{{items}}' bindtap='previewImage' data-index="{{data.resMap[0].index}}" class='type2' wx:if="{{data.resMap[0].mylength==2}}"></image>
+              <image wx:for="{{data.resMap[0].urls}}" wx:for-item="items" wx:key="index" src="{{items}}" data-src='{{items}}' bindtap='previewImage' data-index="{{data.resMap[0].index}}" class='type3' wx:if="{{data.resMap[0].mylength>=3}}"></image>
+            </view>
+            <view class='videoBox' wx:if="{{data.resMap[0].videoAlbumType==2}}">
+              <video src='{{data.resMap[0].urls[0]}}' id='myVideo' binderror="videoErrorCallback" poster='{{data.resMap[0].videoAlbumCoverUrl}}'></video>
+            </view>
+            <view class='readInfo'>
+              <view>
+                <text class='readNum'>{{data.resMap[0].videoAlbumTimes}}</text> 阅读
+              </view>
+              <view class='replyInfo'>
+                <view class='reply'>
+                  <image src='images/yundian_dpzy_pinglun.png'></image>
+                  <text class='replyNum'>{{data.resMap[0].totalCount}}</text>
+                </view>
+                <view class='like'>
+                  <image src='images/yundian_dpzy_dianzan.png'></image>
+                  <text class='likeNum'>{{data.resMap[0].totalLikeCount}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 动态空白页 -->
+         <view class="blank" wx:else>
+            <block>
+              <image src='images/yundian_zjy_yddt.png'></image>
+              <navigator url="" hover-class='none' wx-if="{{type==1}}">
+                <button type="default" plain="true" class='publish' hover-class='none'>发布云店动态</button>
+              </navigator>
+              <text wx-if="{{type==2}}">暂时没有动态更新哦</text>
+            </block>
+        </view>  
+      </view>
+    </view>
+    <!-- 云店头条 -->
+    <view id='headline'>
+      <view class='title'>
+        <view class='titleBox'>
+          <image src='images/yundain_dpzy_tdtt.png' class='titleName headlineTitle'></image>
+          <navigator url='../manage/manage?url=headline&index=1' hover-class='none'>
+            <image src='images/yundian_gengduohui.png' class='enter'></image>
+          </navigator>
+        </view>
+      </view>
+      <view class='body'>
+        <view class='headline' wx:if="{{data.scCmsArticle.length>0}}"> 
+          <view class='headlineList'>
+            <view class='contentBox' data-articleId="{{data.scCmsArticle[0].articleId}}" bindtap='ship'>
+              <image src='{{data.scCmsArticle[0].scCmsResourcesList[0].resourcesUrl}}'></image>
+              <view class='text'>
+                <text class='titles'>{{data.scCmsArticle[0].articleTitle}}</text>
+                <text class='content'>{{data.scCmsArticle[0].articleContent?data.scCmsArticle[0].articleContent:''}}</text>
+              </view>
+            </view>
+            <view class='infoBox'>
+              <text>{{data.scCmsArticle[0].scSysUser.username}}</text>
+              <view>
+                <text>{{data.scCmsArticle[0].visitorNum==null?0:item.visitorNum}}</text>浏览
+                <text>{{data.scCmsArticle[0].answerNumber}}</text>回复
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 头条空白页 -->
+        <view class='blank' wx:else>
+          <block>
+            <image src='images/yundian_zjy_ydtt.png'></image>
+            <navigator url="" hover-class="none" wx-if="{{type==1}}">
+              <button type="default" plain="true" class='publish' hover-class='none'>发布云店头条</button>
+            </navigator>
+            <text wx-if="{{type==2}}">暂时没有资讯哦</text>
+          </block>
+        </view>  
+      </view>
+    </view>
+    <!-- 云店玩家圈 -->
+    <view id='player'>
+      <view class='title'>
+        <view class='titleBox'>
+          <image src='images/yundain_dpzy_wdwjq.png' class='titleName playerTitle'></image>
+          <navigator url='../manage/manage?url=player&index=2' hover-class='none'>
+            <image src='images/yundian_gengduohui.png' class='enter'></image>
+          </navigator>
+        </view>
+      </view>
+      <view class='body'>
+        <view class='player' wx:if="{{data.circleNew.length>0}}"> 
+          <view class='playerList'>
+            <image src='{{data.circleNew[0].logo}}' class='banner'></image>
+            <view class='playerTitle'>
+              <text>{{data.circleNew[0].name}}</text>
+              <image src='images/yundian_spxq_xuanzhong.png' class='titleBorder'></image>
+            </view>
+            <view class='text'>
+              <text>{{data.circleNew[0].instruction!=null?data.circleNew[0].instruction:''}}</text>
+            </view>
+          </view>
+        </view>
+        <!-- 云店玩家圈空白页 -->
+        <view class='blank' wx:else>
+          <block>
+            <image src='images/yundian_zjy_ydwjq.png'></image>
+            <navigator url="" hover-class='none' wx-if="{{type==1}}">
+              <button type="default" plain="true" class='publish' hover-class='none'>发布云店玩家圈</button>
+            </navigator>
+            <text wx-if="{{type==2}}">暂无玩家圈</text>
+          </block>
+        </view> 
+      </view>
+    </view>
+    <!-- 云店粉团队 -->
+    <view id='fans'>
+      <view class='title'>
+        <view class='titleBox'>
+          <image src='images/yundain_dpzy_ydftd.png' class='titleName fansTitle'></image>
+          <navigator url='../manage/manage?url=fans&index=3' hover-class='none'>
+            <image src='images/yundian_gengduohui.png' class='enter'></image>
+          </navigator>
+        </view>
+      </view>
+      <view class='body'>
+        <view class='fans' wx:if="{{data.circleFansTeam.length>0}}">
+        <!--  bindtap='skipDetail' -->
+            <view class='banner' data-detailId="{{data.circleFansTeam[0].circleId}}" data-type="1">
+              <image src="{{data.circleFansTeam[0].bgPic}}" class='bannerPic'></image>
+              <view class='teamInfo'>
+                <text class='detailName'>{{data.circleFansTeam[0].circleName}}</text>
+                <view class='sizeBox'>
+                  <image src='images/renshu.png' class='sizePic'></image>
+                  <text class='size'>{{data.circleFansTeam[0].personCount}}人</text>
+                </view>
+              </view>
+              <image src='images/sanjiao.png' class='triangle'></image>
+            </view>
+            <scroll-view class="teamBox" scroll-x="true">
+            <!--  bindtap='skipDetail' -->
+              <view class='team' wx:for="{{data.circleFansTeam[0].groupList}}" wx:key="index" data-type="2" data-detailId="{{item.detailId}}">
+                <image src='{{item.detailPic}}'></image>
+                <view class='infoBox'>
+                  <text class='teamName'>{{item.detailName}}</text>
+                  <text class='total'>{{item.personCount}}人</text>
+                </view> 
+              </view>
+            </scroll-view>
+        </view>
+        <!-- 云店粉团队空白页 -->
+        <view class='blank' wx:else>
+          <block>
+            <image src='images/yundian_zjy_ydftd.png'></image>
+            <navigator url="" hover-class='none' wx-if="{{type==1}}">
+              <button type="default" plain="true" class='publish' hover-class='none'>发布云店粉团队</button>
+            </navigator>
+            <text wx-if="{{type==2}}">暂无粉天地</text>
+          </block>
+        </view>  
+      </view>
+    </view>
+  </view>
+  <!-- 云店简介 -->
+  <view class="storeBody {{active == 'brief'?'show':'hidden'}}" id='storeBrief'>
+    <view class='list'>
+      <text>联系卖家</text>
+      <!-- <image src='images/yundian_kefu.png' class='enter'></image> -->
+    </view>
+    <view class='list'>
+      <text>店铺二维码</text>
+      <navigator url='code/code?shopName={{shopInfo.shopName}}&url={{shopInfo.logoUrl}}&fans={{shopMsg.fansCounter}}&shopId={{shopInfo.shopId}}' hover-class='none'>
+        <image src='images/yundian_erweima.png' class='enter'></image>
+      </navigator>
+    </view>
+    <view class='list phone'>
+      <text>联系电话</text>
+      <text class='phoneNum' bindtap='phoneCall'>{{shopInfo.phoneService!=null?shopInfo.phoneService:"暂无"}}</text>
+    </view>
+    <view class='list'>
+      <text>店铺简介</text>
+    </view>
+    <view class="list desc">
+      <text>{{shopInfo.shopDesc?shopInfo.shopDesc:"暂无简介"}}</text>
+    </view>
+    <view class='list'>
+      <text>店铺地址</text>
+    </view>
+    <view class='list address'>
+      <text>{{shopInfo.address}}</text>
+      <!-- <navigator url="location/location?longitude={{data.shopInfo.longitude}}&latitude={{data.shopInfo.latitude}}&shopName={{data.shopInfo.shopName}}&address={{data.shopInfo.address}}" hover-class='none'> -->
+        <image src='images/yundian_dpzy_ditudaohang.png' class='enter' bindtap='apen_add'></image>
+      <!-- </navigator> -->
+    </view>   
+  </view>
+</view>

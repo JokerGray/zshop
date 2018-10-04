@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>费用管理 - 智享城市·智享头条</title>
+    <!-- Bootstrap -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/cost_manage.css" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="cost_manage">
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div class="right pull-right">
+                <div class="tab-panel newslist-tab">
+                    <ul class="tabinner">
+                        <li class="active">总计</li>
+                    </ul>
+                </div>
+                <div class="incomeTotle">
+                    <div class="incomeBox">
+                        <p>余额</p>
+                        <p id="balance" class="incomeNum balance orangeT">0</p>
+                        <a href="#" class="RechargeBtn orangeB" data-toggle="modal" data-target="#rechargeModel">充值</a>
+                    </div>
+                    <div class="incomeBox">
+                        <p>付费总计</p>
+                        <p id="payNum" class="incomeNum">0</p>
+                    </div>
+                    <div class="incomeBox">
+                        <p>收益总计</p>
+                        <p id="incomeNum" class="incomeNum">0</p>
+                    </div>
+                </div>
+                <div class="advertiseDataBox">
+                    <div class="">
+                        <p>已提现</p>
+                        <p id="alreadyPresent" class="advertiseDataNum"></p>
+                        <p id="withDrawM" class="withDrawM advertiseDataNum cur-p" data-toggle="modal" data-target="#withDraw">查看提现记录</p>
+                    </div>
+                    <div class="">
+                        <p>未提现收益</p>
+                        <p id="nonPresent" class="advertiseDataNum"></p>
+                        <button id="withDrawBtn" class="withDrawBtn">提现</button>
+                    </div>
+                </div>
+                <div class="tab-panel">
+                    <ul class="tabinner">
+                        <li class="active">明细</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="switchOver clearfix">
+                        <li class="fl cur-p active" type="1">收益</li>
+                        <li class="fl cur-p" type="2">付费</li>
+                    </ul>
+                </div>
+                <div class="searchBox clearfix">
+                    <div class="fl">
+                        <p class="">广告标题</p>
+                        <input id="authorName" type="text" maxlength="10">
+                    </div>
+                    <div class="fl">
+                        <p class="">申请时间</p>
+                        <input class="fl" id="start" type="text" maxlength="20">
+                        <input class="fl" id="end" type="text" maxlength="20">
+                    </div>
+                    <div id="search_icon" class="search_icon fl">
+                        <img src="images/search.png" alt="">
+                    </div>
+                </div>
+                <div class="table">
+                    <div id="income_tableR">
+                        <div class="table-right">
+                            <table class="layui-table" lay-skin="line">
+                                <thead id="table_thead">
+                                    <tr>
+                                        <th>广告标题</th>
+                                        <th>投放时间</th>
+                                        <th>发生金额</th>
+                                        <!-- <th id="tableTypeText">商品收益</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody id="advList"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="page" class="page"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="advExpenseBox" class="advExpenseBox modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="advExpense_b modal-dialog modal-dialog2" role="document">
+            <div class="modal-content modal-content2">
+                <div class="advExpenseTit modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>广告费用明细</h4>
+                </div>
+                <div id="advStyleBox" class="advStyleBox"></div>
+                <div class="advCostBox">
+                    <div class="advTableTitBox">
+                        <p class="clearfix">
+                            <span>费用明细</span>
+                            <button id="advTableBtn" class="advTableBtn orangeB" type="1">查看数据图</button>
+                        </p>
+                    </div>
+                    <!-- 广告详情表格 -->
+                    <table id="advInfoTable" class="table layui-table" lay-skin="line">
+                        <thead>
+                            <tr>
+                                <th>类别</th>
+                                <th>元素</th>
+                                <th>明细</th>
+                                <th>费用（元）</th>
+                            </tr>
+                        </thead>
+                        <tbody id="advInfoTbody" class="advInfoTbody"></tbody>
+                    </table>
+                    <!-- 广告详情折线图 -->
+                    <div id="advChart" class="echarts"></div>
+                    <p class="advTableBottom">计算规则：当日点击量/展示量*单价=当日价格</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="" type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="rechargeModel" class="rechargeModel modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="rechargeBox modal-dialog modal-dialog2" role="document">
+            <div class="rechargeBox modal-content modal-content2">
+                <div class="rechargeTit modal-header">
+                    <button id="rechModelClose" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>充值金额</h4>
+                </div>
+                <div class="rechargeCon">
+                    <input id="rechargeBtn" type="text" maxlength="8">
+                </div>
+                <div class="modal-footer">
+                    <button id="rechConfirm" type="button" class="btn">
+                        <a href="javascript:;" target="_blank">确定</a>   
+                    </button>
+                    <button type="button" class="cancelBtn btn" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="withDraw" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="withDrawBox modal-dialog modal-dialog2" role="document">
+            <div class="withDrawMain modal-content modal-content2">
+                <div class="advertiseDTit modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4>提现详情</h4>
+                </div>
+                <div class="moneyBox">
+                    <p>提现金额总计：<span id="withDrawNum"></span>元</p>
+                    <p>(注：每月1号00:00余额自动转入智享账户)</p>
+                </div>
+                <div id="" class="table advertiseTable account_table">
+                    <div class="table-left">
+                        <div class="panel panel-default">
+                            <table class="table table-hover">
+                                <thead class="advertiseTabHead">
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>时间</th>
+                                        <th>提现金额</th>
+                                        <th>状态</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="withDrawtBody" class="advertiseTabBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="withDPage" class="text-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/echarts/echarts.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/cost_manage.js"></script>
+    <script id="incomeList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+            <tr advId={{item.scCmsAdvId || ''}}>
+                <td>{{item.scCmsAdvTitle || ''}}</td>
+                <td>{{item.scCmsAdvStart || ''}}-{{item.scCmsAdvEnd || ''}}</td>
+                <td>{{item.amountIncurred || '0'}}</td>
+                <td>
+                    <button class="advInfoBtn orangeB" data-toggle="modal" data-target="#advExpenseBox">查看详情</button>
+                </td>
+            </tr>
+        {{#  }); }}
+        {{#  if(d.length == 0){ }}
+        	<tr></tr>
+        {{#  } }} 
+    </script>
+    <script id="advStyle" type="text/html">
+        {{# var advSinglePic = JSON.parse(d.advStyleRes.scCmsAdvStyleResJson) }} 
+        {{# if(d.advStyle.scCmsAdvStyleType == 6){ }}
+        <!--单图-->
+        <div class="advStyleTit">
+            <span>广告样式</span>
+            <span>(单图)</span>
+        </div>
+        <div class="advStyleInfo clearfix">
+            <div class="fl">
+                <p id="advStyleText">{{d.advStyleRes.scCmsAdvStyleResTitle || ''}}</p>
+                <p class="advStyleMark">
+                    <span>[广告]</span>
+                </p>
+            </div>
+            <img id="advStyleImg" class="fr" src="{{advSinglePic[0].resourcesUrl}}" alt="">
+        </div>
+        {{# } else if(d.advStyle.scCmsAdvStyleType == 7){ }}
+        <!--三图-->
+        <div class="advStyleTit">
+            <span>广告样式</span>
+            <span>(三图)</span>
+        </div>
+        <div id="adDConRSetImgList" class="adDConRSetBox clearfix">
+            <p id="advStyleImgLTitle" class="advStyleResTitle">{{d.advStyleRes.scCmsAdvStyleResTitle || ''}}</p>
+            <div id="adDConRSetImgsBox" class="adDConRSetImgList">
+                {{# layui.each(advSinglePic, function(index, item){ }}
+                <img src="{{item.resourcesUrl}}" alt=""> {{# }); }}
+            </div>
+            <p class="adDConRIcon">[广告]</p>
+        </div>
+        {{# } else if(d.advStyle.scCmsAdvStyleType == 8){ }}
+        <!--视频-->
+        <div class="adDConRightTit">
+            <span>广告样式</span>
+            <span id="adDConRType">(视频)</span>
+        </div>
+        <div id="adDConRSetVideo" class="adDConRSetBox clearfix">
+            <p id="advStyleVideoTitle" class="advStyleResTitle">{{d.advStyleRes.scCmsAdvStyleResTitle || ''}}</p>
+            <div id="adDConRSetVideoUrl" class="adDConRSetImgList">
+                <video src="{{advSinglePic[0].videoUrl}}" poster="{{advSinglePic[0].resourcesUrl}}" controls="controls"></video>'
+            </div>
+            <p class="adDConRIcon">[广告]</p>
+        </div>
+        {{# } }}     
+    </script>
+    <script id="advInfoList" type="text/html">
+        <tr>
+            <td class="tLeft"></td>
+            <td>广告位</td>
+            <td>{{d.adv.advPlace.scCmsAdvPlaceName || ''}}</td>
+            <td class="orangeT">{{d.adv.advPlace.advStrategy.scCmsAdvStrategyPrice || '0'}}</td>
+        </tr>
+        <tr>
+            <td class="tLeft">单价构成</td>
+            <td>广告来源</td>
+            <td>{{d.adv.advSource.scCmsAdvSourceName || ''}}</td>
+            <td class="orangeT">{{d.adv.advSource.advStrategy.scCmsAdvStrategyPrice || '0'}}</td>
+        </tr>
+        <tr>
+            <td class="tLeft"><span class="orangeT">{{d.advOrder.unitPrice || '0'}}</span>元/次</td>
+            <td>投放区域</td>
+            {{# if(isNull(d.area)){ }}
+                <td>全国</td>
+            {{# } else{ }}
+                <td>{{d.area.areaname || ''}}</td>
+            {{# } }}
+            <td class="orangeT">{{d.codeStrtegy.scCmsAdvStrategyPrice || '0'}}</td>
+        </tr>
+        <tr>
+            <td class="tLeft"></td>
+            <td>超过标签数量</td>
+            {{# var labelNum = d.adv.scCmsAdvLable, labelArr = [];}}
+            {{labelArr = labelNum.split(',')}}
+            <td>{{labelArr.length - 1}}</td>
+            <td class="orangeT">{{(d.lableStrtegy.scCmsAdvStrategyPrice || '0') * (labelArr.length - 1)}}</td>
+        </tr>
+        <tr>
+            <!-- 1展示 2点击 -->
+            {{# var advType = '展示量', costNum = 0;}}
+            {{# costNum = (+d.advOrder.putInNumber) * (+d.advOrder.unitPrice); }}
+            {{# if(d.advOrder.advType == 1){ }}
+                {{# advType = '展示量';}}
+                {{# costNum = costNum / 1000;}}
+            {{# } else if(d.advOrder.advType == 2){ }}
+                {{# advType = '点击量';}}
+            {{# } }}
+            <td class="tLeft expenseInfo">费用明细 共计：<span class="orangeT">{{costNum}}</span>元</td>
+            <td id="costInfoType">{{advType}}</td>
+            {{# var startTime = (new Date(d.adv.scCmsAdvStart)).getTime(), endTime = (new Date(d.adv.scCmsAdvEnd)).getTime()}}
+            {{# var showDays = (endTime - startTime)/1000/60/60/24}}
+            <td>{{d.advOrder.putInNumber || '0'}}次/{{Math.ceil(showDays)}}天</td>
+            <td class="orangeT">{{costNum}}</td>
+        </tr>
+    </script>
+    <script id="costList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+            <tr>      
+                <td>1</td>
+                <td>{{item.createTime || ''}}</td>
+                <td>{{item.withdrawMoney || '0'}}</td>
+                <td>{{withDrawType(item.auditStatus)}}</td>
+            </tr>
+        {{#  }); }}
+    </script>
+</body>
+
+</html>

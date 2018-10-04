@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+        <title></title>
+        <link rel="stylesheet" href="../../common/assets/foundation-v5.5.3/foundation.min.css">
+        <link rel="stylesheet" href="../../common/assets/jedate/skin/jedate.css">
+        <link rel="stylesheet" href="../../common/assets/jedate/skin/mystyle.css">
+        <link rel="stylesheet" href="../../common/assets/select2/select2.min.css">
+        <link rel="stylesheet" href="../../common/css/common.css">
+        <link rel="stylesheet" href="../css/newReservation.css">
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="add-reservation-box">
+                <form id="reservationForm">
+                <div class="row">
+                    <div class="small-12 medium-12 large-12 columns colspan-row">
+                        <label class="mobile-label"><i class="required-icon">＊</i>客户电话：</label><input type="text" maxlength="11" placeholder="请输入客户手机号码" id="moible" name="mobile">
+                    </div>
+
+                    <div class="small-6 medium-6 large-3 columns">
+                        <label><i class="required-icon">＊</i>开始日期：</label><input type="text" class="start-date datetime" id="startDate" name="startDate" readonly="readonly">
+                    </div>
+                    <div class="small-6 medium-6 large-3 columns">
+                        <label><i class="required-icon">＊</i>开始时间：</label>
+                        <select name="startTime" id="startTime"></select>
+                    </div>
+                    <div class="small-6 medium-6 large-3 columns">
+                        <label><i class="required-icon">＊</i>结束日期：</label><input type="text" class="end-date datetime" id="endDate" name="endDate" readonly="readonly">
+                    </div>
+                    <div class="small-6 medium-6 large-3 columns">
+                        <label><i class="required-icon">＊</i>结束时间：</label>
+                        <select name="endTime" id="endTime"></select>
+                    </div>
+                    <div class="small-6 medium-6 large-3 columns">
+                        <label>服务人员：</label><select name="waiterSelector" id="waiterSelector"></select>
+                    </div>
+                    <div class="small-6 medium-6 large-3 columns">
+                        <label>服务项目：</label>&nbsp;<select name="serviceSelector" id="serviceSelector"></select>
+                    </div>
+                    <div class="small-6 medium-6 large-3 columns">
+                        <label>服务设备：</label><select name="facilitySelector" id="facilitySelector"></select>
+                    </div>
+                    <div class="small-12 medium-12 large-12 columns colspan-row">
+                        <label>预约备注：</label>
+                        <textarea id="summary" name="summary" maxlength="80"></textarea>
+                    </div>
+                    <div id="tips" class="small-12 medium-12 large-12 columns colspan-row invisible">
+                        <label class="tips-label">温馨提示：</label>
+                        <div class="tips">
+                            <p>在客户到店前<b class="tips-time"></b>，所预约的设备和服务人员都将为您等待</p>
+                            <p>在客户接受服务其期间，所预约的设备和服务人员不再为其他人员服务</p>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <script src="../../common/assets/jquery.min.js"></script>
+        <!-- <script src="../../common/assets/foundation-v5.5.3/foundation.min.js"></script>
+        <script src="../../common/assets/foundation-v5.5.3/modernizr.js"></script> -->
+        <script src="../../common/assets/layer/layer.js"></script>
+        <script src="../../common/assets/jedate/jquery.jedate.js"></script>
+        <script src="../../common/assets/select2/select2.min.js"></script>
+        <script src="../../common/js/common.js"></script>
+        <script src="../js/newReservation.js"></script>
+    </body>
+</html>

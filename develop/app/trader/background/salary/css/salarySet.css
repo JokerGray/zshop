@@ -1,0 +1,313 @@
+a, a:hover, a:focus{
+    text-decoration: none;
+}
+p{
+    margin:0;
+}
+.main-tab{
+    padding-left:112px;
+    padding-top:48px;
+    background-color: #fff;
+    overflow:hidden;
+}
+.nav-pills>li+li{
+    margin-left:10px;
+}
+.nav>li>a:focus,
+.nav>li>a:hover {
+    background-color: #1dbfaf;
+    color:#fff;
+}
+.nav>li>a{
+    padding:15px 20px;
+    font-size:18px;
+    border-radius:4px 4px 0 0;
+    background-color: #eee;
+    color:#333;
+}
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover{
+    background-color: #1dbfaf;
+}
+
+.main-content{
+    padding:0 56px 30px;
+    background-color:#f7f7f7;
+}
+.module{
+    margin-bottom:20px;
+}
+.module .title{
+    padding:30px 0;
+    font-size:24px;
+}
+.module .module-con{
+    padding-left:48px;
+}
+.enable-item {
+    float:left;
+    width:300px;
+    height:360px;
+    margin-right:50px;
+    padding:70px 28px 50px;
+    background-color:#fff;
+    -moz-box-shadow:0px 0px 20px #A6F8F0;
+    -webkit-box-shadow:0px 0px 20px #A6F8F0;
+    box-shadow:0px 0px 20px #A6F8F0;
+    text-align: center;
+}
+
+.enable-item .item-name{
+    font-size:24px;
+    color:#353b53;
+}
+.enable-item .item-btn{
+    padding:16px 0;
+}
+.enable-item .item-desc{
+    margin-bottom:70px;
+    color:#ccc;
+    font-size:14px;
+}
+
+.enable-item .item-status .status-btn{
+    display:inline-block;
+    width:60px;
+    height:30px;
+    margin-right:16px;
+    background-image:url(../image/icon_disabled.png);
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+.enable-item .item-status .status-btn.active{
+    background-image:url(../image/icon_enable.png);
+}
+
+.enable-item .item-status .status-tips{
+    display:inline-block;
+    height:30px;
+    line-height: 30px;
+    color:#ccc;
+    font-size:14px;
+}
+
+.table-bordered>thead>tr>th{
+    background-color:#eee;
+    border-bottom-width:1px;
+    font-size:18px;
+    color:#666;
+    font-weight: normal;
+}
+.table-bordered>thead>tr>th,
+.table-bordered>tbody>tr>td,
+.table-bordered>tfoot>tr>td{
+    text-align: center;
+    vertical-align: middle;
+}
+.table-bordered>tfoot>tr>td{
+    padding:20px 0;
+}
+.btn-primary{
+    background-color:#1c84c6;
+}
+.btn-success{
+    background-color: #1dbfaf;
+    border-color:#1dbfaf;
+}
+.btn-add{
+    display:inline-block;
+    height:28px;
+    line-height: 28px;
+    padding-left:36px;
+    background-image:url(../image/icon_add_1.png);
+    background-repeat: no-repeat;
+    font-size:20px;
+}
+
+.btn-add,
+.btn-add:hover,
+.btn-add:focus{
+    color:#1dbfaf;
+    text-decoration: none;
+}
+
+.panel-reward{
+    border:none;
+    -moz-box-shadow:0px 0px 20px #a6f8f0;
+    -webkit-box-shadow:0px 0px 20px #a6f8f0;
+    box-shadow:0px 0px 20px #a6f8f0;
+}
+
+.panel-reward .panel-heading{
+    height:70px;
+    padding:0 40px;
+    border-bottom:1px solid #dadada;
+}
+.panel-reward .nav-tabs{
+    border:none;
+}
+.panel-reward .nav-tabs>li{
+    height:70px;
+    line-height: 70px;
+    padding:0 20px;
+    font-size:20px;
+    color:#333;
+    cursor: pointer;
+}
+.panel-reward .nav-tabs>li+li{
+    margin-left:20px;
+}
+.panel-reward .nav-tabs>li:hover,
+.panel-reward .nav-tabs>li.active{
+    font-size:24px;
+    color:#ffa500;
+    border-bottom:4px solid #ffa500;
+}
+
+.table-reward>tbody>tr>td,
+.table-reward>tbody>tr>th{
+    font-size:18px;
+    color:#353b53;
+    border:none;
+    vertical-align: middle;
+}
+.table-reward>tbody>tr>td:first-child{
+    width:22%;
+    vertical-align: middle;
+}
+.table-reward .num{
+    padding:0 5px;
+    font-size:24px;
+    color:#1dbfaf;
+}
+.table-reward .num-edit{
+    display:inline-block;
+}
+.table-reward .num-edit input[type=text]{
+    width:100px;
+    height:30px;
+    margin:0 5px;
+    text-align: center;
+    background-color: #eee;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+.table-reward .link-btn{
+    display:inline-block;
+    background-repeat: no-repeat;
+    font-size:18px;
+}
+.table-reward .edit-btn{
+    padding-left:30px;
+    margin-right:20px;
+    background-image: url(../image/icon_edit_1.png);
+    color:#1dbfaf;
+}
+.table-reward .remove-btn{
+    padding-left:28px;
+    background-image: url(../image/icon_remove_1.png);
+    color:#f87878;
+}
+.submit-btn{
+    display:inline-block;
+    width:88px;
+    height:30px;
+    line-height: 30px;
+    background-color: #ffa500;
+    font-size:18px;
+    color:#fff;
+    text-align: center;
+}
+.s2-module-2 .panel-reward{
+    padding-bottom:30px;
+}
+.m-reward-box .reward-heading{
+    padding:28px 40px 15px;
+    border-bottom:1px solid #dadada;
+}
+.reward-heading .reward-title{
+    padding-left:16px;
+    margin-bottom:10px;
+    border-left:4px solid #ffa500;
+    font-size:24px;
+    color:#ffa500;
+}
+.reward-heading .reward-tips{
+    font-size:18px;
+    color:#ccc;
+}
+.reward-con{
+    padding:40px 110px;
+}
+.reward-con .reward-tools{
+    margin-bottom:20px;
+    overflow:hidden;
+}
+.reward-tools .normal-set-btn{
+    padding:6px 20px;
+    background-color: #f8ac59;
+    color:#fff;
+    font-size:18px;
+}
+.reward-tools .check-toolbar .tit{
+    font-size:18px;
+    color:#353b53;
+}
+.check-toolbar .tit i{
+    font-style: normal;
+    color:#ccc;
+}
+.reward-con .table{
+    margin-bottom:0;
+    font-size:20px;
+}
+.reward-con .table .input-group{
+    width:50%;
+    margin:0 auto;
+}
+
+.panel-reward.disabled .reward-heading  .reward-title{
+    border-left-color:#999;
+    color:#999;
+}
+.panel-reward.disabled .submit-btn{
+    background-color:#ccc;
+    color:#999;
+}
+.disabled .table-reward .edit-btn{
+    background-image: url(../image/icon_edit_2.png);
+    color:#999;
+}
+.disabled .table-reward .remove-btn{
+    background-image: url(../image/icon_remove_2.png);
+    color:#999;
+}
+.disabled .btn-add{
+    background-image:url(../image/icon_add_2.png);
+}
+
+.disabled .btn-add,
+.disabled .btn-add:hover,
+.disabled .btn-add:focus{
+    color:#999;
+}
+.input-edit{
+    width:300px;
+}
+.input-edit .form-control{
+    display:inline-block;
+    width:100px;
+}
+.checkbox-inline{
+    padding-left:30px;
+    background-image: url(../image/icon_un_check.png);
+    background-repeat: no-repeat;
+    font-size:18px;
+}
+.checkbox-inline.checked{
+    background-image: url(../image/icon_checked.png);
+}
+.checkbox-inline input[type=checkbox]{
+    visibility: hidden;
+}

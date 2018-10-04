@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>组织成员</title>
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/hplus/css/style.min862f.css">
+    <link rel="stylesheet" href="SubaccountRemindView.css">
+</head>
+
+<body class="gray-bg pace-done">
+    <div class="container-fluid">
+        <div class="row-fluid">
+    
+            <div class="selectWeek">
+                <div class="weekText">星期选择：</div>
+                <div class="weekList">
+                    <ul>
+                        <li data-week="0" data-name="每周日">
+                            <span class="selectIcon"></span>
+                            <span>每周日</span>
+                        </li>
+                        <li data-week="1" data-name="每周一">
+                            <span class="selectIcon"></span>
+                            <span>每周一</span>
+                        </li>
+                        <li data-week="2" data-name="每周二">
+                            <span class="selectIcon"></span>
+                            <span>每周二</span>
+                        </li>
+                        <li data-week="3" data-name="每周三">
+                            <span class="selectIcon"></span>
+                            <span>每周三</span>
+                        </li>
+                        <li data-week="4" data-name="每周四">
+                            <span class="selectIcon"></span>
+                            <span>每周四</span>
+                        </li>
+                        <li data-week="5" data-name="每周五">
+                            <span class="selectIcon"></span>
+                            <span>每周五</span>
+                        </li>
+                        <li data-week="6" data-name="每周六">
+                            <span class="selectIcon"></span>
+                            <span>每周六</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="selectTime">
+                <div class="timeText">时间选择：</div>
+                <div class="pickTime">
+                    <input type="time" value="09:00" id="remindTime" name="remindTime">
+                </div>
+            </div>
+            <div class="selectWaiters">
+                <div class="waiterText">服务人员：</div>
+                <div class="waiterList">
+                    <select id="shopId" name="shopId" class="shopList-control">
+                    </select>
+                    <ul id="backUserList">
+                    </ul>
+                </div>
+            </div>
+            <div class="writeNote">
+                <div class="noteText">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</div>
+                <div class="noteArea">
+                    <textarea class="remake" id="remake" name="remake" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../assets/jquery/jquery.min.js"></script>
+    <script src="../../../assets/layer/layer.js"></script>
+    <script src="../../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- <script src="../../../assets/select2/select2.min.js"></script> -->
+    <script src="SubaccountRemindView.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.content {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.content .title {
+  border-bottom: 1px solid gainsboro;
+  margin-bottom: 50px;
+  height: 50px;
+  line-height: 50px;
+}
+.content .title a {
+  color: #1DCCC7;
+  border-bottom: 2px solid #1DCCC7;
+  padding-bottom: 15px;
+}
+.content select {
+  height: 35px;
+  margin-right: 20px;
+  width: 200px !important;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  border-color: #AAAAAA;
+  border-radius: 3px;
+}
+.content select option:hover {
+  background-color: #E5E5E5;
+}
+.content .btn {
+  background: #1DCCC7;
+  color: white;
+}
+.content option:first-child {
+  color: #B5B5B5;
+}
+.content .leaders {
+  position: relative;
+}
+.content .reset {
+  display: none;
+}
+.content .provalprogress {
+  min-width: 400px;
+  min-height: 40px;
+  line-height: 40px;
+  position: relative;
+}
+.content .nextone {
+  position: absolute;
+  top: 30px;
+  left: -60px;
+}
+.content .approvaltype {
+  display: inline-block;
+  margin-right: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+.parentselct {
+  display: none;
+}
+.clickselct {
+  position: absolute;
+  top: 0;
+  left: 465px;
+  width: 200px;
+  height: 35px;
+  border: 1px solid silver;
+  border-radius: 5px;
+  padding-right: 20px;
+}
+.clickselct span {
+  float: left;
+  font-size: 14px;
+  height: 32px;
+  line-height: 32px;
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+.nextlist {
+  width: 10px;
+  height: 15px;
+  position: absolute;
+  top: 7px;
+  left: 180px;
+}
+.persontitle {
+  position: absolute;
+  top: 0;
+  left: 685px;
+  margin: 0;
+  min-width: 200px;
+  max-width: 400px;
+  height: 35px;
+  border: 1px solid silver;
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow-y: auto;
+  padding-right: 5px;
+  /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+  /*定义滚动条轨道 内阴影+圆角*/
+  /*定义滑块 内阴影+圆角*/
+}
+.persontitle::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #F5F5F5;
+}
+.persontitle::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+.persontitle::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #1DCCC7;
+}
+.persontitle a {
+  display: inline-block;
+  float: left;
+  margin-top: 5px;
+  margin-left: 5px;
+  background: #DBFFFE;
+  border-radius: 10px;
+  height: 23px;
+  line-height: 23px;
+  padding: 0 8px;
+}
+.employeer {
+  position: absolute;
+  top: 35px;
+  left: 465px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  z-index: 9999;
+  background: white;
+}
+.employeer li {
+  padding-left: 20px;
+  width: 200px;
+  border: 1px solid #8FACDA;
+  border-top: none;
+  border-bottom: none;
+  font-size: 12px;
+}
+.employeer li.act {
+  background: #1DCCC7;
+}
+.employeer li:first-child {
+  border-top: 1px solid #8FACDA;
+}
+.employeer li:last-child {
+  border-bottom: 1px solid #8FACDA;
+}
+.employeer li:hover {
+  background: #1E90FF;
+}

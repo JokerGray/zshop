@@ -1,0 +1,325 @@
+body {
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.layui-input,
+.layui-select {
+  height: 34px;
+}
+/**顶部tab栏和店铺选择*/
+.navBarAndShopSelect {
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid #cccccc;
+  padding: 0 20px;
+}
+.navBarAndShopSelect .navBar {
+  float: left;
+  margin-top: 20px;
+  font-size: 0;
+}
+.navBarAndShopSelect .navBar a {
+  display: inline-block;
+  vertical-align: middle;
+  width: 97px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  background-color: #eee;
+  color: #707070;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  margin-right: 20px;
+}
+.navBarAndShopSelect .navBar a.active {
+  border: none;
+  background-color: #fff;
+}
+.navBarAndShopSelect .shopSelector {
+  float: right;
+  width: 150px;
+  margin-top: 15px;
+}
+/**路径栏*/
+.path {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+}
+.path > div i {
+  font-family: SimSun;
+}
+.path > div:nth-of-type(1) {
+  float: left;
+}
+.path > div:nth-of-type(1) > span {
+  font-size: 16px;
+  color: #333333;
+}
+.path > div:nth-of-type(2) {
+  float: right;
+}
+.path > div:nth-of-type(2) > a {
+  font-size: 14px;
+  color: #1e9fff;
+}
+.path > div:nth-of-type(2) .skill {
+  display: none;
+}
+.mainContent {
+  /**统计概览*/
+  /**报表主体内容*/
+}
+.mainContent .StatisticalOverview {
+  width: 100%;
+  height: 138px;
+  padding: 20px;
+}
+.mainContent .StatisticalOverview .collage,
+.mainContent .StatisticalOverview .skill {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 2px 2px 6px #dfdfdf, -2px -2px 6px #dfdfdf;
+  font-size: 0;
+}
+.mainContent .StatisticalOverview .collage li,
+.mainContent .StatisticalOverview .skill li {
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+  font-size: 16px;
+  position: relative;
+}
+.mainContent .StatisticalOverview .collage li::after,
+.mainContent .StatisticalOverview .skill li::after {
+  position: absolute;
+  content: '';
+  width: 1px;
+  height: 40px;
+  border-left: 1px solid #cccccc;
+  right: 0;
+  top: 27px;
+}
+.mainContent .StatisticalOverview .collage li p,
+.mainContent .StatisticalOverview .skill li p {
+  font-size: 15px;
+  color: #666666;
+  margin-top: 16px;
+}
+.mainContent .StatisticalOverview .collage li h4,
+.mainContent .StatisticalOverview .skill li h4 {
+  font-weight: 700;
+  font-size: 26px;
+  color: #333333;
+  margin-top: 18px;
+}
+.mainContent .StatisticalOverview .collage li:last-of-type::after,
+.mainContent .StatisticalOverview .skill li:last-of-type::after {
+  border: none;
+}
+.mainContent .StatisticalOverview .skill {
+  display: none;
+  width: 75%;
+}
+.mainContent .StatisticalOverview .skill li {
+  width: 33.3333%;
+}
+.mainContent .mainReport {
+  padding: 0 20px;
+}
+.mainContent .mainReport .title-filter {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+}
+.mainContent .mainReport .title-filter .tableTitle {
+  float: left;
+  font-size: 15px;
+  color: #333333;
+}
+.mainContent .mainReport .title-filter .tableTitle .skill {
+  display: none;
+}
+.mainContent .mainReport .title-filter .filterBox {
+  float: right;
+  padding-top: 11px;
+}
+.mainContent .mainReport .title-filter .filterBox div {
+  float: left;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.mainContent .mainReport .title-filter .filterBox div.typeSelector {
+  width: 100px;
+}
+.mainContent .mainReport .title-filter .filterBox div.typeSelector .layui-input,
+.mainContent .mainReport .title-filter .filterBox div.typeSelector .layui-select {
+  -webkit-border-radius: 2px 0 0 2px;
+  -moz-border-radius: 2px 0 0 2px;
+  border-radius: 2px 0 0 2px;
+  border-right: none;
+}
+.mainContent .mainReport .title-filter .filterBox div.keyWordBox,
+.mainContent .mainReport .title-filter .filterBox div.statusSelector,
+.mainContent .mainReport .title-filter .filterBox div.skillStatus {
+  width: 150px;
+  margin-right: 10px;
+}
+.mainContent .mainReport .title-filter .filterBox div.exportBox a {
+  display: block;
+  width: 80px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  border: 1px solid #d2d2d2;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.mainContent .mainReport .title-filter .filterBox div.exportBox a > i {
+  display: inline-block;
+  width: 24px;
+  height: 23px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: -6px;
+}
+.mainContent .mainReport .title-filter .filterBox div.exportBox a > span {
+  display: inline-block;
+}
+.mainContent .mainReport .title-filter .filterBox div.searchBtn {
+  line-height: normal;
+  margin-right: 10px;
+}
+.mainContent .mainReport .title-filter .filterBox div.searchBtn button {
+  width: 80px;
+  height: 34px;
+  border: 1px solid #dddddd;
+  background-color: #fff;
+  font-size: 14px;
+  color: #333333;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.mainContent .mainReport .title-filter .filterBox .skill {
+  display: none;
+}
+.mainContent .mainReport .tableContent {
+  padding: 0 20px;
+  height: 430px;
+  overflow-y: auto;
+  background-color: #fff;
+}
+.mainContent .mainReport .tableContent .layui-table {
+  margin: 0;
+}
+.mainContent .mainReport .tableContent .layui-table > thead > tr > th,
+.mainContent .mainReport .tableContent .layui-table > tbody > tr > td {
+  padding: 9px 7px;
+}
+.mainContent .mainReport .tableContent .layui-table > thead > tr > th:nth-of-type(1),
+.mainContent .mainReport .tableContent .layui-table > tbody > tr > td:nth-of-type(1) {
+  text-align: center;
+}
+.mainContent .mainReport .tableContent .layui-table > thead > tr > th:last-of-type,
+.mainContent .mainReport .tableContent .layui-table > tbody > tr > td:last-of-type {
+  text-align: right;
+}
+.mainContent .mainReport .tableContent .layui-table > thead > tr > th:last-of-type a,
+.mainContent .mainReport .tableContent .layui-table > tbody > tr > td:last-of-type a {
+  color: #1e9fff;
+}
+.mainContent .mainReport .tableContent .skill {
+  display: none;
+}
+.mainContent .mainReport .tableContent .skill > thead > tr > th:last-of-type,
+.mainContent .mainReport .tableContent .skill > tbody > tr > td:last-of-type {
+  text-align: left;
+}
+.mainContent .mainReport .pageBox {
+  background-color: #fff;
+  padding: 0 20px;
+  height: 55px;
+}
+.mainContent .mainReport .pageBox > div {
+  float: right;
+}
+/**拼团详情*/
+.collageDetail .header {
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  background-color: #353B53;
+  padding: 0 10px 0 20px;
+}
+.collageDetail .header > span {
+  float: left;
+  font-size: 14px;
+  color: #fff;
+}
+.collageDetail .header > i {
+  float: right;
+  width: 34px;
+  height: 34px;
+  text-align: center;
+  line-height: 34px;
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
+}
+.collageDetail .baseInfo {
+  width: 100%;
+  min-height: 60px;
+  line-height: 60px;
+  padding: 0 10px 0 20px;
+}
+.collageDetail .baseInfo > span {
+  font-size: 16px;
+  color: #333333;
+  margin-right: 6%;
+}
+.collageDetail .baseInfo > span:first-of-type {
+  display: inline-block;
+  max-width: 690px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.collageDetail .baseInfo > span:last-of-type {
+  margin-right: 0;
+}
+.collageDetail .detailTable {
+  padding: 0 20px;
+  height: 468px;
+  overflow-y: auto;
+}
+.collageDetail .detailTable > table {
+  margin-top: 0;
+}
+.collageDetail .detailTable > table td,
+.collageDetail .detailTable > table th {
+  padding: 9px 10px;
+}
+.collageDetail .detailTable > table td:nth-of-type(1),
+.collageDetail .detailTable > table th:nth-of-type(1) {
+  text-align: center;
+}
+/*# sourceMappingURL=reportCSCollageKill.css.map */

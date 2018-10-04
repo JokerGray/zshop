@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>审核详情</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/audit_detail.css" />
+</head>
+<body>
+<div class='detail_box clearfix'>
+    <div class="leftCon">
+        <div class="audit-detail">
+            <div class="detail-title">
+                <span class="detailname"></span>
+                <span class="detailphone"></span>
+                <span class="detailtime"></span>
+            </div>
+            <div class="artic-content" id="content">
+                <iframe id="articFrame" name="articFrame" src="" frameborder="0" width="100%" height="100%"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="fr">
+    <div class="rightCon" id="rightConsave">
+        <div class="jurisdiction-add">
+            <button class="layui-btn savebtn" id="saveBtn" lay-filter="saveBtn">
+                保存并返回
+            </button>
+            <button class="layui-btn savebtn" id="backBtn" lay-filter="backBtn">
+                返回
+            </button>
+            <button class="layui-btn layui-btn-normal savebtn" id="nextBtn" lay-filter="nextBtn">
+                保存并跳到下一个
+            </button>
+        </div>
+       <div class="layui-form">
+           <div class="layui-form-item">
+               <label class="layui-form-label">对于左侧的内容审核：</label>
+               <div class="layui-input-block" id="passStaus">
+                   <input id="pass" type="radio" name="sex" value="1" title="审核通过" checked lay-filter="radios">
+                   <input id="nopass" type="radio" name="sex" value="2" title="不予通过" lay-filter="radios">
+               </div>
+           </div>
+           <!--添加全民炫审核版块-->
+           <div class="layui-form-item noreomtype">
+           		<label class="layui-form-label">审核类型：</label>		
+           		<div class="layui-input-block" id="auditType">
+           			<input id="excellent" type="radio" name="audittype" value="1" title="精选" checked lay-filter="audittype">
+                   	<input id="ordinary" type="radio" name="audittype" value="2" title="普通" lay-filter="audittype">	
+           		</div>
+           </div>
+           <div class="layui-form-item noreomtype">
+			    <div class="layui-input-block">
+			      <input type="checkbox" name="istop" title="置顶" lay-filter="istop" />
+			    </div>
+		   </div>
+		   
+		   <!--<div id="toptime" class="up_time" style="padding: 0;margin-left: 20px;font-size: 14px;">
+           		<p style="padding: 0;margin-bottom: 15px;">置顶时间:</p>
+             	<div style="height:28px">
+               		<div style="float: left">
+                   		<input type="text" placeholder="开始时间" id="start_time">
+               		</div>
+               		<div style="float: left;margin-left: 20px">
+                 		<label  style="margin-right: 15px">至:</label>
+                 		<input type="text" placeholder="结束时间" id="end_time">
+               		</div>
+             	</div>
+           </div>-->
+           <div id="toptime" class="up_time" style="padding: 0;margin-left: 20px;font-size: 14px;">
+           		<p style="padding: 0;margin-bottom: 15px;">置顶时间：</p>
+	           <div class="layui-input-inline">
+	           		<input type="text" class="layui-input" placeholder="请输入起始时间" id="start_time">           	
+	           </div>至
+	           <div class="layui-input-inline">
+	           		<input type="text" class="layui-input" placeholder="请输入截止时间" id="end_time">           	
+	           </div>
+           </div>
+           <div class="layui-form-item noreom">
+               <label class="layui-form-label">不予通过的原因：</label>
+               <div class="layui-input-block" id="noResion">
+                   <input type="radio" id="noResi" name="reson" value="色情" title="色情" lay-filter="resions">
+                   <input type="radio" id="noResi1" name="reson" value="暴力" title="暴力" lay-filter="resions">
+                   <input type="radio" id="noResi2"  name="reson" value="政治" title="政治" lay-filter="resions">
+                   <input type="radio" id="noResi3"  name="reson" value="侵权" title="侵权" lay-filter="resions">
+                   <input type="radio" id="noResi4"  name="reson" value="广告" title="广告" lay-filter="resions">
+                   <input type="radio" id="noResi5"  name="reson" value="其他" title="其他" lay-filter="resions">
+               </div>
+           </div>
+           <div class="layui-form-item layui-form-text">
+               <label class="layui-form-label">审核意见：</label>
+               <div class="layui-input-block">
+                   <textarea id="reviewOpinion" name="desc" placeholder="审核意见可选填" class="form-control layui-textarea" maxlength="100"></textarea>
+               </div>
+           </div>
+       </div>
+    </div>
+    <div class="rightCon" id="rightCon">
+        <div class="jurisdiction-add">
+            <button class="layui-btn layui-btn-small savebtn" id="backBtn1">
+                返回
+            </button>
+        </div>
+        <div class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">对于左侧的内容审核：</label>
+                <div class="layui-input-block" id="passResult">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">审核意见：</label>
+                <div class="layui-input-block">
+                    <textarea id="reviewOpinion1" name="desc" class="form-control layui-textarea" maxlength="100" disabled></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/pub.js"></script>
+
+<!--jSCurr-->
+<!-- <script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script> -->
+<script type="text/javascript" src="js/audit_detail.js"></script>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+	<title>作家权重管理·管理员后台</title>
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css?v=201706191500" />
+	<link rel="stylesheet" href="assets/layui/css/layui.css" />
+	<link rel="stylesheet" href="css/zx.css?v=201706191500" />
+	<link rel="stylesheet" href="css/weight_manage.css?v=201706191500" />
+</head>
+<body>
+	<script src="util/head.js"></script>
+	<input type="hidden" id="menuHid" value="weight_manage">
+	<div class="container">
+		<div class="wrapper clearfix">
+			<script src="util/menu.js"></script>
+			<div id="page_R" class="right pull-right">
+				<div id="search_box" class="clearfix">
+					<div id="authorNameBox" class="fl">
+						<p class="authorNameTit">作家名称</p>
+						<input id="authorNameInp" class="penName_inp" type="text">
+					</div>
+					<div id="authorTypeBox" class="fl">
+						<p class="authorTypeTit">作家类型</p>
+						<select id="authorTypeInp" class="autherName_inp">
+							<option value="">请选择</option>
+							<option value="1">新手期</option>
+							<option value="2">普通作者</option>
+							<option value="3">原创作者</option>
+							<option value="4">加V作者</option>
+							<option value="5">签约作者</option>
+						</select>
+					</div>
+					<div id="authorTimeBox" class="fl">
+						<p class="authorTimeTit">入驻时间</p>
+						<input id="start" class="fl" type="text">
+						<input id="end" class="fl" type="text">
+					</div>
+					<div id="recentArtBox" class="fl">
+						<p class="recentArtTit">最近30天发文数量</p>
+						<input id="recentArtInp" type="text">
+					</div>
+					<div id="recentArtBox" class="fl">
+						<p class="recentArtTit">发文总数</p>
+						<input id="totalArtInp" type="text">
+					</div>
+					<div id="search_icon" class="fl"><img src="images/search.png" alt=""></div>
+				</div>
+				<div id="author_box" class="clearfix">
+					<div>
+						<ul class="tabinner clearfix">
+							<li id="tabAll" class="fl active" writerRank="">全部</li>
+							<li id="tabNewcomer" class="fl" writerRank="1">新手期</li>
+							<li id="tabAverage" class="fl" writerRank="2">普通作者</li>
+							<li id="tabOriginal" class="fl" writerRank="3">原创作者</li>
+							<li id="tabaddV" class="fl" writerRank="4">加V作者</li>
+							<li id="tabSign" class="fl" writerRank="5">签约作者</li>
+						</ul>
+						<div id="authBoxNavR" class="clearfix">
+							<button id="exportLimit" data-toggle="modal" data-target="#setExportLimit">
+								<i class="glyphicon glyphicon-list-alt"></i>更多设置
+							</button>
+							<button id="exportExcel">导出Excel</button>
+						</div>
+					</div>
+					<div id="gainsTable" class="table account_table">
+						<div class="table-left">
+							<div class="panel panel-default">
+								<table class="table table-hover">
+									<thead id="gainsTabHead">
+										<th>作者名称</th>
+										<th>作家类型</th>
+										<th>领域</th>
+										<th>入驻时间</th>
+										<th>最近30天发文数量</th>
+										<th>发文总量</th>
+										<th></th>
+									</thead>
+									<tbody id="gainsTabBody"></tbody>
+                	            </table>
+                	        </div>
+                	    </div>
+                	    <div id="page" class="text-center"></div>
+                	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="setExportLimit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    	<div class="setExpLimitBox modal-dialog modal-dialog2" role="document">
+      		<div class="modal-content modal-content2">
+      			<div class="modifyPriceTit modal-header">
+        		  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      				<h4>更多设置</h4>
+        		</div>
+				<div id="setExpCon">
+					<ul id="setExpNav" class="setExpNav clearfix">
+						<li class="active" type="article">发文权限</li>
+						<li type="ques">问答权限</li>
+						<li type="vote">投票权限</li>
+					</ul>
+					<div class="setExpGrade">
+						<p><i class="glyphicon glyphicon-star"></i>新手作者 -- <span class="setTypeText">发文数量</span></p>
+						<input id="setNewbieInp" class="authorGradeInp" type="text" maxlength="5" rank="1">
+						<div class="voteAddBox">
+							<span>邀请人数</span>
+							<input id="newHandNum" class="invitationNum" type="text" maxlength="5" rank="1">
+						</div>
+					</div>
+					<div class="setExpGrade">
+						<p><i class="glyphicon glyphicon-user"></i>普通作者 -- <span class="setTypeText">发文数量</span></p>
+						<input id="setCommonInp" class="authorGradeInp" type="text" maxlength="5" rank="2">
+						<div class="voteAddBox">
+							<span>邀请人数</span>
+							<input id="commonNum" class="invitationNum" type="text" maxlength="5" rank="2">
+						</div>
+					</div>
+					<div class="setExpGrade">
+						<p><i class="glyphicon glyphicon-edit"></i>原创作者 -- <span class="setTypeText">发文数量</span></p>
+						<input id="setOriginalInp" class="authorGradeInp" type="text" maxlength="5" rank="3">
+						<div class="voteAddBox">
+							<span>邀请人数</span>
+							<input id="OriginalNum" class="invitationNum" type="text" maxlength="5" rank="3">
+						</div>
+					</div>
+					<div class="setExpGrade">
+						<p><i class="glyphicon glyphicon-chevron-down"></i>加V作者 -- <span class="setTypeText">发文数量</span></p>
+						<input id="setAddVInp" class="authorGradeInp" type="text" maxlength="5" rank="4">
+						<div class="voteAddBox">
+							<span>邀请人数</span>
+							<input id="addVMun" class="invitationNum" type="text" maxlength="5" rank="4">
+						</div>
+					</div>
+					<div class="setExpGrade">
+						<p><i class="glyphicon glyphicon-education"></i>签约作者 -- <span class="setTypeText">发文数量</span></p>
+						<input id="setSignedInp" class="authorGradeInp" type="text" maxlength="5" rank="5">
+						<div class="voteAddBox">
+							<span>邀请人数</span>
+							<input id="signNum" class="invitationNum" type="text" maxlength="5" rank="5">
+						</div>
+					</div>
+				</div>
+                <div id="setExpFoot" class="modal-footer">
+					<button id="setExpSaveBtn" type="button" class="btn btn-default" data-dismiss="modal">保存</button>
+					<button id="setExpCancelBtn" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+      		</div>
+    	</div>
+  	</div>
+	<div id="modifyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    	<div class="modifyPrice modal-dialog modal-dialog2" role="document">
+      		<div class="modifyPriceBox modal-content modal-content2">
+      			<div class="modifyPriceTit modal-header">
+        		  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      				<h4>升级确认</h4>
+        		</div>
+				<div id="modifyCon">
+					<p><span id="authorName">大雄</span><span id="oldSubNameType"></span><span class="modifyArrow">--------</span><span id="newSubNameType"></span></p>
+				</div>
+                <div id="modifyPriBtnBox" class="modal-footer">
+					<button id="affirmBtn" type="button" class="btn btn-default" data-dismiss="modal">确认升级</button>
+					<button id="cancelBtn" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+      		</div>
+    	</div>
+  	</div>
+	<div id="authAccounts" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    	<div class="examineAccounts modal-dialog modal-dialog2" role="document">
+      		<div class="authAccountsBox modal-content modal-content2">
+      			<div class="authAccouTit modal-header">
+        		  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      				<h4 class="addSubTitle">个人文章详情</h4>
+        		</div>
+				<div class="authorMess">
+					<span class="authorNameTit">作者：</span><span class="authorNameCon">大雄</span><span class="authorNameType">普通作者</span>
+					<span class="authorDateTit">时间：</span><span class="authorDateCon">2017-06-14</span>
+				</div>
+				<div class="authAccouTable table account_table">
+					<div class="table-left">
+						<div class="panel panel-default">
+							<table class="table table-hover">
+								<thead id="artTabHead">
+									<th>文章名称</th>
+									<th>日期</th>
+									<th>推荐</th>
+									<th>阅读</th>
+									<th>评论</th>
+									<th>分享</th>
+									<th>收藏</th>
+									<th>点赞</th>
+								</thead>
+								<tbody id="artTabBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="artPage" class="text-center"></div>
+                </div>
+                <div id="accModalBtnBox" class="modal-footer">
+					<button id="freezeAcc" type="button" class="freezeAcc btn btn-default" data-dismiss="modal">升级</button>
+					<button id="disfreezeAcc" type="button" class="disfreezeAcc btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+      		</div>
+    	</div>
+  	</div>
+	<script src="assets/jquery-1.10.2.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/layui/lay/dest/layui.all.js"></script>
+	<script src="assets/countUp.min.js"></script>
+	<script src="util/util.js?v=201706191500"></script>
+	<script src="util/pub.js"></script>
+	<script src="js/weight_manage.js?v=201706191600"></script>
+	<script id="authorTable" type="text/html">
+        {{#  layui.each(d, function(index, item){ }} 
+        	<tr userId={{item.userId}}>
+				<td class="subscriptName" createTime={{item.createTime}}>{{item.subscriptionName || ''}}</td>
+				<td class="writerRank">
+					{{item.writerRank || ''}}
+					{{# var rank = item.writerRank}}
+				</td>
+				<td>{{item.typeName || ''}}</td>
+				<td>{{item.createTime || ''}}</td>
+				<td>{{item.article30Count || '0'}}</td>
+				<td>{{item.articleCount || '0'}}</td> 
+				<td>
+					{{# if(rank != '签约作者'){ }}
+						<span class="gainsTabFreeze cur-p" data-toggle="modal" data-target="#modifyModal">升级</span>
+						<button class="gainsTabBtn" data-toggle="modal" data-target="#authAccounts">查看</button>
+					{{# } else{ }}
+						<span class="gainsTabFreeze cur-p" data-toggle="modal" data-target="#modifyModal" disabled="disabled"></span>
+						<button class="gainsTabBtn" data-toggle="modal" data-target="#authAccounts">查看</button>
+					{{# } }}
+				</td>
+			</tr>
+        {{#  }); }}
+        {{#  if(d.length == 0){ }}
+        	<td colspan="8"></td>
+        {{#  } }} 
+    </script>
+    <script id="artTable" type="text/html">
+        {{#  layui.each(d, function(index, item){ }} 
+        	<tr>
+				<td><a class="articleTitle cur-p" href="javascript:;" target="_blank" userId={{item.userId}} articleId={{item.articleId}}>{{item.scCmsAarticleTitle || ''}}</a></td>
+				<td>{{item.visitTime || ''}}</td>
+				<td>{{item.dayForwardNumber || '0'}}</td>
+				<td>{{item.dayVisitNumber || '0'}}</td>
+				<td>{{item.dayCommentNumber || '0'}}</td>
+				<td>{{item.shareNumber || '0'}}</td>
+				<td>{{item.dayCollectNumber || '0'}}</td>
+				<td>{{item.priase || '0'}}</td>
+			</tr>
+        {{#  }); }}
+        {{#  if(d.length == 0){ }}
+        	<td colspan="8"></td>
+        {{#  } }} 
+    </script>
+</body>
+</html>

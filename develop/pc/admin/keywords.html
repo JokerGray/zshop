@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <title>关键词·管理员后台</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css?v=201707041142" />
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/zx.css?v=201707211142" />
+    <link rel="stylesheet" href="css/platformManage.css?v=201707041142" />
+    <link rel="stylesheet" href="css/keywords.css?v=201707041142" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="keywords">
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div id="page_R" class="right pull-right">
+                <div id="search_box" class="clearfix">
+                    <div id="time_box" class="fl">
+                        <p>省市</p>
+                        <select id="searchProvinceSec" class="startInp fl" name="province">
+                            <option value="">请选择</option>
+                        </select>
+                        <span id="inpConnect" class="fl">-&nbsp;-</span>
+                        <select id="searchCitySec" class="endInp fl" name="city">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                    <div id="penName_box" class="fl">
+                        <p>关键词</p>
+                        <input id="searchInp" type="text">
+                    </div>
+                    <div id="search_icon" class="fl cur-p"><img src="images/search.png" alt=""></div>
+                    <div id="addNewLabel" class="fl" data-toggle="modal" data-target="#addLabelM">
+                        <i class="glyphicon glyphicon-plus"></i><span>添加关键词</span>
+                    </div>
+                </div>
+                <div id="labelBox" class="clearfix">
+                    <div class="table account_table">
+                        <div id="labelTable" class="table-left">
+                            <div class="panel panel-default">
+                                <table class="table table-hover" style="table-layout:fixed;">
+                                    <thead id="labelTabHead">
+                                        <th id="labelCheckAll" class="cur-p"><i id="labelMultiSelBox"></i><span>全选</span></th>
+                                        <th>省市</th>
+                                        <th>关键词</th>
+                                        <th>描述</th>
+                                        <th>操作</th>
+                                    </thead>
+                                    <tbody id="labelTabCon"></tbody>
+                                    <tfoot id="labelTabFoot">
+                                        <tr>
+                                            <td class="optTotalOpera">选中：<span id="labelCheckedNum" class="orange">0</span></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="tfootOperate">
+                                                <div id="delTotalOpera" class="fl cur-p wfull"><i class="glyphicon glyphicon-trash orange"></i>删除</div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="page" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="addLabelM" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="addLabelMBox modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="addLabelHead modal-header">
+                    <h4 class="addSubTitle">添加关键词</h4>
+                </div>
+                <div class="addLabelCon clearfix">
+                    <div class="addLabelName clearfix">
+                        <p class="fl" style="margin-right:1em;">请输入省市：</p>
+                        <select id="addProvinceSec" class="startInp fl" name="province">
+                            <option value="">请选择</option>
+                        </select>
+                        <span class="inpConnect fl">-&nbsp;-</span>
+                        <select id="addCitySec" class="endInp fl" name="city">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                    <div class="addLabelName clearfix">
+                        <p class="fl">请输入关键词：</p>
+                        <input id="addKeywordInp" class="fl" type="text" maxlength="6">
+                    </div>
+                    <div class="addLabelName clearfix">
+                        <p class="fl" style="margin-right:1em;">请输入描述：</p>
+                        <input id="addDescriptionTxt" class="fl" type="text">
+                    </div>
+                </div>
+                <div class="addLabelFoot modal-footer">
+                    <button id="confilmAddBtn" type="button" class="btn btn-primary">确认添加</button>
+                    <button id="CancelBtn" type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/countUp.min.js"></script>
+    <script src="util/util.js?v=201707041142"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/keywords.js?v=201707041142"></script>
+    <script id="keywordList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }} 
+        <tr>
+            <td><i class="labelSinSelBox cur-p" scCmsKeywordId={{item.scCmsKeywordId || ""}}></i></td>
+			<td>{{item.scCmsKeywordAreaCode || ''}}</td>
+			<td>{{item.scCmsKeywordName || ''}}</td>
+			<td class="text-ellipsis w200px" title={{item.scCmsKeywordDescribe || ''}}>{{item.scCmsKeywordDescribe || ''}}</td>
+			<td>
+				<div class="labCancelIcon fl cur-p wfull delBtn" scCmsKeywordId={{item.scCmsKeywordId || ""}}><i class="glyphicon glyphicon-trash orange"></i>删除</div>
+			</td>
+		</tr>  
+        {{#  }); }}
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no"/>
+    <title>六脉粉神剑</title>
+    <link href="../../common/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../common/assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../common/css/common.css" rel="stylesheet" />
+    <link href="../css/fsj.css" rel='stylesheet' type='text/css' />
+</head>
+<body>
+    <div class="main-content">
+        <div class="msgboard">
+            <div class="icons Center-Container">
+                <div class="link-desc">
+                    <a href="javascript:void(0)" id="btnUpload" class="Absolute-Center" style="color:#60A6A0">
+                        <span id="txtFA">通过线上、线下大量活动、卡券、优惠吸引拓客。</span>
+                    </a>
+                </div>
+                <img class="img-circle" src="../img/fsj_icon1.png" style="left: 248px; top: 42px; width: 77px; height: 77px; opacity: 0.5;background-color:#ccc;">
+                <img class="img-circle" src="../img/fsj_icon2.png" style="left: 19px; top: 133px; width: 77px; height: 77px; opacity: 0.5;">
+                <img class="img-circle" src="../img/fsj_icon3.png" style="left: 210px; top: 171px; width: 77px; height: 77px; opacity: 0.5;">
+                <img class="img-circle" src="../img/fsj_icon4.png" style="left: 78px; top: 8px; width: 77px; height: 77px; opacity: 0.5;">
+                <img class="img-circle" src="../img/fsj_icon5.png" style="left: 108px; top: 232px; width: 77px; height: 77px; opacity: 0.5;">
+            </div>
+        </div>
+        <div class="wire"></div>
+        <div class="circle-wrapper">
+            <div class="center-ad">
+                <img src="../img/fsj_caption.png" />
+            </div>
+            <div id="bg"></div>
+            <div id="circle-animated">
+                <div data-index=0 data-color="#61A7A1">
+                    <a href="javascript:void(0)"><img src="../img/fsj_1.png" /><br />活动引客</a>
+                </div>
+                <div data-index=1 data-color="#EFE941">
+                    <a href="javascript:void(0)"><img src="../img/fsj_2.png" /><br />爆点留客
+                </div>
+                <div data-index=2 data-color="#CC2277">
+                    <a href="javascript:void(0)"><img src="../img/fsj_3.png" /><br />追销锁客
+                </div>
+                <div data-index=3 data-color="#93B74C">
+                    <a href="javascript:void(0)"><img src="../img/fsj_4.png" /><br />粉丝升客
+                </div>
+                <div data-index=4 data-color="#5F9ED1">
+                    <a href="javascript:void(0)"><img src="../img/fsj_5.png" /><br />团队拓客
+                </div>
+                <div data-index=5 data-color="#D15B2E">
+                    <a href="javascript:void(0)"><img src="../img/fsj_6.png" /><br />观鱼览客
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+<script src="../../common/assets/jquery.min.js"></script>
+<script src="../../common/assets/js/bootstrap.min.js"></script>
+<script src="../../common/js/common.js"></script>
+<script src="../js/jQueryRotate.js"></script>
+<script src="../js/raphael.min.js"></script>
+<script src="../js/jquery.connections.js"></script>
+<script src="../js/fsj.js"></script>
+
+<script type="text/javascript">
+    $.urlParam = function(name, parent) {
+        var url = parent ? window.parent.location.href : window.location.href;
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url);
+        if (typeof results === "undefined" || results == null)
+            return null;
+        else
+            return results[1] || 0;
+    }
+
+    var userId = $.urlParam('backUserID', true);
+
+    $("#btnUpload, .img-circle").click(function() {
+        location.href = "list.html?type=" + activeIndex + "&user=" + userId;
+    });
+
+    var scaleValue = 1//0.75;
+    $('body').css({
+        '-webkit-transform': 'scale(' + scaleValue + ')',
+        '-moz-transform': 'scale(' + scaleValue + ')',
+        '-ms-transform': 'scale(' + scaleValue + ')',
+        '-o-transform': 'scale(' + scaleValue + ')',
+        'transform': 'scale(' + scaleValue + ')',
+
+        '-webkit-transform-origin': '0 0',
+        '-moz-transform-origin': '0 0',
+        '-o-transform-origin': '0 0',
+        '-ms-transform-origin': '0 0'
+    });
+</script>
+
+</html>

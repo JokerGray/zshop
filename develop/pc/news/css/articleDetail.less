@@ -1,0 +1,100 @@
+@import "index.less";
+.main {
+    margin-top: 44px;
+    h2.articleTitle {
+        line-height: 40px;
+        font-size: 30px;
+        margin-top: 12px;
+        margin-bottom: 4px;
+        color: #333;
+        font-weight: 700;
+        position: relative;
+        display: block;
+    }
+    .articleInfo {
+        height: 52px;
+        line-height: 52px;
+        overflow: hidden;
+        margin: 20px 0;
+        .articleAvatar {
+            width: 52px;
+            height: 52px;
+            display: block;
+            border-radius: 50%;
+            background: #f90;
+            margin-right: 20px;
+        }
+        .articleAuthor {
+            font-size: 14px;
+            margin-right: 20px;
+            p {
+                height: 26px;
+                line-height: 26px;
+            }
+        }
+        .follow {
+            width: 80px;
+            height: 35px;
+            display: block;
+            margin-top: 6px;
+            cursor: pointer;
+            background: url(../img/follow.png) center center no-repeat;
+            background-size: contain;
+            &.active {
+                background: url(../img/followed.png) center center no-repeat;
+                background-size: contain;
+            }
+        }
+    }
+    .tabControl{
+        margin: 40px 0 200px;
+        position: relative;
+        .titleLeft{
+            position: absolute;
+            left: -114px;
+            li{
+                padding: 8px 12px;
+                font-size: 18px;
+                margin-bottom: 10px;
+                border-radius: 4px;
+                cursor: pointer;
+                text-align: center;
+            }
+            li.active{
+                background: #fdc826;
+                color: #fff;
+            }
+        }
+        .bigWrap{
+            width: 760px;
+            background: #7a70ee;
+            height: 4px;
+        }
+    }
+    .articleContent,
+    .articleContent>div {
+        font-size: 16px;
+        line-height: 28px;
+        color: #222;
+        word-wrap: break-word;
+        &>p {
+            margin: 16px 0;
+        }
+        img,
+        video {
+            max-width: 100% !important;
+            display: block;
+            margin: 10px auto;
+        }
+    }
+}
+.collect{
+    span{
+        font-size: 16px;
+        color: #666;
+        img{
+            vertical-align: top;
+            margin-right: .5rem;
+        }
+    }
+}

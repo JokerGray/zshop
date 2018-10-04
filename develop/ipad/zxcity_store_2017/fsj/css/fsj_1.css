@@ -1,0 +1,193 @@
+@CHARSET "UTF-8";
+* {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: #90CFD8;
+}
+
+body {
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+    background-color: transparent;
+    background-image: url("../img/fsj_bg.jpg");
+    background-size: 100% 100%;
+    width: 2048px;
+    height: 1536px;
+    overflow: hidden;
+}
+
+
+/*---------- 转盘 -----------*/
+
+.circle-wrapper {
+    position: absolute;
+    margin-left: 470px;
+    margin-top: 120px;
+    width: 490px;
+    height: 490px;
+}
+
+.circle-wrapper .center-ad {
+    position: absolute;
+    margin-left: 89px;
+    margin-top: 202px;
+    z-index: 9999;
+}
+
+.circle-wrapper .center-ad img {
+    width: 305px;
+    height: 75px;
+}
+
+
+/* 转盘背景 */
+
+.circle-wrapper #bg {
+    width: 490px;
+    height: 490px;
+    background: url("../img/fsj_circle.png") no-repeat;
+    background-size: 490px 490px;
+}
+
+
+/* 转盘前景 */
+
+.circle-wrapper #circle-animated {
+    width: 490px;
+    height: 490px;
+    margin-top: -490px;
+    /*line-height:35px;*/
+}
+
+.circle-wrapper #circle-animated>div {
+    color: white;
+    margin-left: 12px;
+}
+
+.circle-wrapper #circle-animated>div>a {
+	display:block;
+	text-align:center;
+	line-height:2;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.circle-wrapper #circle-animated>div>a>img {
+    width: 54px;
+    height: 54px;
+}
+
+
+/*---------- ./转盘 -----------*/
+
+
+/*---------- 文本框 -----------*/
+
+.msgboard {
+    position: absolute;
+    left: 55px;
+    top: 178px;
+    border: 7px solid #61A7A1;
+    border-radius: 24px;
+    width: 366px;
+    height: 333px;
+    background-color: #f8f8f8;
+    line-height: 50px;
+    z-index: 9999;
+}
+
+.icons {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.icons>.img-circle {
+    /*background-color: #ccc;*/
+    width: 77px;
+    height: 77px;
+    position: absolute;
+}
+
+.icons a,
+.icons a:hover,
+.icons a:active {
+    text-decoration: none;
+    z-index: 9999;
+}
+
+.icons a>span {
+    font-size: 24px;
+}
+
+.icons a>img {
+    vertical-align: middle;
+}
+
+
+/*---------- ./文本框 -----------*/
+
+
+/*---------- 连接线 -----------*/
+
+.wire {
+    height: 130px;
+    border-right: 7px solid #61A7A1;
+    -webkit-transform: rotate(110deg);
+    -moz-transform: rotate(110deg);
+    -o-transform: rotate(110deg);
+    -ms-transform: rotate(110deg);
+    transform: rotate(110deg);
+    position: absolute;
+    top: 170px;
+    left: 450px;
+    z-index: 9990;
+}
+
+
+/*---------- ./连接线 -----------*/
+
+#bubbles {
+    position: absolute;
+    width: 468px;
+    height: 100%;
+    z-index: 9989;
+}
+
+span {
+    word-break: normal;
+    width: auto;
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.Center-Container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Absolute-Center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    /*resize: both;*/
+    overflow: auto;
+}

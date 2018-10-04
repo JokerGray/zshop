@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>头条推广统计</title>
+  <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="../../../common/css/reset.css">
+  <link rel="stylesheet" href="../../../common/css/layTab.css" />
+  <link type="text/css" rel="stylesheet" href="headlines/css/headlines.css">
+</head>
+<body>
+<div class="layout-top tool-box layui-form">
+    <!--头部搜索框 -->
+	<ul class="tool-box-ul clearfix">
+        <!-- 时间开始 -->
+        <li class="tool-box-li">
+			<div class="layui-form-item">
+				<label class="tool-box-label" id="stTime">时间：</label>
+				<div class="layui-input-inline startDate">
+					<input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+				</div>
+			</div>
+		</li>				
+		<li class="tool-box-li">
+			<div class="layui-form-item">
+				<label class="tool-box-label" id="endTim">至：</label>
+				<div class="layui-input-inline endDate">
+					<input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+				</div>
+			</div>
+		</li>
+        <!-- 时间结束 -->                    
+		<button class="layui-btn" id="searchBtn">查询</button>
+	</ul>
+</div>
+<!--下面图片-->
+<div class="centerContent">
+  <ul class="thefirst">
+    <li class="totalMoney">
+      <div id="totalMoney" style="height: 100px;">
+        <p class="thirty" id="amount" style="margin-top: 10px;border:none;">0.00</p>
+        <p class="eighteen">头条总金额(元)</p>
+      </div>
+    </li>
+    <li class="nextOne">
+      <img src="headlines/img/arrow.png" alt="">
+    </li>
+  </ul>
+  <ul class="thesecond">
+    <li class="one">
+      <img src="headlines/img/blue.png" alt="">
+    </li>
+     <li class="two">
+       <img src="headlines/img/oblong.png" alt="" style="height: 185px;width: 4px;">
+     </li>
+    <li class="three">
+      <img src="headlines/img/blue.png" alt="">
+    </li>
+    <li class="four">
+      <img src="headlines/img/oblong.png" alt="" style="height: 185px;width: 4px;">
+    </li>
+    <li class="five">
+      <img src="headlines/img/blue.png" alt="">
+    </li>
+    <li class="six">
+      <img src="headlines/img/oblong.png" alt="" style="width: 4px;height: 185px;">
+    </li>
+    <li class="seven">
+      <img src="headlines/img/blue.png" alt="">
+    </li>
+  </ul>
+
+  <ul class="thethird">
+    <li class="queryStatus4">
+      <!--<p class="income"></p>-->
+      <img src="headlines/img/-company-income.png" alt="">
+      <div>
+        <p class="thirty" id="companyIncomeSum">0.00</p>
+        <p class="twenty">公司收入</p>
+      </div>
+    </li>
+    <li class="queryStatus2">
+      <img src="headlines/img/Author's-income.png" alt="">
+      <div>
+        <p class="thirty" id="supplierIncomeSum">0.00</p>
+        <p class="twenty">作者收入</p>
+      </div>
+    </li>
+    <li class="queryStatus3">
+      <img src="headlines/img/refunds.png" alt="">
+      <div>
+        <p class="thirty" id="refundAmountSum">0.00</p>
+        <p class="twenty">广告投放人退款</p>
+      </div>
+    </li>
+    <li class="queryStatus1">
+      <img src="headlines/img/Not-completed.png" alt="">
+      <div>
+        <p class="thirty" id="underwayTotalAmountSum">0.00</p>
+        <p class="twenty">进行中</p>
+      </div>
+    </li>
+  </ul>
+  <ul class="thefourth">
+    <li>
+      <img src="headlines/img/arrow.png" alt="">
+    </li>
+  </ul>
+  <ul class="thefive">
+    <li class="one">
+      <img src="headlines/img/yellow.png" alt="">
+    </li>
+    <li class="two">
+      <img src="headlines/img/oblong.png" alt="">
+    </li>
+    <li class="three">
+      <img src="headlines/img/yellow.png" alt="">
+    </li>
+    <!-- <li class="four">
+      <img src="headlines/img/oblong.png" alt="">
+    </li> -->
+    <!-- <li class="five">
+      <img src="headlines/img/yellow.png" alt="">
+    </li> -->
+  </ul>
+  <ul class="thesix">
+    <li id="scIncomeAudit">
+     <span class="one"></span>
+     <div class="div-hover">
+        <p>头条结算(条)</p>
+        <p style="margin-left: 25px;" id="auditNumber">0</p>
+      </div>
+    </li>
+    <li id="workTax">
+     <span class="two"></span>
+     <div class="div-hover">
+        <p >劳务税</p>
+        <p id="laborCostsCount">0.00</p>
+      </div>
+    </li>
+    <!-- <li>
+      <span class="three"></span>
+      <div class="div-hover">
+        <p>劳务费</p>
+        <p>0.00</p>
+      </div>
+    </li> -->
+  </ul>
+</div>
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="headlinesHome.js"></script>
+</body>
+</html>

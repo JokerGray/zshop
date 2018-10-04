@@ -1,0 +1,193 @@
+/*main主体部分*/
+/*左侧权限列表*/
+.main_l {
+    width: 20%;
+    padding: 0 10px;
+    border-top: 3px solid #FFA893;
+}
+
+.privilegeTop {
+	display: block;
+	height: 55px;	
+	line-height: 55px;
+	padding-left: 30px;
+	font-size: 16px;
+}
+
+.privilegeTop i {
+	margin-right: 6px;
+	font-size: 24px;
+}
+
+.privilegeList {
+    width: 100%;
+	max-height: 750px;
+	overflow-x: hidden; 
+	overflow-y: scroll;
+    background: #F8F8F8;
+	border: 1px solid #F0F0F0;
+}
+
+::-webkit-scrollbar{width:5px;}
+
+.priModule a {
+	display: block;
+	color: #888;
+	height: 40px;
+    line-height: 40px;
+	position: relative;
+}
+
+.priModuleTit {
+	background: #EEEEEE;
+	border-top: 1px solid #E5E5E5;
+	border-bottom: 1px solid #E5E5E5;
+	padding-left: 40px;
+}
+
+.priSonLi {
+	background: #F8F8F8;
+	padding-left: 53px;
+}
+
+.prigrandSonLi {
+	background: #F8F8F8;
+	padding-left: 80px;
+	position: relative;
+}
+
+.prigrandSonLi:before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 68px;
+	top: 16px;
+	width: 6px;
+	height: 6px;
+	background: #999;
+	border-radius: 50%;
+}
+
+.priModule i.arrow {
+	padding-right: 6px;
+}
+
+/*右侧内容*/
+.main_r {
+    padding: 30px 30px 20px 10px;
+	width: 80%;
+}
+.mainOperate {
+	margin-bottom: 30px;
+}
+/*搜索框*/
+#search_icon {
+	height: 36px;
+}
+
+#searchInp[type="text"] {
+	line-height: 35px;
+	margin-bottom: 0;
+	padding: 0 0 0 15px;
+	width: 230px;
+	margin-right: 15px;
+}
+
+/*新增权限按钮*/
+#addNewLabel {
+	padding: 0 20px;
+	height: 36px;
+	line-height: 36px;
+	cursor: pointer;
+	background-color: #FFA893;
+	color: #fff;
+	border-radius: 4px;
+	display: inline-block;
+	font-size: 16px;
+}
+
+/*表格*/
+.table #tableCon td {
+    background-color: #fff;
+}
+
+#table_head th, #tableCon td {
+	text-align: center;
+	padding: 0;
+	height: 40px;
+	line-height: 40px;
+	background-color: #f5f5f5;
+}
+
+.operateTab > div {
+    width: 50%;
+}
+
+.operateTab > div > i {
+    margin-right: 10px;
+}
+
+#page {
+	width: 100%;
+}
+
+/*添加权限模态框*/
+.addPriMBox {
+	width: 750px;
+}
+.addPriMBox {
+	margin-top: 100px;
+}
+.addPriHead {
+	border-bottom: 0;
+}
+.addPriHead .addPriTitle {
+	text-align: center;
+	font-weight: 900;
+	font-size: 16px;
+}
+
+.addPriInpInpName {
+	padding-top: 10px;
+	display: inline-block;
+}
+
+.addLabelName {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.addPriInp[type="text"], .addPriSelect {
+	display: inline-block;
+    width: 450px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    margin-bottom: 0;
+	border-radius: 4px;
+}
+
+.priDescription {
+	display: inline-block;
+    width: 450px;
+    border: 1px solid #ccc;
+    padding: 8px;
+	border-radius: 4px;
+	vertical-align: top;
+}
+
+/*模态框底部按钮*/
+.addPriFoot {
+	border-top: 0;
+    text-align: center;
+	margin-bottom: 20px;
+}
+
+.addPriFoot button {
+	color: #fff;
+	padding: 6px 25px;
+	margin: 0 20px;
+}
+
+#confilmAddBtn {
+	background-color: #FFA893;
+}

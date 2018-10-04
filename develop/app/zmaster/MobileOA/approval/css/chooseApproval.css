@@ -1,0 +1,472 @@
+@charset "UTF-8";
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section {
+  display: block;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a {
+  color: black;
+}
+li {
+  list-style: none;
+}
+a:hover,
+a:visited,
+a:active,
+a:link {
+  text-decoration: none;
+}
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body {
+  background-color: #f9f8f8;
+  font-family: PingFang SC, San Francisco, '微软雅黑', sans-serif, Arial;
+}
+.level-item {
+  padding: 0.10666667rem 0.13333333rem;
+  margin-left: 0.66666667rem;
+  font-size: 24px;
+  border: 0.01333333rem solid gainsboro;
+  border-radius: 0.08rem;
+}
+[data-dpr='3'] .level-item {
+  font-size: 36px;
+}
+[data-dpr='1'] .level-item {
+  font-size: 12px;
+}
+.level-one {
+  border: 0.01333333rem solid transparent;
+  background-color: #96d452;
+  color: white;
+}
+.level-two {
+  border: 0.01333333rem solid transparent;
+  background-color: #fab42f;
+  color: white;
+}
+.level-three {
+  border: 0.01333333rem solid transparent;
+  background-color: #fa4646;
+  color: white;
+}
+.layui-m-layercont {
+  padding: 0.46666667rem 0.2rem !important;
+  font-size: 28px !important;
+}
+[data-dpr='3'] .layui-m-layercont {
+  font-size: 38px !important;
+}
+[data-dpr='1'] .layui-m-layercont {
+  font-size: 14px !important;
+}
+.layui-m-layerbtn {
+  height: 60px !important;
+  line-height: 60px !important;
+}
+[data-dpr='3'] .layui-m-layerbtn {
+  height: 90px !important;
+  line-height: 90px !important;
+}
+[data-dpr='1'] .layui-m-layerbtn {
+  height: 30px !important;
+  line-height: 30px !important;
+}
+.layui-m-layerbtn span[no],
+.layui-m-layerbtn span[yes] {
+  font-size: 26px !important;
+}
+[data-dpr='3'] .layui-m-layerbtn span[no],
+[data-dpr='3'] .layui-m-layerbtn span[yes] {
+  font-size: 39px !important;
+}
+[data-dpr='1'] .layui-m-layerbtn span[no],
+[data-dpr='1'] .layui-m-layerbtn span[yes] {
+  font-size: 13px !important;
+}
+.layui-m-layerbtn span[yes] {
+  color: #ff925a !important;
+}
+.title_tab {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 1.17333333rem;
+  line-height: 1.17333333rem;
+  text-align: center;
+  background-color: #ffffff;
+  margin-bottom: 0.26666667rem;
+  font-size: 34px;
+  color: #333333;
+  font-weight: bold;
+  z-index: 500;
+}
+[data-dpr='3'] .title_tab {
+  font-size: 51px;
+}
+[data-dpr='1'] .title_tab {
+  font-size: 17px;
+}
+.title_tab .back_imgBtn {
+  position: absolute;
+  top: 0;
+  left: 0.4rem;
+  width: 1.17333333rem;
+  height: 1.17333333rem;
+}
+.title_tab .back_imgBtn img {
+  margin-top: 0.4rem;
+  width: 19px;
+  height: 30px;
+}
+[data-dpr='3'] .title_tab .back_imgBtn img {
+  width: 30px;
+  height: 53px;
+}
+[data-dpr='1'] .title_tab .back_imgBtn img {
+  width: 10px;
+  height: 15px;
+}
+.title_tab .createBtn {
+  position: absolute;
+  top: 0.29333333rem;
+  right: 0.4rem;
+  width: 45px;
+  height: 45px;
+}
+[data-dpr='3'] .title_tab .createBtn {
+  width: 68px;
+  height: 68px;
+}
+[data-dpr='1'] .title_tab .createBtn {
+  width: 25px;
+  height: 25px;
+}
+.rejectBox {
+  display: none;
+  /*隐藏*/
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0px;
+  left: 0px;
+  z-index: 1000000000000000000;
+}
+.rejectBox .innerBox {
+  font-size: 30px;
+  background: white;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  display: block;
+  width: 80%;
+  height: 3.06666667rem;
+  padding: 0.4rem;
+  border-radius: 0.13333333rem;
+}
+[data-dpr='3'] .rejectBox .innerBox {
+  font-size: 48px;
+}
+[data-dpr='1'] .rejectBox .innerBox {
+  font-size: 12px;
+}
+.rejectBox .innerBox .title {
+  text-align: center;
+  color: #858585;
+}
+.rejectBox .innerBox input {
+  width: 95%;
+  padding-left: 2%;
+  height: 1.06666667rem;
+  font-size: 30px;
+  margin: 0.4rem 0;
+  border: 1px solid gainsboro;
+}
+[data-dpr='3'] .rejectBox .innerBox input {
+  font-size: 36px;
+}
+[data-dpr='1'] .rejectBox .innerBox input {
+  font-size: 12px;
+}
+.rejectBox .innerBox .commonbtn {
+  height: 0.66666667rem;
+  line-height: 0.66666667rem;
+  text-align: center;
+  width: 50%;
+  box-sizing: border-box;
+  float: left;
+}
+.rejectBox .innerBox .deleteBtn {
+  border-right: 1px solid gainsboro;
+  color: #858585;
+}
+.rejectBox .innerBox .certainBtn {
+  color: #ff925a;
+}
+body {
+  width: 100%;
+  background-color: white;
+  overflow-x: hidden;
+}
+#leaveList {
+  background: white;
+  width: 10rem;
+  height: 10.66666667rem;
+  padding-top: 1.33333333rem;
+  font-size: 30px;
+}
+[data-dpr='3'] #leaveList {
+  font-size: 45px;
+}
+[data-dpr='1'] #leaveList {
+  font-size: 15px;
+}
+#leaveList .searchBox {
+  padding: 0.4rem;
+  border-bottom: 1px solid #EDEDEF;
+  position: relative;
+}
+#leaveList .searchBox input {
+  font-size: 30px;
+  background: #EDEDEF;
+  padding-left: 0.26666667rem;
+  height: 0.93333333rem;
+  width: 98%;
+  border-radius: 0.10666667rem;
+}
+[data-dpr='3'] #leaveList .searchBox input {
+  font-size: 45px;
+}
+[data-dpr='1'] #leaveList .searchBox input {
+  font-size: 15px;
+}
+#leaveList .searchBox .searchPeronBtn {
+  position: absolute;
+  top: 0.52rem;
+  right: 4%;
+  width: 44px;
+  height: 44px;
+}
+[data-dpr='3'] #leaveList .searchBox .searchPeronBtn {
+  width: 66px;
+  height: 66px;
+}
+[data-dpr='1'] #leaveList .searchBox .searchPeronBtn {
+  width: 22px;
+  height: 22px;
+}
+#leaveList .defaultPerson {
+  height: 1.33333333rem;
+  line-height: 1.33333333rem;
+  padding: 0.4rem;
+  border-bottom: 1px solid #EDEDEF;
+}
+#leaveList .defaultPerson .tips {
+  color: #b4b4b7;
+  margin-right: 0.32rem;
+}
+#leaveList .defaultPerson .name {
+  color: #666666;
+}
+#leaveList .defaultPerson .to_choose {
+  display: none;
+  border-radius: 0.09333333rem;
+  float: right;
+  display: inline-block;
+  padding: 0.09333333rem 0.26666667rem;
+  line-height: 0.53333333rem;
+  color: white;
+  background-color: #FCC2A4;
+  text-align: center;
+  margin-top: 0.30666667rem;
+}
+#leaveList .defaultPerson .to_choose.active {
+  background-color: #ff925a;
+}
+#leaveList .shopName {
+  padding: 0.26666667rem 0.4rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid #EDEDEF;
+  color: #ff925a;
+}
+#leaveList .treeDepartment .triangle-down {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+  border-left: 0.13333333rem solid transparent;
+  border-right: 0.13333333rem solid transparent;
+  border-top: 0.2rem solid #7E7E80;
+  margin-right: 0.33333333rem;
+}
+#leaveList .treeDepartment .triangle-right {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+  border-left: 0.2rem solid #7E7E80;
+  border-bottom: 0.13333333rem solid transparent;
+  border-top: 0.13333333rem solid transparent;
+  margin-right: 0.36rem;
+  margin-left: 0.05333333rem;
+}
+#leaveList .treeDepartment .shopTab {
+  padding: 0.24rem 0.4rem;
+}
+#leaveList .treeDepartment .shopTab .personUl {
+  display: none;
+}
+#leaveList .treeDepartment .shopTab li {
+  margin-top: 0.32rem;
+  margin-left: 0.66666667rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid gainsboro;
+  color: #666666;
+}
+[data-dpr='3'] #leaveList .treeDepartment .shopTab li {
+  margin-left: 0.93333333rem;
+}
+#leaveList .treeDepartment .shopTab li .personImg {
+  width: 55px;
+  height: 55px;
+  vertical-align: middle;
+  margin-right: 0.26666667rem;
+}
+[data-dpr='3'] #leaveList .treeDepartment .shopTab li .personImg {
+  width: 84px;
+  height: 84px;
+  margin-right: 0.53333333rem;
+}
+[data-dpr='1'] #leaveList .treeDepartment .shopTab li .personImg {
+  width: 28px;
+  height: 28px;
+}
+#leaveList .treeDepartment .shopTab li .name {
+  display: inline-block;
+  width: 2.13333333rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#leaveList .treeDepartment .shopTab li .sex {
+  margin-left: 0.26666667rem;
+}
+[data-dpr='3'] #leaveList .treeDepartment .shopTab li .sex {
+  margin-left: 0.53333333rem;
+}
+#leaveList .treeDepartment .shopTab li .chooseBtn {
+  border-radius: 0.09333333rem;
+  float: right;
+  display: inline-block;
+  padding: 0.09333333rem 0.26666667rem;
+  line-height: 0.53333333rem;
+  color: white;
+  background-color: #FCC2A4;
+  text-align: center;
+}
+#leaveList .treeDepartment .shopTab li .chooseBtn.active {
+  background-color: #ff925a;
+}

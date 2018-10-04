@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<title>推荐人佣金审核</title>
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../../../common/css/reset.css" />
+	<link rel="stylesheet" href="../../../common/css/layTab.css" />
+	<style media="screen" type="text/css">
+    	.dTitle{
+    		font-size: 23px;
+    		margin: 12px 0;    /* 24px 0; */
+    		text-align: center;
+    	}
+    	.dContent{
+    		margin: 0 20px;   /* 0 50px; */
+    		text-align: center;
+    	}
+    	.control-label{
+    		padding-top: 7px;
+		    margin-bottom: 0;
+		    text-align: justify;
+		    display: inline-block;
+		    width: 120px;
+		    max-width: 100%;
+		    font-weight: 700;
+		    font-family: \5FAE\8F6F\96C5\9ED1,arial,sans-serif;
+		    color: #333;
+		    font-size: 14px;
+		    line-height: 24px;
+    	}
+    	.pull-left{
+    		float: left!important;
+    	}
+    	.pull-right{
+    		float: right!important;
+    		
+    	}
+    	.form-control{
+    		/* display: inline; */
+		    width: 48%;
+		    height: 20px;
+		    padding: 6px 12px;
+		    font-size: 14px;
+		    line-height: 1.42857143; 
+		    color: #555;
+		    background-color: #fff;
+		    opacity: 1;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    	}
+    	.form-control:focus{
+    		border-color: #66afe9;
+    		outline: 0;
+    		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    	}
+    	.form-control[readonly]{
+    		background-color: #eee;
+    		opacity: 1;
+    	}
+    	
+    	.pull-right .form-control{
+    		left: -25px;
+    		position: relative;
+    	}
+    	.pull-left .form-control{margin-left: -20px;}
+    	
+    	.from-item{
+    		margin: 10px 25px;   /*  20px 0;  */
+    	}
+    	input[type=radio]{
+    		box-sizing: border-box;
+    		padding: 0;
+    		vertical-align: middle;
+    		margin: 4px 0 0;
+    		line-height: normal;
+    		display: inline-block;
+    	}
+    	.myRadio{
+		    width: 100%;
+		    height: 34px;
+		    font-size: 14px;
+		    color: #555;
+		    background-color: #fff;
+		    background-image: none;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    	}
+    	.myRadio:focus{
+    		border-color: #66afe9;
+    		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    		outline: 5px auto -webkit-focus-ring-color;
+    		outline-offset: -2px;
+    	}
+    	.left{
+    		position: relative;
+    		left: 160px;
+    		top: -30px;
+    	}
+    	.mylabel{
+    		position: relative;
+    		left: 300px;
+    		top: -62px;
+    	}
+    	.mylabel2{
+    		position: relative;
+    		left: 58px;
+    		top: -62px;
+    	}
+    	
+    	.right{
+    		position: relative;
+    		left: 425px;
+    		top: -92px;
+    	}
+    	.line{
+    		position: relative;
+    		left: 1px;
+    		top: -92px;
+    	}
+    	.txt{
+    		position: relative;
+    		left: -90px;
+    		top: -9px;
+    		
+    	}
+    </style>
+</head>
+<body>
+	<div class="tool-box layui-form">
+		<ul class="tool-box-ul clearfix">
+			<!-- 商户名称    -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">商户名称：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="" placeholder="输入商户名称" class="layui-input" id="merchantOrgName" maxlength="20"> 
+					</div>
+				</div>
+			</li>
+			<!--  流水号    -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">流水号：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="" placeholder="输入流水号" class="layui-input" id="serialNo" maxlength="20"> 
+					</div>
+				</div>
+			</li>
+			<!-- 时间开始 -->
+           	<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="stTime">申请日期：</label>
+					<div class="layui-input-inline startDate">
+						<input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+					</div>
+				</div>
+			</li>				
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="endTim">至：</label>
+					<div class="layui-input-inline endDate">
+						<input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+					</div>
+				</div>
+			</li>
+            <!-- 时间结束 -->   
+   		</ul>
+	</div>
+	
+	<div class="tool-add-box clearfix">
+		<button class="layui-btn add" id="exportBtn" style="top: -10px;margin-left: 10px;">导出excel</button>
+		<button class="layui-btn add" id="resetBtn" style="top: -10px;">重置</button>
+		<button class="layui-btn add" id="searchBtn" style="top: -10px;">搜索</button>
+	</div>
+
+	<div class="layui-app">
+		<div class="app-table" style="margin-top: 10px;" >
+			<table lay-filter="merchantTable" id="merchantTable"></table>
+			<div id="layTablePage"></div>
+		</div>
+	</div>
+
+	<script type="text/html" id="barDemo">
+    	<button class="layui-btn my-btn" lay-event="view">确认</button>
+    </script>		
+
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="../../../common/assets/template-web.js"></script>					
+<script type="text/javascript" src="referenceCommissionAudit.js"></script>
+</body>
+</html>
+
+
+<!-- templates -->
+<script type="text/html" id="referenceAuditTpl">
+<div class="container-fluid">
+	<form class="layui-form">
+		<div class="layui-form-item top" style="padding-top: 0px;">
+			<h1 class="dTitle">推荐人佣金审核</h1>
+		</div>
+		<input readonly id="id" type="text" value="{{id}}" hidden>
+		<hr width="760px" style="margin-left: 20px;" />
+
+		<div class="dContent">
+			<fieldset>
+				<div class="pull-left">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>商户名称：</label>
+						<input readonly class="form-control" id="orgName" type="text" value="{{orgName}}">
+					</div>
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>升级类型：</label>
+						<input readonly class="form-control" id="upgradeType" type="text" value="{{upgradeType}}">
+					</div>
+				</div>
+				<div class="pull-right">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>缴纳金额：</label>
+						<input readonly class="form-control" id="upgradeAmount" type="text" value="{{upgradeAmount}}">
+					</div>
+				</div>
+			</fieldset>
+
+			<hr/>
+
+			<fieldset>
+				<div class="pull-left">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>推荐人：</label>
+						<input readonly class="form-control" id="referenceUserName" type="text" value="{{referenceUserName}}">
+					</div>
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>劳务所得：</label>
+						<input class="form-control" id="referenceRealAmount" onkeyup="upgradeRealAmountKeyup(this)" onchange="changeReferenceMoney()" type="text" value="{{referenceAmount}}">
+					</div>
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>所得金额：</label>
+						<input readonly class="form-control" id="referenceMoney" type="text" value="{{referenceMoney}}">
+					</div>
+				</div>
+				<div class="pull-right">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>推荐人类型：</label>
+						<input readonly class="form-control" id="referenceMerchantLevel" type="text" value="{{referenceMerchantLevel}}">
+					</div>
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>应缴个税：</label>
+						<input class="form-control" id="referenceTaxation" onkeyup="upgradeRealAmountKeyup(this)" onchange="changeReferenceMoney()" type="text" value="{{referenceTaxation}}">
+					</div>
+				</div>
+			</fieldset>
+
+			<hr/>
+
+			<fieldset>
+				<div class="pull-left">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>合伙人：</label>
+						<input readonly class="form-control" id="copartnerUserName" type="text" value="{{copartnerUserName}}">
+					</div>
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>应缴个税：</label>
+						<input class="form-control" id="copartnerTaxation" onkeyup="upgradeRealAmountKeyup(this)" onchange="changeCopartnerMoney()" type="text" value="{{copartnerTaxation}}">
+					</div>
+				</div>
+				<div class="pull-right">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>劳务所得：</label>
+						<input class="form-control" id="copartnerRealAmount" onkeyup="upgradeRealAmountKeyup(this)" onchange="changeCopartnerMoney()" type="text" value="{{copartnerAmount}}">
+					</div>
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>所得金额：</label>
+						<input readonly class="form-control" id="copartnerMoney" type="text" value="{{copartnerMoney}}">
+					</div>
+				</div>
+			</fieldset>
+			
+			<hr/>
+
+			<fieldset>
+				<div class="pull-left">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>公司盈利：</label>
+						<input readonly class="form-control" id="upgradeRealAmount" type="text" value="{{profitMoney}}">
+					</div>
+				</div>
+			</fieldset>
+
+			<hr/>
+		</div>
+	</form>
+</div>
+</script>
+
+
+
+
+
+
+
+<!-- templates -->
+<script type="text/html" id="onLineListTpl">
+<div class="container-fluid">
+	<form class="layui-form">
+		<div class="layui-form-item top" style="padding-top: 0px;">
+			<h1 class="dTitle">商户升级详情</h1>
+		</div>
+		<input readonly id="id" type="text" value="{{id}}" hidden>
+		<hr width="740px" style="margin-left: 20px;" />
+
+		<div class="dContent">
+			<fieldset>
+				<div class="pull-left">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>升级类型：</label>
+						<input readonly class="form-control" id="upgradeType" type="text" value="{{upgradeType}}">
+					</div>
+				</div>
+				<div class="pull-right">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>应支付金额：</label>
+						<input readonly class="form-control" id="upgradeAmount" type="text" value="{{upgradeAmount}}">
+					</div>
+				</div>
+			</fieldset>
+
+			<hr/>
+
+			<fieldset>
+				<div class="pull-left">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>支付宝交易号：</label>
+						<input readonly class="form-control" id="serialNumber" type="text" value="{{serialNumber}}">
+					</div>
+				</div>
+				<div class="pull-right">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>支付宝手续费：</label>
+						<input readonly class="form-control" id="aliPayPoundage" type="text" value="{{aliPayPoundage}}">
+					</div>
+				</div>
+			</fieldset>
+
+			<hr/>
+
+			<fieldset>
+				<div class="pull-left">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>进账金额：</label>
+						<input readonly class="form-control" id="aliPayMoney" type="text" value="{{aliPayMoney}}">
+					</div>
+				</div>
+				<div class="pull-right">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>手续费：</label>
+						<input readonly class="form-control" id="aliPay" type="text" value="{{aliPayPoundage}}">
+					</div>
+				</div>
+			</fieldset>
+			
+			<hr/>
+
+			<fieldset>
+				<div class="pull-left">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>实收金额：</label>
+						<input readonly class="form-control" id="upgradeRealAmount" type="text" value="{{upgradeRealAmount}}">
+					</div>
+				</div>
+				<div class="pull-right">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>查账人：</label>
+						<input readonly class="form-control" id="auditName" type="text" value="{{auditName}}">
+					</div>
+				</div>
+			</fieldset>
+				
+			<hr/>
+
+			<fieldset>
+				<div class="pull-left">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>办理人员：</label>
+						<input readonly class="form-control" id="referenceUserName" type="text" value="{{referenceUserName}}">
+					</div>
+				</div>
+				<div class="pull-right">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>劳务所得：</label>
+						<input readonly class="form-control" id="referenceAmount" type="text" value="{{referenceAmount}}">
+					</div>
+				</div>
+			</fieldset>
+				
+			<hr/>
+
+			<fieldset>
+				<div class="pull-left">
+					<div class="from-item">
+						<label class="control-label"><b class="required-icon"></b>审核意见：</label>
+						<input readonly class="form-control" id="state" type="text" value="{{state}}">
+					</div>
+				</div>
+			</fieldset>
+			
+			<hr/>
+
+			<fieldset>
+				<div class="from-item txt">
+					<label class="control-label mylabel2"><b class="required-icon"></b>意见信息：</label>
+					<textarea readonly style="width: 60%; height: 68px;margin-left:38px" id="remark" class="form-control" rows="3">{{remark}}</textarea>
+				</div>
+			</fieldset>
+		</div>
+	</form>
+</div>
+</script>

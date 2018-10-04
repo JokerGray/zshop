@@ -1,0 +1,357 @@
+/* 
+* @Author: Marte
+* @Date:   2017-05-08 17:14:35
+* @Last Modified by:   Marte
+* @Last Modified time: 2017-05-21 15:28:42
+*/
+/**header css*/
+html,body{
+    height: 100%;
+    overflow: hidden;
+}
+a:hover,a:active,a:visited,a:focus{
+    text-decoration: none;
+}
+.row{
+    margin-left:0!important;
+    margin-right:0!important;
+}
+.t2{
+    top: 2px;
+}
+.t4{
+    top: 4px;
+}
+.ml20{
+    margin-left: 20px;
+}
+.ml15{
+    margin-left: 15px;
+}
+.ml40{
+    margin-left: 40px;
+}
+.ml10{
+    margin-left: 10px;
+}
+.mr10{
+    margin-right: 10px;
+}
+.p20{
+    padding:20px;
+}
+.clear{
+    clear:both;
+}
+#head{
+    background-color: #000;
+    height: 60px;
+}
+#head .head-nav{
+    margin-bottom: 0;
+    height: 100%;
+    padding: 17px 0;
+    width:auto;
+}
+#head .head-nav a{
+    font-size:14px;
+    color:#d1d0d0;
+}
+#head .head-nav a span{
+    font-size:22px;
+}
+.head-nav.navbar-nav>li{
+    height: 100%;
+    width: 60px;
+}
+.navbar-nav>li>a{
+    padding: 0;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+.navbar-default {
+    background-color:transparent;
+    border-color:transparent;
+}
+.navbar .navbar-user{
+    margin-right: 80px;
+}
+.navbar .navbar-user li a{
+    font-size:14px;
+    color:#d1d0d0;
+}
+.navbar .navbar-user li a:hover {
+    text-decoration: none;
+    background-color: transparent;
+    color:#d1d0d0;
+}
+#user-pic{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    position: relative;
+    right: 10px;
+    top: -10px;
+}
+.navbar-user li a:focus{
+    color:#d1d0d0!important;
+}
+#head .left-logo{
+    padding: 0;
+    width:auto;
+}
+#head .mid-config{
+    width:auto;
+}
+#head .mid-config .navbar>div{
+    padding: 0;
+}
+#head .mid-config li.ml15 a{
+    color:#eaeaea;
+}
+#head .mid-config li.ml15 a:hover{
+    color:#fff;
+}
+#head .navbar-right{
+    width:auto;
+    float: right;
+}
+#dropdown{
+    left: -48px;
+    top: 25px;
+}
+#contorl-left>a{
+    line-height: 30px;
+}
+#dropdown >li>a{
+    color:#333;
+}
+/*icon*/
+span.icon-zc{
+    width: 22px;
+    height: 18px;
+    background: url(../image/zc.png) 0 no-repeat;
+    position: relative;
+    top: 1px;
+    background-size:cover;
+    display: inline-block;
+    margin-right: 10px; 
+}
+span.icon-tc{
+    width: 18px;
+    height: 20px;
+    background: url(../image/tc.png) 0 no-repeat;
+    position: relative;
+    top: 3px;
+    background-size:cover;
+    display: inline-block;
+    margin-right: 10px; 
+}
+i.argument{
+    width: 20px;
+    height: 20px;
+    background: url(../image/mb.png) 0 no-repeat;
+    position: relative;
+    top: 1px;
+    background-size:cover;
+    display: inline-block;
+}
+i.config{
+    width: 20px;
+    height: 20px;
+    background: url(../image/cs.png) 0 no-repeat;
+    position: relative;
+    top: 1px;
+    background-size:cover;
+    display: inline-block;
+}
+i.versions{
+    width: 20px;
+    height: 20px;
+    background: url(../image/bb.png) 0 no-repeat;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    background-size:cover;
+}
+i.role{
+    width: 20px;
+    height: 20px;
+    background: url(../image/xtjs.png) 0 no-repeat;
+    position: relative;
+    top: 1px;
+    background-size:cover;
+    display: inline-block;
+}
+i.jurisdiction{
+    width: 20px;
+    height: 20px;
+    background: url(../image/qx.png) 0 no-repeat;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    background-size:cover;
+}
+i.supervise{
+    width: 20px;
+    height: 20px;
+    background: url(../image/yh.png) 0 no-repeat;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    background-size:cover;
+}
+i.organization{
+    width: 20px;
+    height: 20px;
+    background: url(../image/xt.png) 0 no-repeat;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    background-size:cover;
+}
+i.config{
+    width: 14px;
+    height: 13px;
+    background: url(../image/config.png) 0 no-repeat;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    background-size:cover;
+}
+#accordion{
+    width: 200px;
+    transition: all .3s;
+}
+#accordion.goleft{
+    transform: translateX(-200px);
+}
+/**menu css*/
+.breadcrumb{
+    background-color: transparent;
+}
+.row-inhert{
+    height:100%;
+}
+.row-logo-img{
+    padding:17px 0;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: #d1d0d0;
+    background-color: transparent;
+}
+#body-box{
+    height: 100%;
+}
+#body-box .body-left-nav{
+    height: 100%;
+}
+#body-box .left-nav{
+    height: 100%;
+    background-color: #303030;
+}
+.menu-left dd a{
+    text-indent: 10px;
+}
+#menu-tree>li>a:hover{
+    background-color: #c83d2d;
+}
+#menu-tree>li.act>a{
+    background-color: #c83d2d!important;
+}
+#menu-tree>li.act>a>span{
+    transform:rotateX(180deg);
+}
+#menu-tree>li.act>dl{
+    display: block;
+}
+#menu-tree>li>a{
+    color:#fff;
+    width: 200px;
+}
+#accordion .layui-nav-bar{
+    background-color: #f97a6b;
+}
+#menu-tree>li>dl>dd>a{
+    color:#fff;
+}
+#menu-tree>li>dl>dd>a:hover{
+    color:#c83d2d;
+}
+#menu-tree span.layui-nav-more{
+    border: none;
+    width: 12px;
+    height: 6px;
+    background: url(../image/down.png) 0 no-repeat;
+    position: absolute;
+    top: 22px;
+    display: inline-block;
+    background-size: cover;
+    right: 24px;
+    transition:all .3s;
+}
+#menu-tree>li:hover>a>span.layui-nav-more{
+    transform:rotateX(180deg);
+}
+#menu-tree .menu-left>dd.actact>a{
+    color:#c83d2d;
+}
+
+/*rightbox*/
+#content{
+    width:calc(100% - 200px);
+}
+#accordion .layui-nav {
+    left:-15px;
+    background-color:transparent;
+}
+/*分页*/
+#paging-box span.layui-laypage-curr,#paging-box a{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+    border: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin:0;
+    text-align: center;
+    color: #333; 
+    font-size: 14px;
+}
+#paging-box span.layui-laypage-curr em.layui-laypage-em{
+    background-color:#ff0000;
+    border-radius: 100%;
+    padding: 0;
+}
+#paging-box span.layui-laypage-curr em:nth-of-type(2){
+        right: 1px;
+    bottom: 1px;
+}
+#paging-box-count{
+    float: right;
+    line-height: 40px;
+    font-size: 14px;
+}
+#paging-box{
+    float: right;
+}
+/*修改密码弹框*/
+#change-password .modal-dialog{
+    width: 627px;
+    height: 438px;
+}
+#change-password .modal-body{
+        height: 315px;
+}
+.input-group .input-group-addon.change {
+    width: 130px;
+    text-align: right;
+    border: 0 none;
+    background-color: transparent;
+}
+#changeform .change-width input{
+    width: 300px;
+}

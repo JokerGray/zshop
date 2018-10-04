@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+	<title>入驻申请详情</title>
+	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css"> 
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+			font-family:-apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+		}
+		html,body {
+			font-size: 16px;
+			height: 100%;
+		}
+		.weui-article{
+			border-bottom: 0.75rem solid #fafafa;
+		}
+		.weui-article p{
+			color: #333;
+			font-size: 0.9rem;
+		}
+		.twoLine{
+			display: flex;
+		}
+		.twoLine p{
+			flex: 1;
+		}
+		.twoBlock{
+			display: flex;
+		}
+		.block2{
+			flex: 1;
+		}
+		p.teamIntroduce{
+			font-size: 0.8rem;
+			color: #666;
+		}
+		h2.teamMemberTitle{
+			display: block;
+			margin-top: 1rem;
+			color: #333;
+			font-size: 0.9rem;
+		}
+		section.teamMember{
+			display: block;
+			margin: 0.5rem 0;
+			padding: 0.5rem;
+			border: 1px solid #dadada;
+			border-radius: 0.25rem;
+		}
+		.teamMember p{
+			margin: 0;
+			font-size: 0.8rem;
+			line-height: 1.25rem;
+		}
+		.hidden{
+			display: none !important;
+		}
+		.remarkContent{
+			display: block;
+			padding: 20px 15px 10px;
+			font-size: 0.9rem;
+			color: #333;
+		}
+		.remark{
+		    padding-left: 0.5rem;
+		}
+		.myBtn{
+			display: block;
+			margin-top: 0;
+			height: 3rem;
+			font-size: 1rem;
+			line-height: 3rem;
+			border-radius: 0;
+			background-color: #4B9DFF;
+		}
+	</style>
+</head>
+<body>
+	<article class="weui-article" id="article">
+		<p>团队名称：<span class="teamName"></span></p>
+		<div class="twoLine">
+			<p>姓名：<span class="leaderName"></span></p>
+			<p>性别：<span class="leaderSex"></span></p>
+		</div>
+		<p>联系电话：<span class="leaderPhone"></span></p>
+		<p>身份证号：<span class="leaderIdentity"></span></p>
+		<div class="twoLine">
+			<p>学历：<span class="leaderEducation"></span></p>
+			<p>生日：<span class="leaderBirthday"></span></p>
+		</div>
+		<p>常用邮箱：<span class="leaderEmail"></span></p>
+		<div class="twoBlock">
+			<p class="block1">通讯地址：</p>
+			<p class="block2 leaderAddress"></p>
+		</div>
+		
+        <p style="margin: 0;">项目介绍</p>
+        <p class="teamIntroduce"></p>
+        
+        <h2 class="teamMemberTitle">管理团队情况</h2>
+        <section class="teamMember hidden" id="example">
+			<div class="twoLine">
+				<p>姓名：<span class="applyerName"></span></p>
+			</div>
+			<div class="twoLine">
+				<p>职务：<span class="applyerDuty"></span></p>
+				<p>学历：<span class="applyerEducation"></span></p>
+			</div>
+			<div class="twoLine">
+				<p>出生：<span class="applyerBirthday"></span></p>
+				<p>电话：<span class="applyerPhone"></span></p>
+			</div>
+        </section>
+    </article>
+    
+    <div class="remarkContent">
+    	<div class="twoBlock">
+			<p class="block1">添加备注：</p>
+			<p class="block2">
+				<textarea class="weui-textarea remark" placeholder="请输入备注内容" rows="3"></textarea>
+			</p>
+		</div>
+    </div>
+    <a href="javascript:;" onclick="addRemark()" class="myBtn weui-btn weui-btn_primary">确定</a>
+    
+    
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.2/weui.min.js"></script>
+	<script type="text/javascript">
+		var isloading = false;
+		$(function(){
+			FastClick.attach(document.body);
+			getData();
+		})
+		// 获取url中的参数
+		function getQueryString(name){
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+			var r = window.location.search.substr(1).match(reg);
+			return r !== null ? decodeURI(r[2]) : null;
+		}
+		
+		// 获取数据
+		function getData(){
+			var id = getQueryString('id');
+			if(!id) {
+				$('article, .remarkContent, a').addClass('hidden');
+				return weui.alert('暂无数据！')
+			};
+			$.ajax({
+				type:"post",
+				dataType: 'json',
+				url:"/zxcity_restful/ws/rest",
+				data:{
+					cmd: 'coffee/querySettleteamDetail',
+					data: JSON.stringify({
+						id: id
+					}),
+					version: 1
+				},
+				beforeSend: function () {
+					loading = weui.loading('加载中……');
+				},
+				complete: function () {
+					loading.hide();
+				},
+				success: function (data) {
+					if(data.code == 1){
+						setData(data.data)
+					} else {
+						weui.alert(data.msg);
+					}
+				},
+				error: function (err) {
+					weui.alert('请求超时，请重试……');
+				}
+			});
+		}
+		
+		// 设置数据
+		function setData(data){
+			if(!data){
+				return weui.alert('暂无数据……');
+			}
+			for(var key in data){
+				$('#article').find('.'+key).text(data[key]);
+			}
+			var userlist = data['applyuserInfoList'];
+			for(var i=0; i<userlist.length; i++){
+				var dom = $('#example').clone();
+				dom.removeClass('hidden');
+				for(var key in userlist[i]){
+					dom.find('.'+key).text(userlist[i][key]);
+				}
+				$('#article').append(dom);
+			}
+			$('.remark').val(data['remark']);
+			// 保证按钮占满整个界面
+			var btn = $('.myBtn');
+			var top = window.innerHeight - btn[0].offsetTop - btn[0].offsetHeight;
+			if(top > 0) $('.myBtn').css('margin-top', top);
+			
+		}
+		
+		// 修改备注
+		function addRemark(){
+			if(isloading) return;
+			var id = getQueryString('id');
+			var remark = $('.remark').val();
+			$.ajax({
+				type:"post",
+				dataType: 'json',
+				url:"/zxcity_restful/ws/rest",
+				data:{
+					cmd: 'coffee/updateSettleteamInfoDetail',
+					data: JSON.stringify({
+						id: id,
+						remark: remark
+					}),
+					version: 1
+				},
+				beforeSend: function () {
+					isloading = true;
+					loading = weui.loading('正在保存...');
+				},
+				complete: function () {
+					isloading = false;
+					loading.hide();
+				},
+				success: function (data) {
+					if(data.code == 1){
+						weui.toast(data.msg, {
+							duration: 1500,
+							callback: function(){
+								history.go(-1);
+							}
+						});
+					} else {
+						weui.alert(data.msg);
+					}
+				},
+				error: function (err) {
+					weui.alert('请求超时，请重试……');
+				}
+			});
+		}
+	</script>
+</body>
+</html>

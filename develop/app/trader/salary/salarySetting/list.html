@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工资设置</title>
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+	<link  rel="stylesheet" href="../../assets/select2-v4.0.6/css/select2.min.css"></script>
+	<style>
+		a:active{
+			color: #333;
+			text-decoration: none;
+		}
+		a:link { 
+			color: #333;
+			text-decoration: none; 
+		} 
+		a:visited { 
+			color: #333;
+			text-decoration: none; 
+		} 
+		a:hover { 
+			color: #333;
+			text-decoration: none; 
+		} 
+		
+		.contain{
+			padding: 0 30px;
+		}
+
+		.search{
+			text-align: right;
+			padding-top:15px;
+			font-size: 15px; 
+		}
+		.selType{
+			display: inline-block;
+			width: 120px;
+		}
+		.selType select{
+			width: 100%;
+			height: 30px;
+		}
+		.query{
+			width: 180px;
+			height: 30px;
+			vertical-align: top;
+			padding-left: 10px;
+		}
+		.queryBtn{
+			display: inline-block;
+		    background: #26C2B2;
+		    height: 30px;
+		    width: 50px;
+		    line-height: 30px;
+		    text-align: center;
+		    color: #fff!important;
+		    vertical-align: top;
+		}
+		.selec{
+			padding: 15px 0;
+    		border-bottom: 1px solid #e5e5e5;
+		}
+		.checkAll,.invertSelection{
+			color:#26C2B2!important;
+		    padding: 5px 10px;
+		    font-size: 15px;
+		}
+		.item{
+			display: inline-block;
+			margin-top: 10px;
+			width: 20%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			padding-right: 10px;
+			cursor: pointer;
+			/*vertical-align: text-top;*/
+		}
+		span.sNames {
+		    display: inline-block;
+		    width: 85%;
+		}
+		input.selcBox {
+		    vertical-align: top;
+		    margin-right: 5px;
+		}
+		optgroup {
+		    font-size: 14px;
+		}
+		.loadMore{
+			text-align: center;
+			margin-top: 20px;
+		}
+		.loadMore a{
+			display: inline-block;
+			padding:5px 10px;
+			background: #26C2B2;
+			color:#fff;
+			border-radius: 3px;
+		}
+
+		.firstItem{
+			font-weight: bold;
+		}
+		.secondItem{
+			
+		}
+ 	</style>
+</head>
+<body>
+	<div class="contain">
+		<div class="search">
+			<label class="selNames">服务项目分类：</label>
+			<div class="selType">
+				<select name="" id="classification">
+					<option value="" class="firstItem">全部</option>
+				</select>
+			</div>
+			<input type="text" class="query"><a href="javascript:;" class="queryBtn" onclick="query()">查询</a>
+		</div>
+
+		<div class="selec">
+			<a href="javascript:;" class="checkAll">全选</a>
+			<!-- <a href="javascript:;" class="invertSelection">反选</a> -->
+		</div>
+
+		<div class="content">
+	
+		</div>
+
+		<div class="loadMore" style="display: none;">
+			<a href="javascript:;" onclick="loadMore()">加载更多</a>
+		</div>
+		
+	</div>
+
+	<script src="../../assets/jquery/jquery.min.js"></script>
+	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../assets/layer/layer.js"></script>
+	<script src="../../assets/select2-v4.0.6/js/select2.full.min.js"></script>
+	<script src="js/common.js"></script>
+	<script type="text/html" id="tp1">
+		<div class="item">
+			<input type="checkbox" class="selcBox"><span class="sNames">砭石升温疗法</span>
+		</div>
+	</script>
+	
+	<script>
+		var totalNums = 0;
+		var merchantId = getQueryString('merchantId');
+		var type = getQueryString('type');
+		var selecId = getQueryString('selecId');
+		if(type == 0){
+			$('.selNames').text('会员分类');
+		}else if(type == 1){
+			$('.selNames').text('商品分类');
+		}else if(type == 2){
+			$('.selNames').text('服务项目分类');
+		}else if( type == 3){
+			$('.selNames').text('服务卡分类');
+		}
+
+
+		//一开始 加载对应数据
+		if(type == 0){
+			accountFuc();
+			$('.search').hide();
+		}else if(type ==1){
+			goodsFuc('','');
+			classification('1');
+			$('.search').show();
+		}else if(type == 2){
+			serviceFuc('','');
+			$('.search').show();
+			classification('2');
+		}else if(type == 3){
+			serviceCardFuc('','');
+			$('.search').show();
+			classification('3');
+		}
+
+
+		//分类
+		function classification(goodsType){
+			var def = reqAjax('shop/newsalary/getGoodsCategoryType', {
+				"merchantId": merchantId,
+				"goodsType" : goodsType  // 1:商品分类;2:服务/服务卡分类;
+			});
+			def.then(function(data){
+				var data = data.data;
+				for(var i=0;i<data.length;i++){
+					// var content = 	`<optgroup label="${data[i].categoryName}">`
+					var content = 	`<option value="${data[i].categoryId}" class="firstItem">${data[i].categoryName}`
+
+					if(data[i].ccategoryList.length != 0){
+						for(var j=0;j<data[i].ccategoryList.length;j++){
+							content += '<option class="secondItem" value="'+data[i].ccategoryList[j].categoryId+'">&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].ccategoryList[j].categoryName+'</option>'
+						}
+					}
+					content += '</option>';
+					$('#classification').append(content);
+				}
+			})
+		} 
+
+		// 会员 接口联调 
+		function accountFuc(){
+			var def = reqAjax('shop/newsalary/getCardTypeList', {
+				"merchantId": merchantId,
+			});
+			def.then(function(data){
+				if(data.code == 1){
+					$('.content').text('');
+					totalNums = data.total;
+					var selectedId = selecId.split(',');
+					var data = data.data;
+					for(var i = 0; i<data.length;i++){
+						var content = $($('#tp1').html()).first().clone();
+
+						content.find('.sNames').text(data[i].businessName);
+						content.css({'display':'inline-block'}).attr({'itemId':data[i].id,'title':data[i].businessName});
+						$('.content').append(content);
+
+						for(var j = 0;j< selectedId.length;j++){
+							if(selectedId[j] == data[i].id && selectedId[j].trim('') != ''){
+								content.find('.selcBox').prop('checked',true);
+							}
+						}
+					}
+				}
+			})
+		}
+
+
+		// 商品 接口联调
+		function goodsFuc(goodsName,downCategoryId){
+			var def = reqAjax('shop/newsalary/getGoods', {
+				"merchantId": merchantId,
+				"pagination": {
+			        "page": 1,
+			        "rows": 999
+			    },
+			    "goodsName": goodsName,     // 商品名称（可不传）
+			    "downCategoryId": downCategoryId  // 分类主键（可不传）
+			});
+			def.then(function(data){
+				if(data.code == 1){
+					$('.content').text('');
+					totalNums = data.total;
+					var selectedId = selecId.split(',');
+					var data = data.data;
+					for(var i = 0; i<data.length;i++){
+						var content = $($('#tp1').html()).first().clone();
+						content.find('.sNames').text(data[i].goodsName);
+						content.css({'display':'inline-block'}).attr({'itemId':data[i].id,'title':data[i].goodsName});
+						$('.content').append(content);
+
+						for(var j = 0;j< selectedId.length;j++){
+							if(selectedId[j] == data[i].id){
+								content.find('.selcBox').prop('checked',true);
+							}
+						}
+					}
+				}
+			})
+		}
+
+		// 服务卡 接口联调
+		function serviceCardFuc(cardName,typeId){
+			var def = reqAjax('shop/newsalary/getServiceCards', {
+				"merchantId": merchantId,
+				"pagination": {
+			        "page2": 1,
+			        "rows": 999
+			    },
+			    "cardName": cardName,  // 服务卡名称 （可不传）
+			    "typeId": typeId     // 分类主键 (可不传)
+			});
+			def.then(function(data){
+				if(data.code == 1){
+					$('.content').text('');
+					totalNums = data.total;
+					var selectedId = selecId.split(',');
+					var data = data.data;
+					for(var i = 0; i<data.length;i++){
+						var content = $($('#tp1').html()).first().clone();
+						content.find('.sNames').text(data[i].cardName);
+						content.css({'display':'inline-block'}).attr({'itemId':data[i].id,'title':data[i].cardName});
+						$('.content').append(content);
+
+						for(var j = 0;j< selectedId.length;j++){
+							if(selectedId[j] == data[i].id){
+								content.find('.selcBox').prop('checked',true);
+							}
+						}
+					}
+				}
+			})
+		}
+
+		// 服务 接口联调
+		function serviceFuc(serviceName,typeId){
+			var def = reqAjax('shop/newsalary/getServices', {
+				"merchantId": merchantId,
+				"pagination": {
+			        "page2": 1,
+			        "rows": 999
+			    },
+			    "serviceName": serviceName,  // 服务名称（可不传）
+			    "typeId": typeId  // 分类主键 （可不传）
+			});
+			def.then(function(data){
+				if(data.code == 1){
+					$('.content').text('');
+					totalNums = data.total;
+					var selectedId = selecId.split(',');
+
+					var data = data.data;
+					for(var i = 0; i<data.length;i++){
+						var content = $($('#tp1').html()).first().clone();
+						content.find('.sNames').text(data[i].serviceName);
+						content.css({'display':'inline-block'}).attr({'itemId':data[i].id,'title':data[i].serviceName});
+						$('.content').append(content);
+
+						for(var j = 0;j< selectedId.length;j++){
+							if(selectedId[j] == data[i].id){
+								content.find('.selcBox').prop('checked',true);
+							}
+						}
+					}
+				}
+			})
+		}
+
+		// 全选
+		$('.checkAll').on('click',function(){
+			$(this).toggleClass('active');
+			// console.log($(this).hasClass('active'));
+			if($(this).hasClass('active')){
+				$('.selcBox').each(function(index, el) {
+					$(el).prop('checked',true);
+				});
+			}else{
+				$('.selcBox').each(function(index, el) {
+					$(el).prop('checked',false);
+				});
+			}
+			// $('.selcBox').each(function(index, el) {
+			// 	$(el).prop('checked',true);
+			// });
+		})
+
+		// 反选 
+		// $('.invertSelection').on('click',function(){
+		// 	$('.selcBox').each(function(index, el) {
+		// 		$(el).prop('checked',false);
+		// 	});
+		// })
+
+		// 查询按钮 
+		function query(){
+			if(type == 0){
+
+			}else if(type ==1){
+				goodsFuc($('.query').val().trim(''),$('#classification option:selected').val());
+			}else if(type == 2){
+				serviceFuc($('.query').val().trim(''),$('#classification option:selected').val());
+			}else if(type == 3){
+				serviceCardFuc($('.query').val().trim(''),$('#classification option:selected').val());
+			}
+		}
+
+		// 确定按钮 传数据
+		function doSubmit(){
+			var idArr = [];
+			var Nums = 0; 
+			$('.selcBox').each(function(index, el) {
+				if($(el).prop('checked')){
+					idArr.push($(el).parent().attr('itemId'));
+					Nums++;
+				}
+			});
+
+			var data = {
+			    idArr : idArr,
+			    Nums : Nums, 
+			};
+			return data;
+		}
+
+
+	</script>
+</body>
+</html>

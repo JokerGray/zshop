@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商户行业模板管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../common/css/bootstrap.min.css" media="all"/>
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <link rel="stylesheet" href="../../common/assets/zTree_v3/css/metroStyle/metroStyle.css"/>
+    <link rel="stylesheet" href="merchant_template_management.css">
+</head>
+<body>
+<div class="layui-row layui-fluid">
+    <ul class="layui-form layui-col-sm12 layui-col-md12 clearfix">
+        <li class="layui-col-md3 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="">行业模板名：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="name">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md3 layui-col-sm6 layui-col-xs12">
+            <label>&nbsp;</label>
+            <div class="fl">
+                <button class="layui-btn" id="toolSearch">搜索</button>
+                <button class="layui-btn" id="toolRelize">重置</button>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="layui-fluid">
+    <div class="layui-app tool-box clearfix text-right">
+        <button class="layui-btn" id="commonAdd" data-cid="11">
+            <i class="layui-icon">&#xe61f;</i>添加
+        </button>
+        <button class="layui-btn" id="refresh" data-cid="11">
+            <i class="layui-icon">&#x1002;</i>刷新
+        </button>
+    </div>
+</div>
+<div class="layui-row layui-fluid" id="tableBox">
+    <div class="app-table">
+        <table id="tabNo" lay-filter="tabNo"></table>
+        <div id="pageLeft" class="fr"></div>
+    </div>
+
+</div>
+<!--lay-event='detail' 这个是绑定事件没有这个就绑定不了事件-->
+
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-md" lay-event='nodetail'><i class="layui-icon">&#xe615;</i>查看</button>
+    <button class="layui-btn layui-btn-md" lay-event='change'><i class="layui-icon">&#xe6b2;</i>修改</button>
+    <button class="layui-btn layui-btn-md layui-btn-danger" lay-event='del'><i class="layui-icon">&#xe640;</i>删除</button>
+
+
+</script>
+
+<!--modal-->
+<div id="demo111" class='layui-form clearfix layui-row disn layer-box'>
+    <div class="app-layer layui-col-sm12 layui-col-md12">
+        <div class="package clearfix">
+            <div class="package-title">查看商户行业模板管理</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+            <ul class="layui-form clearfix p0">
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>行业模板名：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="" autocomplete="off" lay-verify="required" class="layui-input" id="tradeName" disabled readonly>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">可占用设备类别：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="type" disabled  readonly>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>销售开单是否必须选择可占用设备：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control layui-input h30" id="choice" lay-verify="required" autocomplete="off" disabled="disabled">
+                                <option value=""></option>
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>是否启用可占用设备：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control layui-input h30" id="enabled" lay-verify="required" autocomplete="off" disabled="disabled">
+                                <option value=""></option>
+                                <option value="0">停用</option>
+                                <option value="1">启用</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label"><b class="required-icon">＊</b>默认是否：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control layui-input h30" id="default" lay-verify="required" autocomplete="off" disabled="disabled">
+                                <option value=""></option>
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="merchant_template_management.js"></script>
+</body>
+</html>

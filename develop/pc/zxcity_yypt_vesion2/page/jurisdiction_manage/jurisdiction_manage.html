@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>权限管理</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../common/css/reset.css" />
+  
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="css/jurisdiction_manage.css" />
+</head>
+<body>
+<div class="common-container">
+    <div class="jurisdiction-content">
+        <div class="jurisdiction-title">
+            <span>权限管理</span><span> 【可直接在树形结构图书进行拖动】</span>
+        </div>
+        <div class="jurisdiction-left">
+            <div class="jurisdiction-trees">
+                <div class="trees-title">
+                    <button id="openbtn" class="layui-btn layui-btn-sm">
+                        <i class="glyphicon glyphicon-sort-by-alphabet"></i> 展开
+                    </button>
+                    <button id="sqibtn" class="layui-btn layui-btn-sm">
+                        <i class="glyphicon glyphicon-sort-by-alphabet"></i> 折叠
+                    </button>
+                    <button id="addbtn" class="layui-btn layui-btn-sm">
+			            <i class="layui-icon">&#xe61f;</i> 添加
+			        </button>
+                    <button id="deletebtn" class="layui-btn layui-btn-sm">
+                        <i class="layui-icon">&#xe640;</i> 删除
+                    </button>
+                    <button id="refreshbtn" class="layui-btn layui-btn-sm">
+                        <i class="layui-icon">&#x1002;</i> 刷新
+                    </button>
+                </div>
+                <div class="trees-box">
+                    <h4>智享城市运营后台权限管理</h4>
+                    <ul id="tree" class="ztree"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="jurisdiction-right">
+            <form class="layui-form" action="">
+            <div class="jurisdiction-add">
+                <button class="layui-btn layui-btn-sm savebtn" id="saveBtn" lay-submit lay-filter="saveBtn">
+                    保存
+                </button>
+            </div>
+           <div class="addcontent">
+               <div class="addcontent-title">
+                   权限
+               </div>
+               <div class="addcontent-table">
+                       <div class="layui-form-item bitian">
+                           <label class="layui-form-label"><b class="required-icon">＊</b>权限名称：</label>
+                           <div class="layui-input-inline">
+                               <input type="text" id="moduleName" placeholder="请输入中文或英文"  name="title" required  lay-verify="required"  autocomplete="off" class="myinput layui-input" maxlength="10" data-num="0">
+                           </div>
+                           <div class="tip"></div>
+                       </div>
+                       <div class="layui-form-item">
+                           <label class="layui-form-label">URL地址：</label>
+                           <div class="layui-input-inline">
+                               <input type="text" id="url" name="title"  lay-verify=""  autocomplete="off" class="myinput layui-input" maxlength="128" data-num="0">
+                           </div>
+                       </div>
+                       <div class="layui-form-item bitian">
+                           <label class="layui-form-label"><b class="required-icon">＊</b>权限编码：</label>
+                           <div class="layui-input-inline">
+                               <input type="text" id="code" name="title" required  lay-verify="required"  autocomplete="off" class="myinput layui-input"  maxlength="10">
+                           </div>
+                           <div class="tip"></div>
+                       </div>
+                       <div class="layui-form-item">
+
+                           <label class="layui-form-label">图标：</label>
+                           <div class="layui-input-inline">
+                               <input type="text" id="icon" name="title"   lay-verify=""  autocomplete="off" class="myinput layui-input" maxlength="20">
+                           </div>
+                           <div class="tip"></div>
+                       </div>
+                       <div class="layui-form-item layui-form-text">
+                           <label class="layui-form-label">描述：</label>
+                           <div class="layui-input-inline">
+                               <textarea id="note" name="desc" placeholder="智享城市运营后台权限管理" class="myinput layui-textarea" maxlength="150"></textarea>
+                           </div>
+                       </div>
+               </div>
+           </div>
+            </form>
+        </div>
+    </div>
+ </div>
+<!-- jSCommon -->
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/layui.all.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/pub.js"></script>
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.exedit.js"></script>
+<script type="text/javascript" src="../../common/js/jquery.nicescroll.js"></script>
+<script type="text/javascript" src="js/jurisdiction_manage.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- FONTAWESOME STYLES-->
+		<link href="../../common/assets/css/font-awesome.css" rel="stylesheet" />
+		<!-- CUSTOM STYLES-->
+		<link href="../../common/assets/css/custom.css" rel="stylesheet" />
+		<!-- GOOGLE FONTS-->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+		
+		<!-- jquery组件 -->
+		<script src="../../common/assets/js/jquery-1.10.2.js"></script>
+		
+		<!-- bootstrap组件 -->
+		<link href="../../common/assets/css/bootstrap.css" rel="stylesheet" />
+		<script src="../../common/assets/js/bootstrap.min.js"></script>
+		
+		<!-- bootstrapTable组件 -->
+		<script src="../../common/assets/js/bootstrap-table.js"></script>
+		<script src="../../common/assets/js/bootstrap-table-zh-CN.js"></script>
+		
+		<!-- layer弹窗组件 -->
+		<link href="../../common/assets/js/layer/skin/default/layer.css" rel="stylesheet" />
+		<script src="../../common/assets/js/layer/layer.js"></script>
+		
+		<!-- 页面公用组件 -->
+		<script src="../../common/js/util/util.js"></script>
+		<!-- 页面组件 -->
+		<link href="../css/customerRechargeHistoryRecord.css" rel='stylesheet' />
+		<script src="../js/customerRechargeHistoryRecord.js"></script>
+		
+		<title></title>
+	</head>
+	<body>
+	    <div>
+	    	<div id="tableCondition">
+	    		<div id="closeDiv">
+	    			<img src="../img/icon_guanbi@2x.png" onclick="closeWin()" />
+	    		</div>
+	    		<div>
+	    			<h1>充值记录</h1>
+	    		</div>
+	    	</div>
+    		<div id="tableContent" class="row-fluid">
+				<table class="table table-hover table-striped table-responsive" id="rechargeTable">
+					<div class="form-inline" id="toolbar">
+						
+					</div>
+				</table>
+			</div>
+	    </div>
+		
+		
+		<!-- /. WRAPPER  -->
+	</body>
+</html>

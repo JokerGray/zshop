@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>智享头条</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+    <input type="hidden" id="menuHid" value="index">
+    <script src="util/head.js"></script>
+    <div class="container">
+        <div class="wrapper clearfix">
+            <!--公用菜单栏-->
+            <script src="util/menu.js"></script>
+
+            <div class="right pull-right">
+                <div class="right-content">
+                    <div class="in-bd clearfix">
+                        <div class="bg-green pull-left">
+                            <div class="publish">
+                                <a href="send_article.html"><img class="ico" src="images/ico/publish.png">发表</a>
+                                <p>
+                                    <a id="isExamine"></a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bg-blue pull-right">
+                            <div class="statistics">
+                                <div class="ms cur-p" id="fans">
+                                    <span class="num" id="fansNumber">0</span><br />
+                                    <span class="txt">粉丝</span>
+                                </div>
+                                <div class="ms cur-p" id="article">
+                                    <span class="num" id="articleNumber">0</span><br />
+                                    <span class="txt">文章数量</span>
+                                </div>
+                                <div class="ms line cur-p" id="">
+                                    <span class="num" id="yesterReadNumber">0</span><br />
+                                    <span class="txt">昨日阅读量</span>
+                                </div>
+                                <div class="lg">
+                                    <span class="num" id="visitNumber">0</span><br />
+                                    <span class="txt">累计阅读量</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-dt">
+                        <div class="list-title">公告</div>
+                        <ul class="list-dl" id="listUl"></ul>
+                    </div>
+                    <div id="page" class="text-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--公告详情弹窗开始-->
+    <div class="modal fade" id="noticeModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog zx-modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="zx-modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true ">&times;</span>
+					</button>
+                    <h2 class="notice_title" id="notice_title"></h2>
+                </div>
+                <div class="zx-modal-body">
+                    <div id="wrap">
+                        <div class="notice_head clearfix">
+                            <span id="notice_author" class="mr20 fl"></span>
+                            <span id="releaseTime" class="fl"></span>
+                        </div>
+                        <div class="notice_content clearfix" id="noticeContent"></div>
+                    </div>
+                </div>
+                <div class="zx-modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--公告详情弹窗结束-->
+
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/countUp.min.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/index.js"></script>
+    <script id="noticeList" type="text/html">
+        {{# layui.each(d, function(index, item){ }}
+        <li class="list-dd cur-p" scCmsNoticeId={{item.scCmsNoticeId}} data-toggle="modal" data-target="#noticeModal">{{item.scCmsNoticeTitle}}</li>
+        {{# }); }} {{# if(d.length == 0){ }}
+        <li class="list-dd text-center">暂无数据</li>
+        {{# } }}
+    </script>
+</body>
+
+</html>

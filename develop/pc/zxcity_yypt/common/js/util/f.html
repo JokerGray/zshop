@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">5444444</div>
+</body>
+</html>
+<script type="text/javascript">
+     var oBox = document.getElementById('box')
+     var tip = function(){
+        alert(this)
+     }
+     oBox.addEventListener('click',tip,false)
+</script>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <title>广告位设置·管理员后台</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/jcrop/css/jquery.Jcrop.css" type="text/css" />
+    <link rel="stylesheet" href="css/reset.css?v=201706131600" />
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/zx.css?v=201706131600" />
+    <link rel="stylesheet" href="css/carousel_setting.css" />
+    <link rel="stylesheet" href="css/ad_setting.css" />
+</head>
+
+<body>
+    <div class="bgBox">
+        <div id="imgBox">
+            <img src="" alt="" id="img">
+        </div>
+    </div>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="ad_setting">
+    <input type="hidden" id="scCmsAdvPlaceIdHid">
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div id="pageRTit">
+                <ul id="tabUl">
+                    <li class="tabli active">
+                        <a href="ad_setting.html">广告位设置</a>
+                    </li>
+                    <li class="tabli">
+                        <a href="ad_css_setting.html">广告样式设置</a>
+                    </li>
+                    <li class="tabli">
+                        <a href="ad_source_setting.html">广告来源设置</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="page_R" class="right pull-right">
+                <div id="labelBox" class="clearfix">
+                    <div class="table account_table">
+                        <div id="labelTable" class="table-left">
+                            <div class="panel panel-default">
+                                <table class="table table-hover">
+                                    <thead id="labelTabHead">
+                                        <th>广告位</th>
+                                        <th>广告位示意图</th>
+                                        <th>抄送平台</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </thead>
+                                    <tbody id="labelTabCon"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="addBox">
+                    <a class="addA" id="addA" data-toggle="modal" data-target="#addModal">+添加广告位</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 添加模态框 -->
+    <div id="addModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="setModalBox modal-dialog modal-dialog2" role="document">
+            <div class="editModalCon modal-content modal-content2">
+                <div class="setCarouselTop modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="setCarouselTit">添加广告位</h4>
+                </div>
+                <form class="form-horizontal">
+                    <div class="clearfix mt20">
+                        <label class="col-sm-2 control-label">广告位名称:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="addAdTxt">
+                        </div>
+                    </div>
+                    <div class="clearfix mt20">
+                        <label class="col-sm-2 control-label">APP协定ID:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="appAdTxt">
+                        </div>
+                    </div>
+                    <div class="clearfix mt20">
+                        <label class="addAdvLabel col-sm-2 control-label">广告位预览图:</label>
+                        <div class="col-sm-10">
+                            <div class="form-content" id="previewBox2" class="clearfix"></div>
+                            <span class="selLocalfiles localUpload cur-p mt10" id="selLocalfiles2">+上传图片</span>
+                        </div>
+                    </div>
+                    <div class="clearfix mt20">
+                        <label class="col-sm-2 control-label">抄送平台:</label>
+                        <div class="col-sm-10">
+                            <select name="" id="addSel">
+                                <option value="1003">作家后台</option>
+                                <option value="1002">商户后台</option>
+                                <option value="1001">管理后台</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="clearfix mt20">
+                        <label class="col-sm-2 control-label">状态:</label>
+                        <div class="col-sm-10" id="addStatus">
+                            <div class="radio active fl mr20" type="1">
+                                <span></span>
+                                <p class="">开通</p>
+                            </div>
+                            <div class="radio fl" type="0">
+                                <span></span>
+                                <p class="">关闭</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div id="addSubBtnBox" class="modal-footer">
+                    <button id="confirmAddSub" class="btn" type="button" data-dismiss="">保存</button>
+                    <button id="cancelAddSub" class="modalShield btn" type="button" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 修改模态框 -->
+    <div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="setModalBox modal-dialog modal-dialog2" role="document">
+            <div class="editModalCon modal-content modal-content2">
+                <div class="setCarouselTop modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="setCarouselTit">修改广告位</h4>
+                </div>
+                <form class="form-horizontal">
+                    <div class="clearfix mt20">
+                        <label class="col-sm-2 control-label">广告位名称:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="editAdTxt">
+                        </div>
+                    </div>
+                    <div class="clearfix mt20">
+                        <label class="col-sm-2 control-label">APP协定ID:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="appEditAdTxt">
+                        </div>
+                    </div>
+                    <div class="clearfix mt20">
+                        <label class="addAdvLabel col-sm-2 control-label">广告位预览图:</label>
+                        <div class="col-sm-10">
+                            <div class="form-content" id="previewBox" class="clearfix"></div>
+                            <span class="selLocalfiles localUpload cur-p mt10" id="selLocalfiles">+上传图片</span>
+                        </div>
+                    </div>
+                    <div class="clearfix mt20">
+                        <label class="col-sm-2 control-label">抄送平台:</label>
+                        <div class="col-sm-10">
+                            <select name="" id="editSel">
+                                <option value="1003">作家后台</option>
+                                <option value="1002">商户后台</option>
+                                <option value="1001">管理后台</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="clearfix mt20">
+                        <label class="col-sm-2 control-label">状态:</label>
+                        <div class="col-sm-10" id="editStatus">
+                            <div class="radio active fl mr20" type="1">
+                                <span></span>
+                                <p class="">开通</p>
+                            </div>
+                            <div class="radio fl" type="0">
+                                <span></span>
+                                <p class="">关闭</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div id="addSubBtnBox" class="modal-footer">
+                    <button id="confirmEditSub" class="btn" type="button" data-dismiss="">保存</button>
+                    <button id="cancelAddSub" class="modalShield btn" type="button" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/plupload-2.1.2/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/plupload-2.1.2/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/ad_setting.js"></script>
+    <script id="adlList" type="text/html">
+        {{# layui.each(d, function(index, item){ }}
+        <tr>
+            <td class="adlId">{{item.scCmsAdvPlaceName || ''}}</td>
+            <td class="adlImgTd"><img class="adImg" src={{item.scCmsAdvPlaceImg || ''}} alt=""></td>
+            <td class="adlChannel">{{ getPlatform(item.scCmsAdvPlacePlatForm) }}</td>
+            <td class="statusTd">
+                {{# if(item.scCmsAdvPlaceIsDel == 1){ }}
+                <a class="openA">已开通</a> {{# }else if(item.scCmsAdvPlaceIsDel == 0){ }}
+                <a class="closeA">已关闭</a> {{# } }}
+            </td>
+            <td class="operationTd" scCmsAdvPlaceId={{item.scCmsAdvPlaceId}}>
+                {{# if(item.scCmsAdvPlaceIsDel == 1){ }}
+                <a class="closeA">关闭</a> {{# }else if(item.scCmsAdvPlaceIsDel == 0){ }}
+                <a class="openA">开通</a> {{# } }}
+                <a class="editA" data-toggle="modal" data-target="#editModal" data-json={{JSON.stringify(item)}}>修改</a>
+                <a class="removeA">删除</a>
+            </td>
+        </tr>
+        {{# }); }}
+    </script>
+</body>
+
+</html>

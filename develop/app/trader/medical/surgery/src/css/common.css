@@ -1,0 +1,126 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: '微软雅黑';
+	min-width: 1100px;
+	background: #f7f7f7;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.cl{
+	overflow: hidden;
+}
+a{
+	text-decoration: none;
+	color:#333;
+}
+
+a:active{
+	color: #333;
+	text-decoration: none;
+}
+a:link { 
+	color: #333;
+	text-decoration: none; 
+} 
+a:visited { 
+	color: #333;
+	text-decoration: none; 
+} 
+a:hover { 
+	color: #333;
+	text-decoration: none; 
+} 
+
+
+input{
+	border:0;
+	border:1px solid #a9a9a9;
+}
+
+.contain{
+	padding:10px 20px;
+}
+
+.navTab{
+	border-radius: 5px;
+	border:1px solid #999;
+}
+
+.navTab a.active{
+	background: #23c8c9;
+}
+.navTab .remind,.navTab .waitSurgery,.navTab .hasSurgery{
+	display: inline-block;
+	padding: 6px 30px;
+	border-right: 1px solid #999;
+	width: 190px;
+	text-align: center;
+}
+
+.startTime,.endTime{
+	width: 140px;
+	height: 31px;
+	border-radius: 5px;
+	padding-left: 10px;
+}
+.search{
+	width: 190px;
+    height: 31px;
+    margin-left: 20px;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+.searchBtn{
+	text-align: center;
+	display: inline-block;
+    width: 31px;
+    height: 31px;
+    line-height: 31px;
+    background: #20c8cb;
+    vertical-align: top;
+    color:#fff;
+    border-radius: 5px;
+}
+.searchBtn i{
+	font-size: 19px;
+    color: #fff;
+}
+
+/*bootstrap-table*/
+.contentList{
+	margin-top: 20px;
+	background: #fff;
+	padding-top: 15px;
+}
+.contentList .table th{
+	background: #d7e2f9;
+}
+.contentList .fixed-table-container tbody td .th-inner,.contentList .fixed-table-container thead th .th-inner{
+	padding: 15px 0;
+	font-size: 16px;
+}
+.contentList .fixed-table-container{
+	border:0;
+}
+.contentList .fixed-table-container tbody td {
+    border-left: none;
+}
+.contentList .table td{
+	padding: 15px 0;
+}
+
+.sendMessage{
+	width: 60%;
+	height: 30px;
+	border:1px solid #23c8c9;
+	background: #fff;
+	border-radius: 5px;
+	color:#23c8c9;
+}

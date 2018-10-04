@@ -1,0 +1,648 @@
+::-webkit-scrollbar {
+  width: 0;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
+}
+body {
+  font-family: 'microsoft yahei';
+  font-size: 14px;
+  color: #333333;
+  background: #F0F0F0;
+}
+.level-3 {
+  display: inline-block;
+  background-color: #ff5715;
+}
+.level-2 {
+  background-color: #f9a11c;
+}
+.level-1 {
+  background-color: #b3b3b3;
+}
+.all {
+  margin: 20px 250px;
+  padding: 20px 40px;
+  background: white;
+  width: 1060px;
+  position: relative;
+}
+.all .cheackall {
+  display: none;
+  position: absolute;
+  top: 78px;
+  right: 135px;
+  width: 150px;
+  border: 1px solid gainsboro;
+  background: white;
+  z-index: 1111000;
+  cursor: pointer;
+  box-shadow: 0 0 6px 2px #eeeeee;
+}
+.all .cheackall li {
+  border-bottom: 1px solid gainsboro;
+  padding: 5px 10px;
+  text-align: center;
+}
+.all .cheackall li:last-child {
+  border: none;
+}
+.all .head {
+  width: 100%;
+  height: 35px;
+  border-bottom: 1px solid gainsboro;
+  position: relative;
+}
+.all .head li {
+  height: 35px;
+  cursor: pointer;
+}
+.all .head li.active {
+  color: #1BE0D7;
+  border-bottom: 2px solid #1BE0D7;
+}
+.all .head li:first-child {
+  position: absolute;
+  top: -2px;
+  left: 0px;
+}
+.all .head li:nth-child(2) {
+  position: absolute;
+  top: -2px;
+  left: 100px;
+}
+.all .head li:nth-child(3) {
+  position: absolute;
+  top: -2px;
+  right: 70px;
+  cursor: pointer;
+}
+.all .head li:nth-child(3) a {
+  width: 50px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  height: 30px;
+  color: white;
+  background: #1BE0D7;
+}
+.all .head li:nth-child(4) {
+  position: absolute;
+  top: -2px;
+  right: 0px;
+  width: 50px;
+}
+.all .head li:nth-child(4) img {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.all .title {
+  margin-top: 20px;
+  height: 12px;
+}
+.all .title a {
+  cursor: pointer;
+}
+.all .title a:first-child {
+  padding-right: 20px;
+  border-right: 1px solid gainsboro;
+  margin-right: 20px;
+}
+.all .title a.active {
+  color: #1BE0D7;
+}
+.all .centre {
+  padding: 0 50px;
+  height: 652px;
+  margin-top: 15px;
+}
+.all .centre ul {
+  float: left;
+  padding-top: 15px;
+  width: 440px;
+  margin: 10px 15px;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 0 6px 2px #eeeeee;
+}
+.all .centre ul li {
+  margin-left: 60px;
+  margin-bottom: 5px;
+}
+.all .centre ul .leftIMG {
+  margin-left: 0;
+  position: absolute;
+  top: 0;
+  left: 0px;
+}
+.all .centre ul .leftIMG .firstImg {
+  position: absolute;
+  top: 17px;
+  left: 20px;
+  z-index: 100000;
+}
+.all .centre ul .leftIMG span {
+  position: absolute;
+  top: 41px;
+  left: 34px;
+  border-right: 1px solid gainsboro;
+  height: 73px;
+}
+.all .centre ul .leftIMG .secondImg {
+  position: absolute;
+  top: 114px;
+  left: 25px;
+}
+.all .centre ul .nameProval a {
+  color: #1BE0D7;
+}
+.all .centre ul .nameProval b {
+  color: #747474;
+  font-weight: normal;
+}
+.all .centre ul .lilevelType {
+  margin-bottom: 34px;
+  height: 18px;
+}
+.all .centre ul .lilevelType span {
+  font-size: 12px;
+  margin: 0 5px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: white;
+}
+.all .centre ul .litoProval {
+  margin-bottom: 15px;
+}
+.all .centre ul .lilastChild {
+  width: 440px;
+  height: 35px;
+  border-radius: 5px;
+  background: #F0F0F0;
+  margin: 0;
+}
+.all .centre ul .lilastChild a {
+  display: inline-block;
+  padding: 4px 10px;
+  background: white;
+  float: right;
+  margin-top: 5px;
+  border-radius: 7px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.all #pageNo {
+  position: absolute;
+  bottom: -4px;
+  right: 25px;
+}
+#details-2 {
+  display: none;
+  padding: 10px 35px 0 35px;
+}
+#details-2 ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #1BE0D7;
+}
+#details-2 :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #1BE0D7;
+}
+#details-2 ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #1BE0D7;
+}
+#details-2 :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #1BE0D7;
+}
+#details-2 .flag {
+  color: red;
+}
+#details-2 .toCheack {
+  position: relative;
+}
+#details-2 .toCheack .layui-form-label {
+  position: absolute;
+  top: 2px;
+  left: -40px;
+  width: 120px;
+}
+#details-2 .layui-input-block {
+  position: relative;
+}
+#details-2 .layui-input-block.cheackproval {
+  padding: 0;
+}
+#details-2 .layui-input-block .addPerson {
+  margin-top: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+#details-2 .layui-input-block .havePerson {
+  display: none;
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  min-width: 70px;
+  height: 20px;
+  background: #1BE0D7;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#details-2 .layui-input-block .havePerson i {
+  color: white;
+  float: right;
+  margin-top: 2px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+#details-2 .layui-input-block .layui-form-checkbox {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  margin-right: 0;
+  padding-right: 0;
+}
+#details-2 .layui-input-block .layui-form-checkbox span {
+  padding-right: 0;
+}
+#details-2 .layui-input-block .level-item {
+  display: inline-block;
+  padding: 4px 10px;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+#details-2 .layui-input-block .level-item:hover {
+  color: white;
+}
+#details-2 .layui-input-block .level-item:nth-child(1).active {
+  background-color: #b3b3b3;
+  color: white;
+}
+#details-2 .layui-input-block .level-item:nth-child(1):hover {
+  background-color: #b3b3b3;
+}
+#details-2 .layui-input-block .level-item:nth-child(2).active {
+  background-color: #f9a11c;
+  color: white;
+}
+#details-2 .layui-input-block .level-item:nth-child(2):hover {
+  background-color: #f9a11c;
+}
+#details-2 .layui-input-block .level-item:nth-child(3).active {
+  background-color: #ff5715;
+  color: white;
+}
+#details-2 .layui-input-block .level-item:nth-child(3):hover {
+  background-color: #ff5715;
+}
+#details-2 .layui-input-block .tocommom {
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  color: #1BE0D7;
+  cursor: pointer;
+}
+#details-2 .layui-input-block #iptPic {
+  width: 420px;
+  min-height: 38px;
+  border: 1px solid gainsboro;
+}
+#details-2 .layui-input-block #iptPic .parentPic {
+  position: relative;
+  float: left;
+  width: 68px;
+  margin-top: 35px;
+}
+#details-2 .layui-input-block #iptPic .parentPic i {
+  position: relative;
+  top: -24px;
+  left: 58px;
+  font-size: 16px;
+  cursor: pointer;
+}
+#details-2 .layui-input-block #iptPic .parentPic img {
+  width: 50px;
+  height: 50px;
+}
+#details-2 .layui-input-block #iptFile {
+  width: 420px;
+  min-height: 38px;
+  border: 1px solid gainsboro;
+}
+#details-2 .layui-input-block #iptFile .fileShow {
+  border: 1px solid gainsboro;
+  margin: 35px 10px 10px 10px;
+  padding: 5px;
+}
+#details-2 .layui-input-block #iptFile .fileShow .name {
+  display: inline-block;
+  margin: -5px 15px;
+  width: 200px;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#details-2 .layui-input-block #iptFile .fileShow img {
+  width: 30px;
+  height: 30px;
+}
+#details-2 .layui-input-block #iptFile .fileShow a {
+  font-size: 14px;
+  color: #BFBFBF;
+}
+#details-2 .layui-input-block #iptFile .fileShow .delFile {
+  float: right;
+  margin-right: 10px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+#details-2 textarea:-ms-input-placeholder {
+  color: #666;
+}
+#details-2 textarea::-webkit-input-placeholder {
+  color: #666;
+}
+#details-2 textarea:-moz-placeholder {
+  color: #666;
+}
+#details-2 .reason {
+  width: 488px;
+  height: 100px;
+  border: 1px solid gainsboro;
+  margin-left: 45px;
+  resize: none;
+}
+#details-2 .layui-layer-btn0 {
+  border-radius: 10px;
+}
+#details-2 .layui-layer-btn1 {
+  border-radius: 10px;
+}
+#details-1 {
+  padding: 10px 40px;
+}
+#details-1 .flag {
+  color: red;
+}
+#details-1 .divtitle span {
+  display: inline-block;
+  font-size: 13px;
+  color: white;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+#details-1 .divtitle b {
+  font-size: 18px;
+  margin-right: 30px;
+}
+#details-1 .inform {
+  font-size: 12px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+#details-1 .table-border {
+  width: 510px;
+  font-size: 14px;
+  border: 1px solid gainsboro;
+}
+#details-1 .table-border tr {
+  border: 1px solid gainsboro;
+}
+#details-1 .table-border tr td {
+  height: 35px;
+  padding-left: 15px;
+}
+#details-1 .table-border tr td .flag {
+  color: #ff0000;
+}
+#details-1 .table-border tr td:nth-of-type(1) {
+  width: 94px;
+  background-color: #f5f5f5;
+}
+#details-1 .table-border tr td:nth-of-type(2) {
+  color: #333333;
+}
+#details-1 .table-border .detailPic {
+  padding-left: 51px;
+  height: 45px;
+}
+#details-1 .table-border .detailFile {
+  padding-left: 52px;
+  height: 45px;
+}
+#details-1 .table-border .picShow .real {
+  width: 40px;
+  height: 37px;
+  margin-right: 20px;
+}
+#details-1 .table-border .picShow #mo {
+  display: none;
+  /*隐藏*/
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0px;
+  left: 0px;
+  z-index: 1000000000000000000;
+}
+#details-1 .table-border .picShow #moimg {
+  display: block;
+  margin: 100px auto;
+  max-width: 40%;
+}
+#details-1 .table-border .picShow #moimg {
+  -webkit-animation: first 1s;
+  -o-animation: first 1s;
+  animation: first 1s;
+}
+@keyframes first {
+  from {
+    transform: scale(0.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+#details-1 .table-border .picShow .close {
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #f1f1f1;
+}
+#details-1 .table-border .picShow .close:hover,
+#details-1 .table-border .picShow .close:focus {
+  color: #bbb;
+  cursor: pointer;
+}
+@media only screen and (max-width: 750px) {
+  #details-1 .table-border .picShow #moimg {
+    width: 100%;
+  }
+}
+#details-1 .table-border .tofileShow {
+  width: 330px;
+  height: 30px;
+  border: 1px solid gainsboro;
+  padding: 2px;
+  position: relative;
+}
+#details-1 .table-border .tofileShow .name {
+  display: inline-block;
+  width: 240px;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 30px;
+  height: 30px;
+  margin-left: 46px;
+}
+#details-1 .table-border .tofileShow img {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 25px;
+  margin-right: 20px;
+}
+#details-1 .table-border .tofileShow .delFile {
+  float: right;
+  margin-right: 10px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+#details-1 .recording {
+  padding-top: 10px;
+  max-height: 210px;
+  overflow-y: auto;
+}
+#details-1 .recording table {
+  margin-top: 10px;
+  width: 510px;
+  font-size: 14px;
+  border: 1px solid gainsboro;
+}
+#details-1 .recording table thead {
+  background: #f5f5f5;
+}
+#details-1 .recording table th {
+  height: 40px;
+  border: 1px solid gainsboro;
+}
+#details-1 .recording table th:nth-child(1) {
+  width: 100px;
+}
+#details-1 .recording table th:nth-child(2) {
+  width: 230px;
+}
+#details-1 .recording table td {
+  height: 40px;
+  padding-left: 10px;
+  text-align: center;
+  border: 1px solid gainsboro;
+}
+#details-1 .recording table td:nth-child(1) {
+  width: 100px;
+}
+#details-1 .recording table td:nth-child(2) {
+  width: 100px;
+}
+#details-1 .recording table .opinion {
+  color: grey;
+  font-size: 10px;
+}
+#details-3 {
+  padding: 20px;
+  position: relative;
+}
+#details-3 .left-nav {
+  float: left;
+  width: 27%;
+  margin-right: 20px;
+  background-color: #ededed;
+}
+#details-3 .left-nav #treeDemo1 {
+  max-height: 450px;
+  overflow-y: auto;
+  width: 100%;
+  overflow-x: auto;
+}
+#details-3 .right-content {
+  float: left;
+  width: 70%;
+  position: relative;
+}
+#details-3 .right-content .searchBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  width: 67px;
+  height: 45px;
+}
+#details-3 .right-content .toChoose {
+  padding-left: 20px;
+  cursor: pointer;
+  width: 88%!important;
+}
+#details-3 .right-content td {
+  text-align: center;
+}
+#details-3 .right-content thead th {
+  background: #2FC4B5;
+  color: white;
+  text-align: center;
+}
+#details-3 .right-content .btn-info {
+  display: inline-block;
+  padding: 3px 6px;
+  background: #2FC4B5;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+}
+#details-3 .right-content .layui-table td,
+#details-3 .right-content .layui-table th {
+  padding: 10px;
+}
+#details-3 .right-content .remark {
+  display: none;
+  position: absolute;
+  width: 200px;
+  height: 40px;
+  left: 0;
+  top: 300px;
+}
+#details-3 .right-content .toEmail {
+  display: none;
+  position: absolute;
+  top: 382px;
+  right: 10px;
+}
+#details-3 .right-content #paging-box-r {
+  position: absolute;
+  top: 400px;
+  right: 0px;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="stylesheet" type="text/css" href="../../../assets/bootstrap/css/bootstrap.min.css"/>
+		<script src="../../../assets/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/plupload-2.3.1/js/moxie.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/plupload-2.3.1/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/plupload-2.3.1/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="./setCircle.css"/>
+		<title></title>
+	
+	</head>
+	<body >
+		<form id="myform" method="post">
+			<div class="container-fluid ">
+				<div class="row box">
+					<div class="header">
+						创建圈子
+					</div>
+					<div class="content">
+						<div class="col-xs-12 faceGrounp" >
+							<label class="mylabel" for="upFace"><i class="must">*</i>上传圈子头像&nbsp;:</label>
+							<div class="upFace" >
+								<div class="shadow" id="setFace"></div>
+								<img src="../image/upFace.png" alt="" id="upFace"/>
+								<input type="hidden" name="face" id="url" value="" />
+							</div>
+							<input type="hidden" name="faceImg" />
+						</div>
+						<div class="col-xs-12 form-group nameGroup">
+							<div class="compile">
+								<span class="glyphicon glyphicon-edit " ></span>
+								<div class="edit" style="display: none;">
+									<span class="glyphicon glyphicon-remove" ></span>
+									<span class="glyphicon glyphicon-ok " data-type="detailName"></span>
+								</div>
+							</div>
+							<label class="mylabel" for="detailName"><i class="must ">*</i>圈子名称&nbsp;:<span class="textHint">(字数限制2~10个字)</span></label>
+							<input type="text"  name="detailName" class="circleName" id="detailName" placeholder="如:某某某" pattern="\S{1,10}$" maxlength="10" disabled="disabled"/>
+						</div>
+						<div class="col-xs-12 form-group">
+							<label class="mylabel" for="">店铺名称&nbsp;:</label>
+							<p class="storeName"></p>
+						</div>
+						<div class="col-xs-12 form-group">
+							<div class="compile">
+								<span class="glyphicon glyphicon-edit "></span>
+								<div class="edit" style="display: none;">
+									<span class="glyphicon glyphicon-remove"></span>
+									<span class="glyphicon glyphicon-ok " data-type="detailMarkName"></span>
+								</div>
+							</div>
+							<label class="mylabel" for=""><i class="must ">*</i>圈子标签&nbsp;:<span class="textHint">(至少选择一个,最多选择4个标签)</span></label>
+							<div class="markBox" id="markBox">
+								
+								<input type="hidden" name="detailMarkName" id="detailMarkName" >
+							</div>
+						</div>
+						<div class="col-xs-12 form-group">
+							<div class="compile">
+								<span class="glyphicon glyphicon-edit "></span>
+								<div class="edit" style="display: none;">
+									<span class="glyphicon glyphicon-remove"></span>
+									<span class="glyphicon glyphicon-ok " data-type="detailTitle"></span>
+								</div>
+							</div>
+							<label class="mylabel" for="circleDuc"><i class="must ">*</i>圈子介绍&nbsp;:</label>
+							<textarea name="detailTitle" id="detailTitle" class="circleDuc" disabled="disabled"></textarea>
+						</div>
+						<div class="col-xs-12 form-group">
+							<div class="compile">
+								<span class="glyphicon glyphicon-edit "></span>
+								<div class="edit" style="display: none;">
+									<span class="glyphicon glyphicon-remove"></span>
+									<span class="glyphicon glyphicon-ok " data-type="isValidate"></span>
+								</div>
+							</div>
+							<label class="mylabel" for=""><i class="must ">*</i>加圈方式&nbsp;:</label>
+							<div class="opt">
+								<input class="magic-radio" type="radio"  name="isValidate" id="r1" value="0"   >
+								<label for="r1" class="radioLabel">无需审核直接进圈子</label>
+							</div>
+							<div class="opt">
+								<input class="magic-radio" type="radio" name="isValidate" id="r2" value="1"  >
+								<label for="r2" class="radioLabel">需要管理员审核</label>
+							</div>
+
+						</div>
+
+					</div>
+			
+				</div>
+			</div>
+		</form>
+	
+	</body>
+	<script src="./setCircle.js"></script>
+</html>

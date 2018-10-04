@@ -1,0 +1,288 @@
+@charset "UTF-8";
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section {
+  display: block;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+li {
+  list-style: none;
+}
+a:hover,
+a:visited,
+a:active,
+a:link {
+  text-decoration: none;
+}
+.container-fluid {
+  padding: 0;
+}
+.btn:focus {
+  outline: none !important;
+}
+h1 {
+  font-size: 36px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+h2 {
+  font-size: 30px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+h3 {
+  font-size: 24px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+h4 {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+h5 {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+body {
+  width: 100%;
+  height: auto;
+  font-family: 'microsoft yahei';
+  font-size: 14px;
+  color: #999999;
+}
+#billingLnquiries {
+  width: 100%;
+}
+#billingLnquiries .title {
+  width: 100%;
+  min-height: 195px;
+  height: auto;
+  padding: 20px 35px 0 35px;
+  /*#paymentTime, #bills {
+      width: 210px;
+    }*/
+}
+#billingLnquiries .title .form-inline:nth-of-type(1) {
+  margin: 0 0 40px 0;
+}
+#billingLnquiries .title .form-inline label {
+  width: 100px;
+  text-align: right;
+}
+#billingLnquiries .title .form-inline select,
+#billingLnquiries .title .form-inline input[type=text] {
+  width: 240px;
+}
+#billingLnquiries .title .search {
+  display: inline-block;
+  width: 67px;
+  height: 45px;
+  background: url(../../images/search.png) no-repeat;
+  vertical-align: middle;
+  margin: 0 15px 0 40px;
+  cursor: pointer;
+}
+#billingLnquiries .title a {
+  color: #ffffff;
+  background-color: #f8ac59;
+  vertical-align: 2px;
+}
+#billingLnquiries .title label {
+  font-weight: normal;
+}
+#billingLnquiries .title input[type=text],
+#billingLnquiries .title select {
+  margin: 0 10px 0 0;
+}
+#billingLnquiries .table-area {
+  width: 100%;
+  height: auto;
+  background-color: #f7f7f7;
+  padding: 20px 35px;
+}
+#billingLnquiries .table-area table thead tr th {
+  text-align: center;
+  vertical-align: middle;
+  height: 50px;
+  font-weight: normal;
+  color: #ffffff;
+  font-size: 16px;
+  background-color: #1dbfaf;
+}
+#billingLnquiries .table-area table tbody td {
+  background-color: #ffffff;
+  height: 65px;
+  text-align: center;
+  vertical-align: middle;
+}
+#billingLnquiries .table-area table tbody .processing {
+  color: #ffffff;
+  background-color: #ffb463;
+}
+#billingLnquiries .table-area table tbody .start {
+  color: #ffffff;
+  background-color: #1a7bb9;
+}
+#billingLnquiries .table-area table tbody .end {
+  color: #ffffff;
+  background-color: #1dbfaf;
+}
+#billingLnquiries .table-area #paging-box-r {
+  float: right;
+  margin: 0 25px 0 0;
+}
+#billingLnquiries .table-area:after {
+  display: table;
+  content: '';
+  clear: both;
+}
+#details-1 {
+  width: 100%;
+  height: auto;
+  padding: 30px 0 0 0;
+  color: #333333;
+  line-height: 60px;
+}
+#details-1 .form-group {
+  margin: 0 0 40px 0;
+}
+#details-1 .form-group label {
+  width: 130px;
+  text-align: right;
+  margin: 0 10px 0 0;
+}
+#details-1 .form-group input,
+#details-1 .form-group select {
+  width: 210px;
+}
+#details-1 .form-group textarea {
+  width: 510px;
+  height: 110px;
+  vertical-align: text-top;
+  resize: none;
+}
+#details-2 {
+  width: 100%;
+  padding: 30px 0 0 0;
+  color: #333333;
+}
+#details-2 .form-inline {
+  margin: 0 0 50px 0;
+}
+#details-2 .form-inline label {
+  min-width: 160px;
+  text-align: right;
+  margin: 0 5px 0 0;
+}
+#details-2 .form-inline p {
+  display: inline-block;
+  min-width: 210px;
+  text-align: left;
+}
+#details-2 .form-inline input {
+  width: 230px;
+}
+#details-2 .form-inline textarea {
+  width: 510px;
+  height: 110px;
+  vertical-align: top;
+  resize: none;
+}

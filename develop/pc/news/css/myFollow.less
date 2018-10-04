@@ -1,0 +1,148 @@
+@charset "utf-8";
+@import 'pub.less';
+//页面主体内容：
+#commonNavChild {
+    display: none;
+}
+.navChild{
+    border-bottom: none !important;
+}
+.main-top {
+    margin-top: 44px;
+}
+.container{
+    .logo a{
+        width: 100%;
+        height: 100%;
+        display: block;
+        z-index: 999;
+    }
+}
+.main {
+    padding-top: 26px;
+    margin-top: 0;
+    background-color: #F8F8F8;
+    .myMessBox {
+        .followBtn {
+            width: 100px;
+            margin-top: 23px;
+        }
+    }
+}
+
+// 左侧内容
+.left {
+    width: 760px;
+    background-color: #fff;
+    padding-bottom: 30px;
+    .myNav {
+        padding-left: 30px;
+        border-bottom: 1px solid #EEEEEE;
+        width: 100%;
+        li {
+            float: left;
+            a {
+                display: inline-block;
+                font-size: 18px;
+                padding: 15px 5px;
+                margin: 0 20px;
+            }
+            a.active {
+                border-bottom: 3px solid #FFBF14;
+            }
+        }
+    }
+    .followConBox {
+        padding: 0 30px;
+        min-height: 500px;
+        .followUserBox {
+            padding: 15px 0;
+            border-bottom: 1px solid #EEEEEE;
+            .followUser {
+                .followUserIcon {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                }
+                .followUserTextBox {
+                    padding: 10px 0 0 10px;
+                    .followUserName {
+                        font-size: 16px;
+                        font-weight: 900;
+                    }
+                    .followUserTalk {
+                        padding-top: 5px;
+                        color: #666;
+                    }
+                }
+            }
+            .followBtn {
+                width: 90px;
+                margin-top: 13px;
+                .followBtnIcon {
+                    margin-right: 3px;
+                }
+            }
+        }
+    }
+    .moreConBtn {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background: #EEEEEE;
+        color: #1164AA;
+        font-size: 14px;
+    }
+}
+
+.right {
+    .myFollowBox {
+        padding: 20px 0;
+        background-color: #fff;
+        margin-bottom: 20px;
+        div {
+            width: 50%;
+            float: left;
+            text-align: center;
+            .myFollowNum {
+                font-size: 30px;
+                font-weight: 900;
+            }
+            .myFollowType {
+                color: #666666;
+            }
+        }
+        div:first-child {
+            border-right: 1px solid #EEEEEE;
+        }
+    }
+}
+
+//公用关注按钮
+.followBtn {
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #FD4B4B;
+    color: #fff;
+    font-size: 14px;
+    .followBtnIcon {
+        margin-right: 5px;
+    }
+}
+
+.followBtn.active {
+    background-color: #CCCCCC;
+}
+
+//我的企业信息
+.company {
+    padding: 30px 0;
+    background-color: #EEEEEE;
+    span {
+        display: inline;
+    }
+    text-align: center;
+}

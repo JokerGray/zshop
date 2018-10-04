@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>新增优惠券</title>
+  <link rel="stylesheet" type="text/css" href="../../../common/assets/hplus/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="../../../common/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="../../../common/css/common.css">
+  <link rel="stylesheet" type="text/css" href="addCoupon.css">
+</head>
+<body>
+<div class="tableBox">
+  <div class="form-group form-inline">
+    <span>优惠券名称：</span>
+    <input type="text" class="form-control" id="name" placeholder="请输入名称（必填）" maxlength="10">
+  </div>
+  <div class="form-group form-inline">
+    <span>单人可领总数：</span>
+    <input type="text" class="form-control" id="numberOne" placeholder="请填写数字（必填）" maxlength="5" value="1"
+           disabled="true">
+  </div>
+  <div class="form-group form-inline">
+    <span>优惠券总可用数量：</span>
+    <input type="text" class="form-control" id="numberTotal" placeholder="请填写数字（必填）" maxlength="5">
+  </div>
+  <div class="form-group form-inline">
+    <span>最低消费（元）：</span>
+    <input type="text" class="form-control" id="amountMin" placeholder="请填写数字（必填）" maxlength="4">
+  </div>
+  <div class="form-group form-inline">
+    <span>优惠类型：</span>
+    <select class="form-control" id="couponType" disabled="true">
+      <option value="00">通用券</option>
+      <option value="01">优惠券</option>
+      <option value="02">减免券</option>
+      <option value="03">包邮券</option>
+    </select>
+  </div>
+  <div class="form-group form-inline">
+    <span>优惠金额：</span>
+    <input type="text" class="form-control" id="amount" placeholder="请填写数字,不得高于最低消费（必填）" maxlength="4">
+  </div>
+  <div class="form-group form-inline">
+    <span>优惠券等级：</span>
+    <input type="text" class="form-control" placeholder="请填写数字,0-9（非必填）" maxlength="1" id="couponLevel">
+  </div>
+  <div class="form-group form-inline">
+    <span>说明：</span>
+    <textarea class="form-control" id="instruction" placeholder="请填写文本（非必填）" maxlength="50"></textarea>
+  </div>
+  <div class="form-group form-inline">
+    <span>开始时间：</span>
+    <input size="16" type="text" value="" placeholder="请输入日期（必填）" readonly class="form_datetime form-control"
+           id="beginTime">
+  </div>
+  <div class="form-group form-inline">
+    <span>结束时间：</span>
+    <input size="16" type="text" value="" placeholder="请输入日期（必填）" readonly class="form_datetime form-control"
+           id="endTime">
+  </div>
+</div>
+</body>
+<script type="text/javascript" src="../../../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="../locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="addCoupon.js"></script>
+</html>

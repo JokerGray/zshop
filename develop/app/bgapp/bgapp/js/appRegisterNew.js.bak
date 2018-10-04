@@ -1,0 +1,282 @@
+$(function(){
+	var recommendUserId = getQueryString("recommendUserId");
+	var productId = getQueryString("productId");
+	var shareTime = getQueryString("shareTime");
+	var iconUrl="http://oss-cn-hangzhou.aliyuncs.com/tsnrhapp/member/servicePackage/be9b8523c8504211ad7cc05ce6a89990.png";
+	var mobileExp = /^1\d{10}$/; //手机正则
+	var passwordExp = /^[0-9a-zA-Z]{6,16}$/; //密码正则
+	var regEn = /[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/im; //特殊符正则
+	var regCh = new RegExp("[\\u4E00-\\u9FFF]+","g"); //中文正则
+	
+	//普通用户和商户切换
+//	$('.typeChange span').each(function(){
+//		$(this).click(function(){
+//			if($(this).attr("id")=="normalStore"){
+//				if($('.storeInfo').css('display')=='none'){
+//					$('.storeInfo').fadeIn();
+//					$(this).css('background','url(images/putongshanghu.png) no-repeat 0 -1px');
+//					$('#normalUser').css('background','url(images/putongyonghu＿2.png) no-repeat 0 0');
+//					$('.storeInfoContainer').show();
+//				}
+//			}else if($(this).attr("id")=="normalUser"){
+//				if($('.storeInfo').css('display')=='block'){
+//					$('.storeInfo').fadeOut();
+//					$(this).css('background','url(images/putongyonghu.png) no-repeat 0 0');
+//					$('#normalStore').css('background','url(images/putongshanghu＿2.png) no-repeat 0 -0.01rem');
+//				}
+//			}
+//		})
+//	})
+
+	//商户详细信息显示隐藏
+//	$('#showMore').click(function(){
+//		if($('.storeInfoContainer').css('display')=='block'){
+//			$('.storeInfoContainer').fadeOut();
+//			$(this).attr('src','images/yundian_home_touxiang1.png');
+//		}else{
+//			$('.storeInfoContainer').fadeIn();
+//			$(this).attr('src','images/yundian_home_touxiang2.png');
+//		}
+//	})
+	
+	//回到顶部
+	$(window).on('scroll', function () {
+	//判断显示还是隐藏按钮
+	  	if($(this).scrollTop()>=$(this).height()){
+	  	  	$('.goTop').fadeIn('slow');
+	 	 }else{
+	   	 	$('.goTop').fadeOut('slow');
+	  	}
+	});
+	$('.goTop').on('click',function () {
+	    $('html,body').animate({scrollTop: $('.register').position().top},500);
+	});
+	
+	//所属行业列表和省市联动
+//	reqAjaxAsync('share/initUserReg').done(function(res){
+//		if(res.code==9){
+//			var arr1=new Array();
+//			var arr2=new Array();
+//			//行业选择列表
+//			for(var i=0;i<res.data.merchantTrades.length;i++){
+//				var type=res.data.merchantTrades[i].name;
+//				arr1[i]=type;
+//				sessionStorage.setItem('arr',JSON.stringify(res.data.merchantTrades))
+//				$(".storeTypes").picker({
+//				  title: "请选择所属行业",
+//				  inputReadOnly: true,
+//				  cols: [
+//				    {
+//				      textAlign: 'center',
+//				      values: arr1
+//				    }
+//				  ]
+//				});
+//			}
+//			//省市选择列表
+//			for(var i=0;i<res.data.provinceAndCity.length;i++){
+//				if(regEn.test(res.data.provinceAndCity[i].code)==false&&regCh.test(res.data.provinceAndCity[i].code)==false){
+//					var arr3=new Array();
+//					var areaList=res.data.provinceAndCity[i];
+//					for(var j=0;j<areaList.childList.length;j++){
+//						arr3.push({
+//							name: areaList.childList[j].areaname,
+//							code: areaList.childList[j].code,
+//							sub:[]
+//						})
+//					}
+//					arr2.push({
+//						name: areaList.areaname,
+//						code: areaList.code,
+//						sub: arr3
+//					})
+//				}
+//			}
+//			proviceData(JSON.stringify(arr2));
+//	    	$(".storeAddress").cityPicker({
+//		        title: "请选择省市",
+//		        inputReadOnly: true,
+//  			showDistrict: false,
+//		        onChange: function (picker, values, displayValues) {
+//		            console.log(values, displayValues);
+//		            $(".storeAddress").val(displayValues);
+//		        }
+//	    	});
+//		}else{
+//			console.log(res.msg);
+//		}
+//	})
+
+	//防止手机软键盘和pickerview冲突
+//	$('.register input.form-control').each(function(){
+//		$(this).click(function(){
+//			$('.storeAddress').picker("close");
+//			$('.storeTypes').picker("close");
+//		})
+//	})
+//	
+//	$('.store-picker').each(function(){
+//		$(this).click(function(){
+//			document.activeElement.blur();
+//      	$("input").blur();
+//		})
+//	})
+//	
+//	$('.weui-picker-modal').bind( "touchmove", function (e) {
+//	   e.preventDefault();
+//	});
+	
+	//获取验证码
+	$('#getCode').click(function(){
+		var userphone=$('.number').val();
+		var codeParams={userphone:userphone};
+		if(userphone==''){
+			layer.msg('手机号码不能为空');
+		}else{
+			if(!mobileExp.test(userphone)){
+				layer.msg('请填写正确的手机号码');
+				return false;
+			}else{
+				reqAjaxAsync('backUser/getCode',JSON.stringify(codeParams)).done(function(res){
+					if(res.code==1){
+						layer.msg(res.msg);
+						code("#getCode");
+					}else{
+						layer.msg(res.msg);
+					}
+				})
+			}
+		}
+	})
+	
+	//获取验证码倒计时
+	function code(obj){
+	    var countdown=60;
+	    settime(obj);
+	    function settime(obj) {
+	        if (countdown == 0) {
+	            $(obj).attr("disabled",false);
+	            $(obj).html("获取验证码");
+	            countdown = 60;
+	            return;
+	        } else {
+	            $(obj).attr("disabled",true);
+	            $(obj).html(countdown + "s后重新发送");
+	            countdown--;
+	        }
+	        setTimeout(function() {
+                settime(obj) }
+            ,1000)
+	    }
+	}
+
+	//注册
+	function getData(params,userType){
+		reqAjaxAsync('share/shareReg',JSON.stringify(params)).done(function(res){
+			if(res.code==1){
+				if(userType==1){
+					layer.msg("注册成功");
+				}else if(userType==2){
+					layer.msg("升级普通商户申请已提交，请等待运营平台审核");
+				}
+				setTimeout(function(){window.location.href='http://erweima.izxcs.com/erweima_zds.php';},2000)
+			}else{
+				layer.msg(res.msg);
+			}
+		})
+	}
+
+	//注册
+	$('#registNow').click(function(){
+		var phone=$('.number').val();
+		var captcha=$('.code').val();
+		var pass=$('.pass').val();
+		var orgName=$('.storeName').val();
+//		var adminCode=$('.adminName').val();
+//		var address=$('.storeAddress').val().split(' ');
+//		var provinceName=address[0];
+//		var cityName=address[1];
+//		var indexList=JSON.parse(sessionStorage.getItem('arr'));
+//		var indexVal=$('.storeTypes').val();
+//		var license01=sessionStorage.getItem('src1');
+//		var license02=sessionStorage.getItem('src2');
+//		var license03=sessionStorage.getItem('src3');
+//		var license04=sessionStorage.getItem('src4');
+//		for(var i=0;i<indexList.length;i++){
+//			if(indexList[i].name==indexVal){
+//				var trade=i+1;
+//			}
+//		}
+		if(recommendUserId==null||productId==null||shareTime==null){
+			layer.msg('分享者信息不完整');
+			return false;
+		}else if(phone==''){
+			layer.msg('电话号码不能为空');
+			return false;
+		}else if(captcha==''){
+			layer.msg('验证码不能为空');
+			return false;
+		}else if(pass==''){
+			layer.msg('密码不能为空');
+			return false;
+		}else{
+			if(!passwordExp.test(pass)){
+				layer.msg('请填写6-16位的由数字或字母组成的密码');
+				return false;
+			}else{
+//				if($('.storeInfo').css('display')=='none'){
+					//普通用户注册
+					var params1={
+						shareRegType:1,
+			         	phone:phone,
+					    captcha:captcha,	 
+						password:pass,
+						recommendUserId:recommendUserId,
+						productId:productId,
+						shareTime:shareTime
+					};
+					getData(params1,1);
+//				}else{
+//					if(orgName==''){
+//						layer.msg('商家名称不能为空');
+//						return false;
+//					}else if(adminCode==''){
+//						layer.msg('商户管理员昵称不能为空');
+//						return false;
+//					}else if(license01==null||license01==undefined||license02==null||license02==undefined||license03==null||license03==undefined||license04==null||license04==undefined){
+//			            layer.msg('请上传营业执照和身份证照片');
+//			            return false;
+//		            }else{
+//						//普通商户注册
+//						var params2={
+//							shareRegType:2,
+//							phone:phone,
+//							captcha:captcha,
+//							password:pass,
+//							orgName:orgName,
+//							adminName:adminCode,
+//							provinceName:provinceName,
+//							cityName:cityName,
+//							trade:trade,
+//							license01:license01,
+//							license02:license02,
+//							idCardFront:license03,
+//							idCardBack:license04,
+//							recommendUserId:recommendUserId,
+//							productId:productId,
+//							shareTime:shareTime
+//						};
+//						getData(params2,2);
+//					}
+//					
+//				}
+			}
+		}
+	})
+	
+	//微信分享
+	weixin('智大师:让天下没有难做的经营、让人人成为经营大师',iconUrl,'分享注册',apikey,version);
+})
+
+   
+

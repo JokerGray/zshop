@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Pragma" content="no-cache"> 
+    <meta http-equiv="Cache-Control" content="no-cache"> 
+    <meta http-equiv="Expires" content="0">
+    <title>中奖信息管理</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="../framework/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="./css/earnmoney_common.css">
+
+</head>
+
+<body>
+    <ol class="breadcrumb">
+        <li><a href="#">App管理</a></li>
+        <li><a href="#">玩家挣钱</a></li>
+        <li class="active">中奖信息管理</li>
+    </ol>
+    <div class="container-fluid">
+        <div id="toolbar" class="bars">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="phone">用户电话</label>
+                    <input type="text" class="form-control" id="phone">
+                </div>
+                <div class="form-group">
+                    <label for="prizeTitle">奖品名称</label>
+                    <input type="text" class="form-control" id="prizeTitle">
+                </div>
+                <div class="form-group">
+                    <label for="createTime">中奖时间</label>
+                    <input type="text" class="form-control" id="createTime">
+                </div>
+                <button type="button" class="btn btn-default" onclick="search()"><i class="fa fa-search"></i> 查询</button>
+                <button type="button" class="btn btn-default" onclick="refresh()"><i class="fa fa-refresh"></i> 刷新</button>
+            </form>
+        </div>
+        <table id="table" class="table table-hover"></table>
+    </div>
+
+    <script id="tplDetail" type="text/html">
+        <div>详细弹窗</div>
+    </script>
+
+
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script type="text/javascript" src="../framework/bootstrap/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../framework/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="./js/earnmoney_common.js"></script>
+    <script type="text/javascript" src="./js/winning.js"></script>
+
+</body>
+
+</html>

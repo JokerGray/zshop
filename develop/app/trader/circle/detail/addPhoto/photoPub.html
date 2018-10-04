@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta charset="UTF-8">
+
+	
+		<script src="../../../assets/uploadPreview/uploadPreview.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../../assets/bootstrap/css/bootstrap.min.css"/>
+		<script src="../../../assets/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../../../assets/layer/layer.js"></script>
+		<script src="../../../assets/jquery.form.min.js"></script>
+		<!--sweetAlert-->
+		<link rel="stylesheet" type="text/css" href="../../../assets/sweetalert/sweetalert.css" />
+		<script src="../../../assets/sweetalert/sweetalert.min.js"></script>
+		<link rel="stylesheet" href="./photoPub.css" />
+		<title>新建相册</title>
+
+	</head>
+	<body style="background-color: #f7f7f7;">
+		<form  enctype="multipart/form-data" method="post" novalidate="novalidate" id="myForm">
+			<input type="hidden" name="albumUrl" value=""/>
+			<input type="hidden" name="albumId" value=""/>
+			<input type="hidden" name="circleId" value="" />
+			<input type="hidden" name="userId" value="" />
+			<input type="hidden" name="id" value="" />
+			<div class="container">
+				<div class="row mienPub" >
+					<div class="col-xs-12" >
+						<div class="mienTitle">创建相册</div>
+							<div class="form-group" >
+								<label class="mylabel" for="introduce"><i class="must">*</i>相册名称 :<span class="textHint">(字数限制1~6个字)</span></label>
+									<input type="text" name="albumName" id="photoName" onkeypress="javascript:if(event.keyCode == 32)event.returnValue = false;" placeholder="如:十一活动" maxlength="6" />
+							</div>
+						<div class="form-group">
+							<label class="mylabel" for="upBgBtn"><i class="must ">*</i>上传背景照:</label>
+							<div id="upBgBtn" class="upBg" >
+								<div class="noSrc" onclick="upImg()">
+									<p>点击修改照片</p>
+								</div>
+								<img class="bgShow" />
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="bottomBtn">
+				<button type="button" class="saveBtn" id="save">保存</button>
+				<button type="button" class="saveBtn cancelBtn" id="cancel">取消</button>
+				</div>
+			</div>
+		</form>
+	</body>
+	<script src="./photoPub.js"></script>
+</html>

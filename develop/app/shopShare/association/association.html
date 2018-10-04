@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <title>社群详情</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/layer/theme/default/layer.css">
+        <link rel="stylesheet" href="../assets/photoSwipe/photoswipe.css">
+    <link rel="stylesheet" href="../assets/photoSwipe/default-skin/default-skin.css">
+    <link rel="stylesheet" href="css/association.css" />
+</head>
+<body>
+	<header>
+		<div class="content">
+			<div class="btn_group">
+				<a class="left return-icon openApp" href="javascript:void(0);"></a>
+				<a class="right more-icon openApp" href="javascript:void(0);"></a>
+			</div>
+			<!--<a  class="care-icon openApp" href="javascript:void(0);"> </a>
+			<span class="care-text">筑城</span>-->
+			<h1 class="openApp"></h1>
+			<p class="tip openApp"></p>
+		</div>
+	</header>
+	<div class="content">
+		<span class="gongg-btn openApp"></span><span class="gongg openApp">暂无公告</span>
+		<h2 class="openApp">拥有圈子<span class="h_span ">共<i></i>个圈子</span></h2>
+		<ul class="qz_num">
+			<li class="openApp">
+				<img src="../images/qz_community_tianjia@2x.png" alt="" />
+				<span>添加圈子</span>
+			</li>
+			<em>暂时还没有圈子哦</em>
+		</ul>
+		<p class="no-qz">
+			还没有圈子哦
+		</p>
+		<h2 class="openApp">社群风采</h2>
+		<ul class="fc-list">
+			<!--<li>
+				<div class="user-info">
+					<div class="left"><img src="../images/1.png" alt="" /></div>
+					<div class="left">
+						<p class="user-name">用户名最多只有十个字</p>
+						<p class="time">10分钟前</p>
+						<a class="user-more" href="javascript:void(0);"></a>
+					</div>
+				</div>
+				<p class="msg-info">当你的噩梦里再也没有恶龙和沼泽，而全都是生活难题的那一刻。</p>
+				<p class="img-icon">
+					<a href="javascript:void(0);"><i></i>分享</a>
+					<a href="javascript:void(0);"><i></i>320</a>
+					<a href="javascript:void(0);"><i></i>50</a>
+				</p>
+			</li>-->
+			
+			<!--<li>
+				<div class="user-info">
+					<div class="left"><img src="../images/1.png" alt="" /></div>
+					<div class="left">
+						<p class="user-name">用户名最多只有十个字</p>
+						<p class="time">10分钟前</p>
+						<a class="user-more" href="javascript:void(0);"></a>
+					</div>
+				</div>
+				<p class="msg-info">当你的噩梦里再也没有恶龙和沼泽，而全都是生活难题的那一刻。</p>
+				<div class="msg-img">
+					<img src="../images/1.png" alt="" />
+					<img src="../images/1.png" alt="" />
+					<img src="../images/1.png" alt="" />
+					<a class="img-more" href="javascript:void(0);">共6张</a>
+				</div>
+				<p class="img-icon">
+					<a href="javascript:void(0);"><i></i>分享</a>
+					<a href="javascript:void(0);"><i></i>320</a>
+					<a href="javascript:void(0);"><i></i>50</a>
+				</p>
+			</li>-->
+		</ul>
+		<p class="no-fc">
+			还没有社群风采哦
+		</p>
+	</div>
+	<div class="sub-btn">
+		<a class="active noAdmin openApp" href="javascript:void(0);">加入社群</a>
+		<a class="active admin openApp" href="javascript:void(0);" >发布</a>
+	</div>
+	<div class="fb-dialog">
+        	<a href="javascript:void(0);">
+        		发公告
+        	</a>
+        	<a href="javascript:void(0);">
+        		发风采
+        	</a>
+        	<p><i></i></p>
+    </div>
+    <div id="model" style="display:none;">
+        <div>1. 点击右上角的<img src="../images/dot.png" id="dot"></div>
+        <div>2. 选择<img src="../images/open.png" id="broswer"></div>
+    </div>
+    <div id="shade" style="display:none;"></div>
+       <!--放大图片-->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+        <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+
+            <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+
+                <div class="pswp__top-bar">
+
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+
+                    <div class="pswp__counter"></div>
+
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                    <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+	<script src="../assets/js/jquery-2.1.0.js"></script>
+    <script src="../assets/layer/layer.js"></script>
+    <script src="../circleInfo/common/js/common.js"></script>
+    
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="../assets/photoSwipe/photoswipe.min.js"></script>
+    <script src="../assets/photoSwipe/photoswipe-ui-default.min.js"></script>
+    <script src="../assets/js/utilNew.js"></script>
+	<script src="../assets/js/qrcode.min.js"></script>
+	<script type="text/javascript" src="js/association.js"></script>
+</body>
+</html>

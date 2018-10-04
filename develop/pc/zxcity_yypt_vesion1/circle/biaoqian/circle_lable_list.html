@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+	    <title>圈子-标签管理</title>
+	    <link rel="stylesheet" href="../../common/assets/hplus/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../../common/assets/hplus/css/font-awesome.min93e3.css">
+        <link rel="stylesheet" type="text/css" href="../../common/assets/layui-v2.0.1/layui/css/layui.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+	    <link rel="stylesheet" type="text/css" href="css/circle_lable_list.css">
+    </head>
+	<body>
+		<div class="container-fluid" style="margin-top:20px">
+		    <div class="layui-row">
+			    <div class="layui-col-xs8">
+			      <div class="grid-demo grid-demo-bg1">
+			      	<button class="layui-btn layui-btn-normal" id ="add">+新增标签</button>
+			      </div>
+			    </div>
+			    <div class="layui-col-xs4">
+			    	<div class="layui-row">
+			    		<div class="layui-col-xs8">
+			    			<div class="grid-demo">
+					      	<div class="layui-input-inline sc_box" style="float: right;">
+					        	<input type="text" id="paramKeys" name="paramKeys" class="layui-input" placeholder="请输入关键字" />
+					      	</div>
+					      </div>
+			    		</div>	
+			    		<div class="layui-col-xs4">
+			    			<button class="layui-btn layui-btn-normal" id ="search">搜索</button>
+			    		</div>	
+			    	</div>
+			    </div>
+			</div>
+			
+            <!-- 列表展示 -->
+			<table id="demo" lay-filter="test" ></table>
+			<!--分页-->
+			<div id="laypageLeft" class="table-rgt"></div>
+		</div>
+		<!-- 按钮 -->
+		<script type="text/html" id="checkboxTpl">
+		  <a class="layui-btn layui-btn-danger layui-btn-xs delBtn" lay-event="to_del">删除</a>
+		</script>
+		<!-- 新增层  -->
+		<div class="modal fade"  role="dialog" id="addTop"  data-backdrop="static" data-keyboard="false">
+	      <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+	        	<div class="modal-header">
+	        		<h4 class="modal-title">新增标签</h4>  			            	
+	          	</div>
+				<div class="modal-body">
+		            <form class="layui-form">
+		                <div class="layui-form-item">
+						    <label class="layui-form-label" style="width: 90px;">标签名称</label>
+						    <div class="layui-input-block">
+						      <input type="text" id="lablename1" name="title" lay-verify="title" autocomplete="off" placeholder="请输入名称" class="layui-input">
+						    </div>
+						</div>	
+						<div class="layui-form-item">
+						    <label class="layui-form-label" style="width: 90px;">背景图片</label>
+						    <div class="img-box id-person ">
+                                <img class="show-img" src="img/add-3.png">
+                                <input type="hidden" id="idCardBack" title="">                            
+                            </div>
+						</div>	
+		            </form>		            
+		        </div>
+	          	<div class="modal-footer">
+	          		<div type="button" class="btn btn-primary" id="addTopic">确定</div>
+	            	<div type="button" class="btn btn-default cancels" data-dismiss="modal">取消</div>	            	
+	          	</div>
+	        </div>
+	      </div>
+		</div>		
+		<!-- 图片展示 -->
+		<script type="text/html" id="imgTpl">
+			<div class="showImg">
+				<img class="imgs" src={{d.labelBgimg}} alt={{d.labelBgimg}} style="background:#5cb85c url({{d.labelBgimg}}   no-repeat center center;background-size:100% 100%;" />
+			</div>
+		</script>
+		<!-- 序号 -->
+		<script type="text/html" id="indexTpl">
+		    {{d.LAY_TABLE_INDEX+1}}
+		</script>
+		<script type="text/html" id="labelNameTpl">
+		  {{d.labelName}}
+		</script>
+		<!--判断类型-->
+		<script type="text/html" id="dazzleTypeTpl">
+		  {{#  if(d.dazzleType == 0){ }}
+		  <span>视频</span>
+		  {{#  } else { }}
+		  <span>电子名片</span>
+		  {{#  } }}
+		</script>
+		
+	</body>
+	<!-- jSCommon -->
+	<script type="text/javascript" src="../../common/assets/hplus/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../common/assets/hplus/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+	
+	<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+	<script type="text/javascript" src="../../common/js/common.js"></script>
+	<script type="text/javascript" src="../../common/js/util/util.js"></script>
+	<script type="text/javascript" src="../../common/js/util/pub.js"></script>
+	
+	<!--jSCurr-->
+	<script type="text/javascript" src="../../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="../../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/plupload.full.min.js"></script>
+	<script type="text/javascript" src="js/circle_lable_list.js"></script>
+</html>

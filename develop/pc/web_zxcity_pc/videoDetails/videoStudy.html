@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <title>视频教程</title>
+    <link rel="stylesheet" href="../common/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/css/common.css">
+    <link rel="stylesheet" href="css/videoStudy.css">
+</head>
+<body>
+<div id="main">
+    <!-- <div class="account">
+        <div class="title">
+            <span class="number">01</span>
+            <span class="catalogName">账户维护</span>
+        </div>
+        <div class="videoContent">
+            <div class="b-layer"></div>
+            <div class="txt">
+                <span>1.1</span>
+                <span>录入门店、职务</span>
+                <span></span>
+            </div>
+        </div>
+    </div> -->
+</div>
+</body>
+<script src="../common/scripts/jquery-1.11.1.min.js"></script>
+<script src="../common/scripts/commonUtil.js"></script>
+<script>
+    //页面加载
+    function loadVideoListData() {
+        var param = "{'merchantId': '1070'}";
+        var res = CommonUtil.ajaxData('shopWeb/queryVideoList', param);
+        if (res.code == 1) {
+            var html = '';
+            for (var i = 0; i < res.data.length; i++) {
+                var row = res.data[i];
+                //目录序号正则匹配
+                var seqNumber = row.seqNumber.replace(/(?=\b\d\b)/g, '0');
+                html += '<div class="account">' +
+                    '<div class="title">' +
+                    '<span class="number">' + seqNumber + '</span>' +
+                    '<span class="catalogName">' + row.catalogName + '</span>' +
+                    '</div>';
+                //如果当下标>0时,前一个序号和后一个序号不相等时,说明是同一个序号,进去下层循环
+                //if (i > 0 && row.seqNumber != res.data[i - 1].seqNumber) {
+                var catalogList = row.catalogList;
+                for (var n = 0; n < catalogList.length; n++) {
+                    html += '<div class="videoContent" id="' + catalogList[n].id + '" style="background-image:url(' + catalogList[n].backgroundUrl + ') " data-name="' + catalogList[n].catalogName + '">' +
+                        '<div class="black"></div>' +
+                        '<div class="txt">' +
+                        '<span>' + catalogList[n].seqNumber + '</span>' +
+                        '<span>' + catalogList[n].catalogName + '</span>' +
+                        '<span></span>' +
+                        '</div>' +
+                        '</div>';
+                }
+                //}
+                html += '</div>';
+            }
+            $('#main').html(html);
+
+            //视频跳转新页面
+            $('.videoContent').on('click', function () {
+                var videoName = $(this).attr('data-name');
+                window.open('videoDetails.html?catalogName=' + videoName + '&videoId=' + $(this).attr("id"));
+            });
+        } else {
+            console.error(res.msg);
+        }
+    }
+    loadVideoListData();
+</script>
+</html>

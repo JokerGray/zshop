@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>参数设置</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common_v2.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+	<link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/my_profile.css" />
+</head>
+<body>
+	
+	<div id="app" class="layui-form">
+		<div id="common-tool" class="clearfix p4">
+			<div id="search">
+				<button class="layui-btn layui-btn-small layui-btn-normal" id="save" lay-submit lay-filter='formDemo'> <i class="layui-icon">&#xe627;</i> 保存 </button>
+				<button class="layui-btn layui-btn-small layui-layui-btn-warm" id="clear"> <i class="layui-icon">&#xe640;</i> 清空 </button>
+			</div>
+		</div>
+		<div id="con" class="clearfix">
+			<div id="titplc">基本资料</div>
+			<div class="left-form">
+				<div class="layui-form-item">
+		          <label class="layui-form-label"><i class="star">*</i>姓名:</label>
+		          <div class="layui-input-block">
+		            <input type="text" name="title" required="" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" maxlength="10" id="uname">
+		          </div>
+		        </div>
+				<div class="layui-form-item lasttime input-medium date-picker" data-date-format="yyyy-mm-dd">
+					<div class="input-group">
+						<label  class="layui-form-label" for="jurisdiction-begin"><i class="star">*</i>出生日期：</label>
+						<div class='date layui-input-block' id='datetimepicker1'>
+							<input name="dtBegin" type="text"  id="jurisdiction-begin" placeholder="" >
+							<span class="glyphicon glyphicon-calendar"></span>
+						</div>
+					</div>
+				</div>
+		        <!--<div class="layui-form-item">
+		          <label class="layui-form-label"><i class="star">*</i>出生日期:</label>
+		          <div class="layui-input-block">
+		            <input type="text" name="title" required="" lay-verify="required|date" placeholder="格式XXXX-XX-XX" autocomplete="off" class="layui-input" maxlength="20" id="birthday">
+		          </div>
+		        </div>-->
+	        	<div class="layui-form-item">
+				    <label class="layui-form-label"><i class="star">*</i>性别:</label>
+				    <div class="layui-input-block">
+				      <select name="city" id="sex">
+				        <option value="男">男</option>
+				        <option value="女">女</option>
+				      </select>
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">所属机构:</label>
+				    <div class="layui-input-block">
+				      <select  id="typeSelectr" disabled>
+				        <option value="">--全部--</option>
+				      </select>
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+			          <label class="layui-form-label">手机号:</label>
+			          <div class="layui-input-block">
+			            <input type="text" name="title" required="" lay-verify="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input" id="phone">
+			          </div>
+		       	 </div>
+			</div>
+			<div class="right-form">
+		        <div class="" >
+		          <img src="images/user.png" id="uploadImg" class="signform-face-img"  style="width:50px;height:50px" />
+		        </div>
+		        <button class="layui-btn layui-btn-small layui-btn-normal" id="changePic">修改头像</button>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/login_success.js"></script>
+
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script type="text/javascript" src="js/upload.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/my_profile.js"></script>
+
+
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+</html>

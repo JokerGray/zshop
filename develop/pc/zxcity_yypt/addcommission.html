@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>新增佣金策略</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="commission_manage/commission_manage.css" />
+</head>
+<body>
+    <div class="addsystem">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">代理人类型：</label>
+                <div class="layui-input-block systemSize">
+                    <select name="agentType" id="agentTypeSelect">
+                        <option value=" ">-请选择-</option>
+                        <option value="1">其他</option>
+                        <option value="2">代理商</option>
+                        <option value="3">合伙人</option>
+                        <option value="4">公司内部人员</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">升级类型：</label>
+                <div class="layui-input-block systemSize">
+                    <select name="upgradeType" id="upgradeTypeSelect">
+                        <option value=" ">-请选择-</option>
+                        <option value="1">升级成合作商户</option>
+                        <option value="2">升级成代理商户</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">计费年：</label>
+                <div class="layui-input-block systemSize">
+                    <select name="billingYear" id="billingYear">
+                        <option value=" ">-请选择-</option>
+                        <option value="1">首年</option>
+                        <option value="2">次年</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">适用级别：</label>
+                <div class="layui-input-block systemSize">
+                    <select name="applicableLevel" id="applicableLevel">
+                        <option value=" ">-请选择-</option>
+                        <option value="1">顶级代理</option>
+                        <option value="2">一级代理</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">计费比例：</label>
+                <div class="layui-input-block">
+                    <input id="systemName" name="title" placeholder="必须为以0开头的小数，最多3位小数" lay-verify="title" autocomplete="off"  class="layui-input" type="text" maxlength="5"><span><b class="required-icon">＊</b>必须为小数</span>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">缴费金额：</label>
+                <div class="layui-input-block">
+                    <input id="commissionMoney" name="title" placeholder="必填项" lay-verify="title" autocomplete="off"  class="layui-input" type="text" maxlength="22">
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- jSCommon -->
+    <script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="common/js/util/util.js"></script>
+    <script type="text/javascript" src="common/js/common.js"></script>
+    <script type="text/javascript" src="commission_manage/addcommission.js"></script>
+</body>
+</html>

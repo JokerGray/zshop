@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+	<title>作者审核·管理员后台</title>
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="assets/layui/css/layui.css" />
+	<link rel="stylesheet" href="css/zx.css" />
+	<link rel="stylesheet" href="css/authorial_check.css" />
+</head>
+
+<body>
+	<script src="util/head.js"></script>
+	<input type="hidden" id="menuHid" value="authorial_check">
+	<div class="container">
+		<div class="wrapper clearfix">
+			<script src="util/menu.js"></script>
+			<div id="page_R" class="right pull-right">
+				<div id="search_box" class="clearfix">
+					<div id="penName_box" class="fl">
+						<p class="penName_tit">作家名称</p>
+						<input id="penName_inp" class="penName_inp" type="text" maxlength="10">
+					</div>
+					<!--<div id="autherName_box" class="fl">
+						<p class="autherName_tit">运营者姓名</p>
+						<input id="autherName_inp" class="autherName_inp" type="text" maxlength="10">
+					</div>-->
+					<div id="field_box" class="fl">
+						<p class="field_tit">领域</p>
+						<select id="inputValue" class="form-control signform-input select" name="subscriptionType">
+							<option value="">请选择</option>
+						</select>
+					</div>
+					<div id="timeBox" class="fl">
+						<p class="field_tit">申请时间</p>
+						<input class="fl" id="start" type="text" maxlength="20">
+						<input class="fl" id="end" type="text" maxlength="20">
+					</div>
+					<div id="search_icon" class="fl"><img src="images/search.png" alt=""></div>
+				</div>
+				<div id="article_box" class="clearfix">
+					<div>
+						<ul class="tabinner clearfix">
+							<li id="tabAll" class="fl active">全部</li>
+							<li id="tabPerson" class="fl">个人申请</li>
+							<li id="tabCom" class="fl">企业申请</li>
+						</ul>
+					</div>
+					<div id="selection_date" class="clearfix">
+						<ul class="seleDate_day">
+							<li id="lastSevenDay" class="fl cur-p">7天</li>
+							<li id="lastHalfofMouth" class="fl cur-p">14天</li>
+							<li id="lastMouth" class="fl cur-p">30天</li>
+							<li class="fr selection_opt" style="margin-right: 70px;">
+								<select id="examineOpt" class="form-control signform-input select" name="examineType">
+                            		<option value="">请选择</option>
+									<option value="0">待审核</option>
+									<option value="1">已通过</option>
+									<option value="2">未通过</option>
+									<option value="3">屏蔽</option>
+									<option value="4">冻结</option>
+									<option value="5">黑名单</option>
+                            	</select>
+							</li>
+						</ul>
+					</div>
+					<div class="table account_table">
+						<div id="account_Table" class="table-left">
+							<div class="panel panel-default">
+								<table class="table table-hover">
+									<thead id="table_head">
+										<th></th>
+										<th>作者名称</th>
+										<th>领域</th>
+										<th>申请时间</th>
+										<th>审核时间</th>
+										<th>审核人</th>
+										<th>状态</th>
+										<th></th>
+									</thead>
+									<tbody id="statement_con"></tbody>
+								</table>
+							</div>
+						</div>
+						<div id="page" class="text-center"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog modal-dialog1" role="document">
+			<div class="modal-content modal-content1">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<h4 class="modal-title" id="myModalLabel"><span id="modalTitType"></span>作者审核</h4>
+				</div>
+				<div class="modal-body modal-body1">
+					<form class="clearfix">
+						<div class="form-group form-group1 col-md-3">
+							<label for="inputEmail3" class="control-label"><i class="myModal_icon"></i><span class="selectName">智享头条名称</span></label>
+							<span id="subscriptionName"></span>
+						</div>
+						<div class="form-group form-group1 col-md-3">
+							<label for="inputPassword3" class="control-label"><i class="myModal_icon"></i><span class="selectName">智享头条头像</span></label>
+							<img id="form_headshot" src="" alt="">
+						</div>
+						<div class="form-group form-group1 col-md-3">
+							<label for="inputPassword3" class="control-label"><i class="myModal_icon"></i><span class="selectName">所在地</span></label>
+							<span id="sub_province"></span><span>，</span><span id="sub_city"></span>
+						</div>
+						<div class="form-group form-group1 col-md-3">
+							<label for="inputPassword3" class="control-label"><i class="myModal_icon"></i><span class="selectName">领域</span></label>
+							<span id="subscriptionTypeName"></span>
+						</div>
+						<div class="clearfix" style="padding-top: 30px;">
+							<div class="checkDetail form-group col-md-3">
+								<div class="instructionBox1">
+									<label for="inputPassword3" class="instructionTit1 control-label fl"><i class="myModal_icon"></i><span class="selectName">智享头条介绍</span></label>
+									<span id="subscriptionSynopsis" class="instructionCon1 fl"></span>
+								</div>
+							</div>
+							<div class="checkDetail form-group col-md-9">
+								<div class="instructionBox">
+									<label for="inputPassword3" class="instructionTit control-label fl"><i class="myModal_icon"></i><span class="selectName">辅助说明</span></label>
+									<span id="assistData" class="instructionCon fl"></span>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix" style="padding-top: 30px;">
+							<div class="checkDetail col-md-3" style="padding-right: 13px;">
+								<div class="form-group" style="position: relative;">
+									<label for="inputPassword3" class="control-label"><i class="myModal_icon"></i><span class="selectName">资质证明</span></label>
+									<img id="certificate_photo" src="" alt="" title="" data-toggle="modal" data-target="#photoEnlargeBox">
+									<div class="photoEnlargeBox hide">
+										<img class="photoEnlarge" src="" alt="">
+									</div>
+								</div>
+								<div id="operationNameBox" class="form-group">
+									<label for="inputPassword3" class="control-label"><i class="myModal_icon"></i><span class="selectName">运营者姓名</span></label>
+									<span id="operationName"></span>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="control-label"><i class="myModal_icon"></i><span class="selectName">运营者电话</span></label>
+									<span id="operationPhone"></span>
+								</div>
+								<div id="operationIdCardBox" class="form-group">
+									<label for="inputPassword3" class="control-label"><i class="myModal_icon"></i><span class="selectName">运营者身份证</span></label>
+									<span id="operationIdCard"></span>
+								</div>
+							</div>
+							<div class="IDcardBox checkDetail form-group col-md-9">
+								<div id="IDcardPhotoBox" class="IDcardSelect instructionBox clearfix">
+									<label for="inputPassword3" class="instructionTit control-label clearfix">
+							  			<i class="myModal_icon"></i>
+							  			<span class="selectName">运营者身份证照片</span>
+							  		</label>
+									<img id="IDcard_photo" class="instructionCon fl" src="" alt="">
+								</div>
+								<!-- <div class="IDcardBox IDcardBox1 instructionBox clearfix">
+							  		<label for="inputPassword3" class="instructionTit control-label fl clearfix">
+							  			<i class="myModal_icon fl"></i>
+							  			<span class="selectName fl">运营者手持身份证照片:</span>
+							  		</label>
+							  		<img id="subIDcard_photo" class="instructionCon fl" src="" alt="">
+							  	</div> -->
+							</div>
+						</div>
+					</form>
+				</div>
+				<div id="modalBtnBox" class="modal-footer">
+					<button id="pushPass" type="button" class="modalPass btn btn-default" data-dismiss="modal">通过</button>
+					<button id="notPass" type="button" class="modalNotPass btn btn-primary" data-toggle="modal" data-target="#NotPass">不通过</button>
+					<button id="shield" type="button" class="modalShield btn btn-primary" data-dismiss="modal">屏蔽</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="NotPass" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog modal-dialog2" role="document">
+			<div class="modal-content modal-content2">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				</div>
+				<form>
+					<div id="notPassForm" class="clearfix"></div>
+					<textarea id="NotPass_beca" class="NotPass_beca" placeholder="请输入不通过的理由..."></textarea>
+				</form>
+				<div id="notPassBtnBox" class="modal-footer">
+					<button id="notPassReason" class="NotPass btn" type="button" data-dismiss="modal">提交不通过</button>
+					<button class="modalShield btn" type="button" data-dismiss="modal">返回</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="assets/jquery-1.10.2.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/layui/lay/dest/layui.all.js"></script>
+	<script src="assets/countUp.min.js"></script>
+	<script src="util/util.js"></script>
+	<script src="util/pub.js"></script>
+	<script src="js/authorial_check.js"></script>
+	<script id="noticeList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+        <tr>
+            <td class="tabNotice_icon" style="text-align: right;"><span subscriptionType={{item.subscriptionType}}></span></td>
+		  	<td>{{item.subscriptionName || ''}}</td>
+		  	{{# if(item.scCmsSubscriptionType && item.scCmsSubscriptionType.channelName){ }}
+		  		<td>{{item.scCmsSubscriptionType.channelName}}</td>
+		  	{{# } else{ }}
+		  		<td></td>
+		  	{{# } }}
+		  	<td>{{item.createTime || ''}}</td>
+		  	<td class="examineTime">{{item.examineTime || ''}}</td>
+		  	<td class="examinePerson">{{'管理员'}}</td>
+		  	<td class="checkPending" isExamine={{item.isExamine}}></td>
+		  	<td>
+		  		<button type="button" class="tabNotice_btn" data-toggle="modal" data-target="#myModal" userId={{item.userId}}>查看</button>
+		  	</td>
+        </tr>    
+        {{#  }); }}
+
+        {{#  if(d.length == 0){ }}
+        <td colspan="8">暂无数据</td>
+        {{#  } }} 
+    </script>
+</body>
+
+</html>

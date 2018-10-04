@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css"> 
+	<title>投资申请表</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+			font-family:-apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+		}
+		html,body {
+			color: #333;
+		} 
+		.hide {
+			display: none !important;
+		}
+		.text-center{
+			text-align: center;
+		}
+		#memberGroup{
+			margin-bottom: 10px;
+		}
+		.weui-cells:before, .weui-cells:after {
+			border: none;
+		}
+		.weui-cell {
+			border: 1px solid #dadada;
+			margin: 8px;
+			padding: 8px;
+			font-size: 14px;
+		}
+		.weui-label{
+			width: 80px;
+		}
+		.half.weui-label{
+			width: 40px;
+		}
+		.weui-select{
+			height: auto;
+			line-height: 1;
+		}
+		.captcha .weui-btn{
+		    height: auto;
+		    margin: 8px 8px 0 0;
+		    font-size: 14px;
+		    line-height: 37px;
+		    background-color: #349CEE;
+		    border-radius: 2px;
+		}
+		.btn-submit, .btn-info, .btn-warn{
+			display: block;
+			margin: 16px 8px 8px;
+			background-color: #349CEE;
+		}
+		.btn-info{
+			color: #349CEE;
+			background-color: #fff;
+		}
+		.btn-info:after{
+			border-color: #349CEE;
+		}
+		.btn-warn{
+			color: #E64340;
+			background-color: #fff;
+		}
+		.btn-warn:after{
+			border-color: #E64340;
+		}
+		.weui-btn_primary:not(.weui-btn_disabled):active {
+			background-color: #4b9dff;
+		}
+	</style>
+</head>
+<body>
+	<form id="form">
+		<div class="weui-cells weui-cells_form" id="memberGroup">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">公司名称</label></div>
+                <div class="weui-cell__bd">
+                    <input name="companyName" type="text" class="weui-input" maxlength="20" required emptyTips="请输入投资公司名称！" placeholder="请输入投资公司名称" >
+                </div>
+            </div>
+            
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">投资领域</label></div>
+                <div class="weui-cell__bd">
+                    <input name="investmentKingdom" type="text" class="weui-input" maxlength="20" required emptyTips="请输入投资领域！" placeholder="请输入投资领域" >
+                </div>
+            </div>
+            
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">负责人</label></div>
+                <div class="weui-cell__bd">
+                    <input name="companyBoss" type="text" class="weui-input" maxlength="20" required emptyTips="请输入负责人姓名！" placeholder="请输入负责人姓名" >
+                </div>
+            </div>
+            
+	        <div class="weui-cell" id="phoneContent">
+                <div class="weui-cell__hd"><label class="weui-label">联系电话</label></div>
+                <div class="weui-cell__bd">
+                    <input name="phone" id="phone" class="weui-input" onchange="removeRandomCode()" maxlength="11" required pattern="^1[0-9]{10}$" emptyTips="请输入手机号" notMatchTips="手机号格式不正确" type="number" placeholder="请输入手机号">
+                </div>
+            </div>
+            
+            <div class="weui-flex">
+	            <div class="weui-flex__item">
+	            	<div class="weui-cell" id="captchaContent">
+		                <div class="weui-cell__hd"><label class="weui-label">验证码</label></div>
+		                <div class="weui-cell__bd">
+		                    <input name="randomcode" id="randomCode" onblur="checkRandomCode()" class="weui-input" required type="number" maxlength="10" placeholder="请输入验证码">
+		                </div>
+		            </div>
+	            </div>
+            	<div class="captcha">
+            		<a id="captchaBtn" href="javascript:getCaptcha();" class="weui-btn weui-btn_primary">获取验证码</a>
+            	</div>
+            </div>
+            
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">常用邮箱</label></div>
+                <div class="weui-cell__bd">
+                    <input name="email" class="weui-input" type="text" required pattern="^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$" maxlength="200" placeholder="邮箱用于接收附件" emptytips="请输入您的邮箱！" notmatchtips="请输入正确的邮箱地址！">
+                </div>
+            </div>
+            
+            <a href="javascript:submitForm();" class="weui-btn weui-btn_primary btn-submit">提交</a>
+        </div>
+    </form>
+    
+    <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.2/weui.min.js"></script>
+	<script type="text/javascript">
+		var randomCode = '';
+		$(function(){
+			FastClick.attach(document.body);
+		})
+		// 修改手机号，则验证码置空
+		function removeRandomCode(){
+			document.getElementById("randomCode").value = '';
+		}
+		
+		// 只有在已获得验证码的时候，才需要检测验证码
+		function checkRandomCode(flag){
+			var str = randomCode + '';
+			// 若检测时还没有获得验证码，则提示获取验证码
+			if(flag && str.length == 0) {
+				weui.topTips('请点击按钮获取验证码！');
+				return false;
+			}
+			// 未检测时，没有验证码，则忽略
+			if(str.length == 0) return false;
+			// 校验
+			if(document.getElementById("randomCode").value != str){
+				weui.topTips('验证码不正确！');
+				return false;
+			}
+			return true;
+		}
+		
+		// 获取验证码，获取之前需要校验手机号
+		function getCaptcha(){
+			// 已校验或正在发送数据，不能再次点击
+			if(checkLoading()) return;
+			
+			var errClass = 'weui-cell_warn';
+			var phone = document.getElementById("phone");
+			var phoneContent = document.getElementById("phoneContent");
+			
+			if(phone.value.length == 0) {
+				phoneContent.classList.add(errClass);
+				return weui.topTips(phone.getAttribute('emptytips'));
+			}
+			var reg = new RegExp(phone.getAttribute('pattern'));
+			if(!reg.test(phone.value)) {
+				phoneContent.classList.add(errClass);
+				return weui.topTips(phone.getAttribute('notMatchTips'));
+			}
+			phoneContent.classList.remove(errClass);
+			
+			$.ajax({
+				type:"post",
+				dataType: 'json',
+				url:"/zxcity_restful/ws/rest",
+				data:{
+					cmd: 'coffee/sendCoffeeMessage',
+					data: JSON.stringify({
+						phone: phone.value,
+					}),
+					version: 1
+				},
+				beforeSend: setLoading,
+				success: function(data){
+					if(data.code == 1){
+						setTimer();
+						randomCode = data.data.randomcode;
+					} else {
+						clearLoading();
+						randomCode = ''
+					}
+					weui.alert(data.msg);
+				},
+				error: function (){
+					clearLoading();
+					weui.alert('请求超时，请重试……');
+				}
+			});
+		}
+		
+		// 检测加载样式,true，表示正在加载中，不能使用
+		function checkLoading(){
+			var captchaBtn = document.getElementById("captchaBtn");
+			return captchaBtn.classList.contains('weui-btn_loading');
+		}
+		// 设置加载样式
+		function setLoading(){
+			var captchaBtn = document.getElementById("captchaBtn");
+			captchaBtn.innerHTML = '<i class="weui-loading"></i> 正在发送'
+			captchaBtn.classList.add('weui-btn_loading');
+		}
+		// 清除加载样式
+		function clearLoading(){
+			var captchaBtn = document.getElementById("captchaBtn");
+			captchaBtn.innerHTML = '获取验证码';
+			captchaBtn.classList.remove('weui-btn_loading');
+		}
+		// 设置定时器样
+		function setTimer(){
+			var time = 60;
+			var captchaBtn = document.getElementById("captchaBtn");
+			captchaBtn.innerHTML = '重新发送('+ time +'s)';
+			var interval = setInterval(function(){
+				if(time < 2){
+					clearInterval(interval);
+					clearLoading();
+					return;
+				}
+				time--;
+				captchaBtn.innerHTML = '重新发送('+ time +'s)';
+			}, 1000)
+			captchaBtn.classList.add('weui-btn_loading');
+		}
+		
+		// 提交表单
+		function submitForm(){
+			// 校验
+			var validate = false;
+			weui.form.validate('#form', function (result) {
+				var warnClass = 'weui-cell_warn';
+				var warnList = document.querySelectorAll('#form .'+warnClass);
+				for(var i=0;i<warnList.length; i++){
+					warnList[i].classList.remove(warnClass);
+				}
+				if(result) result.ele.classList.add(warnClass)
+				validate = !result;
+			});
+			if(!validate) return;
+			if(!checkRandomCode(true)) return;
+			
+			var domArr = document.querySelectorAll('#form [name]');
+			var data = {}
+			for(var i=0; i<domArr.length; i++){
+				data[domArr[i].getAttribute('name')] = domArr[i].value;
+			}
+			var loading;
+			$.ajax({
+				type:"post",
+				dataType: 'json',
+				url:"/zxcity_restful/ws/rest",
+				data:{
+					cmd: 'coffee/addCoffeeInvestmentInfo',
+					data: JSON.stringify(data),
+					version: 1
+				},
+				beforeSend: function () {
+					loading = weui.loading('提交中……');
+				},
+				complete: function () {
+					loading.hide();
+				},
+				success: function (data) {
+					if(data.code == 1){
+						weui.toast('提交成功', function () {
+							location.replace('application_success.html');
+						});
+					} else {
+						weui.alert(data.msg);
+					}
+				},
+				error: function (err) {
+					weui.alert('请求超时，请重试……');
+				}
+			});
+		} 
+	</script>
+</body>

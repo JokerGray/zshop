@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>个人账务统计</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap-datepicker/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/account_common.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/modal.css">
+</head>
+<body>
+    <div class="container-fluet" id="body-box" style="padding-top: 0px;">
+        <div class="row body-left-nav">
+            <div class="col-md-11 content-right" id="content">
+
+                <div class="cr-con">
+                    <div id="toolbar" class="row">
+                    <div class="cy-text-right-md form-inline clearfix">
+
+                            <!-- 账户名称开始 -->
+                            <div class="selein ml20 fl">
+                                <span class="cy-pad-hor-s">账户名称：</span>
+                                <input type="text" class="form-control h34 stationwid sechwidth" placeholder="输入账户名称"  id="accountnamer" maxlength="30" onkeydown="keyDownEnter()">
+                            </div>
+                            <!-- 账户名称结束 -->
+
+                            <!-- 时间开始 -->
+                            <div class="ml20 fl datepicker" id="datepicker" data-link-field="dtp_input1">
+                                <span class="cy-pad-hor-s">日期：</span>
+                                <input type="text" class="form-control h34 datepickerwid sechwidth" readonly name="start" id="qBeginTime" placeholder="开始日期" data-date-format="yyyy-mm-dd" />
+                                <span class="cy-pad-hor-s">至</span>
+                                <input type="text" class="form-control h34 datepickerwid sechwidth" readonly name="end" id="qEndTime" placeholder="截止日期" data-date-format="yyyy-mm-dd"/>
+                            </div>
+                            <!-- 时间结束 -->
+
+                            <!-- 搜索导出开始 -->
+                            <div class="ml20 fr">
+                                <button class="btn btn-success h34 sechwid" type="button" id="searchbtn"><i class="glyphicon glyphicon-search"></i>搜索</button>
+                            	<button class="btn btn-success h34 sechwid" type="button" value="finance/count/personCount" id="setButton">设置</button>
+                                <button class="btn btn-success h34 sechwid" type="button" id="excelbtn">导出excel</button>
+                            </div>
+                            <!-- 搜索导出结束 -->
+                        </div>
+                    </div>
+                    <div class="table-con">
+                    <!-- 表格开始 -->
+                        <table id="table"></table>
+                    <!-- 表格结束 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Common -->
+<script type="text/javascript" src="../../common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/js/jqPaginator.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table.v1.11.0.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/account_common.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/str.js"></script>
+<script type="text/javascript" src="../../common/js/num.js"></script>
+<script type="text/javascript" src="../../common/assets/template-web.js"></script>
+
+<script type="text/javascript" src="../../common/assets/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="../../common/assets/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="../../common/js/login_success.js"></script>
+
+
+<script type="text/javascript" src="../../common/js/util/pub.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<!-- detailsfile -->
+<script type="text/javascript" src="personCount.js"></script>
+<script type="text/javascript" src="../../common/js/account_dynamic_column.js"></script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+a{
+	color:#333;
+}
+.homePage{
+	background-color: #f2f2f2;
+}
+
+.main-title{
+	position:relative;
+}
+
+.main-title .save-btn{
+	position:absolute;
+	right:2rem;
+	top:1rem;
+    font-size:1.5rem;
+    color:#fe6869;
+}
+
+.main-content .main-top{
+    height:92px;
+    background-color:#fff;
+}
+
+/**日期选择*/
+.select-date {
+	display: flex;
+	align-items: center;
+	height:2.875rem;
+	padding-left: 1.375rem;
+	font-size: .875rem;
+	color: #fe6869;
+    background-color: #fff;
+    border-top: 1px solid #f2f2f2;
+}
+
+.select-date .select-day {
+	display: flex;
+	height: 100%;
+	align-items: center;
+}
+
+.select-date .selected-cur-date {
+	display: inline-block;
+	width: 4.5rem;
+	text-align: center;
+	line-height: 1.15;
+	color: #333;
+}
+
+.select-date .select-bottom-arrow {
+	display: inline-block;
+	width: 1rem;
+	height: 0.625rem;
+	background-image: url(../image/icon_datexiala@2x.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+	margin-right: .938rem;
+	vertical-align: middle;
+}
+
+.select-date .date-list-box {
+	position: relative;
+	border-left: 1px solid #f2f2f2;
+	padding-left: 1rem;
+}
+
+.date-list-box .prev,
+.date-list-box .next {
+	position: absolute;
+	display: block;
+	top: 50%;
+	margin-top: -0.625rem;
+	width: 1.125rem;
+	height: 1.125rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.date-list-box .prev {
+	left: 1rem;
+	background-image: url(../image/btn-left@2x.png);
+}
+
+.date-list-box .next {
+	left:496px;
+	background-image: url(../image/btn-right@2x.png);
+}
+
+.date-list-box .date-list-inner {
+	position: relative;
+	width: 444px;
+	height: 2rem;
+	margin-left: 2.688rem;
+	overflow: hidden;
+}
+
+.date-list-inner .date-list {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+}
+
+.date-list-inner .date-list a {
+	float: left;
+	display: block;
+	width: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	color: #fe6869;
+}
+
+.date-list-inner .date-list a+a {
+	margin-left: .75rem;
+}
+
+.date-list-inner .date-list a.selected {
+	width: 2rem;
+	height: 2rem;
+	color: #fff;
+	background-color: #fe6869;
+	border-radius: 100%;
+}
+
+.date-list-inner .date-list a.disabled {
+	color: #ccc;
+}
+
+
+.main-top .select-customer{
+    display:flex;
+    height:46px;
+    align-items: center;
+    padding-left:22px;
+    font-size:14px;
+    color:#333;
+}
+
+.select-customer label{
+	display: inline-block;
+    font-weight: normal;
+    color:#fe6869;
+    margin-right:17px;
+}
+
+.select-customer .select-right-arrow{
+    display:inline-block;
+    width:13px;
+    height:21px;
+    background:url(../image/icon_gengduo@2x.png) no-repeat;
+    margin-left:24px;
+    margin-right:64px;
+}
+
+.select-customer .desc{
+    border-left:1px solid #f2f2f2;
+    padding-left:30px;
+}
+
+.select-customer .desc input[type=text]{
+	display: inline-block;
+    padding-left:5px;
+    width:360px;
+    border-bottom:1px solid #dadada;
+	margin-bottom:0;
+	box-shadow: none;
+    border-left:none;
+    border-right:none;
+    border-top:none;
+    outline:none;
+}
+
+.main-content .main-bottom{
+    height:560px;
+    margin-top:11px;
+    padding-left:12px;
+    padding-right:12px;
+}
+.main-bottom .select-item{
+	height:100%;
+}
+.main-bottom .select-item .item-inner{
+    height:100%;
+    background-color:#fff;
+}
+
+
+.select-item .select-item-title{
+    width:100%;
+    height:133px;
+    line-height: 133px;
+    font-size:20px;
+    color:#666;
+    text-align:center;
+    border-bottom:1px solid #f2f2f2;
+}
+
+.select-item .select-inner .select-add-btn{
+    display:block;
+    width:197px;
+    height:197px;
+    margin:100px auto;
+    background:url(../image/btn_tianjia@2x.png) no-repeat;
+	background-size: cover;
+}
+
+.select-item .select-inner .info{
+	display:block;
+	height:44px;
+	line-height: 44px;
+	border-bottom:1px solid #f2f2f2;
+	font-size:15px;
+	color:#fe6869;
+	text-align:center;
+}
+
+.select-inner .info .time{
+	margin-left:39px;
+}
+
+.pop-layer{
+	position: fixed;
+	display:none;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+}
+
+.pop-layer .pop-mask{
+	position: fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background:rgba(0, 0, 0, 0.4);
+}
+
+.pop-layer .pop-inner{
+	position:absolute;
+	top:50%;
+	left:50%;
+	width:300px;
+	height:300px;
+	margin-left:-150px;
+	margin-top:-150px;
+	background-color:#fff;
+	z-index:101;
+	box-shadow: 0px 0px 6px #333;
+	color:#333;
+}
+
+.pop-layer .pop-title{
+	display:flex;
+	align-items: center;
+	justify-content: space-between;
+	height:40px;
+	line-height: 40px;
+	font-size:17px;
+	padding-left:10px;
+	padding-right:10px;
+	background-color: #e7e7e7;
+}
+
+.pop-layer .close-btn{
+	display:inline-block;
+	width:14px;
+	height:14px;
+	background:url(../image/icon_guanbi@2x.png) no-repeat;
+	background-size: cover;
+}
+
+.pop-layer .pop-con{
+	height:250px;
+	overflow-y: auto;
+}
+
+.pop-layer .pop-con select{
+	display: inline-block;
+    height: 2rem;
+    margin-top: 1rem;
+	width: 6.25rem;
+    vertical-align: middle;
+}
+
+.pop-con ul>li{
+	display:flex;
+	align-items: center;
+	justify-content: space-around;
+	height:40px;
+	line-height: 40px;
+	font-size:14px;
+	border-bottom:2px solid #f2f2f2;
+}
+
+.pop-con ul>li:hover{
+	color:#fe6869;
+}
+.pop-con ul>li .name{
+	display: inline-block;
+	width:4rem;
+}
+.pop-con ul>li .btn{
+	width: 3rem;
+	height: 1.5rem;
+    padding: 0;
+    margin: 0;
+    background-color: #fe6869;
+	font-size: 0.875rem;
+}
+
+#roomSelectBox li,
+#serviceSelectBox li{
+	cursor:pointer;
+}

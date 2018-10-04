@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta name=format-detection content="telephone=no">
+    <title>回答详情</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/shareAnswer.css">
+    <script type="text/javascript">
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth < 1200) {
+                        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                    } else {
+                        docEl.style.fontSize = '320px';
+                    }
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+
+<body>
+    <div class="page">
+        <div class="page-content" id="pageCont">
+        </div>
+
+        <script type="text/html" id="showPage">
+            <div class="ans-title">
+                <span class="logo"></span>
+                <%=data.articleTitle%>
+            </div>
+            <div class="ans-answers">
+                <span class="ans-logo toApp"></span>
+                <span class="ans-right toApp"></span>
+                <span class="toApp">
+                    <%=data.answerNumber%>个回答</span>
+            </div>
+            <div class="title-line">
+            </div>
+            <div class="user-info">
+                <img src="<%=data.scSysUser.userpic%>?x-oss-process=image/resize,m_fill,w_70,h_70,limit_0" alt="">
+                <p class="user-name">
+                    <%=data.scSysUser.username%>
+                </p>
+                <p class="creat-time">
+                    <%=data.releaseTime.replace('.0', '')%>
+                </p>
+            </div>
+            <div class="article">
+                <%==data.articleContent%>
+            </div>
+            <div class="ans-corp">
+                <span class="zan toApp">
+                    <%==data.praiseNumber||0%>
+                </span>
+                <!-- <span class="zan">
+                    150
+                </span> -->
+                <span class="report toApp" style="display:none;">举报</span>
+            </div>
+            <div class="inline-gray">
+
+            </div>
+
+        </script>
+        <!-- 评论区 -->
+        <div class="ans-com" id="commentArea">
+        </div>
+        <!-- 领取礼包 -->
+        <div class="page-download toApp">
+            <div class="bg">
+                <div class="floatleft">  
+                    <img src="img/qmx_share_xiazai.png" alt="按钮"> 
+                    智享城市
+                </div>
+                <div class="floatright">下载</div>
+            </div>
+        </div>
+        <script type="text/html" id="comments">
+            <div class="com-title">
+                评论&nbsp;
+                <%=total||0%>
+            </div>
+            <%if(data.totalCount){%>
+                <%for(var i=0;i<data.scCmsCommentList.length;i++){%>
+                    <div class="com-item">
+                        <img src="<%=data.scCmsCommentList[i].userImgUrl%>" alt="">
+                        <p class="com-username">
+                            <%=data.scCmsCommentList[i].userName%>
+                        </p>
+                        <p class="com-content">
+                            <%=data.scCmsCommentList[i].commentComment%>
+                        </p>
+                        <p class="com-time">
+                            <%=data.scCmsCommentList[i].commentTime%>&nbsp;
+                                <span>
+                                    <%=data.scCmsCommentList[i].commentReplyNum%>条回复&nbsp;></span>
+                        </p>
+                        <span class="com-zan">
+                            <%=data.scCmsCommentList[i].praiseNumber%>
+                        </span>
+                    </div>
+                    <%}%>
+                        <%}else{%>
+                            <div class="no-comment">暂无评论...</div>
+                            <%}%>
+
+
+        </script>
+    </div>
+    <div id="wxLayer" class="wx_layer" style="display:none;">
+        <div id="msgBox" class="msg_box">
+            <P>1.点击右上角的</P>
+            <p>2.选择</p>
+            <span class="msg_arrow"></span>
+            <span class="msg_point"></span>
+            <span class="msg_txt"></span>
+        </div>
+    </div>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/artTemplate.js"></script>
+    <script src="assets/layer_mobile/layer.js"></script>
+    <script src="js/jweixin-1.2.0.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/shareAnswer.js"></script>
+
+</body>
+
+</html>

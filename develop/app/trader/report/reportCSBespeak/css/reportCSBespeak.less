@@ -1,0 +1,405 @@
+body{
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.layui-input, .layui-select{
+  height: 34px;
+}
+/**顶部时间选择和店铺选择*/
+.time-shop{
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid #ccc;
+  .timeTab{
+    float: left;
+    ul{
+      font-size: 0;
+      padding-top: 19px;
+      li{
+        display: inline-block;
+        width: 97px;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        font-size: 16px;
+        color: #707070;
+        border-top: 1px solid #cccccc;
+        border-left: 1px solid #cccccc;
+        border-right: 1px solid #cccccc;
+        -webkit-border-radius: 4px 4px 0 0;
+        -moz-border-radius: 4px 4px 0 0;
+        border-radius: 4px 4px 0 0;
+        margin-left: 20px;
+        cursor: pointer;
+        &.active{
+          border: none;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  .shopSelector{
+    float: right;
+    width: 150px;
+    margin-top: 15px;
+    margin-right: 20px;
+  }
+}
+/**时间选择和路径显示*/
+.time-path{
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+  >div{
+    display: inline-block;
+    vertical-align: middle;
+    &.timeIcon{
+      vertical-align: -7px;
+      i{
+        display: block;
+        width: 24px;
+        height: 24px;
+        background: url("../../../assets/common/img/dateIcon.png") no-repeat center;
+        -webkit-background-size: 100%;
+        background-size: 100%;
+      }
+    }
+    &.timeSelector{
+      >div:nth-of-type(1){
+        //display: none;
+        width: 90px;
+      }
+      >div:nth-of-type(2){
+        display: none;
+        span{
+          padding: 0 10px;
+          font-size: 16px;
+          color: #333333;
+        }
+      }
+      >div:nth-of-type(3){
+        width: 190px;
+        display: none;
+      }
+      input{
+        width: 100%;
+        height: 24px;
+        color: #1e9fff;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        vertical-align: middle;
+      }
+    }
+    &.path{
+      font-size: 16px;
+      color: #333333;
+      i{
+        font-family: SimSun;
+      }
+    }
+  }
+}
+/**预约概览*/
+.reservationOverview{
+  width: 100%;
+  ul{
+    li{
+      float: left;
+      width: 22.75%;
+      min-width: 345px;
+      height: 98px;
+      background-color: #fff;
+      border: 1px solid #dddddd;
+      margin: 20px;
+      div{
+        float: left;
+        color: #333333;
+        &.icon{
+          width: 46px;
+          height: 46px;
+          margin: 20px;
+        }
+        p{
+          font-size: 15px;
+          margin-top: 20px;
+        }
+        h4{
+          font-size: 26px;
+          font-weight: 700;
+          margin-top: 14px;
+        }
+        &:last-of-type{
+          float: right;
+          font-size: 14px;
+          color: #666666;
+          margin: 20px 20px 0 0;
+        }
+      }
+      &:first-of-type{
+        .icon{
+          background: url("../images/ic_yuyue.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+      &:nth-of-type(2){
+        .icon{
+          background: url("../images/ic_yyzgd.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+      &:last-of-type{
+        .icon{
+          background: url("../images/ic_yyquxiao.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+    }
+  }
+}
+/**预约走势图*/
+.reservationTrend{
+  width: 100%;
+  padding: 0 20px;
+  >div{
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
+    border: 1px solid #dddddd;
+  }
+}
+/**预约明细列表*/
+.reservationList{
+  padding: 0 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .title-export{
+    width: 100%;
+    height: 55px;
+    line-height: 54px;
+    padding: 0 20px;
+    background-color: #fff;
+    div:first-of-type{
+      float: left;
+      font-size: 15px;
+      color: #333333;
+    }
+    div:last-of-type{
+      float: right;
+      a{
+        display: inline-block;
+        width: 80px;
+        height: 34px;
+        line-height: 34px;
+        border: 1px solid #dddddd;
+        text-align: center;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        i{
+          display: inline-block;
+          width: 24px;
+          height: 23px;
+          vertical-align: -6px;
+          background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+    }
+  }
+  .tableBox{
+    background-color: #fff;
+    padding: 0 20px 10px 20px;
+    height: 440px;
+    overflow-y: auto;
+    table{
+      margin: 0;
+      th,td{
+        padding: 9px;
+        min-width: 110px;
+      }
+      th:first-of-type,
+      td:first-of-type{
+        text-align: center;
+        min-width: 60px;
+      }
+      th:last-of-type,
+      td:last-of-type{
+        text-align: right;
+        a{
+          color: #1e9fff;
+        }
+      }
+      td:nth-of-type(7),
+      td:nth-of-type(8),
+      td:nth-of-type(9){
+        min-width: 150px;
+      }
+    }
+  }
+  .pageBox{
+    height: 55px;
+    background-color: #fff;
+    padding: 0 20px;
+    >div{
+      float: right;
+    }
+  }
+}
+/**预约单详情弹窗*/
+.detailPage{
+  .layui-layer-content{
+    padding: 0 20px;
+  }
+  .header{
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    background-color: #353B53;
+    padding: 0 10px 0 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    >span{
+      float: left;
+      font-size: 14px;
+      color: #fff;
+    }
+    >i{
+      float: right;
+      width: 34px;
+      height: 34px;
+      text-align: center;
+      line-height: 34px;
+      font-size: 22px;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+  .info-status{
+    margin-top: 54px;
+    height: 190px;
+    .status{
+      float: left;
+      width: 50%;
+      height: 100%;
+      text-align: center;
+      border: 1px solid #cccccc;
+      padding-top: 40px;
+      img{
+        width: 60px;
+        height: 60px;
+      }
+      p{
+        font-size: 14px;
+        color: #999999;
+        margin-top: 10px;
+      }
+    }
+    .reservationInfo{
+      float: left;
+      width: 50%;
+      height: 100%;
+      border: 1px solid #cccccc;
+      background-color: #fbfbfb;
+      font-size: 15px;
+      color: #333333;
+      padding: 10px 20px;
+      border-right: none;
+      >div{
+        margin: 5px 0;
+        label{
+          vertical-align: top;
+          display: inline-block;
+        }
+        >div{
+          display: inline-block;
+          vertical-align: top;
+          p{
+            max-width: 100%;
+            /**overflow: hidden;
+            white-space: nowrap;
+            text-overflow:ellipsis;*/
+          }
+        }
+      }
+    }
+  }
+  .aboutTime{
+    ul{
+      li{
+        float: left;
+        width: 33.33333%;
+        font-size: 15px;
+        color: #333333;
+        margin-top: 16px;
+        &:nth-of-type(2),
+        &:nth-of-type(5){
+          text-align: center;
+        }
+        &:nth-of-type(3n){
+          text-align: right;
+        }
+      }
+    }
+  }
+  .reservationServiceInfo{
+    margin-top: 16px;
+    table{
+      margin: 0;
+      border-color: #cccccc;
+      th,td{
+        border-color: #cccccc;
+      }
+      th,td{
+        text-align: center;
+      }
+      th:last-of-type,td:last-of-type{
+        text-align: right;
+      }
+      td:first-of-type{
+        text-align: left;
+        img{
+          width: 50px;
+          height: 50px;
+        }
+        span{
+          display: inline-block;
+          vertical-align: middle;
+          max-width: 213px;
+          overflow: hidden;/*超出部分隐藏*/
+          white-space: nowrap;/*不换行*/
+          text-overflow:ellipsis;/*超出部分文字以...显示*/
+        }
+      }
+      tbody tr:hover{
+        background-color: transparent;
+      }
+    }
+  }
+  .realPay{
+    text-align: right;
+    margin-top: 10px;
+    span:first-of-type{
+      font-size: 14px;
+      color: #333333;
+    }
+    span:last-of-type{
+      font-size: 20px;
+      color: #ff0606;
+    }
+  }
+}

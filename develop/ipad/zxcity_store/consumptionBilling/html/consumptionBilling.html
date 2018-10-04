@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compation" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+		<title>销耗开单</title>
+
+		<link href="../../common/assets/css/bootstrap.css" rel="stylesheet" />
+		<link href="../../common/css/common.css" rel="stylesheet" />
+		<link href="../css/consumptionBilling.css" rel="stylesheet" />
+
+	</head>
+	<body class="homePage">
+		<div class="main-title">
+			<a href="javascript:void(0);" class="return-icon"  onclick="backZxcityStoreApp()">
+				<img src="../../myHomePage/img/icon_fanhui.png" />
+			</a>
+			<h1 class="title">消耗开单</h1>
+		</div>
+		<div class="main-con">
+			<div class="con-left">
+				<div class="staff-box">
+					<div class="ava"><img src="../img/staff_ava.png"></div>
+					<div class="info">
+						<p class="staff-name"></p>
+						<p>员工号：</p>
+						<p class="staff-num"></p>
+					</div>
+				</div>
+				<div class="history-record">
+					<div class="history-title">历史记录</div>
+					<div class="history-list" id="historyList">
+						<ul></ul>
+					</div>
+				</div>
+			</div>
+			<div class="con-right">
+				<div class="customer-box">
+					<div class="customer-ava"><img src="../img/staff_ava.png" alt=""></div>
+					<div class="customer-info" id="customerInfo">
+						<table>
+							<tbody></tbody>
+						</table>
+					</div>
+					<button class="btn select-customer-btn" id="selectCustomerBtn">选择会员</button>
+				</div>
+				<div class="service-box">
+					<div class="service-list" id="serviceList">
+						<table class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th>项目名称</th>
+									<th>购买次数</th>
+									<th>剩余次数</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+					<button id="submitBtn" class="btn">提交订单</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- /. WRAPPER  -->
+		<script src="../../common/assets/js/jquery-1.10.2.js"></script>
+		<script src="../../common/assets/js/bootstrap.min.js"></script>
+		<script src="../../common/assets/js/layer/layer.js"></script>
+		<script src="../../common/js/util/util.js"></script>
+		<script src="../js/consumptionBilling.js"></script>
+	</body>
+</html>

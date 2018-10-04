@@ -1,0 +1,243 @@
+#search_box {
+	padding-left: 70px;
+	position: relative;
+	margin-top: 40px;
+}
+
+#search_box > div {
+	margin-right: 20px;
+}
+
+#search_box > div:last-child {
+	margin-right: 0;
+}
+
+#penName_box > p, #autherName_box > p, #field_box > p, #date_box > p, #time_box > p, #bindUser_box > p {
+	margin-bottom: 10px;
+}
+
+#penName_box, #autherName_box, #field_box, #date_box, #time_box, #bindUser_box {
+	text-align: center;
+}
+
+#penName_box, #autherName_box, #date_box, #time_box {
+	width: 140px;	
+}
+
+#field_box {
+	width: 120px;		
+}
+
+#bindUser_box {
+	width: 170px;		
+}
+
+input[type='text'] {
+	width: 100%;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	height: 34px;
+	vertical-align: bottom;
+	text-align: center;
+}
+
+#bindUser_box {
+	position: relative;
+}
+
+#search_icon {
+	margin-top: 29px;
+	margin-left: 10px;
+	cursor: pointer;
+	height: 33px;
+	line-height: 33px;
+	padding-left: 13px;
+	padding-right: 13px;
+	background-color: #1DBFAF;
+	color: #fff;
+	font-size: 16px;
+}
+
+/*修改tab栏*/
+.adminTabBox {
+    overflow-x: scroll; 
+	overflow-y: hidden;
+	width: 945px;
+	height: 50px;
+    margin-left: 30px;
+}
+.adminTab {
+    position: relative;
+	white-space: nowrap;
+	width: 2000px;	
+	height: 50px;
+    border-bottom: 1px solid #f0f0f0;
+}
+::-webkit-scrollbar { 
+	height: 5px; 
+}
+
+.adminTab li {
+    position: relative;
+    float: left;
+    cursor: pointer;
+    /*width: 78px;*/
+    margin: 0 20px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.adminTab li:hover {
+    color: #2BC6FF;
+}
+
+.adminTab li.active {
+	color: #2BC6FF;
+    border-bottom: 3px solid #2BC6FF;
+}
+/*修改tab栏*/
+
+/*表格*/
+#account_Table {
+	padding: 30px 30px 0 30px;
+}
+
+.tabNotice_icon span {
+	display: inline-block;
+	width: 23px;
+	height: 23px;
+	line-height: 23px;
+	text-align: center;
+	background-color: #00B7EE;
+	border-radius: 50%;
+	color: #fff;
+}
+
+.tab_cancel {
+	color: #FFA893;
+	cursor: pointer;
+}
+
+.tabNotice_btn {
+	height: 25px;
+	line-height: 25px;
+	width: 45px;
+	background: #FFA893;
+	color: #fff;
+	border-radius: 3px;
+	border: 0;
+}
+
+#table_head th {
+	text-align: center;
+	padding: 0;
+	height: 40px;
+	line-height: 40px;
+	background-color: #f5f5f5;
+}
+
+#tableCon > tr > td {
+	padding: 0;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#page {
+	/*position: absolute;
+	bottom: 0;
+	left: 44%;
+	margin-left: -70px;*/
+}
+/*表格*/
+
+/*弹出框*/
+#updateData {
+	margin-top: 200px;
+}
+
+.updateDataBox {
+	width: 825px;
+	margin: 30px auto;
+}
+
+.updateDataBox .modal-content {
+	height: 225px;
+}
+
+#NameBox, #autherNameBox, #postBox, #passwordBox, #modifyBindUserBox {
+	float: left;
+	text-align: center;
+}
+
+.updateInpBox {
+	padding: 30px 50px;
+}
+
+.updateInpBox > div {
+	padding-right: 19px;
+}
+
+.updateInpBox > div:last-child {
+	padding-right: 0;
+}
+
+.updateInpBox > div > p {
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+#updateData input[type='text'] {
+	width: 106px;
+}
+
+#updateData #modifyBindUserBox input[type='text'] {
+	width: 100%;
+}
+
+.updateBtnBox {
+	border-top: 0;
+	text-align: center;
+}
+
+.updateBtnBox button.btn, .updateBtnBox .btn+.btn {
+	margin: 0 20px;
+	border-radius: 7px;
+}
+
+.updateBtnBox .btn+.btn {
+	padding: 6px 20px;
+}
+
+.updateBtnBox button:first-child {
+	background-color: #2BC6FF;
+	border: 0;
+}
+
+#modifyBindUserBox {
+	width: 170px;
+	position: relative;
+}
+
+#mBindInpValue {
+	width: 100%;
+}
+
+#updateData #mBindValue_inp[type='text'] {
+	width: 100px;	
+	border-right: 0;	
+	position: absolute;
+	top: 34px;
+	left: 0;
+	z-index: 1000;
+}
+
+.layui-form-select dl dd.layui-this {
+    background-color: #FFA893;
+    color: #fff;
+}
+
+/*弹出框*/

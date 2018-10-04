@@ -1,0 +1,232 @@
+.clear{
+    clear: both;
+}
+.top-content{
+    margin: 5px 10px;
+    background: #fff;
+    border:1px solid #e5e5e5;
+    padding: 22px;
+    overflow: hidden;
+}
+.top-leftbox{
+    width: 220px;
+    float: left;
+    text-align: center;
+}
+.top-leftbox img{
+    display: block;
+    width: 146px;
+    height: 146px;
+    border-radius: 100%;
+    border: 1px solid #e7e7e7;
+    margin: 0 auto 26px;
+}
+.top-leftbox .top-username{
+    font-size: 30px;
+    color:#333333;
+    display: block;
+    margin:26px auto;
+}
+.top-leftbox .top-text{
+    font-size: 14px;
+    color:#999;
+}
+
+.top-centerbox{
+    width: 56%;
+    float: left;
+}
+.centerbox-event{
+    width: 100%;
+}
+.centerbox-event li{
+    width: 23%;
+    margin: 0 0 28px 2%;
+    background: #00a0e9;
+    color: #fff;
+    float: left;
+    cursor: pointer;
+    height: 100px;
+    cursor: pointer;
+}
+.centerbox-event li img{
+    margin:18px 0 18px 30px;
+}
+.centerbox-event li:first-child{
+    background: #e96157;
+}
+.centerbox-event li:nth-child(2){
+    background: #fdaa2f;
+}
+.centerbox-event li:nth-child(3){
+    background: #00a0e9;
+}
+.centerbox-event li:last-child{
+    background: #35a1b5;
+}
+.centerbox-event li .myEchars{
+    width: 60%;
+    height: 90px;
+    float: left;
+    margin: 5px auto;
+}
+.centerbox-event li .event-txt{
+    display: inline-block;
+    float: right;
+    text-align: center;
+    margin-right: 25px;
+}
+@media screen and (max-width: 1730px) {
+    .centerbox-event li .event-txt{
+        display: inline-block;
+        float: right;
+        text-align: center;
+        margin-right: 5px;
+    }
+}
+
+.centerbox-event li .event-txt span{
+    display: block;
+}
+.event-num{
+    font-size: 30px;
+    margin-top: 20px;
+}
+.event-name{
+    font-size: 16px;
+}
+.top-rightbox{
+    width: 30%;
+    float: right;
+    border:1px solid #dfdfdf;
+    height: 272px;
+}
+.top-rightbox .datetime{
+    padding: 5px 20px;
+    border-bottom: 1px solid #dfdfdf;
+    background: #00a0e9;
+    color: #fff;
+}
+.down-content{
+    width: 100%;
+    overflow: hidden;
+}
+.down-content{
+    padding: 5px 10px;
+}
+.down-content .down-list{
+    width: 49.5%;
+    height: 356px;
+    float: left;
+    border:1px solid #dfdfdf;
+    margin-bottom: 10px;
+}
+.down-content .down-list:nth-child(odd){
+    margin-right: 1%;
+}
+.down-content .down-list h5{
+    border-left: 3px solid #00a0e9;
+    padding: 5px 0;
+    background: #eeeeee;
+    color:#0068b7;
+    text-indent: 10px;
+}
+.content-body{
+    height: auto;
+    overflow: hidden;
+    padding: 0 0 20px 0;
+}
+.down-last{
+    height: 30px;
+    width: 100%;
+}
+body{
+    background: #f6f6f6;
+}
+.common-container {
+    width: 100%;
+    /*padding: 0 0 30px 0;*/
+    background: #f6f6f6;
+    border-left: 1px solid #dcdcdc;
+}
+/*日历*/
+.datepicker-inline{
+    width: 100%;
+}
+.datepicker table{
+    width: 100%;
+}
+/*收缩时待办事项板块*/
+@media screen and (max-width:1850px) and (min-width:1793px ){
+    .centerbox-event li{
+        width: 23%;
+        margin: 0 0 28px 2%;
+    }
+}
+@media screen and (max-width:1744px) and (min-width:1500px ){
+    .top-centerbox{
+        width: 54%;
+    }
+}
+@media screen and (max-width:1500px) and (min-width:1473px ){
+    .top-rightbox{
+        width: 27%;
+    }
+}
+@media screen and (max-width:1472px) {
+    .top-rightbox{
+        width: 25%;
+    }
+}
+/*@media screen and (max-width:1790px) and (min-width:1440px ){
+    .centerbox-event li{
+        width: 28%;
+        margin: 0 5% 28px 0;
+    }
+}
+@media screen and (max-width:1440px){
+    .centerbox-event li{
+        width: 28%;
+        margin: 0 5% 28px 0;
+    }
+}*/
+/*文本域*/
+.yelloBg{
+    background: #fdaa2f;
+    color:#fff !important;
+    border: none !important;
+}
+.layui-form-item .layui-input-block{
+    margin-left: 2%;
+
+}
+.layui-input-block textarea{
+    resize:none;
+}
+.note-title{
+    text-align: right;
+    margin-top: 15px;
+}
+.note-title span{
+    font-size: 14px;
+    color:#999;
+    margin-right: 16px;
+}
+.savebtn{
+    width: 94px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 14px;
+    color:#999;
+}
+/*日历*/
+.datepicker table tr td.today {
+    color: #fff;
+    background-color: #3dc81d;
+    border-color: #3dc81d;
+}
+/*折线图*/
+.echarts{
+    width: 100%;
+    height: 331px;
+}

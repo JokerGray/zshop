@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+        <title></title>
+        <link rel="stylesheet" href="../assets/hplus/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/kindeditor-4.1.7/themes/default/default.css"/>
+        <link rel="stylesheet" href="css/addboutique.css">
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div id="addPicBox">
+                <div class="num-box pull-left">
+                    <span class="pic-num active">1</span>
+                    <span class="pic-num">2</span>
+                    <span class="pic-num">3</span>
+                    <span class="pic-num">4</span>
+                    <span class="pic-num">5</span>
+                </div>
+                <button type="button" class="btn add-btn"><i class="glyphicon glyphicon-plus"></i></button>
+                <button type="button" class="btn remove-btn pull-right"><i class="glyphicon glyphicon-minus"></i></button>
+            </div>
+            <div class="main-content">
+                <form id="mainForm">
+                    <div class="content-top clear">
+                        <div class="form-group form-inline">
+                            <label>选择类别：</label>
+                            <select name="typeSelector" id="typeSelector" class="form-control">
+                                <option value="">---请选择---</option>
+                                <option value="1">商品</option>
+                                <option value="2">服务卡</option>
+                                <option value="3">服务套餐</option>
+                            </select>
+                            <div class="btn-box pull-right">
+                                <button type="button" class="btn import-btn" id="importBtn">导入</button>
+                                <button type="button" class="btn reset-btn" id="resetBtn">清空内容</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                    </div><!--/.content-box-->
+                </form>
+
+            </div>
+        </div>
+
+        <script id="serviceCardTemp" type="text/template">
+            <div class="sub-content">
+                <div class="pull-left">
+                    <div class="form-group">
+                        <label>基础服务：</label>
+                        <div class="input-group">
+                            <input type="text" name="serviceName" class="form-control" aria-label="..." disabled="disabled">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+                                <div id="dropdownList" class="dropdown-menu dropdown-menu-right">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>服务名称</th>
+                                                <th>服务价格</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr id="123" data-name="SPA泡澡">
+                                                <td>1</td>
+                                                <td>SPA泡澡</td>
+                                                <td>200</td>
+                                            </tr>
+                                            <tr id="234" data-name="艾魔灸">
+                                                <td>2</td>
+                                                <td>艾魔灸</td>
+                                                <td>200</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>服务卡名：</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>打包次数：</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>价格(元)：</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <div class="upload-pic">
+                        <div class="show-img">
+                            <input type="hidden" name="picUrl">
+                            <img src="image/bg_placeholder.png" alt="pladceholder figure">
+                        </div>
+                        <a href="javascript:;" class="upload-pic-btn">【<span>设置图片</span>】
+                            <input type="file" accept="image/png,image/gif" name="file">
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group clear">
+                    <label>滚动条字幕：</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </script>
+        <script id="serviceTemp" type="text/template">
+            <div class="sub-content">
+                <div class="pull-left">
+                    <div class="form-group">
+                        <label>服务套餐名称：</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>套餐内容：</label>
+                        <div class="service-content">
+                            <div class="form-group clearfix">
+                                <label class="control-label">选择服务卡：</label>
+                                <div class="input-group">
+                                    <input type="text" name="serviceName" class="form-control" aria-label="..." >
+                                    <div class="input-group-btn">
+                                       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+                                       <div id="dropdownList" class="dropdown-menu dropdown-menu-right">
+                                           <table class="table table-bordered table-hover">
+                                               <thead>
+                                                   <tr>
+                                                       <th>序号</th>
+                                                       <th>服务名称</th>
+                                                       <th>服务价格</th>
+                                                   </tr>
+                                               </thead>
+                                               <tbody>
+                                                   <tr id="123" data-name="SPA泡澡">
+                                                       <td>1</td>
+                                                       <td>SPA泡澡</td>
+                                                       <td>200</td>
+                                                   </tr>
+                                                   <tr id="234" data-name="艾魔灸">
+                                                       <td>2</td>
+                                                       <td>艾魔灸</td>
+                                                       <td>200</td>
+                                                   </tr>
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </div>
+                                </div>
+                            </div>
+                            <div class="form-group service-detail">
+                                <label>数量：</label><input type="text" class="form-control">
+                                <label>价格：</label><input type="text" class="form-control">
+                                <button class="card-detail-btn btn dim" type="button" >
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </button>
+                            </div>
+                            <div class="table-box">
+                                <table id="serviceTable" class="table service-table">
+                                    <thead>
+                                        <tr>
+                                            <th>服务卡名称</th>
+                                            <th>数量</th>
+                                            <th>单价</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>美容卡</td>
+                                            <td>1</td>
+                                            <td><input type="text" maxlength="6"></td>
+                                            <td><i class="glyphicon glyphicon-trash"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>美容卡</td>
+                                            <td>1</td>
+                                            <td><input type="text" maxlength="6"></td>
+                                            <td><i class="glyphicon glyphicon-trash"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>美容卡</td>
+                                            <td>1</td>
+                                            <td><input type="text" maxlength="6"></td>
+                                            <td><i class="glyphicon glyphicon-trash"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>美容卡</td>
+                                            <td>1</td>
+                                            <td><input type="text" maxlength="6"></td>
+                                            <td><i class="glyphicon glyphicon-trash"></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>服务套餐价格：</label>
+                        <input type="text" class="form-control" disabled="disabled">
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <div class="upload-pic">
+                        <div class="show-img">
+                            <input type="hidden" name="picUrl">
+                            <img src="image/bg_placeholder.png" alt="pladceholder figure">
+                        </div>
+                        <a href="javascript:;" class="upload-pic-btn">【<span>设置图片</span>】
+                            <input type="file" accept="image/png,image/gif" name="file">
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group multi-box">
+                    <label>服务套餐详情：</label>
+                    <div class="multi-text">
+                        <textarea name="detail" style="width: 100%; height: 200px;"  class="form-control required" aria-required="true" ></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>滚动条字幕：</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </script>
+        <script id="productTemp" type="text/template">
+            <div class="sub-content">
+                <div class="pull-left">
+                    <div class="form-group">
+                        <label>商品名称：</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>商品价格：</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <div class="upload-pic">
+                        <div class="show-img">
+                            <input type="hidden" name="picUrl">
+                            <img src="image/bg_placeholder.png" alt="pladceholder figure">
+                        </div>
+                        <a href="javascript:;" class="upload-pic-btn">【<span>设置图片</span>】
+                            <input type="file" accept="image/png,image/gif" name="file">
+                        </a>
+                    </div>
+                </div>
+                <div class="attribute-set">
+                    <div class="form-group">
+                        <label>商品规格：<span class="type-mark">(可以从已有的商品规格中选择，也可以自定义添加)</span></label>
+                        <div class="type-list pull-left">
+                            <div class="attr-list-box">
+                                <ul>
+                                    <li class="type-item clearfix">
+                                        <a data-id="1" class="select-icon pull-left" href="javascript:void(0);"></a>
+                                        <span class="item-name pull-left">大小</span>
+                                        <div class="sub-item-list pull-left">
+                                            <label><input type="checkbox" value="S">S</label>
+                                            <label><input type="checkbox" value="M">M</label>
+                                            <label><input type="checkbox" value="L">L</label>
+                                            <label><input type="checkbox" value="XL">XL</label>
+                                        </div>
+                                    </li>
+                                    <li class="type-item clearfix">
+                                        <a data-id="2" class="select-icon pull-left" href="javascript:void(0);"></a>
+                                        <span class="item-name pull-left">颜色</span>
+                                        <div class="sub-item-list pull-left">
+                                            <label><input type="checkbox" value="红">红</label>
+                                            <label><input type="checkbox" value="黄">黄</label>
+                                            <label><input type="checkbox" value="蓝">蓝</label>
+                                            <label><input type="checkbox" value="绿">绿</label>
+                                        </div>
+                                    </li>
+                                    <li class="type-item clearfix">
+                                        <a data-id="3" class="select-icon pull-left" href="javascript:void(0);"></a>
+                                        <span class="item-name pull-left">容量</span>
+                                        <div class="sub-item-list pull-left">
+                                            <label><input type="checkbox" value="100ml">100ml</label>
+                                            <label><input type="checkbox" value="200ml">200ml</label>
+                                            <label><input type="checkbox" value="300ml">300ml</label>
+                                            <label><input type="checkbox" value="450ml">450ml</label>
+                                        </div>
+                                    </li>
+                                    <li class="type-item clearfix">
+                                        <a data-id="1" class="select-icon pull-left" href="javascript:void(0);"></a>
+                                        <span class="item-name pull-left">大小</span>
+                                        <div class="sub-item-list pull-left">
+                                            <label><input type="checkbox" value="S">S</label>
+                                            <label><input type="checkbox" value="M">M</label>
+                                            <label><input type="checkbox" value="L">L</label>
+                                            <label><input type="checkbox" value="XL">XL</label>
+                                        </div>
+                                    </li>
+                                    <li class="type-item clearfix">
+                                        <a data-id="1" class="select-icon pull-left" href="javascript:void(0);"></a>
+                                        <span class="item-name pull-left">大小</span>
+                                        <div class="sub-item-list pull-left">
+                                            <label><input type="checkbox" value="S">S</label>
+                                            <label><input type="checkbox" value="M">M</label>
+                                            <label><input type="checkbox" value="L">L</label>
+                                            <label><input type="checkbox" value="XL">XL</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="btn-box">
+                                <button class="btn diy-type-btn" type="button">自定义添加</button>
+                                <button class="btn submit-btn" type="button">确定</button>
+                            </div>
+                        </div><!--/.type-list-->
+                        <div class="show-list pull-right">
+                            <table id="typeShowTable" class="table show-list-table">
+                                <thead>
+                                    <tr>
+                                        <th>名称</th>
+                                        <th>价格</th>
+                                        <th>删除</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>蓝、150ml</td>
+                                        <td><input type="text"></td>
+                                        <td><i class="glyphicon glyphicon-trash"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>蓝、150ml</td>
+                                        <td><input type="text"></td>
+                                        <td><i class="glyphicon glyphicon-trash"></i></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group multi-box">
+                    <label>商品详细介绍：</label>
+                    <div class="multi-text">
+                        <textarea name="detail" style="width: 100%; height: 200px;"  class="form-control required" aria-required="true" ></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>滚动条字幕：</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </script>
+
+
+        <script src="../assets/hplus/js/jquery.min.js"></script>
+        <script src="../assets/layer/layer.js"></script>
+        <script src="../assets/hplus/js/bootstrap.min.js"></script>
+        <script src="../assets/kindeditor-4.1.7/kindeditor-all-min.js"></script>
+        <script src="../assets/kindeditor-4.1.7/lang/zh_CN.js"></script>
+        <script src="js/addboutique.js"></script>
+    </body>
+</html>

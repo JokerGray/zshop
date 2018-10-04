@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"> 
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <title>社群公告详情</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+</head>
+<body>
+    <div class="container">
+    	<p class="title" id="title">-----</p>
+        <p class="">
+            <span class="userName" id="userName">----</span>
+            <span class="publishDate" id="publishDate">---------- --:--:--</span>
+        </p>
+        <div class="nameContent">
+            <p class="name" id="name">---</p>
+        </div>
+        <div class="context" id="context"></div>
+        <div class="imgContent"></div>
+        <p class="signUp">报名人数：<span id="personNumber">--- </span></p>
+    </div>
+    <div class="container main">
+        
+    </div>
+    <script id="tpl" type="text/html">
+        <div class="userContent">
+            <div class="user">
+                <img class="userPic">
+            </div>
+            <div class="userInfo">
+                <p class="userName">---</p>
+                <p class="createTime">---------- --:--:--</p>
+            </div>
+        </div>
+    </script>
+    <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="assets/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/layer/mobile/layer.js"></script>
+    <script type="text/javascript">
+		// 获取url参数，没有就''
+        function getQueryString(name) {
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+            var r = window.location.search.substr(1).match(reg)
+            return r !== null ? decodeURI(r[2]) : ''
+        }
+        // 初始化
+        $(document).ready(getData);
+
+        // 获取数据
+        function getData() {
+            var params = {
+                id: getQueryString('id')                
+            }
+            $.ajax({
+                type: "post",
+                url: "/zxcity_restful/ws/rest",
+                headers: {
+                    apikey: sessionStorage.getItem('apikey') || 'test'
+                },
+                data: {
+                    cmd: 'association/getNoticeById',
+                    data: JSON.stringify(params),
+                    version: 3
+                },
+                beforeSend: function() {
+
+                },
+                success: function(data) {
+                	setData(data.data);
+                },
+                error: function() {
+                	
+                }
+            });
+        }
+
+        function setData(data) {
+            $('p[id], div[id], span[id]').each(function(){
+                $(this).text(data[this.id]);
+            });
+            for (var i = 0; i < data.urls.length; i++) {
+                $('.imgContent').append($('<img>').attr('src', data.urls[i]))
+            }
+            for (var i = 0; i < data.personList.length; i++) {
+                var obj = data.personList[i];
+                $dom = $($.trim($('#tpl').html()));
+                $dom.find('.userPic').attr('src', obj['userPic']);
+                $dom.find('.createTime').text(obj['createTime']);
+                $dom.find('.userName').text(obj['userName']);
+                $('.container.main').append($dom)
+            }
+        }
+        
+    </script>
+</body>
+
+</html>

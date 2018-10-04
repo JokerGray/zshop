@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compation" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+    <title>服务开单</title>
+    <link rel="stylesheet" href="../common/css/common.css">
+    <link rel="stylesheet" href="../common/assets/select2/select2.min.css">
+    <link rel="stylesheet" href="../common/assets/paging/dist/paging.css">
+    <link rel="stylesheet" href="css/consumptionBilling.css">
+</head>
+<body>
+<div class="left">
+    <div class="left_top">
+        <a href="javascript:;" class="selectVipBtn">选择会员</a>
+    </div>
+    <div class="selectedVip_msg">
+        <!--坑-->
+    </div>
+    <div class="selectedServiceCards_box">
+        <!--<ul>-->
+        <!--<li>-->
+        <!--<h4>减肥卡</h4>-->
+        <!--<p><span>类型：时长卡</span><span>服务业绩：1000</span></p>-->
+        <!--<p>-->
+        <!--<span>-->
+        <!--服务人员：-->
+        <!--<span>王大大</span> &nbsp;-->
+        <!--<span class="changeServicePeopleBtn">[切换]</span>-->
+        <!--</span>-->
+        <!--</p>-->
+        <!--<div>-->
+        <!--<span>服务次数：</span>-->
+        <!--<div class="selectServiceNum">-->
+        <!--<a href="javascript:;" class="reduceBtn">－</a>-->
+        <!--<input type="number" value="1">-->
+        <!--<a href="javascript:;" class="addBtn">＋</a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<h4>减肥卡<sub>（面部按摩）</sub></h4>-->
+        <!--<p><span>类型：时长卡</span><span>服务业绩：1000</span></p>-->
+        <!--<p>-->
+        <!--<span>-->
+        <!--服务人员：-->
+        <!--<span>王大大</span> &nbsp;-->
+        <!--<span class="changeServicePeopleBtn">[切换]</span>-->
+        <!--</span>-->
+
+        <!--</p>-->
+        <!--<div>-->
+        <!--<span>服务次数：</span>-->
+        <!--<div class="selectServiceNum">-->
+        <!--<a href="javascript:;" class="reduceBtn">－</a>-->
+        <!--<input type="number" value="1">-->
+        <!--<a href="javascript:;" class="addBtn">＋</a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<p>服务项目：<span>面部按摩</span><span class="changeServiceTypeBtn">[选择]</span></p>-->
+        <!--</li>-->
+        <!--</ul>-->
+    </div>
+</div>
+<div class="right">
+    <div class="right_top_title">
+        <h4>全部项目</h4>
+    </div>
+    <div class="searchSearchCar_box">
+        <form action="#" onsubmit="return false">
+            <input type="search"
+                   placeholder="搜索"
+                   id="serviceCardKeyWord"
+                   autocomplete="off">
+        </form>
+        <i class="deleBtn"></i>
+    </div>
+    <div class="allServiceCards_box">
+        <!--<ul>-->
+        <!--<li>-->
+        <!--<h4>减肥卡</h4>-->
+        <!--<p>类型：时长卡</p>-->
+        <!--<div>-->
+        <!--<span>服务人员：<span>王大大</span><span class="changeServicePeopleBtn">[切换]</span></span>-->
+        <!--<span>服务业绩：1000</span>-->
+        <!--<span>服务次数：<input type="number" value="1"></span>-->
+        <!--</div>-->
+        <!--<p>2018年03月06日24时到期</p>-->
+        <!--<a href="javascript:;" class="select_sure_btn">立即选择</a>-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<h4>减肥卡</h4>-->
+        <!--<p>类型：时长卡</p>-->
+        <!--<div>-->
+        <!--<span>服务人员：<span>王大大</span><span class="changeServicePeopleBtn">[切换]</span></span>-->
+        <!--<span>服务业绩：1000</span>-->
+        <!--<span>服务次数：<input type="number" value="1"></span>-->
+        <!--</div>-->
+        <!--<p>2018年03月06日24时到期</p>-->
+        <!--<a href="javascript:;" class="select_sure_btn">立即选择</a>-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<h4>成长卡<sub>（需要制定服务项目）</sub></h4>-->
+        <!--<p>类型：时长卡</p>-->
+        <!--<div>-->
+        <!--<span>服务人员：<span>王大大</span><span class="changeServicePeopleBtn">[切换]</span></span>-->
+        <!--<span>服务业绩：1000</span>-->
+        <!--<span>服务次数：<input type="number" value="1"></span>-->
+        <!--</div>-->
+        <!--<p>服务项目：<span>无</span><span class="changeServiceTypeBtn">[选择]</span></p>-->
+        <!--<p>2018年03月06日24时到期</p>-->
+        <!--<a href="javascript:;" class="select_sure_btn">立即选择</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+    </div>
+    <div class="serviceCardsResult_box"></div>
+</div>
+<div class="line"></div>
+<div class="bottom">
+    <!--<span class="serviceTotal">合计：<span>10</span></span>-->
+    <a href="javascript:;" class="addOrderBtn">新增工单</a>
+</div>
+</body>
+<script id="allservicesList" type="text/html">
+    <div class="searchBox">
+        <input type="text" placeholder="请输入关键词">
+        <button class="searchBtn" data-type="service">搜索</button>
+    </div>
+    <div class="serviceListBox">
+        <ul>
+            <li data-flag="false">
+                <span>服务编号</span>
+                <span>服务名称</span>
+                <span>服务价格</span>
+            </li>
+            {{each $data item index}}
+            <li>
+                <span class="serviceId">{{item.id}}</span>
+                <span class="serviceName">{{item.serviceName}}</span>
+                <span class="servicePrice">{{item.price}}</span>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="service-page-selection"></div>
+</script>
+<script id="allaccountList" type="text/html">
+    <div class="searchBox">
+        <input type="text" placeholder="请输入关键词">
+        <button class="searchBtn" data-type="account">搜索</button>
+    </div>
+    <div class="accountListBox">
+        <ul>
+            {{each $data item index}}
+            <li data-index="{{index}}">
+                <span>{{item.memberName}}</span>
+                <span>{{item.mobile}}</span>
+                <span></span>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="page-selection"></div>
+</script>
+<script id="selectWaiter" type="text/html">
+    <!--<div class="selServiceWaiter">-->
+    <!--<p>服务人员：</p>-->
+    <!--<select id="waiterSelector">-->
+    <!--<option value="-1">—请选择—</option>-->
+    <!--{{each $data item index}}-->
+    <!--<option value="{{item}}">{{item.backUserName}}</option>-->
+    <!--{{/each}}-->
+    <!--</select>-->
+    <!--</div>-->
+    <div class="waiterListBox">
+        <!--<div class="searchWaiterBox">-->
+            <!--<form action="javascript:;" id="searchSubmit">-->
+                <!--<input type="search" placeholder="请输入服务人员名称" id="waiterName" autocomplete="off">-->
+            <!--</form>-->
+        <!--</div>-->
+        <div class="waiterList">
+            <ul>
+                {{each $data item index}}
+                <li data-id="{{item.id}}"><span>{{item.backUserName}}</span><span></span></li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</script>
+<script id="familiarTpl" type="text/html">
+    {{if $data}}
+    <p><span>客户姓名：</span><b>{{$data.memberName}}</b></p>
+    <p><span>电话号码：</span><b>{{$data.mobile}}</b></p>
+    <p><span>开单人：</span><b>{{$data.username}}</b></p>
+    {{/if}}
+</script>
+<script id="serviceCardsTpl" type="text/html">
+    <ul>
+        {{each data item index}}
+        <li>
+            <h4>
+                {{item.cardName}}
+                {{if item.serviceType==2}}
+                <sub>（需要制定服务项目）</sub>
+                {{/if}}
+            </h4>
+            {{if item.packType == 2}}
+            <p>类型：时长卡</p>
+            {{else if item.packType == 1}}
+            <p>类型：次数卡</p>
+            {{else if item.packType == 5}}
+            <p>类型：终身卡</p>
+            {{/if}}
+            <div class="cardMsg">
+                <!--<span>服务人员：<span class="waiter" data-id="{{item.waiterId||$data.backUserId}}">{{item.waiterName||$data.username}}</span><span class="changeServicePeopleBtn">[切换]</span></span>-->
+                <span>服务业绩：{{item.achievements}}</span>
+                {{if item.serviceType==2}}
+                <span>服务次数：<input type="number" value="1" disabled></span>
+                {{else}}
+                <span>服务次数：<input type="number" value="{{item.serviceCount||1}}"></span>
+                {{/if}}
+                <span class="canRewriteBtn"></span>
+            </div>
+            <div class="waitersBox">
+                <span>服务人员：<span class="waiter" data-waiters="{{item.waiters||$data.waiters}}">{{item.waiterNames||$data.username}}</span><span class="changeServicePeopleBtn">[切换]</span></span>
+            </div>
+            {{if item.serviceType==2}}
+            <p>服务项目：<span class="serviceItem">无</span><span class="changeServiceTypeBtn">[选择]</span></p>
+            {{else}}
+            <p class="hide">服务项目：<span class="serviceItem" data-serviceid="{{item.serviceId}}">{{item.serviceName}}</span></p>
+            {{/if}}
+            {{if item.packType == 2}}
+            <p>{{item.remainTime}}到期</p>
+            {{else if item.packType == 1}}
+            <p>{{item.remainNum}}/{{item.totalNum}}次</p>
+            {{else if item.packType == 5}}
+            <p>{{item.totalNum}}</p>
+            {{/if}}
+            {{if item.selected}}
+            <a href="javascript:;" class="select_sure_btn cancelColor" data-index="{{index}}">取消选择</a>
+            {{else}}
+            <a href="javascript:;" class="select_sure_btn" data-index="{{index}}">立即选择</a>
+            {{/if}}
+        </li>
+        {{/each}}
+    </ul>
+</script>
+<script id="selectedServiceCardsTpl" type="text/html">
+    <ul>
+        {{each $data item index}}
+        <li>
+            <input type="hidden" value="{{item.extraCharge}}" class="extraCharge">
+            <h4>
+                {{item.cardName}}
+                {{if item.serviceType == 2}}
+                <sub>（{{item.serviceId?item.serviceItem:'需指定服务项目'}}）</sub>
+                {{/if}}
+            </h4>
+            <p>
+                {{if item.packType == 2}}
+                <span>类型：时长卡</span>
+                {{else if item.packType == 1}}
+                <span>类型：次数卡</span>
+                {{else if item.packType == 5}}
+                <span>类型：终身卡</span>
+                {{/if}}
+                <span>服务业绩：{{item.achievements}}</span>
+            </p>
+            <p>
+                <span>
+                    服务人员：
+                    <span data-waiters="{{item.waiters}}" class="waiter">
+                        {{item.waiterNames}}
+                    </span> &nbsp;
+                    <span class="changeServicePeopleBtn">[切换]</span>
+                </span>
+            </p>
+            <div>
+                <span>服务次数：</span>
+                <div class="selectServiceNum">
+                    {{if item.serviceType == 2}}
+                    <a href="javascript:;" data-index="{{index}}">－</a>
+                    <input type="number" value="1" data-maxnum="{{item.remainNum}}" disabled>
+                    <a href="javascript:;" data-index="{{index}}">＋</a>
+                    {{else}}
+                    <a href="javascript:;" class="reduceBtn" data-index="{{index}}">－</a>
+                    <input type="number" value="{{item.serviceCount}}" data-maxnum="{{item.remainNum}}">
+                    <a href="javascript:;" class="addBtn" data-index="{{index}}">＋</a>
+                    {{/if}}
+                </div>
+            </div>
+            {{if item.serviceType == 2}}
+            <p>服务项目：<span data-serviceid="{{item.serviceId||''}}" class="serviceItem" data-price="{{item.price}}">{{item.serviceItem||'无'}}</span><span class="changeServiceTypeBtn">[选择]</span></p>
+            {{else}}
+            <p class="hide">服务项目：<span data-serviceid="{{item.serviceId}}" class="serviceItem">{{item.serviceName}}</span></p>
+            {{/if}}
+            <div>
+                <span class="userText">使用人员：</span>
+                <select class="userPeople">
+                    {{each item.memberRelativeList value _index}}
+                    <option value="{{value}}">{{value}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+<script id="memberList" type="text/html">
+    <div class="listBox">
+        <ul>
+            {{each data item idnex}}
+            <li data-accountid="{{item.accountId}}">
+                <span>{{item.accountName}}</span>
+                <span></span>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</script>
+<script src="js/base.js"></script>
+<script src="../common/assets/jquery.min.js"></script>
+<script src="../common/assets/layer/layer.js"></script>
+<script src="../common/assets/template-web.js"></script>
+<script src="../common/assets/paging/dist/paging.js"></script>
+<script src="../common/assets/select2/select2.min.js"></script>
+<script src="../common/js/common.js"></script>
+<script src="js/consumptionBilling.js"></script>
+<script>
+    $(function () {
+        $('.left').height($(window).height() - $('.bottom').height());
+        $('.right').height($(window).height());
+        $('.line').height($(window).height())
+    })
+</script>
+</html>

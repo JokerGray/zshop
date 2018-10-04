@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>智享课堂</title>
+    <!-- CssCommon -->
+
+    <link rel="stylesheet" type="text/css" href="../../../common/css/reset.css" />
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+    <!-- <link rel="stylesheet" href="../layui/css/layui.css" media="all"> -->
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="zxcity_class_put.css" />
+</head>
+
+<body>
+
+    <div class="layui-fluid">
+        <div class="header">
+            <button class="layui-btn layui-btn-primary" id="go-back">
+                <i class="layui-icon layui-icon-left">&#xe603;</i> 返回
+            </button>
+        </div>
+        <div class="container">
+            <div class="title-tabs">
+                <span class="title-tab active" id="offline">线下</span>
+                <span class="title-tab" id="online">线上</span>
+            </div>
+
+            <div class="layui-form form-content clearfix" id="offline-content">
+                <!--选择分类 -->
+                <div class="layui-row mg-top-20" id="offLine">
+                    <label for="" class="layui-label">选择分类</label>
+                    <div class="row-content">
+                        <select name="" lay-filter="test" id="type" value="1">
+                            <!-- <option value="1">智经营</option>
+                            <option value="2">门店培优</option>
+                            <option value="3">人事客项钱</option>
+                            <option value="4">六脉粉神剑</option> -->
+                        </select>
+                    </div>
+                </div>
+                <!--课程标题 -->
+                <span class="spannn" style="display:none;"></span>
+                <div class="layui-row mg-top-20 row-title">
+                    <label for="" class="layui-label">课程标题</label>
+                    <div class="row-content">
+                        <input type="text" class="layui-input input-course" placeholder="简短说明, 30字以内" maxlength="30">
+                    </div>
+                </div>
+                <!--上传课件 -->
+                <div class="layui-row mg-top-20 row-courseware">
+                    <label for="" class="layui-label">上传课件</label>
+                    <div class="row-content">
+                        <input type="text" class="layui-input input-course" id="course-upload" placeholder="点击上传课件" readonly>
+                        <!-- <input type="file" class="cls-file input-course" id="course-upload"> -->
+                    </div>
+                    <span class="preview">预览</span>
+                    <audio src="" preload="auto" id="audio" style="display: none;" controls>
+                        您的浏览器不支持该音频格式。
+                    </audio>
+                </div>
+                <!--上传封面 -->
+                <div class="layui-row mg-top-20 row-cover">
+                    <label for="" class="layui-label">上传封面</label>
+                    <div class="row-content">
+                        <ul class="course-list clearfix">
+                            <li class="cls-img cover-box" id="add-cover">
+                                <div>添加封面</div>
+                                <img src="" alt="" id="add-cover-img" style="display: none;">
+                            </li>
+                            <!-- <div class="cls-img cover-box">
+                                <img src="img/img1.png" alt="">
+                            </div>
+                            <div class="cls-img cover-box">
+                                <img src="img/img1.png" alt="">
+                            </div> -->
+                        </ul>
+                    </div>
+                </div>
+                <!--课时说明 -->
+                <!-- <div class="layui-row mg-top-20 row-time">
+                    <label for="" class="layui-label">课时说明
+                    </label>
+                    <div class="row-content">
+                        <input type="text" class="layui-input cls-input" placeholder="简短说明, 50字以内" maxlength="50">
+                    </div>
+                </div> -->
+                <!--课程简介 -->
+                <div class="layui-row mg-top-20 row-course-info" id="course-data">
+                    <label for="" class="layui-label">课程简介</label>
+                    <ul class="course-list clearfix" id="course-info-lists">
+                       
+                    </ul>
+                    <div class="course-list-right">
+                         
+                        <button class="list-add layui-btn" id="add-course">添加课程</button>
+                    </div>
+                </div>
+                <!--主讲老师 -->
+                <div class="layui-row mg-top-20 row-teacher" id="teacher-data">
+                    <label for="" class="layui-label">主讲老师</label>
+                    <ul class="course-list clearfix" id="teacher-lists">
+                    </ul>
+                    <div class="course-list-right">
+                        <button class="list-add layui-btn" id="add-teacher">添加主讲</button>
+                    </div>
+                </div>
+                <!--订座费 -->
+                <div class="layui-row mg-top-20 row-price">
+                    <label for="" class="layui-label">订座费</label>
+                    <div class="row-content fee">
+                        <!-- 线下-->
+                        <div class="fee-price">
+                            ￥
+                            <input class="price" type="text" value="300" maxlength="8" onkeyup="clearNoNum(this)">
+                        </div>
+                        <span class="layui-btn-normal">免费</span>
+                    </div>
+                </div>
+                <!-- 发布 -->
+                <div class="layui-row">
+                    <button class="btn-issue">发布</button>
+                </div>
+            </div>
+
+            <div class="layui-form form-content clearfix" id="online-content" style="display: none;">
+                <!--选择分类 -->
+                <div class="layui-row mg-top-20" id="onLine">
+                    <label for="" class="layui-label">选择分类</label>
+                    <div class="row-content">
+                        <select name="" id="type" value="1">
+                            <!-- <option value="1">智经营</option>
+                            <option value="2">门店培优</option>
+                            <option value="3">人事客项钱</option>
+                            <option value="4">六脉粉神剑</option> -->
+                        </select>
+                    </div>
+                </div>
+                <!--课程标题 -->
+                <div class="layui-row mg-top-20 row-title">
+                    <label for="" class="layui-label">课程标题</label>
+                    <div class="row-content">
+                        <input type="text" class="layui-input input-course" placeholder="简短说明, 30字以内" maxlength="30">
+                    </div>
+                </div>
+                <!--上传课件 -->
+                <span class="spannn" style="display:none;"></span>
+                <div class="layui-row mg-top-20 row-courseware">
+                    <label for="" class="layui-label">上传课件</label>
+                    <div class="row-content">
+                        <input type="text" class="layui-input input-course" id="online-course-upload" placeholder="点击上传课件" readonly>
+                    </div>
+                    <span class="preview">预览</span>
+                    <audio src="" preload="auto" id="on-audio" style="display: none;" controls>
+                        您的浏览器不支持该音频格式。
+                    </audio>
+                </div>
+                <!--上传封面 -->
+                <!--<div class="layui-row mg-top-20 row-cover">-->
+                    <!--<label for="" class="layui-label">上传封面</label>-->
+                    <!--<div class="row-content">-->
+                        <!--<ul class="course-list clearfix">-->
+                            <!--<div class="cls-img" id="online-add-cover">-->
+                                <!--<div>添加封面</div>-->
+                                <!--<img src="" alt="" id="online-add-cover-img" style="display: none;">-->
+                            <!--</div>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="layui-row mg-top-20 row-cover">
+                    <label for="" class="layui-label">上传封面</label>
+                    <div class="row-content">
+                        <ul class="course-list clearfix">
+                            <li class="cls-img cover-box" id="online-add-cover">
+                                <div>添加封面</div>
+                                <img src="" alt="" id="online-add-cover-img" style="display: none;">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--课时说明 -->
+                <!-- <div class="layui-row mg-top-20 row-time">
+                    <label for="" class="layui-label">课时说明
+                    </label>
+                    <div class="row-content">
+                        <input type="text" class="layui-input cls-input" placeholder="简短说明, 50字以内" maxlength="50">
+                    </div>
+                </div> -->
+                <!--课程简介 -->
+                <div class="layui-row mg-top-20 row-course-info" id="online-course-data">
+                    <label for="" class="layui-label">课程简介</label>
+                    <ul class="course-list clearfix" id="online-course-info-lists">
+            
+                    </ul>
+                    <div class="course-list-right">
+                        <button class="list-add layui-btn" id="online-add-course">添加课程</button>
+                    </div>
+                </div>
+                <!--主讲老师 -->
+                <div class="layui-row mg-top-20 row-teacher">
+                    <label for="" class="layui-label">主讲老师</label>
+                    <ul class="course-list clearfix" id="online-teacher-lists">
+                    </ul>
+                    <div class="course-list-right">
+                        <button class="list-add layui-btn" id="online-add-teacher">添加主讲</button>
+                    </div>
+                </div>
+                <!--订座费 -->
+                <div class="layui-row mg-top-20 row-price">
+                    <label for="" class="layui-label">费用</label>
+                    <div class="row-content fee">
+                        <!-- 线上-->
+                        <div class="fee-price">
+                            ￥
+                            <input class="price" type="text" value="0.00" maxlength="8" onkeyup="clearNoNum(this)">
+                        </div>
+                        <span class="layui-btn-normal active">免费</span>
+                    </div>
+                </div>
+                <!-- 发布 -->
+                <div class="layui-row">
+                    <button class="btn-issue">发布</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     <!-- default-teacher.png -->
+     <!-- 添加线下课程 -->
+    <div class="layui-form add-form" style="display:none;" id="add-course-tpl">
+        <!--上传图片 -->
+        <div class="layui-row mg-top-20">
+            <label for="" class="layui-label">上传图片</label>
+            <!-- <div class="row-content">
+                <div class="cls-img">上传图片</div>
+            </div> -->
+            <div class="row-content">
+                <div class="cls-img" id="course-cover">
+                    <div>添加封面</div>
+                    <img src="" alt="" id="course-cover-img" style="display: none;">
+                </div>
+            </div>
+        </div>
+        <!--课堂地址 -->
+        <div class="layui-row mg-top-20 row-address">
+            <label for="" class="layui-label">课堂地址</label>
+            <div class="row-content">
+                <input type="text" class="layui-input cls-input" id="add-address" maxlength="50">
+            </div>
+        </div>
+        <!--开始时间 -->
+        <div class="layui-row mg-top-20">
+            <div class="add-date-box">
+                <label for="" class="layui-label">开始时间</label>
+                <input type="text" class="layui-input" id="add-date" maxlength="50">
+                
+            </div>
+            <div class="add-time-box">
+                <label for="" class="layui-label">课堂时长</label>
+                <input type="text" class="layui-input" id="add-time" maxlength="3" 
+                onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" 
+                onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
+                <span>天</span> 
+            </div>
+        </div>
+        <!-- -->
+        <div class="layui-row mg-top-20">
+            <label for="" class="layui-label">课时简介</label>
+            <div class="row-content text-area-box">
+                <textarea class="layui-textarea cls-input" id="add-recommend" maxlength="100" 
+                    oninput="updateTextLenght(this,'#add-course-tpl .text-area-box .text-length', 100)"
+                    style="height:180px;resize:none;"></textarea>
+                <div class="text-length">0/100</div>
+                <!-- <input type="text" class="layui-input cls-input" id="add-recommend" style="height:150px;" maxlength="100"> -->
+            </div>
+        </div>
+        <div class="layui-row mg-top-20">
+            <button class="btn-ok">确定</button>
+        </div>
+    </div>
+    <!-- 添加线上课程 -->
+    <div class="layui-form add-form" style="display:none;" id="add-course-on">
+        <!--上传图片 -->
+        <div class="layui-row mg-top-20">
+            <label for="" class="layui-label">上传图片</label>
+            <div class="row-content">
+        
+                <div class="cls-img" id="cover-online">
+                    <div>添加封面</div>
+                    <img src="" alt="" id="cover-online-img" style="display: none;">
+                </div>
+            </div>
+        </div>
+        <!-- -->
+        <div class="layui-row mg-top-20">
+            <label for="" class="layui-label">课程简介</label>
+            <div class="row-content text-area-box">
+                <textarea class="layui-textarea cls-input" id="add-recommend-online" maxlength="500" 
+                    oninput="updateTextLenght(this,'#add-course-on .text-area-box .text-length', 500)"
+                    style="height:250px;resize:none;padding-bottom:38px;"></textarea>
+                <div class="text-length">0/500</div>
+            </div>
+        </div>
+        <div class="layui-row mg-top-20">
+            <button class="btn-ok">确定</button>
+        </div>                     
+    </div>
+
+    <!-- 添加主讲 -->
+    <div class="layui-form add-form" style="display:none;" id="add-teacher-tpl">
+        <!--上传图片 -->
+        <div class="layui-row mg-top-20">
+            <label for="" class="layui-label">主讲老师</label>
+            <div class="row-content teacher-box">
+                <div class="layui-unselect layui-form-select layui-form-selected">  
+                    <input type="text" class="layui-input cls-input" style="width:120px;min-width: 100px;cursor:default;" 
+                    placeholder="2~4个汉字" maxlength="4">
+                    <i class="layui-icon layui-icon-triangle-d" id="teacher-lists" data-type="1">&#xe625;</i>
+                    <dl class="layui-anim layui-anim-upbit">
+                         
+                        <!-- <dd lay-value="0" class="">无</dd> -->
+                    </dl>  
+                 </div> 
+            </div>
+        </div>
+        <div class="layui-row mg-top-20">
+                <label for="" class="layui-label">上传头像</label>
+                <div class="row-content">
+                    <div  id="upload-teacher">
+                        <img src="img/addT.png" alt="" id="upload-teacher-default">
+                        <img src="" alt="" id="upload-teacher-img">
+                    </div>
+                </div>
+        </div>
+        <!-- -->
+        <div class="layui-row mg-top-20">
+            <label for="" class="layui-label">主讲简介</label>
+            <div class="row-content text-area-box">
+                <textarea class="layui-textarea cls-input"  maxlength="100" 
+                    oninput="updateTextLenght(this,'#add-teacher-tpl .text-area-box .text-length', 100)"
+                    style="height:150px;resize:none;"></textarea>
+                <div class="text-length">0/100</div>
+                <!-- <textarea class="layui-textarea cls-input" id="add-recommend" maxlength="500" style="height:250px;"></textarea> -->
+            </div>
+        </div>
+        <div class="layui-row mg-top-20">
+            <button class="btn-ok" id="teacher-ok">确定</button>
+        </div>
+    </div>
+ 
+    <!-- 主讲人 信息 列表 模板-->
+    <script type="text/html" id="teacher-list-tpl"> 
+        <li class="course-introduction" data-id="{{data.id}}">
+            <div class="content-teacher">
+                <div class="teacher-img">
+                    <img src="{{data.userpic || data.imgDetail  ||  'img/default-teacher.png'}}" alt="{{data.userpic || data.imgDetail || '' }}">
+                </div>
+                <div class="teacher-desr">
+                    <div class="teacher-title">{{data.speakerName || data.name}}</div>
+                    <div class="teacher-msg">{{@data.intro || ''}}</div>
+                </div>
+            </div>
+            <div class="introduction-ctl">
+                <button class="layui-btn ctl-edit">修改</button>
+                <button class="layui-btn ctl-del layui-btn-danger">删除</button>
+            </div>
+        </li>
+    </script>
+
+    <script type="text/html" id="class-tpl">
+        <div class="class-content">
+            <img src="{{data.cover}}" alt="{{data.cover}}">
+            <div class="class-right">
+                {{if data.name}}
+                <p>课程标题:
+                    <span>data.name</span>
+                </p>
+                {{/if}} {{if data.resource}}
+                <p>课程地址:
+                    <span>data.resource</span>
+                </p>
+                {{/if}}
+            </div>
+        </div>
+    </script>
+    <script type="text/html" id="duration-tpl">
+        <p>{{data.duration}}
+            <p>
+                <p class="class-desc">课程简介
+                    <p>
+    </script>
+    <script type="text/html" id="price-tpl">
+        {{if online == 1}}
+        <p>收费
+            <p>
+            {{else if online == 1}}
+            <p>报名
+            <p>
+            <p>定座费
+            <span class="content-price">￥data.price</span>
+        <p>
+     {{/if}}
+    </script>
+    <!-- 线下课堂 简介 列表 模板 -->
+    <script type="text/html" id="course-list-tpl">
+        <li class="course-introduction" data-id="{{data.id}}">
+            <div class="introduction-img"> 
+                <img src="{{data.imgDetail}}" alt="" data-type="imgDetail">
+            </div>
+            <div class="introduction-content">
+                <div class="introduction-item">
+                    <div class="item-title">课堂地址</div>
+                    <div class="item-data" data-type="address" >{{data.address}}</div>
+                </div>
+                <div class="introduction-item"   >
+                    <div class="item-title">开始时间</div>
+                    <div class="item-data" data-type="preTime">{{data.preTime}}</div>
+                </div>
+                <div class="introduction-item"  >
+                    <div class="item-title">课堂时长</div>
+                    <div class="item-data" data-type="duration" >{{data.duration}}天</div>
+                </div>
+                <div class="introduction-item"  >
+                    <div class="item-title">课程简介</div>
+                    <div class="item-data" data-type="intro" >{{@data.intro}}</div>
+                </div>
+            </div>
+            <div class="introduction-ctl">
+                <button class="layui-btn ctl-edit">修改</button>
+                <button class="layui-btn ctl-del layui-btn-danger">删除</button>
+            </div>
+        </li>
+    </script>
+    <!-- 线上上课堂 简介 列表 模板 -->
+    <script type="text/html" id="course-list-on" >
+        <li class="course-introduction" data-id="{{data.id}}">
+            <div class="introduction-img"> 
+                <img src="{{data.imgDetail}}" alt="" data-type="imgDetail">
+            </div>
+            <div class="item-intro" data-type="intro" >{{@data.intro}}</div>
+            <div class="introduction-ctl">
+                <button class="layui-btn ctl-edit">修改</button>
+                <button class="layui-btn ctl-del layui-btn-danger">删除</button>
+            </div>
+        </li>
+    </script>
+    <script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-small layui-btn-normal my-btn" lay-event='look'>
+            <i class="layui-icon">&#xe615;</i> 查看
+        </button>
+        <button class="layui-btn layui-btn-small layui-layui-btn-warm my-btn" lay-event='change'>
+            <i class="layui-icon">&#xe642;</i> 修改
+        </button>
+        <button class="layui-btn layui-btn-small  layui-btn-danger my-btn" lay-event="del">
+            <i class="layui-icon">&#xe640;</i> 删除
+        </button>
+        {{# if(d.status ==1){ }}
+        <button class="layui-btn layui-btn-small  layui-btn-warm my-btn" lay-event="open">
+            启用
+        </button>
+        {{# } else { }}
+        <button class="layui-btn layui-btn-small  layui-btn-primary my-btn" lay-event="close">
+            禁用
+        </button>
+        {{# } }}
+    </script>
+    <div id="play-dlg" style="display: none;"> 
+        <div style="display: none;" class="off dlg-content" id="video-dlg" >
+            <video id="video" width="540" height="400" controls>
+                您的浏览器不支持该视频格式
+            </video>
+            <!-- <audio src="" preload="auto" id="audio" style="display: none;" controls>
+                您的浏览器不支持该音频格式。
+            </audio> -->
+        </div>
+        <div style="display: none;" id="on-video-dlg" class="dlg-content">
+            <video id="on-video" width="540" height="400"  controls>
+                您的浏览器不支持该视频格式
+            </video>
+            <!-- <audio src="" preload="auto" id="on-audio" style="display: none;" controls>
+                您的浏览器不支持该音频格式。
+            </audio> -->
+        </div>
+    </div>
+    <!-- 线下-->
+     
+    <!-- <div style="display: none;" id="video-dlg">
+        <video id="video" width="540" height="400" autoplay="autoplay" controls>
+            您的浏览器不支持该视频格式
+        </video>
+    </div> -->
+    <!-- 线上 -->
+     
+ 
+</body>
+
+
+<!-- jSCommon -->
+
+<!-- <script type="text/javascript" src="../common/js/util/pub.js"></script> -->
+
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript" src="../../../common/assets/layui/layui.all.js"></script>
+ 
+
+
+<script type="text/javascript" src="../../../common/js/yyCache.js"></script>
+<!-- <script type="text/javascript" src="../../common/js/common.js"></script> -->
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+ <!-- <script src="upload.js"> </script>
+ -->
+ <script type="text/javascript" src="../../../common/assets/template-web.js"> </script>
+<script type="text/javascript" src="upload.js"></script>
+<script type="text/javascript" src="zxcity_class_put.js"></script>
+<script>
+    function updateTextLenght(elem,textElem,length) {
+        var curLength=$(elem).val().length; 
+        if(curLength>length) 
+        { 
+        var num=$(elem).val().substr(0,length); 
+        $(elem).val(num); 
+            //alert("超过字数限制，多出的字将被截断！" ); 
+            var layer = layui.layer;
+            layer.msg('超过字数限制，多出的字将被截断');
+        } 
+        else 
+        { 
+            $(textElem).text(curLength + '/' + length); 
+        } 
+    }
+    function clearNoNum(obj) {
+        if (obj.value != '' && obj.value.substr(0, 1) == '.') {
+            obj.value = "";
+        }
+        obj.value = obj.value.replace(/^0*(0\.|[1-9])/, '$1'); //解决 粘贴不生效
+        obj.value = obj.value.replace(/[^\d.]/g, ""); //清除“数字”和“.”以外的字符
+        obj.value = obj.value.replace(/\.{2,}/g, "."); //只保留第一个. 清除多余的     
+        obj.value = obj.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+        obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'); //只能输入两个小数     
+        if (obj.value.indexOf(".") < 0 && obj.value != "") { //以上已经过滤，此处控制的是如果没有小数点，首位不能为类似于 01、02的金额
+            if (obj.value.substr(0, 1) == '0' && obj.value.length == 2) {
+                obj.value = obj.value.substr(1, obj.value.length);
+            }
+        }
+        if(parseFloat(obj.value) >= 100000){
+            obj.value = 99999;
+        }
+    }
+</script>
+
+</html>

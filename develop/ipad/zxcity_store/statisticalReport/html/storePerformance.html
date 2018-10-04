@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<link rel="stylesheet" href="../../common/assets/css/bootstrap.css" />
+<link rel="stylesheet" href="../../common/css/common.css" />
+<link rel="stylesheet" href="../../common/assets/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" href="../css/storePerformance.css" />
+
+</head>
+<body>
+	<div class="maintitle">
+		<a class="return-icon" href="javascript:void(0);"><img
+			src="../../myHomePage/img/icon_fanhui.png"></a>
+		<h1 class="title text-left">门店业绩<span></span></h1>
+	</div>
+	<div class="main-content">
+		<div class="statistics-bar">
+			<div class="consumetotal">
+				<span class="total">00.00</span> <span class="tit">总消耗金额</span>
+			</div>
+			<div class="salestotal">
+				<span class="total">00.00</span> <span class="tit">总销售金额</span>
+			</div>
+		</div>
+		<div class="search-bar">
+			<div class="form-inline pull-right date-wrap">
+				<input type="text" class="form-control datetime start-time" id="startTime" readonly="readonly" /> 至 <input
+					type="text" id="endTime" class="form-control datetime end-time" readonly="readonly" />
+				<button class="btn btn-danger" id="searchBtn">查询</button>
+			</div>
+		</div>
+		<table class="table table-striped table-hover storePerformance-List">
+			<thead>
+				<tr>
+					<th width="23%">门店</th>
+					<th width="18%">消耗金额</th>
+					<th width="18%">消耗项目量</th>
+					<th width="18%">销售金额</th>
+					<th width="23%">销售项目量</th>
+				</tr>
+			</thead>
+			<tbody id="storePerformance">
+			</tbody>
+		</table>
+		<div id="page-selection" class="pageview"></div>
+	</div>
+	<script src="../../common/assets/js/jquery-1.10.2.js"></script>
+<script src="../../common/assets/js/bootstrap.min.js"></script>
+<script src="../../common/assets/js/layer/layer.js"></script>
+<script src="../../common/assets/js/jquery.bootpag.min.js"></script>
+<script type="text/javascript" src="../../common/assets/js/datetimepicker/bootstrap-datetimepicker.min.js" ></script>
+<script type="text/javascript" src="../../common/assets/js/datetimepicker/bootstrap-datetimepicker.zh-CN.js" ></script>
+<script src="../../common/js/util/util.js"></script>
+<script src="../js/storePerformance.js"></script>
+</body>
+</html>

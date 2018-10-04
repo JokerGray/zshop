@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>服务工单统计</title>
+    <link rel="stylesheet" href="../../assets/common/css/common.css">
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="css/reportWorkList.css">
+</head>
+<body>
+<!--顶部条件选项栏-->
+<div class="topFilterBox">
+    <div class="timeFilter">
+        <ul>
+            <li class="active" data-type="1">日报</li>
+            <li data-type="2">月报</li>
+            <li data-type="3">年报</li>
+            <li data-type="4">自定义</li>
+        </ul>
+    </div>
+    <div class="shopFilter">
+        <div>
+            <label>店铺</label>
+            <div class="layui-form">
+                <select id="shopSelector" lay-filter="shopSelector" lay-search></select>
+            </div>
+        </div>
+        <div>
+            <a class="exportBtn" href="javascript:;">
+                <i class="exportIcon"></i>
+                <span>导出</span>
+            </a>
+        </div>
+    </div>
+</div>
+<!--路径显示-->
+<div class="path">
+    <input type="text"
+           class="selectedDate"
+           id="selectedDate"
+           value=""
+           onfocus="blur()"/>
+    <input type="text"
+           class="selectedMonth"
+           id="selectedMonth"
+           value=""
+           onfocus="blur()"/>
+    <input type="text"
+           class="selectedYear"
+           id="selectedYear"
+           value=""
+           onfocus="blur()"/>
+    <input type="text"
+           class="selfDate"
+           id="selfDate"
+           value=""
+           onfocus="blur()"/>
+    <span class="arrowIcon">></span>
+    <span class="selectedShopName"> </span>
+</div>
+<!--统计概览-->
+<div class="reportOverview">
+    <ul class="clearfix">
+
+    </ul>
+</div>
+<!--报表内容-->
+<div class="tableBox">
+    <p>服务工单统计</p>
+    <div>
+        <table class="layui-table">
+            <colgroup>
+                <col width="60">
+                <col width="200">
+                <col width="150">
+                <col width="150">
+                <col width="150">
+                <col width="150">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>店铺名称</th>
+                <th>服务工单总数</th>
+                <th>强制结算数量</th>
+                <th>强制结算占比</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr>-->
+                <!--<td>01</td>-->
+                <!--<td>武汉楚河汉界店</td>-->
+                <!--<td>200</td>-->
+                <!--<td>150</td>-->
+                <!--<td>80%</td>-->
+                <!--<td><a href="JavaScript:;" class="seeDetail">查看详情</a></td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--分页-->
+<div class="pageSelectorBox">
+    <div id="reportPageSelector"></div>
+</div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../assets/layer-v3.1.1/layer.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="js/reportWorkList.js"></script>
+<script id="reportOverviewTpl" type="text/html">
+    <li>
+        <p>服务工单完成总数量</p>
+        <p>{{data.presaleInfoCount}}</p>
+    </li>
+    <li>
+        <p>服务冠军店铺</p>
+        <p>{{data.championShop?data.championShop.shopName:'暂无'}}</p>
+        <p class="clearfix">
+            <span>完成工单数量</span>
+            <span>{{data.championShop?data.championShop.purchaseNum:'0'}}</span>
+        </p>
+    </li>
+    <li>
+        <p>服务冠军员工</p>
+        <p>{{data.championWaiter?data.championWaiter.waiterName:'暂无'}}</p>
+        <p class="clearfix">
+            <span>完成工单数量</span>
+            <span>{{data.championWaiter?data.championWaiter.purchaseNum:'0'}}</span>
+        </p>
+    </li>
+</script>
+<!--店铺服务工单统计弹窗-->
+<script id="detailTpl" type="text/html">
+    <div class="top">
+        <span>服务工单统计</span>
+        <i>×</i>
+    </div>
+    <div class="descAndExport">
+        <div class="descPath">
+            <span class="descShop">{{shopName}}</span>
+            <i>></i>
+        </div>
+        <a href="javascript:;" class="detailExportBtn">
+            <i></i>
+            <span>导出</span>
+        </a>
+        <div class="searchBox">
+            <div class="layui-form">
+                <label>员工</label>
+                <div>
+                    <select id="waiterSelector" lay-filter="waiterSelector" lay-search>
+                        <option value="">全部员工</option>
+                        {{each employeeList item index}}
+                        <option value="{{item.id}}">{{item.username}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <!--<button class="searchBtn">查询</button>-->
+        </div>
+
+    </div>
+    <div class="detailContent">
+        <div class="reportServiceOrder">
+            <div>
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="60">
+                        <col width="200">
+                        <col width="200">
+                        <col width="200">
+                        <col width="200">
+                        <col width="200">
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>员工名称</th>
+                        <th>服务工单总数</th>
+                        <th>强制结算数量</th>
+                        <th>强制结算占比</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--<tr>-->
+                        <!--<td>01</td>-->
+                        <!--<td>王大大</td>-->
+                        <!--<td>200</td>-->
+                        <!--<td>100</td>-->
+                        <!--<td>50&</td>-->
+                        <!--<td><a href="JavaScript:;" class="seeServiceOrder">查看详情</a></td>-->
+                    <!--</tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="detailPageBox clearfix">
+        <div id="detailPageSelector"></div>
+    </div>
+</script>
+<!--员工服务工单明细详情-->
+<script id="detailDetailTpl" type="text/html">
+    <div class="top">
+        <span>服务工单明细详情</span>
+        <i>×</i>
+    </div>
+    <div class="descAndExport">
+        <div class="descPath">
+            <span class="shopName">{{shopName}}</span>
+            <i>></i>
+            <span class="descName">{{waiterName}}</span>
+            <i>></i>
+        </div>
+        <a href="javascript:;" class="detailExportBtn">
+            <i></i>
+            <span>导出</span>
+        </a>
+    </div>
+    <div class="detailContent">
+        <div class="detailDetailContent">
+            <div>
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="80">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>顾客名称</th>
+                        <th>来源</th>
+                        <th>服务次数</th>
+                        <th>结算方式</th>
+                        <th>开始时间</th>
+                        <th>结束时间</th>
+                        <th>服务业绩</th>
+                        <th>评分</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--<tr>-->
+                        <!--<td>1</td>-->
+                        <!--<td>刘袁多美</td>-->
+                        <!--<td>指定服务单</td>-->
+                        <!--<td>1</td>-->
+                        <!--<td>正常结算</td>-->
+                        <!--<td>2018-08-08 15:20</td>-->
+                        <!--<td>2018-08-08 15:20</td>-->
+                        <!--<td>100</td>-->
+                        <!--<td>90</td>-->
+                        <!--<td><a href="javascript:;">查看签名</a></td>-->
+                    <!--</tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="detailPageBox clearfix">
+        <div id="detailDetailPageSelector"></div>
+    </div>
+</script>
+</html>

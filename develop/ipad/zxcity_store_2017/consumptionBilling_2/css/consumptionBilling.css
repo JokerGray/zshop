@@ -1,0 +1,139 @@
+body{
+	background-color: #f2f2f2;
+}
+.pl-0{
+	padding-left:0;
+}
+.pr-0{
+	padding-right:0;
+}
+.px-0{
+	padding-left:0;
+	padding-right:0;
+}
+.select-customer-btn{
+	position:absolute;
+	right:1rem;
+	top:0.65rem;
+	padding:0;
+	width:5.875rem;
+	height:2rem;
+	background-color:#fff;
+	border-color:#fe6869;
+	font-size:1.125rem;
+	color:#fe6869;
+}
+.staff-box{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	width:100%;
+	height:8.125rem;
+	background-color: #fff;
+}
+.staff-box .ava{
+	width:3.5rem;
+	height:3.5rem;
+	margin-right:0.875rem;
+}
+
+.staff-box .info p{
+	font-size:0.938rem;
+	color:#333;
+}
+
+.customer-box{
+	position:relative;
+	display:flex;
+	align-items: center;
+	width:100%;
+	height:8.125rem;
+	background-color: #fff;
+}
+.customer-box .customer-info{
+	width:100%;
+	font-size:1rem;
+	color:#333;
+}
+.customer-info table{
+	width:100%;
+	border:none;
+	margin-bottom:0;
+}
+.customer-info table>tbody>tr>td{
+	padding:0.25rem 0.5rem;
+	background-color:#fff;
+}
+
+.customer-info table>tbody>tr>td+td{
+	padding-left:0.813rem;
+}
+.service-box{
+	margin-top:0.75rem;
+}
+.service-box .service-list{
+	height:31rem;
+	overflow-y: auto;
+}
+
+.service-box .service-list table{
+	width:100%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.service-box table th{
+	width:auto;
+	font-size:1.125rem;
+	text-align: center;
+	font-weight: normal;
+}
+
+.service-box table td{
+	font-size:0.938rem;
+	color:#333;
+	background-color:#fff;
+}
+.service-box table tr>td .check-btn{
+	display:inline-block;
+	width:1.5rem;
+	height:1.5rem;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: url(../image/wxz.png);
+}
+.service-box table tr.checked td{
+	background-color:#f2f2f2;
+}
+.service-box table tr.checked>td .check-btn{
+	background-image: url(../image/xz.png);
+}
+.service-box table tr>td .plus-icon,
+.service-box table tr>td .minus-icon{
+    display:inline-block;
+    width:1.5rem;
+    height:1.5rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    vertical-align: middle;
+}
+.service-box table tr>td .plus-icon{
+    background-image: url(../image/plus_icon.png);
+}
+.service-box table tr>td .minus-icon{
+    background-image: url(../image/minus_icon.png);
+}
+.service-box table tr>td .consump-num{
+    display: inline-block;
+    width:4rem;
+    margin:0 0.5rem;
+    text-align: center;
+}
+
+#submitBtn{
+    display:block;
+    width:50%;
+    margin:0 auto;
+    font-size:1.25rem;
+}

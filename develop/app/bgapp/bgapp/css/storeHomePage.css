@@ -1,0 +1,211 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.allWrapper {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background-color: #f2f2f2;
+	padding-top: 0.2rem;
+	overflow: hidden;
+}
+
+#container1,
+#container2 {
+	width: 3.55rem;
+	height: 2.75rem;
+	margin: 0 0.1rem 0.2rem 0.1rem;
+}
+
+.lineHeader {
+	height: 0.42rem;
+	background-color: #FFFFFF;
+	line-height: 0.42rem;
+	color: #9c9c9c;
+	font-size: 0.14rem;
+	border-bottom: solid 2px #f8f8f9;
+	border-top-left-radius: 0.05rem;
+	border-top-right-radius: 0.05rem;
+}
+
+.lineHeader span {
+	margin-left: 0.2rem;
+	text-indent: 0.2rem;
+	display: inline-block;
+	background-size: 0.12rem!important;
+}
+
+#lineHeader1 span {
+	background: url(../images/zhengfangxing1.png) 0 0.15rem no-repeat;
+}
+
+#lineHeader2 span {
+	background: url(../images/zhengfangxing2.png) 0 0.15rem no-repeat;
+}
+
+#lineChartContainer1,
+#lineChartContainer2 {
+	width: 100%;
+	height: 2.3rem;
+	border-bottom-left-radius: 0.05rem;
+	border-bottom-right-radius: 0.05rem;
+}
+
+#infoContainer {
+	width: 3.55rem;
+	margin: 0 0.1rem 0.4rem 0.1rem;
+	overflow: hidden;
+}
+
+#infoContainer .info {
+	width: 1.72rem;
+	float: left;
+	background-size: 100%;
+	letter-spacing: 0.01rem;
+	margin-bottom: 0.1rem;
+	border-radius: 6px;
+	background-color: #FFFFFF;
+}
+
+#bestProduct h3 {
+	background: url(../images/cp.png) no-repeat;
+}
+
+#bestCumstomer h3 {
+	background: url(../images/kehu.png) no-repeat;
+}
+
+#bestEmployer h3 {
+	background: url(../images/yg.png) no-repeat;
+}
+
+#storeGift h3 {
+	background: url(../images/md.png) no-repeat;
+}
+
+#bestProduct,
+#bestEmployer {
+	margin-right: 0.11rem;
+}
+
+.info h3 {
+	height: 0.54rem;
+	line-height: 0.54rem;
+	text-indent: 0.7rem;
+	font-size: 0.13rem;
+	font-weight: bold;
+	background-size: 100%!important;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+
+.info span {
+	display: inline-block;
+	height: 0.2rem;
+	line-height: 0.2rem;
+	font-size: 0.14rem;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.info span img {
+	width: 0.1rem;
+	margin-bottom: 0.036rem;
+}
+
+.info span.number {
+	width: 0.3rem;
+	text-align: center;
+	font-family: 'myFont';
+	font-size: 0.17rem;
+}
+
+.info span.name {
+	width: 0.6rem;
+	text-align: left;
+	font-size: 0.13rem;
+	color: #505050;
+}
+
+.info span.amount {
+	width: 0.77rem;
+	text-align: left;
+	font-size: 0.12rem;
+	color: #505050;
+}
+
+.info .noData {
+	font-size: 0.3rem;
+	line-height: 0.6rem;
+	text-align: center;
+	color: #c5c5c5;
+	font-weight: bold;
+}
+
+.netTip {
+	text-align: center;
+	width: 100%;
+	font-size: 0.15rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	height: 0.5rem;
+	line-height: 0.5rem;
+	color: #a0a0a0;
+}
+
+#bestEmployer,
+#bestCumstomer {
+	height: 2rem;
+}
+
+#bestProduct,
+#storeGift {
+	height: 2.32rem;
+}
+
+.info span.amount {
+	display: block;
+	margin-left: 0.3rem;
+}
+
+.info span.name,
+.info span.amount {
+	width: 1.37rem;
+}
+
+.todayConsume,
+.todayConsumeNum {
+	color: #FF0000!important;
+}
+
+
+/*嵌入字体*/
+
+@font-face {
+	font-family: 'myFont';
+	src: url('../font/方正隶二简体.eot');
+	/* IE9兼容模式 */
+	src: url('../font/方正隶二简体.eot?#iefix') format('embedded-opentype'), /* IE6~IE8 */
+	url('../font/方正隶二简体.woff') format('woff'), /* 现代浏览器 */
+	url('../font/方正隶二简体.ttf') format('truetype'), /* safari，Android,ios */
+	url('../font/方正隶二简体.svg#方正隶二简体') format('svg');
+	/* Legacy ios */
+	font-weight: normal;
+	font-style: normal;
+}
+
+@media only screen and (max-width: 335px) {
+	.info h3 {
+		font-size: 0.12rem;
+		text-indent: 0.6rem;
+	}
+}

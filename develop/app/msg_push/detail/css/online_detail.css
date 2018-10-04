@@ -1,0 +1,189 @@
+.banner {
+  position: relative
+}
+
+.banner img {
+  width: 100%;
+  display: block
+}
+
+.banner .star {
+  background: url(../img/weishoucang.png) no-repeat center/cover;
+  position: absolute;
+  right: .24rem;
+  bottom: -.5rem;
+  width: 1rem;
+  height: 1rem;
+  display: none
+}
+
+.banner .starhide {
+  background: url(../img/yishoucang.png) no-repeat center/cover
+}
+
+.detail {
+  background-color: #F8F8F8;
+  color: #333
+}
+
+.detail .de_title {
+  background-color: #fff;
+  padding: 0 .24rem;
+  font-size: .28rem
+}
+
+.detail .de_title div {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 1rem;
+  line-height: .6rem;
+  border-bottom: .01rem solid #D9D9D9;
+  padding: .2rem 0
+}
+
+.detail .de_title div:first-of-type>.title_logo {
+  font-size: .32rem;
+  max-width: 5.9rem;
+  line-height: .32rem;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+.detail .de_title div:last-of-type {
+  border-bottom: none
+}
+
+.detail .de_title div i {
+  display: inline-block
+}
+
+.detail .de_title div span.fr {
+  font-size: .26rem;
+  color: #999;
+  border: transparent
+}
+
+.detail .de_title div .c_forword {
+  background-size: center;
+  margin-top: .15rem
+}
+
+.detail .produce {
+  margin-top: .3rem;
+  background: #fff;
+  padding: 0 .24rem;
+  color: #999
+}
+
+.detail .produce .p_title {
+  height: 1rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  line-height: 1rem;
+  border-bottom: .01rem solid #D9D9D9;
+  font-size: .26rem;
+  color: #333
+}
+
+.detail .produce .p_msg {
+  padding: .2rem 0;
+  font-size: .24rem;
+  width: 100%;
+  word-break: break-all;
+  // word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.detail .mans {
+  margin-top: .3rem;
+  font-size: .28rem;
+  padding: 0 .24rem;
+  background-color: #fff
+}
+
+.detail .mans .m_title {
+  height: 1rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  line-height: 1rem;
+  border-bottom: 1px solid #D9D9D9;
+  color: #333;
+  padding-left: .2rem;
+  position: relative
+}
+
+.detail .mans .m_title::before {
+  width: .06rem;
+  height: .36rem;
+  content: "";
+  background-color: red;
+  position: absolute;
+  top: .35rem;
+  left: 0
+}
+
+.detail .mans .m_some .m_single {
+  height: 1.2rem;
+  line-height: 1.2rem;
+  border: .01rem solid transparent;
+  border-bottom: .01rem solid #D9D9D9;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative
+}
+
+.detail .mans .m_some .m_single .m_pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle
+}
+
+.detail .mans .m_some .m_single button {
+  position: absolute;
+  top: .35rem;
+  right: 0;
+  height: .5rem;
+  line-height: .5rem;
+  padding: 0;
+  width: 1rem;
+  background-color: #FF4E82;
+  color: #fff;
+  font-size: .26rem;
+  outline: 0;
+  border-radius: .1rem;
+  border: none
+}
+
+.detail .sign {
+  height: 1.8rem;
+  line-height: 1.8rem;
+  text-align: center;
+  display: none
+}
+
+.detail .sign button {
+  width: 6.45rem;
+  height: .9rem;
+  vertical-align: middle;
+  font-size: .36rem;
+  color: #fff;
+  border: none;
+  background-color: #FF4E82;
+  border-radius: 10px;
+  display: inline;
+  outline: 0
+}
+
+.detail .sign button.btndcd {
+  background-color: #dcdcdc
+}
+
+.reason {
+  display: none;
+}

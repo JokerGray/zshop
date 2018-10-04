@@ -1,0 +1,524 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  color: #333333;
+}
+a {
+  text-decoration: none;
+  color: #333333;
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #333333;
+}
+ul,
+li {
+  list-style: none;
+}
+body {
+  background-color: #f2f2f2;
+}
+.completedStatus {
+  color: #c3c3c3;
+}
+.gray {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+}
+.orderTab {
+  width: 100%;
+  height: 3.5625rem;
+  background-color: #fff;
+  padding-top: 0.9375rem;
+  text-align: center;
+  font-size: 1.125rem;
+  border-bottom: 0.0625rem solid #dadada;
+}
+.orderTab a {
+  display: inline-block;
+  width: 6.25rem;
+  height: 2.125rem;
+  line-height: 2.125rem;
+  padding-bottom: 0.3125rem;
+  border-bottom: 0.0625rem solid #333;
+  margin: 0 0.78125rem 0.625rem 0.78125rem;
+}
+.orderTab a.active {
+  border-color: #fe6869;
+  color: #fe6869;
+}
+.orderStatus {
+  width: 100%;
+  height: 3.125rem;
+  background-color: #fff;
+}
+.orderStatus .status {
+  float: left;
+  padding-left: 0.9375rem;
+  font-size: 1.125rem;
+}
+.orderStatus .status i {
+  display: inline-block;
+  width: 1.4375rem;
+  height: 1.4375rem;
+  background: url("../images/mxz.png") no-repeat center;
+  -webkit-background-size: 1.4375rem 1.4375rem;
+  background-size: 1.4375rem 1.4375rem;
+  margin-right: 0.625rem;
+  margin-top: 1.125rem;
+  vertical-align: text-bottom;
+}
+.orderStatus .status span {
+  margin-right: 1.875rem;
+}
+.orderStatus .status span.selected i {
+  background: url("../images/xzz.png") no-repeat center;
+  -webkit-background-size: 1.4375rem 1.4375rem;
+  background-size: 1.4375rem 1.4375rem;
+}
+.orderStatus .search {
+  float: right;
+  padding-right: 0.9375rem;
+  padding-top: 0.40625rem;
+}
+.orderStatus .search input {
+  width: 11.5rem;
+  height: 2.3125rem;
+  outline: none;
+  border: 0.0625rem solid #fe6869;
+  float: left;
+  margin-right: 0.9375rem;
+  font-size: 0.875rem;
+  color: #333333;
+  padding-left: 0.625rem;
+  margin-bottom: 0;
+}
+.orderStatus .search input::-webkit-input-placeholder {
+  color: #CCCCCC;
+}
+.orderStatus .search input::-moz-placeholder {
+  color: #CCCCCC;
+}
+.orderStatus .search input:-ms-input-placeholder {
+  color: #CCCCCC;
+}
+.orderStatus .search a {
+  width: 4.5rem;
+  height: 2.3125rem;
+  background-color: #fe6869;
+  color: #ffffff;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 2.3125rem;
+  float: left;
+}
+.main-title {
+  position: relative;
+}
+.main-title .timeCountBtn {
+  position: absolute;
+  width: 6.25rem;
+  height: 2.1875rem;
+  line-height: 2.1875rem;
+  text-align: center;
+  color: #fe6869;
+  font-size: 1.125rem;
+  border: 0.0625rem solid #fe6869;
+  right: 0.9375rem;
+  top: 0.78125rem;
+}
+.orderList {
+  width: 100%;
+  margin-top: 0.625rem;
+}
+.orderList ul {
+  width: 100%;
+}
+.orderList ul li {
+  width: 100%;
+  background-color: #ffffff;
+  margin-bottom: 0.3125rem;
+  position: relative;
+}
+.orderList ul li .listTop {
+  width: 100%;
+  height: 2.65625rem;
+  line-height: 2.65625rem;
+  border-bottom: 0.0625rem solid #eeeeee;
+  padding-left: 1.875rem;
+  display: flex;
+}
+.orderList ul li .listTop div:nth-of-type(1) {
+  flex: 1.5;
+}
+.orderList ul li .listTop div:nth-of-type(2) {
+  flex: 1.5;
+  text-align: center;
+}
+.orderList ul li .listTop div:nth-of-type(3) {
+  flex: 2;
+  text-align: center;
+}
+.orderList ul li .listTop div:last-of-type {
+  flex: 3;
+  text-align: center;
+}
+.orderList ul li .listInfo {
+  width: 100%;
+  padding: 0 1.875rem;
+}
+.orderList ul li .listInfo .top {
+  width: 100%;
+  margin-top: 0.625rem;
+  overflow: hidden;
+}
+.orderList ul li .listInfo .top img {
+  width: 5.6875rem;
+  height: 5.5625rem;
+  float: left;
+  display: inline-block;
+}
+.orderList ul li .listInfo .top .dsc {
+  float: right;
+  margin-left: 0.9375rem;
+  width: 87%;
+}
+.orderList ul li .listInfo .top .dsc p {
+  font-size: 0.9375rem;
+  margin: 0;
+  line-height: 1.5;
+}
+.orderList ul li .listInfo .top .dsc p span {
+  margin-right: 0.625rem;
+}
+.orderList ul li .listInfo .top .dsc p:nth-of-type(1) {
+  font-weight: 700;
+}
+.orderList ul li .listInfo .top .dsc p:nth-of-type(2) {
+  margin: 0rem 0;
+}
+.orderList ul li .listInfo .bottom {
+  width: 100%;
+  overflow: hidden;
+}
+.orderList ul li .listInfo .bottom .operateStatus {
+  float: left;
+  margin-top: 0.9375rem;
+}
+.orderList ul li .listInfo .bottom .operateStatus span {
+  font-size: 0.9375rem;
+  color: #fe6869;
+}
+.orderList ul li .listInfo .bottom .operateStatus span:last-of-type {
+  margin-left: 0.625rem;
+}
+.orderList ul li .listInfo .bottom .operateStatus span.lookSignPic {
+  display: inline-block;
+  width: 1.4375rem;
+  height: 1.5rem;
+  background: url("../../common/image/electronic-signature@2x.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: middle;
+}
+.orderList ul li .listInfo .bottom .operateStatus .lookSignBtn {
+  display: inline-block;
+  padding-bottom: 0.625rem;
+}
+.orderList ul li .listInfo .bottom .operate {
+  float: right;
+  margin: 0.4925rem 0.75rem;
+}
+.orderList ul li .listInfo .bottom .operate a {
+  float: left;
+  width: 5.3125rem;
+  height: 2.1875rem;
+  line-height: 2.1875rem;
+  text-align: center;
+  border: 0.0625rem solid #fe6869;
+  color: #fe6869;
+  margin: 0 0.3125rem;
+}
+.orderList ul li .listInfo .bottom .completedPostmark {
+  position: absolute;
+  right: 3.21875rem;
+  top: 3.3125rem;
+  width: 7.625rem;
+  height: 7.53125rem;
+  background: url("../../common/image/cuo@2x.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+body .service-class {
+  border-radius: 0.4375rem;
+  overflow: hidden;
+}
+body .service-class .layui-layer-btn {
+  padding: 0;
+  height: 20%;
+  position: relative;
+  background-color: #fe6869;
+  border-radius: 0 0 0.4375rem 0.4375rem;
+}
+body .service-class .layui-layer-btn .layui-layer-btn0 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  border: none;
+  text-align: center;
+  font-size: 120%;
+  background-color: transparent;
+}
+body .service-class .layui-layer-setwin .layui-layer-close2 {
+  top: -0.625rem;
+  left: -1.25rem;
+}
+.serviceOptions {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.625rem;
+  padding-top: 5%;
+  position: relative;
+}
+.serviceOptions h2 {
+  width: 100%;
+  font-size: 1.5rem;
+  text-align: center;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /** 对象作为伸缩盒子模型显示 **/
+  -webkit-box-orient: vertical;
+  /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+  -webkit-line-clamp: 1;
+  /** 显示的行数 **/
+}
+.serviceOptions .selServicePeople,
+.serviceOptions .selServiceEquipment {
+  margin-top: 5%;
+  text-align: center;
+}
+.serviceOptions .selServicePeople > span:nth-of-type(1),
+.serviceOptions .selServiceEquipment > span:nth-of-type(1) {
+  display: block;
+  font-size: 1.125rem;
+  margin-bottom: 0.3125rem;
+}
+.page-selection {
+  margin-top: 0.9375rem;
+}
+.select2-container--open .select2-dropdown {
+  z-index: 99999999;
+  width: 10.375rem !important;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+}
+.select2-container {
+  height: 2.8125rem;
+  padding-left: 40%;
+}
+.select2-container .select2-selection--single {
+  height: 2.8125rem;
+  width: 10.375rem !important;
+  position: absolute;
+  top: 0rem;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 2.8125rem;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 0.3125rem;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-width: 0.59375rem 0.375rem 0rem 0.375rem;
+  left: 40%;
+  top: 50%;
+}
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-width: 0.0625rem 0.375rem 0.625rem 0.375rem;
+}
+input[node-type=jsbridge] {
+  opacity: 0;
+  position: relative;
+  top: -2.1875rem;
+  width: 4.375rem;
+  height: 1.3125rem;
+}
+.layui-layer-content {
+  color: #fff;
+}
+.layui-layer-hui {
+  position: absolute !important;
+}
+.sign-class {
+  width: 100%;
+  height: 100%;
+}
+.sign-class .layui-layer-content .evaluation_box {
+  background-color: #f8f8f8;
+  position: absolute;
+  width: 100%;
+  height: 9.375rem;
+  z-index: 1;
+  bottom: 2.8125rem;
+  left: 0;
+  border-top: 0.03125rem solid #dedede;
+}
+.sign-class .layui-layer-content .evaluation_box > span {
+  display: block;
+  padding-left: 0.9375rem;
+  margin-top: 0.9375rem;
+}
+.sign-class .layui-layer-content .evaluation_box > span sub {
+  vertical-align: baseline;
+  color: #fe6869;
+}
+.sign-class .layui-layer-content .evaluation_box .fiveStar {
+  padding-left: 0.9375rem;
+}
+.sign-class .layui-layer-content .evaluation_box .fiveStar span {
+  font-size: 1.875rem;
+  color: #666666;
+}
+.sign-class .layui-layer-content .evaluation_box .fiveStar span.active {
+  color: #ffd503;
+}
+.sign-class .layui-layer-content #canvas {
+  width: 56rem !important;
+  height: 31.5rem !important;
+  position: relative;
+  border-bottom: 0.0625rem dashed #dedede;
+}
+.sign-class .layui-layer-content #canvas canvas {
+  display: block;
+}
+.sign-class #clearCanvas {
+  width: 50%;
+  height: 3.125rem;
+  line-height: 3.125rem;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  font-size: 1.125rem;
+  background-color: #fff;
+  color: #fe6869;
+}
+.sign-class #saveCanvas {
+  width: 50%;
+  height: 3.125rem;
+  line-height: 3.125rem;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  font-size: 1.125rem;
+  background-color: #fe6869;
+  color: #fff;
+}
+.sign-class .layui-layer-setwin .layui-layer-close2 {
+  top: -0.3125rem !important;
+  right: -0.3125rem !important;
+}
+#lookSignTpl {
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+}
+#lookSignTpl .signPic {
+  width: 100%;
+}
+#lookSignTpl .score {
+  width: 100%;
+  height: 6.25rem;
+  font-size: 1.0625rem;
+  color: #333333;
+  font-weight: 700;
+  padding-left: 1.875rem;
+  border-top: 0.0625rem dashed #dedede;
+  padding-top: 0.9375rem;
+}
+#lookSignTpl .score > .scoreText {
+  vertical-align: middle;
+}
+#lookSignTpl .score .fiveStarBox {
+  display: inline-block;
+}
+#lookSignTpl .score .fiveStarBox span {
+  display: inline-block;
+  font-size: 1.875rem;
+  vertical-align: middle;
+  padding: 0 0.15625rem;
+  color: #999999;
+}
+#lookSignTpl .score .fiveStarBox span.active {
+  color: #ffd503;
+}
+.waitersSelector .layui-layer-title {
+  padding: 0;
+  background-color: #fff!important;
+}
+.waitersSelector .layui-layer-btn .layui-layer-btn0 {
+  background-color: #fe6869;
+  border: none;
+}
+.waitersSelector .waitersBox ul {
+  overflow: hidden;
+  padding: 0 0.9375rem;
+}
+.waitersSelector .waitersBox ul li {
+  float: left;
+  margin: 0.625rem 1rem;
+  width: 25%;
+}
+.waitersSelector .waitersBox ul li i {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid #fe6869;
+  vertical-align: middle;
+  -webkit-border-radius: 0.1875rem;
+  -moz-border-radius: 0.1875rem;
+  border-radius: 0.1875rem;
+}
+.waitersSelector .waitersBox ul li span {
+  font-size: 1rem;
+  color: #333333;
+  vertical-align: middle;
+}
+.waitersSelector .waitersBox ul li.active i {
+  background: url("../../common/image/selected.png") no-repeat center;
+  -webkit-background-size: 1.25rem;
+  background-size: 1.25rem;
+  border: none;
+}
+/*# sourceMappingURL=work.css.map */

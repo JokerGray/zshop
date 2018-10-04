@@ -1,0 +1,221 @@
+body,html{
+	width: 100%;
+	height: 100%;
+	color: #666;
+	font-size: 0.28rem;
+	font-family: "PingFang SC","Heiti SC","SF UI Text","Helvetica Neue",Roboto,"Droid Sans Fallback",arial,sans-serif;
+	font-weight: normal;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.lqNav{
+	width: 100%;
+	height: 3.7rem;
+	background: #616162;
+	
+}
+.lqNav{
+	padding: 0.20rem 0.24rem 0 0.24rem;
+	box-sizing: border-box;
+}
+.lqNav .bg{
+	width: 100%;
+	height: 1.68rem;
+}
+.lqNav .bg img{
+	width: 1.68rem;
+	height: 1.68rem;
+	border-radius: 50%;
+	margin-right: 0.28rem;
+	display: block;
+}
+.bg .info{
+	padding-top: 0.1rem;
+	color: #fff;
+}
+.bg .info p{
+	margin-bottom: 0.14rem;
+}
+.bg .info .name{
+	font-size: 0.32rem;
+}
+.bg .info .classify span{
+	border: 1px solid #fff;
+	padding: 0.05rem 0.1rem;
+	border-radius: 10px;
+	font-size: 0.28rem;
+}
+.bg .info .classify span:first-child{
+	margin-right: 0.2rem;
+}
+.bg .join{
+	width: 1.48rem;
+	height: 0.56rem;
+	margin: 0.5rem 0.24rem 0 0;
+	background-image: linear-gradient(-55deg, 
+		#fc4c70 0%, 
+		#ff4f4c 100%);
+	color: #fff;
+	border-radius: 50px;
+	line-height: 0.56rem;
+	text-align: center;
+}
+.totalNum{
+	margin-top: 0.4rem;
+}
+.totalNum li{
+	width: 49%;
+	float: left;
+	text-align: center;
+	font-size: 0.4rem;
+	color: #fff;
+}
+.totalNum li:first-child{
+	border-right: 1px solid #fff;
+	
+
+}
+.totalNum li p:last-child{
+	font-size: 0.30rem;
+	margin-top: 0.1rem;
+}
+.totalNum .moods .family{
+	font-size: 0.34rem;
+}
+.lqList{
+	position: relative;
+	width: 100%;
+
+}
+.position{
+	background: #fff;
+	position: absolute;
+	top: -0.2rem;
+	z-index: 99;
+	width: 100%;
+    border-radius: 0.15rem;
+}
+.lqList .notice{
+	margin-left: 0.34rem;
+	margin-top: 32px;
+}
+.lqList .notice .title{
+	font-size: 0.28rem;
+	padding: 0.05rem 0.1rem;
+	background-image: linear-gradient(135deg, 
+		#37d5f2 0%, 
+		#5293f7 100%);
+	color: #fff;
+	border-radius: 10px;
+}
+.lqList .notice .important{
+	color: #000;
+	font-size: 0.28rem;
+}
+.contain .tab{
+	margin-top: 0.4rem;
+	display: flex;
+}
+.contain .tab li{
+	flex: 3;
+	text-align: center;
+	overflow: hidden;
+}
+.contain .tab li span{
+	border-radius: 40px;
+	background: #eee;
+
+	padding: 0.16rem 0.5rem;
+	color: #666;
+	display: inline-block;
+}
+.contain .tab li span.active{
+	color: #fe4c74;
+}	
+.tabList{
+	box-sizing: border-box;
+	overflow: hidden;
+	margin-bottom: 100px;
+}
+.tabList .child{
+	margin-top: 0.34rem;
+	overflow: hidden;
+	padding: 0 0.24rem;
+}
+.tabList .child .right img{
+	width: 0.36rem;
+}
+.tabList .des img{
+	width: 0.8rem;
+	height: 0.8rem;	
+	border-radius: 50%;
+}
+.listLi .con{
+	margin-left: 0.2rem;
+}
+.listLi .con p:first-child{
+	font-size: 0.32rem;
+	color: #333;
+}
+.listLi .con p:last-child{
+	font-size: 0.24rem;
+	color: #999; 
+	margin-top: 0.1rem;
+}
+.listLi .labelFlag{
+	margin-top: 0.12rem;
+	padding: 0 0.24rem;
+}
+.listLi .labelFlag img{
+	vertical-align: middle;
+	width: 0.36rem;
+	height: 0.36rem;
+}
+.listLi .labelFlag span{
+	font-size: 0.3rem;
+	color: #333;
+}
+.imgNine{
+	margin-top: 0.28rem;
+	overflow: hidden;
+}
+.imgNine figure{
+	margin-right: 0.09rem;
+	margin-bottom: 0.09rem;
+	float: left;
+}
+
+.imgNine figure,.imgNine div{
+	width: 2.44rem;
+	height: 2.42rem !important;
+}
+.imgNine img{
+	width: 100%;
+	height: 100%;
+}
+
+.imgNine figure:nth-child(3n){
+	background:orange;
+	margin-right: 0;
+}
+.giveLike{
+	padding: 0.3rem 0;
+	border-bottom: 1px solid #dadada;
+}
+.giveLike ul{
+	display: flex;
+}
+.giveLike ul li{
+	flex: 3;
+	text-align: center;
+}
+.giveLike ul li img{
+	width: 0.38rem;
+	height: 0.38rem;
+	vertical-align: middle;
+	margin-right: 0.15rem;
+}

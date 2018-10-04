@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+    <title>头条推广详情</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../../../common/css/reset.css" />
+ 	<link rel="stylesheet" href="../../../common/css/layTab.css" />
+ 	<style media="screen" type="text/css">
+    	.dTitle{
+    		font-size: 23px;
+    		margin: 24px 0;
+    		text-align: center;
+    	}
+    	.dContent{
+    		margin: 0 50px;
+    		text-align: center;
+    	}
+    	.control-label{
+    		padding-top: 7px;
+		    margin-bottom: 0;
+		    text-align: justify;
+		    display: inline-block;
+		    width: 120px;
+		    max-width: 100%;
+		    font-weight: 700;
+		    font-family: \5FAE\8F6F\96C5\9ED1,arial,sans-serif;
+		    color: #333;
+		    font-size: 14px;
+		    line-height: 24px;
+    	}
+    	.pull-left{
+    		float: left!important;
+    	}
+    	.pull-right{
+    		float: right!important;
+    		
+    	}
+    	.form-control{
+    		/* display: inline; */
+		    width: 48%;
+		    height: 20px;
+		    padding: 6px 12px;
+		    font-size: 14px;
+		    line-height: 1.42857143; 
+		    color: #555;
+		    background-color: #eee;
+		    opacity: 1;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    	}
+    	.pull-right .form-control{
+    		left: -25px;
+    		position: relative;
+    	}
+    	.pull-left .form-control{margin-left: -23px;}
+    	
+    	.from-item{
+    		margin: 20px 0;
+    	}
+    	.input-group-addon {
+		    background-color: darkgray;
+		    color: #fff;
+		    padding: 9px 12px;
+		    font-size: 14px;
+		    font-weight: 400;
+		    line-height: 1;
+		    text-align: center;
+		    border-radius: 4px;
+		    border-left: 0;
+	        border: none;
+	        width: 1%;
+		    left: -27px;
+    		position: relative;
+		}
+    </style>
+</head>
+<body>
+       <div class="tool-box layui-form">
+   		<ul class="tool-box-ul clearfix">
+   			<!-- 订单编号   -->
+   			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">订单编号：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="" placeholder="输入订单号" class="layui-input" id="serialNumber" maxlength="24"> 
+						<input id="queryStatus" type="hidden" value="">
+					</div>
+				</div>
+			</li>	
+			<!-- 广告主名称   -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">广告主名称：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="" placeholder="输入广告主名称" class="layui-input" id="username" maxlength="10"> 
+					</div>
+				</div>
+			</li>
+   			<!--  订单状态    -->
+   			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">订单状态：</label>
+					<div class="layui-input-inline">
+						<select id="selectview1" lay-verify="required" lay-search>
+							<option value="-1">选择状态</option>
+                            <option value="1">进行中</option>
+                            <option value="2">已完成</option>
+						</select>
+					</div>
+				</div>
+			</li>
+			<!-- 业务类型    -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">业务类型：</label>
+					<div class="layui-input-inline">
+						<select id="selectview2" lay-verify="required" lay-search>
+							 <option value="-1">选择业务</option>
+                             <option value="3">退款</option>
+						</select>
+					</div>
+				</div>
+			</li>
+            <!-- 时间开始 -->
+           	<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="stTime">时间：</label>
+					<div class="layui-input-inline startDate">
+						<input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+					</div>
+				</div>
+			</li>				
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="endTim">至：</label>
+					<div class="layui-input-inline endDate">
+						<input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+					</div>
+				</div>
+			</li>
+            <!-- 时间结束 -->                    
+			<button class="layui-btn toRight" id="resetBtn">重置</button>
+			<button class="layui-btn toRight" id="searchBtn">搜索</button>
+		</ul>
+	</div>
+	
+	<div class="layui-app">
+		<div class="app-table">
+			<table lay-filter="merchantTable" id="merchantTable"></table>
+			<div id="layTablePage"></div>
+		</div>
+	</div>
+	
+	<script type="text/html" id="barDemo">
+		<button class="layui-btn my-btn" lay-event="view">确认</button>
+	</script>
+	
+<!-- Common -->
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="headines_details.js"></script>
+</body>
+</html>

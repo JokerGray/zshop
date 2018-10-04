@@ -1,0 +1,219 @@
+@import '../util/util.scss';
+
+body{
+    background: url(../common/img/bg.png)
+}
+.swiper-container{
+    margin-top: 62px;
+}
+.signin-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+}
+.signin-content{
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);    
+    width: 446px;
+    height: 560px;
+    z-index: 999;
+    padding: 36px 36px 0;
+    background-color: #fff;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px 1px #ccc;
+    user-select: none;
+
+    .title-logo{
+        width: 77px;
+        height: 77px;
+        position: relative;
+        left: 40%;
+        margin-bottom: 20px;
+    }
+    .signin-title{
+        padding: 0 0 36px 0;
+        margin: 0;
+        font-size: 22px;
+        color: #333;
+    }
+
+    .form-group{
+        position: relative;
+        margin: 0;
+        padding-bottom: 24px;
+
+        .phone-locate{
+            cursor: pointer;
+            border: 0;
+            outline: 0;
+            display: inline-block;
+            position: absolute;
+            appearance:none;
+            background: url("../common/img/arrow.png") no-repeat scroll right center transparent;
+            background-size: 12px;
+            padding-right: 17px;
+            color: #666;
+            font-size: 16px;
+            line-height: 37px;
+        }
+        .input-phone{
+            border: 0;
+            // border-bottom: 1px solid #FA6045;
+            outline: none;
+            width: 100%;
+            font-size: 16px;
+            padding-left: 120px;
+            padding-right: 20px;
+            line-height: 36px;
+            border-bottom: 1px solid #eee;
+            transition: all 0.2s ease-out;
+
+            &:focus{
+                border-color: rgba($color: #eee, $alpha: 0);
+            }
+            &:focus~.hand-line{
+                transform: scale(1);
+            }
+        }
+        .hand-line{
+            width: 100%;
+            height: 1px;
+            background: url("../common/img/pitch_on_line.png") no-repeat;
+            background-size: cover;
+            transform: scale(0);
+            transition: all 0.2s ease-out;
+        }
+        .input-pwd{
+            border: 0;
+            border-bottom: 1px solid #ccc;
+            outline: none;
+            width: 100%;
+            font-size: 16px;
+            padding-right: 60px;
+            line-height: 36px;
+            border-bottom: 1px solid #eee;
+            transition: all 0.2s ease-out;
+
+            &:focus{
+                border-color: rgba($color: #eee, $alpha: 0);
+            }
+            &:focus~.hand-line{
+                transform: scale(1);
+            }
+        }
+        #showPwd{
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 30px;
+            color: #999;
+            cursor: pointer;
+        }
+        .captcha-btn{
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: 0;
+            background: 0;
+            height: 36px;
+            line-height: 36px;
+            color: #666;
+            outline: none;
+            transition: all 0.2s ease-in-out;
+            &:hover{
+                color: #AE1932;
+            }
+        }
+        #protocol-error{
+            top: 20px;
+        }
+        .btn-block{
+            color: #fff;
+            transition: all 0.1s ease;
+            outline: none;
+            background: url("../common/img/login_pitch_on.png") no-repeat;
+            background-size: cover;
+            border: none;
+            border-radius: 6px;
+        }
+        .btn-block:hover{
+            background-image: url("../common/img/login_unselected.png");
+        }
+        .btn-block:active{
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+    }
+
+    input.form-control{
+        height: 50px;
+        border-radius: 0;
+        border-color: #d7d7d7;
+        padding-left: 16px;
+    }
+    .checkbox{
+        cursor: pointer;
+        float: left;
+        padding: 0;
+        min-height: auto;
+        .auto-login{
+            color:#999;
+        }
+        .icon-check{
+            font-size: 20px;
+            vertical-align: middle;
+        }
+        .icon-check.active{
+            color: #F32021;
+        }
+    }
+
+    .tool-right{
+        font-size: 14px;
+        float: right;
+        line-height: 20px;
+        a{
+            color:#8d8e8e;
+            text-decoration: none;
+        }
+        img{
+            width: 16px;
+            vertical-align: text-top;
+        }
+    }
+
+    button[type=submit] {
+        height: 50px;
+        border-radius: 0;
+        font-size: 16px;
+        letter-spacing: 4px;
+        // background: url("../common/img/login_pitch_on.png");
+        // background-color: #FA6045;
+    }
+    
+}
+.support{
+    position: absolute;
+    width: 100%;
+    bottom: 40px;
+    text-align: center;
+    .copyright{
+        color: #AE1932;
+        line-height: 36px;
+    }
+}
+label.error{
+    position: absolute;
+    top: 40px;
+    left: 0;
+    margin: 0;
+    font-size: 12px;
+    color: $danger;
+    font-weight: normal;
+}

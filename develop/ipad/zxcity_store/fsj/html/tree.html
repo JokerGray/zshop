@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=2.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>人事客项钱</title>
+	<link href="../css/tree.css" rel='stylesheet' type='text/css' />
+
+	<script src="../../common/assets/js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="../js/jquery.rwdImageMaps.min.js"></script>
+	<!--<script type="text/javascript" src="../js/jquery.imagemapster.min.js" ></script>-->
+</head>
+
+<body>
+	<div class="wrapper">
+		<!--制作页面image-maps.com-->
+	<img id="tree" src="../img/tree.png" usemap="#tree-grab" alt="人事客项钱" />
+	<map name="tree-grab" id="tree-grab">
+		<area id="item1" alt="人" title="人" href="#" shape="poly" coords="832,1296,817,1297,794,1300,766,1298,752,1298,733,1296,712,1291,669,1289,634,1285,600,1277,580,1271,564,1262,547,1248,524,1221,500,1188,484,1164,469,1141,454,1115,442,1092,436,1078,435,1077,480,1103,501,1112,544,1120,581,1118,605,1118,629,1120,667,1128,696,1140,720,1159,747,1191,775,1221,790,1241,802,1248,816,1264,833,1295"  data-index="6" />
+		<area id="item2" alt="事" title="事" href="#" shape="poly" coords="928,965,929,942,926,922,918,908,915,907,913,894,912,880,907,860,903,849,904,837,898,817,893,803,883,784,867,767,851,754,837,744,819,733,797,721,764,699,737,678,714,655,702,626,704,672,705,709,712,758,719,801,732,833,750,854,791,887,837,913,851,928,884,946,912,958"  data-index="7" />
+		<area id="item3" alt="客" title="客" href="#" shape="poly" coords="1129,864,1123,845,1123,826,1123,817,1124,809,1127,803,1130,800,1125,773,1125,762,1125,748,1125,734,1125,712,1124,695,1129,675,1131,662,1143,640,1160,618,1182,594,1213,565,1236,545,1250,525,1269,489,1275,469,1278,446,1280,463,1285,487,1292,521,1302,567,1305,600,1306,644,1305,667,1299,689,1276,719,1233,768,1203,803,1186,817,1179,826,1161,842,1149,854,1138,859"  data-index="8"  />
+		<area id="item4" alt="项" title="项" href="#" shape="poly" coords="1304,1078,1307,1057,1312,1040,1313,1036,1317,1023,1322,1013,1325,1011,1332,986,1342,959,1350,941,1355,919,1369,893,1377,879,1390,860,1407,842,1435,824,1463,810,1507,792,1533,784,1555,775,1582,760,1609,737,1630,712,1640,699,1634,732,1628,764,1624,791,1616,829,1607,854,1601,878,1598,882,1595,897,1590,910,1586,918,1579,933,1565,953,1545,966,1497,998,1432,1025,1393,1043,1353,1060,1315,1076"  data-index="9" />
+		<area id="item5" alt="钱" title="钱" href="#" shape="poly" coords="1183,1351,1210,1349,1229,1347,1253,1347,1265,1345,1282,1343,1297,1341,1311,1335,1331,1333,1361,1332,1389,1329,1419,1323,1451,1313,1476,1301,1493,1287,1535,1234,1583,1154,1621,1083,1560,1120,1533,1129,1510,1131,1470,1133,1428,1135,1413,1137,1393,1141,1366,1147,1335,1156,1316,1170,1295,1188,1277,1211,1239,1257,1216,1289,1200,1311" data-index="10" />
+	</map>
+
+
+	</div>
+	<script>
+		$.urlParam = function (name, parent) {
+			var url = parent ? window.parent.location.href : window.location.href;
+			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url);
+			if (typeof results === "undefined" || results == null)
+				return null;
+			else
+				return results[1] || 0;
+		}
+		var userId = $.urlParam('backUserID', true);
+
+
+		$(document).ready(function (e) {
+
+
+			//
+			// $('#tree').mapster({
+			// 	fillOpacity: 0.4,
+			// 	fillColor: "ffffff",
+			// 	isSelectable: true,
+			// 	stroke: true,
+			// 	strokeColor: "ffffff",
+			// 	strokeOpacity: 0.8,
+			// 	strokeWidth: 5,
+			// 	singleSelect: true,
+			// });
+
+			// 响应式
+			$('img[usemap]').rwdImageMaps();
+
+			$('area').on('click', function () {
+				var activeIndex = $(this).data("index");
+				location.href = "list.html?type=" + activeIndex + "&user=" + userId;
+			});
+
+		});
+	</script>
+</body>
+
+</html>

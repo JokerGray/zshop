@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+	    <title>收益统计</title>
+		<link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+        <link rel="stylesheet" type="text/css" href="common/assets/layui-v2.0.1/layui/css/layui.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="common/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/application.css" />
+		<link rel="stylesheet" type="text/css" href="css/shouyitongji.css" />
+    </head>
+	<body>
+		<div class="layui-fluid">  
+			<div class="layui-row layui-col-space5">
+			    <div class="layui-col-md4">
+			    	<div class="layui-row grid-demo total">
+				      <div class="layui-col-md3">
+				      	<img src="../lianquan/img/shouyi2@2x.png" />
+				      </div>
+				      <div class="layui-col-md6">
+				       	<div class="layui-col-md6">
+				       		<span>总收益</span>
+				       	</div>
+				       	<div class="layui-col-md6">
+				       		<img src="../lianquan/img/zhushi@2x.png"/>
+				       	</div>
+				       	<div class="layui-col-md12 weight">
+				       		<span id="sumProfit"></span>Kg(猪仔重量)
+				       	</div>
+				      </div>
+				      <div class="layui-col-md3">
+				        <button id="tixian" class="layui-btn layui-btn-primary layui-btn-radius jiesuan">结算</button>
+				      </div>
+				    </div>
+			    </div>
+			    <div class="layui-col-md4">
+					<div class="layui-row grid-demo today">
+				      <div class="layui-col-md3">
+				      	<img src="../lianquan/img/shouyi2@2x.png" />
+				      </div>
+				      <div class="layui-col-md1"></div>
+				      <div class="layui-col-md8">
+				      	<div class="layui-col-md12 weight">
+				       		<span>今日收益</span>
+				       	</div>
+				       	<div class="layui-col-md12 weight">
+				       		<span id="dayProfit"></span>Kg(猪仔重量)
+				       	</div>
+				      </div>				      
+				    </div>
+			    </div>
+			    <div class="layui-col-md4">
+					<div class="layui-row grid-demo number">
+				      <div class="layui-col-md3">
+				      	<img src="../lianquan/img/yiqianyue@2x.png" />
+				      </div>
+				      <div class="layui-col-md1"></div>
+				      <div class="layui-col-md8">
+				      	<div class="layui-col-md12 weight">
+				       		<span>已签约人数</span>
+				       	</div>
+				       	<div class="layui-col-md12 weight">
+				       		<span id="sumContract"></span>人
+				       	</div>
+				      </div>				      
+				    </div>
+			    </div>
+			</div>
+			<div class="layui-row layui-col-space5">
+		    	<div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
+		      		<div class="layui-row grid-demo grid-demo-bg1">
+					      <div class="layui-col-md12">
+					        <div id="speedChart">
+                                <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+                                <div id="speedChartMain" style="width: 550px; height: 550px;"></div>
+                           </div>						        
+					      </div>
+					</div>
+		    	</div>
+		    	<div class="layui-col-xs6 layui-col-sm6 layui-col-md8 person">
+		    	  	<div class="layui-row grid-demo grid-demo-bg1">
+					      <div class="layui-col-md12">
+					        <span style="margin-left: 10px;">个人收益排行</span>	
+					      </div>
+					      <div class="layui-col-md12">
+					      	<div class="container-fluid">
+					            <!-- 列表展示 -->
+								<table id="demo" lay-filter="test" ></table>
+								<!--分页-->
+								<div id="laypageLeft" class="table-rgt"></div>
+							</div>
+					      </div>
+					</div>
+		    	</div>		    
+		  	</div>
+		</div>
+		<!-- 结算层 -->		
+		<div class="modal fade"  role="dialog" id="editTop"  data-backdrop="static" data-keyboard="false" >
+	      <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+	        	<div class="modal-header">
+	          		<h4 class="modal-title">申请结算</h4>	          			            	
+	          	</div>
+				<div class="modal-body" style="text-align: center;">
+					<div class="layui-row layui-col-space5">
+						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+							<div class="layui-col-md12">
+						        <span>可兑换猪仔(Kg)</span>	
+						    </div>
+						    <div class="layui-col-md12">
+						    	<div class="layui-input-inline" style="width: 150px;">
+						        	<input id="piglet" class="layui-input zhuzai" type="text" name="" />	
+						        </div>
+						    </div>
+						</div>
+						<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+							<div class="layui-col-md12">
+						        <span>可兑换礼品金(元)</span>	
+						    </div>
+						    <div class="layui-col-md12">
+						        ≈<span id="resultyuan">0</span>	
+						    </div>
+						</div>
+					</div>		                        
+		        </div>
+	          	<div class="modal-footer">
+	          		<div type="button" class="btn btn-default cancels" data-dismiss="modal">取消</div>
+	          		<div type="button" class="btn btn-primary" id="editTopic">确定</div>	            		            	
+	          	</div>
+	        </div>
+	      </div>
+		</div>
+		<!-- 序号 -->
+		<script type="text/html" id="indexTpl">
+		    {{d.LAY_TABLE_INDEX+1}}
+		</script>
+		<!-- 等级 -->
+		<script type="text/html" id="levelTpl">
+			{{#  if(d.level <= 1){ }}
+		  		<span>普通</span>
+		  	{{#  } else if(d.level == 2) { }}
+		  		<span>达人</span>
+		  	{{#  } else if(d.level == 3) { }}
+		  		<span>网红</span>
+		  	{{#  } else if(d.level == 4) { }}
+		  		<span>明星</span>
+		  	{{#  } else { }}
+		  		<span>巨星</span>
+		  	{{#  } }}			
+		</script>
+	</body>
+	<!-- jSCommon -->
+	<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+	<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+	<script type="text/javascript" src="common/js/yyCache.js"></script>
+	<script type="text/javascript" src="common/js/util/util.js"></script>
+	<script type="text/javascript" src="js/echarts.js"></script>
+	<script type="text/javascript" src="common/js/common.js"></script>
+	
+	<!--jSCurr-->
+	<script type="text/javascript" src="common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/shouyitongji.js"></script>
+</html>

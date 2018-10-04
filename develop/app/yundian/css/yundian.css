@@ -1,0 +1,201 @@
+
+* {
+    box-sizing: border-box;
+    /* 在X5新内核Blink中，在排版页面的时候，会主动对字体进行放大，会检测页面中的主字体，当某一块字体在我们的判定规则中，认为字号较小，并且是页面中的主要字体，就会采取主动放大的操作。然而这不是我们想要的，可以采取给最大高度解决 */
+    max-height: 100000px;
+     
+    
+  }
+  *{
+      padding: 0;
+      margin: 0;
+  }
+  *:before, *:after {
+      box-sizing: border-box;
+    max-height: 100000px;
+  }
+  
+  *, *:before, *:after {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  
+  html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th,textarea, td {
+    border: 0 none;
+    font-size: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+  }
+  
+  em, strong {
+    font-style: normal;
+  }
+  
+  ul, ol, li {
+    list-style: none;
+  }
+  
+  body {
+      font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","\5FAE\8F6F\96C5\9ED1",Arial,sans-serif;
+      line-height: 1.5;
+      color: #333;
+      /* background-color: #f2f2f2; */
+      font-size: 0.24rem;
+    /* background-color: #ffffff; */
+      
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  .box {
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow: hidden;
+  }
+.banxin{
+    width: 100%;
+    padding: 0 0.3rem;
+}
+.min{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+.min img{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+.Top{
+    width: 100%;
+    height: 1.15rem;
+    /* background-color: red; */
+    /* position: fixed; */
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    font-size: 0.34rem;
+    color: #333333;
+    line-height: 1.15rem;
+    text-align: center;
+}
+.content{
+    width: 100%;
+    /* height: 6rem; */
+    background-color: #eb5037;
+    margin-top: -0.12rem;
+    overflow: hidden;
+}
+.main{
+    width: 100%;
+    /* height: 3.86rem; */
+    height: 100%;
+    background-color: #FED3D2;
+    margin-top: 0.88rem;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.94rem;
+}
+.input{
+    display: block;
+    height: 0.9rem;
+    width: 5.5rem;
+     margin: 0 auto;
+     margin-top: 0.6rem;
+     text-align: center;
+     font-family: PingFang-SC-Medium;
+     font-size: 0.36rem;
+     border-radius: 10px;
+     color:#999999;
+     border: 0px;
+} 
+.subm{
+    display: block;
+    height: 0.9rem;
+    width: 5.5rem;
+     margin: 0 auto;
+     margin-top: 0.3rem;
+     /* margin-bottom: 0.3rem; */
+     text-align: center;
+     font-family: PingFang-SC-Medium;
+     font-size: 0.36rem;
+     border-radius: 10px;
+     color:#ffffff;
+     background-color:#eb5037; 
+     border: 0px;
+}
+.zhezhao{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(51, 51, 51, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+.tishi{
+    width: 5.5rem;
+    height: 1.5rem;
+    background-color: black;
+    border-radius: 10px;
+    margin: auto;
+    line-height: 1.5rem;
+    text-align: center;
+    font-family: PingFang-SC-Medium;
+    font-size: 0.34rem;
+    color:#ffffff;
+}
+.identifying{
+    height: 0.9rem;
+    width: 5.5rem;
+    margin: 0.3rem auto;
+    border-radius: 10px;
+}
+.yanzheng{
+    display: block;
+    height: 0.9rem;
+    width: 2.86rem;
+    float: left;
+    text-align: center;
+    font-family: PingFang-SC-Medium;
+    font-size: 0.34rem;
+    border-radius: 10px;
+    color:#999999;
+    border: 0px;
+}
+.huoqu{
+    display: block;
+    height: 0.9rem;
+    width: 2.34rem;
+    float: right;
+    text-align: center;
+    background-color: #f15b43;
+    font-family: PingFang-SC-Medium;
+    font-size: 0.34rem;
+    border-radius: 10px;
+    color:#ffffff;
+    border: 0px;
+}
+.main span{
+    width: 100%;
+    display: block;
+    height: 0.3rem;
+    margin: 0 auto;
+    text-align: center;
+    font-family: PingFang-SC-Medium;
+    font-size: 0.26rem;
+    color:#666666;
+    line-height: 0.3rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.6rem;
+}
+     
+
+
+

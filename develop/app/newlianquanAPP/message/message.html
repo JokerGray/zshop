@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>系统消息发布</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="css/summernote-bs4.css"> -->
+    <link rel="stylesheet" type="text/css" href="layer/theme/default/layer.css" />
+    <link rel="stylesheet" href="css/message.css" />
+    <style type="text/css">
+    	.ke-icon-images {
+		    background-image: url(assets/kindeditor-4.1.10/themes/default/default.png);
+		    background-position: 0px -496px;
+		    width: 16px;
+		    height: 16px;
+		}
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row subtitle">
+            系统消息发布
+        </div>
+        <div class="row ">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-1 control-label"><i class="tip">*</i>标题</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="title" placeholder="请输入标题" required="">
+                    </div>
+                    <div class="verify">
+                        标题不能为空
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-1 control-label">上传图片</label>
+                    <div class="uploadLeft uploads col-sm-6" id="licence1">
+                        <button id="upload1"></button>
+                        <div id="preview1" class="preview"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-1 control-label">详情</label>
+                    <div id="editor" class="edit col-sm-6">
+                        <textarea id="applicationform" name="content" style="width:100%;height:400px;visibility:hidden;"></textarea>
+                        <div id="textHide" class="dis-n"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-1 col-sm-10">
+                        <button type="button" class="btn btn-info" id="submit">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+         <!--从正文选择模态框 end-->
+         <div id="btn"></div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="layer/layer.js"></script>
+    <script type="text/javascript" src="js/plupload.full.min.js"></script>
+    <script src="assets/kindeditor-4.1.10/kindeditor-all-min.js"></script>
+    <script src="assets/kindeditor-4.1.10/kindeditor-min.js "></script>
+    <script src="assets/kindeditor-4.1.10/lang/zh_CN.js"></script>
+    <script src="js/utilNew.js"></script>
+    <script src="js/send_article.js"></script>
+    <script src="js/message.js"></script>
+</body>
+
+</html>

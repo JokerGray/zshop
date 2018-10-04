@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商户缴费状态</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/merchant_paystatu.css" />
+</head>
+<body>
+<div id="common-tool" class="clearfix p4">
+    <div id="search">
+        <button class="layui-btn layui-btn-small layui-btn-primary">
+            <i class="layui-icon">&#xe615;</i> 搜索
+        </button>
+    </div>
+</div>
+<div id="search-tool" class="clearfix">
+    <div class="input-group">
+        <span class="pull-left">商户名称：</span>
+        <input type="text" class="form-control media-input"  id="name" maxlength="11">
+    </div>
+    <div class="input-group">
+        <span class="pull-left">计费类型：</span>
+        <select class="form-control c0" id="chargeType">
+            <option value="">--请选择--</option>
+            <option value="1">普通商户</option>
+            <option value="2">合作商户</option>
+            <option value="3">代理商户</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <span class="pull-left">商户状态：</span>
+        <select class="form-control c0" id="locked">
+            <option value="">--请选择--</option>
+            <option value="0">锁定</option>
+            <option value="1">启用</option>
+        </select>
+    </div>
+    <!--<div class="input-group lasttime input-medium date-picker" data-date-format="yyyy-mm-dd">
+        <div class="input-group">
+            <span  class="jurisdiction-label pull-left" for="jurisdiction-begin">开始时间：</span>
+            <div class='date form-control' id='datetimepicker1'>
+                <input name="dtBegin" type="text"  id="jurisdiction-begin" placeholder="-请选择-" readonly="readonly">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+        <div class="input-group">
+            <span class="jurisdiction-label pull-left" for="jurisdiction-end">至 </span>
+            <div class='date form-control' id='datetimepicker2'>
+                <input name="dtEnd" type="text"  id="jurisdiction-end" placeholder="-请选择-" readonly="readonly">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+    </div>   -->
+    
+    <div class="input-group">
+        <button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearch">
+            搜索
+        </button>
+        <button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+            重置
+        </button>
+    </div>
+</div>
+<div class="table-lt clearfix">
+    <div id="noAudit" class="table-list clearfix">
+        <table lay-filter="tableNo" id="tableNo"></table>
+        <div id="laypageLeft" class="table-rgt"></div>
+    </div>
+</div>
+
+
+     
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/merchant_paystatu.js"></script>
+</html>

@@ -1,0 +1,110 @@
+.layui-table-view .layui-table{
+  width:100%;
+}
+.layui-table-box, .layui-table-view{
+  margin: 0;
+}
+.layui-form-item label{
+  display:block;
+  font: 14px/2em 微软雅黑;
+}
+.layui-laypage{
+  float: right;}
+
+.header{
+  padding:35px 0px;
+}
+.c333{
+  color: #333;}
+.m0a{
+  margin: 0 auto;
+  float: none;
+}
+div.layui-input-block{
+  margin-right: 20px;
+  margin-left: 0!important;}
+
+//俩选择器在一起
+.province_box{
+  select+div{
+    width: 48%;
+    display: inline-block;
+  }
+  select:nth-child(1)+div{
+   float: right;
+  }
+}
+.province_box2{
+  input{
+    width: 50%;
+    display: inline-block;
+  }
+  input:nth-child(1){
+    float: left;
+  }
+}
+
+//选择按钮
+.layui-btn+.layui-btn {
+  margin-left: 10px;
+}
+
+.op5 {
+  background: rgb(236, 236, 236);
+  color: #000;
+}
+.op5:hover {
+  color: #000;
+}
+
+//弹出层
+.app-table{
+  margin-top: 25px;
+  border-top: 2px solid #009688;
+}
+.layer-box{
+  padding: 30px 40px;
+}
+.app-layer{
+  padding:10px;
+  border: 1px solid #E3E3E3;
+  border-top: 2px solid #009688;
+  img{
+    max-width: 100%;
+    height: 180px;
+    margin: 0 auto;
+  }
+  .package {
+    height: 40px;
+    line-height: 40px;
+    background-color: #F5F5F5;
+    cursor: pointer;
+  }
+  .package-title {
+    float: left;
+    margin-left: 15px;
+  }
+  .layer-place {
+    display: none;
+    color: rgb(141, 141, 141);
+    text-align: center;
+    cursor: pointer;
+    font: 12px/30px 微软雅黑;
+  }
+
+  .package-some {
+    float: right;
+    >i.description {
+      font-style: normal;
+      color: #000;
+      font-size: 12px;
+    }
+    >i.icon {
+      padding: 5px;
+      color: #009688;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+
+  }
+}

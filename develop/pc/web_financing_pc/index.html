@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>财务自检数据模拟系统</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/plugins/select/bootstrap-select.min.css" rel="stylesheet"/>
+    <link href="css/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet">
+    <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="js/plugins/layer/theme/default/layer.css" rel="stylesheet" type="text/css">
+    <link href="common/common.css" rel="stylesheet" type="text/css">
+  	<link href="css/index.css" rel="stylesheet"/>
+  </head>
+  <body class="container-fluid">
+    	<div>
+    		<h1 class="text-center" style="background-color: #eee;">财务自检数据模拟系统</h1>
+    	</div>
+
+      <!-- position: fixed; -->
+    	<div class="row container-fluid">
+    		<!-- <form class="form-inline row"> -->
+    			<div class="col-md-offset-1 col-md-1 col-lg-offset-1 col-lg-1  col-xs-10" style="padding-bottom: 10px;">
+    				<button class="btn btn-primary" onclick="dataInit()">数据初始化</button>
+    			</div>
+    			<div id="oneId" class="col-md-offset-1 col-md-3 col-lg-offset-1 col-lg-3  col-xs-10" style="padding-bottom: 10px;">
+					  <!-- <div class="form-group"> -->
+					    <!-- <label>业务数：</label>
+					    <select id="selectOneId" class="select-jquery-plugin selectpicker show-tick form-control" multiple data-live-search="true" onchange="selectOneListen()">
+
+				       </select> -->
+					  <!-- </div> -->
+				  </div>
+  			  <div  id="twoId"  class="col-md-offset-1 col-md-3 col-lg-offset-1 col-lg-3  col-xs-10" style="padding-bottom: 10px;">
+  				  <!-- <div class="form-group"> -->
+  				    <!-- <label>线程数：</label>
+  				    <select id="selectTwoId" class="select-jquery-plugin selectpicker show-tick form-control" multiple data-live-search="true" onchange="selectTwoListen()" disabled="disabled">
+
+  			       </select> -->
+  				  <!-- </div> -->
+  			  </div>
+				 <div class="col-md-1 col-lg-1 col-xs-10">
+				 		<!-- <button id="startCeShiId" class="btn btn-info" onclick="startCeShi()">开始测试</button> -->
+				 </div>
+				<!-- </form> -->
+    	</div>
+
+    	<div class="hr-line background-color-cutting-line"></div>
+    	<div id="userListId" class="container-fluid row-margin-top">
+    			<!--<div class="text-center">
+    				<img src="img/5-121204193R0-50.gif" />
+    				<h2>数据加载中</h2>
+    			</div>-->
+      </div>
+
+    	<div class="hr-line background-color-cutting-line"></div>
+      <caption><label class="text-info">公司资金池</label>
+        <!-- <h3 class="text-right" style="display: inline;margin-left: 1520px;background-color: #64e264;">支付宝：2000</h3> -->
+      </caption>
+    	<div class="container-fluid row-margin-top">
+          <div class="col-md-6 col-lg-6 col-xs-12">
+            <table class="table table-hover">
+             <thead>
+               <tr>
+                 <th class="text-center">商户总余额</th>
+                 <th class="text-center">客户总余额</th>
+                 <th class="text-center">未完成总金额</th>
+                 <th class="text-center">未确认款项</th>
+                 <th class="text-center">总收入</th>
+                 <th class="text-center">总计</th>
+                 <th class="text-center">支付宝</th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr id="bonusPoolTbodyOneId" style="background-color: #f5f5f5;">
+
+                </tr>
+             </tbody>
+           </table>
+          </div>
+
+          <div class="col-md-6 col-lg-6 col-xs-12">
+            <table class="table table-hover">
+             <thead>
+               <tr>
+                 <th class="text-center">充值总额</th>
+                 <th class="text-center">提现总额</th>
+                 <th class="text-center">差额</th>
+                 <th class="text-center">状态</th>
+                </tr>
+             </thead>
+             <tbody>
+               <tr id="bonusPoolTbodyTwoId" style="background-color: #f5f5f5;">
+
+               </tr>
+             </tbody>
+           </table>
+          </div>
+	    </div>
+
+
+
+    	<div class="hr-line background-color-cutting-line"></div>
+      <div class="row">
+        <div class="container-fluid col-md-12 col-lg-6 col-xs-12">
+          <label class="text-info">前台系统记录</label>
+          <div>
+              <textarea id="textareaId" class="col-md-12 col-lg-12 col-xs-12 text-left" style="height:202px;font-size: 15px;background-color: #ddd;" readonly="readonly">
+              </textarea>
+          </div>
+        </div>
+        <div class="container-fluid col-md-12 col-lg-6 col-xs-12">
+          <label class="text-info">后台系统记录</label>
+          <div>
+              <textarea id="textareaTwoId" class="col-md-12 col-lg-12 col-xs-12 text-left" style="height:202px;font-size: 15px;background-color: #ddd;" readonly="readonly">
+              </textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="hr-line background-color-cutting-line"></div>
+
+      <div id="myAlert"  style="width:35%;">
+      	<!-- <a href="#" class="close" data-dismiss="alert">&times;</a>
+      	<strong>成功！</strong>结果是成功的。 -->
+      </div>
+
+      <div class="container-fluid">
+        <h3>功能按钮</h3>
+        <div id="dataLoadingLoad" class="text-center">
+          <!-- <img src="img/5-121204193R0-50.gif" style="height:55px;"/>
+          <p>数据加载中</p> -->
+        </div>
+
+        <div class="hr-line" style="background-color: #ccc;height: 1px;"></div>
+        <div class="row" style="height: 40px;font-size: 20px;">
+          <div class="col-md-5">
+              <!-- 客户-->
+              <div class="row">
+                    <div class="col-md-6" >
+                        <div class="text-center">
+                          <label class="text-info" style="margin-top: 5px;height: 30px;color:#03A9F4;">客户-A：</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center">
+                          <label class="text-info" style="margin-top: 5px;height: 30px;color:#03A9F4;">客户-B：</label>
+                        </div>
+                    </div>
+              </div>
+          </div>
+
+          <div class="col-md-2 text-center">
+          </div>
+          <!-- 商户 -->
+          <div class="col-md-5">
+              <!--  -->
+              <div class="row">
+                    <div class="col-md-6">
+                        <div class="text-center">
+                          <label style="margin-top: 5px;height: 30px;color:#03A9F4;">商户C：</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center">
+                          <label class="text-info" style="margin-top: 5px;height: 30px;color:#03A9F4;">商户D：</label>
+                        </div>
+                    </div>
+              </div>
+          </div>
+        </div>
+        <div class="hr-line" style="background-color: #ccc;height: 1px;"></div>
+      </div>
+
+    	<div class="container-fluid" style="margin-bottom: 45px;height:440px;overflow: auto;">
+          <div class="hr-line" style="background-color: #ccc;height: 1px;"></div>
+    			<div class="row">
+            <div class="col-md-5 zdy-div-height">
+                <!-- 客户a 和 客户b -->
+                <div class="row">
+                      <div class="col-md-6" >
+                          <div class="container-fluid row">
+                                <div class="col-md-4">
+                                      <button class="btn btn-info" onclick="consumeOrders(2070)">1-消费下单</button>
+                                </div>
+                                <div class="col-md-4">
+                                      <!-- <button class="btn btn-info" onclick="recharge(1)">2-充值</button> -->
+                                      <button class="btn btn-info" onclick="confirmReceipt(2070)">2-确认收货</button>
+                                </div>
+                                <div class="col-md-4">
+                                      <button class="btn btn-info" onclick="consumerReturn(2070)">3-消费退货</button>
+                                </div>
+                                <div class="col-md-4 col-md-4-zdy">
+                                      <button class="btn btn-info" onclick="theGoodsReturn(2070)">4-收货退货</button>
+                                </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="consumeOrders(2080)">5-消费下单</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="confirmReceipt(2080)">6-确认收货</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="consumerReturn(2080)">7-消费退货</button>
+                              </div>
+                              <div class="col-md-4 col-md-4-zdy">
+                                    <button class="btn btn-info" onclick="theGoodsReturn(2080)">8-收货退货</button>
+                              </div>
+                          </div>
+                      </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 text-center vertical-vertical-virgule">
+                <h1 class="zdy-btn-list-h1">云店购物</h1>
+            </div>
+
+            <!-- 商户 -->
+            <div class="col-md-5 zdy-div-height">
+                <!--  -->
+                <div class="row">
+                      <div class="col-md-6">
+
+                      </div>
+                      <div class="col-md-6">
+
+                      </div>
+                </div>
+            </div>
+    			</div>
+
+          <div class="hr-line" style="background-color: #ccc;height: 1px;"></div>
+          <div class="row">
+            <div class="col-md-5 zdy-div-height">
+                <!-- 客户a 和 客户b -->
+                <div class="row">
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="balancePay(2070)">充值余额</button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="balancePay(2080)">充值余额</button>
+                              </div>
+                          </div>
+                      </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 text-center vertical-vertical-virgule">
+                <h1>充值缴费</h1>
+            </div>
+
+            <!-- 商户 -->
+            <div class="col-md-5 zdy-div-height">
+                <div class="row">
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="balancePay(65)">充值余额</button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="balancePay(1070)">充值余额</button>
+                              </div>
+                          </div>
+                      </div>
+                </div>
+            </div>
+    			</div>
+
+          <div class="hr-line" style="background-color: #ccc;height: 1px;"></div>
+          <div class="row">
+            <div class="col-md-5 zdy-div-height">
+                <!-- 客户a 和 客户b -->
+                <div class="row">
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="commissionPayment(2070)">佣金支付</button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="commissionPayment(2080)">佣金支付</button>
+                              </div>
+
+                          </div>
+                      </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 text-center vertical-vertical-virgule">
+                <h1>商户升级</h1>
+            </div>
+
+            <!-- 商户 -->
+            <div class="col-md-5 zdy-div-height">
+                <div class="row">
+                      <div class="col-md-6">
+
+                          <div class="container-fluid row">
+                              <div class="col-md-5">
+                                    <button class="btn btn-info" onclick="upgradeApplyFor(65,2,1)">合作商户线上升级</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="passTheAudit(65)">审核通过</button>
+                              </div>
+                          </div>
+
+                      </div>
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                            <div class="col-md-5">
+                                  <button class="btn btn-info" onclick="upgradeApplyFor(1070,3,1)">代理商户线上升级</button>
+                            </div>
+                            <div class="col-md-4">
+                                  <button class="btn btn-info" onclick="passTheAudit(1070)">审核通过</button>
+                            </div>
+                          </div>
+                      </div>
+                </div>
+            </div>
+    			</div>
+
+
+          <div class="hr-line" style="background-color: #ccc;height: 1px;"></div>
+          <div class="row">
+            <div class="col-md-5 zdy-div-height">
+                <!-- 客户a 和 客户b -->
+                <div class="row">
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="zhuanWenZhengFaBu(2070)">转文赚转发</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="ZhuanWenZhengChaKan(2070)">转文赚查看</button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="zhuanWenZhengFaBu(2080)">转文赚转发</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="ZhuanWenZhengChaKan(2080)">转文赚查看</button>
+                              </div>
+                          </div>
+                      </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 text-center vertical-vertical-virgule">
+                <h1>转文赚</h1>
+            </div>
+
+            <!-- 商户 -->
+            <div class="col-md-5 zdy-div-height">
+                <div class="row">
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="zhuanWenEarn(65)">转文赚发布</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="ZhuanWenZhengChaKan(65)">转文赚查看</button>
+                              </div>
+                          </div>
+
+                      </div>
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                            <div class="col-md-4">
+                                  <button class="btn btn-info" onclick="zhuanWenEarn(1070)">转文赚发布</button>
+                            </div>
+                            <div class="col-md-4">
+                                  <button class="btn btn-info" onclick="ZhuanWenZhengChaKan(1070)">转文赚查看</button>
+                            </div>
+                          </div>
+                      </div>
+                </div>
+            </div>
+    			</div>
+
+
+          <div class="hr-line" style="background-color: #ccc;height: 1px;"></div>
+          <div class="row">
+            <div class="col-md-5 zdy-div-height">
+                <!-- 客户a 和 客户b -->
+                <div class="row">
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="shareDiscountCoupon(2070)">分享优惠券</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="buyDiscountCoupon(2070)">购买优惠券</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="tryOutDiscountCoupon(2070)">使用优惠券</button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="shareDiscountCoupon(2080)">分享优惠券</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="buyDiscountCoupon(2080)">购买优惠券</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="tryOutDiscountCoupon(2080)">使用优惠券</button>
+                              </div>
+                          </div>
+                      </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 text-center vertical-vertical-virgule">
+                <h1>分享赚</h1>
+            </div>
+
+            <!-- 商户 -->
+            <div class="col-md-5 zdy-div-height">
+                <div class="row">
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info" onclick="discountCouponMake(65)">优惠券制作</button>
+                              </div>
+                          </div>
+
+                      </div>
+                      <div class="col-md-6">
+                          <div class="container-fluid row">
+                            <div class="col-md-4">
+                                  <button class="btn btn-info" onclick="discountCouponMake(1070)">优惠券制作</button>
+                            </div>
+                          </div>
+                      </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="hr-line" style="background-color: #ccc;height: 1px;"></div>
+          <div class="row">
+            <div class="col-md-5 zdy-div-height">
+
+            </div>
+            <div class="col-md-2 text-center vertical-vertical-virgule">
+                <h1 class="zdy-btn-list-h1">主播劳务税</h1>
+            </div>
+
+            <!-- 商户 -->
+            <div class="col-md-5 zdy-div-height">
+              <div class="row">
+                    <div class="col-md-6" >
+                        <div class="container-fluid row zdy-div-border-bottom-split-line">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info col-md-4-zdy" onclick="laborApplication(65)">劳务申请</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info col-md-4-zdy" onclick="enterpriseApplication(65)">劳务审核</button>
+                              </div>
+                        </div>
+                        <div class="container-fluid row" style="padding-top: 5px;">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info col-md-4-zdy" onclick="enterpriseApplication(65)">企业申请</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info col-md-4-zdy" onclick="createLaborInspection(65)">发票审核</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info col-md-4-zdy" onclick="laborApplication(65)">企业审核</button>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="container-fluid row zdy-div-border-bottom-split-line">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info col-md-4-zdy" onclick="laborApplication(1070)">劳务申请</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info col-md-4-zdy" onclick="enterpriseApplication(1070)">劳务审核</button>
+                              </div>
+                        </div>
+                        <div class="container-fluid row" style="padding-top: 5px;">
+                              <div class="col-md-4">
+                                    <button class="btn btn-info col-md-4-zdy" onclick="enterpriseApplication(1070)">企业申请</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info col-md-4-zdy" onclick="createLaborInspection(1070)">发票审核</button>
+                              </div>
+                              <div class="col-md-4">
+                                    <button class="btn btn-info col-md-4-zdy" onclick="laborApplication(1070)">企业审核</button>
+                              </div>
+                        </div>
+                    </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="hr-line" style="background-color: #ccc;height: 2px;"></div>
+          <div class="row">
+            <div class="col-md-5 zdy-div-height">
+
+            </div>
+            <div class="col-md-2 text-center vertical-vertical-virgule">
+                <h1 class="zdy-btn-list-h1">新商户升级</h1>
+            </div>
+
+            <!-- 商户 -->
+            <div class="col-md-5 zdy-div-height">
+              <div class="row">
+                    <div class="col-md-6" >
+                        <div class="container-fluid row">
+                              <div class="col-md-6">
+                                    <button class="btn btn-info" onclick="upgradeMerchantApply(65,3,1)">合作商户线上升级申请</button>
+                              </div>
+                              <div class="col-md-6">
+                                    <button class="btn btn-info" onclick="onLineAudit(63)">合作商户线上升级审核通过</button>
+                              </div>
+                              <div class="col-md-6">
+                                    <button class="btn btn-info" onclick="">合作商户线上升级推荐人佣金审核通过</button>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="container-fluid row">
+                            <div class="col-md-6">
+                                  <button class="btn btn-info" onclick="upgradeMerchantApply(1070,4,1)">代理商户线上升级申请</button>
+                            </div>
+                            <div class="col-md-6">
+                                    <button class="btn btn-info" onclick="OnLineAudit(1070)">代理商户线上升级审核通过</button>
+                            </div>
+                            <div class="col-md-6">
+                                    <button class="btn btn-info" onclick="">代理商户线上升级推荐人佣金审核通过</button>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+
+            </div>
+          </div>
+    	</div>
+
+      <!-- json数据并格式化输出 -->
+      <div class="" id="resultDiv">
+
+      </div>
+
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/select/bootstrap-select.min.js"></script>
+    <script src="js/plugins/jeditable/jquery.jeditable.js"></script>
+    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="js/plugins/layer/layer.js" type="text/javascript"></script>
+    <script src="common/common.js" charset="utf-8"></script>
+    <script src="js/index.js"></script>
+    <script src="js/wjzq.js"></script>
+    <script src="js/zblws.js"></script>
+    <script src="js/upgradeMerchant.js"></script>
+
+  </body>
+</html>

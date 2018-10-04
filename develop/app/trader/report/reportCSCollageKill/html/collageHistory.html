@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>历史拼团记录</title>
+    <link rel="stylesheet" href="../../../assets/common/css/common.css">
+    <link rel="stylesheet" href="../../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../css/collageHistory.css">
+</head>
+<body>
+<!--title和关闭按钮-->
+<div class="header">
+    <span>拼团活动</span>
+    <i class="closeBtn">关闭</i>
+</div>
+<!--路径显示-->
+<div class="path">
+    <span class="shopNameText"></span>
+    <i> > </i>
+</div>
+<!--报表主体部分-->
+<div class="mainReport">
+    <div class="title-filter">
+        <div class="tableTitle">拼团活动记录</div>
+        <div class="filterBox layui-form">
+            <div>
+                <select id="statusSelector" lay-filter="statusSelector" lay-search>
+                    <option value="">全部状态</option>
+                    <option value="0">未开始</option>
+                    <option value="1">进行中</option>
+                    <option value="2">已结束</option>
+                    <option value="3">已失效</option>
+                    <option value="4">已删除</option>
+                </select>
+            </div>
+            <div>
+                <a href="JavaScript:;" class="exportBtn">
+                    <i></i>
+                    <span>导出</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="reportTable">
+        <table class="layui-table">
+            <colgroup>
+                <col width="80">
+                <col width="200">
+                <col width="200">
+                <!--<col width="150">-->
+                <col width="150">
+                <col width="250">
+                <col width="250">
+                <col width="250">
+                <col width="150">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>拼团活动名称</th>
+                <th>商品名称</th>
+                <!--<th>活动商品库存</th>-->
+                <th>拼团固定人数</th>
+                <th>创建时间</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr>-->
+                <!--<td>01</td>-->
+                <!--<td>春雨经典补水面膜"</td>-->
+                <!--<td>资生堂蓝胖子防晒霜</td>-->
+                <!--<td>111</td>-->
+                <!--<td>111</td>-->
+                <!--<td>2018-08-22 16:03</td>-->
+                <!--<td>2018-08-22 16:03</td>-->
+                <!--<td>2018-08-22 16:03</td>-->
+                <!--<td>未开始</td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+    <div class="pageBox clearfix">
+        <div id="pageSelector"></div>
+    </div>
+</div>
+</body>
+<script src="../../../assets/jquery/jquery.min.js"></script>
+<script src="../../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../../assets/common/js/utils.js"></script>
+<script src="../js/collageHistory.js"></script>
+<script>
+    //动态设置报表容器高度
+    $('.reportTable').height($(window).height()-$('.header').height()-$('.path').height()-$('.title-filter').height()-$('.pageBox').height()-40);
+</script>
+</html>

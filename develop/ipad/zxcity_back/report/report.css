@@ -1,0 +1,196 @@
+a:hover, a:focus, a:active, a:link{
+    text-decoration: none;
+}
+ul, ol{
+    margin:0;
+    padding:0;
+}
+li{
+    list-style: none;
+}
+body{
+    font-family:'microsoft yahei';
+}
+.main-wrapper{
+
+}
+.main-tab .tab-inner{
+
+}
+.main-tab .tab-item{
+    display:inline-block;
+    width:140px;
+    height:50px;
+    line-height: 50px;
+    border-radius:5px 5px 0 0;
+    background-color:#eee;
+    box-shadow: inset 0 -1px 0 #ddd;
+    font-size:20px;
+    color:#666;
+    text-align: center;
+}
+
+.main-tab .tab-item:hover,
+.main-tab .tab-item.active{
+    background-color:#1c84c6;
+    color:#fff;
+}
+.main-wrapper .main-content{
+    background-color: #f7f7f7;
+}
+.sub-tab{
+    margin:30px 0;
+}
+.sub-tab .btn{
+    width:120px;
+    height:42px;
+    line-height: 42px;
+    padding:0;
+    margin:0;
+    background-color:#fff;
+    border:1px solid #e5e5e5;
+    font-size:18px;
+    color:#999;
+}
+.sub-tab .btn:hover,
+.sub-tab .btn.active{
+    background-color:#fda359;
+    color:#fff;
+}
+.statistical-box{
+    width:100%;
+    margin-bottom:30px;
+    overflow:hidden;
+}
+.statistical-box .statistical-item{
+    position:relative;
+    float:left;
+    width:23%;
+    height:160px;
+    background-color:#fff;
+    border-top:3px solid #ccc;
+}
+
+.statistical-box .statistical-item+.statistical-item{
+    margin-left:2.5%;
+}
+.statistical-item .title{
+    height:60px;
+    padding-left:20px;
+    border-bottom:1px solid #ddd;
+}
+
+.statistical-item .title .name{
+    line-height: 60px;
+    color:#333;
+    font-size:16px;
+}
+
+.statistical-item .selector{
+    float:right;
+    width:60px;
+    height:20px;
+    margin-top:20px;
+    margin-right:10px;
+    font-size:14px;
+}
+
+.selector .dropdown-toggle{
+    width:60px;
+    height:20px;
+    padding:0;
+    margin:0;
+    border-radius:0;
+    background-color:#4d99ca;
+    color:#fff;
+}
+.selector .dropdown-toggle .caret{
+    color:#fff;
+    border-width: 6px;
+    margin-left:6px;
+}
+.selector .dropdown-menu{
+    width:100%;
+    min-width:60px;
+    margin:0;
+    padding:0;
+    text-align:center;
+    border-radius:0;
+}
+.dropdown-menu .divider{
+    margin:2px 0;
+}
+.statistical-item .info{
+    padding-left:20px;
+}
+.statistical-item .info .num{
+    font-size:36px;
+    color:#999;
+}
+.statistical-item .info .desc{
+    font-size:14px;
+    color:#999;
+}
+.statistical-item .info .contrast{
+    position:absolute;
+    right:20px;
+    bottom:15px;
+    font-size:14px;
+}
+.statistical-item .info .contrast.down{
+    color:#ed5565;
+}
+.statistical-item .info .contrast.up{
+    color:#1ab394;
+}
+
+.chart-box{
+    position:relative;
+    width:100%;
+    height:500px;
+    background-color:#fff;
+}
+.chart-box .chart-selector{
+    position:absolute;
+    top:10px;
+    right:40px;
+}
+.chart-selector .btn{
+    width:88px;
+    height:40px;
+    padding:0;
+    margin:0;
+    border:1px solid #e5e5e5;
+    background-color:#fff;
+    color:#999;
+    font-size:20px;
+}
+.chart-selector .btn:hover,
+.chart-selector .btn.active{
+    background-color:#53cbf8;
+    color:#fff;
+}
+.settlement .chart-box{
+    height:600px;
+}
+#settlementChart,
+#settlementList{
+    width:50%;
+    height:100%;
+}
+#settlementList .table-box{
+    height:500px;
+    margin-top:50px;
+    padding:20px;
+    border-radius:30px;
+}
+
+#settlementList.list1 .table-box{
+    border:4px solid #3fbe39;
+}
+#settlementList.list2 .table-box{
+    border:4px solid #fda359;
+}
+#settlementList.list3 .table-box{
+    border:4px solid #53cbf8;
+}

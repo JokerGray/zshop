@@ -1,0 +1,284 @@
+.advertising{
+    background: #fff;
+}
+.advertising .advertising-topbox{
+    background: #f8f6f7;
+}
+.adver-title{
+    font-size: 16px;
+}
+.search-box input{
+    background: #f8f6f7;
+}
+/*tab切换*/
+.area-box{
+    border: 0;
+    width: 60%;
+    float: left;
+}
+.area-box .layui-tab-title .layui-this{
+    border: 2px solid #3b9bff !important;
+    height: 42px;
+    line-height: 42px;
+    color:#3b9bff;
+    border-bottom: 2px solid #fff !important;
+    z-index: 400;
+}
+.area-box .layui-tab-title li{
+    float: left;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    border: 2px solid #dfdfdf;
+    border-bottom: none;
+    border-right: none;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.area-box .layui-tab-title{
+    height: 40px;
+    background: #fff;
+    /*margin:0;*/
+}
+.area-box .layui-tab-title li:first-child{
+    margin-left: 0;
+    border-bottom: none !important;
+}
+.area-box .layui-tab-title li:last-child{
+    border-right:2px solid #dfdfdf;
+}
+.area-box .layui-tab-content{
+    border:2px solid #3b9bff;
+}
+.area-box .layui-tab-card{
+    border: none;
+}
+.area-box .item-list .item-h4{
+    width: 122px;
+    height: 49px;
+    background: url("../img/tabbtn.png") no-repeat;
+    background-position: center;
+    color:#fff;
+    line-height: 49px;
+    cursor: pointer;
+    font-size: 15px;
+    text-align: left;
+    padding-left: 45px;
+}
+.area-box .item-list{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.area-box .item-list li{
+    padding: 0 20px;
+    background: #8c8e8b;
+    color:#fff;
+    display: inline-block;
+    float: left;
+    margin:10px 0 10px 30px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 56px;
+    line-height: 56px;
+}
+.area-box .item-list li.avl{
+    box-shadow: 2px 2px 20px #aaa;
+}
+.adver-tip{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+}
+.adver-tip .have-set,.no-set{
+    width: 88px;
+    float: right;
+}
+.adver-tip i{
+    display: block;
+    width: 20px;
+    height:20px;
+    float: left;
+    margin:10px 10px 0 0;
+}
+.adver-tip .have-set i{
+    background: #f4887b;
+}
+.adver-tip .no-set i{
+    background: #8c8e8b;
+}
+.adver-tip .no-set i{
+    background: #8c8e8b;
+}
+
+
+
+/*内容*/
+.content-all{
+    width: 1380px;
+    margin: 17px auto;
+    height:632px;
+
+}
+.area-box .showlist{
+    height: 550px;
+    overflow: auto;
+}
+.show-box{
+    display: none;
+    width: 38%;
+    height: 300px;
+    float: right;
+    margin-top: 50px;
+    padding: 45px 10px;
+    border:2px solid #3b9bff;
+}
+.show-box .left-img{
+   border:2px solid #dfdfdf;
+   /* width: 350px;
+    height: 210px;*/
+    overflow: hidden;
+    float: left;
+    box-sizing: border-box;
+}
+.show-box i{
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: url("../img/default.png") no-repeat;
+    background-position: center;
+}
+.show-box .right-img{
+    border:2px solid #dfdfdf;
+    width: 140px;
+    height: 210px;
+    float: right;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+/*设置*/
+.setting{
+    display: none;
+    width: 1380px;
+    margin: 0 auto;
+}
+.setting .ctrlbtn{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding:20px 0 ;
+}
+.setting .ctrlbtn a{
+    display: block;
+    float: left;
+    background: #3b9bff;
+    color: #fff;
+    width: 94px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.setting .ctrlbtn a:hover {
+    background: #4fa5fe;
+}
+/*广告*/
+.detail{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.detail li{
+    width: 240px;
+    height: 220px;
+    float: left;
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    margin: 20px;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+}
+.detail li.avl{
+    background: #d2e4f8;
+}
+/*.detail li:nth-of-type(5n+0){
+    margin-right: 0;
+}*/
+.detail li .layui-form-checkbox{
+    float: right;
+    margin: 0;
+}
+.detail li .adverimg{
+    width: 240px;
+    height: 144px;
+    background: #fff;
+    overflow: hidden;
+}
+.detail li img{
+    display: block;
+    margin: 0 auto !important;
+    height: 144px;
+}
+.detail li .detail-name{
+    font-size: 14px;
+    color:#383131;
+    display: block;
+    padding: 15px;
+}
+.detail li .look{
+    position: absolute;
+    z-index: 1;
+    right: 2px;
+    bottom:2px;
+    cursor: pointer;
+}
+.detail li .look i{
+    font-size: 22px;
+    color:#4fa5fe;
+}
+.demo111{
+    display: none;
+    width: 880px;
+    height: 528px;
+    margin: 5px auto;
+}
+.demo111 .imgs{
+    width: 100%;
+    height: 100%;
+}
+.demo111 .imgs .leftimginfo{
+    width: 100%;
+    height: 100%;
+}
+.demo111 .imgs .leftvideo{
+    width: 100%;
+    height: 100%;
+}
+.lfu img{
+   display: inline-block;
+    width: 100%;
+}
+.leftvideo .videos{
+    width: 400px;
+    height: 230px;
+    float: left;
+    margin: 20px;
+    border: 1px solid #dfdfdf;
+}
+.setal{
+    background: #f4887b !important;
+}
+.nodataad{
+    display: none;
+    text-align: center;
+    height: 500px;
+    width: 100%;
+    background: url(../img/nodata2.png) no-repeat;
+    background-position: center;
+}

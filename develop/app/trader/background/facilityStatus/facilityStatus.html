@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>设施设备占用情况</title>
+    <link rel="stylesheet" href="../../assets/paging/dist/paging.css">
+    <link rel="stylesheet" href="../../assets/common/css/paging.css">
+    <link rel="stylesheet" href="../../assets/select2/select2.min.css">
+    <link rel="stylesheet" href="css/facilityStatus.css">
+</head>
+<body>
+<!--头部tab页和筛选条件框-->
+<div class="header">
+    <div class="searchBox">
+        <div class="selectShop">
+            <label>店铺：</label>
+            <select id="selectShop"></select>
+        </div>
+        <div class="facilityStatus">
+            <label>设备占用：</label>
+            <select id="facilityStatus">
+                <option value="">全部</option>
+                <option value="1">实际占用</option>
+                <option value="0">空闲</option>
+            </select>
+        </div>
+        <div class="timeSelector">
+            <label>预约时间：</label>
+            <select id="timeSelector"></select>
+        </div>
+    </div>
+</div>
+<!--页面主要内容-->
+<div class="contentBox">
+    <div class="tabBar">
+        <!--菜单选项列表-->
+        <div class="menu">
+            <!-- <a href="javascript:;" data-cate="1" class="active">房间</a>
+            <a href="javascript:;" data-cate="2">床位</a>
+            <a href="javascript:;" data-cate="3">座位</a>
+            <a href="javascript:;" data-cate="4">其他</a>
+            <a href="javascript:;" data-cate="5">设备</a> -->
+        </div>
+        <!--设备占用说明-->
+        <div class="occupiedDescription">
+            <div class="statusInstructions">
+                <span>预约占用</span>
+                <span>实际占用</span>
+                <span>空闲</span>
+            </div>
+            <button class="exportBtn">批量导出</button>
+            <a href="javascript:;" class="hide" id="downloadBtn" download=""></a>
+        </div>
+    </div>
+    <div class="main">
+
+    </div>
+    <!--<div class="selector-paging"></div>-->
+    <div class="mask"></div>
+</div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="./js/base.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="../../assets/jquery-qrcode/jquery.qrcode.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/layer-v3.1.1/layer.js"></script>
+<script src="../../assets/paging/dist/paging.js"></script>
+<script src="../../assets/select2/select2.min.js"></script>
+<!-- <script src="js/facilityStatus.js"></script> -->
+<script>
+    var newScript = document.createElement('script');
+    newScript.src = "./js/facilityStatus.js?v=" + Math.random();
+    $('body').append(newScript);
+</script>
+<!--查看占用情况-->
+<script type="text/html" id="userStatueTpl">
+    <ul class="clearfix">
+        {{each data item index}}
+        {{if item.presaleId == 0&&item.isBespoke == 0}}
+        <li class="free">
+            <h4 title="{{item.title}}">{{item.title}}</h4>
+            <p>可容纳{{item.maxNum}}人</p>
+            <div class="erCodeIcon"
+                 data-facilityId="{{item.id}}"
+                 data-flag="true"
+                 title="点击查看二维码"
+                 data-shopId="{{item.shopId}}"></div>
+            <div class="erCodeBox">
+                <div class="erCode"></div>
+                <a href="javascript:;" class="downloadBtn" download="{{item.title}}">下载</a>
+            </div>
+        </li>
+        {{else if item.presaleId > 0&&item.isBespoke == 0}}
+        <li class="used">
+            <h4 title="{{item.title}}">{{item.title}}</h4>
+            <p title="{{item.purchaseName}}">{{item.purchaseName}}</p>
+            <p>订单号：{{item.presaleId}}</p>
+            <p>顾客：{{item.accountName}}</p>
+            <p><img src="./image/clock.png"><span>{{item.startTime.substr(0,16)}}</span></p>
+            <p><img src="./image/people.png"><span>{{item.waiterName}}</span></p>
+            <div class="erCodeIcon"
+                 data-facilityId="{{item.id}}"
+                 data-flag="true"
+                 title="点击查看二维码"
+                 data-shopId="{{item.shopId}}"></div>
+            <div class="erCodeBox">
+                <div class="erCode"></div>
+                <a href="javascript:;" class="downloadBtn" download="{{item.title}}">下载</a>
+            </div>
+        </li>
+        {{else if item.isBespoke == 1&&item.presaleId == 0}}
+        <li class="InAppointment">
+            <h4 title="{{item.title}}">{{item.title}}</h4>
+            <p>可容纳{{item.maxNum}}人</p>
+            <div class="erCodeIcon"
+                 data-facilityId="{{item.id}}"
+                 data-flag="true"
+                 title="点击查看二维码"
+                 data-shopId="{{item.shopId}}"></div>
+            <div class="erCodeBox">
+                <div class="erCode"></div>
+                <a href="javascript:;" class="downloadBtn" download="{{item.title}}">下载</a>
+            </div>
+        </li>
+        {{/if}}
+        {{/each}}
+    </ul>
+</script>
+</html>

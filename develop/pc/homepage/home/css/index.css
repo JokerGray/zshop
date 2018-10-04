@@ -1,0 +1,487 @@
+html, body{
+	font-size: 16px;
+}
+
+/*鼠标移入放大*/
+.hoverEnlarge{
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-ms-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+}
+.hoverEnlarge:hover{
+	-webkit-transform: scale(1.1, 1.1);
+	-moz-transform: scale(1.1, 1.1);
+	-ms-transform: scale(1.1, 1.1);
+	-o-transform: scale(1.1, 1.1);
+	transform: scale(1.1, 1.1);
+}
+/*视频*/
+.videoContent{
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	vertical-align: top;
+}
+
+.detailIcon{
+	width: 10rem;
+	height: 2.8125rem;
+	margin: 1.375rem 0 0 1.5rem;
+    vertical-align: top;
+	background-image: url(../img/other_xiangqing.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	cursor: pointer;
+}
+/*---------------------------第一页------------------------------*/
+.page1{
+	background-image: url(../img/play.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.page1Content{
+	position: relative;
+	display: table-cell;
+	width: 100vw;
+	height: 100vh;
+	vertical-align: middle;
+	color: #eee;
+	text-align: center;
+	background: url(../img/top_bg_mesh.png);
+}
+.page1Content .titleContent{
+	text-shadow: 0 0 5px #777;
+}
+.page1Content .title{
+	font-size: 4.125rem;
+	font-weight: 200;
+	text-shadow: 0 0 5px #777;
+}
+.page1Content .subtitle{
+	font-size: 2.5rem;
+	font-weight: lighter;
+	margin: 7.5rem 0 2.5rem;
+}
+.page1Content .downIconContent{
+    display: block;
+    bottom: 0;
+    width: 100%;
+    padding: 0 0 1.5rem;
+    text-align: center;
+}
+.page1Content .downloadIcon{
+	display: block;
+	margin: 0 auto 0;
+	width: 15.25rem;
+	height: 4.875rem;
+	background-image: url(../img/top_download.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	cursor: pointer;
+}
+.page1Content .videoIcon{
+	display: block;
+	width: 15.25rem;
+	height: 4.875rem;
+	margin: 1.25rem auto;
+	background-image: url(../img/jiaoxue.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	cursor: pointer;
+}
+.page1Content .downIcon{
+	position: absolute;
+	width: 2.8125rem;
+	height: 4.8125rem;
+	bottom: 1.5rem;
+	left: 50%;
+	margin-left: -1.4rem;
+	background-image: url(../img/top_jiantou.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	cursor: pointer;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-ms-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+}
+.page1Content .downIcon:hover{
+	-webkit-transform: translateY(1rem);
+	-moz-transform: translateY(1rem);
+	-ms-transform: translateY(1rem);
+	-o-transform: translateY(1rem);
+	transform: translateY(1rem);
+}
+/*---------------------------第二页------------------------------*/
+.page2{
+	margin: 0 auto;
+	max-width: 1440px;
+}
+.page2 .titleContent{
+	display: block;
+	padding:0 0 3.125rem 6.25rem;
+	width: 34.375rem;
+}
+.page2 .titleContent .appContent{
+	display: block;
+	margin-top: 4.5rem;
+	height: 3.125rem;
+    white-space: nowrap;
+}
+.page2 .appContent>div{
+	display: inline-block;
+}
+.page2 .appContent .appTitle{
+	font-size: 2.5rem;
+	color: #666;
+	line-height: 3.125rem;
+	letter-spacing: 0.0625rem;
+    vertical-align: top;
+}
+.page2 .appContent .appTitle p{
+	display: block;
+	color: #999999;
+	font-size: 1.5rem;
+	line-height: 1.5rem;
+	padding: 0.5rem 0 0 0;
+	margin: 0;
+}
+.page2 .appContent .appIcon{
+	margin-top: 0.7rem;
+	margin-left: 0.5rem;
+	padding-right: 1.5rem;
+	border-right: 0.0625rem solid #eee;
+}
+.page2 .appContent .iosIcon, .page2 .appContent .androidIcon{
+	display: block;
+	width: 2.625rem;
+	height: 1.375rem;
+	background-image: url(../img/other_ios.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.page2 .appContent .androidIcon{
+	margin-top: 0.3125rem;
+	width: 4.8125rem;
+	background-image: url(../img/other_Android.png);
+}
+.page2 .detail{
+	display: block;
+	margin-top: 7rem;
+	font-size: 1rem;
+	color: #333;
+    line-height: 1.9;
+}
+.page2 .phoneContent{
+	position: absolute;
+	display: table-cell;
+	top: 0;
+	right: 0;
+    width: 100%;
+	height: 100%;
+	max-width: 53.125rem;
+	background-image: url(../img/zplatform_bg.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: right;
+	pointer-events: none;
+}
+.page2 .phoneContent .iphoneLayer{
+	position: absolute;
+	display: block;
+	width: 14rem;
+	height: 100%;
+	right: 50%;
+	background-image: url(../img/zxcs_tanchu.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	z-index: 999;
+}
+.page2 .phoneContent .iphone{
+	display: block;
+	margin: 0 auto;
+	width: 16.4375rem;
+	height: 100%;
+	background-image: url(../img/zxcs_iphone.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+
+/*---------------------------第三页------------------------------*/
+.page3{
+	background-color: #f7f9fc;
+}
+.page3 .page3Content{
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 90rem;
+	height: 100%;
+}
+.page3 .phoneContent{
+	position: relative;
+	display: inline-block;
+    width: 100%;
+	height: 100%;
+	max-width: 31.25rem;
+	min-height: 37.5rem;
+	margin-left: 6.25rem;
+	background-image: url(../img/zmaster_bg.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	pointer-events: none;
+}
+.page3 .phoneContent .iphoneLayer{
+	position: absolute;
+	top: 0;
+	width: 14rem;
+	height: 100%;
+	right: 0;
+	background-image: url(../img/zmaster_tanchu.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	z-index: 999;
+}
+.page3 .phoneContent .iphone{
+	display: block;
+	margin: 0 auto;
+	width: 16.4375rem;
+	height: 100%;
+	background-image: url(../img/zmaster_iphone.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+.page3 .titleContent{
+	display: block;
+	width: 34.375rem;
+    margin-left: 9.375rem;
+    vertical-align: middle;
+}
+.page3 .titleContent .appContent{
+	display: block;
+	margin-top: 4.5rem;
+	height: 3.125rem;
+    white-space: nowrap;
+}
+.page3 .appContent>div{
+	display: inline-block;
+}
+.page3 .appContent .appTitle{
+	font-size: 2.5rem;
+	color: #666;
+	line-height: 3.125rem;
+	letter-spacing: 0.0625rem;
+    vertical-align: top;
+}
+.page3 .appContent .appTitle p{
+	display: block;
+	color: #999999;
+	font-size: 1.5rem;
+	line-height: 1.5rem;
+	padding: 0.5rem 0 0 0;
+	margin: 0;
+}
+.page3 .appContent .appIcon{
+	margin-top: 0.7rem;
+	margin-left: 0.5rem;
+	padding-right: 1.5rem;
+	border-right: 1px solid #eee;
+}
+.page3 .appContent .iosIcon, .page2 .appContent .androidIcon{
+	display: block;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.page3 .appContent .iosIcon{
+	width: 2.625rem;
+	height: 1.375rem;
+	background-image: url(../img/other_ios.png);
+}
+.page3 .appContent .androidIcon{
+	margin-top: 0.3125rem;
+    height: 1.375rem;
+	width: 4.8125rem;
+	background-image: url(../img/other_Android.png);
+}
+.page3 .detail{
+	display: block;
+	margin-top: 4.5rem;
+	font-size: 1rem;
+	color: #333;
+    line-height: 1.9;
+}
+/*---------------------------第四页------------------------------*/
+.page4{
+	background-image: url(../img/zshop_bg.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+.page4 .appTitle small{
+	display: block;
+	font-size: 0.8rem;
+	line-height: 0.8rem;
+	padding: 10px 0 0 2px;
+	color: #999999;
+}
+.page4 .appTitle p{
+	display: block;
+	font-size: 1.5rem;
+	line-height: 1.5rem;
+	padding-top: 0.875rem;
+}
+.page4 .padContent{
+	position: absolute;
+	top: 0;
+	right: 100px;
+    width: 100%;
+	height: 100%;
+	max-width: 32.75rem;
+	background-image: url(../img/zshop_ipad.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+.page4 .detail{
+	margin-top: 7rem;
+}
+/*---------------------------第五页------------------------------*/
+.page5 .titleContent{
+	display: table-cell;
+	height: 100vh;
+	margin: 0;
+	vertical-align: middle;
+}
+.page5 .circleContent{
+	position: absolute;
+	display: block;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    padding: 10rem 2rem 2rem 2rem;
+}
+@media only screen and (max-width: 1600px) {
+	.page5 .circleContent{
+		padding: 8rem 1rem 1rem 1rem;
+	}
+}
+@media only screen and (max-width: 1440px) {
+	.page5 .circleContent{
+		padding: 6rem 0 0 0;
+	}
+}
+.page5 .circleBg{
+	position: relative;
+	display: block;
+	width: 54.1875rem;
+	height: 100%;
+	max-width: 100%;
+	pointer-events: none;
+	background-image: url(../img/zplatform_bg.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+.page5 .platformContent .platform{
+    display: inline-block;
+    width: 100%;
+	max-width: 33.75rem;
+	min-height: 22.6875rem;
+	background-image: url(../img/zplatform_html.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+.page3 .appContent .appIcon{
+	padding-bottom: 1.5rem;
+}
+.page5 .pcIcon{
+	display: inline-block;
+	padding: 0.2rem 0.75rem;
+	border-radius: 0.5rem;
+	border: 1px solid #4bb5fa;
+	color: #4bb5fa;
+	line-height: 1;
+}
+.page5 .platformInfo{
+	position: absolute;
+	display: inline-block;
+	font-size: 1.25rem;
+	color: #333;
+	letter-spacing: 0.0625rem;
+    white-space: nowrap;
+}
+.page5 .platformInfo img{
+	margin-right: 0.625rem;
+}
+.page5 .platformInfo span{
+	display: inline-block;
+	padding-bottom: 0.625rem;
+    vertical-align: bottom;
+}
+@keyframes clockwise{
+	from{
+		-webkit-transform: rotate(0);
+		-moz-transform: rotate(0);
+		-ms-transform: rotate(0);
+		-o-transform: rotate(0);
+		transform: rotate(0);
+	}
+	to{
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@keyframes anticlockwise{
+	from{
+		-webkit-transform: rotate(0);
+		-moz-transform: rotate(0);
+		-ms-transform: rotate(0);
+		-o-transform: rotate(0);
+		transform: rotate(0);
+		-webkit-transform-origin: 2.1875rem 2.1875rem;
+		-moz-transform-origin: 2.1875rem 2.1875rem;
+		-ms-transform-origin: 2.1875rem 2.1875rem;
+		-o-transform-origin: 2.1875rem 2.1875rem;
+		transform-origin: 2.1875rem 2.1875rem;
+	}
+	to{
+		-webkit-transform: rotate(-360deg);
+		-moz-transform: rotate(-360deg);
+		-ms-transform: rotate(-360deg);
+		-o-transform: rotate(-360deg);
+		transform: rotate(-360deg);
+		-webkit-transform-origin: 2.1875rem 2.1875rem;
+		-moz-transform-origin: 2.1875rem 2.1875rem;
+		-ms-transform-origin: 2.1875rem 2.1875rem;
+		-o-transform-origin: 2.1875rem 2.1875rem;
+		transform-origin: 2.1875rem 2.1875rem;
+	}
+}
+.rotateClockwise{
+	animation: clockwise 600s linear infinite;
+	-webkit-animation: clockwise 600s linear infinite;
+	-moz-animation: clockwise 600s linear infinite;
+	-o-animation: clockwise 600s linear infinite;
+	animation: clockwise 600s linear infinite;
+}
+.rotateAnticlockwise{
+	animation: anticlockwise 600s linear infinite;
+	-webkit-animation: anticlockwise 600s linear infinite;
+	-moz-animation: anticlockwise 600s linear infinite;
+	-o-animation: anticlockwise 600s linear infinite;
+	animation: anticlockwise 600s linear infinite;
+}

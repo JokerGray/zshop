@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta name=format-detection content="telephone=no">
+    <title>问答详情</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/shareQuestion.css">
+    <script type="text/javascript">
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if(clientWidth<1200){
+                        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                    }else{
+                        docEl.style.fontSize='320px';
+                    }
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+    <div class="page">
+        <div class="questions" id="question"></div>
+        <div class="answerBox">
+            <span id="answerNum">0个回答</span>
+        </div>
+        <div class="questions" id="qesList"></div>
+        <!-- 回答详情 -->
+        <script type="text/html" id="queQues">
+            <div class="qes-tit">
+                <span></span>
+            </div>
+            <div class="qes-item">
+                <div class="user-info">
+                        <img src="<%=data.scSysUser.userpic%>?x-oss-process=image/resize,m_fill,w_70,h_70,limit_0" alt="">
+                        <p class="user-name"><%=data.scSysUser.username%></p>
+                        <p class="creat-time"><%=data.releaseTime.substr(0,16)%></p>
+                </div> 
+                <div class="ans-tit"><%==data.articleTitle||""%></div> 
+                <div class="ans-cont">
+                    <p><%==data.articleContent||""%></p> 
+                </div>    
+            </div>   
+        </script>
+        <!-- 回复详情 -->
+        <script type="text/html" id="queItem">
+            <%for(var i=0;i<data.length;i++){%>
+                <div class="qes-item">
+                    <div class="user-info">
+                            <img src="<%=data[i].scSysUser.userpic%>?x-oss-process=image/resize,m_fill,w_70,h_70,limit_0" alt="">
+                            <p class="user-name"><%=data[i].scSysUser.username%></p>
+                            <p class="creat-time"><%=data[i].releaseTime.substr(0,16)%></p>
+                    </div> 
+                    <!-- <div class="ans-tit"><%==data[i].articleTitle||""%></div>  -->
+                    <div class="ans-cont">
+                        <p><%==data[i].articleContent||""%></p> 
+                    </div>   
+                    <div class="ans-data">
+                        <span></span>
+                        <span></span>
+                    </div> 
+                </div>                
+            <%}%>
+        </script>
+    </div>
+    <!-- 领取礼包 -->
+    <div class="page-download toApp">
+        <div class="bg">
+            <div class="floatleft">  
+                <img src="img/qmx_share_xiazai.png" alt="按钮"> 
+                智享城市
+            </div>
+            <div class="floatright">下载</div>
+        </div>
+    </div> 
+    <!-- 微信引导跳至浏览器打开 -->
+    <div id="wxLayer" class="wx_layer" style="display:none;">
+        <div id="msgBox" class="msg_box">
+            <P>1.点击右上角的</P>
+            <p>2.选择</p>
+            <span class="msg_arrow"></span>
+            <span class="msg_point"></span>
+            <span class="msg_txt"></span>
+        </div>
+    </div>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="assets/layer_mobile/layer.js"></script>
+    <script src="js/jweixin-1.2.0.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/shareQuestion.js"></script>
+    <script src="js/artTemplate.js"></script>
+</body>
+</html>

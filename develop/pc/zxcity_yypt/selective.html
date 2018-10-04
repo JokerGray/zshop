@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>通知公告</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+	<link rel="stylesheet" href="common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="selective/selective.css" />
+</head>
+<body>
+    <div class="common-container" id="body-box">
+        <div class="row body-left-nav" >
+                <div class="common-title">
+                    商户权限 - <span class="jurisdiction-title-name">角色模板 - 是否可选</span>
+                    <div class="selectDiv" id="selectDiv">
+                    	<span class="fa fa-caret-up" id="selectSpan"></span>
+                    	<ol id="selectOl">
+	                    	<li>
+	                    		<a href="role_template.html">角色模板</a>
+	                    	</li>
+	                    	<li>
+	                    		<a href="selective.html">是否可选</a>
+	                    	</li>
+                    	</ol>
+                    </div>
+                    
+                </div>
+                  <div class="row common-search">
+                      <form class="form-inline" role="form">
+                          <div class="form-group">
+                              <label class="control-lable">权限名称：</label>
+                              <input type="text" class="layui-input search-input media-input longinput" placeholder="请输入权限名称" id="inquireInput">
+                          </div>
+                          <div class="form-group">
+		                    <span class="control-lable">角色名称：</span>
+		                    <select id="ascription" class="selectpicker show-tick form-control">
+		                        <option value="">-请选择-</option>
+		                        <!--<option value="1">APP</option>
+		                        <option value="2">商品后台</option>
+		                        <option value="3">展示端</option>
+		                        <option value="4">智大师</option>-->
+		                    </select>
+		                </div>
+                          <button class="btn btn-success" type="button" id="inquire">
+                              <i class="search-icon"></i>查询
+                          </button>
+                      </form>
+                      <a href="javascript:void(0);"  class="btn btn-info add-users" id="bcp" >批量操作</a>
+                  </div>
+                    <div class="common-table" id="common-table">
+                        <table class="table table-hover">
+                              <thead>
+                                <tr class="active">
+                                  <th>序号</th>
+                                  <th>勾选</th>
+                                  <th>角色名称</th>
+                                  <th>权限名称</th>
+                                  <th>是否可用</th>
+                                  <th>是否可选</th>
+                                  <th>操作</th>
+                                </tr>
+                              </thead>
+                              <tbody id="tbodyParameter">
+                              	
+                              </tbody>
+                    </table>
+                </div>
+                <div class="common-page">
+                      <div id="paging-box-count">
+                          
+                      </div>
+                    <div id="paging-box" class="basic-jump"></div>
+                </div>
+        </div>
+    </div>
+</body>
+<!-- modal单项操作 -->
+		<div class="modal fade" id="commer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+						<h4 class="modal-title" id="myModalLabel">
+                    	修改
+                </h4>
+					</div>
+					<div class="modal-body">
+						<form class="bs-example bs-example-form" role="form">
+							<!--角色-->
+							<div class="input-group">
+						        <span class="pull-left lt">角色名称：</span>
+						        <input type="text" class="form-control media-input" id="roleName" disabled>
+					        </div>
+							<!--权限-->
+							<div class="input-group">
+						        <span class="pull-left lt">权限名称：</span>
+						        <input type="text" class="form-control media-input" id="sysName" disabled>
+					        </div>
+					        <!--是否可用-->
+							<div class="input-group">
+						        <span class="pull-left lt">是否可用：</span>
+						        <input type="text" class="form-control media-input" id="userable" disabled>
+					        </div>
+					        <!--是否可选-->
+					        <div class="input-group">
+								<span class="pull-left lt">是否可选:</span>
+								<select id="adminable" class="selectpicker show-tick form-control">
+									<option>可选</option>
+									<option>不可选</option>
+									<option>推荐</option>
+								</select>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary close-btn" id="saveAudit">
+                    				保存
+                		</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+				<!-- modal批量操作 -->
+		<div class="modal fade" id="commerChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+						<h4 class="modal-title" id="myModalLabel">
+                    	修改角色
+                </h4>
+					</div>
+					<div class="modal-body">
+						<form class="bs-example bs-example-form" role="form">
+							 <!--是否可选-->
+					        <div class="input-group">
+								<span class="pull-left lt">是否可选:</span>
+								<select id="chaAdminable" class="selectpicker show-tick form-control">
+									<option>可选</option>
+									<option>不可选</option>
+									<option>推荐</option>
+								</select>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary close-btn" id="saveAudit2">
+                    				保存
+                		</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+
+<script type="text/javascript" src="common/js/login_success.js"></script>
+<script type="text/javascript" src="common/js/util/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/util.js"></script>
+<script type="text/javascript" src="common/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+
+<!--jSCurr-->
+
+<script type="text/javascript" src="selective/selective.js"></script>
+<script type="text/javascript" src="common/js/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/pub.js"></script>
+</html>

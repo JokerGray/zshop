@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智创工场-用户注册</title>
+    ${require('../common/header.html')}
+</head>
+
+<body>
+    <div class="signin-container">
+        <div class="signin-content">
+            <img class="title-logo" src="../common/img/logo.png" alt="">
+            <h3 class="signin-title text-center">欢迎注册智享城市</h3>
+    
+            <form class="form-horizontal" id="form" autocomplete="off">
+                <div class="form-group">
+                    <select class="phone-locate" name="phoneLocate" id="phoneLocate">
+                        <option value="china">中国大陆</option>
+                    </select>
+                    <input type="text" class="input-phone" name="phone" id="phone" required placeholder="请输入手机号码" maxlength="11">
+                    <div class="hand-line"></div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="input-pwd" name="pwd" id="pwd" required placeholder="请输入密码" minlength="6" maxlength="16">
+                    <i class="iconfont icon-eye-close" id="showPwd"></i>
+                    <div class="hand-line"></div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="input-pwd" name="captcha" id="captcha" required placeholder="请输入验证码" maxlength="16">
+                    <button type="button" class="captcha-btn" id="captchaBtn">获取验证码</button>
+                    <div class="hand-line"></div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox" id="protocol">
+                        <label>
+                            <input type="checkbox" name="protocol" required>
+                            <small>同意遵守
+                                <a target="_blank" href="/user-protocol.html">智享城市APP用户协议</a>
+                            </small>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group" style="top: 10px;">
+                    <button type="submit" class="btn btn-block">注册</button>
+                </div>
+            </form>
+            <div class="text-right">
+                <small class="tool-right">
+                    <a href="/signin.html">已有账号？直接登陆 >></a>
+                </small>
+            </div>
+        </div>
+        <div class="support">
+            <div>鄂网文（2017）9247-211号</div>
+            <div class="copyright">Copyright © 2018 izxcs.com智享城市 版权所有 保留一切权利 鄂ICP备15013752号-2</div>
+        </div>
+    </div>
+    ${require('../common/footer.html')}
+</body>
+
+</html>

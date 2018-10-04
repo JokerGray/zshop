@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工资设置</title>
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/bootstrap-table/bootstrap-table.min.css"/>
+	<link rel="stylesheet" href="css/common.css">
+	<style>
+		body{
+			min-width: 1200px;
+		}
+		.contain{
+			padding-left:55px;
+			font-family: '微软雅黑'; 
+		}
+
+		.line::before{
+			display: inline-block;
+		    content: '';
+		    width: 3px;
+		    height: 20px;
+		    background: #ffa500;
+		    margin-right: 5px;
+		    vertical-align: sub;
+
+		}
+
+		.line {
+		    font-size: 16px;
+		    font-weight: normal;
+		    color: #ffa500;
+		    padding: 10px 0;
+		}
+		
+		.tookeen table{
+			width: 80%;
+		}
+
+		.tookeen table th{
+			background: #eee;
+			color:#666;
+		}
+		
+		.tookeen table th,.tookeen table td{
+			width: 33.33%;
+			max-width: 225px;
+			text-align: center;
+			padding:10px 0;
+			font-size: 15px;
+			border-bottom: 1px solid #eee;
+		}
+
+		.tookeen table td input{
+			height: 30px;
+			width: 60%;
+			padding-left: 5px;
+			max-width: 225px;
+		}
+		
+		.tookeen table td span{
+			display: inline-block;
+			height: 30px;
+			line-height: 28px;
+			width: 15%;
+			text-align: center;
+			border:1px solid #a9a9a9;
+			border-left:0;
+			vertical-align: bottom;
+		}
+
+		.submitBtn{
+			display: inline-block;
+		    background: #ffa500;
+		    padding: 5px 10px;
+		    color: #fff!important;
+		    border-radius: 3px;
+		}
+
+	</style> 
+	
+</head>
+<body>
+	<div class="contain">
+		<div class="navs">
+			<a class="base_salary">基础薪资板块</a>
+			<a class="recruitment_salary">招聘薪资板块</a>
+			<a class="talk_salary active">拓客薪资板块</a>
+			<a class="service_salary">服务薪资板块</a>
+			<a class="management_salary">管理薪资板块</a>
+			<a class="activity_salary">活动薪资板块</a>
+		</div>
+		
+		<div class="tookeen"> 
+			<div class="line">人头奖金</div>
+			<div class="tookenTab">
+				<table>
+					<thead>
+						<tr>
+							<th>拓客人数</th>
+							<th>奖励金额</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<input type="text" class="rewardStandard" maxlength="3" onkeyup="integerCheck(this)" onchange="integerCheck(this)" value="1" disabled="disabled"><span>人</span>
+							</td>
+							<td>
+								<input type="text" class="rewardValue" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)"><span>元</span>
+							</td>
+							<td>
+								<a href="javascript:;" class="submitBtn" onclick="submitBtn(this)">提交</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+
+	<script src="../../assets/jquery/jquery.min.js"></script>
+	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../assets/layer/layer.js"></script>
+
+	<!-- bootstrap-table -->
+	<script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+	<script src="js/common.js"></script>
+
+
+	<script>
+		var merchantId = getQueryString('merchantId');
+
+		inint();
+		function inint(){
+			var def = reqAjax('shop/newsalary/getPositionsAndSalarySetting', {
+		   	    merchantId : merchantId,
+		   	    type : 4  // 1-伯乐奖 2-终身成就奖 3-组建团队设置 4-拓客人头奖励
+		   	});
+		   	def.then(function(data){
+		   		if(data.code == 1){
+		   			var data = data.data;
+		   			if(data.length > 0){
+		   				$('.tookenTab table tbody tr').attr({'keyId':data[0].id});
+			   			$('.rewardStandard').val(data[0].rewardStandard);
+			   			$('.rewardValue').val(data[0].rewardValue);
+		   			}
+		   			
+		   		}else{
+		   			layer.msg(data.msg,{icon:2});
+		   		}
+		   	})
+		 }
+
+
+	   	// 提交按钮
+	   	function submitBtn(self){
+	   		var rewardStandard = $(self).parent().parent().find('.rewardStandard').val();
+	   		var rewardValue = $(self).parent().parent().find('.rewardValue').val();
+	   		var id = $('.tookenTab tbody tr').attr('keyId') == undefined ? '' : $('.tookenTab tbody tr').attr('keyId');
+
+	   		if(rewardValue.trim('') == ''){
+	   			layer.msg('奖励金额不能空！',{icon:2});
+	   			return;
+	   		}
+
+	   		// 新增和修改
+	   		var def = reqAjax('shop/newsalary/addOrUpdateSalarySetting', {
+	             "scSalarySetting": [
+	             	{
+				    	"rewardName": '拓客人头奖励',//奖项名称:1-伯乐奖 2-终身成就奖 3-组建团队设置 4-拓客人头奖励
+				    	"rewardStandard": rewardStandard,//奖项标准值(当为组建团队设置时用于存放组建团队人数)
+				    	"positionId": '',//职务ID  只有 伯乐奖传 职务id  其他传空
+				    	"plateType": 3,//所属板块类型  1-基础薪资板块  2-招聘薪资板块 3-拓客薪资板块 4-服务薪资板块 5-管理薪资板块 6-活动薪资板块
+				    	"rewardValue": rewardValue,//奖励值(当为组建团队设置时用于存放个人保底业绩)
+				    	"rewardPeriod": '',//(当为组建团队设置时用于存放团队保底业绩)
+				    	"merchantId": merchantId,//商户主键
+				    	"rewardDesc": "",//奖项描述
+				    	"commConsist": '',//组成项
+				    	"rewardCode": 4,//1-伯乐奖 2-终身成就奖 3-组建团队设置 4-拓客人头奖励
+				    	"id": id,//主键值
+				    	"shopId": ''//店铺ID
+					}
+				]
+	        });
+	        def.then(function(data){
+	        	if(data.code == 1){
+	        		// location.reload();
+	        		layer.msg(data.msg,{icon:1});
+	        		inint();
+	        	}else{
+	        		layer.msg(data.msg,{icon:2});
+	        	}
+	        })
+	   	}
+
+	   	// 金额 校验
+		function moneyCheck(self){
+		    if($(self).val().length <= 8){
+		        if($(self).val().length==1){
+		            $(self).val($(self).val().replace(/[^0-9]/g,''));
+		        } else {
+		            $(self).val($(self).val().replace(/[^0-9.]/g,''));
+		            $(self).val($(self).val().replace(/\.{2,}/g,"."));
+		            $(self).val($(self).val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+
+		            if($(self).val().split('.')[1] != undefined && $(self).val().split('.')[1].length > 2){
+				      	$(self).val($(self).val().split('.')[0] +'.'+ $(self).val().split('.')[1].substring(0,2));
+				    }
+		        }
+		    }else{
+		        $(self).val($(self).val().replace(/[^0-9.]/g,''));
+		        $(self).val($(self).val().replace(/\.{2,}/g,"."));
+		        $(self).val($(self).val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+
+		        // 整数 金额超过 8 位
+		        if($(self).val() > 99999999.99){
+		            $(self).val($(self).val().substring(0,8));
+		        }
+
+		        if($(self).val().split('.')[1] != undefined && $(self).val().split('.')[1].length > 2){
+			      	$(self).val($(self).val().split('.')[0] +'.'+ $(self).val().split('.')[1].substring(0,2));
+			    }
+		    }
+		}
+
+		// 正整数 校验
+		function integerCheck(self){
+			if(self.value.length==1){
+				self.value=self.value.replace(/[^0-9]/g,'');
+			}else{
+				self.value=self.value.replace(/\D/g,'');
+			}
+		}
+
+
+	</script>
+
+</body>
+</html>

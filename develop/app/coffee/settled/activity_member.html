@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+	<title>已报名成员</title>
+	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css"> 
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			font-family:-apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+		}
+		html, body{
+			height: 100%;
+		    overflow: hidden;
+		}
+		.hidden{
+			display: none !important;
+		}
+		::-webkit-scrollbar{
+			height: 6px;
+    		background-color: red;
+		}
+		::-webkit-scrollbar-thumb{
+			background-color: #999;
+			border-radius: 10px;
+		}
+		::-webkit-scrollbar-track{
+			background-color: #F5F5F5;
+		}
+		.container{
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+		}
+		.banner{
+			display: block;
+			padding: 10px 10px 0;
+			background-color: #fff;
+			text-align: left;
+			color: #333;
+		}
+		.top-wrap{
+		    display: block;
+		    padding-bottom: 8px;
+		    margin: 8px 0;
+		    white-space: nowrap;
+		    overflow-x: scroll;
+		}
+		.top-wrap .wrap>div{
+			display: inline-block;
+		    margin-right: 25px;
+		    text-align: left;
+		    color: #999;
+		    line-height: 1.8;
+		    vertical-align: top;
+		}
+		.content{
+			display: block;
+			flex: 1;
+			background: url(../img/ckkf_beijingtu.png) no-repeat;
+			background-size: cover;
+			color: #fff;
+			text-align: center;
+		}
+		.content .tips{
+			padding: 30px 0;
+			font-size: 15px;
+		}
+		.content .tips p{
+			line-height: 1.8;
+		}
+		.content .dashline{
+			margin: 0 12px 40px;
+			border-top: 1px dashed #fff;
+		}
+		.content .logo{
+			display: block;
+			margin: 0 auto;
+			width: 65px;
+			height: 65px;
+		}
+		.content .logoText{
+			display: block;
+			padding: 10px 0 40px;
+			font-size: 18px;
+		}
+		.content .qrcode{
+			display: block;
+			margin: 0 auto;
+			max-width: 110px;
+		}
+		.content .qrcodeText{
+			display: block;
+			margin-top: 13px;
+			font-size: 15px;
+		}
+		.adminBtn{
+			display: inline-block;
+			float: right;
+			font-size: 14px;
+			padding: 0 8px;
+			line-height: 18px;
+			border: 1px solid #ff9d2a;
+			color: #ff9d2a;
+			border-radius: 18px;
+			cursor: pointer;
+		}
+		#modal{
+			transition: all 0.2s ease-out;
+		}
+		#modal .dialogTitle{
+			display: block;
+			text-align: center;
+			font-size: 18px;
+			color: #000;
+			padding: 10px 0;
+		}
+		#modal .pwdInput{
+		    display: block;
+		    margin: 1rem auto 0;
+		    width: 90%;
+		    height: 34px;
+		    padding: 6px 12px;
+		    font-size: 14px;
+		    line-height: 1.42857143;
+		    color: #555;
+		    background-color: #fff;
+		    background-image: none;
+		    border: 1px solid #dadada;
+		    border-radius: 4px;
+		    outline: none;
+		    box-sizing: border-box;
+		    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+		    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+		    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+		}
+		#modal .pwdInput:focus{
+			border-color: #66afe9;
+			outline: 0;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+			box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+		}
+		#modal .tips{
+			position: absolute;
+			display: block;
+			width: 80%;
+			padding: 0.1rem 0 0 0.5rem;
+			margin: 0 auto;
+			font-size: 0.8rem;
+			color: red;
+			text-align: left;
+		}
+		#modal a.submitBtn{
+			display: block;
+			margin: 1.5rem auto 0.5rem;
+			width: 90%;
+			text-align: center;
+			font-size: 1rem;
+			line-height: 2.5rem;
+			color: #fff;
+			background-color: #349CEE;
+			border-radius: 0.5rem;
+			text-decoration: none;
+		}
+		#modal a.submitBtn:active{
+			opacity: 0.8;
+		}
+	</style>
+</head>
+<body>
+    <div class="container">
+    	<div class="banner">
+    		<p>已报名成员 <span class="adminBtn" id="showModal">查看成员</span></p>
+    		<div class="top-wrap">
+			    <div class="wrap" id="member"></div>
+			</div>
+		</div>
+		<div class="content">
+			<div>
+				<div class="tips">
+					<p>立即加入活动圈，您的好友也在这里</p>
+				</div>
+				<div class="dashline"></div>
+			</div>
+			<div>
+				<img class="logo" src="../img/ckkf_zxllogo.png"/>
+				<p class="logoText">智享城市</p>
+			</div>
+			<div>
+				<img class="qrcode" src="../img/qrcode_zxcs.png"/>
+				<p class="qrcodeText">长按下载APP</p>
+			</div>
+		</div>
+    </div>
+    
+    <div class="js_dialog" id="modal" style="display: none;">
+        <div class="weui-mask" onclick="hideModal()"></div>
+        <div class="weui-dialog weui-skin_android">
+            <div class="weui-dialog__bd dialog">
+                <div class="dialogTitle">请输入管理员密码</div>
+                <input id="password" class="pwdInput" type="password" value="" placeholder="密码" />
+                <p class="tips" style="display: none;">请输入密码！</p>
+                <a class="submitBtn" href="javascript:checkPwd();">确定</a>
+            </div>
+        </div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.2/weui.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			FastClick.attach(document.body);
+			$('#showModal').click(function(){
+				$('#modal').show();
+			})
+			getData();
+		})
+		function hideModal(){
+			$('#modal').hide();
+			$('#modal .tips').hide();
+			document.getElementById("password").value = '';
+		}
+		// 获取url中的参数
+		function getQueryString(name){
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+			var r = window.location.search.substr(1).match(reg);
+			return r !== null ? decodeURI(r[2]) : null;
+		}
+		
+		// 获取活动晒单
+		function getData(){
+			var id = getQueryString('id');
+			if(!id) return;
+			$.ajax({
+				type:"post",
+				dataType: 'json',
+				headers: {
+	                apikey: sessionStorage.getItem('apikey') || 'test'
+	            },
+				url:"/zxcity_restful/ws/rest",
+				data:{
+					cmd: 'activityNew/getParticipantList',
+					data: JSON.stringify({
+						activityId: id
+					}),
+					version: 1
+				},
+				beforeSend: function () {
+					loading = weui.loading('加载中……');
+				},
+				complete: function () {
+					loading.hide();
+				},
+				success: function (data) {
+					if(data.code == 1){
+						setData(data.data);
+					} else {
+						weui.alert(data.msg);
+					}
+				},
+				error: function (err) {
+					weui.alert('请求超时，请重试……');
+				}
+			});
+		}
+		
+		// 设置数据
+		function setData(arr){
+			for(var i=0; i<arr.length; i+=2){
+				$('#member').append('<div><p></p><p></p></div>');
+			}
+			for(var i=0; i<arr.length; i++){
+				var num = arr[i]['info'];
+				var name = arr[i]['userName'];
+				if(name.length == 0){
+					name = arr[i]['phone'].substr(0, 3) + '****' + arr[i]['phone'].substr(7);
+				}
+//				var str = name + (!!num ? (' ('+ num +'人)') : '');
+				var str = name;
+				$('#member p').eq(i).text(str);
+			}
+		}
+		
+		// 密码校验4223972
+		var checking = false;
+		function checkPwd(){
+			if(checking) return;
+			var val = document.getElementById("password").value;
+			if(val.length == 0){
+				return $('#modal .tips').show().text('请输入密码！');
+			}
+			var loading;
+			$.ajax({
+				type:"post",
+				dataType: 'json',
+				url:"/zxcity_restful/ws/rest",
+				data:{
+					cmd: 'coffee/verifyPassword',
+					data: JSON.stringify({
+						password: val,
+					}),
+					version: 1
+				},
+				beforeSend: function () {
+					$('#modal .tips').hide();
+					loading = weui.loading('检查中...');
+					checking = true;
+				},
+				complete: function () {
+					loading.hide();
+				},
+				success: function(data){
+					checking = data.code == 1;
+					if(data.code == 1){
+						weui.toast('校验成功', function () {
+							location.href= "application_table.html?id=" + getQueryString('id');
+						});
+					} else {
+						$('#modal .tips').show().text(data.msg);
+					}
+				},
+				error: function (){
+					checking = false;
+					$('#modal .tips').show().text('请求超时，请重试……');
+				}
+			});
+		}
+	</script>
+</body>
+</html>

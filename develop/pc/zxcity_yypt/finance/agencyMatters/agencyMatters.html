@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>待办事项</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/account_common.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/modal.css">
+    <link rel="stylesheet" type="text/css" href="../../account_management/agencyMatters/agencyMatters.css">
+</head>
+<body>
+    <div class="container-fluet" id="body-box">
+        <div class="row body-left-nav">
+            <div class="col-md-11 content-right" id="content">
+                <div class="cr-top" style="">
+                    <!-- 顶部 -->
+                    <ul class="nav nav-tabs">
+                        <li role="presentation"><span class="ul-li-span-zdy">账务管理</span></li>
+                        <li role="presentation"><span style="">></span></li>
+                        <li role="presentation"><span >待办事项</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div id="toolbar" class="row">
+                          <div id="dataLoadingId" class="text-center" style="padding-right: 155px;">
+
+                          </div>
+
+                          <div id="contentId" style="display:none;">
+                            <div class="col-lg-offset-1 col-md-6 col-lg-4 col-sm-8 div-padding-bottom-top-zdy">
+                                <div class="content-div-zdy">
+                                    <div class="content-div-zdy-top">
+                                        <span style="display: inline-block;">
+                                          <p class="content-div-zdy-top-left-p">提现申请审核</p>
+                                        </span>
+                                        <div class="pull-right" style="display: inline-block;">
+                                          <label>待办数：</label>
+                                          <span id="txsqshId">0</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="zdy-div-button">
+                                        <button class="btn btn-info pull-right btn-zdy-css" type="button" onclick="goToProcessing('finance/trade/audit.html')">前往处理</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-offset-1 col-md-6 col-lg-4 col-sm-8 div-padding-bottom-top-zdy">
+                                <div class="content-div-zdy" >
+                                  <div class="content-div-zdy-top">
+                                      <span style="display: inline-block;">
+                                        <p class="content-div-zdy-top-left-p">提现出账支付</p>
+                                      </span>
+                                      <div class="pull-right" style="display: inline-block;">
+                                        <label>待办数：</label>
+                                        <span id="txczzfId">0</span>
+                                      </div>
+                                  </div>
+
+                                  <div  class="zdy-div-button">
+                                      <button class="btn btn-info pull-right btn-zdy-css" type="button" onclick="goToProcessing('finance/trade/cash.html')">前往处理</button>
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-offset-1 col-md-6 col-lg-4 col-sm-8 div-padding-bottom-top-zdy">
+                                <div class="content-div-zdy" >
+                                  <div class="content-div-zdy-top">
+                                      <span style="display: inline-block;">
+                                        <p class="content-div-zdy-top-left-p">推荐人佣金审核</p>
+                                      </span>
+                                      <div class="pull-right" style="display: inline-block;">
+                                        <label>待办数：</label>
+                                        <span id="tjryjshId">0</span>
+                                      </div>
+                                  </div>
+
+                                  <div  class="zdy-div-button">
+                                      <button class="btn btn-info pull-right btn-zdy-css" type="button" onclick="goToProcessing('finance/merchant/referrerAmount.html')">前往处理</button>
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-offset-1 col-md-6 col-lg-4 col-sm-8 div-padding-bottom-top-zdy">
+                                <div class="content-div-zdy" >
+                                  <div class="content-div-zdy-top">
+                                      <span style="display: inline-block;">
+                                        <p class="content-div-zdy-top-left-p">商户升级审核</p>
+                                      </span>
+                                      <div class="pull-right" style="display: inline-block;">
+                                        <label>待办数：</label>
+                                        <span id="shsjskId">0</span>
+                                      </div>
+                                  </div>
+
+                                  <div  class="zdy-div-button">
+
+                                      <button class="btn btn-info pull-right btn-zdy-css" type="button" onclick="goToProcessing('finance/merchant/merchantUpdateApply.html')">前往处理</button>
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-offset-1 col-md-6 col-lg-4 col-sm-8 div-padding-bottom-top-zdy">
+                                <div class="content-div-zdy" >
+                                  <div class="content-div-zdy-top">
+                                      <span style="display: inline-block;">
+                                        <p class="content-div-zdy-top-left-p">试用商户到期短信通知</p>
+                                      </span>
+                                      <div class="pull-right" style="display: inline-block;">
+                                        <label>待办数：</label>
+                                        <span id="syqshdxtzId">0</span>
+                                      </div>
+                                  </div>
+
+                                  <div  class="zdy-div-button">
+                                      <button class="btn btn-info pull-right btn-zdy-css" type="button" onclick="goToProcessing('finance/account/merchantTest.html')">前往处理</button>
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-offset-1 col-md-6 col-lg-4 col-sm-8 div-padding-bottom-top-zdy">
+                                <div class="content-div-zdy" >
+                                  <div class="content-div-zdy-top">
+                                      <span style="display: inline-block;">
+                                        <p class="content-div-zdy-top-left-p">直播佣金审核</p>
+                                      </span>
+                                      <div class="pull-right" style="display: inline-block;">
+                                        <label>待办数：</label>
+                                        <span id="zbyjshId">0</span>
+                                      </div>
+                                  </div>
+
+                                  <div  class="zdy-div-button">
+                                      <button class="btn btn-info pull-right btn-zdy-css" type="button" onclick="goToProcessing('finance/anchorManage/anchorAccountAudit.html')">前往处理</button>
+
+                                  </div>
+                                </div>
+                            </div>
+
+                          </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<!-- Common -->
+<script type="text/javascript" src="../../common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../agencyMatters/agencyMatters.js"></script>
+</body>
+</html>

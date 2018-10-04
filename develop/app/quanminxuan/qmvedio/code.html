@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>约吧小视频分享页</title>
+    <link rel="stylesheet" href="../css/rest.css">
+    <link rel="stylesheet" href="css/qmvedio.css">
+    <link rel="stylesheet" href="css/code.css">
+</head>
+<body>
+    <div class="app">
+        <div class="code_box">
+            <div class="pic">
+                <img id="imgUrl" src="img/tou.jpg"/>
+            </div>
+            <h3 id="shopName">店铺名称店铺名称店铺名称店铺名称</h3>
+            <div class="code" id="qrcode">
+            </div>
+            <p>长按二维码进入店铺小程序</p>
+        </div>
+    </div>
+    <script src="../js/qrcode.min.js"></script>
+    <script src="../js/zepto.min.js"></script>
+<script>
+    /**
+     * 根据参数名获取地址栏URL里的参数
+     */
+    $(function(){
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        var shopId = GetQueryString('shopId') || 55;
+        var imgUrl = GetQueryString('imgUrl');
+        var shopName = decodeURI(GetQueryString('shopName'));
+        var url ='https://wxapp.izxcs.com/qrcode/shop/?shopId='+shopId;
+        var codew = $('#qrcode').width();
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            width : codew,
+            height : codew
+        });
+        qrcode.makeCode(url);
+        $('#imgUrl').attr('src',imgUrl)
+        $('#shopName').html(shopName)
+        $('.app').show()
+    })
+
+</script>
+</body>
+</html>

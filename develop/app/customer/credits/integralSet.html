@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>积分设置</title>
+
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
+	<script src="assets/jquery.min.js"></script>
+	<script src="assets/layer/layer.js"></script>
+	<link rel="stylesheet" href="assets/check_index/layer/skin/default/layer.css"/>
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="assets/layui/css/layui.css">
+	<script src="assets/layui/layui.js"></script>
+	<script src="src/js/common.js"></script>
+
+
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			font-family: '微软雅黑';
+			min-width: 1100px;
+		}
+		.paddingValue{
+			padding:30px 50px 0 50px;
+		}
+		.nav{
+			border-bottom: 10px solid #f7f7f7;
+		}
+		.levelSet,.integralSet,.integralGoods{
+			display: inline-block;
+			text-align: center;
+			text-decoration: none!important;
+			padding: 19px 50px;
+			background:#f1f1f1;
+			color:#6f6f6f;
+			border-top-right-radius: 8px;
+			border-top-left-radius: 8px;
+			font-size: 16px;
+		}
+		.nav>a.active{
+			background:#1cc1ae;
+			color:#fff;
+		}
+
+		/*积分设置*/
+		.contain{
+			padding:0 50px 10px;
+			background: #f7f7f7;
+		}
+		.integralSetContent{
+			padding: 0 36px 36px;
+			background: #fff;
+		}
+
+		/*.integralSetContent*/
+		.integralSetContent .title{
+			padding:20px 0;
+		}
+
+		.integralSetContent .line{
+			display: inline-block;
+		    height: 26px;
+		    width: 4px;
+		    background: #ffa600;
+		    margin-right: 8px;
+		}
+
+		.integralSetContent .topUpName{
+			display: inline-block;
+		    vertical-align: super;
+		    font-size: 18px;
+		    font-weight: bold;
+		    color: #ffa600;
+		}
+		.selec {
+		    padding-bottom: 20px;
+		    border-bottom: 1px solid #dadada;
+		}
+		/*单选 */
+		.selec input{
+			position: absolute;
+			display: none;
+		}
+		.selec label{
+			position: relative;  
+		  	padding-left: 20px;  
+		  	width: auto;
+		  	cursor: pointer;  
+		  	vertical-align: middle;
+		}
+		.selec label:hover:before {  
+		    animation-duration: 0.4s;  
+		    animation-fill-mode: both;  
+		    animation-name: hover-color;
+		}
+		.selec label.radio1{
+			padding-right: 35px;
+		}
+		.selec label.radio1:before,.selec label.radio2:before{  
+		    position: absolute;  
+		    top: 50%;  
+		    left: 0;  
+		    display: inline-block;  
+		    width: 12px;  
+		    height: 12px;  
+		    content: '';  
+		    border: 1px solid #a9a9a9;
+		    border-radius: 50%;
+		    transform: translateY(-50%);
+		}
+
+		.selec label:after {  
+		    position: absolute;  
+		    display: none;  
+		    content: ''; 
+		}  
+		  
+		.selec input[disabled] + label {  
+		  	cursor: not-allowed;  
+		  	color: #e4e4e4;
+		}  
+		.selec input:checked + label:before {  
+		  	animation-name: none;
+		}  
+		  
+		.selec input:checked + label:after {  
+		  	display: block;
+		}  
+		  
+		.selec input + label.radio1:after,.selec input + label.radio2:after{  
+		  	top: 7px;  
+		  	left: 3px;  
+		  	width: 6px;  
+		  	height: 6px;  
+		  	border-radius: 50%;  
+		  	background: #20bfb6; 
+		}
+		/**/
+		.selectContent {
+		    margin-top: 30px;
+		}
+		.selectContent table{
+			width: 80%;
+			border-collapse:collapse;
+			border:1px solid #f5f5f5;
+			box-sizing: border-box;
+			
+		}
+		.selectContent th{
+			font-weight: normal;
+			background: #f1f1f1;
+			padding:10px 0;
+		}
+		.selectContent tr,.selectContent th,.selectContent td{
+			width:25%;
+			text-align: center;
+		}
+		.selectContent tbody tr{
+			border-bottom:1px solid #f1f1f1;
+		}
+		.selectContent tbody tr input{
+			width: 40%;
+			height: 32px;
+			border:1px solid #f1f1f1;
+			outline: 0;
+			padding:0 0 0 10px;
+		}
+		.selectContent td{
+			height: 60px;
+			padding:10px 0;
+		}
+		.selectContent tbody tr{
+			border-top: 1px solid #f5f5f5;
+			border-bottom: 1px solid #f5f5f5;
+		}	
+		.selectContent tbody tr a{
+			display: inline-block;
+			text-decoration: none;
+		}
+		.selectContent tbody tr .submit{
+			width: 88px;
+			height: 30px;
+			line-height: 30px;
+			color: #fff;
+			background: #fea600;
+		}
+		.selectContent tbody tr .editor{
+			width: 62px;
+			height: 26px;
+			line-height: 26px;
+			color:#32c4b2;
+			border: 1px solid #32c4b2;
+    		border-radius: 4px;
+		}
+		
+		.yuan i,.integralName i,.percentage .pcount i{
+			display: inline-block;
+		    font-style: normal;
+		    padding: 6.5px 10px;
+		    background: #f1f1f1;
+		    vertical-align: top;
+		    color:#666;
+		}
+		.percentage input{
+			padding:0 10px !important;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="nav paddingValue">
+		<a href="levelSet.html" class="levelSet">等级设置</a>
+		<a href="integralSet.html" class="integralSet active">积分设置</a>
+		<a href="integralGoods.html" class="integralGoods">积分商品</a>
+	</div>
+	
+	<div class="contain">
+		<div class="integralSetContent">
+			<div class="topUp" style="display: none;">
+				<div class="title">
+					<div class="line"></div>
+					<div class="topUpName">充值</div>
+				</div>
+				<div class="selec">
+					<input type="radio" class="check1" name="radio"  value="1">  
+		       		<label class="radio1">固定</label>  
+		    
+		       		<input type="radio" class="check2" name="radio"  value="2">  
+		       		<label class="radio2">百分比</label>  
+				</div>
+				<div class="selectContent">
+					<table>
+						<thead>
+							<tr>
+								<th></th>
+								<th>基准值</th>
+								<th>计算值</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="fixed">
+								<td class="sName">固定</td>
+								<td>
+									<div class="yuan">
+										<input type="text" class="baseline" onkeyup="checkcount(this)"  onchange="checkcount(this)"><i>元</i>
+									</div>
+								</td>
+								<td>
+									<div class="integralName">
+										<input type="text" class="calculated"  onkeyup="checkcount(this)"  onchange="checkcount(this)"><i>积分</i>
+									</div>
+								</td>
+								<td>
+									<!-- <a href="javascript:;" class="submit" onclick="submit(this)">提交</a> -->
+									<a href="javascript:;" class="editor" onclick="editor(this)">
+										<i class="iconfont icon-baocun"></i>
+										保存
+									</a>
+								</td>
+							</tr>
+							<!-- <tr style="display:none;" class="percentage" >
+								<td>百分比</td>
+								<td class="pcount">
+									<input type="text" class="baseline"><i>元</i>
+								</td>
+								<td class="pcount">
+									<input type="text" class="calculated"><i>%</i>
+								</td>
+								<td>
+									<a href="javascript:;" class="submit" onclick="submit(this)">提交</a>
+									<a href="javascript:;" class="editor" onclick="editor(this)">
+										<i class="iconfont icon-bianji"></i>
+										编辑
+									</a>
+								</td>
+								
+							</tr> -->
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+	<script>
+		// 从url 中获取  merchantId
+		var merchantId = getQueryString('merchantId');
+
+		window.onload=function(){
+		    $('.levelSet').attr('href','levelSet.html?merchantId='+ getQueryString('merchantId'));
+		    $('.integralSet').attr('href','integralSet.html?merchantId='+ getQueryString('merchantId'));
+		    $('.integralGoods').attr('href','integralGoods.html?merchantId='+ getQueryString('merchantId'));
+		}
+
+		var def = reqAjax('credits/merchantRules', {
+		    merchantId : merchantId,
+		});
+
+		def.then(function(data){
+			total = data.total;
+			var data = data.data;
+
+			for(var i = 0;i<data.length;i++){
+				var count = i*2;
+				var rows = data;
+				var content = $('.integralSetContent .topUp').first().clone();
+				content.find('.selec input').attr('name','radio'+i);
+				// 动态改变 id和for
+				content.find('.check1').attr('id','r'+count);
+				content.find('.radio1').attr('for','r'+count);
+				content.find('.check2').attr('id','r'+(Number(count+1)));
+				content.find('.radio2').attr('for','r'+(Number(count+1)));
+
+				// 
+				content.find('.topUpName').text(rows[i].ruleName); 
+				// 固定 和 百分比
+				if(rows[i].calcType == 0){
+					content.find('.check1').prop('checked',true);
+					content.find('.check2').prop('checked',false);
+					content.find('.integralName').find('i').text('积分');
+					content.find('.sName').text('固定');
+					// content.find('.fixed').show();
+					// content.find('.percentage').hide();
+				} else if(rows[i].calcType == 1){
+					content.find('.check1').prop('checked',false);
+					content.find('.check2').prop('checked',true);
+					content.find('.integralName').find('i').text('%');
+					content.find('.sName').text('百分比');
+					// content.find('.fixed').hide();
+					// content.find('.percentage').show();
+				}
+
+
+				// if(rows[i].benchmark == ''|| rows[i].calcValue == ''){
+				// 	content.find('.submit').show();
+				// 	content.find('.editor').hide();
+				// }else{
+				// 	content.find('.submit').hide();
+				// 	content.find('.editor').show();
+				// }
+
+
+				// 固定
+				// 基准值
+				content.find('.baseline').val(rows[i].benchmark);
+				// 计算值
+				content.find('.calculated').val(rows[i].calcValue);
+
+				// 百分比
+				content.find('.perBaseline').val(rows[i].benchmark);
+				content.find('.perCalculated').val(rows[i].calcValue);
+
+				// 主键id、规则编码、商户id
+				content.attr({'id':rows[i].id,'ruleCode':rows[i].ruleCode,'merchantId':rows[i].merchantId});
+
+				content.find('tbody').attr({'id':rows[i].id,'ruleCode':rows[i].ruleCode,'merchantId':rows[i].merchantId});
+
+
+				content.show();
+				$('.integralSetContent').append(content);
+			}  	
+		});
+
+		$('.integralSetContent').on('click','.selec label',function(){
+			if($(this).text() == '固定'){
+				$(this).parent().parent().find('.sName').text('固定');
+				$(this).parent().parent().find('.integralName').find('i').text('积分');
+			}else if($(this).text() == '百分比'){
+				$(this).parent().parent().find('.sName').text('百分比');
+				$(this).parent().parent().find('.integralName').find('i').text('%');
+			}
+		});
+
+		//  提交按钮
+		// function submit(self){
+		// 	var calcValue = $(self).parent().parent().find('.calculated').val();
+		// 	var benchmark = $(self).parent().parent().find('.baseline').val();
+		// 	var calcType = $(self).parent().parent().parent().parent().parent().parent().find('.selec:checked').val();
+		// 	var id = $(self).parent().parent().parent().attr('id');
+		// 	var ruleName = $(self).parent().parent().parent().parent().parent().parent().find('.topUpName').text();
+		// 	var merchantId = $(self).parent().parent().parent().attr('merchantId');
+		// 	var ruleCode = $(self).parent().parent().parent().attr('rulecode');
+		// 	if(calcValue.trim('') == ''){
+		// 		layer.alert('计算值不能为空',{icon:2});
+		// 		return;
+		// 	}
+		// 	if(benchmark.trim('') == ''){
+		// 		layer.alert('基准值不能为空',{icon:2});
+		// 		return;
+		// 	}
+
+
+		// 	layer.confirm('确认提交？', {
+		// 	     btn : [ '确定', '取消' ]//按钮
+		// 	}, function(index) {
+		// 	     layer.close(index);
+		// 		rulesUpdateAjax(calcValue,id,benchmark,ruleName,calcType,merchantId,ruleCode);
+		// 	});		
+		// 	// console.log(calcValue+'__'+benchmark+'__'+calcType+'__'+id+'__'+ruleName+'__'+merchantId+'__'+ruleCode);
+		// }
+
+		// 编辑按钮
+		function editor(self){
+			var calcValue = $(self).parent().parent().find('.calculated').val();
+			var benchmark = $(self).parent().parent().find('.baseline').val();
+			if($(self).parent().parent().parent().parent().parent().parent().find('.selec .check1').prop('checked')){
+				var calcType = 0;
+			}else if($(self).parent().parent().parent().parent().parent().parent().find('.selec .check2').prop('checked')){
+				var calcType = 1;
+			}
+			var id = $(self).parent().parent().parent().attr('id');
+			var ruleName = $(self).parent().parent().parent().parent().parent().parent().find('.topUpName').text();
+			var merchantId =  getQueryString('merchantId');
+			var ruleCode = $(self).parent().parent().parent().attr('rulecode');
+			if(id == 0){
+				var checked = 1;
+			}else{
+				var checked = 0;
+			}
+
+			if(calcValue.trim('') == ''){
+				layer.alert('计算值不能为空',{icon:2});
+				return;
+			}
+			if(benchmark.trim('') == ''){
+				layer.alert('基准值不能为空',{icon:2});
+				return;
+			}
+			if(calcType == 0){
+				var res = reg = /^[1-9]\d*$/;
+				if(!res.test(calcValue)){
+					layer.alert('积分为正整数',{icon:2});
+					return;
+				}
+			}
+
+			layer.confirm('确认保存？', {
+		        btn : [ '确定', '取消' ]//按钮
+		    }, function(index) {
+		        layer.close(index);
+		        if(id == 0){
+		        	addUpdateAjax(calcValue,id,benchmark,ruleName,calcType,merchantId,ruleCode,checked);
+		        }else{
+		        	rulesUpdateAjax(calcValue,id,benchmark,ruleName,calcType,merchantId,ruleCode)
+		        }
+			});		
+			// console.log(calcValue+'__'+benchmark+'__'+calcType+'__'+id+'__'+ruleName+'__'+merchantId+'__'+ruleCode);
+		}
+
+		// 修改 商户积分规则接口
+		function rulesUpdateAjax(calcValue,id,benchmark,ruleName,calcType,merchantId,ruleCode){
+			var def = reqAjax('credits/rulesUpdate', {
+				arr:[{
+					calcValue : calcValue,
+					id : id,
+					benchmark : benchmark,
+					ruleName : ruleName,
+					calcType : calcType,
+					merchantId : merchantId,
+					ruleCode : ruleCode
+				}]
+			});
+
+			def.then(function(data){
+				layer.msg(data.msg,{icon:1});
+				location.reload();
+			})
+		}
+
+		// 新增 商户积分规则接口
+		function addUpdateAjax(calcValue,id,benchmark,ruleName,calcType,merchantId,ruleCode,checked){
+			var def = reqAjax('credits/toggleRuleStatus', {
+				calcValue : calcValue,
+				id : id,
+				benchmark : benchmark,
+				ruleName : ruleName,
+				calcType : calcType,
+				merchantId : merchantId,
+				ruleCode : ruleCode,
+				checked : checked
+
+			});
+
+			def.then(function(data){
+				layer.msg(data.msg,{icon:1});
+				location.reload();
+			})
+		}
+
+		// 校验
+		function checkcount(self){
+			if($(self).val().length==1){
+				$(self).val($(self).val().replace(/[^0-9]/g,''));
+			} else {
+				$(self).val($(self).val().replace(/[^0-9.]/g,''));
+				$(self).val($(self).val().replace(/\.{2,}/g,"."));
+				$(self).val($(self).val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+			}
+		}
+
+		// 正整数
+		function integerCheck(self){
+			if(self.value.length==1){
+				self.value=self.value.replace(/[^1-9]/g,'');
+			}else{
+				self.value=self.value.replace(/\D/g,'');
+			}
+		}
+	</script>
+</html>

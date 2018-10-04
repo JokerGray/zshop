@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link href="../../../../assets/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/animate.min.css" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	<!--本页面样式-->
+	<link rel="stylesheet" href="css/index.css">
+	<!-- jquery -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/jquery.min.js"></script>
+	
+	<!-- bootstrap -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/bootstrap.min.js"></script>
+	
+	<!--layer弹出层插件-->
+	<script type="text/javascript" src="../../../../assets/layer/layer.js"></script>
+	
+	<!-- bootstrap-table -->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/hplus/css/plugins/bootstrap-table/bootstrap-table.min.css" /> 
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+	<!-- iCheck选择框样式 -->
+	<link href="../../../../assets/hplus/css/plugins/iCheck/custom.css" rel="stylesheet">
+	<script src="../../../../assets/hplus/js/plugins/iCheck/icheck.min.js"></script>
+
+	<!-- 共用的样式 -->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/css/common.css"></link>
+
+	<!-- 弹层title样式统一 -->
+	<link rel="stylesheet" href="../../../../assets/check_index/layer/skin/default/layer.css">
+
+	<script type="text/javascript">
+		var ctx = '';
+	</script>
+	<title>玩家转窗口</title>
+</head>
+<body>
+	<div class="container">
+		<input type="hidden" id="prizeId" value='90'>
+		<input type="hidden" id="prizeStatus" value='1'>
+	
+		<div class="row formContent">
+			<div class="col-xs-12">
+				<p class="formTitle">
+					<span class ="title"></span>
+					<span id="shelve" class="shelve "></span>
+				</p>
+			</div>
+			<div class="col-xs-5">
+				<label>中奖人数：</label>
+				<span class="zj_count"></span>
+			</div>
+			<div class="col-xs-5">
+				<label>奖品价值：</label>
+				<span class="price"></span>
+			</div>
+			<div class="col-xs-5">
+				<label>到期时间：</label>
+				<span class="expireTime"></span>
+			</div>
+			<div class="col-xs-5">
+				<label>发布时间：</label>
+				<span class="createTime"></span>
+			</div>
+			<div class="col-xs-12">
+				<label class="pull-left">注释说明：</label>
+				<div id="remarkContent"> </div>
+			</div>
+		</div>
+		<div style="padding-top: 1.5rem;">
+			<table id="table"></table>
+		</div>
+	</div>
+	<script src="../../src/common.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>

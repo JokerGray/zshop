@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>知识库</title>
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-2.2.5/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/reply.css" />
+</head>
+<body>
+    <div class="common-container">
+        <div class="jurisdiction-content">
+            <div class="title">
+                <h4>快捷回复</h4>
+                <hr />
+            </div>
+
+            <div class="jurisdiction-left">
+                <div class="repon-sort">
+                    库<i class="layui-icon" id="classifyAdd" data-num="0">&#xe608;</i>
+                </div>
+                <ul id="classify" class="classify"></ul>
+            </div>
+
+            <div class="jurisdiction-center">
+                <div class="repon-rightl">
+                    <button class="layui-btn layui-btn-primary" id="delBtn">删除</button>
+                </div>
+                <div class="repon-rightr">
+                    <!--搜索-->
+                    <div class="ctrlbox">
+                        <button class="layui-btn layui-btn-normal" id="addQs">添加</button>
+                        <button class="layui-btn layui-btn-normal" id="importIn">导入</button>
+                        <button class="layui-btn layui-btn-normal" id="importOut">导出</button>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" id="searchName" autocomplete="off" placeholder="搜索回复内容" maxlength="50"><i class="searchicon"></i>
+                    </div>
+                 </div>
+                <!--列表-->
+                <div class="repon-table">
+                    <table class="layui-table" lay-filter="table" lay-even lay-skin="nob" id="table">
+                    </table>
+                    <div id="laypageLeft" class="table-rgt"></div>
+                    <script type="text/html" id="barDemo">
+                        <i class="layui-icon" lay-event="change" style="font-size: 25px;">&#xe642;</i>
+                        <i class="layui-icon" lay-event="del" style="font-size: 25px; ">&#xe640;</i>
+                    </script>
+                    <script type="text/html" id="effcettime">
+                        {{d.shortcutWords}}<span style="display: none;" class="ids">{{d.id}}</span>
+                    </script>
+                </div>
+            </div>
+
+
+               <!--内容详情end-->
+            </div>
+
+        </div>
+    <!--查看详情-->
+    <div class="infomation">
+        <h4>快捷回复详情<i class="info-close"></i></h4>
+        <div class="tip-titl">
+            <div class="titletxt">快捷词：<span></span></div>
+            <div class="title-ctrl">
+                <i class="layui-icon" id="editKnow" style="font-size: 25px;">&#xe642;</i>
+                <i class="layui-icon" id="delKnow" style="font-size: 25px; ">&#xe640;</i>
+            </div>
+        </div>
+        <div class="info-content">
+            回复内容：<br><span></span>
+        </div>
+    </div>
+    <!--新增或者修改-->
+    <div class="add-tip layui-form" id="addTip">
+        <div class="layui-form-item">
+            <label class="layui-form-label"><b class="required-icon">＊</b>类别</label>
+            <div class="layui-input-block" id="select">
+                <select name="interest" lay-filter="aihao" id="classifySelect">
+
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">快捷词</label>
+            <div class="layui-input-block">
+                <input name="title" id="keyword" lay-verify="title" autocomplete="off" placeholder="请输入标题(5字以内)" class="layui-input" type="text" maxlength="5">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><b class="required-icon">＊</b>回复内容</label>
+            <div class="layui-input-block">
+                <textarea id="replyContent" placeholder="请输入内容(100字以内)" class="layui-textarea" maxlength="100" lay-verify="required" ></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!--导入-->
+    <div class="import-in" id="importInfile">
+        <div class="import-level">
+            <i class="step-one">上传文件</i><i class="step">导入数据</i><i class="step">完成</i>
+        </div>
+        <div class="import-one">
+            <span>1.请按照模板格式准备需要导入的数据</span>
+            <a><i class="layui-icon">&#xe601;</i>下载快捷回复导入模板</a>
+        </div>
+        <div class="import-two">
+            <span>2.请选择需要导入的文件</span>
+            <div class="layui-form-item source-upload">
+            </div>
+        </div>
+    </div>
+    <!--导入第二步-->
+    <div class="import-in" id="importInfile1">
+        <div class="import-level">
+            <i class="step-one">上传文件</i><i class="step acv">导入数据</i><i class="step">完成</i>
+        </div>
+        <div class="import-one">
+            导入中请稍候...
+        </div>
+    </div>
+    <!--导入第三步-->
+    <div class="import-in" id="importInfile2">
+        <div class="import-level">
+            <i class="step-one">上传文件</i><i class="step acv">导入数据</i><i class="step acv">完成</i>
+        </div>
+        <div class="import-one">
+        </div>
+    </div>
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui-2.2.5/layui/layui.all.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="../common/js/util/util.js"></script>
+    <script type="text/javascript" src="../common/js/common.js"></script>
+    
+    <script type="text/javascript" src="../common/js/util/pub.js"></script>
+    <!-- jSMyself-->
+    <script type="text/javascript" src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script type="text/javascript" src="js/upload_self.js"></script>
+    <script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.exedit.js"></script>
+    <script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.exhide.js"></script>
+    <script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/reply.js"></script>
+</body>
+</html>

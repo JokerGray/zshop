@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>筑城攻略</title>
+    <link rel="stylesheet" href="css/homepage.css">
+</head>
+<body>
+    <div id="div-box" class="div-box">
+        <div class="img1"></div>
+        <div class="img2"></div>
+        <div class="img3">
+            <a class="goto" href="javascript:void(0)"></a>
+        </div>
+        <!--<img src="img/03_01.jpg" alt="">-->
+        <!--<img src="img/03_02.jpg" alt="">-->
+        <!--<img src="img/03_03.jpg" alt="">-->
+    </div>
+    <script src="js/zepto.min.js"></script>
+    <script>
+        $('.goto').on('tap',function () {
+            try {
+                //判断在苹果还是安卓
+                var u = window.navigator.userAgent;
+                var  isAndroid =   (u.indexOf('Android') > -1 || u.indexOf('Adr') > -1) && u.indexOf('SmartCity') > -1;
+                var  isiOS =   !!u.match(/\(i[^;]+;( u;)? CPU.+Mac OS X/) && u.indexOf('SmartCity') > -1;
+                if (isAndroid) {
+                    window.android.jumpToConcernList({});
+                } else if (isiOS) {
+                    window.webkit.messageHandlers.jumpToConcernList.postMessage({});
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        })
+    </script>
+</body>
+</html>

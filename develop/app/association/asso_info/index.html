@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/index.css">
+	<title>社群详情</title>
+</head>
+<body>
+    <div id="commodityShare">
+		<div class="followingBox">
+			<div class="follow_img">
+				<img id="follow_img" src="" alt="">
+			</div>		
+			<p class="comminity_case">本社群由<span id="founder"></span>创建于<span id="foundDate"></span></p>
+			<div class="follow_title">
+				<div class="foll_tit_fl fl">
+					<p id="foll_name"></p>
+					<p id="foll_instruc"></p>
+				</div>
+				<div class="foll_tit_fr fr">
+					<button class="follow_btn" id="follow_btn"></button>
+					<a class="follow_btn" id="follow_icon" href="#"></a>
+				</div>
+			</div>
+		</div>	
+		<div class="joinRequire">
+			<p class="jr_title"><i class="title_icon"></i>加入要求</p>
+			<p id="jr_con" class="jr_con"></p>
+		</div>
+		<div class="joinedGroup">
+			<p class="jd_title"><i class="title_icon"></i>拥有圈子</p>
+			<div class="jd_detail clearfix">
+				<div id="jd_detail_img" class="fl"></div>
+				<div class="detail_enter fr"><span id="joinedGroup_Num"></span>个圈子<img class="enter_icon" src="img/sqzz_jiantou_right@2x.png"></img></div>
+			</div>
+		</div>
+		<div class="admin">
+			<p class="admin_title"><i class="title_icon"></i>社群管理员</p>
+			<div class="admin_detail clearfix">
+				<div class="fl" id="founderList">
+					<img id="founder_icon" class="ad_detail_icon" style="display: none;">
+				</div>
+				<span id="founders">创建人</span>
+				<div class="detail_enter fr"><img class="enter_icon" src="img/sqzz_jiantou_right@2x.png"></img></div>
+			</div>
+		</div>
+		<div class="publicNotice">
+			<a class="pubNotice_title clearfix" href="#"><span class="fl"><i class="title_icon"></i>社群公告</span><span class="pubTit_more fr">更多公告</span></a>
+			<div class="pubN_article">
+				<p class="art_title"><span></span><a id="public_apply" href="#">报名</a></p>
+				<div class="art_con">
+					<p class="art_para" id="art_con"></p>
+					<p class="art_figure clearfix"><span class="art_date fl"></span><span class="art_num fr">报名人数<span></span></span></p>
+				</div>
+			</div>
+		</div>
+		<a class="download" href="#">
+			<img src="img/download.png" alt="">
+		</a>
+	</div>
+	<div id="weixin_pageto" style="display: none;">
+        <div class="txt">
+            请点击右上角复制链接<img src="img/_more@3x.png" style="width: 0.7rem;" />从QQ浏览器中打开
+            <!--2、选择<img src="img/safari@3x.png" style="width: 0.7rem;"/>在浏览器中打开-->
+        </div>
+        <img src="img/shape_up@3x.png" alt="" class="uparrow">
+        <!--<img src="img/shape1_down@3x.png" alt="" class="downarrow">-->
+    </div>
+	<!-- <input id="submit_btn" type="submit" value="加入社群"> -->
+	<script src="js/jquery-1.12.2.min.js"></script>
+	<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script src="js/template.js"></script>
+	<script src="js/main.js?v=20171205"></script>
+	<script src="assets/layer/mobile/layer.js"></script>
+
+	<script id="icon_box" type="text/html">
+		{{each data.circleList as value i}}
+			<div class="detail_icon_box">
+				<img class="jd_detail_icon" src="{{value.logo}}" alt="">
+				<span class="icon_mark"><i></i>{{value.circleNumber}}</span>
+			</div>
+		{{/each}}
+	</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!--pages/shop/shopSearch/shopSearch.wxml-->
+<view class='search-box'>
+    <view class='search-header'>
+        <input bindinput="bindKeyInput"  value="{{inputValue}}" placeholder="请输入店铺名称" /><image bindtap='reset' src='/images/search-del.png'></image>
+    </view>
+    <text bindtap='cancel' class='cancel'>取消</text>
+    <block  wx:if="{{false}}">
+        <view class='shop-list-box'>
+            <view class='shop-list-btn'>
+                <image src='/images/addShop.png'></image>
+                <text bindtap='newshop'>新增店铺地址</text>
+            </view>
+            <view class='shop-list'  wx:for='{{shopList}}' wx:for-index="index" wx:for-item="item" wx:key='index'>
+                <view class='shop-item'>
+                    <view class='shop-title ovh2 c131313 fz28'>{{item.title}}</view>
+                    <view class='shop-text ovh1 c999 fz26'>{{item.address}}</view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block  wx:else>
+        <view class='shop-no'>
+            <image src='/images/gantan.png'></image>
+            <view class='shop-tips c131313 fz28'>此店尚未入驻，请填写店铺地址</view>
+            <view class='shop-add fz26' bindtap='newshop' >新增店铺地址</view>
+        </view>
+    </block>
+</view>
+
+

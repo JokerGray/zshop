@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>智享头条 - 登录</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <!--初始化css-->
+    <link rel="stylesheet" href="css/reset.css" />
+    <!--公用css-->
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <!--公用js-->
+    <script src="util/util.js"></script>
+    <script src="js/login.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="header-inner clearfix">
+                <div class="logo pull-left"><img src="images/logo.png"></div>
+            </div>
+        </div>
+        <div class="login-wrap">
+            <div class="base-login">
+                <div class="input-field">
+                    <h2>登录</h2>
+                </div>
+                <div class="input-field">
+                    <input id="username" type="text" autocomplete="off" spellcheck="false" placeholder="手机号" maxlength="11">
+                </div>
+                <div class="input-field">
+                    <input id="password" type="password" autocomplete="off" spellcheck="false" placeholder="密码">
+                </div>
+                <div class="action">
+                    <div class="clearfix">
+                        <input id="remember" class="remember" type="checkbox" name="remember">
+                        <label for="remember">一个月内免登录</label>
+                        <label class="pull-right">
+                            <a  class="linelight" href="forget.html">忘记密码</a>							
+                        </label>
+                    </div>
+                </div>
+                <a href="javascript:;" id="sendSubmit" class="btn btn-block btn-lg login-btn btn-submit">登录</a>
+                <div class="clearfix relex">
+                    <span>还没有智享头条账号，您可以</span>
+                    <a class="linelight" href="register.html">立即注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+</body>
+
+</html>

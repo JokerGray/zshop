@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>泡圈主页</title>
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../../../common/css/reset.css">
+    <link rel="stylesheet" href="../../../common/css/layTab.css" />
+    <link rel="stylesheet" href="./bubbleCircle/css/bubbleCircleHome.css">
+  </head>
+  <body>
+      <div class="layout-top">
+        <!--头部搜索框 -->
+        <ul class="tool-box-ul clearfix">
+	        <!-- 时间开始 -->
+	        <li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="stTime">时间：</label>
+					<div class="layui-input-inline startDate">
+						<input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+					</div>
+				</div>
+			</li>				
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="endTim">至：</label>
+					<div class="layui-input-inline endDate">
+						<input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+					</div>
+				</div>
+			</li>
+	        <!-- 时间结束 -->                    
+			<button class="layui-btn" id="searchBtn">查询</button>
+		</ul>
+      </div>
+      <div class="center" id="totalClick">
+          <div class="center-left">
+              <img src="bubbleCircle/img/computer.png" alt="">
+          </div>
+          <div class="center-right">
+               <ul>
+                <li class="top">
+                  <p class="margin-left" style="font-size: 26px;">转账</p>
+                </li>
+                <li class="bottom">
+                  <span class="text-right margin-left">笔数：</span>
+                  <span id="countId">0</span>
+                  <span>次</span>
+                </li>
+                <li class="bottom">
+                  <span class="text-right margin-left">转账金额：</span>
+                  <span id="sunMoney">0.00</span>
+                  <span>元</span>
+                </li>
+              </ul>
+          </div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+  <script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="../../../common/js/util.js"></script>
+  <script type="text/javascript" src="../common/cw_common.js"></script>
+  
+  <script type="text/javascript">    
+	jsorcss('js','bubbleCircleHome');
+  </script>
+</html>

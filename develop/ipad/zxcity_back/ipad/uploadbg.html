@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+        <title>上传背景图片</title>
+        <link rel="stylesheet" href="../assets/hplus/css/bootstrap.min.css">
+        <link rel="stylesheet" href="js/Jcrop-0.9.12/css/jquery.Jcrop.min.css">
+        <link rel="stylesheet" href="css/setbgimg.css">
+    </head>
+    <body>
+        <div id="uploadBgBox" class="upload-bg-box">
+            <input type="hidden" id="realWidth">
+            <input type="hidden" id="realHeight">
+            <input type="hidden" id="x1">
+            <input type="hidden" id="y1">
+            <input type="hidden" id="x2">
+            <input type="hidden" id="y2">
+            <div class="upload-img">
+                <img class="big-img" src="image/1.jpg" id="target" alt="[Jcrop Example]" />
+                <div id="preview-pane">
+                    <div class="preview-container">
+                      <img src="image/1.jpg" class="jcrop-preview" alt="Preview" />
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:;" class="upload-btn">【<span>设置图片</span>】
+                <input type="file" accept="image/jpeg,image/gif" name="file">
+            </a>
+            <button type="button" class="btn" id="submitBtn">确定</button>
+        </div>
+        <script src="../assets/js/jquery-1.8.2.min.js"></script>
+        <script src="../assets/layer/layer.js"></script>
+        <script src="js/Jcrop-0.9.12/js/jquery.Jcrop.min.js"></script>
+        <script src="js/uploadbg.js"></script>
+    </body>
+</html>

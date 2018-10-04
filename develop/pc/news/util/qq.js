@@ -1,0 +1,1 @@
+document.writeln("    <script type=\'text/javascript\' src=\'http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js\' data-appid=\'101409663\' data-redirecturi=\'http://news.zxtest.izxcs.com/qcBack.html\' charset=\'utf-8\'></script>");

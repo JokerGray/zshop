@@ -1,0 +1,102 @@
+// 第六部分，智享小白
+.section7{
+    margin-top: 200px;
+    background-image: url(./img/fqz_xfbty_bg.png), url(./img/fqz_qhxyp_bg.png.png), url(./img/fqz_dnqlx_bg.png.png);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: left 212px, 80% 212px, bottom right;
+
+    .content{
+        background-image: url(./img/fqz_yellow_circle.png), url(./img/fqz_red_semicircle.png.png);
+        background-repeat: no-repeat, no-repeat;
+        background-position: right center, left 101%;
+        
+        .title-left{
+            padding-top: 170px;
+            text-align: right;
+            img{
+                display: inline-block;
+            }
+            p{
+                font-size: 32px;
+                color: #000;
+                letter-spacing: 2px;
+            }
+            .title1{
+                font-weight: bold;
+                &::first-letter{
+                    font-size: 48px;
+                }
+            }
+        }
+        .title-right{
+            padding-top: 220px;
+            text-align: center;
+            font-size: 30px;
+            color: #d70c2a;
+            font-weight: bold;
+            letter-spacing: 2px;
+            span{
+                position: relative;
+                display: inline-block;
+                border-bottom: 2px solid #d70c2a;
+                cursor: pointer;
+                &.loading{
+                    background: rgba($color: #000, $alpha: 0.5);
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        .img-content{
+            position: relative;
+            padding: 50px 0 100px;
+            >div{
+                position: relative;
+                min-height: 400px;
+                margin-bottom: 100px;
+                text-align: center;
+                &:nth-of-type(even) .box{
+                    right: inherit;
+                    left: 0;
+                    transform: translate3d(-50%, -50%, 0);
+                }
+            }
+            img{
+                max-width: 100%;
+                height: auto;
+            }
+            .box{
+                position: absolute;
+                width: 300px;
+                height: 370px;
+                padding: 76px 36px 36px;
+                top: 50%;
+                right: 0;
+                transform: translate3d(50%, -50%, 0);
+                background: rgba($color: #fff, $alpha: 0.95);
+                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.16);
+                text-align: right;
+                overflow: hidden;
+                cursor: pointer;
+                .box-title{
+                    font-size: 32px;
+                    color: #333;
+                }
+                .box-time{
+                    font-size: 16px;
+                    color:#999;
+                }
+                .box-content{
+                    margin-top: 40px;
+                    height: 145px;
+                    font-size: 20px;
+                    color: #333;
+                    line-height: 1.5;
+                    text-align: left;
+                    overflow: hidden;
+                }
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>参数设置</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common_v2.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="css/interface_resource.css" />
+</head>
+<body>
+	
+	<div id="app">
+		<div id="common-tool" class="clearfix">
+			<div id="funcTool">
+				<div id="search">
+					<!--<button class="layui-btn layui-btn-small layui-btn-primary">
+					  <i class="layui-icon">&#xe615;</i> 搜索
+					</button>-->
+				</div>
+				<div id="rig-tool" class="clearfix">
+					<button class="layui-btn layui-btn-small layui-btn-primary" id="commonAdd">
+					  <i class="layui-icon">&#xe61f;</i> 添加
+					</button>
+					<!--<button class="layui-btn layui-btn-small layui-btn-primary" id="commonDel">
+					  <i class="layui-icon">&#xe640;</i> 删除
+					</button>-->
+					<button class="layui-btn layui-btn-small layui-btn-primary" id="refresh">
+					  <i class="layui-icon">&#x1002;</i> 刷新
+					</button>
+				</div>
+			</div>
+			<div id="search-tool" class="clearfix">
+				<div class="input-group">
+					<span class="pull-left">CMD:</span>
+					<input type="text" class="form-control media-input" placeholder="请输入信息" id="inquireInput" maxlength="50">
+				</div>
+				<div class="input-group">
+					<button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearch">
+						搜索
+					</button>
+					<button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+						重置
+					</button>
+				</div>
+				<div id="search-tool-show">
+					<!--<button class="layui-btn layui-btn-small layui-btn-normal">
+						>>
+					</button>-->
+				</div>
+			</div>
+		</div>
+		<div id="app-con" class="">
+			<table lay-filter="demo" id="demo"></table>
+			<div id="laypageLeft"></div>
+		</div>
+	</div>
+	
+	
+	<!--modal-->
+		<div id="con" class="clearfix">
+			<ul class="left-con">
+				<li class="">CMD</li>
+			</ul>
+			<ul class="right-con">
+				<li class="p5">
+					<input type="text" class="form-control h28" id="version" maxlength="50" placeholder='必填'>
+				</li>
+			</ul>
+		</div>
+</body>
+<script type="text/html" id="barDemo">
+		<button class="layui-btn layui-btn-small layui-layui-btn-warm" lay-event='change'>
+		  <i class="layui-icon">&#xe6b2;</i>修改
+		</button>
+		<button class="layui-btn layui-btn-small  layui-btn-danger" lay-event="del">
+			  <i class="layui-icon">&#xe640;</i>删除
+		</button>
+</script>
+
+
+
+
+
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/login_success.js"></script>
+
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="js/interface_resource.js"></script>
+
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+</html>

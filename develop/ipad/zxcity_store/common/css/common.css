@@ -1,0 +1,120 @@
+/*
+ * 公共属性
+ */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica Neue, Helvetica, PingFang SC,
+		\5FAE\8F6F\96C5\9ED1, Tahoma, Arial, sans-serif;
+	font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-family: inherit;
+}
+
+ul, ol, li, dl, dt, dd {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+a:link, a:hover {
+	text-decoration: none;
+}
+
+img {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+}
+
+thead>tr>th{
+	background-color: #fe6869;
+	color:#fff;
+	text-align: center;
+}
+
+/*
+ * 内容页公共组件
+ */
+.maintitle {
+	position: relative;
+	width: 100%;
+	height: 54px;
+	text-align: center;
+	background-color:#fff;
+}
+
+.maintitle .return-icon {
+	position: absolute;
+	left: 10px;
+	top: 18px;
+	width: 10px;
+}
+
+.maintitle .title {
+	padding: 0;
+	margin: 0;
+	font-size: 20px;
+	line-height: 54px;
+}
+
+.main-content {
+	position: relative;
+	overflow: hidden;
+	background-color:#fff;
+}
+
+/*
+ * 分页组件主体
+ */
+.pageview {
+	text-align: center;
+}
+
+.pagination {
+	padding: 0;
+	margin: 0;
+}
+
+.pagination>li>a, .pagination>li>span {
+	color: #FE6869;
+}
+
+.pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus,
+	.pagination>li>span:focus {
+	color: #FE6869;
+}
+
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover,
+	.pagination>.active>span:hover, .pagination>.active>a:focus,
+	.pagination>.active>span:focus {
+	background-color: #FE6869;
+	border-color: #FE6869;
+}
+
+/*
+ * Layer窗口组件
+ */
+.layui-layer-setwin .layui-layer-close1 {
+	background: url(../img/icon_guanbi@2x.png) #d2322d scroll no-repeat;
+	background-size: 60% 60%;
+	background-position: center!important;
+	border-radius: 3px;
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+/**/
+.fixed-table-pagination .pagination-detail{
+	display:none;
+}
+.fixed-table-pagination .pull-right{
+	width:100%;
+	text-align:center;
+}
+.fixed-table-pagination .pagination a{
+	font-size:28px;
+	padding-left:16px;
+	padding-right:16px;
+}

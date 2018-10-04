@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实名认证审核</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../common/css/bootstrap.min.css" media="all"/>
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css"/>
+    <link rel="stylesheet" href="../../common/assets/zTree_v3/css/metroStyle/metroStyle.css"/>
+    <link rel="stylesheet" href="realname_authaudit.css">
+</head>
+<body>
+<div class="layui-row layui-fluid">
+    <ul class="layui-form layui-col-sm12 layui-col-md12 clearfix input-box">
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="">账号：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" maxlength="11" class="layui-input" id="merchantName">
+                </div>
+            </div>
+        </li>
+        <!--nickName-->
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="">昵称：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" maxlength="11" class="layui-input" id="nickName">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="start_time">开始时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off"  class="layui-input" id="jurisdiction-begin">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="">结束时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="jurisdiction-end">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <label>&nbsp;</label>
+            <div class="fl">
+                <button class="layui-btn" id="toolSearch">搜索</button>
+                <button class="layui-btn" id="toolRelize">重置</button>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="layui-fluid">
+    <div class="layui-app tool-box clearfix">
+        <div class="fl tab_box">
+            <button class="layui-btn active" data-type="1">
+                待认证
+            </button>
+            <button class="layui-btn op5" data-type="2">
+                已认证
+            </button>
+        </div>
+    </div>
+</div>
+<div class="layui-row layui-fluid" id="tableBox">
+    <div class="app-table">
+        <table id="tableNo" lay-filter="tableNo"></table>
+        <div id="laypageLeft" class="fr"></div>
+    </div>
+</div>
+<!--lay-event='detail' 这个是绑定事件没有这个就绑定不了事件-->
+
+<script type="text/html" id="barDemo">
+    {{# if($('button.active').attr('data-type') == '1'){ }}
+    <button class="layui-btn layui-btn-md " lay-event='change'>
+        <i class="layui-icon">&#xe6b2;</i> 去处理
+    </button>
+    {{#  } else { }}
+    <button class="layui-btn layui-btn-md layui-btn-normal" lay-event='detail'>
+        <i class="layui-icon">&#xe615;</i> 查看
+    </button>
+    {{#  } }}
+
+
+</script>
+
+<div id="demo111" class='layui-form clearfix layui-row disn layer-box'>
+
+    <div class="layui-progress layui-progress-big progress-my disn" lay-filter="progross" lay-showPercent="true" id="progross">
+        <div class="layui-progress-bar layui-bg-green" lay-percent="25%"></div>
+    </div>
+
+    <div class="app-layer layui-col-sm12 layui-col-md12">
+        <div class="package clearfix">
+            <div class="package-title">查看信息</div>
+            <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+            </div>
+        </div>
+        <div class="app-layer-content">
+            <ul class="layui-form clearfix p0">
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">账号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="" autocomplete="off" lay-verify="required" class="layui-input" id="usercode" disabled readonly>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">昵称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="" placeholder="" lay-verify="required" autocomplete="off" class="layui-input" id="username" disabled  readonly>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">城市：</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" lay-verify="required" disabled  readonly id="city_name">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 lookUsername">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">真实姓名：</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input"  disabled  readonly id="realname">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 lookguild trade">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">性别：</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input"  disabled  readonly id="usersex">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 lookguild">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">生日：</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input"  disabled  readonly id="userbirth">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4 ">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">提交时间：</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input"  disabled  readonly id="submissiontime">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4">
+                    <div class="mr20">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">身份证号码</label>
+                            <div class="layui-input-block p0">
+                                <input type="text" class="layui-input"  disabled  readonly id="identificationno">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md4">
+                    <div class="mr20">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">邮箱</label>
+                            <div class="layui-input-block p0">
+                                <input type="text" class="layui-input"  disabled  readonly id="mail">
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!--<li class="disb">
+                    <div class="layui-form-item layui-col-md4">
+                        <label class="tool-box-label">身份证正面：</label>
+                        <div class="layui-input-block">
+                            <div class="img-box">
+                                <img src="../../common/images/placeholder.png"  id="card_back_photo" class="zImg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">身份证反面：</label>
+                        <div class="layui-input-block">
+                            <div class="img-box">
+                                <img src="../../common/images/placeholder.png"  id="card_front_photo" class="zImg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </li>-->
+                <li class="layui-col-md4">
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">手持身份证正面：</label>
+                        <div class="layui-input-block">
+                            <div class="img-box">
+                                <img src="../../common/images/placeholder.png" id="card_hold_photo" class="zImg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="layui-form-item">
+                        <label class="tool-box-label">认证意见：</label>
+                        <div class="layui-input-block">
+                            <textarea class="disb" id="audit_opinion" style="width: 100%; padding: 10px;" placeholder="请输入认证意见" name="" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="layer-place">
+                展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script>
+
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="realname_authaudit.js"></script>
+</body>
+</html>

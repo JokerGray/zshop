@@ -1,0 +1,24 @@
+<div class="tools-lightbox">
+    <div class="panel-default">
+        <div class="padding-15">
+            <div class="col-md-12">
+                <h5 class="tools-line-h tools-m-0">您确定要拒绝活动申请吗？</h6>
+                
+            </div>
+           
+        </div>
+        <div class="status-modal-footer">
+            <div class="col-md-12">
+                <input class="form-control refuse-input" ng-class="{dangerInput:!isvalidate}" type="text" placeholder="请填写拒绝原因（5-20个字）" ng-model="reason" id="reason" >
+                <p class="danger-info" ng-if='!isvalidate'>请填写拒绝原因（5-20个字）</p>
+            </div>
+        </div>
+
+        <div class="status-modal-footer">
+            <div class="col-md-12">
+                <button class="btn modal-btn-new-danger  col-md-5" ng-click="refuse()" id="refuse">确认拒绝</button>
+                <button class="btn modal-btn-green-default  col-md-5" ng-click="cancel()" id="cancel">再想一想</button>
+            </div>
+        </div>
+    </div>
+</div>

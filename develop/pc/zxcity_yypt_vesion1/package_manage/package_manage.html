@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>礼包管理</title>
+    <!-- Css../commonold -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="css/package_manage.css" />
+</head>
+<body>
+<div id="common-tool" class="clearfix p4">
+    <div id="search">
+        <button class="layui-btn layui-btn-small layui-btn-primary">
+            <i class="layui-icon">&#xe615;</i> 搜索
+        </button>
+    </div>
+    <div id="rig-tool" class="clearfix">
+        <button class="layui-btn layui-btn-small layui-btn-primary" id="commonAdd">
+            <i class="layui-icon">&#xe61f;</i> 添加
+        </button>
+    </div>
+</div>
+<div id="search-tool" class="clearfix">
+    <div class="input-group">
+        <span class="pull-left">礼包名称：</span>
+        <input type="text" class="form-control media-input"  id="merchantName" maxlength="20">
+    </div>
+    <div class="input-group">
+        <span class="pull-left">所属产品：</span>
+        <select class="form-control" id="payLocK">
+            <option value="">--请选择--</option>
+            <option value="1">APP</option>
+            <option value="2">商品后台</option>
+            <option value="3">展示端</option>
+            <option value="4">智大师</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearch">
+            搜索
+        </button>
+        <button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+            重置
+        </button>
+    </div>
+    <!--<div id="search-tool-show" class="highsearch">
+        <i class="fa fa-angle-double-down"></i>
+    </div>-->
+</div>
+<div class="jiange"></div>
+<div id="audit" class="tabale-list">
+    <table lay-filter="table" id="table"></table>
+    <div id="laypageLeft" class="table-rgt"></div>
+</div>
+<script type="text/html" id="barDemor">
+    <button class="layui-btn layui-btn-small layui-btn-normal" lay-event='detail'>
+        <i class="layui-icon">&#xe615;</i> 查看
+    </button>
+    {{#  if(d.isAvailable == 1){ }}
+    <button class="layui-btn layui-btn-small layui-layui-btn-warm" lay-event='change'>
+        <i class="layui-icon">&#xe6b2;</i> 修改
+    </button>
+    <button class="layui-btn layui-btn-small  layui-btn-danger" lay-event="del" id="del">
+        弃用
+    </button>
+    {{#  } else { }}
+    <button class="layui-btn layui-btn-small layui-btn-primary disbld" lay-event="binddel" id="binddel">
+        已弃用
+    </button>
+    {{#  } }}
+</script>
+
+<!-- modal -->
+<!--查看-->
+<div id="details" class='layui-form clearfix common-tip'>
+    <div class="centerCon">
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">礼包名称：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input form-control h30" id="detailsName" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">所属产品：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input form-control h30" id="detailsType" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian packoption">
+            <label class="layui-form-label flex">礼包描述：</label>
+            <div class="layui-input-block flex">
+                <textarea type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input form-control" id="detailsLevel" disabled style="resize: none"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">礼包内容：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input form-control h30" id="detailsCode" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">是否可用：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input form-control h30" id="detailsValueType" disabled>
+            </div>
+        </div>
+    </div>
+</div>
+<!--修改-->
+<div id="changeDetail" class='clearfix changeDetail common-tip'>
+    <div class="centerCon">
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>礼包名称：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input form-control h30" id="changname" maxlength="20">
+            </div>
+        </div>
+        <div class="form-group goodstype bitian">
+            <span class="layui-form-label">所属产品：</span>
+            <select id="changbasic" class="selectpicker show-tick form-control goodinfo">
+                <option value="1">APP</option>
+                <option value="2">商品后台</option>
+                <option value="3">展示端</option>
+                <option value="4">智大师</option>
+            </select>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>礼包描述：</label>
+            <div class="layui-input-block flex">
+                <textarea type="text" lay-verify="required" name="title" autocomplete="off" class="layui-input" id="packageinfoNote" maxlength="150"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <span class="layui-form-label"><b class="required-icon">＊</b>礼包内容：</span>
+            <div class="select-body">
+                <div class="box-list" id="select-boxs">
+
+                </div>
+                <div class="addpackagebtn">
+                    <button class="layui-btn layui-btn-small layui-btn-primary add-package" id="addPackages">
+                        <i class="layui-icon">&#xe61f;</i> 添加
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--添加-->
+<div id="addDetail" class='clearfix addDetail common-tip'>
+    <div class="centerCon">
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>礼包名称：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input form-control h30" id="systemName" maxlength="22">
+            </div>
+        </div>
+        <div class="form-group goodstype bitian">
+            <span class="layui-form-label">所属产品：</span>
+            <select id="addBasic" class="selectpicker show-tick form-control">
+                <option value="1">APP</option>
+                <option value="2">商品后台</option>
+                <option value="3">展示端</option>
+                <option value="4">智大师</option>
+            </select>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>礼包描述：</label>
+            <div class="layui-input-block flex">
+                <textarea type="text" name="title" autocomplete="off" class="layui-input" id="systemNote" maxlength="150"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <span class="layui-form-label"><b class="required-icon">＊</b>礼包内容：</span>
+            <div class="select-body">
+                <div class="box-list" id="select-box">
+                    <!--<div class="packagelist">
+                        <select class="selectpicker show-tick form-control">
+                            <option value="1">优惠券</option>
+                            <option value="2">智币</option>
+                            <option value="3">现金</option>
+                        </select>
+                        <div class="layui-input-inline packagecard" >
+                            <select  name="coupon" class="selectcoupon form-control">
+                                <option value=" ">请选择</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline packagecoin select-text">
+                            <input placeholder="数量" name="coin"  autocomplete="off"  class="layui-input" type="text" value=""  maxlength="5">
+                        </div>
+                        <div class="layui-input-inline packagemoney select-text">
+                            <input placeholder="RMB" name="money"  autocomplete="off"  class="layui-input" type="text" value="" maxlength="5">
+                        </div>
+                    </div>-->
+                </div>
+                <div class="addpackagebtn">
+                    <button class="layui-btn layui-btn-small layui-btn-primary add-package" id="addPackage">
+                        <i class="layui-icon">&#xe61f;</i> 添加
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!-- jS../commonold -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+<!-- jS../commonold -->
+<script type="text/javascript" src="js/package_manage.js"></script>
+</html>

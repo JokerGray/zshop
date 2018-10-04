@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>分享赚账单详情</title>
+        <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+        <link rel="stylesheet" type="text/css" href="css/zwz.css"/>
+        <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_42u551n4wuahsemi.css"/>		
+	</head>
+	<body>
+		<div id="zwz">
+			<!--导航-->
+			<div class="nav">
+				<ul>
+					<li><a href="">今日</a></li>
+					<li><a href="">昨日</a></li>
+					<li class="nav_active"><a href="">近7日</a></li>
+					<li><a href="">近30日</a></li>
+				</ul>
+			</div>
+			<p class="time">2017-01-18至2017-01-24</p>
+			<div class="line_warp">
+				<!--图表层-->
+				<div class="canvas canvas1">
+					<!--统计-->
+					<div class="count">
+						<div class="c c_left">
+							<div class="dian">
+								<i class="iconfont icon-yuandian"></i>
+								<span>劵被使用总次数</span>	
+							</div>
+							<span class="num">1256</span>
+						</div>
+						<div class="c c_right">
+							<div class="dian">
+								<i class="iconfont icon-yuandian"></i>
+								<span>总收入</span>	
+							</div>
+							<span class="num">￥56.26</span>						
+						</div>
+					</div>
+					<!--图表-->
+					<div class="line" style="width: 92.7%;height: 250px;">
+						
+					</div>
+				</div>			
+				<!--图表层-->
+				<div class="canvas canvas2">
+					<!--标题-->
+					<div class="title">
+						<span>分享"小程序今夜凌晨降临"</span>
+					</div>
+					<!--统计-->
+					<div class="count">
+						<div class="c c_left">
+							<div class="dian">
+								<i class="iconfont icon-yuandian"></i>
+								<span>劵被使用总次数</span>	
+							</div>
+							<span class="num">56</span>
+						</div>
+						<div class="c c_right">
+							<div class="dian">
+								<i class="iconfont icon-yuandian"></i>
+								<span>收入</span>	
+							</div>
+							<span class="num">￥12.26</span>						
+						</div>
+					</div>
+					<!--账单流水-->
+					  <div class="water">
+					    <ul>
+					    	<li>
+					    		<div>
+					    			<span class="time">09-24 14:30</span>
+					    			<span class="num">数量：1</span>
+					    			<span class="money"><i class="iconfont icon-jia"></i>15.00</span>
+					    		</div>
+					    	</li>
+					    	<li>
+					    		<div>
+					    			<span class="time">09-24 14:30</span>
+					    			<span class="num">数量：1</span>
+					    			<span class="money"><i class="iconfont icon-jia"></i>15.00</span>
+					    		</div>
+					    	</li>
+					    	<li>
+					    		<div>
+					    			<span class="time">09-24 14:30</span>
+					    			<span class="num">数量：1</span>
+					    			<span class="money"><i class="iconfont icon-jia"></i>15.00</span>
+					    		</div>
+					    	</li>					    	
+					    </ul>
+					  </div>
+				</div>				
+			</div>
+		</div>
+	    <script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.4.0/echarts.common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var myChart1 = echarts.init(document.querySelector(".canvas1 .line"));
+				function setCanvas(obj){
+				  var options = {
+				    tooltip : {
+				      trigger: 'axis',
+				      triggerOn: 'mousemove'
+				    },
+				    grid: {
+				      left: '3%',
+				      right: '4%',
+				      bottom: '3%',
+				      containLabel: true
+				    },
+				    xAxis : {
+				      type: 'category',
+				      boundaryGap: false,
+				      data: [],
+				    },
+				    yAxis : {
+				      type : 'value',
+				      splitNumber:2,
+				      splitLine:{
+				        lineStyle:{
+				          type:'dashed'
+				        }
+				      },
+				      axisLine:{
+				        show:false,
+				      },
+				      axisLabel:{
+				      	textStyle:{
+				      		color: function (val) {
+						        return '#ccc';
+						    },
+						    fontSize:24
+				      		
+				      	}
+				      }
+				    },
+				    series : {
+				      type:'line',
+				      silent:true,
+				      //线条
+				      lineStyle:{
+				        normal:{
+				          color:obj.color,
+				        }
+				      },
+				      //拐点
+				      itemStyle:{
+				        normal:{
+				          color:obj.color,
+				        },
+				        emphasis:{
+				          borderWidth:5
+				        }
+				      },
+				      //渲染面积
+				      areaStyle: {
+				        normal: {
+				          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+				            offset: 0, color: obj.color // 0% 处的颜色
+				          }, {
+				            offset: 1, color: '#fff' // 100% 处的颜色
+				          }], false)
+				        }
+				      },
+				      data:obj.data
+				    }
+				  };
+				  return options;
+				}
+				var a = setCanvas({
+				  color:'#66D2FE',
+				  data:[220, 432, 100, 934, 290, 330, 320]
+				})			
+				myChart1.setOption(a);
+			}
+		</script>
+	</body>
+</html>

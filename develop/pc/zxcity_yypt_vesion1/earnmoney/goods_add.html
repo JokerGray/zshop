@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Pragma" content="no-cache"> 
+    <meta http-equiv="Cache-Control" content="no-cache"> 
+    <meta http-equiv="Expires" content="0"> 
+
+    <title>实物奖品管理-添加</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="./css/earnmoney_common.css">
+    <style>
+        .content {
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid content">
+        <form>
+            <div class="form-group">
+                <label for="merchantId">添加商户</label>
+                <select class="form-control" id="merchantId"></select>
+            </div>
+            <div class="form-group">
+                <label for="areaId">省</label>
+                <select class="form-control" id="areaId"></select>
+            </div>
+            <div class="form-group">
+                <label for="cityId">市</label>
+                <select class="form-control" id="cityId"></select>
+            </div>
+            <div class="form-group">
+                <label for="prizeTitle">奖券标题</label>
+                <input type="text" class="form-control" id="prizeTitle" maxlength="6" autocomplete="off"></select>
+            </div>
+            <div class="form-group">
+                <label for="prizePrice">奖券面额(元)</label>
+                <input type="text" class="form-control" id="prizePrice" maxlength="5" autocomplete="off"></select>
+            </div>
+            <div class="form-group">
+                <label>实物图片</label>
+                <div id="choose" class="well text-center" style="cursor: pointer">
+                    <h3 class="text-center">点击选择图片</h3>
+                    <img id="prizeStyle" style="max-width: 100%" src="" alt="">
+                    <div id="ossfile" style="display: none;">
+                        <div class="text-info"></div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="prizeExplain">注释说明</label>
+                <textarea style="resize: none;" rows="5" class="form-control" id="prizeExplain"></textarea>
+            </div>
+            <button type="button" class="btn btn-info" onclick="add()">提交</button>
+        </form>
+    </div>
+
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script> 
+    <script type="text/javascript" src="./js/earnmoney_common.js"></script>
+    <script type="text/javascript" src="./js/goods_add.js"></script>
+</body>
+
+</html>

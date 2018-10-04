@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>智享城市·24小时 - 注册</title>
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/rent.css" />
+		<link rel="stylesheet" href="css/login.css" />
+	    <!--[if lt IE 9]>
+	      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	    <![endif]-->
+	    <script src="js/jquery-1.10.2.js"></script>
+	    <script src="assets/layer/layer.js"></script>
+	    <script src="js/until/util.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="header">
+				<div class="header-inner clearfix">
+					<div class="logo pull-left"><img src="images/logo.png" ></div>				
+				</div>
+			</div>
+			<div class="register-wrap" style="min-height: 300px;">
+				<div class="base-register">
+					<div class="input-field">
+						<input id="mobile" type="text" name="mobile" autocomplete="off" spellcheck="false" placeholder="手机号">
+					</div>
+					<div class="input-field">
+						<input id="password" type="password" name="password" autocomplete="off" spellcheck="false" placeholder="设置密码">
+					</div>
+					<div class="input-field">
+						<div class="phone-code">
+							<input id="code" type="text" name="code" autocomplete="off" spellcheck="false" placeholder="验证码">
+							<span class="code-btn">获取验证码</span>
+						</div>
+					</div>
+					<a href="javascript:void(0)" id="sendSubmit" class="btn btn-block btn-lg login-btn btn-submit">注册</a>
+					<div class="clearfix" id="codestr" style="position: absolute; margin-top:10px; display: none;">
+						您的验证码是：<span class="codestr"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="lib/register_step1.js"></script>
+	</body>
+</html>

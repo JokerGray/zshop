@@ -1,0 +1,13 @@
+document.writeln("                <div class=\'tabControl\'>");
+document.writeln("                    <ul class=\'titleLeft\'></ul>");
+document.writeln("                    <div class=\'bigWrap\'></div>");
+document.writeln("                    <div class=\'con\'>");
+document.writeln("                          <div class=\'list\' id=\'container\'></div>");
+document.writeln("                          <div class=\'info_box cur-p\' id=\'updateList\' style=\'display:none;\'>换一批试试</div>");
+document.writeln("                          <div class=\'info_box cur-p\' id=\'updateListNo\' style=\'display:none;background:#ddd;\'>已经到底了哦</div>");
+document.writeln("                   </div>");
+document.writeln("                  <div class=\'imgbg\'> ");
+document.writeln("                      <img src=\'img/listbj.png\' alt=\'\'>");
+document.writeln("                      <p>数据为空~</p>");
+document.writeln("                  </div>");
+document.writeln("                </div>");

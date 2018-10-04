@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+        <title></title>
+        <link rel="stylesheet" href="../assets/hplus/css/bootstrap.min.css">
+        <link id="mainStyle" rel="stylesheet" href="css/padback.css">
+        <!-- <link id="mainStyle" rel="stylesheet" href="css/theme2/padback.css"> -->
+        <script>
+            var styleType = sessionStorage.getItem("styleType");
+            var styleObj = document.getElementById("mainStyle");
+            if(styleType == 2){
+                styleObj.setAttribute("href", "css/theme2/padback.css");
+            }else if(styleType == 3){
+                styleObj.setAttribute("href", "css/theme3/padback.css");
+            }else{
+                styleObj.setAttribute("href", "css/padback.css");
+            }
+        </script>
+    </head>
+    <body>
+        <div id="padContainer">
+            <div class="pad-main-wrapper pull-left">
+                <div id="appshow">
+                    <div class="show-wrapper">
+                        <iframe id="pageFrame" name="pageFrame" src="boutique.html" frameborder="0" width="102%" height="102%"></iframe>
+                    </div>
+                    <div class="show-menu">
+                        <ul>
+                            <li class="boutique show-menu-active" data-rel="boutique">
+                                <i class="iActive"></i><span class="menu-text">精品</span>
+                                <span class="glyphicon glyphicon-pencil edit-btn"></span>
+                            </li>
+                            <li class="popular" data-rel="popular">
+                                <i></i><span class="menu-text">爆款</span>
+                                <span class="glyphicon glyphicon-pencil edit-btn"></span>
+                            </li>
+                            <li class="allproducts" data-rel="allproducts">
+                                <i></i><span class="menu-text">全部</span>
+                                <span class="glyphicon glyphicon-pencil edit-btn"></span>
+                            </li>
+                            <li class="discount" data-rel="discount">
+                                <i></i><span class="menu-text">优惠</span>
+                                <span class="glyphicon glyphicon-pencil edit-btn"></span>
+                            </li>
+                            <li class="store" data-rel="store">
+                                <i></i><span class="menu-text">店铺</span>
+                                <span class="glyphicon glyphicon-pencil edit-btn"></span>
+                            </li>
+                            <li class="news" data-rel="news">
+                                <i></i><span class="menu-text">资讯</span>
+                                <span class="glyphicon glyphicon-pencil edit-btn"></span>
+                            </li>
+                            <li class="account" data-rel="account">
+                                <i></i><span class="menu-text">账户</span>
+                                <span class="glyphicon glyphicon-pencil edit-btn"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="styleSetBox" class="style-set-box pull-left">
+                <p class="title">风格设置</p>
+                <div class="style-choose">
+                    <label><input type="radio" name="styleType" value="1" checked="checked">经典风格</label>
+                    <label><input type="radio" name="styleType" value="2">淡雅风格</label>
+                    <label><input type="radio" name="styleType" value="3">简约风格</label>
+                </div>
+                <div class="bg-set">
+                    <p class="sub-title">背景图片设置</p>
+                    <div class="pic-choose">
+                        <div class="pic-show">
+                            <img src="image/styleset/bg_small_1.jpg">
+                        </div>
+                        <a href="javascript:;" class="remove-btn"></a>
+                        <a href="javascript:;" class="reselect-btn">重新选择</a>
+                    </div>
+                    <p class="desc">（图片大小建议不超过1M）</p>
+                </div>
+                <button type="button" class="btn save-btn">保存</button>
+            </div>
+        </div>
+
+    <script src="../assets/js/jquery-1.8.2.min.js"></script>
+    <script src="../assets/layer/layer.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/padback.js"></script>
+    </body>
+</html>

@@ -1,0 +1,509 @@
+* {
+	list-style: none;
+}
+
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-7,
+.col-xs-9 {
+	padding: 0;
+}
+
+::-webkit-input-placeholder {
+	/* WebKit browsers */
+	color: #C3C3C3!important;
+}
+
+:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #C3C3C3!important;
+}
+
+::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #C3C3C3!important;
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10+ */
+	color: #C3C3C3!important;
+}
+
+.allWrapper {
+	padding-bottom: 40px;
+	font-family: "microsoft yahei";
+}
+
+.allWrapper .caret {
+	float: right;
+	margin-right: 20px;
+	margin-top: 23px;
+}
+
+.allWrapper .banner img {
+	width: 100%;
+}
+
+.allWrapper .container-fluid {
+	padding: 0;
+}
+
+.allWrapper .row {
+	margin: 0;
+}
+
+.allWrapper .register {
+	background: url(../images/beijing.png) no-repeat 0 0;
+	padding-left: 36px;
+	padding-right: 36px;
+	padding-bottom: 120px;
+	position: relative;
+}
+
+strong {
+	background: url(../images/fengexian.png) no-repeat 50% 42px;
+	display: block;
+	height: 45px;
+	background-size: 35px 3px;
+}
+
+.register .type-change,
+.register .type-change div {
+	height: 55px;
+	line-height: 55px;
+	margin-bottom: 30px;
+	cursor: pointer;
+}
+
+.register .normal-user {
+	background: url(../images/putongyonghu.png) no-repeat 0 0;
+	background-size: 100%!important;
+}
+
+.register .normal-store {
+	background: url(../images/putongshanghu＿2.png) no-repeat 0 -1px;
+	background-size: 100%!important;
+}
+
+.register input,
+.register select {
+	width: 100%;
+	height: 50px;
+	color: #C3C3C3;
+	text-indent: 40px;
+	border-radius: 25px;
+	border: none;
+	font-size: 17px;
+	background-color: #FFFFFF;
+	box-shadow: 0 2px 8px 2px #ffb296;
+	background-size: 20px 25px;
+}
+
+.register input:focus,
+.register select:focus {
+	box-shadow: none;
+}
+
+.number {
+	background: url(../images/shouji.png) no-repeat 20px 50%;
+}
+
+.code {
+	background: url(../images/yanzhengma.png) no-repeat 20px 50%;
+	background-size: 20px 15px!important;
+}
+
+.pass {
+	background: url(../images/mima.png) no-repeat 20px 50%;
+}
+
+.store-name {
+	background: url(../images/dianpu.png) no-repeat 20px 50%;
+	background-size: 20px 20px!important;
+}
+
+.admin-name {
+	background: url(../images/icon_lc.png) no-repeat 20px 50%;
+}
+
+.store-types {
+	background: url(../images/icon_hy.png) no-repeat 20px 50%;
+	text-indent: 52px!important;
+	background-size: 20px 20px!important
+}
+
+.phone-number,
+.pass-number,
+.code-number,
+#store-name,
+#store-address,
+#admin-name,
+#store-types {
+	height: 80px;
+}
+
+.store-address {
+	background: url(../images/didian.png) no-repeat 20px 50%;
+	background-size: 20px 25px;
+	text-indent: 52px!important;
+	padding-right: 30px;
+}
+
+#store-types,
+#store-address {
+	position: relative;
+}
+
+#store-types .caret,
+#store-address .caret {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.pass-number {
+	height: 50px;
+	line-height: 50px;
+}
+
+.register .get-code {
+	height: 50px;
+	line-height: 50px;
+	color: #FFFFFF;
+	background-color: #f55145;
+	border-radius: 25px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.register .get-code .btn {
+	width: 100%;
+	height: 100%;
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	outline: none;
+	box-shadow: none;
+	color: #FFFFFF!important;
+}
+
+.register #regist-now {
+	border: none;
+	background: url(../images/anniu.png) no-repeat;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	background-size: 100% 60px;
+	cursor: pointer;
+	margin-top: 30px;
+	outline: none;
+	box-shadow: none;
+}
+
+.register .store-info .tip {
+	height: 60px;
+	line-height: 60px;
+	color: #ff474d;
+	font-size: 17px;
+	text-indent: 20px;
+	position: relative;
+}
+
+.register .store-info .tip img {
+	display: block;
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	z-index: 999;
+	right: 40px;
+	top: 22px;
+}
+
+.register .store-info .pic-upload .col-xs-6 {
+	cursor: pointer;
+	height: 120px;
+}
+
+.upload-left,
+.upload-right {
+	padding: 0;
+	width: 48%;
+	float: left;
+	height: 120px;
+}
+
+.uploads {
+	background-size: 100% 100%!important;
+}
+
+#upload-left {
+	background: url(../images/yingyezhizhao1.png) no-repeat;
+	margin-bottom: 10px;
+}
+
+#upload-right {
+	background: url(../images/yingyezhizhao2.png) no-repeat;
+	margin-bottom: 10px;
+}
+
+#newUpload1 {
+	background: url(../images/shenfenzhengzheng.png) no-repeat;
+}
+
+#newUpload2 {
+	background: url(../images/shenfenzhengfan.png) no-repeat;
+}
+
+.pic-upload div button {
+	height: 100%!important;
+	width: 100%!important;
+	opacity: 0;
+}
+
+.upload-left {
+	margin-right: 4%;
+	margin-bottom: 5px;
+}
+
+.pic-upload div.preview {
+	width: 100%;
+	height: 120px;
+	top: -120px;
+}
+
+.pic-upload div.preview div {
+	width: 100%!important;
+	height: 120px!important;
+	top: 0!important;
+}
+
+.smart-city {
+	position: absolute;
+	z-index: 999;
+	width: 90%;
+	left: 5%;
+	bottom: -330px;
+	background-color: #FFFFFF;
+	border-radius: 4px;
+	box-shadow: 1px 8px 10px 5px #f2ced0;
+}
+
+.smart-city ul {
+	padding-right: 15px;
+}
+
+.smart-city .head,
+.appInfo-list .head,
+.smart-manage .head {
+	height: 110px;
+	text-align: center;
+	line-height: 40px;
+	padding-top: 10px;
+}
+
+.smart-city .head strong,
+.appInfo-list .head strong,
+.smart-manage .head strong {
+	font-size: 24px;
+}
+
+.smart-city .head p,
+.appInfo-list .head p,
+.smart-manage .head p {
+	font-size: 13px;
+	color: #838383;
+	margin-bottom: 0;
+}
+
+.smart-city li {
+	height: 100px;
+	border-bottom: solid 1px #f1f1f1;
+	padding-top: 10px;
+}
+
+.smart-city li:last-of-type {
+	border-bottom: none;
+}
+
+.smart-city li span.app-name {
+	line-height: 30px
+}
+
+.smart-city li .appIcon img {
+	width: 100%;
+}
+
+.smart-city .appName {
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+.smart-city .appName .app-name {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.smart-city .appName .app-info {
+	font-size: 13px;
+	color: #c3c3c3;
+}
+
+.appInfo-list {
+	width: 90%;
+	padding-top: 380px;
+	margin-right: 5%;
+	margin-left: 5%;
+}
+
+.appInfo-list ul {
+	padding-left: 20px;
+}
+
+.appInfo-list li {
+	height: 90px;
+	background-color: #ffb180;
+	box-shadow: 0 0 8px 2px #ffd4c8;
+	position: relative;
+	border-radius: 4px;
+	color: #FFFFFF;
+	margin-bottom: 20px;
+}
+
+.appInfo-list li .appIcon {
+	position: absolute;
+	z-index: 999;
+	left: -28px;
+	top: 10px;
+}
+
+.appInfo-list li .appIcon img {
+	width: 100%;
+}
+
+.appInfo-list .appName {
+	height: 90px;
+	padding-top: 10px;
+	padding-right: 10px;
+}
+
+.appInfo-list .app-name {
+	font-size: 18px;
+	line-height: 30px;
+}
+
+.smart-manage {
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	letter-spacing: 1px;
+	position: relative;
+}
+
+.smart-manage .pic {
+	margin-bottom: 20px;
+}
+
+.smart-manage .pic img {
+	width: 100%;
+}
+
+.smart-manage .manage-info img {
+	width: 130px;
+	float: left;
+}
+
+.smart-manage .goTop {
+	position: fixed;
+	z-index: 999;
+	width: 60px;
+	height: 60px;
+	right: 0;
+	bottom: 200px;
+}
+
+.smart-manage .goTop img {
+	width: 100%;
+}
+
+@media (max-width: 360px) {
+	.register input,
+	.register select {
+		height: 40px;
+		font-size: 13px;
+		background-size: 15px 20px;
+	}
+	.register .type-change,
+	.register .type-change div {
+		margin-bottom: 5px;
+	}
+	.phone-number,
+	.pass-number,
+	.code-number,
+	#store-name,
+	#store-address,
+	#admin-name,
+	#store-types {
+		height: 65px;
+	}
+	.register .get-code {
+		height: 40px;
+		line-height: 40px;
+	}
+	.register .get-code .btn {
+		font-size: 12px;
+	}
+	.register #regist-now {
+		height: 50px;
+		line-height: 50px;
+		background-size: 100% 50px;
+		margin-top: 25px;
+	}
+	.smart-city .head strong,
+	.appInfo-list .head strong,
+	.smart-manage .head strong {
+		font-size: 20px;
+	}
+	.smart-city .head p,
+	.appInfo-list .head p,
+	.smart-manage .head p {
+		font-size: 12px;
+	}
+	.smart-city .appName .app-name {
+		font-size: 14px;
+	}
+	.smart-city .appName .app-info {
+		font-size: 12px;
+	}
+	.smart-city li {
+		height: 90px;
+	}
+	.appInfo-list .app-name {
+		font-size: 16px;
+		line-height: 30px;
+	}
+	.appInfo-list .app-info {
+		font-size: 14px;
+	}
+	.smart-manage .manage-info {
+		font-size: 13px;
+	}
+	.pass-number {
+		height: 40px;
+	}
+	.register .store-info .tip {
+		font-size: 14px;
+	}
+	.upload-left,
+	.upload-right {
+		height: 90px;
+		background-size: 100% 90px;
+	}
+	.pic-upload div.preview {
+		height: 90px;
+		top: -90px;
+	}
+	.pic-upload div.preview div {
+		height: 90px!important;
+	}
+}

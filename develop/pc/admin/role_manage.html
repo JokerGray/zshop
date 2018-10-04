@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <title>权限管理·管理员后台</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/role_manage.css" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="role_manage">
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div id="page_R" class="right pull-right">
+                <div class="mainOperate clearfix">
+                    <div id="addNewLabel" class="fl" data-toggle="modal" data-target="#addPrivilege"><i class="glyphicon glyphicon-plus"></i><span>新增角色</span></div>
+                    <div class="fr">
+                        <input id="searchInp" class="searchInp fl" type="text" placeholder="请输入关键字搜索" maxlength="10">
+                        <img id="search_icon" class="search_icon fl" src="images/search.png" alt="">
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="table account_table">
+                        <div id="addSubTable" class="table-left">
+                            <div class="panel panel-default">
+                                <table class="table table-hover">
+                                    <thead id="table_head">
+                                        <th>序号</th>
+                                        <th>角色名称</th>
+                                        <th>是否可用</th>
+                                        <th>操作</th>
+                                    </thead>
+                                    <tbody id="tableCon"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="page" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="addPrivilege" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="addPriMBox modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="addPriHead modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="addPriTitle">新增角色</h4>
+                </div>
+                <div class="addLabelCon clearfix">
+                    <div class="addLabelName">
+                        <p class="addPriInpInpName">角色名称：</p>
+                        <input id="addPriName" class="addPriInp" class="fl" type="text" maxlength="6">
+                        <span class="orange">*必填</span>
+                    </div>
+                    <div class="addLabelName">
+                        <p class="addPriInpInpName">是否可用：</p>
+                        <select id="isAvailabel" class="addPriSelect">
+                            <option value="1">可用</option>
+                            <option value="0">不可用</option>
+                        </select>
+                        <span class="orange">*必填</span>
+                    </div>
+                    <div class="addLabelName bindPriBox clearfix">
+                        <p class="addPriInpInpName fl">绑定权限：</p>
+                        <div class="bindPriList fl">
+                            <ul id="privilegeList">
+                                <!--<li>
+                                    <a class="priModeleA priModuleTit" href="javascript:;" myselfid="1079">
+                                        <i class="arrow glyphicon glyphicon-triangle-bottom"></i> 文章审核
+                                        <i class="checkBoxIcon"></i>
+                                    </a>
+                                    <ul class="priModuleUl show">
+                                        <li class="cur-p">
+                                            <a href="javascript:;" class="priModeleA priSonLi" myselfid="1082">
+                                                <i class="arrow glyphicon glyphicon-triangle-bottom"></i> 审核
+                                                <i class="checkBoxIcon"></i>
+                                            </a>
+                                            <ul class="prigrandSonUl show"></ul>
+                                        </li>
+                                        <li class="cur-p">
+                                            <a href="javascript:;" class="priModeleA priSonLi" myselfid="1099">
+                                                <i class="arrow glyphicon glyphicon-triangle-bottom"></i> 审核2
+                                                <i class="checkBoxIcon"></i>
+                                            </a>
+                                            <ul class="prigrandSonUl show">
+                                                <li>
+                                                    <a href="javascript:;" class="prigrandSonLi">
+                                                        审核子集1
+                                                        <i class="checkBoxIcon"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="addPriFoot modal-footer">
+                    <button id="confilmAddBtn" type="button" class="btn" data-dismiss="">保存</button>
+                    <button id="CancelBtn" type="button" class="modalShield btn" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plupload-2.1.2/js/plupload.full.min.js "></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/countUp.min.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/role_manage.js"></script>
+    <script id="priTableList" type="text/html">
+        {{#  layui.each(d, function(index, item){ }} 
+            <tr uid={{item.uId}}>
+                <td class="numericalOrder">{{item.uId}}</td>
+                <td class="url">{{item.name || ''}}</td>
+                {{# if(item.available == 1){ }}
+                    <td class="priCode" available={{item.available}}>可用</td>
+                {{# }else{ }}
+                    <td class="priCode" available={{item.available}}>不可用</td>
+                {{# } }}
+                <td class="operateTab">
+                    <div class="synLabelIcon fl cur-p" data-toggle="modal" data-target="#addPrivilege">
+                        <i class="glyphicon glyphicon-pencil orange"></i>修改
+                    </div>
+                    <div class="labCancelIcon fl cur-p"><i class="glyphicon glyphicon-trash orange"></i>删除</div>
+                </td>
+            </tr>
+        {{#  }); }}
+    </script>
+</body>
+
+</html>

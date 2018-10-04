@@ -1,0 +1,157 @@
+/*公共部分*/
+.h100{
+	height: 100px!important	;
+}
+.h100p{
+	height: 100%!important;}
+.w30p{
+	width: 30%!important;
+}
+.h30{
+	height: 30px!important	;
+}
+.p5{
+	padding: 5px!important;
+}
+.p05{
+	padding: 0 5px!important;
+}
+.fs12{
+	font-size: 12px!important;
+}
+.flex{
+	display: flex!important;
+	justify-content: center!important;
+	align-items: center!important;
+	height: 100%!important;
+}
+.h28{
+	height: 28px!important;
+}
+.h144{
+	height: 144px!important;
+	line-height: 144px!important;
+}
+
+/*end*/
+#app {
+	padding:0px 20px;
+}
+#common-tool{
+	background-color: #fff;
+	border-top: 1px solid #DCDCDC;
+}
+
+#funcTool{
+	padding: 4px 4px 4px 0;
+}
+
+
+#common-tool #search{
+	float: left;
+}
+#common-tool #rig-tool{
+	float: right;
+}
+#rig-tool>button{
+	float: left;
+}
+
+/*end*/
+#search-tool{
+	background-color: #fff;
+	border-top: 1px solid #DCDCDC;
+	border-bottom:1px solid #DCDCDC;
+	padding: 10px 6px;
+	position: relative;
+	display: none;
+}
+#search-tool .input-group{
+	float: left;
+	margin-left: 10px;
+}
+#search-tool .input-group:first-child{
+	margin-left: 0;
+}
+#search-tool .input-group>span{
+	line-height: 30px;
+	font-size: 12px;
+	color: #666666;
+	margin-right: 5px;
+}
+#search-tool-show{
+	float: right;
+}
+
+
+
+
+/*仿表格开始*/
+#con{
+	width: 920px;
+	margin-top: 15px;
+	padding:4px;
+	border: 1px solid #e5e5e5;
+	display: none;
+	margin-left: 14px;
+}
+
+#con>ul{
+	float: left;
+}
+#con>ul.left-con{
+	width: 260px;
+}
+#con>ul.right-con{
+	width: calc(100% - 260px);
+}
+#con li{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border: 1px solid #e5e5e5;
+}
+#con li.thead{
+	background-color: #f4f4f4;
+}
+#con li.thead.l{
+	text-align: left;
+	font-weight: 700;
+}
+#con li.thead.r{
+	text-align: right;	
+}
+#con li.thead.r>a{
+	margin-right: 20px;
+	color: #00a0e9;
+}
+#con li.thead.r>button{
+	width: 68px;
+	height: 26px;
+	line-height: 26px;
+	font-size: 12px;
+    position: relative;
+    top: -2px;
+}
+#goHistory{
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+/*==================================================================*/
+#funcTool{
+	height: 40px;
+	background-color: #F8F7F7;
+	border-top: 1px solid #DCDCDC;
+	border-bottom:1px solid #DCDCDC;
+}
+#refresh{
+	margin-top: 3px;
+	margin-right: 5px;
+}

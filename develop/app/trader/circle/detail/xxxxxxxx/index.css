@@ -1,0 +1,237 @@
+html, body{
+    height: 100%;
+    background-color: #efefef;
+    font-family: Microsoft YaHei,-apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
+}
+body>.container{
+    min-height: 100%;
+    min-width: 768px;
+    background-color: #fff;
+}
+/* 导航 */
+.nav-menu{
+    padding: 1rem 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #f7f7f7;
+    border-right: 1px solid #f7f7f7;
+    text-align: center;
+    color: #353b53;
+    background-color: #fff;
+    cursor: pointer;
+}
+.nav-menu:last-of-type{
+    border-right: none;
+}
+.nav-menu.active{
+    background-color: #353b53;
+    color: #fff;
+    font-weight: bold;
+}
+.content{
+    display: none;
+    padding: 0 12px;
+}
+.content.active{
+    display: block;
+}
+/* 报名按钮 */
+.btn-back{
+    width: 72px;
+    margin-top: 24px;
+    font-weight: bold; 
+    background-color: #353b53;
+    font-size: 16px;
+}
+.btn-back:hover{
+    background-color: #646c88
+}
+/* 加载更多按钮 */
+.btn-more{
+    display: inline-block;
+    width: 300px;
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #353b53;
+    font-size: 18px;
+}
+/* 晒单分享 */
+.share-content{
+    display: block;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #fff;
+    box-shadow: 0px 0px 16px 0px #ffcccc;
+}
+.swiper-container, .video-container {
+    width: 100%;
+    height: 215px;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #ffe4e4;
+}
+.share-info-content .user-content{
+    margin-top: 20px;
+}
+.share-info-content .user-content img{
+    float: left;
+    width: 60px;
+    height: 60px;
+    background-color: #6cd9a3;
+    border-radius: 50%;
+}
+.share-info-content .user-content .userName{
+    padding-left: 80px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.share-info-content .user-content .createDate{
+    padding-left: 80px;
+    font-size: 14px;
+    color: #999;
+}
+.share-info-content .textContent{
+    display: -webkit-box;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #333;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+}
+.share-info-content .video-container video{
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+
+/* 附件信息 */
+.other-title{
+    display: block;
+    width: 233px;
+    height: 40px;
+    padding-left: 15px;
+    margin-bottom: 22px;
+    line-height: 40px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    background-image: url(biaoti.png);
+    background-repeat: no-repeat;
+}
+.info-content{
+    display: block;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #fff;
+    box-shadow: 0px 0px 32px 0px #ccc;
+    border-radius: 10px;
+    border-left: 15px solid #fa963f;
+}
+.info-content .status-text{
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    letter-spacing: 5px;
+}
+.info-content .status{
+    display: inline-block;
+    width: 72px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #fa963f;
+    border-radius: 4px;
+}
+.needle{
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 1px;
+    top: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom, transparent, #ccc 50%, transparent);
+}
+.info-content.reviewing{
+    border-left-color: #fa963f;
+}
+.info-content.reviewing .status{
+    background-color: #fa963f;
+}
+.info-content.succeed{
+    border-left-color: #6cd9a3;
+}
+.info-content.succeed .status{
+    background-color: #6cd9a3;
+}
+.info-content.refused{
+    border-left-color: #fa4c47;
+}
+.info-content.refused .status{
+    background-color: #fa4c47;
+}
+.shop-info-content{
+
+}
+.shop-info-content .shop-content img{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: lightcoral;
+    vertical-align: middle;
+}
+.shop-info-content .shop-content .shop-name{
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 18px;
+    color: #333;
+    vertical-align: middle;
+}
+.shop-info-content .shop-content .icon-phone{
+    float: right;
+    margin-right: 8px;
+    width: 13px;
+    height: 14px;
+    background-image: url(icon-phone.png);
+}
+.shop-info-content .shop-content .phone{
+    float: right;
+    font-size: 16px;
+    line-height: 1;
+    color: #666;
+}
+.shop-info-content .sensor-content{
+    margin-top: 16px;
+}
+.shop-info-content .sensor-content>span{
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+.shop-info-content .sensor-content>p {
+    display: block;
+    padding-left: 90px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    color: #666;
+}
+.shop-info-content .btn-refuse, .shop-info-content .btn-agree{
+    width: 120px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.shop-info-content .btn-refuse{
+    color: #fa4c47;
+    background-color: #fff;
+    border-color: #fa4c47;
+    margin-right: 24px;
+}
+.shop-info-content .btn-refuse:active{
+    background-color: #eee;
+    color: #fa4c47;
+}

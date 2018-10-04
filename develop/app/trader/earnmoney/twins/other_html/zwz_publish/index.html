@@ -1,0 +1,108 @@
+<!DOCTYPE html >
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>发布转文赚</title>
+
+		<link href="../../../../assets/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="../../../../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="../../../../assets/hplus/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+		<link href="../../../../assets/hplus/css/animate.min.css" rel="stylesheet">
+		<link href="../../../../assets/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+		<link rel="stylesheet" href="index.css">
+		<!-- jquery -->
+		<script type="text/javascript" src="../../../../assets/hplus/js/jquery.min.js"></script>
+	
+		<!-- bootstrap -->
+		<script type="text/javascript" src="../../../../assets/hplus/js/bootstrap.min.js"></script>
+		
+		<!--layer弹出层插件-->
+		<script type="text/javascript" src="../../../../assets/layer/layer.js"></script>
+
+		<!-- iCheck选择框样式 -->
+		<link href="../../../../assets/hplus/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<script src="../../../../assets/hplus/js/plugins/iCheck/icheck.min.js"></script>
+
+		<!-- 弹层title样式统一 -->
+		<link rel="stylesheet" href="../../../../assets/check_index/layer/skin/default/layer.css"/>
+	</head>
+<body>
+	<div class="myTitle text-center text-info"> 发布转文赚  </div>
+	<input type="hidden" value="" id="msg">
+	
+	<form class="myForm" id="articleForm" enctype="multipart/form-data" method="post">
+		<input type="hidden" value="" name="userId" id="userId" />
+		<input type="hidden" value="" name="userName" id="userName" />
+		
+		<div class="form-group">
+			<label for="shopId">选择店铺</label>
+			<select class="form-control" name="shopId" id="shopId">
+	            <option value="" data-userpic=""></option>
+			</select>
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-xs-6">
+				<label for="taskPrice">每次点击价格 <span class="explain text-warning">(不能超过1元)</span></label>
+				<input id="taskPrice" name="taskPrice" type="text" class="taskPrice form-control myFormInline" maxlength="4" placeholder="如：0.05" onblur="checkStata($(this))" onKeypress="return (/[\d.]/.test(String.fromCharCode(event.keyCode)))" style="ime-mode:Disabled" onkeyup="checkPay()">元
+				<div class="tipinfo">
+					<div class="empty">
+						<i class="fa fa-times-circle"></i>必填
+					</div>
+					<div class="writeErrow"></div>
+				</div>
+			</div>
+			<div class="form-group col-xs-6">
+				<label for="taskTotalReadnum">总共点击次数 <span class="explain text-warning">(不能超过10万次)</span></label>
+				<input id="taskTotalReadnum" name="taskTotalReadnum" type="text" class="taskTotalReadnum form-control myFormInline" maxlength="6" placeholder="如：10000" onblur="checkStata($(this))" onKeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))" style="ime-mode:Disabled" onkeyup="checkPay()">次
+				<div class="tipinfo">
+					<div class="empty">
+						<i class="fa fa-times-circle"></i>必填
+					</div>
+					<div class="writeErrow"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="taskDemand">请选择需要转发的文章</label>
+			
+			<h3 id="tips" class="bg-danger" style="display: none;">
+				该商户没有可发布转文赚的文章！
+			</h3>
+			
+			<div class="task" style="display: none;">
+				<section class="article">
+					<div class="articleSelect"><i class="fa fa-circle-o fa-2x"></i></div>
+					<div class="articleContent">
+						<img class="imgUrl" src="" width="50" height="50">
+						<div class="articleTitle">文章标题 </div>
+					</div>
+				</section>
+			</div>
+			
+			<div class="loadMore" style="display: none;">
+				<span class="loadMoreText" onclick="getListData()">加载更多</span>
+			</div>
+			
+		</div>
+		
+	</form>
+	
+	<div class="row payContent">
+		<div class="col-xs-6">
+			<h3>待支付：<span class="explain text-warning" id="payPrice">¥ 0</span></h3>
+		</div>
+		<div class="col-xs-6 text-right">
+			<button type="button" class="btn btn-info" id="submitBtn" onclick="checkForm()"> 支付 </button>
+			<button type="button" class="btn btn-default" onclick="parent.window.closeAddPage()"> 取消 </button>
+		</div>
+	</div>
+
+	<script src="../../src/js/common.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+</body>
+</html>

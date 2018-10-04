@@ -1,0 +1,236 @@
+
+@function vm($px) {
+  @return ($px / 750) * 100vw;
+}
+@mixin ell() {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+$vm_base: 750;
+$color_base:#333333;
+$wihte:#fff;
+$dark:#000;
+$bdc:#dadada;
+$bdt:#f0eeee;
+$f9f9:#f9f9f9;
+$c999:#999999;
+$c666:#666666;
+$bg:#efedee;
+$money:#428efe;
+$line:#428efe;
+$req:#428efe;
+$font_h3:vm(36);
+$font_p:vm(28);
+$font_num:vm(40);
+ul,li,dd,dt{
+  box-sizing: border-box;
+}
+a{
+  color: $color_base;}
+.tac{
+  text-align: center;}
+.h3{
+  font-size:$font_h3;
+}
+
+.p{
+  font-size:$font_p;
+}
+.font-num{
+  font-size:$font_num;
+}
+.c666{
+  color: $c666;}
+.c999{
+  color: $c999;
+}
+.p24{
+  padding:0 vm(24);}
+.border-radius5{
+  border-radius: vm(10);
+}
+.posr{
+  position: relative;}
+.disn{
+  display: none;}
+body{font-family:  -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+  background: $f9f9;
+  color: $color_base;}
+.app{
+  overflow: hidden;
+  margin-top: 0;
+}
+.mb15{
+  margin-bottom:vm(15);
+}
+.header{
+  box-sizing: border-box;
+  height:vm(350);
+  background: $wihte;
+  padding:vm(50) vm(35);
+  &_dl{
+    overflow: hidden;
+  }
+  dt{
+    float: left;
+    width:vm(165);
+    height:vm(165);
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom:vm(52);
+    img{
+      width: 100%;
+    }
+  }
+  dd{
+    float: left;
+    margin-left:vm(40);
+  }
+  h3{
+    color: $dark;
+    line-height:vm(88);
+    font-size:vm(32);
+  }
+  p{
+    font-size:$font_p;
+    line-height:vm(64);
+  }
+  .tiaojian{
+    padding-left:vm(30);
+    color: $dark;
+    img{
+      width:vm(80);
+      height:vm(30);
+      display: inline-block;
+      vertical-align: middle;
+      margin:0 vm(48);
+    }
+  }
+
+}
+.container{
+  box-sizing: border-box;
+  background: $wihte;
+  padding:vm(38) vm(35);
+  h3{
+    color: $dark;
+    display: block;
+    height:vm(42);
+    margin-bottom:vm(107);
+    font-size:vm(28);
+    i{
+      display: inline-block;
+      background: url("../../img/d_07.jpg") no-repeat 0 0;
+      width:vm(42);
+      height:vm(42);
+      background-size: 100%;
+      vertical-align: text-top;
+      margin-right:vm(20);
+    }
+  }
+  .line{
+    width: 100%;
+    height:vm(10);
+    background: $bg;
+    border-radius: vm(10);
+    position: relative;
+    margin-bottom:vm(50);
+
+  }
+  .range{
+    position: absolute;
+    height:vm(97);
+    font-size:vm(28);
+    bottom:vm(-10);
+    left: 10%;
+    p{
+      line-height:vm(73);
+      text-align: center;
+    }
+    span{
+      width:vm(20);
+      height:vm(20);
+      background: $line;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .range1{
+    left: auto;
+    right: 5%;
+  }
+  .count{
+    line-height:vm(36);
+    text-align: center;
+  }
+
+}
+.statusBox{
+  box-sizing: border-box;
+  background: $wihte;
+  padding:vm(38) vm(35);
+  h3{
+    color: $dark;
+    display: block;
+    height:vm(42);
+    margin-bottom:vm(107);
+    font-size:vm(28);
+    padding-left:vm(24);
+    position: relative;
+  }
+  h3:before{
+    content: '';
+    position: absolute;
+    width:vm(6);
+    height:100%;
+    background: $money;
+    left:vm(0);
+  }
+  .shenhe{
+    background:linear-gradient(to right,#bbb,#eee);
+    color: $dark;
+  }
+  .refuse{
+    background:linear-gradient(to right,#bbb,#eee);
+    color:#960000;
+  }
+  .pass{
+    background:linear-gradient(to right,#589efe,#83b9f9);
+    color: $wihte;
+  }
+  .circle{
+    width:vm(220);
+    height:vm(220);
+
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 50%;
+    line-height:vm(220);
+
+    margin-bottom:vm(30);
+  }
+  p{
+    text-align: center;
+  }
+}
+
+.apply{
+  position: fixed;
+  width: 84%;
+  height:vm(80);
+  line-height:vm(80);
+  font-weight:bold;
+  letter-spacing: vm(10);
+  font-size:vm(32);
+  background: $wihte;
+  color:$money;
+  bottom: vm(20);
+  box-shadow: 0 0 10px rgba(0,0,0,.2);
+  left: 8%;
+  border-radius: vm(40);
+  text-align: center;
+  z-index: 9999;
+}

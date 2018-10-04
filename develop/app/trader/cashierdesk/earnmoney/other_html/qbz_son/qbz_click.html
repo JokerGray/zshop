@@ -1,0 +1,114 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>查看任务信息</title>
+    <!-- bootstrap的样式 -->
+    <link href="../../../../assets/hplus/css/bootstrap.min14ed.css" rel="stylesheet">
+    <link href="../../../../assets/hplus/css/font-awesome.min93e3.css" rel="stylesheet">
+
+    <!-- jquery -->
+    <script type="text/javascript" src="../../../../assets/hplus/js/jquery.min.js"></script>
+   
+    <!--layer弹出层插件-->
+    <script type="text/javascript" src="../../../../assets/layer/layer.js"></script>
+    
+    <!-- layDate时间 -->
+    <script src="../../../../assets/laydate/laydate.js"></script>
+
+    <script type="text/javascript">
+        var ctx = '';
+        laydate.skin('molv');
+    </script>
+</head>
+
+<body class="gray-bg" style="overflow: hidden">
+    
+</body>
+<script>
+    // 获取url地址中的参数
+        function getQueryString (name) {
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+            var r = window.location.search.substr(1).match(reg)
+            return r !== null ? encodeURI(r[2]) : ''
+        }
+        var taskId = getQueryString('id');
+        // ajax通用
+    function reqAjax(cmd, data){
+        var deferred = $.Deferred();
+        $.ajax({
+            type:"post",
+            dataType: 'json',
+            url:"/zxcity_restful/ws/rest",
+            headers: {
+                apikey: sessionStorage.getItem('apikey') || 'test'
+            },
+            data: {
+                cmd: cmd,
+                data: JSON.stringify(data),
+                version: 2 // 版本号根据情况默认
+            },
+            success: function(data){
+                deferred.resolve(data)
+            },
+            error: function(){
+                // 这里的 error 一般都是网络问题，500了也检查不出来
+                // layer.closeAll('loading');
+                alert('连接出错，请检查网络或稍后再试！');
+                deferred.reject()
+            }
+        });
+        return deferred;
+    }
+    // var userId = getQueryString('userid') || 0;
+    var def = reqAjax('earnmoney/getTEDForConsumer', {
+        taskId : taskId
+    });
+    def.then(function(data){
+        var $dom = $($('#dom').html());
+        $dom.find('.taskTitle').text(data.data.taskTitle);
+        $dom.find('.taskPrice').text(parseFloat(data.data.taskPrice).toFixed(2)+'元');
+        $dom.find('.taskNeedPerson').text(data.data.taskNeedPerson+'人');
+        $dom.find('.total_paid').text(parseFloat(data.data.taskPrice*data.data.taskNeedPerson).toFixed(2)+'元');
+        $dom.find('.taskDemand').text(data.data.taskDemand);
+        if(data.data.resourceList.length == 0){
+            $dom.find('.resourceUrl').css('display','none');
+        }else {
+            $dom.find('.resourceUrl').attr('src',data.data.resourceList[0].resourceUrl);
+        }
+        $('.gray-bg').append($dom);
+    });
+</script>
+
+<script type="html/text" id="dom">
+    <div class="row">
+        <div class="col-sm-12" >
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div style="border-bottom: 1px solid #e5e5e5">
+                        <div class="col-sm-offset-2" style="margin-bottom: 20px;">
+                            <h2 style="font-size: 20px; color: #000;" class="taskTitle">cggg</h2>
+                            <p>
+                                <span>人均报酬：<span class="taskPrice">55.00元</span></span> 
+                            </p>
+                            <p>
+                                <span>任务人数：<span class="taskNeedPerson">2人</span></span> 
+                            </p>
+                            <p>
+                                <span>总报酬：<span class="total_paid">110.00元</span></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-offset-2" style="width: 500px;">
+                        <h4>任务需求：</h4>
+                        <p style="line-height: 24px;text-indent:2rem" class="taskDemand"></p>
+                    </div>
+                    <div class="col-sm-offset-2" style="width: 500px; margin-top: 10px;">
+                        <img src="" style="width: 200px;height: 200px;" class="resourceUrl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+</html>

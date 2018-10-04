@@ -1,0 +1,136 @@
+@import '../util/util.scss';
+
+@media (min-width: 1400px){
+    .container {
+        width: 1400px;
+    }
+}
+div{
+    // 滚动条样式优化
+    &::-webkit-scrollbar{
+        background-color: #f6f4f7;
+        width: 10px;
+    }
+    &::-webkit-scrollbar-button{
+        display: none;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: #ccc;
+    }
+}
+// 禁止左右滑动
+html,body{
+    min-width: 1024px;
+}
+// 通用大标题
+section .title-content{
+    margin: 0 auto 120px;
+    font-size: 60px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    user-select: none;
+    >span{
+        display: inline-block;
+        padding: 0 85px;
+        vertical-align: middle;
+    }
+    >i{
+        @include img_icon(62px, 76px);
+        background-image: url(./img/title_triangle.png);
+        vertical-align: middle;
+        &:last-of-type{
+          transform: rotate(180deg);  
+        }
+    }
+}
+// 通用遮罩
+.cover{
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba($color: #000, $alpha: 0.05);
+    user-select: none;
+    transform: scale(0);
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
+    &.active{
+        background-color: rgba($color: #000, $alpha: 0.05);
+        transform: scale(1);
+    }
+}
+// 通用大图背景层
+.img-layer{
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000, $alpha: 0.8);
+    overflow-y: auto;
+    text-align: center;
+    img{
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}
+// 通用一行省略
+.ellipsis{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@import './section1.scss';
+@import './section2.scss';
+@import './section3.scss';
+@import './section4.scss';
+@import './section5.scss';
+@import './section6.scss';
+@import './section7.scss';
+@import './section8.scss';
+
+.signup-content{
+    padding: 76px 0;
+    background-color: #d70c2a;
+    box-shadow: 0px 2px 8px 0px #777777;
+    .text-c{
+        margin: 0;
+        font-size: 26px;
+        color: #fff;
+    }
+    .text-btn{
+        display: block;
+        width: 200px;
+        margin: 30px auto;
+        height: 40px;
+        background-color: #ffff1b;
+        font-size: 16px;
+        line-height: 40px;
+        color: #d70c2a;
+        &:hover{
+            text-decoration: none;
+        }
+        &::before, &::after{
+            content: '';
+            display: block;
+            width: 200px;
+            height: 2px;
+            margin: 0 auto;
+            background-color: #fff;
+        }
+        &::before{
+            transform: translateY(-8px);
+        }
+        &::after{
+            width: 100px;
+            transform: translateY(5px);
+        }
+    }
+    .text-e{
+        margin: 0;
+        font-size: 12px;
+        color: #fff;
+    }
+}

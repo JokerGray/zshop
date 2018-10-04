@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>组织成员</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/laydate-v5.0.9/theme/default/laydate.css">
+    <link rel="stylesheet" href="../../assets/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="editAccount.css">
+</head>
+
+<body>
+    <div class="container-fluid" style="margin-top:2rem;">
+        <div class="top-title">
+            <!-- <span class="title-sum">基本资料</span> -->
+            <div class="row row-user">
+                <div class="col-xs-3 col-xs-offset-1" style="line-height: 34px">
+                    <span class="title-name">姓名：</span>
+                    <input type="text" id="memberName" class="form-control width-70percent" maxlength="16">
+                </div>
+                <div class="col-xs-3" style="line-height: 34px">
+                    <span class="title-name">手机号：</span>
+                    <input type="text" id="mobile" class="form-control width-70percent" maxlength="11"  onkeyup="validateNumber(this);" onafterpaste="validateNumber(this);">
+                </div>
+                <!-- <div class="col-xs-2" style="line-height: 34px">
+                    <span class="title-name">积分：</span>
+                    <input type="text" id="pointValue" class="form-control width-70percent" maxlength="8"  onkeyup="validateNumber(this);" onafterpaste="validateNumber(this);">
+                </div> -->
+                <div class="col-xs-3" style="line-height: 34px">
+                    <span class="title-name">生日：</span>
+                    <input type="text" id="birthday" class="form-control width-70percent">
+                </div>
+                <div class="col-xs-1" style="line-height: 34px">
+                    <input type="checkbox" name="islunarBirthday" id="islunarBirthday">
+                    <label for="islunarBirthday">农历生日</label>
+                </div>
+            </div>
+            <div class="row row-user">
+               
+            </div>
+        </div>
+
+        <div>
+            <div class="cardSty1e swiper-no-swiping" style="padding:0 80px;position: relative;margin-top: 34px;">
+                <!-- Swiper -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper" id="account"></div>
+                </div>
+                <div class="swiper-button-next" style="position: absolute;right: 36px;"></div>
+                <div class="swiper-button-prev" style="position: absolute;left:36px;"></div>
+            </div>
+            <div class="tab-content m-r-20" id="tabContent">   
+                
+            
+            </div>  
+        </div>
+               
+    </div>
+
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <script src="../../assets/layer/layer.js"></script>
+    <script src="../../assets/swiper/js/swiper.min.js"></script>
+    <script src="../../assets/laydate-v5.0.9/laydate.js"></script>
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- <script src="../../../assets/select2/select2.min.js"></script> -->
+    <script src="editAccount.js"></script>
+</body>
+</html>
+<script>
+</script>

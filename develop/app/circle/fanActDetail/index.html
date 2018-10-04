@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="wekit">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./static/flexible/flexible.js"></script>
+    <script src="./static/artTemplate/artTemplate.js"></script>
+    <script src="./static/share/share.js"></script>
+    <title>粉活动详情</title>
+</head>
+<body style="font-size: 12px;max-width: 640px;margin: 0 auto;">
+        <!-- <div id="header"> -->
+            <!-- <div class="header_logo"> -->
+                <!-- <img src="./src/img/logo.png"> -->
+            <!-- </div> -->
+            <!-- <div class="header_load btn"> -->
+                <!-- 打开 -->
+            <!-- </div> -->
+        <!-- </div> -->
+    <div class="content">
+        
+    </div>
+    <!-- <a href="/24hours/share24/getPackage.html?sn=15w0&yw=circle&cp=1" class="footer download_link"> <img src="./src/img/footer.png" alt=""> </a> -->
+
+    <div id="contBlank" style="display: none;">
+        <span class="blank_icon"></span>
+        <p class="msg_miss">哎呀！您访问的地址不存在</p>
+    </div>
+
+    <div class="model">
+        <div class="model_cont">
+            <p class="text1">1、点击右上角的&nbsp;&nbsp;<span></span></p>
+            <p class="text2">2、选择&nbsp;&nbsp;<span></span></p>
+            <div class="pointTo"></div>
+        </div>
+    </div>
+
+    
+
+    <script type="text/html" id="showBlank">
+            <div class="error">
+                <%=msg%>
+            </div>
+    </script>
+    <script src="./static/pub/pub.js"></script>
+    <script type="text/html" id="showCont">
+        <div >
+                <div class="cover-img" id="coverImg" style="background: url({{data.detailPicUrl}}) no-repeat; background-size:cover;">
+                    <!-- <div class="cover-cover"></div> -->
+                    <!-- <div class="back-btn"></div> -->
+                    
+                </div>
+                <div class='active-name-box'>
+                    <div class='active-title'>{{data.name}}</div>
+                    <div class='active-detail'><span class='active-time'>{{data.detailPublishTime}}</span>  <span class='active-text-gray'>赞</span> <span id='likeCount'>{{data.commentList.totalLikeCount}}</span> · <span class='active-text-gray'>评论</span> <span id='comentCount'>{{data.commentList.totalCount}}</span></div>
+                </div>
+                <div class="activity-about">
+
+                    <div class='info-box'>
+                        <div class="user-info">
+                            <div class="user-icon">
+                                <img id="userLogo" src="{{data.fansTeamLogo}}" alt="">
+                            </div>
+                            <div class="user-text">
+                                <div class="user-title" id="fansName">{{data.fansTeamName}}</div>
+                                <div class="user-name">
+                                    <span id="merchantName">{{data.orgName}}</span>
+                                    <!-- <img src="./src/img/shanghubiao.png" alt=""> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class='man-num-box'>
+                            <div>参与人数</div>
+                            <div class='man-num'>{{data.detailMaxTotal}} <span class='man-text'>人</span></div>
+                        </div>
+                    </div>
+                    <div class="detail-info">
+                        <div class="detail-title" id="detailTitle">出行信息</div>
+                        <div class="detail-time">
+                            <img class="detail-time-img" src="./src/img/shijian@2x.png" alt="">
+                            开始时间： <b id="selectTime">{{data.detailBeginTime}}</b>
+                        </div>
+                        <div class="detail-addr height-auto">
+                            <div class='addr-icon'>
+                                <img class="detail-addr-img" src="./src/img/didian@2x.png" alt="">
+                                活动地点：
+                            </div>
+                            
+                            <b id="selectAddress">{{data.place}}</b>
+                        </div>
+                    </div>
+                    <div class="active-process">
+                        <div class="active-process-title">
+                            <!-- <b class="title-bar"></b> -->
+                            活动流程
+                        </div>
+                        
+                        <!-- <img src="{{data.detailPicUrl}}" alt="" > -->
+                        <div class="process-content" id="processContent"></div>
+                    </div>
+                </div>
+                <!-- <div class='bottom-box'>
+                    <div class='bottom-left'>
+                        <img class="zan-img" src="./src/img/yizan@2x.png" alt="">
+                        <span id="selectAddress">1000</span>
+                    </div>
+                    <div class='bottom-right'>
+                        <img class="pinglun-img" src="./src/img/pinglun@2x.png" alt="">
+                        <span id="selectAddress">1000</span>
+                    </div>
+                </div> -->
+            </div>
+
+        
+    </script>
+    <script>
+        function changeLike(num){
+            $('#likeCount').text(num)
+        }
+        function changeComent(num){
+            $('#comentCount').text(num)
+        }
+        //以下代码为删除嵌入广告
+        var del_times = 0, deTimer = null;
+        function adGo() {
+            var iframe = document.getElementsByTagName('iframe')[0];
+            if(iframe){
+                console.log(iframe)
+                
+                //循环 iframe 父类，直到找到body和body的下一级，然后整个嵌入的代码删除。
+                var bodyNode = {tagName:''}, iframeParent, targetNode = iframe.parentNode;
+                while (bodyNode.tagName != 'BODY'){
+                    bodyNode = targetNode;
+                    if(bodyNode.tagName != 'BODY'){
+                        iframeParent = targetNode;
+                        targetNode = targetNode.parentNode;
+                    }
+                }
+                if(iframeParent) //如果iframe有父类
+                    bodyNode.removeChild(iframeParent);
+                else
+                    bodyNode.removeChild(iframe);
+            }
+            del_times++;
+            if (del_times > 10) window.clearInterval(deTimer)
+        }
+        deTimer = self.setInterval(adGo, 1000);   //把这个1000, 调低一点，比如200
+    </script>
+</body>
+</html>

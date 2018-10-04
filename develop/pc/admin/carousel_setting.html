@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+	<title>轮播图设置·管理员后台</title>
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/jcrop/css/jquery.Jcrop.css" type="text/css" />
+	<link rel="stylesheet" href="css/reset.css?v=201706131600" />
+	<link rel="stylesheet" href="assets/layui/css/layui.css" />
+	<link rel="stylesheet" href="css/zx.css?v=201706131600" />
+	<link rel="stylesheet" href="css/carousel_setting.css" />
+</head>
+<body>
+	<script src="util/head.js"></script>
+	<input type="hidden" id="menuHid" value="carousel_setting">
+	<div class="container">
+		<div class="wrapper clearfix">
+			<script src="util/menu.js"></script>
+			<div id="page_R" class="right pull-right">
+                <p id="pageRTit">当前轮播图样式（轮播图不能超过六条）</p>
+				<div id="labelBox" class="clearfix">
+					<div class="table account_table">
+						<div id="labelTable" class="table-left">
+							<div class="panel panel-default">
+								<table class="table table-hover">
+									<thead id="labelTabHead">
+										<th>序号</th>
+										<th>图片</th>
+										<th>频道</th>
+										<th>文章名称</th>
+										<th>操作</th>
+									</thead>
+									<tbody id="labelTabCon"></tbody>
+									<tfoot id="labelTabFoot">
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td><button id="addCarouselBtn" data-toggle="modal" data-target="#setCarousel">添加</button></td>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="setCarousel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    	<div class="setCarouselBox modal-dialog modal-dialog2" role="document">
+      		<div class="setCarouselCon modal-content modal-content2">
+      			<div class="setCarouselTop modal-header">
+        		  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      				<h4 class="setCarouselTit">轮播图设置</h4>
+        		</div>
+        		<form class="form-horizontal">
+  					<div class="form-group">
+  						<label class="col-sm-2 control-label">选择频道</label>
+  						<div class="col-sm-10">
+                              <select id="selChannel" class="form-control"></select>
+  						</div>
+  					</div>
+  					<div class="form-group">
+  					  	<label class="addAdvLabel col-sm-2 control-label">添加文章</label>
+  					  	<div class="col-sm-10">
+  						    <input class="addAdvLabelTit form-control" id="inpSelArticle" placeholder="请输入文章名称" autocomplete="off" maxlength="30">
+                            <span id="clickBtnToArt" class="cur-p" data-toggle="modal" data-target="#addArticle">【选择】</span>
+  						</div>
+  					</div>
+  					<div class="form-group">
+  					  	<label class="col-sm-2 control-label">添加图片</label>
+                        <div class="col-sm-10">
+  					    	<span class="selArtfiles localUpload cur-p" id="selArtfiles" data-toggle="modal" data-target="#addFromartImg">从文章中选择</span>
+  					    	<span class="selLocalfiles localUpload cur-p" id="selLocalfiles">从本地上传</span>
+  					    	<span class="red ml10">*大小不能超过1M,尺寸为690*360</span>
+							<span id="clickDrawImg" class="red ml30 cur-p hide">点击进行裁剪</span>
+                        	<div class="form-content mt20" id="previews" class="clearfix"></div>
+                            <div class="OSSFilesBox">
+								<div class="progressContent" style="display: none;">
+                    			    <div class="progress">
+                    			        <div class="progress-bar" style="width: 0%"></div>
+                    			    </div>
+                    			</div>
+								<img id="selectedImg" src="">
+							</div>
+  					  	</div>
+  					</div>
+                    <div class="addAdvertBox form-group hide">
+  					  	<label class="col-sm-2 control-label">添加广告链接</label>
+  					  	<div class="col-sm-10">
+  						    <input class="form-control" id="addAdvertLink" placeholder="请输入链接网址" autocomplete="off" maxlength="100">
+  						</div>
+  					</div>
+				</form>
+        		<div id="addSubBtnBox" class="modal-footer">
+        		  	<button id="confirmAddSub" class="btn" type="button" data-dismiss="">保存</button>
+        		  	<button id="cancelAddSub" class="modalShield btn" type="button" data-dismiss="modal">取消</button>
+        		</div>
+      		</div>
+    	</div>
+  	</div>
+  	<div id="addArticle" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    	<div class="addArtDialog modal-dialog modal-dialog2" role="document">
+      		<div class="addArtBox modal-content modal-content2">
+      			<div class="addSubTop modal-header">
+        		  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      				<h4 class="addSubTitle">选择文章</h4>
+        		</div>
+                <div class="selChannelBox">
+                    <span>频道</span>
+                    <select name="" id="selArtChannel" class="form-control">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+        		<div id="artSearchBox" class="clearfix">
+					<div id="artSearchIcon" class="fr"><img src="images/search.png" alt=""></div>
+					<input id="artSearchInp" class="searchInp fr" type="text" placeholder="输入文章标题搜索" maxlength="30">
+				</div>
+				<div id="contributeArt" class="show">
+        			<div id="addArticleBox" class="clearfix">
+						<div class="table account_table clearfix" style="height: 460px;">
+							<div id="addArtTable" class="table-left">
+								<div class="panel panel-default">
+									<table class="table table-hover">
+										<thead id="addArtTableHead">
+											<th>文章</th>
+											<th>浏览量</th>
+											<th>操作</th>
+										</thead>
+										<tbody id="addArtTableCon"></tbody>
+                		            </table>
+                		        </div>
+                		    </div>
+                		    <div id="artPage" class="text-center"></div>
+                		</div>
+					</div>
+				</div>
+      		</div>
+    	</div>
+  	</div>
+	<div id="addFromartImg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    	<div class="addFArtImgDialog modal-dialog modal-dialog2" role="document">
+      		<div class="addFartImgBox modal-content modal-content2">
+      			<div class="addFartImgTop modal-header">
+        		  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      				<h4 class="addFartImgTitle">选择文章中的图片</h4>
+        		</div>
+				<div id="addFartImgList"></div>
+                <div id="addFartImgBtns" class="modal-footer">
+					<button id="verifyBtn" type="button" class="btn btn-default" data-dismiss="modal">确认</button>
+					<button id="cancelBtn" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+      		</div>
+    	</div>
+  	</div>
+	<script src="assets/jquery-1.10.2.js"></script>
+	<script src="assets/plupload-2.1.2/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/plupload-2.1.2/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/jcrop/js/jquery.Jcrop.js"></script>
+	<script src="assets/layui/lay/dest/layui.all.js"></script>
+	<script src="assets/countUp.min.js"></script>
+	<script src="util/util.js"></script>
+	<script src="util/pub.js"></script>
+	<script src="js/carousel_setting.js"></script>
+	<script id="carouselList" type="text/html">
+	    {{#  layui.each(d, function(index, item){ }}   
+			<tr>
+        	    <td class="carouselId">{{item.scCmsCarouselId || ''}}</td>
+				<td class="carouselImgTd"><img class="carouselImg" src={{item.scCmsCarouselImg || ''}} alt=""></td>
+				<td class="carouselChannel" channelId={{item.scCmsChanneId || ''}}>{{item.scCmsChannelName || ''}}</td>
+				<td class="carouselArticle" articleId={{item.scCmsCarouselArticleId}} title='{{item.scCmsCarouselName || ''}}'>{{item.scCmsCarouselName || ''}}</td>
+				<td class="updateTotalOpera cur-p" data-toggle="modal" data-target="#setCarousel" advertUrl={{item.scCmsCarouselUrl || ''}}><i class=" glyphicon glyphicon-pencil orange"></i>编辑</td>
+			</tr>	
+		{{#  }); }}
+	</script>
+	<script id="articleList" type="text/html">	
+		{{#  layui.each(d, function(index, item){ }}   
+			<tr>
+        	    <td class="articleTit" articleId={{item.articleId || ''}}>{{item.articleTitle || ''}}</td>
+                <td>{{item.articleNumber || '0'}}</td>
+                <td class="addArtTabBtnBox">
+                    <button class="artCheckBtn"><a href="javascript:;" target="_blank">查看</a></button>
+                    <button class="artSelectBtn" data-dismiss="modal" channelId={{item.channelId || ''}}>选择</button>
+                </td>
+        	</tr>	
+		{{#  }); }}
+	</script>
+</body>
+</html>

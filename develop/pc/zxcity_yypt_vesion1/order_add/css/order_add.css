@@ -1,0 +1,231 @@
+.common-container{
+    position: relative;
+    height: 100%;
+}
+.jurisdiction-content{
+    height: 100%;
+    background: #fff;
+    position: relative;
+}
+.jurisdiction-content h4{
+    font-size: 16px;
+    color:#000;
+}
+/*新建*/
+.addcontent-info{
+    background: #fff;
+    width: 70%;
+    height: 100%;
+}
+.addcontent-info .addcontent{
+    width: 100%;
+}
+.addcontent .addcontent-title{
+    height: 45px;
+    line-height: 45px;
+    font-size: 16px;
+    text-indent: 35px;
+}
+.addcontent .addcontent-title span{
+    color:#1E9FFF;
+    cursor: pointer;
+}
+.addcontent .addcontent-table{
+    padding: 0 30px 0 10px;
+}
+.addcontent-table .endtime{
+    margin: 8px 51px 8px 56px !important;
+}
+.addcontent-table .lasttime,.begintime{
+    width: 30%;
+    float: left;
+    margin: 8px 0.6%;
+}
+.addcontent-table .lasttime .input-group,.begintime .input-group{
+    width: 95%;
+}
+.addcontent-table .lasttime .jurisdiction-label,.begintime .jurisdiction-label{
+    margin-bottom: 15px;
+}
+.addcontent-table .lasttime .date,.begintime .date{
+    height: 38px;
+    border:1px solid #e6e6e6;
+    margin-left: 9px;
+}
+.addcontent-table .lasttime .date:hover,.addcontent-table .lasttime .date:visited,.addcontent-table .begintime .date:hover,.addcontent-table .begintime .date:visited{
+    border: 1px solid #D2D2D2;
+}
+.addcontent-table .endtime{
+    /*margin:0 5%;*/
+}
+.addcontent-table .table-top{
+    height: auto;
+    width: 100%;
+}
+.addcontent-table .table-top .layui-form-item,.table-bottom .layui-form-item{
+    width: 30%;
+    float: left;
+    clear: none;
+}
+.table-top .layui-form-item .layui-form-label,.table-bottom .layui-form-item .layui-form-label{
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+.table-top .layui-form-item .layui-input-block,.table-bottom .layui-form-item .layui-input-block{
+    clear: both;
+    margin-left: 20px;
+}
+.addcontent-table .table-top .layui-form-item:nth-child(2),.table-bottom .layui-form-item:nth-child(2),.table-bottom .layui-form-item:nth-child(5){
+    margin:0 5%;
+}
+.order-common{
+    width: 100%;
+    height: 38px;
+    border:1px solid #e6e6e6;
+    position: relative;
+    cursor: pointer;
+}
+.order-common:hover,.order-common:visited{
+    border:1px solid #D2D2D2;
+}
+.order-common span{
+    display: block;
+    width: 90%;
+    height: 38px;
+    line-height: 38px;
+    text-indent: 10px;
+    color:#777;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.table-condensed table tr {
+    background: #fff !important;
+}
+.order-common i{
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+.classify-menu,.plate-menu{
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 200px;
+    overflow: auto;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    box-shadow: 0 0 10px #ccc;
+    z-index: 33;
+}
+.order-common i.down-arrows{
+    background: url("../img/down-arrows.png") no-repeat;
+    background-size: 100%;
+}
+.order-common i.up-arrows{
+    background: url("../img/up-arrows.png") no-repeat;
+    background-size: 100%;
+}
+.titlename .layui-form-label,.infotext .layui-form-label{
+    width: 100%;
+    text-align: left;
+}
+.titlename .layui-input-block,.infotext .layui-input-block{
+    margin-left: 20px;
+}
+.table-bottom{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 10px 0;
+}
+.cenlbtn{
+    background: #4ab930;
+    color:#fff;
+    border:0;
+}
+.cenlbtn:hover{
+    color:#fff;
+    border:0;
+}
+.jurisdiction-add{
+    padding: 0 20px;
+}
+.jurisdiction-add i{
+    display: block;
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin:6px 4px 0 0;
+}
+.jurisdiction-add i.createicon{
+    background: url("../img/create.png") no-repeat;
+    background-size: 100%;
+}
+.jurisdiction-add i.cancelicon{
+    background: url("../img/cancel.png") no-repeat;
+    background-size: 100%;
+}
+.date input{
+    border: 0;
+    width: 90%;
+    height: 30px;
+    line-height: 30px;
+}
+.w-e-text-container{
+    height: 200px !important;
+}
+.layui-form-item {
+    margin-bottom: 10px;
+}
+.layui-form-selected dl{
+    height: 150px;
+}
+.copy-box{
+    width: 29.5%;
+}
+/*分类下拉*/
+.classify-nav,.plate-nav{
+    width: 100%;
+    height: 38px;
+}
+.classify-nav li,.plate-nav li{
+    width: 25%;
+    text-align: center;
+    height: 38px;
+    line-height: 38px;
+    border-bottom: 1px solid #dfdfdf;
+    float: left;
+}
+.classify-nav li.actv,.plate-nav li.actv{
+    background: #1E9FFF;
+    color:#fff;
+}
+.classify-list,.plate-list{
+    width: 100%;
+    height: 160px;
+    overflow-y:auto;
+}
+.classify-list li,.plate-list li{
+    display: inline-block;
+    padding: 5px;
+    height: 35px;
+    line-height: 35px;
+    float: left;
+    cursor: pointer;
+}
+.classify-menu .layui-icon,.plate-menu .layui-icon{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.w-e-text-container img{
+    height: 200px;
+}

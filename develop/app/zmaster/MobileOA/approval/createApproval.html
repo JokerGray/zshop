@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <script src="../common/flexible.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <!--<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">-->
+  <title>发起请假</title>
+  <link rel="stylesheet" href="../common/layer_mobile/need/layer.css">
+  <link type="text/css" rel="stylesheet" href="css/createApproval.css">
+</head>
+<body>
+
+<div class="title_tab">
+  <p class="back_imgBtn">
+    <img src="img/createType/nav_icon_back@3x.png" class="back_tab to_menu">
+  </p>
+  发起请假
+</div>
+<!--<div>-->
+  <!--<p class="title_tab"><img src="img/createType/nav_icon_back@3x.png" class="back_tab commonback_tab">发起请假</p>-->
+<!--</div>-->
+
+<div id="centerContent">
+
+  <!--请假类型-->
+  <div class="leaveType commonTypeOne">
+    <p>
+      <span class="flag">*</span>
+      <span class="wordPrompt">请假类型</span>
+      <span class="wordTips typeName"></span>
+      <img src="img/createType/leaveType.png" class="nextPart">
+    </p>
+
+  </div>
+  <!--请假开始时间-->
+  <div class="leavetime leaveStarTime">
+    <div class="toChooseType">
+      <span class="flag">*</span>
+      <span class="wordPrompt">开始时间</span>
+    </div>
+    <div class="wordTime" id="date4" data-options='{"type":"YYYY-MM-DD hh:mm","beginYear":2017,"endYear":2088}'>
+      <span class="wordTips">请选择开始时间</span>
+    </div>
+  </div>
+  <!--请假结束时间-->
+  <div class="leavetime leaveEndTime">
+    <div class="toChooseType">
+      <span class="flag">*</span>
+      <span class="wordPrompt">结束时间</span>
+    </div>
+    <div class="wordTime" id="date5" data-options='{"type":"YYYY-MM-DD hh:mm","beginYear":2017,"endYear":2088}'>
+      <span class="wordTips">请选择结束时间</span>
+    </div>
+  </div>
+
+  <!--请假事由-->
+  <div class="commonTypeOne leaveReason">
+    <p>
+      <span class="flag">*</span>
+      <span class="wordPrompt">请假事由</span>
+      <!--<span class="wordTips">请输入请假事由</span>-->
+    </p>
+    <input type="text" maxlength="26" class="inputReason wordTips" placeholder="请输入请假事由">
+  </div>
+  <!--选择审批人-->
+  <div class="commonTypeOne chooseProvalPerson" data-id="">
+    <p>
+      <span class="flag">*</span>
+      <span class="wordPrompt">选择审批人</span>
+      <span class="wordTips">（点击头像切换审批人）</span>
+    </p>
+    <div class="toChoosed">
+
+      <div class="addCommom addPersonBtn">
+        <img src="img/createType/addPic.png" class="addpersonImg">
+      </div>
+      <!--<div class="addPersonBtn">-->
+      <!--<img src="img/createType/addtips.png" class="addCommom">-->
+      <!--</div>-->
+      <div class="haveChoosed">
+        <p class="addCommom dotImg">
+          <span>李</span>
+        </p>
+        <p class="name ">李里肥</p>
+      </div>
+    </div>
+  </div>
+  <!--图片-->
+  <div class="commonTypeOne">
+    <p class="wordPrompt picType">
+      图片
+      <span class="wordTips">（最多上传3张）</span>
+    </p>
+    <div class="havechoosedImg">
+      <!--<div class="imgBox">-->
+      <!--<img src="img/createType/personImg.png" class="addCommom">-->
+      <!--<span class="deletPicBtn">-->
+      <!--<img src="img/createType/delPic.png" alt="">-->
+      <!--</span>-->
+      <!--</div>-->
+      <p id="imgUploadBtn" class="addCommom addPinBtn">
+        <img src="img/createType/addPic.png" class="addpicImg">
+      </p>
+    </div>
+  </div>
+  <!--优先级-->
+  <div class="commonTypeOne levelType" data-level="1">
+      <span class="wordPrompt">
+        优先级
+      </span>
+    <span class="level-item level-one" data-priorityLevel="1">普通</span>
+    <span class="level-item " data-priorityLevel="2">紧急</span>
+    <span class="level-item " data-priorityLevel="3">非常紧急</span>
+  </div>
+  <!--发布-->
+  <div class="publishProval">
+    <p class="pulishBtn">
+      发布
+    </p>
+  </div>
+
+</div>
+
+<!--选择请假类型-->
+<div id="chooseType">
+  <p class="triangle-up">
+  </p>
+  <ul>
+    <li value="1">事假</li>
+    <li value="2">病假</li>
+    <li value="3">调休</li>
+    <li value="4">婚假</li>
+    <li value="5">丧假</li>
+    <li value="6">工伤假</li>
+  </ul>
+</div>
+
+
+<script src="../common/jquery-1.11.1.min.js"></script>
+<script src="../common/layer_mobile/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../common/plupload-2.3.1/js/moxie.js"></script>
+<script type="text/javascript" charset="utf-8" src="../common/plupload-2.3.1/js/plupload.full.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../common/plupload-2.3.1/js/i18n/zh_CN.js"></script>
+<script src="../common/util.js"></script>
+<script src="../common/jquery.date.js"></script>
+<script src="../common/upload.js"></script>
+<script type="text/javascript" src="js/createApproval_new.js"></script>
+<script>
+  $.date('#date4');
+  $.date('#date5');
+</script>
+</body>
+</html>

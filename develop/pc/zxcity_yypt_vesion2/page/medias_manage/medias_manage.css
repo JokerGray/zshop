@@ -1,0 +1,284 @@
+/*禁止选择*/
+.unselectable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+/*common*/
+.p0{
+	padding: 0!important;
+}
+.w30{
+	width: 30%!important;
+}
+.mr5{
+	margin-right: 5%!important;
+}
+.tr90{
+	transform: rotate(90deg)!important;
+}
+.dn{
+	display: none!important;
+	}
+/*common end*/
+
+
+ul.tool-box-ul {
+	padding: 35px 25px;
+}
+
+ul.tool-box-ul>li.tool-box-li {
+	width: 250px;
+	margin-right: 20px;
+	float: left;
+}
+
+div.layui-input-inline {
+	width: 100%!important;
+}
+
+ul.tool-box-ul>li.tool-box-li .tool-box-label {
+	display: block;
+	font: normal 14px/2em "微软雅黑";
+}
+
+.f-left{
+    float: left;
+}
+
+
+.f-right{
+    float: right;
+}
+/* .showImg {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  border: 1px solid #5cb85c;
+  border-radius: 50px;
+  position: relative;
+}
+
+.showImg .imgs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: none;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  font-size: 10px;
+  color: #fff;
+  background-color: #5cb85c;
+} */
+ .showImg {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+ }
+ .showImg .imgs {
+    width: 60px;
+    height: 60px;
+    background-color: #5cb85c;
+ }
+
+table td .layui-table-cell {
+    height: 100%;
+}
+.showImg .play-music {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  background: #5cb85c;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.layui-app table th {
+  text-align: center;
+}
+.layui-app table td {
+  text-align: center;
+  vertical-align: middle !important;
+}
+.layui-app {
+	padding: 0 20px;
+}
+table td .play {
+  /* left: -25px;
+  top: -25px;
+  position: relative;
+  margin-left: 50%;
+  margin-top: 50%; */
+  vertical-align: middle !important;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+  background: #5cb85c url(img/qmx_music_start@3x.png) no-repeat center center;
+  background-size: 40% 40%;
+  cursor: pointer;
+}
+
+table td .play.stop {
+  background: #5cb85c url(img/qmx_music_stop@3x.png) no-repeat center center;
+  background-size: 40% 40%;
+}
+.img_wrap {
+  width: 100%;
+  height: 120px;
+}
+
+.img_wrap .img_fl {
+  width: 120px;
+  height: 120px;
+  float: left;
+  margin-right: 30px;
+}
+.img_wrap .img_fl img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #337ab7
+}
+
+.img_wrap .img_fr {
+  height: 120px;
+}
+
+.img_wrap .img_fr p {
+  line-height: 25px;
+  color: #337ab7;
+}
+
+.img_wrap audio {
+  margin-bottom: 5px;
+}
+.fix_img {
+  margin-left: 20px;
+}
+
+.fixedUrl {
+  margin-top: 20px;
+  color: #31b0d5;
+  display: none;
+}
+
+.input-block {
+	margin-left: 85px;
+}
+ 
+.show-upload {
+  display: none;
+}
+.layui-layer-page .layui-layer-content{
+	overflow: visible !important;
+}
+
+.form-label {
+	height:28px;
+	line-height:28px;
+}
+.layui-form-item .layui-layer-btn0 {
+ 
+	 height: 28px;
+    line-height: 28px;
+    margin: 5px 5px 0;
+    padding: 0 15px;
+ 
+ 
+    color: #333;
+    border-radius: 2px;
+    font-weight: 400;
+	cursor: pointer;
+	border-color: #1E9FFF;
+    background-color: #1E9FFF;
+    color: #fff;
+}
+.layui-form-item .layui-layer-btn1 {
+	height: 28px;
+    line-height: 28px;
+    margin: 5px 5px 0;
+    padding: 0 15px;
+    border: 1px solid #dedede;
+    background-color: #fff;
+    color: #333;
+    border-radius: 2px;
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: none;
+}
+.table-rgt {
+	text-align: right;
+}
+
+.title {
+	font-size:16px;
+	background-color:#424651;
+	color:#fff;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+ .title span {
+  font-size: 16px;
+  color: #999999;
+}
+
+#edit-area {
+  width: 100%;
+  height: auto;
+  padding: 20px 0 20px 20px;
+}
+
+#edit-area:after {
+  display: table;
+  content: '';
+  clear: both;
+}
+
+#edit-area .type-item {
+  float: left;
+  width: 98px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  margin: 0 15px 15px 0;
+  background-color: #f0f0f0;
+  font-size: 14px;
+  color: #333333;
+  border-radius: 4px;
+  cursor: pointer;
+}
+body{overflow-y: scroll;}
+
+.layui-btn.my-btn {
+    height: 28px;
+    line-height: 28px;
+    padding: 0 16px;
+    font-size: 12px;
+}
+/*table 顶部边框*/
+.layui-border-box.layui-table-view {
+    border-top:2px solid #009688;
+}
+
+.layui-table, .layui-table-view {
+	width: 100% !important;
+}

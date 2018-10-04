@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <meta id="meta_title" itemprop="name" content=""/>
+    <meta id="meta_introduce" itemprop="image" content="favicon.ico" />
+    <meta id="meta_imgUrl" itemprop="description" name="description" content="" />
+    <title></title>
+    <style type="text/css">
+        *{
+            box-sizing: border-box;
+        }
+    	html, body, iframe{
+    		height: 100%;
+    		width: 100%;
+    		margin: 0;
+    		padding: 0;
+    		overflow: hidden;
+    	}
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        .wrap{
+            display: block;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            -webkit-overflow-scrolling: touch;
+            overflow-y: scroll;
+        }
+    	iframe{
+    		border: none;
+    		outline: none;
+    	}
+    	.errorBlock{
+    		display: block;
+    		text-align: center;
+    		font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+    	}
+    	.errorBlock img{
+    		display: block;
+    		margin: 5rem auto 0;
+    	}
+    	.errorBlock p{
+    		display: block;
+    		text-align: center;
+    		padding-top: 2rem;
+    	}
+    	.errorBlock a{
+	    	padding: 2px 6px;
+		    color: #ea6f5a!important;
+		    border: 1px solid rgba(236,97,73,.7);
+		    border-radius: 3px;
+		    text-decoration: none;
+        cursor: pointer;
+        transition: .1s ease-in;
+		    -webkit-transition: .1s ease-in;
+		    -moz-transition: .1s ease-in;
+		    -o-transition: .1s ease-in;
+		    -ms-transition: .1s ease-in;
+    	}
+    	#errorBlock{
+    		display: none;
+    	}
+    </style>
+  </head>
+  <body>
+    <div class="wrap" id="wrap">
+        <iframe id="mainframe" name="mainframe"></iframe>
+    </div>
+	<div class="errorBlock" id="errorBlock">
+		<img src="img/error.png"/>
+		<p></p>
+		<a id="retry" href="">点击重试</a>
+	</div>
+
+
+    <script src="plugins/jquery/jquery-3.1.1.js"></script> 
+    <script src="plugins/fingerprint/fingerprint2.min.js"></script> 
+	<script src="js/rewrite.js?v=20171030"></script> 
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+        	var interval = setInterval(function(){
+                if(!!window.ReWrite){
+                    clearInterval(interval);
+                    ReWrite.init();
+                }
+            }, 50)
+        })
+
+        // 分享页面
+        function share(title, introduce, imgUrl){
+            $('#meta_' + title).attr('content', title);
+            $('#meta_' + introduce).attr('content', introduce);
+            $('#meta_' + imgUrl).attr('content', imgUrl);
+            $.ajax({
+                type: "post",
+                url: "/zxcity_restful/ws/rest",
+                dataType: 'json',
+                headers: {
+                    apikey: sessionStorage.getItem('apikey') || 'test'
+                },
+                data: {
+                    cmd: 'game/getSign',
+                    data: JSON.stringify({
+                        url: location.href
+                    }),
+                    version: 1
+                },
+                success: function(res) {
+                    wx.config({
+                        debug: false,
+                        appId: 'wxe50dd59beab1e644',
+                        timestamp: res.data.timestamp,
+                        nonceStr: res.data.nonceStr,
+                        signature: res.data.signature,
+                        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareWeibo', 'onMenuShareQZone', 'onMenuShareQZone']
+                    });
+                    var options = {
+                        title: title,
+                        desc: introduce,
+                        link: location.href,
+                        imgUrl: imgUrl
+                    }
+                    wx.ready(function(){
+                        wx.onMenuShareTimeline({
+                            title: introduce,
+                            link: location.href,
+                            imgUrl: imgUrl
+                        });
+                        wx.onMenuShareAppMessage($.extend({
+                            type: '',
+                            dataUrl: ''
+                        }, options));
+                        wx.onMenuShareQQ(options);
+                        wx.onMenuShareWeibo(options);
+                        wx.onMenuShareQZone(options);
+                        wx.onMenuShareQZone(options);
+                    })
+                }
+            });
+        }
+	</script>
+    </b>
+  </body>
+</html>

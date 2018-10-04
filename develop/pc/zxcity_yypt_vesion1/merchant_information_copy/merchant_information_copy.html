@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商户数据拷贝</title>
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="css/merchant_information_copy.css" />
+</head>
+<body>
+
+	<div id="search-tool" class="clearfix">
+		<div class="top clearfix">
+		    <div class="input-group">
+		        <span class="pull-left">源商户ID：</span>
+		        <input type="text" class="form-control media-input"  id="merchantId" maxlength="20">
+		    </div>
+		    <div class="input-group">
+		        <span class="pull-left">目标商户ID：</span>
+		        <input type="text" class="form-control media-input"  id="destmerchantId" maxlength="20">
+		    </div>    	
+		    <div class="input-group">
+		        <button class="layui-btn layui-btn-small layui-btn-normal" id="submit1">
+		            	提交
+		        </button>
+		    </div>			
+		</div>
+		<div class="bot clearfix">
+		    <div class="input-group">
+		        <span class="pull-left">源店铺ID：</span>
+		        <input type="text" class="form-control media-input"  id="srcShopId" maxlength="20">
+		    </div>
+		    <div class="input-group">
+		        <span class="pull-left">目标店铺ID：</span>
+		        <input type="text" class="form-control media-input"  id="destShopId" maxlength="20">
+		    </div>    	
+		    <div class="input-group">
+		        <button class="layui-btn layui-btn-small layui-btn-normal" id="submit2">
+		            	提交
+		        </button>
+		    </div>			
+		</div>
+
+	</div>
+	<div class="jiange"></div>
+	<div class="content">
+		<h2>【日志展示】</h2>
+		<form class="layui-form" action="">
+			<textarea class="layui-textarea" id="contentDetial"></textarea>		
+		</form>
+	</div>
+</body>
+<!-- jS../commonold -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+<!-- jS../commonold -->
+<script type="text/javascript" src="js/merchant_information_copy.js"></script>
+</html>

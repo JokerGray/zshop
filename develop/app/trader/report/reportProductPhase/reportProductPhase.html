@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>品项统计</title>
+    <link rel="stylesheet" href="../../assets/common/css/common.css">
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="css/reportProductPhase.css">
+</head>
+<body>
+<!--顶部条件选项栏-->
+<div class="topFilterBox">
+    <div class="timeFilter">
+        <ul>
+            <li class="active" data-type="1">日报</li>
+            <li data-type="2">月报</li>
+            <li data-type="3">年报</li>
+            <li data-type="4">自定义</li>
+        </ul>
+    </div>
+    <div class="shopFilter">
+        <div>
+            <label>店铺</label>
+            <div class="layui-form">
+                <select id="shopSelector" lay-filter="shopSelector" lay-search> </select>
+            </div>
+        </div>
+        <div>
+            <a class="exportBtn" href="javascript:;">
+                <i class="exportIcon"> </i>
+                <span>导出</span>
+            </a>
+        </div>
+    </div>
+</div>
+<!--路径显示-->
+<div class="path">
+    <input type="text"
+           class="selectedDate"
+           id="selectedDate"
+           value=""
+           onfocus="blur()"/>
+    <input type="text"
+           class="selectedMonth"
+           id="selectedMonth"
+           value=""
+           onfocus="blur()"/>
+    <input type="text"
+           class="selectedYear"
+           id="selectedYear"
+           value=""
+           onfocus="blur()"/>
+    <input type="text"
+           class="selfDate"
+           id="selfDate"
+           value=""
+           onfocus="blur()"/>
+    <span class="arrowIcon">></span>
+    <span class="selectedShopName"> </span>
+</div>
+<!--统计概览-->
+<div class="reportOverview">
+    <ul class="clearfix"> </ul>
+</div>
+<!--品项走势图-->
+<div class="OverviewTrend">
+    <div class="canvasBox"></div>
+</div>
+<!--中部筛选栏-->
+<div class="middleFilterBOx clearfix">
+    <div class="tabNav">
+        <ul class="clearfix">
+            <li class="active" data-navType="1">按项目</li>
+            <li data-navType="2">按卡项</li>
+            <li data-navType="3">按商品</li>
+            <li data-navType="4">按套餐</li>
+            <li data-navType="5">按套盒</li>
+        </ul>
+    </div>
+    <div class="middleFilterContent">
+        <!--团队-->
+        <div class="team">
+            <label>团队</label>
+            <div class="layui-form" lay-filter="teamSelector">
+                <select id="teamSelector"
+                        lay-filter="teamSelector"
+                        lay-search> </select>
+            </div>
+        </div>
+        <!--员工-->
+        <div class="employee">
+            <label>员工</label>
+            <div class="layui-form" lay-filter="employeeSelector">
+                <select id="employeeSelector"
+                        lay-filter="employeeSelector"
+                        lay-search> </select>
+            </div>
+        </div>
+        <!--项目-->
+        <div class="project div">
+            <label>服务</label>
+            <div class="layui-form">
+                <select id="projectSelector" lay-filter="projectSelector" lay-search> </select>
+            </div>
+        </div>
+        <!--卡项-->
+        <div class="card div">
+            <label>卡项</label>
+            <div class="layui-form">
+                <select id="cardSelector" lay-filter="cardSelector" lay-search> </select>
+            </div>
+        </div>
+        <!--商品-->
+        <div class="product div">
+            <label>商品</label>
+            <div class="layui-form">
+                <select id="productSelector" lay-filter="productSelector" lay-search>
+                </select>
+            </div>
+        </div>
+        <!--套餐-->
+        <div class="package div">
+            <label>套餐</label>
+            <div class="layui-form">
+                <select id="packageSelector" lay-filter="packageSelector" lay-search> </select>
+            </div>
+        </div>
+        <!--套盒-->
+        <div class="setBox div">
+            <label>套盒</label>
+            <div class="layui-form">
+                <select id="setBoxSelector" lay-filter="setBoxSelector" lay-search> </select>
+            </div>
+        </div>
+        <!--<div>-->
+            <!--<button class="searchBtn">查询</button>-->
+        <!--</div>-->
+    </div>
+</div>
+<!--报表-->
+<div class="tableBox">
+    <!--项目-->
+    <div class="formProject">
+        <table class="layui-table">
+            <colgroup>
+                <col width="60">
+                <col width="400">
+                <col width="200">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>服务名称</th>
+                <th>服务销售数量</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr>-->
+                <!--<td>01</td>-->
+                <!--<td>-->
+                    <!--小气泡深层清洁护理的-->
+                <!--</td>-->
+                <!--<td>100</td>-->
+                <!--<td><a href="javascript:;" class="seeProjectDetail">查看详情</a></td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+    <!--卡项-->
+    <div class="formCard">
+        <table class="layui-table">
+            <colgroup>
+                <col width="79">
+                <col width="300">
+                <col width="150">
+                <col width="150">
+                <col width="150">
+                <col width="150">
+                <col width="150">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>卡项名称</th>
+                <th>卡项销售数量</th>
+                <th>直销</th>
+                <th>随套餐销售</th>
+                <th>随套盒销售</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr>-->
+                <!--<td>01</td>-->
+                <!--<td>小气泡深层清洁护理的</td>-->
+                <!--<td>100</td>-->
+                <!--<td>21</td>-->
+                <!--<td>31</td>-->
+                <!--<td>41</td>-->
+                <!--<td><a href="javascript:;" class="seeCardDetail">查看详情</a></td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+    <!--商品-->
+    <div class="formProduct">
+        <table class="layui-table">
+            <colgroup>
+                <col width="75">
+                <col width="400">
+                <col width="150">
+                <col width="150">
+                <col width="150">
+                <col width="150">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>商品名称</th>
+                <th>商品销售数量</th>
+                <th>直销</th>
+                <th>随套盒销售</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr>-->
+                <!--<td>01</td>-->
+                <!--<td>小气泡深层清洁护理的</td>-->
+                <!--<td>100</td>-->
+                <!--<td>50</td>-->
+                <!--<td>25</td>-->
+                <!--<td><a href="javascript:;" class="seeProductDetail">查看详情</a></td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+    <!--套餐-->
+    <div class="formPackage">
+        <table class="layui-table">
+            <colgroup>
+                <col width="56">
+                <col width="350">
+                <col width="200">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>套餐名称</th>
+                <th>套餐销售数量</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr>-->
+                <!--<td>01</td>-->
+                <!--<td>小气泡深层清洁护理的</td>-->
+                <!--<td>100</td>-->
+                <!--<td><a href="javascript:;" class="seePackageDetail">查看详情</a></td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+    <!--套盒-->
+    <div class="formSetBox">
+        <table class="layui-table">
+            <colgroup>
+                <col width="56">
+                <col width="350">
+                <col width="200">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>套盒名称</th>
+                <th>套盒销售数量</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr>-->
+                <!--<td>01</td>-->
+                <!--<td>-->
+                    <!--小气泡深层清洁护理的-->
+                <!--</td>-->
+                <!--<td>100</td>-->
+                <!--<td><a href="javascript:;" class="seeSetBoxDetail">查看详情</a></td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="pageSelectorBox">
+    <div id="reportPageSelector"></div>
+</div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../assets/layer-v3.1.1/layer.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/echart/echarts.min.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="js/reportProductPhase.js"></script>
+<!--项目详情-->
+<script id="projectDetailTpl" type="text/html">
+    <div class="top">
+        <span>服务销售详情</span>
+        <i>×</i>
+    </div>
+    <div class="descAndExport">
+        <div class="descPath">
+            <span class="descName" title="{{$data.name}}">{{$data.name}}</span>
+            <i>></i>
+            <span class="descShop">{{$data.shopName}}</span>
+        </div>
+        <a href="javascript:;" class="detailExportBtn">
+            <i></i>
+            <span>导出</span>
+        </a>
+    </div>
+    <div class="detailContent">
+        <div>
+            <table class="layui-table">
+                <colgroup>
+                    <col width="80">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>店铺名称</th>
+                    <!--<th>团队名称</th>-->
+                    <th>员工名称</th>
+                    <th>顾客名称</th>
+                    <!--<th>项目名称</th>-->
+                    <!--<th>价格</th>-->
+                    <th>服务次数</th>
+                    <th>销售时间</th>
+                    <th>销售金额</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>武汉楚河汉界店</td>-->
+                    <!--<td>王大大</td>-->
+                    <!--<td>刘袁多美</td>-->
+                    <!--<td>1</td>-->
+                    <!--<td>2018-07-30 11:14</td>-->
+                    <!--<td>2000.00</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="detailPageBox clearfix">
+        <div class="detailTotal">
+            <!--<span>合计 <b>25</b> 笔 | </span>-->
+            <!--<span>销售数量 <b>25</b> | </span>-->
+            <!--<span>共￥ <b>25600.00</b> </span>-->
+        </div>
+        <div id="projectDetailPageSelector"></div>
+    </div>
+</script>
+<!--卡项详情-->
+<script id="cardDetailTpl" type="text/html">
+    <div class="top">
+        <span>卡项销售详情</span>
+        <i>×</i>
+    </div>
+    <div class="descAndExport">
+        <div class="descPath">
+            <span class="descName" title="{{$data.name}}">{{$data.name}}</span>
+            <i>></i>
+            <span class="descShop">{{$data.shopName}}</span>
+            <i>></i>
+        </div>
+        <div class="detailRadio">
+            <ul class="clearfix">
+                <li class="active" data-type="1">
+                    <i class="sIcon"></i>
+                    <span>直销</span>
+                </li>
+                <li data-type="2">
+                    <i class="sIcon"></i>
+                    <span>随套餐销售</span>
+                </li>
+                <li data-type="4">
+                    <i class="sIcon"></i>
+                    <span>随套盒销售</span>
+                </li>
+            </ul>
+        </div>
+        <a href="javascript:;" class="detailExportBtn">
+            <i></i>
+            <span>导出</span>
+        </a>
+    </div>
+    <div class="detailContent">
+        <div>
+            <table class="layui-table">
+                <!--<colgroup>-->
+                    <!--<col width="60">-->
+                    <!--<col width="150">-->
+                    <!--<col width="100">-->
+                    <!--<col width="100">-->
+                    <!--<col width="100">-->
+                    <!--<col width="130">-->
+                    <!--<col width="130">-->
+                    <!--<col width="130">-->
+                    <!--<col width="90">-->
+                    <!--<col width="90">-->
+                    <!--<col width="160">-->
+                    <!--<col width="80">-->
+                    <!--<col>-->
+                <!--</colgroup>-->
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>店铺名称</th>
+                    <!--<th>团队名称</th>-->
+                    <th>员工名称</th>
+                    <th>顾客名称</th>
+                    <th class="packageName">套餐名称</th>
+                    <th class="setBoxName">套盒名称</th>
+                    <!--<th>卡项名称</th>-->
+                    <!--<th>价格</th>-->
+                    <th>卡项数量</th>
+                    <th>销售时间</th>
+                    <th>销售金额</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>武汉楚河汉界店</td>-->
+                    <!--<td>王大大</td>-->
+                    <!--<td>刘袁多美</td>-->
+                    <!--<td class="packageName">小气泡护理小气泡护理</td>-->
+                    <!--<td class="setBoxName">小气泡护理小气泡护理</td>-->
+                    <!--<td>1</td>-->
+                    <!--<td>2018-07-30 11:14</td>-->
+                    <!--<td>2000.00</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="detailPageBox clearfix">
+        <div class="detailTotal">
+            <!--<span>合计 <b>25</b> 笔 | </span>-->
+            <!--<span>销售数量 <b>25</b> | </span>-->
+            <!--<span>共￥ <b>25600.00</b> </span>-->
+        </div>
+        <div id="cardDetailPageSelector"></div>
+    </div>
+</script>
+<!--商品详情-->
+<script id="productDetailTpl" type="text/html">
+    <div class="top">
+        <span>商品销售详情</span>
+        <i>×</i>
+    </div>
+    <div class="descAndExport">
+        <div class="descPath">
+            <span class="descName" title="{{$data.name}}">{{$data.name}}</span>
+            <i>></i>
+            <span class="descShop">{{$data.shopName}}</span>
+        </div>
+        <div class="detailRadio">
+            <ul class="clearfix">
+                <li class="active" data-type="0">
+                    <i class="sIcon"></i>
+                    <span>直销</span>
+                </li>
+                <li data-type="2">
+                    <i class="sIcon"></i>
+                    <span>随套盒销售</span>
+                </li>
+            </ul>
+        </div>
+        <a href="javascript:;" class="detailExportBtn">
+            <i></i>
+            <span>导出</span>
+        </a>
+    </div>
+    <div class="detailContent">
+        <div>
+            <table class="layui-table">
+                <!--<colgroup>-->
+                    <!--<col width="80">-->
+                    <!--<col width="200">-->
+                    <!--<col>-->
+                <!--</colgroup>-->
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>店铺名称</th>
+                    <!--<th>团队名称</th>-->
+                    <th>员工名称</th>
+                    <th>顾客名称</th>
+                    <th class="setBoxName">套盒名称</th>
+                    <!--<th>商品名称</th>-->
+                    <!--<th>价格</th>-->
+                    <th>商品数量</th>
+                    <th>销售时间</th>
+                    <th class="money">销售金额</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>武汉楚河汉界店</td>-->
+                    <!--<td>王大大</td>-->
+                    <!--<td>刘袁多美</td>-->
+                    <!--<td class="setBoxName">小气泡护理小气泡护理</td>-->
+                    <!--<td>1</td>-->
+                    <!--<td>2018-07-30 11:14</td>-->
+                    <!--<td>2000.00</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="detailPageBox clearfix">
+        <div class="detailTotal">
+            <!--<span>合计 <b>25</b> 笔 | </span>-->
+            <!--<span>销售数量 <b>25</b> | </span>-->
+            <!--<span>共￥ <b>25600.00</b> </span>-->
+        </div>
+        <div id="productDetailPageSelector"></div>
+    </div>
+</script>
+<!--套餐详情-->
+<script id="packageDetailTpl" type="text/html">
+    <div class="top">
+        <span>套餐销售详情</span>
+        <i>×</i>
+    </div>
+    <div class="descAndExport">
+        <div class="descPath">
+            <span class="descName" title="{{$data.name}}">{{$data.name}}</span>
+            <i>></i>
+            <span class="descShop">{{$data.shopName}}</span>
+        </div>
+        <a href="javascript:;" class="detailExportBtn">
+            <i></i>
+            <span>导出</span>
+        </a>
+    </div>
+    <div class="detailContent">
+        <div>
+            <table class="layui-table">
+                <!--<colgroup>-->
+                    <!--<col width="80">-->
+                    <!--<col width="200">-->
+                    <!--<col>-->
+                <!--</colgroup>-->
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>店铺名称</th>
+                    <!--<th>团队名称</th>-->
+                    <th>员工名称</th>
+                    <th>顾客名称</th>
+                    <!--<th>套餐名称</th>-->
+                    <!--<th>套餐内容</th>-->
+                    <!--<th>价格</th>-->
+                    <th>套餐数量</th>
+                    <th>销售时间</th>
+                    <th>销售金额</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>武汉楚河汉界店</td>-->
+                    <!--<td>王大大</td>-->
+                    <!--<td>刘袁多美</td>-->
+                    <!--<td>1</td>-->
+                    <!--<td>2018-07-30 11:14</td>-->
+                    <!--<td>2000.00</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="detailPageBox clearfix">
+        <div class="detailTotal">
+            <!--<span>合计 <b>25</b> 笔 | </span>-->
+            <!--<span>销售数量 <b>25</b> | </span>-->
+            <!--<span>共￥ <b>25600.00</b> </span>-->
+        </div>
+        <div id="packageDetailPageSelector"></div>
+    </div>
+</script>
+<!--套盒详情-->
+<script id="setBoxDetailTpl" type="text/html">
+    <div class="top">
+        <span>套盒销售详情</span>
+        <i>×</i>
+    </div>
+    <div class="descAndExport">
+        <div class="descPath">
+            <span class="descName" title="{{$data.name}}">{{$data.name}}</span>
+            <i>></i>
+            <span class="descShop">{{$data.shopName}}</span>
+        </div>
+        <a href="javascript:;" class="detailExportBtn">
+            <i></i>
+            <span>导出</span>
+        </a>
+    </div>
+    <div class="detailContent">
+        <div>
+            <table class="layui-table">
+                <!--<colgroup>-->
+                <!--<col width="80">-->
+                <!--<col width="200">-->
+                <!--<col>-->
+                <!--</colgroup>-->
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>店铺名称</th>
+                    <!--<th>团队名称</th>-->
+                    <th>员工名称</th>
+                    <th>顾客名称</th>
+                    <th>套盒商品</th>
+                    <th>套盒服务卡</th>
+                    <!--<th>套餐名称</th>-->
+                    <!--<th>套餐内容</th>-->
+                    <!--<th>价格</th>-->
+                    <th>套盒数量</th>
+                    <th>销售时间</th>
+                    <th>销售金额</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>武汉楚河汉界店</td>-->
+                    <!--<td>王大大</td>-->
+                    <!--<td>刘袁多美</td>-->
+                    <!--<td>小气泡护理小气泡护理</td>-->
+                    <!--<td>小气泡护理小气泡护理</td>-->
+                    <!--<td>1</td>-->
+                    <!--<td>2018-07-30 11:14</td>-->
+                    <!--<td>2000.00</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="detailPageBox clearfix">
+        <div class="detailTotal">
+            <!--<span>合计 <b>25</b> 笔 | </span>-->
+            <!--<span>销售数量 <b>25</b> | </span>-->
+            <!--<span>共￥ <b>25600.00</b> </span>-->
+        </div>
+        <div id="setBoxDetailPageSelector"></div>
+    </div>
+</script>
+<!--概览-->
+<script id="overviewTpl" type="text/html">
+    <li>
+        <p class="clearfix">
+            <span>服务销售总数</span>
+            {{if $data.ringRatioService > 0}}
+            <span>高于{{$data.typeText}} {{$data.ringRatioService}}</span>
+            {{else if $data.ringRatioService < 0}}
+            <span>低于{{$data.typeText}} {{$data.ringRatioService * -1}}</span>
+            {{else}}
+            <span>与{{$data.typeText}}持平</span>
+            {{/if}}
+        </p>
+        <h4>{{$data.totalAccountService}}</h4>
+    </li>
+    <li>
+        <p class="clearfix">
+            <span>卡项销售总数</span>
+            {{if $data.ringRatioCard > 0}}
+            <span>高于{{$data.typeText}} {{$data.ringRatioCard}}</span>
+            {{else if $data.ringRatioCard < 0}}
+            <span>低于{{$data.typeText}} {{$data.ringRatioCard * -1}}</span>
+            {{else}}
+            <span>与{{$data.typeText}}持平</span>
+            {{/if}}
+        </p>
+        <h4>{{$data.totalCardAccount}}</h4>
+    </li>
+    <li>
+        <p class="clearfix">
+            <span>商品销售总数</span>
+            {{if $data.ringRatioGoods > 0}}
+            <span>高于{{$data.typeText}} {{$data.ringRatioGoods}}</span>
+            {{else if $data.ringRatioGoods < 0}}
+            <span>低于{{$data.typeText}} {{$data.ringRatioGoods * -1}}</span>
+            {{else}}
+            <span>与{{$data.typeText}}持平</span>
+            {{/if}}
+        </p>
+        <h4>{{$data.totalGoodsAccount}}</h4>
+    </li>
+    <li>
+        <p class="clearfix">
+            <span>套餐销售总数</span>
+            {{if $data.ringRatioPack > 0}}
+            <span>高于{{$data.typeText}} {{$data.ringRatioPack}}</span>
+            {{else if $data.ringRatioPack < 0}}
+            <span>低于{{$data.typeText}} {{$data.ringRatioPack * -1}}</span>
+            {{else}}
+            <span>与{{$data.typeText}}持平</span>
+            {{/if}}
+        </p>
+        <h4>{{$data.packCount}}</h4>
+    </li>
+    <li>
+        <p class="clearfix">
+            <span>套盒销售总数</span>
+            {{if $data.ringRatioBox > 0}}
+            <span>高于{{$data.typeText}} {{$data.ringRatioBox}}</span>
+            {{else if $data.ringRatioBox < 0}}
+            <span>低于{{$data.typeText}} {{$data.ringRatioBox * -1}}</span>
+            {{else}}
+            <span>与{{$data.typeText}}持平</span>
+            {{/if}}
+        </p>
+        <h4>{{$data.totalBoxAccount}}</h4>
+    </li>
+</script>
+</html>

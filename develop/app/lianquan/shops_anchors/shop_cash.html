@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>商铺结算明细</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="css/commons.css">
+    <link rel="stylesheet" type="text/css" href="css/shop_cash.css">
+</head>
+<style>
+</style>
+
+<body>
+    <div id="cash" class="cash_nav">
+        <span class="cash_btn active" data-type="0">未结算</span>
+        <span class="cash_btn" data-type="1">已结算</span>
+        <input type="hidden" id="hidImg" data-shopId="325">
+    </div>
+    <div class="row subtitle">
+        <div class="col-xs-12">
+            APP管理 -脸圈店铺结算
+            <!-- <span id="shop" data-shopId="23">食材花园</span> -->
+        </div>
+    </div>
+    <div class="page">
+        <!-- 未结算页面 -->
+        <div id="cashied">
+        </div>
+
+        <script type="text/html" id="pageCashed">
+            <div class="row tableBox">
+                    <div class="col-xs-12" id="tablelist">
+                        <table class="table table-bordered table-striped">
+                            <tbody>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>姓名</th>
+                                    <th>头像</th>
+                                    <th>昵称</th>
+                                    <th>签约时间</th>
+                                    <th>可结算收益（猪仔）</th>
+                                    <th>操作</th>
+                                </tr>
+                                <%for(var i=0;i<data.list.length;i++){%>
+                                    <tr>
+                                        <td><%=(i+1)%></td>
+                                        <td><%=data.list[i].name%></td>
+                                        <td>
+                                            <div class="showAnchor">
+                                                <img src="<%=data.list[i].userpic%>?x-oss-process=image/resize,m_fill,w_200,h_200,limit_0">
+                                            </div>
+                                        </td>
+                                        <td><%=data.list[i].username%></td>
+                                        <td><%=data.list[i].modifyTime.substr(0,10)%></td>
+                                        <td class="balance">
+                                            <span class="bl_nb"><%=data.list[i].balance%>只</span>
+                                        </td>
+                                        <td>
+                                            <div class="btn btn-primary sendApply" data-auditstatus="<%=data.list[i].auditStatus%>" data-balance="<%=data.list[i].balance%>" data-userid="<%=data.list[i].userId%>">申请结算</div>
+                                        </td>
+                                    </tr>
+                                <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row footer">
+                    <div class="col-xs-12">
+                        <span>显示第&nbsp;
+                            <span id="pageStart1">1</span>&nbsp;到&nbsp;
+                            <span id="pageEnd1">5</span>&nbsp;条记录，一共&nbsp;
+                            <span style="color:#23c6c8;" id="msgNum1"><%=data.sumCount%></span>&nbsp;条记录，每页显示&nbsp;
+                            <span class="form-group form-inline">
+                                <select name="pageNum" class="form-control" id="pageChange1">
+                                    <%for(var j=5;j<36;j+=10){%>
+                                        <%if(j==row){%>
+                                            <option selected="selected" value="<%=j%>"><%=j%></option>
+                                        <%}else{%>
+                                            <option value="<%=j%>"><%=j%></option>
+                                        <%}%>
+                                    <%}%>
+                                </select>&nbsp;</span>条记录</span>
+                        <div class="btn-group" id="pageBtns1"></div>
+                    </div>
+                </div>              
+        </script>
+<!-- 点击结算弹窗 -->
+<div class="model" style="display:none;">
+		<input type="hidden" id="adstatus"></input>
+		<div class="md_box">
+			<div class="md_tit">申请结算<span id="colseModel"></span></div>
+			<div class="mdct">
+				<div class="mdct_hd">
+					<p>本次结算量： <input type="text" id="balanceTotal" placeholder="最多可输入x"></input>个猪仔≈<input type="text" id="rmb" readonly="readonly"></input>RMB
+					<span>（猪仔个数/10=收益，本公式仅供参考）</span>
+					</p>
+				</div>
+				<div class="mdct_choose">
+					<span>报税方式：</span>
+					<ul>
+						<li class="taxli">
+							<span></span>
+							<label>劳务报税</label>
+						</li>
+						<li class="taxli">
+							<span></span>
+							<label>企业报税</label>
+						</li>						
+					</ul>
+				</div>
+				<div class="mdct_cont mdct0" >
+							<table border="0" cellspacing="0" cellpadding="0">
+									<tr><td class="tax_item">姓名：</td><td><input type="text" id="yName" maxlength="6"/></td></tr>
+									<tr><td class="tax_item">身份证：</td><td><input type="text" id="yIdCard" maxlength="18" /></td></tr>									
+									<tr><td class="tax_item">手机号：</td><td><input type="text" id="yPhone" maxlength="11" /></td></tr>	
+									<tr><td class="tax_item">税费计算(月累计)：</td><td><input type="text" id="shouldPay" readonly="readonly"></input></td></tr>
+									<tr><td class="tax_item">本次税费：</td><td><input type="text" id="thisTax" readonly="readonly"></input></td></tr>																	
+							</table>
+							<p class="taxTig stTip">上一笔结算未结清，不可重新结算！</p>
+				</div>
+				<div class="mdct_cont mdct1" style="display: none;">
+							<table border="0" cellspacing="0" cellpadding="0">
+									<tr><td class="tax_role">购买方</td><td class="tax_item">企业名称：</td><td><input type="text" value="武汉智创工场互联网科技发展有限公司" readonly="readonly"/></td></tr>
+									<tr><td></td><td class="tax_item">统一社会信用代码：</td><td><input type="text" value="91420111MA4KLYRYX1" readonly="readonly"/></td></tr>									
+									<tr><td></td><td class="tax_item">发票金额：</td><td><input type="text" id="taxMoney2" readonly="readonly"/></td></tr>								
+									<tr><td></td><td class="tax_item">发票内容：</td><td><input type="text" placeholder="劳务费" readonly="readonly"/></td></tr>									
+							</table>
+							<div class="mdct_line"></div>
+							<table border="0" cellspacing="0" cellpadding="0">
+									<tr><td class="tax_role">销售方</td><td class="text_item">企业名称：</td><td><input type="text" placeholder="与纸质发票一致" id="corporationName" maxlength="30"/></td></tr>
+									<tr><td></td><td class="text_item">统一社会信用代码：</td><td><input type="text" placeholder="与纸质发票一致" id="creditCode" maxlength="30"/></td></tr>									
+									<tr><td></td><td class="text_item">发票编号：</td><td><input type="text" placeholder="与纸质发票一致" id="invoiceNumber" maxlength="30"/></td></tr>								
+							</table>
+							<p class="taxTig">提示：请根据以上信息，开据纸质发票！请务必在30个工作日内将对应金额的纸质发票邮寄到：武汉市武昌区中北路122号东沙大厦A栋13楼，否则过期处理不予支付</p>
+				</div>				
+				<div class="model_footer">
+						<div id="submit" class="submit">提交</div>
+				</div>
+			</div>
+		</div>
+	</div>
+        <!-- 已结算页面 -->
+        <div id="noCash" style="display:none;"></div>
+        <script type="text/html" id="nocashPage">
+            <div class="row tableBox">
+                    <div class="col-xs-12" id="tablelist">
+                        <table class="table table-bordered table-striped">
+                            <tbody>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>昵称</th>
+                                    <th>结算（猪仔）</th>
+                                    <th>结算状态</th>
+                                    <th>提交时间</th>
+                                    <th>流水号</th>
+                                    <th>备注</th>
+                                </tr>
+                                <%for(var i=0;i<data.list.length;i++){%>
+                                    <tr>
+                                        <td><%=(i+1)%></td>
+                                        <td><%=data.list[i].userName%></td>
+                                        <td><%=data.list[i].money%>只</td>
+                                        <%if(data.list[i].status==0){%>
+                                            <td>待审核</td>
+                                        <%}else if(data.list[i].status==1){%>
+                                            <td>通过</td>
+                                        <%}else if(data.list[i].status==2){%>
+                                            <td>未通过</td>
+                                        <%}%>
+                                        <td><%=data.list[i].create_time.substr(0,10)%></td>
+                                        <td><%=data.list[i].serialNo%></td>
+                                        <td><%=(data.list[i].comment?data.list[i].comment:"暂无备注")%></td>
+                                    </tr>                                
+                                <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row footer">
+                    <div class="col-xs-12">
+                        <span>显示第&nbsp;
+                            <span id="pageStart">1</span>&nbsp;到&nbsp;
+                            <span id="pageEnd">5</span>&nbsp;条记录，一共&nbsp;
+                            <span style="color:#23c6c8;" id="msgNum2"><%=total%></span>&nbsp;条记录，每页显示&nbsp;
+                            <span class="form-group form-inline">
+                                <select name="pageNum" class="form-control" id="pageChange2">
+                                <%for(var j=5;j<36;j+=10){%>
+                                        <%if(j==row){%>
+                                            <option selected="selected" value="<%=j%>"><%=j%></option>
+                                        <%}else{%>
+                                            <option value="<%=j%>"><%=j%></option>
+                                        <%}%>
+                                    <%}%>
+                            </select>&nbsp;</span>条记录</span>
+                        <div class="btn-group" id="pageBtns2"></div>
+                    </div>
+                </div>        
+        </script>
+        <script type="text/html" id="errorPage">
+            <div class="no-data">暂无数据...</div>
+        </script>
+    </div>
+</body>
+<script src="../assets/jquery-1.10.2.js"></script>
+<script src="../js/artTemplate.js"></script>
+<script src="js/common.js"></script>
+<script src="../assets/layui/lay/dest/layui.all.js"></script> 
+<script src="js/shop_cash.js"></script>
+
+</html>

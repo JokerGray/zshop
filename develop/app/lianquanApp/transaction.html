@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>交易详细</title>
+    <link rel="stylesheet" type="text/css" href="css/transaction.css" />
+    <script type="text/javascript">
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <script src="assets/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/artTemplate.js"></script>
+</head>
+
+<body>
+    <!-- 支付显示头部 -->
+    <div id="head" class="head"></div>
+    <!-- 展示交易头部,非提现 -->
+    <script id="trade" type="text/html">
+            <div class="ts_title">
+                <span></span>交易详情
+            </div>    
+        </script>
+    <!-- 展示交易头部,提现 -->
+    <script id="tradeBill" type="text/html">
+            <div class="logo">
+                </div>
+                <p class="hd_txt">交易详情</p>
+                <div class="cont prs">
+                        处理进度
+                        <span><%==withdrawCash.applyTime||''%></span>
+                </div>  
+                <div class="cont prs">
+                        <span><%==withdrawCash.auditTime||''%></span>
+                </div>  
+                <div class="cont prs">
+                        <%if(withdrawCash.state==4){%>
+                            <span><%==(withdrawCash.returnTime)||''%></span>
+                        <%}else{%>
+                            <span><%==(withdrawCash.payTime)||''%></span>                            
+                        <%}%>
+                </div>
+
+                <%if(withdrawCash.state==0){%>
+                    <div class="progress prog0">
+                            <p>申请提现</p>
+                            <p class="nopass">审核通过</p>
+                            <p class="nopass">到帐成功</p>
+                    </div>
+                <%}else if(withdrawCash.state==1){%>
+                    <div class="progress prog1">
+                            <p>申请提现</p>
+                            <p>审核通过</p>
+                            <p class="nopass">到帐成功</p>
+                    </div>                    
+                <%}else if(withdrawCash.state==2){%>
+                    <div class="progress prog1">
+                            <p>申请提现</p>
+                            <p>审核不通过</p>
+                            <p class="nopass">到帐成功</p>
+                    </div>                    
+                <%}else if(withdrawCash.state==3){%>
+                    <div class="progress prog2">
+                            <p>申请提现</p>
+                            <p>审核通过</p>
+                            <p>到帐成功</p>
+                    </div>                    
+                <%}else if(withdrawCash.state==4){%>
+                    <div class="progress prog2">
+                            <p>申请提现</p>
+                            <p>审核通过</p>
+                            <p>退回申请</p>
+                    </div>                    
+                <%}%>
+      </script>
+    <!-- 展示详细的内容 -->
+    <div id="bills"></div>
+
+    <script id="billCont" type="text/html">
+            <div class="wrap_mon">
+                    <div class="cont cont_main">
+                        金&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;额
+                        <span><%==scAccountUserLog.money%>&nbsp;元</span>
+                    </div>            
+                </div>            
+            <div class="wrap_cont">
+                <div class="cont">
+                        交易内容
+                        <%if(scAccountUserLog==3){%>
+                            <span>提现</span>
+                        <%}else{%>
+                            <span><%==scAccountUserLog.billMark%></span>
+                        <%}%>
+                    </div>
+                    <div class="cont">
+                        交易类型
+                        <span><%==scAccountUserLog.billTypeStr%></span>
+                    </div>
+                    <div class="cont">
+                        交易时间
+                        <span><%==scAccountUserLog.billTime%></span>
+                    </div>
+                    <div class="cont">
+                        流水号
+                        <span><%==scAccountUserLog.serialNo%></span>
+                    </div> 
+            </div>  
+        </script>
+</body>
+<script src="js/transaction.js"></script>
+
+</html>

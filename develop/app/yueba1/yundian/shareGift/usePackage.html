@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <link rel="stylesheet" href="css/basePack.css">
+    <link rel="stylesheet" href="css/pack1.css">
+    <title>智享城市礼包</title>
+    <script>!function(e){
+            function t(a){
+                if(i[a])return i[a].exports;
+                var n=i[a]={exports:{},
+                id:a,
+                loaded:!1};
+                return e[a].call(n.exports,n,n.exports,t),
+                n.loaded=!0,n.exports}var i={};
+                return t.m=e,
+                t.c=i,
+                t.p="",
+                t(0)}([function(e,t){
+                    "use strict";
+                    Object.defineProperty(t,"__esModule",{value:!0});
+                    var i=window;
+                    t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,
+                    d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),
+                    l=o.match(/U3\/((\d+|\.){5,})/i),
+                    c=l&&parseInt(l[1].split(".").join(""),10)>=80,
+                    p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),
+                    s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);
+                    var u=1/s,m=r.querySelector('meta[name="viewport"]');
+                    m||(m=r.createElement("meta"),
+                    m.setAttribute("name","viewport"),
+                    r.head.appendChild(m)),
+                    m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),
+                    r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);
+            flex(100, 1);</script>
+</head>
+
+<body>
+    <div id="zxCityGiftBox">
+        <p class="giftBTitle clearfix">
+            <img id="giftBTitIcon" class="fl" src="image/qmx_share_zhixianglogo.png" alt="">
+            <span id="giftBTitTxt" class="fl">智享城市</span>
+        </p>
+        <div class="giftAdvertiBox"><img id="giftAdverti" src="image/qmx_share_title.png" alt=""></div>
+        <div id="registerBox" class="">
+            <div class="registerInpBox">
+                <div class="registerTit"><span>新户专享</span></div>
+                <div id="registerInpArea">
+                    <div class="bg-white">
+                        <div class="l_con">
+                            <span class="font32px">礼包</span>
+                        </div>
+                        <div class="r_con">
+                            <p class="title" id="name">新客礼包</p>
+                            <p class="info"><span id="amountMin"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="getGiftBtn"><a href="http://erweima.izxcs.com/erweima.php"><span>下载智享城市APP立即领用</span></a></div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/usePackage.js"></script>
+</body>
+
+</html>

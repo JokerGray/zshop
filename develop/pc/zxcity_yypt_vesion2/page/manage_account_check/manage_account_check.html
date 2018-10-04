@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>头道汤组织结构配置</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../common/css/bootstrap.min.css" media="all"/>
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <link rel="stylesheet" href="../../common/assets/zTree_v3/css/metroStyle/metroStyle.css"/>
+    <link rel="stylesheet" href="manage_account_check.css">
+</head>
+<body>
+    <div class="layui-row layui-fluid">
+        <ul class="layui-form layui-col-sm12 layui-col-md12 clearfix">
+            <li class="layui-col-md3 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item">
+                    <label class="">账号：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="usercode"  maxlength="11">
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md3 layui-col-sm6 layui-col-xs12" >
+                <div class="layui-form-item">
+                    <label class="">昵称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="username" maxlength="12">
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md3 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item ">
+                    <label class="">是否锁定：</label>
+                    <div class="layui-input-block">
+                        <select id="locked" lay-verify="required">
+                            <option value="">--全部--</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md3 layui-col-sm6 layui-col-xs12">
+                <label>&nbsp;</label>
+                <div class="fl">
+                    <button class="layui-btn" id="toolSearch">搜索</button>
+                    <button class="layui-btn" id="toolRelize">重置</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="layui-row layui-fluid">
+        <table id="tabNo" lay-filter="tabNo"></table>
+        <div id="pageLeft" class="fr"></div>
+    </div>
+    <!--lay-event='detail' 这个是绑定事件没有这个就绑定不了事件-->
+
+    <script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-md" lay-event='detail'><i class="layui-icon">&#xe615;</i>查看</button>
+    </script>
+    <script type="text/html" id="status">
+        {{# if(d.isrealname == 0){ }}
+        <div class="layui-table-cell laytable-cell-8-_isrealname" >未认证</div>
+        {{# }else if(d.isrealname == 1){ }}
+        <div class="layui-table-cell laytable-cell-8-_isrealname" style="color: #1E9FFF;">待审核</div>
+        {#  }else if(d.isrealname == -1){ }}
+        <div class="layui-table-cell laytable-cell-8-_isrealname" style="color: #009688;">不通过</div>
+        {{#  } else if(d.isrealname == 2){ }}
+        <div class="layui-table-cell laytable-cell-8-_isrealname" style="color: #5FB878;">已认证</div>
+        {{#  } else { }}
+        <div class="layui-table-cell laytable-cell-8-_isrealname" >未认证</div>
+        {{#  } }}
+    </script>
+
+    <!--modal-->
+    <div id="demo111" class='layui-form clearfix layui-row disn layer-box'>
+        <div class="app-layer layui-col-sm12 layui-col-md12">
+            <div class="package clearfix">
+                <div class="package-title">App用户信息</div>
+                <div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+                </div>
+            </div>
+            <div class="app-layer-content">
+                <ul class="layui-form clearfix p0">
+                    <li class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">账户：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoAccount" disabled lay-verify="required|phone" maxlength="11" readonly>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">昵称：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoName" disabled  maxlength="11" readonly>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">城市：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoCity" disabled  readonly>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">生日：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoBirthday" disabled  readonly>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">性别：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoSex" disabled   readonly>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">标签：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoTag" disabled  maxlength="12" readonly>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">姓名：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infotrueName" disabled   readonly>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">邮箱：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoEmail" disabled  maxlength="12" readonly>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">身份证：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="infoNumber" disabled  maxlength="12" readonly>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">身份证正面：</label>
+                            <div class="layui-input-block">
+                                <img src=""  id="infoIDz" alt="">
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">身份证反面：</label>
+                            <div class="layui-input-block">
+                                <img src=""  id="infoIDf" alt="">
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="tool-box-label">手持身份证正面照：</label>
+                            <div class="layui-input-block">
+                                <img src=""  id="infoIDhand" alt="">
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+                <div class="layer-place">
+                    展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="manage_account_check.js"></script>
+</body>
+</html>

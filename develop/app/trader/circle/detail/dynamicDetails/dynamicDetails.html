@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../../assets/bootstrap/css/bootstrap.min.css"/>
+		<script src="../../../assets/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../assets/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../../../assets/layer/layer.js"></script>
+		<script src="../../../assets/artTemplate/artTemplate.js"></script>
+		<link rel="stylesheet" type="text/css" href="./supervise.css"/>
+		<title>动态</title>
+
+	</head>
+	<body style="background-color: #f7f7f7;">
+		
+		<div class="container">
+			<div class="row" >
+				<div class="col-xs-12" >
+					<div class="mienTitle">动态详情</div>
+					<div class="mienContent">
+						
+					</div>
+				</div>
+				
+				
+			</div>
+			<div class="bottomBtn">
+			<button type="button" class="saveBtn" id="back">返回</button>
+			<button type="button" class="saveBtn cancelBtn" id="cancel">删除</button>
+			</div>
+		</div>
+
+	</body>
+	<script id="init" type="text/html">
+		<input type="hidden" name="videoAlbumId"  value="<%=data.videoAlbum.videoAlbumId%>" />
+		<input type="hidden" name="isAdmin" value="<%=data.videoAlbum.isAdmin%>" />
+		<input type="hidden" name="videoAlbumCircleId" value="<%=data.videoAlbum.videoAlbumCircleId%>" />
+		<div class="mienBox">
+			<div class="teamLogo">
+				<a href="javascript:;">
+					<img class="faceImg" src="<%=data.videoAlbum.logo%>">
+				</a>
+			</div>
+			<div class="adduser">
+				<h3 class="adminName"><%=data.videoAlbum.circleName%></h3>
+				<%if(data.videoAlbum.type==2){%>
+						<em class="bus"></em>
+					<%}%>
+				<p class="pubDate"><%=data.videoAlbum.videoAlbumTime%></p>
+			</div>
+			<!--<h2 class="caption">风采详情内容 :</h2>
+			<div class="menText pre" id="pre"></div>-->
+			<p class="menText"><%=data.videoAlbum.videoAlbumDescription%></p>
+				<%if(data.videoAlbum.videoAlbumType==1){%>
+							<%if(data.videoAlbum.urls.length>1){%>
+									<ul class="pictureBox">
+										<%for(var j =0;j<data.videoAlbum.urls.length;j++){%>
+										<li><img src="<%=data.videoAlbum.urls[j]%>?x-oss-process=image/resize,m_fill,h_224,w_224"></li>
+										<%}%>
+									</ul>
+								<%}else{%>
+									<div class="picBox">
+										<img src="<%=data.videoAlbum.urls[0]%>?x-oss-process=image/resize,m_fill,h_224,w_224">
+									</div>
+									<%}%>
+							
+							<%}else if(data.videoAlbum.videoAlbumType==2){%>
+								<div class="videoBox" >
+									<video width="320px" height="176px" src="<%=data.videoAlbum.urls[0]%>" poster="<%=data.videoAlbum.videoAlbumCoverUrl%>">
+									</video>
+									<a class="playVideo">
+										<img src="./image/bofanganniu.png" alt="">
+									</a>
+								</div>
+							<%}%>
+							<p class="userName"><%=data.videoAlbum.userName%></p>
+							<p class="shopName"><%=data.videoAlbum.shopName%></p>
+			
+			<%if(data.commentList.totalLikeCount>0){%>
+				<h2 class="caption">全部赞</h2> <span><%=data.commentList.totalLikeCount%></span>
+				<ul class="praisedList ">
+					<%for(var i=0;i<data.commentList.allLikeList.length;i++){%>
+						<li class="praised">
+							<a href="javascript:;">
+								<img  src="<%=data.commentList.allLikeList[i].sMemberImgName%>">
+							</a>
+						</li>
+						<%}%>
+				</ul>
+				<%}%>
+			<%if(data.commentList.commentList.length>0){%>
+			<h2 class="caption">全部评论 :</h2>
+			<div class="comment">
+				
+					<%for(var k = 0 ;k<data.commentList.commentList.length;k++){%>
+						<div class="discussList">
+							<!--评论 （发布）-->
+							<div class="reviewer">
+								
+								<!--评论头像（发布） -->
+								<div class='reviewerFace'>
+									<a href="javascript:;">
+										<img src="<%=data.commentList.commentList[k].sMemberImgName%>" class="faceImg" />
+									</a>
+								</div>
+								<p class="comments">
+									<a href="javascript:;" class="reviewerName">
+										<%=data.commentList.commentList[k].sUserCode%>
+									</a>
+									:&nbsp;
+									<%=data.commentList.commentList[k].sCommentContent%>
+								</p>
+								<span class="editTime"><%=data.commentList.commentList[k].sCommentDate%></span>
+								<%if(data.videoAlbum.isAdmin!=0){%>
+										<a href="javascript:;" class="reviewerRe">删除</a>
+									<%}%>
+							
+								<input type="hidden" name="sId" value="<%=data.commentList.commentList[k].sId%>" />
+							</div>
+							<!--回复-->
+							<%if(data.commentList.commentList[k].lsccr.length>0){%>
+							<%for(var o = 0; o<data.commentList.commentList[k].lsccr.length;o++){%>
+							<ul class="revertList">
+								<li>
+									<!--评论（回复）-->
+									<div class="reviewer">
+										<!--回复者头像-->
+										<div class='reviewerFace'>
+											<a href="javascript:;">
+												<img src="<%=data.commentList.commentList[k].lsccr[o].replyUserImage%>" class="faceImg" />
+											</a>
+										</div>
+										<p class="reply">
+											<a href="javascript:;" class="replier"><%=data.commentList.commentList[k].lsccr[o].replyUserCode%></a> 回复
+											<a href="javascript:;" class="reviewerName"><%=data.commentList.commentList[k].lsccr[o].repliedUserCode%></a>
+											:&nbsp;<%=data.commentList.commentList[k].lsccr[o].replyContent%>
+										</p>
+										<span class="editTime"><%=data.commentList.commentList[k].lsccr[o].replyDate%></span>
+										<%if(data.videoAlbum.isAdmin!=0){%>
+											<a href="javascript:;" class="reviewerLscrr">删除</a>
+											<%}%>
+										<input type="hidden" name="sId" value="<%=data.commentList.commentList[k].lsccr[o].parentReplyId%>" />
+										<input type="hidden" name="replyId" value="<%=data.commentList.commentList[k].lsccr[o].replyId%>" />
+									</div>
+								</li>
+							</ul>
+							<%}%>
+							<%}%>
+						</div>
+						<%}%>
+			
+			
+				</div>
+					<%}%>
+			<!--加载更多-->
+			<!--<%if(data.commentList.commentList.length>4){%>
+			<div class="move">
+				<a href="javascript:;" class="loadMore" id="loadMore">查看更多评论&nbsp;>></a>
+			</div>
+			<%}%>-->
+		</div>
+	</script>
+	<script src="./dynamicDetails.js"></script>
+</html>

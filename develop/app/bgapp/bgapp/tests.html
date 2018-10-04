@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<title>测试</title>
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/TcLiveShare.css"/>
+	</head>
+	<script>
+	(function(doc, win) {
+		var docEl = doc.documentElement,
+			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+			recalc = function() {
+				var clientWidth = docEl.clientWidth;
+				if (!clientWidth) return;
+				docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+			};
+		if (!doc.addEventListener) return;
+		win.addEventListener(resizeEvt, recalc, false);
+		doc.addEventListener('DOMContentLoaded', recalc, false);
+	})(document, window);
+	</script>
+	<body>
+		<div>
+			<button class="btn btn-primary" id="test1">打开</button>
+			<button class="btn btn-primary" id="test2">打开(有判断)</button>
+			<button class="btn btn-primary" id="test3">打开(延时链接)</button>
+			<div class=model>
+				<div class=model_cont>
+					<p class=text1>1、点击右上角的&nbsp;&nbsp;<img src="images/tip.png"/></p>
+					<p class=text2>2、选择用浏览器打开&nbsp;&nbsp;<img src="images/browser.png"/></p>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="assets/js/jquery-2.1.0.js"></script>
+	<script>
+		$(function(){
+			var jumpParams = getUrlParams("jumpParams") || "";
+			var $ios_app = "zds://lookShopLive?jumpParams=" + jumpParams;
+			var $ios_url = "https://itunes.apple.com/cn/app/id1239289004";
+			
+			var $android_app = "smartmaster://smart/path?jumpParams=" + jumpParams;
+			var $android_url = "http://android.myapp.com/myapp/detail.htm?apkName=com.smartcity.smartmaster";
+			
+			// 获取url地址
+			function getUrlParams(name) {
+			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+			    var r = window.location.search.substr(1).match(reg);
+			    if (r != null) {
+			        r[2] = r[2].replace(new RegExp("%", 'g'), "%25");
+			        return decodeURI(decodeURIComponent(r[2]));
+			    }
+			    return "";
+			}
+			
+			$('.model_cont').click(function(){
+				$('.model').hide();
+			})
+			
+			$('#test1').click(function(){
+				window.location.href = $ios_app;
+			})
+			
+			$('#test2').click(function(){
+				if (navigator.userAgent.match(/MicroMessenger/i) == 'MicroMessenger') {
+		            $(".model").show();
+		            $(".model_cont").on("click",function(event){
+		                event.stopPropagation();
+		            });	
+		        //QQ内置浏览器
+		        } else if (navigator.userAgent.indexOf(' QQ') > -1) {
+		            $(".model").show();
+		            $(".model_cont").on("click",function(event){
+		                event.stopPropagation();
+		            });
+		            console.log("qq浏览器");
+		        } else {
+		            window.location.href = $ios_app;
+		            setTimeout(function () {
+		                window.location.href = $ios_url;
+		            }, 250);
+		            setTimeout(function () {
+		                window.location.reload();
+		            }, 1000);
+		        }
+			})
+			
+			$('#test3').click(function(){
+				window.location.href = $ios_app;
+				setTimeout(function () {
+	                window.location.href = $ios_url;
+	            }, 250);
+	            setTimeout(function () {
+	                window.location.reload();
+	            }, 1000);
+			})
+		})
+	</script>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+        <title></title>
+        <link rel="shortcut icon" href="../favicon.ico">
+        <link rel="stylesheet" href="../common/assets/foundation-v5.5.3/foundation.min.css">
+        <link rel="stylesheet" href="../common/assets/swiper/swiper-3.4.2.min.css">
+        <link rel="stylesheet" href="../common/css/common.css">
+        <link rel="stylesheet" href="css/chainAll.css">
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="main-title">
+                <h5 class="title">连锁总部</h5>
+            </div>
+            <div class="main-content">
+                <section class="section-box section1">
+                    <div class="section-title">片区销售消耗业绩</div>
+                    <div class="section-detail">
+                        <div class="charts" id="barChartofSection1"></div>
+                    </div>
+                </section>
+                <section class="section-box section2">
+                    <div class="section-title">片区费用</div>
+                    <div class="section-detail">
+                        <div class="charts" id="lineChartofSection2"></div>
+                        <a href="javascript:;" class="link-btn">详情&gt;</a>
+                    </div>
+                </section>
+                <section class="section-box section3">
+                    <div class="section-title">片区商户数量</div>
+                    <div class="section-detail">
+                        <div class="charts" id="lineChartofSection3"></div>
+                    </div>
+                </section>
+                <section class="section-box section4">
+                    <div class="section-title">所有片区</div>
+                    <div class="section-detail">
+                    </div><!-- ./end of .section-detail  -->
+                </section>
+            </div>
+        </div>
+
+
+        <script id="section4Tpl" type="text/html">
+            <div class="total clearfix">
+                <div class="sale-item left">
+                    <label>销售额：</label><span class="num">￥{{tSale}}</span>
+                </div>
+                <div class="consumption-item left">
+                    <label>消耗额：</label><span class="num">￥{{tConsumption}}</span>
+                </div>
+                <div class="cost-item left">
+                    <label>费用：</label><span class="num">￥{{tCost||0}}</span>
+                </div>
+            </div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {{each slideArr item index}}
+                    <div class="swiper-slide">
+                        <a class="inner" href="chainPartition.html?id={{item.id}}&name={{item.name}}">
+                            <div class="pic" id="{{item.id}}">
+                                <img src="{{item.pic}}">
+                                <p class="name">{{item.name}}</p>
+                            </div>
+                            <div class="info">
+                                <p class="sale-item">
+                                    <label>销售额：</label>
+                                    <span class="num">￥{{item.sale}}</span>
+                                </p>
+                                <p class="consumption-item">
+                                    <label>消耗额：</label>
+                                    <span class="num">￥{{item.consumption}}</span>
+                                </p>
+                                <p class="cost-item">
+                                    <label>费<i class="letter-space"></i>用：</label>
+                                    <span class="num">￥{{item.cost||0}}</span>
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    {{/each}}
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+              </div>
+        </script>
+        <script src="../common/assets/jquery.min.js"></script>
+        <script src="../common/assets/foundation-v5.5.3/foundation.min.js"></script>
+        <script src="../common/assets/foundation-v5.5.3/modernizr.js"></script>
+        <script src="../common/assets/echarts.common.min.js"></script>
+        <script src="../common/assets/layer/layer.js"></script>
+        <script src="../common/assets/swiper/swiper-3.4.2.jquery.min.js"></script>
+        <script src="../common/assets/template-web.js"></script>
+        <script src="../common/js/common.js"></script>
+        <script src="js/chainAll.js"></script>
+    </body>
+</html>

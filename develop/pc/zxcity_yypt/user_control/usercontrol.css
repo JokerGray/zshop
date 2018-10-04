@@ -1,0 +1,224 @@
+/*公用样式*/
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+/*查询*/
+/*#content .form-inline{
+    padding-bottom: 20px;
+}*/
+/*#content .form-inline label{
+    color: #666666;
+    font-weight: 400;
+    font-size: 15px;
+}*/
+#content .form-inline .form-group input{
+    width: 250px;
+}
+#content .p35 .col-md-6{
+    margin:10px 0;
+}
+
+/*表格*/
+#userBody .btn-group .enable{
+    background-color: #2CBB4F;
+    color: #fff;!important;
+}
+#userBody td .btn-group .lock{
+    background-color: #000;
+    color: #fff;!important;
+}
+#userBody td .btn-group .lock:hover{
+    color: #fff;
+}
+
+#content .table th,#content .table td{
+    text-align: center;
+}
+#content .table td .btn-group{
+    height: 19px;
+    margin-top: -13px;
+}
+#content .table td .btn-group .btn{
+    padding: 4px 10px;
+    border-radius: 0;
+}
+
+#content .table .remove-modifier .btn-md {
+    border: 0;
+    background-color: inherit;
+    margin-top: -8px;
+}
+#content .table .remove-modifier button{
+    padding: 0;
+}
+#content  .remove-modifier .col-md-6{
+    height: 19px;
+}
+#content  .remove-modifier .col-md-6 span{
+    font-size: 14px;
+}
+#content .table .remove-modifier .glyphicon-pencil{
+    color: #2EB14D;
+    /*vertical-align: bottom;*/
+    margin-top: 9px;
+}
+#content .table .remove-modifier .glyphicon-minus-sign{
+    color: #FF585D;
+    margin-top: 9px;
+}
+#content .table .remove-modifier .resetBtn{
+    border: 0;
+    height: 30px;
+    padding: 5px;
+   /* margin-top: -4px;*/
+    background-color: #29B1E1;
+    color:#fff;
+}
+#userBody .edUser,#userBody .delUser{
+    cursor: pointer;
+}
+
+
+
+/* 新增用户 模态框 */
+.modal-content h4{
+    font-size: 16px;
+    margin-top: -5px;
+}
+.modal-content .input-group span:nth-child(3){
+    margin-left: 25px;
+    color: #9C9C9C;
+}
+.modal-content .input-group span:nth-child(3) i{
+    color: #FE3131;
+}
+
+.modal-content .modal-header button{
+    margin-top: -5px;
+}
+.modal-content .input-group .input-group-addon{
+    width: 100px;
+    text-align: right;
+    border: 0 none;
+    background-color: transparent;
+}
+.modal-content .input-group .form-control{
+    width: 325px;
+}
+.modal-content .input-group:first-child .form-control{
+    width: 450px;
+}
+
+.modal-content .input-group  button.btn-parameter{
+    width: 450px;
+}
+/*.add-users{
+    width: 200px;
+    height: 45px;
+}*/
+.modal-dialog .modal-footer{
+    transition:all .3s;
+}
+.modal-dialog .modal-footer{
+    background-color: #f1f1f1;
+}
+.modal-content .input-group input[type="file"]{
+    position: absolute;
+    width: 178px;
+    height: 178px;
+    opacity: 0;
+}
+.modal-content .input-group #videoUrl_1{
+    float: left;
+    width: 178px;
+    height: 178px;
+    background:url("../common/image/user.png") no-repeat center center;
+}
+
+#changeform .input-group-addon{
+    width: 130px;
+}
+
+#contentLabel{
+    position: relative;
+}
+#contentLabel>img{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+}
+#uploadLabel{
+    position: absolute;!important;
+    width: 100px;
+    height: 100px;
+    left: 100px;
+    top: 5px;
+}
+#uploadLabel:hover{
+    cursor: pointer;
+}
+#uploadLabel:active{
+    background-color: rgba(255, 255, 255, 0);!important;
+}
+.modal-content .input-group .signform-face-text{
+    float: right;
+    margin-top: 25px;
+    margin-left: 20px;
+}
+/*新增、修改用户模态框高度*/
+#add-newuser .modal-body,#editUser{
+    height: 750px;
+}
+#add-newuser .modal-content{
+    height: 110%;
+}
+
+#content{
+    /*width:calc(100% - 50px);*/
+    width: 100%;
+    padding: 0;
+}
+
+/*2017.3.21修改*/
+select.form-control {
+    width: 163px !important;
+}
+.remove-modifier div{
+    display: inline-block;
+    margin-right: 25px;
+}
+.remove-modifier div:last-child{
+    margin-right: 0;
+}
+.remove-modifier>div:first-child{
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    float: left;
+    margin-left: 22px;
+    cursor: pointer;
+    margin-top: 4.5px;
+}
+.remove-modifier>div:nth-child(2){
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    cursor: pointer;
+    margin-top: 4.5px;
+}
+.deleteRole i{
+    font-size: 18px;
+    float: left;
+    cursor: pointer;
+}
+.remove-modifier .resetBtn{
+    padding: 3px 10px;
+    border-radius: 0;
+    background-color: #29B1E1;
+    color: #fff;
+}

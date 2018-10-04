@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>工单分类设置</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="css/order_classify_setting.css" />
+</head>
+<body>
+<div class="common-container">
+    <div class="addorder">
+        <i class="fa" id="fa"></i>
+        <i class="tit">添加工单分类</i>
+    </div>
+    <div class="jurisdiction-content">
+        <div class="jurisdiction-left">
+            <div class="jurisdiction-trees">
+                <div class="trees-title">
+                    <button id="openbtn" class="layui-btn layui-btn-small layui-btn-primary">
+                        <i class="glyphicon glyphicon-sort-by-alphabet"></i> 展开
+                    </button>
+                    <button id="sqibtn" class="layui-btn layui-btn-small layui-btn-primary">
+                        <i class="glyphicon glyphicon-sort-by-alphabet"></i> 折叠
+                    </button>
+                    <button id="addbtn" class="layui-btn layui-btn-small layui-btn-primary">
+			            <i class="layui-icon">&#xe61f;</i> 添加
+			        </button>
+                    <button id="deletebtn" class="layui-btn layui-btn-small layui-btn-primary">
+                        <i class="layui-icon">&#xe640;</i> 删除
+                    </button>
+                    <button id="refreshbtn" class="layui-btn layui-btn-small layui-btn-primary">
+                        <i class="layui-icon">&#x1002;</i> 刷新
+                    </button>
+                </div>
+                <div class="trees-box">
+                    <h4>工单分类</h4>
+                    <ul id="tree" class="ztree"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="jurisdiction-right">
+            <form class="layui-form" action="">
+            <div class="jurisdiction-add">
+                <button class="layui-btn layui-btn-small layui-btn-primary savebtn" id="saveBtn" lay-submit lay-filter="saveBtn">
+                    保存
+                </button>
+            </div>
+           <div class="addcontent">
+               <div class="addcontent-title">
+                   工单分类信息
+               </div>
+               <div class="addcontent-table">
+                       <div class="layui-form-item bitian">
+                           <label class="layui-form-label"><b class="required-icon">＊</b>名称：</label>
+                           <div class="layui-input-block">
+                               <input type="text" id="moduleName" placeholder="请输入名称"  name="title" required  lay-verify="required"  autocomplete="off" class="layui-input " maxlength="10" data-num="0">
+                           </div>
+                           <div class="tip"></div>
+                       </div>
+                       <div class="layui-form-item bitian">
+                           <label class="layui-form-label"><b class="required-icon">＊</b>编码：</label>
+                           <div class="layui-input-block">
+                               <input type="text" id="code" name="title" required  lay-verify="required"  autocomplete="off" class="layui-input"  maxlength="10" >
+                           </div>
+                           <div class="tip"></div>
+                       </div>
+               </div>
+           </div>
+            </form>
+        </div>
+    </div>
+ </div>
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.exedit.js"></script>
+<script type="text/javascript" src="js/order_classify_setting.js"></script>
+</body>
+</html>

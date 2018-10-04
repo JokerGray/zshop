@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+  <title>智币统计</title>
+  <link type="text/css" rel="stylesheet" href="zCoin/css/zCoin.css">
+  <link rel="stylesheet" type="text/css" href="../common/plugins/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-table.min.css">
+  <link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="../../framework/bootstrap-datepicker/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-select.css">
+  <link rel="stylesheet" type="text/css" href="../../common/css/common.css">
+  <link rel="stylesheet" type="text/css" href="../../framework/layui/css/layui.css">
+  <link rel="stylesheet" type="text/css" href="../../common/css/account_common.css">
+  <link rel="stylesheet" type="text/css" href="../../common/css/modal.css">
+  <link rel="stylesheet" type="text/css" href="../common/cw_common.css">
+  <style type="text/css">
+  	.datepicker {	
+  		margin-top: 52px;	
+  	}
+  	.csr{
+  		cursor:pointer;
+  	}
+  </style>
+</head>
+<body>
+
+<!--头部搜索框-->	
+<ul class="seacrch ml20 fl" id="datepicker" data-link-field="dtp_input1">
+  <li style="margin-top: 7px;">时间范围:</li>
+  <li>
+  	<input type="text" class="form-control h34 datepickerwid sechwidth" readonly name="start" id="qBeginTime" placeholder="开始日期" data-date-format="yyyy-mm-dd" style="margin-top: 5px;" />
+  </li>
+  <li>
+    -
+  </li>
+  <li>
+    <input type="text" class="form-control h34 datepickerwid sechwidth" readonly name="end" id="qEndTime" placeholder="截止日期" data-date-format="yyyy-mm-dd" style="margin-top: 5px;" />
+  </li>
+  <li>
+    <img src="headlines/img/searchImg.png" class="csr" id="searchBtn" style="margin-top: 3px;" >
+  </li>
+</ul>
+
+<!--中间图片-->
+<div class="centerContent" style="margin-left: 10px;">
+  <ul class="thefirst">
+    <li class="topLength andr csr">
+      <p class="topTitle blue">
+        <a class="twenty">Android智币购买数 </a>
+        <sapn class="sixteen">(数量/金额)  </sapn>
+      </p>
+      <p class="secondTitle">
+        <a class="thirty" id="andrPurchaseCount">0</a>
+        <a  class="eighteen">Z币</a>
+        <a  class="thirty">/</a>
+        <a class="thirty" id="andrPurchaseAmount">0.00</a>
+        <a  class="eighteen">元</a>
+      </p>
+    </li>
+    <li  class="topLength ios csr">
+      <p class="topTitle green">
+        <a class="twenty">IOS智币购买数 </a>
+        <sapn class="sixteen">(数量/金额)</sapn>
+      </p>
+      <p class="greenTitle" >
+        <a class="thirty" id="iosPurchaseCount">0</a>
+        <a  class="eighteen">Z币</a>
+        <a  class="thirty">/</a>
+        <a class="thirty" id="iosPurchaseAmount">0.00</a>
+        <a  class="eighteen">元</a>
+      </p>
+    </li>
+
+  </ul>
+  <ul class="thesecond">
+    <li class="one">
+      <img src="headlines/img/blue.png" alt="">
+    </li>
+    <li class="two">
+      <img src="headlines/img/oblongMore.png" alt="">
+    </li>
+    <li class="three">
+      <img src="headlines/img/blue.png" alt="">
+    </li>
+  </ul>
+  <ul class="thethree">
+    <li>
+      <img src="zCoin/img/arrow-two.png" alt="">
+    </li>
+  </ul>
+  <ul class="thefour total csr">
+    <li class="totalMoney" style="padding-left: 20px;">
+      <p class="thecount">
+        <span class="eighteen" id="purchaseTotalCount">0</span>
+        <spna class="eighteen">Z币</spna>
+        <spna class="eighteen">/</spna>
+        <spna class="eighteen" id="purchaseTotalAmount">0.00</spna>
+        <span class="eighteen">元</span>
+      </p>
+      <p class="thetatal">
+        <span class="twenty">
+          	智币购买总数
+        </span>
+        <span class="sixteen">
+                                  （数量/金额）
+        </span>
+      </p>
+    </li>
+  </ul>
+  <ul class="thefive">
+    <li>
+      <img src="zCoin/img/arrow1.png" alt="">
+    </li>
+  </ul>
+  <ul class="thesecond thesix">
+    <li class="one">
+      <img src="headlines/img/blue.png" alt="">
+    </li>
+    <li class="two">
+      <img src="headlines/img/oblongMore.png" alt="">
+    </li>
+    <li class="three">
+      <img src="headlines/img/blue.png" alt="">
+    </li>
+  </ul>
+  <ul class="theseven">
+      <li class="consume csr">
+        <p class="violet">智币消耗量</p>
+        <p class="iconcount">
+          <span class="thirty" id="consumeTotalCount">0</span>
+          <span>Z币</span>
+        </p>
+      </li>
+      <li class="unread rest csr">
+        <p class="yellow">
+          	智币未消耗量
+        </p>
+        <p class="iconcount">
+         <span class="thirty" id="restTotalCount">0</span>
+          <span>Z币</span>
+        </p>
+      </li>
+  </ul>
+  <ul class="theeight">
+    <li>
+      <img src="zCoin/img/arrow1.png" alt="">
+    </li>
+  </ul>
+  <ul class="thenine">
+    <li class="one">
+      <img src="headlines/img/blue.png" alt="">
+    </li>
+    <li class="two">
+      <img src="zCoin/img/oblong.png" alt="">
+    </li>
+    <li class="three">
+      <img src="headlines/img/blue.png" alt="">
+    </li>
+  </ul>
+  <ul class="theten">
+    <li class="exchangeable csr">
+      <span class="one"></span>
+      <p>可折现</p>
+      <a id="exchangeableZCount">0</a> Z币
+    </li>
+    <li class="inexchangeable csr">
+      <span class="two"></span>
+      <p >不能折现</p>
+      <a id="inexchangeableZCount">0</a> Z币
+    </li>
+  </ul>
+</div>
+
+<!--赠送智币-->
+<!-- <div class="giving">
+  <p class="top">
+    <span class="twenty">赠送智币</span>
+    <span>（数量/金额）</span>
+  </p>
+  <p class="botton">
+      <span class="twenty" id="">0</span>
+    <span>个</span>
+    <span class="twenty" id="">/</span>
+    <span class="twenty" id="">0.00</span>
+    <span >元</span>
+  </p>
+</div> -->
+
+<script type="text/javascript" src=""></script>
+</body>
+<script type="text/javascript" src="../../common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/js/jqPaginator.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table.v1.11.0.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/account_common.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/str.js"></script>
+<script type="text/javascript" src="../../common/js/num.js"></script>
+
+<script type="text/javascript" src="../../common/assets/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+
+<script type="text/javascript" src="zCoinHome.js"></script>
+</html>

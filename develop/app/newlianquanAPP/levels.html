@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>脸圈等级制度</title>
+    <link rel="stylesheet" href="css/levels.css">
+    <script>
+        (function(doc, win) {
+			var docEl = doc.documentElement,
+				resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+				recalc = function() {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth) return;
+					docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+				};
+			if (!doc.addEventListener) return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="header_top">
+            <img class="pic" src="image/lq_dengji_Lwanjia@2x.png" alt="图片">
+        </div>
+        <div class="header_center">
+            <div class="level_model">
+                <div class="player" level="1">
+                    <div class="message">
+                        <div class="level_model_pic">
+                            <img src="image/lq_dengji_Swanjia@2x.png" alt="" class="active">
+                        </div>
+                        <div class="description activeColor">玩家</div>
+                    </div>      
+                    <sapn class="playerBar">
+                        <span class="playerBarPrs"></span>
+                    </span>
+                </div>
+
+                <div class="talent" level="2">
+                    <div class="message">
+                        <div class="level_model_pic">
+                            <img src="image/lq_dengji_Sdaren@2x.png" alt="">
+                        </div>
+                        <div class="description">达人</div>
+                    </div>
+                    <sapn class="talentBar">
+                        <span class="talentBarPrs"></span>
+                    </span>
+                </div>
+
+                <div class="online_sensation" level="3">
+                    <div class="message">
+                        <div class="level_model_pic">
+                            <img src="image/lq_dengji_Swanghong@2x.png" alt="">
+                        </div>
+                        <div class="description">网红</div>
+                    </div>
+                    <sapn class="onlineSensationBar">
+                        <span class="onlineSensationBarPrs"></span>
+                    </span>
+                </div>
+
+                <div class="star" level="4">
+                    <div class="message">
+                        <div class="level_model_pic">
+                            <img src="image/lq_dengji_Smingxing@2x.png" alt="">
+                        </div>
+                        <div class="description">明星</div>
+                    </div>
+                    <sapn class="starBar">
+                        <span class="starBarPrs"></span>
+                    </span>
+                </div>
+
+                <div class="superstar" level="5">
+                    <div class="message">
+                        <div class="level_model_pic">    
+                            <img src="image/lq_dengji_Sjuxing@2x.png" alt="">
+                        </div>
+                        <div class="description">巨星</div>
+                    </div>
+                 </div>   
+            </div>
+        </div>
+        <div class="header_bottom">
+            <p><span>到达<span class="remark">【达人】</span>可点亮勋章！</span>距离<span class="remark">【达人】</span>还差<span class="count">--位粉丝</span></p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="triangle"></div>
+        <div class="title">
+            <span class="line"></span>
+            <span class="titleContent"><span class="tittleName">玩家</span>特权</span>
+            <span class="line"></span>
+        </div>
+        <div class="privilege">
+            <div class="flower">
+                <img src="image/lq_dengji_xianhua@2x.png" alt="">
+                <p>每日赠送<span class="flowerCount">10</span>朵鲜花</p>
+            </div>
+            <div class="logo" style="display:none">
+                <img src="image/lq_dengji_zhaunshu@2x.png" alt="">
+                <p><span class="logoName">达人</span>专属标识</p>
+            </div>
+            <div class="shop" style="display:none">
+                <img src="image/lq_dengji_zhulian@2x.png" alt="">
+                <p>可寻找店面签约“主脸” <br>获30%礼品金奖励</p>
+            </div>
+            <div class="fans" style="display:none">
+                <img src="image/lq_dengji_zhubo@2x.png" alt="">
+                <p>满100粉丝<br>可找店铺签约直播“主播”<br>获50%礼品金奖励</p>
+            </div>
+            <div class="iphone" style="display:none">
+                <img src="image/lq_dengji_phone@2x.png" alt="">
+                <p>苹果新型手机一部</p>
+            </div>
+            <div class="car" style="display:none">
+                <img src="image/lq_dengji_car@2x.png" alt="">
+                <p>奔驰轿车一辆</p>
+            </div>
+            <div class="spokesperson" style="display:none">
+                <img src="image/lq_dengji_daiyanren@2x.png" alt="">
+                <p>成为“智享城市” <br>平台代言人</p>
+            </div>
+        </div>
+
+        <div class="explain">
+            <div class="level_explain">
+                <span class="line"></span>
+                <span class="titleContent">等级说明</span>
+                <span class="line"></span>
+            </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <th>等级</th>
+                        <th>说明</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="player_icon">玩家</td>
+                            <td>普通玩家</td>
+                        </tr>
+                        <tr>
+                            <td class="talent_icon">达人</td>
+                            <td>满50个粉丝</td>
+                        </tr>
+                        <tr>
+                            <td class="online_sensation_icon">网红</td>
+                            <td>“礼品金”收入累计达25000元</td>
+                        </tr>
+                        <tr>
+                            <td class="star_icon">明星</td>
+                            <td>“礼品金”收入累计达750000元</td>
+                        </tr>
+                        <tr>
+                            <td class="superstar_icon">巨星</td>
+                            <td>“礼品金”收入累计达2000000元</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/jquery-3.2.1.min.js"></script>
+    <script src="assets/layer/layer.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/levels.js"></script>
+</body>
+</html>

@@ -1,0 +1,857 @@
+
+/**header css*/
+html, body {
+  height: 100%;
+}
+
+.iframebody {
+  min-width: 1500px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 1500px) {
+  .iframebody {
+    min-width: 1500px;
+    overflow: auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navbar-right {
+    margin-right: 0 !important;
+  }
+}
+
+a:hover, a:active, a:visited, a:focus {
+  text-decoration: none;
+}
+
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.t2 {
+  top: 2px;
+}
+
+.t4 {
+  top: 4px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.ml15 {
+  margin-left: 15px;
+}
+
+.ml40 {
+  margin-left: 40px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+.p10{
+	padding: 10px;
+}
+.p20 {
+  padding: 20px;
+}
+
+.p36 {
+  padding: 0 36px;
+}
+.clear {
+  clear: both;
+}
+
+#head {
+  background-color: #000;
+  height: 60px;
+}
+
+#head .head-nav {
+  margin-bottom: 0;
+  height: 100%;
+  padding: 17px 0;
+  width: auto;
+}
+
+#head .head-nav a {
+  font-size: 14px;
+  color: #d1d0d0;
+}
+
+#head .head-nav a span {
+  font-size: 22px;
+}
+
+.head-nav.navbar-nav > li {
+  height: 100%;
+  width: 60px;
+}
+
+.navbar-nav > li > a {
+  padding: 0;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.navbar .navbar-user {
+  margin-right: 80px;
+}
+
+.navbar .navbar-user li a {
+  font-size: 14px;
+  color: #d1d0d0;
+}
+
+.navbar .navbar-user li a:hover {
+  text-decoration: none;
+  background-color: transparent;
+  color: #d1d0d0;
+}
+
+#user-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  position: relative;
+  right: 10px;
+  top: -10px;
+}
+
+.navbar-user li a:focus {
+  color: #d1d0d0 !important;
+}
+
+#head .left-logo {
+  padding: 0;
+  width: auto;
+}
+
+#head .mid-config {
+  width: auto;
+}
+
+#head .mid-config .navbar > div {
+  padding: 0;
+}
+
+#head .mid-config li.ml15 a {
+  color: #eaeaea;
+}
+
+#head .mid-config li.ml15 a:hover {
+  color: #fff;
+}
+
+#head .navbar-right {
+  width: auto;
+  float: right;
+}
+
+#dropdown {
+  left: -48px;
+  top: 25px;
+}
+
+#contorl-left > a {
+  line-height: 30px;
+}
+
+#dropdown > li > a {
+  color: #333;
+}
+
+/*icon*/
+span.icon-zc {
+  width: 22px;
+  height: 18px;
+  background: url(../image/zc.png) 0 no-repeat;
+  position: relative;
+  top: 1px;
+  background-size: cover;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+span.icon-yc {
+  width: 22px;
+  height: 18px;
+  background: url(../image/icon-yc.png) 0 no-repeat;
+  position: relative;
+  top: 1px;
+  background-size: cover;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+span.icon-kz {
+  width: 24px;
+  height: 21px;
+  background: url(../image/icon-ho.png) 0 no-repeat;
+  position: relative;
+  top: 1px;
+  background-size: cover;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+span.icon-tc {
+  width: 18px;
+  height: 20px;
+  background: url(../image/tc.png) 0 no-repeat;
+  position: relative;
+  top: 3px;
+  background-size: cover;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+i.argument {
+  width: 20px;
+  height: 20px;
+  background: url(../image/mb.png) 0 no-repeat;
+  position: relative;
+  top: 1px;
+  background-size: cover;
+  display: inline-block;
+}
+
+i.config {
+  width: 20px;
+  height: 20px;
+  background: url(../image/cs.png) 0 no-repeat;
+  position: relative;
+  top: 1px;
+  background-size: cover;
+  display: inline-block;
+}
+
+i.versions {
+  width: 20px;
+  height: 20px;
+  background: url(../image/bb.png) 0 no-repeat;
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  background-size: cover;
+}
+
+i.role {
+  width: 20px;
+  height: 20px;
+  background: url(../image/xtjs.png) 0 no-repeat;
+  position: relative;
+  top: 1px;
+  background-size: cover;
+  display: inline-block;
+}
+
+i.jurisdiction {
+  width: 20px;
+  height: 20px;
+  background: url(../image/qx.png) 0 no-repeat;
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  background-size: cover;
+}
+
+i.supervise {
+  width: 20px;
+  height: 20px;
+  background: url(../image/yh.png) 0 no-repeat;
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  background-size: cover;
+}
+
+i.organization {
+  width: 20px;
+  height: 20px;
+  background: url(../image/xt.png) 0 no-repeat;
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  background-size: cover;
+}
+
+i.config {
+  width: 14px;
+  height: 13px;
+  background: url(../image/config.png) 0 no-repeat;
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  background-size: cover;
+}
+
+#accordion {
+  width: 200px;
+  transition: all .3s;
+}
+
+#accordion.goleft {
+  overflow: hidden;
+	
+  width: 0;
+  padding: 0;
+
+}
+
+/**menu css*/
+.breadcrumb {
+  background-color: transparent;
+}
+
+.row-inhert {
+  height: 100%;
+}
+
+.row-logo-img {
+  padding: 17px 0;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+  color: #d1d0d0;
+  background-color: transparent;
+}
+
+#body-box {
+  height: 100%;
+}
+
+#body-box .body-left-nav {
+  height: 100%;
+}
+
+#body-box .left-nav {
+  height: 100%;
+  background-color: #303030;
+}
+
+.menu-left dd a {
+  /*text-indent: 10px;*/
+}
+
+#menu-tree > li > a:hover {
+  background-color: #c83d2d;
+}
+
+#menu-tree > li.act > a {
+  background-color: #c83d2d !important;
+}
+
+#menu-tree > li.act > a > span {
+  transform: rotateX(180deg);
+}
+
+#menu-tree > li.act > dl {
+  display: block;
+}
+
+#menu-tree > li > a {
+  color: #fff;
+  width: 200px;
+  cursor: pointer;
+}
+
+#accordion .layui-nav-bar {
+  background-color: #f97a6b;
+}
+
+#menu-tree > li > dl > dd > .nav-children-title a {
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+}
+
+#menu-tree > li > dl > dd > .nav-children-title a:hover {
+  color: #c83d2d;
+}
+
+#menu-tree span.layui-nav-more {
+  border: none;
+  width: 20px;
+  height: 16px;
+  background: url(../image/down.png) 0 no-repeat;
+  position: absolute;
+  top: 15px;
+  display: inline-block;
+  right: 24px;
+  transition: all .3s;
+  background-size: 60%;
+}
+
+#menu-tree > li:hover > a > span.layui-nav-more {
+  transform: rotateX(180deg);
+}
+
+#menu-tree .menu-left > dd.actact .nav-children-title > a, #menu-tree .menu-left > dd.actact .nav-children-title > span {
+  color: #c83d2d;
+}
+
+#menu-tree .menu-left .nav-children-title {
+  height: 40px;
+}
+
+/*增加三级菜单后menu*/
+.ptmenu dd {
+  /*height: 40px;*/
+  line-height: 40px;
+}
+
+.ptmenu dd .nav-children-title > span {
+  margin: 13px 10px 0 40px;
+  cursor: pointer;
+  float: left;
+}
+
+#menu-tree .layui-nav-children dd a {
+  text-indent: 35px;
+  color: #fff;
+  cursor: pointer;
+}
+
+#menu-tree .layui-nav-children dd a:hover {
+  color: #c83d2d;
+}
+
+#menu-tree .layui-nav-children {
+  display: none;
+}
+
+#menu-tree .layui-nav-children a.avection {
+  color: #c83d2d;
+}
+
+/*rightbox*/
+#content {
+  width: calc(100% - 200px);
+}
+
+#accordion .layui-nav {
+	height: 100%;
+  left: -15px;
+  background-color: #303030;
+}
+
+/*分页*/
+#paging-box span.layui-laypage-curr, #paging-box a {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+  border: 0;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  margin: 0;
+  text-align: center;
+  color: #333;
+  font-size: 14px;
+}
+
+#paging-box span.layui-laypage-curr em.layui-laypage-em {
+  background-color: #ff0000;
+  border-radius: 100%;
+  padding: 0;
+}
+
+#paging-box span.layui-laypage-curr em:nth-of-type(2) {
+  right: 1px;
+  bottom: 1px;
+}
+
+#paging-box-count {
+  float: right;
+  line-height: 40px;
+  font-size: 14px;
+}
+
+#paging-box {
+  float: right;
+}
+
+/*新加样式-分页*/
+#paging-box-r span.layui-laypage-curr, #paging-box-r a {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+  border: 0;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  margin: 0;
+  text-align: center;
+  color: #333;
+  font-size: 14px;
+}
+
+#paging-box-r span.layui-laypage-curr em.layui-laypage-em {
+  background-color: #ff0000;
+  border-radius: 100%;
+  padding: 0;
+}
+
+#paging-box-r span.layui-laypage-curr em:nth-of-type(2) {
+  right: 1px;
+  bottom: 1px;
+}
+
+#paging-box-count-r {
+  float: right;
+  line-height: 40px;
+  font-size: 14px;
+}
+
+#paging-box-r {
+  float: right;
+}
+
+/*修改密码弹框*/
+#change-password .modal-dialog {
+  width: 627px;
+  height: 438px;
+}
+
+#change-password .modal-body {
+  height: 315px;
+}
+
+.input-group .input-group-addon.change {
+  width: 130px;
+  text-align: right;
+  border: 0 none;
+  background-color: transparent;
+}
+
+#changeform .change-width input {
+  width: 300px;
+}
+
+.add-icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+  background: url(add_icon.png) no-repeat;
+  vertical-align: text-bottom;
+}
+/*通用面包屑*/
+.common-container {
+  width: 100%;
+}
+
+.common-title {
+  width: 100%;
+  font-size: 16px;
+  color: #666;
+  padding: 15px 40px;
+  background: #f7f7f7;
+  border-bottom: 1px dashed #e5e5e5;
+}
+
+.common-search {
+  padding: 40px;
+}
+
+.common-search .form-inline .control-lable {
+  font-weight: 400;
+  margin-right: 15px;
+  float: left;
+  width: 72px;
+    text-align: right;
+}
+
+.common-search .longinput {
+  width: 418px;
+  height: 34px;
+  float: left;
+}
+
+.common-search .form-group {
+  height: 34px;
+  line-height: 34px;
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.common-search .btn-success {
+  width: 100px;
+  background-color: #2cbb4e;
+  border-radius: 2px;
+}
+
+.add-users {
+  width: 140px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #00c1de;
+  margin-top: 20px;
+  padding: 0;
+  border-radius: 2px;
+}
+
+
+
+.remove-modifier .controlbtn {
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.deletebtn i {
+  color: #f05050;
+  font-size: 18px;
+  margin-right: 5px;
+  float: left;
+}
+
+.remove-modifier .deletebtn {
+  margin: 2px 16px;
+}
+
+.remove-modifier .infobtn {
+  display: inline-block;
+  background-color: #5bc0de;
+  padding: 3px 10px;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.common-page {
+  padding: 20px 40px;
+}
+
+.common-page1 {
+  padding: 20px 0;
+}
+
+select.form-control {
+  color: #999;
+}
+
+.btn-success i {
+  margin-right: 5px;
+}
+
+.edicticon {
+  display: inline-block;
+  width: 21px;
+  height: 20px;
+  float: left;
+  margin-right: 5px;
+  background: url(../../common/image/edit_icon.png) no-repeat;
+}
+
+.search-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  background: url(search_icon.png) no-repeat;
+  vertical-align: text-bottom;
+}
+
+.addIcon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+  background: url(add_icon.png) no-repeat;
+  vertical-align: text-bottom;
+}
+
+.ho-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background: url(../../common/image/ho_icon.png) no-repeat;
+  vertical-align: text-bottom;
+}
+
+.qx-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background: url(../../common/image/qx_icon.png) no-repeat;
+  vertical-align: text-bottom;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #2cbb4e;
+  border-color: #2cbb4e;
+}
+
+.btn-info {
+  background-color: #00c1de;
+  border-color: #00c1de;
+}
+/*下拉框字体黑色*/
+select{
+	color:#000000!important;
+}
+/*顶部箭头*/
+
+.navchat>span{
+  position: absolute;
+  color: #f3f9ff;
+  top: 33px;
+  left: 10px;
+  z-index: 57;
+  display: none;
+}
+/*聊天*/
+.weachat{
+  position: absolute;
+  top: 61px;
+  left: 400px;
+  width: 710px;
+  height: 652px;
+  z-index: 55;
+  background: rgba(0,0,0,0);
+  overflow: hidden;
+}
+.smallicon{
+  position: absolute;
+  color: rgba(0,0,0,0.6);;
+  top: 10px;
+  left: 240px;
+  cursor: pointer;
+  display: inline-block;
+}
+.message{
+  background: #ff525d;
+  padding: 3px 5px;
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  right: -30px;
+  top: -10px;
+  font-style: normal;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+}
+.webchaticon{
+  margin-right: 10px;
+}
+.webclose{
+  color:#fff;
+  float: right;
+  cursor: pointer;
+  margin-right: -50px;
+}
+.minicon{
+  top: 8px !important;
+}
+.minicon a{
+  color:#000;
+}
+
+/*8.15*/
+td.eq-num{width:30px!important;}
+td.operation{
+	min-width: 300px!important;
+}
+td.operation>div.operation-div{
+		margin: 0 auto!important
+		height: 40px!important
+}
+.darkGreen{
+	background-color: #009688!important;
+	}
+.lightGreen{
+	background-color: #5FB878!important;
+}
+.blue{
+	background-color:#1E9FFF!important;
+}
+.yellow{
+	background-color: #F7B824!important;
+}
+.orange{
+	background-color: #FF5722!important;
+}
+
+.operation-btn{
+    width: 64px;
+    background-color: #00a0e8;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.common-table {
+	
+}
+
+.common-table table {
+  border-top: 1px solid #e5e5e5;
+  width: calc(100% - 80px);
+  margin: 0 40px;
+}
+
+.common-table table tr th {
+  height: 40px;
+  background: #f3f3f3;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  vertical-align: middle;
+
+}
+
+.common-table table tr th:first-child {
+  width: 100px;
+}
+
+.common-table table tr td {
+  height: 40px;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  vertical-align: middle;
+  color: #666;
+  padding: 0 8px;
+}
+
+.modal i.star{
+    font-size: 18px;
+    position: absolute;
+    left: 15px;
+    top: 22px;
+    color: red;
+}
+.form-group>.jurisdiction-label{
+	font-weight: normal;
+}

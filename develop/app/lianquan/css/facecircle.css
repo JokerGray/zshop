@@ -1,0 +1,153 @@
+html,body{
+    background: #fff;
+}
+.chose_type{
+    height: 70px;
+    position: relative;
+}
+.chose_type .clint-type {
+    float: left;
+    display: inline-block;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: rgba(0,0,0,0.35);
+    margin: 20px;
+    font-size: 18px;
+    font-weight: bolder!important;
+    font-weight: normal;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+}
+.clint-type:first-child.active{
+    background:rgb(97,188,255)
+}
+.clint-type:nth-of-type(2).active{
+    background:#ff5784;
+}
+.chose_type .shop-box{
+    position: absolute;
+    top:20px;
+    right:120px;
+    width:200px;
+    height:45px;
+}
+.chose_type .shop-box select{
+    width:200px;
+    height:45px;
+    line-height:45px;
+    font-size:16px;
+    text-align: center;
+}
+/* 选择流程 */
+.nav_top{width: 100%;height: 90px;background-color:rgba(0,0,0,0.35);padding-top: 20px;}
+.nav_top .btn-group button{height: 50px;color:#6e6e6e;}
+.nav_top .btn-navlist{margin-left: 44px;}
+.nav_top .btn-navlist button{width:125px;}
+.nav_top .btn-navlist .btn-default：hover{background-color:none!important;border-color:none!important;}
+.btn-group>.btn:first-child{border-top-left-radius: 8px;border-bottom-left-radius:8px;}
+.btn-group>.btn:first-child>div>input{border: none;}
+.btn-group>.btn:first-child>div>.add-on{display: block;width: 50px;height:30px;}
+.btn-group>.btn:last-child{border-top-right-radius: 8px;border-bottom-right-radius:8px;}
+.btn-active{background-color: #1dbfaf;color:#fff!important;}
+.btn-delete{width: 50px;float: right;margin-right:54px;}
+.btn-delete button{width: 100%;height: 100%;text-align: center;}
+.btn-searchs{float: right;margin-right:36px;height: 50px;}
+.btn-searchs>.btn:first-child{width: 164px;}
+.btn-searchs>.btn>input[type=text]{width: 100%;display:block;height:36px;text-align: center;font-size: 18px;color:#999999;border: none;}
+.btn-alls{float: right;margin-right: 36px;}
+.btn-alls>button:first-child{width: 125px;}
+.btn-alls>button:nth-of-type(2){width: 50px;}
+/* 主页面以及错误页 */
+.page{
+    width:100%;
+}
+.error-page{
+    width:384px;
+    height: 339px;
+    margin:90px auto;
+    background: url(../img/nodata.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+/* 流程视图css */
+.face-step{
+    width:100%;
+}
+.face-step .face-step-item{
+    float:left;
+}
+.face-step-fl{
+    width:280px;
+}
+.face-step-fr{
+    width:calc(100% - 280px);
+    height: 800px;
+    background: #ff5784
+}
+.anchor-item{
+    width:280px;
+    height: 91px;
+    position: relative;
+}
+.anchor-item>img{
+    width: 55px;
+    height: 55px;
+    margin: 18px;
+    float: left;
+    border-radius: 50%;
+}
+.anchor-item.active{
+    background-color: #f6f6f6;
+}
+.anchor-item>.apply_name {
+    line-height: 38px;
+    height: 38px;
+    font-size: 20px;
+    width: 120px;
+    position: absolute;
+    top: 10px;
+    left: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.anchor-item>p:nth-of-type(2) {
+    line-height: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 90px;
+}
+.anchor-item>p .apply_date {
+    font-size: 13px;
+    margin-right: 5px;
+}
+.anchor-item>p .apply_time {
+    font-size: 13px;
+}
+.anchor-item .apply_yue {
+    position: absolute;
+    top: 34px;
+    right: 22px;
+    width: 24px;
+    height: 24px;
+}
+.anchor-item.status1{
+    color: #1dbfaf;
+}
+.anchor-item.status1 .apply_yue{
+    background: url(../img/yue_green.png) no-repeat center center;
+}
+.anchor-item.status2{
+    color: #f97979;
+}
+.anchor-item.status2 .apply_yue{
+    background: url(../img/yue_red.png) no-repeat center center;
+}
+.anchor-item.status3{
+    color: yellow;
+}
+.anchor-item.status3 .apply_yue{
+    background: url(../img/yue_yellow.png) no-repeat center center;
+}
+/* 收入视图css */

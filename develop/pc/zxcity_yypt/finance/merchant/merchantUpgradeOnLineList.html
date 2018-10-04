@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
+<title>线上审核记录</title>
+<!-- CssCommon -->
+<link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-table.min.css">
+<link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+<link rel="stylesheet" type="text/css" href="../../framework/bootstrap-datepicker/css/bootstrap-datepicker.css">
+<link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-select.css">
+<link rel="stylesheet" type="text/css" href="../../common/css/common.css">
+<link rel="stylesheet" type="text/css" href="../../framework/layui/css/layui.css">
+<link rel="stylesheet" type="text/css" href="../../common/css/account_common.css">
+<link rel="stylesheet" type="text/css" href="../../common/css/modal.css">
+</head>
+<body>
+	<div class="container-fluet" id="body-box">
+		<div class="row body-left-nav">
+			<div class="col-md-11 content-right" id="content">
+				<div class="cr-top">
+					<!-- 面包屑开始 -->
+					<ul class="nav nav-tabs">
+						<li role="presentation"><a class="hovers" href="javascript:;">账务管理</a></li>
+						<li role="presentation"><span>/</span></li>
+						<li role="presentation"><a class="hovers" href="javascript:;">商户升级</a></li>
+						<li role="presentation"><span>/</span></li>
+						<li role="presentation nav-toggle"><a class="hovers" href="javascript:;">线上审核记录<i class="glyphicon glyphicon-triangle-bottom"></i></a>
+							<dl class="toggle" style="width: 150px;">
+								<dd class=""><a href="merchantUpgradeOffLineAudit.html">线下升级审核</a></dd>
+								<dd class=""><a href="merchantUpgradeOffLineList.html">线下审核记录</a></dd>
+								<dd class=""><a href="merchantUpgradeOffLineStaffList.html">线下员工账单</a></dd>
+								<dd class=""><a href="merchantUpgradeOnLineAudit.html">线上升级审核</a></dd>
+								<dd class="acives"><a href="merchantUpgradeOnLineList.html">线上审核记录</a></dd>
+								<dd class=""><a href="referenceCommissionAudit.html">推荐人佣金审核</a></dd>
+								<dd class=""><a href="referenceCommissionList.html">佣金审核记录</a></dd>
+								<dd class=""><a href="merchantUpgradeOnLineStaffList.html">线上员工账单</a></dd>
+								
+								<dd class=""><a href="employeesCommissionStatistics.html">员工业绩统计</a></dd>
+								<dd class=""><a href="recommendedCommissionStatistics.html">推荐人佣金统计</a></dd>
+								<dd class=""><a href="partnerCommissionStatistics.html">合伙人佣金统计</a></dd>
+								<dd class=""><a href="companyIncomeDetail.html">公司盈利清单</a></dd>
+								<dd class=""><a href="companyIncomeStatistics.html">公司盈利统计</a></dd>
+								
+								<dd class=""><a href="merchantUpgradeStrategyList.html">佣金策略</a></dd>
+								<!--
+								<dd class=""><a href="merchantUpgradeList.html">商户升级列表</a></dd>
+								<dd class=""><a href="merchantUpgradeAudit.html">商户升级审核</a></dd>
+								<dd class=""><a href="referenceAudit.html">推荐人佣金审核</a></dd>
+								-->
+							</dl>
+						</li>
+					</ul>
+					<!-- 面包屑结束 -->
+				</div>
+				<div class="cr-con">
+					<div id="toolbar" class="row">
+						<div class="cy-text-right-md form-inline clearfix">
+							<!-- 账户名称开始 -->
+                            <div class="selein ml20 fl">
+                                <span class="cy-pad-hor-s">商户：</span>
+                                <input type="text" class="form-control h34 stationwid sechwidth" placeholder="输入商户名称"  id="merchantOrgName" maxlength="30">
+                            </div>
+                            <!-- 账户名称结束 --> 
+							
+							<!-- 账户名称开始 -->
+                            <div class="selein ml20 fl">
+                                <span class="cy-pad-hor-s">流水号：</span>
+                                <input type="text" class="form-control h34 stationwid sechwidth" placeholder="输入流水号"  id="serialNo" maxlength="30">
+                            </div>
+                            <!-- 账户名称结束 --> 
+							
+							<!-- 搜索导出开始 -->
+							<div class="ml20 fr">
+								<button class="btn btn-success h34 sechwid" type="button" id="searchbtn">
+									<i class="glyphicon glyphicon-search"></i>搜索
+								</button>
+								<!-- 动态表头 -->
+								<button class="btn btn-success h34 sechwid" type="button"  value="finance/merchant/merchantUpgradeOnLineList" id="setButton">
+									设置
+								</button>
+								<!-- 动态表头 -->
+								<button class="btn btn-success h34 sechwid" type="button" id="excelbtn">导出excel</button>
+							</div>
+							<!-- 搜索导出结束 -->
+						</div>
+					</div>
+					<div class="table-con">
+						<!-- 表格开始 -->
+						<table id="table"></table>
+						<!-- 表格结束 -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Common -->
+	<script type="text/javascript" src="../../common/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../common/js/jqPaginator.min.js"></script>
+	<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table.v1.11.0.min.js"></script>
+	<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js"></script>
+	<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-select.js"></script>
+	<script type="text/javascript" src="../../common/js/util.js"></script>
+	<script type="text/javascript" src="../../common/js/account_common.js"></script>
+	<script type="text/javascript" src="../../common/js/common.js"></script>
+	<script type="text/javascript" src="../../common/js/str.js"></script>
+	<script type="text/javascript" src="../../common/js/num.js"></script>
+
+	<script type="text/javascript" src="../../common/assets/layui/lay/dest/layui.all.js"></script>
+	<script type="text/javascript" src="../../common/js/login_success.js"></script>
+	<script type="text/javascript" src="../../common/js/util/changePassword.js"></script>
+	<script type="text/javascript" src="../../common/js/changePassword.js"></script>
+	<script type="text/javascript" src="../../common/js/util/pub.js"></script>
+	<script type="text/javascript" src="../../common/assets/template-web.js"></script>
+	<!-- detailsfile -->
+	<script type="text/javascript" src="merchantUpgradeOnLineList.js"></script>
+	<!-- 动态表头 -->	
+	<script type="text/javascript" src="../../common/js/account_dynamic_column.js"></script>
+	
+</body>
+</html>
+
+
+<!-- templates -->
+<script type="text/html" id="onLineListTpl">
+<div class="container-fluid">
+	<form class="form-horizontal">
+		<div class="row-fluid">
+			<h1 class="text-center dialog-title">线上审核详情</h1>
+			</div>
+			
+			<input readonly id="id" type="text" value="{{id}}" hidden>
+			<hr/>
+			<div class="row">
+				<fieldset>
+					<div class="pull-left w-half">
+						<div class="form-group">
+						    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>升级类型：</label>
+						    <div class="col-md-6 col-sm-6">
+						        <input readonly class="form-control" id="upgradeType" type="text" value="{{upgradeType}}">
+						    </div>
+						</div>
+					</div>
+					<div class="pull-right w-half">
+						<div class="form-group">
+						    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>应支付金额：</label>
+						    <div class="col-md-6 col-sm-6">
+						        <input readonly class="form-control" id="upgradeAmount" type="text" value="{{upgradeAmount}}">
+						    </div>
+						</div>
+					</div>
+				</fieldset>
+				
+				<hr/>
+				
+				<fieldset>
+					<div class="pull-left w-half">
+						<div class="form-group">
+						    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>支付宝交易号：</label>
+						    <div class="col-md-6 col-sm-6">
+						        <input readonly class="form-control" id="serialNumber" type="text" value="{{serialNumber}}">
+						    </div>
+						</div>
+					</div>
+					<div class="pull-right w-half">
+						<div class="form-group">
+						    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>支付宝手续费：</label>
+						    <div class="col-md-6 col-sm-6">
+						        <input readonly class="form-control" id="aliPayPoundage" type="text" value="{{aliPayPoundage}}">
+						    </div>
+						</div>
+					</div>
+				</fieldset>
+				
+				<hr/>
+				
+				<fieldset>
+					<div class="pull-left w-half">
+						<div class="form-group">
+						    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>进账金额：</label>
+						    <div class="col-md-6 col-sm-6">
+						        <input readonly class="form-control" id="aliPayMoney" type="text" value="{{aliPayMoney}}">
+						    </div>
+						</div>
+					</div>
+					<div class="pull-right w-half">
+						<div class="form-group">
+						    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>手续费：</label>
+						    <div class="col-md-6 col-sm-6">
+						        <input readonly class="form-control" id="aliPay" type="text" value="{{aliPayPoundage}}">
+						    </div>
+						</div>
+					</div>
+				</fieldset>
+				<hr/>
+				
+				<fieldset>
+					<div class="pull-left w-half">
+						<div class="form-group">
+						    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>实收金额：</label>
+						    <div class="col-md-6 col-sm-6">
+						        <input readonly class="form-control" id="upgradeRealAmount" type="text" value="{{upgradeRealAmount}}">
+						    </div>
+						</div>
+					</div>
+					<div class="pull-right w-half">
+						<div class="form-group">
+						    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>查账人：</label>
+						    <div class="col-md-6 col-sm-6">
+						        <input readonly class="form-control" id="auditName" type="text" value="{{auditName}}">
+						    </div>
+						</div>
+					</div>
+				</fieldset>
+				<hr/>
+				
+				<fieldset>
+					<div class="pull-left w-half">
+						<div class="form-group">
+						    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>办理人员：</label>
+						    <div class="col-md-6 col-sm-6">
+						        <input readonly class="form-control" id="referenceUserName" type="text" value="{{referenceUserName}}">
+						    </div>
+						</div>
+					</div>
+					<div class="pull-right w-half">
+						<div class="form-group">
+						    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>劳务所得：</label>
+						    <div class="col-md-6 col-sm-6">
+						        <input readonly class="form-control" id="referenceRealAmount" type="text" value="{{referenceRealAmount}}">
+						    </div>
+						</div>
+					</div>
+				</fieldset>
+				<hr/>
+				
+				<fieldset>
+					<div class="pull-left w-half">
+						<div class="form-group">
+						    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>审核意见：</label>
+						    <div class="col-md-6 col-sm-6">
+						        <input readonly class="form-control" id="state" type="text" value="{{state}}">
+						    </div>
+						</div>
+					</div>
+					<div class="pull-right w-half">
+						<div class="form-group">
+						    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>&nbsp;</label>
+						</div>
+					</div>
+				</fieldset>
+				<hr/>
+				
+				<fieldset>
+					<div class="form-group">
+					    <label class="col-md-2 col-sm-4 control-label"><b class="required-icon"></b>意见信息：</label>
+					    <div class="col-md-10 col-sm-6">
+					    	<textarea readonly id="remark" class="form-control" rows="3">{{remark}}</textarea>
+					    </div>
+					</div>
+				</fieldset>
+			</div>
+		</form>
+	</div>
+</script>

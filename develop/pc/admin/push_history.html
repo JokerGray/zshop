@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+	<title>推送历史·管理员后台</title>
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="assets/layui/css/layui.css" />
+	<link rel="stylesheet" href="css/zx.css" />
+	<link rel="stylesheet" href="css/push_history.css" />
+</head>
+
+<body>
+	<script src="util/head.js"></script>
+	<input type="hidden" id="menuHid" value="push_history">
+	<div class="container">
+		<div class="wrapper clearfix">
+			<script src="util/menu.js"></script>
+			<div id="page_R" class="right pull-right">
+				<div id="search_box" class="clearfix">
+					<div class="searchInps searchSelect">
+						<p>频道</p>
+						<select id="channelInp" class="penName_inp" name="" id="">
+							<option value="">请选择</option>
+						</select>
+					</div>
+					<div class="searchInps">
+						<p>文章名称</p>
+						<input id="artNameInp" class="autherName_inp" type="text">
+					</div>
+					<div class="searchInps">
+						<p>作者</p>
+						<input id="authorInp" class="autherName_inp" type="text">
+					</div>
+					<div class="searchInps">
+						<p>推送焦点时间</p>
+						<input id="pushTimeInp" type="text">
+					</div>
+					<div id="search_icon" class=""><img src="images/search.png" alt=""></div>
+				</div>
+				<div id="article_box" class="clearfix">
+					<div class="table account_table">
+						<div id="account_Table" class="table-left">
+							<div class="panel panel-default">
+								<table class="table table-hover">
+									<thead id="table_head">
+										<th>序号</th>
+										<th>频道</th>
+										<th>文章名称</th>
+										<th>作者</th>
+										<!--<th>展示量</th>-->
+										<th>阅读量</th>
+										<th>发布时间</th>
+										<th>推送焦点时间</th>
+									</thead>
+									<tbody id="statement_con"></tbody>
+								</table>
+							</div>
+						</div>
+						<div id="page" class="text-center"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="assets/jquery-1.10.2.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/layui/lay/dest/layui.all.js"></script>
+	<script src="assets/countUp.min.js"></script>
+	<script src="util/util.js"></script>
+	<script src="util/pub.js"></script>
+	<script src="js/push_history.js"></script>
+	<script id="getCarouselList" type="text/html">
+		{{#  layui.each(d, function(index, item){ }} 
+    	    <tr>
+				<td>{{item.scCmsCarouselId || ''}}</td>
+				<td>{{item.scCmsChannelName || ''}}</td>
+				<td class="articleTitle" title={{item.scCmsCarouselName || ''}}>{{item.scCmsCarouselName || ''}}</td>
+				<td>{{item.subscriptionName || ''}}</td>
+				<!--<td>{{item.scCmsDispalyNumber || '0'}}</td>-->
+				<td>{{item.articleNumber || '0'}}</td>
+				{{# var createTime = item.scCmsCarouselCreatetime || ''}}
+				{{# if(createTime){ }}
+					{{# createTime = format(createTime) + ' ' + getTime(createTime)}}
+					<td>{{createTime}}</td>
+					<td>{{createTime}}</td>
+				{{# }else{ }}
+					<td></td>
+					<td></td>
+				{{# } }}
+			</tr>
+		{{#  }); }}
+    </script>
+</body>
+</html>

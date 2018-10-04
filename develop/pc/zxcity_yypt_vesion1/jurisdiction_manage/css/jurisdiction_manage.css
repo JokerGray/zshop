@@ -1,0 +1,124 @@
+.jurisdiction-content{
+    margin: 5px 0 0 10px;
+    height: 90%;
+    background: #fff;
+}
+.jurisdiction-content .jurisdiction-title{
+    height: 36px;
+    line-height: 36px;
+    width: 100%;
+    background: #f8f7f7;
+    color:#666;
+    border: 1px solid #e5e5e5;
+    padding-left: 10px;
+}
+.jurisdiction-title span:first-child{
+    font-size: 14px;
+}
+.jurisdiction-title span:last-child{
+    font-size: 12px;
+}
+.jurisdiction-content .jurisdiction-left{
+    width: 305px;
+    height: 96%;
+    float: left;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.jurisdiction-left .jurisdiction-trees{
+    width: 100%;
+}
+.jurisdiction-trees .trees-title{
+    height: 40px;
+    line-height: 38px;
+    width: 100%;
+    background: #eeeeee;
+    padding: 0 10px;
+}
+.trees-title button:nth-child(2){
+    display: none;
+}
+.trees-title .layui-btn+.layui-btn{
+    margin:0;
+}
+.jurisdiction-trees .trees-box{
+    width: 100%;
+    height: auto;
+}
+.trees-box h4{
+    width: 100%;
+    height: 28px;
+    line-height: 30px;
+    text-indent: 10px;
+    background: #dcdcdc;
+    font-size: 14px;
+    color: #333333;
+    cursor: pointer;
+}
+.ztree{
+    height: 740px;
+    overflow: auto;
+}
+/*right*/
+.jurisdiction-right{
+    margin-left: 315px;
+    height: 96%;
+    border-left: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.jurisdiction-right .jurisdiction-add{
+    height: 40px;
+    line-height: 38px;
+    width: 100%;
+    background: #eeeeee;
+}
+.jurisdiction-add button{
+    width: 68px;
+    background: #00a0e9;
+    color:#fff;
+    margin-left: 10px;
+}
+.jurisdiction-right .addcontent{
+    width: 100%;
+    position: relative;
+}
+.addcontent .addcontent-title{
+    position: absolute;
+    padding: 0 5px;
+    top: 16px;
+    left: 12px;
+    background: #fff;
+    font-size: 14px;
+    color: #333;
+    z-index: 3;
+}
+.addcontent .addcontent-table{
+    margin:26px 10px 0 0;
+    border-top: 1px solid #e5e5e5;
+    position: absolute;
+    width: 99%;
+    padding: 30px 0;
+}
+.addcontent-table .layui-form-item{
+    width: 620px;
+}
+/*表单修改*/
+.layui-form-label{
+    width: 115px;
+}
+.layui-input-block{
+    margin-left: 115px;
+}
+.tip{
+    display: inline-block;
+    color: red;
+    margin: 5px 0 0;
+}
+/*修改树*/
+.ztree li {
+    padding: 4px;
+}
+.ztree * {
+    font-size: 14px;
+}

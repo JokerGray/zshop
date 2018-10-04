@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>会员补录</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="../../assets/layui-v2.2.2/css/layui.css"> -->
+    <link rel="stylesheet" href="../../assets/laydate-v5.0.9/theme/default/laydate.css">
+    <link rel="stylesheet" href="../../assets/hplus/css/style.min862f.css">
+    <link rel="stylesheet" href="../../assets/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="memberadd.css">
+
+    <link rel="stylesheet" href="../../assets/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="../editAccount/editAccount.css">
+</head>
+
+<body>
+    <div class="container-fluid" style="margin-top:2rem;">
+        <div id="step1" style="">
+            <div class="top-title">
+                <span class="title-sum">所属门店：</span>
+                <div class="row row-user" style="margin-top: 10px;">
+                    <div class="col-xs-12" style="line-height: 34px">
+                        <select class="select-body" name="account" id="account">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-user">
+                <div class="col-xs-5">
+                    <span class="title-name">姓名：</span>
+                    <input type="text" id="userName" class="input-body" maxlength="16">
+                </div>
+                <div class="col-xs-5 col-xs-offset-1">
+                    <span class="title-name">手机号：</span>
+                    <input type="text" id="mobile" class="input-body" maxlength="11" onkeyup="validateNumber(this);" onafterpaste="validateNumber(this);">
+                </div>
+            </div>
+            <div class="row row-user">
+                <div class="col-xs-5">
+                    <span class="title-name">生日：</span>
+                    <input type="text" id="birthday" class="input-body" style="">
+                    <span class="is-lunar">
+                        <input type="checkbox" name="isLunar" id="isLunar">
+                        <label for="isLunar">农历生日</label>
+                    </span>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1">
+                    <span class="title-name">身份证：</span>
+                    <input type="text" id="identityCard" class="input-body">
+                    <span class="no-necessary">（可选填）</span>
+                </div>
+            </div>
+            <button class="bottom-bar btn btn-info" id="submit1" style="margin-top: 17%;">确定</button>
+        </div>
+        <div id="checkStep1" style="display: none;">
+            <div class="check-top">
+                <div class="img-content">
+                    <img src="../img/nike.png" alt="">
+                </div>
+                <div class="check-content">会员基本信息补录完成！</div>
+            </div>
+            <div class="check-btn">
+                <button class="btn btn-info btn-continue renew">补录新会员</button>
+                <button class="btn btn-cancel" id="addAccount">账户办理</button>
+            </div>
+        </div>
+        <div id="step2" style="display: none;">
+            <div id="accountList">
+                <!-- <div class="row row-user1">
+                    <div class="col-xs-2">
+                        <span class="title-name">账户类型：</span>
+                        <span class="step2-title" id="accountName">-</span>
+                    </div>
+                    <div class="col-xs-2">
+                        <span class="title-name">实际金额：</span>
+                        <span class="step2-title" id="realMoney">-</span>
+                    </div>
+                    <div class="col-xs-2">
+                        <span class="title-name">赠送金额：</span>
+                        <span class="step2-title" id="sendMoney">-</span>
+                    </div>
+                    <div class="col-xs-2">
+                        <span class="title-name">店铺：</span>
+                        <span class="step2-title" id="shopName">-</span>
+                    </div>
+                </div> -->
+            </div>
+            <!-- <div class="row row-user1">
+                <div class="col-xs-4">
+                    <span class="title-sum">账户升级：</span>
+                    <select class="select-body" name="accountType" id="accountType"></select>
+                </div>
+                <div class="col-xs-4">
+                    <span class="title-sum">赠送方式：</span>
+                    <span id="giveType">-</span>
+                </div>
+            </div>
+            <div class="row row-user1" id="productRow" style="display:none;">
+                <span class="col-xs-12">
+                    <table id="productList" class="table-hovered"></table>
+                </span>
+            </div>
+            <div class="top-title">
+                <span class="title-sum">业务说明：</span>
+                <div class="row row-user1" style="margin-top: 10px;">
+                    <div class="col-xs-12" style="line-height: 34px">
+                        <textarea name="serviceDetail" id="serviceDetail" cols="80" rows="6" disabled="disabled" style="resize: none;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-user1">
+                <div class="col-xs-3">
+                    <div class="title-name">办卡日期：</div>
+                    <input type="text" id="startDate" class="input-body step2-input">
+                </div>
+                <div class="col-xs-3">
+                    <div class="title-name">实际金额：</div>
+                    <input type="text" id="principal" class="input-body step2-input" value="0" oninput="isnum(this)" onkeyup="isnum(this)" onafterpaste="delunum(this)">
+                    <span class="yuan">元</span>
+                </div>
+                <div class="col-xs-2" id="giveMoney">
+                    <div class="title-name">赠送金额：</div>
+                    <input type="text" id="interest" class="input-body step2-input" value="0" oninput="isnum(this)" onkeyup="isnum(this)" onafterpaste="delunum(this)">
+                    <span class="yuan">元</span>
+                </div>
+                <div class="col-xs-4 fansRow">
+                    <div class="title-name">活动经费：</div>
+                    <input type="text" id="finance" class="input-body step2-input" value="0" oninput="isnum(this)" onkeyup="isnum(this)" onafterpaste="delunum(this)">
+                    <span class="yuan">元</span>
+                    <input type="checkbox" name="renewPerYear" id="renewPerYear">
+                    <label for="renewPerYear" style="font-weight: 500;">按年续费</label>
+                </div>
+            </div> -->
+            <div>
+                <!-- <div class="top-title">
+                    <span class="title-sum">所属门店：</span>
+                    <div class="row row-user" style="margin-top: 10px;">
+                        <div class="col-xs-12" style="line-height: 34px">
+                            <select class="select-body" name="account1" id="accountStep2">
+                            </select>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="cardSty1e swiper-no-swiping" style="padding:0 80px;position: relative;margin-top: 34px;">
+                    <!-- Swiper -->
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper" id="accountInfo"></div>
+                    </div>
+                    <div class="swiper-button-next" style="position: absolute;right: 36px;"></div>
+                    <div class="swiper-button-prev" style="position: absolute;left:36px;"></div>
+                </div>
+                <div class="tab-content m-r-20" id="tabContent">   
+                    
+                
+                </div>  
+            </div>
+            <button class="bottom-bar btn btn-info" style="left: 30%;" id="submit2">确定</button>
+            <button class="bottom-bar btn btn-info" style="left: 38%;" onclick="jumpout()">跳过</button>
+        </div>
+        <div id="checkStep2" style="display: none;">
+            <div class="check-top">
+                <div class="img-content">
+                    <img src="../img/nike.png" alt="">
+                </div>
+                <div class="check-content">会员账户信息补录完成！</div>
+            </div>
+            <div class="check-btn" style="left: 34%;">
+                <button class="btn btn-info btn-continue renew">补录新会员</button>
+                <button class="btn btn-info btn-continue" style="margin-left: 50px;" id="restart">继续办理账户</button>
+                <button class="btn btn-cancel" style="margin-left: 50px;" onclick="jumpout()">补服务卡</button>
+            </div>
+        </div>
+        <div id="checkStep3" style="display: none;">
+            <div class="check-top">
+                <div class="img-content">
+                    <img src="../img/nike.png" alt="">
+                </div>
+                <div class="check-content">会员服务卡补录完成！</div>
+            </div>
+            <div class="check-btn">
+                <button class="btn btn-info btn-continue renew">补录新会员</button>
+                <button class="btn btn-cancel" id="closeAll">完成</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <script src="../../assets/layer/layer.js"></script>
+    <link rel="stylesheet" href="../../assets/check_index/layer/skin/default/layer.css">
+    <script src="../../assets/laydate-v5.0.9/laydate.js"></script>
+    <script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- <script src="../../../assets/select2/select2.min.js"></script> -->
+    <script src="memberadd.js"></script>
+
+    <script src="../../assets/swiper/js/swiper.min.js"></script>
+    <!-- <script src="../editAccount/editAccount.js"></script> -->
+
+
+</body>
+</html>

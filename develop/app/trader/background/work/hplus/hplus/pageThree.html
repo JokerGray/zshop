@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" user-scalable="no">
+
+		<title></title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="css/animate.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="pages/common/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.min862f.css?v=4.1.0" />
+		<link rel="stylesheet" type="text/css" href="js/layui/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="pages/common/swiper-4.0.7/dist/css/swiper.css" />
+		<link rel="stylesheet" type="text/css" href="pages/pageThree/pageThree.css" />
+		<link rel="stylesheet" type="text/css" href="pages/pageThree/stylesheet.css" />
+	</head>
+
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content clearfix">
+			<div class="layui-btn layui-btn-normal" id="goBack">返回</div>
+			<div class="col-md-12 app-li clearfix">
+				<div class="top-link" v-for="(item,index) in areaJson" :data-id="item.id" :data-backUserId="item.backUserId" @click="doTab(item,areaJson)" :class="{act:item.active}" v-cloak>
+					{{item.name}}利润表
+				</div>
+			</div>
+			<div class="col-md-12 year-month">
+				<div class="year-box clearfix">
+					<div class="year-li layui-input act" id="year">2018</div>
+					<div class="year-li layui-input" id="month">月</div>
+				</div>
+				<div class="witch" id="witch">
+					2018年利润表
+				</div>
+				<div class="table-div clearfix">
+					<div class="left-table">
+						<table class="table table-bordered text-center" style="background-color: #fff;">
+							<thead>
+								<tr class="text-center">
+									<th rowspan="2" colspan="2" class="text-center f25">项目</th>
+									<th rowspan="1" colspan="2" class="text-center f15">合计</th>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2">
+										<span class="fir">金额</span>
+										<span class="sec">%</span>
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan="1" colspan="2">业绩</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"performance")}}</span>
+										<span class="sec"></span>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">利润</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"profit")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"profit"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="ffc">费用总额</td>
+									<td rowspan="1" colspan="2" class="ffc">
+										<span class="fir">{{getAll(yearJson,"totalCost")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"totalCost"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="5">基本费用</td>
+									<td>工资</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"wage")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"wage"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>房租</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"rent")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"rent"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>装修</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"decoration")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"decoration"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>资产折旧</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"assetsDepreciation")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"assetsDepreciation"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="ffc">小计</td>
+									<td rowspan="1" colspan="2" class="ffc">
+										<span class="fir">{{getAll(yearJson,"basicCostSubtotal")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"basicCostSubtotal"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="4">产品成本</td>
+									<td>销售</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"sales")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"sales"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>奖赠</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"awardGift")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"awardGift"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>打烊</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"proofing")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"proofing"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="ffc">小计</td>
+									<td rowspan="1" colspan="2" class="ffc">
+										<span class="fir">{{getAll(yearJson,"productCostSubtotal")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"productCostSubtotal"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="18">现金花费</td>
+									<td>燃气水电</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"gasHydropower")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"gasHydropower"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>电话费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"telephoneFee")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"telephoneFee"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>办公费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"officeExpenses")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"officeExpenses"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>POS手续费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"posFee")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"posFee"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>工商税费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"businessTax")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"businessTax"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>社保费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"socialSecurityCharges")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"socialSecurityCharges"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>差旅费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"travelExpenses")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"travelExpenses"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>零品购置费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"sporadicPurchaseCosts")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"sporadicPurchaseCosts"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>运杂费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"transportFees")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"transportFees"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>汽车费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"carFee")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"carFee"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>市内交通费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"cityTransportationFee")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"cityTransportationFee"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>修理费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"repairCosts")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"repairCosts"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>福利费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"welfareFee")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"welfareFee"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>奖励费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"rewardFee")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"rewardFee"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>广告费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"advertisingFee")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"advertisingFee"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>公关费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"prFee")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"prFee"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>培训学习费</td>
+									<td rowspan="1" colspan="2">
+										<span class="fir">{{getAll(yearJson,"trainingFees")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"trainingFees"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="ffc">小计</td>
+									<td rowspan="1" colspan="2" class="ffc">
+										<span class="fir">{{getAll(yearJson,"cashCostsSubtotal")}}</span>
+										<span class="sec">{{getp(getAll(yearJson,"cashCostsSubtotal"),getAll(yearJson,"performance"))}}</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="right-table">
+						<table class="table table-bordered text-center" style="background-color: #fff;">
+							<thead>
+								<tr class="text-center">
+									<th rowspan="1" colspan="2" class="text-center f18" v-for="(item,index) of yearJson">{{yearJson.length==12?(index+1)+"月":(index+1)+"日"}}</th>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span  class='fir'>金额</span>
+										<span  class='sec'>%</span>
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span  class='fir' :title="item.performance">{{item.performance}}</span>
+										<span  class='sec'> </span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span  class='fir' :title="item.profit">{{item.profit}}</span>
+										<span class='sec'>{{getp(item.profit,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson" class="ffc">
+										<span  class='fir' :title="item.totalCost">{{item.totalCost}}</span>
+										<span class='sec'>{{getp(item.totalCost,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span  class='fir' :title="item.wage">{{item.wage}}</span>
+										<span class='sec'>{{getp(item.wage,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span  class='fir' :title="item.rent">{{item.rent}}</span>
+										<span class='sec'>{{getp(item.rent,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span  class='fir' :title="item.decoration">{{item.decoration}}</span>
+										<span class='sec'>{{getp(item.decoration,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span  class='fir' :title="item.assetsDepreciation">{{item.assetsDepreciation}}</span>
+										<span class='sec'>{{getp(item.assetsDepreciation,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson" class="ffc">
+										<span class='fir' :title="item.basicCostSubtotal">{{item.basicCostSubtotal}}</span>
+										<span class='sec'>{{getp(item.basicCostSubtotal,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.sales">{{item.sales}}</span>
+										<span class='sec'>{{getp(item.sales,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.awardGift">{{item.awardGift}}</span>
+										<span class='sec'>{{getp(item.awardGift,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.proofing">{{item.proofing}}</span>
+										<span class='sec'>{{getp(item.proofing,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson" class="ffc">
+										<span class='fir' :title="item.productCostSubtotal">{{item.productCostSubtotal}}</span>
+										<span class='sec'>{{getp(item.productCostSubtotal,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.gasHydropower">{{item.gasHydropower}}</span>
+										<span class='sec'>{{getp(item.gasHydropower,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.telephoneFee">{{item.telephoneFee}}</span>
+										<span class='sec'>{{getp(item.telephoneFee,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.officeExpenses">{{item.officeExpenses}}</span>
+										<span class='sec'>{{getp(item.officeExpenses,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.posFee">{{item.posFee}}</span>
+										<span class='sec'>{{getp(item.posFee,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.businessTax">{{item.businessTax}}</span>
+										<span class='sec'>{{getp(item.businessTax,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.socialSecurityCharges">{{item.socialSecurityCharges}}</span>
+										<span class='sec'>{{getp(item.socialSecurityCharges,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.travelExpenses">{{item.travelExpenses}}</span>
+										<span class='sec'>{{getp(item.travelExpenses,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.sporadicPurchaseCosts">{{item.sporadicPurchaseCosts}}</span>
+										<span class='sec'>{{getp(item.sporadicPurchaseCosts,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.transportFees">{{item.transportFees}}</span>
+										<span class='sec'>{{getp(item.transportFees,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.carFee">{{item.carFee}}</span>
+										<span class='sec'>{{getp(item.carFee,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.cityTransportationFee">{{item.cityTransportationFee}}</span>
+										<span class='sec'>{{getp(item.cityTransportationFee,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.repairCosts">{{item.repairCosts}}</span>
+										<span class='sec'>{{getp(item.repairCosts,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.welfareFee">{{item.welfareFee}}</span>
+										<span class='sec'>{{getp(item.welfareFee,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.rewardFee">{{item.rewardFee}}</span>
+										<span class='sec'>{{getp(item.rewardFee,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.advertisingFee">{{item.advertisingFee}}</span>
+										<span class='sec'>{{getp(item.advertisingFee,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.prFee">{{item.prFee}}</span>
+										<span class='sec'>{{getp(item.prFee,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson">
+										<span class='fir' :title="item.trainingFees">{{item.trainingFees}}</span>
+										<span class='sec'>{{getp(item.trainingFees,item.performance)}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="1" colspan="2" v-for="(item,index) of yearJson" class="ffc">
+										<span class='fir' :title="item.cashCostsSubtotal">{{item.cashCostsSubtotal}}</span>
+										<span class='sec'>{{getp(item.cashCostsSubtotal,item.performance)}}</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js?v=2.1.4"></script>
+		<script src="js/bootstrap.min.js?v=3.3.6"></script>
+		<script type="text/javascript" src="pages/pageThree/nicescroll.js"></script>
+		<script type="text/javascript" src="js/layui/layui.all.js"></script>
+		<script type="text/javascript" src="pages/common/swiper-4.0.7/dist/js/swiper.min.js"></script>
+		<script type="text/javascript" src="pages/common/util.js"></script>
+		<script type="text/javascript" src="pages/pageThree/vue.js"></script>
+		<script src="pages/pageThree/pageThree.js"></script>
+	</body>
+
+</html>

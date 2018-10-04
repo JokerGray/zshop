@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit" />
+    <title>风采详情</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+</head>
+
+<body>
+    <div class="container main">
+        <div class="userContent">
+            <div class="thumbnail">
+                <img class="userPic" src="" alt="">
+            </div>
+            <div class="userInfo">
+                <p class="userName ellipsis">---</p>
+                <p class="publishDate">---------- --:--:--</p>
+            </div>
+        </div>
+        <div class="description"></div>
+        <div class="imgContent"></div>
+        <div class="likeContent">
+            <span class="totalLikeText">
+                <span class="totalLikeCount">0</span>人点赞</span>
+        </div>
+    </div>
+    <div class="container titleName">
+        <p class="name ellipsis"></p>
+    </div>
+    <p class="commentText container">评论 <span class="totalCount">0</span></p>
+    <div class="container comment"></div>
+
+    <script id="tpl" type="text/html">
+        <div class="commentContent">
+            <img class="commentImg">
+            <div class="commentInfo">
+                <p class="commentUserName ellipsis">---</p>
+                <p class="commentDate">---------- --:--:--</p>
+                <p class="comment"></p>
+            </div>
+        </div>
+    </script>
+    <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="assets/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/layer/mobile/layer.js"></script>
+    <script type="text/javascript">
+        // 提示语句
+        function toast(msg) {
+            return layer.open({ type: 0, content: msg, style: "color:#fff;background-color:rgba(0,0,0,0.7);font-size:14px;letter-spacing: 1px;", shade: "background-color:rgba(0,0,0,0.1)" })
+        }
+        // 加载状态
+        function loading(msg) {
+            return layer.open({ type: 2 })
+        }
+        // 获取url参数，没有就''
+        function getQueryString(name) {
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+            var r = window.location.search.substr(1).match(reg)
+            return r !== null ? decodeURI(r[2]) : ''
+        }
+        // 初始化
+        $(document).ready(getData);
+
+        // 获取数据
+        function getData() {
+            var params = {
+                videoAlbumId: getQueryString('videoAlbumId')
+            }
+            var loadingIndex = loading();
+            $.ajax({
+                type: "post",
+                url: "/zxcity_restful/ws/rest",
+                cache: false,
+                headers: {
+                    apikey: sessionStorage.getItem('apikey') || 'test'
+                },
+                data: {
+                    cmd: 'association/getVAById',
+                    data: JSON.stringify(params),
+                    version: 2
+                },
+                success: function (data) {
+                    layer.close(loadingIndex)
+                    if (data.code == 1) {
+                        if(Object.keys(data.data).length == 0 ){
+                            return toast('数据获取失败，请检查页面参数或刷新页面再试！');
+                        }
+                        setData(data.data);
+                    } else {
+                        toast(data.msg)
+                    }
+                },
+                error: function () {
+                    layer.close(loadingIndex);
+                    toast('网络错误，连接失败！')
+                }
+            });
+        }
+
+        function setData(data) {
+            $('.userContent .userPic').attr('src', data.video.userPic);
+            $('.userContent .userName').text(data.video.userName);
+            $('.userContent .publishDate').text(data.video.publishDate);
+            $('.description').text(data.video.description);
+            var coverUrl = data.video.coverUrl;
+            var urls = data.video.urls;
+            if(coverUrl) {
+                var $video = $('<video></video>');
+                $video.attr('src', urls[0]);
+                $video.attr('poster', coverUrl);
+                $video.attr('controls', 'controls');
+                $('.imgContent').append($video);
+            } else {
+                for (var i = 0; i < urls.length; i++) {
+                    var $div = $('<div><img></div>');
+                    $div.find('img').attr('src', urls[i]);
+                    $('.imgContent').append($div);
+                }
+            }
+            $('.totalLikeText .totalLikeCount').text(data.video.commentList.totalLikeCount)
+            var likeList = data.video.commentList.allLikeList;
+            if(likeList) {
+                for (var i = 0; i< likeList.length && i < 10; i++) {
+                    $('.totalLikeText').before($('<img>').attr('src', likeList[i].sMemberImgName))
+                }
+                if (likeList.length>10) {
+                    $('.totalLikeText').before('<span class="ellipsis">...</span>');
+                    $('.totalLikeText').addClass('float-right');
+                }
+            }
+            $('.titleName .name').text(data.name);
+            $('.commentText .totalCount').text(data.video.commentList.totalCount);
+            var commentList = data.video.commentList.commentList;
+            for (var i = 0; i < commentList.length; i++) {
+                var $dom = $($.trim($('#tpl').html()));
+                $dom.find('.commentImg').attr('src', commentList[i].sMemberImgName);
+                $dom.find('.commentUserName').text(commentList[i].sUserCode);
+                $dom.find('.commentDate').text(commentList[i].sCommentDate);
+                $dom.find('.comment').text(commentList[i].sCommentContent);
+                $('.container.comment').append($dom);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

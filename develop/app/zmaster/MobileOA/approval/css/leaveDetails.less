@@ -1,0 +1,483 @@
+@import url(../../common/reset);
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#leaveList {
+
+  width: 750rem/@font-size-base;
+  height: 800rem/@font-size-base;
+  padding-top: 100rem/@font-size-base;
+  //请假信息
+  .topPart{
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    //height: 460rem/@font-size-base;
+    padding: 0 30rem/@font-size-base;
+    margin-bottom: 50rem/@font-size-base;
+    background: white;
+    font-size: 28px;
+    [data-dpr='3'] & {
+      font-size: 42px;
+    }
+    [data-dpr='1'] & {
+      font-size: 14px;
+    }
+
+    //显示拒绝同意图片
+    .showType{
+      display: none;
+      position: absolute;
+      top:100rem/@font-size-base;
+      right: 20rem/@font-size-base;
+
+      width:200px ;
+      height: 100px;
+      [data-dpr='3'] & {
+        width:300px ;
+        height: 150px;
+      }
+      [data-dpr='1'] & {
+        width:100px ;
+        height: 50px;
+      }
+    }
+
+
+    .topHead{
+      padding: 30rem/@font-size-base 0;
+      .headImg{
+        width: 125rem/@font-size-base;
+        padding-left: 50rem/@font-size-base;
+        float: left;
+        .nameImg{
+          display: inline-block;
+
+          width: 80rem/@font-size-base;
+          height: 80rem/@font-size-base;
+          background: @baseColor;
+          border-radius: 40rem/@font-size-base;
+          text-align: center;
+          line-height: 80rem/@font-size-base ;
+          color: white;
+        }
+      }
+      .rightPart{
+        margin-left: 125rem/@font-size-base;
+
+        .nameTitle{
+          margin-bottom: 10rem/@font-size-base;
+          .level-item{
+            margin-left: 30rem/@font-size-base;
+          }
+        }
+        .timePrompt{
+          color: #858585;
+          font-size: 24px;
+          [data-dpr='3'] & {
+            font-size: 40px;
+          }
+          [data-dpr='1'] & {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .sencondHead{
+      padding: 20rem/@font-size-base 0;
+      li{
+        margin-bottom: 20rem/@font-size-base;
+        letter-spacing: 2px;
+
+        &:nth-child(5){
+          .reasonType{
+            width: 170rem/@font-size-base;
+            float: left;
+            color: #858585;
+            text-align: right;
+        }
+          .reasonText{
+            margin-left:170rem/@font-size-base ;
+            padding-left: 10rem/@font-size-base;
+            font-size: 28px;
+            [data-dpr='3'] & {
+              font-size: 42px;
+            }
+            [data-dpr='1'] & {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+      li span:first-child{
+        display: inline-block;
+        width: 170rem/@font-size-base;
+        color: #858585;
+        text-align: right;
+      }
+      li span:nth-child(2){
+        font-size: 28px;
+        [data-dpr='3'] & {
+          font-size: 42px;
+        }
+        [data-dpr='1'] & {
+          font-size: 16px;
+        }
+      }
+
+      li span.time{
+        font-size: 22px;
+        [data-dpr='3'] & {
+          font-size: 33px;
+        }
+        [data-dpr='1'] & {
+          font-size: 11px;
+        }
+      }
+      .imgTips{
+        height: 100rem/@font-size-base;
+        line-height:100rem/@font-size-base;
+        span{
+          vertical-align: top;
+        }
+        img{
+          margin-right: 25rem/@font-size-base;
+          width: 80px;
+          height: 80px;
+          [data-dpr='3'] & {
+            width: 150px;
+            height: 150px;
+          }
+          [data-dpr='1'] & {
+            width: 50px;
+            height: 50px;
+          }
+        }
+      }
+    }
+  }
+
+  //审批记录
+  .approvalRecord{
+    background: white;
+    width: 100%;
+    margin-bottom: 110rem/@font-size-base;
+    .recordTips{
+      font-size: 32px;
+      [data-dpr='3'] & {
+        font-size: 48px;
+      }
+      [data-dpr='1'] & {
+        font-size: 16px;
+      }
+      padding: 0 30rem/@font-size-base;
+      border-bottom: 1px solid gainsboro;
+      height: 70rem/@font-size-base;
+      line-height: 70rem/@font-size-base;
+      img{
+        width: 42px;
+        height: 42px;
+        vertical-align: middle;
+        margin-right: 25rem/@font-size-base;
+        [data-dpr='3'] & {
+          width: 63px;
+          height: 63px;
+        }
+        [data-dpr='1'] & {
+          width: 21px;
+          height: 21px;
+        }
+      }
+    }
+
+    .approvalPath{
+      padding: 50rem/@font-size-base 30rem/@font-size-base;
+
+      font-size: 28px;
+      [data-dpr='3'] & {
+        font-size: 42px;
+      }
+      [data-dpr='1'] & {
+        font-size: 16px;
+      }
+
+      li{
+        margin-bottom: 40rem/@font-size-base;
+        .reason{
+          color: #858585;
+          //padding-left: 10%;
+          padding-left: 5%;
+        }
+        .time{
+          color: #858585;
+          font-size: 24px;
+          [data-dpr='3'] & {
+            font-size: 36px;
+          }
+          [data-dpr='1'] & {
+            font-size: 13px;
+          }
+        }
+      }
+     .oneTab{
+
+       span{
+         display: inline-block;
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         &:first-child{
+           //width: 10%;
+           width: 26rem/@font-size-base;
+           height: 26rem/@font-size-base;
+           border-radius: 13rem/@font-size-base;
+           background-color: @baseColor;
+           //margin-top: 10rem/@font-size-base;
+           vertical-align: middle;
+           //margin-right: 20rem/@font-size-base;
+         }
+
+         &:nth-child(2){
+           width: 27%;
+
+         }
+         &:nth-child(3){
+           width: 25%;
+         }
+         &:nth-child(4){
+           width: 35%;
+           text-align: right;
+         }
+       }
+        //      已同意
+       .type_3{
+          color: @baseColor;
+       }
+       //已拒绝
+       .type_4{
+         color:red;
+       }
+
+      }
+
+
+    }
+  }
+}
+
+//操作按钮
+.operateBtn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+
+  .commomBtn{
+
+    div{
+      float: left;
+      box-sizing: border-box;
+      text-align: center;
+      height: 100rem/@font-size-base;
+      line-height:  100rem/@font-size-base;
+      border-right: 1px solid gainsboro;
+      flex-grow:1;
+      color: @baseColor;
+      font-size: 32px;
+      [data-dpr='3'] & {
+        font-size: 48px;
+      }
+      [data-dpr='1'] & {
+        font-size: 16px;
+      }
+
+      &:last-child{
+        border-right: none;
+      }
+    }
+  }
+
+  .typeOne{
+    div{
+      width: 100%;
+    }
+  }
+
+  .TypeTwo{
+    div{
+      height: 0;
+    }
+  }
+
+  .typeFive,.typeThree{
+    div{
+      width: 33%;
+    }
+  }
+
+  .typeSix,.typeFour{
+    div{
+      width: 50%;
+    }
+  }
+
+
+
+  .typeOne,.TypeTwo,.typeThree,.typeFour,.typeFive,.typeSix{
+    display: none;
+  }
+}
+//优先级
+.level-item {
+  padding: 8rem/@font-size-base 10rem/@font-size-base;
+  //margin-left: 50rem/@font-size-base;;
+  font-size: 24px;
+  [data-dpr='3'] & {
+    font-size: 36px;
+  }
+  [data-dpr='1'] & {
+    font-size: 12px;
+  }
+  border: 1rem/@font-size-base solid gainsboro;
+  border-radius: 6rem/@font-size-base;
+  color: white;
+}
+
+.level-1{
+  background-color: #96d452;
+}
+.level-2{
+  background-color: #fab42f;
+}
+.level-3{
+  background-color: #fa4646;
+}
+
+//查看大图
+#mo{
+  display: none;/*隐藏*/
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.7);
+  top: 0px;
+  left: 0px;
+  z-index:1000000000000000000;
+}
+#moimg{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  display: block;
+  //margin:200px auto;
+  max-width:80%;
+  max-height: 80%;
+}
+#moimg{
+  -webkit-animation: first 1s;
+  -o-animation: first 1s;
+  animation: first 1s;
+}
+.close{
+  width: 65rem/@font-size-base;
+  height: 65rem/@font-size-base;
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  color:#f1f1f1;
+}
+.close:hover,
+.close:focus{
+  color:#bbb;
+  cursor:pointer;
+}
+
+@keyframes first{
+  from{transform: scale(0.1);}
+  to{transform: scale(1);}
+}
+
+@media only screen and(max-width:750px ) {
+  #moimg{
+    width: 100%;
+  }
+}
+
+//拒绝同意,转交弹框
+.rejectBox{
+  display: none;/*隐藏*/
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+  top: 0px;
+  left: 0px;
+  z-index:1000000000000000000;
+
+  .innerBox{
+    font-size: 30px;
+    [data-dpr='3'] & {
+      font-size: 48px;
+    }
+    [data-dpr='1'] & {
+      font-size: 12px;
+    }
+    background: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: block;
+    width: 80%;
+    height: 230rem/@font-size-base;
+    padding: 30rem/@font-size-base;
+    border-radius: 10rem/@font-size-base;
+    .title{
+      text-align: center;
+      color: #858585;
+    }
+    input{
+      width: 95%;
+      padding-left: 2%;
+      height: 80rem/@font-size-base;
+      font-size: 30px;
+      [data-dpr='3'] & {
+        font-size: 36px;
+      }
+      [data-dpr='1'] & {
+        font-size: 12px;
+      }
+      margin: 30rem/@font-size-base 0;
+
+    }
+    .commonbtn{
+      height: 50rem/@font-size-base;
+      line-height: 50rem/@font-size-base;
+      text-align: center;
+      width: 50%;
+      box-sizing: border-box;
+      float: left;
+
+    }
+    .deleteBtn{
+      border-right: 1px solid gainsboro;
+      color: #858585;
+    }
+    .certainBtn{
+      color: @baseColor;
+    }
+  }
+}

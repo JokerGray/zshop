@@ -1,0 +1,142 @@
+<!--index.wxml-->
+<view class='main' id='tab-con'>
+  <scroll-view scroll-y="true" bindscroll="scroll" scroll-top="{{scrollTop}}" >
+    <view class='videoContent' wx:for="{{items}}" id='videoHeight' wx:key='unique' wx:for-index="idx" wx:for-item="item">
+      <!-- 头部 -->
+      <view class='userinfo'>
+        <image bindtap="bindViewTap" data-myConcern='{{item.myConcern}}' data-userid="{{item.userId}}" data-id='{{item.id}}' class="userinfo-avatar" src="{{item.userPic}}" mode="cover"></image>
+        <text class="userinfo-nickname">{{item.userName}}</text>
+        <!-- <text class="userinfo-nickname" bindtap='onClickMoveDetails'>{{item.userName}}</text> -->
+        <image src='../../images/huahuo_shouye_zhaodian@2x.png' class='userinfoShop' wx:if='{{item.isPartner == 1}}'></image>
+        <view class='userDetailed' bindtap='userDetailed' data-id='{{item.id}}' data-userid='{{item.userId}}'data-index='{{idx}}' data-item='{{item}}' ></view>
+        <!-- AlruserinfoFollow 已关注 userinfoFollow 未关注  -->
+        <view wx:if="{{item.infoFollow}}"class='{{item.myConcern ? "AlruserinfoFollow":"userinfoFollow"}}' bindtap='userinfoFollowMe' data-id='{{item.id}}' data-userId='{{item.userId}}'>
+          {{item.myConcern ?"已关注":"关注"}}
+        </view>
+      </view>
+      <view class='videText' bindtap='onDetailed' data-item='{{item}}'>{{item.videoIntroduce}}</view>
+      <!-- 中间视频，从新布局 -->
+      <view class='videophone'>
+        <view class='video-container'>
+          <view data-id='{{item.id}}' data-idx='{{idx}}' bindtap='videoPlayClick' style=' position: relative;' class="{{item.videoHeight >item.videoWidth ? 'videoC':'videEnd'}}">
+            <view wx:if="{{aaaa}}">
+              <video wx:if='{{curr_id == item.id}}' id='myVideo' src='{{item.videoUrl}}' poster='{{item.poster}}' controls='false' objectFit='cover' class="{{item.videoHeight > item.videoWidth ? 'videoC':'videEnd'}}" autoplay >
+              </video>
+              <view wx:else>
+                <view>
+                  <image class="model-img" mode="aspectFill" src="{{item.coverUrl}}" class="{{item.videoHeight >item.videoWidth ? 'videoC':'videEnd'}}"></image>
+                  <view class="{{item.videoHeight >item.videoWidth?'model-btn':'triangleplay'}}">
+                    <view class="play-icon"></view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view wx:else>
+              <view>
+                <image class="model-img" style='margin-top:15rpx;border-radius:11rpx;' mode="aspectFill" src="{{item.coverUrl}}" class="{{item.videoHeight >item.videoWidth ? 'videoC':'videEnd'}}"></image>
+                <view class="{{item.videoHeight >item.videoWidth ?'model-btn':'triangleplay'}}">
+                  <view class="play-icon"></view>
+                </view>
+              </view>
+            </view>
+                <!-- 到家服务 -->
+                 <image wx:if='{{item.isGohome==1}}' class="{{item.videoHeight >item.videoWidth ?'serviceShopUp':'serviceShop'}}" src='../../images/huahuo_shouye_daojia@2x.png'></image>
+          </view>
+        </view>
+      </view>
+      <!-- 查看店铺 -->
+      <view class='lookshopdiv' wx:if="{{item.isShowShop == 1}}" bindtap='lookshopdiv' data-userid='{{item.userId}}'>
+        <image class='lookshop' src='../../images/huahuo_shouye_shop@2x.png'></image>
+        <text>查看店铺</text>
+      </view>
+      <!-- 底部图标 -->
+      <view class='videoData'>
+        <view class='videoDataOne'>{{item.timeSpanStr}}</view>
+        <view class='videoDataTwo'>{{item.distance}}</view>
+      </view>
+      <view class='bottomImg'>
+        <image class='bottomImgone' data-id='{{item.id}}' data-userId='{{item.userId}}' bindtap='collectA' src='{{item.collection?"../../images/huahuo_shouye_shoucang@2x.png":"../../images/huahuo_shouye_save@2x.png"}}'></image>
+        <image class='bottomImgtwo' src='../../images/huahuo_shouye_pinglun@2x.png' data-id='{{item.id}}' data-userId='{{item.userId}}' bindtap='collectComment'></image>
+        <!-- open-type='share' -->
+        <button data-id='{{item.id}}' data-index='{{idx}}' data-userId='{{item.userId}}' bindtap='bottomImgthree' open-type='share'>
+          <image class='bottomImgthree' src='../../images/huahuo_shouye_share@2x.png'></image>
+        </button>
+      </view>
+      <view class='line'></view>
+    </view>
+
+    <!-- 点击按钮，显示发布页面 -->
+    <image class='videoupload' bindtap='publishvideo' src='../../images/huahuo_shouye_fabu@2x.png'></image>
+    <view class="weui-loadmore">
+      <view hidden='{{bottom}}' class="weui-loading"></view>
+      <view class="weui-loadmore__tips">{{bottom?"已经到底啦":"正在加载"}}</view>
+    </view>
+  </scroll-view>
+</view>
+
+
+<!-- 查看店铺 -->
+<view class="drawer_screen " bindtap="showCartList" data-statu="close" wx:if="{{showCartList}}"catchtouchmove="ture" >
+</view>
+<!-- modals-bottom-dialog -->
+<view class=" cartlist-float " animation="{{animationData}}" wx:if="{{showCartList}}"catchtouchmove="ture" >
+   <scroll-view scroll-y="true" style='max-height:518rpx;' scroll-top='{{scrollTopComment}}'>
+    <view style='background:#fff;border-radius:20rpx 20rpx 0 0;'>
+      <view class='label-cart-bar'>关联店铺<text>{{LookShopItem.length}}</text></view>
+    </view>
+    <view class='lookshop-list' wx:for="{{LookShopItem}}" wx:key='unique' wx:for-index='index'>
+      <image src='{{item.logoUrl}}'></image>
+      <view  data-item='{{item}}'>
+        <view class='loolshop-name' bindtap='onShopdetails' data-item='{{item}}' data-index='{{index}}'>{{item.shopName}}</view>
+        <view class='loolshop-content' bindtap='onShopdetails' data-item='{{item}}' data-index='{{index}}'>{{item.address==null?'':item.address}}</view>
+      </view>
+      <view class='loolshopIn' bindtap='loolshopIn' data-id='{{item.id}}' data-index='{{index}}'>进店</view>
+      </view>
+     </scroll-view>
+</view>
+
+
+
+<!-- 查看评论弹出框 -->
+<view class="drawer_screen" bindtap="showCartList" data-statu="close" wx:if="{{showCommentCartList}}" catchtouchmove="ture">
+</view>
+<view class="cartlist-float comment-float" animation="{{animationData}}" wx:if="{{showCommentCartList}}"catchtouchmove="ture">
+  <scroll-view scroll-y="true" style='max-height:650rpx;' scroll-top='{{scrollTopComment}}'>
+    <view wx:if='{{commentlength>0}}' class='label-cart-bar' style='background:#fff; text-align: center;padding-left: 0;'>
+      {{commentlength}}条评论
+    </view>
+    <view wx:if='{{replycomment.length>0}}'>
+      <view wx:for="{{replycomment}}" wx:key='unique'wx:for-index="index">
+        <view class='lookshop-list'>
+          <image src='{{item.userPic}}' style="border-radius:50%;"></image>
+          <view>
+            <view class='loolshop-name'>{{item.userName}}</view>
+            <view class='loolshop-content'>{{item.modifyTime}}</view>
+            <view class='showcomment' data-index = 'index' bindtap='replyComment' data-id='{{item.id}}' data-itemreply='{{item}}' data-reply= '{{1}}' data-videoId='{{item.userid}}'>{{item.commentContent}}</view>
+            <view class='showcomment-reply' wx:if='{{item.reCommentList.length>0&&item.reCommentList[0]!==null}}'>
+              <label>回复{{item.reCommentList[0].userName}}</label>
+              <text>{{item.reCommentList[0].commentContent}}</text>
+            </view>
+          </view>
+          <!-- <view class='loolshopIn'>进店</view> -->
+        </view>
+      </view>
+      <view class='cbottom-inp'>
+        <input class='seach input' placeholder="友爱评论，说点好听的吧~" value='{{inputReply}}' focus='{{focusReply}}' bindconfirm='bindOnclick' type='Text'></input>
+      </view>
+    </view>
+    <view wx:else>
+      <view class='comment-Bottom'>
+        <view>暂无评论</view>
+      </view>
+      <view class='cbottom-inp'>
+        <input class='seach input' placeholder="友爱评论，说点好听的吧~" value='{{inputReply}}' bindconfirm='bindOnclick' type='Text'></input>
+      </view>
+    </view>
+
+  </scroll-view>
+</view>
+    <image class='videoupload' bindtap='publishvideo' src='../../images/huahuo_shouye_fabu@2x.png'></image>
+
+
+ 

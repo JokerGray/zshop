@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <title>文章审核·管理员后台</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/authorial_check.css" />
+    <link rel="stylesheet" href="css/article_check.css" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="article_check">
+    <input type="hidden" id="articleHid">
+    <input type="hidden" id="channelIdHid">
+
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div id="page_R" class="right pull-right">
+                <div id="search_box" class="clearfix">
+                    <div id="penName_box" class="fl">
+                        <p class="penName_tit">文章名称</p>
+                        <input id="penName_inp" class="penName_inp" type="text">
+                    </div>
+                    <!-- <span class="middle_line" id="mLine1">-</span> -->
+                    <div id="autherName_box" class="fl">
+                        <p class="autherName_tit">作者</p>
+                        <input id="autherName_inp" class="autherName_inp" type="text">
+                    </div>
+                    <!-- <span class="middle_line" id="mLine2">-</span> -->
+                    <div id="field_box" class="fl">
+                        <p class="field_tit">频道</p>
+                        <select id="inputValue" class="form-control signform-input select" name="subscriptionType">
+							<option value="">请选择</option>
+						</select>
+                    </div>
+                    <div id="timeBox" class="fl">
+                        <p class="field_tit">申请时间</p>
+                        <input type="text" class="fl" id="start" />
+                        <input type="text" class="fl" id="end" />
+                    </div>
+                    <div id="search_icon" class="fl"><img src="images/search.png" alt=""></div>
+                </div>
+                <div id="article_box" class="clearfix">
+                    <div>
+                        <ul class="tabinner clearfix">
+                            <li id="tabAll" class="fl active">全部</li>
+                            <li id="tabPerson" class="fl">个人文章</li>
+                            <li id="tabCom" class="fl">企业文章</li>
+                        </ul>
+                    </div>
+                    <div id="selection_date" class="clearfix">
+                        <ul class="seleDate_day">
+                            <li id="lastSevenDay" class="fl cur-p">7天</li>
+                            <li id="lastHalfofMouth" class="fl cur-p">14天</li>
+                            <li id="lastMouth" class="fl cur-p">30天</li>
+                            <li class="fl selection_opt" style="margin-left: 30px;">
+                                <select id="examineOpt" class="form-control signform-input select" name="examineSec">
+                                    <option value="">--请选择--</option>
+                                    <option value="0">未通过</option>
+                                    <option value="1">已通过</option>
+                                    <option value="2">待审核</option>
+                                    <option value="3">屏蔽</option>
+                                    <option value="4">黑名单</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="table account_table">
+                        <div id="account_Table" class="table-left">
+                            <div class="panel panel-default">
+                                <table class="table table-hover zx-table">
+                                    <thead id="table_head">
+                                        <th class="w50px"></th>
+                                        <th class="w100px">文章名称</th>
+                                        <th>作者</th>
+                                        <th>领域</th>
+                                        <th class="w200px">申请时间</th>
+                                        <th>审核时间</th>
+                                        <th>审核人</th>
+                                        <th>状态</th>
+                                        <th></th>
+                                    </thead>
+                                    <tbody id="statement_con"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="page" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--查看模态框 strat-->
+    <div class="modal fade" id="articleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog zx-modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="zx-modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true ">&times;</span>
+					</button>
+                    <h2 class="article_title" id="article_title"></h2>
+                </div>
+                <div class="zx-modal-body">
+                    <div id="wrap">
+                        <div class="article_head clearfix">
+                            <span id="article_author" class="mr20 fl"></span>
+                            <span id="releaseTime" class="fl"></span>
+                            <span id="labelList" class="fl"></span>
+                            <span id="articleType"></span>
+                            <span id="channelName" class="fr font20px black"></span>
+                        </div>
+                        <div class="article_content clearfix" id="articleContent"></div>
+                        <!--<div id="detail_box"></div>-->
+                    </div>
+                </div>
+                <div class="zx-modal-footer">
+                    <!--<button type="button" id="recommendBtn" class="btn btn-submit">首页推荐</button>-->
+                    <button type="button" id="homePageBtn" class="btn btn-submit">首页置顶</button>
+                    <button type="button" id="areaBtn" class="btn btn-submit">领域置顶</button>
+                    <button type="button" id="passBtn" class="btn btn-primary">通过</button>
+                    <button type="button" class="btn btn-danger btnNotPass" data-toggle="modal" data-target="#notPass">不通过</button>
+                    <button type="button" id="shieldBtn" class="btn form-btn">屏蔽</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看模态框 end-->
+
+    <!--不通过 start-->
+    <div id="notPass" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-dialog2" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <textarea class="wfull" id="notPassTxt" cols="30" rows="10" placeholder="输入不通过辅助说明..." maxlength="100"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button id="notpassBtn" class="NotPass btn" type="button">提交不通过</button>
+                    <button class="modalShield btn" type="button" data-dismiss="modal">返回</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--不通过 end-->
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/countUp.min.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/article_check.js"></script>
+    <script id="articleList" type="html/text">
+        {{#  layui.each(d.list, function(index, item){ }}
+            <tr>
+                <!--TODO 企业颜色-->
+                {{# if(item.releaseType == 0){  }}
+                    <td class="tabNotice_icon"><span style="background:#00B7EE;" releaseType={{item.releaseType}}>个</span></td>
+                {{# }   }}
+                {{# if(item.releaseType == 1){  }}
+                <td class="tabNotice_icon"><span style="background:#8CD73C;" releaseType={{item.releaseType}}>企</span></td>
+                {{# }   }}
+                <td class="text-ellipsis w100px" title={{ item.articleTitle || ''}}>{{ item.articleTitle || '' }}</td>
+                <td>{{ item.subscriptionName || '' }}</td>
+                <td>{{ item.channelName || '' }}</td>
+                <td>{{ item.releaseTime || '' }}</td>
+                <td class="reviewerTime">{{ item.reviewerTime || '' }}</td>
+                <td>管理员</td>
+                <td class="stateTd">
+                    
+                    {{# if(item.isExamine == 3){ }}
+                        已屏蔽
+                    {{# }else{ }}
+                        {{# if(!isNull(getStickAll(item.stickAll))){ }}
+                            <ul class="dropdown">
+                                {{ getStickAll(item.stickAll) }}
+                            </ul>
+                            <span class="red">已置顶</span> 
+                        {{# }else{ }}
+                            {{ examine(item.isExamine) || '' }}
+                        {{# } }}
+                    {{# } }}
+                </td>
+                {{# if(item.isExamine == 3){    }}
+                    <td></td>
+                {{# } }}
+                {{# if(item.isExamine != 3){    }}
+                    <td><button userId={{ item.releaseId }} articleId={{ item.articleId }} channelId={{ item.channelId }} isExamine={{ item.isExamine }} stickAll={{ item.stickAll }} class="tabNotice_btn previewModal" data-toggle="modal" data-target="#articleModal">查看</button></td>
+                {{# } }}
+            </tr>
+        {{#  }); }}
+        </script>
+</body>
+
+</html>

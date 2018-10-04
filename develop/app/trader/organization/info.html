@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改组信息</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/organization.css">
+</head>
+<body>
+    <div id="info">
+       <label class="control-label title">基本资料</label> 
+       <div class="basicinfo">
+           <div>
+                <label class="control-label">姓名:</label> 
+                <span id="name">测试</span>
+           </div>
+           <div>
+                <label class="control-label">手机号码:</label>
+                <span id="number"></span>
+           </div>
+           <div>
+                <label class="control-label">剩余经费:</label>
+                <span id="amount"></span>元
+           </div>
+       </div>
+       <div>
+           <label class="control-label title">经费明细</label>
+           <div>
+               <ul id="list">
+                   <li id="listTitle">
+                       <div class="order">NO.</div>
+                       <div class="time">变更时间</div>
+                       <div class="change">经费变更</div>
+                       <div class="remain">剩余经费</div>
+                       <div class="reason">变更原因</div>
+                   </li> 
+               </ul>
+           </div>
+       </div>
+    </div>
+</body>
+<script src="assets/js/jquery-2.1.0.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+</html>

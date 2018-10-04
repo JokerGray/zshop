@@ -1,0 +1,243 @@
+@import url(../../common/reset);
+
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#leaveList {
+  width: 750rem/@font-size-base;
+  height: 800rem/@font-size-base;
+
+  padding-top: 100rem/@font-size-base;
+
+  //头部导航
+  .topTitle {
+    width: 100%;
+    height: 180rem/@font-size-base;
+    background: white;
+    border-bottom: 1px solid #dadada;
+
+    .commonPic {
+      width: 70px;
+      height: 70px;
+      [data-dpr='3'] & {
+        width: 105px;
+        height: 105px;
+      }
+      [data-dpr='1'] & {
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    .commonTab {
+      box-sizing: border-box;
+      margin: 0 10%;
+      float: left;
+      width: 30%;
+      background: white;
+      padding:3% 0;
+      color: #858585;
+
+      [data-dpr='3'] & {
+        padding:4% 0;
+      }
+      [data-dpr='1'] & {
+        padding:3% 0;
+      }
+
+      border-bottom: 6rem/@font-size-base solid transparent;
+      text-align: center;
+
+      &.active{
+        border-bottom: 6rem/@font-size-base solid @baseColor;
+        color: @baseColor;
+      }
+    }
+  }
+
+  //待审批/已审批
+  .approvaledTab{
+    display: flex;
+    display: -webkit-box ;
+    display: -webkit-flex ;
+    display: -ms-flexbox ;
+    background: white;
+    padding: 30rem/@font-size-base ;
+    text-align: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #dadada;
+
+    .commmonapprovaledTab{
+      flex-grow: 1;
+      color: #858585;
+
+
+      &.active{
+        color: @baseColor;
+      }
+      img{
+        width: 40px;
+        height: 40px;
+        vertical-align: middle;
+        margin-right: 10rem/@font-size-base;
+        [data-dpr='3'] & {
+          width: 60px;
+          height: 60px;
+        }
+        [data-dpr='1'] & {
+          width: 20px;
+          height: 20px;
+        }
+
+      }
+    }
+
+    //待我审批
+    .toApprovalBtn{
+        border-right: 1px solid #dadada;
+
+    }
+      //我已审批
+    .havedApprovalBtn{
+
+    }
+
+  }
+
+  //提交列表
+  .submitList {
+    width: 100%;
+    background-color: #f9f8f8;
+
+    .detailBox {
+      width: 100%;
+      box-sizing: border-box;
+      background: white;
+      margin-bottom: 30rem/@font-size-base;
+      padding: 30rem/@font-size-base 0 30rem/@font-size-base 160rem/@font-size-base;
+      position: relative;
+      font-size: 24px;
+      [data-dpr='3'] & {
+        font-size: 36px;
+      }
+      [data-dpr='1'] & {
+        font-size: 12px;
+      }
+
+
+      //显示拒绝同意图片
+      .showType{
+        display: none;
+        position: absolute;
+        top:115rem/@font-size-base;
+        right: 20rem/@font-size-base;
+
+        width:200px ;
+        height: 100px;
+        [data-dpr='3'] & {
+          width:300px ;
+          height: 150px;
+        }
+        [data-dpr='1'] & {
+          width:100px ;
+          height: 50px;
+        }
+      }
+
+      .nameBlue {
+        color: @baseColor;
+      }
+
+      .time {
+        color: #858585;
+
+      }
+      .oneList {
+        position: absolute;
+        top: 20rem/@font-size-base;
+        left: 50rem/@font-size-base;
+        img {
+          width: 70px;
+          height: 270px;
+
+          [data-dpr='3'] & {
+            width: 105px;
+            height: 425px;
+          }
+          [data-dpr='1'] & {
+            width: 35px;
+            height: 135px;
+          }
+        }
+
+      }
+
+      .thirdList {
+        margin: 15rem/@font-size-base 0;
+
+      }
+
+      .levelList {
+        margin: 60rem/@font-size-base 0;
+        span {
+          margin-left: 0;
+        }
+        //优先级
+        .level-item {
+          padding: 8rem/@font-size-base 10rem/@font-size-base;
+          //margin-left: 50rem/@font-size-base;;
+          font-size: 24px;
+          [data-dpr='3'] & {
+            font-size: 36px;
+          }
+          [data-dpr='1'] & {
+            font-size: 12px;
+          }
+          border: 1rem/@font-size-base solid gainsboro;
+          border-radius: 6rem/@font-size-base;
+          color: white;
+        }
+
+        .level-1{
+          background-color: #96d452;
+        }
+        .level-2{
+          background-color: #fab42f;
+        }
+        .level-3{
+          background-color: #fa4646;
+        }
+      }
+
+    }
+
+    //占位图
+    .blankPage{
+      position: relative;
+      padding-top: 700rem/@font-size-base;
+      .blankPageImg{
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width:230px;
+        height: 260px;
+        [data-dpr='3'] & {
+          width: 345px;
+          height: 390px;
+        }
+        [data-dpr='1'] & {
+          width: 115px;
+          height: 130px;
+        }
+      }
+    }
+
+  }
+}
+

@@ -1,0 +1,218 @@
+.main-content{
+    height:92%;
+    padding-bottom:2rem;
+    overflow-y: auto;
+}
+.room-list li{
+    float:left;
+    width:33.33%;
+    position: relative;
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+}
+.room-item{
+    position: relative;
+    padding-top:2.5rem;
+    margin-top:2rem;
+}
+.room-item .pic{
+    position: absolute;
+    top:0;
+    left:50%;
+    width:5rem;
+    height: 5rem;
+    margin-left:-2.5rem;
+}
+
+.room-item .info{
+    width:100%;
+    height:12.75rem;
+    background-color: #fff;
+    text-align: center;
+}
+.room-item .info .name{
+    height:4.875rem;
+    line-height: 7.875rem;
+}
+.room-item .info .bespoke{
+    height:3rem;
+    line-height: 3rem;
+    color:#fe6869;
+}
+.room-item .info .state{
+    height:4.875rem;
+    line-height: 4.875rem;
+    border-top:0.063rem solid #eee;
+    color:#f7b888;
+}
+.detail-show-box{
+    background-color:#f2f2f2;
+}
+.detail-show-box .order-item{
+    margin-bottom:1rem;
+    background-color:#fff;
+    color:#333;
+}
+.order-item .info{
+    height:2.625rem;
+    line-height: 2.625rem;
+    padding:0 1rem;
+    border-bottom:0.125rem solid #eee;
+}
+.order-item .detail .row{
+    padding:0.5rem 1rem;
+}
+.order-item .detail .pic{
+    width:7.625rem;
+    height:5.625rem;
+    border:1px solid #eee;
+}
+.order-item .detail .status{
+    display: inline-block;
+    padding: .375rem 0 .5rem;
+    color:#fe6869;
+}
+.order-item .detail .waiter{
+	margin-right:1rem;
+}
+
+.bespoke-detail{
+    padding:1rem 1.5rem;
+}
+.bespoke-detail .item-label{
+    display:inline-block;
+    color:#999;
+}
+/*签名弹窗样式*/
+.sign-class {
+    width: 100%;
+    height: 100%;
+}
+.sign-class .layui-layer-content .evaluation_box {
+    background-color: #f8f8f8;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    bottom: 2.8125rem;
+    left: 0;
+    border-top: 0.03125rem solid #dedede;
+}
+.sign-class .layui-layer-content .evaluation_box > span {
+    display: block;
+    padding-left: 0.9375rem;
+    margin-top: 0.9375rem;
+}
+.sign-class .layui-layer-content .evaluation_box > span sub {
+    vertical-align: baseline;
+    color: #fe6869;
+}
+.sign-class .layui-layer-content .evaluation_box .fiveStar {
+    padding-left: 0.9375rem;
+}
+.sign-class .layui-layer-content .evaluation_box .fiveStar span {
+    font-size: 1.875rem;
+    color: #666666;
+}
+.sign-class .layui-layer-content .evaluation_box .fiveStar span.active {
+    color: #ffd503;
+}
+.sign-class .layui-layer-content #canvas {
+    width: 56.09375rem !important;
+    height: 31.5rem !important;
+    position: relative;
+}
+.sign-class .layui-layer-content #canvas canvas {
+    display: block;
+}
+.sign-class .layui-layer-content #clearCanvas {
+    width: 50%;
+    height: 3.125rem;
+    line-height: 3.125rem;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    font-size: 1.125rem;
+    background-color: #fff;
+    color: #fe6869;
+}
+.sign-class .layui-layer-content #saveCanvas {
+    width: 50%;
+    height: 3.125rem;
+    line-height: 3.125rem;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    font-size: 1.125rem;
+    background-color: #fe6869;
+    color: #fff;
+}
+.sign-class .layui-layer-setwin .layui-layer-close2 {
+    top: -0.625rem !important;
+    right: -0.625rem !important;
+}
+
+/*查看工单详情重写*/
+.detailTop{
+    width: 100%;
+    height: 2.5rem;
+    border-bottom: 0.03125rem solid #dedede;
+    line-height: 2.5rem;
+    padding: 0 1.5625rem;
+}
+.detailTop>span{
+    float: left;
+}
+.detailTop>span:nth-of-type(1),.detailTop>span:nth-of-type(2){
+    width: 30%;
+}
+.detailTop>span:nth-of-type(3){
+    width: 40%;
+}
+.detailInfo{
+    width: 100%;
+    /*height: 100%;*/
+    padding: 0 1.5625rem;
+    margin-top: 0.9375rem;
+    overflow: hidden;
+}
+.detailInfo>img{
+    width:7.625rem;
+    height:5.625rem;
+    border:1px solid #eee;
+    float: left;
+}
+.detailInfo>.detailMsg{
+    float: left;
+    margin-left: 0.9375rem;
+}
+.detailInfo>.detailMsg>p{
+    line-height: 1.9625rem;
+}
+.detailInfo>.detailMsg>p:first-of-type{
+    font-weight: 700;
+}
+.detailStatus{
+    width: 100%;
+    height: 2.1875rem;
+    line-height: 2.1875rem;
+    padding: 0 1.5625rem;
+    margin-top: 1.5625rem;
+    overflow: hidden;
+}
+.detailStatus>.status{
+    float: left;
+    color: #fe6869;
+}
+.detailStatus>.complete-btn{
+    float: right;
+    width: 5.3125rem;
+    height: 2.1875rem;
+    line-height: 2.1875rem;
+    color: #fe6869;
+    border: 0.03125rem solid #fe6869;
+    text-align: center;
+}

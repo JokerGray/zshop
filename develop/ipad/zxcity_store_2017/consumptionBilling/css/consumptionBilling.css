@@ -1,0 +1,566 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+.left {
+  width: 38.45%;
+  background-color: #fff;
+  float: left;
+  overflow-y: auto;
+}
+.left .left_top {
+  width: 100%;
+  height: 3.5625rem;
+  background-color: #F2F2F2;
+  border-bottom: 0.0625rem solid #999;
+  padding-right: 0.9375rem;
+}
+.left .left_top .selectVipBtn {
+  float: right;
+  height: 3.5625rem;
+  line-height: 3.5625rem;
+  font-size: 0.9375rem;
+}
+.left .selectedVip_msg {
+  width: 100%;
+  height: 6.46875rem;
+  padding-left: 0.9375rem;
+  border-bottom: 0.0625rem solid #dadada;
+}
+.left .selectedVip_msg p span {
+  font-size: 0.9375rem;
+  color: #333333;
+}
+.left .selectedVip_msg p b {
+  font-weight: 400;
+}
+.left .selectedVip_msg p:first-of-type {
+  margin-top: 0.625rem;
+}
+.left .selectedVip_msg p:first-of-type b {
+  font-size: 1.125rem;
+  color: #fe6869;
+}
+.left .selectedVip_msg p:nth-of-type(2) {
+  margin-top: 0.625rem;
+}
+.left .selectedVip_msg p:last-of-type {
+  margin-top: 0.625rem;
+}
+.left .selectedVip_msg p:last-of-type b {
+  font-size: 0.8125rem;
+  color: #fe6869;
+}
+.left .selectedServiceCards_box {
+  width: 100%;
+  border-top: 0.3125rem solid #f2f2f2;
+}
+.left .selectedServiceCards_box ul li {
+  width: 100%;
+  padding-left: 0.9375rem;
+  padding-top: 0.4375rem;
+  padding-bottom: 0.9375rem;
+  border-bottom: 0.0625rem solid #dadada;
+  overflow: hidden;
+}
+.left .selectedServiceCards_box ul li h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #333333;
+}
+.left .selectedServiceCards_box ul li h4 sub {
+  vertical-align: baseline;
+  color: #f59701;
+}
+.left .selectedServiceCards_box ul li p {
+  font-size: 0.875rem;
+  color: #333333;
+  margin-top: 0.5625rem;
+}
+.left .selectedServiceCards_box ul li p:first-of-type span {
+  margin-right: 3.5625rem;
+}
+.left .selectedServiceCards_box ul li p:nth-of-type(2) {
+  line-height: 1.5rem;
+}
+.left .selectedServiceCards_box ul li p:nth-of-type(2) > span {
+  white-space: normal;
+  word-break: keep-all;
+  overflow: hidden;
+}
+.left .selectedServiceCards_box ul li p:last-of-type {
+  margin-top: 0.3125rem;
+}
+.left .selectedServiceCards_box ul li p .changeServicePeopleBtn {
+  color: #fe6869;
+}
+.left .selectedServiceCards_box ul li p .changeServiceTypeBtn {
+  color: #f59701;
+}
+.left .selectedServiceCards_box ul li > div {
+  margin-top: 0.625rem;
+  overflow: hidden;
+}
+.left .selectedServiceCards_box ul li > div > span {
+  float: left;
+  height: 1.6875rem;
+  line-height: 1.6875rem;
+  font-size: 0.875rem;
+  color: #333333;
+}
+.left .selectedServiceCards_box ul li > div .selectServiceNum {
+  float: left;
+  margin-left: 3rem;
+}
+.left .selectedServiceCards_box ul li > div .selectServiceNum a {
+  float: left;
+  width: 1.6875rem;
+  height: 1.6875rem;
+  line-height: 1.5625rem;
+  text-align: center;
+  font-size: 1.875rem;
+  color: #666666;
+}
+.left .selectedServiceCards_box ul li > div .selectServiceNum input {
+  float: left;
+  width: 2.8125rem;
+  height: 1.6875rem;
+  outline: none;
+  border: 0.0625rem solid #bfbfbf;
+  -webkit-border-radius: 0.125rem;
+  -moz-border-radius: 0.125rem;
+  border-radius: 0.125rem;
+  margin: 0 0.625rem;
+  text-align: center;
+  -webkit-appearance: none;
+}
+.left .selectedServiceCards_box ul li > div .selectServiceNum .addBtn {
+  color: #2bb8aa;
+}
+.left .selectedServiceCards_box ul li > div .userText {
+  line-height: 2.125rem;
+}
+.left .selectedServiceCards_box ul li > div .userPeople {
+  width: 8.0625rem;
+  height: 2.125rem;
+}
+.left .selectedServiceCards_box ul li > div .select2-container {
+  height: 2.125rem;
+}
+.left .selectedServiceCards_box ul li > div .select2-container .select2-selection--single {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  height: 2.125rem;
+}
+.left .selectedServiceCards_box ul li > div .select2-container .select2-selection--single .select2-selection__rendered {
+  line-height: 2.125rem;
+}
+.left .selectedServiceCards_box ul li > div .select2-container .select2-selection--single .select2-selection__arrow {
+  height: 2.125rem;
+}
+.right {
+  width: 61.55%;
+  height: 15.625rem;
+  background-color: #fff;
+  float: left;
+  overflow-y: scroll;
+}
+.right .right_top_title {
+  width: 100%;
+  height: 3.5625rem;
+  line-height: 3.5625rem;
+  background-color: #F2F2F2;
+  border-bottom: 0.0625rem solid #999;
+}
+.right .right_top_title h4 {
+  font-size: 1.25rem;
+  color: #333333;
+  margin: 0;
+  text-align: center;
+}
+.right .searchSearchCar_box {
+  width: 100%;
+  height: 2.5625rem;
+  background-color: #F2F2F2;
+  border-left: 0.0625rem solid #999;
+  padding: 0.34375rem 0.9375rem 0.34375rem 0.84375rem;
+  position: relative;
+}
+.right .searchSearchCar_box input {
+  width: 100%;
+  height: 1.875rem;
+  border: none;
+  outline: none;
+  background-color: #DDDDDD;
+  text-align: center;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+.right .searchSearchCar_box input::-webkit-search-cancel-button {
+  display: none;
+}
+.right .searchSearchCar_box .deleBtn {
+  position: absolute;
+  width: 1.875rem;
+  height: 1.875rem;
+  background: url("../../common/image/delete.png") no-repeat center;
+  -webkit-background-size: 1.4375rem 1.4375rem;
+  background-size: 1.4375rem 1.4375rem;
+  top: 0.34375rem;
+  right: 1.5625rem;
+  display: none;
+}
+.right .allServiceCards_box ul li,
+.right .serviceCardsResult_box ul li {
+  padding-top: 0.9375rem;
+  padding-left: 0.84375rem;
+  padding-bottom: 0.9375rem;
+  border-bottom: 0.0625rem solid #dadada;
+  position: relative;
+}
+.right .allServiceCards_box ul li h4,
+.right .serviceCardsResult_box ul li h4 {
+  margin: 0;
+  font-size: 1.125rem;
+  color: #333333;
+}
+.right .allServiceCards_box ul li h4 sub,
+.right .serviceCardsResult_box ul li h4 sub {
+  font-size: 0.75rem;
+  color: #333333;
+  vertical-align: baseline;
+}
+.right .allServiceCards_box ul li p,
+.right .serviceCardsResult_box ul li p {
+  font-size: 0.875rem;
+  color: #333333;
+  margin-top: 0.625rem;
+}
+.right .allServiceCards_box ul li p:last-of-type,
+.right .serviceCardsResult_box ul li p:last-of-type {
+  color: #f59701;
+}
+.right .allServiceCards_box ul li p .changeServiceTypeBtn,
+.right .serviceCardsResult_box ul li p .changeServiceTypeBtn {
+  color: #f59701;
+}
+.right .allServiceCards_box ul li .cardMsg,
+.right .serviceCardsResult_box ul li .cardMsg {
+  margin-top: 0.625rem;
+}
+.right .allServiceCards_box ul li .cardMsg span,
+.right .serviceCardsResult_box ul li .cardMsg span {
+  display: inline-block;
+  font-size: 0.875rem;
+  color: #333333;
+}
+.right .allServiceCards_box ul li .cardMsg span input,
+.right .serviceCardsResult_box ul li .cardMsg span input {
+  width: 1.5625rem;
+  height: 100%;
+  border: none;
+  text-align: center;
+  -webkit-appearance: none;
+}
+.right .allServiceCards_box ul li .cardMsg > span:nth-of-type(1),
+.right .serviceCardsResult_box ul li .cardMsg > span:nth-of-type(1) {
+  width: 12.375rem;
+}
+.right .allServiceCards_box ul li .cardMsg > span:nth-of-type(2),
+.right .serviceCardsResult_box ul li .cardMsg > span:nth-of-type(2) {
+  width: 7rem;
+  margin: 0 0rem 0 1.875rem;
+}
+.right .allServiceCards_box ul li .cardMsg .canRewriteBtn,
+.right .serviceCardsResult_box ul li .cardMsg .canRewriteBtn {
+  display: inline-block;
+  width: 0.65625rem;
+  height: 0.75rem;
+  background: url("../../common/image/pen@2x.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.right .allServiceCards_box ul li .waitersBox,
+.right .serviceCardsResult_box ul li .waitersBox {
+  margin-top: 0.625rem;
+}
+.right .allServiceCards_box ul li .waitersBox > span,
+.right .serviceCardsResult_box ul li .waitersBox > span {
+  display: inline-block;
+  font-size: 0.875rem;
+  color: #333333;
+}
+.right .allServiceCards_box ul li .waitersBox > span .changeServicePeopleBtn,
+.right .serviceCardsResult_box ul li .waitersBox > span .changeServicePeopleBtn {
+  color: #fe6869;
+}
+.right .allServiceCards_box ul li .select_sure_btn,
+.right .serviceCardsResult_box ul li .select_sure_btn {
+  position: absolute;
+  width: 5.65625rem;
+  height: 1.96875rem;
+  text-align: center;
+  line-height: 1.96875rem;
+  color: #fff;
+  background-color: #2bb8aa;
+  bottom: 0.3125rem;
+  right: 0.9375rem;
+  font-size: 0.875rem;
+}
+.right .allServiceCards_box ul li .cancelColor,
+.right .serviceCardsResult_box ul li .cancelColor {
+  background-color: #fe6869;
+}
+.right .serviceCardsResult_box {
+  display: none;
+}
+.line {
+  width: 0.0625rem;
+  border-left: 0.0625rem solid #999;
+  position: fixed;
+  top: 0;
+  left: 38.45%;
+  z-index: 2;
+}
+.bottom {
+  width: 38.45%;
+  height: 2.875rem;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-top: 0.08695652rem solid #dadada;
+}
+.bottom .serviceTotal {
+  display: inline-block;
+  font-size: 0.9375rem;
+  color: #fe6869;
+  margin-top: 0.9375rem;
+  margin-left: 1.875rem;
+}
+.bottom .addOrderBtn {
+  float: right;
+  width: 6.28125rem;
+  height: 2.125rem;
+  line-height: 2.125rem;
+  text-align: center;
+  background-color: #fe6869;
+  color: #fff;
+  font-size: 1.125rem;
+  margin-top: 0.375rem;
+  margin-right: 0.9375rem;
+}
+.searchBox {
+  width: 100%;
+  height: 2.5rem;
+  background-color: #DDDDDD;
+  padding: 0.3125rem 0.625rem;
+}
+.searchBox input {
+  width: 86%;
+  height: 1.875rem;
+  border: none;
+  outline: none;
+  padding-left: 0.75rem;
+  background-color: #fff;
+  float: left;
+  -webkit-appearance: none !important;
+  border-radius: 0;
+}
+.searchBox button {
+  width: 10%;
+  height: 1.875rem;
+  border: none;
+  outline: none;
+  float: left;
+  background-color: #fff;
+  color: #999999;
+  margin-left: 4%;
+  -webkit-appearance: none !important;
+}
+.accountListBox,
+.serviceListBox {
+  width: 100%;
+  margin-top: 0.625rem;
+  height: 75%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.accountListBox ul,
+.serviceListBox ul {
+  padding: 0 1.25rem;
+}
+.accountListBox ul li,
+.serviceListBox ul li {
+  width: 100%;
+  height: 2.40625rem;
+  line-height: 2.40625rem;
+  border-bottom: 0.0625rem solid #eee;
+}
+.accountListBox ul li span,
+.serviceListBox ul li span {
+  float: left;
+  width: 33.333%;
+  height: 2.40625rem;
+  font-size: 0.9375rem;
+  color: #333333;
+}
+.accountListBox ul li span:last-of-type,
+.serviceListBox ul li span:last-of-type {
+  color: #999999;
+  text-align: right;
+  display: inline-block;
+  background: url("../../common/image/xiangyou.fw.png") no-repeat right;
+  -webkit-background-size: 0.5rem 0.8125rem;
+  background-size: 0.5rem 0.8125rem;
+}
+.accountListBox ul li span:nth-of-type(2),
+.serviceListBox ul li span:nth-of-type(2) {
+  text-align: center;
+}
+.serviceListBox {
+  text-align: center;
+}
+.serviceListBox ul li:first-of-type span {
+  font-weight: 700;
+  color: #000000;
+  font-size: 1rem;
+}
+.serviceListBox ul li:first-of-type span:last-of-type {
+  font-weight: 700;
+  color: #000000;
+  font-size: 1rem;
+}
+.serviceListBox ul li:first-of-type:first-of-type span:last-of-type {
+  background: none;
+}
+.serviceListBox ul li span:last-of-type {
+  text-align: center;
+  color: #333333;
+}
+body .accountList-class .layui-layer-title,
+body .waiterList-class .layui-layer-title {
+  background-color: #fff!important;
+  font-size: 0.9375rem;
+  color: #333333;
+  padding: 0!important;
+}
+body .accountList-class .layui-layer-setwin,
+body .waiterList-class .layui-layer-setwin {
+  display: none!important;
+}
+body .accountList-class .layui-layer-btn0,
+body .waiterList-class .layui-layer-btn0 {
+  background-color: #fe6869;
+  border-color: #fe6869;
+}
+.layui-layer-shade {
+  opacity: 0.5!important;
+}
+body .waiterList-class .waiterListBox {
+  width: 100%;
+  height: 100%;
+}
+body .waiterList-class .waiterListBox .searchWaiterBox {
+  width: 100%;
+  height: 2.5rem;
+  background-color: #DDDDDD;
+  padding: 0 0.625rem;
+}
+body .waiterList-class .waiterListBox .searchWaiterBox form input {
+  width: 100%;
+  height: 1.875rem;
+  outline: none;
+  border: none;
+  margin-top: 0.3125rem;
+  padding-left: 0.625rem;
+  -webkit-appearance: none !important;
+  border-radius: 0;
+}
+body .waiterList-class .waiterListBox .searchWaiterBox form input::-webkit-search-cancel-button {
+  display: none;
+}
+body .waiterList-class .waiterListBox .waiterList {
+  padding: 0 0.625rem;
+}
+body .waiterList-class .waiterListBox .waiterList ul {
+  padding-top: 20px;
+}
+body .waiterList-class .waiterListBox .waiterList ul li {
+  width: 100%;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  border-bottom: 0.0625rem solid #dadada;
+  color: #333333;
+  font-size: 0.9375rem;
+  padding: 0 0.625rem;
+}
+body .waiterList-class .waiterListBox .waiterList ul li span:nth-of-type(2) {
+  float: right;
+  font-size: 1.5625rem;
+  color: #dddddd;
+}
+body .waiterList-class .waiterListBox .waiterList ul li span:nth-of-type(2) {
+  width: 1rem;
+  height: 1rem;
+  background: url("../../common/image/xiangyou.fw.png") no-repeat center;
+  -webkit-background-size: 0.5625rem;
+  background-size: 0.5625rem;
+  margin-top: 0.796875rem;
+}
+body .waiterList-class .waiterListBox .waiterList ul li span:nth-of-type(2).active {
+  background: url("../../common/image/yes.png") no-repeat center;
+  -webkit-background-size: 1rem;
+  background-size: 1rem;
+}
+.memberListBox .layui-layer-title {
+  background-color: #fff!important;
+  font-size: 0.9375rem;
+  color: #333333;
+  padding: 0!important;
+}
+.memberListBox .listBox {
+  width: 100%;
+}
+.memberListBox .listBox ul {
+  padding: 0.9375rem;
+}
+.memberListBox .listBox ul li {
+  height: 2.40625rem;
+  line-height: 2.40625rem;
+  border-bottom: 0.0625rem solid #eee;
+  font-size: 0;
+}
+.memberListBox .listBox ul li span {
+  display: inline-block;
+  height: 100%;
+  font-size: 0.9375rem;
+  color: #333333;
+  vertical-align: top;
+}
+.memberListBox .listBox ul li span:first-of-type {
+  width: 80%;
+}
+.memberListBox .listBox ul li span:last-of-type {
+  width: 20%;
+  background: url("../../common/image/xiangyou.fw.png") no-repeat right;
+  -webkit-background-size: 0.5rem 0.8125rem;
+  background-size: 0.5rem 0.8125rem;
+}
+.select2-container--open .select2-dropdown {
+  z-index: 999999999 !important;
+}
+.service-page-selection,
+.page-selection {
+  width: 60%;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+/*# sourceMappingURL=consumptionBilling.css.map */

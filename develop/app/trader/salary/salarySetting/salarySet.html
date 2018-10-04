@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工资设置</title>
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/bootstrap-table/bootstrap-table.min.css"/>
+	<link rel="stylesheet" href="css/common.css"> 
+	<style>
+		body{
+			min-width: 1200px;
+		}
+
+		.contain{
+			padding-left:55px;
+			font-family: '微软雅黑'; 
+		}
+
+		.state{
+			height: 20px;
+		    line-height: 20px;
+		    font-size: 18px;
+		    margin-top: 15px;
+		    color: #333;
+		}
+		.state::before{
+			display: inline-block;
+		    content: '';
+		    width: 4px;
+		    height: 18px;
+		    background: #1DBFAF;
+		    vertical-align: bottom;
+		    margin-right: 5px;
+		}
+
+		.positionInfo{
+			width: 85%;
+		}
+		
+		.positionInfo{
+			background: #fff;
+			padding-top: 15px;
+		}
+
+		.positionInfo .bootstrap-table .table>thead>tr>th {
+		    border-left: 0;
+		}
+
+		.positionInfo .table th{
+			background: #F5F5F5;
+		}
+		.positionInfo .fixed-table-container tbody td .th-inner,.positionInfo .fixed-table-container thead th .th-inner{
+			padding: 12px 0;
+			font-size: 16px;
+		}
+		.positionInfo .fixed-table-container{
+			border:0;
+		}
+		.positionInfo .fixed-table-container tbody td {
+		    border-left: none;
+		}
+		.positionInfo .table td{
+			padding: 10px 0;
+			line-height: 30px;
+		}
+		.positionInfo tbody tr{
+
+		}
+
+		#searchInfo{
+			font-size: 15px;
+			font-weight: normal;
+			color:#09CCC2!important;
+		}
+
+
+		.positionInfo table input{
+			width: 120px;
+			height: 30px;
+			padding-left:5px;
+			font-size: 12px;
+		}
+
+		.yuan{
+			margin-left: 5px;
+		}
+
+		.skyBule{
+			color:#09CCC2;
+		}
+
+		a.setting,a.rules {
+			font-size: 15px;
+			font-weight: normal;
+			color:#09CCC2;
+			background: #fff;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		a.delete,a.modifyPositionBtn {
+		    display: inline-block;
+		    background: #ed5565;
+		    padding: 0px 10px;
+		    color: #fff;
+		    border-radius: 3px;
+		}
+		a.modifyPositionBtn{
+			background: #23c6c8;
+		}
+
+		.goodEmployees{
+			width: 85%;
+			padding-right: 15px;
+			margin-bottom: 50px;
+		}
+		
+		.goodEmployees .nav-tabs>li a{
+			font-size: 20px;
+		}
+		.goodEmployees .nav-tabs>li.active>a,.goodEmployees .nav-tabs>li.active>a:focus,.goodEmployees .nav-tabs>li.active>a:hover {
+			border:0;
+			color:#ffa500;
+			border-bottom: 3px solid #ffa500;
+		}
+		.goodEmployees .nav-tabs>li>a:hover{
+			border:0;
+			color:#ffa500;
+			border-bottom: 3px solid #ffa500;
+			background: #fff;
+		}
+		.goodEmployees .tab-content{
+			margin-top: 15px;
+		}
+		.Titles{
+			padding-left: 50px;
+			font-size: 16px;
+			padding-bottom: 15px;
+		}
+
+		.infos,.content{
+			padding-left: 200px;
+		}
+		.infos a{
+			font-size: 17px;
+		    color: #1dbfaf;
+		}
+		.infos img{
+			margin-right: 10px;
+		}
+		.items{
+			font-size: 16px;
+			padding-bottom: 15px;
+		}
+		.items .nums,.rewardValueText{
+			font-size: 20px;
+			color: #1dbfaf;
+		}
+		.items input{
+			width: 120px;
+			height: 30px;
+			text-align: center;
+			border: 0;
+		    border: 1px solid #a9a9a9;
+		    border-radius: 3px;
+		}
+
+		.submitBtn{
+			display: inline-block;
+		    padding: 5px 10px;
+		    background: #ffa500;
+		    color: #fff!important;
+		    border-radius: 3px;
+		    margin-right: 5px;
+		}
+		.deleteBtn img{
+			/*margin-right: 15px;*/
+		}
+		.deleteBtn span{
+			vertical-align: middle;
+		}
+		.deleteBtn{
+			display: inline-block;
+    		color: #f87878!important;
+    		padding: 5px 10px;
+		}
+		.operation{
+			display: inline-block;
+			margin-left: 50px;
+		}
+		.modifyBtn{
+			color:#1dbfaf!important;
+		}
+		.itemInfo{
+			display: inline-block;
+			width: 280px;
+		}
+
+		.lottery {
+		    font-size: 20px;
+		    text-align: center;
+		    margin-top: 100px;
+		}
+		.lottery a{
+			display: inline-block;
+		    padding: 5px 30px;
+		    background: #1DBFAF;
+		    color: #fff!important;
+		    border-radius: 3px;
+		}
+
+		.addPosition{
+			float: right;
+			margin-right: 15px;
+			background: #1c84c6;
+		    padding: 5px 10px;
+		    color: #fff!important;
+		    border-radius: 3px;
+		}
+		
+ 	</style>
+</head>
+<body>
+	<div class="contain">
+		<div class="navs">
+			<a class="base_salary active">基础薪资板块</a>
+			<a class="recruitment_salary">招聘薪资板块</a>
+			<a class="talk_salary">拓客薪资板块</a>
+			<a class="service_salary">服务薪资板块</a>
+			<a class="management_salary">管理薪资板块</a>
+			<a class="activity_salary">活动薪资板块</a>
+		</div>
+
+		<div>
+			<div class="state" style="width:85%;overflow: hidden;height: 30px;">
+		    	请设置职务底薪及其他明细
+		    	<a href="javascript:;" class="addPosition" onclick="addPosition(this)">新增职务</a>
+		    </div>
+
+		    <div class="positionInfo">
+		    	<div class="table-tool-content">
+					<div class="container-fluid table-content">
+						<table class="table table-hover table-condensed" id="position">
+							
+						</table>
+					</div>
+				</div>
+		    </div>
+		</div>
+
+		<div class="goodEmployees">
+			<div class="state">
+				请设置优秀员工奖
+			</div>
+			
+			<!--  -->
+			<div class="goodsEmployeesSetting">
+			  	<!-- Nav tabs -->
+			  	<ul class="nav nav-tabs" role="tablist">
+			    	<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">天奖</a></li>
+			    	<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">月奖</a></li>
+			    	<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">季奖</a></li>
+			    	<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">年奖</a></li>
+			  	</ul>
+
+			  	<!-- Tab panes -->
+			  	<div class="tab-content">
+			  		<!-- 天奖 -->
+			    	<div role="tabpanel" class="tab-pane active" id="home">
+			    		<div class="dayAward">
+				    		<div class="Titles">
+				    			当天服务业绩最高
+				    		</div>
+				    		<div class="dayResults">
+								<div class="content"></div>
+					    		<div class="infos">
+					    			<a href="javascript:;" onclick="addBtn(this)">
+					    				<img src="img/icon_add_1.png" alt="">新增奖励名次
+					    			</a>
+					    		</div>
+				    		</div>
+							
+
+				    		<div class="Titles">
+				    			当天服务人头数最高
+				    		</div>
+
+				    		<div class="dayService">
+				    			<div class="content"></div>
+				    			<div class="infos">
+					    			<a href="javascript:;" onclick="addBtn(this)">
+					    				<img src="img/icon_add_1.png" alt="">新增奖励名次
+					    			</a>
+					    		</div>
+				    		</div>
+
+				    		<div class="Titles">
+				    			当天现金收入最高
+				    		</div>
+							
+							<div class="dayCash">
+								<div class="content"></div>
+					    		<div class="infos">
+					    			<a href="javascript:;" onclick="addBtn(this)">
+					    				<img src="img/icon_add_1.png" alt="">新增奖励名次
+					    			</a>
+					    		</div>
+					    	</div>
+					    </div>
+			    	</div>
+			    	<!-- 月奖 -->
+			    	<div role="tabpanel" class="tab-pane" id="profile">
+			    		<div class="monthAward">
+				    		<div class="Titles">
+				    			当月服务业绩最高
+				    		</div>
+				    		<div class="monthResults">
+								<div class="content"></div>
+					    		<div class="infos">
+					    			<a href="javascript:;" onclick="addBtn(this)">
+					    				<img src="img/icon_add_1.png" alt="">新增奖励名次
+					    			</a>
+					    		</div>
+				    		</div>
+							
+
+				    		<div class="Titles">
+				    			当月服务人头数最高
+				    		</div>
+
+				    		<div class="monthService">
+				    			<div class="content"></div>
+				    			<div class="infos">
+					    			<a href="javascript:;" onclick="addBtn(this)">
+					    				<img src="img/icon_add_1.png" alt="">新增奖励名次
+					    			</a>
+					    		</div>
+				    		</div>
+
+				    		<div class="Titles">
+				    			当月现金收入最高
+				    		</div>
+							
+							<div class="monthCash">
+								<div class="content"></div>
+					    		<div class="infos">
+					    			<a href="javascript:;" onclick="addBtn(this)">
+					    				<img src="img/icon_add_1.png" alt="">新增奖励名次
+					    			</a>
+					    		</div>
+					    	</div>
+					    </div>
+			    	</div>
+			    	<!-- 季奖 -->  
+			    	<div role="tabpanel" class="tab-pane" id="messages">
+			    		<div class="quarterAward">
+				    		<div class="Titles">
+				    			当季度服务业绩最高
+				    		</div>
+				    		<div class="quarterResults">
+								<div class="content"></div>
+					    		<div class="infos">
+					    			<a href="javascript:;" onclick="addBtn(this)">
+					    				<img src="img/icon_add_1.png" alt="">新增奖励名次
+					    			</a>
+					    		</div>
+				    		</div>
+							
+
+				    		<div class="Titles">
+				    			当季度服务人头数最高
+				    		</div>
+
+				    		<div class="quarterService">
+				    			<div class="content"></div>
+				    			<div class="infos">
+					    			<a href="javascript:;" onclick="addBtn(this)">
+					    				<img src="img/icon_add_1.png" alt="">新增奖励名次
+					    			</a>
+					    		</div>
+				    		</div>
+
+				    		<div class="Titles">
+				    			当季度现金收入最高
+				    		</div>
+							
+							<div class="quarterCash">
+								<div class="content"></div>
+					    		<div class="infos">
+					    			<a href="javascript:;" onclick="addBtn(this)">
+					    				<img src="img/icon_add_1.png" alt="">新增奖励名次
+					    			</a>
+					    		</div>
+					    	</div>
+					    </div>
+			    	</div>
+			    	<!-- 年奖 --> 
+			    	<div role="tabpanel" class="tab-pane" id="settings">
+			    		<div class="yearAward">
+				    		<div class="Titles">
+				    			当年服务业绩最高
+				    		</div>
+				    		<div class="yearResults">
+								<div class="content"></div>
+					    		<div class="infos">
+					    			<a href="javascript:;" onclick="addBtn(this)">
+					    				<img src="img/icon_add_1.png" alt="">新增奖励名次
+					    			</a>
+					    		</div>
+				    		</div>
+							
+				    		<div class="Titles">
+				    			当年服务人头数最高
+				    		</div>
+
+				    		<div class="yearService">
+				    			<div class="content"></div>
+				    			<div class="infos">
+					    			<a href="javascript:;" onclick="addBtn(this)">
+					    				<img src="img/icon_add_1.png" alt="">新增奖励名次
+					    			</a>
+					    		</div>
+				    		</div>
+
+				    		<div class="Titles">
+				    			当年现金收入最高
+				    		</div>
+							
+							<div class="yearCash">
+								<div class="content"></div>
+					    		<div class="infos">
+					    			<a href="javascript:;" onclick="addBtn(this)">
+					    				<img src="img/icon_add_1.png" alt="">新增奖励名次
+					    			</a>
+					    		</div>
+					    	</div>
+					    </div>
+			    	</div>
+			  	</div>
+			</div>
+
+			<!-- 开通优秀员工奖 -->
+			<div class="lottery">
+				<a href="javascript:;" onclick="openAward()">开通</a>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/html" id="tp1">
+		<div class="items">
+			<span class="itemInfo"> 第  <span class="nums">1</span>  名获得奖金  <input type="text" class="rewardValue" style="display: none;" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)"> <span class="rewardValueText"></span> 元 </span> 
+			<span class="operation">
+				<a href="javascript:;" class="submitBtn" onclick="subBtn(this)" style="display: none;">提交</a>
+				<a href="javascript:;" class="modifyBtn" onclick="modifyBtn(this)">
+					<img src="img/icon_edit_1.png" alt=""> <span>修改</span>
+				</a>   
+				<a href="javascript:;" class="deleteBtn" onclick="delBtn(this)">
+					<img src="img/icon_remove_1.png" alt=""> <span>删除</span>
+				</a>
+			</span>
+		</div>
+	</script>
+
+	<script src="../../assets/jquery/jquery.min.js"></script>
+	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../assets/layer/layer.js"></script>
+	<link rel="stylesheet" href="../../assets/check_index/layer/skin/default/layer.css"/>
+
+	<!-- bootstrap-table -->
+	<script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+	<script src="js/common.js"></script>
+	<script src="js/salarySet.js"></script>
+</body>
+</html>

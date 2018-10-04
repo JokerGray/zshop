@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>发表视频</title>
+    <!--<link rel="icon" href="images/favicon.ico" type="image/x-icon">-->
+    <link rel="stylesheet" href="../../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/publish.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper clearfix mb30">
+            <div class="right">
+                <div class="crumb">发表</div>
+                <div class="tab-panel publish-tab">
+                    <ul class="tabinner">
+                        <li class="active">
+                            发表视频
+                        </li>
+                    </ul>
+                </div>
+                <div class="right-content">
+                    <!--发表视频-->
+                    <div class="tab-content videos" id="container">
+                        <div class="video-wrap ">
+                            <a class="btn form-btn btn-submit">上传视频<input type="file " class="video-btn cur-p" id="uploadVideo" /></a>
+                            <div class="form-sign">支持绝大多数视频文件格式，为了上传速度较大的视频请压缩后上传</div>
+                            <h4>您所选择的文件列表：</h4>
+                            <div id="videoProgress"></div>
+                            <div id="videoHide"></div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="form-label">视频简介<span class="form-sign ">(必填)</span></div>
+                            <div class="form-content">
+                                <div class="form-input-wrap">
+                                    <textarea class="form-input" maxlength="500" name="videocontent" placeholder="请输入内容 " style="height: 170px; " id="videoTxt"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <div class="form-label">封面</div>
+                            <div class="form-content">
+                                <!--<button class="selectArticle">从视频截取</button>-->
+                                <button class="localUpload " id="selectfiles">从本地上传</button>
+                                <div class="form-sign">发表视频必须要有图片</div>
+                                <div id="preview"></div>
+                                <div id="ossfile"></div>
+                            </div>
+                        </div>
+                        <div class="form-btn-wrap clearfix">
+                            <button class="btn form-btn btn-submit" id="postfiles">发表</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dis-n" id="hidDiv"></div>
+    <script src="../../common/assets/hplus/js/jquery.min.js"></script>
+    <script src="../../common/assets/layui/lay/dest/layui.all.js"></script>
+    <script src="../../common/assets/hplus/js/bootstrap.min.js"></script>
+    <script src="../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    
+    <script src="../../common/js/yyCache.js"></script>
+    <script src="util/util.js"></script>
+    <script src="js/send_video.js"></script> 
+</body>
+</html>

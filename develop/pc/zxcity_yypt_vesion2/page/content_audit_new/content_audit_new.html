@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>内容审核</title>
+    <!-- CssSinglepage-->
+    <!-- <link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" /> -->
+
+
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="css/content_audit_new.css" />
+</head>
+<body>
+<div id="common-tool" class="clearfix p4">
+    <div id="search" data-ty="0">
+        <button class="layui-btn">
+            <i class="layui-icon">&#xe615;</i> 搜索
+        </button>
+    </div>
+</div>
+<div id="search-tool" class="clearfix">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <div class="input-group">
+                <label class="layui-form-label">标题：</label>
+                <input type="text" class="titinput layui-input"  id="merchantName" maxlength="12">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <div class="input-group">
+                <label class="layui-form-label">板块：</label>
+                <div class="laselect layui-inline">
+                    <select name="city" lay-verify="" lay-search  id="platebox" class="laselect platesel"></select>
+                    <!-- <select class="layui-input platesel"></select> -->
+                </div>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <div class="input-group auditType">
+                <span class="layui-form-label">审核状态：</span>
+                <div class="laselect layui-inline">
+                    <select class="" id="isPass"  lay-verify="">
+                        <option value="">-请选择-</option>
+                        <option value="1">审核已通过</option>
+                        <option value="2">审核未通过</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <div class="input-group lasttime input-medium date-picker" data-date-format="yyyy-mm-dd">
+                <div class="input-group layui-inline">
+                    <span class="timecon" for="jurisdiction-begin">创建时间：</span>
+                    <div class="lamydate layui-inline">
+                        <input type="text" class="layui-input" id="jurisdiction-begin">
+                    </div>
+                    <!-- <div class='date form-control' id='datetimepicker1'>
+                        <input name="dtBegin" type="text"  id="jurisdiction-begin" placeholder="-请选择-" >
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </div> -->
+
+                </div>
+                <div class="input-group layui-inline">
+                    <span class="timecon" for="jurisdiction-end">至： </span>
+                    <div class="lamydate layui-inline">
+                        <input type="text" class="layui-input" id="jurisdiction-end"> 
+                    </div>                   
+                    <!-- <div class='date form-control' id='datetimepicker2'>
+                        <input name="dtEnd" type="text"  id="jurisdiction-end" placeholder="-请选择-" >
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="marl10 layui-inline">
+            <div class="input-group">
+                <button class="layui-btn" id="toolSearch">
+                    搜索
+                </button>
+                <button class="layui-btn" id="toolRelize">
+                    重置
+                </button>
+            </div>
+        </div>
+</div>
+<div class="tab-title layui-clear">
+    <ul>
+        <li class="acti" data-num="0"><a class="layui-btn">智享城市APP</a></li>
+        <li data-num="0"><a class="layui-btn">智大师APP</a></li>
+        <li data-num="0"><a class="layui-btn">智享店务PAD</a></li>
+    </ul>
+</div>
+<div class="tabs-title layui-clear">
+    <ul>
+        <li class="active" data-num="0"><a>待审核</a></li>
+        <li data-num="0"><a>已审核</a></li>
+    </ul>
+</div>
+<div class="batchdel layui-clear" id="batchDel">
+    <button class="batchdel-btn layui-btn layui-btn-danger" id="batchdeletbtn">
+        <i class="layui-icon">&#xe640;</i> 批量删除
+    </button>
+</div>
+<div class="table-lt clearfix">
+    <div id="noAudit" class="table-list clearfix">
+        <table lay-filter="tableNo" id="tableNo"></table>
+        <div id="laypageLeft" class="table-rgt"></div>
+    </div>
+</div>
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-sm" lay-event="del" >
+        <i class="layui-icon">&#xe6b2;</i> 审核
+    </button>
+</script>
+<script type="text/html" id="barDemor">
+    <button class="layui-btn layui-btn-sm" lay-event='detail'>
+        <i class="layui-icon">&#xe615;</i> 查看
+    </button>
+    <button class="layui-btn layui-btn-sm" lay-event="dels" >
+        <i class="layui-icon">&#xe6b2;</i> 复审
+    </button>
+</script>
+<script type="text/html" id="titleTpl">
+    {{d.scSysPlateSetting.plateDesc}}
+</script>
+<script type="text/html" id="titleTpl1">
+    {{#  if(d.status == 1){ }}
+    <span>审核已通过</span>
+    {{#  } else { }}
+    <span>审核未通过</span>
+    {{#  } }}
+</script>
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/layui.all.js"></script>
+<!-- <script type="text/javascript" src="../../common/assets/layui/layui.all.js"></script> -->
+
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/pub.js"></script>
+
+
+<!--jSCurr-->
+<!-- <script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script> -->
+<script type="text/javascript" src="js/content_audit_new.js"></script>
+</html>

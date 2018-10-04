@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <title>APP管理</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="app_manage/app_manage.css" />
+</head>
+<body>
+<!--common-head-->
+<div class="container-fluet" id="body-box">
+    <div class="row body-left-nav" >
+        <!--左侧栏导航end-->
+        <div class="jurisdiction-content">
+            <div class="common-title">
+                商户管理 - <span class="jurisdiction-title-name">APP用户管理</span>
+            </div>
+            <div class="row jurisdiction-info">
+                <div class="jurisdiction-right-body">
+                    <div class="common-search">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label class="control-lable" for="jurisdiction-account">账号：</label>
+                                <input type="text" class="form-control layui-input " id="jurisdiction-account" placeholder="请输入信息" >
+                            </div>
+                            <div class="form-group">
+                                <label class="control-lable" for="jurisdiction-name">昵称：</label>
+                                <input type="text" class="form-control layui-input " id="jurisdiction-name" placeholder="请输入信息" >
+                            </div>
+                            <div class="form-group">
+                                <label class="control-lable">是否锁定：</label>
+                                <select class="form-control" id="payLocK">
+                                    <option value="">-请选择-</option>
+                                    <option value="0">启用</option>
+                                    <option value="1">锁定</option>
+                                </select>
+                            </div>
+							<div class="form-group">
+                                <label class="control-lable">是否实名认证：</label>
+                                <select class="form-control" id="isRealName">
+                                    <option value="">-请选择-</option>
+                                    <option value="0">未认证</option>
+                                    <option value="1">待审核</option>
+									<option value="2">已认证</option>
+									<option value="-1">不通过</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-success" id="searchBtn">
+                                <i class="search-icon"></i>查询
+                            </button>
+                        </form>
+                    </div>
+                    <div class="row common-table">
+                        <table class="table table-hover" id="system-table">
+                            <thead>
+                            <tr class="active">
+                                <th>序号</th>
+                                <th>账号</th>
+                                <th>昵称</th>
+                                <th>性别</th>
+                                <th width="5%">居住地</th>
+                                <th width="5%">签名</th>
+                                <th>是否锁定</th>
+                                <th>用户性质</th>
+                                <th>实名认证</th>
+                                <th width="32%">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <div class="clearfix p20">
+                            <div id="paging-box-count">
+
+                            </div>
+                            <div id="paging-box" class="basic-jump"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="common/js/util/util.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+<script type="text/javascript" src="common/js/login_success.js"></script>
+<script type="text/javascript" src="common/js/util/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/pub.js"></script>
+<script type="text/javascript" src="app_manage/app_manage.js"></script>
+</html>

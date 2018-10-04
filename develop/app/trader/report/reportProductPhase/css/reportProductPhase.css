@@ -1,0 +1,577 @@
+body {
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+/**顶部条件选项栏*/
+.topFilterBox {
+  width: 100%;
+  height: 65px;
+  background-color: #f3f3f4;
+  font-size: 0;
+  border-bottom: 1px solid #cccccc;
+}
+.topFilterBox > div {
+  display: inline-block;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.topFilterBox .timeFilter {
+  width: 60%;
+  height: 100%;
+}
+.topFilterBox .timeFilter ul {
+  width: 100%;
+  height: 100%;
+}
+.topFilterBox .timeFilter ul li {
+  float: left;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 0 30px;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  color: #707070;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  font-size: 16px;
+}
+.topFilterBox .timeFilter ul li.active {
+  background-color: #fff;
+  border: none;
+}
+.topFilterBox .shopFilter {
+  width: 40%;
+  height: 100%;
+  line-height: 65px;
+  text-align: right;
+  padding-right: 20px;
+}
+.topFilterBox .shopFilter > div {
+  display: inline-block;
+}
+.topFilterBox .shopFilter > div > label {
+  font-size: 14px;
+  color: #333333;
+  vertical-align: middle;
+}
+.topFilterBox .shopFilter > div > div {
+  display: inline-block;
+  width: 150px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.topFilterBox .shopFilter > div .exportBtn {
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+  line-height: 28px;
+  text-align: center;
+  background-color: #fff;
+  font-size: 12px;
+  color: #333333;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.topFilterBox .shopFilter > div .exportBtn > .exportIcon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: middle;
+}
+.topFilterBox .shopFilter > div .exportBtn > span {
+  vertical-align: middle;
+}
+/**路径显示*/
+.path {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding-left: 20px;
+  font-size: 16px;
+}
+.path .dateIcon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/common/img/dateIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: -5px;
+}
+.path > input {
+  color: #1E9FFF;
+  margin-left: 4px;
+  height: 34px;
+  padding-left: 32px;
+  background: url("../../../assets/common/img/dateIcon.png") no-repeat left 3px;
+  -webkit-background-size: 24px 24px;
+  background-size: 24px 24px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.path > input.selectedDate {
+  width: 116px;
+}
+.path > input.selectedMonth {
+  width: 94px;
+  display: none;
+}
+.path > input.selectedYear {
+  width: 72px;
+  display: none;
+}
+.path > input.selfDate {
+  width: 220px;
+  display: none;
+}
+.path .arrowIcon {
+  font-family: SimSun;
+  margin: 0 4px 0 0;
+  font-weight: 700;
+}
+/**统计概览*/
+.reportOverview {
+  width: 100%;
+  min-height: 118px;
+  background-color: #f3f3f4;
+  padding: 0 20px;
+}
+.reportOverview ul {
+  font-size: 0;
+  padding: 5px 0;
+}
+.reportOverview ul li {
+  float: left;
+  width: 20%;
+  min-width: 300px;
+  height: 98px;
+  background-color: #fff;
+  margin: 5px 0;
+  border: 1px solid #cccccc;
+}
+.reportOverview ul li > p {
+  padding: 0 16px;
+  margin-top: 16px;
+  color: #666666;
+  font-size: 16px;
+}
+.reportOverview ul li > p span:first-of-type {
+  float: left;
+}
+.reportOverview ul li > p span:last-of-type {
+  float: right;
+}
+.reportOverview ul li > p .itemText {
+  max-width: 230px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.reportOverview ul li h4 {
+  font-size: 20px;
+  color: #333333;
+  padding: 16px 16px 0 16px;
+}
+.reportOverview ul li h4 sub {
+  font-size: 14px;
+  vertical-align: text-bottom;
+}
+/**品项走势图*/
+.OverviewTrend {
+  width: 100%;
+  height: 300px;
+  background-color: #f3f3f4;
+  padding: 0 20px;
+}
+.OverviewTrend .canvasBox {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #cccccc;
+  background-color: #fff;
+}
+/**中部筛选栏*/
+.middleFilterBOx {
+  width: 100%;
+  min-height: 55px;
+  background-color: #fff;
+  border-left: 20px solid #f3f3f4;
+  border-right: 20px solid #f3f3f4;
+  margin-top: 20px;
+}
+.middleFilterBOx .tabNav {
+  float: left;
+  padding-left: 10px;
+}
+.middleFilterBOx .tabNav ul li {
+  float: left;
+  margin: 0 10px;
+  margin-top: 18px;
+  padding-bottom: 4px;
+  color: #999999;
+  cursor: pointer;
+  font-size: 16px;
+}
+.middleFilterBOx .tabNav ul li.active {
+  border-bottom: 2px solid #1E9FFF;
+}
+.middleFilterBOx .middleFilterContent {
+  float: right;
+  line-height: 55px;
+}
+.middleFilterBOx .middleFilterContent > div {
+  display: inline-block;
+  margin-right: 20px;
+  color: #707070;
+}
+.middleFilterBOx .middleFilterContent > div > label {
+  font-size: 14px;
+  margin-right: 6px;
+}
+.middleFilterBOx .middleFilterContent > div > .layui-form {
+  display: inline-block;
+  width: 150px;
+}
+.middleFilterBOx .middleFilterContent > div > .searchBtn {
+  width: 80px;
+  height: 34px;
+  outline: none;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+}
+.middleFilterBOx .middleFilterContent > div.card,
+.middleFilterBOx .middleFilterContent > div.product,
+.middleFilterBOx .middleFilterContent > div.package,
+.middleFilterBOx .middleFilterContent > div.setBox {
+  display: none;
+}
+/**报表内容*/
+.tableBox {
+  width: 100%;
+  height: 450px;
+  overflow-y: auto;
+  background-color: #fff;
+  border-left: 20px solid #f3f3f4;
+  border-right: 20px solid #f3f3f4;
+  padding: 0 20px;
+}
+.tableBox .formCard,
+.tableBox .formProduct,
+.tableBox .formPackage,
+.tableBox .formSetBox {
+  display: none;
+}
+.tableBox .layui-table {
+  margin-top: 0;
+}
+.tableBox .layui-table thead > tr > th,
+.tableBox .layui-table tbody > tr > td {
+  text-align: right;
+}
+.tableBox .layui-table thead > tr > th:nth-of-type(1),
+.tableBox .layui-table tbody > tr > td:nth-of-type(1) {
+  text-align: center;
+}
+.tableBox .layui-table thead > tr > th:nth-of-type(2),
+.tableBox .layui-table tbody > tr > td:nth-of-type(2) {
+  text-align: left;
+}
+.tableBox .layui-table tbody > tr > td .seeProjectDetail,
+.tableBox .layui-table tbody > tr > td .seeCardDetail,
+.tableBox .layui-table tbody > tr > td .seeProductDetail,
+.tableBox .layui-table tbody > tr > td .seePackageDetail,
+.tableBox .layui-table tbody > tr > td .seeSetBoxDetail {
+  color: #1E9FFF;
+}
+/**分页选择器*/
+.pageSelectorBox {
+  width: 100%;
+  height: 55px;
+  background-color: #fff;
+  border-left: 20px solid #f3f3f4;
+  border-right: 20px solid #f3f3f4;
+  padding-right: 20px;
+}
+.pageSelectorBox #reportPageSelector {
+  float: right;
+}
+.projectDetail .top,
+.cardDetail .top,
+.productDetail .top,
+.packageDetail .top,
+.setBoxDetail .top {
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  background-color: #353B53;
+  padding: 0 20px;
+  color: #fff;
+}
+.projectDetail .top > span,
+.cardDetail .top > span,
+.productDetail .top > span,
+.packageDetail .top > span,
+.setBoxDetail .top > span {
+  float: left;
+  font-size: 14px;
+}
+.projectDetail .top > i,
+.cardDetail .top > i,
+.productDetail .top > i,
+.packageDetail .top > i,
+.setBoxDetail .top > i {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+.projectDetail .descAndExport,
+.cardDetail .descAndExport,
+.productDetail .descAndExport,
+.packageDetail .descAndExport,
+.setBoxDetail .descAndExport {
+  width: 100%;
+  height: 60px;
+  line-height: 58px;
+  padding: 0 20px;
+}
+.projectDetail .descAndExport .descPath,
+.cardDetail .descAndExport .descPath,
+.productDetail .descAndExport .descPath,
+.packageDetail .descAndExport .descPath,
+.setBoxDetail .descAndExport .descPath {
+  float: left;
+  font-size: 16px;
+  color: #333333;
+}
+.projectDetail .descAndExport .descPath .descName,
+.cardDetail .descAndExport .descPath .descName,
+.productDetail .descAndExport .descPath .descName,
+.packageDetail .descAndExport .descPath .descName,
+.setBoxDetail .descAndExport .descPath .descName {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.projectDetail .descAndExport .descPath > i,
+.cardDetail .descAndExport .descPath > i,
+.productDetail .descAndExport .descPath > i,
+.packageDetail .descAndExport .descPath > i,
+.setBoxDetail .descAndExport .descPath > i {
+  font-family: SimSun;
+}
+.projectDetail .descAndExport .detailRadio,
+.cardDetail .descAndExport .detailRadio,
+.productDetail .descAndExport .detailRadio,
+.packageDetail .descAndExport .detailRadio,
+.setBoxDetail .descAndExport .detailRadio {
+  float: left;
+}
+.projectDetail .descAndExport .detailRadio ul li,
+.cardDetail .descAndExport .detailRadio ul li,
+.productDetail .descAndExport .detailRadio ul li,
+.packageDetail .descAndExport .detailRadio ul li,
+.setBoxDetail .descAndExport .detailRadio ul li {
+  float: left;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.projectDetail .descAndExport .detailRadio ul li > i,
+.cardDetail .descAndExport .detailRadio ul li > i,
+.productDetail .descAndExport .detailRadio ul li > i,
+.packageDetail .descAndExport .detailRadio ul li > i,
+.setBoxDetail .descAndExport .detailRadio ul li > i {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+.projectDetail .descAndExport .detailRadio ul li > span,
+.cardDetail .descAndExport .detailRadio ul li > span,
+.productDetail .descAndExport .detailRadio ul li > span,
+.packageDetail .descAndExport .detailRadio ul li > span,
+.setBoxDetail .descAndExport .detailRadio ul li > span {
+  font-size: 14px;
+  color: #333333;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.projectDetail .descAndExport .detailRadio ul li.active > i,
+.cardDetail .descAndExport .detailRadio ul li.active > i,
+.productDetail .descAndExport .detailRadio ul li.active > i,
+.packageDetail .descAndExport .detailRadio ul li.active > i,
+.setBoxDetail .descAndExport .detailRadio ul li.active > i {
+  border: none;
+  background: url("../../../assets/common/img/selectedIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.projectDetail .descAndExport .detailExportBtn,
+.cardDetail .descAndExport .detailExportBtn,
+.productDetail .descAndExport .detailExportBtn,
+.packageDetail .descAndExport .detailExportBtn,
+.setBoxDetail .descAndExport .detailExportBtn {
+  float: right;
+  width: 80px;
+  height: 34px;
+  font-size: 14px;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  line-height: 34px;
+  text-align: center;
+  margin-top: 13px;
+}
+.projectDetail .descAndExport .detailExportBtn > i,
+.cardDetail .descAndExport .detailExportBtn > i,
+.productDetail .descAndExport .detailExportBtn > i,
+.packageDetail .descAndExport .detailExportBtn > i,
+.setBoxDetail .descAndExport .detailExportBtn > i {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: -6px;
+}
+.projectDetail .detailContent,
+.cardDetail .detailContent,
+.productDetail .detailContent,
+.packageDetail .detailContent,
+.setBoxDetail .detailContent {
+  padding: 0 20px;
+}
+.projectDetail .detailContent > div,
+.cardDetail .detailContent > div,
+.productDetail .detailContent > div,
+.packageDetail .detailContent > div,
+.setBoxDetail .detailContent > div {
+  overflow-y: auto;
+}
+.projectDetail .detailContent > div > table,
+.cardDetail .detailContent > div > table,
+.productDetail .detailContent > div > table,
+.packageDetail .detailContent > div > table,
+.setBoxDetail .detailContent > div > table {
+  margin-top: 0;
+}
+.projectDetail .detailContent > div > table td,
+.cardDetail .detailContent > div > table td,
+.productDetail .detailContent > div > table td,
+.packageDetail .detailContent > div > table td,
+.setBoxDetail .detailContent > div > table td,
+.projectDetail .detailContent > div > table th,
+.cardDetail .detailContent > div > table th,
+.productDetail .detailContent > div > table th,
+.packageDetail .detailContent > div > table th,
+.setBoxDetail .detailContent > div > table th {
+  padding: 9px 4px;
+  min-width: 80px;
+}
+.projectDetail .detailContent > div > table > thead > tr > th:first-of-type,
+.cardDetail .detailContent > div > table > thead > tr > th:first-of-type,
+.productDetail .detailContent > div > table > thead > tr > th:first-of-type,
+.packageDetail .detailContent > div > table > thead > tr > th:first-of-type,
+.setBoxDetail .detailContent > div > table > thead > tr > th:first-of-type,
+.projectDetail .detailContent > div > table > tbody > tr > td:first-of-type,
+.cardDetail .detailContent > div > table > tbody > tr > td:first-of-type,
+.productDetail .detailContent > div > table > tbody > tr > td:first-of-type,
+.packageDetail .detailContent > div > table > tbody > tr > td:first-of-type,
+.setBoxDetail .detailContent > div > table > tbody > tr > td:first-of-type {
+  width: 80px;
+  text-align: center;
+}
+.projectDetail .detailPageBox,
+.cardDetail .detailPageBox,
+.productDetail .detailPageBox,
+.packageDetail .detailPageBox,
+.setBoxDetail .detailPageBox {
+  padding: 0 20px;
+  height: 55px;
+}
+.projectDetail .detailPageBox .detailTotal,
+.cardDetail .detailPageBox .detailTotal,
+.productDetail .detailPageBox .detailTotal,
+.packageDetail .detailPageBox .detailTotal,
+.setBoxDetail .detailPageBox .detailTotal {
+  float: left;
+  line-height: 55px;
+}
+.projectDetail .detailPageBox .detailTotal span,
+.cardDetail .detailPageBox .detailTotal span,
+.productDetail .detailPageBox .detailTotal span,
+.packageDetail .detailPageBox .detailTotal span,
+.setBoxDetail .detailPageBox .detailTotal span {
+  font-size: 16px;
+  color: #333333;
+}
+.projectDetail .detailPageBox .detailTotal span > b,
+.cardDetail .detailPageBox .detailTotal span > b,
+.productDetail .detailPageBox .detailTotal span > b,
+.packageDetail .detailPageBox .detailTotal span > b,
+.setBoxDetail .detailPageBox .detailTotal span > b {
+  color: #ff3030;
+}
+.projectDetail .detailPageBox > div:nth-of-type(2),
+.cardDetail .detailPageBox > div:nth-of-type(2),
+.productDetail .detailPageBox > div:nth-of-type(2),
+.packageDetail .detailPageBox > div:nth-of-type(2),
+.setBoxDetail .detailPageBox > div:nth-of-type(2) {
+  float: right;
+}
+.projectDetail .packageName,
+.cardDetail .packageName,
+.productDetail .packageName,
+.packageDetail .packageName,
+.setBoxDetail .packageName,
+.projectDetail .setBoxName,
+.cardDetail .setBoxName,
+.productDetail .setBoxName,
+.packageDetail .setBoxName,
+.setBoxDetail .setBoxName {
+  display: none;
+}
+.layui-form .layui-form-select {
+  text-align: left;
+}
+.layui-form .layui-form-select dl {
+  max-width: 100%;
+}
+.layui-input {
+  height: 34px;
+  border-color: #cccccc;
+  color: #707070;
+  font-size: 14px;
+}
+/*# sourceMappingURL=reportProductPhase.css.map */

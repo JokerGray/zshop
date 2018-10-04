@@ -1,0 +1,397 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #f0f0f0;
+}
+.layout {
+  width: 68.298%;
+  margin: 20px auto;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  padding: 0 38px;
+}
+.layout .tabNav {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 1px solid #ebebeb;
+}
+.layout .tabNav a {
+  display: inline-block;
+  height: 60px;
+  font-size: 14px;
+  color: #1eccc6;
+  border-bottom: 2px solid #1eccc6;
+  padding: 0 10px;
+}
+.layout .setting_people {
+  border-bottom: 1px solid #ebebeb;
+}
+.layout .setting_people .defaultApprovalPeople,
+.layout .setting_people .defaultCopyPeople {
+  padding-top: 30px;
+  min-height: 130px;
+}
+.layout .setting_people .defaultApprovalPeople label,
+.layout .setting_people .defaultCopyPeople label {
+  display: inline-block;
+  width: 13%;
+  font-size: 14px;
+  color: #333333;
+  vertical-align: top;
+  text-align: right;
+}
+.layout .setting_people .defaultApprovalPeople > div,
+.layout .setting_people .defaultCopyPeople > div {
+  width: 86%;
+  display: inline-block;
+}
+.layout .setting_people .defaultApprovalPeople > div p,
+.layout .setting_people .defaultCopyPeople > div p {
+  color: #333333;
+}
+.layout .setting_people .defaultApprovalPeople > div ul,
+.layout .setting_people .defaultCopyPeople > div ul {
+  padding-top: 30px;
+  padding-left: 25px;
+  min-height: 97px;
+}
+.layout .setting_people .defaultApprovalPeople > div ul li,
+.layout .setting_people .defaultCopyPeople > div ul li {
+  margin-bottom: 20px;
+  display: inline-block;
+  vertical-align: top;
+}
+.layout .setting_people .defaultApprovalPeople > div ul li .arrowIcon,
+.layout .setting_people .defaultCopyPeople > div ul li .arrowIcon {
+  display: inline-block;
+  width: 38px;
+  height: 10px;
+  background: url("../images/approval_set_arrow@2x.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: 42px;
+  margin: 0 9px;
+}
+.layout .setting_people .defaultApprovalPeople > div ul li .approvalPeopleName,
+.layout .setting_people .defaultCopyPeople > div ul li .approvalPeopleName {
+  display: inline-block;
+}
+.layout .setting_people .defaultApprovalPeople > div ul li .approvalPeopleName span,
+.layout .setting_people .defaultCopyPeople > div ul li .approvalPeopleName span {
+  display: block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #7789cf;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.layout .setting_people .defaultApprovalPeople > div ul li .approvalPeopleName s,
+.layout .setting_people .defaultCopyPeople > div ul li .approvalPeopleName s {
+  text-decoration: none;
+  display: block;
+  width: 50px;
+  text-align: center;
+  font-size: 14px;
+  color: #333333;
+  margin-top: 8px;
+}
+.layout .setting_people .defaultApprovalPeople > div ul li.addBtn .arrowIcon,
+.layout .setting_people .defaultCopyPeople > div ul li.addBtn .arrowIcon {
+  vertical-align: 4px;
+}
+.layout .setting_people .defaultApprovalPeople > div ul li.addBtn .approvalPeopleName span,
+.layout .setting_people .defaultCopyPeople > div ul li.addBtn .approvalPeopleName span {
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+  color: #c5c5c5;
+  font-size: 30px;
+}
+.layout .setting_people .defaultApprovalPeople > div ul li.addBtn .approvalPeopleName s,
+.layout .setting_people .defaultCopyPeople > div ul li.addBtn .approvalPeopleName s {
+  height: 19px;
+}
+.layout .setting_people .defaultCopyPeople > div ul {
+  padding-left: 0;
+}
+.layout .setting_people .defaultCopyPeople > div ul li {
+  margin: 0 29px 20px 29px;
+}
+.layout .setting_type {
+  border-bottom: 1px solid #ebebeb;
+}
+.layout .setting_type .approvalType,
+.layout .setting_type .noticeType {
+  padding-top: 40px;
+}
+.layout .setting_type .approvalType label,
+.layout .setting_type .noticeType label {
+  display: inline-block;
+  width: 13%;
+  font-size: 14px;
+  color: #333333;
+  vertical-align: top;
+  text-align: right;
+}
+.layout .setting_type .approvalType ul,
+.layout .setting_type .noticeType ul {
+  width: 86%;
+  display: inline-block;
+}
+.layout .setting_type .approvalType ul li,
+.layout .setting_type .noticeType ul li {
+  margin-left: 30px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.layout .setting_type .approvalType ul li .selectIcon,
+.layout .setting_type .noticeType ul li .selectIcon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #dadada;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.layout .setting_type .approvalType ul li.active .selectIcon,
+.layout .setting_type .noticeType ul li.active .selectIcon {
+  background: url("../images/selected.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  border: none;
+}
+.layout .setting_type .noticeType {
+  padding-bottom: 30px;
+}
+.layout .btns {
+  padding: 78px 15.569%;
+}
+.layout .btns .saveBtn {
+  outline: none;
+  border: none;
+  width: 80px;
+  height: 30px;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #1eccc6;
+}
+.selectPeople.layui-layer {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+.selectPeople.layui-layer .layui-layer-content {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+.selectPeople.layui-layer .title {
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  background-color: #353b53;
+  color: #1ae0d5;
+  font-size: 20px;
+}
+.selectPeople.layui-layer .mainContent {
+  font-size: 0;
+  padding: 0 34px;
+  overflow: hidden;
+}
+.selectPeople.layui-layer .mainContent > div {
+  float: left;
+  width: 45.336%;
+  height: 100%;
+  margin: 0 18px;
+  font-size: 14px;
+}
+.selectPeople.layui-layer .mainContent > div > p {
+  font-size: 20px;
+  color: #333333;
+  padding: 40px 0 16px 0;
+}
+.selectPeople.layui-layer .mainContent > div > div {
+  border: 1px solid #e3e3e3;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  background-color: #f8f8f8;
+  overflow-y: auto;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .search {
+  text-align: center;
+  padding-top: 12px;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .search form {
+  position: relative;
+  width: 100%;
+  height: 40px;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .search form input {
+  position: absolute;
+  left: 12px;
+  top: 0;
+  width: 93.142%;
+  height: 40px;
+  border: 1px solid #e3e3e3;
+  outline: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding-left: 40px;
+  background: url("../images/search.png") no-repeat 10px center;
+  -webkit-background-size: 22px;
+  background-size: 22px;
+  background-color: #ffffff;
+  color: #333333;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .items .item {
+  margin-top: 20px;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .items .item h4 {
+  cursor: pointer;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .items .item h4 .triangleIcon {
+  display: inline-block;
+  width: 14px;
+  height: 8px;
+  background: url("../images/triangle.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: middle;
+  margin: 0 14px 0 20px;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .items .item h4 .shopName {
+  font-size: 14px;
+  color: #666666;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .items .item ul {
+  font-size: 0;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .items .item ul li {
+  margin-top: 10px;
+  cursor: pointer;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .items .item ul li > div {
+  display: inline-block;
+  font-size: 14px;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .items .item ul li > div.name {
+  width: 60%;
+  color: #333333;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .items .item ul li > div.name .sIcon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #d9d9d9;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin: 0 14px 0 20px;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .items .item ul li > div.phoneNum {
+  width: 40%;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .items .item ul li > div.phoneNum .pIcon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  background: url("../images/phone.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  margin-right: 10px;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectContent .items .item ul li.active > div.name .sIcon {
+  background: url("../images/selected_1.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  border: none;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectedContent {
+  padding: 20px 22px 0 22px;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectedContent ul li {
+  font-size: 0;
+  margin-bottom: 10px;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectedContent ul li .name {
+  display: inline-block;
+  width: 60%;
+  font-size: 14px;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectedContent ul li .name .No {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #1eccc6;
+  font-size: 12px;
+  color: #ffffff;
+  line-height: 18px;
+  text-align: center;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectedContent ul li .phoneNum {
+  display: inline-block;
+  width: 40%;
+  font-size: 14px;
+}
+.selectPeople.layui-layer .mainContent > div > div.selectedContent ul li .phoneNum .pIcon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  background: url("../images/phone.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  margin-right: 10px;
+}
+.selectPeople.layui-layer .btnBox {
+  text-align: center;
+  font-size: 0;
+  margin: 30px 0;
+}
+.selectPeople.layui-layer .btnBox button {
+  width: 100px;
+  height: 40px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  margin: 0 32px;
+}
+.selectPeople.layui-layer .btnBox button.cancel {
+  color: #333333;
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+}
+.selectPeople.layui-layer .btnBox button.sure {
+  color: #ffffff;
+  background-color: #1eccc6;
+}
+/*# sourceMappingURL=approvalSetting.css.map */

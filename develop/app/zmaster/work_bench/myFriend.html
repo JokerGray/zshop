@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <title>我的人脉</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" href="pages/myfriend/myfriend.css">
+</head>
+
+<body>
+    <div class="app">
+        <div class="container">
+            <ul class="ul_list">
+                <!-- <li>
+                    <dl>
+                        <dt><img src="29.png" alt=""></dt>
+                        <dd>
+                            <b>马俊</b><span>2018-9-10</span>
+                        </dd>
+                    </dl>
+                </li> -->
+            </ul>
+            <div class="no_data" style="display:none">暂无数据</div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/zepto.min.js"></script>
+
+<script src="assets/layer/layer.js"></script>
+<script src="js/util.js"></script>
+<script>
+    $(function () {
+        var userId = GetQueryString('userId');
+        var USER_URL = {
+            FINDFRIEND:'user/userRecommendPage',//获取人脉
+        }
+        getFriend();
+        function getFriend(){
+            var params = {
+                userId:userId
+            }
+            return reqAjaxAsync(USER_URL.FINDFRIEND,JSON.stringify(params)).done(function(res){
+                console.log(res)
+                if(res.code == 1 && res.data.length){
+                    var datas = res.data;
+                    var str = ``;
+                    $.each(datas,function(i,item){
+                        str+=`<li>
+                                <dl>
+                                    <dt><img src="${item.userpic}" alt=""></dt>
+                                    <dd>
+                                        <b>${item.username}</b><span>${item.shareRegTime}</span>
+                                    </dd>
+                                </dl>
+                            </li>`
+                    })
+                    $(".ul_list").html(str)
+                }else{
+                    $(".no_data").show().siblings().hide();
+                }
+            })
+        }
+    })
+</script>
+
+</html>

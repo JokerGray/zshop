@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <!-- 强制更新 -->
+    <!-- <meta http-equiv="pragma" content="no-cache" /> -->
+    <!-- <meta http-equiv="Cache-Control" content="no-cache" /> -->
+    <!-- <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+    <meta http-equiv="expires" content="Thu, 01 Jan 1970 00:00:01 GMT" />
+    <meta http-equiv="expires" content="0" /> -->
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>约吧小视频分享页</title>
+    <link rel="stylesheet" href="../js/swiper-4.0.7/css/swiper.min.css">
+    <link rel="stylesheet" href="../css/rest.css">
+    <link rel="stylesheet" href="css/qmvedio.css">
+</head>
+<body>
+    <!-- 请跳转至浏览器 -->
+    <div class="model">
+        <div class="model_cont">
+            <p class="text1">1、点击右上角的&nbsp;&nbsp;
+                <span></span>
+            </p>
+            <p class="text2">2、选择&nbsp;&nbsp;
+                <span></span>
+            </p>
+            <div class="pointTo"></div>
+        </div>
+    </div>
+    <div class="app" >
+        <div class="vedio_box" style="display: none">
+            <video id="video" class="vedio_box_vedio" preload  src="" x5-playsinline=""  webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint"  data-type="min">
+
+                您的浏览器不支持 HTML5 video 元素
+            </video>
+            <div class="video_bg"></div>
+            <a id="play" data-type="off" class="play" href="javscript:;"><img src="img/yb_videodetail_play@2x.png" alt=""></a>
+            <div class="text_box">
+                <div class="text_left">
+                    <h4 style="display:none;" id="isGohome">到家服务</h4>
+                    <h3  id="username"></h3>
+                    <p id="videoIntroduce"></p>
+                </div>
+                <div class="text_right" style="display:none;opacity: 1">
+                    <div class="text_right_head"  id="isGoshop" style="display:none;">
+                        <i class=""><img src="" alt=""></i>
+                        <span id="isPartner">找店</span>
+                    </div>
+                    <ul class="text_right_ul">
+                        <li>
+                            <i class="house">
+                                <img src="img/shop.png" alt="">
+                            </i>
+                            <p>店铺</p>
+                        </li>
+                        <li>
+                            <i class="wechat"></i>
+                            约吧
+                        </li>
+                        <li>
+                            <i class="share"></i>
+                            分享
+                        </li>
+                        <li>
+                            <i id="collection" class="collection"></i>
+                            <span>&nbsp;</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="text_bottom">
+                    <span class="time" id="time1">0:00</span>
+                    <div class="range-bg"></div>
+                    <div class="range-bg range-bg-face"></div>
+                    <div class="range" id="range"></div>
+                    <span class="time time2" id="time2">0:00</span>
+                    <i class="fullPage"></i>
+                </div>
+            </div>
+        </div>
+        <div class="vidio_null" style="display: none">
+               该作品不存在或已被作者删除啦
+        </div>
+    </div>
+    <div class="swiper-container shop_list" id="shop_list" style="bottom: -100%;">
+        <h3 class="h3">店铺列表</h3>
+        <div class="swiper-wrapper">
+            <!--<div class="swiper-slide">-->
+                <!--<div class="shop_list_box">-->
+                    <!--<div class="shop_list_mb"></div>-->
+                    <!--<img class="img_null" src="img/bgnull.png"   alt="">-->
+                    <!--<img class="img_yes" src="img/bgnull.png" style="display: none;" alt="">-->
+                    <!--<h4 class="h4">智创纸媒智创纸媒智创纸媒智创纸媒智创纸媒智创纸媒智创纸媒</h4>-->
+                    <!--<i class="go"></i>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="swiper-slide">-->
+                <!--<div class="shop_list_box">-->
+                    <!--<div class="shop_list_mb"></div>-->
+                    <!--<img class="img_null" src="img/bgnull.png"   alt="">-->
+                    <!--<img class="img_yes" src="img/bgnull.png" style="display: none;" alt="">-->
+                    <!--<h4 class="h4">智创纸媒智创纸媒智创纸媒智创纸媒智创纸媒智创纸媒智创纸媒</h4>-->
+                    <!--<i class="go"></i>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="swiper-slide">-->
+                <!--<div class="shop_list_box">-->
+                    <!--<div class="shop_list_mb"></div>-->
+                    <!--<img class="img_null" src="img/bgnull.png"   alt="">-->
+                    <!--<img class="img_yes" src="img/bgnull.png" style="display: none;" alt="">-->
+                    <!--<h4 class="h4">智创纸媒智创纸媒智创纸媒智创纸媒智创纸媒智创纸媒智创纸媒</h4>-->
+                    <!--<i class="go"></i>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/layer/layer.js"></script>
+    <script>
+    (function($)    
+{    
+    
+    $.extend(    
+    {    
+        NV:function(name)    
+        {    
+var NV = {};    
+var UA = navigator.userAgent.toLowerCase();    
+try    
+{    
+    NV.name=!-[1,]?'ie':   
+     
+    (UA.indexOf("firefox")>0)?'firefox':    
+    (UA.indexOf("chrome")>0)?'chrome':    
+    window.opera?'opera': 
+    window.openDatabase?'safari':     
+    'unkonw';    
+}catch(e){};    
+try    
+{    
+    NV.version=(NV.name=='ie')?UA.match(/msie ([\d.]+)/)[1]:    
+    (NV.name=='firefox')?UA.match(/firefox\/([\d.]+)/)[1]:    
+    (NV.name=='chrome')?UA.match(/chrome\/([\d.]+)/)[1]:    
+    (NV.name=='opera')?UA.match(/opera.([\d.]+)/)[1]:    
+    (NV.name=='safari')?UA.match(/version\/([\d.]+)/)[1]:    
+    '0';    
+}catch(e){};    
+try    
+{    
+    NV.shell=(UA.indexOf('360ee')>-1)?'360极速浏览器':    
+    (UA.indexOf('360se')>-1)?'360安全浏览器':    
+    (UA.indexOf('se')>-1)?'搜狗浏览器':    
+    (UA.indexOf('aoyou')>-1)?'遨游浏览器':    
+    (UA.indexOf('theworld')>-1)?'世界之窗浏览器':    
+    (UA.indexOf('worldchrome')>-1)?'世界之窗极速浏览器':    
+    (UA.indexOf('greenbrowser')>-1)?'绿色浏览器':    
+    (UA.indexOf('qqbrowser')>-1)?'QQ浏览器':    
+    (UA.indexOf('baidu')>-1)?'百度浏览器':    
+    '未知或无壳';    
+}catch(e){}    
+            switch(name)    
+            {    
+                case 'ua':    
+                case 'UA':br=UA;break;    
+                case 'name':br=NV.name;break;    
+                case 'version':br=NV.version;break;    
+                case 'shell':br=NV.shell;break;    
+                default:br=NV.name;    
+            }    
+            return br;    
+        }    
+    });    
+})(jQuery); 
+$(function()    
+{    
+//     alert('浏览器UA='+$.NV('UA')+    
+//     '\n\n浏览器名称='+$.NV('name')+    
+//     '\n\n浏览器版本='+parseInt($.NV('version'))+    
+//     '\n\n浏览器外壳='+$.NV('shell'));  
+
+    	if($.NV('name') =='safari' && parseInt($.NV('version'))<6){
+                alert('暂不支持该浏览器，请用其他浏览器浏览,或者启动窗口UA模式！')
+                window.history.go(-1);
+				
+		}else if($.NV('name') == 'chrome' && parseInt($.NV('version'))<20){
+                alert('暂不支持该版本浏览器，请升级或者更换浏览器浏览本页面！')
+                window.history.go(-1);
+		}
+		
+});  
+    // $("body").html(nav)
+    </script>
+    <script src="../js/swiper-4.0.7/js/swiper.min.js"></script>
+    <script src="qmvedio.js"></script>
+</body>
+</html>

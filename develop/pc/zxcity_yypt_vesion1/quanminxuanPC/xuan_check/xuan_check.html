@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+	    <title>全民炫 -视频管理</title>
+	    <link rel="stylesheet" href="../../common/assets/hplus/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../../common/assets/hplus/css/font-awesome.min93e3.css">
+        <link rel="stylesheet" type="text/css" href="../../common/assets/layui-v2.0.1/layui/css/layui.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+	    <link rel="stylesheet" type="text/css" href="css/xuan_check.css">
+    </head>
+	<body>
+		<div class="container-fluid" style="margin-top:20px">
+            <div class="layui-inline">
+		    	<div class="layui-input-inline sc_box">
+		        	<input type="text" id="paramKeys" name="paramKeys" class="layui-input" placeholder="请输入关键字" />
+		      	</div>
+		      	<button class="layui-btn layui-btn-normal" id ="search">搜索</button>
+		    </div>
+            <!-- 列表展示 -->
+			<table id="demo" lay-filter="test" ></table>
+			<!--分页-->
+			<div id="laypageLeft" class="table-rgt"></div>
+		</div>
+		<!-- 按钮 -->
+		<script type="text/html" id="checkboxTpl">
+		  <a class="layui-btn layui-btn-xs editBtn" lay-event="to_edit">编辑</a>
+		  <a class="layui-btn layui-btn-danger layui-btn-xs delBtn" lay-event="to_del">删除</a>
+		</script>
+		<!-- 修改层 -->
+		<div class="modal fade"  role="dialog" id="editTop"  data-backdrop="static" data-keyboard="false">
+	      <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+	        	<div class="modal-header">
+	          		<h4 class="modal-title">修改审核</h4>
+	          		<video id="video" width="540" height="400" autoplay="autoplay" controls >
+	          			您的浏览器不支持该视频格式
+	          		</video>	            	
+	          	</div>
+				<div class="modal-body">
+		            <form>
+		                <div class="form-group">
+		                    <label for="topicTit">审核类型：</label>
+		                    <input id="excellent" type="radio" name="audittype" value="1" title="精选" checked lay-filter="audittype">精选
+                   			<input id="ordinary" type="radio" name="audittype" value="2" title="普通" lay-filter="audittype">普通	                       
+		                </div>		                                                     
+		            </form>		            
+		        </div>
+	          	<div class="modal-footer">
+	          		<div type="button" class="btn btn-primary" id="editTopic">修改</div>
+	            	<div type="button" class="btn btn-default cancels" data-dismiss="modal">取消</div>	            	
+	          	</div>
+	        </div>
+	      </div>
+		</div>		
+		<!-- 图片展示 -->
+		<script type="text/html" id="imgTpl">
+			<div class="showImg">
+				<img class="imgs" src={{d.coverUrl}} style="background:#5cb85c url({{d.coverUrl}}   no-repeat center center;background-size:100% 100%;" />
+			</div>
+		</script>
+		<!-- 序号 -->
+		<script type="text/html" id="indexTpl">
+		    {{d.LAY_TABLE_INDEX+1}}
+		</script>
+		<script type="text/html" id="labelNameTpl">
+		  {{# if(d.dazzleLabelList.length > 0){ }}
+				{{# layui.each(d.dazzleLabelList, function(index, item){ }}
+					<span>{{item.labelName}}</span><br/>
+				{{# }); }}
+		  {{# } }}
+		</script>
+		<!--判断类型-->
+		<script type="text/html" id="dazzleTypeTpl">
+		  {{#  if(d.dazzleType == 0){ }}
+		  <span>视频</span>
+		  {{#  } else { }}
+		  <span>电子名片</span>
+		  {{#  } }}
+		</script>
+		
+	</body>
+	<!-- jSCommon -->
+	<script type="text/javascript" src="../../common/assets/hplus/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../common/assets/hplus/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+	
+	<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+	<script type="text/javascript" src="../../common/js/common.js"></script>
+	<script type="text/javascript" src="../../common/js/util/util.js"></script>
+	<script type="text/javascript" src="../../common/js/util/pub.js"></script>
+	
+	<!--jSCurr-->
+	<script type="text/javascript" src="../../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="../../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/xuan_check.js"></script>
+</html>

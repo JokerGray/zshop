@@ -1,0 +1,299 @@
+body{
+    font-size: 0.16rem;
+}
+.page{
+    width:100%;
+    max-width:1200px;
+    margin: 0 auto;
+}
+.shop-info{
+    width: 100%;
+    height:2.6rem;
+    background:url(../img/shopImg/bg@2x.png) no-repeat center center;
+    background-size: 100% 100%;
+    position: relative;
+}
+.top-shadow{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background:url(../img/shopImg/bg_mengceng@2x.png) no-repeat center center;
+    background-size:100% 100%;
+    height: 0.47rem;
+}
+.user{
+    width:0.7rem;
+    height: 0.7rem;
+    position: absolute;
+    top: 0.7rem;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    margin:0 auto;
+    background-color: #c1c1c1;
+}
+.user img{
+    width:0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+}
+.shop-name{
+    width:1.08rem;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    text-align: center;
+    word-break: break-all;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    position: absolute;
+    top:1.5rem;
+    left: 0;
+    right: 0;
+    margin:0 auto;
+    font-weight: bold;
+    color: #fff;
+    border-bottom: 2px solid #fff;
+}
+.shop-title{
+    width:100%;
+    height: 0.7rem;
+    line-height: 1rem;
+    margin-top: 0.13rem;
+    text-align: center;
+    background:url(../img/shopImg/dian@2x.png) no-repeat center 0;
+    background-size:0.55rem 0.325rem;
+    color: #6d6fdc;
+    font-weight: bold;
+    border-bottom:1px solid #6d6fdc;
+    position: relative;
+}
+.shop-title:after{
+    position: absolute;
+    width:0.35rem;
+    height: 0.03rem;
+    background: #6d6fdc;
+    bottom:-0.015rem;
+    left: 0;
+    right: 0;
+    content:'';
+    margin: 0 auto;
+}
+.shop-box{
+    width:3.75rem;
+    height: 2.32rem;
+    padding-top: 0.3rem;
+    margin-bottom: 0.2rem;
+}
+.shop-sg{
+    background:url(../img/shopImg/yuan_right@2x.png) no-repeat right 0;
+    background-size:auto 100%;
+}
+.shop-db{
+    background:url(../img/shopImg/yuan_left@2x.png) no-repeat left 0;
+    background-size:auto 100%;
+}
+.shop{
+    width:3.1rem;
+    height: 2.3rem;
+    margin: 0 auto;
+    padding-top: 0.12rem;
+}
+.shop-sg .shop{
+    background:url(../img/shopImg/kuang_left@2x.png) no-repeat right 0;
+    background-size:100% 100%;
+    padding-left:0.15rem;
+    padding-right: 0.05rem;
+}
+.shop-db .shop{
+    background:url(../img/shopImg/kuang_right@2x.png) no-repeat left 0;
+    background-size:100% 100%;
+    padding-right:0.1rem;
+    padding-left: 0.1rem;
+}
+.shop .shopImg{
+    width:1.5rem;
+    height: 2.1rem;
+    float: left;
+    font-size: 0.12rem;
+}
+.shop .shopImg img{
+    width:1.5rem;
+    height: 1.65rem;
+    border-radius: 0.1rem;
+    margin-bottom: 0.1rem;
+}
+.shop .shopImg .shop-local{
+    height: 0.35rem;
+    line-height: 0.16rem;
+    padding-left: 0.22rem;
+    position: relative;
+    color: #7394eb;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.shop .shopImg .shop-local p{
+    padding-top: 0.02rem;
+}
+.shop .shopImg .shop-local .loca-lg{
+    position: absolute;
+    left: 0;
+    width:0.165rem;
+    height: 0.255rem;
+    background: url(../img/shopImg/icon_dingwei@2x.png) no-repeat center center;
+    background-size:0.165rem 0.255rem;
+}
+.shop .shopInfo{
+    width:1.5rem;
+    height: 2.1rem;
+    float: left;
+    font-size: 0.12rem;
+    position: relative;
+}
+.shop .shopInfo>img{
+    display: block;
+    margin:0.1rem auto 0;
+    width:0.4rem;
+    height: 0.4rem;
+    border-radius: 0.2rem;
+}
+.shop .shopInfo>.user-img-bt{
+    width:0.45rem;
+    height: 0.11rem;
+    background:url(../img/shopImg/bolang@2x.png) no-repeat center center;
+    background-size: 100% 100%;
+    margin:0.03rem auto 0.1rem;
+}
+.shop .shopInfo .shopName{
+    text-align: center;
+    font-size: 0.14rem;
+    color: #3566e9;
+}
+.shop .shopInfo .phone-logo{
+    position: absolute;
+    width:0.16rem;
+    height: 0.16rem;
+    background:url(../img/shopImg/icon_dianhua@2x.png) no-repeat center center;
+    background-size: 100% 100%;
+    top:1.25rem;
+    left: 0.2rem;
+}
+.shop .shopInfo p{
+    text-align: center;
+}
+.shop .shopInfo .fans{
+    height: 0.36rem;
+    line-height: 0.36rem;
+    font-size: 0.12rem;
+}
+.shop .shopInfo .phone-num{
+    font-size: 0.12rem;
+    margin-bottom: 0.23rem;
+    padding-left: 0.1rem;
+}
+.shop .shopInfo .enter{
+    width:0.81rem;
+    height: 0.425rem;
+    margin: 0 auto;
+    background:url(../img/shopImg/btn_right@2x.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+.shop-db .shop .shopInfo .enter{
+    background:url(../img/shopImg/btn_left@2x.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+.wx_layer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+.msg_box{
+    position: relative;
+    width: 100%;
+    height:1.75rem;
+    background: #fff;
+    padding:0.25rem 0 0 0.75rem;
+}
+.msg_box p{
+    height: 0.7rem;
+    line-height: 0.7rem;
+    font-weight:400;
+}
+.msg_box .msg_arrow{
+    position: absolute;
+    left:2.7rem;
+    top:0.05rem;
+    width:.75rem;
+    height:0.58rem;
+    background: url(../img/shape_up@2x.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+.msg_box .msg_point{
+    position: absolute;
+    left:2rem;
+    top:0.45rem;
+    width:0.3rem;
+    height:0.3rem;
+    background: url(../img/moreshu@2x.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+.msg_box .msg_txt{
+    position: absolute;
+    left:1.3rem;
+    top:1.15rem;
+    width:1.45rem;
+    height:0.3rem;
+    background: url(../img/liulanqi@2x.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+.page{
+   padding-bottom: 0.5rem; 
+}
+.page-download{
+    width: 100%;
+    margin-top: 0.2rem;
+    position: fixed;
+    bottom: 0;
+}
+.page-download img{
+    width: 100%;
+    border: none;
+}
+.bg{
+    width: 100%;
+    height: 0.45rem;
+    background: #343338;
+    padding: 0.08rem 0.12rem;
+    box-sizing: border-box;
+}
+.bg .floatleft{
+    float: left;
+    font-size: 0.16rem;
+    color: #fff;
+}
+.bg .floatright{
+    float: right;
+    width: 0.6rem;
+    height: .25rem;
+    line-height: .25rem;
+    border-radius: .07rem;
+    border: solid 0.01rem #ffffff;
+    text-align: center;
+    font-size: .14rem;
+    color: #FFF;
+    margin-top: .025rem;
+}
+.bg img{
+    width: .3rem;
+    height: .3rem;
+    vertical-align: middle;
+    margin-right: .1rem;
+}
+

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <script src="../common/flexible.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <!--<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">-->
+  <title>转交</title>
+  <link rel="stylesheet" href="../common/layer_mobile/need/layer.css">
+  <link type="text/css" rel="stylesheet" href="css/chooseApproval.css">
+</head>
+<body>
+<!--头部-->
+<div class="title_tab">
+  <p class="back_imgBtn">
+    <img src="img/createType/nav_icon_back@3x.png" class="back_tab to_menu">
+  </p>
+  <span class="name">转交</span>
+</div>
+
+<!--<div>-->
+  <!--<p class="title_tab"><img src="img/createType/nav_icon_back@3x.png" class="back_tab commonback_tab to_createBtn"><span class="name">转交</span></p>-->
+<!--</div>-->
+<div id="leaveList">
+<!--搜索框-->
+  <div class="searchBox">
+    <input type="text" placeholder="输入员工姓名">
+    <img src="img/createType/searchPerson.png" class="searchPeronBtn">
+  </div>
+<!--默认审批人-->
+  <div class="defaultPerson">
+      <span class="tips">当前选择人</span>
+    <span class="name"></span>
+    <span class="to_choose active">选择</span>
+  </div>
+<!--店铺名-->
+  <p class="shopName"></p>
+<!--树状图-->
+  <div class="treeDepartment">
+      <!--<div class="shopTab">-->
+        <!--<p>-->
+          <!--<span class="triangle-down"></span>-->
+          <!--<span>徐东店</span>-->
+        <!--</p>-->
+      <!--</div>-->
+      <!--<div class="shopTab">-->
+        <!--<p >-->
+          <!--<span class="triangle-down "></span>-->
+          <!--<span>徐东店</span>-->
+        <!--</p>-->
+        <!--<ul></ul>-->
+      <!--</div>-->
+  </div>
+</div>
+
+<!--同意，拒绝，撤销弹框-->
+<div class="rejectBox">
+  <div class="innerBox">
+    <p class="title">是否同意此申请？</p>
+    <input type="text" placeholder="请输入理由" maxlength="120" class="reason">
+    <div >
+      <div class="deleteBtn commonbtn">取消</div>
+      <div class="certainBtn commonbtn">确定</div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--<ul>-->
+  <!--<li>-->
+    <!--<img src="img/createType/personImg.png" class="personImg">-->
+    <!--<span class="name">张宇</span>-->
+    <!--<span class="sex">男</span>-->
+    <!--<span class="chooseBtn active">选择</span>-->
+  <!--</li>-->
+  <!--<li>-->
+    <!--<img src="img/createType/personImg.png" class="personImg">-->
+    <!--<span class="name">张宇</span>-->
+    <!--<span class="sex">男</span>-->
+    <!--<span class="chooseBtn active">选择</span>-->
+  <!--</li>-->
+  <!--<li>-->
+    <!--<img src="img/createType/personImg.png" class="personImg">-->
+    <!--<span class="name">张宇</span>-->
+    <!--<span class="sex">男</span>-->
+    <!--<span class="chooseBtn active">选择</span>-->
+  <!--</li>-->
+<!--</ul>-->
+<script src="../common/jquery-1.11.1.min.js"></script>
+<script src="../common/layer_mobile/layer.js"></script>
+<script src="../common/util.js"></script>
+<script src="js/chooseApproval_new.js"></script>
+</body>
+</html>

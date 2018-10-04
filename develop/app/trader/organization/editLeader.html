@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改领袖</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/layer/mobile/need/layer.css">
+    <link rel="stylesheet" href="assets/css/select2.css">
+    <link rel="stylesheet" href="css/organization.css"/>
+</head>
+<body>
+    <div id="editLeader">
+        <div id="leader" style="display:none;">
+            <p class="title">是否确认修改领袖"<span id="name"></span>"?</p>
+            <label class="control-label">请重新选择领袖</label>
+            <select class="form-control" id="person">
+                <option>选择领袖</option>
+            </select>
+        </div>
+        <div id="noleader" style="display:none;">
+            暂无可供选择为领袖的人员
+        </div>
+    </div>
+</body>
+<script src="assets/js/jquery-2.1.0.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/layer/layer.js"></script>
+<script src="assets/js/utilNew.js"></script>
+<script src="js/select.js"></script>
+<script src="assets/js/select2.full.js"></script>
+</html>

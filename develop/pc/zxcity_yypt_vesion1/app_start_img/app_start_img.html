@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>行业流程模板管理</title>    <!-- CssCommon -->
+    <!--<link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="app_start_img.css" />
+</head>
+<body>
+
+    <div class="header layui-form layui-row ">
+        <div class="btn-box">
+            <button class="layui-btn layui-btn-small layui-btn-primary" id="searchToggle" data-type="off"><i class="layui-icon">&#xe615;</i>搜索</button>
+            <div class="fr">
+                <button class="layui-btn layui-btn-small" id="addBtn"><i class="layui-icon ">&#xe61f;</i>新增</button>
+            </div>
+        </div>
+        <ul class="header_ul clearfix" style="display: none">
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item">
+                    <label class="" for="">标题：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="titles" class="layui-input">
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item">
+                    <label class="" for="">状态：</label>
+                    <div class="layui-input-block">
+                        <select name="" class="layui-select" id="statuss">
+                            <option value="">--全部--</option>
+                            <option value="0">启用<option>
+                            <option value="1">禁用</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+                <div class="layui-form-item">
+                    <label class="" for="">&nbsp;</label>
+                    <div class="layui-input-block">
+                        <button class="layui-btn" id="searchBtn">查询</button>
+                        <button class="layui-btn" id="restBtn">重置</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="wrapper-main">
+        <div class="layui-tab" lay-filter="tabDemo">
+            <ul class="layui-tab-title">
+                <li class="layui-this">智享城市</li>
+                <li>智大师</li>
+                <li>智享店务</li>
+            </ul>
+        </div>
+        <div class="main">
+            <table id="tableNo" lay-filter="tableNo"></table>
+            <div class="layui-laypage" id="page"></div>
+        </div>
+    </div>
+
+    <script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-small" lay-event='edit'><i class="layui-icon">&#xe642;</i>修改</button>
+        <button class="layui-btn layui-btn-small" lay-event='del'><i class="layui-icon">&#xe640;</i>删除</button>
+    </script>
+
+    <script type="text/html" id="switchDemo">
+        {{# if(d.status == 0){ }}
+        <input type="checkbox" checked lay-skin="switch"  lay-text="启用|禁用" value="true"  lay-filter="switchTest" >
+        {{#  } else { }}
+        <input type="checkbox"   lay-skin="switch"  lay-text="启用|禁用" value="false" lay-filter="switchTest">
+        {{#  } }}
+    </script>
+    <!--弹出层-->
+    <div id="addDemo" class="layui-form addDemo" style="">
+        <div class="layui-form-item">
+            <label for="" class="layui-form-label">标题:</label>
+            <div class="layui-input-block">
+                <input type="text" id="title" lay-verify="required" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="" class="layui-form-label">平台:</label>
+            <div class="layui-input-block btn_tab">
+                <button class="layui-btn active" data-type="0">智享城市</button>
+                <button class="layui-btn layui-btn-primary"  data-type="1">智大师</button>
+                <button class="layui-btn layui-btn-primary"  data-type="2">智享店务</button>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="" class="layui-form-label">状态:</label>
+            <div class="layui-input-block">
+                <input type="radio" lay-skin="primary" value="0"  name="status" title="启用" checked>
+                <input type="radio" lay-skin="primary" value="1"  name="status" title="禁用">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="" class="layui-form-label">开机图片:</label>
+            <div class="layui-input-block">
+                <img src="../common/image/upload.png" id="bootImgPath" alt="">
+                <input type="hidden" value="1">
+            </div>
+        </div>
+
+        <!--<div class="layui-form-item">-->
+            <!--<label for="" class="layui-form-label">新增图片:</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<button class="layui-btn" id="addImg">+ 新增APP开机图片</button>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<ul class="layui-row lj_ul">-->
+                <!--&lt;!&ndash;<li class="">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label for="" class=" layui-form-label">图片路径:</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="layui-input-block layui-col-sm4">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="text" class="layui-input bootImgPath">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label for="" class=" layui-form-label">排序序号:</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="layui-input-block layui-col-sm2">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="text" class="layui-input sort">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<button class="layui-btn"><i class="layui-icon">&#xe640;</i>删除</button>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li class="">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label for="" class=" layui-form-label">图片路径:</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="layui-input-block layui-col-sm4">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="text" class="layui-input ">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label for="" class=" layui-form-label">排序序号:</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="layui-input-block layui-col-sm2">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="text" class="layui-input ">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<button class="layui-btn"><i class="layui-icon">&#xe640;</i>删除</button>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li class="">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label for="" class=" layui-form-label">图片路径:</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="layui-input-block layui-col-sm4">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="text" class="layui-input ">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label for="" class=" layui-form-label">排序序号:</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="layui-input-block layui-col-sm2">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="text" class="layui-input ">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<button class="layui-btn"><i class="layui-icon">&#xe640;</i>删除</button>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+            <!--</ul>-->
+        <!--</div>-->
+    </div>
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.js"></script>
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+    <script type="text/javascript" src="upload.js"></script>
+    <script type="text/javascript" src="../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+
+
+    <script type="text/javascript" src="app_start_img.js"></script>
+
+
+</body>
+</html>

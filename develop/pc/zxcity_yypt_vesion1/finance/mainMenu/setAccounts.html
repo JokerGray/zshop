@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>结账主页</title>
+	<link rel="stylesheet" href="./setAccounts/css/setAccounts.css">
+	<link type="text/css" rel="stylesheet" href="zCoin/css/zCoin.css">
+  	<link rel="stylesheet" type="text/css" href="../common/plugins/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-table.min.css">
+ 	<link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap-datepicker/css/bootstrap-datepicker.css">
+	<style>
+		#pageContent {
+			margin-top: 65px;
+		}
+		#searchBtn {
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+
+<!--头部搜索框-->	
+<!-- <ul class="seacrch ml20 fl" id="datepicker" data-link-field="dtp_input1">
+  <li style="margin-top: 4px;">时间范围:</li>
+  <li>
+  	<input type="text" class="form-control h34 datepickerwid sechwidth" readonly name="start" id="qBeginTime" placeholder="开始日期" data-date-format="yyyy-mm-dd" style="margin-top: 5px;" />
+  </li>
+  <li>
+    -
+  </li>
+  <li>
+    <input type="text" class="form-control h34 datepickerwid sechwidth" readonly name="end" id="qEndTime" placeholder="截止日期" data-date-format="yyyy-mm-dd" style="margin-top: 5px;" />
+  </li>
+  <li>
+    <img src="headlines/img/searchImg.png" id="searchBtn" style="margin-top: 3px;" >
+  </li>
+</ul> -->
+
+<div class="container-fluid">
+	<div class="row">
+		<ul id="pageContent">
+			<li class="ele-block srtq">
+				<div class="block-title">收入提取</div>
+				<div class="block-content">
+					<p>
+						<label class="block-sub-title">收入金额:&nbsp;&nbsp;</label><label class="block-sub-content" id="totalProfit"></label><br/>
+						<label class="block-sub-title">已提取金额:&nbsp;&nbsp;</label><label class="block-sub-content" id="totalExtractMoney"></label><br/>
+						<label class="block-sub-title">可提取金额:&nbsp;&nbsp;</label><label class="block-sub-content" id="extractableMoney"></label>
+					</p>
+				</div>
+			</li>
+			<li class="ele-block lwfcr">
+				<div class="block-title">劳务费存入</div>
+				<div class="block-content">
+					<p>
+						<label class="block-sub-title">劳务费:&nbsp;&nbsp;</label><label class="block-sub-content" id="totalLaborCosts"></label><br/>
+						<label class="block-sub-title">已存入劳务费:&nbsp;&nbsp;</label><label class="block-sub-content" id="storedMoney"></label><br/>
+						<label class="block-sub-title">可存入劳务费:&nbsp;&nbsp;</label><label class="block-sub-content" id="storableMoney"></label>
+					</p>
+				</div>
+			</li>
+			<!-- <li class="ele-block cz">
+				<div class="block-title">冲账</div>
+				<div class="block-content">
+					<p><label class="block-sub-content" id="reverse"></label></p>
+				</div>
+			</li> -->
+			<li class="ele-block yz">
+				<div class="block-title">预支</div>
+				<div class="block-content">
+					<p>
+						<label class="block-sub-title">已预支:&nbsp;&nbsp;</label><label class="block-sub-content" id="prepayedMoney"></label><br/>
+						<label class="block-sub-title">可预支:&nbsp;&nbsp;</label><label class="block-sub-content" id="prepayableMoney"></label>
+					</p>
+				</div>
+			</li>
+			<li class="ele-block zfbsxfcr">
+				<div class="block-title">支付宝手续费存入</div>
+				<div class="block-content">
+					<p>
+						<label class="block-sub-title">手续费:&nbsp;&nbsp;</label><label class="block-sub-content" id="alipayFee"></label><br/>
+						<label class="block-sub-title">已存入手续费:&nbsp;&nbsp;</label><label class="block-sub-content" id="storedAlipayFee"></label><br/>
+						<label class="block-sub-title">可存入手续费:&nbsp;&nbsp;</label><label class="block-sub-content" id="storableAlipayFee"></label>
+					</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+</div>
+
+</body>
+
+<script type="text/javascript" src="../../common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table.v1.11.0.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/account_common.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/str.js"></script>
+<script type="text/javascript" src="../../common/js/num.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+  
+<script type="text/javascript" src="setAccounts.js"></script>
+</html>

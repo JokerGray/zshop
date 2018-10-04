@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link href="../../../../assets/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/animate.min.css" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	<link rel="stylesheet" href="index.css">
+	<!-- jquery -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/jquery.min.js"></script>
+	
+	<!-- 左侧手风琴菜单-->
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<!--jQuery滚动条特效插件jQuery slimScroll-->
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<!--layer弹出层插件-->
+	<script type="text/javascript" src="../../../../assets/layer/layer.js"></script>
+
+	<!-- 弹层title样式统一 -->
+	<link rel="stylesheet" href="../../../../assets/check_index/layer/skin/default/layer.css">
+	<title>转文赚详细</title>
+</head>
+<body>
+	<div class="myTitle text-center text-info"> 转文赚详细 </div>
+	<div class="container">
+		<div class="row formContent">
+			<div class="col-xs-12 ellipsis">
+				<label>转文赚标题：</label>
+				<span class="title"></span>
+			</div>
+			<div class="col-xs-4 ellipsis">
+				<label>总金额：</label>
+				<span class="total_money"></span>
+			</div>
+			<div class="col-xs-4 ellipsis">
+				<label>已支付：</label>
+				<span class="paid"></span>
+			</div>
+			<div class="col-xs-4 ellipsis">
+				<label>单次点击价：</label>
+				<span class="click"></span>
+			</div>
+			<div class="col-xs-4 ellipsis">
+				<label>限定阅读量：</label>
+				<span class="limit-read"></span>
+			</div>
+			<div class="col-xs-4 ellipsis">
+				<label>已阅读：</label>
+				<span class="read-count"></span>
+			</div>
+			<div class="col-xs-4 ellipsis">
+				<a class="text-info" href="" target="_blank">查看原转发文章</a>
+			</div>														
+		</div>
+		<div class="chartContent" id="chartContent"></div>
+		<input type="hidden" id="reprintId" value="189">
+	</div>
+	
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/echarts/echarts.min.js"></script>
+	<script src="../../src/js/common.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+</body>
+</html>

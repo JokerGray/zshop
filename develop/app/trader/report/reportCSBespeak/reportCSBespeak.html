@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预约统计</title>
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../../assets/common/css/common.css">
+    <link rel="stylesheet" href="./css/reportCSBespeak.css">
+</head>
+<body>
+<!--顶部时间选择和店铺选择-->
+<div class="time-shop">
+    <div class="timeTab">
+        <ul>
+            <li class="active" data-navType="1">日报</li>
+            <li data-navType="0">全部</li>
+            <li data-navType="4">自定义</li>
+        </ul>
+    </div>
+    <div class="shopSelector layui-form">
+        <select id="shopSelector" lay-filter="shopSelector" lay-search> </select>
+    </div>
+</div>
+<!--时间选择和路径显示-->
+<div class="time-path">
+    <div class="timeIcon">
+        <i> </i>
+    </div>
+    <div class="timeSelector">
+        <div>
+            <input type="text" value="" onfocus="blur()" id="day">
+        </div>
+        <div>
+            <span>全部</span>
+        </div>
+        <div>
+            <input type="text" value="" onfocus="blur()" id="dateRange">
+        </div>
+    </div>
+    <div class="path">
+        <i> > </i>
+        <span class="shopName"> </span>
+    </div>
+</div>
+<!--预约概览-->
+<div class="reservationOverview">
+    <ul class="clearfix">
+        <li>
+            <div class="icon"></div>
+            <div>
+                <p>新增预约</p>
+                <h4 id="add"> </h4>
+            </div>
+            <div id="addComparison"> </div>
+        </li>
+        <li>
+            <div class="icon"></div>
+            <div>
+                <p>完成预约</p>
+                <h4 id="finish"> </h4>
+            </div>
+            <div id="finishComparison"> </div>
+        </li>
+        <li>
+            <div class="icon"></div>
+            <div>
+                <p>预约取消</p>
+                <h4 id="cancel"> </h4>
+            </div>
+            <div id="cancelComparison"> </div>
+        </li>
+    </ul>
+</div>
+<!--预约走势图-->
+<div class="reservationTrend">
+    <div id="trend"></div>
+</div>
+<!--预约明细列表-->
+<div class="reservationList">
+    <div class="title-export">
+        <div>
+            <span>预约明细</span>
+        </div>
+        <div>
+            <a href="JavaScript:;" class="exportBtn">
+                <i> </i>
+                <span>导出</span>
+            </a>
+        </div>
+    </div>
+    <div class="tableBox">
+        <table class="layui-table">
+            <colgroup>
+                <col width="80">
+                <col width="150">
+                <col width="150">
+                <col width="100">
+                <col width="100">
+                <col width="100">
+                <col width="150">
+                <col width="150">
+                <col width="150">
+                <col width="80">
+                <col width="120">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>预约店铺</th>
+                <th>预约服务</th>
+                <th>指定服务人员</th>
+                <th>用户名称</th>
+                <th>用户电话</th>
+                <th>预约开始时间</th>
+                <th>预约结束时间</th>
+                <th>创建时间</th>
+                <th>预约状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr>-->
+                <!--<td>01</td>-->
+                <!--<td>YY2018080210305258</td>-->
+                <!--<td>武汉楚河汉街店</td>-->
+                <!--<td>王女士</td>-->
+                <!--<td>散客</td>-->
+                <!--<td>1300000000</td>-->
+                <!--<td>2018-08-29 10:11</td>-->
+                <!--<td>预约中</td>-->
+                <!--<td>-->
+                    <!--<a href="javascript:;">查看详情</a>-->
+                <!--</td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+    <div class="pageBox">
+        <div id="pageSelector"></div>
+    </div>
+</div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/echart/echarts.min.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="./js/reportCSBespeak.js"></script>
+<!--预约单详情弹窗-->
+<script id="detailTpl" type="text/html">
+    <div class="header">
+        <span>预约明细</span>
+        <i class="closeBtn">×</i>
+    </div>
+    <div class="info-status">
+        <div class="reservationInfo">
+            <div>
+                <label>顾客信息：</label>
+                <div>
+                    <p>{{data.customer || '散客'}}，{{data.mobile}}</p>
+                </div>
+            </div>
+            <div>
+                <label>预约店铺：</label>
+                <div>
+                    <p>{{data.shopName}}</p>
+                    <p>{{data.shopAddress}}</p>
+                </div>
+            </div>
+            <div>
+                <label>预约来源：</label>
+                <div>
+                    {{if data.bespokeType == 0}}
+                    <p>电话预约</p>
+                    {{else if data.bespokeType == 1}}
+                    <p>上门预约</p>
+                    {{else if data.bespokeType == 2}}
+                    <p>网上预约</p>
+                    {{else if data.bespokeType == 3}}
+                    <p>商家推荐预约</p>
+                    {{/if}}
+                </div>
+            </div>
+            <div>
+                <label>指定服务人员：</label>
+                <div>
+                    <p>{{data.waiter || '--'}}</p>
+                </div>
+            </div>
+            <div>
+                <label>备注：</label>
+                <div>
+                    <p>{{data.summary || '--'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="status">
+            <img src="./images/{{data.bespokeStatus}}.png" alt="">
+            {{if data.bespokeStatus == 0}}
+            <p>预约中</p>
+            {{else if data.bespokeStatus == 1}}
+            <p>已完成</p>
+            {{else if data.bespokeStatus == 2}}
+            <p>待确认</p>
+            {{else if data.bespokeStatus == -1}}
+            <p>已取消</p>
+            {{else if data.bespokeStatus == -2}}
+            <p>已过期</p>
+            {{/if}}
+        </div>
+    </div>
+    <div class="aboutTime">
+        <ul class="clearfix">
+            <li>预约时间：{{data.createTime}}</li>
+            <li>预约开始时间：{{data.bespokeTime || '-------------无------------'}}</li>
+            <li>预约结束时间：{{data.bespokeEndTime || '-------------无------------'}}</li>
+            <li>服务工单号：----</li>
+            <li>预约完成时间：{{data.finishTime || '-------------无------------'}}</li>
+        </ul>
+    </div>
+    <div class="reservationServiceInfo">
+        <table class="layui-table" lay-skin="line">
+            <colgroup>
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>服务名称</th>
+                <!--<th>次数</th>-->
+                <th>预约金</th>
+                <th>服务价格</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <img src="{{data.serviceImage || 'http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/itemreport/default/morenfuwuka_pic.jpg'}}"
+                         alt="">
+                    <span title="{{data.serviceName}}">{{data.serviceName||'--'}}</span>
+                </td>
+                <!--<td>1</td>-->
+                <td>{{data.subscription||'0.00'}}</td>
+                <td>{{data.servicePrice||'0.00'}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--<div class="realPay">-->
+        <!--<span>实付款：</span>-->
+        <!--<span>￥3,000.00</span>-->
+    <!--</div>-->
+</script>
+</html>

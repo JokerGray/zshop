@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日销售订单详情</title>
+    <link rel="stylesheet" href="../../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../../../assets/common/css/common.css">
+    <link rel="stylesheet" href="../css/dayOrderDetail.css">
+</head>
+<body>
+<!--title和关闭按钮-->
+<div class="header">
+    <span>日销售订单详情</span>
+    <i class="closeBtn">关闭</i>
+</div>
+<!--路径显示和tabNav按钮-->
+<div class="path-radio">
+    <div class="path">
+        <span class="date"> </span>
+        <i> > </i>
+        <span class="shopName"> </span>
+    </div>
+    <div class="radioBtn">
+        <ul class="clearfix">
+            <li class="active" data-index="1">
+                <i> </i>
+                <span>店外购物</span>
+            </li>
+            <li  data-index="2">
+                <i> </i>
+                <span>店内下单</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--主要内容-->
+<div class="main">
+    <div class="online">
+        <!--统计概览-->
+        <div class="overview">
+            <ul class="clearfix">
+                <li>
+                    <div></div>
+                    <div>
+                        <p>支付订单</p>
+                        <h4 id="payCount"> </h4>
+                    </div>
+                    <div id="payCompare"> </div>
+                </li>
+                <li>
+                    <div></div>
+                    <div>
+                        <p>完成订单</p>
+                        <h4 id="completeCount"> </h4>
+                    </div>
+                    <div id="completeCompare"> </div>
+                </li>
+                <li>
+                    <div></div>
+                    <div>
+                        <p>退款订单</p>
+                        <h4 id="returnCount"> </h4>
+                    </div>
+                    <div id="returnCompare"> </div>
+                </li>
+            </ul>
+        </div>
+        <!--订单走势图-->
+        <div class="orderTrend">
+            <div class="trend"></div>
+        </div>
+        <!--报表-->
+        <div class="reportContent">
+            <!--标题和导出按钮-->
+            <div class="title-export">
+                <div class="title">
+                    <span>店外购物订单明细</span>
+                </div>
+                <div class="export">
+                    <a href="javascript:;" class="exportBtn">
+                        <i> </i>
+                        <span>导出</span>
+                    </a>
+                </div>
+            </div>
+            <!--报表内容-->
+            <div class="tableBox">
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="80">
+                        <col width="200">
+                        <col width="200">
+                        <col width="150">
+                        <col width="100">
+                        <col width="100">
+                        <col width="100">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>订单编号</th>
+                        <th>店铺名称</th>
+                        <th>用户名称</th>
+                        <th>商品件数</th>
+                        <th>订单金额</th>
+                        <th>支付金额</th>
+                        <th>支付类型</th>
+                        <th>下单时间</th>
+                        <th>订单状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>ZXCSSHOP201807171654374980089</td>-->
+                    <!--<td>武汉楚河汉街店</td>-->
+                    <!--<td>福西西fcc0616</td>-->
+                    <!--<td>16</td>-->
+                    <!--<td>61</td>-->
+                    <!--<td>610</td>-->
+                    <!--<td>支付宝支付</td>-->
+                    <!--<td>2018-08-24 16:38</td>-->
+                    <!--<td>配送中</td>-->
+                    <!--<td>-->
+                    <!--<a href="JavaScript:;">查看详情</a>-->
+                    <!--</td>-->
+                    <!--</tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="inShop">
+        <!--统计概览-->
+        <div class="overview">
+            <ul class="clearfix">
+                <li>
+                    <div></div>
+                    <div>
+                        <p>新增订单</p>
+                        <h4 id="inShopAddOrder"> </h4>
+                    </div>
+                    <div id="inShopAddOrderCompare"> </div>
+                </li>
+                <li>
+                    <div></div>
+                    <div>
+                        <p>已结算订单</p>
+                        <h4 id="inShopCompleteOrder"> </h4>
+                    </div>
+                    <div id="inShopCompleteCompare"> </div>
+                </li>
+            </ul>
+        </div>
+        <!--订单走势图-->
+        <div class="orderTrend">
+            <div class="inShopTrend"></div>
+        </div>
+        <!--报表-->
+        <div class="reportContent">
+            <!--标题和导出按钮-->
+            <div class="title-export">
+                <div class="title">
+                    <span>店内下单订单明细</span>
+                </div>
+                <div class="export">
+                    <a href="javascript:;" class="inShopExportBtn">
+                        <i> </i>
+                        <span>导出</span>
+                    </a>
+                </div>
+            </div>
+            <!--报表内容-->
+            <div class="tableBox">
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="80">
+                        <col width="200">
+                        <col width="150">
+                        <col width="130">
+                        <col width="130">
+                        <col width="130">
+                        <col width="130">
+                        <col width="150">
+                        <col width="130">
+                        <col width="130">
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <!--<th>订单编号</th>-->
+                        <th>店铺名称</th>
+                        <th>用户名称</th>
+                        <th>商品件数</th>
+                        <th>订单金额</th>
+                        <th>支付金额</th>
+                        <th>支付类型</th>
+                        <th>下单时间</th>
+                        <th>订单状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--<tr>-->
+                    <!--<td>01</td>-->
+                    <!--<td>武汉楚河汉街店</td>-->
+                    <!--<td>福西西fcc0616</td>-->
+                    <!--<td>16</td>-->
+                    <!--<td>61</td>-->
+                    <!--<td>610</td>-->
+                    <!--<td>支付宝支付</td>-->
+                    <!--<td>2018-08-24 16:38</td>-->
+                    <!--<td>配送中</td>-->
+                    <!--<td>-->
+                    <!--<a href="JavaScript:;">查看详情</a>-->
+                    <!--</td>-->
+                    <!--</tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pageBox">
+    <div>
+        <div id="pageSelector"></div>
+    </div>
+</div>
+</body>
+<script src="../../../assets/jquery/jquery.min.js"></script>
+<script src="../../../assets/artTemplate/template-web.js"></script>
+<script src="../../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../../assets/echart/echarts.min.js"></script>
+<script src="../../../assets/common/js/utils.js"></script>
+<script src="../js/dayOrderDetail.js"></script>
+<script id="onlineDetailTpl" type="text/html">
+    <div class="top">
+        <span>订单详情</span>
+        <i class="closeBtn">×</i>
+    </div>
+    <div class="detailContent">
+        <div class="orderStatus">
+            <div>
+                <img src="../images/{{data[0].orderStatus}}.png">
+                <p>
+                    {{if data[0].orderStatus == 0}}
+                    待发货
+                    {{else if data[0].orderStatus == 1}}
+                    配送中
+                    {{else if data[0].orderStatus == 2}}
+                    已收货
+                    {{else if data[0].orderStatus == 3}}
+                    配送失败
+                    {{else if data[0].orderStatus == 4}}
+                    取消
+                    {{else if data[0].orderStatus == 5}}
+                    订单异常
+                    {{else if data[0].orderStatus == 6}}
+                    已退货
+                    {{else if data[0].orderStatus == 50}}
+                    已退款
+                    {{/if}}
+                </p>
+            </div>
+        </div>
+        <div class="orderInfo">
+            <div>
+                <label>送货方式：</label>
+                <div>
+                    <p>{{data[0].deliveryType}}</p>
+                </div>
+            </div>
+            <div>
+                <label>收货地址：</label>
+                <div>
+                    <!--<p>王大大 1340000000</p>-->
+                    <p>{{data[0].address}}</p>
+                </div>
+            </div>
+            <div>
+                <label>买家留言：</label>
+                <div>
+                    <p>{{data[0].remark}}</p>
+                </div>
+            </div>
+            <div>
+                <label>订单编号：</label>
+                <div>
+                    <p>{{data[0].orderNo}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="goodsInfo">
+            <table class="layui-table" lay-skin="line">
+                <colgroup>
+                    <col width="230">
+                    <col width="110">
+                    <col width="110">
+                    <col width="110">
+                    <col width="110">
+                    <!--<col width="110">-->
+                    <col width="120">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>商品名称</th>
+                    <th>商品类型</th>
+                    <th>数量</th>
+                    <th>状态</th>
+                    <th>价格</th>
+                    <!--<th>优惠</th>-->
+                    <th>商品总价</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{each data item index}}
+                <tr>
+                    <td class="goodsMsg">
+                        <img src="{{item.pictureUrl}}" alt="">
+                        <div>
+                            <p title="{{item.goodsName}}">{{item.goodsName}}</p>
+                            <p>
+                                <span>商品描述：{{item.goodsDsr}}</span>
+                                <!--<span>套餐：标准</span>-->
+                            </p>
+                        </div>
+                    </td>
+                    <td>{{item.goodsType}}</td>
+                    <td>{{item.goodsNum}}</td>
+                    <td>
+                        {{if item.orderStatus == 0}}
+                        待发货
+                        {{else if item.orderStatus == 1}}
+                        配送中
+                        {{else if item.orderStatus == 2}}
+                        已收货
+                        {{else if item.orderStatus == 3}}
+                        配送失败
+                        {{else if item.orderStatus == 4}}
+                        取消
+                        {{else if item.orderStatus == 5}}
+                        订单异常
+                        {{else if item.orderStatus == 6}}
+                        已退货
+                        {{else if item.orderStatus == 50}}
+                        已退款
+                        {{/if}}
+                    </td>
+                    <td>{{$imports.moneyFormat(item.goodsPrice)}}</td>
+                    <!--<td>会员80%折扣</td>-->
+                    <td class="totalMoney">
+                        <p>{{$imports.moneyFormat(item.goodsNum*item.goodsPrice)}}</p>
+                        <!--<p>(快递0.00)</p>-->
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div class="payType-money clearfix">
+            <div class="payType">
+                <span>支付方式：</span>
+                <span>{{data[0].payType}}</span>
+            </div>
+            <div class="money">
+                <span>实付金额：</span>
+                <span>￥{{$imports.moneyFormat(data[0].realPay)}}</span>
+            </div>
+        </div>
+    </div>
+</script>
+<script id="inShopDetailTpl" type="text/html">
+    <div class="top">
+        <span>订单详情</span>
+        <i class="closeBtn">×</i>
+    </div>
+    <div class="orderBaseInfo">
+        <span>订单状态：
+            {{if data[0].orderStatus == 0}}
+            待处理
+            {{else if data[0].orderStatus == 1}}
+            处理中
+            {{else if data[0].orderStatus == 2}}
+            待结算
+            {{else if data[0].orderStatus == 3}}
+            已结算
+            {{else if data[0].orderStatus == 4}}
+            已取消
+            {{/if}}
+        </span>
+        <span>支付方式：{{data[0].payType}}</span>
+        <span>实付金额：<i>{{$imports.moneyFormat(data[0].realPay)}}</i></span>
+    </div>
+    <div class="detailTableBox">
+        <table class="layui-table">
+            <colgroup>
+                <col width="80">
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>商品名称</th>
+                <th>商品描述</th>
+                <th>商品类型</th>
+                <th>购买数量</th>
+                <th>商品单价</th>
+                <th>商品总价</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each data item index}}
+            <tr>
+                <td>{{index+1 < 10 ? '0' + (index + 1) : (index + 1)}}</td>
+                <td>{{item.goodsName}}</td>
+                <td>{{item.goodsDsr}}</td>
+                <td>{{item.goodsType}}</td>
+                <td>{{item.goodsNum}}</td>
+                <td>{{$imports.moneyFormat(item.goodsPrice)}}</td>
+                <td>{{$imports.moneyFormat(item.goodsNum*item.goodsPrice)}}</td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</script>
+</html>

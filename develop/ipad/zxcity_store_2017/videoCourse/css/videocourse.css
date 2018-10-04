@@ -1,0 +1,196 @@
+@import "../../common/css/common.css";
+body {
+  background-color: #F2F2F2;
+  overflow: hidden;
+}
+a:hover,
+a:focus,
+a:link,
+a:active {
+  color: #333333;
+}
+header {
+  width: 100%;
+  height: 3.5625rem;
+  line-height: 3.625rem;
+  border-bottom: 0.03125rem solid #dadada;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+nav {
+  width: 100%;
+  height: 3.125rem;
+  background-color: #fff;
+  padding-left: 0.9375rem;
+  position: fixed;
+  top: 3.625rem;
+  left: 0;
+  z-index: 3;
+}
+nav a {
+  font-size: 1.125rem;
+  color: #666666;
+  border-bottom: 0.0625rem solid #666666;
+  display: inline-block;
+  width: 6.5625rem;
+  margin-right: 3.125rem;
+  text-align: center;
+  padding: 0 0.15625rem 0.3125rem 0.15625rem;
+  margin-top: 0.9375rem;
+}
+nav a sub {
+  vertical-align: baseline;
+  font-size: 0.5625rem;
+}
+nav a.active {
+  color: #fe6869;
+  border-color: #fe6869;
+}
+nav a.active sub {
+  color: #fe6869;
+}
+main {
+  width: 100%;
+  height: 100%;
+  padding: 0 0.9375rem;
+  margin-top: 7.6875rem;
+}
+main ul {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+main ul li {
+  width: 12.5rem;
+  height: 12.5rem;
+  background-color: #fff;
+  margin-top: 0.625rem;
+  float: left;
+  margin-right: 1.375rem;
+}
+main ul li:nth-of-type(4n) {
+  margin-right: 0;
+}
+main ul li .imgBox {
+  width: 12.5rem;
+  height: 9.375rem;
+  position: relative;
+}
+main ul li .imgBox img {
+  width: 100%;
+}
+main ul li .imgBox::before {
+  position: absolute;
+  content: '';
+  width: 2.8125rem;
+  height: 2.8125rem;
+  background: url("../assets/images/video@2x.png") no-repeat center;
+  -webkit-background-size: 2.8125rem;
+  background-size: 2.8125rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+main ul li .imgBox::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+main ul li p {
+  display: inline-block;
+  width: 100%;
+  height: 3.125rem;
+  line-height: 3.125rem;
+  font-size: 0.9375rem;
+  padding: 0 0.625rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+main .noDataImg {
+  width: 100%;
+  height: 23.9375rem;
+  background: url("../assets/images/Live-space@2x.png") no-repeat center;
+  -webkit-background-size: 31.15625rem 23.9375rem;
+  background-size: 31.15625rem 23.9375rem;
+  margin-top: 11.25rem;
+  text-align: center;
+}
+main .noDataImg p {
+  font-size: 1.25rem;
+  color: #a8a8a8;
+  padding-top: 24.6875rem;
+}
+.videoBox {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.videoBox video {
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+}
+.videoBox .my-video-dimensions {
+  width: 100%;
+  height: 100%;
+}
+.videoBox .my-video-dimensions .vjs-control-bar {
+  bottom: 0;
+  background-color: #fff;
+}
+.hide {
+  display: none;
+}
+.chimee-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.time-ad {
+  background-color: transparent;
+  border: 0;
+  display: none !important;
+}
+.time-ad img {
+  display: block;
+  width: 30px;
+}
+.time-ad em {
+  position: absolute;
+  right: -7px;
+  top: 35px;
+  width: 60px;
+  text-align: center;
+  font-size: 12px;
+  background-color: rgba(156, 85, 85, 0.66);
+  padding: 0 3px;
+  z-index: -1;
+  border-radius: 5px;
+}
+.time-ad cm-pp-close {
+  display: none;
+}
+.time-ad cm-pp-body {
+  padding: 0;
+}
+chimee-menu {
+  display: none !important;
+}
+.layui-layer-setwin .layui-layer-close2 {
+  z-index: 1;
+  top: -11.875rem !important;
+  right: -7.5rem !important;
+}

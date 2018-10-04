@@ -1,0 +1,281 @@
+
+@function vm($px) {
+  @return ($px / 750) * 100vw;
+}
+@mixin ell() {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin sj($px,$color) {
+  border:vm($px) solid $color;
+  border-top: vm($px) solid transparent;
+  border-bottom:vm($px) solid transparent;
+  border-left:vm($px) solid transparent;
+  border-right: vm($px) solid transparent;
+}
+
+$vm_base: 750;
+$color_base:#333333;
+$wihte:#fff;
+$dark:#000;
+$bdc:#dadada;
+$bdt:#f0eeee;
+$c999:#999999;
+$c666:#666666;
+$money:#f04d06;
+$line:#e1aa5f;
+$shu:#fff01d;
+$req:#f89750;
+$font_h3:vm(36);
+$font_p:vm(28);
+$font_num:vm(40);
+$f88:#f88952;
+$f16:#f16399;
+$f25:#25cdd3;
+$f4bb:#4bb046;
+$f585:#5858ed;
+$f1c:#1c64d0;
+$ffe:#fed59d;
+$d8:#d84967;
+.f88{
+  background:$f88;
+}
+.f16{
+  background: $f16;}
+.f25c{
+  background: $f25;
+}
+.f4b{
+  background: $f4bb;
+}
+.f58{
+  background: $f585;
+}
+.fd8{
+  background: $d8;
+}
+.lh32{
+  line-height:vm(32);
+}
+
+.lh64{
+  line-height:vm(64);
+}
+*{box-sizing: border-box;}
+
+.tac{
+  text-align: center;}
+.h3{
+  color: $dark;
+  font-size:$font_h3;
+}
+.h3c{
+  color: #fcd312;
+}
+.p{
+  font-size:$font_p;
+}
+.font-num{
+  font-size:$font_num;
+}
+.c666{
+  color: $c666;}
+.c999{
+  color: $c999;
+}
+.p24{
+  padding:0 vm(24);}
+.border-radius10{
+  border-radius: vm(10);
+}
+.border-radius5{
+  border-radius: vm(5);
+}
+.posr{
+  position: relative;}
+
+
+body,html{
+  width:100%;
+  height: 100%;}
+
+body{font-family: "Helvetica Neue", Helvetica, "PingFang SC", '微软雅黑', Tahoma, Arial, sans-serif;
+  color: $wihte;
+  background: url(bg.jpg) no-repeat;
+  background-size:cover;
+}
+.app{
+  width:vm(750);
+  height: 100%;
+  overflow-y: auto;
+  margin-top: 0;
+}
+a{
+  color: $color_base;
+}
+a:hover{
+  color: $color_base;
+}
+.tit{
+  position: relative;
+  height: vm(88);
+  background:$wihte ;
+  line-height:vm(88) ;
+  text-align: center;
+  font-size:$font_h3;
+  font-weight: normal;
+  //border-bottom:1px solid $bdc;
+  &_img{
+    position: absolute;
+    left:vm(24);
+    top: 50%;
+    width:vm(28);
+    height:vm(46);
+    margin-top:vm(-23);
+
+  }
+}
+.container{
+  //border-top:1px solid $bdt;
+  //background: $bdt;
+  //padding:vm(40) vm(10);
+  margin-bottom:vm(100);
+  width: vm(750);
+}
+.app-bg{
+}
+.disn{
+  display: none;}
+.z_box{
+  padding-left:vm(80);
+  padding-top:vm(30);
+  .z_box_ul{
+    position: relative;
+    padding-left:vm(28);
+    li{
+      position: relative;
+      padding-bottom:vm(40);
+    }
+    .line{
+      content: '';
+      position: absolute;
+      width:vm(6);
+      height: 100%;
+      background: $wihte;
+      left: vm(-33);
+      top: 0;
+    }
+    .title{
+      line-height:vm(64);
+      font-size:vm(32);
+      position: relative;
+      z-index:100;
+
+    }
+    .title:after{
+      content: '';
+      position: absolute;
+      background: $wihte;
+      top: 50%;
+    }
+    p{
+      position: relative;
+      padding-top:vm(15);
+      line-height:vm(50);
+      font-size:vm(28);
+      padding-left:vm(30);
+
+      i{
+        position: absolute;
+        width:vm(20);
+        height:vm(20);
+        background: $wihte;
+        left: 0;
+        top:50%;
+        margin-top:vm(-5);
+        border-radius: 50%;
+      }
+    }
+    .hk{
+      position: relative;
+      line-height:vm(58);
+      font-size:vm(28);
+      color: $ffe;
+    }
+    li.normal{
+      padding-left:vm(20);
+      .title:after{
+        width:vm(45);
+        height:vm(4);
+        left:vm(-53);
+      }
+      .hk{
+        display: none;
+      }
+    }
+    li.active{
+      padding-left: 0;
+      .lineActive{
+        height: 0%;
+        background: $ffe;
+      }
+      .title{
+        color:$f1c;
+      }
+      .title:after{
+        width:vm(285);
+        height:100%;
+        left:vm(-28);
+        background: $wihte;
+        top: 0;
+        z-index:-1;
+        border-top-right-radius: vm(64);
+        border-bottom-right-radius: vm(64);
+      }
+    }
+
+
+  }
+
+  .percent_box{
+    position: absolute;
+    width:vm(156);
+    right:vm(-180);
+    top: vm(-2);
+    line-height:vm(32);
+    border:vm(2) solid $wihte;
+    background: transparent;
+    text-align: center;
+    font-size:vm(22);
+    border-radius: vm(32);
+    color: $wihte;
+    overflow: hidden;
+    em{
+      width: 100%;
+      position: absolute;
+      background: $f1c;
+      height: 100%;
+      left: 0;
+      z-index:-1;
+    }
+  }
+}
+.apply{
+  position: fixed;
+  width: 84%;
+  height:vm(80);
+  line-height:vm(80);
+  font-weight:bold;
+  letter-spacing: vm(10);
+  font-size:vm(32);
+  background: $wihte;
+  color:$f1c;
+  bottom: vm(20);
+  box-shadow: 0 0 10px rgba(0,0,0,.2);
+  left: 8%;
+  border-radius: vm(40);
+  text-align: center;
+  z-index: 9999;
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+        <title>新增预约</title>
+        <link rel="stylesheet" href="../../common/assets/foundation-v5.5.3/foundation.min.css">
+        <link rel="stylesheet" href="../../common/assets/jedate/skin/jedate.css">
+        <link rel="stylesheet" href="../../common/assets/jedate/skin/mystyle.css">
+        <link rel="stylesheet" href="../../common/css/common.css">
+        <link rel="stylesheet" href="../css/addReservation.css" />
+    </head>
+    <body class="homePage">
+        <div class="main-title">
+			<h5 class="title">新增预约</h5>
+            <a id="saveAddReservationBtn" class="save-btn" href="javascript:void(0);">保存</a>
+		</div>
+        <div class="main-content">
+            <div class="main-top">
+                <div class="select-date">
+                    <div class="select-day">
+                        <a id="selectDateBtn" href="javascript:void(0);">
+                            <span id="currentDateShow" class="selected-cur-date"></span>
+                            <span class="select-bottom-arrow"></span>
+                        </a>
+                    </div>
+                    <div class="date-list-box">
+                        <a class="prev invisible" href="javascript:void(0);"></a>
+                        <a class="next invisible" href="javascript:void(0);"></a>
+                        <div class="date-list-inner">
+                            <div class="date-list">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="select-customer">
+                    <div>
+                        <a id="selectCustomerBtn" href="javascript:void(0);">
+                            <label>客户：</label><span id="selectCustomerName">请选择客户</span>
+                            <span class="select-right-arrow"></span>
+                        </a>
+                    </div>
+                    <div class="desc">备注：<input id="summary" type="text" maxlength="40"></div>
+                </div>
+            </div>
+            <div class="main-bottom">
+                <ul class="small-block-grid-3 medium-block-grid-3 large-block-grid-3">
+                    <li class="select-item select-technician">
+                        <div class="item-inner">
+                            <p class="select-item-title">选择服务人员</p>
+                            <div class="select-inner">
+                                <a id="selectTechnicianBtn" class="select-add-btn" href="javascript:void(0);"></a>
+                                <div id="selectTechnicianList" class="hide">
+                                    <a class="info" href="javascript:void(0);">
+                                        <span class="name"></span>
+                                        <span class="time"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="select-item select-room">
+                        <div class="item-inner">
+                            <p class="select-item-title">选择房间</p>
+                            <div class="select-inner">
+                                <a id="selectRoomBtn" class="select-add-btn" href="javascript:void(0);"></a>
+                                <div id="selectRoomList" class="hide">
+                                    <a class="info" href="javascript:void(0);">
+                                        <span class="name"></span>
+                                        <span class="time"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="select-item select-project">
+                        <div class="item-inner">
+                            <p class="select-item-title">选择项目</p>
+                            <div class="select-inner">
+                                <a id="selectProjectBtn" class="select-add-btn" href="javascript:void(0);"></a>
+                                <div id="selectProjectList" class="hide">
+                                    <a class="info" href="javascript:void(0);">
+                                        <span class="name"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pop-layer" id="technicianSelectBox">
+			<div class="pop-inner">
+                <div class="pop-title">选择服务人员<a class="close-btn" href="javascript:void(0);"></a></div>
+    			<div class="pop-con">
+    				<ul></ul>
+    			</div>
+			</div>
+            <div class="pop-mask"></div>
+        </div>
+		<div class="pop-layer" id="roomSelectBox">
+            <div class="pop-inner">
+                <div class="pop-title">选择房间<a class="close-btn" href="javascript:void(0);"></a></div>
+    			<div class="pop-con">
+    				<ul></ul>
+    			</div>
+            </div>
+			<div class="pop-mask"></div>
+		</div>
+		<div class="pop-layer" id="serviceSelectBox">
+            <div class="pop-inner">
+                <div class="pop-title">选择项目<a class="close-btn" href="javascript:void(0);"></a></div>
+    			<div class="pop-con">
+    				<ul></ul>
+    			</div>
+            </div>
+            <div class="pop-mask"></div>
+		</div>
+
+        <script src="../../common/assets/jquery.min.js"></script>
+        <script src="../../common/assets/foundation-v5.5.3/foundation.min.js"></script>
+        <script src="../../common/assets/foundation-v5.5.3/modernizr.js"></script>
+        <script src="../../common/assets/layer/layer.js"></script>
+        <script src="../../common/assets/jedate/jquery.jedate.js"></script>
+        <script src="../../common/js/common.js"></script>
+        <script src="../js/addReservation.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,63 @@
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body{background:#f1f1f1;}
+			img {
+				display: block;
+				border: none;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			ul,
+			ol,
+			li {
+				list-style: none;
+			}
+			.inputBox{
+				width:100%;
+				background:#fff;
+				position: relative;
+			}
+			.lf_tx:after{display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;}
+			#inputNum{font-size:0.16rem;color:#999;display: block;width:0.6rem;height:0.3rem;float:right;}
+			.inputBox textarea{
+				display: block;
+				width:100%;
+				height:1.3rem;
+				resize: none;
+				outline: none;
+				border:none;
+				padding:0.2rem;
+				font-size:0.14rem;
+				color: #999;
+				line-height:0.18rem;
+			}
+			.inputBox textarea::textarea-placeholder{
+				color:#999;
+			}
+			.touch{
+				height:0.5rem;
+				line-height:0.5rem;
+				width:100%;
+				background:#fff;
+				margin-top:0.1rem;
+			}
+			.inputImg{width:100%;padding-bottom:0.1rem;}
+			.inputImg>p{font-size:0.15rem;color:#999;padding-left:0.2rem;height:0.3rem;line-height:0.3rem;}
+			.inputImg:after{display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;}
+			.imgInstruction{height:0.46rem;line-height:0.46rem;color:#999;display: block;background:#fff;width:100%;border:none;font-size:0.15rem;padding-left:0.2rem;}
+			.inputimgBox{float: left;width:0.6rem;height:0.6rem;margin:0.1rem 0 0 0.1rem;}
+			#inputBtn{background:#fff url(../image/tianjia.png) no-repeat center center;background-size:100% 100%;}
+			#upload{font-size:0.15rem;margin-top:0.2rem;color:#999;}
+			.imgBox{float: left;width:0.6rem;height:0.6rem;margin:0.1rem 0 0 0.1rem;position:relative;}
+			.imgBox>.delBtn{display:block;width:0.15rem;height:0.15rem;background:url(../image/delimg.png) no-repeat center center;background-size:100% 100%;position: absolute;top:-0.05rem;right:-0.05rem;}
+			.imgBox>img{width:100%;height:100%;}
+			input{outline:none;}
+			.touch span{font-size:0.14rem;display: inline-block;height:0.5rem;float: left;margin-left:0.2rem;font-weight:bold;}
+			.touch input{float: left;margin:0.17rem 0 0 0.1rem;width:2.7rem;border: none;font-size:0.14rem;}
+			#submits{width:3.5rem;height:0.45rem;font-size:0.17rem;color:#fff;background:linear-gradient(to right,#fa963f,#fa4d47);border-radius:0.05rem;margin:0.1rem auto;display: block;border:none;}

@@ -1,0 +1,79 @@
+html, body{
+    background-color: #fff;
+    font-family: -apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+}
+body{
+    overflow-y: scroll;
+}
+.ztree i{
+    margin-left: 5px;
+    font-family: 'Glyphicons Halflings';
+}
+.ztree li>div.line{
+    padding: 0.25rem 0;
+}
+.ztree li>div.line:hover{
+    background-color: #fbfbfb;
+}
+.ztree li>div.line input{
+    border: none;
+    outline: none;
+}
+.ztree li span.num{
+    float: right;
+}
+.ptree-title{
+    background-color: #d7e1fa;
+    padding: 0.5rem;
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+}
+#ptree.ztree{
+    padding: 0;
+}
+#ptree.ztree i:hover{
+    color: #d9534f;
+}
+#ptree.ztree i.glyphicon-edit:hover{
+    color: #ec971f;
+}
+#ptree a{
+    position: relative;
+    display: block;
+    height: auto;
+    padding: 0.75rem;
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    line-height: 1;
+}
+#ptree li.level0:nth-of-type(2n) a{
+    margin-bottom: 0;
+    background-color: lightblue;
+}
+#ptree li.level0 a.curSelectedNode{
+    background-color: #e5e5e5;
+}
+/* #ptree li:first-child a{
+    color: red;
+    border-radius: 0;
+    border-color: #f3cb12;
+    color: #f3cb12;
+}
+#ptree li:first-child a.curSelectedNode{
+    color: #fff;
+    background-color: #bbb;
+}
+#ptree li:first-child a::after{
+    content: ' ';
+    position: absolute;
+    height: 0;
+    width: 0;
+    left: 0;
+    top: 0;
+    border-left: 8px solid #f3cb12;
+    border-top: 8px solid #f3cb12;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+} */

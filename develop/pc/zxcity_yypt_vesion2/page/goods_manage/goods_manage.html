@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智币商品管理</title>
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <link rel="stylesheet" href="../../common/css/rest_new.css">
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="goods_manage.css" />
+</head>
+<body>
+    <div class="app-wrap layui-row layui-fluid layui-form">
+
+        <div class="header clearfix">
+            <div class="layui-form-item">
+                <label for="">选择业务板块:</label>
+                <div class="layui-input-inline">
+                    <select class="layui-select" name="" id="moduleName" lay-filter="moduleName">
+                        <!--<option value="0100">脸圈</option>-->
+                        <!--<option value="0110">直播</option>-->
+                        <!--<option value="0200">全民炫</option>-->
+                        <!--<option value="0300">约吧</option>-->
+                        <!--<option value="0400">圈子</option>-->
+                        <!--<option value="0500">二十四小时</option>-->
+                        <!--<option value="0600">云店</option>-->
+                        <!--<option value="0601">云店-购买</option>-->
+                        <!--<option value="0602">云店-预约金</option>-->
+                        <!--<option value="0603">云店-专业制作</option>-->
+                        <!--<option value="0700">游戏</option>-->
+                        <!--<option value="0701">游戏-麻将</option>-->
+                        <!--<option value="0702">游戏-山海经</option>-->
+                        <!--<option value="0800">玩家挣钱</option>-->
+                        <!--<option value="0801">玩家挣钱-转文赚</option>-->
+                        <!--<option value="0802">玩家挣钱-抢标赚</option>-->
+                        <!--<option value="0803">玩家挣钱-分享赚</option>-->
+                        <!--<option value="0900">智大师</option>-->
+                    </select>
+                </div>
+                <div class="fr">
+                    <button class="layui-btn" id="addBtn">+新增商品</button>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <table lay-filter="demo" id="demo" class="mtb0"></table>
+            <div id="laypageLeft" class="fr"></div>
+        </div>
+    </div>
+    <script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event='change'>
+            <i class="layui-icon">&#xe642;</i> 修改
+        </button>
+        <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event='del'>
+            <i class="layui-icon">&#xe640;</i> 删除
+        </button>
+    </script>
+    <div id="addDemo" class="disn layui-form layer-box">
+        <div class="input-box">
+            <div class="layui-form-item">
+                <label class="layui-form-label">业务板块：</label>
+                <div class="layui-input-block">
+                    <input lay-verify="required" id="newGoodsCategory" placeholder="" readonly type="text" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品名称：</label>
+                <div class="layui-input-block">
+                    <input lay-verify="required" id="goodsName" type="text" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品价格：</label>
+                <div class="layui-input-block">
+                    <input lay-verify="required|number" id="goodsPrice" placeholder="只能是数字" type="text" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品图片：</label>
+                <div class="layui-input-block">
+                    <img src="../../common/images/upload.png" id="goodsPic" class="signform-face-img"  style="width:200px;height:200px;border: 1px solid #eee;" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+<script type="text/javascript" src="../../common/assets/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+    <script src="../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="../../common/js/upload.js"></script>
+
+    <script src="goods_manage.js"></script>
+</body>
+</html>

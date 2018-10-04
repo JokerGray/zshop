@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>执行手术</title>
+	
+	<link rel="stylesheet" href="../../assets/check_index/layer/skin/default/layer.css"/>
+
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+
+
+	<link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+
+	<link rel="stylesheet" type="text/css" href="src/iconfont/iconfont.css">
+	<link rel="stylesheet" href="../../assets/bootstrapDatePicker/css/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/bootstrap-table/bootstrap-table.min.css"/> 
+	<link  rel="stylesheet" href="../../assets/select2-v4.0.6/css/select2.min.css"></script>
+	
+	<link rel="stylesheet" href="src/css/common.css">
+
+	<script src="../../assets/hplus/js/jquery.min.js"></script>
+	<script src="../../assets/layer/layer.js"></script>
+	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../assets/layui-v2.3.0/layui.js"></script>
+	<script src="../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="../../assets/select2-v4.0.6/js/select2.full.min.js"></script>
+
+	<script src="src/js/common.js"></script>
+	
+	<!-- bootstrap-table -->
+	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background: #f7f7f7;
+			min-width: 1100px;
+		}
+		.back{
+			text-align: center;
+			display: inline-block;
+			text-decoration: none;
+			width: 80px;
+			height: 30px;
+			line-height: 30px;
+			color: #999;
+			border:1px solid #999;
+			border-radius: 5px;
+		}
+		.contain{
+			padding:10px 20px;
+		}
+		.customerInfo{
+			position: relative;
+			width: 100%;
+			border:1px solid #d9d9d9;
+			border-radius: 5px;
+			margin-top: 20px;
+			background: #fff;
+		}
+		.customerInfo .title{
+			position: absolute;
+			width: 40px;
+			height: 100%;
+			background: #21c9c9;
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+			color: #fff;
+		    box-sizing: border-box;
+		    padding: 30px 10px;
+		    font-weight: bold;
+		}
+
+		span.titleInfo {
+		    position: absolute;
+		    top: 50%;
+		    transform: translateY(-50%);
+		    padding-right: 10px;
+		}
+		.customerInfo .content{
+			width: 100%;
+			height: 100%;
+			padding-left: 40px;
+			box-sizing: border-box;
+		}
+		.customerInfo .content div.messageInfo{
+			display: inline-block;
+			width: 33%;
+			padding-top: 15px;
+		}
+		.customerInfo .content label{
+			display: inline-block;
+			width: 120px;
+			text-align: right;
+		}
+		.customerInfo .content p{
+			text-align: right;
+		}
+		.customerInfo .content p a{
+			display: inline-block;
+			text-decoration: none;
+			padding:10px;
+			color:#21c9c9;
+		}
+		.operationTime{
+			width: 180px;
+		    height: 25px;
+		    padding-left: 10px;
+		    border-radius: 4px;
+		}
+
+		.bodyInfo .messageInfo{
+			padding-top: 5px;
+		}
+		
+		.title.bodyInfos{
+			background: #248ff0;
+		}
+		.hideInfo>div{
+			padding-bottom: 15px;
+		} 
+		.loseWeight,.loseWeightEffect{
+			display: inline-block;
+			width: 33.3%;
+		}
+		.loseWeightWays,.reason{
+			display: inline-block;
+			width: 66.6%;
+		}
+
+		.title.message{
+			background: #5db65d;
+		}
+		
+		.selectInfo{
+			position: relative;
+			margin: 10px 0;
+		}
+
+		.selectInfo label{
+			width: 120px;
+			position: absolute;
+		}
+		.selectInfo span.commonStyle{
+			display: inline-block;
+			padding-left:120px;
+			width: 100%;
+			padding-right: 10px;
+		}
+		.selectInfo span input{
+			width: 100%;
+			height: 25px;
+			border-radius: 4px;
+		}
+		
+		.save{
+			margin-top: 20px;
+			text-align: center;
+		}
+		.saveBtn{
+			display: inline-block;
+		    padding: 5px 40px;
+		    background: #21c9c9;
+		    color: #fff!important;
+		    font-weight: bold;
+		    border-radius: 4px;
+		}
+
+		.titleLine {
+		    margin-top: 20px;
+		    background: #fff;
+		    height: 30px;
+		    line-height: 30px;
+		    padding-left: 40px;
+		    font-size: 15px;
+		}
+		.titleLine::before {
+		   	display: inline-block;
+		    content: '';
+		    height: 18px;
+		    background: #ff7a30;
+		    width: 3px;
+		    margin-right: 5px;
+		    vertical-align: text-bottom;
+		}
+
+		.customerInfo.historicals{
+			margin-top: 0;
+		}
+		.customerInfo.historicals .title{
+			background: #ff7a30;
+		}
+		.customerInfo.historicals .content .messageInfo{
+			padding-top: 7px!important;
+		}
+		.historyTime{
+			padding-top: 15px;
+		}
+
+		.historicalsItem{
+			margin-bottom: 15px;
+		}
+		
+		input.nowListremark {
+		    height: 36px!important;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="contain">
+		<a class="back">返回</a>
+
+		<div class="customerInfo">
+			<input type="hidden" id="opId">
+			<input type="hidden" id="csId">
+			<input type="hidden" id="opName">
+			<input type="hidden" id="csName">
+			<div class="title">
+				<span class="titleInfo">顾客信息</span>
+			</div>
+			<div class="content">
+				<div class="messageInfo">
+					<label>顾客姓名：</label>
+					<span class="memberName"></span>
+				</div>
+				<div class="messageInfo">
+					<label>手机号码：</label>
+					<span class="mobile"></span>
+				</div>
+				<div class="messageInfo">
+					<label>顾客性别：</label>
+					<span class="gender"></span>
+				</div>
+				<div class="messageInfo">
+					<label>出生年月：</label>
+					<span class="birthday"></span>
+				</div>
+				<div class="messageInfo">
+					<label>顾客年龄：</label>
+					<span><span class="age"></span>岁</span>
+				</div>
+				<div class="messageInfo">
+					<label>身份证号：</label>
+					<span class="idNumber"></span>
+				</div>
+				<div class="messageInfo" style="padding-bottom: 15px;">
+					<label>来源：</label>
+					<span class="dataSource"></span>
+				</div>
+				<!-- <p>
+					<a href="javascript:;">详情信息<i class="iconfont icon-xiangxiashouqi01"></i></a>
+				</p> -->
+			</div>
+		</div>
+
+		<div class="customerInfo bodyInfo">
+			<div class="title bodyInfos"><span class="titleInfo">身体信息</span></div>
+			<div class="content">
+				<div class="messageInfo">
+					<label>平均体温：</label>
+					<span><span class="temperature"></span>°C</span>
+				</div>
+				<div class="messageInfo">
+					<label>使用隐形眼镜：</label>
+					<span class="contactLenses"></span>
+				</div>
+				<div class="messageInfo">
+					<label>个人性格：</label>
+					<span class="personalCharacter"></span>
+				</div>
+				<div class="messageInfo">
+					<label>是否化妆：</label>
+					<span class="makeup"></span>
+				</div>
+				<div class="messageInfo">
+					<label>皮肤状态：</label>
+					<span class="skinSensitive"></span>
+				</div>
+				<div class="messageInfo">
+					<label>目前健康状态：</label>
+					<span class="healthyState"></span>
+				</div>
+				<div class="messageInfo">
+					<label>是否怀孕：</label>
+					<span class="pregnancy"></span>
+				</div>
+
+				<div class="messageInfo">
+					<label>月经生理：</label>
+					<span class="menstrualPhysiology"></span>
+				</div>
+				<div class="messageInfo" style="display: none;">
+					<label>敏感史：</label>
+					<span class="allergy"></span>
+				</div>
+				<div class="messageInfo" style="display: none;">
+					<label>皮肤敏感：</label>
+					<span class="skin"></span>
+				</div>
+				<div class="messageInfo" style="display: none;">
+					<label>药物敏感：</label>
+					<span class="drugSensitive"></span>
+				</div>
+
+				<p>
+					<a href="javascript:;" onclick="messgeBtn(this)"><span style="margin-right:5px;">展开</span><i class="iconfont icon-xiangxiashouqi01"></i></a>
+				</p>
+
+				<div class="hideInfo" style="display: none;">
+					<div class="">
+						<label>病态：</label>
+						<span class="pathological"></span>
+					</div>
+
+					<div>
+						<label>过敏史：</label>
+						<span class="allergyInfo"></span>
+					</div>
+
+					<div class="">
+						<label>常服药物：</label>
+						<span class="generalDrugs"></span>
+					</div>
+
+					<div class="">
+						<label>过往病史：</label>
+						<span class="historical"></span>
+					</div>
+
+					<div class="loseWeight">
+						<label>减肥经历：</label>
+						<span class="weightHis"></span>
+					</div><div class="loseWeightWays">
+						<label>减肥方法：</label>
+						<span class="loseWeightWay"></span>
+					</div>
+
+					<div class="loseWeightEffect">
+						<label>减肥效果：</label>
+						<span class="skinCondition"></span>
+					</div><div class="reason">
+						<label>原因：</label>
+						<span class="loseReason"></span>
+					</div>
+					
+					<div class="">
+						<label>美容环境：</label>
+						<span class="cosmeticEnvironment"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="nowListContent">
+			<div class="customerInfo nowListItem">
+				<div class="title message">
+					<span class="titleInfo">手术信息</span>
+				</div>
+				<div class="content">
+					<div class="messageInfo">
+						<label>手术项目：</label>
+						<span class="nowLiseServiceName"></span>
+					</div>
+					<div class="messageInfo">
+						<label>手术耗时：</label>
+						<span>
+							<input type="text" class="operationTime" maxlength="4" onkeyup="checkTime(this)" onblur="checkTime(this)"> min
+						</span>
+					</div>
+					<div class="messageInfo">
+						<label>是否留院：</label>
+						<input type="radio" class="noCourt" name="store" value="1" checked="checked"> 否
+						<input type="radio" class="yesCourt" name="store" value="2" style="margin-left: 15px;"> 是
+					</div>
+					<div class="selectInfo">
+						<label style="margin-top:6px;">参与医生：</label>
+						<span class="commonStyle">
+							<select  class="select form-control" id="doctor" multiple="true"">
+							</select>
+						</span>
+					</div>
+					<div class="selectInfo">
+						<label style="margin-top:6px;">参与护士：</label>
+						<span class="commonStyle">
+							<select id="nurse" name="" class="select2" multiple style="width:100%;height: 28px;">
+							</select>
+						</span>
+					</div>
+					<div class="selectInfo" style="padding-bottom: 15px;">
+						<label style="margin-top:6px;">备注：</label>
+						<span class="commonStyle">
+							<input type="text" class="nowListremark" style="padding-left:10px;" maxlength="200">
+						</span>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="titleLine cl">历史检验
+			<span class="fr" style="color:#21c9c9;margin-right: 5px;font-size: 14px;cursor: pointer;" onclick="flow(this)"><span class="flowName">收起</span><i class="iconfont icon-xiangshangjiantou" style="margin:0 5px;"></i></span>
+		</div>
+		<div class="historicalsContent">
+			<div class="historicalsItem" style="display: none;">
+				<div class="customerInfo historicals">
+				<div class="title message">历史手术信息</div>
+					<div class="content">
+						<div class="historyTime">
+							<label>历史手术：</label>
+							<span class="createTime"></span>
+						</div>
+						<div class="messageInfo">
+							<label>手术项目：</label>
+							<span class="serviceName"></span>
+						</div>
+						<div class="messageInfo">
+							<label>手术耗时：</label>
+							<span>
+								<span class="csotTime"></span> min
+							</span>
+						</div>
+						<div class="messageInfo">
+							<label>是否留院：</label>
+							<span class="inIn"></span>
+						</div>
+						<div class="selectInfo">
+							<label>参与医生：</label>
+							<span class="operatorName commonStyle">
+								
+							</span>
+						</div>
+						<div class="selectInfo">
+							<label>参与护士：</label>
+							<span class="coPersonnelName commonStyle">
+								
+							</span>
+						</div>
+						<div class="selectInfo">
+							<label>备注：</label>
+							<span class="remark commonStyle" style="white-space:normal; word-break:break-all;">
+								
+							</span>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="save">
+			<a href="javascript:;" class="saveBtn" onclick="saveBtn()">保存</a>
+		</div>
+	</div>
+	
+	<script>
+		
+		// 从url 获取 所需字段
+		var merchantId = getQueryString('merchantId');
+		var processId = getQueryString('processId');
+		var memberId = getQueryString('memberId');
+		var id = getQueryString('id');
+		var purchaseName = GetQueryString_new('purchaseName');
+
+		$("#doctor").select2({
+			language : 'zh-CN',
+			width:'100%'
+		});
+
+		$("#nurse").select2({
+			language : 'zh-CN',
+			width:'100%'
+		});
+
+
+		$(document).ready(function() {
+			$('.back').attr({'href':'forSurgery.html?merchantId='+merchantId});
+
+			var salesmanList;
+			// 获取 员工
+			var def = reqAjax('customer/salesmanList', {
+				merchantId : merchantId
+			});	
+			def.then(function(data){
+				salesmanList = data.data;
+			})
+
+
+			// 顾客信息 接口联调
+            var def = reqAjax('medical/getMedicalCustomerDetail', {
+				processId : processId,
+				memberId : memberId
+			});	
+			def.then(function(data){
+				var data = data.data;
+				if(data.memberList.length != 0){
+					// 顾客信息 数据填充
+					$('.memberName').text(data.memberList[0].memberName);
+					$('.mobile').text(data.memberList[0].mobile);
+
+					if(data.memberList[0].gender == 0){
+						$('.gender').text('女');
+					}else if(data.memberList[0].gender == 1){
+						$('.gender').text('男');
+					}else if(data.memberList[0].gender == 2){
+						$('.gender').text('保密');
+					}
+
+					$('.birthday').text(data.memberList[0].birthday);
+					$('.age').text(data.memberList[0].age);
+					$('.idNumber').text(data.memberList[0].idNumber);
+					// if(data.memberList[0].dataSource == 0){
+					// 	$('.dataSource').text('未选择');
+					// }else if (data.memberList[0].dataSource == 7){
+					// 	$('.dataSource').text('美团');
+					// }else if (data.memberList[0].dataSource == 8){
+					// 	$('.dataSource').text('更美APP');
+					// }else if (data.memberList[0].dataSource == 9){
+					// 	$('.dataSource').text('自进');
+					// }else if (data.memberList[0].dataSource == 10){
+					// 	$('.dataSource').text('老带新');
+					// }
+
+					if(data.memberList[0].dataSource == 0){
+						$('.dataSource').text('未选择');
+					}else if (data.memberList[0].dataSource == 7){
+						$('.dataSource').text('美团');
+					}else if (data.memberList[0].dataSource == 8){
+						$('.dataSource').text('更美APP');
+					}else if (data.memberList[0].dataSource == 9){
+						if(data.memberList[0].introducer == ''){
+							$('.dataSource').text('自进');
+						}else{
+							$('.dataSource').text('自进('+data.memberList[0].introducer+')');
+						}
+					}else if (data.memberList[0].dataSource == 10){
+						if(data.memberList[0].introducer == ''){
+							$('.dataSource').text('老带新');
+						}else{
+							$('.dataSource').text('老带新('+data.memberList[0].introducer+')');
+						}
+					}
+
+					// 过敏史
+					$('.allergyInfo').text(data.memberList[0].allergy);
+					// 过往病因
+					$('.historical').text(data.memberList[0].historical);
+
+				}
+				if(data.bodyList.length != 0){
+					// 身体信息 数据填充
+					$('.temperature').text(data.bodyList[0].temperature);
+					// 使用隐形眼镜
+					if(data.bodyList[0].contactLenses == 0){
+						$('.contactLenses').text('不使用');
+					}else if(data.bodyList[0].contactLenses == 1){
+						$('.contactLenses').text('软镜');
+					}else if(data.bodyList[0].contactLenses == 2){
+						$('.contactLenses').text('硬镜');
+					}
+					// 个人性格
+					if(data.bodyList[0].personalCharacter == 0){
+						$('.personalCharacter').text('内向');
+					}else if(data.bodyList[0].personalCharacter == 1){
+						$('.personalCharacter').text('好动');
+					}else if(data.bodyList[0].personalCharacter == 2){
+						$('.personalCharacter').text('动静皆宜');
+					}
+					// 化妆
+					if(data.bodyList[0].makeup == 0){
+						$('.makeup').text('不化妆');
+					}else if(data.bodyList[0].makeup == 1){
+						$('.makeup').text('淡妆');
+					}else if(data.bodyList[0].makeup == 2){
+						$('.makeup').text('浓妆');
+					}
+					// 皮肤状态
+					if(data.bodyList[0].skinCondition == 0){
+						$('.skinSensitive').text('良好');
+					}else if(data.bodyList[0].skinCondition == 1){
+						$('.skinSensitive').text('较差');
+					}else if(data.bodyList[0].skinCondition == 2){
+						$('.skinSensitive').text('恶劣');
+					}
+
+					// 健康状态
+					if(data.bodyList[0].healthyState == 0){
+						$('.healthyState').text('良好');
+					}else if(data.bodyList[0].healthyState == 1){
+						$('.healthyState').text('较差');
+					}else if(data.bodyList[0].healthyState == 2){
+						$('.healthyState').text('恶劣');
+					}
+					// 怀孕
+					if(data.bodyList[0].pregnancy == 0){
+						$('.pregnancy').text('未怀孕');
+					}else if(data.bodyList[0].pregnancy == 1){
+						$('.pregnancy').text('怀孕');
+					}
+
+					// 月经生理
+					if(data.bodyList[0].menstrualPhysiology == 0){
+						$('.menstrualPhysiology').text('顺调');
+					}else if(data.bodyList[0].menstrualPhysiology == 1){
+						$('.menstrualPhysiology').text('不顺调');
+					}else if(data.bodyList[0].menstrualPhysiology == 2){
+						$('.menstrualPhysiology').text('轻微经痛');
+					}else if(data.bodyList[0].menstrualPhysiology == 3){
+						$('.menstrualPhysiology').text('剧痛');
+					}
+
+					// 月经时间段
+
+					if(data.bodyList[0].lastPeriod != null ){
+						$('.createTime').text(data.bodyList[0].lastPeriod.split('/')[0]);
+						$('.lastPeriod').text(data.bodyList[0].lastPeriod.split('/')[1]);
+					}
+					// 月经 天数
+					$('.menstrualCycle').text(data.bodyList[0].menstrualCycle);
+
+					// 皮肤敏感
+					if(data.bodyList[0].skin == 0){
+						$('.skin').text('过敏');
+					}else if(data.bodyList[0].skin == 1){
+						$('.skin').text('不过敏');
+					}
+
+					// 药物敏感
+					if(data.bodyList[0].drugSensitive == 0){
+						$('.drugSensitive').text('轻微');
+					}else if(data.bodyList[0].drugSensitive == 1){
+						$('.drugSensitive').text('普通');
+					}else if(data.bodyList[0].drugSensitive == 2){
+						$('.drugSensitive').text('严重');
+					}
+
+					// 病态 pathological
+					// if(data.bodyList[0].pathological == 0){
+					// 	$('.pathological').text('贫血');
+					// }else if(data.bodyList[0].pathological == 1){
+					// 	$('.pathological').text('便秘');
+					// }else if(data.bodyList[0].pathological == 2){
+					// 	$('.pathological').text('肠胃疾病');
+					// }else if(data.bodyList[0].pathological == 3){
+					// 	$('.pathological').text('糖尿病');
+					// }else if(data.bodyList[0].pathological == 4){
+					// 	$('.pathological').text('心脏病');
+					// }else if(data.bodyList[0].pathological == 5){
+					// 	$('.pathological').text('血压高');
+					// }else if(data.bodyList[0].pathological == 6){
+					// 	$('.pathological').text('易疲劳');
+					// }
+
+					// 病态 pathological
+					var pathologicalArr = ['贫血','便秘','肠胃疾病','糖尿病','心脏病','血压高','易疲劳','其他'];
+					var pathological = data.bodyList[0].pathological.split(',');
+					var pathologicals = '';
+					for(var i = 0; i<pathological.length;i++){
+						if(pathological[i] == 1){
+							pathologicals = pathologicals+pathologicalArr[i]+'，';
+						}
+					}
+
+					$('.pathological').text(pathologicals.substring(0, pathologicals.length-1));
+					// 常服药物 generalDrugs
+					$('.generalDrugs').text(data.bodyList[0].generalDrugs);
+
+					// 减肥经历
+					// if( data.bodyList[0].weightHis == 0){
+					// 	$('.weightHis').text('是');
+					// }else if(data.bodyList[0].weightHis == 1){
+					// 	$('.weightHis').text('否');
+					// }
+					if( data.bodyList[0].loseWeight == '' || data.bodyList[0].loseWeight == null){
+						$('.weightHis').text('否');
+					}else{
+						$('.weightHis').text('是');
+					}
+
+					// 减肥方法
+					// $('.loseWeightWay').
+					$('.loseWeightWay').text(data.bodyList[0].loseWeight);
+
+					// 减肥效果 skinCondition
+					if( data.bodyList[0].reason.length > 0){
+						$('.skinCondition').text('失败');
+					}else{
+						$('.skinCondition').text('成功');
+					}
+
+					// 原因
+					$('.loseReason').text(data.bodyList[0].reason);
+					
+					// 美容坏环境 cosmeticEnvironment
+					// if(data.bodyList[0].cosmeticEnvironment == 0){
+					// 	$('.cosmeticEnvironment').text('用手摸面');
+					// }else if(data.bodyList[0].cosmeticEnvironment == 1){
+					// 	$('.cosmeticEnvironment').text('用手擦眼');
+					// }else if(data.bodyList[0].cosmeticEnvironment == 2){
+					// 	$('.cosmeticEnvironment').text('用手擦臂');
+					// }
+					var cosmeticEnvironmentArr = ['用手摸面','用手擦眼','用手擦臂','其他'];
+					var cosmeticEnvironment = data.bodyList[0].cosmeticEnvironment.split(',');
+					var cosmeticEnvironments = '';
+					for(var i = 0; i<cosmeticEnvironment.length;i++){
+						if(cosmeticEnvironment[i] == 1){
+							cosmeticEnvironments = cosmeticEnvironments+cosmeticEnvironmentArr[i]+'，';
+						}
+					}
+					
+					$('.cosmeticEnvironment').text(cosmeticEnvironments.substring(0, cosmeticEnvironments.length-1));
+				}
+			}); 
+
+			 
+			// 历史信息 接口联调
+			var def = reqAjax('medical/getMedicalSurgeryHistory', {
+				processId : processId,
+				memberId : memberId,
+				operationId : id
+			});	
+			def.then(function(data){
+				// hisList
+				var data = data.data;
+				for(var i = 0;i<data.hisList.length;i++){
+					var content = $('.historicalsItem').first().clone();
+					content.find('.createTime').text(data.hisList[i].createTime.split(' ')[0]);
+					if(data.hisList[i].inIn == 1){
+						content.find('.inIn').text('否');
+					}else if(data.hisList[i].inIn == 2){
+						content.find('.inIn').text('是');
+					}
+					content.find('.serviceName').text(data.hisList[i].serviceName);
+					content.find('.csotTime').text(data.hisList[i].csotTime);
+					content.find('.operatorName').text(data.hisList[i].operatorName);
+					content.find('.coPersonnelName').text(data.hisList[i].coPersonnelName);
+					content.find('.remark').text(data.hisList[i].remark);
+					content.show();
+					$('.historicalsContent').append(content);
+				}
+
+				// nowtList
+				// 参与医生
+				for(var j = 0; j<salesmanList.length;j++){
+					$('#doctor').append("<option value='" + salesmanList[j].id + "'>" + salesmanList[j].username + "</option>")
+				}
+				// 参与护士
+				for(var j = 0; j<salesmanList.length;j++){
+					$('#nurse').append("<option value='" + salesmanList[j].id + "'>" + salesmanList[j].username + "</option>")
+				}
+
+			})
+
+		});
+
+		// 收起 展开
+		function messgeBtn(self){
+			if($(self).find('i').hasClass('icon-xiangxiashouqi01')){
+				$(self).find('i').removeClass('icon-xiangxiashouqi01').addClass('icon-arrow_up');
+				$(self).find('span').text('收起');
+				$('.hideInfo').show();
+			}else{
+				$(self).find('i').addClass('icon-xiangxiashouqi01').removeClass('icon-arrow_up');
+				$(self).find('span').text('展开');
+				$('.hideInfo').hide();
+			}
+		}
+
+		// 
+		function flow(self){
+			if($(self).find('i').hasClass('icon-xiangshangjiantou')){
+				$(self).find('i').removeClass('icon-xiangshangjiantou').addClass('icon-xiangxiajiantou');
+				$(self).find('.flowName').text('展开'); 
+				$('.historicalsContent').hide();
+			}else{
+				$(self).find('i').addClass('icon-xiangshangjiantou').removeClass('icon-xiangxiajiantou');
+				$(self).find('.flowName').text('收起');
+				$('.historicalsContent').show();
+			}
+		}
+
+
+		
+		
+		// 获取 医生
+		$('#doctor').change(function(){
+			var operationId = '';
+			var operatorName = '';
+			var selected = $("#doctor").select2('data');//选择的值
+			for (var i=0;i<selected.length;i++){  
+			   operatorName += selected[i].text + ',';
+			   operationId += selected[i].id + ',';
+			}
+			$('#opId').val(operationId);
+			$('#opName').val(operatorName);
+		});
+		// 获取护士
+		$('#nurse').change(function(){
+			var coPersonnel = '';
+			var coPersonnelName = '';
+			var selected = $("#nurse").select2('data');//选择的值
+			for (var i=0;i<selected.length;i++){  
+			   coPersonnelName += selected[i].text + ',';
+			   coPersonnel += selected[i].id + ',';
+			}
+			$('#csId').val(coPersonnel);
+			$('#csName').val(coPersonnelName);
+		});
+
+		// 手术信息
+		$('.nowLiseServiceName').text(purchaseName);
+
+
+		// 保存 接口联调
+		function saveBtn(){
+			
+			var isIn = $('input:radio[name="store"]:checked').val();
+			
+			var remark = $('.nowListremark').val();
+			var costTime = $('.operationTime').val();
+
+			if(costTime.trim('') == ''){
+				layer.msg('请输入手术耗时！',{icon:2});
+				return;
+			}
+
+			if($('#opName').val() == '' || $('#opId').val() == ''){
+				layer.msg('请输入参与医生！',{icon:2});
+				return;
+			}
+			var def = reqAjax('medical/todoMedicalSurgery', {
+				memberId : memberId,
+				isIn : isIn,
+				operator : $('#opId').val(),
+				operatorName : $('#opName').val(),
+				processId : processId,
+				coPersonnel : $('#csId').val(),
+				coPersonnelName : $('#csName').val(),
+				remark : remark,
+				costTime : costTime,
+				operationId:id
+			});	
+			def.then(function(data){
+				layer.msg(data.msg);
+				location.href="forSurgery.html?merchantId=" + merchantId;
+			})
+		}
+
+		// 检查 时间
+		function checkTime(self) {
+			if(self.value.length==1){
+				self.value=self.value.replace(/[^0-9]/g,'');
+			}else{
+				self.value=self.value.replace(/\D/g,'');
+			}
+		}
+
+		// 如果url 中有中文，则用 此方法 获取url 中文
+		function GetQueryString_new(name){
+		    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		    var r = window.location.search.substr(1).match(reg);//注意这行
+		    if(r!=null){
+		        return  decodeURI(r[2]);//解码一次
+		    }else{
+		        return null;
+		    }
+		}
+	</script>
+</body>
+</html>

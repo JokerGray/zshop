@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+    <title>智币消耗排行榜</title>
+	<link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../../../common/css/reset.css" />
+	<link rel="stylesheet" href="../../../common/css/layTab.css" />
+</head>
+<body>
+	<div class="tool-box layui-form">
+   		<ul class="tool-box-ul clearfix">
+			<!-- 所属版块开始 -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">版块：</label>
+					<div class="layui-input-inline">
+						<select id="selectview" lay-search>
+							
+			
+						</select>
+					</div>
+				</div>
+			</li>
+			<!-- 智币商品名称 -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">商品名称：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="" placeholder="输入商品名称" class="layui-input" id="goodsName" maxlength="20"> 
+					</div>
+				</div>
+			</li>
+			<!-- 时间开始 -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="stTime">使用日期：</label>
+					<div class="layui-input-inline startDate">
+						<input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+					</div>
+				</div>
+			</li>				
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="endTim">至：</label>
+					<div class="layui-input-inline endDate">
+						<input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+					</div>
+				</div>
+			</li>
+			<!-- 时间结束  -->
+			<button class="layui-btn" id="searchBtn">搜索</button>
+			<button class="layui-btn" id="resetBtn">重置</button>
+			<button class="layui-btn" id="exportBtn">导出excel</button>
+		</ul>
+	</div>
+		
+	<div class="layui-app">
+		<div class="app-table">
+			<table lay-filter="merchantTable" id="merchantTable"></table>
+			<div id="amount"></div>
+			<div id="layTablePage"></div>
+		</div>
+	</div>
+	
+	<script type="text/html" id="barDemo">
+		<button class="layui-btn my-btn" lay-event="view">确认</button>
+	</script>
+
+</body>
+</html>
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="zConsumeRanking.js"></script>

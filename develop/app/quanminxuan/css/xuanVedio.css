@@ -1,0 +1,436 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td, header, section, aside, nav, menu, footer, article {
+    margin: 0;
+    padding: 0;
+}
+			img {
+				display: block;
+				border: none;
+			}
+			a {
+				text-decoration: none;
+			}
+			ul,
+			ol,
+			li {
+				list-style: none;
+			}
+			
+			#header {
+				height: 0.45rem;
+				width: 100%;
+				background-color: #333333;
+				position: fixed;
+				top: 0;
+				z-index: 999;
+			}
+			
+			#footer {
+				width: 100%;
+				height: 1rem;
+				text-align: center;
+				bottom: 0;
+				color: #fff;
+				z-index: 999;
+				background: #e35055;
+				margin-left: -0.06rem;
+			}
+			
+			#footer img {
+				width: 100%;
+			}
+			
+			body {
+				font-size: 0.12rem;
+			}
+			
+			.btn {
+				width: 0.52rem;
+				height: 0.25rem;
+				text-align: center;
+				line-height: 0.25rem;
+				color: #fff;
+				border: 1px solid #fff;
+				border-radius: 0.05rem;
+				float: right;
+				margin-top: 0.1rem;
+			}
+			
+			#header>.header_load {
+				margin-right: 0.12rem;
+				border: none;
+				background-color: #d50811;
+				width: 0.68rem;
+			}
+			
+			#header>.header_open {
+				margin-right: 0.11rem;
+			}
+			
+			#header>.header_logo {
+				width: 1.03rem;
+				height: 0.3rem;
+				float: left;
+				margin-left: 0.1rem;
+				margin-top: 0.1rem;
+			}
+			
+			#header>.header_logo>img {
+				width: 100%;
+			}
+			
+			#content {
+				width: 100%;
+				margin-top: 0.45rem;
+			}
+			
+			#content>.video_play {
+				width: 100%;
+				max-height: 3.75rem;
+				position: relative;
+			}
+			
+			#content>.video_play>img {
+				width: 100%;
+				height: 100%;
+				max-height: 3.75rem;
+			}
+			
+			#content>.video_play>.playbtn {
+				position: absolute;
+				z-index:400;
+				margin: auto;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				width: 0.5rem;
+				height: 0.5rem;
+				background: url(../img/play.png) no-repeat center center;
+				background-size: 100% 100%;
+			}
+			
+			#content>video {
+				display: block;
+				width: 100%;
+				height: 3.75rem;
+				object-fit: contain;
+				background: #000;
+			}
+			
+			#content>.person {
+				width: 100%;
+				height: 0.55rem;
+			}
+			
+			.fix:after {
+				display: block;
+				content: "clear";
+				height: 0;
+				clear: both;
+				overflow: hidden;
+				visibility: hidden;
+			}
+			
+			.person_btLine {
+				height: 1px;
+				background: #d3d3d3;
+				width: 3.5rem;
+				margin-left: 0.1rem;
+			}
+			
+			#content>.person>div {
+				width: 1.75rem;
+				height: 0.55rem;
+				float: left;
+				padding-top: 0.13rem;
+				margin-left: 0.12rem;
+			}
+			
+			#content>.person>.person_left>img {
+				width: 0.3rem;
+				height: 0.3rem;
+				float: left;
+				border-radius: 50%;
+				margin-right: 0.1rem;
+			}
+			
+			#content>.person>.person_left>.person_id {
+				color: #131313;
+			}
+			
+			#content>.person>.person_left>.person_infos {
+				color: #aaaaaa;
+				font-size: 0.08rem;
+			}
+			
+			#content>.person>.person_left>.person_infos>span {
+				margin-right: 0.04rem;
+			}
+			
+			#content>.person>.person_left>.person_infos>.seen {
+				width: 0.16rem;
+				height: 0.13rem;
+				margin-left: 0.05rem;
+			}
+			
+			#content>.person>.person_left>.person_infos>.seen>img {
+				width: 0.16rem;
+				display: inline-block;
+				transform: translateY(0.03rem);
+			}
+			
+			#content>.person>.person_right>div {
+				width: 0.55rem;
+				height: 0.22rem;
+				line-height: 0.22rem;
+				float: right;
+				margin-top: 0.02rem;
+				margin-left: 0.1rem;
+			}
+			
+			#content>.person>.person_right>div>img {
+				height: 0.22rem;
+				float: left;
+				margin-right: 0.08rem;
+			}
+			
+			#content>.person>.person_right>div>span {
+				font-size: 0.12rem;
+				color: #aaaaaa;
+			}
+			
+			.title {
+				width: 100%;
+			}
+			
+			.title_text {
+				line-height: 0.22rem;
+				padding: 0.08rem 0.12rem 0;
+				font-size: 0.14rem;
+				word-wrap: break-word;
+				white-space: normal!important;
+				color: #131313;
+			}
+			
+			.tags {
+				padding: 0.04rem 0.12rem;
+			}
+			
+			.tags>.tagbtn {
+				height: 0.22rem;
+				line-height: 0.22rem;
+				border: 1px solid #1cd39b;
+				color: #1cd39b;
+				display: inline-block;
+				padding: 0 0.09rem;
+				border-radius: 0.09rem;
+				margin-right: 0.1rem;
+				margin-bottom: 0.1rem;
+			}
+			
+			.foot_br {
+				width: 100%;
+				height: 0.1rem;
+			}
+			/*		.ellipsis-3-style {
+		    display: -webkit-box;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    -webkit-line-clamp: 3;
+		    -webkit-box-orient: vertical;
+		    height: 0.6rem;
+		}*/
+			
+			.textOver-hid {
+				overflow: hidden;
+				height: 0.75rem;
+			}
+			
+			.mores {
+				height: 0.085rem;
+				line-height: 0.085rem;
+				width: 100%;
+				text-align: center;
+				margin: 0.08rem auto;
+				display: none;
+			}
+			
+			.mores_icon {
+				display: inline-block;
+				width: 0.15rem;
+				height: 0.085rem;
+				background: no-repeat url(../img/more_text.png) center center;
+				background-size: 100% 100%;
+			}
+			
+			.ft_pad {
+				width: 100%;
+				height: 1.1rem;
+			}
+			
+			#comment {
+				padding-left: 0.12rem;
+				padding-bottom: 0.05rem;
+			}
+			
+			.com_tit {
+				width: 100%;
+				height: 0.4rem;
+				line-height: 0.4rem;
+				font-size: 0.16rem;
+				border-bottom: 1px solid #D3D3D3;
+			}
+			
+			#commentNum {
+				font-size: 0.12rem;
+				color: #999999;
+				display: none;
+			}
+			
+			.com_list {
+				padding:0.1rem 0;
+				border-bottom: 1px solid #D3D3D3;
+				position:relative;
+			}
+			
+			.com_list:after {
+				display: block;
+				content: "clear";
+				height: 0;
+				clear: both;
+				overflow: hidden;
+				visibility: hidden;
+			}
+			.com_list:last-child{
+				border-bottom:none;
+			}
+			
+			.com_list img{
+				display:block;
+				float:left;
+				width:0.3rem;
+				height:0.3rem;
+				margin-right:0.1rem;
+				border-radius:50%;
+			}
+			.com_list .com_cont{
+				float:left;
+				width:3.05rem;
+			}
+			.com_user{
+				width:100%;
+				height:0.18rem;
+				line-height:0.18rem;
+				font-size:0.14rem;
+				color:#131313;
+				word-break: break-word;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow:ellipsis;
+				/*font-weight: normal;*/
+			}
+			.com_dt_time{
+				font-size:0.11rem;
+				color:#aaaaaa;
+				height:0.18rem;
+				line-height:0.18rem;
+				margin-bottom:0.05rem;
+			}
+			.com_comment{
+				width:100%;
+				line-height:0.18rem;
+				font-size:0.14rem;
+				color:#131313;
+				word-break: break-word;
+			}
+			.com_bt,.no_com{
+				width:100%;
+				height:0.4rem;
+				line-height:0.4rem;
+				font-size:0.14rem;
+				color:#1cd39b;
+				text-align:center;
+			}
+			.no_com{color:#aaaaaa;}
+			.com_bt span{
+				margin-left:-0.06rem;
+			}
+			#contBlank{
+				padding-top: 1rem;
+				text-align: center;
+			}
+			.blank_icon{
+				width:0.89rem;
+				height:0.96rem;
+				display: inline-block;
+				background: url(../img/blank_2x.png) no-repeat center center;
+				background-size: 100% 100%;
+			}
+			.msg_miss{
+				font-size:0.16rem;
+				color: #666666;
+				font-weight: bold;
+				margin:0.25rem auto 0.14rem;
+			}
+			.vedio_miss{
+				font-size:0.14rem;
+				color: #999999;
+			}
+			.model{
+				width: 100%;
+				height:6.67rem;
+				background: rgba(0,0,0,0.5);
+				position: fixed;
+				z-index: 999;
+				top:0;
+				display: none;
+			}
+			.model .model_cont{
+				width: 100%;
+				height:1.65rem;
+				background: #fff;
+				padding-top:0.35rem;
+				padding-left:0.75rem;
+				position: relative;
+				z-index: 1000;
+			}
+           .model_cont .text1{
+           		height:0.3rem;
+           		line-height: 0.3rem;
+           		font-size:0.16rem;
+           		color: #131313;
+           }
+		  .model_cont .text1 span{
+		  	display: inline-block;
+		  	width: 0.3rem;
+		  	height: 0.3rem;
+		  	background:url(../img/moreheng@2x.png) no-repeat center center;
+		  	background-size: 100% 100%;
+		  	transform: translateY(0.1rem);
+		  }
+           .model_cont .text2{
+           		height:0.3rem;
+           		line-height: 0.3rem;
+           		font-size:0.16rem;
+           		color: #131313;
+           		margin-top:0.23rem;
+           }
+		  .model_cont .text2 span{
+		  	display: inline-block;
+		  	width: 1.45rem;
+		  	height: 0.3rem;
+		  	background:url(../img/liulanqi@2x.png) no-repeat center center;
+		  	background-size: 100% 100%;
+		  	transform: translateY(0.1rem);
+		  }
+		  .model .model_cont .pointTo{
+		  	position: absolute;
+		  	width:0.7rem;
+		  	height:0.58rem;
+		  	background:url(../img/shape_up@2x.png) no-repeat center center;
+		  	background-size: 100% 100%;
+		  	top:0.18rem;
+		  	right:0.9rem;
+		  }
+
+

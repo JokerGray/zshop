@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>商户入驻</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrap-select/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+    <div class="panel-body">
+            <div class="col-md-12 min-w">
+                <div class="content-box">
+                    <div class="box-title">请上传商铺营业执照</div>
+                    <div class="up-load-box col-md-12">
+                        <div class="up-load col-md-6 ">
+                            <div class="img-box certificate" >
+                                <img src="./img/juxing.png">
+                                <input type="hidden" id="license01" title="营业执照正">
+                                <div class="cover">
+                                    <div>
+                                        <p>0%</p>
+                                        <p>正在上传……</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tips"> <span class="neccesary">*</span> 上传营业执照正</div>
+                        </div>
+                        <div class="up-load col-md-6 ">
+                            <div class="img-box certificate">
+                                <img src="./img/juxing.png">
+                                <input type="hidden" id="license02" title="营业执照副">
+                                <div class="cover">
+                                    <div>
+                                        <p>0%</p>
+                                        <p>正在上传……</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tips"> 上传营业执照副</div>
+                        </div>
+                        <div class="up-load col-md-6 ">
+                            <div class="img-box id-card">
+                                <img src="./img/juxing.png">
+                                <input type="hidden" id="idCardFront" title="身份证照正面">
+                                <div class="cover">
+                                    <div>
+                                        <p>0%</p>
+                                        <p>正在上传……</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tips"> <span class="neccesary">*</span> 上传身份证正面</div>
+                        </div>
+                        <div class="up-load col-md-6 ">
+                            <div class="img-box id-person">
+                                <img src="./img/juxing.png">
+                                <input type="hidden" id="idCardBack" title="手持身份证正面">
+                                <div class="cover">
+                                    <div>
+                                        <p>0%</p>
+                                        <p>正在上传……</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tips"> <span class="neccesary">*</span> 手持身份证正面</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="box-title">完善商家信息</div>
+                    <div class="col-md-12">
+                        <table class="table table-bordered" id="table">
+                            <div class="form-group">
+                                <label class="col-xs-2" for="">商户名称：</label>
+                                <input class="form-control w-510" placeholder="请输入商户名称" type="text" id="merchantName">
+                                <span class='name-tips'>此名称为营业执照内公司名称</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-2" for="">店铺名称：</label>
+                                <input class="form-control w-510" placeholder="请输入店铺名称" type="text" id="shopName">
+                                <span class='name-tips'>此名称将在智享城市APP和小程序显示</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-2" for="">行业：</label>
+                                <select class="selectpicker" id="trade"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-2" for="">地址：</label>
+                                <select class="selectpicker" id="province"></select>
+                                <select class="selectpicker" id="city"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-2" for="">手机：</label>
+                                <input class="form-control w-400" placeholder="请输入手机号" type="text" id="phone">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-2" for="">密码：</label>
+                                <input class="form-control w-400" placeholder="请输入密码" type="password" id="password">
+                                <i class="pass-icon"></i>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-2" for="">验证码：</label>
+                                <input class="form-control w-260" placeholder="请输入短信验证码" type="text" id="captcha">
+                                <button class="btn btn-code" type="button" id='captcha-btn' onclick="send()">获取验证码</button>
+                            </div>
+                            <div> 
+                                <!-- <div class="btn btn-cancel">返回</div> -->
+                                <button class="btn btn-yes" type="button" >确认</button>
+                            </div>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+        
+    </div>
+    <div class="success-modal" >
+        <div class="close-btn" onclick="closeModal()"></div>
+        <div class="success-tips">审核通过后，我们将会以短信方式通知您，请注意查收！</div>
+        <div class="success-btn-group">
+            <a href="http://www.zhixiangchengshi.com/" target="_blank">
+                <div class="know-more-btn">查看了解更多</div>
+            </a>
+            <div class="ok-btn" onclick="closeModal()">我知道了</div>
+        </div>
+    </div>
+
+    <script src="./jquery/jquery.min.js"></script>
+    <script src="./layer/layer.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="./plupload-2.3.1/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="./plupload-2.3.1/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

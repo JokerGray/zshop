@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>商户组织</title>
+        <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+        <link rel="stylesheet" href="common/assets/layui/css/layui.css">
+        <link rel="stylesheet" href="common/assets/layui/css/modules/layer/default/layer.css">
+        <link rel="stylesheet" href="common/assets/layui/css/modules/layer/myskin/style.css">
+        <link rel="stylesheet" href="common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+        <link rel="stylesheet" href="common/css/reset.css" />
+        <link rel="stylesheet" href="common/css/common.css" />
+        <link rel="stylesheet" href="merchants_manage/css/merchants_orgazation.css">
+    </head>
+    <body>
+        <div class="main-content">
+            <div class="content-title">商户管理 - 商户组织</div>
+            <div class="content-box">
+                <div class="orgazation-tree">
+                    <a class="tree-title" href="javascript:;"><i class="icon"></i>所有组织</a>
+                    <div class="tree-box">
+                        <ul id="orgazationTree" class="ztree mytree"></ul>
+                    </div>
+                </div>
+                <div class="detail-box">
+                    <div class="search-box">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">组织名称：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="searchInput" autocomplete="off" class="layui-input search-input" id="searchInput">
+                                </div>
+                                <button class="layui-btn search-btn btn" type="button"><i class="icon"></i>查询</button>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="table-box">
+                        <table id="listTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>组织名称</th>
+                                    <th>组织类型</th>
+                                    <th>优先级</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <div class="common-page1">
+                            <div id="paging-box-count"></div>
+                            <div id="paging-box" class="basic-jump"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="common/assets/hplus/js/jquery.min.js"></script>
+        <script src="common/assets/hplus/js/bootstrap.min.js"></script>
+        <script src="common/assets/zTree_v3/js/jquery.ztree.core.js"></script>
+        <script src="common/assets/layui/lay/dest/layui.all.js"></script>
+        <script src="common/assets/template-web.js"></script>
+        <script id="addOrgazationTpl" type="text/html">
+            <div class="add-orgazation-box">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"><b class="required-icon">＊</b>组织名称：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="orgName" value="{{orgName}}" maxlength="10" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"><b class="required-icon">＊</b>组织类型：</label>
+                        <div class="col-sm-9">
+                            <select name="orgType" id="orgType" class="form-control" disabled="disabled">
+                                {{each orgTypeList value i}}
+                                    <option value="{{i}}">{{value}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"><b class="required-icon">＊</b>排序号：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="priority" name="priority" value="{{priority}}" maxlength="2" required="required">
+                            <span class="tips">排序号1-99 排序号越大，优先级别越高</span>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </script>
+        <script id="setServiceTpl" type="text/html">
+            <div class="set-service-box">
+                <form class="form-horizontal" id="setServiceForm">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">全景地址：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="fullViewAddr" value="{{fullViewAddr}}" id="fullViewAddr" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">直播推流地址：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="livePullAddr" value="{{livePullAddr}}" id="livePullAddr" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">直播拉流地址：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="livePushAddr" value="{{livePushAddr}}" id="livePushAddr" required="required">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </script>
+        <script src="common/js/util/util.js"></script>
+        <script src="common/js/common.js"></script>
+        <script src="merchants_manage/js/merchants_orgazation.js"></script>
+    </body>
+</html>

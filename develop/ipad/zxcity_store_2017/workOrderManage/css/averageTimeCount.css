@@ -1,0 +1,264 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+.header {
+  width: 100%;
+  height: 2.75rem;
+  position: relative;
+}
+.header .goBack {
+  position: absolute;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: url("../../common/image/return_icon.png") no-repeat center;
+  -webkit-background-size: 1.0625rem 1.5rem;
+  background-size: 1.0625rem 1.5rem;
+  left: 0.3125rem;
+  top: 0;
+}
+.header .navTab {
+  width: 100%;
+  height: 100%;
+  line-height: 2.75rem;
+  text-align: center;
+}
+.header .navTab a {
+  height: 1.53125rem;
+  line-height: 1.53125rem;
+  border-bottom: 0.0625rem solid #666666;
+  padding: 0.15625rem 0.9375rem;
+  margin: 0 0.78125rem;
+  font-size: 1.25rem;
+  color: #666666;
+}
+.header .navTab a.active {
+  color: #fe6869;
+  border-color: #fe6869;
+}
+.searchRequirement {
+  width: 100%;
+  height: 3.75rem;
+  background-color: #fff;
+  line-height: 3.75rem;
+  padding-left: 0.46875rem;
+}
+.searchRequirement .orderCompleteTime-searchRequirement {
+  display: block;
+}
+.searchRequirement .orderCompleteTime-searchRequirement div {
+  display: inline-block;
+  margin: 0 3.03125rem;
+}
+.searchRequirement .orderCompleteTime-searchRequirement div span {
+  font-size: 1rem;
+  color: #333333;
+}
+.searchRequirement .orderCompleteTime-searchRequirement div.keyword-waiterNum {
+  margin-left: 0.46875rem;
+}
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-waiterNum select {
+  width: 6.28125rem;
+  height: 2.25rem;
+  background-color: #fff;
+  border: 0.0625rem solid #cccccc;
+  outline: none;
+}
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-waiterNum .select2-container--default .select2-selection--single {
+  border-color: #999999;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-waiterNum .select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 2.25rem;
+}
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-waiterNum .select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 2.25rem;
+}
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-waiterNum .select2-container {
+  width: 7.53125rem !important;
+}
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-waiterNum .select2-container .select2-selection--single {
+  height: 2.25rem !important;
+}
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-waiterName,
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-date,
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-serviceName {
+  float: right;
+  margin: 0 0.46875rem;
+}
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-waiterName input,
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-date input,
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-serviceName input {
+  width: 7.53125rem;
+  height: 2.25rem;
+  outline: none;
+  border: 0.0625rem solid #CCCCCC;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0.3125rem;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-waiterName #searchDate,
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-date #searchDate,
+.searchRequirement .orderCompleteTime-searchRequirement .keyword-serviceName #searchDate {
+  display: inline-block;
+  width: 7.53125rem;
+  height: 2.25rem;
+  border: 0.0625rem solid #CCCCCC;
+  padding-left: 0.3125rem;
+  vertical-align: middle;
+  font-size: 1rem;
+  color: #333333;
+}
+.searchRequirement .orderCompleteTime-searchRequirement .searchBtn {
+  float: right;
+  width: 5.0625rem;
+  height: 2.25rem;
+  line-height: 2.25rem;
+  text-align: center;
+  color: #fff;
+  background-color: #fe6869;
+  vertical-align: middle;
+  margin: 0.78125rem 0.9375rem;
+}
+.searchRequirement .serviceCompleteTime-searchRequirement {
+  display: none;
+}
+.searchRequirement .serviceCompleteTime-searchRequirement div {
+  display: inline-block;
+  margin: 0 0.84375rem;
+}
+.searchRequirement .serviceCompleteTime-searchRequirement div span {
+  font-size: 1rem;
+  color: #333333;
+}
+.searchRequirement .serviceCompleteTime-searchRequirement div.keyword-waiterName {
+  margin-left: 0.46875rem;
+}
+.searchRequirement .serviceCompleteTime-searchRequirement .keyword-waiterName input,
+.searchRequirement .serviceCompleteTime-searchRequirement .keyword-serviceName input {
+  width: 8.1875rem;
+  height: 2.25rem;
+  outline: none;
+  border: 0.0625rem solid #ccc;
+  padding: 0 0 0 0.3125rem;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+.searchRequirement .serviceCompleteTime-searchRequirement .keyword-time #startTime,
+.searchRequirement .serviceCompleteTime-searchRequirement .keyword-time #endTime {
+  display: inline-block;
+  width: 8.5rem;
+  height: 2.25rem;
+  border: 0.0625rem solid #ccc;
+  padding-left: 0.3125rem;
+  vertical-align: middle;
+  font-size: 1rem;
+  color: #333333;
+  outline: none;
+}
+.searchRequirement .serviceCompleteTime-searchRequirement .keyword-time #startTime:disabled,
+.searchRequirement .serviceCompleteTime-searchRequirement .keyword-time #endTime:disabled {
+  background-color: #ffffff;
+}
+.searchRequirement .serviceCompleteTime-searchRequirement .keyword-time span:nth-of-type(3) {
+  margin: 0 0.3125rem;
+}
+.searchRequirement .serviceCompleteTime-searchRequirement .searchBtn {
+  display: inline-block;
+  width: 5.0625rem;
+  height: 2.25rem;
+  line-height: 2.25rem;
+  text-align: center;
+  color: #fff;
+  background-color: #fe6869;
+  vertical-align: middle;
+  margin: 0 0.4375rem;
+}
+.resultList {
+  width: 100%;
+  height: 100%;
+  margin-top: 0.625rem;
+}
+.resultList .orderCompleteTime-list {
+  display: block;
+}
+.resultList .orderCompleteTime-list .listTitle {
+  width: 100%;
+  height: 2.8125rem;
+  line-height: 2.8125rem;
+  background-color: #fe6869;
+  color: #fff;
+  font-size: 1.1875rem;
+}
+.resultList .orderCompleteTime-list .listTitle span {
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+.resultList .orderCompleteTime-list .listContent {
+  width: 100%;
+  height: 100%;
+}
+.resultList .orderCompleteTime-list .listContent ul li {
+  width: 100%;
+  height: 2.8125rem;
+  line-height: 2.8125rem;
+  color: #333333;
+  font-size: 1rem;
+  text-align: center;
+}
+.resultList .orderCompleteTime-list .listContent ul li span {
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+.resultList .serviceCompleteTime-list {
+  display: none;
+}
+.resultList .serviceCompleteTime-list .listTitle {
+  width: 100%;
+  height: 2.8125rem;
+  line-height: 2.8125rem;
+  background-color: #fe6869;
+  color: #fff;
+  font-size: 1.1875rem;
+}
+.resultList .serviceCompleteTime-list .listTitle span {
+  float: left;
+  width: 33.33333%;
+  text-align: center;
+}
+.resultList .serviceCompleteTime-list .listContent {
+  width: 100%;
+  height: 100%;
+}
+.resultList .serviceCompleteTime-list .listContent ul li {
+  width: 100%;
+  height: 2.8125rem;
+  line-height: 2.8125rem;
+  color: #333333;
+  font-size: 1rem;
+  text-align: center;
+}
+.resultList .serviceCompleteTime-list .listContent ul li span {
+  float: left;
+  width: 33.33333%;
+  text-align: center;
+}
+.serviceCompleteTime-select-page {
+  margin-bottom: 1.5625rem;
+  width: 100%;
+  position: relative;
+  top: 1.5625rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+/*# sourceMappingURL=averageTimeCount.css.map */

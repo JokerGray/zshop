@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>计费类型管理</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css"/>
+    <link rel="stylesheet" href="common/css/reset.css"/>
+    <link rel="stylesheet" href="common/css/common.css"/>
+    <link rel="stylesheet" href="common/assets/layui/css/layui.css"/>
+    <link rel="stylesheet" href="common/css/modal.css"/>
+
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" href="account_management/account_management.css"/>
+</head>
+<body>
+<!-- 头部 -->
+<!--<script src="common/js/util/head.js"></script>-->
+
+<div class="container-fluet" id="body-box">
+    <div class="row body-left-nav">
+        <div id="content">
+            <div class="common-title">
+                商户管理 - <span class="jurisdiction-title-name">计费类型管理</span>
+            </div>
+            <div class="row common-search">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label class="control-lable">名称：</label>
+                        <input type="text" class="form-control layui-input search-input" id="searchName" placeholder="请输入信息"/>
+                    </div>
+                    <button class="btn btn-success" type="button" id="searchCount">
+                        <i class="search-icon"></i><span>查询</span>
+                    </button>
+                </form>
+                <a href="javascript:void(0);" class="btn btn-info add-users" id="newRole" data-toggle="modal" data-target="#addNew">
+                    <i class="add-icon"></i>新增
+                </a>
+            </div>
+            <!-- 表格 -->
+            <div class="common-table">
+                <table class="table table-hover">
+                    <thead>
+                    <tr class="active">
+                        <th>序号</th>
+                        <th>名称</th>
+                        <th>费用（元）</th>
+                        <th>有效天数</th>
+                        <!--<th>开店数量限制</th>
+                        <th>上架商品数量限制</th>-->
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                        <th>修改人</th>
+                        <th>修改时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="countBody">
+
+                    </tbody>
+                </table>
+                <!-- 分页 -->
+                <div class="common-page1">
+                    <div id="paging-box-count">
+
+                    </div>
+                    <div id="paging-box" class="basic-jump"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 新增模态框 -->
+<div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    新增计费
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                        <span class="input-group-addon">名称:</span>
+                        <input type="text" class="form-control name">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">费用（元）:</span>
+                        <input type="text" class="form-control counts" maxlength="10">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">有效天数:</span>
+                        <input type="text" class="form-control days" maxlength="10" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">商户等级:</span>
+                            <select class="form-control" name="merchantId" id="merchantIds">
+                            </select>
+                    </div>
+                    <br>
+                    <!--<div class="input-group">
+                        <span class="input-group-addon">开店数量限制:</span>
+                        <input type="text" class="form-control stores" value="1" disabled>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">上架商品数量限制:</span>
+                        <input type="text" class="form-control goods" value="无限制" disabled>
+                    </div>-->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn" id="saveNew">
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 修改模态框 -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title">
+                    修改计费
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                        <span class="input-group-addon">名称:</span>
+                        <input type="text" class="form-control name">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">费用（元）:</span>
+                        <input type="text" class="form-control counts" maxlength="10">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">有效天数:</span>
+                        <input type="text" class="form-control days" maxlength="10" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">商户等级:</span>
+                        <select class="form-control" name="merchantId" id="merchantId" >
+                        </select>
+                    </div>
+                    <br>
+                    <!--<div class="input-group">
+                        <span class="input-group-addon">开店数量限制:</span>
+                        <input type="text" class="form-control stores" disabled>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">上架商品数量限制:</span>
+                        <input type="text" class="form-control goods" value="无限制" disabled>
+                    </div>-->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn" id="saveEdit">
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+
+<script type="text/javascript" src="common/js/util/util.js"></script>
+<!--<script type="text/javascript" src="common/js/login_success.js"></script>-->
+<script type="text/javascript" src="common/js/util/changePassword.js"></script>
+<!--<script type="text/javascript" src="common/js/quit.js"></script>-->
+ <!--<script type="text/javascript" src="common/js/util/pub.js"></script>-->
+ <script type="text/javascript" src="common/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+
+<script src="account_management/account_management.js"></script>
+</html>

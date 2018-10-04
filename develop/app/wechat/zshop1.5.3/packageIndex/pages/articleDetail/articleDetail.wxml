@@ -1,0 +1,16 @@
+
+<view>
+  <view class='title'>{{articleDetail.articleTitle}}</view>
+  <view class='user'>
+    <view> 
+      <image src='{{articleDetail.scSysUser.userpic}}'></image>
+    </view>
+    <view>
+      <view class='username'>{{articleDetail.scSysUser.username}}</view>
+      <view class='releaseTime'>{{articleDetail.releaseTime}}</view>
+    </view>
+  </view>
+  <view class='content'>
+    <wxparser  rich-text="{{articleDetail.articleContent}}" />
+  </view>
+</view>

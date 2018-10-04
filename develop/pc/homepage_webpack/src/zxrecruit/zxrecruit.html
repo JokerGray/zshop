@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <title>智享招聘</title>
+    ${require('../common/header.html')}
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+</head>
+<body>
+    ${require('../common/tpl-header.html')}
+    <div class="bannber-content">
+        <img src="./img/banner.jpg" alt="">
+    </div>
+
+    <!-- 筛选栏 -->
+    <div class="filter">
+        <div class="container">
+            <ul class="filter-content">
+                <li class="location iconfont">
+                    <span class="active">武汉市</span><i></i>
+                    <ul class="down-menu">
+                        <li>武汉市</li>
+                        <li>杭州市</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>技术</span><i></i>
+                    <ul class="down-menu">
+                        <li>技术</li>
+                        <li>研发类</li>
+                        <li>测试类</li>
+                        <li>运维类</li>
+                        <li>系统类</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>设计</span><i></i>
+                    <ul class="down-menu">
+                        <li>产品</li>
+                        <li>产品经理</li>
+                        <li>产品运营</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>市场</span><i></i>
+                    <ul class="down-menu">
+                        <li>客服</li>
+                        <li>电话服务</li>
+                        <li>增值服务</li>
+                        <li>客服培训</li>
+                    </ul>
+                </li>
+                <li>
+                    <span id="workType">管理</span><i></i>
+                    <ul class="down-menu">
+                        <li>管理</li>
+                        <li>财务类</li>
+                        <li>人力资源类</li>
+                        <li>行政类</li>
+                    </ul>
+                </li>         
+            </ul>
+        </div>
+    </div>
+    <!-- 当前位置 -->
+    <div class="container">
+        <div class="nav-subtitle">
+            <i class="iconfont icon-location"></i>
+            <span>当前位置：</span>
+            <a href="/">首页</a>
+            <i class="iconfont icon-right"></i>
+            <span>智享招聘</span>
+        </div>
+    </div>
+
+    <!--  -->
+    <div class="container">
+        <div class="narrow">
+            <div class="job-list-message">
+                <h2 class="pull-left">职位信息</h2>
+                <div class="pull-right">
+                    共 <span class="count">12</span> 个在招职位
+                </div>
+            </div>
+            <div class="job-list">
+                <div class="list-header">
+                    <div class="list-row">
+                        <div class="col-sm-3">
+                            职位名称
+                        </div>
+                        <div class="col-sm-2">
+                            职位类别
+                        </div>
+                        <div class="col-sm-2">
+                            工作地点
+                        </div>
+                        <div class="col-sm-2">
+                            招聘人数
+                        </div>
+                        <div class="col-sm-3">
+                            更新时间
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="list-body" id="listCont">
+  
+              
+            </ul>
+            <!-- 分页 -->
+            <div id="layPage" class="text-center">
+                <!-- <div id="test1"></div> -->
+            </div>
+        </div>
+    </div>
+
+    <!--  -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 aboutUs">
+                <div class="aboutUs-content">
+                    <h3>关于我们</h3>
+                    <p>我们一直都在寻找一些志同道合、才华横溢的小伙伴和我们一起做一些充满挑战的事情。</p>
+                    <a href="/">332704695@qq.com<i></i></a>
+                </div>
+            </div>
+            <div class="col-sm-6 contactUs">
+                <div class="contactUs-content">
+                    <h3>联系我们</h3>
+                    <p>如果您对以上信息有任何疑问的地方，希望您能随时联系我们，您的想法或建议对我们非常重要。</p>
+                    <a href="/">电话：027-65382779<i></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="signup-content">
+        <div class="container text-center">
+            <p class="text-c">更多发现更多好玩尽在智享城市</p>
+            <a class="text-btn" href="/signup.html">立即注册</a>
+            <p class="text-e">MORE DEVELOPMENT AND MORE FUN IN THE CITY</p>
+        </div>
+    </section>
+    
+    ${require('../common/tpl-footer.html')}
+    ${require('../common/footer.html')}
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/layui/layui.js"></script>
+</body>
+</html>

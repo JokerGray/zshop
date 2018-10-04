@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>工单详情</title>
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+   <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-2.2.5/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="css/order_detail.css" />
+</head>
+<body>
+    <div class="common-container" data-type="1">
+        <div class="jurisdiction-content">
+            <div class="jurisdiction-left">
+                <h4><a id="myOrder">我的工单</a> > 工单详情 </h4>
+                <div class="title">这是标题</div>
+                <div class="content">这是内容</div>
+                <div class="open-hid"> <!--关闭工单时才会出现-->
+                    <button class="layui-btn layui-btn-small layui-btn-normal" id="openBtn">
+                        重新开启
+                    </button>
+                    <button class="layui-btn layui-btn-small layui-btn-normal" id="nextBtn1">
+                        下一个
+                    </button>
+                </div>
+                <div class="message-input">
+                    <div id="editor" class="editor" style="width:100%;height: 210px"></div>
+                    <div class="tip">备注：图片大小请小于1m</div>
+                    <div class="ctrol-left">
+                        <button class="layui-btn layui-btn-small layui-btn-normal" id="sendBtn">
+                            回复
+                        </button>
+                    </div>
+                    <div class="ctrol-right">
+                        <button class="layui-btn layui-btn-small layui-btn-normal" id="nextBtn">
+                            下一个
+                        </button>
+                        <button class="layui-btn layui-btn-small layui-btn-normal" id="passBtn">
+                            转交工单
+                        </button>
+                        <button class="layui-btn layui-btn-small" id="nooverBtn">
+                            不需处理
+                        </button>
+                        <button class="layui-btn layui-btn-small" id="overBtn">
+                            完结工单
+                        </button>
+                    </div>
+                </div>
+                <div class="ctrl-log">
+                    <div class="ctrl-title">
+                        <span>操作日志</span>
+                    </div>
+                    <div class="message-info-lists" id="messageInfo">
+                    </div>
+                </div>
+            </div>
+            <div class="jurisdiction-center">
+                <h2>工单信息</h2>
+                <h3><i class="layui-icon">&#xe63c;</i>工单信息</h3>
+                <div class="order-detail">
+                    <table class="layui-table" lay-skin="nob">
+                        <colgroup>
+                            <col width="150">
+                            <col width="200">
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td>工单号：</td>
+                            <td class="tickno tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>创建时间：</td>
+                            <td class="createtime tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>优先级：</td>
+                            <td class="protiy tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>工单分类：</td>
+                            <td class="classify tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>所属板块：</td>
+                            <td class="plate tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>发起人：</td>
+                            <td class="createuser tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>受理人：</td>
+                            <td class="handle tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>抄送：</td>
+                            <td class="copyuser tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>状态：</td>
+                            <td class="orderstatu tabletxe"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3><i class="layui-icon">&#xe612;</i>APP用户信息</h3>
+                <div class="app-user">
+                    <table class="layui-table" lay-skin="nob">
+                        <colgroup>
+                            <col width="150">
+                            <col width="200">
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td>账号：</td>
+                            <td class="appaccount tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>昵称：</td>
+                            <td class="appnickname tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>手机号：</td>
+                            <td class="appphone tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>用户状态：</td>
+                            <td class="appu-serstate tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>是否认证：</td>
+                            <td class="app-iscert tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>用户性质：</td>
+                            <td class="app-usertype tabletxe"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3><i class="layui-icon">&#xe612;</i>商户信息</h3>
+                <div class="app-user">
+                    <table class="layui-table" lay-skin="nob">
+                        <colgroup>
+                            <col width="150">
+                            <col width="200">
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td>账号：</td>
+                            <td class="merchant-account tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>商户等级：</td>
+                            <td class="merchant-level tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>商户类型：</td>
+                            <td class="merchant-type tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>商户状态：</td>
+                            <td class="merchant-state tabletxe"></td>
+                        </tr>
+                        <tr>
+                            <td>联系方式：</td>
+                            <td class="merchant-phone tabletxe"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--弹窗-->
+    <!--转交工单-->
+    <div class="turn-order layui-form" id="turnOrder">
+        <div class="layui-form-item">
+            <label class="layui-form-label">工单受理人</label>
+            <div class="layui-input-block" id="turnUser">
+                <select name="city" class="copycommon" lay-verify="" lay-search>
+                </select>
+            </div>
+        </div>
+    </div>
+<!--图片-->
+<div class="img-hide" id="imgHide">
+    <img src="">
+</div>
+</body>
+
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui-2.2.5/layui/layui.all.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="../common/js/util/util.js"></script>
+    <script type="text/javascript" src="../common/js/common.js"></script>
+    
+    <script type="text/javascript" src="../common/js/util/pub.js"></script>
+    <!-- jSMyself-->
+    <script type="text/javascript" src="../common/js/jquery.nicescroll.js"></script>
+    <script type="text/javascript" src="../common/assets/wangEditor/wangEditor.min.js"></script>
+    <script type="text/javascript" src="../order/js/editor.js"></script>
+    <script type="text/javascript" src="../order/js/common_order.js"></script>
+    <script type="text/javascript" src="js/order_detail.js"></script>
+</body>
+</html>

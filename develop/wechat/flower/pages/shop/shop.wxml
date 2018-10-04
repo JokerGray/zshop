@@ -1,0 +1,38 @@
+<!--pages/shop/shop.wxml-->
+
+<!-- //搜索店铺 -->
+<view class="drawer_screen" bindtap="showCartList" data-statu="close" wx:if="{{true}}"></view>
+<view class="shop" wx:if="{{true}}">
+    <view class='shopheader'>
+    <image class='shopimage' src='../../images/detailed/huahuo_shoptc_close@2x.png'></image>
+    <view class='shopheadertop'>填写店铺信息</view>
+    </view>
+    <view class='shopheadercom'>
+        <input class='shopheaderinp' bindinput='userNameInput' placeholder="请输入店铺名称"/>
+    </view>
+    <view class='shopbottom' bindtap='shopnamesend'>确定</view>
+</view>
+
+<!-- //添加店铺 -->
+
+<view class="shop" wx:if="{{false}}">
+    <view class='shopheader addshopheader'>
+      <image class='shopimage' src='../../images/detailed/huahuo_shoptc_close@2x.png'></image>
+      <view class='shopheadertop'style='padding-left:100rpx;width:500rpx;'>20条评论</view>
+      <view class='shopheadertopright'>添加新店铺</view>
+    </view>
+    <view class='lookshop-list'>
+            <image        src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLhpCNoXf1fPRmNTacXOekNDO76tZ33TAkS8s0JfjWqu7YpbItoJ8EorAhPgPGlhT2lmFXIBQOFRw/132'style="border-radius:50%;"></image>
+            <view>
+              <view class='loolshop-name'>闪闪亮晶晶{{item.num}}</view>
+              <view class='showcomment'>我们坚持一件事情，并不是因为这样做了会有效果，而是坚信，这样做是对的</view>
+            </view>
+    </view>
+     <view class='lookshop-list'>
+            <image        src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLhpCNoXf1fPRmNTacXOekNDO76tZ33TAkS8s0JfjWqu7YpbItoJ8EorAhPgPGlhT2lmFXIBQOFRw/132'style="border-radius:50%;"></image>
+            <view>
+              <view class='loolshop-name'>闪闪亮晶晶{{item.num}}</view>
+              <view class='showcomment'>我们坚持一件事情，并不是因为这样做了会有效果，而是坚信，这样做是对的</view>
+            </view>
+    </view>
+</view>

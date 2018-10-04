@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>新增优惠券</title>
+    <link href="../../../../assets/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="../../../../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../../assets/hplus/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+    <link href="../../../../assets/hplus/css/animate.min.css" rel="stylesheet">
+    <link href="../../../../assets/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <!-- jquery -->
+    <script type="text/javascript" src="../../../../assets/hplus/js/jquery.min.js"></script>
+    
+    <!-- 左侧手风琴菜单-->
+    <script type="text/javascript" src="../../../../assets/hplus/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <!--jQuery滚动条特效插件jQuery slimScroll-->
+    <script type="text/javascript" src="../../../../assets/hplus/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!--layer弹出层插件-->
+    <script type="text/javascript" src="../../../../assets/layer/layer.js"></script>
+    <!-- 主页的样式初始化-->
+    <script type="text/javascript" src="../../../../assets/hplus/js/hplus.min.js"></script>
+  
+    <script type="text/javascript">
+        var ctx = '';
+    </script>
+    <link rel="stylesheet" href="../../../../assets/css/earnmoney/coupon/add.css"/>
+    <style>
+        .mybtn{
+            margin:0 5px;
+            color: #333;
+            background-color: #fff;
+            border-color: #ccc ;
+        }
+        .box{
+            padding: 0.5rem 0;
+            font-size: 1.5rem;
+            border-bottom: 1px dashed #ddd;
+        }
+        .bottomBox{
+            position: absolute;
+            border-bottom: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.5rem 20px;
+            background-color: #eee;
+        }
+        .labelTitle{
+            width: 80px;
+        }
+        .serialNumber{
+            display: inline-block;
+            padding: 0.6rem 0;
+        }
+        span.noData{
+            color: #999;
+        }
+    </style>
+</head>
+<div class="container-fluid">
+	<div class="row">
+		<div class="ibox-content ">
+			<div class="box">
+				<span class="labelTitle">用户电话：</span><span id="comsumerPhone"></span>
+			</div>
+			<div class="box">
+				<span class="labelTitle">购买时间：</span><span id="createTime"></span>
+			</div>
+			<div class="box">
+				<span class="labelTitle">到期时间：</span><span id="expireTime"></span>
+			</div>
+			<div class="box">
+				<span class="labelTitle">消费时间：</span><span id="consumeTime"></span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="box bottomBox text-left">
+		<span class="serialNumber text-danger">
+			<span class="labelTitle">序列号：</span>
+			<span id="serialNumber"></span>
+		</span>
+		<button type="button" class="btn btn-info hidden pull-right consumeBtn1" onclick="submitConsume()">确认消费</button>
+		<div class="btn btn-link text-info hidden pull-right consumeBtn2">已消费</div>
+		<div class="btn btn-link text-muted hidden pull-right expireBtn">已过期</div>
+	</div>
+</div>
+<script src="../../src/js/common.js"></script>
+<script>
+	$(document).ready(function(){
+		if(!localStorage.coupon) return;
+		var coupon = JSON.parse(localStorage.coupon);
+		$('#comsumerPhone').text(coupon['comsumerPhone']);
+		$('#createTime').text(coupon['createTime']);
+		$('#consumeTime').text(coupon['consumeTime']=='-' ? '暂无消费记录' : coupon['consumeTime']).toggleClass('noData', !consumeTime);
+		$('#serialNumber').text(coupon['serialNumber']);
+		$('#expireTime').text(coupon['expireTime']);
+		if(coupon['orderStatus'] == '未消费'){
+			$('.consumeBtn1 ').removeClass('hidden');
+		}else if(coupon['orderStatus'] == '已消费'){
+			$('.consumeBtn2 ').removeClass('hidden');
+		}else if(coupon['orderStatus'] == '已过期'){
+			$('.expireBtn').removeClass('hidden');
+		}
+	});
+
+	// 确认消费
+	function submitConsume(){
+		var index = parent.layer.confirm('确认消费？', function(){
+			parent.layer.close(index);
+			var def = reqAjax('earnmoney/shopCouponCheckUsingstate', {
+				serialNumber : $('#serialNumber').text()
+			});
+			def.then(function(data){
+				parent.layer.msg(data.msg, {icon: data.code == 1 ? 1 : 2});
+				if(data.code == 1) {
+					parent.refresh();
+					parent.layer.closeAll('iframe');
+				}
+			}).fail(function(data){
+				parent.layer.msg('提交失败！系统错误或网络异常！');
+			});
+		});
+	}
+</script>
+</body>
+</html>

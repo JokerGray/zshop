@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="wekit">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圈子详情</title>
+    <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="//apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./static/flexible/flexible.js"></script>
+    <script src="./static/artTemplate/artTemplate.js"></script>
+</head>
+<body>
+    	<div class="wrap" style="max-width: 1024px;margin:0 auto;">
+            <div id="header" style="max-width: 1024px;margin:0 auto; " >
+                <div class="header_logo">
+                    <img src="./src/img/logo.png" />
+                </div>
+                <div class="header_load btn">
+                    打开
+                </div>
+            </div>
+            <div class="content">
+                <div class="head"></div>
+                <div id="tab">
+                    <div class="tab">
+                        <div class="tab-head">
+                            <span class="tab-sub"></span>
+                                <ul class="nav-tabs">
+                                    <li class="tab-item active ">动态</li> 
+                                    <li class="tab-item activity-btn">活动</li>
+                                </ul>
+                        </div>
+                        <div class="tabContent" >
+                            <div class="tab-main dynamic selected">
+                                <div class="dyContent">
+                                    <img class="dy-stance stance" src="./src/img/quanzi_kongbaiye.png" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-main activity ">
+                                <div class="acContent" >
+                                    <img class="ac-stance stance" src="./src/img/quanzi_kongbaiye.png" alt="">
+                                </div>
+                            </div>       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="model">
+            <div class="model_cont">
+                <p class="text1">1、点击右上角的&nbsp;&nbsp;<span></span></p>
+                <p class="text2">2、选择&nbsp;&nbsp;<span></span></p>
+                <div class="pointTo"></div>
+            </div>
+        </div>
+    </div>
+    <a href="javascrpt:;" class="footer download_link"> <img src="./src/img/footer.png" alt=""> </a>
+    <script type="text/html" id="blankPage">
+        <div class="blankPage">
+                <p class="warning">哎呀!您访问的圈子不存在</p>
+            </div>
+    </script>
+    <script type="text/html" id="circleHead">
+       
+            <div class="surface">
+                <img src="<%=data.detailTitlePic%>" alt="">
+            </div>
+            <div class="circle">
+                <h3 class="cirName"><%=data.detailName%></h3>
+                <%if(data.type==2){%>
+                <div class="shopImg"></div>
+                <%}%>
+                <%if(data.shopName){%>
+                <p class="shopName"><%=data.shopName%></p>
+                <%}%>
+                <div class="keyword">
+                    <%for(var i = 0 ;i<data.detailMarkName.split(",").length;i++){%>
+                    <span class="key">#<%=data.detailMarkName.split(",")[i]%></span>
+                    <%}%>
+                </div>
+                <p class="describe">             
+                    <%=data.detailTitle%>
+                </p>
+            </div>    
+        
+    </script>
+    <script type="text/html" id="VideoAlbumList">
+        <%for(var i =0;i<data.length;i++){%>
+           
+        <div class="dyList" onclick="gotoDynamic(<%=data[i].videoAlbum.videoAlbumId%>)">
+             
+                <div class="dydata">
+                    <img src="<%=data[i].videoAlbum.logo%>" alt="" class="headImg">
+                    <h3 class="useName"><%=data[i].videoAlbum.circleName%></h3>
+                    <%if(data[i].videoAlbum.type==2){%>
+                        <div class="shopImg"></div>
+                    <%}%>
+                  
+                    <p class="postedDate"><%=data[i].videoAlbum.videoAlbumTime%></p>
+                    <p class="dynamicText"><%=data[i].videoAlbum.videoAlbumDescription%></p>
+                    <div class="dy-media">
+                            <%if(data[i].videoAlbum.videoAlbumType==1){%>
+                                <ul class="imgBox clearfix">
+                                        <%for(var j =0;j<data[i].videoAlbum.urls.length;j++){%>
+                                                <li>
+                                                    <a href="javascript:void(0);">
+                                                        <img src="<%=data[i].videoAlbum.urls[j]%>">
+                                                    </a>
+                                                </li>
+                                            <%}%>
+                                </ul>
+                            <%}else if(data[i].videoAlbum.videoAlbumType==2){%>
+                                <video class="video" src="<%=data[i].videoAlbum.urls[0]%>"></video>
+                                <%}else if(data[i].videoAlbum.videoAlbumType==3){%>
+                                    <%}%>
+                    </div>
+                    <%if(data[i].videoAlbum.shopName){%>
+
+                         <p class="shopName"><%=data[i].videoAlbum.shopName%></p>
+                        <%}%>
+                </div>
+                <div class="feelHandle">
+                        <ul class="rowLine clearfix">
+                            <li>
+                                <a href="javascript:void(0);" class="txt">
+                                    <span class="pos">
+                                            <em class="icon iconLike"></em>
+                                            <em><%=data[i].videoAlbum.isLike%></em>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="txt">
+                                    <span class="pos">
+                                            <em class="icon iconReview"></em>
+                                            <em><%=data[i].videoAlbum.isAttention%></em>
+                                    </span>
+                                </a>
+                                </li>
+                            <li>
+                                <a href="javascript:void(0);" class="txt">
+                                    <span class="pos">
+                                            <em class="icon iconBrowse"></em>
+                                            <em><%=data[i].videoAlbum.isVisual%></em>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                </div>
+            </div>
+            <%}%>
+    </script>
+    <script type="text/html" id="ActivityList">
+        <%for(var i =0 ;i<data.length;i++){%>
+        <div class="activityList">
+            <div class="face" onclick="gotoActivity(<%=data[i].id%>)">
+                <a href="javascript:;">
+                   <img src="<%=data[i].circleLogo%>" class="a-face-img" alt="">
+                </a>
+            </div>
+            <h3 class="pub-name"><%=data[i].circleName%></h3>
+                <%if(data[i].circleType==2){%>
+                <div class="shopImg"></div>
+                <%}%>
+            <p class="pub-date">于<em><%=data[i].createTime%></em>发布</p>
+            <img class="pub-img" src="<%=data[i].cover%>" alt="">
+            <%if(data[i].isJoin==0){%>
+                <div class="isJoin">限圈内报名</div>
+                <%}%>
+            <%if(data[i].namingName!=""){%>
+                <div class="namingName"><%=data[i].namingName%></div>
+                <%}%>
+            <h3 class="pub-title"><%=data[i].name%></h3>
+            <%if(data[i].sponsorNumber!=0){%>
+                <p class="pub-start">以获<%=data[i].sponsorNumber%>家赞助</p>
+                <%}%>
+            <p class="pub-start"><em><%=data[i].startTime%></em>开始</p>
+            <%if(data[i].type==1){%>
+                <span class="pub-status-lose">已过期</span>
+            <%}else{%>
+                <span class="pub-status">报名中</span>
+                <%}%>
+            <%if(data[i].avePrice==0){%>
+            <span class="pub-price">免费</span>
+            <%}else{%>
+                <span class="pub-price">¥ <%=data[i].avePrice%></span>
+                <%}%>
+        </div>
+        <%}%>
+    </script>
+
+    <script src="./static/pub/pub.js"></script>
+    <script src="./static/share/share.js"></script>
+    <script>
+
+    </script>
+</body>
+</html>

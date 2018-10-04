@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='apple-itunes-app' content='app-id=1146700782'>
+    <title>智享城市扫码</title>
+    <link rel="stylesheet" href="style/ewm.css">
+</head>
+
+<body>
+    <div id="weixin_pageto">
+        <div class="txt">
+            1、点击右上角
+            <img src="img/_more@3x.png" style="width: 0.7rem;" />打开菜单
+            <br/> 2、选择
+            <img src="img/safari@3x.png" style="width: 0.7rem;" />在浏览器中打开
+        </div>
+        <img src="img/shape_up@3x.png" alt="" class="uparrow">
+        <img src="img/shape1_down@3x.png" alt="" class="downarrow">
+    </div>
+    <div id="weixin_pageto" style="display: none;">
+        <div class="txt">
+            请点击右上角复制链接<img src="img/_more@3x.png" style="width: 0.7rem;" />从QQ浏览器中打开
+        </div>
+        <img src="img/shape_up@3x.png" alt="" class="uparrow">
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/commonUtil.js"></script>
+    <script>
+        //获取参数
+        var apptype = CommonUtil.getUrlParam('apptype'),
+            subtype = CommonUtil.getUrlParam('subtype'),
+            userId = CommonUtil.getUrlParam('userId');
+
+        //跳转app地址
+        var $ios_app = "CityNRH://?apptype=" + apptype + "&subtype=" + subtype + "&userId=" + userId;
+        var $android_app = "smartcity://news006/jumpParams?userId=" + userId;
+
+        //app下载地址
+        var $ios_url = "https://itunes.apple.com/us/app/zhi-xiang-cheng-shi/id1146700782";
+        var $android_url = "http://android.myapp.com/myapp/detail.htm?apkName=com.smartcity";
+
+        function openApp() {
+            //判断为android
+            if (navigator.userAgent.match(/android/i)) {
+                //微信
+                if (navigator.userAgent.match(/MicroMessenger/i) == 'MicroMessenger') {
+                    $('#weixin_pageto').show();
+                    //QQ内置浏览器
+                    // } else if (navigator.userAgent.indexOf('Mobile MQQBrowser') > -1) {
+                } else if (navigator.userAgent.indexOf('MQQBrowser') > -1 && navigator.userAgent.indexOf(' TBS') > -1) {
+                    $('#weixin_pageto').show();
+                } else {
+                    var last = Date.now();
+                    var doc = window.document;
+                    var ifr = doc.createElement('iframe');
+                    ifr.src = $android_app;
+                    ifr.style.cssText = 'display:none;border:0;width:0;height:0;';
+                    doc.body.appendChild(ifr);
+                    setTimeout(function() {
+                        doc.body.removeChild(ifr);
+                        //setTimeout回小于2000一般为唤起失败
+                        if (Date.now() - last < 4000) {
+                            window.location.href = $android_url;
+                        }
+                    }, 3000);
+                }
+                //判断为IOS
+            } else if (navigator.userAgent.match(/iPhone|iPod|iPad/i)) {
+                //微信
+                if (navigator.userAgent.match(/MicroMessenger/i) == 'MicroMessenger') {
+                    $('#weixin_pageto').show();
+                    //QQ内置浏览器
+                } else if (navigator.userAgent.indexOf(' QQ') > -1) {
+                    $('#weixin_pageto').show();
+                } else {
+                    window.location.href = $ios_app;
+                    setTimeout(function() {
+                        window.location.href = $ios_url;
+                    }, 3000);
+                }
+            } else {
+                //判断为pc
+                window.location.href = $android_url;
+            }
+        }
+        openApp();
+    </script>
+</body>
+
+</html>

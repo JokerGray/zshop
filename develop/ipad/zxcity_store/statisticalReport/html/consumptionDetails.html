@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<link rel="stylesheet" href="../../common/assets/css/bootstrap.css" />
+<link rel="stylesheet" href="../../common/css/common.css" />
+<link rel="stylesheet" href="../../common/assets/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/consumptionDetails.css" />
+
+</head>
+<body>
+	<div class="maintitle">
+		<a class="return-icon" href="javascript:void(0);"><img
+			src="../../myHomePage/img/icon_fanhui.png"></a>
+		<h1 class="title">消耗明细</h1>
+	</div>
+	<div class="main-content">
+		<div class="search-bar">
+			<div class="form-inline date-wrap">
+				<input type="text" id="startTime" class="form-control datetime start-time" readonly="readonly" /> 至 <input type="text" id="endTime"
+					class="form-control datetime end-time" readonly="readonly" /> 项目 <input
+					type="text" id="serviceName" class="form-control" />
+				<button type="button" class="btn btn-danger" id="searchBtn">查询</button>
+			</div>
+		</div>
+		<table class="table table-striped consumptionDetails-List">
+			<thead>
+				<tr>
+					<th width="20%">员工</th>
+					<th width="20%">项目</th>
+					<th width="20%">消费金额</th>
+					<th width="20%">客户</th>
+					<th width="20%">时间</th>
+				</tr>
+			</thead>
+			<tbody id="consumptionDetails">
+			</tbody>
+		</table>
+		<div id="page-selection" class="pageview"></div>
+	</div>
+
+<script src="../../common/assets/js/jquery-1.10.2.js"></script>
+<script src="../../common/assets/js/bootstrap.min.js"></script>
+<script src="../../common/assets/js/jquery.bootpag.min.js"></script>
+<script src="../../common/assets/js/layer/layer.js"></script>
+<script type="text/javascript" src="../../common/assets/js/datetimepicker/bootstrap-datetimepicker.min.js" ></script>
+<script type="text/javascript" src="../../common/assets/js/datetimepicker/bootstrap-datetimepicker.zh-CN.js" ></script>
+<script src="../../common/js/util/util.js"></script>
+<script src="../js/consumptionDetails.js"></script>
+</body>
+</html>

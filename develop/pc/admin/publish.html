@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+	<title>24小时·管理员后台</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/publish.css" />
+	<!--[if lt IE 9]>
+	   <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="header white">
+		<div class="container">
+			<div class="header_logo pull-left"><img src="images/logo.png" ></div>
+			<div class="header_user pull-right">
+				<div class="h_user_group clearfix">
+					<div class="h_face pull-left">
+						<img src="images/face1.png" />
+						<ul class="face_dropdown">
+							<li>
+								<i class="fa fa-leaf"></i>作者
+								<div class="name"><a>NIKE耐克</a></div>
+							</li>
+							<li class="line">
+								<a href="login.html"><i class="fa fa-sign-out"></i>退出</a>
+							</li>
+						</ul>
+					</div>
+					<div class="pull-left">
+						<div class="h_user_type">管理员</div>
+						<div class="h_user_name">NIKE耐克</div>
+					</div>				
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="homepage">
+		<div class="container white">
+			<div class="col-xs-2 one">
+				<ul class="sidebar-collapse">
+					<li class="active">
+						<a class="sidebar-item"><i class="fa fa-home"></i>主页</a>
+					</li>
+					<li>
+						<a class="sidebar-item"><i class="fa fa-file-text-o"></i>审核</a>
+						<ul class="sidebar-sub">
+							<li>
+								<a href="newslist.html">作家审核</a>
+							</li>
+							<li>
+								<a href="commentlist.html">文章审核</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a class="sidebar-item"><i class="fa fa-bar-chart"></i>收益审核</a>
+						<ul class="sidebar-sub">
+							<li>
+								<a href="fananalysis.html">单日收益核对</a>
+							</li>
+							<li>
+								<a href="fananalysis.html">异常名单</a>
+							</li>
+							<li>
+								<a href="fananalysis.html">黑名单</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a class="sidebar-item"><i class="fa fa-bar-chart"></i>作家权重管理</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-xs-10 one">
+				<div class="right_box">
+					<p class="pub_nav">发布公告</p>
+					<form id="formid" name="form" method="post" action="">
+						<div class="pub_title_box">
+							<input id="pub_title" class="pub_title" type="text" value="请输入标题(5-30字)" maxlength="30"><i id="pubTit_icon"><span id="icon_length">0</span>/30</i>
+						</div>
+						<textarea id="editor_id" name="content" style="width:100%; height:500px;"></textarea>
+						<div class="con_btns">
+							<input id="submit" type="submit" name="submit" value="发表">
+							<input id="preview" type="button" value="预览">
+							<input id="cancel" type="button" value="取消">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+<script src="lib/jquery/jquery-1.12.2.min.js"></script>
+<script charset="utf-8" src="assets/kindeditor-4.1.10/kindeditor.js"></script>
+<script charset="utf-8" src="assets/kindeditor-4.1.10/lang/zh_CN.js"></script>
+<script src="js/publish.js"></script>
+</body>
+</html>

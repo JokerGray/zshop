@@ -1,0 +1,199 @@
+*{
+    margin:0;
+    padding: 0;
+}
+html,body{
+    font-size:100%;
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+}
+.take-meal-wrapper{
+    /*display:flex;
+    justify-content: space-between;*/
+    width:100%;
+    height:100vh;
+    background:url(./img/take_bg.png) no-repeat center center;
+    background-size:cover;
+    color:#fff;
+    overflow:hidden;
+}
+.take-meal-wrapper .take-meal-content{
+    width: 102%;
+    height: 100%;
+    overflow-y: auto;
+}
+.take-meal-content a{
+    margin:12px 2.5%;
+    display: block;
+    height: 31px;
+    width: 44px;
+}
+.take-meal-content a img{
+    display: block;
+    width: 40%;
+}
+.take-meal-content .take-meal-lists{
+    width: 98%;
+}
+.take-meal-lists li{
+    width: 30%;
+    margin-left: 2.5%;
+    float: left;
+    height: 304px;
+   /* margin-bottom: 40px;*/
+    min-width: 307px;
+    position: relative;
+}
+.take-meal-lists li .take-meal-num{
+    display: block;
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-radius: 100%;
+    background: #fff;
+    color: #a58f64;
+    font-size: 13px;
+}
+.take-meal-container{
+    width: 100%;
+    height: 264px;
+    overflow: hidden;
+}
+.take-meal-lists .take-meal-head{
+    width: 100%;
+    padding: 10px 3%;
+    background: #a58f64;
+    overflow: hidden;
+    font-size: 16px;
+}
+.take-meal-head .take-meal-order{
+    display: block;
+    float: left;
+    width: 34%;
+    min-width: 84px;
+    text-align: left;
+    height: 40px;
+}
+.take-meal-order span{
+    display: block;
+}
+.take-meal-btn{
+    width: 27%;
+    float: right;
+}
+.take-meal-head .take-meal-time{
+    width: 39%;
+    float: left;
+    /*height: 40px;*/
+    text-align: center;
+    font-size: 15px;
+}
+.take-meal-time .take-time-wrapper{
+    display: inline-block;
+    text-align: left;
+}
+.take-meal-time span{
+    display: block;
+}
+.take-meal-head .btn{
+    color: #fff;
+    background: #f59701;
+    padding: 8px 8px;
+    float: right;
+    font-size: 16px;
+}
+.take-meal-list{
+    width: 106%;
+    height: 180px;
+    overflow-y: scroll;
+    background: rgba(0,0,0,0.5);
+}
+.take-meal-list .take-meal-info{
+    color: #fff;
+    font-size: 16px;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #393329;
+    padding: 0 9% 0 3%;
+    height: 60px;
+
+}
+.take-meal-info .meal-info-name{
+    width: 74%;
+    float: left;
+    padding: 19px 0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.take-meal-info .btn{
+    color:#fff;
+    margin-top: 12px;
+    width: 54px;
+    height: 34px;
+    float: right;
+}
+.take-meal-info .take-btn{
+    background: #f59701;
+}
+.take-meal-info .over-btn{
+    background: #999999;
+}
+.take-meal-info .disable-btn{
+    background:red url(img/disable.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.gray-btn{
+    background: #999999;
+    color:#fff;
+}
+/*样式layer*/
+body .demo-class .layui-layer-title {
+    padding: 0 80px 0 20px;
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    color: #333;
+    overflow: hidden;
+    background-color: #F8F8F8;
+    border-radius: 2px 2px 0 0;
+}
+body .demo-class .layui-layer-setwin a {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    font-size: 46px;
+    _overflow: hidden;
+}
+body .demo-class .layui-layer-content {
+    position: relative;
+    padding: 20px;
+    line-height: 30px;
+    word-break: break-all;
+    overflow: hidden;
+    font-size: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-indent: 30px;
+}
+.hr{
+    width: 100%;
+    height: 40px;
+}
+

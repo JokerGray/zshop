@@ -1,0 +1,171 @@
+// px转成rem的方法
+@function ptr($px) {
+    @return ($px/26) * 1rem;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+html{
+    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+html, body{
+    height: 100%;
+    background-color: #fdfcf4;
+}
+
+@media screen { html { font-size: 70%!important; } }
+@media screen and (min-width: 320px) { html { font-size: 70%!important; } }
+@media screen and (min-width: 375px) { html { font-size: 87.890625%!important; } }
+@media screen and (min-width: 414px) { html { font-size: 97.03%!important; } }
+@media screen and (min-width: 480px) { html { font-size: 112.5%!important; } }
+@media screen and (min-width: 560px) { html { font-size: 131.25%!important; } }
+@media screen and (min-width: 640px) { html { font-size: 150%!important; } }
+@media screen and (min-width: 720px) { html { font-size: 168.75%!important; } }
+
+.app{
+    padding: ptr(26);
+}
+@mixin content{
+    position: relative;
+    display: block;
+    background-color: #fff;
+    border-radius: ptr(4);
+}
+.text-right{
+    text-align: right;
+}
+.content_title{
+    @include content;
+    padding: ptr(26) ptr(24) ptr(26);
+
+    .task_tag{
+        display: inline-block;
+        background-color: #ffd705;
+        color: #333;
+        font-size: ptr(28);
+        line-height: 1;
+        padding: ptr(4) ptr(4) ptr(4) ptr(25);
+        margin-left: ptr(-32);
+        border-radius: ptr(4);
+        vertical-align: bottom;
+
+        .price_content{
+            display: inline-block;
+            background-color: #fff;
+            line-height: 1;
+            padding: ptr(8) ptr(20);
+            margin-left: ptr(20);
+        }
+    }
+    .createTime{
+        float: right;
+        padding: ptr(12) ptr(0);
+        color: #666;
+    }
+
+    .task_title{
+        display: block;
+        font-size: ptr(38);
+        font-weight: bold;
+        padding: ptr(27) 0 ptr(12);
+    }
+
+    .task_property_table{
+        width: 100%;
+        td{
+            width: 50%;
+            font-size: ptr(24);
+            padding: ptr(12) 0;
+        }
+    }
+}
+.content_employer{
+    @include content;
+    margin: ptr(20) 0 ptr(40);
+    padding: ptr(27) 0;
+
+    .task_employer{
+
+        td{
+            vertical-align: middle;
+        }
+        .employer_tag{
+            display: inline-block;
+            width: ptr(95);
+            height: ptr(50);
+            background: url(img/wjzq_gz_ban@2x.png) no-repeat;
+            background-size: contain;
+            font-size: ptr(30);
+            line-height: ptr(50);
+            text-align: center;
+            font-weight: bold;
+        }
+        .employer_pic{
+            display: inline-block;
+            width: ptr(80);
+            height: ptr(80);
+            margin: 0 ptr(10) 0 ptr(15);
+            border-radius: 100%;
+        }
+        .employer_name{
+            font-size: ptr(28);
+        }
+    }
+}
+.task_tag_top{
+    display: block;
+    width: ptr(404);
+    height: ptr(78);
+    margin: 0 auto 0;
+    padding-top: ptr(32);
+    font-size: ptr(34);
+    background: url(img/wjzq_renwuxuqiubg@2x.png) no-repeat;
+    background-size: contain;
+    text-align: center;
+    font-weight: bold;
+    transform: translateY(ptr(-32));
+}
+.content_demand{
+    @include content;
+    margin-top: ptr(56);
+
+    .task_content{
+        padding: 0 ptr(38) ptr(40);
+        font-size: ptr(26);
+        line-height: 1.5;
+        transform: translateY(ptr(-16));
+    }
+}
+.content_photo{
+    .task_img{
+        padding: 0 ptr(25) ptr(40);
+        img{
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            border-radius: ptr(5);
+        }
+    }
+}
+.download{
+    display: block;
+    width: 100%;
+    background-color:#e35055;
+    text-align: center;
+
+    img{
+        width: 100%;
+        max-width: 100%;
+    }
+}
+.download.hidden{
+    display: none;
+}

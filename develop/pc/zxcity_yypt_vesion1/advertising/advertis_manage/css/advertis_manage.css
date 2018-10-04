@@ -1,0 +1,540 @@
+/*tab切换*/
+.ctronlbox{
+    width: 1380px;
+    margin: 24px auto 0;
+    position: relative;
+}
+.ctronl-btn{
+    display: inline-block;
+    position: absolute;
+    top:0;
+    bottom:0;
+    right: 0;
+}
+.ctronl-btn a{
+    display: block;
+    float: left;
+    background: #3b9bff;
+    color:#fff;
+    width: 94px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+}
+.ctronl-btn a:first-child{
+    margin-right: 9px;
+}
+.ctronlbox .layui-input-block{
+    width: 98px;
+    background: #3b9bff;
+}
+.ctronlbox .layui-input-block input{
+    background: #3b9bff;
+    color:#fff;
+    font-size: 18px;
+    text-align: center;
+}
+.ctronlbox .layui-form-select .layui-edge{
+    border-top-color: #fff;
+}
+/*select*/
+.ctronlbox .layui-unselect::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #fff;
+}
+
+.ctronlbox .layui-unselect:-moz-placeholder, textarea:-moz-placeholder{
+    color: #fff;
+}
+
+.ctronlbox .layui-unselect::-moz-placeholder, textarea::-moz-placeholder {
+    color: #fff;
+}
+.ctronlbox .layui-unselect:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #fff;
+}
+/*全部相关*/
+.all-info{
+    position: relative;
+    width: 215px;
+    /*height: 568px;*/
+}
+.all-info .tablist{
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    color:#fff;
+    background: #3b9bff;
+    text-indent: 16px;
+    cursor: pointer;
+    font-size: 18px;
+}
+.alllist{
+    position: absolute;
+    top:38px;
+    z-index: 33;
+    display: none;
+}
+.alllist .listnav{
+    width: 215px;
+    height: 530px;
+    background: #393031;
+    padding: 19px 0;
+    float: left;
+}
+.alllist .listnav li{
+    height: 38px;
+    line-height: 38px;
+    width: 100%;
+    color:#fff;
+    text-indent: 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.alllist .listnav li:hover{
+    background: #605a5a;
+}
+.alllist .listnav li.actv{
+    background: #605a5a;
+}
+.alllist .listinfo{
+    width: 438px;
+    height: 530px;
+    background: #ffffff;
+    padding: 0 34px;
+    margin-left: 215px;
+    border:2px solid #3b9bff;
+    border-left:0;
+    box-shadow: 0 0 10px #ccc;
+}
+.alllist .listinfo>h4{
+    color:#000;
+    font-size: 15px;
+    height: 57px;
+    line-height: 65px;
+    border-bottom:1px solid #dfdfdf;
+}
+.listinfo ul{
+    width: 100%;
+    height: 427px;
+    overflow: auto;
+}
+.listinfo ul .nochild{
+    display: inline-block;
+    padding: 20px 0 0 0;
+    color:#777;
+    float: left;
+    margin-right: 24px;
+    font-size: 15px;
+    cursor: pointer;
+    white-space:nowrap;
+    height: 40px;
+    line-height: 30px;
+}
+.listinfo ul .chlid{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.listinfo ul .chlid h4{
+    font-size: 15px;
+    padding: 0 0 5px 0;
+}
+.listinfo .chlid ul{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.listinfo .chlid ul li{
+    display: inline-block;
+    height: 40px;
+    float: left;
+    white-space:nowrap;
+    font-size: 14px;
+    color:#777;
+    margin-right: 24px;
+    cursor: pointer;
+    line-height: 30px;
+}
+.listinfo ul .nochild:hover,.listinfo .chlid ul li:hover{
+    color: #3b9bff;
+}
+.listinfo>ul h4{
+    display: block;
+    width: 100%;
+}
+/*内容*/
+.content-all{
+    width: 1380px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+.content-all ul{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.onlyinput>ul li,.steptwo li{
+    width: 300px;
+    height: 170px;
+    float: left;
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    margin: 20px;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+}
+.onlyinput>ul li .layui-form-checkbox,.steptwo li .layui-form-checkbox{
+    float: right;
+    margin: 0;
+}
+.sue,.hideval,.hidetip,.twotip{
+    display: none;
+}
+.hidetip{
+    width: 80px;
+    margin-top: 8px;
+    float: left;
+}
+.chaeck {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0;
+    display: none;
+}
+.onlyinput>ul li img,.steptwo li img{
+    display: block;
+    float: left;
+    margin: 9px;
+}
+.content-all ul li .machine-info{
+    display: inline-block;
+    width: 200px;
+    padding: 9px 0 0 29px;
+    cursor: pointer;
+}
+.content-all .machine-info span{
+    display: block;
+    margin-bottom: 8px;
+}
+.content-all .machine-info .machine-statu{
+    width: 75px;
+    float: left;
+}
+.content-all .machine-info .machine-send{
+    width: 70px;
+    float: right;
+}
+.machine-info .machine-statu i{
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    float: right;
+    margin-top: 4px;
+}
+.machine-info .machine-statu .red-statu{
+    background:red;
+}
+.machine-info .machine-statu .green-statu{
+    background:green;
+}
+.content-all ul li:hover{
+   background: #d2e4f8;
+}
+.leftimg{
+    width: 660px;
+    height: 380px;
+    border:10px solid #dfdfdf;
+    float: left;
+    text-align: center;
+}
+.leftvideos{
+    height: 100%;
+    width: auto;
+}
+.rightvideo{
+    /*margin-left: 51%;*/
+    float: right;
+    width: 660px;
+    height: 380px;
+    border: 10px solid #dfdfdf;
+}
+.nodata2 {
+    display: none;
+    text-align: center;
+    height: 500px;
+    width: 100%;
+    background: url(../img/nodata2.png) no-repeat;
+    background-position: center;
+}
+.noda {
+    display: none;
+    text-align: center;
+    height: 400px;
+    width: 100%;
+    background: url(../img/nodata2.png) no-repeat;
+    background-position: center;
+}
+.stepthree{
+    margin:0 auto;
+}
+.stepthree .leftimg:hover,.stepthree .rightvideo:hover{
+    border:10px solid #3b9bff;
+}
+.ctronl-btn .layui-input-block{
+    margin-left: 205px;
+}
+.listinfo .closebtn{
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+/*弹窗 轮播*/
+.demo111{
+    display: none;
+    padding: 5px;
+}
+/*投放步骤*/
+.step{
+    display: inline-block;
+    margin: 8px;
+}
+.step span{
+    display: inline-block;
+    width: 170px;
+    height: 20px;
+}
+.step span i{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.step span i.stepzacv{
+    background: url("../img/send0.jpg") no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+.step span i.steplacv{
+    background: url("../img/send1.png") no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+.step span i.stept{
+    background: url("../img/send2.png") no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+.step span i.steptacv{
+    background: url("../img/send02.png") no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+.step span i.stepr{
+    background: url("../img/send3.png") no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+.step span i.stepracv{
+    background: url("../img/send03.png") no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+.step span i.stepf{
+    background: url("../img/send4.png") no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+.step span i.stepfacv{
+    background: url("../img/send04.png") no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+/*上一步*/
+.prev,.steptwo,.stepthree,.stepfour{
+    display: none;
+}
+.stepone li.actv{
+    background: #d2e4f8;
+}
+.nodata{
+    display: none;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 600;
+}
+/*详情弹窗*/
+.imgs{
+    width: 440px;
+    height: 260px;
+    float: left;
+    padding: 0 10px;
+}
+.imgs h4,.video h4{
+    margin-bottom: 10px;
+}
+.imgInfo{
+    padding: 10px;
+}
+.imgInfo .img-detail .snad{
+    float: none;
+    width: 100%;
+}
+.imgInfo .img-detail{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.imgInfo .imgs-list{
+    display: inline-block;
+    float: left;
+    width: 300px;
+    margin-bottom: 5px;
+}
+.video{
+    width: 440px;
+    height: 260px;
+    padding: 0 10px;
+    float: right;
+    margin-right: 10px;
+
+}
+.leftimginfo,.rightimginfo,.lft1,.rft1{
+   /* width:432px ;
+    height: 243px;*/
+    border:10px solid #dfdfdf;
+    text-align: center;
+}
+.swiper-container{
+    width: 416px;
+    height: 234px;
+}
+.stepone .avl{
+    border: 1px solid #d2e4f8;
+}
+.stepthree .swiper-container{
+    height: 100%;
+    width: 100%;
+}
+.stepthree .swiper-container img{
+    height: 100%;
+    width: 100%;
+}
+/*广告*/
+.steptwo li .adver-img{
+    width: 288px;
+    height: 162px;
+    background: #fff;
+    overflow: hidden;
+}
+.steptwo li img{
+    display: block;
+    width: 288px;
+    margin: 0 !important;
+}
+.steptwo li{
+    width: 288px !important;
+    height: 240px !important;
+}
+.steptwo .detail-name{
+    display: block;
+    text-indent: 10px;
+    margin: 10px;
+}
+.steptwo .detail-size{
+    padding-left: 20px;
+    color:#bcbcbc;
+}
+.steptwo .avl{
+    background: #d2e4f8;
+}
+/*修改勾选框样式*/
+.detail .layui-form-checkbox i {
+    width: 25px;
+    right: 2px;
+}
+
+.detail .layui-form-checkbox {
+    position: relative;
+    height: 25px;
+    line-height: 25px;
+    margin-right: 10px;
+    padding-right: 25px;
+    border: 1px solid #d2d2d2;
+    cursor: pointer;
+    font-size: 0;
+    border-radius: 2px;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+    box-sizing: border-box;
+}
+.layui-carousel-ind ul {
+    display: inline-block;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 10px;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    width: auto;
+}
+.lfu img{
+    width: 100%;
+}
+.stepthree video{
+    width: 100%;
+}
+.demo111 video{
+    width: 100%;
+}
+/*区域投放*/
+.areainput{
+    display: none;
+    width: 100%;
+    height: auto;
+}
+.areainput .area-first{
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+    border-bottom: 1px solid #dfdfdf;
+}
+.areainput .area-first>input{
+    float: left;
+}
+.areainput .area-first>.layui-unselect{
+    float: left;
+}
+.areainput .area-first .area-child{
+    margin:0 0 0 50px;
+}
+.areacheck{
+    display: inline-block;
+    font-size: 18px;
+    float: left;
+}
+.areacheck i,.area-child i{
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url(../img/checkbox.png) no-repeat;
+    float: left;
+    margin: 5px 10px 0 0;
+    cursor: pointer;
+}
+.area-box .avl i{
+    background: url("../img/checkactv.png") no-repeat;
+}
+.area-child{
+    display: inline-block;
+    font-size: 18px;
+}
+.area-child div{
+    float: left;
+    margin-right: 30px;
+}
+.area-first:nth-child(3) .area-child{
+    margin:0 0 0 14px;
+}

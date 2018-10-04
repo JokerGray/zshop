@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+	    <title>签约网红</title>
+		<link rel="stylesheet" href="../../common/assets/hplus/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../../common/assets/hplus/css/font-awesome.min93e3.css">
+        <link rel="stylesheet" type="text/css" href="common/assets/layui-v2.0.1/layui/css/layui.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="common/css/reset.css">
+    </head>
+	<body>
+		<!--顶部-->
+		<div class="layui-tab layui-tab-card" lay-filter="test1">
+		  <ul class="layui-tab-title">
+		    <li class="layui-this" lay-id="111">已签约主脸</li>
+		    <li lay-id="222">已签约主播</li>
+		  </ul>
+		  <div class="layui-tab-content">
+		    <div class="layui-tab-item layui-show">
+		    	<!-- 已签约主脸列表展示 -->
+				<table id="demo" lay-filter="test" ></table>
+				<!--分页-->
+				<div id="laypageLeft" class="table-rgt"></div>
+		    </div>
+		    <div class="layui-tab-item">
+		    	<!-- 已签约主播列表展示 -->
+		    		
+		    </div>
+		  </div>
+		</div>
+		
+		<!-- 序号 -->
+		<script type="text/html" id="indexTpl">
+		    {{d.LAY_TABLE_INDEX+1}}
+		</script>
+	</body>
+	<!-- jSCommon -->
+	<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+	<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+	
+	<script type="text/javascript" src="common/js/yyCache.js"></script>
+	<script type="text/javascript" src="common/js/common.js"></script>
+	<script type="text/javascript" src="common/js/util/util.js"></script>
+	<script type="text/javascript" src="common/js/util/pub.js"></script>
+	
+	<!--jSCurr-->
+	<script type="text/javascript" src="common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/signnet_manage.js"></script>
+</html>

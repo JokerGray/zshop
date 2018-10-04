@@ -1,0 +1,197 @@
+/*通用*/
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: normal;
+    font-style: normal;
+}
+ul li {
+    list-style: none;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
+    outline: none;
+    outline-offset: 0;
+}
+.btn.active, .btn:active{
+    box-shadow: 0 0 0;
+}
+.clear{
+    clear: both;
+}
+html, body {
+    position: relative;
+    height: 100%;
+}
+/*discount*/
+#discountContainer{
+    width: 100%;
+    height: 668px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+#discountContainer .discount-imgs{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: -1;
+}
+.discount-imgs .discount-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: none;
+}
+.discount-wrapper:first-child{
+    display: block;
+}
+.discount-wrapper .discount-img{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.discount-img img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.discount-wrapper .discount-texts{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 49px;
+    line-height: 46px;
+    color:#fff;
+    background: rgba(177,177,177,0.8);
+    z-index: 2;
+    padding: 0 10px;
+    font-size: 18px;
+    width:8000%;
+}
+.discount-texts div{
+    float:left;
+}
+#discountContainer .discount-menu{
+    margin: 0 40px;
+    padding: 65px 0;
+    height: 670px;
+    width: 123px;
+    position: relative;
+    overflow: hidden;
+}
+.discount-menu-body{
+    width: 128px;
+    overflow-y: auto;
+    height: 604px;
+    overflow-x: hidden;
+}
+.discount-menu .discount-add-menu{
+    width: 256px;
+}
+.discount-add-menu li .discount-delete{
+    cursor: pointer;
+    display: none;
+}
+.discount-add-menu li.active .discount-delete{
+    display:block;
+}
+.discount-menu .discount-menu-add{
+    /*display: inline-block;*/
+    width: 256px;
+}
+.discount-menu-add li{
+    width: 128px;
+    height: 120px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+.discount-add-menu li{
+    width: 128px;
+    height: auto;
+    margin-top: 10px;
+    overflow: hidden;
+    text-align: center;
+    line-height: 35px;
+}
+.discount-menu-add li img{
+    display: block;
+    width: 128px;
+    height: 120px;
+}
+.discount-add-menu li img{
+    display: block;
+    width: 128px;
+    height: 86px;
+    box-shadow: 0 0 10px #666;
+    border: 2px solid #eee;
+}
+.pplarText{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 49px;
+    line-height: 49px;
+    color:#fff;
+    background: rgba(0,0,0,.6);
+    z-index: 2;
+    padding: 0 10px;
+    font-size: 18px;
+    width:100%;
+}
+.discount-add-menu li.active{
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+}
+.pplar-slider{
+    width:8000%;
+    height: 49px;
+}
+.pplar-slider div{
+    float:left;
+}
+.pplar-slider ul{
+    float:left;
+    height:49px;
+    overflow:hidden;
+    zoom:1; }
+.pplar-slider ul li{
+    float:left;
+    line-height:49px;
+    list-style:none;
+}
+
+/*文字滚动*/
+ul.pplTxt-marquee{
+    display: block;
+    height: 49px;
+    line-height: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+ul.pplTxt-marquee li {
+    display: block;
+    left: 0;
+    line-height: 49px;
+    padding: 3px 5px;
+    position: absolute;
+    text-indent: 0.8em;
+    top: -999em;
+    white-space: nowrap;
+}
+.discont-default{
+    width: 100%;
+    height: 100%;
+    background: url("../image/discount_default.png") no-repeat;
+    background-size: 100%;
+}
+

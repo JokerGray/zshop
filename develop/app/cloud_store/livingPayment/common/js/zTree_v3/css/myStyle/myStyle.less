@@ -1,0 +1,115 @@
+.ztree {
+  background-color: #ededed;
+  padding: 0;
+}
+
+.ztree * {
+  font-size: 14px;
+  font-family: "Microsoft Yahei", Verdana, Simsun, "Segoe UI Web Light", "Segoe UI Light", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
+}
+
+.ztree li ul {
+  margin: 0;
+  padding: 0
+}
+
+.ztree li {
+  line-height: 30px;
+}
+
+.ztree li.level0 {
+  text-indent: 5px;
+}
+
+.ztree li.level1 {
+  text-indent: 10px;
+}
+
+.ztree li.level2 {
+  text-indent: 15px;
+}
+
+.ztree li a {
+  width: 80%;
+  height: 30px;
+  padding: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ztree li a:hover {
+  text-decoration: none;
+}
+
+.ztree li a span.button.switch {
+  visibility: hidden
+}
+
+.ztree.showIcon li a span.button.switch {
+  visibility: visible
+}
+
+.ztree li a.curSelectedNode {
+  background-color: #ededed;
+  border: 0;
+  height: 30px;
+}
+
+.ztree li a.curSelectedNode span {
+  color: #26c2b2 !important;
+}
+
+.ztree li span {
+  line-height: 30px;
+}
+
+.ztree li span.button {
+  margin-top: -5px;
+}
+
+.ztree li span.button.switch {
+  width: 16px;
+  height: 16px;
+}
+
+.ztree li a.level0 span {
+  color: #333333;
+}
+
+.ztree li a.level1 span {
+  color: #666666;
+}
+
+.ztree li a .button {
+  background-image: none !important;
+}
+
+.ztree li span.button {
+  background-image: url("img/left_menuForOutLook.png");
+  background-image: url("img/left_menuForOutLook.gif");
+}
+
+.ztree li span.button.root_close {
+  background-position: -18px -18px;
+}
+
+.ztree li span.button.root_open {
+  background-position: 0 -18px;
+}
+
+.ztree li span.button.center_close {
+  background-position: -18px 0;
+}
+
+.ztree li span.button.center_open {
+  background-position: 0 0;
+}
+
+.ztree li span.button.bottom_close {
+  background-position: -18px 0;
+}
+
+.ztree li span.button.bottom_open {
+  background-position: 0 0;
+}

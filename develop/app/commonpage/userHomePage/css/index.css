@@ -1,0 +1,653 @@
+html{
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif, "PingFang SC"; 
+}
+body{
+    font-size: 0;
+    color: #333;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+video::-webkit-media-controls{
+    display:none !important;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.clear{
+    clear: both;
+    float: none;
+}
+.border{
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.borderBottoman{
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.26rem;
+}
+.header{
+    padding-top: .44rem;
+    width: 100%;
+    height: 4.04rem;
+    background: url("../img/bg.png") no-repeat center center;
+    background-size: cover;
+    box-sizing: border-box;
+}
+.nav{
+    width: 100%;
+    height: 1.4rem;
+    position: relative;
+}
+.header .portrait{
+    width: 1.4rem;
+    height: 1.4rem;
+    margin: 0 auto;
+    display: block;
+    border-radius: 50%;
+}
+.header .moreRight{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.3rem;
+}
+.header .moreRight img{
+    float: left;
+    height: .44rem;
+}
+.header .moreRight .zc{
+    width: 1.06rem;
+    margin-right: 0.1rem;
+}
+.header .moreRight .more{
+    width: .44rem;
+}
+.header .userName{
+    font-size: .44rem;
+    color: #fff;
+    text-align: center;
+    margin-top: .3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 .2rem;
+}
+.userInfo .info{
+    padding: .02rem 0.1rem;
+	background-color: #4970ff;
+    border-radius: 15px;
+    display: inline-block;
+    margin-right: .18rem;
+}
+.userInfo{
+    font-size: .22rem;
+    color: #fff;
+    text-align: center;
+    margin-top: .2rem;
+}
+.userInfo i{
+    line-height: .3rem;
+}
+.userInfo img{
+    width: .2rem;
+    height: .2rem
+}
+.userInfo .address{
+    padding: .02rem 0.1rem;
+	background-color: #b12dfc;
+    border-radius: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.numer{
+    margin-top: .2rem;
+}
+.numer span{
+    font-size: .22rem;
+    color: #fff;
+    text-align: center;
+}
+.numer>span{
+    width: 49%;
+    display: inline-block;
+}
+.numer .zcNum{
+    border-right: 1px solid #fff;
+    text-align: right;
+    padding-right: .4rem;
+    box-sizing: border-box;
+}
+.numer .fansNum{
+    text-align: left;
+    padding-left: .4rem;
+    box-sizing: border-box;
+}
+.container,.tabNav{
+    overflow: hidden;
+}
+.container .tabNav li{
+    position: relative;
+    width: 50%;
+    text-align: center;
+    padding: .2rem 0;
+    float: left;
+    font-size: .3rem;
+    color: #333;
+}
+.container .tabNav li.active span{
+    width: .4rem;
+	height: .04rem;
+	background-color: #f94646;
+    border-radius: 2px;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 45%;
+}
+.content{
+    padding-bottom: 1rem;
+}
+/* 朋友圈详情 */
+.friendCircle ul{
+    background: #eee;
+    overflow: hidden;
+}
+.friendCircle li{
+    position: relative;
+    width: 100%;
+    margin-top: .2rem;
+    background: #fff;
+}
+.paowrap{
+    width: 100%;
+    overflow: hidden;
+    padding-left: .24rem;
+    box-sizing: border-box;
+}
+.friendCircle li .toubu{
+    margin-top: .5rem;
+}
+.friendCircle li .toubu .imgp{
+    width: .8rem;
+    height: .8rem;
+    display: block;
+    border-radius: 50%;
+    margin-right: .2rem;
+}
+.postypeP{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: .38rem;
+    width: 1.28rem;
+    display: block;
+    top: -.2rem;
+}
+.postypeP img{
+    width: 100%;
+    height: 100%;
+}
+.namep p:first-child{
+    font-size: .3rem;
+    margin-top: .05rem
+}
+.namep p:last-child{
+    font-size: .24rem;
+    color: #868686;
+    margin-top: .05rem
+}
+.friendCircle li .dian img{
+    width: .3rem;
+    height: .4rem;
+    display: block;
+    margin-top: .5rem;
+}
+.navtitle{
+    font-size: .3rem;
+    margin: .3rem 0 .1rem .24rem;
+}
+.paolist{
+    margin-left: .24rem;
+}
+.paolist img{
+    width: 2.32rem;
+    height: 2.32rem;
+    margin-right: .04rem;
+    margin-top: .1rem;
+}
+.paoadd{
+    margin: .24rem .1rem 0 .24rem;
+    overflow: hidden;
+}
+.paoadd img.left{
+    width: .5rem;
+    height: .5rem;
+    border-radius: 5px;
+    display: block;
+    margin-right: .1rem;
+}
+.paoadd span{
+    line-height: .5rem;
+}
+.jiant{
+    width: .1rem;
+    height: .2rem;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: .05rem;
+}
+.xinBottom img{
+    width: .3rem;
+    height: .3rem;
+}
+.xinBottom{
+   padding: .3rem .24rem .2rem .24rem;
+   overflow: hidden;
+}
+.mr10{
+    margin-right: .1rem;
+}
+.xinBottom .zannum{
+    margin-right: .6rem;
+}
+.xinBottom span img{
+   vertical-align: text-bottom;
+}
+.fount{
+    font-size: .2rem;
+    color: #8d8d8d;
+    margin-left: .1rem;
+}
+.video{
+    width: 2.75rem;
+    height: 4.22rem;
+    margin-right: .04rem;
+    float: left;
+    position: relative;
+}
+.paolist{
+    overflow: hidden;
+}
+.video .yunImg{
+    width: 100%;
+    height: 100%;
+}
+.video .icon{
+    width: .6rem;
+    height: .6rem;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+/* 了解他 */
+.words{
+    font-size: .36rem;
+    color: #333;
+    float: left;
+}
+.understand ul>li{
+    padding: .3rem;
+    overflow: hidden;
+    font-size: 0.24rem;
+}
+.moreL{
+    font-size: .24rem;
+    color: #999;
+    float: right;
+    line-height: .56rem;
+}
+.moreL img{
+    width: .1rem;
+    height: .2rem;
+    display: inline-block;
+    margin-left: .2rem;
+}
+.intro .clear{
+    margin-bottom: 0.26rem;
+}
+.indes{
+    line-height: .4rem;
+}
+.slide{
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-x: scroll;
+    width: 100%;
+    height: auto;
+}
+.slide::-webkit-scrollbar {
+    display: none;
+}
+.yunScroll{
+    margin-right: .3rem;
+    display: inline-block;
+    border-radius: 20px;
+}
+.yunScroll .yunCon:first-child{
+    margin-left: .2rem;
+}
+.yunScroll .yunCon{
+    position: relative;
+    margin-top: .24rem;
+    width: 4rem;
+    display: inline-block;
+    margin-right: .3rem;
+}
+.yunScroll .yunCon .yunImg{
+    height: 2.6rem;
+    width: 4rem;
+    display: block;
+    border-radius: .2rem;
+}
+.yunScroll .yunCon .icon img{
+    width: 1.56rem;
+    height: .52rem;
+    position: absolute;
+    display: block;
+    top: .4rem;
+    left: -.2rem;
+}
+.yunScroll .yunCon .icon span{
+    position: absolute;
+    top: .4rem;
+    line-height: .4rem;
+    font-size: .24rem;
+    color: #fff;
+}
+/* 全名炫 */
+.yunScroll .xuanCon{
+    width: 2.2rem;
+    height: 2.8rem;
+    position: relative;
+    margin-top: .24rem;
+    display: inline-block;
+}
+.xuanCon .yunImg{
+    width: 2.2rem;
+    height: 2.8rem;
+    display: block;
+}
+.xuanCon img{
+    width: .6rem;
+    height: .6rem;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+/* 脸圈 */
+.lianScroll .lianCon{
+    width: 3rem;
+    height: 3.6rem;
+    margin-top: .24rem;
+    display: inline-block;
+}
+.lianScroll .lianCon img{
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+}
+/* 约吧 */
+.yueScroll .yueCon{
+    margin-top: .24rem;
+    width: 6.3rem;
+    display: inline-block;
+}
+.yueImg{
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: .2rem;
+}
+.yueImg img{
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+}
+.yueImg .pos{
+    position: absolute;
+    height: 0px;
+    width: 0px;
+    border-left: .8rem solid #ff5655;
+    border-bottom: .8rem solid transparent;
+    top: 0;
+    left: 0;
+}
+.yueImg .pos span{
+    position: absolute;
+    font-size: .2rem;
+    left: -.8rem;
+    top: .1rem;
+    color: #fff;
+    transform:rotate(-45deg);
+    -ms-transform:rotate(-45deg); 	/* IE 9 */
+    -moz-transform:rotate(-45deg); 	/* Firefox */
+    -webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+    -o-transform:rotate(-45deg); 
+}
+.renwu p:first-child{
+    font-size: .28rem;
+    color: #131313;
+}
+.yang{
+    font-size: .26rem;
+    color: #131313;
+}
+.price{
+    font-size: .36rem;
+    color: #131313;
+}
+.renwu p{
+    line-height: .7rem;
+}
+.unit{
+    font-size: .26rem;
+    color: #999;
+}
+/* 玩家赚钱 */
+.zuan{
+    width: .4rem;
+    height: .4rem;
+    background: #ffd600;
+    border-radius: 50%;
+    padding: .05rem;
+    line-height: .4rem;
+}
+.wanImg{
+    position: relative;
+    border-radius: 10px;
+    margin-right: .2rem;
+}
+.wanImg img{
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+}
+.flag{
+    position: absolute;
+    top: .12rem;
+    right: -.07rem;
+    font-size: .24rem;
+    color: #000;
+    background: #ffd600;
+    padding: .05rem;
+    border-radius: 5px;
+}
+.play{
+    width: 1.5rem;
+}
+.toutiao p .unit:first-child{
+    margin-right: .3rem;
+}
+.ellipsis{
+    width: 4rem; 
+    white-space:nowrap;
+    text-overflow:ellipsis; 
+    -o-text-overflow:ellipsis; 
+    overflow:hidden;
+}
+
+.quanScroll .quanCon {
+    width: 1.5rem;
+    display: block;
+    display: inline-block;
+    margin-right: .2rem;
+    margin-top: .24rem;
+}
+.quanImg{
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 10px;
+}
+.quanScroll .quanW{
+    width: 1.5rem;
+    font-size: .26rem;
+    color: #131313;
+    text-align: center;
+}
+.posBom{
+    position: fixed;
+    bottom: .8rem;
+    left: 1.24rem;
+    right: 1.24rem;
+    z-index: 999;
+}
+.posBom img{
+    width: 1.6rem;
+    height: .6rem;
+    display: inline-block;
+}
+.con div>div{
+    margin-right: .24rem;
+}
+.posBom>img,.moreL{
+    cursor: pointer;
+}
+.app-download {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.app-download img {
+    width: 100%;
+    height: 100%;
+}
+#downloadA{
+    display: block;
+    height: 100%;
+}
+#weixin_pageto {
+    font-size: 0.30rem;
+}
+#weixin_pageto img {
+    width: 0.26rem;
+    height: 0.3rem;
+}
+
+.zanwei img{
+    display:block;
+    margin: auto;
+    margin-top: 1.4rem;
+    margin-bottom: .5rem;
+}
+.zanwei p{
+    text-align: center;
+    font-size: .24rem;
+    color: #ccc;
+}
+#commodityShare{
+    padding-bottom: 0.5rem;
+}
+.bg{
+    width: 100%;
+    height: 0.9rem;
+    background: #343338;
+    padding: 0.16rem 0.24rem;
+    box-sizing: border-box;
+}
+.bg .floatleft{
+    float: left;
+    font-size: 0.32rem;
+    color: #fff;
+}
+.bg .floatright{
+    float: right;
+    width: 1.2rem;
+    height: .5rem;
+    line-height: .5rem;
+    border-radius: .125rem;
+    border: solid 0.015rem #ffffff;
+    text-align: center;
+    font-size: .28rem;
+    color: #FFF;
+    margin-top: .05rem;
+}
+.bg img{
+    width: .6rem;
+    height: .6rem;
+    vertical-align: middle;
+    margin-right: .2rem;
+}
+
+/* 指引样式 */
+.wx_layer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	background: rgba(0,0,0,0.4);
+	z-index: 999;
+}
+.msg_box{
+    position: relative;
+    width: 100%;
+    background: #fff;
+    padding:1rem;
+}
+.msg_box p{
+    font-weight:400;
+    font-size: .4rem;
+    color: #333;
+}
+.msg_box p:first-child{
+    margin-bottom: .4rem;
+}
+.msg_box .msg_arrow{
+    position: absolute;
+    left: 5.7rem;
+    top: .5rem;
+    width: 1.5rem;
+    height: 2rem;
+    background: url(../img/shape_up@2x.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+.msg_box .msg_point{
+    position: absolute;
+	left: 4rem;
+    top: 1rem;
+	width: .5rem;
+    height: .5rem;
+    background: url(../img/moreshu@2x.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+.msg_box .msg_txt{
+    position: absolute;
+	left: 2.6rem;
+    top: 2rem;
+    width: 3rem;
+    height: .5rem;
+    background: url(../img/liulanqi@2x.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+.intro,.yundianwrap,.qmxwrap,.lianquanwrap,.yuebawrap,.wanjiawrap,.quanziwrap,.toutiaowrap{
+    cursor: pointer;
+}

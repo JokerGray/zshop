@@ -1,0 +1,174 @@
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+		<title>基本地图展示</title>
+		<!-- <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css" /> -->
+		<link rel="stylesheet" href="./map/main.css">
+		<script src="../../../assets/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <script src="https://cache.amap.com/lbs/static/es5.min.js"></script> -->
+		<script src="./map/amap.es5.min.js"></script>
+		<script src="./amap.js"></script>
+		<!-- <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script> -->
+		<script src="./map/addToolBar.js"></script>
+		<script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+	</head>
+	<style>
+		#selectPlace {
+			position: fixed;
+			width: 450px;
+			height: 36px;
+			top: 40px;
+			left: 100px;
+			 border-radius: 5px;
+      		box-shadow: 3px 4px 3px 0px silver;
+      		border: 1px solid silver;
+		}
+		#keyword{
+			    height: 100%;
+			    border: 0;
+			    padding-left: 5px;
+			    width: 100%;
+			    border-radius: 5px;
+			    outline: none;
+		}
+	</style>
+
+	<body>
+		<div id="container"></div>
+		<div id="selectPlace">
+			<input type="text" id="keyword" name="keyword" placeholder="请输入关键字">
+			<input type="hidden" id="adcode" name="adcode"  value=""/>
+		</div>
+		<script>
+			var params = getParams();
+			var lng = params.lng || 116.397428;
+			var lat = params.lat || 39.90923;
+			var map ;
+			if(lng!=0&&lng){
+					map = new AMap.Map('container', {
+					resizeEnable: true,
+					zoom: 11,
+					center: [lng, lat],
+					keyboardEnable: false
+				});
+			}else{
+				   var map = new AMap.Map('container', {
+			        resizeEnable: true,
+			        zoom: 11,
+			        keyboardEnable: false
+			    });
+				map.plugin(['AMap.ToolBar'], function() {
+			        //设置地位标记为自定义标记
+			        var toolBar = new AMap.ToolBar();
+			        map.addControl(toolBar);
+			    });
+			}
+
+			var marker = new AMap.Marker({
+				position: [lng, lat], //marker所在的位置
+				map: map //创建时直接赋予map属性
+			});
+			map.on('click', function(e) {
+				lng = e.lnglat.getLng();
+				lat = e.lnglat.getLat();
+				lnglatXY = [lng, lat];
+				marker.setPosition(lnglatXY);
+				regeocoder();
+			})
+
+    function regeocoder() { 
+    	//逆地理编码
+    	AMap.service('AMap.Geocoder', function () {
+			var geocoder = new AMap.Geocoder({
+            radius: 1000,
+            extensions: "all"
+        });        
+        geocoder.getAddress(lnglatXY, function(status, result) {
+            if (status === 'complete' && result.info === 'OK') {
+                geocoder_CallBack(result);
+            }
+        });        
+       	marker.setPosition(lnglatXY);
+        map.setFitView();
+				});
+
+    }
+    function geocoder_CallBack(data) {
+    	
+    	$('#adcode').val(data.regeocode.addressComponent.adcode)
+        var address = data.regeocode.formattedAddress; //返回地址描述
+        $('#keyword').val(address)
+    }
+    
+       AMapUI.loadUI(['misc/PoiPicker'], function(PoiPicker) {
+        var poiPicker = new PoiPicker({
+            input: 'keyword'
+        });
+        poiPickerReady(poiPicker);
+    });
+
+    function poiPickerReady(poiPicker) {
+
+        window.poiPicker = poiPicker;
+
+        var infoWindow = new AMap.InfoWindow({
+            offset: new AMap.Pixel(0, -20)
+        });
+
+        //选取了某个POI
+        poiPicker.on('poiPicked', function(poiResult) {
+        	console.log(poiResult)
+            var source = poiResult.source,
+                poi = poiResult.item,
+                info = {
+                    source: source,
+                    id: poi.id,
+                    name: poi.name,
+                    location: poi.location.toString(),
+                    address: poi.address
+                };
+            marker.setMap(map);
+            infoWindow.setMap(map);
+            marker.setPosition(poi.location);
+            infoWindow.setPosition(poi.location);
+          	$('#adcode').val(poi.adcode);
+//          infoWindow.setContent('POI信息: <pre>' + JSON.stringify(info) + '</pre>');
+            $('#keyword').val(info.name)
+            infoWindow.open(map, marker.getPosition());
+			map.setFitView();
+            map.setCenter(marker.getPosition());
+        });
+
+        poiPicker.onCityReady(function() {
+            poiPicker.suggest($('#keyword').val());
+        });
+    }
+			function getParams() {
+				var url = location.search;
+				var params = new Object();
+				if(url.indexOf("?") != -1) {
+					var str = url.substr(1);
+					var strs = str.split("&");
+					for(var i = 0; i < strs.length; i++) {
+						params[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+					}
+				}
+				return params;
+			}
+			
+			var callbackdata = function(){
+				var data = {
+					lng:marker.getPosition( ).lng,
+					lat:marker.getPosition( ).lat,
+					address:$('#keyword').val(),
+					adcode:$('#adcode').val()
+				}
+				return data;
+			}
+		</script>
+	</body>
+
+</html>

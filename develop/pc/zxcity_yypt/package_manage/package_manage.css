@@ -1,0 +1,117 @@
+.common-container{
+    width: 100%;
+}
+
+/*通用部分结束*/
+.add-package{
+    width: 58px;
+    height: 34px;
+    background: #06b6c6;
+    position: relative;
+    cursor: pointer;
+}
+.add-package .add-select{
+    position: absolute;
+    z-index: 3;
+    top:9px;
+    left: 22px;
+    width: 20px;
+    height: 20px;
+    background: url("../common/image/add-select.png") no-repeat;
+}
+.goodscontent{
+    display: none;
+}
+.select-body{
+    width: 500px;
+    margin-left: 120px;
+    position: relative;
+}
+.select-body .layui-input-block{
+    width: 390px;
+    margin-left: 0;
+}
+.select-body .layui-input-block .layui-input-inline{
+    width: 185px;
+}
+.box-list{
+    float: left;
+    height: 350px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 430px;
+}
+.modal-body .layui-form-label{
+    width: 120px;
+}
+.modal-body .layui-input-block{
+    width: 70%;
+    margin-left: 120px;
+}
+.modal-body textarea{
+    width: 500px;
+}
+.goodsnote{
+    width: 600px;
+}
+.notetext{
+    width: 600px;
+    text-overflow:clip;
+    overflow:hidden;
+    white-space:nowrap;
+    text-align: center;
+}
+.addpackagebtn{
+    position: absolute;
+    right: 0;
+}
+.deletebtn{
+    display: inline-block;
+    padding: 3px 10px;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    border-radius: 2px;
+    background: #F0514E;
+}
+.greend{
+    color: #2cbb4e !important;
+}
+.axv{
+    background: #aaa;
+}
+.packageisal{
+    width: 500px;
+}
+/*下拉选框样式*/
+select.form-control{
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    border-radius: 2px;
+}
+.goodstype select.form-control{
+    width: 500px;
+}
+.packagelist select.form-control{
+    width: 200px;
+    float: left;
+}
+.show-tick{
+    margin: 0 16px 10px 0;
+}
+.packagelist{
+    width: 440px;
+    float: left;
+    margin-bottom: 10px;
+}
+.packagelist .select-text{
+    display: none;
+}
+.packagelist .layui-input-inline{
+    width: 200px;
+    height: 34px;
+    float: left;
+}
+.packagelist .layui-input-inline input{
+    height: 34px;
+}

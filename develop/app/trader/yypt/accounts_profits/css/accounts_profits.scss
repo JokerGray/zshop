@@ -1,0 +1,191 @@
+$base-size:16px;
+$base-color:#333333;
+$bg:#f3f3f3;
+$white:#fff;
+$main-color:#26c3b2;
+$second-color:#f8ab59;
+.bgf3{
+  background: $bg;
+  color: $base-color;
+
+}
+.bgf3:hover{
+  color: $base-color;
+}
+.main-color{
+  color: $main-color;
+}
+.main-color-bg{
+  background: $main-color;
+}
+.ml25{
+  margin-left: 25px;
+}
+.layui-input, .layui-select, .layui-textarea,.layui-table-cell{
+  height: 35px;
+  line-height: 35px;
+
+}
+.layui-btn{
+  font-size:$base-size;
+  border-radius: 3px;
+}
+.layui-form-label{
+  padding:7px 15px;
+}
+.layui-table-view .layui-table{
+  width: 100%;
+}
+.layui-table-view .layui-table td, .layui-table-view .layui-table th{
+  padding:10px 0;
+  font-size:$base-size;
+}
+.layui-table thead tr{
+  background: $main-color;
+  color: $white;
+}
+.layui-table tbody tr:hover, .layui-table-click, .layui-table-header, .layui-table-hover, .layui-table-mend, .layui-table-patch, .layui-table-tool{
+  background: $bg;
+}
+.layui-form-select dl dd.layui-this{
+  background: $main-color;
+}
+.layui-form-select .layui-input{
+  padding-right: 0;
+}
+.layui-btn .layui-icon{
+  margin-right: 0;
+}
+.layui-btn-sm i{
+  font-size: 22px!important;
+}
+.layui-table-body,.bg-white{
+  background: $white;
+
+}
+.layui-table, .layui-table-view{
+  margin: 0;
+}
+.layui-laypage{
+  float: right;
+  padding-right: 10px;
+}
+.layui-layer-btn .layui-layer-btn0{
+  background-color:$main-color!important;
+  border-color: $main-color!important;;
+}
+.fr{
+  float: right;
+}
+.fl{
+  float: left;}
+.disn{
+  display: none;}
+body,html{
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+body{
+  font-size:$base-size;
+  color:$base-color;
+  background: $bg;
+}
+.main-wapper{
+  //width: 100%;
+  height: auto;
+  padding:0 10px;
+}
+.hearder{
+  background: $white;
+  >ul{
+    //overflow: hidden;
+    padding-top: 15px;
+  }
+  >ul>li{
+    float: left;
+  }
+}
+//时间搜索框内布局
+.w430{
+  width: 430px;}
+.time-box{
+  position: absolute;
+  background: #fff;
+  border:1px solid #e6e6e6;
+  width: 100%;
+  z-index:9999;
+  box-sizing: border-box;
+  padding:10px 15px;
+  top: 34px;
+  &-ul{
+    overflow: hidden;
+  }
+  li{
+    float: left;
+    cursor: pointer;
+    background: $bg;
+    line-height: 30px;
+    width: 30%;
+    margin-right:5%;
+    text-align: center;
+    margin-bottom:10px;
+  }
+  li:nth-child(3n){
+    margin-right: 0;
+  }
+  p{
+    margin-bottom: 10px;
+  }
+  &-div{
+    text-align: center;
+    margin-top: 20px;
+    display: none;
+  }
+}
+//主体
+.main {
+  padding: 0 50px;
+
+}
+.data-box{
+  overflow: hidden;
+  margin:50px 0 26px 0;
+  li{
+    float: left;
+    width: 33%;
+    text-align: center;
+  }
+  p{
+    line-height: 44px;
+  }
+  h3{
+    line-height: 46px;
+  }
+  span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #999999;
+    border-radius: 50%;
+    vertical-align: text-bottom;
+    line-height: 22px;
+    color: $white;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  span:hover{
+    opacity:.8;
+  }
+}
+
+.layui-table td, .layui-table th{
+  text-align: center;
+  padding:10px;
+  font-size: 16px;
+}
+.layui-table tbody tr:hover, .layui-table-click, .layui-table-header, .layui-table-hover, .layui-table-mend, .layui-table-patch, .layui-table-tool{
+  background: #fff;
+
+}

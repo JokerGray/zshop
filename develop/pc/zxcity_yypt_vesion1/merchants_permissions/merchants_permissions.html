@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>参数设置</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common_v2.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <link rel="stylesheet" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="css/merchants_permissions.css" />
+</head>
+<body>
+	<div id="common-tool" class="clearfix p4">
+		<div id="search">
+			<button class="layui-btn layui-btn-small layui-btn-primary">
+			  <i class="layui-icon">&#xe615;</i> 搜索
+			</button>
+		</div>
+		<div id="rig-tool" class="clearfix">
+			<button class="layui-btn layui-btn-small layui-btn-primary" id="commonAdd">
+			  <i class="layui-icon">&#xe61f;</i> 添加
+			</button>
+			<button class="layui-btn layui-btn-small layui-btn-primary" id="refresh">
+			  <i class="layui-icon">&#x1002;</i> 刷新
+			</button>
+		</div>
+	</div>
+	<div id="search-tool" class="clearfix layui-f layui-form">
+		<div class="layui-inline fl">
+	    <label class="layui-form-label">角色名:</label>
+	    <div class="layui-input-block">
+	      <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入角色名称"  id="inquireInputType" class="layui-input" maxlength="10">
+	    </div>
+  </div>
+		<!--<div class="input-group">
+			<span class="pull-left">商户:</span>
+			<select id="commercialList" class="selectpicker show-tick form-control">
+							<option>--全部--</option>
+			</select>
+		</div>-->
+		 <div class="layui-inline fl">
+	      <label class="layui-form-label">商户:</label>
+	      <div class="layui-input-inline">
+	        <select name="modules" lay-verify="required" lay-search="" lay-filter="merchants" id="commercialList">
+	          <option value="">直接选择或搜索选择</option>
+	        </select>
+	      </div>
+	    </div>
+	    <div class="input-group t5">
+			<button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearch">
+				搜索
+			</button>
+			<button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+				重置
+			</button>
+		</div>
+	  </div>
+		
+		<div id="search-tool-show">
+		</div>
+	</div>
+	<div id="app" class="clearfix">
+		<div id="leftTable" class="clearfix">
+			<table lay-filter="demo" id="demo"></table>
+			<div id="laypageLeft"></div>
+		</div>
+		<div id="app-table" class="clearfix">
+			<h2 id="myListName"></h2>
+			<div id="btnCon">
+				<button class="layui-btn layui-btn-small layui-btn-normal" id="addKv">
+				  <i class="layui-icon">&#xe61f;</i> 添加角色用户
+				</button>
+			</div>
+			<table lay-filter="demodb" id="demodb"></table>
+		</div>
+	</div>
+	<script type="text/html" id="barDemo">
+			<button class="layui-btn layui-btn-small layui-layui-btn-warm" lay-event='change'>
+			  <i class="layui-icon">&#xe6b2;</i> 修改
+			</button>
+			<button class="layui-btn layui-btn-small  layui-btn-danger" lay-event="del">
+			  <i class="layui-icon">&#xe640;</i> 删除
+			</button>
+	</script>
+	<script type="text/html" id="layerDemo">
+			<button class="layui-btn layui-btn-small layui-layui-btn-warm" lay-event='accredit'>
+			  <i class="layui-icon">&#xe6b2;</i> 授权
+			</button>
+	</script>
+	
+	
+	
+	
+	
+	<!--modal-->
+	<div id="demo111" class='layui-form clearfix' lay-filter="seach">
+		<div class="leftCon">
+			<div class="layui-form-item bbn">
+		          <label class="layui-form-label flex"><i class="star">*</i>角色名称：</label>
+		          <div class="layui-input-block flex">
+	              <input type="text" name="title"  lay-verify="required" maxlength="10"   placeholder="请输入角色名称" autocomplete="off" class="layui-input h30" id="addName">
+          		  </div>
+      		</div>
+      		<div class="layui-form-item h100 bbn">
+		          <label class="layui-form-label flex"><i class="star">*</i>是否可用：</label>
+		          <div class="layui-input-block flex">
+		            <select lay-verify="required"  id="isUserable">
+		              <option value="1">是</option>
+		              <option value="0">否</option>
+		            </select>
+		          </div>
+        	</div>
+        	<div class="layui-form-item h100 bbn">
+		          <label class="layui-form-label flex"><i class="star">*</i>商户名称：</label>
+		          <div class="layui-input-block flex">
+		            <select lay-verify="required" lay-search id="merName">
+		              <option value="">直接或搜索选择</option>
+		            </select>
+		          </div>
+        	</div>
+        	<div class="layui-form-item h100">
+		          <label class="layui-form-label flex"><i class="star">*</i>是否管理：</label>
+		          <div class="layui-input-block flex">
+		            <select lay-verify="required"  id="isAdmin">
+		              <option value="0">否</option>
+		              <option value="1">是</option>
+		            </select>
+		          </div>
+        	</div>
+
+		</div>
+		<div class="rightCon">
+			<div class="layui-form-item rightCon-div">
+		          <label class="layui-form-label flex"><i class="star">*</i>角色权限：</label>
+		          <div class="layui-input-block">
+		          	<ul  id="treeDemo" class="ztree" ></ul>
+          		</div>  		  	
+      		</div>
+
+		</div>
+	</div>
+	<!--modal-->
+	<div id="demo222" class='layui-form clearfix' lay-filter="seachr">
+		<div id="lay" class="clearfix">
+			<table lay-filter="layTable" id="layTable"></table>
+			<div id="layTablePage"></div>
+		</div>
+	</div>
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script>
+
+
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="js/merchants_permissions.js"></script>

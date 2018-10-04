@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>音频管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <link rel="stylesheet" href="medias_manage.css">
+</head>
+<body>
+    <div>
+        <div class="tool-box layui-form" style="margin-top: 20px;padding:0 20px;">
+            <div class="layui-form-item clearfix">
+                <div class="layui-inline f-left">
+                    <input type="text" name="" placeholder="搜索" class="layui-input" id="inputSearch">
+        
+                </div>
+                <div class="layui-inline f-left">
+                    <button class="layui-btn" id="search">搜索</button>
+                </div>
+                <div class="layui-inline f-left">
+                    <div class="layui-input-inline">
+                        <select name="type" lay-verify="required"  lay-filter="musicType" id="musicType">
+                        </select>
+                    </div>
+        
+                </div>
+                <div class="layui-inline f-right" style="margin-right: 50px;">
+                    <button class="layui-btn" id="adGs">+新增音频</button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-app">
+            <table style="margin-top:20px;" id="tablelist" lay-filter="tablelist"></table>
+            <!--分页-->
+            <div id="laypageLeft" class="table-rgt"></div>
+        </div>
+    </div>
+    <!--  修改音乐 -->
+    <form class="tool-box layui-form" id="edit" style="display: none;padding:20px;">
+        <div class="layui-form-item">
+            <label class="form-label" for="fixName">歌曲名:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="fixName" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="form-label" for="fixAuthor">作者:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="fixAuthor" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="addLev" style="text-align: left;padding: 9px 0;">音乐类型：</label>
+            <div class="layui-input-block input-block" style="width:120px;">
+                <select name="musicType2" lay-verify="required" id="fixType">
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="addTopCont" style="text-align: left;padding: 9px 0;">添加音频:</label>
+            <div class="layui-input-block input-block" >
+                <button class="layui-btn" id="fixImg">添加封面</button>
+                <button class="layui-btn" id="fixMusic">添加音乐</button>
+            </div>
+        </div>
+        <div class="layui-form-item show-upload" id="showBox2" style="display:block">
+            <label class="form-label" for="addTopCont">预览</label>
+            <div class="layui-input-inline">
+                <div class="img_wrap" >
+                    <div class="img_fl">
+                        <!-- <img src="http://oss-cn-hangzhou.aliyuncs.com/tsnrhapp/a83a361a-f5dd-455d-a4d6-dddd4cbe95d0.jpg"> -->
+                    </div>
+                    <div class="img_fr">
+                        <!-- <audio src="http://zxcity-app.oss-cn-hangzhou.aliyuncs.com/music/3Pcb2wTS6Z.mp3" controls="controls"></audio>
+                                <p>04:20</p>												 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--  新增音乐 -->
+    <form class="tool-box layui-form" id="add" style="display: none;padding:20px;">
+        <div class="layui-form-item">
+            <label class="form-label" for="musicName">歌曲名:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" maxlength="50" id="musicName" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="form-label" for="authorName">作者:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" maxlength="50"  id="author" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="addLev" style="text-align: left;padding: 9px 0;">音乐类型：</label>
+            <div class="layui-input-block input-block" style="width:120px;">
+                <select name="musicType2"  id="musicType2">
+                    <option value="1">国语</option>
+                    <option value="2">流行</option>
+                </select>
+            </div>
+        </div>
+    
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="addTopCont" style="text-align: left;padding: 9px 0;">添加音频:</label>
+            <div class="layui-input-block input-block">
+                <button class="layui-btn" id="newImg">添加封面</button>
+                <button class="layui-btn" id="newMusic">添加音乐</button>
+            </div>
+        </div>
+        <div class="layui-form-item show-upload" id="showBox1">
+            <label class="form-label" for="addTopCont">预览</label>
+            <div class="layui-input-inline">
+                <div class="img_wrap" id="newGoodsImg">
+                    <div class="img_fl">
+                        <!-- <img src="http://oss-cn-hangzhou.aliyuncs.com/tsnrhapp/a83a361a-f5dd-455d-a4d6-dddd4cbe95d0.jpg"> -->
+                    </div>
+                    <div class="img_fr">
+                        <!-- <audio src="http://zxcity-app.oss-cn-hangzhou.aliyuncs.com/music/3Pcb2wTS6Z.mp3" controls="controls"></audio>
+                                    <p>04:20</p>												 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- <div class="layui-form-item" style="margin-bottom: 10px;">
+            <div style="float: right;">
+                <a class="layui-layer-btn0">添加</a>
+                <a class="layui-layer-btn1">取消</a>
+            </div>
+        </div> -->
+        <!-- <div class="layui-form-item">
+            <div class="layui-input-block input-block">
+                <button class="layui-btn" id="newImg">添加封面</button>
+                <button class="layui-btn" id="newMusic">添加音乐</button>
+            </div>
+        </div> -->
+    </form>
+  
+    <audio id="musicPlayer" autoplay="autoplay" loop="loop"></audio>
+</body>
+<script type="text/html" id="imgTpl">
+    <div class="showImg">
+        <img class="imgs" src={{d.coverUrl}} data-img="{{d.coverUrl}}"  style="background:#5cb85c url({{d.coverUrl}} no-repeat center center;" />
+    </div>
+</script>
+<script type="text/html" id="indexTpl">
+        {{d.LAY_TABLE_INDEX+1}}
+</script>
+<script type="text/html" id="barCtrl">
+    <button class="layui-btn layui-btn-small  my-btn" lay-event="change">
+        <i class="layui-icon">&#xe642;</i>修改</button>
+    <button class="layui-btn layui-btn-small layui-btn-danger my-btn" lay-event="delete">
+        <i class="layui-icon">&#xe640;</i>删除</button>
+</script>
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script type="text/javascript" src="uploadmedia.js"></script>
+ 
+<script type="text/javascript" src="medias_manage.js"></script>
+ 
+</html>

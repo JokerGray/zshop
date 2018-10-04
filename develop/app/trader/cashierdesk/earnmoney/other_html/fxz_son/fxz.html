@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+	<link href="../../../../assets/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/animate.min.css" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	<!--页面自身样式-->
+	<link rel="stylesheet" href="css/index.css">
+	<!-- jquery -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/jquery.min.js"></script>
+	
+	<!-- bootstrap -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/bootstrap.min.js"></script>
+
+	<!--layer弹出层插件-->
+	<script type="text/javascript" src="../../../../assets/layer/layer.js"></script>
+	
+	<!-- bootstrap-table -->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/hplus/css/plugins/bootstrap-table/bootstrap-table.min.css" /> 
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+	<!-- iCheck选择框样式 -->
+	<link href="../../../../assets/hplus/css/plugins/iCheck/custom.css" rel="stylesheet">
+	<script src="../../../../assets/hplus/js/plugins/iCheck/icheck.min.js"></script>
+
+	<!-- 共用的样式 -->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/css/common.css"></link>
+
+	<!-- 弹层title样式统一 -->
+	<link rel="stylesheet" href="../../../../assets/check_index/layer/skin/default/layer.css">
+
+	<title>分享赚窗口</title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="ibox-content ">
+			    <div class="row">
+			    	<div class="coupon_title form-group clear">
+			    	<input type="hidden" id="couponId" name="couponId" value="173">
+					<input type="hidden" id="shopId" name="shopId" value="290">
+			    		<h1 class="details_title control-label" for="articleTitle"></h1>
+			    		<label class="couponStatus"></label>
+			    	</div>
+			    </div>    
+			    <div class="row">
+			    	<div class="col-sm-8">
+			    		<div class="form-group clear">
+							<p class="col-sm-3 control-label articleTitle" for="articleTitle">发布时间:</p>
+							<span class="createTime"></span>
+						</div>
+						<div class="form-group clear">
+							<p class="col-sm-3 control-label articleTitle" for="articleTitle">原金额:</p>
+							<span class="couponOriginalPrice"></span>
+						</div>
+						<div class="form-group clear">
+							<p class="col-sm-3 control-label articleTitle" for="articleTitle">支付金额:</p>
+							<span class="couponPresentPrice"></span>
+						</div>
+						<div class="form-group clear">
+							<p class="col-sm-3 control-label articleTitle" for="articleTitle">分享可赚金额:</p>
+							<span class="couponCashback"></span>
+						</div>
+			    	</div>
+			    	<div class="col-sm-2 col-sm-offset-2" style="display:none">
+			    		<div class="blanket_orders">
+							<p class="orderNum">2346</p>
+							<p class="small-font smallsize-font">总订单</p>
+						</div>
+						<div class="recent_orders">
+							<p class="orderNum">4422</p>
+							<p class="small-font smallsize-font">最近一个月订单</p>
+						</div>
+			    	</div>
+			    </div>  
+				<div class="row">
+				<table class="table table-hover" id="couponTable">
+					<div class="form-inline" id="toolbar">
+						
+					</div>
+				</table>
+			</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../../src/common.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

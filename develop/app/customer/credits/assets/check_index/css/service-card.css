@@ -1,0 +1,103 @@
+*{margin: 0;padding: 0;list-style: none;font-family: "微软雅黑";color: #6e6e6e;}
+.allWrapper{width: 100%;}
+.allWrapper .row{width: 100%;margin-left: 0px;}
+/*字体图标部分*/
+@font-face {
+  font-family: 'iconfont';
+  src: url('../iconfont/iconfont.eot');
+  src: url('../iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../iconfont/iconfont.woff') format('woff'),
+  url('../iconfont/iconfont.ttf') format('truetype'),
+  url('../iconfont/iconfont.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:40px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+/*左边服务类别部分*/
+.service-list{/*border: solid 1px grey;*/padding: 0px;}
+.service-list div,span{/*border: solid 1px grey;*/}
+.service-list .list-title{height: 90px;line-height: 90px;text-align: center;font-size: 16px;font-weight: bold;background: url(../images/xian.png) no-repeat 50% 89px;}
+.service-list .option{height: 95px;line-height: 95px;text-align: center;font-size: 15px;font-weight: bold;}
+.service-list .option span{letter-spacing: 1px;}
+.service-list .service-info li{height: 45px;line-height: 45px;background-color: #ededed;margin-bottom: 2px;font-weight: bold;font-size: 18px;letter-spacing: 3px;}
+.service-list .service-info li input{text-align: left;margin-left: 12px;margin-right: 16px;}
+.service-list .service-info li .down{font-size: 18px;margin-left: 20px;cursor: pointer;}
+.service-list .service-info .list{width: 100%;overflow: hidden;display: none;}
+.service-list .service-info .list li{height: 50px;line-height: 50px;background-color: #e5e5e5;font-size: 16px;color: #666666;margin-bottom: 0px;}
+.service-list .service-info .list li input{margin-left: 30px;margin-right: 55px;}
+/*右边服务具体项目*/
+.service-content{background-color: #f6f6f6;padding: 0px;padding-left: 4px;}
+.service-content .tabs{height: 90px;line-height: 90px;background-color: #FFFFFF;padding-right: 60px;}
+.service-content .tabs div{text-align: center;font-size: 16px;font-weight: bold;}
+.service-content .tabs span.tabli{display: inline-block;height: 90px;line-height: 90px;cursor: pointer;}
+.service-content .tabs span.on{color: #1dccc5;border-bottom: solid 2px #1dccc5;}
+.service-content .tabs .col-sm-6{height: 90px;padding: 0px;}
+.service-content .search{padding: 0px;}
+	.service-content .search .input-group{width: 460px;}
+.service-content .tabs .form-group{90px;margin-bottom: 0px;margin-top: 28px;float: right;}
+.service-content .input-group input{border-radius: 0px;border-right: none;}
+.service-content .input-group span{border: none;border-radius: 0px;}
+.service-content .input-group .input-group-addon{background-color: #1dbfaf;width: 57px;}
+.service-content .content-body{padding-left: 48px;padding-right: 60px;}
+.service-content .chose{float: right;margin-top: 40px;margin-bottom: 40px;}
+.service-content .choseall,.delete{display: inline-block;width: 54px;height: 35px;border-radius: 2px;line-height: 35px;text-align: center;background-color: #FFFFFF;cursor: pointer;}
+.service-content .delete{background-color: #1dbfaf;color: #FFFFFF;margin-left: 30px;}
+.service-content .card-list{float: left;}
+.service-content .card-list .add-service{width: 195px;height: 195px;border: dashed 1px #353b53;background: url(../images/plus.png) no-repeat 50% 50%;margin: 72px auto;margin-bottom: 38px;}
+.service-content .card-list .plus{text-align: center;font-size: 16px;height: 390px;}
+.service-content .card-info{background-color: #FFFFFF;height: 390px;margin-bottom: 40px;padding-top:15px;}
+.service-content .card-info .pics{margin: 0 auto;width: 90%;margin-bottom: 20px;}
+.service-content .card-info .pics img{width: 100%;}
+.service-content .card-info .product{overflow: hidden;height: auto;}
+.service-content .card-info .face{float: left;margin-left: 5%;display: block;font-size: 16px;}
+.service-content .card-info .price{float: right;margin-right: 5%;color: red;display:block;font-size: 16px;}
+.service-content .card-info .rank{width: 105px;height: 35px;background-color: #1dbfaf;text-align: center;line-height: 35px;color: #FFFFFF;float: right;margin-top: 18px;margin-right: 5%;border-radius: 2px;cursor: pointer;}
+.service-content .card-info .check{float: left;margin-top: 20px;clear: both;margin-left: 5%;}
+@media (max-width:1620px) {
+	.service-list .service-info li{font-size: 16px;}
+	.service-content .card-info{height: 360px;margin-bottom: 30px;padding-top:15px;}
+	.service-content .card-list .plus{height: 360px;}
+}
+@media (max-width:1450px) {
+	.service-list .option span{font-size: 13px;}
+	.service-list .service-info li{font-size: 15px;letter-spacing: 2px;}
+	.service-list .service-info .list li{font-size: 13px;}
+	.service-content .card-info{height: 330px;}
+	.service-content .card-list .plus{height: 330px;}
+	.service-content .card-list .add-service{width: 160px;height: 160px;margin: 50px auto;margin-bottom: 38px;background-size: 130px 130px;}
+}
+@media (max-width:1380px) {
+	.service-list .option span{font-size: 12px;}
+	.service-content .card-info{height: 310px;}
+	.service-content .card-list .plus{height: 310px;}
+	.service-content .card-info .face{font-size: 15px;}
+	.service-content .card-info .price{font-size: 15px;}
+	.service-content .card-info .rank{font-size: 14px;width: 90px;}
+}
+@media (max-width:1300px) {
+	.service-list .option .col-sm-4{padding: 0px;padding-left: 15px;}
+	.service-list .option span{text-align: left;}
+	.service-list .service-info li{font-size: 14px;letter-spacing: 1px;}
+	.service-content .card-info{height: 290px;}
+	.service-content .card-list .plus{height: 290px;}
+}
+@media (max-width:1100px) {
+	.service-list{width: 22%;}
+	.service-content{width: 78%;}
+	.service-list .list-title{font-size: 15px;}
+	.service-content .tabs span.tabli{font-size: 15px;}
+	.service-content .search .input-group{width: 300px;}
+	.service-content .chose{float: right;margin-top: 20px;margin-bottom: 20px;}
+	.service-content .card-list .add-service{width: 110px;height: 110px;background-size: 100px 100px;}
+	.service-content .card-info{height: 190px;padding-top: 5px;}
+	.service-content .card-list .plus{height: 190px;font-size: 14px;}
+	.service-content .card-info .face{font-size: 12px;}
+	.service-content .card-info .price{font-size: 12px;}
+	.service-content .card-info .rank{font-size: 12px;width: 70px;height: 25px;line-height: 25px;margin-top: 10px;}
+	.service-content .card-info .pics{margin-bottom: 10px;}
+	.service-content .card-info .check{margin-top: 10px;}
+}

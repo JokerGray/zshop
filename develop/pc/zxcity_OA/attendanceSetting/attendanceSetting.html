@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>考勤设置</title>
+    <link rel="stylesheet" href="../assets/layui-v2.3.0/layui/css/layui.css">
+    <link rel="stylesheet" href="../common/css/reset.css">
+    <link rel="stylesheet" href="../assets/select2/select2.min.css">
+    <link rel="stylesheet" href="./css/attendanceSetting.css">
+</head>
+<body>
+<div class="layoutBody">
+    <div class="header">
+        <div>
+            <span>考勤设置</span>
+        </div>
+    </div>
+    <!--店铺选择-->
+    <div class="selectShop">
+        <label>考勤店铺：</label>
+        <select id="shopSelector"></select>
+    </div>
+    <!--设置打卡方式-->
+    <div class="setAttendanceType">
+        <label>考勤方式：</label>
+        <div class="settingContent">
+            <p>以下方式满足一项，考勤组成员即可完成考勤</p>
+            <!--考勤地点设置-->
+            <div class="typeOne">
+                <div class="typeOne-directions">
+                    <span>1.根据办公地点考勤</span>
+                    <div>
+                        <i>有效范围</i>
+                        <select id="SelectRange">
+                            <option value="100">100米</option>
+                            <option value="200">200米</option>
+                            <option value="300">300米</option>
+                            <option value="400">400米</option>
+                            <option value="500">500米</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="typeOne-detail">
+                    <div class="typeOne-detail-title">
+                        <span>考勤地址</span>
+                        <span>操作</span>
+                    </div>
+                    <div class="typeOne-detail-content">
+                        <div class="address">
+                            <h4>东沙大厦</h4>
+                            <p>湖北省武汉市武昌区水果湖街街道东沙大厦A座</p>
+                            <input type="hidden">
+                        </div>
+                        <a href="javascript:;" class="editBtn">修改</a>
+                    </div>
+                </div>
+            </div>
+            <!--考勤wifi设置-->
+            <div class="typeTwo">
+                <p>2.根据wifi考勤（精确定位到办公室内，可添加多个办公WIFI）</p>
+                <div class="typeTwo-detail">
+                    <div class="typeTwo-detail-title">
+                        <span>名称</span>
+                        <span>MAC地址</span>
+                        <span>操作</span>
+                    </div>
+                    <div class="typeTwo-detail-content">
+                        <ul>
+                            <!--<li>-->
+                                <!--<span title="我不想说什么为什么要十五个字啊">我不想说什么为什么要十五个字啊</span>-->
+                                <!--<span>40:8D:5C:E7:EF:BF</span>-->
+                                <!--<span class="delBtn">删除</span>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<span title="pro" class="wifiName">pro</span>-->
+                                <!--<span class="wifiMac">40:8D:5C:E7:EF:BF</span>-->
+                                <!--<span class="delBtn">删除</span>-->
+                            <!--</li>-->
+                        </ul>
+                    </div>
+                </div>
+                <a href="javascript:;" class="addWifi">添加办公WIFI</a>
+                <div class="punchStyle">
+                    <ul>
+                        <li data-whether="1"><i></i><span>允许WI-FI打卡</span></li>
+                        <li data-whether="2"><i></i><span>允许定位打卡</span></li>
+                        <li data-whether="3"><i></i><span>wifi、定位必须同时存在才能打卡</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--设置上班时间-->
+    <div class="setAttendanceTime setAttendanceType layui-row">
+        <label>设置考勤时间：</label>
+        <div class="time_list settingContent layui-col-md12">
+            <button class="layui-btn layui-btn-sm c1b" id="addTime">新增班次</button>
+            <div class="time_list_box">
+                <ul class="layui-clear ul1">
+                    <li class="layui-col-sm4">班次</li>
+                    <li class="layui-col-sm5 tac">时间</li>
+                    <li class="layui-col-sm3 tar">操作</li>
+                </ul>
+                <!--<ul class="layui-clear ul2">-->
+                    <!--<li class="layui-col-sm4" data-name="timeName">-->
+                        <!--<i class="checki"></i>A班-->
+                    <!--</li>-->
+                    <!--<li class="layui-col-sm5 tac" data-name="time">-->
+                        <!--09:10-18:00-->
+                    <!--</li>-->
+                    <!--<li class="layui-col-sm3 tar" >-->
+                        <!--<a href="#" class="edit">编辑</a>-->
+                        <!--<a href="#" class="del">删除</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+                <p class="tac ul2No">暂无考勤</p>
+            </div>
+            <button class="layui-btn layui-btn-sm c1b m0a" id="saveBtn">保存设置</button>
+        </div>
+
+        <!---->
+        <!--<div class="timeSelectBox">-->
+
+        <!--</div>-->
+    </div>
+
+    <!--<div class="saveBtnBox">-->
+        <!--<button id="saveBtn">保存设置</button>-->
+    <!--</div>-->
+</div>
+</body>
+<script src="../assets/jquery/jquery.min.js"></script>
+<!--<script src="../assets/layui-v2.3.0/layui/layui.js"></script>-->
+
+<!--<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.2&key=b38c0136ec7979ad54172f0170483df7"></script>-->
+<!--<script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>-->
+<script type="text/javascript" src='//webapi.amap.com/maps?v=1.4.6&key=b38c0136ec7979ad54172f0170483df7&plugin=AMap.ToolBar'></script>
+<!-- UI组件库 1.0 -->
+<script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+<script src="../assets/artTemplate/template-web.js"></script>
+<script src="./js/base.js"></script>
+<script src="../assets/select2/select2.full.min.js"></script>
+<script src="../assets/select2/zh-CN.js"></script>
+<script src="../assets/layer-v3.1.1/layer.js"></script>
+<script src="../assets/laydate-v5.0.9/laydate.js"></script>
+
+<!--<script src="../assets/layui-v2.3.0/layui/layui.js"></script>-->
+
+<script src="../common/js/util.js"></script>
+<script src="./js/attendanceSetting.js"></script>
+<script>
+    $(function () {
+        $('#shopSelector').select2({language: "zh-CN"});
+        // $('#beginTime').select2({minimumResultsForSearch: -1});
+        // $('#endTime').select2({minimumResultsForSearch: -1});
+        $('#SelectRange').select2({minimumResultsForSearch: -1})
+    })
+</script>
+<!--添加WiFi弹窗-->
+<script type="text/html" id="addWifiTpl">
+    <div class="title">
+        <span>添加办公WiFi</span>
+        <i class="closeBtn">×</i>
+    </div>
+    <div class="setWifiContent">
+        <div class="wifiName">
+            <label for="WiFiName">名称：</label>
+            <input type="text" id="WiFiName" placeholder="最多不超过15字" maxlength="15">
+        </div>
+        <div class="wifiMac">
+            <label for="wifiMac">MAC地址：</label>
+            <input type="text" id="wifiMac" placeholder="例子：40:8D:5C:E7:EF:BF" maxlength="17">
+        </div>
+        <p>名称尽量保持与考勤WiFi名称一致，避免员工产生误解</p>
+    </div>
+</script>
+<!--修改考勤地址-->
+<script type="text/html" id="editAddressTpl">
+    <div id="container" class="map mapBox" tabindex="0">
+        <div class='panel'>
+            <div class="tips">请输入地址：</div>
+            <input id='input' value='' onfocus='this.value=""' placeholder="输入地址显示位置">
+        </div>
+    </div>
+    <!--<div class="mapBox" id="container">-->
+        <!---->
+    <!--</div>-->
+    <div class="resultBox">
+        <div>
+            <label>地址名称：</label>
+            <input type="text" class="addressName" placeholder="请输入地址名称">
+            <input type="hidden" id="coordinate" value="">
+        </div>
+        <div>
+            <label>详细地址：</label>
+            <span class="addressDetail" title=""></span>
+        </div>
+        <div class="btns">
+            <button href="javascript:;" class="cancelBtn">取消</button>
+            <button href="javascript:;" class="yesBtn">确定</button>
+        </div>
+    </div>
+</script>
+<!--选择生效方式弹窗-->
+<div id="EffectiveType" style="display: none;">
+    <div class="tips">
+        <p>提示</p>
+        <p>考勤时间今日生效、次日生效？</p>
+    </div>
+    <div class="selectItem">
+        <ul>
+            <li data-effect="4">今日生效</li>
+            <li data-effect="1">次日生效</li>
+            <li data-effect="-1">取消</li>
+        </ul>
+    </div>
+</div>
+<div id="addTimeLayer" class="layui-form" style="display: none;">
+    <div class="layui-form-item">
+        <label class="layui-form-label">班次名称：</label>
+        <div class="layui-input-inline">
+            <input type="text" id="timeName" maxlength="10" placeholder="请输入" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">上班时间：</label>
+        <div class="layui-input-inline">
+            <input class="layui-input" placeholder="请选择" id="beginTime" lay-verify="required" value="" onclick="blur()" onkeydown="blur()" onfocus="blur()">
+        </div>
+        <span class="fl span">至</span>
+        <label class="layui-form-label">下班时间：</label>
+        <div class="layui-input-inline">
+            <input class="layui-input" placeholder="请选择" id="endTime" lay-verify="required" value="" onclick="blur()" onkeydown="blur()" onfocus="blur()">
+        </div>
+    </div>
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+</div>
+</html>

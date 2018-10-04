@@ -1,0 +1,288 @@
+*{
+	font-family: -apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+}
+/*鼠标移入放大*/
+.hoverEnlarge{
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-ms-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+}
+.hoverEnlarge:hover{
+	-webkit-transform: scale(1.1, 1.1);
+	-moz-transform: scale(1.1, 1.1);
+	-ms-transform: scale(1.1, 1.1);
+	-o-transform: scale(1.1, 1.1);
+	transform: scale(1.1, 1.1);
+}
+/*导航条*/
+.headerContent{
+	position: fixed;
+	display: block;
+	width: 100%;
+	top: 0;
+	height: 80px;
+	background-color: #fff;
+	color: #333;
+	z-index: 999;
+	z-index: 999;
+	-webkit-box-shadow: 0 0 5px #777;
+	-moz-box-shadow: 0 0 5px #777;
+	box-shadow: 0 0 5px #777;
+}
+.headerNav{
+	display: block;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+	font-size: 16px;
+	line-height: 1;
+	letter-spacing: 2px;
+	text-align: right;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+.headerNav>li:first-child{
+	padding-top: 20px;
+	cursor: pointer;
+	float: left;
+}
+.headerNav>li:first-child span{
+	font-size: 24px;
+    margin-left: 6px;
+    line-height: 40px;
+    vertical-align: top;
+    -webkit-transition: color 0.2s ease-out;
+    -moz-transition: color 0.2s ease-out;
+    -ms-transition: color 0.2s ease-out;
+    -o-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+}
+.headerNav>li:first-child:hover span{
+	color: #e0061c;
+}
+.headerNav>li, .headerNav>li a{
+	display: inline-block;
+	font-size: 16px;
+	color: #333;
+	text-decoration: none;
+}
+.headerNav>li a{
+	padding: 32px 5px 29px;
+	margin: 0 15px;
+	border-bottom: 3px solid transparent;
+	-webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+.headerNav>li a:hover{
+	color: #e0061c;
+}
+.headerNav>li.active a{
+	border-color: #4BB5FA;
+}
+
+/*右侧小控件*/
+.rightBar{
+	position: fixed;
+	display: block;
+	width: 100px;
+	top: 210px;
+	right: 0;
+	z-index: 999;
+}
+.iconGroup>div{
+	display: block;
+	width: 44px;
+	height: 44px;
+	margin: 6px auto 0;
+	background-color: #2f354e;
+	font-size: 16px;
+	text-align: center;
+	cursor: pointer;
+	-webkit-transition: background-color 0.2s ease-out;
+	-moz-transition: background-color 0.2s ease-out;
+	-ms-transition: background-color 0.2s ease-out;
+	-o-transition: background-color 0.2s ease-out;
+	transition: background-color 0.2s ease-out;
+}
+.iconGroup>div:first-child{
+	margin-top: 0;
+}
+.iconGroup>div:hover{
+	background-color: #979aa6;
+}
+.iconGroup>div img{
+	padding-top: 10px;
+}
+.iconGroup .icontop img{
+	padding-top: 15px;
+}
+.iconGroup>div span{
+	position: absolute;
+	display: none;
+	height: 44px;
+	letter-spacing: 1px;
+}
+.iconGroup>div.iconlx:hover span, .iconGroup>div.icontop:hover span{
+	display: inline-block;
+}
+.iconGroup .iconlx span , .iconGroup .icontop span{
+	width: 44px;
+	font-size: 16px;
+	background-color: #979aa6;
+	color: #fefefe;
+	line-height: 22px;
+}
+.iconGroup>div.iconlx:hover span, .iconGroup>div.icontop:hover span{
+	position: relative;
+	right: 0;
+}
+.iconGroup>div.iconlx:hover img, .iconGroup>div.icontop:hover img{
+	display: none;
+}
+.iconGroup .iconqq span, .iconGroup .iconphone span{
+	width: 170px;
+	right: 72px;
+	font-size: 20px;
+	background-color: #fff;
+	color: #666;
+	line-height: 44px;
+	border: 1px solid #979aa6;
+}
+.rightNav{
+	display: block;
+	margin: 50px auto 0;
+    padding: 0;
+}
+.rightNav li{
+	list-style: none;
+	display: block;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 16px;
+}
+.rightNav li>a{
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border: 2px solid #c9c9c9;
+	border-radius: 100%;
+	vertical-align: top;
+}
+.rightNav li.active>a{
+	background-color: #4BB5FA;
+	border-color: #4BB5FA;
+}
+/*点击跳转到智享后台*/
+.toPlatform{
+	cursor: pointer;
+}
+/*页脚页*/
+.footerPage{
+	position: relative;
+	display: block;
+	height: 100%;
+	background-image: url(../img/bottom_bg.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top;
+	text-align: center;
+}
+.footerPage .footerPageContent{
+	width: 100%;
+	height: 100%;
+}
+.footerPage .title{
+	font-size: 100px;
+	color: #fff;
+	line-height: 1;
+	margin: 0 auto;
+	padding-top: 134px;
+}
+.footerPage .subtitle{
+	font-size: 48px;
+	color: #fff;
+	line-height: 1;
+	margin: 0 auto;
+	padding-top: 70px;
+}
+.footerPage .subtitle span{
+	margin: 0 10px;
+}
+.footerPage .qrcodeContent{
+	margin-top: 66px;
+}
+.footerPage .qrcodeContent>div{
+	display: inline-block;
+	margin: 0 25px;
+}
+.footerPage .qrcodeContent p{
+	margin-top: 22px;
+	font-size: 24px;
+	color: #fff;
+	line-height: 1;
+}
+.footerPage .footerContent{
+	position: absolute;
+	display: block;
+	width: 100%;
+	bottom: 0;
+}
+.footerPage .footerLogo{
+	display: block;
+	width: 100%;
+	background-color: #22263f;
+	opacity: 0.7;
+}
+.footerPage .footerLogo>div{
+	display: inline-block;
+	margin: 36px;
+	font-size: 16px;
+	line-height: 1;
+}
+.footerPage .footerLogo p{
+	margin: 0;
+	padding: 10px 0 0 0;
+	font-size: 16px;
+	color: #fff;
+	line-height: 1;
+}
+.footerPage .footerCopyright{
+	display: block;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	background-color: #22263F;
+	color: #fff;
+	letter-spacing: 1px;
+	text-align: left;
+}
+.footerPage .footerCopyright>div{
+	margin: 0 auto;
+	max-width: 1440px;
+	font-size: 16px;
+    line-height: 50px;
+}
+.footerPage .footerCopyright img{
+	margin-right: 6px;
+    vertical-align: middle;
+}
+.footerPage .footerCopyright span{
+	font-size: 16px;
+	margin-right: 20px;
+}
+.footerPage .footerCopyright a,.footerPage .footerCopyright a:visited,.footerPage .footerCopyright a:active{
+	color: #FFF;
+	float: right;
+	font-size: 18px;
+	margin-left: 66px;
+	text-decoration: none;
+}

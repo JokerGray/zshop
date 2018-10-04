@@ -1,0 +1,232 @@
+.main-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+}
+.template-box{
+    width: 100%;
+    height: 100%;
+}
+.template-box .template-nav{
+    background: #fff;
+    padding:20px 35px;
+    overflow: hidden;
+    border-bottom: 1px solid #dfdfdf;
+}
+.template-nav .nav-list{
+    width: 80px;
+    height: 80px;
+    border:1px solid #dfdfdf;
+    color:#c9cbca;
+    text-align: center;
+    float: left;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.template-nav .nav-list.acv{
+    border:1px solid #1dc0af;
+    color:#000;
+}
+.template-nav .nav-list .big-size{
+    display: block;
+    width: 36px;
+    height: 42px;
+    margin: 8px auto;
+    background: url("../../common/img/a4.png") no-repeat;
+}
+.template-nav .nav-list.acv .big-size{
+    background: url("../../common/img/a4acv.png") no-repeat;
+}
+.template-nav .nav-list .middle-size{
+    display: block;
+    width: 46px;
+    height: 42px;
+    margin: 8px auto;
+    background: url("../../common/img/samll.png") no-repeat;
+}
+.template-nav .nav-list.acv .middle-size{
+    background: url("../../common/img/smallacv.png") no-repeat;
+}
+.template-nav .nav-list .small-size{
+    display: block;
+    width: 46px;
+    height: 42px;
+    margin: 8px auto;
+    background: url("../../common/img/samll.png") no-repeat;
+}
+.template-nav .nav-list.acv .small-size{
+    background: url("../../common/img/smallacv.png") no-repeat;
+}
+.ctrol-btn{
+    width: 100%;
+    padding: 10px 35px;
+    height: auto;
+    text-align: right;
+    border-bottom: 1px solid #dfdfdf;
+    overflow: hidden;
+    background: #f9f9f9;
+}
+.ctrol-btn .edit-btn{
+    padding: 0 20px 0 0;
+    height: 35px;
+    border-right: 1px solid #dfdfdf;
+    float: left;
+    cursor: pointer;
+    font-size: 10px;
+    color:#000;
+    text-align: center;
+}
+.ctrol-btn .edit-btn .glyphicon{
+    font-size: 20px;
+    display: block;
+    color:#1dc0af;
+    margin-bottom: 5px;
+}
+.ctrol-btn .close-btn .glyphicon{
+    font-size: 15px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    display: block;
+    color: #fff;
+    background: #d36161;
+    margin: 0 auto 5px;
+}
+.ctrol-btn .close-btn{
+    width: 35px;
+    height: 35px;
+    margin-left: 61px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 10px;
+    color:#000;
+}
+.template-content{
+    width: 50%;
+    height: calc(100% - 172px);
+    background: #c0c3cc;
+    float: left;
+}
+.template-content .content-list{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+.template-content .hr{
+    width: 595px;
+    height: 4px;
+    border-left: 5px solid #dfdfdf;
+    border-right: 5px solid #dfdfdf;
+    background: #86868e;
+    margin:0 auto;
+}
+.template-content .content-box{
+    margin:4px auto;
+}
+.template-content .content-box.acv{
+    display: block;
+}
+.setting-rgt{
+    width: 50%;
+    height: calc(100% - 172px);
+    margin-left: 50%;
+    overflow: auto;
+}
+.setting-rgt .basic-value{
+    width: 100%;
+    height: 400px;
+    overflow: auto;
+}
+.setting-rgt .basic-value .rgt-list{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.setting-rgt .rgt-list h4{
+    background: #f9f9f9;
+    border-bottom: 1px solid #dfdfdf;
+    box-shadow: 1px 0 10px #ccc;
+    padding: 10px 20px;
+    color:#1dc0af;
+    font-size: 15px;
+}
+.setting-rgt .rgt-list h4 button{
+    float: right;
+    margin-right: 10px;
+    padding: 0 5px;
+    height: 20px;
+    line-height: 20px;
+}
+.setting-rgt .rgt-box{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+.setting-rgt .rgt-box .checkbox{
+    display: inline-block;
+    float: left;
+    margin: 10px;
+}
+.setting-rgt .change-btn{
+    border-top:1px solid #dfdfdf;
+    padding: 20px;
+}
+.setting-rgt .change-btn .layui-form-item{
+    width: 40%;
+    float: left;
+    clear: none;
+}
+.setting-rgt .change-btn label{
+    width: 100px;
+}
+.setting-rgt .word-size{
+    clear: both !important;
+}
+.setting-rgt .lastbtn{
+    width: 100%;
+    text-align: center;
+}
+.setting-rgt .layui-anim-upbit{
+    height: 150px;
+}
+.content-list .artic-list{
+    display: none;
+}
+.lastbtn{
+    width: 80% !important;
+    text-align: center;
+}
+.lastbtn button{
+    padding: 0 30px;
+}
+.view{
+    margin:10px auto;
+}
+.change-btn{
+    display: none;
+}
+.cura{
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.cura.acve{
+    border:1px solid #1dc0af !important;
+    box-shadow: 1px 1px 10px #dfdfdf;
+}
+
+.footer-text.acve {
+    border: 1px solid #1dc0af !important;
+    box-shadow: 1px 1px 10px #dfdfdf;
+}
+.basic-value h4 span{
+    padding-left:15px;
+}
+.artic-list>img{
+    display: block;
+    width: 114px;
+    height: 100px;
+    margin:20px auto;
+}

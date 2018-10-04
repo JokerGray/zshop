@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link href="../../../../assets/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/animate.min.css" rel="stylesheet">
+	<link href="../../../../assets/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	<!--页面自身样式-->
+	<link rel="stylesheet" href="css/index.css">
+	<!-- 共用的样式 -->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/css/common.css"></link>
+	<!-- jquery -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/jquery.min.js"></script>
+	<!-- bootstrap -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/bootstrap.min.js"></script>
+	
+	<!--layer弹出层插件-->
+	<script type="text/javascript" src="../../../../assets/layer/layer.js"></script>
+
+	<!-- bootstrap-table -->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/hplus/css/plugins/bootstrap-table/bootstrap-table.min.css" /> 
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+
+	<!-- echarts -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/echarts/echarts.min.js"></script>
+	<!-- morris -->
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/morris/raphael-2.1.0.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/hplus/js/plugins/morris/morris.js"></script>
+	<title>抢标赚窗口</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row" style="padding-top: 2rem;">
+			<div class="col-xs-6" id="formContent">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label  class="control-label text-right form-title ellipsis "></label>
+						<div class="form-text">
+							<span class="status"></span>
+						</div>
+					</div>
+					<div class="form-group" style="padding-left: 15px;">
+						<label>价格:</label>
+						<span class="price"></span>
+					</div>
+					<div class="form-group" style="padding-left: 15px;">
+						<label>发布时间 :</label>
+						<span class="createTime"></span>
+					</div>
+					<div class="form-group" style="padding-left: 15px;">
+						<label>总需人数 :</label>
+						<span id="totalNo"></span>人
+					</div>
+				</form>
+				<div class="col-xs-8 col-xs-offset-2"><button type="button" class="btn btn-block btn-info" onclick="showDetailDialog()">查看抢标详情</button></div>
+			</div>
+			<div class="col-xs-6" id="chartContent"></div>
+			<input type="hidden" id="need" value='2'>
+			<input type="hidden" id="id" value='494'>
+		</div>
+		
+		<div class="btn-group my-btn-group" role="group">
+		  <button type="button" value="1" id="bidStatus1" class="btn btn-info">待审核<span id="waitNum"></span></button>
+		  <button type="button" value="2" id="bidStatus2" class="btn">进行中<span id="ingNum"></span></button>
+		  <button type="button" value="4" id="bidStatus3" class="btn">已完成<span id="endNum"></span></button>
+		</div>
+		<table id="table"></table>
+	</div>
+	<script type="text/javascript" src="../../src/common.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

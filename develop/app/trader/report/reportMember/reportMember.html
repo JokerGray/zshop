@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>会员统计</title>
+    <link rel="stylesheet" href="../../assets/common/css/common.css">
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../../assets/select2-v4.0.6/css/select2.min.css">
+    <link rel="stylesheet" href="css/reportMember.css">
+</head>
+<body>
+<!--顶部时间tab页和店铺选择，员工选择-->
+<div class="top">
+    <div class="timeNav">
+        <a href="javascript:;" class="thisMonth active">本月</a>
+        <a href="javascript:;" class="selfTime">自定义时间</a>
+        <div class="timeRange">
+            <input type="text" id="Month" autocomplete="off" value="" onclick="blur()" onfocus="blur()">
+            <button id="sure">确定</button>
+        </div>
+    </div>
+    <div class="filterBox">
+        <div>
+            <label>店铺 </label>
+            <select id="shopSelector">
+                <!--<option value="null">全部店铺</option>-->
+            </select>
+        </div>
+    </div>
+</div>
+<!--路径导航-->
+<div class="path">
+    <span class="pathTime">本月</span><i> > </i>
+    <span class="pathShopName"> </span>
+</div>
+<!--业绩之最展示-->
+<div class="greatBox"></div>
+<!--报表内容-->
+<div class="content">
+    <div class="memberReport">
+        <div class="table">
+            <!--<div class="exportBtn">-->
+                <!--<a href="javascript:;">导出EXCEL</a>-->
+            <!--</div>-->
+            <table id="memberReport" lay-filter="memberReport">
+                <thead>
+                <tr>
+                    <!--<th lay-data="{field: 'num', width:60,minWidth:60, fixed:'left',style:'text-align:center'}">序号</th>-->
+                    <!--<th lay-data="{field: 'shopName', width:206,minWidth:206}">店铺名称</th>-->
+                    <!--<th lay-data="{field: 'newNum', width:160,minWidth:160,sort:true}">新客人数</th>-->
+                    <!--<th lay-data="{field: 'comNum',minWidth:158,sort:true}">到店人数</th>-->
+                    <!--<th lay-data="{field: 'serviceNUm',minWidth:158,sort:true}">服务人头数</th>-->
+                    <th lay-data="{field: 'num', event:'detail',width:60,minWidth:60, fixed:'left',style:'text-align:center'}">序号</th>
+                    <th lay-data="{field: 'shopName', event:'detail'}">店铺名称</th>
+                    <th lay-data="{field: 'reachStoreNumber', event:'detail'}">到店人数</th>
+                    <th lay-data="{field: 'servicePeopleNumber', event:'detail'}">服务人头数</th>
+                    <th lay-data="{field: 'newMemberCardCount', event:'detail'}">新客人数</th>
+                    <th lay-data="{field: 'shopId', event:'detail',width:-1,minWidth:-1,style:'display:none'}"></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div class="pageBox">
+                <div class="pageTips">
+                    <p>
+                        显示<span class="from">1</span>到<span class="to">10</span>项，共<span class="total">57</span>项
+                    </p>
+                </div>
+                <div id="memberPageSelect"></div>
+            </div>
+        </div>
+        <div class="chart">
+            <div class="chartContent" style="width: 860px;height:410px;"></div>
+        </div>
+    </div>
+</div>
+<!--时间选择遮罩-->
+<div class="mask"></div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/echart/echarts.min.js"></script>
+<script src="../../assets/layer-v3.1.1/layer.js"></script>
+<script src="../../assets/layui-v2.3.0/layui.js"></script>
+<script src="../../assets/select2-v4.0.6/js/select2.full.min.js"></script>
+<script src="../../assets/select2-v4.0.6/js/i18n/zh-CN.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="js/reportMember.js"></script>
+<script type="text/html" id="greatTpl">
+    <ul>
+        <li>
+            <p class="topTitle">会员总数（商户）</p>
+            <div class="greatDetail">
+                <span class="name">{{data.memberCardCount}}</span>
+                {{if data.addCardCount >= 0}}
+                <span class="greatContent up">
+                    <s>相比上月</s>
+                    <i>{{$imports.Math.abs(data.addCardCount)}}人&nbsp;<b></b></i>
+                </span>
+                {{else}}
+                <span class="greatContent down">
+                    <s>相比上月</s>
+                    <i>{{$imports.Math.abs(data.addCardCount)}}人&nbsp;<b></b></i>
+                </span>
+                {{/if}}
+            </div>
+        </li>
+        <li>
+            <p class="topTitle">到店总人数（会员）</p>
+            <div class="greatDetail">
+                <span class="name">{{data.reachStoreNumber}}</span>
+                {{if data.addReachStoreNumber >= 0}}
+                <span class="greatContent up">
+                    <s>相比上月</s>
+                    <i>{{$imports.Math.abs(data.addReachStoreNumber)}}人&nbsp;<b></b></i>
+                </span>
+                {{else}}
+                <span class="greatContent down">
+                     <s>相比上月</s>
+                    <i>{{$imports.Math.abs(data.addReachStoreNumber)}}人&nbsp;<b></b></i>
+                </span>
+                {{/if}}
+            </div>
+        </li>
+        <li>
+            <p class="topTitle">服务人头数（会员）</p>
+            <div class="greatDetail">
+                <span class="name">{{data.servicePeopleNumber}}</span>
+                {{if data.addServicePeopleNumber >= 0}}
+                <span class="greatContent up">
+                    <s>相比上月</s>
+                    <i>{{$imports.Math.abs(data.addServicePeopleNumber)}}人&nbsp;<b></b></i>
+                </span>
+                {{else}}
+                <span class="greatContent down">
+                    <s>相比上月</s>
+                    <i>{{$imports.Math.abs(data.addServicePeopleNumber)}}人&nbsp;<b></b></i>
+                </span>
+                {{/if}}
+            </div>
+        </li>
+        <li>
+            <p class="topTitle">新客总人数（会员）</p>
+            <div class="greatDetail">
+                <span class="name">{{data.newMemberCardCount}}</span>
+                {{if data.addNewCardCount >= 0}}
+                <span class="greatContent up">
+                    <s>相比上月</s>
+                    <i>{{$imports.Math.abs(data.addNewCardCount)}}人&nbsp;<b></b></i>
+                </span>
+                {{else}}
+                <span class="greatContent down">
+                    <s>相比上月</s>
+                    <i>{{$imports.Math.abs(data.addNewCardCount)}}人&nbsp;<b></b></i>
+                </span>
+                {{/if}}
+            </div>
+        </li>
+    </ul>
+</script>
+<script id="detailPageTpl" type="text/html">
+    <div class="detailTop">
+        <span>会员统计详情</span>
+        <i class="closeIcon">×</i>
+    </div>
+    <div class="detailPath">
+        <div>
+            <span class="detailShopName">{{shopName}}</span>
+            <i> > </i>
+        </div>
+        <div class="layui-form">
+            <input type="radio" name="detail" value="1" lay-filter="radio" title="到店人数" checked>
+            <input type="radio" name="detail" value="2" lay-filter="radio" title="服务人头数">
+            <input type="radio" name="detail" value="3" lay-filter="radio" title="新客人数">
+        </div>
+        <div>
+            <a href="javascript:;" id="exportBtn">导出EXCEL</a>
+        </div>
+    </div>
+    <div class="detailTableBox">
+        <table class="layui-table">
+            <colgroup>
+                <col width="60">
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>店铺名称</th>
+                <th>客户名称</th>
+                <th>到店时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each data.rows item index}}
+            <tr>
+                <td>{{(index+1)<10?'0'+(index+1):(index+1)}}</td>
+                <td>{{item.shopName}}</td>
+                <td>{{item.memberName}}</td>
+                <td>{{item.consumeTime}}</td>
+            </tr>
+            {{/each}}
+            {{if data.rows.length === 0}}
+            <tr><td colspan="4">暂无相关数据</td></tr>
+            {{/if}}
+            </tbody>
+        </table>
+    </div>
+    <div class="detailPageSelector">
+        <div id="detailPageSelector"></div>
+    </div>
+</script>
+</html>

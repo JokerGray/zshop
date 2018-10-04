@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<title>可兑换智币明细</title>
+	<link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../../../common/css/reset.css" />
+	<link rel="stylesheet" href="./exchangeableZDetail.css" />
+	<style>
+		.ico {
+			cursor:url('../common/plugins/jquery.imgbox-1.0.0/img/magnifier.png'),auto;
+		}
+    	.dTitle{
+    		font-size: 23px;
+    		margin: 24px 0;
+    		text-align: center;
+    	}
+    	.dContent{
+    		margin: 0 50px;
+    		text-align: center;
+    	}
+    	.control-label{
+    		padding-top: 7px;
+		    margin-bottom: 0;
+		    text-align: justify;
+		    display: inline-block;
+		    width: 120px;
+		    max-width: 100%;
+		    font-weight: 700;
+		    font-family: \5FAE\8F6F\96C5\9ED1,arial,sans-serif;
+		    color: #333;
+		    font-size: 14px;
+		    line-height: 24px;
+    	}
+    	.pull-left{
+    		float: left!important;
+    	}
+    	.pull-right{
+    		float: right!important;
+    		
+    	}
+    	.form-control{
+    		/* display: inline; */
+		    width: 48%;
+		    height: 20px;
+		    padding: 6px 12px;
+		    font-size: 14px;
+		    line-height: 1.42857143; 
+		    color: #555;
+		    background-color: #eee;
+		    opacity: 1;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    	}
+    	.pull-right .form-control{
+    		left: -25px;
+    		position: relative;
+    	}
+    	.pull-left .form-control{margin-left: -23px;}
+    	
+    	.from-item{
+    		margin: 15px 0;
+    	}
+	</style>
+</head>
+<body>
+	<div class="tool-box layui-form">
+   		<ul class="tool-box-ul clearfix">
+			<!-- 直播服务  -->
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label">直播服务：</label>
+					<div class="layui-input-inline">
+						<select id="selectview2" lay-verify="required" lay-search>
+						    <option value="-1" selected>-- 全部 --</option>
+		                    <option value="0">已开通</option>
+		                    <option value="1">未开通</option>
+						</select>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="tool-add-box clearfix">
+		<button class="layui-btn add" id="exportBtn" style="top: -10px;margin-left: 10px;">导出excel</button>
+		<button class="layui-btn add" id="resetBtn" style="top: -10px;">重置</button>
+		<button class="layui-btn add" id="searchBtn" style="top: -10px;">搜索</button>
+	</div>
+
+	<div class="layui-app">
+		<div class="app-table" style="margin-top: 10px;" >
+			<table lay-filter="merchantTable" id="merchantTable"></table>
+			<div id="amount"></div>
+			<div id="layTablePage"></div>
+		</div>
+	</div>
+	
+	<script type="text/html" id="barDemo">
+    	<button class="layui-btn my-btn" lay-event="view">确认</button>
+    </script>
+		
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="../../../common/assets/template-web.js"></script>
+<script type="text/javascript" src="exchangeableZDetail.js"></script>
+
+<script type="text/javascript">    
+	/* jsorcss('js','exchangeableZDetail'); */
+</script>
+</body>
+</html>
+
+<!-- templates -->
+<script type="text/html" id="merchantInfoTpl">
+
+<div class="container-fluid" style="margin-top: 30px;">
+	<form class="layui-form">
+		<div class="layui-form-item top" style="padding-top: 0px;">
+			<h1 class="dTitle">商户基本信息</h1>
+		</div>
+		
+		<div class="dContent">
+			<div class="pull-left">
+				<div class="from-item">
+					<label class="control-label"><b class="required-icon"></b>商  户  名  称：</label>
+				    <input readonly class="form-control" id="userCode" type="text" value="{{orgName}}">
+				</div>
+				<div class="from-item">
+					<label class="control-label"><b class="required-icon"></b>是否开通直播：</label>
+				    <input readonly class="form-control" id="regular" type="text" value="{{liveStatusStr}}">
+				</div>
+				<div class="from-item">
+					<label class="control-label" style="position: absolute;left:63px;display:block;"><b class="required-icon"></b>营业执照：</label>
+				</div>
+				<div class="from-item">
+			        <a id="img_box" onclick="openPic({{licenseFront}})" style="position: absolute;left:135px;top:240px;">   
+						<img src="../common/plugins/jquery.imgbox-1.0.0/img/license_thumbnail.png" class="ico" />
+					</a>
+				</div>
+			</div>
+			
+			<div class="pull-right">
+			    <div class="from-item">
+					<label class="control-label"><b class="required-icon"></b>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</label>
+			        <input readonly  class="form-control" id="userName" type="text" value="{{phone}}">
+			    </div>
+			    <div class="from-item">
+					<label class="control-label"><b class="required-icon"></b>主脸人数：</label>
+			        <input readonly  class="form-control" id="locked" type="text" value="{{attestationUserNumber}}">
+			    </div>
+			</div>
+
+			<div class="pull-left">
+				
+			</div>
+		</div>
+	</form>
+</div>
+</script>

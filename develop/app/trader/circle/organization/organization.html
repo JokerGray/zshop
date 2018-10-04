@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组织成员</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/demo.css">
+    <link rel="stylesheet" href="assets/css/zTreeStyle.css">
+    <link rel="stylesheet" href="assets/layer/mobile/need/layer.css">
+    <link rel="stylesheet" href="assets/layui/css/layui.css">
+    <link rel="stylesheet" href="assets/css/select2.css">
+    <link rel="stylesheet" href="css/organization.css">
+</head>
+<body>
+    <div class="allWrapper" id="organization">
+        <div class="head">
+            <input class="form-control" placeholder="请输入成员姓名" id="memberList" flag="unchose"/>
+            <ul id="list"></ul>
+            <button class="btn btn-primary" id="personSearch">成员搜索</button>
+        </div>
+        <div class="body">
+            <div class="treeBox">
+                <div class="treehead">
+                    <div class="headbox input-group">
+                        <input class="form-control" placeholder="请输入小组名称" aria-describedby="teamSearch" id="teamList"/>
+                        <span class="input-group-addon" id="teamSearch">小组搜索</span>
+                    </div>
+                    <div class="headbox">
+                        <span>小组信息</span>
+                        <button class="btn btn-primary" id="addNewTeam">增加一级小组</button>
+                    </div>
+                </div>
+                <div class="tree">
+                    <ul id="treeDemo" class="ztree"></ul>
+                </div>
+            </div>
+            <div class="tableBox">
+                <div class="tablehead">
+                    <span>成员信息</span>
+                    <button class="btn btn-primary" id="addNewMember">增加成员</button>
+                </div>
+                <table class="layui-table" id="table" lay-filter='table'></div>
+                <script id="barDemo" type="text/html">
+                    <a class="layui-btn layui-btn-xs detailBtn" lay-event="detail">查看</a>
+                    {{# if(d.type=='领袖'){ }}
+                        <a class="layui-btn layui-btn-xs editBtn" lay-event="edit">修改</a>
+                    {{# } else if(d.type='成员'){}}
+                        <a class="layui-btn layui-btn-xs moveBtn" lay-event="move">移组</a>
+                        <a class="layui-btn layui-btn-xs deleteBtn" lay-event="delete">删除</a>
+                    {{# } }}
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="assets/js/jquery-2.1.0.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.ztree.core.js"></script>
+<script src="assets/js/jquery.ztree.excheck.js"></script>
+<script src="assets/js/jquery.ztree.exedit.js"></script>
+<script src="assets/layer/layer.js"></script>
+<script src="assets/js/select2.full.js"></script>
+<script src="assets/layui/layui.js"></script>
+<script src="assets/js/utilNew.js"></script>
+<script src="js/organization.js"></script>
+</html>

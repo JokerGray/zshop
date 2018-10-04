@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <title>店铺</title>
+    <link rel="stylesheet" href="../assets/hplus/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/store.css">
+</head>
+<body>
+    <div id="dp-main">
+        <div class="dp-title row">
+            <div class="col-xs-12">
+                <select id="storeSelector">
+                    <option value="1">店铺一</option>
+                    <option value="2">店铺二</option>
+                    <option value="3">店铺三</option>
+                </select>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="content content-1">
+                <div class="placeholder-img"><a class="add-pic-link" href="javascript:void(0);"></a></div>
+                <div id="storePicList_1" class="carousel slide  hidden" data-ride="carousel" data-interval="3000" data-pause="">
+                    <div class="carousel-inner">
+                        <a href="javascript:;" class="item active">
+                            <img src="image/1.jpg">
+                            <div class="carousel-caption">
+                                图片一
+                            </div>
+                        </a>
+                         <a href="javascript:;" class="item">
+                            <img src="image/2.jpg">
+                            <div class="carousel-caption">
+                                图片二
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="item">
+                            <img src="image/3.jpg">
+                            <div class="carousel-caption">
+                                图片三
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="item">
+                            <img src="image/4.jpg">
+                            <div class="carousel-caption">
+                                图片四
+                            </div>
+                        </a>
+                    </div>
+                    <ul class="carousel-indicators">
+                        <li data-slide-to="0" data-target="#storePicList_1" class="active"></li>
+                        <li data-slide-to="1" data-target="#storePicList_1"></li>
+                        <li data-slide-to="2" data-target="#storePicList_1"></li>
+                        <li data-slide-to="3" data-target="#storePicList_1"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content content-2 hidden">
+                <div class="placeholder-img"><a class="add-pic-link" href="javascript:void(0);"></a></div>
+                <div id="storePicList_2" class="carousel slide hidden" data-ride="carousel" data-interval="3000" data-pause="">
+                    <div class="carousel-inner"></div>
+                    <ul class="carousel-indicators"></ul>
+                </div>
+            </div>
+            <div class="content content-3 hidden">
+                <div class="add-video">
+                    <div class="link-box">
+                        <a href="javascript:void(0);" class="store-link upload-link">上传</a>
+                        <a href="javascript:void(0);" class="store-link contact-us-link">联系我们</a>
+                    </div>
+                </div>
+                <div class="video-list hidden">
+                    <ul></ul>
+                </div>
+            </div>
+            <div class="content content-4 hidden"></div>
+            <div class="content content-5 hidden">
+                <div class="link-box">
+                    <a href="javascript:void(0);" class="store-link live-start-link">开通</a>
+                </div>
+            </div>
+            <div class="content content-6 hidden"></div>
+        </div>
+        <div class="aside-nav">
+            <div class="btn-group-vertical" role="group">
+                <button type="button" class="btn btn-default active">图片轮播</button>
+                <button type="button" class="btn btn-default">员工风采</button>
+                <button type="button" class="btn btn-default">视频展示</button>
+                <button type="button" class="btn btn-default">720度全景</button>
+                <button type="button" class="btn btn-default">直播空间</button>
+                <button type="button" class="btn btn-default disabled">虚拟空间</button>
+            </div>
+        </div>
+    </div><!--/#dp-main  -->
+
+    <script src="../assets/js/jquery-1.8.2.min.js"></script>
+    <script src="../assets/layer/layer.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/store.js"></script>
+</body>
+</html>

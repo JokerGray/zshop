@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>商户管理</title>
+        <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+        <link rel="stylesheet" href="common/assets/layui/css/layui.css">
+        <link rel="stylesheet" href="common/assets/layui/css/modules/layer/default/layer.css">
+        <link rel="stylesheet" href="common/assets/layui/css/modules/layer/myskin/style.css">
+                <link rel="stylesheet" href="common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+        <link rel="stylesheet" href="common/css/reset.css" />
+        <link rel="stylesheet" href="common/css/common.css" />
+        <link rel="stylesheet" type="text/css" href="common/css/modal.css" />
+        <link rel="stylesheet" href="merchants_manage/css/merchants_manage.css">
+    </head>
+    <body>
+        <div class="main-content">
+            <div class="content-title">商户管理</div>
+            <div class="content-box">
+                <div class="search-box">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label class="control-label">昵称：</label>
+                            <input type="text" class="form-control" name="searchName" placeholder="请输入昵称" maxlength="10">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">手机号：</label>
+                            <input type="text" class="form-control" id="searchAdmin" name="searchAdmin" placeholder="请输入账号" maxlength="11">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">商户用户类型：</label>
+                            <select class="form-control" id="userTypeSelector">
+                                <option value="">--请选择--</option>
+                                <option value="0">正式</option>
+                                <option value="1">测试</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">是否锁定：</label>
+                            <select class="form-control" id="statusSelector">
+                                <option value="">--请选择--</option>
+                                <option value="1">锁定</option>
+                                <option value="0">启用</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">省市：</label>
+                            <select class="form-control" id="provinceSelector1">
+                                <option value="">--请选择--</option>
+                            </select>
+                            <select class="form-control" id="citySelector1" disabled="disabled">
+                                <option value="">--请选择--</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn search-btn"><i class="icon"></i>查询</button>
+                    </form>
+                </div>
+                <div>
+                    <button id="addMerchantsBtn" type="button" class="btn add-merchants-btn"><i class="icon"></i>新增商户</button>
+
+                    <button id="yxBtn" type="button" class="btn add-merchants-btn">云信重试</button>
+                    <button id="upgradeBtn" type="button" class="btn update-merchants-btn" data-toggle="modal" data-target="#upgradeModal">商户升级</button>
+                </div>
+                <div class="table-box">
+                    <table id="listTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>账号</th>
+                                <th>商户用户类型</th>
+                                <th>商户等级</th>
+                                <th>用户昵称</th>
+                                <th>绑定的平台用户</th>
+                                <th>云信注册状态</th>
+                                <th>锁定/启用</th>
+                                <!--<th>最后操作人</th>-->
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="common-page1">
+                        <div id="paging-box-count"></div>
+                        <div id="paging-box" class="basic-jump"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="common/js/util/util.js"></script>
+    <script type="text/javascript" src="common/js/common.js"></script>
+    <script type="text/javascript" src="common/js/login_success.js"></script>
+    <script type="text/javascript" src="common/js/util/changePassword.js"></script>
+    <script type="text/javascript" src="common/js/util/pub.js"></script>
+    <script src="common/assets/zTree_v3/js/jquery.ztree.core.js"></script>
+    <script src="common/assets/template-web.js"></script>
+    <script id="addMerchantsTpl" type="text/html">
+
+        <div class="edit-pop-box">
+            <form id="addForm" name="addForm" class="form-horizontal">
+                <div class="pull-left w-half">
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>商户名称：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <input type="text" class="form-control" name="orgName" id="orgName" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>性别：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <select class="form-control" name="sex" id="sex">
+                                <option value="0">男</option>
+                                <option value="1">女</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>计费等级：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <select class="form-control" name="levelTypeId" id="levelTypeId" >
+                                <!--<option value="">--请选择--</option>-->
+                                {{each chargeLevel value i}}
+                                    <option value="{{value.id}}">{{value.levelName}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>平台用户账号：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <input type="text" class="form-control" name="platusercode" id="platusercode" maxlength="11">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>商户管理员账号：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <input type="text" class="form-control" name="usercode" id="usercode" autocomplete="off" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>商户管理员密码：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <input type="text" onfocus="this.type='password'" autocomplete="off" class="form-control" name="password" id="password" maxlength="12" placeholder="请输入6-12位长度的密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>个人频道名：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <input type="text" class="form-control" name="subscriptionName" id="subscriptionName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>省市：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <select class="form-control half" name="provinceSelector2" id="provinceSelector2">
+                                <option value="">--请选择--</option>
+                            </select>
+                            <select class="form-control half" name="citySelector2" id="citySelector2" disabled="disabled">
+                                <option value="">--请选择--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--商户类型新增-->
+                    <!--<div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>商户类型名称：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <select class="form-control" name="merchantId" id="merchantId" >
+                                <option value="">--请选择--</option>
+                            </select>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="pull-right w-half">
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>商户优先级：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <input type="text" class="form-control" name="priority" id="priority" placeholder="优先级为1-99的整数，数字越大优先级越高" maxlength="2">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>所属行业：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <select class="form-control" name="trade" id="trade">
+                                <option value="">--请选择--</option>
+                                {{each trade value i}}
+                                    <option value="{{value}}">{{i}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>商户类型：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <select class="form-control" name="regular" id="regular">
+                                <option value="">--请选择--</option>
+                                {{each regular value i}}
+                                <option value="{{i}}">{{value}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>商户编码：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <input type="text" class="form-control" name="merchantsCode" id="merchantsCode">
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>平台用户密码：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <span class="form-control">默认为123456</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>商户管理员昵称：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <input type="text" class="form-control" name="username" id="username" placeholder="只能输入中文或者英文">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>密码安全级别：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <div class="pwd-strength">
+                                <span class="s-level level1">弱</span>
+                                <span class="s-level level2">中</span>
+                                <span class="s-level level3">强</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>频道类型：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <select class="form-control" name="subscriptionTypeId" id="subscriptionTypeId">
+                                <option value="">--请选择--</option>
+                                {{each channelList value i}}
+                                    <option value="{{value.channelId}}">{{value.channelName}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label">推荐人：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <span class="form-control" name="reference" id="reference"></span>
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>频道简介：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <textarea class="form-control" name="subscriptionSynopsis" id="subscriptionSynopsis" rows="4" cols="40"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </script>
+    <script id="updateMerchantsTpl" type="text/html">
+        <div class="edit-pop-box">
+            <form id="updateForm" name="updateForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>用户账号：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <input type="text" disabled="disabled" class="form-control" name="usercode" value="{{usercode}}" id="usercode">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>用户昵称：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <input type="text" class="form-control" name="username" value="{{username}}" id="username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>是否锁定：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <select class="form-control" name="locked" id="lockSelector">
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">＊</b>密码：</label>
+                        <div class="col-md-9 col-sm-9">
+                            <input type="password" class="form-control" name="password" value="{{password}}" id="password" maxlength="12" placeholder="请输入6-12位长度的密码">
+                        </div>
+                    </div> -->
+            </form>
+        </div>
+    </script>
+        <!--商户升级-->
+        <div class="modal fade upgradeModal" id="" tabindex="-1" role="dialog" aria-labelledby="mychange">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close addclose" data-dismiss="modal" aria-hidden="true">×
+                        </button>
+                        <h4 class="modal-title" id="mychange">
+                            商户升级
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="bs-example bs-example-form" role="form">
+                            <div class="form-group goodstype">
+                                <span class="layui-form-label upgrademodal">升级类型：</span>
+                                <select id="changbasic" class="form-control">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <span class="layui-form-label upgrademodal">金额：</span>
+                                <input type="text" class="form-control search-input" id="upgradeMoney" value="3650"  disabled/>
+                            </div>
+                            <div class="form-group">
+                                <span class="layui-form-label upgrademodal">商户名：</span>
+                                <input type="text" class="form-control search-input" id="merName"  disabled/>
+                            </div>
+                            <div class="form-group">
+                                <span class="layui-form-label upgrademodal">推荐人：</span>
+                                <input type="text" class="form-control search-input" id="lowPeople"  disabled/>
+                            </div>
+                            <div class="form-group">
+                                <span class="layui-form-label upgrademodal">顶级推荐人：</span>
+                                <input type="text" class="form-control search-input" id="topPeople" disabled/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary close-btn" id="add-para">
+                        		保存
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="common/js/util/util.js"></script>
+        <script type="text/javascript" src="common/js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="common/js/common.js"></script>
+        <script src="merchants_manage/js/merchants_manage.js"></script>
+    </body>
+</html>

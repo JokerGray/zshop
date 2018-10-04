@@ -1,0 +1,39 @@
+<!--pages/message/message.wxml-->
+<view class='msg-box'>
+    <view class='msg-item' >
+        <view class='msg-img msg-img-new'>
+            <image src='/images/qipao.png'></image>
+        </view>
+        <view class='msg-text' bindtap='navigateToAll' data-url="../comment/comment?userId={{commentList.userId}}" >
+            <view class='msg-title'>
+                <text class='msg-h3'>评论</text>
+                <text class='msg-time'>2018-8-21 13:08:50</text>
+            </view>
+            <text class='msg-content'>{{commentList.userName}}评论了你：{{commentList.commentContent}}</text>
+        </view>
+    </view>
+    <view class='msg-item'>
+        <view class='msg-img msg-img-new'>
+            <image src='/images/ling.png'></image>
+        </view>
+        <view class='msg-text'>
+            <view class='msg-title'>
+                <text class='msg-h3'>系统通知</text>
+                <text class='msg-time'>2018-8-21 13:08:50</text>
+            </view>
+            <text class='msg-content'>好吃得完全停不下来</text>
+        </view>
+    </view>
+    <view class='msg-item'>
+        <view class='msg-img msg-img-head'>
+            <image src='/images/head.png'></image>
+        </view>
+        <view class='msg-text'>
+            <view class='msg-title'>
+                <text class='msg-h3'>徐佩奇</text>
+                <text class='msg-time'>2018-8-21 13:08:50</text>
+            </view>
+            <text class='msg-content'>我发现了一个很好看的视频，快来看看！里面...</text>
+        </view>
+    </view>
+</view>

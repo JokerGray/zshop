@@ -1,0 +1,297 @@
+a,a:hover, a:link, a:active,a:focus{
+	text-decoration: none;
+}
+.homePage{
+	background-color: #f2f2f2;
+}
+
+.main-title{
+	position:relative;
+	width: 100%;
+	height: 98px;
+	text-align: center;
+}
+
+.main-title .return-icon{
+	position:absolute;
+	left: 42px;
+	top: 30px;
+}
+
+.main-con {
+    display:flex;
+    justify-content: center;
+    margin:0 auto;
+}
+
+.main-con  p{
+	padding:0;
+	margin:0;
+	line-height: 1;
+}
+
+.main-con .con-left{
+    width:616px;
+}
+
+.main-con .con-right{
+    width:1366px;
+    margin-left:18px;
+}
+
+.con-left .customer-info{
+    height:786px;
+    width:100%;
+    background-color:#fff;
+}
+
+.con-left .billing-summary{
+    height:554px;
+    width:100%;
+    margin-top:18px;
+    background-color:#fff;
+	padding-top:50px;
+}
+
+.con-right .billing-detail{
+    width:100%;
+    height:1160px;
+	padding-top:54px;
+	margin-bottom:38px;
+    background-color:#fff;
+}
+
+.con-right .submit-btn{
+    width:100%;
+	height:90px;
+	background-color:#fe6869;
+	color:#fff;
+	font-size:40px;
+	border:none;
+}
+
+.customer-info .customer-detail{
+	display:flex;
+	padding-top:38px;
+	margin-bottom:108px;
+}
+
+.customer-detail .ava{
+	width:164px;
+	height:170px;
+	margin-left:22px;
+}
+
+.customer-detail .ava img{
+	width:100%;
+	height:100%;
+	border-radius:100%;
+}
+
+.customer-detail .info{
+	margin-left:54px;
+	color:#333;
+}
+
+.customer-detail .info .name{
+	margin-top:16px;
+	font-size:42px;
+	font-weight: bold;
+}
+
+.customer-detail .info .tel-num{
+	margin-top:24px;
+	font-size:30px;
+}
+.customer-detail .info .saleman{
+	margin-top:18px;
+	font-size:30px;
+}
+
+.con-left .con-title{
+	margin-left:28px;
+	font-size:34px;
+	color:#333;
+}
+
+.con-left .con-summary{
+	width:560px;
+	margin-left:28px;
+	margin-right:28px;
+	margin-top:24px;
+	padding-bottom:24px;
+	border-left:none;
+	border-top:none;
+	border-right:none;
+	border-bottom:2px solid #d2d2d2;
+	outline: none;
+	font-size:28px;
+	color:#333;
+}
+
+::-webkit-input-placeholder,
+:-moz-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder{
+	color:#ccc;
+}
+
+.billing-detail .service-type{
+	position:relative;
+	display:flex;
+	justify-content: center;
+}
+
+.service-type .service-name{
+	position:relative;
+	display:block;
+	width:568px;
+	height:92px;
+	line-height: 92px;
+	border:4px solid #fe6869;
+	color:#fe6869;
+	font-size:40px;
+	text-align:center;
+}
+
+.service-type .service-name .down-arrow-icon{
+	position:absolute;
+	right:38px;
+	top:34px;
+	display:block;
+	width:22px;
+	height:23px;
+	background:url(../img/xzgdx-xiala@2x.png) no-repeat;
+}
+
+.service-type .select-box{
+	display:none;
+	position:absolute;
+	top:88px;
+	left:50%;
+	width:568px;
+	max-height:470px;
+	margin-left:-284px;
+	background-color:#fff;
+	border:4px solid #fe6869;
+	overflow-y:auto;
+	z-index:100;
+}
+
+.select-box ul>li{
+	height:92px;
+	line-height: 92px;
+	color:#333;
+	font-size:40px;
+	text-align:center;
+	cursor:pointer;
+	background-color: #f2f2f2;
+}
+
+.select-box ul>li:hover{
+	color:#fe6869;
+	background-color:#fff;
+}
+
+.billing-detail .service-info{
+	margin-top:100px;
+	margin-left:50px;
+	margin-right:50px;
+}
+
+.service-info dd{
+	display:flex;
+	height:118px;
+	line-height: 118px;
+	width:100%;
+	font-size:34px;
+	color:#333;
+}
+
+.service-info dd+dd{
+	border-top:2px solid #eee;
+}
+
+.service-info dd label{
+	color:#999;
+	width:180px;
+	margin-bottom:0;
+	margin-right:40px;
+	font-weight: normal;
+	text-align:right;
+}
+
+.service-info input[type=text]{
+	height:86px;
+	line-height: 86px;
+	font-size:34px;
+}
+
+.service-info .num input[type=text]{
+	width:100px;
+	text-align:center;
+	margin-top:16px;
+}
+
+.service-info .summary input[type=text]{
+	width:860px;
+	border-top:none;
+	border-left:none;
+	border-right:none;
+	outline:none;
+	border-bottom:2px solid #d2d2d2;
+}
+
+.i-select-box{
+	position: relative;
+	width:300px;
+	height:86px;
+	margin-top:16px;
+	border:2px solid #fe6869;
+}
+
+.i-select-box .i-select-text{
+	position: relative;
+	display:block;
+	width:100%;
+	height:100%;
+	line-height: 86px;
+	text-align: center;
+	color:#333;
+}
+
+.i-select-box .i-select-text i{
+	position:absolute;
+	display:block;
+	top:50%;
+	right:20px;
+	width:22px;
+	height:23px;
+	margin-top:-12px;
+	background:url(../img/xzgdx-xiala@2x.png) no-repeat;
+}
+
+.i-select-box .i-select-list{
+	display:none;
+	position:absolute;
+	left:-2px;
+	top:83px;
+	width:300px;
+	max-height:450px;
+	border:2px solid #fe6869;
+	background-color:#f2f2f2;
+	z-index:99;
+	overflow-y: auto;
+}
+
+.i-select-list ul>li{
+	height:86px;
+	line-height: 86px;
+	text-align: center;
+	cursor:pointer;
+}
+
+.i-select-list ul>li:hover{
+	background-color:#fff;
+	color:#fe6869;
+}

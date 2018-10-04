@@ -1,0 +1,314 @@
+@import '../util/util.scss';
+html,
+body {
+    min-width: 768px;
+    font-family: $font-family-aliyun;
+
+    // 滚动条样式优化
+    &::-webkit-scrollbar{
+        background-color: #f6f4f7;
+        width: 10px;
+    }
+    &::-webkit-scrollbar-button{
+        display: none;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: #ccc;
+    }
+}
+@media (min-width: 1400px){
+    .container {
+        width: 1400px;
+    }
+}
+// 顶部导航整体
+.nav-container{
+    z-index: 2;
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+    
+    // 内部
+    .nav-header {
+        $height: 160px;
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+        background-color: #fff;
+        font-size: 20px;
+        a:hover{
+            text-decoration: none;
+        }
+        .dropdown:hover{
+            .dropdown-menu{
+                display: block;
+                top: 140px;
+            }
+        }
+        // logo
+        .nav-logo{
+            float: left;
+            padding: 0;
+            line-height: $height;
+            .logo{
+                @include img_icon(72px, 72px);
+                background-image: url('./img/logo.png');
+                vertical-align: middle;
+            }
+            >span{
+                color: #999;
+                font-weight: bold;
+            }
+        }
+        // 菜单导航
+        .nav-list{
+            position: relative;
+            display: block;
+            list-style: none;
+            margin: 0 0 0 250px;
+            padding: 0;
+            >li{
+                display: inline-block;
+                &.active>a{
+                    font-weight: bold;
+                    color: #d70c2a;
+                }
+                >a{
+                    display: inline-block;
+                    line-height: $height;
+                    width: 130px;
+                    text-align: center;
+                    color: #666;
+                    transition: all 0.1s ease-in-out;
+                    text-decoration: none;
+                    &:hover{
+                        color: #d70c2a;
+                    }
+                }
+                &.nav-line-block{
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    height: 10px;
+                    width: 1920px;
+                    background: linear-gradient(135deg,transparent 7px,#cecece 0) top left;
+                    .nav-line{
+                        position: absolute;
+                        display: inline-block;
+                        width: 130px;
+                        height: 10px;
+                        top: 0;
+                        left: 0;
+                        background: #d51431;
+                        background: linear-gradient(-135deg,transparent 7px,#d51431 0) right,
+                        linear-gradient(135deg,transparent 7px,#d51431 0) left;
+                        background-size:50% 100%;
+                        transition: all 0.1s ease-out;
+                        background-repeat:no-repeat;
+                    }
+                }
+            }
+        }
+        // 登陆注册
+        .nav-sign{
+            position: absolute;
+            top: 0;
+            right: 0;
+    
+            .btn-link{
+                color: #333;
+                transition: all 0.1s ease-in-out;
+                margin: 0;
+                padding: 0 16px;
+                font-size: 18px;
+                line-height: $height;
+                border: none;
+                &:hover{
+                    color: red;
+                }
+            }
+            .icon-download{
+                font-size: 26px;
+                vertical-align: middle;
+            }
+            .sign-line{
+                display: inline-block;
+                height: 18px;
+                width: 1px;
+                background-color: #999;
+                line-height: 160px;
+                vertical-align: middle;
+            }
+        }
+    }
+    //空白分割
+    .hide-hr{
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        bottom: -50px;
+        z-index: 4;
+    }
+}
+.sub-nav{
+    z-index: 2;
+    position: absolute;
+    display: none;
+    width: 100%;
+    top: 150px;
+    height: 50px;
+    padding-top:10px; 
+    left: 0;
+    line-height: 50px;
+    &.active{
+        display: block;
+    }
+    >div{
+        width: 100%;
+        margin: 0 auto;
+        background: rgba($color: #000, $alpha: 0.5);
+    }
+    .menu-content{
+        width: 80%;
+        margin:0 auto;
+        padding-left: 250px;
+    }
+    a{
+        display: inline-block;
+        width: 130px;
+        color: #fff;
+        font-size: 18px;
+        text-decoration: none;
+        text-align: center;
+    }
+}
+
+
+// 通用轮播pagination样式
+.swiper-pagination-bullet{
+    height: auto;
+    width: 30px;
+    border-radius: 0;
+    background-color: inherit;
+    >i{
+        display: inline-block;
+        width: 100%;
+        height: 3px;
+        margin: 3px 0;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        box-shadow: 0px 0px 0px 1px #f2f2f2;
+    }
+    &.swiper-pagination-bullet-active>i{
+        background-color: rgba($color: #fff, $alpha: 0.8);
+    }
+}
+
+// 底部
+.footer {
+    padding: 28px 0 14px;
+    border-bottom: 10px solid#ffff1b;
+    .addr{
+        margin: 0;
+        font-size: 18px;
+        color: #999;
+    }
+    .tel{
+        margin: 0;
+        font-size: 22px;
+        color: #666;
+    }
+}
+
+// 右侧锚点
+.anchor{
+    position: fixed;
+    width: 42px;
+    right: 16px;
+    bottom: 150px;
+    z-index: 999;
+    font-size: 14px;
+    
+    // 右侧按钮样式
+    .anchor-side{
+        background-color: #fff;
+        white-space: normal;
+        // box-shadow: 0px 0px 1px 1px #eee;
+        border: 1px solid #f2f2f2;
+
+        .btn-advice{
+            display: block;
+            width: 100%;
+            height: auto;
+            white-space: normal;
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid #f2f2f2;
+            &:focus{
+                outline: none;
+            }
+            &:last-of-type{
+                border-bottom: none;
+            }
+        }
+    }
+
+    // 弹窗样式
+    .anchor-modal{
+        position: absolute;
+        display: none;
+        bottom: 0;
+        right: 100%;
+        width: 350px;
+        margin-right: -1px;
+        background-color: #fff;
+        border: 1px solid #f2f2f2;
+        padding: 16px;
+        &.active{
+            display: block;
+        }
+        .title-contact{
+            margin: 0;
+            font-weight: bold;
+            color: #333;
+        }
+        p.item-contact{
+            margin: 0;
+            padding: 8px 0 0 0;
+            color: #666;
+            font-size: 14px;
+
+            .online{
+                font-size: 80%;
+                background-color: #eee;
+                padding: 4px 8px;
+                line-height: 1;
+            }
+        }
+        .title-advice{
+            @extend .title-contact;
+            padding: 24px 0 16px 0;
+        }
+        .form-group{
+            margin-bottom: 16px;
+        }
+        .form-control{
+            border-radius: 0;
+        }
+        textarea.form-control{
+            resize: none;
+            &::-webkit-scrollbar-thumb{
+                background-color: #cbd2d8;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+        }
+        label.error{
+            margin: 0;
+            font-size: 12px;
+            color: $danger;
+            font-weight: normal;
+        }
+    }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>操作日志查询</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" type="text/css" href="../../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/operate_log.css" />
+</head>
+<body>
+<!-- <div id="common-tool" class="clearfix p4">
+    <div id="search">
+        <button class="layui-btn layui-btn-small layui-btn-primary">
+            <i class="layui-icon">&#xe615;</i> 搜索
+        </button>
+    </div>
+    <div id="rig-tool" class="clearfix">
+        <button class="layui-btn layui-btn-small layui-btn-primary" id="refresh">
+            <i class="layui-icon">&#x1002;</i> 刷新
+        </button>
+    </div>
+</div> -->
+    <div class="tool-box layui-form" id="search-tool">
+        <ul class="tool-box-ul clearfix">
+            <li class="tool-box-li">
+                <div class="layui-form-item">
+                    <label class="tool-box-label">
+                        <b class="required-icon"></b>登录名 : </label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" placeholder="请输入登录名" id="serviceName" maxlength="15">
+                    </div>
+                </div>
+            </li>
+            <li class="tool-box-li">
+                <div class="layui-form-item">
+                    <label class="tool-box-label">
+                        <b class="required-icon"></b>手机号 : </label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" placeholder="请输入手机号" id="serviceNum" maxlength="11">
+                    </div>
+                </div>
+            </li>
+            <li class="tool-box-li">
+                <div class="layui-form-item">
+                    <label class="tool-box-label">
+                        <b class="required-icon"></b>搜索起始时间 : </label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" placeholder="YYYY-MM-DD" id="jurisdiction-begin" >
+                    </div>
+                </div>
+            </li>
+            <li class="tool-box-li">
+                <div class="layui-form-item">
+                    <label class="tool-box-label">
+                        <b class="required-icon"></b>搜索结束时间 : </label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" placeholder="YYYY-MM-DD" id="jurisdiction-end">
+                    </div>
+                </div>
+            </li>
+            <button class="layui-btn" id="toolSearch">搜索</button>
+            <button class="layui-btn" id="toolRelize">重置</button>
+
+            <div class="tool-add-box clearfix" style="float: right;">
+                <button class="layui-btn layui-btn-small" id="refresh">
+                    <i class="layui-icon">&#x1002;</i> 刷新
+                </button>
+            </div>
+        </ul>
+ 
+    </div>
+
+<!-- <div id="search-tool" class="clearfix">
+    <div class="input-group">
+        <span class="pull-left">登录名：</span>
+        <input type="text" class="form-control media-input" placeholder="请输入登录名" id="serviceName" maxlength="15">
+    </div>
+    <div class="input-group">
+        <span class="pull-left">手机号：</span>
+        <input type="text" class="form-control media-input" placeholder="请输入手机号" id="serviceNum" maxlength="11">
+    </div>
+ 
+    <div class="input-group lasttime input-medium date-picker" data-date-format="yyyy-mm-dd">
+        <div class="input-group">
+            <span  class="jurisdiction-label pull-left" for="jurisdiction-begin">时间：</span>
+            <div class='date form-control' id='datetimepicker1'>
+                <input name="dtBegin" type="text"  id="jurisdiction-begin" placeholder="-请选择-" >
+                <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+        <div class="input-group">
+            <span class="jurisdiction-label pull-left" for="jurisdiction-end">至 </span>
+            <div class='date form-control' id='datetimepicker2'>
+                <input name="dtEnd" type="text"  id="jurisdiction-end" placeholder="-请选择-" >
+                <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group">
+        <button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearch">
+            搜索
+        </button>
+        <button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+            重置
+        </button>
+    </div>
+</div> -->
+<div id="app" class="tabale-list">
+    <div class="layui-app" style="width:100%;">
+        <table lay-filter="table" id="table"></table>
+        <div id="laypageLeft" class="table-rgt"></div>
+    </div>
+ 
+</div>
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-small  layui-btn-normal my-btn" lay-event="look">
+        <i class="layui-icon">&#xe615;</i> 查看
+    </button>
+</script>
+<!--model-->
+<div id="details" class='layui-form clearfix common-tip'>
+    <div class="centerCon">
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">登录名：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input form-control h30" id="detailsName" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">姓名：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input form-control h30" id="detailsType" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian packoption">
+            <label class="layui-form-label flex">手机：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input form-control h30" id="phoneNumber" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">所属部门：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input form-control h30" id="detailsCode" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">版块名称：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input form-control h30" id="detailsMenu" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label">操作日志：</label>
+            <div class="layui-input-block ">
+                <textarea type="text" name="title"  autocomplete="off" class="layui-input form-control h30" id="detailsValueType" disabled></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/layui.all.js"></script>
+<!-- <script type="text/javascript" src="../../common/js/yyCache.js"></script> -->
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/jquery.nicescroll.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<!-- <script type="text/javascript" src="../../common/js/pub.js"></script> -->
+
+<script type="text/javascript" src="js/operate_log.js"></script>
+</html>

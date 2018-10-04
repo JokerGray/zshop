@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>tab</title>
+    <link rel="stylesheet" type="text/css" href="../../../common/css/account_tab.css"> <!-- 引入 tab切换css -->
+</head>
+
+<body>
+
+	<!-- ********************* 统计图 start ********************* -->
+	<!-- tab切换 start -->
+	<div class="echartsBox" id="echartsBox">
+		<ul id="echartsTab">
+			<li><b>领取数量统计</b></li>
+			<li><b>领取金额统计</b></li>
+		</ul>
+		<div class="echartsList" id="echartsList">
+			<div class="text" style="display:block;">
+				<div id="echartsDiv1" style="width: 900px;height:400px;"></div> <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+			</div>
+			<div class="text">
+				<div id="echartsDiv2" style="width: 900px;height:400px;"></div> <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+			</div>
+		</div>
+	</div>
+	<!-- tab切换 end -->
+	<!-- ********************* 统计图 end ********************* -->
+	
+    
+	<!-- ********************* 统计图 start ********************* -->
+	<script type="text/javascript" src="../../../common/js/jquery-1.12.4.min.js"></script>
+    <script src="../../../common/js/account_tab.js"></script> <!-- 引入 tab切换js , 必须放在后面-->
+    <script src="../../../common/js/account_echarts.js"></script> <!-- 引入 echarts.js -->
+    <script src="echarts_demo.js"></script> <!-- 引入 echarts_demo.js , 必须放在后面-->
+    <script src="echarts_demo2.js"></script> <!-- 引入 echarts_demo.js , 必须放在后面-->
+	<!-- ********************* 统计图 end ********************* -->
+	
+</body>
+</html>

@@ -1,0 +1,60 @@
+/*标题*/
+
+.article_title {
+    text-align: left;
+    font-size: 28px;
+    width: 1000px;
+    /*text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;*/
+}
+
+.article_head {
+    margin-bottom: 20px;
+    color: darkgray;
+}
+
+#labelList, #articleType {
+    margin-left: 20px;
+}
+
+#articleContent img,
+#articleContent video {
+    max-width: 800px;
+    display: block;
+}
+
+.stateTd {
+    position: relative;
+}
+
+.stateTd:hover .dropdown {
+    display: block;
+    opacity: 1;
+}
+
+.stateTd .dropdown li {
+    padding-left: 0;
+    color: #ff8b6f;
+    border-top: 1px solid #dcdcdc;
+}
+
+.stateTd .dropdown li:first-child {
+    border-top: 0;
+}
+
+#search_box {
+    padding-left: 30px;
+}
+
+.previewModal.gray {
+    background-color: gray;
+}
+
+.btnNotPass.showBtn {
+    display: inline-block;
+}
+
+.btnNotPass.hideBtn {
+    display: none;
+}

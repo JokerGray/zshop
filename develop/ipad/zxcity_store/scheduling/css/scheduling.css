@@ -1,0 +1,369 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+ul>li {
+	float: left;
+	list-style-type: none;
+}
+
+a, a:link, a:hover, a:visited {
+	text-decoration: none;
+}
+body{
+
+-moz-user-select:none;/*火狐*/
+
+-webkit-user-select:none;/*webkit浏览器*/
+
+-ms-user-select:none;/*IE10*/
+
+-khtml-user-select:none;/*早期浏览器*/
+
+user-select:none;
+
+background: #f2f2f2;
+}
+/*头部相关样式*/
+.container-fluid>header {
+	background: #fff;
+}
+
+.container-fluid>header>#header_row {
+	height: 150px;
+}
+
+#header_row>div {
+	line-height: 150px;
+}
+
+#header_row>div:first-child a img {
+	margin-left: 35px;
+}
+
+#header_row>div:nth-of-type(2) {
+	font-size: 40px;
+}
+
+#header_row>div:last-child>span {
+	font-size: 40px;
+	color: #fe6869;
+	margin-right: 35px;
+}
+/*模态框*/
+#header_row>div:last-child .modal-content {
+	position: absolute;
+	width: 570px;
+	height: 322px;
+	top: 500px;
+	left: -200px;
+}
+
+.modal-content img {
+	display: block;
+	margin: 40px auto;
+	width: 108px;
+	height: 108px;
+}
+
+.modal-content p {
+	font-size: 40px;
+	color: #333;
+	text-align: center;
+}
+
+.container-fluid>header>#date_row>div {
+	height: 94px;
+	line-height: 94px;
+	font-size: 30px;
+	color: #fe6869;
+}
+
+/***********头部日期样式*******************/
+.main-top .select-date {
+	display: flex;
+	align-items: center;
+	height: 92px;
+	padding-left: 44px;
+	border-bottom: 1px solid #f2f2f2;
+	font-size: 28px;
+	color: #fe6869;
+}
+
+.select-date .select-day {
+	display: flex;
+	height: 100%;
+	align-items: center;
+}
+
+.select-date .selected-cur-date {
+	display: inline-block;
+	width: 66px;
+	text-align: center;
+	line-height: 1.15;
+	color: #333;
+}
+
+.select-date .select-bottom-arrow {
+	display: inline-block;
+	width: 21px;
+	height: 13px;
+	background: url(../../customerReservation/img/icon_datexiala@2x.png)
+		no-repeat;
+	margin-left: 10px;
+	margin-right: 30px;
+}
+
+.select-date .date-list-box {
+	position: relative;
+	border-left: 1px solid #f2f2f2;
+	padding-left: 16px;
+}
+
+.date-list-box .prev, .date-list-box .next {
+	position: absolute;
+	display: block;
+	top: 50%;
+	margin-top: -18px;
+	width: 36px;
+	height: 36px;
+}
+
+.date-list-box .prev {
+	left: 16px;
+	background: url(../../customerReservation/img/btn-left@2x.png) no-repeat;
+}
+
+.date-list-box .next {
+	left: 992px;
+	background: url(../../customerReservation/img/btn-right@2x.png)
+		no-repeat;
+}
+
+.date-list-box .date-list-inner {
+	position: relative;
+	width: 888px;
+	height: 62px;
+	margin-left: 86px;
+	overflow: hidden;
+}
+
+.date-list-inner .date-list {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+}
+
+.date-list-inner .date-list a {
+	float: left;
+	display: block;
+	width: 62px;
+	line-height: 62px;
+	text-align: center;
+	color: #fe6869;
+}
+
+.date-list-inner .date-list a+a {
+	margin-left: 22px;
+}
+
+.date-list-inner .date-list a.selected {
+	width: 62px;
+	height: 62px;
+	color: #fff;
+	background-color: #fe6869;
+	border-radius: 100%;
+}
+
+.date-list-inner .date-list a.disabled {
+	color: #ccc;
+}
+
+/************日期插件样式结束*****************/
+
+/************个人上班详情*****************/
+.container-fluid>section {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+/*#work-group=ul   .worker=li*/
+#work-group {
+	margin-left: 20px;
+}
+
+#work-group .worker {
+	background: #fff;
+	width: 564px;
+	height: 406px;
+	position: relative;
+	margin-top: 145px;
+	margin-right: 14px;
+}
+
+#work-group .worker>img {
+	display: block;
+	width: 158px;
+	height: 158px;
+	border-radius: 50%;
+	position: absolute;
+	top: -79px;
+	left: 208px;
+}
+
+#work-group .worker .username {
+	font-size: 34px;
+	font-weight: bold;
+	color: #333;
+	margin-top: 103px;
+	text-align: center;
+}
+
+#work-group .worker .more_relex {
+	margin-top: 34px;
+	text-align: center;
+}
+
+#work-group .worker .more_relex span {
+	display: inline-block;
+	font-size: 28px;
+	color: #999;
+	cursor:pointer;
+	border: 2px solid #d2d2d2;
+	border-radius: 28px;
+	padding: 10px 35px;
+}
+.worker{
+	position:relative;
+}
+.worker .daytime {
+	margin-top: 38px;
+	border-top: 1px solid #ddd;
+}
+
+.worker .daytime li {
+	width: 78px;
+	height: 78px;
+	line-height: 78px;
+	border-radius: 50%;
+	text-align: center;
+	color: #999;
+	cursor:pointer;
+	text-decoration: none;
+	font-size: 32px;
+	margin-left: 31px;
+	margin-top: 20px;
+	border: 1px solid #ddd;
+	position:relative;
+}
+.worker .daytime li img{
+	position:absolute;
+	width:25px;
+	height:25px;
+	left:75%;
+	top:10%;
+	display:none;
+}
+
+.more_relex span:first-child {
+	margin-right: 46px;
+}
+/*JS增加样式*/
+.more_relex .morework {
+	background: #f6cd64;
+	font-weight: bold;
+	color: #fff !important;
+}
+
+.more_relex .relex {
+	background: #cc9fe2;
+	font-weight: bold;
+	color: #fff !important;
+}
+
+.morning {
+	background: #61a5f0;
+	font-weight: bold;
+	color: #fff !important;
+}
+
+.afternoon {
+	background: #f6857d;
+	font-weight: bold;
+	color: #fff !important;
+}
+
+.night {
+	background: #a48c80;
+	font-weight: bold;
+	color: #fff !important;
+}
+
+.all_day {
+	background: #f6cd64;
+	font-weight: bold;
+	color: #fff !important;
+}
+
+.rest {
+	background: #96d471;
+	font-weight: bold;
+	color: #fff !important;
+}
+.daytime li.first img,
+.daytime li.second img,
+.daytime li.third img,
+.daytime li.forth img {
+	display:block;
+}
+.daytime li .glyphicon-ban-circle{
+	position:absolute;
+	bottom:0;
+	left:0;
+	display:none;
+	width:60px;
+	height:60px;
+	line-height:65px;
+	padding-left:5px;
+	color:#FA0900;
+	transform:scale(3);
+	-webkit-transform:scale(3);
+	-o-transform:scale(3);
+}
+#ajaxMaskLayer{
+	width:100%;
+	height:100%;
+	display:none;
+	cursor:wait;
+	background:#666;
+	opacity:0.6;
+	position:absolute;
+	top:0;
+	left:0;
+}
+#ajaxMaskLayer h1{
+	color:white;
+	margin:530px 700px;
+	text-align:center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>店内下单二维码</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../../assets/paging/dist/paging.css">
+    <link rel="stylesheet" href="../../assets/common/css/paging.css">
+    <link rel="stylesheet" href="../../assets/select2/select2.min.css">
+    <link rel="stylesheet" href="css/facilityPic.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="main-top">
+            <div>店铺：<select name="shopSelector" id="shopSelector"></select></div>
+        </div>
+        <div class="main-content">
+            <div class="con-left">
+                <div class="con-title">
+                    <ul class="tab-box">
+                        <li class="tab-li active" data-type="2">店铺</li>
+                        <li class="tab-li" data-type="0">正餐</li>
+                        <li class="tab-li" data-type="1">快餐</li>
+                    </ul>
+                    <a class="download-link" href="javascript:;">批量导出</a>
+                </div>
+                <div class="show-con">
+                    <div class="no-data">
+                        <img src="./image/zhanweitu.png">
+                        <p>店铺二维码已生成~</p>
+                    </div>
+                    <div class="facility-box hide">
+                        <div class="list-tab">
+                            <a class="tab-item active" href="javascript:;" data-type="1">房间</a>
+                            <a class="tab-item" href="javascript:;" data-type="2">床位</a>
+                            <a class="tab-item" href="javascript:;" data-type="3">座位</a>
+                            <a class="tab-item" href="javascript:;" data-type="4">其他</a>
+                            <a class="tab-item" href="javascript:;" data-type="5">设备</a>
+                        </div>
+                        <div class="list-con">
+                            <ul class="clearfix" id="facilityList">
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="con-right">
+                <div class="right-title">样式展示</div>
+                <div id="canvasBox" class="show-box">
+                    <canvas id="showCanvas" width="100%" height="100%"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="qrCanvas" style="display:none;"></div>
+    <div class="imgbox" style="display:none;">
+        
+    </div>
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <script src="./js/base.js"></script>
+    <script src="../../assets/common/js/utils.js"></script>
+    <script src="../../assets/jquery-qrcode/jquery.qrcode.js"></script>
+    <script src="../../assets/artTemplate/template-web.js"></script>
+    <script src="../../assets/layer-v3.1.1/layer.js"></script>
+    <script src="../../assets/paging/dist/paging.js"></script>
+    <script src="../../assets/select2/select2.min.js"></script>
+    <script src="./js/fileSave.js"></script>
+    <script src="./js/jszip.min.js"></script>
+      <!-- <script src="./js/facilityPic.js"></script>   -->
+     <script>
+        var newScript = document.createElement('script');
+        newScript.src = "./js/facilityPic.js?v=" + Math.random();
+        $('body').append(newScript);
+    </script>    
+</body>
+</html>

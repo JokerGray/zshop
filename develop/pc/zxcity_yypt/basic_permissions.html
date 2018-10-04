@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>通知公告</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+	<link rel="stylesheet" href="common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="basic_permissions/basic_permissions.css" />
+</head>
+<body>
+    <div class="common-container" id="body-box">
+        <div class="row body-left-nav" >
+                <div class="common-title">
+                    商户权限 - <span class="jurisdiction-title-name">基础权限</span>
+                </div>
+                <div id="left-role">
+                	<ul id="treeDemo" class="ztree"></ul>
+                </div>
+                <div id="right-role">
+                	<div class="row common-search">
+                      <form class="form-inline" role="form">
+                          <div class="form-group">
+                              <label class="control-lable">权限名称：</label>
+                              <input type="text" class="layui-input search-input media-input longinput" placeholder="请输入权限名称" id="inquireInput">
+                          </div>
+                          <button class="btn btn-success" type="button" id="inquire">
+                              <i class="search-icon"></i>查询
+                          </button>
+                      </form>
+                      <a href="javascript:void(0);"  class="btn btn-info add-users" id="add-users" data-toggle="modal"><i class="add-icon"></i>新增</a>
+                  </div>
+                    <div class="common-table" id="common-table">
+                        <table class="table table-hover">
+                              <thead>
+                                <tr class="active">
+                                  <th>序号</th>
+                                  <th>权限名称</th>
+                                  <th>权限类型</th>
+                                  <th>权限地址</th>
+                                  <th>是否可用</th>
+                                  <th>操作</th>
+                                </tr>
+                              </thead>
+                              <tbody id="tbodyParameter">
+                              	
+                              </tbody>
+                    </table>
+                </div>
+                <div class="common-page">
+                      <div id="paging-box-count">
+                          
+                      </div>
+                    <div id="paging-box" class="basic-jump"></div>
+                </div>
+            </div>
+                
+                  
+                
+        </div>
+
+    </div>
+    <!-- modal -->
+    <div class="modal fade" id="add-newuser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    新增
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group p20">
+                        <span class="input-group-addon">资源名称:</span>
+                        <input type="text" class="form-control newname" id="addName">
+                    </div>
+                    <div class="input-group p20">
+                        <span class="input-group-addon">资源地址:</span>
+                        <input type="text" class="form-control newname" id="addIp">
+                    </div>
+                    <div class="input-group p20">
+                        <span class="input-group-addon">授权代码:</span>
+                        <input type="text" class="form-control newname" id="addaoc">
+                    </div>
+                    <div class="input-group p20">
+							<span class="input-group-addon">资源类型:</span>
+							<select id="zytype" class="selectpicker show-tick form-control">
+								<option>topmenu</option>
+								<option>menu</option>
+								<option>button</option>
+							</select>
+					</div>
+                    <div class="input-group p20">
+							<span class="input-group-addon">是否可用:</span>
+							<select id="addAdminable" class="selectpicker show-tick form-control">
+								<option>可用</option>
+								<option>不可用</option>
+							</select>
+					</div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn" id="add-parameters">
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+   <!-- modal -->
+    <div class="modal fade" id="commerChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    修改
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group p20">
+                        <span class="input-group-addon">资源名称:</span>
+                        <input type="text" class="form-control newname" id="chaName">
+                    </div>
+                    <div class="input-group p20">
+                        <span class="input-group-addon">资源地址:</span>
+                        <input type="text" class="form-control newname" id="chaIp">
+                    </div>
+                    <div class="input-group p20">
+                        <span class="input-group-addon">授权代码:</span>
+                        <input type="text" class="form-control newname" id="chaaoc">
+                    </div>
+                    <div class="input-group p20">
+							<span class="input-group-addon">资源类型:</span>
+							<select id="chazytype" class="selectpicker show-tick form-control">
+								<option>topmenu</option>
+								<option>menu</option>
+								<option>button</option>
+							</select>
+					</div>
+                    <div class="input-group p20">
+							<span class="input-group-addon">是否可用:</span>
+							<select id="chaAdminable" class="selectpicker show-tick form-control">
+								<option>可用</option>
+								<option>不可用</option>
+							</select>
+					</div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn" id="saveParemeterconfig">
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+
+<script type="text/javascript" src="common/js/login_success.js"></script>
+<script type="text/javascript" src="common/js/util/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/util.js"></script>
+<script type="text/javascript" src="common/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+<script src="common/assets/zTree_v3/js/jquery.ztree.core.min.js"></script>
+<script src="common/assets/zTree_v3/js/jquery.ztree.excheck.min.js"></script>
+
+<!--jSCurr-->
+
+<script type="text/javascript" src="basic_permissions/basic_permissions.js"></script>
+<script type="text/javascript" src="common/js/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/pub.js"></script>
+</html>

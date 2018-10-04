@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="wekit">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./static/flexible/flexible.js"></script>
+    <script src="./static/artTemplate/artTemplate.js"></script>
+    <script src="./static/share/share.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+
+    <title>粉丝权益分享</title>
+</head>
+<body style="font-size: 12px;max-width: 640px;margin: 0 auto;">
+        <div id="header">
+            <div class="header_logo">
+                <img src="./src/img/logo.png">
+            </div>
+            <div class="header_load btn">
+                打开
+            </div>
+        </div>
+        
+    <div class="content">
+        
+    </div>
+    <a href="/24hours/share24/getPackage.html?sn=15w0&yw=circle&cp=1" class="footer download_link"> <img src="./src/img/footer.png" alt=""> </a>
+
+    <div id="contBlank" style="display: none;">
+        <span class="blank_icon"></span>
+        <p class="msg_miss">哎呀！您访问的地址不存在</p>
+    </div>
+
+    <div class="model">
+        <div class="model_cont">
+            <p class="text1">1、点击右上角的&nbsp;&nbsp;<span></span></p>
+            <p class="text2">2、选择&nbsp;&nbsp;<span></span></p>
+            <div class="pointTo"></div>
+        </div>
+    </div>
+
+    
+
+    <script src="./static/pub/pub.js"></script>
+    
+
+<script type="text/html" id="showCont">
+
+    <div class="cover-img" id="coverImg" onclick="gotoCircle()">
+        <img src="{{data.merchant.bgUrl}}" alt="" style="height: 100%; width: 100%;">
+        <div class="back-btn"></div>
+        <div class='swipe'>
+            <div class='fansTeamLogo'>
+                {{if data.merchant.logoUrl}}
+                    <img src="{{data.merchant.logoUrl}}" alt="" >
+                {{else}}
+                    <img src="./src/img/logo1.png" alt="" >
+                {{/if}}
+                
+                <div class='fansTeam-name'>{{data.merchant.merchantName}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="activity-about">
+        <div>
+                <div class="swiper-container pinkLvl-nav swiper-container-horizontal" id="pinkLvl-nav">
+		
+                    <div class="swiper-wrapper" id="lvlList" style="">
+                        {{if data.businessList.length ==1}}
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon">
+                                    <img src='./src/img/fensidengji5-xiao@2x.png' />
+                                </div>
+                                <p class="lvlName">{{data.businessList[0].businessName}}</p>
+                            </div>
+                        {{/if}}
+                        {{if data.businessList.length ==2}}
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(0)'>
+                                    <img src='./src/img/fensidengji4-xiao@2x.png' />
+                                    <div class=right-line></div>
+                                </div>
+                                <p class="lvlName">{{data.businessList[0].businessName}}</p>
+                            </div>
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(1)'>
+                                    <img src='./src/img/fensidengji5-xiao@2x.png' />
+                                </div>
+                                <p class="lvlName">{{data.businessList[1].businessName}}</p>
+                            </div>
+                        {{/if}}
+                        {{if data.businessList.length ==3}}
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(0)'>
+                                    <img src='./src/img/fensidengji3-xiao@2x.png' />
+                                    <div class=right-line></div>
+                                </div>
+                                <p class="lvlName">{{data.businessList[0].businessName }}</p>
+
+                            </div>
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(1)'>
+                                    <img src='./src/img/fensidengji4-xiao@2x.png' />
+                                    <div class=right-line></div>
+                                </div>
+                                <p class="lvlName">{{data.businessList[1].businessName}}</p>
+                            </div>
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(2)'>
+                                    <img src='./src/img/fensidengji5-xiao@2x.png' />
+                                </div>
+                                <p class="lvlName">{{data.businessList[2].businessName}}</p>
+                            </div>
+                        {{/if}}
+                        {{if data.businessList.length ==4}}
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(0)'>
+                                    <img src='./src/img/fensidengji2-xiao@2x.png' />
+                                    <div class=right-line></div>
+                                </div>
+                                <p class="lvlName">{{data.businessList[0].businessName}}</p>
+                            </div>
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(1)'>
+                                    <img src='./src/img/fensidengji3-xiao@2x.png' />
+                                    <div class=right-line></div>
+                                </div>
+                                <p class="lvlName">{{data.businessList[1].businessName}}</p>
+                            </div>
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(2)'>
+                                    <img src='./src/img/fensidengji4-xiao@2x.png' />
+                                    <div class=right-line></div>
+                                </div>
+                                <p class="lvlName">{{data.businessList[2].businessName}}</p>
+                            </div>
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(3)'>
+                                    <img src='./src/img/fensidengji5-xiao@2x.png' />
+                                </div>
+                                <p class="lvlName">{{data.businessList[3].businessName}}</p>
+                            </div>
+                        {{/if}}
+                        {{if data.businessList.length ==5}}
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(0)'>
+                                    <img src='./src/img/fensidengji1-xiao@2x.png' />
+                                    <div class=right-line></div>
+                                </div>
+                                <p class="lvlName">{{data.businessList[0].businessName}}</p>
+                            </div>
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(1)'>
+                                    <img src='./src/img/fensidengji2-xiao@2x.png' />
+                                    <div class=right-line></div>
+                                </div>
+                                <p class="lvlName">{{data.businessList[1].businessName}}</p>
+                            </div>
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(2)'>
+                                    <img src='./src/img/fensidengji3-xiao@2x.png' />
+                                    <div class=right-line></div>
+                                </div>
+                                <p class="lvlName">{{data.businessList[2].businessName}}</p>
+                            </div>
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(3)'>
+                                    <img src='./src/img/fensidengji4-xiao@2x.png' />
+                                    <div class=right-line></div>
+                                </div>
+                                <p class="lvlName">{{data.businessList[3].businessName}}</p>
+                            </div>
+                            <div class="swiper-slide lvlNav" style="display: block; " data-lv="4">
+                                <div class="lvlicon" onclick='slideTo(4)'>
+                                    <img src='./src/img/fensidengji5-xiao@2x.png' />
+                                </div>
+                                <p class="lvlName">{{data.businessList[4].businessName}}</p>
+                            </div>
+                        {{/if}}
+                    </div>
+
+                </div>
+        </div>
+        
+<!-- 111 -->
+<div class="pink-power">
+        <div class="swiper-wrapper pinkteam swiper-container-horizontal swiper-container-autoheight" id="pinkteam">
+            <div class="swiper-wrapper " id="lvlDetails" style=" transform: translate3d(-680px, 0px, 0px); transition-duration: 0ms;">
+                {{if data.businessList}}
+                    {{each data.businessList as business index}}
+                    <div class="swiper-slide lvlContent swiper-slide-prev" style="display: block; margin-right: 20px;" data-lv="3">
+                        <input type="hidden" name="id" value="">
+                        <div class=" pinklvl-box">
+                            <div class=" pinklvl-content">
+                                <input type="hidden" name="id" value="">
+                                <div class="reduced">
+                                    <h5 class="power-title"><i class="myicon myicon-money"></i>充值立送</h5>
+                                    <div class="discount">
+                                        <div class="sum">
+                                            <span class="onset">起充金额<span class="payNum">{{business.depositThreshold}}</span>元</span> <br>
+                                            {{if business.referralType == 0}}
+                                            <span class="ratio">赠送金额<span class="ratioNum">0</span>元</span>
+                                            {{/if}}
+                                            {{if business.referralType == 1}}
+                                            <span class="ratio">赠送金额<span class="ratioNum">{{business.interestMoney}}</span>元</span>
+                                            {{/if}}
+                                            {{if business.referralType == 2}}
+                                            <span class="ratio">赠送比例<span class="ratioNum">{{business.interestMoney}}</span>%</span>
+                                            {{/if}}
+                                        </div>
+                                        <div class="enjoy">
+                                            <i class="enjoy-cion"></i>
+                                            <p class="enjoy-discount"><span class="enjoy-discount-num ">{{(business.discount)/10}}</span>折</p>
+                                            <p>尊享折扣</p>
+                                        </div>
+                                        <div class="activity">
+                                            <i class="activity-cion"></i>
+                                            <p class="activity-fund"><span class="activity-fund-num">{{business.funds}}</span>元</p>
+                                            <p>活动经费</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{if business.memberPresentEntity.length != 0 && business.memberPresentCards.length != 0}}
+                                <div class="gift">
+                                    <h5 class="power-title"><i class="myicon myicon-gift"></i>粉丝赠品</h5>
+                                    <div class="gift-list">
+                                        {{each business.memberPresentEntity as presentEntity index}}
+                                            <div class="gift-box" style="display: block;">
+                                                <div class="giftIco"></div>
+                                                <div class="gift-img" style="background-image: url('{{presentEntity.picUrl}}')">
+                                                        <img src="./src/img/git-background.png" class="photo">
+                                                </div>
+                                                <span class="gift-name ellipsis">{{presentEntity.entityName}}</span>
+                                                <span class="gift-price">¥{{presentEntity.value}}元</span>
+                                                <input type="hidden" name="describe" value="">
+                                            </div>
+                                        {{/each}}
+                                        {{each business.memberPresentCards as presentCards index}}
+                                            <div class="gift-box" style="display: block;">
+                                                <div class="cardIco"></div>
+                                                <div class="gift-img"  style="background-image: url('{{presentCards.picUrl}}')">
+                                                        <img src="./src/img/git-background.png" class="photo">
+                                                </div>
+                                                <span class="gift-name ellipsis">{{presentCards.cardName}}</span>
+                                                <span class="gift-price">¥{{presentCards.discountPrice}}元</span>
+                                            </div>
+                                        {{/each}}
+
+                                    </div>
+                            
+                                </div>
+                                {{/if}}
+                                <div class="privilege">
+                                    <h5 class="power-title"><i class="myicon myicon-privilege"></i>特殊权益</h5>
+
+                                        <div class="privilege-box ">
+
+                                        </div>
+  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                {{/if}}
+            </div>
+        </div>
+
+
+
+</div>
+
+<!-- 舞台 讲座-->
+    <div class="chair" id="chair" style="">
+
+        <h5 class="power-title chair-title"><i class="myicon myicon-video"></i>讲座论坛</h5>
+        <div class="swiper-container chairShow swiper-container-horizontal swiper-container-autoheight" id="chairShow">
+            <div class="chair-list swiper-wrapper" id="chariLst">
+                {{if data.funsStageList[0]}}
+                    {{each data.funsStageList[0].stage as stage index}}
+                        <div class="swiper-slide chairBox swiper-slide-active" style="display: block;">
+                            <div class="video-box">
+                                <img class="chairImg" alt="" src="{{stage.logo}}">
+                                <!--<video width="300px" height="130px"></video>
+                                <div class="play"></div>-->
+                            </div>
+                            <div class="video-describe">
+                                {{stage.title}}
+                            </div>
+                        </div>
+                    {{/each}}
+                {{/if}}
+                    
+            </div>
+        </div>
+
+        <div class="stage" id="stage" style="">
+                <h5 class="power-title chair-title"><i class="myicon myicon-stage"></i>绽放舞台</h5>
+                <div class="swiper-container stageShow swiper-container-horizontal swiper-container-autoheight" id="stageShow">
+                    <div class="chair-list swiper-wrapper" id="stageLst">
+                        {{if data.funsStageList[0]}}
+                            {{each data.funsStageList[1].stage as stage index}}
+                                <div class="swiper-slide stageBox swiper-slide-active" style="display: block;">
+                                    <div class="video-box">
+                                        <img class="chairImg" alt="" src="{{stage.logo}}">
+                                        <!--<video width="300px" height="130px"></video>
+                                                                    <div class="play"></div>-->
+                                    </div>
+                                    <div class="video-describe">
+                                            {{stage.title}}
+                                    </div>
+                                </div>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+
+<!-- 111 -->
+
+       
+        
+
+    </div>
+</script>
+
+</body>
+</html>

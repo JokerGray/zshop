@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>广告模板</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../../common/assets/jcrop/css/jquery.Jcrop.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/advertising.css" />
+    <link rel="stylesheet" type="text/css" href="css/advertis_template.css" />
+</head>
+<body>
+<div class="advertising">
+    <div class="adver-up">
+        <div class="advertising-topbox">
+            <div class="advertising-top">
+                <!--区域-->
+                <div class="advertising-area">
+                    <div class="area-input" data-num="0">
+                        <i class="address"></i>
+                        <span data-pro="42" data-city="4201" class="area-name">武汉市</span>
+                        <i class="layui-icon">&#xe61a;</i>
+                    </div>
+                    <div class="area-all">
+                        <span class="close">x</span>
+                        <div class="selectarea">
+                            <ul>
+                                <li class="actv">
+                                    <a>
+                                        <span data-id="42" class="provice-name">湖北省</span><i class="layui-icon">&#xe61a;</i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span data-id="4201" class="city-name">武汉市</span><i class="layui-icon">&#xe61a;</i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="arealist selectprovince actv">
+                            <ul>
+                            </ul>
+                        </div>
+                        <div class="arealist selectcity">
+                            <ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--搜索-->
+                <div class="search-box">
+                    <i class="searchicon"></i>
+                    <input type="text" id="searchName" autocomplete="off" placeholder="搜索名称" maxlength="10">
+                    <a id="search" class="search btns">搜索</a>
+                </div>
+            </div>
+        </div>
+        <!--内容-->
+        <div class="content-all">
+            <div class="adver-title">广告模板 > <span class="title-type">商圈</span></div>
+            <div class="area-box">
+                <div class="layui-tab layui-tab-card" lay-filter="test1">
+                    <ul class="layui-tab-title" id="tabNav">
+                        <li data-id="1" data-num="0" lay-val="商圈" lay-id="1" class="layui-this">商圈</li>
+                        <li data-id="2" lay-val="社区" lay-id="2">社区</li>
+                        <li data-id="3" lay-val="职能部门" lay-id="3">职能部门</li>
+                        <li data-id="4" lay-val="地铁" lay-id="4">地铁</li>
+                        <li data-id="5" lay-val="公交" lay-id="5">公交</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <div class="showlist">
+                            </div>
+                        </div>
+                        <div class="layui-tab-item">
+                            <div class="showlist">
+                            </div>
+                        </div>
+                        <div class="layui-tab-item">
+                            <div class="showlist">
+                            </div>
+                        </div>
+                        <div class="layui-tab-item">
+                            <div class="showlist">
+                            </div>
+                        </div>
+                        <div class="layui-tab-item">
+                            <div class="showlist">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="adver-tip">
+                    <div class="no-set"><i></i>未设置</div>
+                    <div class="have-set"><i></i>已设置</div>
+                </div>
+            </div>
+            <div class="show-box">
+                <div class="left-img" data-id="1">
+                    <i class="lfimg"></i>
+                </div>
+                <div class="right-img" data-id="2">
+                    <i class="rgtimg"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--设置模板-->
+    <div class="setting">
+        <div class="ctrlbtn">
+            <a class="savetmp">确定</a>
+            <a class="cance">取消</a>
+        </div>
+        <div class="nodataad"></div>
+        <div class="havadata">
+            <ul class="detail layui-form">
+            </ul>
+            <!--分页-->
+            <div class="common-page1 addmore" data-num="1" data-statu="0">
+                <div id="paging-box-count">
+                </div>
+                <div id="paging-box" class="basic-jump"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal-->
+<!--轮播详情-->
+<div id="carousel" class='layui-form demo111'>
+    <div class="imgs">
+        <div class="leftimginfo">
+            <div class="leftvideo">
+                <ul></ul>
+            </div>
+            <div class="layui-carousel" id="carousel_1">
+                <div class="lfu" carousel-item>
+                </div>
+            </div>
+        </div>
+        <div class="rightimginfo">
+            <div class="rightvideo">
+            </div>
+            <div class="layui-carousel" id="carousel_2">
+                <div class="lfu" carousel-item>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/util/util.js"></script>
+<script type="text/javascript" src="../../common/js/util/pub.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="../common/js/advertis.js"></script>
+<script type="text/javascript" src="js/advertis_template.js"></script>
+</html>

@@ -1,0 +1,308 @@
+*{
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+.header{
+  width: 100%;
+  height: 88/32rem;
+  position: relative;
+  .goBack{
+    position: absolute;
+    width: 88/32rem;
+    height: 88/32rem;
+    background: url("../../common/image/return_icon.png") no-repeat center;
+    -webkit-background-size: 34/32rem 48/32rem;
+    background-size: 34/32rem 48/32rem;
+    left: 10/32rem;
+    top: 0;
+  }
+  .navTab{
+    width: 100%;
+    height: 100%;
+    line-height: 88/32rem;
+    text-align: center;
+    a{
+      height: 49/32rem;
+      line-height: 49/32rem;
+      border-bottom: 2/32rem solid #666666;
+      padding: 5/32rem 30/32rem;
+      margin: 0 25/32rem;
+      font-size: 40/32rem;
+      color: #666666;
+      &.active{
+        color: #fe6869;
+        border-color: #fe6869;
+      }
+    }
+  }
+}
+
+.searchRequirement{
+  width: 100%;
+  height: 120/32rem;
+  background-color: #fff;
+  line-height: 120/32rem;
+  padding-left: 15/32rem;
+  .orderCompleteTime-searchRequirement{
+    display: block;
+    div{
+      display: inline-block;
+      margin:0 97/32rem;
+      span{
+        font-size: 32/32rem;
+        color: #333333;
+      }
+      &.keyword-waiterNum{
+        margin-left: 15/32rem;
+      }
+    }
+    .keyword-waiterNum {
+      select {
+        width: 201/32rem;
+        height: 72/32rem;
+        background-color: #fff;
+        border: 2/32rem solid #cccccc;
+        outline: none;
+      }
+      //修改select2样式
+      .select2-container--default {
+        .select2-selection--single {
+          border-color: #999999;
+          -webkit-border-radius: 0;
+          -moz-border-radius: 0;
+          border-radius: 0;
+          .select2-selection__rendered{
+            line-height: 72/32rem;
+          }
+          .select2-selection__arrow{
+            height:72/32rem;
+          }
+        }
+      }
+      .select2-container{
+        width: 241/32rem!important;
+        .select2-selection--single{
+          height: 72/32rem !important;
+        }
+      }
+    }
+    .keyword-waiterName,.keyword-date,.keyword-serviceName{
+      float: right;
+      margin: 0 15/32rem;
+      input{
+        width: 241/32rem;
+        height: 72/32rem;
+        outline: none;
+        border: 2/32rem solid #CCCCCC;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 10/32rem;
+        -webkit-appearance:none;
+        border-radius: 0;
+      }
+      #searchDate{
+        display: inline-block;
+        width: 241/32rem;
+        height: 72/32rem;
+        //line-height: 74/32rem;
+        border: 2/32rem solid #CCCCCC;
+        padding-left: 10/32rem;
+        vertical-align: middle;
+        font-size: 32/32rem;
+        color: #333333;
+      }
+    }
+    .searchBtn{
+      float: right;
+      width: 162/32rem;
+      height: 72/32rem;
+      line-height: 72/32rem;
+      text-align: center;
+      color: #fff;
+      background-color: #fe6869;
+      vertical-align: middle;
+      margin:25/32rem 30/32rem;
+    }
+  }
+  .serviceCompleteTime-searchRequirement{
+    display: none;
+    div{
+      display: inline-block;
+      margin: 0 27/32rem;
+      span{
+        font-size: 32/32rem;
+        color: #333333;
+      }
+      &.keyword-waiterName{
+        margin-left: 15/32rem;
+      }
+    }
+    .keyword-waiterName,.keyword-serviceName{
+      input{
+        width: 262/32rem;
+        height: 72/32rem;
+        outline: none;
+        border: 2/32rem solid #ccc;
+        padding: 0 0 0 10/32rem;
+        -webkit-appearance:none;
+        border-radius: 0;
+      }
+    }
+    .keyword-time{
+      #startTime,#endTime{
+        display: inline-block;
+        width: 272/32rem;
+        height: 72/32rem;
+        //line-height: 72/32rem;
+        border: 2/32rem solid #ccc;
+        padding-left: 10/32rem;
+        vertical-align: middle;
+        font-size: 32/32rem;
+        color: #333333;
+        outline: none;
+        &:disabled{
+          background-color:#ffffff;
+        }
+      }
+      span:nth-of-type(3){
+        margin: 0 10/32rem;
+      }
+    }
+    .searchBtn{
+      display: inline-block;
+      width: 162/32rem;
+      height: 72/32rem;
+      line-height: 72/32rem;
+      text-align: center;
+      color: #fff;
+      background-color: #fe6869;
+      vertical-align: middle;
+      margin:0 14/32rem;
+    }
+  }
+}
+
+.resultList{
+  width: 100%;
+  height: 100%;
+  margin-top: 20/32rem;
+  .orderCompleteTime-list{
+    display: block;
+    .listTitle{
+      width: 100%;
+      height: 90/32rem;
+      line-height: 90/32rem;
+      background-color: #fe6869;
+      color: #fff;
+      font-size: 38/32rem;
+      span{
+        float: left;
+        width: 50%;
+        text-align: center;
+      }
+    }
+    .listContent{
+      width: 100%;
+      height: 100%;
+      ul{
+        li{
+          width: 100%;
+          height: 90/32rem;
+          line-height: 90/32rem;
+          color: #333333;
+          font-size: 32/32rem;
+          text-align: center;
+          span{
+            float: left;
+            width: 50%;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  .serviceCompleteTime-list{
+    display: none;
+    .listTitle{
+      width: 100%;
+      height: 90/32rem;
+      line-height: 90/32rem;
+      background-color: #fe6869;
+      color: #fff;
+      font-size: 38/32rem;
+      span{
+        float: left;
+        width: 33.33333%;
+        text-align: center;
+      }
+    }
+    .listContent{
+      width: 100%;
+      height: 100%;
+      ul{
+        li{
+          width: 100%;
+          height: 90/32rem;
+          line-height: 90/32rem;
+          color: #333333;
+          font-size: 32/32rem;
+          text-align: center;
+          span{
+            float: left;
+            width: 33.33333%;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+//.jedateblue{
+//  border-color: #fe6869;
+//  .jedatetop{
+//    background: #fe6869;
+//    border-color: #fe6869;
+//  }
+//  .jedaul li.action{
+//    background: #fe6869;
+//  }
+//  .jedatebot .jedatebtn span{
+//    background: #fe6869;
+//  }
+//  .jedatesetm .ymdropul li.action{
+//    background-color: #fe6869;
+//  }
+//  .jedatetopym p span.jedateymchok{
+//    background-color: #fe6869;
+//  }
+//  .jedatesety .ymdropul li.action{
+//    background: #fe6869;
+//  }
+//  .jedateym .triangle:hover{
+//    background-color: #fe4e53;
+//  }
+//  .jedatebot{
+//    background: #fff;
+//  }
+//  .jedateym .prev,
+//  .jedateym .next{
+//    //display: none;
+//  }
+//
+//}
+
+//分页插件
+.serviceCompleteTime-select-page{
+  //margin-top: 60/32rem;
+  margin-bottom: 50/32rem;
+  width: 100%;
+  position: relative;
+  top: 50/32rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Pragma" content="no-cache"> 
+    <meta http-equiv="Cache-Control" content="no-cache"> 
+    <meta http-equiv="Expires" content="0"> 
+    <title>虚拟奖品详细</title>
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" href="../framework/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="./css/earnmoney_common.css">
+    <link rel="stylesheet" href="./css/coupon_detail.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h3><span id="prizeTitle">---</span> <small id="prizeStatus">--</small></h3>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-2 control-label">中奖人数</label>
+                <div class="col-xs-4">
+                    <span class="form-control" id="prizeCount"></span>
+                </div>
+                <label class="col-xs-2 control-label">奖品价值</label>
+                <div class="col-xs-4">
+                    <span class="form-control" id="prizePrice"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label">发布时间</label>
+                <div class="col-xs-4">
+                    <span class="form-control" id="createTime"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label">使用说明</label>
+                <div class="col-xs-10">
+                    <div class="form-control" id="prizeExplain"></div>
+                </div>
+            </div>
+        </form>
+
+        <table id="table" class="table table-hover"></table>
+    </div>
+
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="../framework/bootstrap/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../framework/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="./js/earnmoney_common.js"></script>
+    <script type="text/javascript" src="./js/coupon_detail.js"></script>
+</body>
+
+</html>

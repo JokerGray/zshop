@@ -1,0 +1,494 @@
+@charset "utf-8";
+// 主题颜色
+// @theme:#f40;
+@theme: #ffbf14;
+// 版心
+@container: 1140px;
+
+/*!
+ * @名称：base.css
+ * @功能：1、重设浏览器默认样式
+ *       2、设置通用原子类
+ */
+
+
+/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+
+html,
+body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    color: #333;
+    outline: 0;
+}
+
+body {
+    min-width: 1220px;
+    overflow-x: hidden;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    margin: 0;
+    padding: 0;
+}
+
+i {
+    font-style: normal;
+}
+
+
+/* 要注意表单元素并不继承父级 font 的问题 */
+
+input,
+select,
+textarea {
+    font-size: 100%;
+}
+
+input {
+    border: 0px;
+    background-color: #fff;
+}
+
+
+/* 去掉 table cell 的边距并让其边重合 */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/*button默认样式*/
+
+button {
+    background-color: #fff;
+    border: 0;
+}
+
+
+/* ie bug：th 不继承 text-align */
+
+th {
+    text-align: inherit;
+}
+
+
+/* 去除默认边框 */
+
+fieldset,
+img {
+    border: none;
+}
+
+
+/* ie6 7 8(q) bug 显示为行内表现 */
+
+iframe {
+    display: block;
+}
+
+
+/* 去掉 firefox 下此元素的边框 */
+
+abbr,
+acronym {
+    border: none;
+    font-variant: normal;
+}
+
+
+/* 一致的 del 样式 */
+
+del {
+    text-decoration: line-through;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+    font-style: normal;
+    font-weight: 500;
+}
+
+
+/* 去掉列表前的标识，li 会继承 */
+
+ol,
+ul {
+    list-style: none;
+}
+
+
+/* 对齐是排版最重要的因素，别让什么都居中 */
+
+caption,
+th {
+    text-align: left;
+}
+
+
+/* 来自yahoo，让标题都自定义，适应多个系统应用 */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: 500;
+}
+
+q:before,
+q:after {
+    content: '';
+}
+
+
+/* 统一上标和下标 */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+
+/* 让链接在 hover 状态下显示下划线 */
+
+a {
+    color: #222;
+    background: 0 0;
+    text-decoration: none;
+    outline: 0;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:link {
+    text-decoration: none;
+    color: #333;
+}
+
+
+/* 默认不显示下划线，保持页面简洁 */
+
+ins {
+    text-decoration: none;
+}
+
+
+/* 去除 ie6 & ie7 焦点点状线 */
+
+a:focus,
+*:focus {
+    outline: none;
+}
+
+
+/* 清除浮动 */
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+    overflow: hidden;
+}
+
+.clearfix {
+    zoom: 1;
+    /* for ie6 & ie7 */
+}
+
+.clear {
+    clear: both;
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+.one {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.container {
+    width: @container;
+    margin: 0 auto;
+    padding: 0;
+}
+
+
+/* 设置浮动，减少浮动带来的 bug */
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.white {
+    background: #fff;
+}
+
+
+/* 设置显示和隐藏，通常用来与 js 配合 */
+
+.hide {
+    display: none;
+}
+
+.block {
+    display: block;
+}
+
+.cur-p {
+    cursor: pointer;
+}
+
+.cur-d {
+    cursor: default;
+}
+
+
+/*font*/
+
+.font14px {
+    font-size: 14px;
+}
+
+
+/*display*/
+
+.dis-b {
+    display: block !important;
+}
+
+.dis-n {
+    display: none;
+}
+
+.dis-i {
+    display: inline;
+}
+
+.dis-i-b {
+    display: inline-block;
+}
+
+.dis-t {
+    display: table;
+}
+
+
+/*color*/
+
+.gray {
+    color: #999;
+}
+
+.blue {
+    color: #2BC6FF;
+}
+
+.red {
+    color: #ff8b6f;
+}
+
+.black {
+    color: #333;
+}
+
+.orange {
+    color: #FFA893;
+}
+
+
+/*width*/
+
+.wfull {
+    width: 100%;
+}
+
+.max-w100px {
+    max-width: 100px;
+}
+
+.max-w50px {
+    max-width: 50px;
+}
+
+
+/*font*/
+
+.font20px {
+    font-size: 20px;
+}
+
+.font40px {
+    font-size: 40px;
+}
+
+a {
+    color: #333;
+}
+
+a:hover {
+    color: @theme;
+}
+
+.text-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.form-control:focus {
+    border-color: @theme;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(43, 198, 255, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(43, 198, 255, .6);
+}
+
+
+/*按钮色*/
+
+.btn-submit,
+.btn-submit:active {
+    color: #fff;
+    border-color: #ed793d;
+    background-color: #ff8b6f;
+}
+
+.btn-submit:hover,
+.btn-submit:focus,
+.btn-submit:active:hover {
+    color: #fff;
+    border-color: #ce4727;
+    background-color: #f6623f;
+}
+
+.btn-blue,
+.btn-blue:active {
+    color: #fff;
+    border-color: #1E9FFF;
+    background-color: #1E9FFF;
+}
+
+.btn-blue:hover,
+.btn-blue:focus,
+.btn-blue:active:hover {
+    color: #fff;
+    border-color: #1E9FFF;
+    background-color: #1E9FFF;
+}
+
+
+/*背景色*/
+
+.bg-green {
+    background-color: #60d295;
+}
+
+.bg-blue {
+    background-color: #7cbae5;
+}
+
+
+/*循环*/
+
+@rex : 10;
+.loop(@prex, @prop, @n, @i: 1) when (@i =< @n) {
+    @a: @i*@rex;
+    .@{prex}@{a} {
+        @{prop}: @a+0px !important;
+    }
+    .loop(@prex, @prop, @n, (@i + 1));
+}
+
+.loop(w, width, 10);
+.loop(h, height, 10);
+.loop(pl, padding-left, 10);
+.loop(pr, padding-right, 10);
+.loop(ml, margin-left, 10);
+.loop(mr, margin-right, 10);
+.loop(mt, margin-top, 10);
+.loop(mb, margin-bottom, 10);

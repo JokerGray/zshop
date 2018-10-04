@@ -1,0 +1,485 @@
+body {
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+/**顶部条件选项栏*/
+.topFilterBox {
+  width: 100%;
+  height: 65px;
+  background-color: #f3f3f4;
+  font-size: 0;
+  border-bottom: 1px solid #cccccc;
+}
+.topFilterBox > div {
+  display: inline-block;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.topFilterBox .timeFilter {
+  width: 60%;
+  height: 100%;
+}
+.topFilterBox .timeFilter ul {
+  width: 100%;
+  height: 100%;
+}
+.topFilterBox .timeFilter ul li {
+  float: left;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 0 30px;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  color: #707070;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  font-size: 16px;
+}
+.topFilterBox .timeFilter ul li.active {
+  background-color: #fff;
+  border: none;
+}
+.topFilterBox .shopFilter {
+  width: 40%;
+  height: 100%;
+  line-height: 65px;
+  text-align: right;
+  padding-right: 20px;
+}
+.topFilterBox .shopFilter > div {
+  display: inline-block;
+}
+.topFilterBox .shopFilter > div > label {
+  font-size: 14px;
+  color: #333333;
+  vertical-align: middle;
+}
+.topFilterBox .shopFilter > div > div {
+  display: inline-block;
+  width: 150px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.topFilterBox .shopFilter > div .exportBtn {
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+  line-height: 28px;
+  text-align: center;
+  background-color: #fff;
+  font-size: 12px;
+  color: #333333;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.topFilterBox .shopFilter > div .exportBtn > .exportIcon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: middle;
+}
+.topFilterBox .shopFilter > div .exportBtn > span {
+  vertical-align: middle;
+}
+/**路径显示*/
+.path {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding-left: 20px;
+  font-size: 16px;
+}
+.path .dateIcon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/common/img/dateIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: -5px;
+}
+.path > input {
+  color: #1E9FFF;
+  margin-left: 4px;
+  height: 34px;
+  padding-left: 32px;
+  background: url("../../../assets/common/img/dateIcon.png") no-repeat left 3px;
+  -webkit-background-size: 24px 24px;
+  background-size: 24px 24px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.path > input.selectedDate {
+  width: 116px;
+}
+.path > input.selectedMonth {
+  width: 94px;
+  display: none;
+}
+.path > input.selectedYear {
+  width: 72px;
+  display: none;
+}
+.path > input.selfDate {
+  width: 220px;
+  display: none;
+}
+.path .arrowIcon {
+  font-family: SimSun;
+  margin: 0 4px 0 0;
+  font-weight: 700;
+}
+/**统计概览*/
+.reportOverview {
+  width: 100%;
+  min-height: 138px;
+  background-color: #f3f3f4;
+}
+.reportOverview ul {
+  font-size: 0;
+  padding: 20px 0;
+}
+.reportOverview ul li {
+  float: left;
+  width: 20%;
+  min-width: 300px;
+  height: 98px;
+  background-color: #fff;
+  margin: 0 20px;
+  border: 1px solid #cccccc;
+}
+.reportOverview ul li > p {
+  padding: 0 20px;
+  margin-top: 16px;
+  color: #666666;
+  font-size: 16px;
+}
+.reportOverview ul li > p span:nth-of-type(1) {
+  float: left;
+}
+.reportOverview ul li > p span:nth-of-type(2) {
+  float: right;
+}
+.reportOverview ul li > p .itemText {
+  max-width: 230px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.reportOverview ul li h4 {
+  font-size: 20px;
+  color: #333333;
+  padding: 16px 16px 0 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.reportOverview ul li h4 sub {
+  font-size: 14px;
+  vertical-align: text-bottom;
+}
+/**品项走势图*/
+.OverviewTrend {
+  width: 100%;
+  height: 300px;
+  background-color: #f3f3f4;
+  padding: 0 20px;
+}
+.OverviewTrend .canvasBox {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #cccccc;
+  background-color: #fff;
+}
+/**中部筛选栏*/
+.middleFilterBOx {
+  width: 100%;
+  min-height: 55px;
+  background-color: #fff;
+  border-left: 20px solid #f3f3f4;
+  border-right: 20px solid #f3f3f4;
+  margin-top: 20px;
+}
+.middleFilterBOx .tabNav {
+  float: left;
+  padding-left: 10px;
+}
+.middleFilterBOx .tabNav ul li {
+  float: left;
+  margin: 0 10px;
+  margin-top: 18px;
+  padding-bottom: 4px;
+  color: #999999;
+  cursor: pointer;
+  font-size: 16px;
+}
+.middleFilterBOx .tabNav ul li.active {
+  border-bottom: 2px solid #1E9FFF;
+}
+.middleFilterBOx .middleFilterContent {
+  float: right;
+  line-height: 55px;
+}
+.middleFilterBOx .middleFilterContent > div {
+  display: inline-block;
+  margin-right: 20px;
+  color: #707070;
+}
+.middleFilterBOx .middleFilterContent > div > label {
+  font-size: 14px;
+  margin-right: 6px;
+}
+.middleFilterBOx .middleFilterContent > div > .layui-form {
+  display: inline-block;
+  width: 150px;
+}
+.middleFilterBOx .middleFilterContent > div > .searchBtn {
+  width: 80px;
+  height: 34px;
+  outline: none;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+}
+.middleFilterBOx .middleFilterContent > div.card,
+.middleFilterBOx .middleFilterContent > div.product,
+.middleFilterBOx .middleFilterContent > div.package,
+.middleFilterBOx .middleFilterContent > div.setBox {
+  display: none;
+}
+/**报表内容*/
+.tableBox {
+  width: 100%;
+  height: 450px;
+  overflow-y: auto;
+  background-color: #fff;
+  border-left: 20px solid #f3f3f4;
+  border-right: 20px solid #f3f3f4;
+  padding: 0 20px;
+}
+.tableBox .formProject table > tbody > tr > td:nth-of-type(4) {
+  color: #ff3030;
+}
+.tableBox .fromConsumption {
+  display: none;
+}
+.tableBox .fromConsumption table > tbody > tr > td:nth-of-type(4) {
+  color: #ff3030;
+}
+.tableBox .layui-table {
+  margin-top: 0;
+}
+.tableBox .layui-table thead > tr > th,
+.tableBox .layui-table tbody > tr > td {
+  text-align: right;
+}
+.tableBox .layui-table thead > tr > th:nth-of-type(1),
+.tableBox .layui-table tbody > tr > td:nth-of-type(1) {
+  text-align: center;
+}
+.tableBox .layui-table thead > tr > th:nth-of-type(2),
+.tableBox .layui-table tbody > tr > td:nth-of-type(2) {
+  text-align: left;
+}
+.tableBox .layui-table tbody > tr > td .seeProjectDetail,
+.tableBox .layui-table tbody > tr > td .seeConsumptionDetail {
+  color: #1E9FFF;
+}
+/**分页选择器*/
+.pageSelectorBox {
+  width: 100%;
+  height: 55px;
+  background-color: #fff;
+  border-left: 20px solid #f3f3f4;
+  border-right: 20px solid #f3f3f4;
+  padding-right: 20px;
+}
+.pageSelectorBox #reportPageSelector {
+  float: right;
+}
+/**详情弹窗*/
+.spDetail .top,
+.consumptionDetail .top {
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  background-color: #353B53;
+  padding: 0 20px;
+  color: #fff;
+}
+.spDetail .top > span,
+.consumptionDetail .top > span {
+  float: left;
+  font-size: 14px;
+}
+.spDetail .top > i,
+.consumptionDetail .top > i {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+.spDetail .descAndExport,
+.consumptionDetail .descAndExport {
+  width: 100%;
+  height: 60px;
+  line-height: 58px;
+  padding: 0 20px;
+}
+.spDetail .descAndExport .descPath,
+.consumptionDetail .descAndExport .descPath {
+  float: left;
+  font-size: 16px;
+  color: #333333;
+}
+.spDetail .descAndExport .descPath > i,
+.consumptionDetail .descAndExport .descPath > i {
+  font-family: SimSun;
+  vertical-align: middle;
+}
+.spDetail .descAndExport .descPath > .descName,
+.consumptionDetail .descAndExport .descPath > .descName {
+  display: inline-block;
+  max-width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.spDetail .descAndExport .descPath > .descShop,
+.consumptionDetail .descAndExport .descPath > .descShop {
+  vertical-align: middle;
+}
+.spDetail .descAndExport .detailRadio,
+.consumptionDetail .descAndExport .detailRadio {
+  float: left;
+}
+.spDetail .descAndExport .detailRadio ul li,
+.consumptionDetail .descAndExport .detailRadio ul li {
+  float: left;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.spDetail .descAndExport .detailRadio ul li > i,
+.consumptionDetail .descAndExport .detailRadio ul li > i {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+.spDetail .descAndExport .detailRadio ul li > span,
+.consumptionDetail .descAndExport .detailRadio ul li > span {
+  font-size: 14px;
+  color: #333333;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.spDetail .descAndExport .detailRadio ul li.active > i,
+.consumptionDetail .descAndExport .detailRadio ul li.active > i {
+  border: none;
+  background: url("../../../assets/common/img/selectedIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.spDetail .descAndExport .detailExportBtn,
+.consumptionDetail .descAndExport .detailExportBtn {
+  float: right;
+  width: 80px;
+  height: 34px;
+  font-size: 14px;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  line-height: 34px;
+  text-align: center;
+  margin-top: 13px;
+}
+.spDetail .descAndExport .detailExportBtn > i,
+.consumptionDetail .descAndExport .detailExportBtn > i {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  vertical-align: -6px;
+}
+.spDetail .detailContent,
+.consumptionDetail .detailContent {
+  padding: 0 20px;
+}
+.spDetail .detailContent > div,
+.consumptionDetail .detailContent > div {
+  overflow-y: auto;
+}
+.spDetail .detailContent > div > table,
+.consumptionDetail .detailContent > div > table {
+  margin-top: 0;
+}
+.spDetail .detailContent > div > table td,
+.consumptionDetail .detailContent > div > table td,
+.spDetail .detailContent > div > table th,
+.consumptionDetail .detailContent > div > table th {
+  min-width: 80px;
+}
+.spDetail .detailContent > div > table > thead > tr > th:first-of-type,
+.consumptionDetail .detailContent > div > table > thead > tr > th:first-of-type,
+.spDetail .detailContent > div > table > tbody > tr > td:first-of-type,
+.consumptionDetail .detailContent > div > table > tbody > tr > td:first-of-type {
+  width: 80px;
+  text-align: center;
+}
+.spDetail .detailContent > div > table > thead > tr > th:last-of-type,
+.consumptionDetail .detailContent > div > table > thead > tr > th:last-of-type,
+.spDetail .detailContent > div > table > tbody > tr > td:last-of-type,
+.consumptionDetail .detailContent > div > table > tbody > tr > td:last-of-type {
+  text-align: right;
+}
+.spDetail .detailPageBox,
+.consumptionDetail .detailPageBox {
+  padding: 0 20px;
+  height: 55px;
+}
+.spDetail .detailPageBox > div:nth-of-type(1),
+.consumptionDetail .detailPageBox > div:nth-of-type(1) {
+  float: right;
+}
+.layui-form .layui-form-select {
+  text-align: left;
+}
+.layui-form .layui-form-select dl {
+  max-width: 100%;
+}
+.layui-input {
+  height: 34px;
+  border-color: #cccccc;
+  color: #707070;
+  font-size: 14px;
+}
+/*# sourceMappingURL=reportServiceConsum.css.map */

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>广告机管理</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../common/css/advertising.css" />
+    <link rel="stylesheet" type="text/css" href="css/ft-carousel.css" />
+    <link rel="stylesheet" type="text/css" href="css/advertis_manage.css" />
+</head>
+<body>
+<div class="advertising">
+    <div class="advertising-topbox">
+        <div class="advertising-top">
+            <!--区域-->
+            <div class="advertising-area">
+                <div class="area-input" data-num="0">
+                    <i class="address"></i>
+                    <span data-pro="42" data-city="4201" class="area-name" data-typ="0">武汉市</span>
+                    <i class="layui-icon">&#xe61a;</i>
+                </div>
+                <div class="area-all">
+                    <span class="close">x</span>
+                    <div class="selectarea">
+                        <ul>
+                            <li class="actv">
+                                <a>
+                                    <span data-id="42" class="provice-name">湖北省</span><i class="layui-icon">&#xe61a;</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <span data-id="4201" class="city-name">武汉市</span><i class="layui-icon">&#xe61a;</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="arealist selectprovince actv">
+                        <ul>
+                        </ul>
+                    </div>
+                    <div class="arealist selectcity">
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--搜索-->
+            <div class="search-box">
+                <i class="searchicon"></i>
+                <input type="text" id="searchName" autocomplete="off" placeholder="搜索广告机名称" maxlength="10">
+                <a id="search" class="search btns">搜索</a>
+            </div>
+        </div>
+        <!--按钮操作-->
+        <div class="ctronlbox">
+            <div class="all-info">
+                <div class="tablist btns" data-num="0">全部</div>
+                <div class="alllist">
+                    <div class="listnav">
+                        <ul id="allClassify">
+                            <li data-id="1" class="actv" data-num="0">商圈<span></span></li>
+                            <li data-id="2" data-num="0">社区<span></span></li>
+                            <li data-id="3" data-num="0">职能部门<span></span></li>
+                            <li data-id="4" data-num="0">地铁<span></span></li>
+                            <li data-id="5" data-num="0">公交站<span></span></li>
+                        </ul>
+                    </div>
+                    <div class="listinfo">
+                        <h4>所有<span class="closebtn">x</span></h4>
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ctronl-btn">
+                <a id="addarea" class="btns">区域投放</a>
+                <a id="addsource" class="change sendsource btns">投放</a>
+                <div class="layui-form">
+                    <div class="layui-input-block btns" id="linestt">
+                        <select name="linestatu" lay-filter="linestatu">
+                            <option value="">状态</option>
+                            <option value="0">未连接</option>
+                            <option value="1">已连接</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--选择的时候出现div-->
+    <div class="hide-ctronl layui-form">
+        <div class="layui-form-item" id="selectall">
+            <input class="allcheck" type="checkbox" name="" title="选择" lay-skin="primary" lay-filter="all">
+        </div>
+        <div class="select-num">
+            已选择<span class="selnum">0</span>个
+        </div>
+        <div class="hidetip" data-num="0">仅选中<span>2</span>个</div>
+        <div class="step">
+            <span class="step0"><i class="stepzacv"></i></span>
+            <span class="step1"><i class="steplacv"></i></span>
+            <span class="step2"><i class="stept"></i></span>
+            <span class="step3"><i class="stepr"></i></span>
+            <!--<span class="step4"><i class="stepf"></i></span>-->
+        </div>
+        <a id="cancel" data-step="0" class="btn btn-default btns" type="button">取消</a>
+        <a id="sue" class="btn btn-default btns sue" type="button">确定</a>
+        <a id="next" class="btn btn-default btns next" type="button">下一步</a>
+       <!-- <a id="prev" class="btn btn-default btns prev" type="button">上一步</a>-->
+        <!--<div class="ctronl-search">
+            <input type="text" id="selectName" autocomplete="off" maxlength="10">
+            <a id="ctronlSearch" class="btns" type="button">搜索</a>
+        </div>-->
+    </div>
+    <!--内容-->
+    <div class="content-all">
+        <div class="areainput layui-form">
+            <div class="area-box">
+                <!--<div class="area-first layui-form-item">
+                    <input type="checkbox" name="" title="商圈:" lay-skin="primary">
+                    <div class="area-child">
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </div>
+                </div>-->
+            </div>
+        </div>
+        <div class="onlyinput ">
+            <div class="areaname">全部 ></div>
+            <div class="nodata2"></div>
+            <ul class="detail stepone layui-form">
+                <!--<li>
+                    <div class="chaeck layui-form-item">
+                        <input type="checkbox" lay-skin="primary">
+                    </div>
+                    <img src="img/advice_icon.png">
+                    <div class="machine-info">
+                        <span class="machine-name">122</span>
+                        <span class="machine-area">1212</span>
+                        <span class="machine-address">1212</span>
+                        <span class="machine-specific">1212</span>
+                        <span class="machine-version">1212</span>
+                        <span class="machine-statu"><i class="red-statu"></i>连接状态</span>
+                        <span class="machine-send">正在投放</span>
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+        <!--第二步-->
+        <div class="twotip">请点击<a>广告管理</a>去添加广告</div>
+        <ul class="detail layui-form steptwo">
+        </ul>
+        <!--分页-->
+        <div class="common-page1 addmore" data-num="1" data-statu="0">
+            <div id="paging-box-count">
+            </div>
+            <div id="paging-box" class="basic-jump"></div>
+        </div>
+        <!--第三步-->
+        <div class="detail stepthree">
+            <div class="leftimg">
+                <video controls="controls" class="leftvideos"></video>
+                <div class="layui-carousel" id="carousel_3">
+                    <div class="lfu" carousel-item>
+                    </div>
+                </div>
+            </div>
+            <div class="rightvideo">
+                <video controls="controls" class="rgtvideo"></video>
+                <div class="layui-carousel" id="carousel_4">
+                    <div class="lfu" carousel-item>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--隐藏部分-->
+        <div class="hideval">
+            <div class="merchine" data-num=""></div>
+            <div class="advercits"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!--modal-->
+<!--轮播详情-->
+<div id="carousel" class='layui-form demo111'>
+    <div class="noda"></div>
+    <div class="imgInfo">
+        <div class="img-detail">
+            <div class="imgs-list snad">
+                设备编号：<span class="machine-sn"></span>
+            </div>
+            <div class="imgs-list">
+                区域详情：<span class="machine-typename"></span>
+            </div>
+            <div class="imgs-list">
+                所在城市：<span class="machine-cityname"></span>
+            </div>
+        </div>
+        <div class="img-detail">
+            <div class="imgs-list">
+                创建时间：<span class="machine-createtime"></span>
+            </div>
+            <div class="imgs-list">
+                设备状态：<span class="machine-stat"></span>
+            </div>
+        </div>
+    </div>
+    <div class="imgs">
+        <h4>广告位1</h4>
+        <div class="lft1">暂不开放</div>
+        <div class="leftimginfo">
+            <video controls="controls" class="leftvideo" src=""></video>
+            <div class="layui-carousel" id="carousel_1">
+                <div class="lfu" carousel-item>
+                </div>
+            </div>
+            <div class="noimg">
+                <img src="../common/img/default_img.png">
+            </div>
+        </div>
+    </div>
+    <div class="video">
+        <h4>广告位2</h4>
+        <div class="rft1">暂不开放</div>
+        <div class="rightimginfo">
+            <video controls="controls" class="rightvid" src=""></video>
+            <div class="layui-carousel" id="carousel_2">
+                <div class="lfu" carousel-item>
+                </div>
+            </div>
+            <div class="noimg1">
+                <img src="../common/img/default_rgtimg.png">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/util/util.js"></script>
+<script type="text/javascript" src="../../common/js/util/pub.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="../common/js/advertis.js"></script>
+<script type="text/javascript" src="js/advertis_manage.js"></script>
+</html>

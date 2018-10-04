@@ -1,0 +1,537 @@
+body{
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.layui-input, .layui-select{
+  height: 34px;
+}
+/**顶部时间选择和店铺选择*/
+.time-shop{
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid #ccc;
+  .timeTab{
+    float: left;
+    ul{
+      font-size: 0;
+      padding-top: 19px;
+      li{
+        display: inline-block;
+        width: 97px;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        font-size: 16px;
+        color: #707070;
+        border-top: 1px solid #cccccc;
+        border-left: 1px solid #cccccc;
+        border-right: 1px solid #cccccc;
+        -webkit-border-radius: 4px 4px 0 0;
+        -moz-border-radius: 4px 4px 0 0;
+        border-radius: 4px 4px 0 0;
+        margin-left: 20px;
+        cursor: pointer;
+        &.active{
+          border: none;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  .shopSelector{
+    float: right;
+    width: 150px;
+    margin-top: 15px;
+    margin-right: 20px;
+  }
+}
+/**时间选择和路径显示*/
+.time-path{
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+  >div{
+    display: inline-block;
+    vertical-align: middle;
+    &.timeIcon{
+      vertical-align: -7px;
+      i{
+        display: block;
+        width: 24px;
+        height: 24px;
+        background: url("../../../assets/common/img/dateIcon.png") no-repeat center;
+        -webkit-background-size: 100%;
+        background-size: 100%;
+      }
+    }
+    &.timeSelector{
+      >div:nth-of-type(1){
+        //display: none;
+        width: 90px;
+      }
+      >div:nth-of-type(2){
+        display: none;
+        span{
+          padding: 0 10px;
+          font-size: 16px;
+          color: #333333;
+        }
+      }
+      >div:nth-of-type(3){
+        width: 190px;
+        display: none;
+      }
+      input{
+        width: 100%;
+        height: 24px;
+        color: #1e9fff;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        vertical-align: middle;
+      }
+    }
+    &.path{
+      font-size: 16px;
+      color: #333333;
+      i{
+        font-family: SimSun;
+      }
+    }
+    &.radioBox{
+      float: right;
+      ul{
+        li{
+          display: inline-block;
+          margin-left: 20px;
+          cursor: pointer;
+          i{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #D0D0D0;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 6px;
+          }
+          span{
+            vertical-align: middle;
+            font-size: 14px;
+            color: #333333;
+          }
+          &.active{
+            i{
+              border: 6px solid #1e9fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/**店外购物*/
+.online{
+  /**商品前十报表*/
+  .topTen{
+    padding: 0 20px;
+    margin-top: 20px;
+    /**店外购物报表*/
+    .tabNav{
+      width: 100%;
+      height: 55px;
+      background-color: #fff;
+      padding: 16px 20px 0 20px;
+      a{
+        display: inline-block;
+        padding-bottom: 6px;
+        margin-right: 20px;
+        &.active{
+          border-bottom: 2px solid #1e9fff;
+        }
+      }
+    }
+    .topTableBox{
+      padding: 0 20px 10px 20px;
+      background-color: #fff;
+      height: 440px;
+      overflow-y: auto;
+      table{
+        margin: 0;
+        thead{
+          tr{
+            background-color: #fff;
+            th{
+              border: none;
+              border-bottom: 1px solid #cccccc;
+              &:nth-last-of-type(1),
+              &:nth-last-of-type(2),
+              &:nth-last-of-type(3){
+                text-align: right;
+              }
+            }
+          }
+        }
+        tbody{
+          tr{
+            &:hover{
+              background-color: #fff;
+            }
+            td{
+              border-color: #fff;
+              &:nth-last-of-type(1),
+              &:nth-last-of-type(2),
+              &:nth-last-of-type(3){
+                text-align: right;
+                a{
+                  color: #1e9fff;
+                }
+              }
+            }
+          }
+        }
+        &.sales{
+          //display: none;
+        }
+        &.salesVolume{
+          display: none;
+        }
+        &.returnGoods{
+          display: none;
+        }
+      }
+    }
+  }
+  /**销售商品明细*/
+  .goodsSaleList{
+    padding: 0 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .table-title-search{
+      width: 100%;
+      height: 55px;
+      line-height: 53px;
+      background-color: #fff;
+      padding: 0 20px;
+      .tableTitle{
+        float: left;
+        span{
+          font-size: 15px;
+          color: #333;
+        }
+      }
+      .tableSearch{
+        float: right;
+        >div{
+          display: inline-block;
+          vertical-align: middle;
+          &:first-of-type{
+            width: 150px;
+            position: relative;
+            z-index: 2;
+            .goodsResult{
+              position: absolute;
+              width: 100%;
+              max-height: 250px;
+              overflow-y: auto;
+              background-color: #fff;
+              border: 1px solid #E6E6E6;
+              border-top: none;
+              z-index: 2;
+              display: none;
+              li{
+                width: 100%;
+                padding: 22px 10px;
+                line-height: 0;
+                cursor: pointer;
+                font-size: 14px;
+                color: #666666;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow:ellipsis;
+                &:hover{
+                  background-color: #eeeeee;
+                }
+              }
+            }
+          }
+          &:last-of-type{
+            margin-left: 6px;
+            a{
+              display: inline-block;
+              width: 80px;
+              height: 34px;
+              line-height: 34px;
+              text-align: center;
+              border: 1px solid #d2d2d2;
+              -webkit-border-radius: 2px;
+              -moz-border-radius: 2px;
+              border-radius: 2px;
+              font-size: 14px;
+              color: #333333;
+              i{
+                display: inline-block;
+                vertical-align: -6px;
+                width: 24px;
+                height: 23px;
+                background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+                -webkit-background-size: 100%;
+                background-size: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .tableBox{
+      padding: 0 20px 10px 20px;
+      background-color: #fff;
+      height: 445px;
+      overflow-y: auto;
+      table{
+        margin: 0;
+        td,th{
+          padding: 9px;
+        }
+        td:first-of-type,
+        th:first-of-type{
+          text-align: center;
+        }
+        td:last-of-type,
+        th:last-of-type{
+          text-align: right;
+          a{
+            color: #1e9fff;
+          }
+        }
+      }
+    }
+    .pageBox{
+      height: 55px;
+      padding: 0 20px;
+      background-color: #fff;
+      >div{
+        float: right;
+      }
+    }
+  }
+}
+/**店内购物*/
+.inShop{
+  display: none;
+  /**各类商品销售总数*/
+  .totalCount{
+    ul{
+      li{
+        float: left;
+        width: 22.7%;
+        min-width: 350px;
+        height: 98px;
+        background-color: #fff;
+        border: 1px solid #dddddd;
+        margin: 20px;
+        div{
+          float: left;
+          &:nth-of-type(1){
+            width: 46px;
+            height: 46px;
+            margin: 20px 20px 0  20px;
+          }
+          &:nth-of-type(3){
+            float: right;
+            font-size: 14px;
+            color: #666666;
+            margin: 16px 20px 0 0;
+          }
+          p{
+            font-size: 15px;
+            color: #333333;
+            margin-top: 16px;
+          }
+          h4{
+            font-size: 25px;
+            color: #333333;
+            font-weight: 700;
+            margin-top: 16px;
+          }
+        }
+        &:nth-of-type(1){
+          div:nth-of-type(1){
+            background: url("../images/ic_cjjianshu.png") no-repeat center;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
+        }
+        &:nth-of-type(2){
+          div:nth-of-type(1){
+            background: url("../images/ic_cardshu.png") no-repeat center;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
+        }
+        &:nth-of-type(3){
+          div:nth-of-type(1){
+            background: url("../images/ic_packageshu.png") no-repeat center;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
+        }
+        &:nth-of-type(4){
+          div:nth-of-type(1){
+            background: url("../images/ic_boxshu.png") no-repeat center;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
+        }
+      }
+    }
+  }
+  /**各类商品销售走势图*/
+  .inShopTrendBox{
+    padding: 0 20px;
+    >div{
+      width: 100%;
+      height: 300px;
+      border: 1px solid #dddddd;
+      background-color: #fff;
+    }
+  }
+  /**报表部分*/
+  .mainReport{
+    padding: 20px 20px;
+    /**tab按钮，搜索框，导出按钮*/
+    .tab-search-export{
+      width: 100%;
+      height: 55px;
+      line-height: 55px;
+      background-color: #fff;
+      padding: 0 20px;
+      .tabNavBox{
+        float: left;
+        a{
+          display: inline-block;
+          height: 34px;
+          line-height: 34px;
+          margin-right: 20px;
+          color: #999999;
+          &.active{
+            border-bottom: 2px solid #1e9fff;
+            color: #333333;
+          }
+        }
+      }
+      .searchBox{
+        float: right;
+        form{
+          >div{
+            display: inline-block;
+            width: 150px;
+            vertical-align: middle;
+          }
+          button{
+            width: 80px;
+            height: 34px;
+            border: 1px solid #dedede;
+            background-color: #fff;
+            vertical-align: middle;
+            color: #333333;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            margin-left: 6px;
+          }
+        }
+
+      }
+      .exportBox{
+        float: right;
+        margin-left: 10px;
+        a{
+          display: inline-block;
+          width: 80px;
+          height: 34px;
+          line-height: 34px;
+          border: 1px solid #dddddd;
+          text-align: center;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          border-radius: 4px;
+          vertical-align: middle;
+          i{
+            display: inline-block;
+            width: 24px;
+            height: 23px;
+            vertical-align: -6px;
+            background: url('../../../assets/common/img/exportIcon.png') no-repeat center;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
+        }
+      }
+    }
+    /**报表内容*/
+    .tableContent{
+      padding: 0 20px;
+      height: 430px;
+      background-color: #fff;
+      overflow-y: auto;
+      table{
+        margin: 0;
+        th:first-of-type,
+        td:first-of-type{
+          text-align: center;
+        }
+        th:last-of-type,
+        td:last-of-type{
+          text-align: right;
+          a{
+            color: #1e9fff;
+          }
+        }
+      }
+      .product{
+        //display: none;
+      }
+      .card{
+        display: none;
+      }
+      .package{
+        display: none;
+      }
+      .setBox{
+        display: none;
+      }
+    }
+    /**分页器*/
+    .pageBox{
+      padding: 0 20px;
+      height: 55px;
+      background-color: #fff;
+      >div{
+        float: right;
+      }
+    }
+  }
+
+}
+/**遮罩层*/
+.mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: 1;
+  display: none;
+}

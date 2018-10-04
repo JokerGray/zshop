@@ -1,0 +1,257 @@
+/*打印内容A4(宽595px)*/
+.a4{
+    width: 595px;
+    height: auto;
+    padding: 30px 25px;
+    font-size: 14px;
+    font-family: "microsoft yahei";
+    border: 1px solid #000;
+    background: #fff;
+    color:#000;
+    overflow: hidden;
+}
+.a4 .content-title{
+    font-size: 18px;
+    text-align: center;
+    width: 95%;
+    margin:0 auto;
+    white-space:nowrap;
+    overflow: hidden;
+}
+.a4 .content-body{
+    width: 100%;
+    margin:30px auto;
+}
+.a4 .content-body .body-list{
+    display: inline-block;
+    float: left;
+    margin: 0 30px 20px 0;
+}
+.a4 .content-body .list-title,.a4 .content-body .title-val{
+    display: inline-block;
+    float: left;
+}
+.a4 .content-article{
+    clear: both;
+    margin: 0 auto 20px;
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.a4 .content-foot .body-list{
+    display: inline-block;
+    float: left;
+    margin: 0 30px 20px 0;
+}
+.a4 .content-foot .list-title,.a4 .content-foot .title-val{
+    display: inline-block;
+    float: left;
+}
+.a4 .table-title{
+    text-align: center;
+    width: 20%;
+    display: inline-block;
+    word-wrap:break-word;
+    box-pack:justify;
+    border-right: 1px solid #000;
+    padding: 5px;
+}
+.a4 .table-val{
+    border-top: 1px solid #000;
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+    word-wrap:break-word;
+    box-pack:justify;
+    border-right: 1px solid #000;
+}
+.a4 .tab-title,.a4 .table-body{
+    width: 100%;
+    border:1px solid #000;
+    border-right:none;
+}
+.a4 .tab-title{
+    border-bottom: none;
+}
+.a4 .table-body{
+    border-top:none;
+}
+/*80mm*/
+.eight-size{
+    width: 302px;
+    background: #fff;
+    height: auto;
+    font-size: 14px;
+}
+.eight-size .tab-title,.eight-size .table-body{
+    width: 100%;
+}
+.eight-size .content-title{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 10px;
+    width: 95%;
+    margin:0 auto;
+    white-space:nowrap;
+    overflow: hidden;
+}
+.eight-size .content-top{
+    padding: 0 10px;
+}
+.eight-size .content-top .top-list{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 5px;
+    word-wrap:break-word;
+    word-break:break-all;
+}
+.eight-size .content-top .list-title{
+    display: inline-block;
+    float: left;
+}
+.eight-size .content-body{
+    border-top: 1px solid #000;
+    margin: 0 10px;
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    overflow: hidden;
+}
+.eight-size .table-list{
+    display: inline-block;
+}
+.eight-size .content-footer{
+    margin:0 10px;
+    border-top:1px dashed #000;
+}
+.eight-size .footer-text{
+    clear: both;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+}
+.eight-size .content-footer .footer-list{
+    padding-top: 5px;
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+}
+.eight-size .content-footer .footer-title,.eight-size .content-footer .footer-val{
+    display: inline-block;
+    float: left;
+}
+.eight-size .table-title{
+    border-bottom: 1px dashed #000;
+    padding: 5px 0;
+    display: inline-block;
+    text-align: center;
+    word-wrap:break-word;
+    box-pack:justify;
+}
+.eight-size .table-val{
+    padding: 5px 0;
+    display: inline-block;
+    text-align: center;
+    word-wrap:break-word;
+    box-pack:justify;
+}
+.eight-size .table-list .table-val{
+    padding: 5px 0;
+}
+/*58mm*/
+.five-size{
+    width: 219px;
+    background: #fff;
+    font-size: 12px;
+}
+.five-size .tab-title,.eight-size .table-body{
+    width: 100%;
+}
+.five-size .content-title{
+    padding: 10px 0;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    width: 95%;
+    margin:0 auto;
+    white-space:nowrap;
+    overflow: hidden;
+}
+.five-size .content-top{
+    margin:0 5px auto;
+}
+.five-size .content-top .top-list{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 5px;
+    word-wrap:break-word;
+    word-break:break-all;
+}
+.five-size .list-title{
+    display: inline-block;
+    float: left;
+}
+.five-size .content-body{
+    border-top: 1px solid #000;
+    margin: 0 5px;
+    height: auto;
+    overflow: hidden;
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+}
+.five-size .body-table{
+    width:100%;
+    border-top:1px solid #000 ;
+    display: flex;
+    flex-direction:row;
+}
+.five-size .content-footer{
+    border-top:1px dashed #000;
+    margin: 0px 10px 5px;
+}
+.five-size .footer-text{
+    clear: both;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+}
+.five-size .content-footer .footer-list{
+    padding-top: 5px;
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+}
+.five-size .content-footer .list-title,.five-size .content-footer .title-val{
+    display: inline-block;
+    float: left;
+}
+.five-size .table-title{
+    border-bottom: 1px dashed #000;
+    padding: 5px 0;
+    display: inline-block;
+    text-align: center;
+    word-wrap:break-word;
+    box-pack:justify;
+}
+.five-size .table-val{
+    padding: 5px 0;
+    display: inline-block;
+    text-align: center;
+    word-wrap:break-word;
+    box-pack:justify;
+}
+.five-size .table-list .table-val{
+    padding: 5px 0;
+}
+
+
+

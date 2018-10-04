@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工资设置</title>
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/bootstrap-table/bootstrap-table.min.css"/>
+	<link rel="stylesheet" href="css/common.css">
+	<style>
+		body{
+			min-width: 1200px;
+		}
+
+		.contain{
+			padding-left:55px;
+			font-family: '微软雅黑'; 
+		}
+
+		.line::before{
+			display: inline-block;
+		    content: '';
+		    width: 3px;
+		    height: 20px;
+		    background: #ffa500;
+		    margin-right: 5px;
+		    vertical-align: sub;
+
+		}
+
+		.line {
+		    font-size: 16px;
+		    font-weight: normal;
+		    color: #ffa500;
+		    padding: 10px 0;
+		}
+		
+		.activityTab table{
+			width: 80%;
+		}
+
+		.activityTab table tbody tr{
+			border-bottom: 1px solid #eee;
+		}
+
+		.activityTab table th{
+			background: #eee;
+			color:#666;
+		}
+		
+		.activityTab table th,.activityTab table td{
+			width: 25%;
+			text-align: center;
+			padding:10px 0;
+			font-size: 15px;
+		}
+
+		.activityTab table td input{
+			height: 30px;
+			width: 60%;
+			padding-left: 5px;
+		}
+		
+		.activityTab table td span{
+			display: inline-block;
+			height: 30px;
+			line-height: 28px;
+			width: 15%;
+			text-align: center;
+			border:1px solid #a9a9a9;
+			border-left:0;
+			vertical-align: bottom;
+		}
+
+		.submitBtn{
+			display: inline-block;
+		    background: #ffa500;
+		    padding: 5px 10px;
+		    color: #fff!important;
+		    border-radius: 3px;
+		}
+	</style> 
+	
+</head>
+<body>
+	<div class="contain">
+		<div class="navs">
+			<a class="base_salary">基础薪资板块</a>
+			<a class="recruitment_salary">招聘薪资板块</a>
+			<a class="talk_salary">拓客薪资板块</a>
+			<a class="service_salary">服务薪资板块</a>
+			<a class="management_salary">管理薪资板块</a>
+			<a class="activity_salary active">活动薪资板块</a>
+		</div>
+		
+		<div class="activity">
+			<div class="line">PK奖设置</div>
+			<div class="activityTab">
+				<table>
+					<thead>
+						<tr>
+							<th>类型</th>
+							<th>基准业绩额</th>
+							<th>奖金</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="people">
+							<td class="type" type="1">个人</td>
+							<td>
+								<input type="text" class="baseResult" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)"><span>元</span>
+							</td>
+							<td>
+								<input type="text" class="money" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)"><span>元</span>
+							</td>
+							<td>
+								<a href="javascript:;" class="submitBtn" onclick="submitBtn(this)">提交</a>
+							</td>
+						</tr>
+						<tr class="team">
+							<td class="type" type="2">团体</td>
+							<td>
+								<input type="text" class="baseResult" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)"><span>元</span>
+							</td>
+							<td>
+								<input type="text" class="money" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)"><span>元</span>
+							</td>
+							<td>
+								<a href="javascript:;" class="submitBtn" onclick="submitBtn(this)">提交</a>
+							</td>
+						</tr>
+						<tr class="shop">
+							<td class="type" type="3">店面</td>
+							<td>
+								<input type="text" class="baseResult" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)"><span>元</span>
+							</td>
+							<td>
+								<input type="text" class="money" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)"><span>元</span>
+							</td>
+							<td>
+								<a href="javascript:;" class="submitBtn" onclick="submitBtn(this)">提交</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<script src="../../assets/jquery/jquery.min.js"></script>
+	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../assets/layer/layer.js"></script>
+
+	<!-- bootstrap-table -->
+	<script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+	<script src="js/common.js"></script>
+
+
+	<script>
+		var merchantId = getQueryString('merchantId');
+
+		// 根据商户ID获取商户下pk奖列表
+		var def = reqAjax('shop/newsalary/getPKBonusByMerchantId', {
+	   	    merchantId : merchantId
+	   	});
+	   	def.then(function(data){
+	   		if(data.code == 1){
+	   			var data = data.data;
+	   			for(var i = 0;i<data.length;i++ ){
+	   				console.log();
+	   				if(data[i].type == 1){
+	   					$('.people').attr({'keyId':data[i].id});
+	   					$('.people .baseResult').val(data[i].value);
+	   					$('.people .money').val(data[i].bonus);
+	   				}else if(data[i].type == 2){
+	   					$('.team').attr({'keyId':data[i].id});
+	   					$('.team .baseResult').val(data[i].value);
+	   					$('.team .money').val(data[i].bonus);
+
+	   				}else if(data[i].type == 3){
+	   					$('.shop').attr({'keyId':data[i].id});
+	   					$('.shop .baseResult').val(data[i].value);
+	   					$('.shop .money').val(data[i].bonus);
+	   				}
+	   			}
+	   			
+	   			
+	   		}else{
+	   			layer.msg(data.msg,{icon:2});
+	   		}
+	   	})
+
+
+	   	// 提交按钮
+	   	function submitBtn(self){
+
+	   		var bonus = $(self).parent().parent().find('.money').val();
+	   		var id = $(self).parent().parent().attr('keyId') != undefined ? $(self).parent().parent().attr('keyId') : '';
+	   		var type = $(self).parent().parent().find('.type').attr('type');
+	   		var value = $(self).parent().parent().find('.baseResult').val();
+
+	   		if(value.trim('') == ''){
+	   			layer.msg('基准业绩额！',{icon:2});
+	   			return;
+	   		}
+
+	   		if(bonus.trim('') == ''){
+	   			layer.msg('奖金不能为空！',{icon:2});
+	   			return;
+	   		}
+
+	   		
+
+	   		// 新增或修改pk奖保存
+			var def = reqAjax('shop/newsalary/addOrUpdatePKBonus', {
+		   	      "scSalaryPKbonus": [
+			        {
+			            "merchantId": merchantId,//商户主键
+			            "bonus": bonus,//pk奖金
+			            "id": id,//主键值
+			            "shopId": "",//店铺主键
+			            "type": type,//类型1-个人 2-团队 3-店铺
+			            "value": value//PK基准值
+			        }
+			    ]
+		   	});
+		   	def.then(function(data){
+		   		if(data.code == 1){
+		   			layer.msg(data.msg,{icon:1});
+		   			location.reload();
+		   		}else{
+		   			layer.msg(data.msg,{icon:2});
+		   		}
+		   	})
+	   	}
+
+	   	// 金额 校验
+		function moneyCheck(self){
+		    if($(self).val().length <= 8){
+		        if($(self).val().length==1){
+		            $(self).val($(self).val().replace(/[^0-9]/g,''));
+		        } else {
+		            $(self).val($(self).val().replace(/[^0-9.]/g,''));
+		            $(self).val($(self).val().replace(/\.{2,}/g,"."));
+		            $(self).val($(self).val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+
+		            if($(self).val().split('.')[1] != undefined && $(self).val().split('.')[1].length > 2){
+				      	$(self).val($(self).val().split('.')[0] +'.'+ $(self).val().split('.')[1].substring(0,2));
+				    }
+		        }
+
+		    }else{
+		        $(self).val($(self).val().replace(/[^0-9.]/g,''));
+		        $(self).val($(self).val().replace(/\.{2,}/g,"."));
+		        $(self).val($(self).val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+
+		        // 整数 金额超过 8 位
+		        if($(self).val() > 99999999.99){
+		            $(self).val($(self).val().substring(0,8));
+		        }
+
+		        if($(self).val().split('.')[1] != undefined && $(self).val().split('.')[1].length > 2){
+			      	$(self).val($(self).val().split('.')[0] +'.'+ $(self).val().split('.')[1].substring(0,2));
+			    }
+		    }
+		}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+.jurisdiction-content{
+    margin: 5px 0 0 10px;
+    height: 100%;
+    background: #fff;
+}
+.jurisdiction-content .jurisdiction-title{
+    height: 36px;
+    line-height: 36px;
+    width: 100%;
+    background: #f8f7f7;
+    color:#666;
+    border: 1px solid #e5e5e5;
+    padding-left: 10px;
+}
+.jurisdiction-title span:first-child{
+    font-size: 14px;
+}
+.jurisdiction-title span:last-child{
+    font-size: 12px;
+}
+.jurisdiction-content .jurisdiction-left{
+    width: 305px;
+    height: 100%;
+    float: left;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.jurisdiction-left .jurisdiction-trees{
+    width: 100%;
+}
+.jurisdiction-trees .trees-title{
+    height: 40px;
+    line-height: 38px;
+    width: 100%;
+    background: #eeeeee;
+    padding: 0 10px;
+}
+.trees-title button:nth-child(2){
+    display: none;
+}
+.trees-title .layui-btn+.layui-btn{
+    margin:0;
+}
+.jurisdiction-trees .trees-box{
+    width: 100%;
+    height: auto;
+}
+.trees-box h4{
+    width: 100%;
+    height: 28px;
+    line-height: 30px;
+    text-indent: 10px;
+    background: #dcdcdc;
+    font-size: 14px;
+    color: #333333;
+    cursor: pointer;
+}
+.ztree{
+    /* height: 760px; */
+    overflow: auto;
+}
+/*right*/
+.jurisdiction-right{
+    margin-left: 315px;
+    margin-right: 5px;
+    width: auto;
+    height: 100%;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.jurisdiction-right .addcontent{
+    width: 100%;
+    position: relative;
+}
+
+.addcontent .addcontent-table{
+    position: absolute;
+    height: 100%;
+    padding: 30px 0;
+}
+.addcontent-table .layui-form-item{
+    width: 620px;
+}
+/*表单修改*/
+.layui-form-label{
+    width: 115px;
+}
+.layui-input-block{
+    margin-left: 115px;
+}
+.tip{
+    display: inline-block;
+    color: red;
+    margin: 5px 0 0;
+}
+
+fieldset {
+    font-family: sans-serif;
+    
+    
+    height:500px;
+    padding: 15px;
+}
+
+fieldset legend {
+    
+    color: #fff;
+    padding: 15px 10px ;
+    width: 100px;    
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.required-icon {
+    color: #ff0000;
+  }
+[v-cloak] {
+    display: none;
+}
+.jurisdiction-right blockquote {
+    font-weight: bolder;
+}
+.jurisdiction-right .layui-elem-quote
+{
+    padding: 9px;
+    border-left: 5px solid #ccc;
+}
+
+
+.jurisdiction-right .checks{
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin-top:10px;
+}
+
+
+
+
+/* 菜单节点样式 */
+
+.ztree * {
+	font-size: 14px!important;
+}
+
+.ztree li a {
+	line-height: 20px!important;
+	height: 20px!Important;
+}
+
+.ztree li a:hover {
+	background: #BBDDFF;
+}
+
+.ztree li span.button.ico_docu {
+	vertical-align: middle!important;
+}
+
+li.level0 {
+	margin-top: 5px!important;
+}

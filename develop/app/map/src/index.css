@@ -1,0 +1,523 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font: 12px/16px Verdana, Helvetica, Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    resize: both;
+    position: relative;
+}
+
+
+/* 默认label颜色 */
+
+.amap-icon img {
+    width: 30px;
+    height: 35px;
+}
+
+.amap-marker-label {
+    border: 0;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+
+/* 加载动画 */
+
+.loading {
+    display: none;
+    width: 100px;
+    height: 60px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -30px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 16px;
+}
+
+.tab {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    z-index: 99999;
+}
+
+.tab .bg {
+    width: 100%;
+    height: 6px;
+    background: #f3f2f2;
+}
+
+.tab ul li {
+    line-height: 34px;
+    float: left;
+    color: #ccc;
+    /* margin-left: 20px; */
+    margin-left: 15px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.tab ul li.active {
+    font-size: 14px;
+    color: #f30;
+}
+
+.swiper {
+    position: fixed;
+    width: 100%;
+    height: 250px;
+    z-index: 999999;
+    left: 0;
+    bottom: -410px;
+}
+
+.swiper-title-span-wjzq {
+    color: #fdb802;
+}
+
+.swiper-title-span-hd {
+    color: #ff3670;
+}
+
+.swiper-head-img {
+    width: 25px;
+    vertical-align: middle;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.swiper .swiper-head {
+    text-align: center;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 10px;
+}
+
+.swiper a.share img {
+    width: 25px;
+    height: 5px;
+}
+
+.swiper a.share {
+    margin-right: 15px;
+}
+
+.swiper-container {
+    width: 100%;
+    /* height: 200px; */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.swiper-content-hd {
+    position: relative;
+}
+
+.swiper-slide {
+    background: #fff;
+    width: 86%;
+    height: 250px;
+}
+
+.swiper-title {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.swiper-title img.avator {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    border-radius: 50%;
+    background: #ccc;
+    margin-left: 10px;
+}
+
+.swiper-title .name {
+    width: 55%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+a.shop {
+    position: absolute;
+    bottom: 0;
+    border-radius: 12px;
+    background: rgb(255, 66, 60);
+    padding: 5px 8px;
+    color: #fff;
+    box-shadow: 1px 2px 4px rgb(255, 66, 60);
+}
+
+.swiper .swiper-content {
+    position: relative;
+    height: 55px;
+    margin: 10px 10px 20px;
+}
+
+.swiper .description {
+    width: 210px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.swiper .address {
+    height: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.swiper .address img {
+    width: 11px;
+    height: 16px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: -3px;
+}
+
+.swiper .phone img {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: -1px;
+}
+
+.swiper .border {
+    height: 1px;
+    background: #e1e1e1;
+    margin: 0 10px;
+    clear: both;
+}
+
+.swiper-bottom {
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 50px;
+}
+
+.swiper .swiper-bottom-left {
+    width: calc(100% - 45px);
+    line-height: 20px;
+}
+
+.swiper .nav {
+    width: 30px;
+    height: 30px;
+    background: url(./img/yundian_ditu_daohangbtn.png) no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+/* lx新增样式 */
+.ellipsis{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.activity .swiper-title{
+    height: 135px;
+}
+.activity .swiper-title .name{
+    background: url(./img/mengceng.png) no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 16px 50px 16px 16px;
+    box-sizing: border-box;
+}
+.activity .swiper-title .name .title{
+    font-size: 16px;
+    color: #333;
+}
+.activity .swiper-title .name .time{
+    padding: 1rem 0;
+    color: #666;
+}
+.activity .swiper-bottom{
+    height: auto;
+}
+.activity .btn{
+    position: absolute;
+    left: 16px;
+    bottom: 20px;
+}
+.activity .address{
+    margin-top: 5px;
+}
+
+/* 通用样式 */
+.header{
+    display: block;
+    padding: 16px;
+    text-align: center;
+}
+.header-icon {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+.header-title{
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    vertical-align: middle;
+    letter-spacing: 1px;
+}
+.user-content{
+    display: block;
+    padding: 0 16px 16px 16px;
+}
+.user-content .thumbnail{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    vertical-align: middle
+}
+.user-content .vertical-center{
+    display: inline-block;
+    padding-left: 5px;
+    vertical-align: middle
+}
+.user-content .user-name{
+    display: block;
+    padding: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+.user-content .user-text{
+    display: block;
+    font-size: 12px;
+    color: #666;
+}
+.user-content .shop-icon{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+    background-image: url(./img/icon_dianpu.png);
+    margin-right: 5px;
+}
+.user-content .stars{
+    display: none;
+}
+.detail-content{
+    position: relative;
+    display: block;
+    height: 75px;
+    margin: 0 16px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+}
+.detail-content .detail-tag{
+    float: left;
+    margin-right: 8px;
+    padding: 0 5px;
+    background: url(./img/btn_jianbian.png) no-repeat;
+    background-size: 100% 100%;
+    line-height: 1.5;
+    color: #fff;
+    border-radius: 4px;
+}
+.detail-content>p{
+    line-height: 1.5;
+    color: #666;
+    word-wrap: break-word;
+    max-height: 100%;
+    overflow: hidden;
+    border-bottom: 38px solid transparent;
+    box-sizing: border-box;
+}
+.detail-content .detail-icon{
+    position: absolute;
+    display: block;
+    padding: 5px 8px;
+    bottom: 10px;
+    right: 0;
+    border-radius: 12px;
+    background: rgb(255, 66, 60);
+    color: #fff;
+    box-shadow: 1px 2px 4px rgb(255, 66, 60);
+    text-decoration: none;
+}
+.detail-content .hd-title, .detail-content .hd-time{
+    display: none;
+}
+/* 几个图标 */
+.icon-star, .icon-address, .icon-phone, .icon-business{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+    background-image: url(./img/icon_xing.png);
+}
+.icon-star.off{
+    background-image: url(./img/icon_xing2.png);
+}
+.icon-star.half{
+    background-image: url(./img/iconfont-xingxing3.png);
+}
+.icon-address{
+    height: 18px;
+    margin-right: 5px;
+    background-image: url(./img/icon_dizhi.png);
+}
+.icon-phone{
+    margin-right: 5px;
+    background-image: url(./img/icon_tonghua.png);
+}
+.icon-business{
+    float: right;
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    background-image: url(./img/icon_biao_shangjiaquan.png);
+}
+.footer{
+    display: block;
+    padding: 8px 16px;
+}
+.footer .price, .footer .stars{
+    display: none;
+}
+.footer .stars{
+    color: #666;
+}
+.footer .address span, .footer .phone span{
+    color: #666;
+    vertical-align: middle
+}
+
+/* 差异化样式 */
+/* 约吧 */
+.yb .header-icon{
+    background-image: url(./img/chw_yb_xiao.png);
+}
+.yb .header-title{
+    color: #11d9dd;
+}
+.yb .footer .price{
+    display: block;
+    font-size: 14px;
+    color: #ff8001;
+}
+.yb .footer .price, .yb .footer .stars{
+    display: block;
+}
+/* 云店 */
+.yd .header-icon{
+    background-image: url(./img/chw_yd_xiao.png);
+}
+.yd .header-title{
+    color: #fd8651;
+}
+.yd .user-content .stars{
+    display: block;
+}
+/* 活动样式太多，需要更多定义 */
+.hd .header-icon{
+    background-image: url(./img/chw_hd.png);
+}
+.hd .header-title{
+    color: #f6486f;
+}
+.hd .user-content{
+    display: none;
+}
+.hd .detail-content{
+    height: 142px;
+    background-size: 100%;
+    background-position: center;
+}
+.hd .hd-content{
+    display: block;
+    height: 100%;
+    padding: 0;
+    background: url(./img/mengceng.png) no-repeat;
+    background-size: 100%;
+}
+.hd .hd-title{
+    display: block;
+    padding: 16px 50px 0 0;
+    font-size: 16px;
+    color: #333;
+}
+.hd .hd-time{
+    display: block;
+    padding: 1rem 0;
+    color: #999;
+}
+.hd .detail-icon{
+    left: 0;
+    right: auto;
+}
+/* 圈子 */
+.qz .header-icon{
+    background-image: url(./img/chw_qz_xiao.png);
+}
+.qz .header-title{
+    color: #fe496d;
+}
+/* 玩家挣钱 */
+.wjzq .header-icon{
+    background-image: url(./img/chw_wjzq_xiao.png);
+}
+.wjzq .header-title{
+    color: #fcba03;
+}

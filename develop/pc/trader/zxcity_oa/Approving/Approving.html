@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+  <title>审批流程</title>
+  <link rel="stylesheet" type="text/css" href="../common/css/layui-v2.1.5/css/layui.css">
+  <link rel="stylesheet" type="text/css" href="css/approval.css">
+  <link rel="stylesheet" type="text/css" href="../common/js/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" type="text/css" href="../common/js/zTree_v3/css/myStyle/myStyle.css">
+</head>
+<body>
+<!--主页内容-->
+<div class="all">
+  <ul class="cheackall">
+    <li>全部</li>
+    <li>请假审批</li>
+    <li>报销审批</li>
+    <li>出差审批</li>
+  </ul>
+
+  <ul class="head">
+    <li  class="active">
+
+      我提交的
+    </li>
+    <li>
+      我审批的
+    </li>
+    <li class="toProval">
+      <a>发起审批</a>
+    </li>
+    <li>
+      全部
+      <img src="../images/click.png" alt="">
+    </li>
+  </ul>
+  <div class="content">
+    <p class="title">
+      <a class="hasTo">待我审批</a>
+      <a class="hasProvaled active">我已审批</a>
+    </p>
+    <div class="centre">
+      <!--<ul class="detailBox ">-->
+        <!--<li>-->
+          <!--<img src="../images/icon-1.png" alt="">-->
+          <!--<img src="" alt="">-->
+          <!--<img src="../images/icon-2.png" alt="">-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<a href="">杨思洋</a>-->
+          <!--<b>今天14:32提交了</b>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<a href="">请假申请：1.5天</a>-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<span>-->
+          <!--非常紧急-->
+        <!--</span>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--待审批-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<a class="btnDetails">查看详情</a>-->
+          <!--&lt;!&ndash;<a class="del">删除</a>&ndash;&gt;-->
+          <!--&lt;!&ndash;<a class="toEdit">编辑</a>&ndash;&gt;-->
+        <!--</li>-->
+      <!--</ul>-->
+    </div>
+    <div id="pageNo"></div>
+  </div>
+</div>
+
+<!--详情弹出框-->
+<div id="details-1" style="display: none">
+  <div class="topPrat">
+    <!--<div class="divtitle">-->
+      <!--<span>请假审批</span>-->
+      <!--<b class="level-3">非常紧急</b>-->
+    <!--</div>-->
+    <!--<div class="base-info">-->
+      <!--<p class="inform">-->
+        <!--<a>刘洋</a>-->
+        <!--<span>2012-06-03</span>-->
+      <!--</p>-->
+      <!--<table class="table table-border">-->
+        <!--<tr>-->
+          <!--<td>-->
+            <!--<span class="flag">*</span>审批类型-->
+          <!--</td>-->
+          <!--<td>请假审批</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+          <!--<td>-->
+            <!--<span class="flag">*</span>请假类型-->
+          <!--</td>-->
+          <!--<td>事假</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+          <!--<td>-->
+            <!--<span class="flag">*</span>请假时间-->
+          <!--</td>-->
+          <!--<td>2017-10-03-&#45;&#45;217-11-04</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+          <!--<td>-->
+            <!--<span class="flag">*</span>请假天数-->
+          <!--</td>-->
+          <!--<td> 1.5 天</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+          <!--<td>-->
+            <!--<span class="flag">*</span>审批模板-->
+            <!--<p>111</p>-->
+            <!--<p>222</p>-->
+          <!--</td>-->
+          <!--<td>经典模板</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+          <!--<td>-->
+            <!--<span class="flag">*</span>请假原因-->
+          <!--</td>-->
+          <!--<td> 家里有事</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+          <!--<td class="detailPic">-->
+            <!--图片-->
+          <!--</td>-->
+          <!--<td> 家里有事</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+          <!--<td class="detailFile">-->
+            <!--附件-->
+          <!--</td>-->
+          <!--<td> 家里有事</td>-->
+        <!--</tr>-->
+      <!--</table>-->
+    <!--</div>-->
+  </div>
+ <div class="bottomPart">
+   <div class="recording">
+     <p>
+       <i class="layui-icon">&#xe62d;</i>
+       <span>审批记录</span>
+     </p>
+     <table class="table" >
+       <thead>
+       <tr>
+         <th>处理人</th>
+         <th>执行操作</th>
+         <th>时间</th>
+       </tr>
+       </thead>
+       <tbody>
+       <!--<tr>-->
+         <!--<td>-->
+           <!--王思雨-->
+         <!--</td>-->
+         <!--<td>-->
+           <!--审批中-->
+         <!--</td>-->
+         <!--<td>-->
+           <!--2017-10-08 19:00-->
+         <!--</td>-->
+       <!--</tr>-->
+       </tbody>
+     </table>
+   </div>
+ </div>
+
+
+</div>
+
+<!--发起审批弹框-->
+<div id="details-2">
+  <form class="layui-form">
+    <div class="layui-form-item">
+      <label class="layui-form-label"><span class="flag">*</span>审批类型：</label>
+      <div class="layui-input-block">
+        <select>
+          <option value="1">请假审批</option>
+        </select>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label"><span class="flag">*</span>请假类型：</label>
+      <div class="layui-input-block">
+        <select>
+          <option value="1">事假</option>
+          <option value="2">病假</option>
+          <option value="3">调休</option>
+          <option value="4">婚假</option>
+          <option value="5">丧假</option>
+          <option value="6">工伤假</option>
+        </select>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label"><span class="flag">*</span>请假时间：</label>
+      <div class="layui-input-block">
+        <input id="chooseTime" type="text"  lay-filter="chooseTime" class="layui-input " readonly="readonly" placeholder="请选择请假时间">
+      </div>
+    </div>
+
+    <!--<div class="layui-form-item">-->
+      <!--<label class="layui-form-label"><span class="flag">*</span>请假时长：</label>-->
+      <!--<div class="layui-input-block">-->
+        <!--<input type="text" class="layui-input" readonly="readonly" id="timer">-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="layui-form-item toCheack">
+      <label class="layui-form-label "><span class="flag">*</span>选择审批人：</label>
+      <div class="layui-input-block cheackproval">
+        <img src="../images/addperson.png" class="addPerson">
+        <div class="havePerson">
+          <span class="theHavePerson"></span>
+          <i class="layui-icon delHavePerson">&#x1006;</i>
+        </div>
+        <input data-value="0" type="checkbox" class="email"  lay-filter="email"
+                title="是否发送邮件通知" lay-skin="primary">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">优先级：</label>
+      <div class="layui-input-block levelType">
+        <span class="level-item active" data-priorityLevel="1">普通</span>
+        <span class="level-item " data-priorityLevel="2">紧急</span>
+        <span class="level-item" data-priorityLevel="3">非常紧急</span>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">图片：</label>
+      <div class="layui-input-block">
+        <div id="Pic" class="tocommom">
+          <img src="../images/pic.png" alt="">
+          <span>添加图片</span>
+        </div>
+        <div id="iptPic">
+
+        </div>
+        <!--<input type="text" class="layui-input toPic" readonly="readonly" >-->
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">附件：</label>
+      <div class="layui-input-block">
+        <div id="File" class="  tocommom">
+          <img src="../images/file.png" alt="">
+          <span>添加附件</span>
+        </div>
+        <div id="iptFile">
+          <!--<div class="fileShow">-->
+          <!--<img src="../images/z.png" alt="">-->
+          <!--<span class="name"></span>-->
+          <!--<a>2016ddd</a>-->
+          <!--<i class=" delFile layui-icon">&#x1006;</i>-->
+          <!--</div>-->
+        </div>
+
+      </div>
+    </div>
+
+    <textarea name="" maxlength="50" required lay-verify="required" placeholder="请输入请假理由"
+              class="layui-textarea reason"></textarea>
+  </form>
+</div>
+
+<!--选择审批人-->
+<div id="details-3" style="display: none;">
+  <div class="left-nav">
+
+    <ul id="treeDemo1" class="ztree"></ul>
+  </div>
+
+  <div class="right-content">
+    <form class="layui-form">
+      <img src="../images/search.png" class="searchBtn">
+      <input type="text" name="" placeholder="请输入员工姓名" maxlength="15" autocomplete="off" class="layui-input toChoose">
+      <table class="table1 layui-table"  lay-even>
+        <colgroup>
+          <col width="100">
+          <col width="120">
+          <col width="65">
+          <col width="150">
+          <col width="150">
+          <col>
+        </colgroup>
+        <thead>
+        <tr>
+          <th>账号</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>手机号</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <!--<tr>-->
+        <!--<td>lihong</td>-->
+        <!--<td>李红</td>-->
+        <!--<td>女</td>-->
+        <!--<td>18627170643</td>-->
+        <!--<td>-->
+        <!--<span class="btn btn-info">选择</span>-->
+        <!--</td>-->
+        <!--</tr>-->
+        </tbody>
+      </table>
+    </form>
+    <textarea name="" required lay-verify="required" maxlength="40" placeholder="请输入转交备注"
+              class="layui-textarea remark"></textarea>
+    <div class="toEmail">
+      <input class="emailBox" type="checkbox">
+      <span>是否发送邮件通知</span>
+    </div>
+
+    <div id="paging-box-r"></div>
+  </div>
+
+</div>
+
+
+<div id="fakeBtn">
+
+</div>
+
+<script type="text/javascript" src="../common/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../common/css/layui-v2.1.5/layui.all.js"></script>
+<script type="text/javascript" src="../common/js/util.js"></script>
+<script type="text/javascript" src="../common/js/zTree_v3/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" charset="utf-8" src="../common/js/plupload-2.3.1/js/moxie.js"></script>
+<script type="text/javascript" charset="utf-8" src="../common/js/plupload-2.3.1/js/plupload.full.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../common/js/plupload-2.3.1/js/i18n/zh_CN.js"></script>
+<script type="text/javascript" src="../common/js/upload.js"></script>
+<script type="text/javascript" src="js/approval.js"></script>
+</body>
+</html>

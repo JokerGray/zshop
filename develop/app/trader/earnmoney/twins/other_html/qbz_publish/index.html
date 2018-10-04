@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>发布抢标赚</title>
+
+	<link href="../../../../assets/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="../../../../assets/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../../assets/hplus/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+    <link href="../../../../assets/hplus/css/animate.min.css" rel="stylesheet">
+    <link href="../../../../assets/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	<link rel="stylesheet" href="index.css">
+    <!-- jquery -->
+    <script type="text/javascript" src="../../../../assets/hplus/js/jquery.min.js"></script>
+   
+    <!--layer弹出层插件-->
+    <script type="text/javascript" src="../../../../assets/layer/layer.js"></script>
+  
+    <!-- 通用JS工具类 -->
+    <script type="text/javascript" src="../../../../assets/_common/zxcity_ms.js"></script>
+
+    <!-- jquery validate -->
+    <script type="text/javascript" src="../../../../assets/hplus/js/plugins/validate/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../../../../assets/_common/validate_expand.js"></script>
+    <script type="text/javascript" src="../../../../assets/hplus/js/plugins/validate/messages_zh.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/common/jquery_validate.css"></link>
+
+    <!-- iCheck选择框样式 -->
+    <link href="../../../../assets/hplus/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <script src="../../../../assets/hplus/js/plugins/iCheck/icheck.min.js"></script>
+
+	<!-- 弹层title样式统一 -->
+	<link rel="stylesheet" href="../../../../assets/check_index/layer/skin/default/layer.css">
+
+</head>
+<body>
+	<div class="myTitle text-center text-info"> 发布抢标赚 </div>
+	<input type="hidden" id="msg" value="">
+	<form class="myForm" id="inputForm" enctype="multipart/form-data" method="post">
+		<input type="hidden" value="573" name="userId" id="userId" />
+		<input type="hidden" value="" name="userName" id="userName" />
+		
+		<div class="form-group">
+			<label for="shopId">选择店铺</label>
+			<select class="form-control" name="shopId" id="shopId" onchange="dataInteract()">
+	        	<option value="" data-userpic=""></option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="taskTitle">任务标题 <span class="explain text-warning">(只能输入18个字)</span></label>
+			<input id="taskTitle" name="taskTitle" type="text" class="writeContent form-control" maxlength="18" placeholder="如：汽车老司机帮忙运货" onblur="checkStata($(this))">
+			<div class="tipinfo">
+				<div class="empty">
+					<i class="fa fa-times-circle"></i>必填
+				</div>
+				<div class="writeErrow"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-xs-5">
+				<label for="taskPrice">抢标价格（元） <span class="explain text-warning">(抢标任务的人均价格)</span></label>
+				<!--<input id="taskPrice" name="taskPrice" type="text" class="taskPrice form-control required isMoney" maxlength="7" placeholder="如：300.00 元" >-->
+				<input id="taskPrice" name="taskPrice" type="text" class="writeContent taskPrice form-control" maxlength="7" placeholder="如：300.00 元"  onblur="checkStata($(this))">
+				<div class="tipinfo">
+					<div class="empty">
+						<i class="fa fa-times-circle"></i>必填
+					</div>
+					<div class="writeErrow"></div>
+				</div>
+			</div>
+			<div class="form-group col-xs-5">
+				<label for="taskNeedPerson">总需人数 （人）<span class="explain text-warning">(完成任务一共需要多少人)</span></label>
+				<!--<input id="taskNeedPerson" name="taskNeedPerson" type="text" class="taskNeedPerson form-control required oneToNightNight" maxlength="2" placeholder="如：20">-->
+				<input id="taskNeedPerson" name="taskNeedPerson" type="text" class="writeContent taskNeedPerson form-control" maxlength="2" placeholder="如：20" onblur="checkStata($(this))">
+				<div class="tipinfo">
+					<div class="empty">
+						<i class="fa fa-times-circle"></i>必填
+					</div>
+					<div class="writeErrow"></div>
+				</div>
+			</div>
+			<div class="form-group col-xs-2" style="padding-left: 0;padding-right: 0;">
+				<label for="taskNeedPerson">总计 </label>
+				<span class="form-control" style="border: none;padding-left: 0;padding-right: 0;"><span id="totalCount">0</span> 元</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="taskDemand">任务需求 <span class="explain text-warning">(详细说明这次任务的具体要求)</span></label>
+			<textarea id="taskDemand" name="taskDemand" class="writeContent form-control" placeholder="如：需要从A城市的A区早上8:00送货到B城B区" rows="10" cols="" onblur="checkStata($(this))"></textarea>
+			<div class="tipinfo">
+				<div class="empty">
+					<i class="fa fa-times-circle"></i>必填
+				</div>
+				<div class="writeErrow"></div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="">任务照片 <span class="explain text-warning">(能更好地说明任务内容的照片)</span></label>
+			
+			<div class="row" id="imgContentAll"></div>
+		</div>
+		
+		<div class="text-right">
+			<button type="button" class="btn btn-info" id="submitBtn" onclick="checkForm()"> 提 交 </button>
+			<button type="button" class="btn btn-default" onclick="parent.window.closeAddPage()"> 取 消 </button>
+		</div>
+	</form>
+
+	<script id="tpl" type="text/html">
+		<div class="col-xs-3">
+			<div class="imgContent text-info">
+				<div class="imgClose" style="display: none;"><i class="fa fa-close" onclick="closeImg(this)"></i></div>
+				<div class="imgNoSrc text-center">
+					<p><i class="fa fa-plus fa-2x"></i></p>
+					<p>添加照片</p>
+				</div>
+				<img class="imgShow"/>
+			</div>
+		</div>
+	</script>
+
+    <!-- jSCommon -->
+	<script src="../../../../assets/plupload-2.3.1/js/moxie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../../assets/plupload-2.3.1/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../../assets/plupload-2.3.1/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../src/js/common.js"></script>
+	<script src="index.js"></script>
+</body>
+</html>

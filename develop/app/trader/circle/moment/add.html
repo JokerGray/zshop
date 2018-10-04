@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <title>圈子-发布动态</title>
+  <link rel="stylesheet" type="text/css" href="../../assets/bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../../assets/layer/mobile/need/layer.css">
+  <link rel="stylesheet" href="../../assets/select2-v4.0.6/css/select2.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div id="moment" class="allWrapper">
+    <div class="main-title">发布动态</div>
+    <div class="content">
+      <div class="head">
+        <label class="control-label title">动态内容</label>
+        <input type="text" class="form-control" id="momentTitle" placeholder="请输入动态标题(4~25字以内)" maxlength="25" minlength="4"> 
+      </div>
+      <div class="tabBox">
+        <span id="pic" class="tab active">图文动态</span>
+        <span id="video" class="tab">视频动态</span>
+      </div>
+      <div id="picBox" class="box">
+        <textarea id="momentEdit" name="content" style="width:600px;height:160px;" class="form-control"></textarea>
+        <div id="addBox"><span id="add">添加图片</span></div>
+      </div>
+      <div id="videoBox" class="box" style="display:none;">
+        <textarea class="form-control" id="momentContent"></textarea>
+        <div class="upload" id="addVideo">添加视频<div id="cover"></div></div>
+      </div>
+      <div id="videoPreview" class="hideDiv"></div>
+      <div id="picPreview" class="hideDiv"></div>
+      <div id="uploadVideo" class="hideDiv"></div>
+      <div id="uploadPic" class="hideDiv"></div>
+      <label class="control-label title">所属圈子</label>
+      <div>
+        <select class="form-control" id="circleList">
+        </select>
+      </div>
+      <div class="btnBox">
+        <button class="btn btn-default" id="cancel">取消</button>
+        <button class="btn btn-default" id="save">保存</button>
+      </div>
+    </div>
+  </div>
+  <script src="../../assets/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../assets/layer/layer.js"></script>
+  <script src="../../assets/select2-v4.0.6/js/select2.full.min.js"></script>
+  <script src="../../assets/plupload-2.3.1/js/plupload.full.min.js"></script>
+  <script src="../../assets/kindeditor-4.1.7/kindeditor-all-min.js"></script>
+  <script src="../../assets/kindeditor-4.1.7/lang/zh_CN.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+</html>

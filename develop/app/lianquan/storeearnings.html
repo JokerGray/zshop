@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>脸圈收银台</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/storeearnings.css" />
+</head>
+<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/echarts.js"></script>
+<script src="js/artTemplate.js" type="text/javascript" charset="utf-8"></script>
+
+<body>
+<div class="apply_content" id="storeShow"></div>
+
+<script type="text/html" id="storeShowContent">
+	    <div>
+        <div class="column_box">
+            <div class="three_row">
+                <div class="content_box money_smallbox">
+                    <img src="img/shouyi.png" class="money"alt=""/>
+                    <span class="moneyNum"><%=data.allSum%>只</span>
+                    <span class="income">总收益（猪仔）</span>
+                </div>
+            </div>
+            <div class="three_row">
+                <div class="content_box fans_smallbox">
+                    <img src="img/shouyi.png" class="money"alt=""/>
+                    <span class="fansNum"><%=data.daySum%>只</span>
+                    <span class="followersCount">今日收益（猪仔）</span>
+                </div>
+            </div>
+            <div class="three_row">
+                <div class="content_box charm_smallbox">
+                    <img src="img/signNum.png" class="money"alt=""/>
+                    <span class="charmNum"><%=data.number%>人</span>
+                    <span class="charmValue">签约人数</span>
+                </div>
+            </div>
+        </div>
+        <div class="two_row ">
+            <div class="information_box">
+                <div class="information_smallbox" >
+
+                    <div id="person_income" style="height:500px;">
+                    </div>
+					<div class="btn-group" role="group" aria-label="...">
+					  <button type="button" class="btn btn-default " id="month1">年</button>
+					  <button type="button" class="btn btn-default" id="week1">月</button>
+					  <button type="button" class="btn btn-active" id="day1">周</button>
+					</div>                       
+                 	<div id="informationBox"></div>                   
+                </div>
+
+            </div>
+            <div class="earnings_box">
+                <div class="earnings_smallbox">
+                    <div id="income" style="height: 500px;"></div>
+                    
+					<div class="btn-group" role="group" aria-label="...">
+					  <button type="button" class="btn btn-default " id="month2">年</button>
+					  <button type="button" class="btn btn-default" id="week2">月</button>
+					  <button type="button" class="btn btn-active" id="day2">周</button>
+					</div>                      
+                </div>
+
+
+            </div>
+        </div>
+
+            <div class="rankingtide_box">
+                <div class="rankingtide_smallbox">
+                    <div id="rankingtide" style="height: 600px;">
+                    </div>
+
+					<div class="btn-group" role="group" aria-label="...">
+					  <button type="button" class="btn btn-default " id="month3">月</button>
+					  <button type="button" class="btn btn-default" id="week3">周</button>
+					  <button type="button" class="btn btn-active" id="day3">日</button>
+					</div>                     
+                    
+                </div>
+
+            </div>
+</script>
+
+<script type="text/html" id="incomeTable">
+                     	<table border="0" cellspacing="0" cellpadding="0">
+                     	<%if(data.rankings[0]){%>
+	                    		<tr>
+	                    			<td>1&nbsp;&nbsp;</td>
+	                     			<td><span style="background:#b3baff;"></span></td>
+	                    			<td><%=data.rankings[0].userName%></td>
+	                     			<td><%=data.rankings[0].percentum%>%</td> 
+	                     			<td><%=data.rankings[0].earning%>只</td>                    			
+	                    		</tr>
+                     		<%}
+                     	%>
+                     	<%if(data.rankings[1]){%>
+	                    		<tr>
+	                    			<td>2&nbsp;&nbsp;</td>
+	                     			<td><span style="background:#87eae2;"></span></td>
+	                    			<td><%=data.rankings[1].userName%></td>
+	                     			<td><%=data.rankings[1].percentum%>%</td> 
+	                     			<td><%=data.rankings[1].earning%>只</td>                    			
+	                    		</tr>
+                     		<%}
+                     	%>
+                     	<%if(data.rankings[2]){%>
+	                    		<tr>
+	                    			<td>3&nbsp;&nbsp;</td>
+	                     			<td><span style="background:#9986f9;"></span></td>
+	                    			<td><%=data.rankings[2].userName%></td>
+	                     			<td><%=data.rankings[2].percentum%>%</td> 
+	                     			<td><%=data.rankings[2].earning%>只</td>                    			
+	                    		</tr>
+                     		<%}
+                     	%>
+                    	</table>    	
+</script>
+
+</body>
+<script src="js/storeearning.js" type="text/javascript" charset="utf-8"></script>
+</html>

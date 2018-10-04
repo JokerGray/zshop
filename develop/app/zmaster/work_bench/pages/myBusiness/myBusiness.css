@@ -1,0 +1,219 @@
+@charset "UTF-8";
+ul, li, dd, dt {
+  box-sizing: border-box; }
+
+.tac {
+  text-align: center; }
+
+.h3 {
+  font-size: 4.8vw; }
+
+.p {
+  font-size: 3.7333333333vw; }
+
+.font-num {
+  font-size: 5.3333333333vw; }
+
+.c666 {
+  color: #666666; }
+
+.c999 {
+  color: #999999; }
+
+.p24 {
+  padding: 0 3.2vw; }
+
+.border-radius10 {
+  border-radius: 1.3333333333vw; }
+
+.border-radius5 {
+  border-radius: 0.6666666667vw; }
+
+.posr {
+  position: relative; }
+
+* {
+  box-sizing: border-box; }
+
+body, html {
+  width: 100%;
+  height: 100%; }
+
+body {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", '微软雅黑', Tahoma, Arial, sans-serif;
+  color: #333333; }
+
+.app {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 0; }
+
+a {
+  color: #333333; }
+
+a:hover {
+  color: #333333; }
+
+h2.tit {
+  position: relative !important;
+  width: 100%;
+  padding: 0 !important; }
+
+.tit {
+  position: relative;
+  height: 11.7333333333vw;
+  background: #fff;
+  line-height: 11.7333333333vw;
+  text-align: center;
+  font-size: 4.8vw;
+  font-weight: normal; }
+  .tit_img {
+    position: absolute;
+    left: 3.2vw;
+    top: 50%;
+    width: 3.7333333333vw;
+    height: 6.1333333333vw;
+    margin-top: -3.0666666667vw; }
+
+.container {
+  background: #f0eeee;
+  padding: 2vw; }
+
+.data_box {
+  height: 23.4666666667vw; }
+  .data_box ul {
+    height: 100%; }
+  .data_box li {
+    float: left;
+    width: 49%;
+    padding-top: 3.0666666667vw;
+    height: 100%;
+    background: #fff;
+    text-align: center; }
+  .data_box li:nth-child(2) {
+    float: right; }
+  .data_box i {
+    font-style: normal;
+    margin-right: 1.3333333333vw; }
+  .data_box p {
+    line-height: 10vw;
+    font-size: 4.8vw; }
+  .data_box span {
+    color: #999999;
+    line-height: 8.9333333333vw;
+    font-size: 3.7333333333vw; }
+
+.first_echar {
+  height: 82.6666666667vw;
+  margin: 2.6666666667vw 0;
+  border-left: none;
+  border-right: none;
+  background: #fff; }
+  .first_echar_ul {
+    padding-left: 2.1333333333vw; }
+    .first_echar_ul li {
+      float: left;
+      text-align: center;
+      padding-right: 5.6vw; }
+    .first_echar_ul a {
+      line-height: 8.9333333333vw;
+      font-size: 3.7333333333vw;
+      position: relative;
+      color: #999999; }
+    .first_echar_ul a:after {
+      position: absolute;
+      transition: all 0.3s ease-out;
+      content: '';
+      width: 0;
+      height: 0.6666666667vw;
+      background: #428efe;
+      bottom: -1px;
+      left: 10%; }
+    .first_echar_ul li.active a {
+      color: #428efe; }
+    .first_echar_ul li.active a:after {
+      left: 0;
+      width: 25%; }
+  .first_echar .echat {
+    height: 73.3333333333vw; }
+
+.p_title {
+  line-height: 8.5333333333vw; }
+
+.shop_list {
+  position: relative;
+  width: 100vw; }
+  .shop_list_img {
+    width: 16.6666666667vw;
+    height: 16.6666666667vw;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 5.3333333333vw;
+    margin-bottom: 2.9333333333vw; }
+    .shop_list_img img {
+      width: 100%;
+      height: 100%; }
+  .shop_list_text {
+    color: #666666;
+    font-size: 3.2vw;
+    line-height: 5.6vw; }
+  .shop_list p {
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+    font-size: 3.7333333333vw;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+
+.swiper-container {
+  width: 100%;
+  height: 48vw;
+  text-align: center;
+  box-sizing: border-box; }
+  .swiper-container > p {
+    color: #666666;
+    line-height: 48vw; }
+
+.swiper-slide {
+  height: 45.3333333333vw !important;
+  opacity: 0.8;
+  background: #fff;
+  border-radius: 5px;
+  -webkit-transition: 300ms;
+  -moz-transition: 300ms;
+  -ms-transition: 300ms;
+  -o-transition: 300ms;
+  transition: 300ms;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  box-sizing: border-box; }
+
+.swiper-slide-visible {
+  opacity: 0.8;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8);
+  transform: scale(0.8);
+  box-shadow: 0 0 2vw rgba(0, 0, 0, 0); }
+
+.swiper-slide-active {
+  top: 0;
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  box-shadow: 0 0 2vw rgba(0, 0, 0, 0.1); }
+
+.shandow {
+  box-shadow: 0 0 2vw rgba(0, 0, 0, 0.1); }
+
+/*# sourceMappingURL=myBusiness.css.map */

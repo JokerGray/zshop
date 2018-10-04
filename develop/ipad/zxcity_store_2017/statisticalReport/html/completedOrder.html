@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="stylesheet" href="../../common/assets/foundation-v5.5.3/foundation.min.css">
+    <link rel="stylesheet" href="../../common/assets/jedate/skin/jedate.css">
+    <link rel="stylesheet" href="../../common/assets/jedate/skin/mystyle.css">
+    <link rel="stylesheet" href="../../common/assets/select2/select2.min.css">
+    <link rel="stylesheet" href="../../common/assets/paging/dist/paging.css">
+    <link rel="stylesheet" href="../../common/css/common.css">
+    <link rel="stylesheet" href="../css/completedOrder.css"/>
+</head>
+<body>
+<div class="main-title">
+    <a href="javascript:;" class="return-icon"></a>
+    <h5 class="title">已完成工单<span></span></h5>
+</div>
+<div class="main-content">
+    <div class="all-store">
+        <div class="search-bar">
+            <div class="form-inline pull-right date-wrap">
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="shopName" class="inline right">店铺:</label>
+                    </div>
+                    <div class="small-2 columns">
+                        <!--<input type="text" id="shopName" class="small-3 columns">-->
+                        <select id="shopName"></select>
+                    </div>
+
+                    <div class="small-2 columns">
+                        <label for="serviceName" class="inline right">服务项目:</label>
+                    </div>
+                    <div class="small-2 columns">
+                        <input type="text" id="serviceName" class="small-3 columns">
+                    </div>
+
+                    <div class="small-2 columns">
+                        <label for="staffName" class="inline right">员工姓名:</label>
+                    </div>
+                    <div class="small-2 columns">
+                        <input type="text" id="staffName" class="small-3 columns">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="phoneNum" class="inline right">手机:</label>
+                    </div>
+                    <div class="small-2 columns">
+                        <input type="number" id="phoneNum" class="small-3 columns">
+                    </div>
+
+                    <div class="small-2 columns">
+                        <label for="phoneNum" class="inline right">起止日期:</label>
+                    </div>
+                    <div class="small-4 columns">
+                        <input type="text" class="form-control datetime start-time" id="startTime" readonly="readonly"/> 至 <input
+                            type="text" id="endTime" class="form-control datetime end-time" readonly="readonly"/>
+                    </div>
+                    <div class="small-2 columns">
+                        <button type="button" class="btn btn-normal" id="searchBtn1">查询</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped table-hover storePerformance-List">
+            <thead>
+            <tr>
+                <th width="14%">店铺</th>
+                <th width="14%">服务项目</th>
+                <th width="14%">服务人员</th>
+                <th width="14%">客户名称</th>
+                <th width="15%">开始时间</th>
+                <th width="15%">结束时间</th>
+                <th width="14%">设备名称</th>
+            </tr>
+            </thead>
+            <tbody id="storePerformance">
+
+            </tbody>
+        </table>
+        <div id="page-selection" class="pageview"></div>
+    </div>
+</div>
+
+<script src="../../common/assets/jquery.min.js"></script>
+<script src="../../common/assets/jquery.bootpag.min.js"></script>
+<script src="../../common/assets/layer/layer.js"></script>
+<script src="../../common/assets/jedate/jquery.jedate.js"></script>
+<script src="../../common/assets/select2/select2.min.js"></script>
+<script src="../../common/assets/echarts.simple.min.js"></script>
+<script src="../../common/assets/template-web.js"></script>
+<script src="../../common/assets/paging/dist/paging.js"></script>
+<script src="../../common/js/common.js"></script>
+<script src="../js/compeledOrder.js"></script>
+<script type="text/html" id="completedList">
+    {{each data item index}}
+    <tr>
+        <td>{{item.shopName}}</td>
+        <td>{{item.serviceName}}</td>
+        <td>{{item.waiterName}}</td>
+        <td>{{item.accountName}}</td>
+        <td>{{item.startTime}}</td>
+        <td>{{item.endTime}}</td>
+        <td>{{item.roomName}}</td>
+    </tr>
+    {{/each}}
+</script>
+</body>
+</html>

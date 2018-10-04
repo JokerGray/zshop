@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>劳务统计主页</title>
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../../../common/css/reset.css">
+    <link rel="stylesheet" href="../../../common/css/layTab.css" />
+    <link rel="stylesheet" href="./labortax/css/laborTaxHome.css" />
+  </head>
+  <body>
+    <div class="layout-top">
+      <!--头部搜索框 -->
+	  <ul class="tool-box-ul clearfix">
+	        <!-- 时间开始 -->
+	        <li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="stTime">时间：</label>
+					<div class="layui-input-inline startDate">
+						<input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+					</div>
+				</div>
+			</li>				
+			<li class="tool-box-li">
+				<div class="layui-form-item">
+					<label class="tool-box-label" id="endTim">至：</label>
+					<div class="layui-input-inline endDate">
+						<input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+					</div>
+				</div>
+			</li>
+	        <!-- 时间结束 -->                    
+			<button class="layui-btn" id="searchBtn">查询</button>
+		</ul>
+    </div>
+    <div class="layout-left">
+        <!-- 劳务费统计  -->
+        <div class="content-left">
+          <div class="content-left-top">
+            <img  src="labortax/img/labor.png" alt="">
+          </div>
+          <div class="content-left-button">
+             <a href="javascript:;" id="totalClickDetails">劳务明细表</a>
+             <img src="labortax/img/Click.png" alt="">
+          </div>
+        </div>
+        <div id="totalClick" class="content-right">
+           <p id="laborCostsTotal">0.00</p>
+           <dd>劳务费</dd>
+        </div>
+    </div>
+    <div class="layout-center">
+        <img src="labortax/img/line--one.png">
+    </div>
+    <div class="layout-right">
+        <ul>
+          <li id="liveClick" class="live-shadow">
+            <div class="top live-top">
+                <p class="live-title">直播佣金</p>
+                <span id="liveNumber" class="span-right">0</span>
+                <span>人数：</span>
+            </div>
+            <div class="bottom">
+                <div>
+                  <span>税前劳务费:</span>
+                  <span id="liveLaborCosts">0.00</span>
+                </div>
+                <div>
+                  <span>劳务税:</span>
+                  <span id="liveLaborTax">0.00</span>
+                </div>
+                <img src="labortax/img/live.png" style="top: 7px;">
+            </div>
+          </li>
+          <li id="headlineClick" class="headline-shadow">
+            <div class="top headline-top">
+                <p class="headline-title">头条推广</p>
+                <span id="headlineNumber" class="span-right">0</span>
+                <span >人数：</span>
+            </div>
+            <div class="bottom">
+                <div>
+                  <span>税前劳务费:</span>
+                  <span id="headlineLaborCosts">0.00</span>
+                </div>
+                <div>
+                  <span>劳务税:</span>
+                  <span id="headlineLaborTax">0.00</span>
+                </div>
+                <img src="labortax/img/news.png">
+            </div>
+          </li>
+          <li id="merchantClick" class="merchant-shadow">
+            <div class="top merchant-top">
+                <p class="merchant-title">商户升级</p>
+                <span class="span-right" id="merchantNumber">0</span>
+                <span>人数：</span>
+            </div>
+            <div class="bottom">
+                <div>
+                  <span>税前劳务费:</span>
+                  <span id="merchantLaborCosts">0.00</span>
+                </div>
+                <div>
+                  <span>劳务税:</span>
+                  <span id="merchantLaborTax">0.00</span>
+                </div>
+                <img src="labortax/img/merchants.png">
+            </div>
+          </li>
+        </ul>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+  <script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="../../../common/js/util.js"></script>
+  <script type="text/javascript" src="../common/cw_common.js"></script>
+  <script type="text/javascript">    
+  	jsorcss('js','laborTaxHome');
+  </script>
+</html>

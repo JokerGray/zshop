@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>运营策略</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="css/strategy_setting.css" />
+</head>
+<body>
+<div id="common-tool" class="clearfix p4">
+    <div id="search">
+        <button class="layui-btn layui-btn-small layui-btn-primary">
+            <i class="layui-icon">&#xe615;</i> 搜索
+        </button>
+    </div>
+    <div id="rig-tool" class="clearfix">
+        <button class="layui-btn layui-btn-small layui-btn-primary" id="commonAdd">
+            <i class="layui-icon">&#xe61f;</i> 添加
+        </button>
+    </div>
+</div>
+<div id="search-tool" class="clearfix">
+    <div class="input-group">
+        <span class="pull-left">策略名称：</span>
+        <input type="text" class="form-control media-input"  id="merchantName" maxlength="20">
+    </div>
+    <div class="input-group">
+        <span class="pull-left">用户类型：</span>
+        <select class="form-control" id="merchantType">
+            <option value="">--请选择--</option>
+            <option value="0">个人用户</option>
+            <option value="1">商户</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <span class="pull-left">用户等级：</span>
+        <select class="form-control" id="merchantLeve">
+            <option value="">--请选择--</option>
+            <option value="0">普通用户</option>
+            <option value="1">普通商户</option>
+            <option value="2">合作商户</option>
+            <option value="3">代理商户</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <button class="layui-btn layui-btn-small layui-btn-normal" id="toolSearch">
+            搜索
+        </button>
+        <button class="layui-btn layui-btn-small layui-btn-normal" id="toolRelize">
+            重置
+        </button>
+    </div>
+    <!--<div id="search-tool-show" class="highsearch">
+        <i class="fa fa-angle-double-down"></i>
+    </div>-->
+</div>
+<div class="jiange"></div>
+<div id="audit" class="tabale-list">
+    <table lay-filter="table" id="table"></table>
+    <div id="laypageLeft" class="table-rgt"></div>
+</div>
+<script type="text/html" id="barDemor">
+    <button class="layui-btn layui-btn-small layui-btn-normal" lay-event='detail'>
+        <i class="layui-icon">&#xe615;</i> 查看
+    </button>
+    <button class="layui-btn layui-btn-small layui-layui-btn-warm" lay-event='change'>
+        <i class="layui-icon">&#xe6b2;</i> 修改
+    </button>
+    <button class="layui-btn layui-btn-small  layui-btn-danger" lay-event="del">
+        <i class="layui-icon">&#xe640;</i> 删除
+    </button>
+</script>
+
+
+
+
+
+
+<!--modal-->
+<!--查看详情-->
+<div id="details" class='layui-form clearfix common-tip' lay-filter="seach">
+    <div class="centerCon">
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">策略名称：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input h30" id="detailsName" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">用户类型：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input h30" id="detailsType" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">用户等级：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input h30" id="detailsLevel" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">功能编码：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input h30" id="detailsCode" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">取值类型：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input h30" id="detailsValueType" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">取值：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input h30" id="detailsValue" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">应用范围：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input h30" id="detailsApplicableTo" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">业务描述：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input h30" id="detailsDescription" disabled>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增/修改-->
+<div id="addDetail" class='layui-form clearfix common-tip'>
+    <div class="leftCon">
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>策略名称：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input h30" id="addName" maxlength="20">
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>功能编码：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input h30" id="addCode"  maxlength="20">
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>取值类型：</label>
+            <div class="layui-input-block flex" id="addValueType">
+                <select  class="form-control">
+                    <option>整数</option>
+                    <option>布尔</option>
+                    <option>小数</option>
+                    <option>文本</option>
+                    <option>天数</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex">应用范围：</label>
+            <div class="layui-input-block flex" id="addGround">
+                <select class="form-control">
+                    <option value="">--请选择--</option>
+                    <option value="0">店铺</option>
+                    <option value="1">商户</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="rightCon">
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>用户类型：</label>
+            <div class="layui-input-block flex" id="addType">
+                <select class="form-control">
+                    <option value="0">个人用户</option>
+                    <option value="1">商户</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item bitian levelusual">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>用户等级：</label>
+            <div class="layui-input-block flex" id="addLevel">
+                <select class="form-control">
+                    <option value="0">普通用户</option>
+                    <option value="1">普通商户</option>
+                    <option value="2">合作商户</option>
+                    <option value="3">代理商户</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item bitian levelnormal">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>用户等级：</label>
+            <div class="layui-input-block flex">
+                <select id="addLevel0" class="form-control">
+                    <option value="0">普通用户</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>取值：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input h30" id="addValue" maxlength="10">
+            </div>
+        </div>
+        <div class="layui-form-item bitian" id="textBox">
+            <label class="layui-form-label flex">业务描述：</label>
+            <div class="layui-input-block flex">
+                <textarea type="text" name="title" autocomplete="off" class="layui-input" id="addDescription" maxlength="150"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+
+<!--jSCurr-->
+<script type="text/javascript" src="js/strategy_setting.js"></script>
+</html>

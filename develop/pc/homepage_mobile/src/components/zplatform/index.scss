@@ -1,0 +1,305 @@
+@function pxToRem($px, $base: 1) {
+    @return ($px/$base) * 0.01rem;
+}
+// 隐藏方案
+.hide{
+  opacity: 0 !important;
+}
+// 大标题
+.bigTitle{
+  display: inline-block;
+  padding: pxToRem(80) pxToRem(10) pxToRem(10);
+  font-size: pxToRem(40);
+  color: #113394;
+  border-bottom: pxToRem(4) solid #113394;
+}
+// 圆形背景
+.bgCircle{
+  position: absolute;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  opacity: 0.25;
+  pointer-events: none;
+}
+.bgCircle.orange{
+  width: pxToRem(300);
+  height: pxToRem(300);
+  right: pxToRem(-150);
+  top: pxToRem(-100);
+  background-image: url(img/bg_orange.png);
+}
+.bgCircle.blue{
+  width: pxToRem(250);
+  height: pxToRem(250);
+  left: pxToRem(-100);
+  top: 30%;
+  background-image: url(img/bg_blue.png);
+}
+.bgCircle.purple{
+  width: pxToRem(230);
+  height: pxToRem(230);
+  right: pxToRem(-100);
+  top: pxToRem(-50);
+  background-image: url(img/bg_purple.png);
+  opacity: 0.8;
+}
+.bgCircle.darkblue{
+  width: pxToRem(202);
+  height: pxToRem(202);
+  left: pxToRem(-80);
+  top: pxToRem(-25);
+  background-image: url(img/bg_darkblue.png);
+  opacity: 0.8;
+}
+.bgCircle.bigblue{
+  width: pxToRem(344);
+  height: pxToRem(344);
+  left: pxToRem(-100);
+  top: pxToRem(-100);
+  background-image: url(img/bg_bigblue.png);
+}
+// 通用格式
+.swiper-item {
+  display: block;
+  height: 100%;
+  text-align: center;
+  background: #fff;  
+}
+.swiper-item {
+  display: block;
+  padding-top: 44px;
+  height: 100%;
+  text-align: center;
+  background: #fff;
+  letter-spacing: pxToRem(1);
+  box-sizing: border-box;
+}
+// 第一页
+.page1{
+  background: url(img/bg.png) no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  text-align: left;
+  color: #fff;
+
+  h1 {
+    padding: pxToRem(30);
+    font-size: pxToRem(72);
+  }
+  .subtitle{
+    display: block;
+    padding: 0 0 pxToRem(40) pxToRem(30);
+    font-size: pxToRem(24);
+  }
+  .subtitle span{
+    display: inline-block;
+  }
+  p{
+    display: block;
+    padding: 0 pxToRem(30);
+    font-size: pxToRem(28);
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+  .cardContent{
+    display: block;
+    margin: pxToRem(36) pxToRem(120) 0;
+    text-align: center;
+  }
+  .cardContent img{
+    display: inline-block;
+    width: 40%;
+    z-index: 999;
+  }
+  .cardContent>div img:first-child{
+    margin-right: pxToRem(5);
+  }
+}
+
+// 第二页
+.page2{
+  border-bottom: pxToRem(3) solid #e9f3ff;
+  .subtitle{
+    display: block;
+    padding: pxToRem(50) pxToRem(55);
+    font-size: pxToRem(30);
+    color: #4e4d5f;
+    line-height: 1.5;
+    text-align: left;
+  }
+  .counterBg{
+    display: block;
+    margin: pxToRem(80) pxToRem(10) 0;
+  }
+  .counterBg>img{
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+// 第三页
+.page3{
+  .textContent{
+    display: block;
+    margin: pxToRem(30) pxToRem(25) 0;
+    box-shadow: 0 0 pxToRem(30) #dcf6fe;
+  }
+  .content1, .content2{
+    padding: 0 pxToRem(80);
+    position: relative;
+  }
+  .content1>h1, .content2>h1{
+    display: block;
+    padding: pxToRem(30) 0;
+    margin: 0;
+    font-size: pxToRem(30);
+    color: #171c2a;
+  }
+  .content1>div{
+    display: flex;
+  }
+  .content1>div span{
+    display: block;
+    flex: 1;
+    padding-bottom: pxToRem(20);
+    font-size: pxToRem(26);
+    color: #4e4d5f;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .content1>div span:last-child{
+    text-align: right;
+  }
+  .line{
+    display: block;
+    height: 1px;
+    margin: 0 pxToRem(20);
+    background-color: #dcf6fe;
+  }
+  .content2>p{
+    display: block;
+    padding-bottom:pxToRem(20);
+    font-size: pxToRem(26);
+    color: #4e4d5f;
+    text-align: left;
+  }
+  .content2>div{
+    display: block;
+    padding-bottom:pxToRem(20);
+    font-size: pxToRem(20);
+    color: #717171;
+    text-align: left;
+  }
+  .bgBox, .bgSit{
+    position: absolute;
+    display: inline-block;
+    background-image: url(img/bg_box.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .bgBox{
+    width: pxToRem(188);
+    height: pxToRem(200);
+    bottom: 0;
+    right: 0;
+    background-image: url(img/bg_box.png);
+  }
+  .bgSit{
+    width: pxToRem(61);
+    height: pxToRem(142);
+    left: pxToRem(50);
+    top: pxToRem(-110);
+    background-image: url(img/bg_sit.png);
+  }
+}
+
+// 第四页
+.page4{
+  display: flex;
+  flex-direction: column;
+  .subtitleContent{
+    padding: pxToRem(30) pxToRem(40);
+  }
+  .subtitle{
+    display: block;
+    padding-top: pxToRem(20);
+    font-size: pxToRem(30);
+    line-height: 1.5;
+    color: #4e4d5f;
+    text-align: center;
+  }
+  .phoneContent{
+    display: block;
+    padding: 0 pxToRem(90);
+    text-align: center;
+  }
+  .phoneContent .phone1, .phoneContent .phone2{
+    display: inline-block;
+    margin: 0 pxToRem(50);
+    width: pxToRem(59);
+    height: pxToRem(89);
+    background-image: url(img/phone_1.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .phoneContent .phone2{
+    width: pxToRem(66);
+    height: pxToRem(90);
+    background-image: url(img/phone_2.png);
+  }
+  .textContent{
+    display: block;
+    flex: 1;
+    margin-top: pxToRem(40);
+    padding: pxToRem(35) pxToRem(40);
+    color: #fff;
+    text-align: left;
+    background: url(img/bg_page4.png) no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+  }
+  .textContent h1{
+    padding-bottom: pxToRem(20);
+    font-size: pxToRem(36);
+    font-weight: 600;
+  }
+  .textContent h3{
+    padding-bottom: pxToRem(40);
+    font-size: pxToRem(20);
+    font-weight: normal;
+  }
+  .textContent h2{
+    padding-bottom: pxToRem(40);
+    font-size: pxToRem(26);
+    font-weight: normal;
+    line-height: 1.5;
+  }
+}
+
+// 第五页
+.page5{
+  .subtitle{
+    display: block;
+    padding: 0;
+    font-size: pxToRem(24);
+    color: #4e4d5f;
+  }
+  .subtitle1{
+    padding-top: pxToRem(35);
+  }
+  .subtitle2{
+    padding-top: pxToRem(50);
+  }
+  .subtitle3{
+    padding: pxToRem(20) 0 pxToRem(15);
+  }
+  .imgContent{
+    padding: pxToRem(30);
+  }
+  .imgContent img{
+    width: 100%;
+    max-width: 100%;
+  }
+}

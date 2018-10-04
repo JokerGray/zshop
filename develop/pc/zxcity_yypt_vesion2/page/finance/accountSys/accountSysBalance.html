@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>系统账户余额</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+		<style>
+			.container ul li,.total{
+				float:left;
+				height: 90px;
+				width:30%;
+				margin-left:1%;
+				margin-top:1%;
+				text-align: center;
+				background-color: #CCCCCC;
+				border:1px solid #e3e3e3;
+				border-radius: 4px;
+				padding-top:15px;
+				line-height: 22px;
+			}
+			.container li span,.total>span{
+				font-size: 24px;
+				color: green;
+				display:block;
+				padding-top:15px;
+			}
+			.total{
+				width: 80%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<ul>
+				<li>系统总账户金额（所有用户余额总和）<span id="totalMoney"></span></li>
+				<li>系统托管账户金额（主要为云店购物，云店专业制作，云店预付，玩家挣钱分享赚）<span id="trusteeshipMoney"></span></li>			
+				<li>系统结算账户金额（未支付的提现金额）<span id="settlementMoney"></span></li>			
+				<li>系统盈利账户金额（盈利类型 1 转盘/2 智币充值/3 直播预存/4 专业制作/5 商户升级/6 存入金额/7 收入提取/8 主播佣金发放/9 冲账）<span id="profitMoney"></span></li>
+				<li>系统子账户金额（目前为 玩家挣钱子账户，头条子账户）<span id="sunMoney"></span></li>
+				<li>系统待确认款项金额（主要为 未发放佣金商户升级）<span id="upgradeMoney"></span></li>
+				<li>系统劳务费金额（主要为 商户升级推荐人佣金，主脸或主播佣金，头条作者收入佣金）<span id="taxMoney"></span></li>
+				<li>支付宝手续费（充值时，支付宝扣除金额））<span id="poundageMoney" style="color: red;"></span></li>
+				
+				</ul>			
+			<div class="total">系统计算出来的支付宝金额（主要用于与实际支付宝金额进行对账）</br>计算方式为：总账户 + 托管账户 + 结算账户 + 盈利账户 +子账户 +待确认款项 + 劳务费 - 支付宝手续费<span id="aliMoney"></span></div>
+		</div>
+
+	</body>
+
+</html>
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+
+<script type="text/javascript">
+	jsorcss('js','accountSysBalance');
+</script>

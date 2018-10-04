@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compation" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+		<title>服务开单</title>
+		<link rel="stylesheet" href="../common/assets/foundation-v5.5.3/foundation.min.css">
+		<link rel="stylesheet" href="../common/css/common.css">
+		<link rel="stylesheet" href="css/consumptionBilling.css">
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="main-title">
+                <h5 class="title">服务开单</h5>
+				<button class="btn-default select-customer-btn" id="selectCustomerBtn">选择会员</button>
+            </div>
+            <div class="main-content">
+                <div class="row">
+                    <div class="medium-3 columns pl-0">
+						<div class="staff-box">
+							<div class="ava"><img src="../common/image/default_avatar.png"></div>
+							<div class="info">
+								<p class="staff-name"></p>
+								<p>员工号：</p>
+								<p class="staff-num"></p>
+							</div>
+						</div>
+					</div>
+                    <div class="medium-9 columns px-0">
+                        <div class="customer-box">
+							<div class="customer-info" id="customerInfo">
+								<table>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="medium-12 columns px-0">
+                        <div class="service-box">
+							<div class="service-list" id="serviceList">
+								<table class="table table-hover table-striped" id="cardsTable">
+									<thead>
+										<tr>
+											<th>选择</th>
+											<th>卡项名称</th>
+											<th>剩余/购买次数</th>
+											<th>截止时间</th>
+											<th>消耗数量</th>
+                                            <th>服务业绩</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+							<button id="submitBtn" class="btn-normal">确定</button>
+						</div>
+                    </div>
+                </div>
+            </div><!--/.main-content -->
+        </div>
+
+		<script src="../common/assets/jquery.min.js"></script>
+		<script src="../common/assets/foundation-v5.5.3/foundation.min.js"></script>
+		<script src="../common/assets/foundation-v5.5.3/modernizr.js"></script>
+		<script src="../common/assets/layer/layer.js"></script>
+		<script src="../common/js/common.js"></script>
+        <script src="js/consumptionBilling.js"></script>
+    </body>
+</html>

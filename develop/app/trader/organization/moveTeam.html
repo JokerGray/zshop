@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小组移动</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/layer/mobile/need/layer.css">
+    <link rel="stylesheet" href="assets/css/select2.css">
+    <link rel="stylesheet" href="css/organization.css"/>
+</head>
+<body>
+    <div id="moveTeam">
+        <div id="teamBox" style="display: none">
+            <div>当前组:<span id="teamNow"></span></div>
+            <div>上级组:<span id="teamUp"></span></div>
+        </div>
+        <div id="infoBox" style="display: none">
+            <div>姓名:<span id="name"></span></div>
+            <div>当前组:<span id="teamInfo"></span></div>
+        </div>
+        <label class="control-label">选择移入组</label>
+        <select class="form-control" id="team">
+            <option>请选择</option>
+        </select>
+    </div>
+</body>
+<script src="assets/js/jquery-2.1.0.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/layer/layer.js"></script>
+<script src="assets/js/utilNew.js"></script>
+<script src="assets/js/select2.full.js"></script>
+<script src="js/select.js"></script>
+</html>

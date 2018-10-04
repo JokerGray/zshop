@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+        <title>首页</title>
+        <link rel="stylesheet" href="common/assets/js/foundation-v5.5.3/foundation.min.css">
+        <link rel="stylesheet" href="common/css/common.css">
+        <link rel="stylesheet" href="myhomepage/css/myhomepage.css">
+    </head>
+    <body>
+        <header id="mainNav">
+			<nav class="top-nav" data-topbar="">
+				<ul>
+					<li>
+						<a data-page="1" class="active" href="javascript:;">
+							<i class="nav-item-icon"></i>
+							<span class="nav-item-name">我的首页</span>
+						</a>
+					</li>
+					<li>
+						<a data-page="2" href="storehomepage/storehomepage.html">
+							<i class="nav-item-icon"></i>
+							<span class="nav-item-name">门店首页</span>
+						</a>
+					</li>
+					<li>
+						<a data-page="3" class="disabled">
+							<i class="nav-item-icon"></i>
+							<span class="nav-item-name">客户预约</span>
+						</a>
+					</li>
+					<li>
+						<a data-page="4" class="disabled">
+							<i class="nav-item-icon"></i>
+							<span class="nav-item-name">消耗开单</span>
+						</a>
+					</li>
+					<li>
+						<a data-page="5" class="disabled">
+							<i class="nav-item-icon"></i>
+							<span class="nav-item-name">工单管理</span>
+						</a>
+					</li>
+					<li>
+						<a data-page="6" class="disabled">
+							<i class="nav-item-icon"></i>
+							<span class="nav-item-name">排班</span>
+						</a>
+					</li>
+					<li>
+						<a data-page="7" class="disabled">
+							<i class="nav-item-icon"></i>
+							<span class="nav-item-name">订单管理</span>
+						</a>
+					</li>
+					<li>
+						<a data-page="8" class="disabled">
+							<i class="nav-item-icon"></i>
+							<span class="nav-item-name">客户管理</span>
+						</a>
+					</li>
+					<li>
+						<a data-page="9" class="disabled">
+							<i class="nav-item-icon"></i>
+							<span class="nav-item-name">统计报表</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+        <div class="main-content">
+            <div class="row">
+                <div class="small-12 columns recording-module module-3">
+                    <div class="module-inner">
+                        <div class="module-title">我的销售业绩</div>
+                        <div class="module-con">
+                            <div id="salesChart" class="bar-chart"></div>
+                        </div>
+                    </div>
+                </div><!--/.end of module-3-->
+                <div class="small-12 columns recording-module module-4">
+                    <div class="module-inner">
+                        <div class="module-title">我的消耗业绩</div>
+                        <div class="module-con">
+                            <div id="consumptionChart" class="bar-chart"></div>
+                        </div>
+                    </div>
+                </div><!--/.end of module-4-->
+                <!-- <div class="small-12 columns recording-module module-2">
+                    <div class="module-inner">
+                        <div class="module-title">今日预售</div>
+                        <div class="module-con">
+                            <div class="item">
+                                <p><span>￥</span><b id="imprest" class="count-num">0</b></p>
+                                <span class="color-grey sub-title">总订金</span>
+                            </div>
+                            <div class="item">
+                                <p id="presalesNum" class="count-num">0</p>
+                                <span class="color-grey sub-title">总人数</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> --><!--/.end of module-2-->
+                <div class="small-12 columns recording-module module-1">
+                    <div class="module-inner">
+                        <div class="module-title">客户回访</div>
+                        <div class="module-con">
+                            <div class="small-6 columns dividing-line">
+                                <div class="item">
+                                    <p class="sub-title">最近一个月到店会员</p>
+                                    <a class="color-grey count-num" id="oneMonthCome" href="javascript:void(0);"
+                                       data-type="1">0</a>
+                                </div>
+                                <div class="item">
+                                    <p class="sub-title">最近一个月注册会员</p>
+                                    <a class="color-grey count-num" id="oneMonthRegister" href="javascript:void(0);"
+                                       data-type="2">0</a>
+                                </div>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <p class="sub-title">1~2个月未到店会员</p>
+                                    <a class="color-grey count-num" id="twoMonthNotCome" href="javascript:void(0);"
+                                       data-type="3">0</a>
+                                </div>
+                                <div class="item">
+                                    <p class="sub-title">1~2个月未沟通会员</p>
+                                    <a class="color-grey count-num" id="twoMonthNotCommunicatee"
+                                       href="javascript:void(0);"
+                                       data-type="4">0</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.end of module-1-->
+
+
+                <div class="small-12 columns recording-module module-5">
+                    <div class="module-inner">
+                        <div class="module-title">新客分析</div>
+                        <div class="module-con">
+                            <div class="small-4 columns">
+                                <div class="item">
+                                    <p id="todayRegister" class="count-num" data-type="1">0</p>
+                                    <span class="color-grey sub-title">今日新客人数</span>
+                                </div>
+                                <div class="item">
+                                    <p id="monthRegister" class="count-num" data-type="2">0</p>
+                                    <span class="color-grey sub-title">本月新客总数</span>
+                                </div>
+                            </div>
+                            <div class="small-8 columns">
+                                <div id="newCustomerChart" class="radius-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.end of module-5-->
+                <div class="small-12 columns recording-module module-7">
+                    <div class="module-inner">
+                        <div class="module-title">赠送统计</div>
+                        <div class="module-con">
+                            <div class="small-4 columns">
+                                <div class="item">
+                                    <p id="todayLargess" class="count-num" data-type="3">0</p>
+                                    <span class="color-grey sub-title">今日赠送</span>
+                                </div>
+                                <div class="item">
+                                    <p id="monthLargess" class="count-num" data-type="1">0</p>
+                                    <span class="color-grey sub-title">本月赠送总数</span>
+                                </div>
+                            </div>
+                            <div class="small-8 columns">
+                                <div id="sendCountChart" class="radius-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.end of module-7-->
+                <div class="small-12 columns recording-module module-6">
+                    <div class="module-inner">
+                        <div class="module-title">客户卡项预警</div>
+                        <div class="module-con">
+                            <div class="small-6 columns dividing-line">
+                                <div class="item">
+                                    <p class="sub-title"></p>
+                                    <span class="color-grey count-num"></span>
+                                </div>
+                                <div class="item">
+                                    <p class="sub-title"></p>
+                                    <span class="color-grey count-num"></span>
+                                </div>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <p class="sub-title"></p>
+                                    <span class="color-grey count-num"></span>
+                                </div>
+                                <div class="item">
+                                    <p class="sub-title"></p>
+                                    <span class="color-grey count-num"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.end of module-6-->
+                <div class="small-12 columns recording-module module-8 hide">
+                    <div class="module-inner">
+                        <div class="module-title"></div>
+                    </div>
+                </div><!--/.end of module-8-->
+            </div><!--/.row  -->
+        </div><!--/.main-content  -->
+
+
+    <!-- jQuery 库 -->
+    <script src="common/assets/js/jquery.min.js"></script>
+    <!-- JavaScript 文件 -->
+    <script src="common/assets/js/foundation-v5.5.3/foundation.min.js"></script>
+    <!-- modernizr.js 文件 -->
+    <script src="common/assets/js/foundation-v5.5.3/modernizr.js"></script>
+    <script src="common/assets/js/echarts.simple.min.js"></script>
+    <script src="common/js/util.js"></script>
+    <script src="common/js/main.js"></script>
+    <script src="myhomepage/js/myhomepage.js"></script>
+    </body>
+</html>

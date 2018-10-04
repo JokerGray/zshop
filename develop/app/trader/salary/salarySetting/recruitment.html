@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工资设置</title>
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/bootstrap-table/bootstrap-table.min.css"/>
+
+	<link  rel="stylesheet" href="../../assets/select2-v4.0.6/css/select2.min.css">
+	<link rel="stylesheet" href="css/common.css">
+	<style>
+		body{
+			min-width: 1200px;
+		}
+
+		.contain{
+			padding-left:55px;
+			font-family: '微软雅黑'; 
+		}
+		.title {
+		    font-size: 16px;
+		    font-weight: bold;
+		    padding: 10px 0;
+		}
+
+		.line::before{
+			display: inline-block;
+		    content: '';
+		    width: 3px;
+		    height: 20px;
+		    background: #ffa500;
+		    margin-right: 5px;
+		    vertical-align: sub;
+
+		}
+
+		.line {
+		    font-size: 16px;
+		    font-weight: normal;
+		    color: #ffa500;
+		    padding: 10px 0;
+		}
+
+		.boleContent table,.lifeTiemTable table,.teamSetting table,.attendanceBonusTab table{
+			width: 80%;
+		}
+
+		.boleContent table th,.lifeTiemTable table tr th,.teamSetting table th,.attendanceBonusTab table tr th{
+			background: #eee;
+			color:#666;
+		}
+
+		.boleContent table th,.boleContent table td{
+			width: 20%;
+			text-align: center;
+			font-size: 15px;
+			padding:10px 0;
+			border-bottom: 1px solid #eee;
+		}
+		
+		.boleContent table td input,.lifeTiemTable table tr input,.teamSetting table tr input,.attendanceBonusTab table tr input{
+			height: 30px;
+			width: 60%;
+			padding-left: 5px;
+			max-width: 225px;
+		}
+		
+		.boleContent table td span,.lifeTiemTable table tr span,.teamSetting table tr span.sign,.attendanceBonusTab table tr span{
+			display: inline-block;
+			height: 30px;
+			line-height: 28px;
+			width: 15%;
+			text-align: center;
+			border:1px solid #a9a9a9;
+			border-left:0;
+			vertical-align: bottom;
+			max-width: 60px;
+		}
+		
+		
+		.line_b{
+			padding-bottom: 10px;
+    		border-bottom: 1px solid #dadada;
+		}
+
+		.lifeTiemTable table tr th,.lifeTiemTable table tr td{
+			width: 33.33%;
+			text-align: center;
+			padding:10px 0;
+			font-size: 15px;
+			border-bottom: 1px solid #eee;
+		}
+
+		.attendanceBonusTab table tr th,.attendanceBonusTab table tr td,.teamSetting table th,.teamSetting table td{
+			width: 25%;
+			text-align: center;
+			padding:10px 0;
+			font-size: 15px;
+			border-bottom: 1px solid #eee;
+		}
+
+		.attendanceBonusTab{
+			padding-bottom: 50px;
+		}
+		
+		/**/
+		.submitBtn{
+			display: inline-block;
+		    background: #ffa500;
+		    padding: 5px 10px;
+		    color: #fff!important;
+		    border-radius: 3px;
+		}
+
+		/*多选 select 样式*/
+		.teamSetting input.select2-search__field {
+		    height: 22px;
+		}
+
+
+	</style> 
+	
+</head>
+<body>
+	<div class="contain">
+		<div class="navs">
+			<a class="base_salary">基础薪资板块</a>
+			<a class="recruitment_salary active">招聘薪资板块</a>
+			<a class="talk_salary">拓客薪资板块</a>
+			<a class="service_salary">服务薪资板块</a>
+			<a class="management_salary">管理薪资板块</a>
+			<a class="activity_salary">活动薪资板块</a>
+		</div>
+		
+		<div class="recruitmentInfo">
+			<div class="title">招聘奖励设置</div>
+			<!-- 伯乐奖 -->
+			<div class="bole">
+				<div class="line">伯乐奖</div>
+				<p class="line_b">伯乐奖入职当月即发放，被推荐人在岗时间未达到设置时间则奖金扣除</p>
+				<div class="boleContent">
+					<table>
+						<thead>
+							<tr>
+								<th>职务</th>
+								<th>招聘人数</th>
+								<th>奖励金额</th>
+								<th>在岗时间</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+			<!-- 终身成就奖 -->
+			<div class="lifeTiem">
+				<div class="line">终身成就奖</div>
+				<div class="lifeTiemTable">
+					<table>
+						<thead>
+							<tr>
+								<th style="width:40%;">被推荐人业绩达到金额</th>
+								<th style="width:40%;">奖励推荐人</th>
+								<th style="width:20%;">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="width:40%;">
+									<input type="text" class="recommendedMoney" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)"><span>元</span>
+								</td>
+								<td style="width:40%;">
+									<input type="text" class="recommendedPeople" maxlength="5" onkeyup="countCheck(this)" onchange="countCheck(this)"><span>%</span>
+								</td>
+								<td style="width:20%;">
+									<a href="javascript:;" onclick="subMit(this)" class="submitBtn">提交</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- 组建团队设置 -->
+			<div class="teamSetting">
+				<div class="line">组建团队设置</div>
+				<div class="teamSettingTable">
+					<table>
+						<thead>
+							<tr>
+								<th>组建团队人数</th>
+								<th style="width: 30%">团队保底业绩</th>
+								<th>个人保底业绩</th>
+								<!-- <th>业绩组成</th> -->
+								<th style="width: 20%;">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<input type="text" class="teamPeopleNums" maxlength="3" onkeyup="integerCheckeds(this)" onchange="integerCheckeds(this)"><span class="sign">人</span>
+								</td>
+								<td style="width: 30%">
+									<input type="text" class="teamResults" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)"><span class="sign">元</span>
+								</td>
+								<td>
+									<input type="text" class="peopleResults" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)"><span class="sign">元</span>
+								</td>
+								<!-- <td>
+									<select name="" id="resultType" multiple>
+										<option value="1">充值业绩</option>
+										<option value="2">现金消费业绩</option>
+										<option value="3">服务业绩</option>
+										<option value="4">账户余额消费业绩</option>
+										<option value="5">拓客业绩</option>
+										<option value="6">辅助销售业绩</option>
+										<option value="7">辅助服务业绩</option>
+									</select>
+								</td> -->
+								<td style="width: 20%;">
+									<a href="javascript:;" onclick="teamSubMit(this)" class="submitBtn">提交</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- 全勤奖设置 -->
+			<div class="attendanceBonus">
+				<div class="line">全勤奖设置</div>
+				<div class="attendanceBonusTab">
+					<table>
+						<thead>
+							<tr>
+								<th>职务</th>
+								<th style="width:30%;">考勤异常次数（含迟到早退，达到此设置则无全勤）</th>
+								<th>全勤奖金</th>
+								<th style="width:20%;">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+						
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+		
+		
+
+	</div>
+
+	<script src="../../assets/jquery/jquery.min.js"></script>
+	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../assets/layer/layer.js"></script>
+
+	<!-- bootstrap-table -->
+	<script src="../../assets/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="../../assets/select2-v4.0.6/js/select2.full.min.js"></script>
+
+	<script src="js/common.js"></script>
+	
+	<!-- 伯乐奖 -->
+	<script type="text/html" id="tp1">
+		<tr>
+			<td class="positionName">经理</td>
+			<td>每人</td>
+			<td>
+				<input type="text" class="reward" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)"><span>元</span>
+			</td>
+			<td>
+				<input type="text" class="standard" maxlength="3" onkeyup="integerCheckeds(this)" onchange="integerCheckeds(this)"><span>月</span>
+			</td>
+			<td>
+				<a href="javascript:;" class="submitBtn" onclick="submitBtn(this)">提交</a>
+			</td>
+		</tr>
+	</script>
+	
+	<!-- 全勤奖设置 -->
+	<script type="text/html" id="tp2">
+		<tr>
+			<td class="positionNames"></td>
+			<td style="width:30%;">
+				<input type="text" class="latenessNum" maxlength="3" onkeyup="integerCheck(this)" onchange="integerCheck(this)"><span>次</span>
+			</td>
+			<td>
+				<input type="text" class="money" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)"><span>元</span>
+			</td>
+			<td style="width:20%;">
+				<a href="javascript:;" class="submitBtn" onclick="submitBonus(this)">提交</a>
+			</td>
+		</tr>
+	</script>
+	
+
+	<script>
+		// 业绩 类型
+		var merchantId = getQueryString('merchantId');
+
+		$("#resultType").select2({
+			language : 'zh-CN',
+			width:'100%'
+		});
+
+		getWage('1');
+
+		getWage('2');
+
+		getWage('3');
+
+		// 根据商户主键获取职务列表或者职务对应的工资设置信息
+        function getWage(type){
+        	var def = reqAjax('shop/newsalary/getPositionsAndSalarySetting', {
+	            merchantId : merchantId,
+	            type : type  // 1-伯乐奖 2-终身成就奖 3-组建团队设置 4-拓客人头奖励
+	        });
+	        def.then(function(data){
+	            if(data.code == 1){
+	            	// 1-伯乐奖
+	                if(type == 1){
+	                	$('.boleContent tbody').text('');
+	                	for(var i = 0;i<data.data.length;i++){
+	                		var content = $($('#tp1').html()).first().clone();
+	                		content.attr({'positionId':data.data[i].id});
+	                		content.find('.positionName').text(data.data[i].positionName);
+	                		if(data.data[i].scSalarySetting != null){
+	                			content.attr({'keyId':data.data[i].scSalarySetting.id});
+	                			content.find('.reward').val(data.data[i].scSalarySetting.rewardValue);
+	                			content.find('.standard').val(data.data[i].scSalarySetting.rewardStandard);	
+	                		}
+							$('.boleContent tbody').append(content);
+	                	}
+	                }
+	                // 2-终身成就奖
+	                if(type == 2){
+	                	if(data.data.length > 0){
+	                		$('.lifeTiemTable tbody tr').attr({'keyId':data.data[0].id});
+		                	$('.recommendedMoney').val(data.data[0].rewardValue);
+		                	$('.recommendedPeople').val(data.data[0].rewardStandard);
+	                	}
+	                }
+	                // 3-组建团队设置
+	                if(type == 3){
+	                	// console.log(data.data[0].rewardValue);
+	                	if(data.data.length > 0){
+	                		$('.teamSettingTable tbody tr').attr({'keyId':data.data[0].id});
+		                	$('.teamPeopleNums').val(data.data[0].rewardStandard);
+		                	$('.teamResults').val(data.data[0].rewardPeriod);
+		                	$('.peopleResults').val(data.data[0].rewardValue);
+	                	}
+	                	
+	                }
+	            }else{
+	                layer.msg(data.msg,{icon:2});
+	            }
+	        })
+        }
+
+
+        //伯乐奖 提交 按钮
+        function submitBtn(self){
+        	var id = $(self).parent().parent().attr('keyId') != undefined ? $(self).parent().parent().attr('keyId') : '';
+        	var positionId = $(self).parent().parent().attr('positionId');
+        	var rewardStandard = $(self).parent().parent().find('.standard').val();
+        	var rewardValue = $(self).parent().parent().find('.reward').val();
+
+        	if(rewardValue.trim('') == ''){
+        		layer.msg('奖励金额不能为空！',{icon:2});
+        		return;
+        	}
+
+        	if(rewardStandard.trim('') == ''){
+        		layer.msg('在岗时间不能为空！',{icon:2});
+        		return; 
+        	}
+      
+        	getAjax('伯乐奖',rewardStandard,positionId,rewardValue,'','','1',id);
+        	
+        }
+
+        // 终身成就奖 提交按钮
+        function subMit(self){
+        	var id = $(self).parent().parent().attr('keyId') != undefined ? $(self).parent().parent().attr('keyId') : '';
+        	var rewardStandard = $(self).parent().parent().find('.recommendedPeople').val();
+        	var rewardValue = $(self).parent().parent().find('.recommendedMoney').val();
+
+        	if(rewardValue.trim('') == ''){
+        		layer.msg('被推荐人业绩达到金额不能为空！',{icon:2}); 
+        		return;
+        	}
+        	
+        	if(rewardStandard.trim('') == ''){
+        		layer.msg('奖励推荐人不能为空！',{icon:2});
+        		return; 
+        	}
+
+        	getAjax('终身成就奖',rewardStandard,'',rewardValue,'','','2',id);
+        	
+
+        }
+
+        // 组建团队设置
+        function teamSubMit(self){
+        	var rewardStandard = $(self).parent().parent().find('.teamPeopleNums').val();
+        	var rewardValue = $(self).parent().parent().find('.peopleResults').val();
+        	var rewardPeriod = $(self).parent().parent().find('.teamResults').val();
+        	var id = $(self).parent().parent().attr('keyId') != undefined ? $(self).parent().parent().attr('keyId') : '';
+        	var commConsist = '';
+
+        	if(rewardStandard.trim('') == ''){
+        		layer.msg('组建团队人数不能为空！',{icon:2});
+        		return; 
+        	}
+
+        	if(rewardValue.trim('') == ''){
+        		layer.msg('个人保底业绩不能为空！',{icon:2});  
+        		return;
+        	}
+
+        	if(rewardPeriod.trim('') == ''){
+        		layer.msg('团队保底业绩不能为空！',{icon:2}); 
+        		return;
+        	}
+
+        	getAjax('组建团队设置',rewardStandard,'',rewardValue,rewardPeriod,'','3',id);
+        	
+        }
+
+        // 提交 按钮 
+        function getAjax(rewardName,rewardStandard,positionId,rewardValue,rewardPeriod,commConsist,rewardCode,id){
+        	var def = reqAjax('shop/newsalary/addOrUpdateSalarySetting', {
+	             "scSalarySetting": [
+	             	{
+				    	"rewardName": rewardName,//奖项名称:1-伯乐奖 2-终身成就奖 3-组建团队设置 4-拓客人头奖励
+				    	"rewardStandard": rewardStandard,//奖项标准值(当为组建团队设置时用于存放组建团队人数)
+				    	"positionId": positionId,//职务ID  只有 伯乐奖传 职务id  其他传空
+				    	"plateType": 2,//所属板块类型  1-基础薪资板块  2-招聘薪资板块 3-拓客薪资板块 4-服务薪资板块 5-管理薪资板块 6-活动薪资板块
+				    	"rewardValue": rewardValue,//奖励值(当为组建团队设置时用于存放个人保底业绩)
+				    	"rewardPeriod": rewardPeriod,//(当为组建团队设置时用于存放团队保底业绩)
+				    	"merchantId": merchantId,//商户主键
+				    	"rewardDesc": "",//奖项描述
+				    	"commConsist": commConsist,//组成项
+				    	"rewardCode": rewardCode,//1-伯乐奖 2-终身成就奖 3-组建团队设置 4-拓客人头奖励
+				    	"id": id,//主键值
+				    	"shopId": ''//店铺ID
+					}
+				]
+	        });
+	        def.then(function(data){
+	        	if(data.code == 1){
+	        		layer.msg(data.msg,{icon:1});
+	        		if(rewardCode == 1){
+	        			getWage('1');
+	        		}else if(rewardCode == 2){
+	        			getWage('2');
+	        		}else if(rewardCode == 3){
+	        			getWage('3');
+	        		}
+	        	}else{
+	        		layer.msg(data.msg,{icon:2});
+	        	}
+	        })
+        }
+
+        getAttendance();
+        // 全勤奖设置 接口联调
+        function getAttendance(){
+        	var def = reqAjax('shop/newsalary/getPositionsAndSalaryFullWork', {
+	            merchantId : merchantId
+	        });
+	        def.then(function(data){
+	        	if(data.code == 1){
+	        		$('.attendanceBonusTab table tbody').text('');
+	        		for(var i = 0; i < data.data.length;i++){
+	        			var content = $($('#tp2').html()).first().clone();
+	        			content.find('.positionNames').text(data.data[i].positionName);
+	        			content.attr({'positionId':data.data[i].id});
+
+	        			if(data.data[i].scSalaryFullwork != null){
+	        				content.attr({'keyId':data.data[i].scSalaryFullwork.id});
+	        				content.find('.latenessNum').val(data.data[i].scSalaryFullwork.latenessNum);
+	        				content.find('.money').val(data.data[i].scSalaryFullwork.money)
+	        			}  
+	        			$('.attendanceBonusTab table tbody').append(content);
+	        		}
+	        	}
+	        })
+        }
+
+        // 全勤奖 提交 按钮
+        function submitBonus(self){
+        	var id = $(self).parent().parent().attr('keyId') != undefined ? $(self).parent().parent().attr('keyId') : '';
+        	var positionId = $(self).parent().parent().attr('positionId');
+        	var money = $(self).parent().parent().find('.money').val();
+        	var latenessNum = $(self).parent().parent().find('.latenessNum').val();
+
+        	if(latenessNum.trim('') == ''){
+        		layer.msg('考勤异常次数不能为空！',{icon:2});
+        		return; 
+        	}
+
+        	if(money.trim('') == ''){
+        		layer.msg('全勤奖金不能为空！',{icon:2});  
+        		return;
+        	}
+
+        	var def = reqAjax('shop/newsalary/addOrUpdateSalaryFullWork', { 
+			    "scSalaryFullWork": [
+			        {
+			            "id": id,//主键值
+			            "merchantId": merchantId,//商户主键
+			            "shopId": "",//店铺主键（不用传）
+			            "positionId": positionId,//职务ID
+			            "money": money,//全勤奖金
+			            "latenessNum": latenessNum//考勤异常次数（含迟到早退，达到此设置则无全勤）
+			        }
+			    ]
+
+	        });
+	        def.then(function(data){
+	        	if(data.code == 1){
+	        		// location.reload();
+	        		layer.msg(data.msg,{icon:1});
+	        		getAttendance();
+	        	}else{
+	        		layer.msg(data.msg,{icon:2});
+	        	}
+	        })
+        }
+
+        // 金额 校验
+		function moneyCheck(self){
+		    if($(self).val().length <= 8){
+		        if($(self).val().length==1){
+		            $(self).val($(self).val().replace(/[^0-9]/g,''));
+		        } else {
+		            $(self).val($(self).val().replace(/[^0-9.]/g,''));
+		            $(self).val($(self).val().replace(/\.{2,}/g,"."));
+		            $(self).val($(self).val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+		        }
+
+		        if($(self).val().split('.')[1] != undefined && $(self).val().split('.')[1].length > 2){
+			      	$(self).val($(self).val().split('.')[0] +'.'+ $(self).val().split('.')[1].substring(0,2));
+			    }
+		        
+		    }else{
+		        $(self).val($(self).val().replace(/[^0-9.]/g,''));
+		        $(self).val($(self).val().replace(/\.{2,}/g,"."));
+		        $(self).val($(self).val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+
+		        // 整数 金额超过 8 位
+		        if($(self).val() > 99999999.99){
+		            $(self).val($(self).val().substring(0,8));
+		        }
+
+		        if($(self).val().split('.')[1] != undefined && $(self).val().split('.')[1].length > 2){
+			      	$(self).val($(self).val().split('.')[0] +'.'+ $(self).val().split('.')[1].substring(0,2));
+			    }
+		    }
+		}
+
+		// 正整数 校验
+		function integerCheck(self){
+			if(self.value.length==1){
+				self.value=self.value.replace(/[^0-9]/g,'');
+			}else{
+				self.value=self.value.replace(/\D/g,'');
+			}
+		}
+		// 正整数 校验 不能为0
+		function integerCheckeds(self){
+			if(self.value.length==1){
+				self.value=self.value.replace(/[^1-9]/g,'');
+			}else{
+				self.value=self.value.replace(/\D/g,'');
+			}
+		}
+
+		// 1-100  校验
+		function countCheck(self){
+			if($(self).val() <= 100){
+				if($(self).val().length==1){
+			        $(self).val($(self).val().replace(/[^0-9]/g,''));
+			    } else {
+			        $(self).val($(self).val().replace(/[^0-9.]/g,''));
+			        $(self).val($(self).val().replace(/\.{2,}/g,"."));
+			        $(self).val($(self).val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+			        
+			        if($(self).val().split('.')[1] != undefined && $(self).val().split('.')[1].length > 2){
+			        	$(self).val($(self).val().split('.')[0] +'.'+ $(self).val().split('.')[1].substring(0,2));
+			        }
+			    }
+			}else{
+				$(self).val('100');
+			}
+		} 
+
+	</script>
+
+</body>
+</html>

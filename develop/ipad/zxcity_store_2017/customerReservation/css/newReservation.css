@@ -1,0 +1,93 @@
+.main-wrapper, .row{
+    background-color: #fff!important;
+}
+.add-reservation-box{
+    padding:0.875rem 0;
+    background-color: #fff;
+
+}
+.add-reservation-box .columns label{
+    width:29%;
+    text-align: right;
+    cursor:default;
+}
+.add-reservation-box .columns input[type=text],
+.add-reservation-box .columns select{
+    display:inline-block;
+    width:69%;
+}
+.add-reservation-box .colspan-row label{
+    display: inline-block;
+    vertical-align: top;
+    width:14%;
+}
+
+.add-reservation-box .colspan-row .mobile-label{
+    vertical-align: baseline;
+}
+.add-reservation-box .colspan-row .tips-label{
+    padding-top:0.35rem;
+}
+.add-reservation-box .colspan-row textarea{
+    display: inline-block;
+    width:85%;
+    height:5rem;
+    resize: none;
+    margin-bottom:0.625rem;
+}
+.add-reservation-box .colspan-row input[type=text],
+.add-reservation-box .colspan-row .tips{
+    display: inline-block;
+    width:85%;
+}
+.add-reservation-box .colspan-row select{
+    width:5rem;
+    margin:0 0.5rem;
+}
+.required-icon{
+    color:#ff0000;
+    font-style: normal;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1rem;
+}
+/*2017.12.14更改开始*/
+.column, .columns{
+    height: 3.5rem;
+}
+#tips{
+    margin-top: 1.8rem;
+}
+.select2-container .select2-selection--single{
+    height: 2.3125rem;
+    line-height: 2.3125rem;
+    border-radius: 0;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    height: 100%;
+    line-height:2.3125rem ;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b{
+    margin-top: 0.2rem;
+}
+/*2017.12.14更改结束*/
+@media screen and (max-width:800px){
+
+    .add-reservation-box .columns label{
+        width:37%;
+    }
+    .add-reservation-box .columns input[type=text],
+    .add-reservation-box .columns select{
+        width:60%;
+    }
+    .add-reservation-box .colspan-row label{
+        width:18%;
+    }
+    .add-reservation-box .colspan-row input[type=text],
+    .add-reservation-box .colspan-row .tips{
+        width:80%;
+    }
+    .add-reservation-box .colspan-row textarea{
+        width:80%;
+    }
+}

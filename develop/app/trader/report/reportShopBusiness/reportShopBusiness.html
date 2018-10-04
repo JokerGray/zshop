@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>店铺营业统计</title>
+    <link rel="stylesheet" href="../../assets/common/css/common.css">
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="../../assets/select2-v4.0.6/css/select2.min.css">
+    <link rel="stylesheet" href="./css/reportShopBusiness.css">
+</head>
+<body>
+<!--顶部时间tab页和店铺选择，员工选择-->
+<div class="top">
+    <div class="timeNav">
+        <a href="javascript:;" class="thisMonth active">本月</a>
+        <a href="javascript:;" class="selfTime">自定义时间</a>
+        <div class="timeRange">
+            <input type="text" id="startDate" autocomplete="off" value="" onfocus="blur()" onclick="blur()">
+            <span>至</span>
+            <input type="text" id="endDate" autocomplete="off" value="" onfocus="blur()" onclick="blur()">
+            <button id="sure">确定</button>
+        </div>
+    </div>
+    <div class="filterBox">
+        <div>
+            <label>店铺 </label>
+            <select id="shopSelector">
+                <!--<option value="null">全部店铺</option>-->
+            </select>
+        </div>
+    </div>
+</div>
+<!--路径导航-->
+<div class="path">
+    <span class="pathTime" data-type="thisMonth">本月</span><i> > </i>
+    <span class="pathShopName"> </span>
+</div>
+<!--业绩之最展示-->
+<div class="greatBox"></div>
+<!--条件tab栏和服务选择-->
+<div class="filterTab">
+    <div class="tabNav">
+        <a href="javascript:;" data-class="totalMoneyReport" class="active" data-type="1">总流水</a>
+        <a href="javascript:;" data-class="incomeReport" data-type="2">现金收入</a>
+        <a href="javascript:;" data-class="expendReport" data-type="3">服务业绩</a>
+    </div>
+    <div class="exportBtn">
+        <a href="javascript:;">导出EXCEL</a>
+    </div>
+</div>
+<!--页面主体显示-->
+<div class="content">
+    <div class="totalMoneyReport">
+        <table id="totalMoneyReport" lay-filter="totalMoneyReport">
+            <thead>
+            <tr>
+                <!--<th lay-data="{field: 'num', width:60,minWidth:60, fixed: 'left',style:'text-align:center'}">序号</th>-->
+                <!--<th lay-data="{field: 'shopName', width:206,minWidth:206}">店铺名称</th>-->
+                <!--<th lay-data="{field: 'orderType', width:156,minWidth:156}">账单类型</th>-->
+                <!--<th lay-data="{field: 'actualPay', width:182,minWidth:182,sort: true}">账单金额（元）</th>-->
+                <!--<th lay-data="{field: 'discountMoney', width: 162,minWidth:162}">优惠金额（元）</th>-->
+                <!--<th lay-data="{field: 'payType', width: 176,minWidth:176}">支付方式</th>-->
+                <!--<th lay-data="{field: 'memberName', width: 154,minWidth:154}">顾客名称</th>-->
+                <!--<th lay-data="{field: 'salesman', width: 164,minWidth:164}">销售员工</th>-->
+                <!--<th lay-data="{field: 'consumeTime',width: 395,minWidth:395}">账单时间</th>-->
+                <th lay-data="{field: 'num', width:60,minWidth:60, fixed: 'left',style:'text-align:center'}">序号</th>
+                <th lay-data="{field: 'shopName'}">店铺名称</th>
+                <th lay-data="{field: 'orderType'}">账单类型</th>
+                <th lay-data="{field: 'actualPay'}">账单金额（元）</th>
+                <th lay-data="{field: 'discountMoney'}">优惠金额（元）</th>
+                <th lay-data="{field: 'payType'}">支付方式</th>
+                <th lay-data="{field: 'memberName'}">顾客名称</th>
+                <th lay-data="{field: 'salesman'}">销售员工</th>
+                <th lay-data="{field: 'consumeTime'}">账单时间</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <div class="pageBox">
+            <div class="pageTips">
+                <p>
+                    显示<span class="from">1</span>到<span class="to">10</span>项，共<span class="total">57</span>项
+                </p>
+            </div>
+            <div id="totalMoneyPageSelect"></div>
+        </div>
+    </div>
+    <div class="incomeReport">
+        <div class="table">
+            <table id="incomeReport" lay-filter="incomeReport">
+                <thead>
+                <tr>
+                    <!--<th lay-data="{field: 'num', width:60,minWidth:60, fixed:'left',style:'text-align:center',event:'detail'}">序号</th>-->
+                    <!--<th lay-data="{field: 'shopName', width:207,minWidth:207,event:'detail'}">店铺名称</th>-->
+                    <!--<th lay-data="{field: 'totalPrice', width:152,minWidth:152,sort:true,event:'detail'}">现金收入（元）</th>-->
+                    <!--<th lay-data="{field: 'cashPayRecharge',minWidth:152,minWidth:152,sort:true,event:'detail'}">充值金额（元）</th>-->
+                    <!--<th lay-data="{field: 'cashPayMoney',minWidth:152,minWidth:152,sort:true,event:'detail'}">现金消费（元）</th>-->
+                    <!--<th lay-data="{field: 'cashPayAppointment',minWidth:152,minWidth:152,sort:true,event:'detail'}">定金预售（元）</th>-->
+                    <!--<th lay-data="{field: 'shopId',minWidth:0,minWidth:0,event:'detail',style:'display:none'}"></th>-->
+                    <th lay-data="{field: 'num',width:60,minWidth:60, fixed:'left',style:'text-align:center',event:'detail'}">序号</th>
+                    <th lay-data="{field: 'shopName',event:'detail'}">店铺名称</th>
+                    <th lay-data="{field: 'totalPrice',event:'detail'}">现金收入（元）</th>
+                    <th lay-data="{field: 'cashPayRecharge',event:'detail'}">充值金额（元）</th>
+                    <th lay-data="{field: 'cashPayMoney',event:'detail'}">现金消费（元）</th>
+                    <th lay-data="{field: 'cashPayAppointment',event:'detail'}">定金预售（元）</th>
+                    <th lay-data="{field: 'shopId',width:-1,event:'detail',style:'display:none'}"></th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div class="pageBox">
+                <div class="pageTips">
+                    <p>
+                        显示<span class="from">1</span>到<span class="to">10</span>项，共<span class="total">57</span>项
+                    </p>
+                </div>
+                <div id="incomePageSelect"></div>
+            </div>
+        </div>
+        <div class="chart">
+            <div class="chartTitle">
+                <span>现金收入前十排行</span>
+                <span>
+                    <i class="active" data-type="0">现金收入/</i>
+                    <i data-type="1">充值金额/</i>
+                    <i data-type="2">现金消费/</i>
+                    <i data-type="3">定金预售</i>
+                </span>
+            </div>
+            <div class="echartBox">
+                <div class="incomeChartContent" style="width: 760px;height:325px;"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="expendReport">
+        <div class="table">
+            <table id="expendReport" lay-filter="expendReport">
+                <thead>
+                <tr>
+                    <!--<th lay-data="{field: 'num', width:60,minWidth:60, fixed:'left',style:'text-align:center'}">序号</th>-->
+                    <!--<th lay-data="{field: 'achievementShopName', width:'50%',minWidth:'50%'}">店铺名称</th>-->
+                    <!--<th lay-data="{field: 'achievementPrice',width:221,minWidth:221,sort:true}">服务业绩（元）</th>-->
+                    <th lay-data="{field: 'num', width:60,minWidth:60, fixed:'left',style:'text-align:center',event:'detail'}">序号</th>
+                    <th lay-data="{field: 'achievementShopName',event:'detail'}">店铺名称</th>
+                    <th lay-data="{field: 'achievementPrice',event:'detail'}">服务业绩（元）</th>
+                    <th lay-data="{field: 'shopId',width:-1,event:'detail',style:'display:none'}"></th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="pageBox">
+                <div class="pageTips">
+                    <p>
+                        显示<span class="from">1</span>到<span class="to">10</span>项，共<span class="total">57</span>项
+                    </p>
+                </div>
+                <div id="expendPageSelect"></div>
+            </div>
+        </div>
+        <div class="chart">
+            <div class="chartTitle">
+                <span>服务业绩店铺前十排行</span>
+                <!--<span>店铺排行/<i>人员排行</i></span>-->
+            </div>
+            <div class="echartBox">
+                <div class="expendChartContent" style="width: 832px;height:325px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--时间选择遮罩-->
+<div class="mask"></div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/echart/echarts.min.js"></script>
+<script src="../../assets/layer-v3.1.1/layer.js"></script>
+<script src="../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../assets/select2-v4.0.6/js/select2.full.min.js"></script>
+<script src="../../assets/select2-v4.0.6/js/i18n/zh-CN.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="./js/reportShopBusiness.js"></script>
+<!--店铺营业额占比详情弹窗-->
+<script type="text/html" id="businessDetailTpl">
+    <div class="detailTop">
+        <span>店铺现金收入占比详情</span>
+        <i class="closeIcon">×</i>
+    </div>
+    <div class="detailContent">
+        <div class="chartBox">
+            <div class="pieChart" style="width: 480px;height: 444px;"></div>
+        </div>
+        <div class="tableBox">
+            <div class="detailPath">
+                <p>店铺：<b>女人花江汉路一店</b> >全部明细> <span>充值</span> </p>
+                <a href="javascript:;" id="exportBtn">导出EXCEL</a>
+            </div>
+            <div class="detailTable">
+                <table class="layui-table" lay-even id="detailTable">
+                    <colgroup>
+                        <col width="60">
+                        <col width="155">
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <!--<th style="width: 60px;min-width: 60px;max-width: 60px; text-align: center">序号</th>-->
+                        <!--<th style="width: 150px;min-width: 150px;max-width: 150px;">时间</th>-->
+                        <!--<th style="width: 100px;min-width: 100px;max-width: 100px;">充值金额（元）</th>-->
+                        <!--<th style="width: 90px;min-width: 90px;max-width:90px;">顾客</th>-->
+                        <!--<th style="width: 90px;min-width: 90px;;max-width: 90px;">销售员工</th>-->
+                        <th style="text-align: center">序号</th>
+                        <th style="min-width: 155px">时间</th>
+                        <th style="min-width: 80px;">金额（元）</th>
+                        <th>顾客</th>
+                        <th>销售员工</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{if data.length > 0}}
+                    {{each data item index}}
+                    <tr>
+                        <td style="text-align: center">{{(index+1)<10?'0'+(index+1):(index+1)}}</td>
+                        <td>{{item.consumeTime}}</td>
+                        {{if $data.type == 1}}
+                        <td>{{item.cashPayRecharge}}</td>
+                        {{else if $data.type == 2}}
+                        <td>{{item.cashPayMoney}}</td>
+                        {{else if $data.type == 3}}
+                        <td>{{item.cashPayAppointment}}</td>
+                        {{/if}}
+                        <td>{{item.memberName}}</td>
+                        <td>{{item.salesMan}}</td>
+                    </tr>
+                    {{/each}}
+                    {{else}}
+                    <tr><td class="layui-none" colspan="5">暂无相关数据</td></tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="pageBox">
+                <div class="pageTips">
+                    <!--<p>-->
+                        <!--显示<span class="from">1</span>到<span class="to">10</span>项，共<span class="total">57</span>项-->
+                    <!--</p>-->
+                </div>
+                <div id="detailPageSelect"></div>
+            </div>
+        </div>
+    </div>
+</script>
+<!--四大冠军报表-->
+<script type="text/html" id="greatTpl">
+    <ul>
+        <li>
+            <p class="topTitle">现金收入</p>
+            <div class="greatDetail">
+                <span class="businessMoney"><sub>￥</sub>{{$imports.moneyFormat(data.price)}}</span>
+                {{if data.PercentagePrice >= 0}}
+                <span class="greatContent up compare">
+                    <s>相比上月</s>
+                    <i>
+                        {{$imports.Math.round($imports.Math.abs(data.PercentagePrice*100))}}%
+                        &nbsp;
+                        <b></b>
+                    </i>
+                </span>
+                {{else}}
+                <span class="greatContent down compare">
+                    <s>相比上月</s>
+                    <i>
+                        {{$imports.Math.round($imports.Math.abs(data.PercentagePrice*100))}}%
+                        &nbsp;
+                        <b></b>
+                    </i>
+                </span>
+                {{/if}}
+            </div>
+        </li>
+        <li>
+            <p class="topTitle">服务业绩</p>
+            <div class="greatDetail">
+                <span class="expendMoney"><sub>￥</sub>{{$imports.moneyFormat(data.achievementPrice)}}</span>
+                {{if data.PercentagePriceAchi >= 0}}
+                <span class="greatContent up compare">
+                    <s>相比上月</s>
+                    <i>
+                        {{$imports.Math.round($imports.Math.abs(data.PercentagePriceAchi*100))}}%
+                        &nbsp;
+                        <b></b>
+                    </i>
+                </span>
+                {{else}}
+                <span class="greatContent down compare">
+                    <s>相比上月</s>
+                    <i>
+                        {{$imports.Math.round($imports.Math.abs(data.PercentagePriceAchi*100))}}%
+                        &nbsp;
+                        <b></b>
+                    </i>
+                </span>
+                {{/if}}
+            </div>
+        </li>
+        <li>
+            <p class="topTitle">店铺现金收入冠军</p>
+            <div class="greatDetail">
+                <span class="name" title="{{data.turnoverChampionShopName}}">{{data.turnoverChampionShopName}}</span>
+                <span class="greatContent">
+                    <s>营业额：</s>
+                    <i>
+                       ￥{{$imports.moneyFormat(data.turnoverChampionrice)}}
+                    </i>
+                </span>
+            </div>
+        </li>
+        <li>
+            <p class="topTitle">店铺服务业绩冠军</p>
+            <div class="greatDetail">
+                <span class="name" title="{{data.championAchievementShopName}}">{{data.championAchievementShopName}}</span>
+                <span class="greatContent">
+                    <s>消耗额：</s>
+                    <i>
+                       ￥{{$imports.moneyFormat(data.championAchievementPrice)}}
+                    </i>
+                </span>
+            </div>
+        </li>
+    </ul>
+</script>
+<!--服务业绩明细弹窗-->
+<script id="ServicePerformanceTpl" type="text/html">
+    <div class="detailTop">
+        <span>服务业绩详情</span>
+        <i class="closeIcon">×</i>
+    </div>
+    <div class="performanceDetailContent">
+        <div class="performanceDetailPath">
+            <p>店铺：<span>{{$data.shopName}}</span>---服务业绩明细</p>
+            <a href="javascript:;" class="exportBtn">导出EXCEL</a>
+        </div>
+    </div>
+    <div class="tableBox">
+        <table class="layui-table" lay-even id="performanceDetailTable">
+            <colgroup>
+                <col width="60">
+                <col width="155">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th style="text-align: center">序号</th>
+                <th style="min-width: 165px">时间</th>
+                <th>服务项目</th>
+                <th style="min-width: 90px;">顾客</th>
+                <th style="min-width: 90px;">服务人员</th>
+                <th style="min-width: 130px;">业绩金额（元）</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{if data.length > 0}}
+            {{each data item index}}
+            <tr>
+                <td style="text-align: center;">{{(index+1) < 10 ? ('0'+(index+1)) : (index+1)}}</td>
+                <td>{{item.consumeTime}}</td>
+                <td>{{item.serviceName}}</td>
+                <td>{{item.consumerName}}</td>
+                <td>{{item.userName}}</td>
+                <td>{{item.achPay}}</td>
+            </tr>
+            {{/each}}
+            {{else}}
+            <tr><td class="layui-none" colspan="6">暂无相关数据</td></tr>
+            {{/if}}
+            </tbody>
+        </table>
+    </div>
+    <div class="pageBox">
+        <div class="pageTips"></div>
+        <div id="performanceDetailPageSelect"></div>
+    </div>
+</script>
+</html>

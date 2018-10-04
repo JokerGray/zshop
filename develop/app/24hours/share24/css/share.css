@@ -1,0 +1,260 @@
+ html,
+ body {
+     background: #f1f1f1;
+     width: 100%;
+     height: 100%;
+ }
+ 
+ header {
+     width: 100%;
+     position: relative;
+     height: 2.38rem;
+ }
+ 
+ header .header_bg {
+     width: 100%;
+     position: absolute;
+     top: 0;
+     left: 0;
+     height: 2.38rem;
+     background: url(../img/logo.png) no-repeat;
+     background-size: cover;
+     z-index: 2;
+ }
+ 
+ header .header_bg_black {
+     width: 100%;
+     height: 2.38rem;
+     background: rgba(0, 0, 0, .2);
+     z-index: 2;
+     left: 0;
+     top: 0;
+     position: absolute;
+ }
+ 
+ header .header_con {
+     width: 100%;
+     position: absolute;
+     top: 0;
+     left: 0;
+     font-size: 0.26rem;
+     height: 2.38rem;
+     z-index: 3;
+ }
+ 
+ header .header_con .header_right{
+	 width: calc(100% - 2.35rem);
+ }
+ 
+ header img {
+     width: 1.4rem;
+     height: 1.4rem;
+     margin: 0.5rem 0.4rem 0.5rem 0.24rem;
+ }
+ 
+ header .header_con>div {
+     margin-top: 0.5rem;
+     color: #fff;
+ }
+ 
+ header>div h2 {
+     font-size: 0.36rem;
+     line-height: 0.36rem;
+ }
+ 
+ header>div .fistr_p {
+     margin-top: 0.3rem;
+     line-height: 0.26rem;
+ }
+ 
+ header>div .last_p {
+     margin-top: 0.2rem;
+     line-height: 0.26rem;
+ }
+ 
+ section {
+     margin-top: 0.24rem;
+     background: #fff;
+     padding: 0.24rem;
+     font-size: 0.3rem;
+     line-height: 0.3rem;
+ }
+
+ .toparrow{
+    display :none;
+}
+
+ section h3 {
+     margin-bottom: 0.24rem;
+ }
+ 
+ section h3 img {
+     height: 0.28rem;
+     line-height: 0.28rem;
+ }
+ 
+ section h3 .top {
+     font-size: 0.28rem;
+     line-height: 0.28rem;
+ }
+ 
+ section .imgs {
+     position: relative;
+     height: 100%;
+ }
+ 
+ section .small_img {
+     margin-top: 0.24rem;
+     display: flex;
+ }
+ 
+ section .small_img img {
+     width: 32%;
+     margin-right: 0.12rem;
+     border-radius: 0.08rem;
+ }
+ 
+ section .small_img img:last-child {
+     margin-right: 0;
+ }
+ 
+ section .small_label {
+     height: 0.26rem;
+     background: rgb(145, 137, 242);
+     position: absolute;
+     border-radius: 0.1rem;
+     right: 0.2rem;
+     bottom: 0.1rem;
+     color: #fff;
+     padding: 0.1rem;
+     line-height: 0.26rem;
+ }
+ 
+ section .small_label i {
+     font-size: 0.3rem;
+ }
+ 
+ section .foot_content {
+     margin-top: 0.24rem;
+     color: #999;
+     line-height: 0.46rem;
+     font-size: 0.2rem;
+     width: 100%;
+ }
+ 
+ section .foot_content i {
+     font-size: 0.26rem;
+ }
+ 
+ section .foot_content .name {
+     font-size: 0.24rem;
+ }
+ 
+ section .content {
+     padding: 0.24rem 0;
+     border-bottom: 0.01rem solid #ccc;
+     line-height: 0.4rem;
+     position: relative;
+ }
+ 
+ section .content .title {
+     font-size: 0.32rem;
+ }
+ 
+ section .foot_content .dateDiv,
+ section .foot_content .seeNum {
+     color: #ccc;
+ }
+ 
+ section .article_con {
+     width: calc(100% - 2.1rem);
+     margin-right: 0.44rem;
+ }
+ 
+ section .article_cover {
+     width: 1.66rem;
+     height: 1.66rem;
+ }
+ 
+ .w220 {
+     width: 2.20rem;
+ }
+ 
+ .w166 {
+     width: 1.66rem;
+ }
+ 
+ .w100 {
+     width: 100%;
+ }
+ 
+ .font32 {
+     font-size: 0.32rem;
+ }
+ 
+ .ml22 {
+     margin-left: 0.22rem;
+     margin-right: 0.05rem;
+ }
+ 
+ section .article_box {
+     height: 1.66rem;
+     line-height: 0.35rem;
+ }
+ 
+ .article_title {
+     height: 1.0rem;
+     line-height: 0.33rem;
+ }
+ 
+ .video_box {
+     position: relative;
+     width: 100%;
+     height: 3.94rem;
+ }
+ 
+ .video_box video {
+     position: absolute;
+     width: 100%;
+     height: 3.94rem;
+     margin-top: 0.24rem;
+     z-index: 2;
+ }
+ 
+ .video_box .poster_img {
+     position: absolute;
+     width: 100%;
+     height: 3.94rem;
+     margin-top: 0.24rem;
+     z-index: 3;
+ }
+ 
+ .video_box .playA {
+     position: absolute;
+     width: 100%;
+     height: 3.94rem;
+     background: url(../img/play_icon.png) 50% no-repeat;
+     background-size: 100px;
+     z-index: 4;
+ }
+ 
+ section img.cover {
+     width: 100%;
+     height: 100%;
+ }
+ 
+ .blur {
+     filter: url(blur.svg#blur);
+     /* FireFox, Chrome, Opera */
+     -webkit-filter: blur(10px);
+     /* Chrome, Opera */
+     -moz-filter: blur(10px);
+     -ms-filter: blur(10px);
+     filter: blur(10px);
+     filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);
+     /* IE6~IE9 */
+ }
+ 
+ .block {
+     display: block;
+ }

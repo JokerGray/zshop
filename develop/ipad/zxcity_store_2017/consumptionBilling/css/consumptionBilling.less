@@ -1,0 +1,687 @@
+*{
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+.left{
+  width: 38.45%;
+  background-color: #fff;
+  float: left;
+  overflow-y: auto;
+  .left_top{
+    width: 100%;
+    height: 114/32rem;
+    background-color: #F2F2F2;
+    border-bottom: 2/32rem solid #999;
+    padding-right: 30/32rem;
+    //position: fixed;
+    //top: 0;
+    //left: 0;
+    //z-index: 1;
+    .selectVipBtn{
+      float: right;
+      height: 114/32rem;
+      line-height: 114/32rem;
+      font-size: 30/32rem;
+    }
+  }
+  .selectedVip_msg{
+    width: 100%;
+    height: 207/32rem;
+    padding-left: 30/32rem;
+    border-bottom: 2/32rem solid #dadada;
+    //margin-top: 114/32rem;
+    //position: fixed;
+    //top: 114/32rem;
+    //left: 0;
+    //background-color: #fff;
+    //z-index: 1;
+    p{
+      span{
+        font-size: 30/32rem;
+        color: #333333;
+      }
+      b{
+        font-weight: 400;
+      }
+      &:first-of-type{
+        margin-top: 20/32rem;
+        b{
+          font-size: 36/32rem;
+          color: #fe6869;
+        }
+      }
+      &:nth-of-type(2){
+        margin-top: 20/32rem;
+      }
+      &:last-of-type{
+        margin-top: 20/32rem;
+        b{
+          font-size: 26/32rem;
+          color: #fe6869;
+        }
+      }
+    }
+  }
+  .selectedServiceCards_box{
+    width: 100%;
+    border-top: 10/32rem solid #f2f2f2;
+    //margin-top: 321/32rem;
+    ul{
+      li{
+        width: 100%;
+        //height: 375/32rem;
+        padding-left: 30/32rem;
+        padding-top: 14/32rem;
+        padding-bottom: 30/32rem;
+        border-bottom: 2/32rem solid #dadada;
+        overflow: hidden;
+        h4{
+          margin: 0;
+          font-size: 32/32rem;
+          color: #333333;
+          sub{
+            vertical-align: baseline;
+            color: #f59701;
+          }
+        }
+        p{
+          font-size: 28/32rem;
+          color: #333333;
+          margin-top: 18/32rem;
+          &:first-of-type{
+            span{
+              margin-right: 114/32rem;
+            }
+          }
+          &:nth-of-type(2){
+            line-height: 48/32rem;
+            >span{
+              white-space:normal;
+              word-break:keep-all;
+              overflow:hidden;
+            }
+          }
+          &:last-of-type{
+            margin-top: 10/32rem;
+          }
+          .changeServicePeopleBtn{
+            color: #fe6869;
+          }
+          .changeServiceTypeBtn{
+            color: #f59701;
+          }
+        }
+        >div{
+          margin-top: 20/32rem;
+          overflow: hidden;
+          >span{
+            float: left;
+            height: 54/32rem;
+            line-height: 54/32rem;
+            font-size: 28/32rem;
+            color: #333333;
+          }
+          .selectServiceNum{
+            float: left;
+            margin-left: 96/32rem;
+            a{
+              float: left;
+              width: 54/32rem;
+              height: 54/32rem;
+              line-height: 50/32rem;
+              text-align: center;
+              font-size: 60/32rem;
+              color: #666666;
+            }
+            input{
+              float: left;
+              width: 90/32rem;
+              height: 54/32rem;
+              outline: none;
+              border: 2/32rem solid #bfbfbf;
+              -webkit-border-radius: 4/32rem;
+              -moz-border-radius: 4/32rem;
+              border-radius: 4/32rem;
+              margin: 0 20/32rem;
+              text-align: center;
+              -webkit-appearance: none;
+            }
+            .addBtn{
+              color: #2bb8aa;
+            }
+          }
+          .userText{
+            line-height: 68/32rem;
+          }
+          .userPeople{
+            width: 258/32rem;
+            height: 68/32rem;
+          }
+          .select2-container{
+            height: 68/32rem;
+            .select2-selection--single{
+              -webkit-border-radius: 0;
+              -moz-border-radius: 0;
+              border-radius: 0;
+              height: 68/32rem;
+              .select2-selection__rendered{
+                line-height: 68/32rem;
+              }
+              .select2-selection__arrow{
+                height: 68/32rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.right{
+  width: 61.55%;
+  height: 500/32rem;
+  background-color: #fff;
+  float: left;
+  overflow-y: scroll;
+  .right_top_title{
+    width: 100%;
+    height: 114/32rem;
+    line-height: 114/32rem;
+    background-color: #F2F2F2;
+    border-bottom: 2/32rem solid #999;
+    //position: fixed;
+    //top: 0;
+    //left: 38.45%;
+    //z-index: 1;
+    h4{
+      font-size: 40/32rem;
+      color: #333333;
+      margin:0;
+      text-align: center;
+    }
+  }
+  .searchSearchCar_box{
+    width: 100%;
+    height: 82/32rem;
+    background-color: #F2F2F2;
+    border-left: 2/32rem solid #999;
+    padding: 11/32rem 30/32rem 11/32rem 27/32rem;
+    position: relative;
+    //margin-top: 114/32rem;
+    //position: fixed;
+    //top: 114/32rem;
+    //right: 0;
+    //z-index: 1;
+    input{
+      width: 100%;
+      height: 60/32rem;
+      border: none;
+      outline: none;
+      background-color: #DDDDDD;
+      text-align: center;
+      -webkit-appearance: none;
+      border-radius: 0;
+      &::-webkit-search-cancel-button{
+        display: none;
+      }
+    }
+    .deleBtn{
+      position: absolute;
+      width: 60/32rem;
+      height: 60/32rem;
+      background: url("../../common/image/delete.png") no-repeat center;
+      -webkit-background-size: 46/32rem 46/32rem;
+      background-size: 46/32rem 46/32rem;
+      top: 11/32rem;
+      right: 50/32rem;
+      display: none;
+    }
+  }
+  .allServiceCards_box,.serviceCardsResult_box{
+    //margin-top: 196/32rem;
+    ul{
+      li{
+        padding-top: 30/32rem;
+        padding-left: 27/32rem;
+        padding-bottom: 30/32rem;
+        //height:384/32rem;
+        border-bottom: 2/32rem solid #dadada;
+        position: relative;
+        h4{
+          margin: 0;
+          font-size: 36/32rem;
+          color: #333333;
+          sub{
+            font-size: 24/32rem;
+            color: #333333;
+            vertical-align: baseline;
+          }
+        }
+        p{
+          font-size: 28/32rem;
+          color: #333333;
+          margin-top: 20/32rem;
+          &:last-of-type{
+            color: #f59701;
+          }
+          .changeServiceTypeBtn{
+            color: #f59701;
+          }
+        }
+        .cardMsg{
+          margin-top: 20/32rem;
+          span{
+            display: inline-block;
+            font-size: 28/32rem;
+            color: #333333;
+            input{
+              width: 50/32rem;
+              height: 100%;
+              border: none;
+              text-align: center;
+              -webkit-appearance: none;
+            }
+          }
+          >span:nth-of-type(1){
+            width: 396/32rem;
+          }
+          >span:nth-of-type(2){
+            width:224/32rem;
+            margin: 0 0/32rem 0 60/32rem;
+          }
+          .canRewriteBtn{
+            display: inline-block;
+            width: 21/32rem;
+            height: 24/32rem;
+            background: url("../../common/image/pen@2x.png") no-repeat center;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
+        }
+        .waitersBox{
+          margin-top: 20/32rem;
+          >span{
+            display: inline-block;
+            font-size: 28/32rem;
+            color: #333333;
+            .changeServicePeopleBtn{
+              color: #fe6869;
+            }
+          }
+        }
+        .select_sure_btn{
+          position: absolute;
+          width: 181/32rem;
+          height: 63/32rem;
+          text-align: center;
+          line-height: 63/32rem;
+          color: #fff;
+          background-color: #2bb8aa;
+          bottom: 10/32rem;
+          right: 30/32rem;
+          font-size: 28/32rem;
+        }
+        .cancelColor{
+          background-color: #fe6869;
+        }
+      }
+    }
+  }
+  .serviceCardsResult_box{
+    display: none;
+  }
+}
+
+.line{
+  width: 2/32rem;
+  border-left: 2/32rem solid #999;
+  position: fixed;
+  top: 0;
+  left: 38.45%;
+  z-index: 2;
+}
+
+.bottom{
+  width: 38.45%;
+  height: 92/32rem;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-top: 2/23rem solid #dadada;
+  .serviceTotal{
+    display: inline-block;
+    font-size: 30/32rem;
+    color: #fe6869;
+    margin-top: 30/32rem;
+    margin-left: 60/32rem;
+  }
+  .addOrderBtn{
+    float: right;
+    width: 201/32rem;
+    height: 68/32rem;
+    line-height: 68/32rem;
+    text-align: center;
+    background-color: #fe6869;
+    color: #fff;
+    font-size: 36/32rem;
+    margin-top: 12/32rem;
+    margin-right: 30/32rem;
+
+  }
+}
+
+.searchBox{
+  width: 100%;
+  height: 80/32rem;
+  background-color: #DDDDDD;
+  padding: 10/32rem 20/32rem;
+  input{
+    width: 86%;
+    height: 60/32rem;
+    border: none;
+    outline: none;
+    padding-left: 24/32rem;
+    background-color: #fff;
+    float: left;
+    -webkit-appearance: none !important;
+    border-radius: 0;
+  }
+  button{
+    width: 10%;
+    height: 60/32rem;
+    border: none;
+    outline: none;
+    float: left;
+    background-color: #fff;
+    color: #999999;
+    margin-left: 4%;
+    -webkit-appearance: none !important;
+  }
+}
+
+.accountListBox,.serviceListBox{
+  width: 100%;
+  margin-top: 20/32rem;
+  height: 75%;
+  overflow: hidden;
+  overflow-y: auto;
+  ul{
+    padding: 0 40/32rem;
+    li{
+      width: 100%;
+      height: 77/32rem;
+      line-height: 77/32rem;
+      border-bottom: 2/32rem solid #eee;
+      span{
+        float: left;
+        width: 33.333%;
+        height: 77/32rem;
+        font-size: 30/32rem;
+        color: #333333;
+        &:last-of-type{
+          color: #999999;
+          text-align: right;
+          display: inline-block;
+          background: url("../../common/image/xiangyou.fw.png") no-repeat right;
+          -webkit-background-size: 16/32rem 26/32rem;
+          background-size: 16/32rem 26/32rem;
+        }
+        &:nth-of-type(2){
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.serviceListBox{
+  text-align: center;
+  ul{
+    li{
+      &:first-of-type{
+        span{
+          font-weight: 700;
+          color: #000000;
+          font-size: 32/32rem;
+          &:last-of-type{
+            font-weight: 700;
+            color: #000000;
+            font-size: 32/32rem;
+          }
+        }
+        &:first-of-type{
+          span{
+            &:last-of-type{
+              background: none;
+            }
+          }
+        }
+      }
+      span{
+        &:last-of-type{
+          text-align: center;
+          color: #333333;
+        }
+      }
+
+    }
+  }
+
+}
+
+//服务列表和客户列表弹窗
+body .accountList-class,body .waiterList-class{
+  .layui-layer-title{
+    background-color: #fff!important;
+    font-size: 30/32rem;
+    color: #333333;
+    padding: 0!important;
+  }
+  .layui-layer-setwin{
+    display: none!important;
+  }
+  .layui-layer-btn0{
+    background-color: #fe6869;
+    border-color: #fe6869;
+  }
+}
+//设置遮罩层
+.layui-layer-shade{
+  opacity: 0.5!important;
+}
+
+//选服务人员弹窗和select2插件
+body .waiterList-class{
+  //.selServiceWaiter{
+  //  text-align: center;
+  //  padding-top: 80/32rem;
+  //  overflow: hidden;
+  //  p{
+  //    height: 60/32rem;
+  //    line-height: 60/32rem;
+  //    font-size: 36/32rem;
+  //    color: #333333;
+  //    margin-bottom: 20/32rem;
+  //  }
+  //  #waiterSelector{
+  //    width: 40%;
+  //    height: 70/32rem;
+  //    background-color: #fff;
+  //    outline: none;
+  //    text-align: center;
+  //  }
+  //  /deep/.select2-container{
+  //    width: 45% !important;
+  //    height: 80/32rem;
+  //  }
+  //  .select2-container--default .select2-selection--single{
+  //    border-radius: 0;
+  //    height: 80/32rem !important;
+  //    .select2-selection__rendered{
+  //      line-height: 80/32rem !important;
+  //    }
+  //    .select2-selection__arrow{
+  //      height: 80/32rem;
+  //      line-height: 80/32rem;
+  //    }
+  //  }
+  //}
+  .waiterListBox{
+    width: 100%;
+    height: 100%;
+    .searchWaiterBox{
+      width: 100%;
+      height: 80/32rem;
+      background-color: #DDDDDD;
+      padding: 0 20/32rem;
+      form{
+        input{
+          width: 100%;
+          height: 60/32rem;
+          outline: none;
+          border: none;
+          margin-top: 10/32rem;
+          padding-left: 20/32rem;
+          -webkit-appearance: none !important;
+          border-radius: 0;
+          &::-webkit-search-cancel-button {
+            display: none;
+          }
+        }
+      }
+    }
+    .waiterList{
+      padding: 0 20/32rem;
+      ul{
+        padding-top: 20px;
+        li{
+          width: 100%;
+          height: 80/32rem;
+          line-height: 80/32rem;
+          border-bottom: 2/32rem solid #dadada;
+          color: #333333;
+          font-size: 30/32rem;
+          padding: 0 20/32rem;
+          span:nth-of-type(2){
+            float: right;
+            font-size: 50/32rem;
+            color: #dddddd;
+          }
+          span:nth-of-type(2){
+            width: 32/32rem;
+            height: 32/32rem;
+            background: url("../../common/image/xiangyou.fw.png") no-repeat center;
+            -webkit-background-size: 18/32rem;
+            background-size: 18/32rem;
+            margin-top: 25.5/32rem;
+            &.active{
+              background: url("../../common/image/yes.png") no-repeat center;
+              -webkit-background-size: 32/32rem;
+              background-size: 32/32rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//选择子账户弹窗
+.memberListBox{
+  .layui-layer-title{
+    background-color: #fff!important;
+    font-size: 30/32rem;
+    color: #333333;
+    padding: 0!important;
+  }
+  .listBox{
+    width: 100%;
+    ul{
+      padding: 30/32rem;
+      li{
+        height: 77/32rem;
+        line-height: 77/32rem;
+        border-bottom: 2/32rem solid #eee;
+        font-size: 0;
+        span{
+          display: inline-block;
+          height: 100%;
+          font-size: 30/32rem;
+          color: #333333;
+          vertical-align: top;
+          &:first-of-type{
+            width: 80%;
+
+          }
+          &:last-of-type{
+            width: 20%;
+            background: url("../../common/image/xiangyou.fw.png") no-repeat right;
+            -webkit-background-size: 16/32rem 26/32rem;
+            background-size: 16/32rem 26/32rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+//select2插件
+.select2-container--open{
+  .select2-dropdown{
+    z-index: 999999999 !important;
+    //.select2-search{
+    //  display: block!important;
+    //}
+  }
+}
+
+//分页插件
+.service-page-selection,.page-selection{
+  //margin-top: 60/32rem;
+  width: 60%;
+  //height: 70/32rem;
+  position: absolute;
+  bottom: 32/32rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  //.ui-paging-container {
+  //  ul{
+  //    height: 70/32rem;
+  //    li{
+  //      padding: 0;
+  //      width: 60/32rem;
+  //      height: 70/32rem;
+  //      line-height: 70/32rem;
+  //      text-align: center;
+  //      font-size: 36/32rem;
+  //      border: 2/32rem solid #ddd;
+  //      color: #ddd;
+  //      //float: left;
+  //      vertical-align: middle;
+  //      &.focus{
+  //        background-color: #fe6869;
+  //        color: #FFFFFF;
+  //      }
+  //    }
+  //    .js-page-first,.js-page-last{
+  //      display: none;
+  //    }
+  //    .js-page-next{
+  //      background: url("../../common/image/right.png") no-repeat center;
+  //      -webkit-background-size: 40/32rem 40/32rem;
+  //      background-size: 40/32rem 40/32rem;
+  //    }
+  //    .js-page-prev{
+  //      background: url("../../common/image/left.png") no-repeat center;
+  //      -webkit-background-size: 40/32rem 40/32rem;
+  //      background-size: 40/32rem 40/32rem;
+  //    }
+  //  }
+  //}
+}

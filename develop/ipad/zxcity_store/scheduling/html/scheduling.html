@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=2.0, maximum-scale=1" />
+        <link rel="stylesheet" href="../../common/assets/css/bootstrap.css" />
+        <link rel="stylesheet" href="../../common/css/common.css">
+        <link rel="stylesheet" href="../css/scheduling2.css">
+        <title>排班</title>
+    </head>
+    <body class="homepage">
+        <div class="main-title">
+            <a class="return-icon" href="javascript:void(0);" onclick="backZxcityStoreApp()"><img src="../img/icon_fanhui.png" /></a>
+			<h1 class="title">排班</h1>
+            <a id="savaBtn" href="javascript:void(0);" class="save-btn">保存</a>
+        </div>
+        <div class="main-content homepage">
+            <div class="select-date">
+                <div class="select-day">
+                    <a id="selectDateBtn" href="javascript:void(0);" >
+                        <span id="currentDateShow" class="selected-cur-date"></span>
+                        <input id="dateSelector" type="hidden">
+                        <span class="select-bottom-arrow"></span>
+                    </a>
+                </div>
+                <div class="date-list-box">
+                    <a class="prev invisible" href="javascript:void(0);"></a>
+                    <a class="next invisible" href="javascript:void(0);"></a>
+                    <div class="date-list-inner">
+                        <div class="date-list">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-wrap">
+                <dl></dl>
+            </div>
+        </div>
+
+
+    <script src="../../common/assets/js/jquery-1.10.2.js"></script>
+    <script src="../../common/assets/js/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../common/assets/js/layer/layer.js"></script>
+    <script src="../../common/js/util/util.js"></script>
+    <script src="../js/scheduling2.js"></script>
+
+    </body>
+</html>

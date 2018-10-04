@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>店铺客户到店记录</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../../assets/paging/dist/paging.css">
+    <link rel="stylesheet" href="../../assets/common/css/paging.css">
+    <link rel="stylesheet" href="../../assets/select2/select2.min.css">
+    <link rel="stylesheet" href="css/shopArrivalRecord.css">
+</head>
+<body>
+<!--查询条件-->
+<div class="filterBox">
+    <div class="filter-shop">
+        <label>店铺：</label>
+        <select id="selectShop"></select>
+    </div>
+    <div class="filter-date">
+        <label>时间：</label>
+        <input type="text" class="startDate" id="startDate" placeholder="" onclick="blur()" autocomplete="off">
+        <span>至</span>
+        <input type="text" class="endDate" id="endDate" placeholder="" onclick="blur()" autocomplete="off">
+    </div>
+    <div class="filter-activity">
+        <label>到店情况：</label>
+        <select id="selectActivity">
+            <option value="">全部</option>
+            <option value="1">已消费</option>
+            <option value="2">未消费</option>
+        </select>
+    </div>
+    <a href="javascript:;" class="searchBtn"></a>
+</div>
+<!--列表展示-->
+<div class="recordList">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>客户名称</th>
+            <th>到店时间</th>
+            <th>消费金额</th>
+            <th>消费店铺</th>
+            <!--<th>操作</th>-->
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div class="noDataTip">暂无记录！</div>
+</div>
+<!--分页信息-->
+<div class="pageBox clearfix">
+    <div class="pageTips">
+        <span>显示第<span id="pageStart">1</span>条到第<span id="pageEnd">10</span>条记录，总共<span id="pageTotal">100</span>记录，每页显示</span>
+        <div class="btn-group dropup ">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                10 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="javascript:;">10</a></li>
+                <li><a href="javascript:;">20</a></li>
+                <li><a href="javascript:;">50</a></li>
+                <li><a href="javascript:;">100</a></li>
+            </ul>
+        </div>
+        <span>条记录</span>
+    </div>
+    <div class="pageSelector"></div>
+</div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/layer-v3.1.1/layer.js"></script>
+<script src="../../assets/paging/dist/paging.js"></script>
+<script src="../../assets/select2/select2.min.js"></script>
+<script src="../../assets/laydate-v5.0.9/laydate.js"></script>
+<script src="../../assets/artTemplate/template-web.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="js/shopArrivalRecord.js"></script>
+<script>
+    $(function () {
+        $('.recordList').outerHeight($(window).height()-$('.filterBox').height()-$('.pageBox').outerHeight(true))
+    })
+</script>
+<script type="text/html" id="shopArrivalRecordTpl">
+    {{each data item index}}
+    <tr>
+        <td>{{item.accountName||'散客'}}</td>
+        <td>{{item.consumeTime}}</td>
+        <td>{{item.actualPay}}元</td>
+        <td>{{item.shopName}}</td>
+        <!--<td><a href="javascript:;" class="viewBtn" data-id="{{item.id}}" data-accountname="{{item.accountName||'散客'}}"></a></td>-->
+    </tr>
+    {{/each}}
+</script>
+<script type="text/html" id="recordDetailTpl">
+    <div class="layer-common-style">
+        <div class="title-top">
+            <span class="title-text">到店明细（{{$data.accountName}}）</span>
+            <button class="closeBtn">×</button>
+        </div>
+        <div class="detailList">
+            <div class="top">
+                <div class="shoppingRecord">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>商品名称</th>
+                            <th style="min-width: 60px">数量</th>
+                            <th style="min-width: 60px">单价</th>
+                            <th style="min-width: 80px">实际支付</th>
+                            <th style="min-width: 80px">支付方式</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{if data.goodsList.length>0}}
+                        {{each data.goodsList item index}}
+                        <tr>
+                            <td>{{item.purchaseName}}</td>
+                            <td>{{item.purchaseNum}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.actualPayment}}</td>
+                            {{if item.payType == 0}}
+                            <td>本金支付</td>
+                            {{else if item.payType == 1}}
+                            <td>卡项支付</td>
+                            {{else if item.payType == 2}}
+                            <td>现金支付</td>
+                            {{else if item.payType == 3}}
+                            <td>组合支付</td>
+                            {{else if item.payType == 9}}
+                            <td>云店线上支付</td>
+                            {{/if}}
+                        </tr>
+                        {{/each}}
+                        {{else}}
+                        <tr>
+                            <td class="noDataTips" colspan="4">无购买商品明细</td>
+                        </tr>
+                        {{/if}}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="consumptionRecord">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>服务名称</th>
+                            <th style="min-width: 80px;">消耗次数</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{if data.expendList.length>0}}
+                        {{each data.expendList item index}}
+                        <tr>
+                            <td>{{item.serviceName}}</td>
+                            <td>{{item.consumeNum}}</td>
+                        </tr>
+                        {{/each}}
+                        {{else}}
+                        <tr>
+                            <td class="noDataTips" colspan="2">无消耗明细</td>
+                        </tr>
+                        {{/if}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+           <div class="bottom">
+               <div class="buyServiceCardRecord">
+                   <table class="table">
+                       <thead>
+                       <tr>
+                           <th>服务卡名称</th>
+                           <th style="min-width: 80px">应付金额</th>
+                           <th style="min-width: 80px">实付金额</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       {{if data.cardList.length>0}}
+                       {{each data.cardList item index}}
+                       <tr>
+                           <td>{{item.cardName}}</td>
+                           <td>{{item.shouldPay}}</td>
+                           <td>{{item.actualPay}}</td>
+                       </tr>
+                       {{/each}}
+                       {{else}}
+                       <tr>
+                           <td class="noDataTips" colspan="3">无购买服务卡明细</td>
+                       </tr>
+                       {{/if}}
+                       </tbody>
+                   </table>
+               </div>
+               <div class="rechargeRecord">
+                   <table class="table">
+                       <thead>
+                       <tr>
+                           <th>充值金额</th>
+                           <th>赠送金额</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       {{if data.rechargeList.length>0}}
+                       {{each data.rechargeList item index}}
+                       <tr>
+                           <td>{{item.recharge}}</td>
+                           <td>{{item.largess}}</td>
+                       </tr>
+                       {{/each}}
+                       {{else}}
+                       <tr>
+                           <td class="noDataTips" colspan="2">无充值明细</td>
+                       </tr>
+                       {{/if}}
+                       </tbody>
+                   </table>
+               </div>
+           </div>
+        </div>
+        <!--<div class="page-selector"></div>-->
+    </div>
+</script>
+</html>

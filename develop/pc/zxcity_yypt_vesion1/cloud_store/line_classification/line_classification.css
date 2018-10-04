@@ -1,0 +1,114 @@
+body {
+  font-size: 16px;
+  color: #666666;
+  font-family: '微软雅黑';
+  overflow-y: auto;
+}
+.container-fluid {
+  padding: 0;
+}
+label {
+  font-weight: normal;
+  font-size: 14px;
+}
+#line_classification {
+  width: 100%;
+  height: 1020px;
+}
+#line_classification .title {
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  background-color: #f7f7f7;
+  border-bottom: 1px dashed #e5e5e5;
+}
+#line_classification .search-area {
+  padding: 0 55px;
+  height: 170px;
+}
+#line_classification .search-area .form-inline {
+  margin: 40px 0 0 0;
+}
+#line_classification .search-area .form-inline .form-group {
+  margin: 0 10px 0 0;
+}
+#line_classification .search-area .form-inline a:nth-of-type(2),
+#line_classification .search-area .form-inline a:nth-of-type(3) {
+  margin: 38px 15px 0 0;
+}
+#line_classification .content {
+  padding: 0 55px;
+}
+#line_classification .content table thead {
+  color: #333333;
+  background-color: #f3f3f3;
+  height: 42px;
+}
+#line_classification .content table th,
+#line_classification .content table td {
+  text-align: center;
+  vertical-align: middle;
+}
+#line_classification .content table td {
+  height: 62px;
+}
+#line_classification .content table td img {
+  width: 90px;
+  height: 54px;
+}
+#line_classification .content table td .edicticon {
+  float: none;
+  vertical-align: top;
+}
+#line_classification .content table td .glyphicon-minus-sign {
+  color: #ff0000;
+  margin: 0 5px 0 0;
+}
+#line_classification .content table td .edit,
+#line_classification .content table td .delete {
+  display: inline-block;
+  cursor: pointer;
+}
+#line_classification .content table td .edit {
+  margin: 0 10px 0 0;
+}
+#line_classification .content table td.green {
+  color: #2cbb4e;
+}
+#line_classification .content table tr.active td {
+  background-color: #E8FFED /*#FFE6B0*/ !important;
+}
+#line_classification .content p {
+  float: right;
+  line-height: 40px;
+  font-size: 14px;
+  margin: 0 0 0 10px;
+}
+#line_classification .content .isshow,
+#line_classification .content .glyphicon {
+  cursor: pointer;
+}
+.edicticon {
+  display: inline-block;
+  width: 21px;
+  height: 20px;
+  float: left;
+  margin-right: 5px;
+  background: url(../img/edit_icon.png) no-repeat;
+}
+.ho-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background: url(../img/ho_icon.png) no-repeat;
+  vertical-align: text-bottom;
+}
+.qx-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background: url(../img/qx_icon.png) no-repeat;
+  vertical-align: text-bottom;
+}

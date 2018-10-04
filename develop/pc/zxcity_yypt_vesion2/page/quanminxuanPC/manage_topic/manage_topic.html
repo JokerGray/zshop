@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>全民炫话题</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+  <link rel="stylesheet" href="../../../common/css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="../../../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+  <link rel="stylesheet" href="../../../common/assets/zTree_v3/css/metroStyle/metroStyle.css" />
+  <link rel="stylesheet" href="manage_topic.css">
+</head>
+
+<body>
+  <div class="layui-row layui-fluid">
+    <div class="tool-box layui-form" style="margin-bottom: 20px">
+      <ul class="tool-box-ul clearfix">
+        <li class="tool-box-li">
+          <div class="layui-form-item">
+            <div class="layui-input-inline">
+              <input type="text" id="search_box" name="paramKeys" placeholder="按话题名搜索" class="layui-input">
+            </div>
+          </div>
+        </li>
+        <button class="layui-btn" id="search">搜索话题</button>
+        
+        <button class="addbtn layui-btn" id="adGs" data-toggle="modal" data-target="#addTop">+ 添加话题</button>
+      </ul>
+    </div>
+    <div class="layui-app">
+      <table style="margin-top:20px;" id="manage" lay-filter="manage"></table>
+      <!--分页-->
+      <div id="laypageLeft" class="table-rgt"></div>
+    </div>
+ 
+  </div>
+
+
+ 
+ 
+  <script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-small my-btn" lay-event="change"><i class="layui-icon">&#xe642;</i>修改</button>
+    <button class="layui-btn layui-btn-small layui-btn-danger my-btn" lay-event="delete"><i class="layui-icon">&#xe640;</i>删除</button>
+  </script>
+
+  <!-- 新增 修改话题 -->
+  <form class="tool-box layui-form" id="add" style="display: none;padding:20px;">
+    <div class="layui-form-item">
+      <label class="form-label" for="addTopName">话题名:（必填，字母数字下划线中文组合）</label>
+      <div class="layui-input-inline">
+        <input type="text" name="" placeholder="" autocomplete="off" class="layui-input" maxlength="20" id="addTopName" lay-verify="required">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label" for="addTopCont">话题描述（必填）:</label>
+      <div class="layui-input-inline">
+        <textarea id="addTopCont" cols="20" rows="8" class="layui-textarea" maxlength="300" style="width:100%;"></textarea>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label" for="addLev">是否推送:</label>
+      <div class="layui-input-inline">
+        <input type="radio" name="addTs" value="1" title="是" lay-filter="addTs">
+        <input type="radio" name="addTs" value="0" title="否" lay-filter="addTs" checked="checked">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label" for="addTopCont">话题优先级(必填,0-99的数字,数字越大优先级越高):</label>
+      <div class="layui-input-inline">
+        <input type="text"   placeholder="优先级" autocomplete="off" class="layui-input" id="addLev" lay-verify="required" maxlength="2">
+      </div>
+    </div>
+  </form>
+
+ 
+  <script type="text/html" id="indexTpl">
+        {{d.LAY_TABLE_INDEX+1}}
+  </script>
+  <script type="text/html" id="barCtrl">
+   
+      <button class="layui-btn layui-btn-small my-btn" lay-event="change">
+          <i class="layui-icon">&#xe642;</i>修改</button>
+      <button class="layui-btn layui-btn-small layui-btn-danger my-btn" lay-event="delete">
+          <i class="layui-icon">&#xe640;</i>删除</button>
+ 
+ 
+  </script>
+  <script type="text/html" id="descriptionTpl">
+    <div class="desc"> {{d.description}} <div>
+
+  </script>
+  <script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+
+  <!-- <script type="text/javascript" src="../../../common/js/echarts.common.min.js"></script> -->
+
+  <!-- <script type="text/javascript" src="../../../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script> -->
+
+  <script type="text/javascript" src="../../../common/assets/layui/layui.all.js"></script>
+  <script type="text/javascript" src="../../../common/js/util.js"></script>
+  <script type="text/javascript" src="../../../common/js/yyCache.js"></script>
+  <script src="../../../common/assets/plupload-2.1.2\js\plupload.full.min.js"></script>
+  <script type="text/javascript" src="manage_topic.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>区域信息</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="area_info/area_info.css" />
+</head>
+<body>
+<div class="common-container">
+    <div class="content-body">
+        <div class="common-title">
+            区域信息维护 - <span class="jurisdiction-title-name">区域信息</span>
+        </div>
+        <div class="row common-search">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <label class="control-lable" for="jurisdiction-name">区域名称：</label>
+                    <input type="text" class="form-control search-input longinput" id="jurisdiction-name" placeholder="请输入省区域名称" maxlength="22">
+                </div>
+                <a class="btn btn-success"  id="searchCount">
+                    <i class="search-icon"></i><span>查询</span>
+                </a>
+            </form>
+            <a class="btn btn-info add-users" id="newRole" data-toggle="modal" data-target="#myModal">
+                <i class="add-icon"></i>新增
+            </a>
+        </div>
+        <!-- 表格 -->
+        <div class="common-table">
+            <div class="tablehegt">
+                <table class="table table-hover" id="jurisdiction-table">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>区域名称</th>
+                        <th>编号</th>
+                        <th>区域级别</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 分页 -->
+            <div class="common-page1">
+                <div id="paging-box-count">
+
+                </div>
+                <div id="paging-box" class="basic-jump"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!-- jSCommon -->
+<script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="common/js/util/util.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+<script type="text/javascript" src="common/js/login_success.js"></script>
+<script type="text/javascript" src="common/js/util/changePassword.js"></script>
+<script type="text/javascript" src="common/js/util/pub.js"></script>
+<!-- jSCommon -->
+<script type="text/javascript" src="area_info/area_info.js"></script>
+</html>

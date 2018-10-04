@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"> 
+  <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+  <title>二维码</title>
+  <link rel="stylesheet" href="css/flexible.css">
+  <script type="text/javascript" src="assets/flexible.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/index.css"/>
+  <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+  <script type="text/javascript" src="assets/jquery.min.js"></script>
+  <script src="assets/jquery.qrcode.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <input id="qrText" type="hidden" value="null" >
+    <div class="imgbox">
+      <div class="face">
+        <img class="estop" src="img/shape2.png" alt="">
+      </div>
+      <h3 class="circleName"></h3>
+      <div id="imgDiv">
+      </div>
+      <p class="join">扫描二维码,加入圈子</p>
+    </div>
+    <a class="download download-link" href="#">
+      <img src="img/download.png" alt="">
+    </a>
+  </div>
+  
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      setDownload();
+      getData();
+      createQr();
+    })
+    // 二维码生成
+    function createQr(){
+      document.createElement('canvas').getContext('2d');
+      var valText = $('#qrText').val();
+      var reg=/^[\u0391-\uFFE5]+$/; 
+      if(valText!=""&&!reg.test(valText)){ 
+        $('#imgDiv').qrcode({render:"canvas",height:180, width:180,correctLevel:0,text:valText});
+      }else{
+        $('#imgDiv').qrcode({render:"canvas",height:180, width:180,correctLevel:0,text:utf16to8(valText)});
+      }
+      var mycanvas1=document.getElementsByTagName('canvas')[0];
+      var img = convertCanvasToImage(mycanvas1);
+      $('#imgDiv').append(img);
+    }
+     // 字符编码
+     function utf16to8(str) {  
+      var out, i, len, c;  
+      out = "";  
+      len = str.length;  
+      for(i = 0; i < len; i++) {  
+        c = str.charCodeAt(i);  
+        if ((c >= 0x0001) && (c <= 0x007F)) {  
+          out += str.charAt(i);  
+        } else if (c > 0x07FF) {  
+          out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));  
+          out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));  
+          out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+        } else {  
+          out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));  
+          out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+        }  
+      }  
+      return out;  
+    }
+    function convertCanvasToImage(canvas) {
+      var image = new Image();
+      image.src = canvas.toDataURL("image/png");
+      canvas.remove()
+      return image;
+    }
+	 // 获取url参数，没有就''
+   function getQueryString(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+    var r = window.location.search.substr(1).match(reg)
+    return r !== null ? decodeURI(r[2]) : ''
+  }
+      // 设置下载路径
+  function setDownload(){
+      	var list = document.querySelector('.download-link');
+        var sn = getQueryString('sn');
+        var detailId=getQueryString('detailId');
+        var jumpParams =getQueryString('jumpParams');
+        var qrurl='http://192.168.14.11:8080/detail/dist/?detailId='+detailId+'&sn='+sn+'&yw=circle&cp=1&jumpParams='+jumpParams;
+        $('#qrText').val(qrurl)
+        list.href = '/24hours/share24/getPackage.html?sn='+ sn +'&yw=service&cp=1';	
+      }
+      // 分享页面
+      function share(title, introduce, imgUrl){
+        $.ajax({
+          type: "post",
+          url: "/zxcity_restful/ws/rest",
+          dataType: 'json',
+          headers: {
+            apikey: sessionStorage.getItem('apikey') || 'test'
+          },
+          data: {
+            cmd: 'game/getSign',
+            data: JSON.stringify({
+              url: location.href
+            }),
+            version: 1
+          },
+          success: function(res) {
+            wx.config({
+                  debug: false,
+                  appId: 'wxe50dd59beab1e644',
+                  timestamp: res.data.timestamp,
+                  nonceStr: res.data.nonceStr,
+                  signature: res.data.signature,
+                  jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareWeibo', 'onMenuShareQZone', 'onMenuShareQZone']
+            });
+            var options = {
+             title: title,
+             desc: introduce,
+             link: location.href,
+             imgUrl: imgUrl
+           }
+           wx.ready(function(){
+             wx.onMenuShareTimeline({
+               title: introduce,
+               link: location.href,
+               imgUrl: imgUrl
+             });
+             wx.onMenuShareAppMessage($.extend({
+               type: '',
+               dataUrl: ''
+             }, options));
+             wx.onMenuShareQQ(options);
+             wx.onMenuShareWeibo(options);
+             wx.onMenuShareQZone(options);
+             wx.onMenuShareQZone(options);
+           })
+         }
+       });
+      }
+
+    // 获取数据
+    function getData() {
+      var detailId=getQueryString('detailId');
+      $.ajax({
+        type: "post",
+        url: "/zxcity_restful/ws/rest",
+        headers: {
+          apikey: sessionStorage.getItem('apikey') || 'test'
+        },
+        data: {
+          cmd: 'circle/getCircleByID20',
+          data: JSON.stringify({"detailId":detailId}),
+          version: 1
+        },
+        success: function(r) {
+          console.log(r);
+          if(r.code==1){
+            share(r.data.detailName,r.data.detailTitle,r.data.detailTitlePic);
+            $('.face').css("background-image","url("+r.data.detailTitlePic+")");
+            $('.circleName').text(r.data.detailName);
+            $('title').text(r.data.detailName+'的圈子二维码');
+          }
+        },
+        error: function(r) {
+          console.log(r)
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

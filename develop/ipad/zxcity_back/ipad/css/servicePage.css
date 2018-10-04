@@ -1,0 +1,318 @@
+@CHARSET "UTF-8";
+*{
+    padding: 0;
+    margin: 0;
+}
+.service-page .page-tab{
+	height:36px;
+	width:100%;
+	border-bottom:1px solid #eee;
+	background-color:#eee;
+}
+
+.page-tab .tab-link{
+	display:block;
+	float:left;
+	height:36px;
+	line-height:36px;
+	width:80px;
+	margin-right:15px;
+	font-size:16px;
+	text-align:center;
+	color:#666;
+}
+.page-tab .tab-link.active{
+	background-color:#999;
+	color:#eee;
+}
+
+
+.service-wrapper{
+    width:90%;
+    margin:0 auto;
+    text-align: center;
+    padding:20px 0;
+}
+
+.serviceContainer label{
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    padding-top:0 !important;
+}
+.serviceContainer{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+.service-body {
+    margin: 10px 31px 0;
+    overflow: hidden;
+}
+.service-body .service-up{
+    width: 40%;
+    height: auto;
+    overflow: hidden;
+    float: left;
+}
+
+.service-name{
+    width:80%;
+}
+.form-group{
+    margin:0 0 15px 0 !important;
+}
+.service-name .form-control{
+    width:80%;
+    height: 31px;
+    line-height: 31px;
+    margin: 0;
+    padding: 0 5px;
+}
+.service-up .service-img{
+    width: 300px;
+    height: 250px;
+    margin: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.service-img img{
+    display: block;
+    width: 300px;
+    height: 250px;
+}
+.service-down{
+    width: 60%;
+    height: auto;
+    overflow: hidden;
+    float: right;
+    padding-left: 20px;
+}
+.service-down .service-lft{
+    width: 40%;
+    padding: 0 15px;
+    float: left;
+}
+.service-down .addCard{
+    width: 100%;
+    padding: 0;
+    float: right;
+}
+.service-card label{
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+}
+.service-card-content{
+    width: 100%;
+    margin-bottom:15px;
+}
+.service-card-content .service-card-select{
+    width: 80%;
+    position: relative;
+}
+.service-card-select .card-id{
+    width: 350px;
+    height: 29px;
+    line-height: 29px;
+    float: left;
+    border: 0;
+    padding: 0 5px;
+}
+.service-card-input .btn{
+    height: 30px;
+    position: absolute;
+    right: -1px;
+    top: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+.service-card-input .btn:focus{
+    outline: none;
+}
+.service-card-input .btn:active{
+    box-shadow: 0;
+}
+.service-card-input{
+    width: 350px;
+    height: 31px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: relative;
+}
+.service-card-input:focus{
+    border-color: #66afe9;
+    outline: 0;
+}
+.service-card-select .card-detail{
+    display: none;
+    height: auto;
+    left: 0;
+    max-height: 150px;
+    overflow: auto;
+    position: absolute;
+    top: 31px;
+    width: 350px;
+}
+.service-card-select .card-detail.actve{
+    display: block;
+}
+.card-detail table{
+    background: #fff;
+}
+.card-detail table tr th{
+    background: rgb(235, 235, 228);
+    font-size: 13px;
+    padding: 0 8px;
+    height: 31px;
+    line-height: 31px;
+    color: #666;
+}
+.card-detail table tr td{
+    font-size: 13px;
+    background: #fff;
+    padding: 0 8px;
+    height: 31px;
+    line-height: 31px;
+    color: #666;
+}
+.service-card .service-card-name{
+    margin-bottom:5px;
+}
+.service-card-numBody{
+    /*margin-bottom: 15px;*/
+    width: 100px;
+    float: left;
+    height: 31px;
+    line-height: 31px;
+}
+.service-card-numBody .service-card-num{
+    margin-bottom:5px;
+    float: left;
+}
+.service-card-numBody .card-add-num{
+    width: 50px;
+    float: right;
+}
+.card-add-num .form-control{
+    height: 31px;
+}
+.service-card-priceBody{
+    width: 280px;
+    margin-left: 15px;
+    height: 31px;
+    line-height: 31px;
+    float: left;
+}
+.service-card-priceBody .service-card-price{
+    float: left;
+}
+.service-card-priceBody .card-add-price{
+    float: right;
+    width: 230px;
+}
+.card-add-price .form-control{
+    height: 31px;
+}
+.service-card .btn-primary{
+    height: 31px;
+    margin-left: 10px;
+}
+.addCard-info .control-label{
+    float: left;
+    padding-top: 7px !important;
+}
+.addCard-info .add-cardname{
+    width: 300px;
+    float: left;
+}
+.addCard{
+	height:245px;
+	overflow-y:auto;
+}
+.addCard table{
+	width:100%;
+    border-left:0;
+    border-right: 0;
+    
+}
+.addCard table>tbody>tr>td{
+    border:0;
+    text-align: center;
+    height: 31px;
+}
+.addCard table>thead>tr>th{
+    border:0;
+    text-align: center;
+}
+.add-cardPrice{
+    height: 31px;
+    line-height: 31px;
+    width:80px;
+    padding: 0 5px;
+}
+.addCard table>tbody>tr>td .btn{
+    height: 26px;
+    padding-top:3px;
+}
+button.dim{
+	margin-bottom:0!important;
+}
+
+.price-sum{
+    height: 31px;
+    line-height: 31px;
+}
+.price-sum .control-label{
+    margin-bottom: 5px;
+    float: left;
+}
+.price-sum .form-control{
+    height: 31px;
+    padding: 0 5px;
+    line-height: 31px;
+    width:300px;
+    float: left;
+    margin-right: 5px;
+}
+.addCard-table thead{
+    width: 100%;
+}
+.addCard-table tr{
+    width: 100%;
+}
+.service-info{
+    width: 100%;
+    margin-top: 15px;
+}
+.service-img-label{
+    float: left;
+}
+
+.upload-pic-btn{
+    position: relative;
+    display: inline-block;
+    padding: 4px 100px;
+    overflow: hidden;
+    color: #666;
+    text-decoration: none;
+    line-height: 10px;
+    font-size: 13px;
+    margin-top:10px;
+}
+.upload-pic-btn span{
+    color: #999;
+}
+.upload-pic-btn input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.upload-pic-btn:hover {
+    background: #fff;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}

@@ -1,0 +1,292 @@
+body{
+  background:#F7F7F7;
+  position: relative;
+}
+*{
+  box-sizing: border-box;
+}
+
+.layui-unselect dl { max-height:120px; }
+//滚动条宽度
+::-webkit-scrollbar {
+  width: 0;
+}
+
+//滚动条槽宽颜色
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+//滚动条颜色
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+//滚动条鼠标悬停颜色
+::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
+}
+@corlor:#1dbfaf;
+.corlor{
+  color: @corlor;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+//选择店铺
+
+#thechooseShop{
+  position: absolute;
+  top:42px;
+  left: 430px;
+  font-size: 16px;
+
+  select{
+    width: 200px;
+    height: 30px;
+  }
+}
+
+//添加按钮
+
+.addBtn{
+  position: absolute;
+  top: 35px;
+  right: 110px;
+  span{
+    background:#f8ac59;
+  }
+}
+
+//头部面板
+.title_panel{
+  height:90px;
+  background: white;
+  padding-left: 110px;
+  li{
+    float: left;
+    width: 140px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 18px;
+    background: #f1f1f1;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-right: 2px;
+    margin-top: 30px;
+    cursor: pointer;
+  }
+  li.active{
+    background: @corlor;
+    color: white;
+  }
+}
+
+
+//中间内容
+.content{
+  padding: 35px 110px;
+
+  form{
+    min-width:1525px;
+    .layui-form-label{
+      padding: 9px 10px;
+    }
+    span:first-child{
+      background:#1dbfaf ;
+      margin-left: 30px;
+    }
+    span:nth-child(2){
+      background:#f8ac59;
+    }
+  }
+  table{
+
+
+    thead{
+      th{
+        background: #1dbfaf;
+        color: white;
+        height: 50px;
+        text-align: center;
+        font-size: 17px;
+        width: 10%;
+        border-right: none;
+      }
+    }
+
+    tbody{
+      .layui-table-cell {
+        height: 30px;
+        line-height: 30px;
+      }
+
+      td{
+        height: 65px;
+        line-height: 65px;
+        color: #999999;
+        font-size: 17px;
+        text-align: center;
+        width: 10%;
+        border-right: none;
+      }
+    }
+    //操作按钮
+    .tabicon{
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+      background:@corlor ;
+      margin-right: 20px;
+      cursor: pointer;
+      i{
+        font-size: 25px;
+        color: white;
+        float: left;
+        //margin-top:3px ;
+        margin-left: 2px;
+      }
+      .delete_tab{
+        margin-top:2px ;
+      }
+    }
+  }
+}
+
+//录入单元楼层弹框
+#addBuilding{
+  display: none;
+  .leftPart{
+    float: left;
+    width: 265px;
+    background: #f8f8f8;
+    font-size: 15px;
+    .firstFloor{
+      padding-left: 24px;
+      height: 60px;
+      line-height: 60px;
+      .addBlock{
+        border: 1px solid @corlor;
+        padding: 5px;
+        margin-left: 30px;
+      }
+      &:hover{
+        background: white;
+      }
+    }
+    ul{
+      overflow-y: auto;
+      height: 600px;
+      li{
+
+        height: 60px;
+        line-height: 60px;
+        padding-left: 50px;
+        color: #333333;
+        letter-spacing:2px;
+        &:hover{
+          background: white;
+        }
+
+        .number{
+          display: inline-block;
+          vertical-align: middle;
+          width: 127px;
+          overflow:hidden ;
+        }
+      }
+      li.active{
+        background: white;
+      }
+    }
+  }
+
+  .rightPart{
+    margin-left:265px;
+    padding: 0 50px;
+    height: 250px;
+    .title{
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+      font-size: 18px;
+      margin-bottom: 30px;
+      letter-spacing:3px;
+      padding-top: 10px;
+    }
+
+     .rightContent{
+       border: 1px solid #dcdcdc;
+       height: 597px;
+       overflow-y: auto;
+       padding: 20px;
+       li{
+         float: left;
+         width: 160px;
+         height:40px;
+         line-height: 40px;
+         border: 1px solid #dcdcdc;
+         margin-right: 15px;
+         margin-bottom: 15px;
+         font-size: 14px;
+         padding-left: 15px;
+         color: #999999;
+         letter-spacing: 1px;
+         .number{
+           display: inline-block;
+            width: 90px;
+           vertical-align: middle;
+         }
+         .editBlock{
+           cursor: pointer;
+         }
+         .delBlock{
+           cursor: pointer;
+         }
+     }
+
+       li:first-child{
+         border: 1px solid @corlor;
+       }
+
+
+    }
+  }
+}
+
+//新增资产
+#assert{
+  display: none;
+  padding: 20px 50px;
+  .door{
+    margin-right: 30px;
+  }
+
+  .doorNember{
+    width: 291px;
+  }
+
+}
+
+//绑定业主
+#owner{
+  display: none;
+  padding: 20px;
+}
+
+//新增车辆
+#addvehical{
+  display: none;
+  padding: 20px;
+
+}
+
+.layui-table-tips-main{
+  display: none;
+}
+.layui-table-tips-c{
+  display: none;
+}
+

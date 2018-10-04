@@ -1,0 +1,8 @@
+$vm_base: 750;
+@function vm($px) {
+  @return ($px / 375) * 100vw;
+}
+
+.header{
+  padding:vm(10) vm(15);
+}

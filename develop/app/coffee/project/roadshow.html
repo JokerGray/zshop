@@ -1,0 +1,203 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<title>微路演</title>
+	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css"> 
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		    font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
+		}
+		html,body {
+			color: #333;
+		} 
+		.hidden{
+			display: none !important;
+		}
+		.cell_content {
+			display: flex;
+			display: -webkit-flex; /* Safari */
+			padding: 20px 0;
+			margin:0 12px;
+			border-bottom: 1px solid #dadada;
+		}
+		.imgContent{
+			width: 111px;
+			height: 82.5px;
+			overflow: hidden;
+		}
+		.imgContent img{
+			display: block;
+			margin: 0 auto;
+			max-width: 100%;
+			height: auto;
+		}
+		.right {
+			flex: 1;
+			padding-left: 15px;
+			height:82.5px;
+			position: relative;
+		}
+		.right .articleTitle {
+			position: absolute;
+			float: left;
+			font-size: 18px;
+			line-height: 24px;
+			max-height: 48px;
+			overflow: hidden;
+		}
+		.right .releaseTime {
+			position: absolute;
+			float: left;
+			bottom: 6px;
+			height: 13px;
+			color: #999;
+			font-size: 13px;
+		}
+		.loadmoreContent:after, .loadmoreContent:before{
+			content: " ";
+			display: table;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="cell_content articleContent hidden" id="example">
+			<div class="imgContent">
+				<img class="resourcesUrl" src="../img/ckkf_zp1.png">
+			</div> 
+			<div class="right">
+				<div class="articleTitle">路演天下：都是演技</div>
+				<div class="releaseTime">2018年02月3日</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="loadmoreContent" id="loadmore">
+        <div class="weui-loadmore">
+            <i class="weui-loading"></i>
+            <span class="weui-loadmore__tips">正在加载</span>
+        </div>
+        <div class="weui-loadmore weui-loadmore_line hidden">
+            <span class="weui-loadmore__tips">没有更多数据</span>
+        </div>
+    </div>
+    
+	<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.2/weui.min.js"></script>
+	<script type="text/javascript">
+		var USERID = isDevEnv() ? 317 : 54015;
+		var CHANNELID = isDevEnv() ? 1065 : 1047;
+		var TYPECODE = 1001;
+		var loadingStatus = false;
+		$(document).ready(function(){
+			FastClick.attach(document.body);
+			getData();
+			// 点击跳转到路演详细
+			$('.container').on('click', '.articleContent', function(){
+				window.location.href = 'roadshow_detail.html?id='+ this.id;
+			})
+			// 无限滚动加载
+			$(window).on('scroll', infiniteScroll)
+		});
+		
+		// 判断当前环境是否测试环境
+		function isDevEnv(){
+			var arr = ['localhost', '192.168', '127.0.0', 'test'];
+			for(var i=0; i<arr.length; i++){
+				if (location.hostname.indexOf(arr[i]) > -1) return true;
+			}
+			return false;
+		}
+		
+		function getData(){
+			if(loadingStatus) return
+			var loading;
+			var data = {
+				channelId: CHANNELID,
+				userId: USERID,
+				praiseUser: 0,
+				typeCode: TYPECODE,
+				pagination: {
+					page: parseInt($('.articleContent').length / 10) +1,
+					rows: 10
+				}
+			}
+			$.ajax({
+				type:"post",
+				url:"/zxcity_restful/ws/rest",
+				dataType: 'json',
+				data: {
+					cmd: 'cms_new/onlyOneArticlelist',
+					data: JSON.stringify(data),
+					version: 1
+				},
+				beforeSend: function () {
+					loadingStatus = true;
+				},
+				complete: function () {
+					loadingStatus = false;
+				},
+				success: function (data){
+					if(data.code == 1){
+						createList(data.data, data.total);
+					}else{
+						weui.alert(data.msg)
+					}
+				},
+				error: function (err){
+					weui.alert('服务忙，请刷新页面后重试~');
+					$('#loadmore').addClass('hidden');
+				}
+			});
+		}
+		
+		// 生成列表
+		function createList(arr, total){
+			for(var i=0; i< arr.length; i++){
+				var dom = $('#example').clone();
+				dom.removeClass('hidden');
+				dom.attr('id', arr[i]['articleId']);
+				dom.find('.articleTitle').text(arr[i]['articleTitle']);
+				dom.find('.releaseTime').text(arr[i]['releaseTime']);
+				
+				var scCmsResourcesList = arr[i]['scCmsResourcesList'];
+				if(scCmsResourcesList.length > 0){
+					dom.find('.resourcesUrl').attr('src', scCmsResourcesList[0]['resourcesUrl']);
+				}
+				$('.container').append(dom)
+			}
+			// 判断是否已加载完毕，是，则取消对应样式
+			if($('.articleContent').length - 1 == total){
+				$('#loadmore .weui-loadmore_line').removeClass('hidden').siblings().addClass('hidden');
+			}
+			// 图片居中显示
+			$('.imgContent').each(function(){
+				this.scrollTop = (this.scrollHeight - this.offsetHeight)/2
+			})
+		}
+		
+		// 检测是否需要加载数据
+		// 只有在未加载，且还可以加载数据的情况下，才需要加载
+		function canLoad(){
+			// 若正在加载，则不需要加载
+			if(loadingStatus) return false;
+			// 当前面板若无更多数据，即total已满，则不需要加载
+			var needLoading = $('#loadmore .weui-loadmore_line').hasClass('hidden');
+			return needLoading;
+		}
+		
+		// 检测下拉加载
+		function infiniteScroll() {
+			var toBottom = window.innerHeight + document.body.scrollTop + 80 > document.body.scrollHeight;
+			if(!toBottom) return;
+			if(!canLoad()) return;
+			// 刷新数据
+			getData();
+		}
+	</script>
+</body>

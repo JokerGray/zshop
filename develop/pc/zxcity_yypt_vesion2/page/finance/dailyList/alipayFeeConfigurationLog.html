@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>支付宝手续费配置记录</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="../../../common/css/reset.css" />
+	</head>
+
+	<body>
+		<div class="tool-box layui-form">
+			<ul class="tool-box-ul clearfix">
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label">版本号：</label>
+						<div class="layui-input-inline">
+							<select id="yearVersion" lay-search>
+							</select>
+						</div>
+					</div>
+				</li>
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label" id="stTime">操作日期：</label>
+						<div class="layui-input-inline startDate">
+							<input type="text" class="layui-input" id="startDate" placeholder="YYYY-MM-DD">
+						</div>
+					</div>
+				</li>				
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label" id="endTim">至：</label>
+						<div class="layui-input-inline endDate">
+							<input type="text" class="layui-input" id="endDate" placeholder="YYYY-MM-DD">
+						</div>
+					</div>
+				</li>				
+				<button class="layui-btn" id="searchBtn">搜索</button>
+				<button class="layui-btn" id="resetBtn">重置</button>
+			</ul>
+		</div>
+		<div class="tool-add-box clearfix">
+			<button class="layui-btn my-btn add" lay-event="add" id="addButton">导出excel</button>
+			<!--<button class="layui-btn my-btn add" lay-event="add" id="setButton">设置</button>-->
+		</div>
+		<div class="layui-app">
+			<div class="app-table">
+				<table lay-filter="merchantTable" id="merchantTable"></table>
+				<div id="layTablePage"></div>
+			</div>
+		</div>
+			
+		<script type="text/html" id="typeOfOperation">
+		    
+		      {{#  if(d.typeOfOperation==1){ }}
+					<span style="color: #4cae4c;">添加</span>
+			  {{#  } else if(d.typeOfOperation==2){ }}
+			  		<span style="color: #03A9F4;">修改</span>
+			  {{#  } else if(d.typeOfOperation==3){ }}
+			  		<span style="color: #E91E63;">删除</span>			  		
+			  {{#  } }}
+		</script>
+		<script type="text/html" id="adut">
+		    <button class="layui-btn my-btn" lay-event="configure">配置信息</button>
+		    <button class="layui-btn my-btn" lay-event="information">用户详情</button>
+		</script>
+
+		<!--配置信息-->
+		<div id="addUser" class='layui-form clearfix' lay-filter="addUser">
+			<div class="app-layer">
+				<div class="package clearfix">
+					<div class="package-title">配置详情</div>
+					<div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+					</div>
+				</div>
+				<div class="app-layer-content">
+					<ul class="tool-box-ul layui-form clearfix p0">
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">版本：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="audit1"  readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">支付类型：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="audit2" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">收费标准：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="audit3" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">支付操作：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="audit4" readonly>
+								</div>
+							</div>
+						</li>
+
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">有效日期：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="audit5" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">至：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="audit6" readonly> 
+								</div>
+							</div>
+						</li>						
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">是否限额：</label>
+								<div class="layui-input-inline" id="audit7" >
+							        <input type="radio" class="layui-input" title="限额" disabled="disabled">
+						      	    <input type="radio" class="layui-input" title="不限额" disabled="disabled">										
+								</div>
+							</div>
+						</li>						
+						<li class="tool-box-li w30 mr5" id="min">
+							<div class="layui-form-item">
+								<label class="tool-box-label">最小限额：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="audit8" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5" id="max">
+							<div class="layui-form-item">
+								<label class="tool-box-label">最大限额：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="audit9" readonly>
+								</div>
+							</div>
+						</li>
+
+					</ul>
+					<div class="layer-place">
+						展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--用户详情-->
+		<div id="addLayer" class='layui-form clearfix' lay-filter="addLayer">
+			<div class="app-layer">
+				<div class="package clearfix">
+					<div class="package-title">用户详情</div>
+					<div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+					</div>
+				</div>
+				<div class="app-layer-content">
+					<ul class="tool-box-ul layui-form clearfix p0">
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">手机号：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="show1" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">用户名称：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="show2" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">登录名：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="show3" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">是否锁定：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" class="layui-input" id="show4" readonly>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="layer-place">
+						展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		
+		
+
+	</body>
+
+</html>
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+
+<script type="text/javascript">
+	jsorcss('css','alipayFeeConfigurationLog');
+	jsorcss('js','alipayFeeConfigurationLog');
+</script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>新增组织</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="common/assets/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="agent_construction/add_construction.css" />
+</head>
+<body>
+    <div class="addsystem">
+        <form class="layui-form" action="" data-type='one'>
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称：</label>
+                <div class="layui-input-block common-name">
+                    <input name="title" lay-verify="title" autocomplete="off"  class="layui-input" type="text" id="systemName">
+                </div>
+            </div>
+            <div class="layui-form-item" id="phone">
+                <label class="layui-form-label">手机号：</label>
+                <div class="layui-input-block common-name">
+                    <input name="title" lay-verify="title" autocomplete="off"  class="layui-input" type="text" id="systemPhone">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">类型：</label>
+                <div class="layui-input-block systemSize">
+                    <select name="interest" lay-filter="aihao" id="aihao">
+                        <option value="1" selected>组织</option>
+                        <option value="2">系统用户</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <form class="layui-form" action="" data-type='two'>
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称：</label>
+                <div class="layui-input-block common-name">
+                    <input name="title" lay-verify="title" autocomplete="off"  class="layui-input" type="text" id="systemName">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机号：</label>
+                <div class="layui-input-block common-name">
+                    <input name="title" lay-verify="title" autocomplete="off"  class="layui-input" type="text" id="systemPhone">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">类型：</label>
+                <div class="layui-input-block systemSize">
+                    <select name="interest" lay-filter="shanghu">
+                        <option value="1">商户代理人</option>
+                        <option value="2">商户</option>
+                    </select>
+                </div>
+            </div> 
+            <div class="layui-form-item" id="jueseBox">
+                <label class="layui-form-label">角色：</label>
+                <div class="layui-input-block systemSize">
+                    <select name="interest" lay-filter="juese" id="juese">
+                        <option value="1">1111111111</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- jSCommon -->
+    <script type="text/javascript" src="common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="common/js/util/util.js"></script>
+    <script type="text/javascript" src="agent_construction/add_construction.js"></script>
+</body>
+</html>

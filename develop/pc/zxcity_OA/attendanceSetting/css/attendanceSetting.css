@@ -1,0 +1,734 @@
+* {
+  box-sizing: border-box;
+}
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 2px;
+}
+*::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 0;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+}
+*::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+body {
+  background-color: #f0f0f0;
+}
+.layoutBody {
+  width: 68.259%;
+  background-color: #fff;
+  margin: 0 auto;
+  border: 1px solid #e0e0e0;
+  margin-top: 20px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.header {
+  width: 100%;
+  height: 60px;
+  line-height: 59px;
+  padding: 0 40px;
+}
+.header div {
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid #ebebeb;
+  font-size: 0;
+}
+.header div span {
+  display: inline-block;
+  font-size: 14px;
+  color: #1be0d6;
+  border-bottom: 2px solid #1be0d6;
+}
+.selectShop {
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  position: relative;
+  font-size: 0;
+  margin-top: 22px;
+}
+.selectShop label {
+  float: left;
+  width: 16.333%;
+  height: 32px;
+  color: #333333;
+  font-size: 14px;
+  text-align: right;
+}
+.selectShop select {
+  float: left;
+  width: 130px;
+  height: 32px;
+  outline: none;
+  border: 1px solid #d9d9d9;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding-left: 30px;
+  font-size: 12px;
+  color: #1be0d6;
+  background: url("../images/selectstore.png") no-repeat scroll right center transparent;
+}
+.selectShop .select2-container--default .select2-selection--single {
+  background: url("../images/selectstore.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.selectShop .select2-container--default .select2-selection--single .select2-selection__rendered {
+  padding-right: 30px;
+  padding-left: 30px;
+  color: #1be0d6;
+  font-size: 12px;
+}
+.selectShop .select2-container--default .select2-selection--single .select2-selection__arrow {
+  display: none;
+}
+.setAttendanceType {
+  font-size: 0;
+  margin-top: 40px;
+}
+.setAttendanceType > label {
+  display: inline-block;
+  width: 16.333%;
+  height: 32px;
+  color: #333333;
+  font-size: 14px;
+  text-align: right;
+  vertical-align: top;
+}
+.setAttendanceType .settingContent {
+  display: inline-block;
+  font-size: 14px;
+  color: #5f5f5f;
+  width: 55.833%;
+}
+.setAttendanceType .settingContent .typeOne {
+  width: 100%;
+  height: 100%;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-directions {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  margin-top: 10px;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-directions > span {
+  float: left;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-directions > div {
+  float: right;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-directions > div i {
+  vertical-align: middle;
+  font-style: normal;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-directions > div select {
+  width: 100px;
+  height: 28px;
+  outline: none;
+  border: 1px solid #d9d9d9;
+  font-size: 14px;
+  color: #333333;
+  margin-left: 10px;
+  padding-left: 10px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: url("../images/attendance_arrow.png") no-repeat scroll right center transparent;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-directions .select2-container--default .select2-selection--single {
+  height: 28px;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-directions .select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 28px;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-directions .select2-container--default .select2-selection--single .select2-selection__arrow {
+  width: 26px;
+  height: 26px;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-detail {
+  width: 100%;
+  border: 1px solid #ebebeb;
+  margin-top: 4px;
+  padding: 0 14px;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-detail .typeOne-detail-title {
+  width: 100%;
+  height: 52px;
+  line-height: 52px;
+  border-bottom: 1px solid #ebebeb;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-detail .typeOne-detail-title > span {
+  width: 50%;
+  float: left;
+  top: 0;
+  left: 0;
+  font-size: 14px;
+  color: #333333;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-detail .typeOne-detail-title > span:last-of-type {
+  float: right;
+  text-align: right;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-detail .typeOne-detail-content {
+  width: 100%;
+  padding: 8px 0;
+  line-height: 26px;
+  overflow: hidden;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-detail .typeOne-detail-content > .address {
+  float: left;
+  text-align: left;
+  width: 91%;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-detail .typeOne-detail-content > .address h4 {
+  font-size: 16px;
+  color: #333333;
+  margin-bottom: 2px;
+}
+.setAttendanceType .settingContent .typeOne .typeOne-detail .typeOne-detail-content .editBtn {
+  width: 9%;
+  float: right;
+  text-align: right;
+  color: #1be0d6;
+}
+.setAttendanceType .settingContent .typeTwo {
+  margin-top: 60px;
+}
+.setAttendanceType .settingContent .typeTwo .typeTwo-detail {
+  margin-top: 10px;
+  width: 100%;
+  border: 1px solid #ebebeb;
+  padding: 0 14px;
+}
+.setAttendanceType .settingContent .typeTwo .typeTwo-detail .typeTwo-detail-title {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #ebebeb;
+  font-size: 0;
+}
+.setAttendanceType .settingContent .typeTwo .typeTwo-detail .typeTwo-detail-title span {
+  display: inline-block;
+  font-size: 14px;
+  color: #333333;
+}
+.setAttendanceType .settingContent .typeTwo .typeTwo-detail .typeTwo-detail-title span:first-of-type {
+  width: 47%;
+}
+.setAttendanceType .settingContent .typeTwo .typeTwo-detail .typeTwo-detail-title span:last-of-type {
+  width: 9%;
+  text-align: right;
+}
+.setAttendanceType .settingContent .typeTwo .typeTwo-detail .typeTwo-detail-title span:nth-of-type(2) {
+  width: 44%;
+}
+.setAttendanceType .settingContent .typeTwo .typeTwo-detail .typeTwo-detail-content {
+  width: 100%;
+}
+.setAttendanceType .settingContent .typeTwo .typeTwo-detail .typeTwo-detail-content ul li {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  font-size: 0;
+  border-bottom: 1px solid #ebebeb;
+}
+.setAttendanceType .settingContent .typeTwo .typeTwo-detail .typeTwo-detail-content ul li:last-of-type {
+  border-bottom: 0;
+}
+.setAttendanceType .settingContent .typeTwo .typeTwo-detail .typeTwo-detail-content ul li span {
+  display: inline-block;
+  font-size: 14px;
+  color: #333333;
+  vertical-align: middle;
+}
+.setAttendanceType .settingContent .typeTwo .typeTwo-detail .typeTwo-detail-content ul li span:first-of-type {
+  width: 47%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.setAttendanceType .settingContent .typeTwo .typeTwo-detail .typeTwo-detail-content ul li span:last-of-type {
+  width: 9%;
+  text-align: right;
+  color: #1be0d6;
+  cursor: pointer;
+}
+.setAttendanceType .settingContent .typeTwo .typeTwo-detail .typeTwo-detail-content ul li span:nth-of-type(2) {
+  width: 44%;
+}
+.setAttendanceType .settingContent .typeTwo .addWifi {
+  display: block;
+  font-size: 14px;
+  color: #1be0d6;
+  padding: 8px 0;
+}
+.setAttendanceType .settingContent .typeTwo .punchStyle {
+  width: 100%;
+  margin-top: 10px;
+}
+.setAttendanceType .settingContent .typeTwo .punchStyle ul li {
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  -moz-user-select: none;
+  /*火狐*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -ms-user-select: none;
+  /*IE10*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  user-select: none;
+}
+.setAttendanceType .settingContent .typeTwo .punchStyle ul li i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #1be0d6;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.setAttendanceType .settingContent .typeTwo .punchStyle ul li i.active {
+  background: url("../images/selected.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.setAttendanceType .settingContent .typeTwo .punchStyle ul li:nth-of-type(2) {
+  margin: 0 50px;
+}
+.setAttendanceTime {
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+.setAttendanceTime > label {
+  float: left;
+  width: 16.333%;
+  height: 32px;
+  line-height: 32px;
+  color: #333333;
+  font-size: 14px;
+  text-align: right;
+  vertical-align: middle;
+}
+.setAttendanceTime .timeSelectBox {
+  float: left;
+  width: 83%;
+  height: 32px;
+  font-size: 0;
+  vertical-align: middle;
+}
+.setAttendanceTime .timeSelectBox > div {
+  float: left;
+  vertical-align: middle;
+  height: 32px;
+  line-height: 32px;
+}
+.setAttendanceTime .timeSelectBox > div:last-of-type {
+  margin-left: 50px;
+}
+.setAttendanceTime .timeSelectBox > div > label {
+  display: inline-block;
+  width: 70px;
+  height: 32px;
+  font-size: 14px;
+  color: #333333;
+  vertical-align: middle;
+}
+.setAttendanceTime .timeSelectBox > div input {
+  width: 130px;
+  height: 32px;
+  vertical-align: middle;
+  border: 1px solid #ebebeb;
+  outline: none;
+  padding-left: 10px;
+  background: url("../images/icon_arrow.png") no-repeat top right;
+  -webkit-background-size: 32px 32px;
+  background-size: 32px 32px;
+  color: #333333;
+}
+.saveBtnBox {
+  padding-left: 22%;
+  margin-top: 120px;
+  margin-bottom: 50px;
+}
+.saveBtnBox button {
+  width: 80px;
+  height: 30px;
+  outline: none;
+  border: none;
+  background-color: #1be0d6;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+}
+.addWifiPage {
+  -webkit-border-radius: 6px!important;
+  -moz-border-radius: 6px!important;
+  border-radius: 6px!important;
+}
+.addWifiPage .layui-layer-btn {
+  height: 57px;
+  border-top: 1px solid #ebebeb;
+  padding: 0;
+}
+.addWifiPage .layui-layer-btn a {
+  width: 80px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 14px;
+  padding: 0;
+  text-align: center;
+  margin-top: 0;
+}
+.addWifiPage .layui-layer-btn a.layui-layer-btn0 {
+  background-color: #1be0d6;
+  border: none;
+}
+.addWifiPage .title {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 1px solid #ebebeb;
+  padding: 0 15px;
+}
+.addWifiPage .title span {
+  float: left;
+  font-size: 14px;
+  color: #333333;
+}
+.addWifiPage .title i {
+  float: right;
+  cursor: pointer;
+  font-size: 24px;
+  color: #999999;
+}
+.addWifiPage .setWifiContent {
+  width: 100%;
+  margin-top: 10px;
+}
+.addWifiPage .setWifiContent > div {
+  margin-bottom: 20px;
+}
+.addWifiPage .setWifiContent > div > label {
+  display: inline-block;
+  width: 120px;
+  font-size: 14px;
+  color: #333333;
+  text-align: right;
+}
+.addWifiPage .setWifiContent > div > input {
+  width: 300px;
+  height: 36px;
+  outline: none;
+  border: 1px solid #ebebeb;
+  padding-left: 10px;
+  font-size: 14px;
+}
+.addWifiPage .setWifiContent > div > input::-webkit-input-placeholder {
+  color: #cccccc;
+}
+.addWifiPage .setWifiContent > div > input::-moz-placeholder {
+  color: #cccccc;
+}
+.addWifiPage .setWifiContent > div > input::-ms-input-placeholder {
+  color: #cccccc;
+}
+.addWifiPage p {
+  font-size: 14px;
+  color: #5f5f5f;
+  padding-left: 40px;
+  margin-top: -4px;
+}
+.editAddressPage,
+.layui-layer-page {
+  -webkit-border-radius: 6px!important;
+  -moz-border-radius: 6px!important;
+  border-radius: 6px!important;
+}
+.editAddressPage .layui-layer-content,
+.layui-layer-page .layui-layer-content {
+  -webkit-border-radius: 6px!important;
+  -moz-border-radius: 6px!important;
+  border-radius: 6px!important;
+}
+.editAddressPage .mapBox,
+.layui-layer-page .mapBox {
+  width: 100%;
+  height: 477px;
+  background-color: #cccccc;
+  position: relative;
+}
+.editAddressPage .mapBox .panel,
+.layui-layer-page .mapBox .panel {
+  width: 214px;
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid silver;
+  box-shadow: 3px 4px 3px 0 silver;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  line-height: 20px;
+  z-index: 9999;
+  padding: 10px 11px;
+  font-size: 12px;
+}
+.editAddressPage .mapBox .panel #input,
+.layui-layer-page .mapBox .panel #input {
+  width: 196px;
+  height: 26px;
+  border: 1px solid #ebebeb;
+  outline: none;
+  padding-left: 4px;
+  font-size: 14px;
+}
+.editAddressPage .mapBox .panel #input::-webkit-input-placeholder,
+.layui-layer-page .mapBox .panel #input::-webkit-input-placeholder {
+  color: #999999;
+}
+.editAddressPage .mapBox .panel #input::-moz-placeholder,
+.layui-layer-page .mapBox .panel #input::-moz-placeholder {
+  color: #999999;
+}
+.editAddressPage .mapBox .panel #input::-ms-input-placeholder,
+.layui-layer-page .mapBox .panel #input::-ms-input-placeholder {
+  color: #999999;
+}
+.editAddressPage .mapBox .panel .tips,
+.layui-layer-page .mapBox .panel .tips {
+  font-size: 14px;
+  color: #333333;
+}
+.editAddressPage .resultBox,
+.layui-layer-page .resultBox {
+  width: 100%;
+  height: 103px;
+  border: 1px solid #ebebeb;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 30px;
+}
+.editAddressPage .resultBox > div,
+.layui-layer-page .resultBox > div {
+  height: 30px;
+  font-size: 0;
+  margin-top: 16px;
+}
+.editAddressPage .resultBox > div > label,
+.layui-layer-page .resultBox > div > label {
+  font-size: 14px;
+  color: #333333;
+  vertical-align: middle;
+}
+.editAddressPage .resultBox > div .addressName,
+.layui-layer-page .resultBox > div .addressName,
+.editAddressPage .resultBox > div .addressDetail,
+.layui-layer-page .resultBox > div .addressDetail {
+  display: inline-block;
+  vertical-align: middle;
+  width: 220px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333333;
+  padding-left: 10px;
+}
+.editAddressPage .resultBox > div .addressDetail,
+.layui-layer-page .resultBox > div .addressDetail {
+  border: none;
+  width: 57%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.editAddressPage .resultBox > div .addressName,
+.layui-layer-page .resultBox > div .addressName {
+  outline: none;
+}
+.editAddressPage .resultBox .btns,
+.layui-layer-page .resultBox .btns {
+  position: absolute;
+  top: 33px;
+  right: 20px;
+  font-size: 0;
+  margin-top: 0;
+}
+.editAddressPage .resultBox .btns button,
+.layui-layer-page .resultBox .btns button {
+  width: 80px;
+  height: 36px;
+  color: #333333;
+  font-size: 14px;
+  border: 1px solid #ebebeb;
+  outline: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.editAddressPage .resultBox .btns button.yesBtn,
+.layui-layer-page .resultBox .btns button.yesBtn {
+  background-color: #1be0d6;
+  color: #ffffff;
+  margin-left: 28px;
+}
+#EffectiveType .tips {
+  text-align: center;
+  line-height: 24px;
+  margin-top: 30px;
+}
+#EffectiveType .tips p:nth-of-type(1) {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+}
+#EffectiveType .tips p:nth-of-type(2) {
+  font-size: 14px;
+  color: #333333;
+  font-weight: 700;
+}
+#EffectiveType .selectItem {
+  width: 100%;
+  margin-top: 10px;
+}
+#EffectiveType .selectItem ul li {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-size: 16px;
+  color: #00ccc0;
+  border-bottom: 1px solid #eeeeee;
+  cursor: pointer;
+}
+.select2-container--default {
+  vertical-align: middle;
+  font-size: 14px;
+}
+.select2-container--default .select2-selection--single {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  height: 32px;
+  border: 1px solid #d9d9d9;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 32px;
+  color: #333333;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  width: 30px;
+  height: 30px;
+  background: url("../images/icon_arrow.png") no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  display: none;
+}
+.select2-container--open {
+  font-size: 14px;
+}
+.select2-container--open .select2-results__option--highlighted[aria-selected] {
+  background-color: #1be0d6;
+}
+.select2-container--open .select2-dropdown {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.select2-container--open .select2-results__option {
+  padding: 4px 6px;
+}
+.amap-ui-poi-picker-sugg-container {
+  max-height: 410px!important;
+}
+.layui-laydate .layui-laydate-main .layui-laydate-content .layui-laydate-list > li {
+  width: 50%;
+}
+.layui-laydate .layui-laydate-main .layui-laydate-content .layui-laydate-list > li:nth-of-type(3) {
+  display: none!important;
+}
+.layui-laydate .layui-laydate-main .layui-laydate-content .layui-laydate-list > li ol li {
+  padding-left: 54px;
+}
+i.checki {
+  cursor: pointer;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #1be0d6;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+i.checkActive {
+  background: url(../images/selected.png) no-repeat center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.c1b {
+  background: #1be0d6;
+}
+.fl {
+  float: left;
+}
+.m0a {
+  margin: 0 auto;
+  display: block;
+}
+.layui-form-label {
+  width: auto;
+}
+.time_list_box {
+  margin: 10px 0;
+  width: 100%;
+  border: 1px solid #ebebeb;
+  padding: 0 14px;
+}
+.time_list_box .ul1 {
+  border-bottom: 1px solid #ebebeb;
+}
+.time_list_box li {
+  float: left;
+  font-size: 14px;
+  color: #333;
+  line-height: 50px;
+}
+.time_list_box li.tar {
+  text-align: right;
+}
+.time_list_box li.tac {
+  text-align: center;
+}
+.time_list_box a {
+  color: #1be0d6;
+  margin-left: 10%;
+}
+#addTimeLayer {
+  padding: 10px;
+}
+#addTimeLayer .span {
+  padding: 9px 15px;
+}
+.ul2No {
+  line-height: 50px;
+}
+.tac {
+  text-align: center;
+}

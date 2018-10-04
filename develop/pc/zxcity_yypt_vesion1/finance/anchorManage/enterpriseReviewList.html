@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>企业审核</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap-datepicker/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/account_common.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/modal.css">
+</head>
+<body>
+    <div class="container-fluet" id="body-box" style="padding-top: 0px;">
+        <div class="row body-left-nav">
+
+            <div class="col-md-11 content-right" id="content">
+
+                <div class="cr-con">
+                    <div id="toolbar" class="row">
+                    <div class="cy-text-right-md form-inline clearfix">
+                            <!-- 商户名称开始 -->
+                            <div class="selein fl">
+                                <span class="cy-pad-hor-s">商户名称：</span>
+                                <input type="text" class="form-control h34 stationwid sechwidth" placeholder="商户名称"  id="merchantName" maxlength="30" onkeydown="keyDownEnter()">
+                            </div>
+                            <!-- 商户名称结束 -->
+
+
+                            <!-- 姓名开始 -->
+                            <div class="selein ml20 fl" style="width: 300px;">
+                                <span class="cy-pad-hor-s">发票号：</span>
+                                <input type="text" class="form-control h34 stationwid sechwidth" placeholder="发票号"  id="invoiceNo" maxlength="30" style="width: 200px;" onkeydown="keyDownEnter()">
+                            </div>
+                            <!-- 姓名结束 -->
+
+							              <!-- 流水号开始 -->
+                            <div class="selein ml20 fl" style="width: 300px;">
+                                <span class="cy-pad-hor-s">流水号：</span>
+                                <input type="text" class="form-control h34 stationwid sechwidth" placeholder="流水号"  id="serialNumber" maxlength="30" style="width: 200px;" onkeydown="keyDownEnter()">
+                            </div>
+                            <!--流水号结束 -->
+
+                            <!-- 时间开始 -->
+                            <div class="fl datepicker" id="datepicker" data-link-field="dtp_input1">
+                                <span class="cy-pad-hor-s">申请日期：</span>
+                                <input type="text" class="form-control h34 datepickerwid sechwidth" readonly name="start" id="qBeginTime" placeholder="开始日期" data-date-format="yyyy-mm-dd" />
+                                <span class="cy-pad-hor-s">至</span>
+                                <input type="text" class="form-control h34 datepickerwid sechwidth" readonly name="end" id="qEndTime" placeholder="截止日期" data-date-format="yyyy-mm-dd"/>
+                            </div>
+                            <!-- 时间结束 -->
+
+
+                            <!-- 搜索导出开始 -->
+                            <div class="ml20 fr">
+                                <button class="btn btn-success h34 sechwid" type="button" id="searchbtn"><i class="glyphicon glyphicon-search"></i>搜索</button>
+                            	<button class="btn btn-success h34 sechwid" type="button" value="finance/anchorManage/enterpriseReviewList" id="setButton">设置</button>
+                                <button class="btn btn-success h34 sechwid" type="button" id="excelbtn">导出excel</button>
+                            </div>
+                            <!-- 搜索导出结束 -->
+                        </div>
+                    </div>
+                    <div class="table-con">
+                    <!-- 表格开始 -->
+                        <table id="table">
+                        </table>
+                    <!-- 表格结束 -->
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+<!-- Common -->
+<script type="text/javascript" src="../../common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/js/jqPaginator.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table.v1.11.0.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/account_common.js"></script>
+
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../../common/js/str.js"></script>
+<script type="text/javascript" src="../../common/js/num.js"></script>
+
+<script type="text/javascript" src="../../common/assets/template-web.js"></script>
+
+<script type="text/javascript" src="../../common/assets/layui/lay/dest/layui.all.js"></script>
+<!-- <script type="text/javascript" src="../../common/js/login_success.js"></script>
+
+
+<script type="text/javascript" src="../../common/js/util/pub.js"></script> -->
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<!-- detailsfile -->
+<script type="text/javascript" src="enterpriseReviewList.js"></script>
+<script type="text/javascript" src="../common/cw_common.js"></script>
+<script type="text/javascript" src="../../common/js/account_dynamic_column.js"></script>
+
+
+<script type="text/html" id="invoiceTpl">
+<div class="container-fluid">
+
+<form class="form-horizontal">
+<div class="row-fluid">
+<h1 class="text-center dialog-title">主播企业发票审核</h1>
+</div>
+
+<div class="row">
+<input type="hidden" value="{{id}}" id="dialogReviewId">
+<input type="hidden" value="{{commissionId}}" id="commissionId">
+
+<div class="row">
+
+
+<div class="pull-left w-half">
+	<div class="form-group">
+		<label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>申请企业名称：</label>
+		<div class="col-md-6 col-sm-6">
+			<p class="form-control-static"><span id="">{{row.invoiceCompany}}</span></p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>申请发票号：</label>
+		<div class="col-md-6 col-sm-6">
+			<p class="form-control-static"><span id="">{{row.invoiceNo}}</span></p>
+		</div>
+	</div>
+</div>
+<div class="pull-right w-half">
+	<div class="form-group">
+		<label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>纳税人识别号：</label>
+		<div class="col-md-6 col-sm-6">
+			<p class="form-control-static"><span id="">{{row.invoiceTIN}}</span></p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>申请支付金额：</label>
+		<div class="col-md-6 col-sm-6">
+			<p class="form-control-static"><span id="">{{row.realMoney}}</span></p>
+		</div>
+	</div>
+</div>
+
+</div>
+
+<div class="form-group">
+    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>企业名称是否一致：</label>
+    <div class="col-md-6 col-sm-6">
+		<label class="radio-inline">
+			<input type="radio" name="reviewInvoiceCompany" value="0">是
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="reviewInvoiceCompany" value="1">否
+		</label>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>信用代码是否一致：</label>
+    <div class="col-md-6 col-sm-6">
+		<label class="radio-inline">
+			<input type="radio" name="reviewInvoiceTin" value="0">是
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="reviewInvoiceTin" value="1">否
+		</label>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>发票金额是否一致或大于支付金额：</label>
+    <div class="col-md-6 col-sm-6">
+        <label class="radio-inline">
+			<input type="radio" name="reviewInvoiceAmount" value="0">是
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="reviewInvoiceAmount" value="1">否
+		</label>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon">*</b>审核意见：</label>
+    <div class="col-md-6 col-sm-6">
+        <label class="radio-inline">
+			<input type="radio" name="reviewStatus" value="0">不通过
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="reviewStatus" value="1">通过
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="reviewStatus" value="2">超时
+		</label>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon">*</b>发票金额：</label>
+    <div class="col-md-6 col-sm-6">
+        <input class="form-control" type="text" id="invoiceAmount" maxlength="16"  >
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>备注信息：</label>
+    <div class="col-md-6 col-sm-6">
+        <p class="form-control-static">
+			<textarea class="form-control" id="comment"></textarea>
+		</p>
+    </div>
+</div>
+
+
+</div>
+
+</form>
+
+</div>
+</script>
+
+
+
+<script type="text/html" id="reviewTpl">
+<div class="container-fluid">
+
+<form class="form-horizontal">
+<div class="row-fluid">
+<h1 class="text-center dialog-title">主播企业佣金审核</h1>
+</div>
+
+<div class="row">
+<input type="hidden" value="{{row.id}}" id="dialogReviewId">
+<div class="form-group">
+    <label class="col-md-3 col-sm-3 control-label"><b class="required-icon"></b>支付金额：</label>
+    <div class="col-md-6 col-sm-6">
+        <p class="form-control-static"><span id="piggy">{{row.realMoney}}</span></p>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-md-3 col-sm-3 control-label"><b class="required-icon"></b>发票审核状态：</label>
+    <div class="col-md-6 col-sm-6">
+        <p class="form-control-static"><span id="piggy">{{row.reviewType == 1 ? '已审核' : '未审核'}}</span></p>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-md-3 col-sm-3 control-label"><b class="required-icon"></b>发票审核时间：</label>
+    <div class="col-md-6 col-sm-6">
+        <p class="form-control-static"><span id="piggy">{{row.reviewTime}}</span></p>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">*</b>审核意见：</label>
+    <div class="col-md-6 col-sm-6">
+		<label class="radio-inline">
+			<input type="radio" name="status" value="1">通过
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="status" value="2">不通过
+		</label>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">*</b>意见信息：</label>
+    <div class="col-md-6 col-sm-6">
+        <textarea class="form-control" rows="3" id="comment" maxlength="255"></textarea>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-3 col-md-6 col-sm-6">
+		<button class="btn btn-primary" type="button" id="reviewBtn">提交</button>
+    </div>
+  </div>
+</div>
+
+</form>
+
+</div>
+</script>
+
+
+
+<script type="text/html" id="reviewMessageTpl">
+<div class="container-fluid">
+
+
+<div class="row-fluid">
+<h1 class="text-center dialog-title">消息发送</h1>
+</div>
+
+<div class="row">
+<form class="form-horizontal">
+<input type="hidden" value="{{row.id}}" id="dialogReviewId">
+<input type="hidden" value="{{row.userId}}" id="receiverId">
+<div class="form-group">
+    <label class="col-md-3 col-sm-3 control-label"><b class="required-icon"></b>收件人：</label>
+    <div class="col-md-6 col-sm-6">
+        <p class="form-control-static">{{row.name && row.name ? row.name : row.merchantName}}</p>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-3 col-sm-3 control-label"><b class="required-icon">*</b>信息内容：</label>
+    <div class="col-md-6 col-sm-6">
+        <textarea class="form-control" rows="3" id="comment" maxlength="255"></textarea>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-3 col-md-6 col-sm-6">
+		<button class="btn btn-primary" type="button" id="sendBtn">提交</button>
+    </div>
+  </div>
+
+
+</form>
+</div>
+
+<div class="row">
+<table id="tableMsg"></table>
+</div>
+
+</div>
+</script>
+
+
+
+</body>
+</html>

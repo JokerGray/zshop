@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <link rel="stylesheet" href="../../common/assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../common/assets/jedate/skin/jedate.css">
+    <link rel="stylesheet" href="../../common/assets/jedate/skin/mystyle.css">
+    <link rel="stylesheet" href="../../common/css/common.css"/>
+    <!--<link rel="stylesheet" href="../../common/assets/datetimepicker/bootstrap-datetimepicker.min.css" />-->
+    <link rel="stylesheet" href="../css/customerPerformance.css"/>
+</head>
+<body>
+<div class="main-title">
+    <a href="javascript:;" onclick="history.go(-1)" class="return-icon"></a>
+    <h5 class="title"><span></span>贡献详情</h5>
+</div>
+<div class="main-content">
+    <div class="echats-wrap">
+        <div class="echats-date-wrap">
+            <div id="barTimeBox" class="date-wrap hide">
+                <div class="form-inline">
+                    <input type="text" class="form-control datetime start-time" readonly="readonly" id="startTime1"/> 至 <input type="text" class="form-control datetime end-time" readonly="readonly"
+                                                                                                                               id="endTime1"/>
+                    <button class="btn btn-danger" id="salsumpHistogramBtn">确定</button>
+                </div>
+            </div>
+            <div class="tab-bar absolute">
+                <div id="barTimeTab" class="tab-bar-colspan">
+                    <ul>
+                        <li class="active"><a href="javascript:void(0)">本月</a></li>
+                        <li><a href="javascript:void(0)">本年</a></li>
+                        <li><a href="javascript:void(0)">更多</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="echats-salesconsumption" id="barChart"></div>
+    </div>
+    <div class="container-fluid pie-wrap">
+        <div id="salsumpPieDate" class="date-wrap hide">
+            <div class="form-inline">
+                <input type="text" class="form-control datetime start-time" readonly="readonly" id="startTime2"/> 至
+                <input type="text" class="form-control datetime end-time" id="endTime2" readonly="readonly"/>
+                <button class="btn btn-danger" id="pieSearchBtn">确定</button>
+            </div>
+        </div>
+        <div class="tab-bar absolute">
+            <div id="pieTimeTab" class="tab-bar-colspan">
+                <ul>
+                    <li class="active"><a href="javascript:void(0)">本月</a></li>
+                    <li><a href="javascript:void(0)">本年</a></li>
+                    <li><a href="javascript:void(0)">更多</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="echats-pie" id="pieChart"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../common/assets/jquery.min.js"></script>
+<script src="../../common/assets/jquery.bootpag.min.js"></script>
+<script src="../../common/assets/layer/layer.js"></script>
+<script src="../../common/assets/echarts.simple.min.js"></script>
+<script src="../../common/assets/jedate/jquery.jedate.min.js"></script>
+<!--<script src="../../common/assets/datetimepicker/bootstrap-datetimepicker.min.js"></script>-->
+<!--<script src="../../common/assets/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>-->
+<script src="../../common/js/common.js"></script>
+<script src="../js/customerPerformanceDetail.js"></script>
+</body>
+</html>

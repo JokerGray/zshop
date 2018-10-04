@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智享城市轮播图设置</title>
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <link rel="stylesheet" href="../../common/css/rest_new.css">
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="app_zxcity_banner.css" />
+</head>
+<body>
+    <div class="app-wrap layui-row layui-fluid">
+        <div class="header clearfix">
+            <button class="layui-btn fr" id="addBtn">+新增</button>
+        </div>
+        <div class="main">
+            <table lay-filter="demo" id="demo" class="mtb0"></table>
+            <div id="laypageLeft" class="fr"></div>
+        </div>
+    </div>
+    <script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event='change'>
+            <i class="layui-icon">&#xe642;</i> 修改
+        </button>
+        <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event='del'>
+            <i class="layui-icon">&#xe640;</i> 删除
+        </button>
+    </script>
+    <div id="addDemo" class="disn layui-form layer-box">
+        <div class="input-box">
+            <div class="layui-form-item">
+                <label class="layui-form-label">跳转地址</label>
+                <div class="layui-input-block">
+                    <input lay-verify="required" id="scBaseCarouselAddress" placeholder="必须以http://或者https://开头" type="text" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">优先级</label>
+                <div class="layui-input-block">
+                    <input lay-verify="required" id="scBaseCarouselPriority" placeholder="只能是数字" type="text" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">轮播背景图</label>
+                <div class="layui-input-block">
+                    <img src="../../common/images/upload.png" id="scBaseCarouselPictureAddress" class="signform-face-img"  style="width:250px;height:150px" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">轮播前景图</label>
+                <div class="layui-input-block">
+                    <img src="../../common/images/upload.png" id="scBaseCarouselEffectChart" class="signform-face-img"  style="width:250px;height:150px" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+<script type="text/javascript" src="../../common/assets/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+    <script src="../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="../../common/js/upload.js"></script>
+
+    <script src="app_zxcity_banner.js"></script>
+</body>
+</html>

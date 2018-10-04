@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>商户升级审核</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/reset.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../../framework/bootstrap-datepicker/css/bootstrap-datepicker.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../../framework/bootstrap/css/bootstrap-select.css"> -->
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../framework/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/account_common.css">
+    <link rel="stylesheet" type="text/css" href="../../common/css/modal.css">
+    <style media="screen" type="text/css">
+      .btn-primary{
+        height: 37px;
+        width: 140px;
+        padding-bottom: 2px;
+        padding-top: 2px;
+        padding-left: 17px;
+        padding-right: 17px;
+        border-radius: 0px!important;
+        font-size: 20px;
+      }
+      .div-border-bottom{
+        padding-top: 6px;
+        border-bottom: 1px solid #31b0d5;
+      }
+
+      .form-control{
+        border-radius: 0px!important;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      input[type="number"]{
+        -moz-appearance: textfield;
+      }
+
+      .form-group {
+          margin-bottom: 20px;
+      }
+    </style>
+</head>
+<body>
+
+	<div class="container-fluid">
+		<form class="form-horizontal" style="padding-bottom: 25px;font-size: 16px;">
+			<div class="row-fluid">
+			  <h1 class="text-center dialog-title">线下升级审核</h1>
+			</div>
+			<div class="row">
+				<div class="pull-left w-half">
+					<div class="form-group">
+					    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>升级类型：</label>
+					    <div class="col-md-7 col-sm-7 div-border-bottom">
+                  <span>合作商户</span>
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>打&nbsp款&nbsp人：</label>
+					    <div class="col-md-7 col-sm-7  div-border-bottom">
+					        <span>张三</span>
+					    </div>
+					</div>
+          <div class="form-group">
+					    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>办理员工：</label>
+					    <div class="col-md-7 col-sm-7 div-border-bottom">
+                  <span>运营小弟</span>
+					    </div>
+					</div>
+          <div class="form-group">
+					    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>到账金额：</label>
+					    <div class="col-md-7 col-sm-7" style="padding-right: 0px;padding-left: 0px;">
+					        <input class="form-control" id="phone" type="number"  placeholder="输入金额......">
+					    </div>
+					</div>
+          <div class="form-group">
+					    <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>审核意见：</label>
+					    <div class="col-md-7 col-sm-7">
+                <label class="radio-inline" style="padding-right: 45px;">
+                  <input type="radio" name="optionsRadiosinline" value="option1" style="height: 18px;width: 16px;"> 通过
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="optionsRadiosinline" value="option2" style="height: 18px;width: 16px;"> 不通过
+                </label>
+					    </div>
+					</div>
+          <div class="form-group">
+              <label class="col-md-4 col-sm-4 control-label"><b class="required-icon"></b>意见信息：</label>
+              <div class="col-md-8 col-sm-8" style="padding-top: 13px;">
+                  <textarea  name="wsxqqqqqqaa" rows="8" cols="80" style="height: 86px;" maxlength="150"></textarea>
+              </div>
+          </div>
+				</div>
+
+				<div class="pull-right w-half">
+				    <div class="form-group">
+                <label class="col-md-3 col-sm-3 control-label"><b class="required-icon"></b>支付金额：</label>
+                <div class="col-md-8 col-sm-8 div-border-bottom">
+                    <span >3650.00</span>
+                </div>
+				    </div>
+				    <div class="form-group">
+				        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon"></b>账&nbsp&nbsp&nbsp&nbsp&nbsp号：</label>
+				        <div class="col-md-8 col-sm-8 div-border-bottom">
+                    <span>4921 2123 2331 388</span>
+				        </div>
+				    </div>
+            <div class="form-group">
+				        <label class="col-md-3 col-sm-3 control-label"><b class="required-icon"></b>劳务所得：</label>
+				        <div class="col-md-8 col-sm-8 div-border-bottom">
+                  <!-- <div style="margin-top: 8px;"> -->
+                         <span style="color:green;">3650.00</span> &nbsp*&nbsp <span style="color:red;">&nbsp30%&nbsp</span>&nbsp=&nbsp<span>1095.00</span>
+                  <!-- </div> -->
+				        </div>
+				    </div>
+            <div class="form-group">
+                <label class="col-md-3 col-sm-3 control-label"><b class="required-icon"></b>查&nbsp账&nbsp人：</label>
+                <div class="col-md-8 col-sm-8" style="padding-right: 0px;padding-left: 0px;">
+                    <input  class="form-control" id="locked" type="text" >
+                </div>
+            </div>
+				</div>
+			</div>
+      <div class="text-center" style="border-top: 2px solid #ddd;margin-top: 14px;">
+            <button type="submit" class="btn btn-primary" style="margin-top: 25px;">确认提交</button>
+      </div>
+		</form>
+	</div>
+
+<script type="text/javascript" src="../../common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/js/jqPaginator.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table.v1.11.0.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="../../framework/bootstrap/js/bootstrap-select.js"></script>
+
+<!-- <script type="text/javascript" src="anchorInfo.js"></script> -->
+
+</body>
+</html>

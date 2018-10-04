@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>专业制作工单审核</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../../common/css/reset.css" />
+    <link rel="stylesheet" href="../../../common/css/layTab.css" />
+    <style type="text/css">
+        #setBtn {
+            width: 112px;
+            height: 38px;
+            position: relative;
+            top: 27px;
+        }
+        .dTitle{
+            font-size: 23px;
+            margin: 12px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="tool-box layui-form">
+    <ul class="tool-box-ul clearfix">
+        <!-- 商户名称 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">商户：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" placeholder="输入商户名称" class="layui-input" id="merchantName" maxlength="30">
+                </div>
+            </div>
+        </li>
+        <!-- 员工姓名 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">工单号：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" placeholder="输入员工姓名" class="layui-input" id="userName" maxlength="30">
+                </div>
+            </div>
+        </li>
+        <!-- 编号 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label">编号：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" placeholder="输入工单号\流水号" class="layui-input" id="orderNo" maxlength="30">
+                </div>
+            </div>
+        </li>
+
+        <!-- 时间开始 -->
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label" id="stTime">提交审核日期：</label>
+                <div class="layui-input-inline startDate">
+                    <input type="text" class="layui-input" id="startDate" placeholder="开始时间">
+                </div>
+            </div>
+        </li>
+        <li class="tool-box-li">
+            <div class="layui-form-item">
+                <label class="tool-box-label" id="endTim">至：</label>
+                <div class="layui-input-inline endDate">
+                    <input type="text" class="layui-input" id="endDate" placeholder="结束时间">
+                </div>
+            </div>
+        </li>
+        <!-- 时间结束 -->
+    </ul>
+</div>
+
+<!--操作按钮-->
+<div class="tool-add-box clearfix">
+    <button class="layui-btn add" id="exportBtn" style="top: -10px;margin-left: 10px;">导出Excel</button>
+    <button class="layui-btn add" id="setBtn" style="top: -10px;">设置</button>
+    <button class="layui-btn add" id="searchBtn" style="top: -10px;">搜索</button>
+</div>
+
+<!--表格开始-->
+<div class="layui-app">
+    <div class="app-table" style="margin-top: 10px;" >
+        <table lay-filter="table" id="table"></table>
+        <div id="layTablePage"></div>
+    </div>
+</div>
+<!--表格结束-->
+
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/assets/template-web.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+<script type="application/javascript">
+    jsorcss('js', 'employeesBill');
+</script>
+</body>
+</html>
+
+<!--templates-->
+<script type="text/html" id="settingsTpl">
+    <form class="layui-form" style="margin-top: 20px;">
+        <div class="layui-fluid">
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">员工姓名</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="userName" lay-skin="switch" {{if userName}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">订单号/流水号</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="orderNo" lay-skin="switch" {{if orderNo}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">业务类型</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="type" lay-skin="switch" {{if type}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">提成金额</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="amount" lay-skin="switch" {{if amount}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row form-item">
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">关联商户</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="merchantName" lay-skin="switch" {{if merchantName}} checked {{/if}} />
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md6">
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <label class="control-label">审核时间</label>
+                    </div>
+                    <div class="layui-col-sm6 layui-col-md6">
+                        <input type="checkbox" name="time" lay-skin="switch" {{if time}} checked {{/if}} />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>

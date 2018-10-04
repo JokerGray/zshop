@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>发布公告 - 智享城市.智享头条</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/send_notice.css" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="index">
+
+    <div class="container">
+        <div class="wrapper clearfix mb30">
+            <script src="util/menu.js"></script>
+            <div class="right pull-right">
+                <div class="crumb">发布公告</div>
+                <div class="right-content">
+                    <div class="tab-content news mt20" id="container">
+                        <div class="title">
+                            <input type="text" id="titleTxt" class="newstitle" name="newstitle" placeholder="请输入标题(5-30字)" />
+                            <span class="limit"><em id="fontLen">0</em>/30</span>
+                        </div>
+                        <div id="editor" class="edit">
+                            <div class="auto_save">自动保存<i class="fa fa-clock-o" aria-hidden="true"></i></div>
+                            <textarea id="applicationform" name="content" style="width:100%;height:500px;visibility:hidden;"></textarea>
+                            <div id="textHide" class="dis-n"></div>
+                        </div>
+                    </div>
+                    <div class="mt20 clearfix">
+                        <button class="btn form-btn btn-blue" id="submitBtn">发表</button>
+                        <!--<button class="btn form-btn" id="previewBtn">预览</button>-->
+                        <button class="btn form-btn" id="cancleA"><a href="index.html">取消</a></button>
+                    </div>
+                    <div id="btn"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js "></script>
+    <script src="assets/layui/lay/dest/layui.all.js "></script>
+    <script src="assets/plupload-2.1.2/js/plupload.full.min.js "></script>
+    <script src="assets/kindeditor-4.1.10/kindeditor-min.js "></script>
+    <script src="assets/kindeditor-4.1.10/lang/zh_CN.js "></script>
+    <script src="util/util.js "></script>
+    <script src="util/pub.js "></script>
+    <script src="js/send_notice.js"></script>
+</body>
+
+</html>

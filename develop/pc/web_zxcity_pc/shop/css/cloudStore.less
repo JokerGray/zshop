@@ -1,0 +1,795 @@
+li {
+    list-style: none;
+}
+
+body {
+    background: #f4f4f4;
+    #wrapper {
+        width: 1140px;
+        margin: 0 auto;
+        background: #f4f4f4;
+        position: relative;
+        /*.breadNav {
+            width: 786px;
+            height: 66px;
+            line-height: 66px;
+            ol {
+                float: left;
+                margin: 0;
+                padding: 0;
+                li {
+                    float: left;
+                    margin-right: 10px;
+                    &:nth-child(2) {
+                        width: 10px;
+                        height: 66px;
+                        background: url(../img/rightIcon.png) no-repeat center;
+                    }
+                    &:first-child:before {
+                        content: '';
+                        display: inline-block;
+                        float: left;
+                        width: 4px;
+                        height: 24px;
+                        background-color: #e0041a;
+                        margin: 21px 5px 0 0;
+                    }
+                    a {
+                        float: left;
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: #666666;
+                    }
+                }
+            }
+            .mobilePhone {
+                float: right;
+                width: 134px;
+                height: 66px;
+                font-size: 12px;
+                color: #999999;
+                text-align: right;
+                background: url(../img/phone.png) no-repeat;
+                background-position: left center;
+            }
+        }*/
+        .mainLeft {
+            width: 786px;
+            background: #ffffff;
+            .tabs {
+                width: 786px;
+                height: 103px;
+                line-height: 103px;
+                text-align: center;
+                border-bottom: 1px solid #cccccc;
+                a {
+                    margin-right: 42px;
+                    font-size: 30px;
+                    color: #999999;
+                    &.active {
+                        font-size: 40px;
+                        color: #333333;
+                        border-bottom: 5px solid #333333;
+                    }
+                }
+            }
+            .content-box {
+                .content-1 {
+                    .title {
+                        width: 786px;
+                        height: 100px;
+                        padding: 0 41px;
+                        h2 {
+                            float: left;
+                            margin: 0;
+                            line-height: 100px;
+                            text-align: left;
+                            font-size: 44px;
+                            font-weight: bold;
+                            color: #333333;
+                        }
+                        .share {
+                            font-size: 18px;
+                            float: right;
+                            line-height: 100px;
+                            margin-right: -25px;
+                            span {
+                                color: #666666;
+                                margin-right: 10px;
+                            }
+                            a {
+                                display: inline-block;
+                                width: 26px;
+                                height: 26px;
+                                margin-right: 10px;
+                                &:nth-child(2) {
+                                    vertical-align: middle;
+                                    background: url(../img/qqSpace.png) no-repeat;
+                                }
+                                &:nth-child(3) {
+                                    vertical-align: middle;
+                                    background: url(../img/weibo.png) no-repeat;
+                                }
+                                &:nth-child(4) {
+                                    vertical-align: middle;
+                                    background: url(../img/qq.png) no-repeat;
+                                }
+                            }
+                        }
+                    }
+                    .shop {
+                        padding: 0 31px 0 41px;
+                        .shopInfo {
+                            float: left;
+                            margin-right: 10px;
+                            img {
+                                display: block;
+                                width: 346px;
+                                height: 346px;
+                            }
+                            .goodsName {
+                                width: 346px;
+                                font-size: 28px;
+                                font-weight: bold;
+                                color: #3e3e3e;
+                                overflow: hidden;
+                                -ms-text-overflow: ellipsis;
+                                text-overflow: ellipsis;
+                                white-space: nowrap
+                            }
+                            .shopName {
+                                width: 346px;
+                                font-size: 24px;
+                                color: #999999;
+                            }
+                            .price {
+                                font-size: 16px;
+                                color: #ff3b3c;
+                                .num {
+                                    font-size: 26px;
+                                }
+                            }
+                        }
+                        &:after {
+                            display: table;
+                            content: '';
+                            clear: both;
+                        }
+                    }
+                }
+                .content-2 {
+                    display: none;
+                    .title {
+                        width: 786px;
+                        height: 100px;
+                        padding: 0 41px;
+                        h2 {
+                            float: left;
+                            margin: 0;
+                            line-height: 100px;
+                            text-align: left;
+                            font-size: 44px;
+                            font-weight: bold;
+                        }
+                        .share {
+                            font-size: 18px;
+                            float: right;
+                            line-height: 100px;
+                            margin-right: -25px;
+                            span {
+                                color: #666666;
+                                margin-right: 10px;
+                            }
+                            a {
+                                display: inline-block;
+                                width: 26px;
+                                height: 26px;
+                                margin-right: 10px;
+                                &:nth-child(2) {
+                                    vertical-align: middle;
+                                    background: url(../img/qqSpace.png) no-repeat;
+                                }
+                                &:nth-child(3) {
+                                    vertical-align: middle;
+                                    background: url(../img/weibo.png) no-repeat;
+                                }
+                                &:nth-child(4) {
+                                    vertical-align: middle;
+                                    background: url(../img/qq.png) no-repeat;
+                                }
+                            }
+                        }
+                    }
+                    .action {
+                        padding: 0 18px;
+                        margin-bottom: 33px;
+                        .actionInfo {
+                            position: relative;
+                            width: 750px;
+                            height: 420px;
+                            margin-bottom: 36px;
+                            background-image: url(../img/actionInfo.png);
+                            background-repeat: no-repeat;
+                            -webkit-background-size: cover;
+                            background-size: cover;
+                            .titleName {
+                                padding: 0 0 0 10px;
+                                height: 60px;
+                                line-height: 60px;
+                                background-color: rgba(0, 0, 0, .5);
+                                position: absolute;
+                                right: 0;
+                                top: 20px;
+                                i {
+                                    display: inline-block;
+                                    width: 28px;
+                                    height: 22px;
+                                    background-image: url(../img/titleIcon.png);
+                                    background-repeat: no-repeat;
+                                    vertical-align: middle;
+                                }
+                                span {
+                                    font-size: 24px;
+                                    color: #ffffff;
+                                    vertical-align: middle;
+                                    margin: 0 24px 0 5px;
+                                }
+                                &:before {
+                                    content: '';
+                                    width: 4px;
+                                    height: 60px;
+                                    position: absolute;
+                                    top: 0;
+                                    bottom: 0;
+                                    left: -10px;
+                                    background-color: #636F7F;
+                                }
+                            }
+                            .price {
+                                width: 180px;
+                                height: 90px;
+                                position: absolute;
+                                left: 24px;
+                                bottom: 20px;
+                                .cur-price {
+                                    height: 55px;
+                                    line-height: 55px;
+                                    background-color: #ff665f;
+                                    border-radius: 10px 10px 0 0;
+                                    text-align: center;
+                                    font-size: 36px;
+                                    color: #ffffff;
+                                }
+                                .cos-price {
+                                    height: 35px;
+                                    line-height: 35px;
+                                    background-color: #484848;
+                                    border-radius: 0 0 10px 10px;
+                                    font-size: 22px;
+                                    color: #ffffff;
+                                    text-align: center;
+                                    text-decoration: line-through;
+                                }
+                            }
+                            .countDown {
+                                position: absolute;
+                                left: 224px;
+                                bottom: 20px;
+                                height: 80px;
+                                font-size: 32px;
+                                text-align: center;
+                                color: #ffffff;
+                                line-height: 1;
+                                p {
+                                    text-align: left;
+                                    font-size: 22px;
+                                    color: #ffffff;
+                                    letter-spacing: 2px;
+                                    line-height: 1.1;
+                                }
+                                span {
+                                    display: inline-block;
+                                    padding: 0 5px;
+                                    height: 45px;
+                                    border: 1px solid #ffffff;
+                                    border-radius: 5px;
+                                    line-height: 45px;
+                                    vertical-align: middle;
+                                }
+                            }
+                            .enroll {
+                                position: absolute;
+                                right: 25px;
+                                bottom: 20px;
+                                font-size: 24px;
+                                color: #ffffff;
+                            }
+                        }
+                        .action-txt {
+                            font-size: 40px;
+                            color: #333333;
+                            text-indent: 24px;
+                        }
+                        .action-date {
+                            font-size: 30px;
+                            color: #999999;
+                            text-indent: 24px;
+                            margin-bottom: 20px;
+                        }
+                        .support {
+                            font-size: 24px;
+                            color: #ff4e62;
+                            text-indent: 24px;
+                            .boss {
+                                padding: 0 2px;
+                                border: 1px solid #ff4e62;
+                                margin-right: 20px;
+                                border-radius: 5px;
+                            }
+                            .seller {
+                                padding: 0 2px;
+                                border: 1px solid #ff4e62;
+                                border-radius: 5px;
+                            }
+                        }
+                    }
+                }
+                .content-3 {
+                    display: none;
+                    .title {
+                        width: 786px;
+                        height: 100px;
+                        padding: 0 41px;
+                        .share {
+                            font-size: 18px;
+                            float: right;
+                            line-height: 100px;
+                            margin-right: -25px;
+                            span {
+                                color: #666666;
+                                margin-right: 10px;
+                            }
+                            a {
+                                display: inline-block;
+                                width: 26px;
+                                height: 26px;
+                                margin-right: 10px;
+                                &:nth-child(2) {
+                                    vertical-align: middle;
+                                    background: url(../img/qqSpace.png) no-repeat;
+                                }
+                                &:nth-child(3) {
+                                    vertical-align: middle;
+                                    background: url(../img/weibo.png) no-repeat;
+                                }
+                                &:nth-child(4) {
+                                    vertical-align: middle;
+                                    background: url(../img/qq.png) no-repeat;
+                                }
+                            }
+                        }
+                    }
+                    .info {
+                        width: 786px;
+                        padding: 0 41px;
+                        margin-bottom: 30px;
+                        .info-title {
+                            font-size: 34px;
+                            color: #333333;
+                            margin-bottom: 25px;
+                        }
+                        video {
+                            width: 100%;
+                            height: 100%;
+                        }
+                        .infoImg {
+                            position: relative;
+                            width: 700px;
+                            height: 396px;
+                            background-size: cover;
+                            .infoIcon {
+                                position: absolute;
+                                width: 88px;
+                                height: 40px;
+                                line-height: 40px;
+                                bottom: 25px;
+                                right: 25px;
+                                background-color: rgba(0, 0, 0, .5);
+                                border-radius: 40px;
+                                color: #ffffff;
+                                font-size: 20px;
+                                i {
+                                    display: inline-block;
+                                    width: 26px;
+                                    height: 26px;
+                                    background-image: url(../img/picture.png);
+                                    background-repeat: no-repeat;
+                                    margin-left: 15px;
+                                    vertical-align: middle;
+                                }
+                                span {
+                                    margin-left: 3px;
+                                }
+                            }
+                        }
+                        .storeInfo {
+                            width: 684px;
+                            height: 65px;
+                            line-height: 65px;
+                            font-size: 20px;
+                            color: #666;
+                            border-bottom: 1px solid #cccccc;
+                            .storeLogo {
+                                float: left;
+                                i {
+                                    display: inline-block;
+                                    width: 30px;
+                                    height: 30px;
+                                    margin: 0 8px;
+                                    background-image: url(../img/logo.png);
+                                    background-repeat: no-repeat;
+                                    vertical-align: middle;
+                                }
+                                span {
+                                    font-size: 24px;
+                                    color: #666666;
+                                    vertical-align: middle;
+                                }
+                            }
+                            .storeDate {
+                                float: left;
+                                margin: 0 25px;
+                                span {
+                                    vertical-align: middle;
+                                }
+                            }
+                            .comment {
+                                float: left;
+                                i {
+                                    display: inline-block;
+                                    width: 24px;
+                                    height: 23px;
+                                    background-image: url(../img/txt.png);
+                                    background-repeat: no-repeat;
+                                    vertical-align: middle;
+                                    margin-right: 5px;
+                                }
+                                .commentnum {
+                                    text-indent: 1em;
+                                }
+                            }
+                        }
+                        &:last-child {
+                            padding-bottom: 150px;
+                        }
+                    }
+                }
+                .content-4 {
+                    display: none;
+                    .title {
+                        width: 786px;
+                        height: 100px;
+                        padding: 0 41px;
+                        .share {
+                            font-size: 18px;
+                            float: right;
+                            line-height: 100px;
+                            margin-right: -25px;
+                            span {
+                                color: #666666;
+                                margin-right: 10px;
+                            }
+                            a {
+                                display: inline-block;
+                                width: 26px;
+                                height: 26px;
+                                margin-right: 10px;
+                                &:nth-child(2) {
+                                    vertical-align: middle;
+                                    background: url(../img/qqSpace.png) no-repeat;
+                                }
+                                &:nth-child(3) {
+                                    vertical-align: middle;
+                                    background: url(../img/weibo.png) no-repeat;
+                                }
+                                &:nth-child(4) {
+                                    vertical-align: middle;
+                                    background: url(../img/qq.png) no-repeat;
+                                }
+                            }
+                        }
+                    }
+                    .video {
+                        position: relative;
+                        width: 786px;
+                        height: 400px;
+                        padding: 0 42px;
+                        margin-bottom: 32px;
+                        video {
+                            position: absolute;
+                            left: 42px;
+                            top: 0;
+                            width: 702px;
+                            height: 400px;
+                            cursor: pointer;
+                            /*background-image: url(../img/video.png);
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            border-radius: 20px;*/
+                        }
+                        .mask {
+                            position: absolute;
+                            left: 42px;
+                            right: 42px;
+                            top: 0;
+                            bottom: 0;
+                            background-color: rgba(0, 0, 0, .3);
+                            span {
+                                position: absolute;
+                                left: 50%;
+                                top: 50%;
+                                margin-left: -40px;
+                                margin-top: -40px;
+                                width: 80px;
+                                height: 80px;
+                                -webkit-border-radius: 40px;
+                                -moz-border-radius: 40px;
+                                border-radius: 40px;
+                                border: 3px solid #cccccc;
+                                cursor: pointer;
+                                i {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    width: 0px;
+                                    height: 0px;
+                                    margin-left: -10px;
+                                    margin-top: -16px;
+                                    border-top: 16px solid transparent;
+                                    border-left: 32px solid #ffffff;
+                                    border-bottom: 16px solid transparent;
+                                }
+                            }
+                        }
+                        &:last-child {
+                            padding-bottom: 384px;
+                        }
+                    }
+                }
+                .content-5 {
+                    display: none;
+                    .title {
+                        width: 786px;
+                        height: 100px;
+                        padding: 0 41px;
+                        .share {
+                            font-size: 18px;
+                            float: right;
+                            line-height: 100px;
+                            margin-right: -25px;
+                            span {
+                                color: #666666;
+                                margin-right: 10px;
+                            }
+                            a {
+                                display: inline-block;
+                                width: 26px;
+                                height: 26px;
+                                margin-right: 10px;
+                                &:nth-child(2) {
+                                    vertical-align: middle;
+                                    background: url(../img/qqSpace.png) no-repeat;
+                                }
+                                &:nth-child(3) {
+                                    vertical-align: middle;
+                                    background: url(../img/weibo.png) no-repeat;
+                                }
+                                &:nth-child(4) {
+                                    vertical-align: middle;
+                                    background: url(../img/qq.png) no-repeat;
+                                }
+                            }
+                        }
+                    }
+                    .shop {
+                        padding: 0 31px 0 41px;
+                        .shopInfo {
+                            float: left;
+                            margin-right: 10px;
+                            img {
+                                display: block;
+                                width: 346px;
+                                height: 346px;
+                            }
+                            .goodsName {
+                                width: 346px;
+                                font-size: 28px;
+                                font-weight: bold;
+                                color: #3e3e3e;
+                                overflow: hidden;
+                                -ms-text-overflow: ellipsis;
+                                text-overflow: ellipsis;
+                                white-space: nowrap
+                            }
+                            .shopName {
+                                width: 346px;
+                                font-size: 24px;
+                                color: #999999;
+                            }
+                            .price {
+                                font-size: 16px;
+                                color: #ff3b3c;
+                                .num {
+                                    font-size: 26px;
+                                }
+                            }
+                        }
+                        &:after {
+                            display: table;
+                            content: '';
+                            clear: both;
+                        }
+                    }
+                }
+            }
+        }
+        .sidebar {
+            position: absolute;
+            top: 66px;
+            right: 0;
+            width: 328px;
+            .sidebar-adv {
+                background-color: #fff;
+                .shopInfo {
+                    position: relative;
+                    width: 329px;
+                    height: 212px;
+                    background-image: url(../img/adv-1.png);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    i {
+                        position: absolute;
+                        display: block;
+                        width: 60px;
+                        height: 60px;
+                        margin-left: -30px;
+                        border-radius: 50%;
+                        top: 48px;
+                        left: 50%;
+                        background-repeat: no-repeat;
+                        background-size: 60px 60px;
+                    }
+                    p {
+                        width: 329px;
+                        text-align: center;
+                        color: #ffffff;
+                        &:nth-of-type(1) {
+                            position: absolute;
+                            top: 135px;
+                            text-align: center;
+                            font-size: 13px;
+                        }
+                        &:nth-of-type(2) {
+                            position: absolute;
+                            top: 155px;
+                            font-size: 10px;
+                        }
+                    }
+                    .mask {
+                        position: absolute;
+                        width: 329px;
+                        height: 212px;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        background-color: rgba(0, 0, 0, .3);
+                    }
+                }
+                .adv {
+                    position: relative;
+                    width: 329px;
+                    height: 212px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    &:nth-child(2) {
+                        margin-top: 23px;
+                        background-image: url(../img/adv-2.png);
+                    }
+                    &:nth-child(3) {
+                        background-image: url(../img/adv-3.png);
+                    }
+                }
+            }
+            .storeChoice {
+                margin-top: 5px;
+                background-color: #ffffff;
+                .sidebar-title {
+                    width: 327px;
+                    height: 50px;
+                    background-color: #7A70EE;
+                    background-image: url(../img/title.png);
+                    background-repeat: no-repeat;
+                    background-position: 14px center;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    border-radius: 5px;
+                    .txt {
+                        font-size: 20px;
+                        color: #ffffff;
+                        font-weight: bold;
+                        margin: 0;
+                        margin-left: 40px;
+                        line-height: 47px;
+                    }
+                }
+                .sidebar-list {
+                    li {
+                        margin-top: 20px;
+                        position: relative;
+                        .headImg {
+                            float: left;
+                            margin: 0 17px 0 14px;
+                            width: 101px;
+                            height: 100px;
+                        }
+                        .info {
+                            .title {
+                                font-size: 20px;
+                                font-weight: bold;
+                                line-height: 1;
+                                overflow: hidden;
+                                -ms-text-overflow: ellipsis;
+                                text-overflow: ellipsis;
+                                white-space: nowrap
+                            }
+                            .userName {
+                                font-size: 18px;
+                                color: #cccccc;
+                                margin-bottom: 23px;
+                            }
+                            .praise {
+                                i {
+                                    display: inline-block;
+                                    width: 18px;
+                                    height: 17px;
+                                    vertical-align: middle;
+                                    background-image: url(../img/dianzan.png);
+                                    background-repeat: no-repeat;
+                                    background-position: 43%;
+                                    cursor: pointer;
+                                    &.active {
+
+                                    }
+                                }
+                                .count {
+                                    vertical-align: top;
+                                    color: #666666;
+                                    font-size: 18px;
+                                    font-weight: bold;
+                                }
+                            }
+                            .num {
+                                position: absolute;
+                                top: -25px;
+                                left: 15px;
+                                font-size: 40px;
+                                color: #ff9ccd;
+                            }
+                        }
+                        &:nth-last-child(1) {
+                            padding-bottom: 50px;
+                        }
+                        &:after {
+                            content: '';
+                            display: table;
+                            clear: both;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <title>圈子-发起活动</title>
+  <link rel="stylesheet" type="text/css" href="../../assets/bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../../assets/bootstrapDatePicker/css/bootstrap-datetimepicker.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../../assets/select2-v4.0.6/css/select2.min.css"/>
+  <link rel="stylesheet" href="./css/add.css">
+</head>
+<body>
+  <div id="event" class="allWrapper">
+    <div class="main-title">发布活动</div>
+    <div class="content">
+        <div class="head">
+          <label class="control-label title">活动基本信息</label>
+          <div class="col-md-12">
+            <label >活动封面</label>
+            <div>
+                <img class="front-img" src="./img/up.png">
+                <input type="hidden" id="activityCover" title="身份证照正面">
+                <div class="cover">
+                    <div>
+                        <p>0%</p>
+                        <p>正在上传……</p>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group m-t-10">
+                <label >活动名称<span class="tips">（字数限制为5-25字）</span></label>
+            </div>
+            <input type="text" class="content-input" name='activityName' id='activityName' placeholder="请输入活动名称">
+            <div class="input-group m-t-10">
+                <label >人均价格</label>
+            </div>
+            <input type="text" class="content-input" name="activityAveprice" id="activityAveprice" placeholder="请输入人均价格" maxlength="9">
+
+            <div class="input-group m-t-10">
+                <label >活动时间</label>
+            </div>
+            <input type="text" readonly class="form_datetime timepick-input" name="activityBegin" id="activityBegin"> 
+            <span class="time-text">至</span> 
+            <input type="text" readonly class="form_datetime timepick-input" name="activityEnd" id="activityEnd">
+          
+          </div>
+          
+        </div>
+
+        <div class="head">
+            <div class="control-label title">圈子地点</div>
+            <div class="col-md-12">
+                <div class="input-group">
+                    <label >选择地区</label>
+                </div>
+            </div>
+            <div class="area-content">
+                <select id="province" class="form-control"></select>
+                <span>省</span>
+                <select id="city" class="form-control"></select>
+                <span>市</span>
+                <select id="district" class="form-control"></select>
+                <span>区</span>
+                <select id="town" class="form-control">
+                <option value="">--- 全部 ---</option>
+                </select>
+                <span>街道</span>
+            </div>
+            <div class="col-md-12 activityAddress">
+                <label >详细地址：<span id="activityAddress"></span></label>
+            </div>
+            <iframe id="iframe" class="location" src="../map.html"></iframe>
+        </div>
+        
+        <div class="head">
+            <label class="control-label title">活动说明</label>
+            <div class="col-md-12">
+                <textarea rows="10" class="col-xs-12 text-area" placeholder="请输入活动说明" name="activityIntroduce" id="activityIntroduce"></textarea>
+            </div>
+        </div>
+
+        <div class="head">
+            <label class="control-label title">关联圈子</label>
+            <div class="col-md-12">
+                <div class="input-group">
+                    <label >发起圈子</label>
+                </div>            
+                <select class="js-example-basic-single content-input" name="circleId"  id="circleId"> </select>
+            
+                <div class="input-group m-t-10">
+                    <label >报名规则</label>
+                </div>
+                <div class="">
+                    <div class="col-xs-6 m-t-10">
+                        <input type="radio" name="enrolmentType" value="1" class="activity-radio re-top"><span>仅限圈内人参与</span>
+                    </div>
+                    <div class="col-xs-6 m-t-10">
+                        <input type="radio" name="enrolmentType" value="0" class="activity-radio re-top"><span>所有人可参与</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="head">
+            <label class="control-label title">个人信息</label>
+            <div class="col-md-12">
+                <div class="input-group">
+                    <label >手机号</label>
+                </div>
+                <input type="text" class="content-input" placeholder="请填写您的手机号" name="activityPhone" id="activityPhone" maxlength="11">
+                <div class="input-group m-t-10">
+                    <label >活动提醒</label>
+                </div>
+                <div class="">
+                    <div class="col-xs-6 m-t-10">
+                        <input type="radio" name="tipTime" value="1" class="activity-radio re-top"><span>提前一小时</span>
+                    </div>
+                    <div class="col-xs-6 m-t-10">
+                        <input type="radio" name="tipTime" value="6" class="activity-radio re-top"><span>提前六小时</span>
+                    </div>
+                    <div class="col-xs-6 m-t-10">
+                        <input type="radio" name="tipTime" value="12" class="activity-radio re-top"><span>提前十二小时</span>
+                    </div>
+                    <div class="col-xs-6 m-t-10">
+                        <input type="radio" name="tipTime" value="24" class="activity-radio re-top"><span>提前二十四小时</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="head">
+            <label class="control-label title">赞助/冠名信息</label>
+            <div class="input-group col-md-12 width-full-100">
+                <label class="col-md-6">能否被赞助</label>
+                <div class="radio-box">
+                    <input type="radio" name="isSponsor" value="1" class="activity-radio re-top"><span class="m-r-30">能</span>
+                    <input type="radio" name="isSponsor" value="0" class="activity-radio re-top"><span class="m-r-30">否</span>
+                </div>
+                
+            </div>
+            
+            <div class="input-group col-md-12 m-t-10  width-full-100">
+                <label class="col-md-6">能否被冠名</label>
+                <div class="radio-box"">
+                  <input type="radio" name="isName" value="1" class="activity-radio re-top"><span class="m-r-30">能</span>
+                  <input type="radio" name="isName" value="0" class="activity-radio re-top"><span class="m-r-30">否</span>
+                </div>
+            </div>
+    
+        </div>
+</div>
+</div>
+<div class="footer">
+    <button type="button" class="btn btn-warning" id="save">提交</button>
+</div>
+
+  <script src="../../assets/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../assets/layer/layer.js"></script>
+  <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.min.js" charset="utf-8"></script>
+  <script src="../../assets/bootstrapDatePicker/js/bootstrap-datetimepicker.zh-CN.js" charset="utf-8"></script>
+  <script src="../../assets/select2-v4.0.6/js/select2.min.js" charset="utf-8"></script>
+  <script src="../../assets/select2-v4.0.6/js/i18n/zh-CN.js" charset="utf-8"></script>
+  <script src="../../assets/plupload-2.3.1/js/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../assets/plupload-2.3.1/js/i18n/zh_CN.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" href="../../assets/kindeditor-4.1.7/themes/default/default.css" />
+  <script type="text/javascript" src="../../assets/kindeditor-4.1.7/kindeditor-all-min.js"></script>   
+  <script src="./js/add.js"></script>
+  <script src="./js/select.js"></script>
+</body>
+</html>

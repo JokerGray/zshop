@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>发表 - 智享城市·24小时</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/publish.css" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="publish">
+
+    <div class="container">
+        <div class="wrapper clearfix mb30">
+            <script src="util/menu.js"></script>
+            <div class="right pull-right">
+                <div class="crumb">发表</div>
+                <div class="tab-panel publish-tab">
+                    <ul class="tabinner">
+                        <li>
+                            <a href="send_article.html" id="send_article">发表文章</a>
+                        </li>
+                        <li>
+                            <a href="send_video.html" id="send_video">发表视频</a>
+                        </li>
+                        <li>
+                            <a href="send_atlas.html" id="send_atlas">发表图集</a>
+                        </li>
+                        <li>
+                            <a href="send_question.html" id="send_question">发起提问</a>
+                        </li>
+                        <li class="active">
+                            <a href="vote.html" id="vote">发起投票</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right-content">
+                    <!--发表文章-->
+                    <div class="form-group clearfix">
+                        <div class="form-label">标题</div>
+                        <div class="form-content">
+                            <div class="title voteTitle">
+                                <input type="text" id="titleTxt" class="newstitle" name="newstitle" placeholder="请输入标题(5-40字)" maxlength="40"/>
+                                <span class="limit voteTitLimit">
+                                    <em id="fontLen">0</em>/40</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="form-label">描述</div>
+                        <div class="form-content">
+                            <div class="voteInfoBox">
+                                <textarea id="voteInfoInp" class="voteInfoInp" placeholder="请输入内容" maxlength="200"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content news mt20" id="container">
+                        <div class="form-group clearfix">
+                            <div class="form-label">封面</div>
+                            <div class="form-content">
+                                <button class="localUpload" id="selectfiles">本地上传</button>
+                                <span class="red ml10">*发起投票必须要有图片</span>
+                            </div>
+                            <div class="form-content mt20" id="previews" class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="form-label">选项</div>
+                        <div class="form-content">
+                            <div class="drop playerDrop">
+                                <div class="form-radio mr20">
+                                    <span class="radio checked" name="playerSettings1" type="1"></span>
+                                    <span class="cur-d">仅文字</span>
+                                </div>
+                                <div class="form-radio">
+                                    <span class="radio" name="playerSettings2" type="0"></span>
+                                    <span class="cur-d">图文</span>
+                                </div>
+                            </div>
+                            <div id="playerList" class="playerList"></div>
+                            <div class="playerSettingBox">
+                                <div class="playerSettings1">
+                                    <span>选项描述：</span>
+                                    <input id="singleInp" type="text" placeholder="必填，30字以内" maxlength="30">
+                                    <button type="single">提交</button>
+                                </div>
+                                <div class="playerSettings2">
+                                    <img id="playerIconBtn" class="fl cur-p" src="images/adsever/add_one.png" alt="">
+                                    <div class="fl playerInps">
+                                        <div>
+                                            <span>选项编号：</span>
+                                            <!-- <input id="multiNumInp" type="text" placeholder="必填，阿拉伯数字" maxlength="6"> -->
+                                            <input type="text" id="multiNumInp" placeholder="必填，阿拉伯数字" maxlength="6" onkeyup="javascript:this.value.substring(0,1)=='0'?this.value='':this.value=this.value" />
+                                        </div>
+                                        <div>
+                                            <span>选项标题：</span>
+                                            <input id="multiTitInp" type="text" placeholder="必填，不多于6个字" maxlength="6">
+                                        </div>
+                                        <div>
+                                            <span>选项描述：</span>
+                                            <input id="multiDescriInp" type="text" placeholder="必填，30字以内"  maxlength="30">
+                                        </div>
+                                    </div>
+                                    <button class="fl" type="multi">提交</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="form-label">投票方式</div>
+                        <div class="form-content">
+                            <div id="voteWay" class="drop">
+                                <div class="form-radio mr20">
+                                    <span class="radio checked" type="0"></span>
+                                    <span class="cur-d">实名</span>
+                                </div>
+                                <div class="form-radio">
+                                    <span class="radio" type="1"></span>
+                                    <span class="cur-d">匿名</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="form-label">投票设置</div>
+                        <div class="form-content">
+                            <div id="voteSetting" class="drop">
+                                <div class="form-radio mr20">
+                                    <span class="radio checked" type="0"></span>
+                                    <span class="cur-d">一个用户只能投一次票</span>
+                                </div>
+                                <div class="form-radio">
+                                    <span class="radio" type="1"></span>
+                                    <span class="cur-d">一个用户每天可投一次票</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="form-label">时间</div>
+                        <div class="form-content">
+                            <div class="drop">
+                                <input class="timeInp fl" id="start" type="text" maxlength="20">
+                                <input class="timeInp fl" id="end" type="text" maxlength="20">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="form-label">频道</div>
+                        <div class="form-content">
+                            <div class="drop">
+                                <form class="layui-form" action="">
+                                    <select name="modules" lay-verify="required" lay-search="" lay-filter="channelSec" id="articleSec">
+                                        <option value="">可搜索选择</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="form-label">标签</div>
+                        <div class="form-content">
+                            <div class="drop">
+                                <button class="btn btn-default mr10" id="selectLabelBtn" data-toggle="modal" data-target="#selectLabelModal">选择标签</button>
+                                <div class="label-all dis-i-b labelAll"></div>
+                                <span class="form-tip red dis-n selectTip">*最多只能选择5个标签</span>
+                                <div class="mt20">
+                                    <input type="text" class="input-name mr10 labelName" id="labelName" placeholder="输入你想要的标签名称" maxlength="6">
+                                    <span class="red dis-n inputTip">*不能超过6个汉字</span>
+                                </div>
+                                <div class="mt20">
+                                    <a href="javascript:;" class="submitLabelA">提交</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 同步云店头条 -->
+                    <div class="form-group clearfix" id="cityBox" style="display: none">
+                        <div id="" class="form-label">将店铺同步到详情页</div>
+                        <div class="form-content">
+                            <div id="shopBox" class="drop"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-btn-wrap clearfix" id="submitBtnAll">
+                    <button class="btn form-btn btn-submit" id="postfiles">发表</button>
+                    <button class="btn form-btn" id="articleDraft">存草稿</button>
+                    <button class="btn form-btn" id="cancleA">取消</button>
+                </div>
+            </div>
+            <!--选择标签模态框 strat-->
+            <div class="modal fade" id="selectLabelModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog zx-modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="zx-modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title font20px">标签选择</h4>
+                        </div>
+                        <div class="zx-modal-body">
+                            <div class="p20 modalBtnAll"></div>
+                            <div class="p20 red dis-n modalBtnTip">*最多选择5个标签</div>
+                        </div>
+                        <div class="zx-modal-footer ">
+                            <button type="button" class="btn form-btn btn-submit confirm">确认</button>
+                            <button type="button" class="btn form-btn" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--选择标签模态框 end-->
+            <div id="localBtn"></div>
+            <div id="iconBtn"></div>
+            <!-- <div class="dis-n" id="editorBox"></div> -->
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="assets/jq-ui.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/publish.js?v=201705022213"></script>
+    <script src="js/vote.js?v=201705022213"></script>
+</body>
+
+</html>

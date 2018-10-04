@@ -1,0 +1,161 @@
+a, a:hover, a:focus{
+    text-decoration: none;
+    color:#1dbfaf;
+}
+p{
+    margin:0;
+}
+.checkbox-inline{
+    padding-left: 3rem;
+    margin-right: 2rem;
+    background-image: url(../image/icon_un_check.png);
+    background-repeat: no-repeat;
+    font-size:18px;
+}
+.checkbox-inline.checked{
+    transition: all 0.2s ease-out;
+    color: #1dbfaf;
+    background-image: url(../image/icon_checked.png);
+}
+
+.input-edit .form-control{
+    display:inline-block;
+    width:100px;
+}
+.btn-primary{
+    background-color:#1c84c6;
+}
+.btn-success{
+    background-color: #1dbfaf;
+    border-color:#1dbfaf;
+}
+.link-btn{
+    display:inline-block;
+    background-repeat: no-repeat;
+    font-size:18px;
+}
+.edit-btn{
+    padding-left: 30px;
+    margin-right: 3rem;
+    background-image: url(../image/icon_edit_1.png);
+    color:#1dbfaf;
+    vertical-align: middle;
+}
+.remove-btn{
+    padding-left:28px;
+    background-image: url(../image/icon_remove_1.png);
+    color:#f87878;
+}
+.submit-btn{
+    display:inline-block;
+    width:88px;
+    height:30px;
+    line-height: 30px;
+    background-color: #ffa500;
+    font-size:18px;
+    color:#fff;
+    text-align: center;
+}
+.btn-add{
+    display:inline-block;
+    height:28px;
+    line-height: 28px;
+    padding-left:36px;
+    margin-top: 1rem;
+    background-image:url(../image/icon_add_1.png);
+    background-repeat: no-repeat;
+    font-size:20px;
+}
+.table-reward>tbody>tr>td,
+.table-reward>tbody>tr>th{
+    font-size:18px;
+    color:#353b53;
+    border:none;
+    vertical-align: middle;
+}
+.table-reward>tbody>tr>td:first-child{
+    width:22%;
+    vertical-align: middle;
+}
+.table-reward .num{
+    padding:0 5px;
+    font-size:24px;
+    color:#1dbfaf;
+}
+.table-reward .num-edit{
+    display:inline-block;
+}
+.table-reward .num-edit input[type=text]{
+    width:100px;
+    height:30px;
+    margin:0 5px;
+    text-align: center;
+    background-color: #eee;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+
+/* 设置标题 */
+.main-title{
+    padding: 3rem 0 2rem;
+    font-size: 24px;
+    color: #ffa500;
+}
+hr{
+    margin: 0;
+}
+.main-content{
+    padding: 2rem 0;
+}
+/* 设置固定 */
+.fixed-set-con p{
+    font-size: 16px;
+    padding-top: 2rem;
+    color: #999;
+}
+.fixed-set-con .num{
+    font-size:24px;
+    padding-right: 1rem;
+    color:#1dbfaf;
+    vertical-align: middle;
+}
+/* 设置浮动 */
+.float-set-con .num + input[type="text"], .float-set-con .submit-btn {
+    display: none;
+}
+.float-set-con .num + input[type="text"]{
+    width: 100px;
+    height: 30px;
+    margin: 0 5px;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.float-set-con tr.edit .num, .float-set-con tr.edit .edit-btn, .float-set-con tr.edit .remove-btn{
+    display: none;
+}
+.float-set-con tr.edit .num + input[type="text"], .float-set-con tr.edit .submit-btn{
+    display: inline-block;
+}
+/*————————————————————————————————————————————————————————————————————————————  */
+/* 以下为充值业绩提成方案页面的css  */
+.box2 tr th, .box2 tr td{
+    width: 33%;
+    text-align: center;
+}
+.box2 tr th{
+    background-color: #efefef;
+}
+.box2 .table-reward>tbody>tr>td{
+    border-bottom: 1px solid #eee;
+    padding: 1rem 0;
+}
+.box2 .table-reward>tfoot>tr>td{
+    padding: 0 0 1rem;
+}
+.box2 .table-reward .num{
+    font-size: 16px;
+    color: #333;
+}

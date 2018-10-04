@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="wekit">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./static/flexible/flexible.js"></script>
+    <script src="./static/artTemplate/artTemplate.js"></script>
+    <script src="./static/share/share.js"></script>
+    <title>动态详情</title>
+</head>
+<body>
+
+        <!-- 页面打开app头栏 -->
+        <div id="header" style="max-width: 1024px;margin:0 auto;">
+				<div class="header_logo">
+					<img src="./src/img/logo.png">
+				</div>
+				<div class="header_load btn">
+					打开
+				</div>
+            </div>
+            <!-- 页面 -->
+    <div class="content">
+      
+    </div>
+
+    <!-- 无数据提示 -->
+    <div id="contBlank" style="display: none;">
+        <span class="blank_icon"></span>
+        <p class="msg_miss">哎呀！您访问的地址不存在</p>
+    </div>
+    <!-- 微信或qq内置浏览器跳转提示 -->
+    <div class="model">
+        <div class="model_cont">
+            <p class="text1">1、点击右上角的&nbsp;&nbsp;<span></span></p>
+            <p class="text2">2、选择&nbsp;&nbsp;<span></span></p>
+            <div class="pointTo"></div>
+        </div>
+    </div>
+
+    <script type="text/html" id="showCont">
+        <div class="dynamic clearfix" onclick="gotoCircle(<%=data.videoAlbum.videoAlbumCircleId%>)">
+       <!--  <input type="hidden" value="<%=data.videoAlbum.videoAlbumCircleId%>" id='gotoCircle'> -->
+            <div class="face  ">
+                <a href="javascript:;">
+                    <img src="<%=data.videoAlbum.userpic%>">
+                </a> 
+            </div>
+            <h3 class="name"><%=data.videoAlbum.userName%></h3>
+            <span class="date"><%=data.videoAlbum.videoAlbumTime%></span>
+            <p class="text"><%=data.videoAlbum.videoAlbumDescription%></p>
+            <div class="media">
+                <%if(data.videoAlbum.videoAlbumType==1){%>
+                <ul class="imgbox clearfix">
+                    <%for(var i = 0;i<data.videoAlbum.urls.length;i++){%>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="<%=data.videoAlbum.urls[i]%>">
+                        </a>
+                    </li>
+                    <%}%>
+                </ul>
+                <%}else if(data.videoAlbum.videoAlbumType==2){%>
+                <div class="videobox">
+                    <video src="<%=data.videoAlbum.urls[0]%>" class="video"  poster>
+                    </video>
+                    <img class="play" src="./src/img/qz_hdxq_bfan@2x.png" alt="">
+                </div>
+                <%}else if(data.videoAlbum.videoAlbumType==3){%>
+                    <%}%>
+            </div>
+            <div class="praise clearfix">
+                <%if(data.commentList.allLikeList.length>0){%>      
+                <ul class="imglist">
+                    <%if(data.commentList.allLikeList.length<5)%>
+                        <%for(var i=0;i<data.commentList.allLikeList.length;i++){%>
+                    <li>
+                        <img  src="<%=data.commentList.allLikeList[i].sMemberImgName%>" alt="">
+                    </li>
+                    <%}%>
+                    <%}else if(data.commentList.allLikeList.length>=5){%>
+                        <%for(var i=0;i<5;i++){%>
+                                <li>
+                                    <img  src="<%=data.commentList.allLikeList[i].sMemberImgName%>" alt="">
+                                </li>
+                        <%}%>
+                </ul>
+                <%}%>
+                <span class="praisenum"><%=data.commentList.allLikeList.length%>人点赞</span>
+                <em class="like"></em>
+            </div>
+            <%if(data.videoAlbum.shopName){%>
+            <div class="biz">
+                <i></i>
+                <span><%=data.videoAlbum.shopName%></span>
+            </div>
+        </div>
+        <%}%>
+        <%if(data.commentList.commentList.length>0){%>
+            <%for(var i =0;i<data.commentList.commentList.length;i++){%>
+        <div class="review">
+                <div class="reviewlist">
+                    <img src="<%=data.commentList.commentList[i].sMemberImgName%>" class="reviewface">
+                    <h3 class="reviewname"><%=data.commentList.commentList[i].sUserCode%></h3>
+                    <span class="reviewdate"><%=data.commentList.commentList[i].sCommentDate%></span>
+                    <p class="reviewtext"><%=data.commentList.commentList[i].sCommentContent%></p>
+                    <%if(data.commentList.commentList[i].lsccr.length>0){%>
+                    <ul class="reply">
+                        <%for(var j =0;j<data.commentList.commentList[i].lsccr.length;j++){%>
+                        <li><a href="javascript:;"><%=data.commentList.commentList[i].lsccr[j].replyUserCode%></a>回复<a href="javascript:;"><%=data.commentList.commentList[i].lsccr[j].repliedUserCode%></a>:<%=data.commentList.commentList[i].lsccr[j].replyContent%></li>
+                        <%}%>
+                    </ul>
+                    <%}%>
+                </div>
+            </div>
+    
+    <%}%>
+      <%}%>
+    </script>
+    <script type="text/html" id="showBlank">
+            <div class="error">
+                <%=msg%>
+            </div>
+    </script>
+    <script src="./static/pub/pub.js"></script>
+
+</body>
+</html>

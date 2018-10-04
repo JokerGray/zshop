@@ -1,0 +1,159 @@
+.app {
+    color: #333;
+    font-size: 18px;
+    font-family:Microsoft YaHei;
+    padding: 54px 47px; 
+}
+.setting-box {
+    margin-top: 30px;
+}
+.setting-title {
+    line-height: 32px;
+    height: 40px;
+}
+
+.setting-open,
+.surcharge-algorithm{
+    span {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+    .setting-label {
+        margin-left: 5px;
+    }
+}
+/*默认未选中 */
+.setting-radio {
+    background: url(../../common/img/cy_shezhi_quan.png) no-repeat center;
+}
+/* 选中*/
+.radio-checked{
+    background: url(../../common/img/cy_shezhi_quanxz.png) no-repeat center;
+}
+
+.setting-open {
+    div {
+        float: left;
+    }
+}
+/* 附加费添加*/
+.setting-add{
+    background: url('../../common/img/cy_shezhi_tianjia.png') no-repeat center;
+    width: 120px;
+    height: 56px;
+    cursor: pointer;
+    display: inline-block;
+}
+.setting-btn {
+    position: fixed;
+    bottom: 200px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+.btn {
+    width: 120px;
+    height: 56px;
+    line-height: 56px;
+    font-size: 22px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.btn+.btn{
+    margin-left: 30px;
+}
+.btn.btn-cancel {
+    background-color: #ccc;
+    color:#fff;
+}
+.btn.btn-ok {
+    background-color: #FF7B7C;
+    color:#fff;
+}
+
+.surcharge-title {
+    font-size: 22px;
+    text-align: center;
+    position: relative;
+    i{
+        // font-size: 28px;
+        position: absolute;
+        right: 10px;
+        top:10px;
+        height: 28px;
+        width: 28px;
+        display: inline-block;
+    }
+}
+.layui-layer {
+    border-radius: 10px !important;
+}
+
+.layui-layer-title{
+    border-radius: 10px 10px 0 0!important;
+    padding: 0px;
+}
+.surcharge-content {
+    padding: 40px 40px;
+    .surcharge-name{
+        input{
+            border: none;
+            outline: none;
+            width:400px;
+            height:46px;
+            background:rgba(255,255,255,1);
+            border:1px solid rgba(112,112,112,1);
+            border-radius:10px;
+            padding: 0 10px;
+        }
+    }
+    .surcharge-algorithm{
+        margin-top: 20px;
+        height: 50px;
+        line-height: 50px;
+        .setting-label{
+            width: 100px;
+        }
+    }
+    .surcharge-price{
+        margin-top: 20px;
+        height: 50px;
+        input{
+            border: none;
+            outline: none;
+            width: 80px;
+            height:46px;
+            background:rgba(255,255,255,1);
+            border:1px solid rgba(112,112,112,1);
+            border-radius:10px;
+            padding: 0 10px;
+            margin: 0 10px;
+        }
+    }
+    .surcharge-ctl{
+        margin-top: 100px;
+        margin-bottom: 30px;
+        float: right;
+    }
+}
+.surcharge-data{
+    font-size: 0px;
+    height: 40px;
+    line-height: 40px;
+    span{
+        font-size: 18px;
+        // display: inline-block;
+        height: 40px;
+        vertical-align: top;
+    }
+    .data-edit{
+        margin-left: 40px;
+        color: #29B3FB;
+        cursor: pointer;
+    }
+}

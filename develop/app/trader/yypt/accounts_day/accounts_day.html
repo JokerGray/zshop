@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>日常收支</title>
+    <!--<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="../../assets/layui-v2.2.2/css/layui.css">
+    <!--<link href="../../assets/hplus/css/plugins/iCheck/custom.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/accounts_day.css">
+</head>
+<body>
+    <div class="main-wapper layui-row">
+        <div class="hearder layui-clear">
+            <ul class="layui-form layui-col-md12">
+                <li class="layui-col-md3 layui-col-lg2">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" for="">店铺:</label>
+                        <div class="layui-input-block">
+                            <select class="layui-input shopName" id="shopName" lay-search>
+                                <option value="">请选择</option>
+                                <!--<option value="0">海澜之家</option>-->
+                                <!--<option value="1">法蒂保罗</option>-->
+                                <!--<option value="2">森马</option>-->
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md3 layui-col-lg2">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" for="">账目类型:</label>
+                        <div class="layui-input-block">
+                            <select class="layui-input accountCategoryId" id="accountCategoryIdser" lay-verify="required">
+                                <option value="">请选择</option>
+                                <!--<option value="1">收入</option>-->
+                                <!--<option value="2">支出</option>-->
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md3 layui-col-lg2">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" for="">时间选择:</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="date" placeholder="选择时间段" class="layui-input">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md3 layui-col-lg2">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" for="">操作人:</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" id="username" placeholder="经手人或者创建人姓名">
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-col-md3 layui-col-lg2">
+                    <div class="layui-form-item">
+                        <button class="layui-btn main-color-bg ml25" id="searchBtn">查询</button>
+                        <button class="layui-btn main-color-bg ml25" id="restBtn">重置</button>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <ul class="tab-box">
+                <li class="active" data-type="2">支出</li>
+                <li class="" data-type="1" style="display:none;">收入</li>
+            </ul>
+            <div class="btn-box">
+                <button class="layui-btn" id="addBtn">新增</button>
+            </div>
+            <div class="table-box">
+                <div id="tab-expenditure">
+                    <div id="tableNo" lay-filter="tableNo" class="layui-table">
+                    </div>
+                    <div id="laypageLeft" class="bg-white layui-clear"></div>
+                </div>
+                <div id="tab-income" style="display: none;">
+                    <div id="table-income" lay-filter="table-income" class="layui-table">
+                    </div>
+                    <div id="laypage-income" class="bg-white layui-clear"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--新增模板-->
+    <div id="addDemo" class="addDemo layui-form" lay-filter="addDemo">
+        <ul class="addUl">
+            <li class="layui-form-item">
+                <label class="layui-form-label" for="">单据编号:</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" lay-verify="required|number" id="documentNumber" maxlength="32">
+                </div>
+            </li>
+
+            <li class="layui-form-item">
+                <label class="layui-form-label" for="">业务日期:</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" readonly lay-verify="required" id="businessTime">
+                </div>
+            </li>
+
+            <li class="layui-form-item">
+                <label class="layui-form-label" for="">账目类型:</label>
+                <div class="layui-input-block">
+                    <select class="layui-input" id="accountCategoryId" lay-verify="required">
+                        <!--<option value="">请选择</option>-->
+                        <!--<option value="1">收入</option>-->
+                        <!--<option value="2">支出</option>-->
+                    </select>
+                </div>
+            </li>
+            <li class="layui-form-item">
+                <label class="layui-form-label" for="">金额(元):</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="money" maxlength="12" lay-verify="required|number">
+                </div>
+            </li>
+            <li class="layui-form-item">
+                <label class="layui-form-label" for="">经手人:</label>
+                <div class="layui-input-block">
+                    <select name="" id="shopId" lay-filter="shop" lay-verify="required" class="layui-select w192 shopName">
+                        <!--<option value="">门店选择</option>-->
+                        <!--<option value="1">11</option>-->
+                        <!--<option value="2">12</option>-->
+
+                    </select>
+                    <select name="" id="handMan" lay-verify="required"  class="layui-select w142">
+                        <!--<option value="">员工选择</option>-->
+                        <!--<option value="1">11</option>-->
+                        <!--<option value="2">12</option>-->
+
+                    </select>
+
+                </div>
+            </li>
+            <li class="layui-form-item remarkBox">
+                <label class="layui-form-label" for="">备注:</label>
+                <div class="layui-input-block">
+                    <textarea name="" id="remarks" class="layui-textarea" maxlength="100"  cols="30" rows="10">
+                    </textarea>
+                </div>
+            </li>
+            <!--<li class="layui-form-item ">-->
+                <!--<label class="layui-form-label" for="">附件:</label>-->
+                <!--<div class="layui-input-block fujian">-->
+                  <!--<button class="layui-btn">添加附件</button>-->
+                <!--</div>-->
+                <!--<div id="preview"></div>-->
+            <!--</li>-->
+
+        </ul>
+        <div class="btn_box">
+            <button class="layui-btn main-color-bg p35" lay-submit="" lay-filter="sub">确认</button>
+            <button class="layui-btn bgf3 p35" id="cancel">取消</button>
+        </div>
+    </div>
+<script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-sm layui-circle circle" lay-event="detail"> <i class="layui-icon">&#xe615;</i></button>
+    {{# if(d.sign == 1 && d.status == 1){ }}
+        <button class="layui-btn layui-btn-sm layui-circle circle" lay-event="del"> <i class="layui-icon">&#x1006;</i></button>
+    {{# } }}
+</script>
+
+<script type="text/html" id="barIncome">
+        <button class="layui-btn layui-btn-sm layui-circle circle" lay-event="detail"> <i class="layui-icon">&#xe615;</i></button>
+    {{# if(d.sign == 1 && d.status == 1){ }}
+        <button class="layui-btn layui-btn-sm layui-circle circle" lay-event="del"> <i class="layui-icon">&#x1006;</i></button>
+    {{# } }}
+</script>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<!--<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>-->
+<script src="../../assets/layui-v2.2.2/layui.js"></script>
+<!--<script src="../../assets/hplus/js/plugins/iCheck/icheck.min.js"></script>-->
+<script src="../common/js/jquery.nicescroll.js"></script>
+<script src="../common/js/util.js"></script>
+<!-- <script type="text/javascript" src="../../assets/_common/zxcity_ms.js"></script>-->
+<script src="js/accounts_day.js"></script>
+</body>
+</html>

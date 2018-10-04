@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>智享城市APP个人分享页面</title>
+    <script src="https://use.fontawesome.com/f47f4563cb.js"></script>
+    <script>!function(e){
+        function t(a){
+            if(i[a])return i[a].exports;
+            var n=i[a]={exports:{},
+            id:a,
+            loaded:!1};
+            return e[a].call(n.exports,n,n.exports,t),
+            n.loaded=!0,n.exports}var i={};
+            return t.m=e,
+            t.c=i,
+            t.p="",
+            t(0)}([function(e,t){
+                "use strict";
+                Object.defineProperty(t,"__esModule",{value:!0});
+                var i=window;
+                t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,
+                d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),
+                l=o.match(/U3\/((\d+|\.){5,})/i),
+                c=l&&parseInt(l[1].split(".").join(""),10)>=80,
+                p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),
+                s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);
+                var u=1/s,m=r.querySelector('meta[name="viewport"]');
+                m||(m=r.createElement("meta"),
+                m.setAttribute("name","viewport"),
+                r.head.appendChild(m)),
+                m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),
+                r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);
+        flex(100, 1);</script>
+        <link rel="stylesheet" href="./css/mySelf.css">
+</head>
+<body>
+    <div class="box">
+        <!-- <div class="TOP"></div> -->
+         <div class="header">
+            <div class="pice">
+                <img src="./image/logo.png" alt="">
+            </div>
+            <span class="zxcs">智享城市</span>
+            <div class="openapp">
+                <span class="last">安装应用</span>
+            </div>
+         </div>
+         <div class="TOP"></div>
+        <div class="cont">
+                <div class="main">
+                    <img id="userpic1" src="" alt="">
+                </div>
+                <div class="opcative"></div>
+                <div class="tuxiang">
+                    <div class="top">
+                        <div class="shoucang">
+                            <p class="p1 small">收藏</p>
+                            <p class="p2 small collection"></p>
+                        </div>
+                        <div class="zhengshu">
+                            <p class="p3 small">证书</p>
+                            <p class="p4 small certNumber"></p>
+                        </div>
+                        <a href="#" class="img1">
+                            <img id="userpic" src="" alt="">
+                        </a>
+                                       
+                    </div>
+                    <div class="bottom">
+                        <h3 id="username"></h3>
+                        <a href="">
+                            <p>查看</p>
+                        </a>
+                    </div>
+                </div>
+        </div>
+        <div class="fenge">
+             <div class="jineng">
+                 <span class="first">技能</span>
+                 <span class="last">2</span>
+             </div>
+        </div>
+        <div class="content">
+            <div class="JN1 hidden">
+                <div class="pic">
+                    <img class="resourceUrl" src="" alt="">
+                </div>
+                <div class="right">
+                    <h1 class="serviceName"></h1>
+                    <div class="DZan">
+                        <ul class="star">
+                            <li><img src="./image/iconfont-xingxinghui.png" alt=""></li>
+                            <li><img src="./image/iconfont-xingxinghui.png" alt=""></li>
+                            <li><img src="./image/iconfont-xingxinghui.png" alt=""></li>
+                            <li><img src="./image/iconfont-xingxinghui.png" alt=""></li>
+                            <li><img src="./image/iconfont-xingxinghui.png" alt=""></li>
+                        </ul>
+                        <span class="startLevel"></span>
+                        <p>已服务</p>
+                        <span class="fuwu">263</span><span class="DAN">单</span>
+                    </div>
+                    <div class="home"></div>
+                    <div class="jiage">
+                            <span class="one">￥</span>
+                            <span class="two servicePrice"></span>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/myself.js"></script>
+</html>

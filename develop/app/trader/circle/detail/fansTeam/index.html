@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>组织成员</title>
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container-fluid" style="margin-top:2rem;">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-menu-left"></i> 返回"基本信息"</button>
+                        <button type="button" class="btn btn-info" onclick="newTeam()"><i class="glyphicon glyphicon-plus"></i> 新增小组</button>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="tree" class="ztree"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <button type="button" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i> 新增组成员</button>
+                    </div>
+                    <div class="panel-body">
+                            <div class="row ptree-title">
+                                <div class="col-md-3">姓名</div>
+                                <div class="col-md-3">身份</div>
+                                <div class="col-md-3">经费查看</div>
+                                <div class="col-md-3">操作</div>
+                            </div>
+                        <ul id="ptree" class="ztree"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../assets/jquery/jquery.min.js"></script>
+    <script src="../../../assets/layer/layer.js"></script>
+    <script src="../../../assets/ztree/js/jquery.ztree.all.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

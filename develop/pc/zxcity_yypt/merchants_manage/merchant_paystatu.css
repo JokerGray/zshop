@@ -1,0 +1,111 @@
+body{
+    /*min-width: 1299px;*/
+    overflow-y: auto;
+}
+.jurisdiction-content{
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+.jurisdiction-title{
+    width: 100%;
+    font-size: 16px;
+    color:#666;
+    padding: 15px 32px;
+    background: #f7f7f7;
+    border-bottom: 1px dashed #e5e5e5;
+}
+.system-nav{
+    background: #f7f7f7;
+    height: 100%;
+    min-width: 183px;
+    overflow-y: auto;
+}
+.system-nav h4{
+    font-size: 16px;
+    color:#333;
+    text-indent: 12px;
+    padding: 17px 0;
+    cursor: pointer;
+}
+.system-nav h4 span{
+    margin-right: 12px;
+}
+.jurisdiction-info{
+    height: 100%;
+}
+.system-nav ul li .jurisdiction-nav-li{
+    text-indent: 12px;
+    padding: 17px 0;
+    cursor: pointer;
+}
+.system-nav>ul>li .jurisdiction-nav-li{
+    background: #ededed;
+    color:#333;
+    font-size: 14px;
+}
+.jurisdiction-info-nav li .jurisdiction-nav-li{
+    text-indent: 24px;
+    font-size: 14px;
+    color: #666666;
+}
+.jurisdiction-info-nav{
+    background: #e5e5e5;
+}
+.jurisdiction-label,.control-label{
+    float: left;
+    line-height: 34px;
+    font-weight: 400;
+}
+.btn-success {
+    width: 100px;
+}
+.form-inline .form-group{
+    margin-right: 36px;
+    height: 34px;
+    margin-bottom: 5px;
+}
+.jurisdiction-detail, .system-detail {
+    padding: 0 35px;
+}
+.system-detail table tr th, .system-detail table tr td {
+    text-align: center;
+    vertical-align: middle;
+    height: 43px;
+}
+.glyphicon-calendar{
+    color:#b3b3b3;
+}
+/*时间*/
+.form-inline .lasttime{
+    margin-right: 0;
+    display: inline;
+}
+.date{
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+}
+.date input{
+    border:none;
+    cursor: pointer;
+}
+.datepicker{
+    background: #fff;
+    border:1px solid #b3b3b3;
+    position: absolute;
+    left: 0;
+    width: 214px;
+    display: none;
+}
+.table tbody tr{
+    cursor: pointer;
+}
+.table tbody tr.actve{
+    background: #eaeaea;
+}
+.statu-tr .statu-control{
+    display: inline-block;
+    padding: 3px 10px;
+    cursor: pointer;
+}

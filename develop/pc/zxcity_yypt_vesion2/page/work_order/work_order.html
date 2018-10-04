@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工单列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css"/>
+    <link rel="stylesheet" href="../../common/assets/zTree_v3/css/metroStyle/metroStyle.css"/>
+    <link rel="stylesheet" href="work_order.css">
+</head>
+<body>
+<div class="layui-row layui-fluid">
+    <ul class="layui-form layui-col-sm12 layui-col-md12 clearfix input-box">
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="">商户名称：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" maxlength="11" class="layui-input" id="merchantNames">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="start_time">工单创建时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off"  class="layui-input" id="jurisdiction-begin">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="">工单截至时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="jurisdiction-end">
+                </div>
+            </div>
+        </li>
+        <li class="layui-col-md2 layui-col-sm6 layui-col-xs12">
+            <label>&nbsp;</label>
+            <div class="fl">
+                <button class="layui-btn" id="toolSearch">搜索</button>
+                <button class="layui-btn" id="toolRelize">重置</button>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="layui-fluid">
+    <div class="layui-app tool-box clearfix">
+        <div class="fl tab_box">
+            <button class="layui-btn active" data-type="0">
+                审核中
+            </button>
+            <button class="layui-btn op5" data-type="1">
+                审核通过
+            </button>
+            <button class="layui-btn op5" data-type="2">
+                审核不通过
+            </button>
+        </div>
+        <div class="fr">
+            <button class="layui-btn" id="addBtn"><i class="layui-icon">&#xe654;</i>新增工单</button>
+        </div>
+    </div>
+</div>
+<div class="layui-row layui-fluid" id="tableBox">
+    <div class="app-table">
+        <table id="demo" lay-filter="demo"></table>
+        <div id="laypageLeft" class="fr"></div>
+    </div>
+</div>
+<!--lay-event='detail' 这个是绑定事件没有这个就绑定不了事件-->
+
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-sm layui-btn" lay-event='detail'>
+      <i class="layui-icon">&#xe6b2;</i> 查看
+    </button>
+
+    {{# if(d.reviewStatus == '2'){ }}
+    <button class="layui-btn layui-btn-sm " lay-event="change">
+        <i class="layui-icon">&#xe6b2;</i> 修改
+    </button>
+    {{# } }}
+
+    <!--<button class="layui-btn layui-btn-small  layui-btn-normal" lay-event="submit">-->
+        <!--<i class="layui-icon">&#xe609;</i> 提交财务审核-->
+    <!--</button>-->
+    <!--{{# if(d.zyzzInfoId == null){ }}-->
+    <!--<button class="layui-btn layui-btn-small  layui-btn-danger" lay-event="del">-->
+        <!--<i class="layui-icon">&#xe640;</i>	删除工单-->
+    <!--</button>-->
+    <!--{{# } }}-->
+    
+</script>
+
+<script type="text/html" id="barDemor">
+    <button class="layui-btn layui-btn-sm layui-btn" lay-event='ok'>
+        <i class="layui-icon">&#xe620;</i> 确认
+    </button>
+
+</script>
+
+
+<div id="addOrder" style="display: none;" class="layui-form layui-row">
+    <ul class="layui-col-sm12 clearfix">
+        <li class="layui-form-item layui-col-md4  layui-col-sm6 ">
+            <label class="layui-form-label" for="">商户名：</label>
+            <div class="layui-input-block autoBoxMerchant"  style="">
+                <input type="hidden" id="merchantId">
+                <input type="text" class="layui-input" lay-verify="required" id="merchantName" readonly>
+            </div>
+            <button class="layui-btn" id="checkUser" >选择商户</button>
+        </li>
+        <li class="layui-form-item layui-col-md8 layui-col-sm6">
+            <label class="layui-form-label" for="">商户地址：</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" id="merchantAddress" lay-verify="required">
+            </div>
+        </li>
+        <li class="layui-form-item layui-col-md4 layui-col-sm6">
+            <label class="layui-form-label" for="">联系方式：</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" id="contactInformation" maxlength="11" lay-verify="required">
+            </div>
+        </li>
+        <li class="layui-form-item layui-col-md4 layui-col-sm6">
+            <label class="layui-form-label" for="">店铺数量：</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" id="shopCount" maxlength="3" lay-verify="required|number">
+            </div>
+        </li>
+        <li class="layui-form-item layui-col-md4 layui-col-sm6">
+            <label class="layui-form-label" for="">所属团队：</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" id="ownTeam" maxlength="20" lay-verify="required">
+            </div>
+        </li>
+        <li class="layui-form-item layui-col-md4 layui-col-sm6">
+            <label class="layui-form-label" for="">工单来源：</label>
+            <div class="layui-input-block">
+                <select name="" class="layui-select" id="orderSourceId"  style="height: 38px;" lay-verify="required">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+        </li>
+        <li class="layui-form-item layui-col-md8 layui-col-sm12">
+            <label class="layui-form-label" for="">工单项目：</label>
+            <div class="layui-input-block" style="border: 1px solid #e6e6e6; padding-left: 10px;">
+                <input type="checkbox" lay-skin="primary" name="workItems" value="1" lay-filter="set1" id="orderTypeStr" title="视频拍摄">
+                <input type="checkbox" lay-skin="primary" name="workItems" value="2" lay-filter="set2" id="commissionTypeStr" title="720°全景">
+            </div>
+        </li>
+        <li class=" layui-col-md12 liTableBox">
+            <table class="layui-table">
+                <tr class="xcp" data-type="1">
+                    <td rowspan="4">智扮提成</td>
+                    <td rowspan="2">业务提成(20%)</td>
+                    <td>宣传片</td>
+                    <td class="layui-form-item">
+                        <label class="layui-form-label labelMe" style="" for="">金额：</label>
+                        <div class="layui-input-block" style="margin-left: 0;">
+                            <input type="text" class="layui-input commissionAmount" maxlength="5">
+                        </div>
+                    </td>
+                    <td class="layui-form-item">
+                        <div class="top_box clearfix">
+                            <div class="autoBox">
+                                <button class="layui-btn addUser" >添加业务人员</button>
+                            </div>
+                            <div class="autoBox">
+                                提成金额
+                            </div>
+
+                        </div>
+
+                        <div class="noData" style="display: none;"></div>
+
+                    </td>
+                </tr>
+                <tr class="qber" data-type="1">
+                    <td >720°全景</td>
+                    <td class="layui-form-item">
+                        <label class="layui-form-label labelMe" for="">金额：</label>
+                        <div class="layui-input-block inputBockMe">
+                            <input type="text" class="layui-input commissionAmount" maxlength="5">
+                        </div>
+                    </td>
+                    <td class="layui-form-item">
+                        <div class="top_box clearfix">
+                            <div class="autoBox">
+                                <button class="layui-btn addUser" >添加业务人员</button>
+                            </div>
+                            <div class="autoBox">
+                                提成金额
+                            </div>
+                        </div>
+
+                        <div class="noData" style="display: none;"></div>
+
+                    </td>
+                </tr>
+                <tr class="xcp" data-type="2">
+                    <td rowspan="2">制作提成(30%)</td>
+                    <td>宣传片</td>
+                    <td class="layui-form-item">
+                        <label class="layui-form-label labelMe" for="">金额：</label>
+                        <div class="layui-input-block inputBockMe">
+                            <input type="text" class="layui-input commissionAmount" maxlength="5">
+                        </div>
+                    </td>
+                    <td class="layui-form-item">
+                        <div class="top_box clearfix">
+                            <div class="autoBox">
+                                <button class="layui-btn addUser" >添加制作人员</button>
+                            </div>
+                            <div class="autoBox">
+                                提成金额
+                            </div>
+                        </div>
+
+                        <div class="noData" style="display: none;"></div>
+
+                    </td>
+                </tr>
+                <tr class="qber" data-type="2">
+                    <td >720°全景</td>
+                    <td class="layui-form-item">
+                        <label class="layui-form-label labelMe" for="">金额：</label>
+                        <div class="layui-input-block inputBockMe">
+                            <input type="text" class="layui-input commissionAmount" maxlength="5">
+                        </div>
+                    </td>
+                    <td class="layui-form-item">
+                        <div class="top_box clearfix">
+                            <div class="autoBox">
+                                <button class="layui-btn addUser" >添加制作人员</button>
+                            </div>
+                            <div class="autoBox">
+                                提成金额
+                            </div>
+                        </div>
+
+                        <div class="noData" style="display: none;"></div>
+                    </td>
+                </tr>
+            </table>
+        </li>
+        <li class=" layui-col-md12">
+            <div class="fl">
+
+                <label class="layui-form-label labelMe" for="">智扮团队提成表：</label>
+                <div class="layui-input-block inputBockMe" >
+                    <img src="images/upload.png" id="commissionPic"/>
+                </div>
+            </div>
+            <div class="fl">
+                <label class="layui-form-label labelMe" for="">智扮外出拍摄表：</label>
+                <div class="layui-input-block inputBockMe" >
+                    <img src="images/upload.png" id="shootingPicUrl"/>
+                </div>
+            </div>
+        </li>
+        <li class="layui-form-item layui-col-sm12">
+            <label class="layui-form-label labelMe" for="">备注：</label>
+            <div class="layui-input-block inputBockMe" >
+                <textarea name="" id="remark" cols="30" rows="5" class="layui-textarea"></textarea>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--modal选择商户-->
+<div id="oneDemo" class='layui-form clearfix disn'>
+    <div class="layui-fluid">
+        <div class="layui-form">
+            <label class="tool-box-label">商户名:</label>
+            <ul class="tool-box-ul clearfix p0">
+                <li class="tool-box-li">
+                    <div class="layui-form-item">
+                        <div class="layui-input-inline">
+                            <input type="text" name="" autocomplete="off" class="layui-input" id="userName" >
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li">
+                    <button class="layui-btn searchBtnLayer" id="searchBtn">搜索</button>
+                    <button class="layui-btn resetBtnLayer" id="resetBtn">重置</button>
+                </li>
+            </ul>
+        </div>
+        <table lay-filter="tableNo" id="tableNo" class="mtb0"></table>
+        <div id="laypageLeftLayer"></div>
+    </div>
+</div>
+
+<!--modal 选择用户-->
+<div id="threeDemo" class='layui-form clearfix disn'>
+    <div class="layui-fluid">
+        <div class="layui-form">
+            <label class="tool-box-label">姓名:</label>
+            <ul class="tool-box-ul clearfix p0">
+                <li class="tool-box-li">
+                    <div class="layui-form-item">
+                        <div class="layui-input-inline">
+                            <input type="text" autocomplete="off"  name="" class="layui-input" id="yyptNickName" >
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-box-li">
+                    <button class="layui-btn searchBtnLayer" id="toolSearch1">搜索</button>
+                    <button class="layui-btn resetBtnLayer" id="resetBtn1">重置</button>
+                </li>
+            </ul>
+        </div>
+        <table lay-filter="tableRe" id="tableRe" class="mtb0"></table>
+        <div id="laypageTip"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/js/yyCache.js"></script>
+<script src="../../common/assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script src="../../common/js/upload.js"></script>
+<script type="text/javascript" src="work_order.js"></script>
+</body>
+</html>

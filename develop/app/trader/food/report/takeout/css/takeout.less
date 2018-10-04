@@ -1,0 +1,449 @@
+
+@baseFontSize: 18px;
+@orderWidth: 488px;
+@orderFontSize: 18px;
+body{
+    color: #333;
+    font-size: @orderFontSize;
+}
+ 
+.layui-table-cell {
+    width: 100%!important;
+}
+.layui-table{
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    thead th{
+        background-color: #fff !important;
+        font-size: 18px;
+    }
+    tbody tr:nth-child(even){
+        background-color: #fff!important;
+     }
+    tbody tr:nth-child(odd){
+        background-color: #f8f8f8!important;
+     }
+
+    th {
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+ 
+    td {
+        font-size: @baseFontSize;
+        height: 80px;
+        line-height: 80px;
+        box-sizing: border-box;
+        div {
+            span{
+                color: #1BE0D6;
+                cursor: pointer;
+            }
+        }
+    }
+    .layui-table-cell {
+        height: initial;
+        div {
+            line-height: 24px;
+        }
+        .address{
+            height: 100%;
+        }
+    }
+    .address{
+        word-break: break-all; 
+        word-wrap:break-word;
+        white-space: pre-wrap;
+    }
+ }
+ .tab-contents {
+     position: relative;
+     margin-top: 20px;
+ }
+ .tab-content{
+     min-height: 820px;
+     position: relative;
+ }
+ /* 搜索*/
+.header-search{
+    line-height: 38px;
+    height: 38px;
+    width: 300px;
+    float: left;
+    margin-left: 20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.header-search input{
+    padding-left: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 240px;
+    height: 100%;
+    border: none;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+.header-search span{
+    color: #fff;
+    background-color: #1BE0D6;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 38px;
+    width: 59px;
+    margin-left: -5px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* 左边内容 */
+.content-left{
+    // float: left;
+    // display: inline;
+    // width: 100%;
+    // padding-right: 500px;
+    box-sizing: border-box; 
+}
+.content-left.nofull{
+    padding-right: 500px;
+}
+/* 订单详情*/
+.content-details {
+    float: right;
+    width: @orderWidth;
+    height: aotu;
+    overflow: hidden;
+    box-shadow:0px 3px 6px rgba(0,0,0,0.16);
+    box-sizing: border-box;
+    min-height: 800px;
+    margin-bottom: 20px;
+    font-size: @orderFontSize;
+    position: absolute;
+    top: 10px;
+    right: 0px;
+}
+
+.order-title{
+    width:@orderWidth;
+    height:40px;
+    background-color: #353B53;
+    border-radius:2px 2px 0px 0px;
+    position: relative;
+    color:#fff;
+}
+.order-title p{
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+     
+}
+.order-title i{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.order-content {
+    font-size: @orderFontSize;
+    color: #333;
+    line-height:34px;
+    // min-height: 700px;
+    .order-header {
+        position: relative;
+        padding: 10px 20px;
+        border-bottom:  1px solid #e5e5e5;
+        .order-info{
+            overflow: auto;
+            line-height: 24px;
+            span:first-child{
+                display: inline-block;
+                width: 90px;
+                float: left;
+                font-weight: bold;
+                height: 34px;
+            }
+            div{
+                // float: right;
+                margin-left: 90px;
+                color: #808080;
+                height: auto;
+                word-wrap:break-word;
+                
+            }
+        }
+        .pay-method{
+            color: #FF7B7C;
+        }
+        /* 订单人 信息*/
+        .order-people{
+            line-height: 34px;
+            height: 34px;
+            span{
+                font-weight: bold;
+                // height: 34px;
+                float: left;
+            }
+            div{
+                margin-left: 90px;
+            }
+        }
+        /*订单时间 */
+        .order-time,
+        .order-number{
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 34px;
+            height: 34px;
+            span{
+                font-weight: bold;
+                height: 34px;
+                float: left;
+            }
+            div{
+                margin-left: 90px;
+            }
+        }
+        /*商品总数 价格 */
+        .order-foods{
+            overflow: auto;
+            div:first-child{
+                float: left;
+            }
+            div:last-child{
+                float: right;
+            }
+        }
+    }
+
+    .order-body{
+        line-height: 34px;
+        min-height: 400px;
+        font-size: 16px;
+        border-bottom:  1px solid #e5e5e5;
+        .order-food-list{
+            border-bottom:  1px solid #e5e5e5;
+        }
+        .food-item{
+            padding: 0px 20px;
+            overflow: auto;
+            .food-name{
+                width: 300px;
+                float: left;
+            }
+            .food-num{
+                float: left;
+            }
+            .food-price{
+                float: right;
+                width: 100px;
+            }
+        }
+        .order-food-info{
+            color:#999;
+            padding: 10px 20px;
+            .food-discount-list {
+                span{
+                    // width: 70px;
+                    float: left;
+                }
+                
+            }
+            .food-discount div{
+                margin-left: 200px;
+            }
+            .food-remarks,.food-payment,.food-amount{
+                span{
+                    width: 70px;
+                    float: left;
+                }
+                div{
+                    margin-left: 200px;
+                }
+            }
+ 
+        }
+    }
+ 
+}
+
+/* 配送进度*/ 
+.order-progress{
+    padding: 20px;
+    .progress{
+            
+            
+        line-height: 24px;
+        font-size: 16px;
+        padding-bottom: 20px;
+        // height: 70px;
+        position: relative;
+        &::before{
+            content: '';
+            display: block;
+            position: absolute;
+            width: 1px;
+            left: 28px;
+            height: 100%;
+            background-color: #999;
+            z-index: 0;
+        }
+        &:last-child::before{
+            content: '';
+            display: block;
+            position: absolute;
+            width: 1px;
+            left: 28px;
+            height: 100%;
+            background-color: inherit;
+            z-index: 0;
+        }
+        .progress-content{
+            padding-left: 68px;
+            height: 100%;
+            padding-top: 5px;
+        }
+
+        .progress-line{
+            background: url('../../common/img/wm_progress.png') no-repeat center;
+            display: inline-block;
+            position: absolute;
+            width: 55px;
+            height: 55px;
+            z-index: 10;
+        }
+    }
+
+}
+/* 订单尾部 接收 拒绝*/
+.order-footer{
+    margin:20px 0px;
+    span{
+        display: inline-block;
+        width: 180px;
+        height: 48px;
+        border-radius: 10px;
+        font-size: 22px;
+        line-height: 48px;
+        text-align: center;
+        cursor: pointer;
+    }
+    span.btn-reject{
+        margin-left: (@orderWidth - (180* 2 + 20)) / 2;
+        background-color: #CCCCCC;
+        color: #fff;
+    }
+    span.btn-ok{
+        margin-left: 20px;
+        background-color: #FF7B7C;
+        color: #fff;
+    }
+}
+/* 订单尾部 申请退款  拒绝 同意*/
+.order-refund{
+    margin:20px 0px;
+    span{
+        display: inline-block;
+        width: 180px;
+        height: 48px;
+        border-radius: 10px;
+        font-size: 22px;
+        line-height: 48px;
+        text-align: center;
+        cursor: pointer;
+    }
+    span.refund-reject{
+        margin-left: (@orderWidth - (180* 2 + 20)) / 2;
+        background-color: #CCCCCC;
+        color: #fff;
+    }
+    span.refund-ok{
+        margin-left: 20px;
+        background-color: #FF7B7C;
+        color: #fff;
+    }
+}
+/* 订单等待配送*/
+.order-pending-dispatch{
+    margin: 20px 0;
+    span{
+        display: inline-block;
+        width: 25%;
+        height: 48px;
+        border-radius: 10px;
+        font-size: 22px;
+        line-height: 48px;
+        text-align: center;
+        cursor: pointer;
+        color: #fff;
+        margin-left: 7.5%;
+    }
+    span+span{
+        margin-left: 5%;
+    }
+    .btn-print{
+        background-color: #F2B323;
+    }
+    .btn-invalid{
+        background-color: #CCCCCC;
+    }
+    .btn-pack{
+        background-color: #FF7B7C;
+    }
+}
+/* 订单拒绝 弹框*/
+#reject-order{
+    padding: 30px;
+    font-size: 18px;
+    color:#333;
+    .reject-title{
+        color: #FF7B7C;
+        line-height: 34px;
+        height: 34px;
+    }
+    select{
+        width: 200px;
+    }
+    textarea{
+        margin-top: 30px;
+        resize: none;
+        border-radius:10px;
+        width: 100%;
+        height:150px;
+        padding: 10px;
+    }
+    .reject-ctl{
+        margin-top: 20px;
+    }
+    .reject-btn{
+        display: block;
+        border: none;
+        width: 80%;
+        margin: auto;
+        color: #fff;
+        background-color: #FF7B7C;
+        border-radius: 8px;
+        height: 48px;
+        line-height: 48px;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
+ 
+
+.layui-table-body{
+    margin-right: 1px;
+}
+.layui-table tbody>tr.layui-table-click{
+    border: 2px solid #1BE0D6;
+    box-sizing: border-box;
+}

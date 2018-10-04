@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>优秀员工奖</title>
+    <link rel="stylesheet" href="../../assets/common/css/common.css">
+    <link rel="stylesheet" href="../../assets/layui-v2.3.0/css/layui.css">
+    <link rel="stylesheet" href="./css/excellentEmployee.css">
+</head>
+<body>
+<!--页面title-->
+<div class="pageTitle">
+    <i> </i>
+    <span>优秀员工奖励管理</span>
+</div>
+<!--奖励方式选择-->
+<div class="rewardType clearfix">
+    <ul class="clearfix">
+        <li class="active" data-type="1">天奖</li>
+        <li data-type="2">月奖</li>
+        <li data-type="3">季奖</li>
+        <li data-type="4">年奖</li>
+    </ul>
+    <!--<a href="javascript:;" class="modifyRewardTypBtn">修改奖励方案</a>-->
+</div>
+<!--筛选条件-->
+<div class="filterBox layui-form">
+    <div>
+        <label>评比标准：</label>
+        <div>
+            <select id="standard" lay-filter="standard">
+                <option value="1">服务业绩</option>
+                <option value="2">服务人头数</option>
+                <option value="3">现金业绩</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <label>所在店铺：</label>
+        <div>
+            <select id="shop" lay-filter="shop">
+
+            </select>
+        </div>
+    </div>
+    <div>
+        <label>时间：</label>
+        <div id="timeSelectors">
+            <input type="text" class="layui-input" id="day" onfocus="blur()">
+            <input type="text" class="layui-input" id="month" onfocus="blur()">
+            <input type="text" class="layui-input" id="season" onfocus="blur()">
+            <input type="text" class="layui-input" id="year" onfocus="blur()">
+        </div>
+    </div>
+    <div class="seasonSelector">
+        <label>季度：</label>
+        <div>
+            <select id="seasonSelector" lay-filter="seasonSelector">
+
+            </select>
+        </div>
+    </div>
+    <div>
+        <button id="refreshBtn" data-btntype="1">重新生成</button>
+    </div>
+    <div>
+        <button id="searchBtn" data-btntype="2">搜索</button>
+    </div>
+</div>
+<!--前三名-->
+<div class="topThree">
+    <ul class="clearfix">
+        <!--<li>-->
+            <!--<div class="photo">-->
+                <!--<img src="http://img1.touxiang.cn/uploads/20131112/12-011650_935.jpg" alt="">-->
+            <!--</div>-->
+            <!--<div>-->
+                <!--<h4>刘袁美</h4>-->
+                <!--<p class="clearfix">-->
+                    <!--<span>美容技术</span>-->
+                    <!--<span>-->
+                        <!--<sub>￥</sub>-->
+                        <!--<b>3,000,000.00</b>-->
+                    <!--</span>-->
+                <!--</p>-->
+                <!--<p class="clearfix">-->
+                    <!--<span class="shieldingStandard">业绩金额</span>-->
+                    <!--<span>3,000,000.00</span>-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</li>-->
+    </ul>
+</div>
+<!--其他名次-->
+<div class="otherRanking">
+    <table class="layui-table" lay-skin="line">
+        <colgroup>
+            <col width="80">
+            <col width="200">
+            <col width="200">
+            <col width="200">
+            <col width="200">
+            <col width="200">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>名次</th>
+            <th>姓名</th>
+            <th>职务</th>
+            <th>评比标准</th>
+            <th class="performance">业绩金额</th>
+            <th class="peopleCount">服务人头数</th>
+            <th>奖项类型</th>
+            <th>奖金</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--<tr>-->
+            <!--<td>4</td>-->
+            <!--<td>1300000000</td>-->
+            <!--<td>王大大</td>-->
+            <!--<td>服务业绩</td>-->
+            <!--<td>1000.00</td>-->
+            <!--<td>天奖</td>-->
+            <!--<td>500</td>-->
+        <!--</tr>-->
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="../../assets/jquery/jquery.min.js"></script>
+<script src="../../assets/layui-v2.3.0/layui.all.js"></script>
+<script src="../../assets/common/js/utils.js"></script>
+<script src="./js/excellentEmployee.js"></script>
+</html>

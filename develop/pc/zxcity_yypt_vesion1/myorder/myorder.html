@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>我的工单</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/layui-v2.0.1/layui/css/layui.css" />
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="../common/assets/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" type="text/css" href="../common/assets/bootstrap-select/css/bootstrap-select.css"/>
+    <link rel="stylesheet" type="text/css" href="css/myorder.css" />
+</head>
+<body>
+<div class="common-container">
+    <div class="jurisdiction-content">
+        <div class="jurisdiction-left">
+            <div class="top-button">
+                <div class="addorder top-btn" data-type="0">
+                    <div class="addorder-txt">
+                        <i class="addicon"></i>新建工单
+                    </div>
+                </div>
+                <div class="searchorder top-btn" data-num="0" data-type="0">
+                    <div class="searchorder-txt">
+                        <i class="searchicon"></i>搜索筛选
+                    </div>
+                </div>
+            </div>
+            <div class="orderlist">
+                <ul>
+                    <li>
+                        <a class="myorders" data-type="0">我的工单<i class="down-arrows"></i></a>
+                        <ul class="hidemenu">
+                            <li class="alllsit actv">全部</li>
+                            <li class="pending ">待我处理<span></span></li>
+                            <li class="copym">抄送给我<span></span></li>
+                            <li class="create">我创建的<span></span></li>
+                            <li class="reply">我回复的<span></span></li>
+                            <li class="handle">我处理的<span></span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="unsolved" data-type="0">未解决工单<i class="down-arrows"></i></a>
+                        <ul class="hidemenu">
+                            <li class="distribution">待分配</li>
+                            <!--<li class="noreply">待回复</li>-->
+                            <li class="dispose">处理中</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="solved" data-type="0">我已解决工单<i class="down-arrows"></i></a>
+                        <ul class="hidemenu">
+                            <li class="distribution">已解决<span></span></li>
+                            <li class="noreply">不需处理<span></span></li>
+                        </ul>
+                    </li>
+                    <li class="custombox" id="custombox">
+                        <a class="custom" data-type="0">自定义搜索<i class="down-arrows"></i></a>
+                        <ul class="hidemenu" id="customList">
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="jurisdiction-right">
+            <div class="orderlft layui-form">
+                <!--搜索相关-->
+                <div class="searchtip">
+                        <div class="layui-form-item classsc">
+                            <label class="layui-form-label">工单分类</label>
+                            <div class="layui-input-block">
+                                <div class="order-classify order-common" id="search-class" data-num="0">
+                                    <span id="order-classifyname2" class="order-classifyname">-请选择-</span>
+                                    <i class="down-arrows"></i>
+                                </div>
+                                <div class="classify-menu">
+                                    <ul id="classTree2" class="ztree"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item platesc">
+                            <label class="layui-form-label">所属板块</label>
+                            <div class="layui-input-block">
+                                <div class="order-common order-plat" id="search-plate" data-num="0">
+                                    <input class="plateinput" type="hidden" required  lay-verify="required">
+                                    <span id="order-platename2" class="order-platename" >-请选择-</span>
+                                    <i class="down-arrows"></i>
+                                </div>
+                                <div class="plate-menu">
+                                    <ul id="plateTree2" class="ztree"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="addseach">
+                            <div class="layui-form-item titlesc">
+                                <label class="layui-form-label">标题：<span class="removediv">— 移除</span></label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" autocomplete="off" class="layui-input" maxlength="20">
+                                </div>
+                            </div>
+                            <div class="layui-form-item numbersc">
+                                <label class="layui-form-label">工单编号：<span class="removediv">— 移除</span></label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" autocomplete="off" class="layui-input" maxlength="20">
+                                </div>
+                            </div>
+                            <div class="layui-form-item input-group lasttime input-medium date-picker cteatetimesc" data-date-format="yyyy-mm-dd">
+                                <div class="input-group">
+                                    <label  class="jurisdiction-label pull-left" for="jurisdiction-begin1">创建时间：<span class="removediv">— 移除</span></label>
+                                    <div class='date form-control' id='datetimepicker1'>
+                                        <input name="dtBegin" type="text"  id="jurisdiction-begin1" placeholder="-请选择-" readonly="readonly">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item createsc">
+                                <label class="layui-form-label">创建人：<span class="removediv">— 移除</span></label>
+                                <div class="layui-input-block" id="createSearch">
+                                    <select name="city" class="copycommon">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item statusc">
+                                <label class="layui-form-label">工单状态：<span class="removediv">— 移除</span></label>
+                                <div class="layui-input-block" id="searchStatu">
+                                    <select name="city">
+                                        <option value="">-请选择-</option>
+                                        <option value="0">未分配</option>
+                                        <!--<option value="1">待回复</option>-->
+                                        <option value="2">处理中</option>
+                                        <option value="3">已解决</option>
+                                        <option value="4">不解决</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item disposesc hid">
+                                <label class="layui-form-label">处理人：<span class="removediv">— 移除</span></label>
+                                <div class="layui-input-block" id="closeSearch">
+                                    <select name="city" class="copycommon">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item copysc hid">
+                                <label class="layui-form-label">抄送：<span class="removediv">— 移除</span></label>
+                                <div class="layui-input-block" id="copySearch">
+                                    <select name="city" class="copycommon">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item input-group lasttime input-medium date-picker endsc hid" data-date-format="yyyy-mm-dd">
+                                <div class="input-group">
+                                    <label  class="jurisdiction-label pull-left" for="jurisdiction-begin5">截止时间：<span class="removediv">— 移除</span></label>
+                                    <div class='date form-control' id='datetimepicker5'>
+                                        <input name="dtBegin" type="text"  id="jurisdiction-begin5" placeholder="-请选择-" readonly="readonly">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item input-group lasttime input-medium date-picker clostimesc hid" data-date-format="yyyy-mm-dd">
+                                <div class="input-group">
+                                    <label  class="jurisdiction-label pull-left" for="jurisdiction-begin6">解决时间：<span class="removediv">— 移除</span></label>
+                                    <div class='date form-control' id='datetimepicker6'>
+                                        <input name="dtBegin" type="text"  id="jurisdiction-begin6" placeholder="-请选择-" readonly="readonly">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item phonesc">
+                                <label class="layui-form-label">联系方式：<span class="removediv">— 移除</span></label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" autocomplete="off" class="layui-input" maxlength="11">
+                                </div>
+                            </div>
+                            <div class="layui-form-item contentsc hid">
+                                <label class="layui-form-label">工单内容：<span class="removediv">— 移除</span></label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" autocomplete="off" class="layui-input" maxlength="20">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="screenbox">
+                            <div class="addlist" data-num="0"><i class="layui-icon">&#xe654;</i>添加筛选规则</div>
+                            <div class="screenlist">
+                                <ul>
+                                    <li>抄送</li>
+                                    <li>截止时间</li>
+                                    <li>解决时间</li>
+                                    <li>工单内容</li>
+                                    <li>处理人</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="layui-btn layui-btn-big layui-btn-normal search-button" id="diysearch">开始筛选</button>
+                        <a class="savesearch" id="savesearch">保存当前条件并筛选</a>
+                </div>
+                <!--自定义搜索详情-->
+                <!--<div class="searchtself">
+                    <div class="layui-form-item classsc">
+                        <label class="layui-form-label">工单分类</label>
+                        <div class="layui-input-block">
+                            <div class="order-classify order-common" id="search-class" data-num="0">
+                                <span id="order-classifyname2" class="order-classifyname">-请选择-</span>
+                                <i class="down-arrows"></i>
+                            </div>
+                            <div class="classify-menu">
+                                <ul id="classTree2" class="ztree"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item platesc">
+                        <label class="layui-form-label">所属板块</label>
+                        <div class="layui-input-block">
+                            <div class="order-common order-plat" id="search-plate" data-num="0">
+                                <input class="plateinput" type="hidden" required  lay-verify="required">
+                                <span id="order-platename2" class="order-platename" >-请选择-</span>
+                                <i class="down-arrows"></i>
+                            </div>
+                            <div class="plate-menu">
+                                <ul id="plateTree2" class="ztree"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="addseach">
+                        <div class="layui-form-item titlesc">
+                            <label class="layui-form-label">标题：<span class="removediv">— 移除</span></label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" autocomplete="off" class="layui-input" maxlength="20">
+                            </div>
+                        </div>
+                        <div class="layui-form-item numbersc">
+                            <label class="layui-form-label">工单编号：<span class="removediv">— 移除</span></label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" autocomplete="off" class="layui-input" maxlength="20">
+                            </div>
+                        </div>
+                        <div class="layui-form-item input-group lasttime input-medium date-picker cteatetimesc" data-date-format="yyyy-mm-dd">
+                            <div class="input-group">
+                                <label  class="jurisdiction-label pull-left" for="jurisdiction-begin1">创建时间：<span class="removediv">— 移除</span></label>
+                                <div class='date form-control' id='datetimepicker1'>
+                                    <input name="dtBegin" type="text"  id="jurisdiction-begin1" placeholder="-请选择-" readonly="readonly">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item createsc">
+                            <label class="layui-form-label">创建人：<span class="removediv">— 移除</span></label>
+                            <div class="layui-input-block" id="createSearch">
+                                <select name="city" class="copycommon">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item statusc">
+                            <label class="layui-form-label">工单状态：<span class="removediv">— 移除</span></label>
+                            <div class="layui-input-block" id="searchStatu">
+                                <select name="city">
+                                    <option value="">-请选择-</option>
+                                    <option value="0">未分配</option>
+                                    &lt;!&ndash;<option value="1">待回复</option>&ndash;&gt;
+                                    <option value="2">处理中</option>
+                                    <option value="3">已解决</option>
+                                    <option value="4">不解决</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item disposesc hid">
+                            <label class="layui-form-label">处理人：<span class="removediv">— 移除</span></label>
+                            <div class="layui-input-block" id="closeSearch">
+                                <select name="city" class="copycommon">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item copysc hid">
+                            <label class="layui-form-label">抄送：<span class="removediv">— 移除</span></label>
+                            <div class="layui-input-block" id="copySearch">
+                                <select name="city" class="copycommon">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item input-group lasttime input-medium date-picker endsc hid" data-date-format="yyyy-mm-dd">
+                            <div class="input-group">
+                                <label  class="jurisdiction-label pull-left" for="jurisdiction-begin5">截止时间：<span class="removediv">— 移除</span></label>
+                                <div class='date form-control' id='datetimepicker5'>
+                                    <input name="dtBegin" type="text"  id="jurisdiction-begin5" placeholder="-请选择-" readonly="readonly">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item input-group lasttime input-medium date-picker clostimesc hid" data-date-format="yyyy-mm-dd">
+                            <div class="input-group">
+                                <label  class="jurisdiction-label pull-left" for="jurisdiction-begin6">解决时间：<span class="removediv">— 移除</span></label>
+                                <div class='date form-control' id='datetimepicker6'>
+                                    <input name="dtBegin" type="text"  id="jurisdiction-begin6" placeholder="-请选择-" readonly="readonly">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item phonesc">
+                            <label class="layui-form-label">联系方式：<span class="removediv">— 移除</span></label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" autocomplete="off" class="layui-input" maxlength="11">
+                            </div>
+                        </div>
+                        <div class="layui-form-item contentsc hid">
+                            <label class="layui-form-label">工单内容：<span class="removediv">— 移除</span></label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" autocomplete="off" class="layui-input" maxlength="20">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screenbox">
+                        <div class="addlist" data-num="0"><i class="layui-icon">&#xe654;</i>添加筛选规则</div>
+                        <div class="screenlist">
+                            <ul>
+                                <li>抄送</li>
+                                <li>截止时间</li>
+                                <li>解决时间</li>
+                                <li>工单内容</li>
+                                <li>处理人</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="layui-btn layui-btn-big layui-btn-normal search-button" id="diysearch1">修改</button>
+                    <a class="savesearch" id="savesearch1">关闭</a>
+                </div>-->
+                <!--end-->
+                <div class="orderliststatu">
+                    <div class="layui-form-item">
+                        <div class="layui-input-block screensort" id="screensort" data-val="1">
+                            <select name="city" lay-filter="timesort">
+                                <option value="1">创建时间降序</option>
+                                <option value="0">创建时间升序</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--无数据时-->
+                    <div class="nodata3"></div>
+                    <!--有数据-->
+                    <div class="havedata">
+                        <div class="sortcontent">
+                        </div>
+                        <!--分页-->
+                        <div class="common-page1 addmore" data-num="1" data-statu="0">
+                            <div id="paging-box-count">
+
+                            </div>
+                            <div id="paging-box" class="basic-jump"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ordercenter">
+                <!--新建-->
+                <div id="addcontent" class="addcontent-info">
+                    <form class="layui-form" action="" role="form">
+                        <div class="addcontent">
+                            <div class="addcontent-title">
+                                新建工单
+                            </div>
+                            <div class="addcontent-table">
+                                <div class="table-top">
+                                    <div class="layui-form-item addclass">
+                                        <label class="layui-form-label">工单分类</label>
+                                        <div class="layui-input-block">
+                                            <div class="order-classify order-common" id="add-classify" data-num="0">
+                                                <span id="order-classifyname" class="order-classifyname">-请选择-</span>
+                                                <i class="down-arrows"></i>
+                                            </div>
+                                            <div class="classify-menu">
+                                                <ul id="classTree" class="ztree"></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item addplat">
+                                        <label class="layui-form-label"><b class="required-icon">＊</b>所属板块</label>
+                                        <div class="layui-input-block">
+                                            <div class="order-common order-plat" id="add-plate" data-num="0">
+                                                <input class="plateinput" type="hidden" required  lay-verify="required">
+                                                <span id="order-platename" class="order-platename" >-请选择-</span>
+                                                <i class="down-arrows"></i>
+                                            </div>
+                                            <div class="plate-menu">
+                                                <ul id="plateTree" class="ztree"></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item titlename">
+                                    <label class="layui-form-label"><b class="required-icon">＊</b>标题：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" id="title" name="title"  required  lay-verify="required"  autocomplete="off" class="layui-input" maxlength="20" data-num="0">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item infotext">
+                                    <label class="layui-form-label"><b class="required-icon">＊</b>工单描述：(图片大小请小于1m)</label>
+                                    <div class="layui-input-block">
+                                        <div id="editor_id0"></div>
+                                    </div>
+                                </div>
+                                <div class="table-bottom">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label"><b class="required-icon">＊</b>创建人</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" id="createName" name="title"  autocomplete="off" class="form-control layui-input " disabled>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">处理人</label>
+                                        <div class="layui-input-block" id="ctronlUser">
+                                            <select name="allot" class="copycommon">
+                                                <option value="">-请选择-</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item bitian">
+                                        <label class="layui-form-label">联系方式：</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" id="phone" placeholder="请输入手机号" name="title" autocomplete="off" class="layui-input " maxlength="11" data-num="0">
+                                        </div>
+                                    </div>
+                                    <div class="input-group lasttime input-medium date-picker" data-date-format="yyyy-mm-dd">
+                                        <div class="input-group">
+                                            <span  class="jurisdiction-label pull-left" for="jurisdiction-begin2">截止时间：</span>
+                                            <div class='date form-control' id='datetimepicker2'>
+                                                <input name="dtBegin" type="text"  id="jurisdiction-begin2" placeholder="-请选择-" readonly="readonly">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group lasttime input-medium date-picker endtime" data-date-format="yyyy-mm-dd">
+                                        <div class="input-group">
+                                            <span  class="jurisdiction-label pull-left" for="jurisdiction-begin3">解决时间：</span>
+                                            <div class='date form-control' id='datetimepicker3'>
+                                                <input name="dtBegin" type="text"  id="jurisdiction-begin3" placeholder="-请选择-" readonly="readonly">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group copy-common">
+                                        <label for="copyadd" class="col-lg-2 control-label layui-form-label">抄送：</label>
+                                        <div class="form-controls">
+                                            <select id="copyadd" class="selectpicker show-menu-arrow form-control" multiple data-max-options="4">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label"><b class="required-icon">＊</b>优先等级：</label>
+                                            <div class="layui-input-block" id="statuName">
+                                                <input type="radio" name="sex" value="0" title="低" checked lay-filter="levelradio">
+                                                <input type="radio" name="sex" value="1" title="中" lay-filter="levelradio">
+                                                <input type="radio" name="sex" value="2" title="高" lay-filter="levelradio">
+                                                <input type="radio" name="sex" value="3" title="急" lay-filter="levelradio">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="jurisdiction-add">
+                            <div id="btn"></div>
+                            <button class="layui-btn layui-btn-small layui-btn-normal savebtn" id="saveBtn" lay-submit lay-filter="saveBtn">
+                                <i class="createicon"></i>确定创建
+                            </button>
+                            <a class="layui-btn layui-btn-small layui-btn-primary cenlbtn" href="javascript:void(0);" id="cancelBtn">
+                                <i class="cancelicon"></i>取消
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <!--无数据时-->
+                <div class="nodata1"></div>
+                <!--有数据时-->
+                <div class="havedata">
+                    <div class="order-message">
+                        <!--可修改日志-->
+                        <div class="messlog">
+                            <div class="message-title layui-form">
+                                <div class="layui-form-item message-statu">
+                                    <div class="layui-input-block screenStatu" id="screenStatu">
+                                        <i class="statuicon statulevel1"></i>
+                                        <select name="loglevel" lay-filter="loglevel">
+                                            <option value="3">紧急</option>
+                                            <option value="2">高</option>
+                                            <option value="1">中</option>
+                                            <option value="0">低</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="ordername"></div>
+                                <div class="orderlog">
+                                    <div class="layui-form-item logclass">
+                                        <label class="layui-form-label">工单分类：</label>
+                                        <div class="layui-input-block">
+                                            <div class="order-classify order-common" data-num="0">
+                                                <span id="order-classifyname1" data-id="" class="order-classifyname">-请选择-</span>
+                                                <i class="down-arrows"></i>
+                                            </div>
+                                            <div class="classify-menu">
+                                                <ul id="classTree1" class="ztree"></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item logplate">
+                                        <label class="layui-form-label">所属板块：</label>
+                                        <div class="layui-input-block">
+                                            <div class="order-common order-plat" data-num="0">
+                                                <span id="order-platename1" data-id="" class="order-platename" >-请选择-</span>
+                                                <i class="down-arrows"></i>
+                                            </div>
+                                            <div class="plate-menu">
+                                                <ul id="plateTree1" class="ztree"></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="message-statuname"></div>
+                            </div>
+                            <div class="order-ctronl layui-form">
+                                <div class="layui-form-item allot">
+                                    <label class="layui-form-label">分配给：</label>
+                                    <div class="layui-input-block allocation" id="allocation">
+                                        <select name="allot" class="copycommon" lay-filter="copycommon">
+                                            <option value="">-请选择-</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="input-group copy-common">
+                                    <label for="copyadd" class="col-lg-2 control-label layui-form-label">抄送：</label>
+                                    <div class="layui-input-block allocation" >
+                                        <input type="text" name="title" autocomplete="off" class="layui-input form-control" id="copylog1" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item logcontent">
+                                <label class="layui-form-label">工单描述：</label>
+                                <div class="layui-input-block">
+                                    <div class="nocommonclass">
+                                        <div class="logctcnt" id="logCont"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ctronlbtn">
+                                <a class="nocatrnl"><i class="noicon"></i>不需处理</a>
+                                <a class="catrnl"><i class="trnlicon"></i>已处理</a>
+                            </div>
+                        </div>
+                        <!--不能修改-->
+                        <div class="nomessage hid">
+                            <div class="message-title layui-form">
+                                <div class="layui-form-item message-statu">
+                                    <div class="layui-input-block screenStatu" id="screenStatu01">
+                                    </div>
+                                </div>
+                                <div class="ordername"></div>
+                                <div class="orderlog">
+                                    <div class="layui-form-item logclass">
+                                        <label class="layui-form-label">工单分类：</label>
+                                        <div class="layui-input-block">
+                                            <div class="nocommonclass">
+                                                <input type="text" name="title" autocomplete="off" class="layui-input h30 " id="noclass" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item logplate">
+                                        <label class="layui-form-label">所属板块：</label>
+                                        <div class="layui-input-block">
+                                            <div class="nocommonplate">
+                                                <input type="text" name="title" autocomplete="off" class="layui-input h30 " id="noplate" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="message-statuname"></div>-->
+                            </div>
+                            <div class="order-ctronl layui-form">
+                                <div class="layui-form-item allot">
+                                    <label class="layui-form-label">分配给：</label>
+                                    <div class="layui-input-block noallocation" id="nocollate">
+                                        <input type="text" name="title" autocomplete="off" class="layui-input h30 " id="nocoll" disabled>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item allot">
+                                    <label class="layui-form-label">抄送给：</label>
+                                    <div class="layui-input-block noallocation" >
+                                        <input type="text" name="title" autocomplete="off" class="layui-input h30 " id="nocopy" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item logcontent">
+                                <label class="layui-form-label">工单描述：</label>
+                                <div class="layui-input-block">
+                                    <div class="nocommonclass">
+                                        <div class="logctcnt" id="logCont1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end-->
+                        <div class="message-info-lists" id="messageInfo">
+                        </div>
+                        <div class="message-input">
+                            <div class="tip">备注：图片大小请小于1m</div>
+                            <div id="editor" class="editor" style="width:100%;height: 230px"></div>
+                            <button class="layui-btn layui-btn-small layui-btn-normal" id="sendBtn">
+                                发送
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="orderrgt">
+                <!--无数据时-->
+                <div class="nodata2"></div>
+                <div class="havedata2">
+                    <h3>APP用户信息</h3>
+                    <div class="app-user">
+                        <table class="layui-table" lay-skin="nob">
+                            <colgroup>
+                                <col width="150">
+                                <col width="200">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td>账号：</td>
+                                <td class="appaccount tabletxe"></td>
+                            </tr>
+                            <tr>
+                                <td>昵称：</td>
+                                <td class="appnickname tabletxe"></td>
+                            </tr>
+                            <tr>
+                                <td>手机号：</td>
+                                <td class="appphone tabletxe"></td>
+                            </tr>
+                            <tr>
+                                <td>用户状态：</td>
+                                <td class="appu-serstate tabletxe"></td>
+                            </tr>
+                            <tr>
+                                <td>是否认证：</td>
+                                <td class="app-iscert tabletxe"></td>
+                            </tr>
+                            <tr>
+                                <td>用户性质：</td>
+                                <td class="app-usertype tabletxe"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3>商户信息</h3>
+                    <div class="app-user">
+                        <table class="layui-table" lay-skin="nob">
+                            <colgroup>
+                                <col width="150">
+                                <col width="200">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td>账号：</td>
+                                <td class="merchant-account tabletxe"></td>
+                            </tr>
+                            <tr>
+                                <td>商户等级：</td>
+                                <td class="merchant-level tabletxe"></td>
+                            </tr>
+                            <tr>
+                                <td>商户类型：</td>
+                                <td class="merchant-type tabletxe"></td>
+                            </tr>
+                            <tr>
+                                <td>商户状态：</td>
+                                <td class="merchant-state tabletxe"></td>
+                            </tr>
+                            <tr>
+                                <td>联系方式：</td>
+                                <td class="merchant-phone tabletxe"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+<!--modal-->
+<div id="demo111" class='layui-form clearfix'>
+    <div class="centerCon">
+        <div class="layui-form-item bitian">
+            <label class="layui-form-label flex"><b class="required-icon">＊</b>名称：</label>
+            <div class="layui-input-block flex">
+                <input type="text" name="title"  lay-verify="required" maxlength="15"   placeholder="请输入自定义名称" autocomplete="off" class="layui-input h30" id="address">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+<script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/assets/layui-v2.0.1/layui/layui.all.js"></script>
+<script type="text/javascript" src="../common/js/yyCache.js"></script>
+<script type="text/javascript" src="../common/js/util/util.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+
+<script type="text/javascript" src="../common/js/util/pub.js"></script>
+<!-- jSCommon -->
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="../common/assets/zTree_v3/js/jquery.ztree.exedit.js"></script>
+<script type="text/javascript" src="../common/assets/wangEditor/wangEditor.min.js"></script>
+<script type="text/javascript" src="../common/js/util/editer.js"></script>
+<script type="text/javascript" src="../common/assets/bootstrap-select/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="js/myorder.js"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+  <title>工作台</title>
+  <link rel="stylesheet" href="../common/css/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../common/css/layui-v2.1.5/css/layui.css">
+  <link type="text/css" rel="stylesheet" href="css/platform.css">
+  <link rel="stylesheet" type="text/css" href="../common/js/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" type="text/css" href="../common/js/zTree_v3/css/myStyle/myStyle.css">
+</head>
+<body>
+<div  id="mainContent" class="content">
+  <ul class="title">
+    <li class="checkall">全部<span class=" unread"></span></li>
+    <li class="checkproval">审批<span></span></li>
+    <li class="checkannounce">公告<span></span></li>
+    <li class="checktesk">任务<span></span></li>
+  </ul>
+  <div class="centercontent">
+    <ul class="boxlist">
+      <!--<li>-->
+      <!--<span class="layui-badge-dot"></span>-->
+      <!--<a href="">杨思洋</a>-->
+      <!--<i>提交了请求</i>-->
+      <!--<b>12:00</b>-->
+      <!--<p>请假申请：1.5天</p>-->
+      <!--</li>-->
+
+    </ul>
+  </div>
+  <div id="paging-box-show"></div>
+</div>
+
+<!--任务详情-->
+<div id="detail-2">
+  <!--<img class="taskdone" src="../../images/taskdone.png" alt="">-->
+  <!--<div class="toConfirm">-->
+  <!--<span>点击确认任务已完成</span>-->
+  <!--</div>-->
+  <!--<div class="title">-->
+  <!--<b>夏季作息调整</b>-->
+  <!--<i class="icon-9"></i>-->
+  <!--<span>截止日期 2017-10-03</span>-->
+  <!--</div>-->
+  <!--<p>-->
+  <!--<span class="level-0">普通</span>-->
+  <!--</p>-->
+  <!--<div class="content">-->
+  <!--<p>-->
+  <!--neieee-->
+  <!--</p>-->
+  <!--</div>-->
+
+  <!--<p class="footer">-->
+  <!--<span>-->
+  <!--创建于 2016-10-03-->
+  <!--</span>-->
+  <!--</p>-->
+</div>
+
+
+<!--公告详情-->
+<div id="detail-3">
+  <div class="title">
+    <div class="line1">
+      <div class="subtitle"></div>
+      <div class="end-date">
+        <i></i>
+      </div>
+    </div>
+    <div class="line2">
+      <div class="name"></div>
+      <div class="start-date">
+      </div>
+    </div>
+    <!--<a href="javascript:void(0)">删除</a>-->
+  </div>
+  <div class="content"></div>
+  <div class="annex-content">
+    <!--<i class="wps"></i>
+    <p class="txt"></p>
+    <a href="javascript:void(0)"></a>-->
+  </div>
+  <div class="range"></div>
+</div>
+
+<!--审批详情弹出框-->
+<div id="details-1" style="display: none">
+  <div class="topPrat">
+    <!--<div class="divtitle">-->
+    <!--<span>请假审批</span>-->
+    <!--<b class="level-3">非常紧急</b>-->
+    <!--</div>-->
+    <!--<div class="base-info">-->
+    <!--<p class="inform">-->
+    <!--<a>刘洋</a>-->
+    <!--<span>2012-06-03</span>-->
+    <!--</p>-->
+    <!--<table class="table table-border">-->
+    <!--<tr>-->
+    <!--<td>-->
+    <!--<span class="flag">*</span>审批类型-->
+    <!--</td>-->
+    <!--<td>请假审批</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td>-->
+    <!--<span class="flag">*</span>请假类型-->
+    <!--</td>-->
+    <!--<td>事假</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td>-->
+    <!--<span class="flag">*</span>请假时间-->
+    <!--</td>-->
+    <!--<td>2017-10-03-&#45;&#45;217-11-04</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td>-->
+    <!--<span class="flag">*</span>请假天数-->
+    <!--</td>-->
+    <!--<td> 1.5 天</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td>-->
+    <!--<span class="flag">*</span>审批模板-->
+    <!--</td>-->
+    <!--<td>经典模板</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td>-->
+    <!--<span class="flag">*</span>请假原因-->
+    <!--</td>-->
+    <!--<td> 家里有事</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="detailPic">-->
+    <!--图片-->
+    <!--</td>-->
+    <!--<td> 家里有事</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="detailFile">-->
+    <!--附件-->
+    <!--</td>-->
+    <!--<td> 家里有事</td>-->
+    <!--</tr>-->
+    <!--</table>-->
+    <!--</div>-->
+  </div>
+  <div class="bottomPart">
+    <div class="recording">
+      <p>
+        <i class="layui-icon">&#xe62d;</i>
+        <span>审批记录</span>
+      </p>
+      <table class="table ">
+        <thead>
+        <tr>
+          <th>处理人</th>
+          <th>执行操作</th>
+          <th>时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--<tr>-->
+        <!--<td>-->
+        <!--王思雨-->
+        <!--</td>-->
+        <!--<td>-->
+        <!--审批中-->
+        <!--</td>-->
+        <!--<td>-->
+        <!--2017-10-08 19:00-->
+        <!--</td>-->
+        <!--</tr>-->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!--选择审批人-->
+<div id="details-3" style="display: none;">
+  <div class="left-nav">
+
+    <ul id="treeDemo1" class="ztree"></ul>
+  </div>
+  <div class="right-content">
+    <form class="layui-form">
+      <img src="../images/search.png" class="searchBtn">
+      <input type="text" name="" placeholder="请输入员工姓名" maxlength="15" autocomplete="off" class="layui-input toChoose">
+      <table class="table1 layui-table"  lay-even="" >
+        <colgroup>
+          <col width="100">
+          <col width="120">
+          <col width="65">
+          <col width="150">
+          <col width="150">
+          <col>
+        </colgroup>
+        <thead>
+        <tr>
+          <th>账号</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>手机号</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <!--<tr>-->
+        <!--<td>lihong</td>-->
+        <!--<td>李红</td>-->
+        <!--<td>女</td>-->
+        <!--<td>18627170643</td>-->
+        <!--<td>-->
+        <!--<span class="btn btn-info">选择</span>-->
+        <!--</td>-->
+        <!--</tr>-->
+        </tbody>
+      </table>
+    </form>
+    <textarea name="" required lay-verify="required" maxlength="40" placeholder="请输入转交备注"
+              class="layui-textarea remark"></textarea>
+    <div class="toEmail">
+      <input class="emailBox" type="checkbox">
+      <span>是否发送邮件通知</span>
+    </div>
+
+    <div id="paging-box-r"></div>
+  </div>
+
+</div>
+
+<script type="text/javascript" src="../common/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../common/css/layui-v2.1.5/layui.all.js"></script>
+<script type="text/javascript" src="../common/js/util.js"></script>
+<script type="text/javascript" src="../common/js/zTree_v3/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="js/platform.js"></script>
+</body>
+</html>

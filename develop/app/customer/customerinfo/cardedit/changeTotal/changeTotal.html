@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>修改卡项次数</title>
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="changeTotal.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row row-user number">
+            <div class="col-xs-12">
+                <div class="title-name">总价：</div>
+                <input type="text" class="input-body" id="buyNum" oninput="isnum(this)" onkeyup="isnum(this)" onafterpaste="delunum(this)">
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../assets/jquery/jquery.min.js"></script>
+    <script src="../../../assets/layer/layer.js"></script>
+    <script src="changeTotal.js"></script>
+</body>
+</html>

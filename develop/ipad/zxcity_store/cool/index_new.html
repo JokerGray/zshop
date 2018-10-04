@@ -1,0 +1,213 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/index.css">
+    <title>我要炫</title>
+</head>
+<body>
+<div id="header">
+    <span class="img"></span>
+    <h4></h4>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div id="main">
+    <video src="#" controls="controls"></video>
+    <p></p>
+    <div class="dianzan">
+        <span></span>
+        <i></i>
+    </div>
+</div>
+<div id="footer">
+    <div class="pinglun">评论</div>
+    <div class="newPing_head">
+        <div class="left-line">
+            <span></span>
+            <span></span>
+        </div>
+        <p>最新评论</p>
+        <div class="right-line">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="newContent">
+        <ul>
+            <li>
+                <span class="headIcon"></span>
+                <span class="date"></span>
+                <span class="dianzan">
+                    <span class="starIcon"></span>
+                    <i></i>
+                </span>
+                <p></p>
+            </li>
+        </ul>
+    </div>
+    <div class="hotPing_head">
+        <div class="left-line">
+            <span></span>
+            <span></span>
+        </div>
+        <p>热门评论</p>
+        <div class="right-line">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="hotContent">
+        <ul>
+            <li>
+                <span class="headIcon"></span>
+                <span class="date"></span>
+                <span class="dianzan">
+                    <span class="starIcon"></span>
+                    <i></i>
+                </span>
+                <p></p>
+            </li>
+        </ul>
+    </div>
+</div>
+	<script src="js/flexible.js"></script>
+    <script src="js/jquery-1.10.2.js"></script>
+	<script>
+    (function () {
+        var url = location.search;
+        var str = '';
+        var item = {};
+        var obj = {};
+        var apikey;
+        if (url.indexOf('?') != -1) {
+            str = url.slice('?').split('&');
+            for (var i = 0; i < str.length; i++) {
+                item = str[i].split('=');
+                obj[item[0].toLowerCase()] = decodeURIComponent(item[1]);
+                switch (obj[0]) {
+                    case 'userid':
+                        var UserIdValue = decodeURIComponent(item[1]);
+                        break;
+                    case 'coolid':
+                        var coolIdValue = decodeURIComponent(item[1]);
+                        break;
+                    case 'coolvideotypeid':
+                        var coolvideotypeidValue = decodeURIComponent(item[1]);
+                        break;
+                }
+            }
+
+            apikey = obj['apikey'];
+            if (coolvideotypeidValue == "2") {
+                document.title = "电子名片";
+            } else {
+                document.title = "我要炫";
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '/zxcity_restful/ws/rest',
+                dataType: 'json',
+                data: {
+                    'cmd': 'circle/getCBID',
+                    'data': '{"coolId":' + coolIdValue + ',"sCurrUserId":' + UserIdValue + ',"coolVideoTypeId":' + parseInt(coolvideotypeidValue) + '}',
+                    'version': '1'
+                },
+                success: function (data) {
+                    var data = data.data;
+                    //视频资料
+                    var $video = $('#main video');
+                    //视频文字
+                    var $txt = $('#main p');
+                    //用户头像
+                    var $headIcon = $('#header .img');
+                    //用户名
+                    var $username = $('#header h4');
+                    //登录日期
+                    var $date = $('#header span').eq(1);
+                    //登录时间
+                    var $time = $('#header span').eq(2);
+                    //粉丝数
+                    var $fans = $('#header span').eq(4);
+                    //最新评论
+                    var newAjax = data.mPlmap.newestCommentList;
+                    //热门评论
+                    var hotAjax = data.mPlmap.hotCommentList;
+                    //热评数量
+                    var hotCount = data.mPlmap.totalLikeCount;
+                    //评论数量
+                    var pingCount = data.mPlmap.totalCount;
+                    //初始化评论内容字符串
+                    var pinglunStr = '<li><span class="headIcon"></span><span class="date"></span><span class="dianzan"><span  class="starIcon"></span><i></i></span><p></p></li>';
+                    // 字符串转换为DOM
+                    function parseDom(arg) {
+                        var objE = document.createElement("div");
+                        objE.innerHTML = arg;
+                        return objE.childNodes;
+                    }
+
+
+                    //设置数据
+                    $video.attr('poster', data['coolCoverPic']).attr('src', data['coolFileAddress']).attr('controls', 'controls');
+                    $txt.html(data['coolDecrip']);
+                    $headIcon.css({'background': 'url(' + data.sysUser.userpic + ')', 'backgroundSize': 'cover'});
+                    $username.html(data.sysUser.username);
+                    $date.html(data.coolTime);
+                    $time.html(data.coolPlayTimes);
+
+                    //最新评论
+                    if (newAjax.length != 0) {
+                        for (var i = 0; i < newAjax.length; i++) {
+                            var newLi = $(parseDom(pinglunStr));
+                            //头像
+                            newLi.find('.headIcon').css({
+                                'background': 'url(' + newAjax[i]['sMemberImgName'] + ')',
+                                'backgroundSize': 'cover'
+                            });
+                            //时间
+                            newLi.find('.date').html(newAjax[i]['sCommentDate']);
+                            //点赞图标
+                            newLi.find('.dianzan starIcon').css({
+                                'background': 'url(img/dianzan@2x.png)',
+                                'backgroundSize': 'cover'
+                            });
+                            //点赞数
+                            newLi.find('.dianzan i').html(newAjax[i]['sLikeCount']);
+                        }
+                        $('.newContent ul').append(newLi);
+                    }
+
+                    //热门评论
+                    /*  if (hotAjax.length != 0) {
+                     for (var i = 0; i < hotAjax.length; i++) {
+                     var hotLi = $(parseDom(pinglunStr));
+                     hotLi
+                     $('.newCount ul').append(hotfrag);
+                     }
+                     }*/
+
+                    //获取热评数量
+                    /*if (hotCount != 0) {
+                     $('#main .dianzan span').text(hotCount);
+                     }*/
+
+                    //没有评论
+                    if (pingCount == 0) {
+                        $('#footer').hide();
+                        $('body').css('backgroundColor', '#12254f');
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            })
+        }
+    })();
+</script>
+</body>
+
+
+</html>

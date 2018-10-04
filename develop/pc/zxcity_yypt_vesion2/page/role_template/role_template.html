@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>新增商户申请</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="../../common/css/reset.css" />
+		<link rel="stylesheet" href="../../common/assets/zTree_v3/css/metroStyle/metroStyle.css" />
+	</head>
+
+	<body>
+		<div class="tool-box layui-form">
+			<ul class="tool-box-ul clearfix">
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label">角色名</label>
+						<div class="layui-input-inline">
+							<input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="roleName" maxlength="11">
+						</div>
+					</div>
+				</li>
+				<li class="tool-box-li" style="display: none;" id="permissionNameLi">
+					<div class="layui-form-item">
+						<label class="tool-box-label">权限名</label>
+						<div class="layui-input-inline">
+							<input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="permissionName" maxlength="11">
+						</div>
+					</div>
+				</li>
+				<button class="layui-btn" id="searchBtn">搜索</button>
+				<button class="layui-btn" id="resetBtn">重置</button>
+			</ul>
+		</div>
+
+		<div class="layui-app">
+			<div class="select-search clearfix">
+				<div class="select-search-div act" data-type="1">角色模板</div>
+				<div class="select-search-div" data-type="2">是否可选</div>
+				<button class="layui-btn my-btn add" lay-event="add" id="addButton">新增</button>
+				<button class="layui-btn my-btn isChoose" lay-event="isChoose" id="chooseBtn">是否可选</button>
+			</div>
+			<div class="app-table">
+				<table lay-filter="merchantTable" id="merchantTable"></table>
+				<table lay-filter="merchantTableright" id="merchantTableright"></table>
+				<div id="layTablePage"></div>
+			</div>
+		</div>
+		
+		
+		<script type="text/html" id="barDemo">
+		    <button class="layui-btn my-btn" lay-event="view"><i class="layui-icon"></i>修改</button>
+		</script>
+		
+		<script type="text/html" id="barDemoRig">
+		    <button class="layui-btn my-btn" lay-event="change"><i class="layui-icon"></i>修改</button>
+		</script>
+
+		<!--角色模板-->
+			<div id="changeLayer" class='layui-form clearfix' lay-filter="changeLayer">
+			<div class="app-layer">
+				<div class="package clearfix">
+					<div class="package-title">角色模板</div>
+				</div>
+				<div class="app-layer-content clearfix">
+					<div class="left-app">
+						<ul class="tool-box-ul layui-form clearfix p0">
+							<li class="tool-box-li mr5">
+								<div class="layui-form-item">
+									<label class="tool-box-label"><b class="required-icon">＊</b>角色名：</label>
+									<div class="layui-input-inline">
+										<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="one" lay-verify="required" maxlength="11"> 
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="mid-line">
+						
+					</div>
+					<div class="right-app">
+						<div class="layui-form-item">
+							<h4 id="fatherTree">添加角色</h4>
+		    				<ul id="treeDemo" class="ztree"></ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+
+		<div id="addLayer" class='layui-form clearfix' lay-filter="adder">
+			<div class="app-layer">
+				<div class="package clearfix">
+					<div class="package-title">商户信息</div>
+					<div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+					</div>
+				</div>
+				<div class="app-layer-content">
+					<ul class="tool-box-ul layui-form clearfix p0">
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label"><b class="required-icon">＊</b>是否可选：</label>
+								<div class="layui-input-inline">
+									<select   id="isCheck">
+										<option value="1">可选</option>
+										<option value="2">不可选</option>
+										<option value="3">推荐</option>
+									</select>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="layer-place">
+						展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+	</body>
+
+</html>
+<script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../common/js/util.js"></script>
+<script type="text/javascript" src="../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../common/assets/zTree_v3/js/jquery.ztree.all.min.js"></script>
+<script type="text/javascript">
+	jsorcss('css','role_template');
+	jsorcss('js','role_template');
+</script>

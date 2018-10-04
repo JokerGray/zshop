@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>我的业绩</title>
+    <link rel="stylesheet" href="../../common/assets/foundation-v5.5.3/foundation.min.css">
+    <link rel="stylesheet" href="../../common/assets/jedate/skin/jedate.css">
+    <link rel="stylesheet" href="../../common/assets/jedate/skin/mystyle.css">
+    <link rel="stylesheet" href="../../common/assets/paging/dist/paging.css">
+    <link rel="stylesheet" href="../../common/css/common.css"/>
+    <link rel="stylesheet" href="../css/consultanPerformanceDatail.css"/>
+
+</head>
+<body>
+<div class="main-title">
+    <a href="javascript:;" class="return-icon" onclick="history.go(-1)"></a>
+    <h5 class="title"><span></span>业绩</h5>
+</div>
+<div class="main-content">
+    <div id="salsumpTab" class="tab-box">
+        <div class="row">
+            <div class="medium-12 columns text-center">
+                <ul class="tab-ul">
+                    <li class="active tab-item"><a class="tab-link" href="javascript:void(0)">业绩</a></li>
+                    <li class="tab-item"><a class="tab-link" href="javascript:void(0)">订单数量</a></li>
+                    <li class="tab-item"><a class="tab-link" href="javascript:void(0)">明细</a></li>
+                    <li class="tab-item"><a class="tab-link" href="javascript:void(0)">饼状图</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content-box">
+        <div class="charts-box">
+            <div class="bar-chart-box">
+                <div class="date-wrap">
+                    <div id="barDateSelector" class="date-selector hide">
+                        <input type="text" class="datetime start-time" id="startTime1" readonly>至<input type="text" class="datetime end-time" id="endTime1" readonly>
+                        <button type="button" class="btn-normal radius" id="barSearchBtn">确定</button>
+                    </div>
+                    <div id="barTimeTypeBox" class="date-type-box">
+                        <ul class="tab-ul">
+                            <li class="active tab-item"><a class="tab-link" href="javascript:void(0);">本月</a></li>
+                            <li class="tab-item"><a class="tab-link" href="javascript:void(0);">本年</a></li>
+                            <li class="tab-item"><a class="tab-link" href="javascript:void(0);">更多</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <div id="barChart" class="chart-container"></div>
+                </div>
+            </div>
+
+        </div><!--/.charts-box -->
+        <div class="list-box hide">
+            <div class="date-wrap">
+                <div id="listDateSelector" class="date-selector hide">
+                    <input type="text" class="datetime start-time" id="startTime3" readonly>至<input type="text" class="datetime end-time" id="endTime3" readonly>
+                    <button type="button" class="btn-normal radius" id="listSearchBtn">确定</button>
+                </div>
+                <div id="listTimeTypeBox" class="date-type-box">
+                    <ul class="tab-ul">
+                        <li class="active tab-item"><a class="tab-link" href="javascript:void(0);">本月</a></li>
+                        <li class="tab-item"><a class="tab-link" href="javascript:void(0);">本年</a></li>
+                        <li class="tab-item"><a class="tab-link" href="javascript:void(0);">更多</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="table-box">
+                <table id="listTable" class="table">
+                    <thead>
+                    <tr>
+                        <th>订单编号</th>
+                        <th>业绩金额</th>
+                        <th>客户名称</th>
+                        <th>客户电话</th>
+                        <th>订单时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div class="pageview" id="listPage"></div>
+            </div>
+        </div><!--/.list-box -->
+        <div class="pie-chart-box hide">
+            <div class="date-wrap">
+                <div id="pieDateSelector" class="date-selector hide">
+                    <input type="text" class="datetime start-time" id="startTime2" readonly>至<input type="text" class="datetime end-time" id="endTime2" readonly>
+                    <button type="button" class="btn-normal radius" id="pieSearchBtn">确定</button>
+                </div>
+                <div id="pieTimeTypeBox" class="date-type-box">
+                    <ul class="tab-ul">
+                        <li class="active tab-item"><a class="tab-link" href="javascript:void(0);">本月</a></li>
+                        <li class="tab-item"><a class="tab-link" href="javascript:void(0);">本年</a></li>
+                        <li class="tab-item"><a class="tab-link" href="javascript:void(0);">更多</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="chart-box">
+                <div id="consumePieChart" class="chart-container"></div>
+                <div id="salePieChart" class="chart-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../common/assets/jquery.min.js"></script>
+<script src="../../common/assets/layer/layer.js"></script>
+<script src="../../common/assets/jedate/jquery.jedate.js"></script>
+<script src="../../common/assets/echarts.simple.min.js"></script>
+<script src="../../common/assets/jquery.bootpag.min.js"></script>
+<script src="../../common/assets/paging/dist/paging.js"></script>
+<script src="../../common/js/common.js"></script>
+<script src="../js/consultantPerformanceDetail.js"></script>
+
+</body>
+</html>

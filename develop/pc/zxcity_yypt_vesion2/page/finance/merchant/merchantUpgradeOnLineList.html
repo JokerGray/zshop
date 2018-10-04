@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>新增商户申请</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../../../common/assets/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="../../../common/css/reset.css" />
+	</head>
+
+	<body>
+		<div class="tool-box layui-form">
+			<ul class="tool-box-ul clearfix">
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label">更换商户：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="" placeholder="请输入商户名" autocomplete="off" class="layui-input" id="merchantOrgName" lay-verify="required" maxlength="11"> 
+						</div>
+					</div>
+				</li>
+				<li class="tool-box-li">
+					<div class="layui-form-item">
+						<label class="tool-box-label">更换流水号：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="" placeholder="请输入流水号" autocomplete="off" class="layui-input" id="serialNo" lay-verify="required" maxlength="50"> 
+						</div>
+					</div>
+				</li>
+				<button class="layui-btn" id="searchBtn">搜索</button>
+				<button class="layui-btn" id="resetBtn">重置</button>
+			</ul>
+		</div>
+		<div class="tool-add-box clearfix">
+			<button class="layui-btn my-btn add" lay-event="add" id="addButton">导出excel</button>
+			<!--<button class="layui-btn my-btn add" lay-event="add" id="setButton">设置</button>-->
+		</div>
+		<div class="layui-app">
+			<div class="app-table">
+				<table lay-filter="merchantTable" id="merchantTable"></table>
+				<div id="layTablePage"></div>
+			</div>
+		</div>
+		
+		
+		<script type="text/html" id="barDemo">
+		    <button class="layui-btn my-btn" lay-event="view">查看</button>
+		</script>
+		
+		<script type="text/html" id="merchantName">
+		    <span style="color: #337ab7;">{{d.merchantName}}</span>
+		</script>
+		
+		<script type="text/html" id="merchantOrgNameFer">
+			 {{# if(d.merchantOrgName == '-'){ }}
+		     <span style="color: #337ab7;">{{d.merchantOrgName}}</span>
+		      {{#  } else { }}
+		      <span style="color: #337ab7;" lay-event='showMerchant'>{{d.merchantOrgName}}</span>
+		      {{#  } }}
+		</script>
+		
+		<script type="text/html" id="referenceUserName">
+		   	 	{{# if(d.referenceUserName == '-'){ }}
+		     	<span style="color: #337ab7;">{{d.referenceUserName}}</span>
+		      {{#  } else { }}
+		      <span style="color: #337ab7;" lay-event='showMerchant'>{{d.referenceUserName}}</span>
+		      {{#  } }}
+		</script>
+		<script type="text/html" id="view">
+		    <button class="layui-btn my-btn" lay-event="view">查看</button>
+		</script>
+
+
+
+		<div id="addLayer" class='layui-form clearfix' lay-filter="addLayer">
+			<div class="app-layer">
+				<div class="package clearfix">
+					<div class="package-title">商户账户详细信息</div>
+					<div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+					</div>
+				</div>
+				<div class="app-layer-content">
+					<ul class="tool-box-ul layui-form clearfix p0">
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换账号：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="one" lay-verify="required|phone" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换用户昵称：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="two" lay-verify="required" maxlength="12" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换商户用户类型：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="three" lay-verify="required|phone" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换是否锁定：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="four" lay-verify="required" maxlength="12" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换绑定的平台用户：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="five" lay-verify="required|phone" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换注册状态：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="six" lay-verify="required" maxlength="12" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换手机号：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="seven" lay-verify="required|phone" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换行业：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="eight" lay-verify="required" maxlength="12" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换省：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="nine" lay-verify="required|phone" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换市：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="ten" lay-verify="required" maxlength="12" readonly>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="layer-place">
+						展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div id="addUser" class='layui-form clearfix' lay-filter="addUser">
+			<div class="app-layer">
+				<div class="package clearfix">
+					<div class="package-title">用户账户详细信息</div>
+					<div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+					</div>
+				</div>
+				<div class="app-layer-content">
+					<ul class="tool-box-ul layui-form clearfix p0">
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换账号：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="oone" lay-verify="required|phone" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换性别：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="otwo" lay-verify="required" maxlength="12" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换生日：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="othree" lay-verify="required|phone" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换用户昵称：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="ofour" lay-verify="required" maxlength="12" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换居住地：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="ofive" lay-verify="required|phone" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换是否锁定：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="osix" lay-verify="required" maxlength="12" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换手机号：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="oseven" lay-verify="required|phone" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换注册状态：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="oeight" lay-verify="required" maxlength="12" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换用户性质：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="onine" lay-verify="required|phone" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换实名认证：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="oten" lay-verify="required" maxlength="12" readonly>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="layer-place">
+						展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div id="addView" class='layui-form clearfix' lay-filter="addView">
+			<div class="app-layer">
+				<div class="package clearfix">
+					<div class="package-title">商户升级详情</div>
+					<div class="package-some unselectable"><i class="description">展开</i><i class="layui-icon icon">&#xe625;</i>
+					</div>
+				</div>
+				<div class="app-layer-content">
+					<ul class="tool-box-ul layui-form clearfix p0">
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换商户名称：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="ooone" lay-verify="required|phone" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换升级类型：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="ootwo" lay-verify="required" maxlength="12" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换应缴金额：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="oothree" lay-verify="required|phone" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换实际缴费金额：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="oofour" lay-verify="required" maxlength="12" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换审核状态：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="oofive" lay-verify="required|phone" maxlength="11" readonly> 
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换审核时间：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="" placeholder="" autocomplete="off" class="layui-input" id="oosix" lay-verify="required" maxlength="12" readonly>
+								</div>
+							</div>
+						</li>
+						<li class="tool-box-li w30 mr5">
+							<div class="layui-form-item">
+								<label class="tool-box-label">更换审核备注：</label>
+								<div class="layui-input-inline">
+									<textarea name="desc" class="layui-textarea" readonly  id="ooseven"></textarea>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="layer-place">
+						展开更多信息<i class="layui-icon tr90">&#xe65b;</i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript" src="../../../common/assets/layui/layui.js"></script>
+<script type="text/javascript" src="../../../common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../common/js/util.js"></script>
+
+<script type="text/javascript">
+	jsorcss('css','merchantUpgradeOnLineList');
+	jsorcss('js','merchantUpgradeOnLineList');
+</script>

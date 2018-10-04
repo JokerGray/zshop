@@ -1,0 +1,209 @@
+@import "./order_index.scss";
+
+
+
+
+
+
+.app{
+  // min-width: 1165px;
+}
+.header{
+
+
+  &_floor_wai{
+    // width: 1010px;
+    max-width:884px;
+    border: 2px solid $be0;
+    
+    margin-left: 30px;
+  }
+    span.icon{
+      background: url("../img/cy_you@3x.png") no-repeat 0 0;
+      background-size: 14px auto;
+      display: inline-block;
+      width: 14px;
+      height: 28px;
+      vertical-align: top;
+      margin-top:20px;
+      cursor: pointer;
+
+    }
+    span.floor_left{
+      background: url("../img/cy_zuo@3x.png") no-repeat 0 0;
+      background-size: 14px auto;
+    }
+
+  &_floor {
+    transition: .5s linear;
+    li {
+      border-right: 2px solid $be0;
+
+    }
+    li.active {
+      background: $be0;
+      color: $wihte;
+    }
+
+  }
+  .search_box{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 5px;
+    margin-left: 30px;
+    .layui-input-block{
+      margin-left: 0;
+    }
+    .layui-input{
+      width: 278px;
+      height: 58px;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+      padding-right: 0;
+    }
+    button{
+      position: absolute;
+      right: -100px;
+      background: $be0;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+      top: 0;
+      height: 58px;
+      width: 100px;
+    }
+  }
+}
+
+.food_list{
+  height: 100%;
+  margin-right: 500px;
+}
+.food_ul{
+  
+  li{
+    position: relative;
+    float: left;
+    margin-right:20px;
+    margin-bottom:20px;
+  }
+}
+
+//食物列表外层
+.food_box_wai{
+  border-radius:10px;
+  overflow: hidden;
+  width:220px;
+  height:220px;
+  box-sizing: border-box;
+  border:1px solid $e5;
+  background: $eca;
+  color: $wihte;
+  cursor: pointer;
+  //transition: .3s all;
+}
+.food_box_zhan{
+  background: $zhan;
+}
+.food_box_zhan_hover{
+  border:2px solid $wihte;
+  box-shadow: 0 0 50px $zhan;
+}
+.food_box_kong_hover{
+  border:2px solid $wihte;
+  box-shadow: 0 0 50px $kong;
+}
+
+.food_box_yu{
+  background: $yu;
+}
+.food_box_yu_hover{
+  border:2px solid $wihte;
+  box-shadow: 0 0 50px $yu;
+}
+
+
+//食物列表内层
+.food_box_nei{
+  padding:17px 15px 15px 15px;
+  
+  .food_title{
+    font-size: 22px;
+    line-height: 30px;
+    height: 60px;
+    @include ovh(2)
+  }
+  .food_money{
+    font-size: 18px;
+    margin-top:10px;
+  }
+  .food_tips{
+    font-size: 28px;
+    line-height: 62px;
+    display: none;
+  }
+  .food_time{
+    font-size: 18px;
+    line-height: 31px;
+  }
+}
+.order_handle{
+  display: none;
+  .goto_kitchen{
+    background: $kong;
+  }
+  .handle_center{
+    // min-height: 600px;
+
+
+    
+
+    li.menu{
+      padding: 0;
+    }
+    li.menu_control{
+      display: block;
+    }
+  }
+  .got_quarter{
+    background: $zhan;
+  }
+  .add_cancel{
+    background: $leave;
+  }
+  
+}
+
+
+
+//估清
+.gq_box{
+  transition:bottom .3s linear;
+  position: absolute;
+  display: block;
+  bottom: -32px;
+  left: 0;
+  right: 0;
+  font-size: 18px;
+  line-height: 32px;
+  text-align:center;
+  height: 32px;
+  background: rgba(0,0,0,.3);
+}
+.food_box_guqing{
+  background: $ccc;
+  .gq_box{
+    // display: none;
+    bottom: 0;
+  }
+  .food_tips{
+    display: block;
+  }
+}
+
+
+/*适配开始*/
+@media screen and (max-width: 1430px){
+  .main{
+    // margin-top: 0px;
+  }
+}

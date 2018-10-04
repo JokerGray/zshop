@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商户应收归档</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../../common/assets/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../../common/css/reset.css"/>
+    <!-- CssSinglepage-->
+    <link rel="stylesheet" type="text/css" href="merchant_revenue_archiving.css" />
+</head>
+<body>
+    <div class="wrapper-main">
+        <div class="layui-row layui-col-md6 layui-col-sm12 main-box">
+            <div class="header1 layui-form ovh">
+                <div class="layui-form-item layui-col-md4">
+                    <label class="" for="">商户名称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="orgNames" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-md4">
+                    <label class="" for="">手机号码：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="phone" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-md4">
+                    <label class=" w100" for="">&nbsp;</label>
+                    <div class="layui-input-block">
+                        <button class="layui-btn" id="searchBtn">查询</button>
+                        <button class="layui-btn" id="restBtn">重置</button>
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <table id="tableNo" lay-filter="tableNo"></table>
+                <div class="layui-laypage" id="page"></div>
+            </div>
+        </div>
+        <div class="layui-row layui-col-md6 layui-col-sm12 main-box">
+            <div class="header layui-form clearfix">
+                <div class="layui-form-item layui-col-md4">
+                    <label class="" for="">店铺名称：</label>
+                    <div class="layui-input-block">
+                        <select name="" id="chargeType" class="layui-select">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-md4">
+                    <label class="" for="">归档日期：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="date" readonly class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-md4">
+                    <label class=" w100" for="">&nbsp;</label>
+                    <div class="layui-input-block">
+                        <button class="layui-btn" id="searchBtn1">查询</button>
+                        <button class="layui-btn" id="restBtn1">重置</button>
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <table id="tableNo1" lay-filter="tableNo1"></table>
+                <div class="layui-laypage" id="page1"></div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/html" id="barDemo">
+        <button class="layui-btn layui-btn-sm" lay-event='edit'><i class="layui-icon">&#xe60a;</i>归档</button>
+    </script>
+    <!--弹出层-->
+    <div id="addDemo" class="layui-form addDemo">
+        <div class="layui-form-item">
+            <label for="" class="layui-form-label">商户名称：</label>
+            <div class="layui-input-block">
+                <input type="text" lay-verify="required" readonly id="orgName" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="" class="layui-form-label">创建时间:</label>
+            <div class="layui-input-block">
+                <input type="text" lay-verify="required" readonly  id="createDatetime" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="" class="layui-form-label">归档日期:</label>
+            <div class="layui-input-block">
+                <input type="text" lay-verify="required" readonly  id="date1" class="layui-input">
+            </div>
+        </div>
+
+
+    </div>
+    <script type="text/javascript" src="../../common/assets/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../common/assets/layui/layui.js"></script>
+    <script type="text/javascript" src="../../common/js/util.js"></script>
+    <script type="text/javascript" src="../../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="merchant_revenue_archiving.js"></script>
+
+
+</body>
+</html>

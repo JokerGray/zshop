@@ -1,0 +1,323 @@
+@charset "utf-8";
+/*!
+ * @名称：base.css
+ * @功能：1、重设浏览器默认样式
+ *       2、设置通用原子类
+ */
+/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+html {
+    font-size: 28.16px;
+}
+@media screen and (min-width: 320px) { html { font-size: 70%!important; } }
+@media screen and (min-width: 375px) { html { font-size: 87.890625%!important; } }
+@media screen and (min-width: 414px) { html { font-size: 97.03%!important; } }
+@media screen and (min-width: 480px) { html { font-size: 112.5%!important; } }
+@media screen and (min-width: 560px) { html { font-size: 131.25%!important; } }
+@media screen and (min-width: 640px) { html { font-size: 150%!important; } }
+@media screen and (min-width: 720px) { html { font-size: 168.75%!important; } }
+@media screen and (min-width: 750px) { html { font-size: 175.78125%!important; } }
+@media screen and (min-width: 800px) { html { font-size: 187.5%!important; } }
+@media screen and (min-width: 960px) { html { font-size: 225%!important; } }
+
+html {
+    background:white;
+    color:black;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    margin:0;
+    padding:0;
+}
+/* 要注意表单元素并不继承父级 font 的问题 */
+input,select,textarea {
+    font-size:100%;
+}
+input {
+    border: 0px;
+    background-color: #fff;
+}
+/* 去掉 table cell 的边距并让其边重合 */
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+/*button默认样式*/
+button {
+    background-color: #fff;
+    border: 0;
+}
+/* ie bug：th 不继承 text-align */
+th {
+    text-align:inherit;
+}
+/* 去除默认边框 */
+fieldset,img {
+    border:none;
+}
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {
+    display:block;
+}
+/* 去掉 firefox 下此元素的边框 */
+abbr,acronym {
+    border:none;
+    font-variant:normal;
+}
+/* 一致的 del 样式 */
+del {
+    text-decoration:line-through;
+}
+address,caption,cite,code,dfn,em,th,var {
+    font-style:normal;
+    font-weight:500;
+}
+/* 去掉列表前的标识，li 会继承 */
+ol,ul {
+    list-style:none;
+}
+/* 对齐是排版最重要的因素，别让什么都居中 */
+caption,th {
+    text-align:left;
+}
+/* 来自yahoo，让标题都自定义，适应多个系统应用 */
+h1,h2,h3,h4,h5,h6 {
+    font-size:100%;
+    font-weight:500;
+}
+q:before,q:after {
+    content:'';
+}
+/* 统一上标和下标 */
+sub,sup {
+    font-size:75%;
+    line-height:0;
+    position:relative;
+    vertical-align:baseline;
+}
+sup {
+    top:-0.5em;
+}
+sub {
+    bottom:-0.25em;
+}
+/* 让链接在 hover 状态下显示下划线 */
+a:hover {
+    text-decoration:none;
+}
+/* 默认不显示下划线，保持页面简洁 */
+ins,a {
+    text-decoration:none;
+}
+/* 去除 ie6 & ie7 焦点点状线 */
+a:focus,*:focus {
+    outline:none;
+}
+/* 清除浮动 */
+.clearfix:before,.clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after {
+    clear:both;
+    overflow:hidden;
+}
+.clearfix {
+    zoom:1; /* for ie6 & ie7 */
+}
+.clear {
+    clear:both;
+    display:block;
+    font-size:0;
+    height:0;
+    line-height:0;
+    overflow:hidden;
+}
+/* 设置显示和隐藏，通常用来与 js 配合 */
+.hide {
+    display:none;
+}
+.block {
+    display:block;
+}
+/* 设置浮动，减少浮动带来的 bug */
+.fl,.fr {
+    display:inline;
+}
+.fl {
+    float:left;
+}
+.fr {
+    float:right;
+}
+
+body,html {
+    background: #f1f1f1;
+    height: 100%;
+}
+
+.one {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.container {
+    width: 1200px;
+    padding: 0;
+}
+
+.white {
+    background: #fff;
+}
+
+/*header*/
+
+.header {
+    height: 74px;
+    margin-bottom: 34px;    
+}
+
+.header_logo {
+    margin-top: 15px;
+}
+.header_user {
+    height: 100%;
+    padding-right: 32px;
+    box-sizing: border-box;
+}
+.h_user_group {
+    position: relative;
+    margin-top: 11px;
+}
+.h_user_group .h_face {
+    width: 51px;
+    height: 51px;
+    margin-right: 8px;
+    overflow: hidden;
+}
+.h_user_group .h_face img {
+    width: 100%;
+    height: 100%;
+}
+.h_user_group .h_user_type {
+    width: 50px;
+    height: 18px;
+    color: #fff;
+    text-align: center;
+    /*background: #ff8b6f;*/
+    background: #30C7FF;        
+    border-radius: 2px;
+    margin-top: 6px;
+    line-height: 18px;
+}
+.h_user_group .h_user_name {
+    /*font-size: 16px;*/
+    font-size: 14px;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+.face_dropdown {
+    position: absolute;
+    left: 0;
+    top: 63px;
+    z-index: 9999;
+    background: #fff;
+    padding: 5px 0 0;
+    border: 1px solid #dcdcdc;
+    border-top: none;
+    display: none;
+    opacity: 0;
+    transition: opacity .1s ease;
+    -webkit-transition: opacity .1s ease;
+    -moz-transition: opacity .1s ease;
+}
+.face_dropdown:before {
+    content: '';
+    position: absolute;
+    z-index: 10000;
+    top: -10px;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: 14px;
+    background: url(../images/arrow-up.png) no-repeat;
+}
+.face_dropdown li {
+    width: 128px;
+    padding-left: 14px;
+    line-height: 34px;
+}
+.face_dropdown li .fa {
+    margin-right: 4px;
+}
+.face_dropdown li.line {
+    border-top: 1px solid #e5e5e5;
+}
+.face_dropdown .name {
+    margin-left: 18px;
+    border-top: 1px solid #f5f5f5;
+}
+.h_user_group:hover .face_dropdown {
+    display: block;
+    opacity: 1;
+}
+
+/*header*/
+
+/*container*/
+.homepage, .container {
+    height: 100%;
+}
+
+/*container*/
+
+/*left_slider*/
+
+.sidebar-collapse {
+    padding-top: 18px;
+    border-right: 1px solid #F0F0F0;
+    height: 100%;
+}
+
+.container > div {
+    height: 100%;
+}
+
+.sidebar-collapse > li {
+    padding-left: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.sidebar-collapse > li .sidebar-item {
+    display: block;
+    color: #888888;
+}
+.sidebar-collapse > li .sidebar-item:hover {
+    color: #f6623f;
+}
+.sidebar-collapse > li i.fa{
+    font-size: 16px;
+    margin-right: 12px;
+}
+.sidebar-collapse > li.active,
+.sidebar-sub > li.active {
+    /*background: #ffa893;*/
+    background: #30C7FF;
+}
+.sidebar-collapse > li.active a,
+.sidebar-collapse > li.active a:hover,
+.sidebar-sub > li.active a,
+.sidebar-sub > li.active a:hover {
+    color: #fff;    
+}
+.sidebar-sub > li {
+    padding-left: 68px;
+    margin-left: -40px;
+}
+
+/*left_slider*/
+

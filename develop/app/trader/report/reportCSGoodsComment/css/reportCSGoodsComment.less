@@ -1,0 +1,379 @@
+body{
+  background-color: #f3f3f4;
+}
+.clearfix::after {
+  content: " ";
+  display: block;;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+/**顶部时间选择和店铺选择*/
+.top{
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #fff;
+  padding: 0 20px;
+  .path{
+    float: left;
+    >i{
+      font-family: SimSun;
+      font-weight: 700;
+    }
+    .shopName{
+      font-size: 16px;
+      color: #333333;
+    }
+
+  }
+  .shopFilter{
+    float: right;
+    width: 150px;
+    margin-top: 8px;
+  }
+}
+.mainContent{
+  padding: 0 20px;
+}
+/**评论总览*/
+.commentsOverview{
+  width: 100%;
+  min-height: 166px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  margin: 18px 0;
+  font-size: 0;
+  >label{
+    display: inline-block;
+    vertical-align: top;
+    width: 10%;
+    font-size: 15px;
+    color: #333333;
+    padding-top: 10px;
+    padding-left: 20px;
+  }
+  >ul{
+    display: inline-block;
+    vertical-align: top;
+    width: 90%;
+    font-size: 15px;
+    color: #333333;
+    >li{
+      float: left;
+      padding-top: 60px;
+      margin: 0 5%;
+      width: 155px;
+      &:first-of-type{
+        margin-left: 0;
+      }
+      >div{
+        margin-top: 16px;
+        h4{
+          font-size: 26px;
+          font-weight: 700;
+          display: inline-block;
+        }
+        >div{
+          display: inline-block;
+          vertical-align: top;
+        }
+      }
+
+    }
+  }
+}
+/**商品评论明细*/
+.goodsCommentList{
+  border: 1px solid #dddddd;
+  background-color: #fff;
+  .filterBox{
+    padding: 12px 20px 9px 20px;
+    >p{
+      float: left;
+      margin-top: 6px;
+    }
+    .filterContent{
+      float: right;
+      >div{
+        display: inline-block;
+        width: 150px;
+        vertical-align: top;
+        margin-left: 6px;
+        .layui-input, .layui-select{
+          height: 34px;
+        }
+        &.keyBox{
+          position: relative;
+          z-index: 2;
+          >ul{
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #dddddd;
+            z-index: 1;
+            width: 100%;
+            display: none;
+            max-height: 250px;
+            overflow-y: auto;
+            li{
+              width: 100%;
+              padding: 8px 6px;
+              font-size: 14px;
+              color: #666;
+              cursor: pointer;
+              &:hover{
+                background-color: #eeeeee;
+              }
+            }
+          }
+        }
+        &.btnBox{
+          width: 80px;
+          >button{
+            width: 100%;
+            height: 34px;
+            background-color: #fff;
+            border: 1px solid #d2d2d2;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            color: #333333;
+          }
+          >a{
+            display: block;
+            width: 100%;
+            height: 34px;
+            line-height: 34px;
+            background-color: #fff;
+            border: 1px solid #d2d2d2;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            text-align: center;
+            >i{
+              display: inline-block;
+              width: 24px;
+              height: 24px;
+              background: url("../../../assets/common/img/exportIcon.png") no-repeat center;
+              -webkit-background-size: 100%;
+              background-size: 100%;
+              vertical-align: -6px;
+            }
+            >span{
+              vertical-align: middle;
+              color: #333333;
+            }
+          }
+        }
+      }
+    }
+  }
+  .tableBox{
+    padding: 0 20px;
+    overflow-y: auto;
+    height: 438px;
+    table{
+      margin: 0;
+      thead>tr>th,
+      tbody>tr>td{
+        padding: 8px 9px;
+      }
+      thead>tr>th:nth-of-type(1),
+      tbody>tr>td:nth-of-type(1){
+        text-align: center;
+      }
+      thead>tr>th:last-of-type,
+      tbody>tr>td:last-of-type{
+        text-align: right;
+        a{
+          color: #1e9fff;
+        }
+      }
+      tbody>tr>td:nth-last-of-type(2){
+        >span:nth-of-type(2){
+          vertical-align: sub;
+        }
+      }
+    }
+  }
+  .pageSelectorBox{
+    padding: 0 20px;
+    >div{
+      float: right;
+    }
+  }
+}
+/**遮罩层*/
+.mask{
+  width: 100%;
+  background-color: rgba(255,255,255,0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: none;
+}
+
+/**评论详情弹窗*/
+.detailPage{
+  .title{
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    background-color: #353B53;
+    padding: 0 10px 0 20px;
+    >span{
+      color: #ffffff;
+      font-size: 14px;
+    }
+    >i{
+      float: right;
+      width: 34px;
+      height: 34px;
+      font-size: 20px;
+      color: #fff;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+  .goodsInfo{
+    width: 100%;
+    padding: 30px 40px 10px 40px;
+    >div{
+      display: inline-block;
+      vertical-align: top;
+      &.goodsImage{
+        >img{
+          display: inline-block;
+          width: 100px;
+          height: 100px;
+        }
+      }
+      &.goodsMsg{
+        margin-left: 16px;
+        p{
+          font-size: 14px;
+          margin-top: 8px;
+          &:nth-of-type(1){
+            margin-top: 0;
+          }
+          //&:last-of-type{
+          //  span{
+          //    color: #ff3030;
+          //  }
+          //}
+          label{
+            color: #999999;
+          }
+          span{
+            color: #333333;
+            font-weight: 700;
+            display: inline-block;
+            width: 600px;
+            vertical-align: top;
+          }
+        }
+      }
+    }
+  }
+  .line{
+    padding: 0 40px;
+  }
+  .totalScore{
+    padding: 0 40px;
+    i{
+      vertical-align: sub;
+      margin-left: 6px;
+      font-size: 14px;
+      color: #666666;
+    }
+  }
+  .commentContent{
+    padding: 10px 40px;
+    p{
+      font-size: 15px;
+      color: #333333;
+      width: 580px;
+    }
+  }
+  .cateScore{
+    padding: 0 40px;
+    >div{
+      display: inline-block;
+      margin-right: 18px;
+      >label{
+        font-size: 15px;
+        color: #333333;
+        vertical-align: middle;
+        margin-right: 6px;
+      }
+      .layui-rate li i.layui-icon{
+        font-size: 16px;
+      }
+    }
+  }
+  .commentImages{
+    padding: 20px 30px;
+    font-size: 0;
+    img{
+      margin: 0 10px;
+      display: inline-block;
+      width: 120px;
+      height: 120px;
+    }
+    >video{
+      display: inline-block;
+      width: 120px;
+      height: 120px;
+      vertical-align: middle;
+      margin: 0 10px;
+    }
+  }
+}
+
+/**查看视频弹窗*/
+.videoPage{
+  .videoBox{
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+    video{
+      width: 100%;
+      height: 100%;
+    }
+    video::-webkit-media-controls {
+      overflow: hidden !important;
+    }
+    video::-webkit-media-controls-enclosure {
+      width: calc(100% + 12px);
+      margin-left: auto;
+    }
+  }
+}
+
+.layui-rate li i.layui-icon{
+  font-size: 14px;
+}
+/**好，中，差评图标*/
+.starIcon{
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 23px;
+  &.hao{
+    background: url("../images/ic_haoping.png") no-repeat center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+  }
+  &.zhong{
+    background: url("../images/ic_zhongping.png") no-repeat center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+  }
+  &.cha{
+    background: url("../images/ic_chaping.png") no-repeat center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+  }
+}

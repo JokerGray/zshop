@@ -1,0 +1,4 @@
+// 用于计算rem的方法
+@function pxToRem($px, $base: 26) {
+    @return ($px/$base) * 1rem;
+}

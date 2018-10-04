@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Pragma" content="no-cache"> 
+    <meta http-equiv="Cache-Control" content="no-cache"> 
+    <meta http-equiv="Expires" content="0">
+    <title>实物奖品管理</title>
+    <!-- CssCommon -->
+    <link rel="stylesheet" href="../common/assets/hplus/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/assets/hplus/css/font-awesome.min93e3.css">
+    <link rel="stylesheet" href="../common/assets/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="../framework/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="./css/earnmoney_common.css">
+
+</head>
+
+<body>
+    <ol class="breadcrumb">
+        <li><a href="#">App管理</a></li>
+        <li><a href="#">玩家挣钱</a></li>
+        <li class="active">实物奖品管理</li>
+    </ol>
+    <div class="container-fluid">
+        <div id="toolbar" class="bars">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="orgName">商户名称</label>
+                    <input type="text" class="form-control" id="orgName">
+                </div>
+                <div class="form-group">
+                    <label for="title">标题</label>
+                    <input type="text" class="form-control" id="prizeTitle">
+                </div>
+                <div class="form-group">
+                    <label for="time">发布时间</label>
+                    <input type="text" class="form-control" id="createTime">
+                </div>
+                <button type="button" class="btn btn-default" onclick="refreshTable()"><i class="fa fa-search"></i> 查询</button>
+                <button type="button" class="btn btn-primary" onclick="openAddLayer()"><i class="fa fa-plus"></i> 新增奖品</button>
+            </form>
+        </div>
+        <table id="table" class="table table-hover table-bordered"></table>
+    </div>
+
+    <script id="tplBtnGroup" type="text/html">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" value="1">上架</button>
+            <button type="button" class="btn btn-default" value="2">下架</button>
+        </div>
+    </script>
+
+    <!-- jSCommon -->
+    <script type="text/javascript" src="../common/assets/hplus/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/assets/hplus/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../common/assets/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script type="text/javascript" src="../common/assets/layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src="../framework/bootstrap/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../framework/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../common/js/yyCache.js"></script>
+    <script type="text/javascript" src="./js/earnmoney_common.js"></script>
+    <script type="text/javascript" src="./js/goods.js"></script>
+    
+</body>
+
+</html>

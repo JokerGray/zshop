@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>问答管理 - 智享城市·智享头条</title>
+    <!-- Bootstrap -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/voteManage.css" />
+</head>
+
+<body>
+    <script src="util/head.js"></script>
+    <input type="hidden" id="menuHid" value="voteManage">
+    <div class="container">
+        <div class="wrapper clearfix">
+            <script src="util/menu.js"></script>
+            <div class="right pull-right">
+                <div class="">
+                    <ul class="tabList topTab clearfix">
+                        <li class="cur-p">
+                            <a href="./voteManage.html">我发起的</a>
+                        </li>
+                        <li class="active cur-p">
+                            <a href="./tpiVoteManage.html">我参与的</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <div>
+                        <div>
+                            <ul id="voteList" class="quesMineList"></ul>
+                        </div>
+                        <div id="qPage" class="page text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="voteInfo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="quesInfoM modal-dialog modal-dialog2" role="document">
+            <div class="quesInfoTpl quesInfoM modal-content modal-content2">
+                <div class="quesInfoMHead modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="quesTitle"></h4>
+                    <img class="infoIsEndIcon" src="" alt="">
+                </div>
+                <div class="quesInfoCon clearfix">
+                    <div class="quesInfoBox">
+                        <div class="quesInfoSubTxt">
+                            <span class="authorName"></span>
+                            <span class="quesTime"></span>
+                            <div class="quesInfoTime fr">
+                                有效时间：<span class="voteStartTime"></span>至
+                                <span class="voteEndTime"></span>
+                            </div>
+                        </div>
+                        <div class="quesCont"></div>
+                        <div id="onlineCelebrity" class="onlineCelebrity"></div>
+                        <div class="quesLabels">
+                            <i class="quesLabelsIcon"></i>
+                            <ul id="quesLabelList" class="quesLabelList"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src="assets/kindeditor-4.1.10/kindeditor-all-min.js"></script>
+    <script src="assets/kindeditor-4.1.10/kindeditor-min.js "></script>
+    <script src="assets/kindeditor-4.1.10/lang/zh_CN.js"></script>
+    <script src="assets/echarts/echarts3.8.4.js"></script>
+    <script src="util/util.js"></script>
+    <script src="util/pub.js"></script>
+    <script src="js/tpiVoteManage.js"></script>
+    <script id="voteTpl" type="text/html">
+    {{#  layui.each(d, function(index, item){ }}
+        <li class="tpiListBox quesMineBox clearfix" articleid="{{item.articleId || ''}}">
+            {{# var endT = new Date(item.scCmsVoteEndTime).getTime(), nowT = new Date().getTime(), isEndFlag = 0;}}
+            {{# if(nowT > endT){ }}
+                <img class="isEndIcon" src="images/yijieshu.png" alt="">
+                {{# isEndFlag = 1;}}
+            {{# } }}
+            <div class="quesMImgListBox fl">
+                <div class="quesMImgList clearfix">
+                    {{# if(isNull(item.scCmsResourcesList)){ }}
+                        <img class="fl" src="images/zhanweitu.png" alt="">
+                    {{# }else { }}
+                        {{#  layui.each(item.scCmsResourcesList, function(index, item){ }}
+                            <img class="fl" src="{{item.resourcesUrl || 'images/zhanweitu.png'}}" alt="">
+                        {{# }); }}
+                    {{# } }}
+                </div>
+            </div>
+            <div class="quesMineInfo fl">
+                <div class="quesMTitBox">
+                    <span class="quesTit" data-toggle="modal" data-target="#voteInfo" isdraft="1" isexamine="2" isEndFlag={{isEndFlag}}>{{item.articleTitle || ''}}</span>
+                    <span class="quesIcon"><img src="images/toupiaoS.png" alt=""></span>
+                    {{# var isDraft = item.isDraft, isExamine = item.isExamine, notPassReason = item.auditDescriptionText || ''}}
+                    {{getExamine(isDraft, isExamine, notPassReason)}}
+                </div>
+                <div class="labelAndTime">
+                    {{# var channelName = isNull(item.scCmsChannel) ? '' : item.scCmsChannel.channelName}}
+                    <span>{{channelName}}</span>
+                    <span>{{item.releaseTime || ''}}</span>
+                </div>
+                <div class="quesMDatas">
+                    <span>阅读：{{item.articleBrowser || '0'}}</span>
+                    <span>参与：{{item.voteNumber || '0'}}</span>
+                    <span>转发：{{item.forwardNumber || '0'}}</span>
+                    <span>收藏：{{item.enshrinedNum || '0'}}</span>
+                </div>
+            </div>
+            {{# if(!isNull(item.scCmsVoteList)){ }}
+                {{#  layui.each(item.scCmsVoteList, function(i, e){ }}
+                    {{# var voteToWhoTime = e.scCmsVoteCreateTime || ''}}
+                    <p class="voteToWho clearfix"><span>我</span> 把票投给了 <span>{{e.scCmsVoteTitle || ''}}</span><span class="fr">{{voteToWhoTime.replace('.0', '')}}</span></p>
+                {{#  }); }}
+            {{# } }}
+        </li>
+    {{#  }); }}
+    </script>
+</body>
+
+</html>

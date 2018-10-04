@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>登录</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <link rel="stylesheet" type="text/css" href="common/css/bootstrap.min.css"/>-->
+	<link rel="stylesheet" href="common/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="page/login/login.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="common/css/reset.css"/> 
+	<style>
+
+		/*
+		*2018-9-27 15:11:38登陆页改版
+		*
+		*/
+		html {
+    	overflow: hidden;
+		}
+		body {
+			overflow: hidden;
+			position: relative;
+			width: 100%;
+			min-width: 1200px;
+			margin: 0;
+		}
+		.wrapper .app .app-con {
+    		width: 455px;}
+		.wrap {
+			width: 100%;
+			zoom: 1;
+			transform-origin: center top;
+			margin: 0 auto;
+		}
+		.wrapper {
+			width: 100%;
+			position: relative;
+		}
+		.events_sec {
+			background: url(page/login/image/bg_1.jpg) no-repeat center top;
+		}
+		.events_sec .content {
+			height: 824px;
+			background: url(page/login/image/main_1.jpg) no-repeat center top;
+			padding-top: 136px;
+		}
+		.setIcon-view{
+			cursor: pointer;
+		}
+		.app-check .login-user{
+			background: rgba(255,255,255,.4);
+		
+			color: #fff;
+		}
+		#username{
+			border-bottom: none;
+		}
+		
+		.layui-input:focus {
+			outline: 0;
+			border-color: transparent!important;
+		}
+		.login-password{
+			background-color:rgba(255,255,255,.4);
+			border: none;
+		}
+		.login-password input{
+			/* background-color:rgba(255,255,255,.4);
+			color: #fff;
+			border-bottom: none; */
+			background: none;
+			border: none;
+			color: #fff;
+		
+		}
+		.app-check .input-field{
+			width: auto
+		}
+		.input-field .btn-info{
+			background: rgba(255,255,255,.8);
+			color: #000;
+			font-size: 16px;
+		}
+		.input-field .btn-info:hover{
+			background: rgba(255,255,255,1);
+			opacity: 1;
+		}
+
+		 input::-webkit-input-placeholder {color: #fff;			}
+	</style>
+
+</head>
+<body>
+	
+<div class="wrap about_page" id="wrap">
+		<div class="wrapper">
+		  <div class="events_sec" id="events_sec">
+			<div class="content app">
+			 
+			  <div class="events_list app-con">
+					<div class="app-con-tit clearfix">
+							<div class="con-img">
+								<!-- <img src="login/image/logo.png" alt="" /> -->
+							</div>
+							<div class="con-tit">
+								<h2>智享城市运营后台管理系统</h2>
+							</div>		                 
+						</div>
+						<div class="app-check layui-form">
+							<div class="login-user">
+								<i class="setIcon-amdin"></i>
+								<i class="setIcon-x"></i>
+								<input type="text" id="username" class="layui-input lo-input user-input" autocomplete="off" spellcheck="false" placeholder="智享账户" maxlength="18">
+							</div>
+							<div class="login-password">
+								<i class="setIcon-key"></i>
+								<i id="view" class="setIcon-view"></i>
+								<input type="password" id="passwordpass"  class="layui-input lo-input pass-input passwordpass" autocomplete="off" spellcheck="false" placeholder="密码" maxlength="18">
+							</div>
+							<input type="checkbox" title="记住账号密码" lay-skin="primary" id="radio" lay-filter="test">
+							<div class="input-field login-btn">
+								<a id="sendSubmit" href="#" class="layui-btn btn-info" role="button">登录</a>
+							</div>
+							
+						</div>
+			  </div>
+			</div>
+		  </div>
+	 </div>
+</div>
+  <!-- <div class="wrapper">
+    	<div class="app">
+    		<div class="app-con">
+    			<div class="app-con-tit clearfix">
+    				<div class="con-img">
+    					<img src="login/image/logo.png" alt="" />
+    				</div>
+    				<div class="con-tit">
+    					<h2>智享城市运营后台管理系统</h2>
+    				</div>		                 
+    			</div>
+    			<div class="app-check layui-form">
+	    			<div class="login-user">
+	    				<i class="setIcon-amdin"></i>
+	                    <i class="setIcon-x"></i>
+	    				<input type="text" id="username" class="form-control lo-input user-input" autocomplete="off" spellcheck="false" placeholder="智享账户" maxlength="18">
+	    			</div>
+	    			<div class="login-password">
+	    				<i class="setIcon-key"></i>
+	                    <i id="view" class="setIcon-view"></i>
+	    				<input type="password"  class="form-control lo-input pass-input passwordpass" autocomplete="off" spellcheck="false" placeholder="密码" maxlength="18">
+	    			</div>
+	    			<input type="checkbox" title="记住账号密码" lay-skin="primary" id="radio" lay-filter="test">
+	    			<div class="input-field login-btn">
+	                	<a id="sendSubmit" href="#" class="btn btn-info" role="button">登录</a>
+	                </div>
+	                
+	    		</div>
+    		</div>
+    		
+    	</div>
+    </div> -->
+</body>
+</html>
+<script src="page/login/canvas-nest.min.js"></script><canvas id="c_n2" width="1055" height="889" style="position: fixed; top: 0px; pointer-events: none; left: 0px; z-index: 999; opacity: 0.9;"></canvas>
+<script type="text/javascript" src="common/assets/layui/layui.all.js"></script>
+<script type="text/javascript" src="common/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+	!function(factory,global){if(typeof define==="function"&&define.amd){define(["jquery"],factory)}else{factory(global.jQuery||global.Zepto)}}(function($,undef){var dataKey="plugin_hideShowPassword",defaults={show:"infer",innerToggle:false,hideToggleUntil:false,touchSupport:false,toggleEvent:"click",toggleTouchEvent:"touchstart mousedown",wrapperClass:"hideShowPassword-wrapper",toggleClass:"hideShowPassword-toggle",states:{shown:{inputClass:"hideShowPassword-shown",eventName:"passwordShown",toggleClass:"hideShowPassword-toggle-hide",toggleText:"Hide",attr:{type:"text",autocapitalize:"off",autocomplete:"off",autocorrect:"off",spellcheck:"false"}},hidden:{inputClass:"hideShowPassword-hidden",eventName:"passwordHidden",toggleClass:"hideShowPassword-toggle-show",toggleText:"Show",attr:{type:"password"}}},widthMethod:$.fn.outerWidth===undef?"width":"outerWidth",heightMethod:$.fn.outerHeight===undef?"height":"outerHeight"};function HideShowPassword(element,options){this.element=$(element);this.init(options)}HideShowPassword.prototype={init:function(options){this.update(options,defaults,this.element.prop("type")==="password");if(this.options.innerToggle){this.initInnerToggle(this.element,this.options)}},update:function(options,base,toggleFallback){base=base||this.options;toggleFallback=toggleFallback||!this.options.show;if(typeof options!=="object"){options={show:options}}this.options=$.extend(true,{},base,options);if(this.options.show==="toggle"){this.options.show=toggleFallback}if(this.options.show==="infer"){this.options.show=this.element.prop("type")!=="password"}this.ifCurrentOrNot($.proxy(function(state){$.each(state.attr,$.proxy(function(key,value){this.element.prop(key,value)},this));this.element.addClass(state.inputClass).trigger(state.eventName)},this),$.proxy(function(state){this.element.removeClass(state.inputClass)},this))},toggle:function(){this.update("toggle")},currentStateKey:function(){return this.options.show?"shown":"hidden"},ifCurrentOrNot:function(ifCurrent,ifNot){var currentKey=this.currentStateKey();$.each(this.options.states,function(thisKey,state){(currentKey===thisKey?ifCurrent:ifNot)(state)})},initInnerToggle:function(el,options){var attachment=el.css("direction")==="rtl"?"left":"right",elWidth=el[options.widthMethod](),wrapperCSS={position:"relative",display:el.css("display"),verticalAlign:el.css("verticalAlign"),marginTop:el.css("marginTop"),marginRight:el.css("marginRight"),marginBottom:el.css("marginBottom"),marginLeft:el.css("marginLeft")},toggleCSS={position:"absolute",top:"50%",mozUserSelect:"none",webkitUserSelect:"none",msUserSelect:"none",userSelect:"none"},elCSS={marginTop:0,marginRight:0,marginBottom:0,marginLeft:0},eventName="",elWidth,wrapper,toggle;el.wrap($("<div />").addClass(options.wrapperClass).css(wrapperCSS));wrapper=el.parent();if(wrapper[options.widthMethod]()!==elWidth){wrapper.css("width",elWidth)}toggle=$("<div />").addClass(options.toggleClass);this.updateInnerToggle(toggle,this.currentStateKey(),options.states);toggleCSS[attachment]=0;toggle.css(toggleCSS);toggle.appendTo(wrapper);toggle.css("marginTop",toggle[options.heightMethod]()/-2);elCSS["padding"+attachment.replace(/./,function(m){return m[0].toUpperCase()})]=toggle[options.widthMethod]();el.css(elCSS);if(options.touchSupport){toggle.css("pointerEvents","none");el.on(options.toggleTouchEvent,$.proxy(function(event){var toggleX=toggle.offset().left,eventX,lesser,greater;if(toggleX){eventX=event.pageX||event.originalEvent.pageX;if(attachment==="left"){toggleX+=toggle[options.widthMethod]();lesser=eventX;greater=toggleX}else{lesser=toggleX;greater=eventX}if(greater>=lesser){event.preventDefault();this.toggle()}}},this))}else{toggle.on(options.toggleEvent,$.proxy(function(){this.toggle()},this))}$.each(options.states,function(key,state){eventName+=state.eventName+" "});el.on(eventName,$.proxy(function(){this.updateInnerToggle(toggle,this.currentStateKey(),options.states)},this));if(options.hideToggleUntil){toggle.hide();el.one(options.hideToggleUntil,function(){toggle.show()})}},updateInnerToggle:function(el,currentKey,states){this.ifCurrentOrNot(function(state){el.addClass(state.toggleClass).text(state.toggleText)},function(state){el.removeClass(state.toggleClass)})}};$.fn.hideShowPassword=function(options){return this.each(function(){var $this=$(this),data=$this.data(dataKey);if(data){data.update(options)}else{$this.data(dataKey,new HideShowPassword(this,options))}})};$.each({show:true,hide:false,toggle:"toggle"},function(verb,showVal){$.fn[verb+"Password"]=function(options){return this.hideShowPassword($.extend({},options,{show:showVal}))}})},this);
+</script>
+<script type="text/javascript" src="common/js/util.js"></script>
+<script type="text/javascript" src="common/js/yyCache.js"></script>
+
+<script type="text/javascript" src="page/login/login.js"></script>

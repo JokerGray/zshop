@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工资设置</title>
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+	<link  rel="stylesheet" href="../../assets/select2-v4.0.6/css/select2.min.css"></script>
+	<style>
+		a:active{
+			color: #333;
+			text-decoration: none;
+		}
+		a:link { 
+			color: #333;
+			text-decoration: none; 
+		} 
+		a:visited { 
+			color: #333;
+			text-decoration: none; 
+		} 
+		a:hover { 
+			color: #333;
+			text-decoration: none; 
+		} 
+		
+		.contain{
+			padding: 30px;
+		}
+		
+		.contain label{
+			font-size: 16px;
+			padding-bottom: 20px;
+		}
+
+		.contain input{
+			height: 30px;
+			padding-left: 10px;
+		}
+
+		input.isMessageRemind {
+		    width: 14px;
+		    height: 14px;
+		    vertical-align: sub;
+		}
+		.messageRemind{
+			font-weight: bold;
+		}
+ 	</style>
+</head>
+<body>
+	<div class="contain">
+		<div style="display: inline-block;width: 45%;">
+			<label>职务名称：</label>
+			<input type="text" class="positionName">
+		</div>
+
+		<div style="display: inline-block;width: 45%;">
+			<label>参考薪资：</label>
+			<input type="text" class="referenceSalary" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)">
+		</div>
+
+		<div>
+			<label>固定补助：</label>
+			<input type="text" class="fixedSubsidy" maxlength="11" onkeyup="moneyCheck(this)" onchange="moneyCheck(this)" >
+		</div>
+
+		<div class="messageRemind">
+			<input type="checkbox" class="isMessageRemind"> 是否设置短信接收(用于催单发送短信到该职务员工手机号)
+		</div>
+
+	</div>
+
+	<script src="../../assets/jquery/jquery.min.js"></script>
+	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../assets/layer/layer.js"></script>
+	<script src="../../assets/select2-v4.0.6/js/select2.full.min.js"></script>
+	<script src="js/common.js"></script>
+	
+	<script>
+
+		var merchantId = getQueryString('merchantId');
+		var positionId = getQueryString('positionId');
+		var type = getQueryString('type');
+		// 
+		if(type == 0){ // 薪资职务
+			
+
+		}else if(type == 1){  // 修改职务
+			// 数据初始化
+			var def = reqAjax('shop/newsalary/getPositionById', {
+		        "positionId": positionId
+		    });
+		    def.then(function(data){
+		        if(data.code == 1){
+		        	var data = data.data;
+		           	$('.positionName').val(data.positionName).attr({'keyId':data.id});
+		           	$('.referenceSalary').val(data.referenceSalary);
+		            $('.fixedSubsidy').val(data.fixedSubsidy);
+		            if(data.isMessageRemind == 0){
+		            	$('.isMessageRemind').prop('checked',false);
+		            }else if(data.isMessageRemind == 1){
+		            	$('.isMessageRemind').prop('checked',true);
+		            }
+		        }else{
+		            layer.msg(data.msg,{icon:2});
+		        }
+		        
+		    })
+		}
+		// 新增和修改 职务接口联调
+		function modifyPosition(){
+			if(type == 0){
+				var id = '';
+			}else if(type == 1){
+				var id = $('.positionName').attr('keyId');
+			}
+			var positionName = $('.positionName').val();
+			var referenceSalary = $('.referenceSalary').val();
+			var fixedSubsidy = $('.fixedSubsidy').val();
+
+			if($('.isMessageRemind').prop('checked') == false){
+				var isMessageRemind = 0;
+			}else{
+				var isMessageRemind = 1;
+			}
+
+			return arr = {
+				id : id,
+				positionName : positionName,
+				referenceSalary : referenceSalary,
+				fixedSubsidy : fixedSubsidy,
+				isMessageRemind : isMessageRemind
+			}  
+		}
+
+
+		// 金额 校验
+		function moneyCheck(self){
+		    if($(self).val().length <= 8){
+		        if($(self).val().length==1){
+		            $(self).val($(self).val().replace(/[^0-9]/g,''));
+		        } else {
+		            $(self).val($(self).val().replace(/[^0-9.]/g,''));
+		            $(self).val($(self).val().replace(/\.{2,}/g,"."));
+		            $(self).val($(self).val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+
+		            if($(self).val().split('.')[1] != undefined && $(self).val().split('.')[1].length > 2){
+				      	$(self).val($(self).val().split('.')[0] +'.'+ $(self).val().split('.')[1].substring(0,2));
+				    }
+		        }
+		        
+		    }else{
+		        $(self).val($(self).val().replace(/[^0-9.]/g,''));
+		        $(self).val($(self).val().replace(/\.{2,}/g,"."));
+		        $(self).val($(self).val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+
+		        // 整数 金额超过 8 位
+		        if($(self).val() > 99999999.99){
+		            $(self).val($(self).val().substring(0,8));
+		        }
+
+		        if($(self).val().split('.')[1] != undefined && $(self).val().split('.')[1].length > 2){
+			      	$(self).val($(self).val().split('.')[0] +'.'+ $(self).val().split('.')[1].substring(0,2));
+			    }
+		    }
+		}
+
+	</script>
+</body>
+</html>

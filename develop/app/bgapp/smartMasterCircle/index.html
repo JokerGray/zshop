@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang=zh-cn>
+	<head>
+		<meta charset=UTF-8>
+		<meta name=viewport content="width=device-width,initial-scale=1">
+		<meta name=renderer content=wekit>
+		<meta http-equiv=X-UA-Compatible content="ie=edge">
+		<script src=//res.wx.qq.com/open/js/jweixin-1.2.0.js></script>
+		<script src=http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js></script>
+		<script src=./static/flexible/flexible.js></script>
+		<script src=./static/artTemplate/artTemplate.js></script>
+		<script src=./static/share/share.js></script>
+		<title>动态详情</title>
+		<link href="css/app.0b774e3.css" rel="stylesheet">
+	</head>
+	<body style="font-size: 12px;max-width: 640px;margin: 0 auto;">
+		<div id=header style="max-width:640px;margin:0 auto">
+			<div class=header_logo> <img src="img/zhidashi.png"> </div>
+			<div class="header_load btn"> 打开 </div>
+		</div>
+		<div class=content> </div>
+		<a href=javascrpt:; class="footer download_link"> <img src="img/fenxiang.png" alt=""> </a>
+		<div id=contBlank style=display:none> <span class=blank_icon></span>
+			<p class=msg_miss>哎呀！您访问的地址不存在</p>
+		</div>
+		<div class=model>
+			<div class=model_cont>
+				<p class=text1>1、点击右上角的&nbsp;&nbsp;<span></span></p>
+				<p class=text2>2、选择&nbsp;&nbsp;<span></span></p>
+				<div class=pointTo></div>
+			</div>
+		</div>
+		<script type=text/html id=showCont>
+			<div class="dynamic clearfix">
+				<div class="face">
+					<a href="javascript:;">
+						<img src="<%=data.videoAlbum.logo%>?x-oss-process=image/resize,m_fill,h_75,w_75">
+					</a>
+				</div>
+				<h3 class="name"><%=data.videoAlbum.circleName%></h3>
+				<%if(data.videoAlbum.type==2){%> <span class="shop"></span>
+				<%}%> <span class="date"><%=data.videoAlbum.videoAlbumTime%></span>
+				<p class="text">
+					<%=data.videoAlbum.videoAlbumDescription%>
+				</p>
+				<div class="media">
+					<%if(data.videoAlbum.videoAlbumType==1){%>
+					<ul class="imgbox clearfix">
+						<%for(var i = 0;i<data.videoAlbum.urls.length;i++){%>
+						<li>
+							<a href="javascript:;">
+								<img src="<%=data.videoAlbum.urls[i]%>?x-oss-process=image/resize,m_fill,h_224,w_224">
+							</a>
+						</li>
+						<%}%> </ul>
+					<%}else if(data.videoAlbum.videoAlbumType==2){%>
+					<div class="videobox">
+						<video src="<%=data.videoAlbum.urls[0]%>" class="video" poster="<%=data.videoAlbum.videoAlbumCoverUrl%>"></video>
+						<img class="play" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHwAAAB8CAYAAACrHtS+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFGNjBEOTA3ODk2MjExRTc5MkY3OTc1RUZCQjBCRjk3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFGNjBEOTA4ODk2MjExRTc5MkY3OTc1RUZCQjBCRjk3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUY2MEQ5MDU4OTYyMTFFNzkyRjc5NzVFRkJCMEJGOTciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUY2MEQ5MDY4OTYyMTFFNzkyRjc5NzVFRkJCMEJGOTciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/KfpYAAATQUlEQVR42uyd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" alt="">
+					</div>
+					<%}else if(data.videoAlbum.videoAlbumType==3){%>
+					<%}%> </div>
+				<div class="praise clearfix">
+					<%if(data.commentList.allLikeList.length>0){%>
+					<ul class="imglist">
+						<%if(data.commentList.allLikeList.length<5)%>
+						<%for(var i=0;i<data.commentList.allLikeList.length;i++){%>
+						<li>
+							<img src="<%=data.commentList.allLikeList[i].sMemberImgName%>" alt="">
+						</li>
+						<%}%>
+						<%}else if(data.commentList.allLikeList.length>=5){%>
+						<%for(var i=0;i<5;i++){%>
+						<li>
+							<img src="<%=data.commentList.allLikeList[i].sMemberImgName%>" alt="">
+						</li>
+						<%}%> </ul>
+					<%}%> <span class="praisenum"><%=data.commentList.allLikeList.length%>人点赞</span>
+					<em class="like"></em>
+				</div>
+				<div class="userName">
+					<span class="user"></span>
+					<span class="v-name"><%=data.videoAlbum.userName%></span>
+				</div>
+				<%if(data.videoAlbum.shopName){%>
+				<div class="biz">
+					<span class="shop"></span>
+					<span><%=data.videoAlbum.shopName%></span>
+				</div>
+			</div>
+			<%}%>
+			<%if(data.commentList.commentList.length>0){%>
+			<%for(var i =0;i<data.commentList.commentList.length;i++){%>
+			<div class="review">
+				<div class="reviewlist">
+					<img src="<%=data.commentList.commentList[i].sMemberImgName%>" class="reviewface">
+					<h3 class="reviewname"><%=data.commentList.commentList[i].sUserCode%></h3>
+					<span class="reviewdate"><%=data.commentList.commentList[i].sCommentDate%></span>
+					<p class="reviewtext">
+						<%=data.commentList.commentList[i].sCommentContent%>
+					</p>
+					<%if(data.commentList.commentList[i].lsccr.length>0){%>
+					<ul class="reply">
+						<%for(var j =0;j<data.commentList.commentList[i].lsccr.length;j++){%>
+						<li>
+							<a href="javascript:;">
+								<%=data.commentList.commentList[i].lsccr[j].replyUserCode%>
+							</a>回复
+							<a href="javascript:;">
+								<%=data.commentList.commentList[i].lsccr[j].repliedUserCode%>
+							</a>:
+							<%=data.commentList.commentList[i].lsccr[j].replyContent%>
+						</li>
+						<%}%> </ul>
+					<%}%> </div>
+			</div>
+			<%}%>
+			<%}%> </script>
+		<script type=text/html id=showBlank>
+			<div class="error">
+				<%=msg%> </div>
+		</script>
+		<script src=./static/pub/pub.js></script>
+		<script type="text/javascript" src="js/common.0b774e3.js"></script>
+		<script type="text/javascript" src="js/app.0b774e3.js"></script>
+	</body>
+
+</html>

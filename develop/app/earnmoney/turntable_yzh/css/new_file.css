@@ -1,0 +1,116 @@
+body {
+  background: url(../image/wjzq_shou_beij.png) no-repeat;
+  background-size: cover;
+  transition: background-size 0.1s;
+}
+.hd {
+  display: flex;
+  justify-content: flex-end;
+  height: 5.12rem;
+}
+.hd div {
+  width: 2.26rem;
+  height: 4.94rem;
+  transition: background-size 0.1s;
+}
+.hd .h1 {
+  background: url(../image/wjzq_yiyuan_liang.png) no-repeat;
+  background-size: cover;
+  margin-right: 0.7rem;
+}
+.hd .h2 {
+  background: url(../image/wjzq_youxi_a.png) no-repeat;
+  background-size: cover;
+  margin-right: 1.1rem;
+}
+.conent {
+  width: 14rem;
+  height: 14rem;
+  margin: 0 auto;
+  background: url(../image/wjzq_zhuanpan.png) no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.conent div img {
+  display: block;
+}
+.conent .c_lamp {
+  position: absolute;
+  width: 12.3rem;
+  height: 12.3rem;
+  top: 0.85rem;
+  left: 0.85rem;
+  transition: transform 3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-transition: transform 3s cubic-bezier(0.215, 0.61, 0.355, 1);  
+}
+.conent .c_lamp img {
+  width: 12.3rem;
+  height: 12.3rem;
+}
+.conent .c_grid {
+  position: absolute;
+  width: 10.62rem;
+  height: 10.62rem;
+  top: 1.69rem;
+  left: 1.69rem;
+  background: url(../image/qjzq_neiyuan.png) no-repeat;
+  background-size: cover;
+  -webkit-transition: transform 2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 2s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.conent .c_grid .yuan {
+  width: 10.62rem;
+  height: 10.62rem;
+  border-radius: 5.3rem;
+  border: 1px solid red;
+  overflow: hidden;
+  position: relative;
+}
+.conent .c_grid .yuan div {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 0.8rem solid transparent;
+  border-right: 0.8rem solid transparent;
+  border-top: 5.31rem solid #ff0000;
+}
+.conent .c_grid .yuan .box1 {
+  transform: rotate(-53deg);
+  top: 0.84rem;
+  left: 0.96rem;
+}
+.conent .c_pointer {
+  position: absolute;
+  width: 3.66rem;
+  height: 6.96rem;
+  left: 5.17rem;
+  bottom: 5.17rem;
+}
+.conent .c_pointer img {
+  width: 3.66rem;
+  height: 6.96rem;
+}
+.floor {
+  width: 100%;
+  height: 4.48rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+.floor .f_info {
+  overflow: hidden;
+  padding-left: 0.5rem;
+  padding-top: 0.46rem;
+  height: 4rem;
+}
+.floor .f_info p {
+  font-size: 0.46rem;
+  align-items: center;
+  height: 1rem;
+  line-height: 1rem;
+}
+.floor .f_info .i1 {
+  color: #EE0100;
+}
+.floor .f_info .i2 {
+  color: #b4b4b4;
+}

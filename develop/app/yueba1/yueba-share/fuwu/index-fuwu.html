@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>智享城市APP服务详情分享页面</title>
+    <!-- <script src="https://use.fontawesome.com/f47f4563cb.js"></script> -->
+    <script>!function(e){
+        function t(a){
+            if(i[a])return i[a].exports;
+            var n=i[a]={exports:{},
+            id:a,
+            loaded:!1};
+            return e[a].call(n.exports,n,n.exports,t),
+            n.loaded=!0,n.exports}var i={};
+            return t.m=e,
+            t.c=i,
+            t.p="",
+            t(0)}([function(e,t){
+                "use strict";
+                Object.defineProperty(t,"__esModule",{value:!0});
+                var i=window;
+                t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,
+                d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),
+                l=o.match(/U3\/((\d+|\.){5,})/i),
+                c=l&&parseInt(l[1].split(".").join(""),10)>=80,
+                p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),
+                s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);
+                var u=1/s,m=r.querySelector('meta[name="viewport"]');
+                m||(m=r.createElement("meta"),
+                m.setAttribute("name","viewport"),
+                r.head.appendChild(m)),
+                m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),
+                r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);
+        flex(100, 1);</script>
+        <link rel="stylesheet" href="./css/swiper.min.css">
+        <link rel="stylesheet" href="./css/fuwu.css">
+</head>
+<body>
+    <div class="box">
+            <div class="lunbo">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- <div class="swiper-slide" id="clone">
+                            <img src="./image/图层1@2x.png" alt="">
+                        </div> -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="banxin">
+                <div class="biaoti"><p id="serviceName">吉乃川日本料理，等你来尝试</p></div>
+                <div class="main">
+                        <span class="span1" id="serviceMode"></span>
+                        <span class="span3" id="categoryName"></span> 
+                </div>
+                <div class="cont">
+                    <span class="span-one">￥<span class="span2" id="servicePrice"></span></span>
+                    <span class="span-two">已服务<span class="span-three" id="orderNumber"></span>单</span>
+                    <span class="span-four"><span class="span-five" id="distance"></span>km</span>
+                </div>
+            </div>
+            <div class="fenge"></div>
+            <div class="content">
+                <div class="banxin">
+                    <div class="image"><img id="userPic" src="" alt=""></div>
+                    <div class="jieshao">
+                        <div class="wanX" id="userName"></div>
+                        <div class="JNeng">
+                                <div class="smrz"><img id="realName" src="./image/yb_smrz_hui.png" alt=""></div>
+                                <div class="zsrz"><img id="isCertificat" src="./image/yb_zsrz_hui.png" alt=""></div>
+                                <div class="dprz"><img id="shopId" src="./image/yb_dprz_hui.png" alt=""></div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fenge"></div>
+            <div class="content3">
+                <div class="banxin">
+                    <div class="time">服务时间</div>
+                    <div class="time-D"></div>
+                </div>
+            </div>
+            <div class="fenge"></div>
+            <div class="content2">
+                    <div class="banxin">
+                        <div class="address">店铺地址</div>
+                        <div class="add-D" id="serviceLocationAddress"></div>
+                    </div>
+            </div>
+            <div class="fenge"></div>
+            <div class="xiangqing">
+                <div class="banxin">
+                    <div class="FW-xiangqing">服务详情</div>
+                    <div class="XQ-content">
+                        <p class="xiangqing-P"><span id="serviceComment"></span></p>
+                    </div>
+                </div>
+            </div>
+             
+            
+    </div>
+</body>
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/fuwu.js"></script>
+<script src="./js/swiper.min.js"></script>
+<script>
+     var mySwiper = new Swiper ('.swiper-container', {
+            loop:false,
+            autoplay:2000,
+            autoplayDisableOnteraction:false,//是否禁止autoplay
+            paginationClickable:true,
+            observer:true,
+            observerParents:false,
+            direction: 'horizontal',
+            shortSwipes:true,//true,默认允许短切换，false快速且长距离滑动无法切换
+            // freeMode:false,
+            touchRatio:2,//触摸距离与滑动距离的比例
+            
+            // 如果需要分页器
+            pagination:{
+                   el: '.swiper-pagination',
+                   type:'fraction',
+                       },
+            onSlideChangeEnd: function(swiper){ 
+                　　　swiper.update();  
+                　　　mySwiper.startAutoplay();
+                　　   mySwiper.reLoop();  
+                }
+          })  
+</script>
+</html>

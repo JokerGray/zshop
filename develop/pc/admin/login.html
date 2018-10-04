@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>管理员登录</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/layui/css/layui.css" />
+    <!--初始化css-->
+    <link rel="stylesheet" href="css/reset.css" />
+    <!--公用css-->
+    <link rel="stylesheet" href="css/zx.css" />
+    <link rel="stylesheet" href="css/login.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="header-inner clearfix">
+                <div class="logo pull-left"><img src="images/logo.png"></div>
+            </div>
+        </div>
+        <div class="login-wrap">
+            <div class="base-header blue">
+                <h2 class="title">管理员登录</h2>
+            </div>
+            <div class="base-login">
+                <div class="input-field">
+                    <input id="username" type="text" name="username" autocomplete="off" spellcheck="false" placeholder="用户名">
+                </div>
+                <div class="input-field">
+                    <input id="password" type="password" name="password" autocomplete="off" spellcheck="false" placeholder="密码">
+                </div>
+                <div class="action">
+                    <div class="clearfix">
+                        <input id="remember" class="remember" type="checkbox" name="remember">
+                        <label for="remember">一个月内免登录</label>
+                        <label class="pull-right">
+                            <!--<a class="blue" href="forget.html">忘记密码</a>							-->
+                        </label>
+                    </div>
+                </div>
+                <a href="javascript:void(0)" id="sendSubmit" class="btn btn-block btn-lg login-btn btn-blue">登录</a>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-1.10.2.js"></script>
+    <script src="assets/layui/lay/dest/layui.all.js"></script>
+    <script src="util/util.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
